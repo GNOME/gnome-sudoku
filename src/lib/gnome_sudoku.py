@@ -262,6 +262,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.history = Undo.UndoHistoryList(undo_widg,redo_widg)
         for e in self.gsd.__entries__.values():
             Undo.UndoableGenericWidget(e,self.history,
+                                       set_method='set_value_from_undo',
                                        pre_change_signal='value-about-to-change'
                                        )
             Undo.UndoableGenericWidget(e,self.history,
@@ -418,10 +419,12 @@ class UI (gconf_wrapper.GConfWrapper):
         #                           )
         hs = game_selector.HighScores(self.sudoku_tracker)
         hs.highlight_newest=True
-        hs.run_swallowed_dialog(self.swallower)
+        #hs.run_swallowed_dialog(self.swallower)
+        hs.run_dialog()
         self.main_actions.get_action('HighScores').set_sensitive(True)
         #self.gsd.blank_grid()
         self.stop_game()
+        self.new_cb()
 
     @simple_debug
     def initialize_prefs (self):
@@ -454,11 +457,34 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def quit_cb (self, *args):
-        #if AUTO_SAVE and not self.won: self.gconf['current_game']=self.save_game()
+        if gtk.main_level() > 1:
+            # If we are in an embedded mainloop, that means that one
+            # of our "swallowed" dialogs is active, in which case we
+            # have to quit that mainloop before we can quit
+            # properly.
+            if self.swallower.running:
+                d = self.swallower.running
+                d.response(gtk.RESPONSE_DELETE_EVENT)
+            gtk.main_quit() # Quit the embedded mainloop
+            gobject.idle_add(self.quit_cb,100) # Call ourselves again
+                                               # to quit the main
+                                               # mainloop
+            return
+            #buttons = d.action_area.get_children()
+            #for b in buttons:
+            #    if d.get_response_for_widget(b) in [gtk.RESPONSE_CLOSE,gtk.RESPONSE_CANCEL]:
+            #        print 'clicking button',b
+            #        b.emit('clicked')
+            #        while gtk.events_pending():
+            #            print 'Take care of iters...'
+            #            gtk.main_iteration()
+            #        break
+        print 'Now we hide the window'
         self.w.hide()
         # make sure we really go away before doing our saving --
         # otherwise we appear sluggish.
-        while gtk.events_pending(): gtk.main_iteration()
+        while gtk.events_pending():
+            gtk.main_iteration()
         if self.won:
             self.gconf['current_game']=''
         if not self.won:
@@ -729,7 +755,7 @@ class UI (gconf_wrapper.GConfWrapper):
             AUTHORS,#authors
             None,#comments
             None,#translator
-            gtk.gdk.pixbuf_new_from_file(os.path.join(ICON_DIR,'sudoku.svg'))#logo
+            gtk.gdk.pixbuf_new_from_file(os.path.join(ICON_DIR,'sudoku.png'))#logo
             )
         try:
             about.set_website('http://gnome-sudoku.sourceforge.net')

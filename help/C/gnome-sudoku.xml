@@ -1,0 +1,613 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "0.7">
+  <!ENTITY manrevision "2.0">
+  <!ENTITY date "October 2006">
+  <!ENTITY app "<application>GNOME Sudoku</application>">
+  <!-- Information about the entities
+       The legal.xml file contains legal information, there is no need to edit the file. 
+       Use the appversion entity to specify the version of the application.
+       Use the manrevision entity to specify the revision number of this manual.
+       Use the date entity to specify the release date of this manual.
+       Use the app entity to specify the name of the application. -->
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 06, 2003
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+    <title>&app; Manual V&manrevision;</title>       
+
+    <copyright> 
+      <year>2006</year> 
+      <holder>Thomas M. Hinkle</holder> 
+    </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+    <publisher> 
+      <publishername> GNOME Documentation Project </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+
+    <authorgroup> 
+      <author> 
+		<firstname>Thomas</firstname> 
+		<surname>Hinkle</surname> 
+		<affiliation> 
+	  		<orgname>GNOME Documentation Project</orgname> 
+	  		<!-- The email address of the author is optional and is commented out by default. 
+			<address> <email>doc-writer2@gnome.org</email> </address> 
+			-->
+		</affiliation> 
+      </author> 
+      
+<!-- This is appropriate place for other contributors: translators,
+     maintainers,  etc. Commented out by default.
+     
+      <othercredit role="translator">
+		<firstname>Latin</firstname> 
+		<surname>Translator 1</surname> 
+		<affiliation> 
+	  		<orgname>Latin Translation Team</orgname> 
+	  		<address> <email>translator@gnome.org</email> </address> 
+		</affiliation>
+		<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other
+-->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+    <revhistory>
+      <revision> 
+		<revnumber>GNOME Sudoku Manual V&manrevision;</revnumber> 
+		<date>&date;</date> 
+		<revdescription> 
+	  		<para role="author">Thomas M. Hinkle
+        <!-- The email address of the author is optional and is commented out by default.  
+	    	<email>docwriter2@gnome.org</email> -->
+	  		</para>
+	  		<para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+      </revision> 
+    </revhistory> 
+
+    <releaseinfo>This manual describes version &appversion; of MY-GNOME-APPLICATION.
+    </releaseinfo> 
+    <legalnotice> 
+      <title>Feedback</title> 
+      <para>To report a bug or make a suggestion regarding the &app; application or
+      this manual, follow the directions in the <ulink url="ghelp:gnome-feedback"
+	  type="help">GNOME Feedback Page</ulink>. 
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm zone="index"> 
+    <primary>MY-GNOME-APP</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>mygnomeapp</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<!-- Use the Introduction section to give a brief overview of what
+     the application is and what it does. -->
+  <sect1 id="myapp-introduction"> 
+    <title>Introduction</title> 
+    <para>
+    &app; is an application to generate and play the popular
+    Sudoku logic puzzle (also known as Number Place).
+    </para>
+    <para>
+
+        The rules of Sudoku are quite simple. In order to complete the
+        puzzle, you must fill each square with a number between 1 and
+        9 such that every row, column and 3x3 box on the board
+        contains the numbers 1 through 9.  Stated another way, you
+        must fill each square such that no number appears twice in the
+        same row, column, or 3x3 box.
+	
+    </para>
+
+    <para>
+        These two different ways of looking at the puzzle are two of
+    the principle ways players think as they play. On the one hand,
+    you ask yourself, &ldquo;How can I fit all the numbers in this
+    box?&rdquo; On the other hand, you ask yourself, &ldquo;What
+    numbers can fit in this square without causing a conflict with
+    other numbers in the same row, column, or 3x3 box?&rdquo;
+
+    </para>
+
+    <para>
+
+    In spite of the simplicity of the game, Sudoku puzzles can vary
+    widely in their difficulty. &app; allows you to select the
+    difficulty of the puzzle you want to play. By default, it will
+    begin with easy puzzles and gradually increase the difficulty of
+    puzzles as you improve.
+
+    </para>
+
+  </sect1>
+
+<!-- =========== Getting Started ============================== -->
+<!-- Use the Getting Started section to describe the steps required
+     to start the application and to describe the user interface components
+     of the application. If there is other information that it is important
+     for readers to know before they start using the application, you should
+     also include this information here. 
+     If the information about how to get started is very short, you can 
+     include it in the Introduction and omit this section. -->
+
+  <sect1 id="myapp-getting-started"> 
+    <title>Getting Started</title> 
+
+    <sect2 id="myapp-start">
+    <title>To Start &app;</title>
+    <para>You can start <application>&app;</application> in the following ways:
+    </para> 
+    <variablelist>
+    	<varlistentry>
+    		<term><guimenu>Applications</guimenu> menu</term>
+    		<listitem>
+    		<para>Choose 
+    		<menuchoice>
+    		<guisubmenu>Games </guisubmenu>
+    		<guimenuitem>Sudoku</guimenuitem>
+    		</menuchoice>. </para>
+    		</listitem>
+    	</varlistentry>
+    	<varlistentry>
+    		<term>Command line</term>
+    		<listitem>
+    		<para>To start <application>&app;</application> from a command line, type the following command, 
+    		then press <keycap>Return</keycap>:</para>
+    		<para> 
+			<command>gnome-sudoku</command> 
+    		</para> 
+    		</listitem>
+    	</varlistentry>
+    </variablelist>
+    </sect2>
+
+    <sect2 id="myapp-when-start">
+    <title>When You Start &app;</title>
+    <para>
+
+    When you start <application>&app;</application>, a puzzle will be
+    displayed. If it is your first time playing, you will begin with
+    an easy puzzle by default. If it is not your first time playing,
+    the game will open to the last puzzle you were working on by
+    default.
+
+    </para>
+
+    <para>
+    
+    To play different puzzle, click on
+    <guibutton>New</guibutton>. This will bring you to the puzzle
+    selection screen, where you can select whatever puzzle you like.
+
+    </para>
+    
+    </sect2>
+    
+    </sect1>
+    <sect1 id="myapp-basic-play">
+    <title>Basic game play</title>
+    <para>To play the game, start filling numbers 1-9 in the squares such that no row, column, or 3x3 box has any number more than one time.</para>
+    <para>You can fill a number in a square with the keyboard or the mouse.</para>
+    <variablelist>
+    	<varlistentry>
+	<term>Keyboard</term>
+	<listitem><para>Use the arrow keys or the mouse to select the square you would like to fill. Then type the number you want to put in the square. Typing <keycap>Backspace</keycap> will remove the number.</para></listitem>
+	</varlistentry>
+	<varlistentry>
+	<term>Mouse</term>
+	<listitem>
+	  <para>
+
+	  Click on a square to select it, then click in the center of
+	  the square to bring up buttons with the numbers 1-9.  Click
+	  on a number to select it, or click on
+	  <guibutton>clear</guibutton> to clear the square. You can
+	  also double-click in the center of a square to bring up the
+	  number buttons.
+	  
+	  </para>
+	</listitem>
+		</varlistentry>
+	</variablelist>
+    <note>
+    <para>
+    If you enter a number that is in conflict with other numbers on
+    the grid, the conflicting numbers will be highlighted in red.
+    </para>
+    <figure id="error-highlight-fig"> 
+	<title>Error highlighting</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/error_highlighting.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>An illegal move will be highlighted in red.</phrase> 
+	    </textobject>
+	  </mediaobject> 
+	</screenshot>
+      </figure>
+    </note>
+    <sect3 id="myapp-saving">
+    <title>Saving and Resuming Games</title>
+    <para>When you close &app;, your current game is automatically saved; when you start, you will continue playing your game where you left off.</para>
+    <para>If you'd like to stop playing one game and begin another, just select <guibutton>New</guibutton> and begin your new game.</para>
+    <para>To resume an old game that you interrupted, select <menuchoice>
+    		<guisubmenu>File</guisubmenu>
+    		<guimenuitem>Resume old game</guimenuitem>
+    		</menuchoice>. You can then select any game you've played before from a list.</para>
+    <para>To replay a game that you have already won, select <menuchoice>
+    		<guisubmenu>Game</guisubmenu>
+    		<guimenuitem>High Scores</guimenuitem>
+    		</menuchoice>. Then select the game you would like to replay and click <guibutton>Replay Game</guibutton>.
+		</para>
+    </sect3>
+
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+<!-- Use this section to describe how to use the application to perform the tasks for 
+  which the application is designed. -->
+  <sect1 id="myapp-hints"> 
+    <title>Features</title> 
+    <!-- ================ Usage Subsection ================================ -->
+
+        <para>
+
+	GNOME Sudoku provides a number of features that help you play
+        puzzles.</para>
+
+      <variablelist>
+    	<varlistentry><term>Notes</term>
+	<listitem>
+		<para><term>Notes</term> or <term>Pencilmarks</term> let
+        you take notes in each square. Many players use
+        notes to track possible values for squares.</para>
+	</listitem>
+	</varlistentry>
+	<varlistentry>
+	<term>Hints and Auto-Fill</term>
+	<listitem>
+	<para>	 You can use
+        <term>hints</term> and <term>auto-fill</term> to have GNOME
+        Sudoku tell you about possible values for a square or
+        automatically fill in a square for you.</para>
+	</listitem>
+	</varlistentry>
+
+		<varlistentry>
+	<term>Highlighting</term>
+	<listitem>
+	<para>	 In highlighting mode, the current row, column and box are highlighted in different colors to make scanning the board easier.</para>
+	</listitem>
+	</varlistentry>
+
+	<varlistentry>
+	<term>Trackers</term>
+	<listitem>
+	  <para>
+
+		Trackers make trial-and-error solutions easier to keep
+		track of. When you <term>track</term> a set of moves,
+		the numbers are entered in a special color to help you
+		distinguish those moves from moves made earlier in the
+		game.
+
+	  </para>
+	</listitem>
+	</varlistentry>
+        </variablelist>
+	
+	<sect2 id="myapp-notes"> 
+      <title>Taking Notes</title> 
+      <para>To write notes (also known as &ldquo;pencilmarks&rdquo;) in a square, first select the square with the keyboard or mouse. Then, do one of the following:</para>
+      <itemizedlist>
+      <listitem>Click in the upper region of the square (the region is highlighted with a square when you move the mouse over a selected square).</listitem>
+      <listitem>Type <keycap>N</keycap></listitem>
+      </itemizedlist>
+      <para>This will bring up a field in which you can type your notes. Type <keycap>Return</keycap> when you are finished editing your note.</para>
+      
+      <note><para>You can also take notes in the bottom of the square by clicking in the bottom of the square or by typing <keycap>M</keycap>. However, this area is used when you ask for a <term>hint</term>, so you should not use this area for your own notes if you also plan to use hints.</para></note>
+</sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="myapp-manipulate-view"> 
+      <title>Hints and Auto-Fill</title>
+
+		             <note>
+
+	      <para>
+
+	      The <term>Hint</term> and <term>Fill</term> features
+	      work based on the logical possibilities given the
+	      current board. They do <emphasis>not</emphasis> work by looking at
+	      the solution. If you have made an error in
+	      an earlier move, these features may fill in or suggest
+	      incorrect values.
+
+	      </para>
+
+	    </note>
+      
+      
+      <sect3 id="myapp-hint">
+          <title>Hints</title>
+	              <para>GNOME Sudoku can give you hints based on your current board. You can ask for a hint for the currently selected square by clicking <guibutton>hint</guibutton>, selecting <menuchoice><guisubmenu>Game</guisubmenu><guimenuitem>Hint</guimenuitem></menuchoice>, or typing <keycap>Control-I</keycap>. This will put a list of possible values in the bottom of the square.</para>
+    <figure id="hint-fig"> 
+	<title>Hints</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/hints.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>When you click on Hint, possible values are shown in the bottom of a square.</phrase> 
+	    </textobject>
+	  </mediaobject> 
+	</screenshot>
+      </figure>
+		      
+	    <para>If you want to remove or alter the hint, you can edit the text by clicking in the bottom of the square.</para>
+	    <para>For very difficult puzzles, you can choose to have &app; show you the possible values for all squares. To turn this mode on, toggle <menuchoice><guisubmenu>Game</guisubmenu><guimenuitem>Always show hint</guimenuitem></menuchoice>. Note that this can make easy puzzles <emphasis>too</emphasis> easy, so you should use this mode sparingly.</para>
+<figure id="all-hints-fig"> 
+	<title>&app; in Always-Show-Hint Mode</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/always_show_hint.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>A difficult puzzle with Always-Show Hint Mode enabled.</phrase> 
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+	    
+	    
+	    </sect3>
+	    <sect3 id="myapp-autofill">
+	    <title>Fill Square</title>
+
+	    <para>
+
+	    To automatically fill in a square for which there is only
+	    one possible value, you can click
+	    <guibutton>Fill</guibutton>, select
+	    <menuchoice><guisubmenu>Game</guisubmenu><guimenuitem>Fill</guimenuitem></menuchoice>,
+	    or type <keycap>Control-F</keycap>. This is useful, for
+	    example, when you have filled in 8 or 9 squares in a row and want to quickly fill in the last empty square.
+	    
+	    </para>
+	    <para>If there are more than
+	    one valid value for the entry, nothing will happen.
+	    </para>	    
+	    </sect3>
+	    <sect3 id="myapp-fill-all">
+	    <title>Fill All Squares</title>
+
+	    <para>You can automatically fill in all squares for which
+	    there is logically only one value at the moment. To do so, 
+	    	    select
+	    <menuchoice><guisubmenu>Game</guisubmenu><guimenuitem>Fill all squares</guimenuitem></menuchoice>,
+	    or type <keycap>Control-A</keycap>.
+	    </para>
+	    
+	    <warning>
+
+	    	    <para>This feature should only be used to help you when you are very stuck on a difficult game. Using this feature on an easy game can solve the entire puzzle in one click, resulting in a very boring game!</para>
+		    </warning>
+	    	    </sect3>
+
+    </sect2> 
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="myapp-highlighting"> 
+      <title>Highlighting</title> 
+      <para>You can turn on highlighting to automatically highlight the current row, column and box in different colors. This can make it easier to see which values cannot go into a current square. To toggle highlighting, you can:</para> 
+      <itemizedlist>
+      <listitem>Click <guibutton>Highlighter</guibutton></listitem>
+      <listitem><menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Highlighter</guimenuitem></menuchoice></listitem>
+      </itemizedlist>
+
+<figure id="highlight-fig"> 
+	<title>&app; with highlighting</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/highlighting.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>Highlighting makes it easy to scan rows, columns, and boxes.</phrase> 
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot>
+      </figure>
+      
+      </sect2>
+
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="myapp-trackers"> 
+      <title>Trackers</title> 
+      <para>You can use trackers to keep track of multiple moves at a time. Tracked moves will be entered in a different color to make them visually distinct. You can also delete all tracked moves at one time. This is particularly useful for solving difficult puzzles by trial-and-error.</para>
+      <note><para>Some sudoku players believe you should never use trial-and-error to solve a puzzle. These players should not use this feature.</para></note>
+
+            <para>You can toggle the tracker-interface by doing one of the following:</para>
+
+	    <itemizedlist>
+
+	      <listitem>
+	       <para>
+		<menuchoice> 
+			  <guimenu>Game</guimenu> 
+			  <guimenuitem>Track additions</guimenuitem>
+		</menuchoice>
+	       </para>
+	     </listitem>
+             <listitem><para>Click <guibutton>Track additions</guibutton></para></listitem>
+           </itemizedlist>
+      <para>This will bring up a list of trackers on to the right of the current game. Create a new tracker by clicking <guibutton>Add Tracker</guibutton>. From this point forward, any number you enter will be part of the selected tracker.</para>
+      <para>You can clear all the values that are part of a tracker by selecting the tracker from the list and clicking <guibutton>Clear Tracker</guibutton>. You can clear all values that are <emphasis>not</emphasis> part of a tracker by clicking <guibutton>Clear Others</guibutton>. </para>
+    </sect2> 
+  </sect1>
+  <!-- ============= Customization ============================= -->
+  <!-- Use this section to describe how to customize the application. -->
+  <sect1 id="myapp-printing"> 
+    <title>Printing Sudoku</title> 
+    <para>
+
+    GNOME Sudoku can print games for you to play on paper. This is useful if you have to leave the computer but want to finish a game you have started, or if you want to print out a bunch of puzzles to do later.
+
+    </para>
+
+    <para>To print the puzzle you are in the midst of playing, click <guibutton>Print</guibutton> or select <menuchoice> 
+	<guimenu>File</guimenu> 
+	<guimenuitem>Print</guimenuitem> 
+      </menuchoice>. This will include the numbers you have already filled in.</para>
+    
+    <para>To print blank puzzles, select <menuchoice> 
+	<guimenu>File</guimenu> 
+	<guimenuitem>Print multiple sudokus</guimenuitem> 
+      </menuchoice>.</para>
+
+      <para>You will then see a print dialog that lets you choose how
+      many games you would like to print and how many games you want
+      to print on each page (the more pages you print per page, the
+      smaller the games will be).</para>
+
+      <para>You can also select the range of difficulty you want the games to be in. The games will print in order of difficulty from easiest to hardest.</para>
+
+      <para>To create a 25 page mini sudoku book for yourself, you could select to print 100 sudokus, at 4 sudokus per page, with games ranging from easy to hard.</para>
+
+<figure id="printing-fig"> 
+	<title>Printing a Mini-Sudoku book from &app;</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/Print_Sudokus.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>This will print 25 pages with 4 sudokus on each page.</phrase> 
+	    </textobject>
+	  </mediaobject> 
+	</screenshot>
+      </figure>
+      
+      <para>By default, &app; will not print games that you have already played. If you're printing out games for a friend, or if you don't care about repeating games, you can check <guibutton>Include games you've already played in list of games to print</guibutton>.</para>
+
+      <para>You can also hand-select the games you would like to print by expanding the <guibutton>Games List</guibutton> and selecting multiple puzzles on the list.</para>
+    
+  </sect1>
+  
+  <sect1 id="mayapp-bugs">
+  <title>Known Bugs and Limitations</title>
+  <sect2>
+  <title>Limited Puzzle Statistics</title>
+
+    <para>GNOME Sudoku ranks puzzles based on the number of squares that can be rapidly filled. The puzzle statistics box shows you the overall rating and shows you three pieces of information:</para>
+
+    <itemizedlist>
+    <listitem><para>The number of squares fillable by elimination, starting from the blank grid (i.e. only a 2 can go in this box, so it must be a 2).</para></listitem>
+    <listitem><para>The number of squares fillable by filling, starting from the blank grid (i.e. only only one square in this row can be a 2, so it must be a 2).</para></listitem>
+    <listitem><para>The number of times in solving the puzzle that the computer had to use trial-and-error, or &ldquo;guessing&rdquo;, to solve the puzzle.</para></listitem>
+    </itemizedlist>
+    <para>
+
+    Many users are upset to know that the computer solver uses
+    trial-and-error, especially since some Sudoku gurus say you should
+    never guess to solve a puzzle. There are a number of other
+    algorithms that can be implemented to help the computer solve
+    sudoku, such as the swordfish and X-wings patterns. 
+
+    </para>
+
+    <para>
+
+    At present, &app; only uses the two algorithms described above as
+    well as trial-and-error. When the statistics box says that &app;
+    needed to use trial-and-error X number of times, it does
+    <emphasis>not</emphasis> mean that a human would have to use
+    trial-and-error to solve the puzzle.
+
+    </para>
+  
+  </sect2>
+
+  <sect2>
+  <title>Negative High Scores</title>
+  <para>High scores are arguably an extraneous part of a sudoku game, but they seem like fun, so &app; includes them. The algorithm for high scores gives you points for speed and for puzzle difficulty and takes away points for using hints. The algorithm is designed to give reasonable-looking scores, but it sometimes produces negative scores, which can be upsetting for users.</para>
+  </sect2>
+ </sect1>
+-->
+<!-- ============= About ================================== -->
+<!-- This section contains info about the program (not docs), such as
+      author's name(s), web page, license, feedback address. This
+      section is optional: primary place for this info is "About.." box of
+      the program. However, if you do wish to include this info in the
+      manual, this is the place to put it. Alternatively, you can put this information in the title page.-->
+  <sect1 id="myapp-about"> 
+    <title>About &app;</title> 
+    <para> &app; was written by Tom Hinkle
+      (<email>thomas_hinkle@sf.net</email>). To find more information about
+      &app;, please visit the 
+      <ulink url="http://gnome-sudoku.sf.net" type="http">&app; Web
+	page</ulink>. </para>
+    <para>
+      To report a bug or make a suggestion regarding this application or
+      this manual, follow the directions in this 
+      <ulink url="ghelp:gnome-feedback"   type="help">document</ulink>.
+    </para>
+
+    <para> This program is distributed under the terms of the GNU
+      General Public license as published by the Free Software
+      Foundation; either version 2 of the License, or (at your option)
+      any later version. A copy of this license can be found at this
+      <ulink url="ghelp:gpl" type="help">link</ulink>, or in the file
+      COPYING included with the source code of this program. </para>
+
+  </sect1> 
+</article>

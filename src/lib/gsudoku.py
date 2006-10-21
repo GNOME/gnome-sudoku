@@ -102,7 +102,7 @@ class NumberSelector (gtk.EventBox):
     def get_value (self):
         return self.value
 
-    def set_value (self,n): 
+    def set_value (self,n):
         self.value = n
 
 class NumberBox (gtk.Widget):
@@ -121,6 +121,10 @@ class NumberBox (gtk.Widget):
     __gsignals__ = {
         'value-about-to-change':(gobject.SIGNAL_RUN_LAST,gobject.TYPE_NONE,()),
         'changed':(gobject.SIGNAL_RUN_LAST,gobject.TYPE_NONE,()),
+        # undo-change - A hacky way to handle the fact that we want to
+        # respond to undo's changes but we don't want undo to respond
+        # to itself...
+        'undo-change':(gobject.SIGNAL_RUN_LAST,gobject.TYPE_NONE,()), 
         'notes-changed':(gobject.SIGNAL_RUN_LAST,gobject.TYPE_NONE,()),
         }
 
@@ -635,6 +639,10 @@ class NumberBox (gtk.Widget):
     def show_notes (self):
         pass
 
+    def set_value_from_undo (self, v):
+        self.set_value(v)
+        self.emit('undo_change')
+
     def set_value (self,v):
         if 0 < v <= self.upper:
             self.set_text(str(v))
@@ -817,6 +825,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         self.setup_grid(grid,group_size)
         for e in self.__entries__.values():
             e.show()
+            e.connect('undo-change',self.entry_callback)
             e.connect('changed',self.entry_callback)
             e.connect('focus-in-event',self.focus_callback)
         self.connect('focus-changed',self.highlight_cells)
@@ -1006,7 +1015,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         self.doing_initial_setup = False
 
     @simple_debug
-    def entry_callback (self, widget, *args):
+    def entry_callback (self, widget, *args):        
         if not widget.get_text():
             if self.grid and self.grid._get_(widget.x,widget.y):
                 self.grid.remove(widget.x,widget.y)

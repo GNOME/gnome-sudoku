@@ -236,7 +236,7 @@ class HighScores (GameSelector):
     
     def setup_tree (self):
         self.setup_treemodel()
-        rend = gtk.CellRendererText()
+        rend = gtk.CellRendererText()        
         rend.connect('edited',self.player_edited_cb)
         col = gtk.TreeViewColumn(_('Player'),rend,text=0,
                                  editable=6,
@@ -268,7 +268,7 @@ class HighScores (GameSelector):
             return self.get_puzzle()
 
     def setup_treemodel (self):
-        # Name, Score, Score (float), Date, Date(float), Puzzle (str), Highlighted, Finisher (PYOBJ)
+        # Name, Score, Score (float), Date, Date(float), Puzzle (str), Highlighted, Finisher (PYOBJ), Number
         self.model = gtk.TreeStore(str,str, float, str, float,str,int,gobject.TYPE_PYOBJECT)
         most_recent = (None,None)
         for game,finishers in self.sudoku_tracker.finished.items():
@@ -284,7 +284,7 @@ class HighScores (GameSelector):
                                    finish_time,
                                    game,
                                    0,
-                                   finisher
+                                   finisher,
                                    ])
                 if finish_time > most_recent[0]: most_recent = (finish_time,itr)
                 for label,detail in [(_('Puzzle'), self.sudoku_tracker.sudoku_maker.names[game]),
@@ -304,6 +304,7 @@ class HighScores (GameSelector):
                     self.model.append(itr,
                                       [label, detail, 0, None, 0,None,0,None])
         self.model.set_sort_column_id(2,gtk.SORT_DESCENDING)
+        
         if self.highlight_newest:
             itr = most_recent[1]
             self.model.set_value(itr,6,1)
@@ -314,7 +315,7 @@ class HighScores (GameSelector):
             self.glade.get_widget('replay').hide()
             self.glade.get_widget('you_win_label').show()
             self.image = self.glade.get_widget('image')
-            self.image.set_from_file(os.path.join(IMAGE_DIR,'Winner.png'))
+            self.image.set_from_file(os.path.join(IMAGE_DIR,'winner.png'))
             self.image.show()
             self.tv.expand_row(self.highlight_path,True)
             def start_editing ():
@@ -327,7 +328,9 @@ class HighScores (GameSelector):
         diff = self.sudoku_tracker.get_difficulty(puzzl)
         time_bonus = (60*60*3.5/(finisher['auto_fills']+1))/finisher['time']
         if time_bonus < 1: time_bonus = 1
-        score = diff.value * 100 * time_bonus
+        score = diff.value * 100
+        if score <= 10: score = 5 # minimum score of 5
+        score = score * time_bonus
         score = score - finisher['auto_fills']*10
         score = score - finisher['impossible_hints']*0.5
         score = score - finisher['hints']*0.5

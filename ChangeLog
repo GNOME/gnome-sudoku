@@ -1,0 +1,18 @@
+2006-10-18  Thomas M. Hinkle  <tom@localhost.localdomain>
+
+	* Fixed bug that caused GNOME Sudoku to hang when on "New Game"
+     	  screen (related to recursive mainloop)
+	* Fixed bug related to Undo that caused some moves not to register
+	  in the internal representation of the sudoku grid (which
+	  resulted in the game-finished-but-no-high-scores bug).
+
+2006-10-16  Thomas M. Hinkle  <thomas_hinkle@sf.net>
+
+	* Finished switch to Makefile style build system.
+
+2006-10-14  Thomas M. Hinkle  <thomas_hinkle@sf.net>
+
+	* Created proper changelog.
+	* Switched from setup.py to Makefile setup.
+	* Created better always-show-hint mode
+	* Made High Scores show integer value instead of ugly float.

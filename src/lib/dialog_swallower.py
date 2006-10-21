@@ -10,6 +10,8 @@ class SwappableArea (gtk.Notebook):
 
     swallowed = {}
     response = None
+    running = False
+
     
     def __init__ (self,main_area):
         gtk.Notebook.__init__(self)
@@ -40,6 +42,7 @@ class SwappableArea (gtk.Notebook):
         for w in action_widgets: w.connect('clicked',cb)
 
     def run_dialog (self, d):
+        self.running = d
         if not self.swallowed.has_key(d):
             self.swallow_dialog(d)
         self.set_current_page(self.swallowed[d])
@@ -49,7 +52,9 @@ class SwappableArea (gtk.Notebook):
             print 'Error in dialog!'
             import traceback; traceback.print_exc()
             print 'forge on fearlessly...'
+        print 'set current page'
         self.set_current_page(self.main_page)
+        self.running = None
         return self.response
 
         

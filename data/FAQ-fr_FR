@@ -1,0 +1,231 @@
+1. Qu'est-ce que GNOME Sudoku ?
+
+Le Sudoku est un jeu populaire de réfléxion japonais. Récemment, il est
+devenu très populaire en Grande Bretagne et ailleurs (c'est ce que j'ai
+entendu).
+
+Je (l'auteur) suis un Américain dont la femme est devenue accro au
+sudoku. J'y ai joué une fois et j'ai décidé d'écrire un programme qui
+résoudrait des Sudokus. Il s'est avéré que laisser l'ordinateur résoudre
+la grille enlevait tout le coté amusant de la chose.
+
+J'ai donc écrit GNOME Sudoku, un programme, pour mon environnement de
+bureau favori, qui génère des grilles et aide dans la résolution de ces
+dernières. Comme tous les logiciels que j'utilise, écris et aime, GNOME
+Sudoku est un logiciel libre publié sous licence GPL (GNU General Public
+Licence).
+
+2. C'est bien joli, mais comment y jouer ?
+
+Les règles du Sudoku sont assez simples. Il suffit simplement de remplir
+les cases vides de la grille avec des chiffres de 1 à 9.
+
+Vous devez placer les chifres de telle sorte que chaque ligne, chaque
+colonne et chaque carré de 3x3 cases aient exactement une seule fois les
+chiffres de 1 à 9.
+
+Une autre façon de voir la chose est de dire qu'il faut placer tous les
+chiffres sur la grille de telle sorte qu'un chiffre ne doit pas se
+répéter sur une ligne, une colonne ou un carré.
+
+Ces deux manières de voir la grille sont en fait les deux principales
+techniques pour jouer. D'un côté, vous vous demandez "Comment placer
+tous les chiffres dans ce carré, cette colonne ou cette ligne ?" et de
+l'autre côté, vous vous demandez "Quel chiffre peut être placé dans
+cette case sans provoquer de conflit avec les autres chiffres de la
+grille ?"
+
+Les cases dont les chiffres sont en gras sont celles qui vous sont
+fournies au début du jeu. C'est le placement de ces cases qui rendent la
+résolution de la grille facile ou bien difficile.
+
+Si vous ne comprenez toujours pas, essayez simplement de placer des
+chiffres dans des cases et vous prendrez vite le coup. Si vous
+positionnez mal un chiffre, les deux chiffres en conflit deviendront
+rouges.
+
+Par défaut, GNOME Sudoku vous proposera un jeu facile pour commencer
+(bien que les grilles faciles vous paraitront pas si faciles au début
+-- il m'a fallu 3 heures pour résoudre ma première grille !). A chaque
+fois que vous gagnez une partie, GNOME Sudoku essaiera de trouver un jeu
+sensiblement plus difficile pour la prochaine partie (bien que vous
+puissiez également définir votre propre niveau de difficulté).
+
+A noter que chaque sudoku généré par GNOME Sudoku a une et une seule
+solution. Des indices sont aussi distribués symétriquement comme pour le
+sudoku traditionnel.
+
+2.1 Les Pistes
+
+Quelques fois, il est utile de garder la trace d'une série de
+placements, que l'on pourra toujours supprimer plus tard si une
+hypothèse provoque finalement un conflit. Les pistes sont là pour ça.
+Lorsque vous choisissez "Ajouter une piste", les nouveaux placements
+seront représentés d'une couleur différente afin de pouvoir les
+différencier. Vous pouvez supprimer tous les placements si vous le
+désirez ou supprimer ceux des autres pistes.
+
+Vous pouvez avoir autant de pistes que vous le désirez.
+
+2.2 Les Indices
+
+Lorsque vous jouez au sudoku avec un crayon et du papier, il vous arrive
+de faire beaucoup de prises de note. D'une manière générale, jouer sur
+ordinateur, consisterait donc à noter dans sa tête plutôt que sur
+papier, ce qui est en fait encore plus amusant.
+
+Mais quelques fois, vous voulez seulement garder une trace des valeurs
+possibles pour chaque case. Si vous cliquez sur "Indice" ou tapez
+"Ctrl+I" (pour Indice), vous obtiendrez la liste des valeurs pouvant
+correspondre à la case courante.
+
+2.3 Remplir les cases automatiquement
+
+GNOME Sudoku a un mode "auto-remplissage" qui permet de remplir
+automatiquement les cases et vous sauver d'un laborieux travail. Il
+suffit de presser le bouton "Remplir" dans la barre d'outils ou encore
+dans le menu pour remplir la case courante (signalée par le curseur)
+-- c'est particulièrement intéressant lorsqu'il ne reste qu'une seule
+case à remplir dans une colonne et que vous ne voulez pas prendre le
+temps de passer en revue chaque chiffre pour trouver celui manquant.
+
+Vous pouvez également choisir de "Remplir toutes les cases"
+automatiquement, ce qui aura pour effet de remplir toutes les cases
+remplissables en utilisant les deux algorithmes simples de résulotion de
+grilles de GNOME Sudoku. Cette fonctionnalité ne devrait être utilisée
+que très rarement -- certaines grilles peuvent être entièrement résolues
+en utilisant cette fonctionnalité, ce qui enlève tout le côté amusant.
+
+2.4 Scores
+
+Lorsque vous finissez une grille, il vous est possible d'entrer votre
+nom dans les scores.
+
+Sudoku n'est pas vraiment un jeu basé sur un système de points, mais
+j'aime bien les scores. Ainsi, GNOME Sudoku génère un score basé sur le
+niveau de la grille, le nombre d'utilisations d'indices (qui comptent
+contre vous) et le temps de résolution.
+
+3. Sauvegarder et ouvrir des grilles
+
+3.1 Sauvegarder
+
+Je n'aime pas le concept de sauvegarde, donc GNOME Sudoku n'a pas de
+commande ou bouton de sauvegarde. Mais pas de panique -- GNOME Sudoku
+sauvegarde *toujours* votre travail. Je n'aime pas "Sauvegarder" non pas
+parce que la sauvegarde m'importe peu, mais parce que sauvegarder est
+tellement important que la sauvegarde est automatique.
+
+3.2 Ouvrir
+
+A chaque fois que vous lancez GNOME Sudoku, la dernière grille sur
+laquelle vous travailliez vous sera présentée.
+
+A chaque fois que vous ouvrez une nouvelle grille sans finir la
+précédente, vous pouvez reprendre cette dernière dans l'état où vous
+l'avez laissée. Pour récupérer la grille, sélectionnez "Reprendre un
+ancien jeu" dans la barre d'outils ou dans le menu. Une liste de toutes
+les grilles non terminées vous sera présentée avec des informations sur
+le début du jeu, la durée écoulée et la date de la dernière action
+effectuée.
+
+3.3 Nouvelles grilles
+
+Lorsque vous choisissez de jouer une nouvelle grille, une boîte de
+dialogue apparaît, vous proposant le niveau de difficulté désiré. Le
+programme regardera ses grilles disponibles et choisira la grille qui
+convient le mieux au niveau demandé.
+
+Si vous cliquez sur "Détails" dans la fenêtre "Nouvelle Grille", il vous
+sera possible d'avoir plus d'informations à propos de chaque grille
+générée par GNOME Sudoku.
+
+4. D'où proviennent les grilles ?
+
+GNOME Sudoku génère ses propres grilles. Générer des grilles prend du
+temps et occupe les ressources de l'ordinateur, c'est pourquoi je
+distribue quelques grilles déjà en place. Lorsque vous lancez GNOME
+Sudoku, il vérifie combien de grilles sont disponibles. Si trop peu de
+grilles sont disponibles, le programme lancera le générateur de grilles en
+arrière plan pendant que vous jouez (le processus s'arrêtera à chaque fois
+que la fenêtre du Sudoku est minimisée afin de ne pas interférer avec
+d'autres travaux).
+
+Vous pouvez arrêter de générer de nouvelles grilles en décochant le
+bouton "Générer de nouvelles grilles pendant le jeu" dans le menu.
+
+5. Comment fonctionne le générateur de grilles ?
+
+GNOME Sudoku est d'abord un simple solveur de grilles. Ce solveur
+est utilisé pour générer de nouvelles grilles (si vous lui demandez de
+résoudre une grille vide, il arrivera à une nouvelle solution à chaque
+fois; ce n'est donc qu'une question de choix de cases à donner comme
+indices).
+
+Le solveur essaie 3 techniques. Ces 3 techniques influent sur la
+difficulté d'une grille donnée. Tout d'abord, le solveur a deux
+manières de remplir les cases de façon "déterministe".
+
+5.1. Par élimination
+
+Pour remplir des cases par élimination, le solveur vérifie les valeurs
+qui peuvent correspondre pour chaque case. S'il n'y a qu'une seule
+valeur possible pour une case donnée, cette valeur est affectée à la
+case.
+
+5.2. Par remplissage
+
+Pour cette méthode, le solveur regarde chaque ligne, colonne et carré
+et regarde où chaque chiffre peut correspondre. S'il n'y a qu'une seule
+case dans un carré, une ligne ou une colonne qui correspondrait à ce
+chiffre, cette valeur est affectée à la case.
+
+5.3 Par hypothèse
+
+Quand le solveur ne peut plus remplir aucune case par les deux
+méthodes précédentes, il sélectionnera la case avec le plus petit nombre
+possible de candidats et fera ensuite des hypothèses. Il continuera à
+travailler sur la grille jusqu'à trouver la solution ou échouer. S'il
+échoue, il essaie simplement une autre hypothèse et ce jusqu'à trouver
+la solution.
+
+6. Comment est définie la notion de difficulté ?
+
+GNOME Sudoku note les grilles sur le nombre d'hypothèses nécessaires
+pour la résoudre (pour beaucoup de grilles, aucune hypothèse n'est
+nécessaire) et combien de cases peuvent être trouvées à l'état initial
+de la grille.
+
+Un rapide test permet de dire que mon système de notation correspond à
+celui de sites web populaires tels dailysudoku.com
+
+Vous pouvez obtenir plus de détails sur la diffculté de la grille
+courante en sélectionnant "Statistiques de la grille" dans le menu 
+"Jeu".
+
+7. Où puis-je poser d'avantage de questions ?
+
+Vous pouvez reporter des bugs, demander de nouvelles fonctionnalités ou
+encore proposer des patchs sur la page sourceforge de GNOME Sudoku :
+http://sf.net/projects/gnome-sudoku/
+
+Vous pouvez également me joindre directement à l'adresse 
+thomas_hinkle@alumni.brown.edu (en anglais).
+
+8. Comment contribuer ?
+
+Si vous êtes programmeur, vous êtes libre de "hacker" le code source de
+GNOME Sudoku, en améliorant l'interface graphique (les pistes pourraient
+être beaucoup plus belles !) ou en travaillant sur le code du solveur et du
+générateur, qui pourraient nécessiter quelques optimisations !
+
+Si vous n'êtes pas programmeur, il y a un tas de choses que GNOME Sudoku
+pourrait avoir, comme :
+
+ - De plus belles icônes
+ - Une page web plus jolie
+ - Une meilleure documentation que ce simple fichier !
+
+Toute contribution sera la bienvenue que ce soient des patchs sur 
+sourceforge ou des emails à thomas_hinkle@alumni.brown.edu (en anglais).
+
