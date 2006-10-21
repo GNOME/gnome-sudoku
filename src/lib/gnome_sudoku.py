@@ -479,7 +479,6 @@ class UI (gconf_wrapper.GConfWrapper):
             #            print 'Take care of iters...'
             #            gtk.main_iteration()
             #        break
-        print 'Now we hide the window'
         self.w.hide()
         # make sure we really go away before doing our saving --
         # otherwise we appear sluggish.
@@ -591,6 +590,7 @@ class UI (gconf_wrapper.GConfWrapper):
             self.gsd.always_show_hints = True
             self.gsd.update_all_hints()
         else:
+            self.gsd.always_show_hints = False            
             self.gsd.clear_hints()
 
     @simple_debug

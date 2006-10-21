@@ -52,7 +52,6 @@ class SwappableArea (gtk.Notebook):
             print 'Error in dialog!'
             import traceback; traceback.print_exc()
             print 'forge on fearlessly...'
-        print 'set current page'
         self.set_current_page(self.main_page)
         self.running = None
         return self.response
