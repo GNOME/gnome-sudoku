@@ -8,7 +8,7 @@ import gtk.glade
 gtk.glade.bindtextdomain (DOMAIN)
 gtk.glade.textdomain (DOMAIN)
 
-VERSION = "1.17.1"
+VERSION = "2.17.1"
 APPNAME = _("GNOME Sudoku")
 COPYRIGHT = _('Copyright (c) 2005, Thomas M. Hinkle. GNU GPL')
 DESCRIPTION = _('GNOME Sudoku is a simple sudoku generator and player.  Sudoku is a japanese logic puzzle.')
