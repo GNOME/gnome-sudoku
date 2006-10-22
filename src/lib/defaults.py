@@ -1,6 +1,7 @@
 import os, os.path
 import gettext
-DOMAIN = 'gnome-sudoku'
+#DOMAIN = 'gnome-sudoku'
+DOMAIN = 'gnome-games'
 gettext.bindtextdomain(DOMAIN)
 gettext.textdomain(DOMAIN)
 from gettext import gettext as _
@@ -10,7 +11,7 @@ gtk.glade.textdomain (DOMAIN)
 
 VERSION = "2.17.1"
 APPNAME = _("GNOME Sudoku")
-COPYRIGHT = _('Copyright (c) 2005, Thomas M. Hinkle. GNU GPL')
+COPYRIGHT = _('Copyright (c) 2005,2006, Thomas M. Hinkle. GNU GPL')
 DESCRIPTION = _('GNOME Sudoku is a simple sudoku generator and player.  Sudoku is a japanese logic puzzle.')
 AUTHORS = ["Thomas M. Hinkle"]
 AUTO_SAVE= True
