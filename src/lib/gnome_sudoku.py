@@ -78,8 +78,8 @@ class UI (gconf_wrapper.GConfWrapper):
         <menuitem action="HighScores"/>
        </menu>
        <menu action="Help">
-         <menuitem action="About"/>
          <menuitem action="ShowHelp"/>
+         <menuitem action="About"/>
        </menu>
      </menubar>
      <toolbar name="Toolbar">
@@ -197,7 +197,7 @@ class UI (gconf_wrapper.GConfWrapper):
              None,None,None),
             ('About',gtk.STOCK_ABOUT,None,
              None,None,self.show_about),
-            ('ShowHelp',gtk.STOCK_HELP,None,
+            ('ShowHelp',gtk.STOCK_HELP, _('_Contents'),
              None,None,self.show_help),
             ('HighScores',None,_('High _Scores'),
              None,_('Show high scores or replay old games.'),
