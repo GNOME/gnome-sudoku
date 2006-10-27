@@ -1,7 +1,6 @@
 # NOTE: We could also play in hexidecimal for kicks...
 import random
 import math
-import Numeric
 import re
 from gettext import gettext as _
 
@@ -72,7 +71,6 @@ class SudokuGrid:
             self.rows.append(set())
             self.boxes.append(set())
             self.grid.append([0]*self.group_size)
-        self.grid = Numeric.array(self.grid,typecode=Numeric.Int)
         self.box_by_coords = {}
         self.box_coords = {}
         self.calculate_box_coords() # sets box_coords and box_by_coords
