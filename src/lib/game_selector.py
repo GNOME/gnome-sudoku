@@ -313,10 +313,6 @@ class HighScores (GameSelector):
     def highlight (self):
         if hasattr(self,'highlight_path'):
             self.glade.get_widget('replay').hide()
-            self.glade.get_widget('you_win_label').show()
-            self.image = self.glade.get_widget('image')
-            self.image.set_from_file(os.path.join(IMAGE_DIR,'winner.png'))
-            self.image.show()
             self.tv.expand_row(self.highlight_path,True)
             def start_editing ():
                 self.tv.set_cursor(self.highlight_path,
