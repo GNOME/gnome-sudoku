@@ -7,7 +7,6 @@ gnomesudoku_PYTHON = \
 	dialog_swallower.py	\
 	game_selector.py	\
 	gnome_sudoku.py	\
-	gsudoku_copy.py	\
 	gsudoku.py	\
 	__init__.py	\
 	new_entry.py	\
