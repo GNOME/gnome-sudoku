@@ -172,7 +172,7 @@ class UI (gconf_wrapper.GConfWrapper):
              self.open_game),
             ('Game',None,_('_Game')),
             ('View',None,_('_View')),
-            ('ShowPossible',gtk.STOCK_HINT,_('_Hint'),
+            ('ShowPossible',gtk.STOCK_INFO,_('_Hint'),
              '<Control>i',
              _('Show which numbers could go in the current square.'),
              self.show_hint_cb),

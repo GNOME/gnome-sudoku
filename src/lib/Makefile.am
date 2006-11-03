@@ -9,7 +9,6 @@ gnomesudoku_PYTHON = \
 	gnome_sudoku.py	\
 	gsudoku.py	\
 	__init__.py	\
-	new_entry.py	\
 	pausable.py	\
 	printing.py	\
 	saver.py	\

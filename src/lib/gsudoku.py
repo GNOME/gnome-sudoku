@@ -895,11 +895,12 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
 
     @simple_debug
     def show_hint (self):        
-        entry = self.focused
-        if entry.read_only or entry.get_text():
-            pass
-        else:
-            self.show_hint_for_entry(entry,interactive=True)
+        if hasattr(self,'focused'):
+            entry = self.focused
+            if entry.read_only or entry.get_text():
+                pass
+            else:
+                self.show_hint_for_entry(entry,interactive=True)
 
     def show_hint_for_entry (self, entry, interactive=False):
         if interactive:
