@@ -172,7 +172,7 @@ class UI (gconf_wrapper.GConfWrapper):
              self.open_game),
             ('Game',None,_('_Game')),
             ('View',None,_('_View')),
-            ('ShowPossible',gtk.STOCK_INFO,_('_Hint'),
+            ('ShowPossible',gtk.STOCK_DIALOG_INFO,_('_Hint'),
              '<Control>i',
              _('Show which numbers could go in the current square.'),
              self.show_hint_cb),
@@ -847,7 +847,7 @@ class TrackerBox (gtk.VBox):
         #print 'tracker_id = ',tracker_id
         pb=image_extras.pixbuf_transform_color(
             STOCK_PIXBUFS['tracks'],
-            (255,255,255),#white
+            (0,0,0),#white
             self.main_ui.gsd.get_tracker_color(tracker_id),
             )
         # select our new tracker

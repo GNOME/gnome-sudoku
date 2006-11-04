@@ -49,13 +49,17 @@ def pixbuf_transform_color (pb,
     arr = arr.copy()
     for row in arr:
         for pxl in row:
-            if pxl[3]!=0: # not transparent
-                if not initial_color or (pxl[0]==initial_color[0] and
-                                         pxl[1]==initial_color[1] and
-                                         pxl[2]==initial_color[2]):
+            if int(pxl[3])!=0: # not transparent
+                if (not initial_color) or ((int(pxl[0])==initial_color[0] and
+                                            int(pxl[1])==initial_color[1] and
+                                            int(pxl[2])==initial_color[2])):
                     pxl[0]=target_color[0]
                     pxl[1]=target_color[1]
                     pxl[2]=target_color[2]
+                elif pxl[0]==0:
+                    print pxl[0]==initial_color[0]
+                    print pxl[1]==initial_color[1]
+                    print pxl[2]==initial_color[2]                    
     return gtk.gdk.pixbuf_new_from_array(arr,
                                          pb.get_colorspace(),
                                          pb.get_bits_per_sample()

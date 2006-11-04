@@ -1,7 +1,18 @@
+2006-11-04  Thomas M. Hinkle  <Thomas_Hinkle@alumni.brown.edu>
+
+	* images/footprints.png: Used shoe-prints. Note that if we get a
+	real artist to pretty up this icon, it needs to contain mostly
+	solid black that will gets properly re-colored when we add
+	trackers of different colors.
+	* src/lib/gnome_sudoku.py: Tweak our fix to Bug 369531; Use
+	STOCK_DIALOG_INFO instead of STOCK_INFO for hints.
+	* src/lib/gtk_goodies/image_extras.py: Fix re-coloring of black png files.
+
 2006-11-03  Thomas M. Hinkle  <Thomas_Hinkle@alumni.brown.edu>
 
 	* src/lib/gnome_sudoku.py: Fix Bug 369531 [sudoku uses wrong icon for hints]
 	* src/lib/*: Remove extra files that don't belong in CVS.
+	* src/lib/gsudoku.py: Don't cause a traceback if user clicks "hint" before a square is selected.
 
 2006-10-30  Andreas Røsdal  <andrearo@pvv.ntnu.no>
 
