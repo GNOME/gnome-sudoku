@@ -5,8 +5,13 @@
 	solid black that will gets properly re-colored when we add
 	trackers of different colors.
 	* src/lib/gnome_sudoku.py: Tweak our fix to Bug 369531; Use
-	STOCK_DIALOG_INFO instead of STOCK_INFO for hints.
+	STOCK_DIALOG_INFO instead of STOCK_INFO for hints. Make sure
+	tracker is off by default.
+	* src/lib/gsudoku.py: Change colors for trackers to tango-y colors.	
 	* src/lib/gtk_goodies/image_extras.py: Fix re-coloring of black png files.
+	* src/lib/saver.py: Don't automatically show trackers just because
+	there *are* trackers for a game; rely on the UI to save the
+	toggled-state of tracker visibility on its own.
 
 2006-11-03  Thomas M. Hinkle  <Thomas_Hinkle@alumni.brown.edu>
 

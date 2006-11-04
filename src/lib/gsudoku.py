@@ -6,16 +6,18 @@ from gettext import gettext as _
 import sudoku
 
 TRACKER_COLORS = [
-    (0.0,0.0,1.0), #blue
-    (0.0,0.75,0.0), #green
-    (0.6,0.0,1.0), #purple
-    (1.0,0.5,0), #orange
-    (0.5,0.5,0.5), #grey
-    (0.6,0.15,0.15), #maroonish
-    (0,0.3,0.0), #dark green
-    (0,0,0.5), #dark blue
-    (0.5,0.35,0.1), #muddy
-    (0.5,0.25,0), #dark orange
+    # Use tango colors recommended here:
+    # http://tango.freedesktop.org/Tango_Icon_Theme_Guidelines
+    tuple([x/255.0 for x in cols]) for cols in
+    [(32,74,135), # Sky Blue 3
+     (78,154,6), # Chameleon 3
+     (206,92,0), # Orange 3
+     (143,89,2), # Chocolate 3
+     (92,53,102), # Plum 3
+     (85,87,83), # Aluminium 5
+     (196,160,0), # Butter 3
+
+     ]
     ]
 
 def gtkcolor_to_rgb (c):

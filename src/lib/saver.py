@@ -50,7 +50,7 @@ def open_game (ui, jar):
     for tracker,tracked in jar['trackers'].items():
         # add 1 tracker per existing tracker...
         ui.tracker_ui.add_tracker()
-        ui.tracker_ui.show()
+        #ui.tracker_ui.show() # Leave this to the toggle setting
         for x,y,val in tracked:
             ui.gsd.add_tracker(x,y,tracker,val=val)
     for tracker,tracking in jar['tracking'].items():

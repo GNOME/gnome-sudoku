@@ -116,6 +116,7 @@ class UI (gconf_wrapper.GConfWrapper):
                      'minimum_number_of_new_puzzles':MIN_NEW_PUZZLES,
                      'bg_black':1,
                      'bg_custom_color':'',
+                     'show_tracker':False,
                      #'show_notes':0
                      }    
 
