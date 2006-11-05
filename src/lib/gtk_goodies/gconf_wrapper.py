@@ -4,7 +4,7 @@
 
 import gconf
 from gconf import VALUE_BOOL, VALUE_INT, VALUE_STRING, VALUE_FLOAT
-from types import StringType, IntType, FloatType
+from types import StringType, IntType, FloatType, BooleanType
 
 verbose = False
 
@@ -37,6 +37,8 @@ class GConf:
 	    return 'int'
 	elif KeyType == FloatType:
 	    return 'float'
+	elif KeyType == BooleanType:
+	    return 'bool'
 	else:
 	    raise GConfError, 'unsupported type: %s' % str (KeyType)
 
