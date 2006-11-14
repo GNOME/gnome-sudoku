@@ -1,0 +1,30 @@
+import os, os.path
+import gettext
+#DOMAIN = 'gnome-sudoku'
+DOMAIN = 'gnome-games'
+gettext.bindtextdomain(DOMAIN)
+gettext.textdomain(DOMAIN)
+from gettext import gettext as _
+import gtk.glade
+gtk.glade.bindtextdomain (DOMAIN)
+gtk.glade.textdomain (DOMAIN)
+
+VERSION = "@VERSION@"
+APPNAME = _("GNOME Sudoku")
+COPYRIGHT = _('Copyright (c) 2005,2006, Thomas M. Hinkle. GNU GPL')
+DESCRIPTION = _('GNOME Sudoku is a simple sudoku generator and player.  Sudoku is a japanese logic puzzle.')
+AUTHORS = ["Thomas M. Hinkle"]
+AUTO_SAVE= True
+MIN_NEW_PUZZLES = 90
+
+APP_DATA_DIR = os.path.join('@prefix@', 'share') 
+ICON_DIR =     os.path.join(APP_DATA_DIR,'pixmaps')
+IMAGE_DIR = os.path.join(ICON_DIR,'gnome-sudoku')
+GLADE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
+BASE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
+
+DATA_DIR = os.path.expanduser('~/.gnome2/gnome-sudoku/')
+
+def initialize_games_dir ():
+    if not os.path.exists(DATA_DIR): os.makedirs(DATA_DIR)
+
