@@ -748,19 +748,17 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def show_about (self, *args):
-        about = gnome.ui.About(
-            APPNAME,#appname
-            VERSION,#version
-            COPYRIGHT,#copyright
-            DESCRIPTION,#description
-            AUTHORS,#authors
-            None,#comments
-            None,#translator
-            gtk.gdk.pixbuf_new_from_file(os.path.join(ICON_DIR,'sudoku.png'))#logo
-            )
-        try:
-            about.set_website('http://gnome-sudoku.sourceforge.net')
-        except AttributeError: pass
+        about = gtk.AboutDialog()
+        about.set_name(APPNAME)
+        about.set_version(VERSION)
+        about.set_copyright(COPYRIGHT)
+        about.set_comments(DESCRIPTION)
+        about.set_authors(AUTHORS)
+        about.set_website("http://www.gnome.org/projects/gnome-games/")
+        about.set_logo_icon_name("sudoku")
+        about.set_translator_credits(_("translator_credits"))
+        about.set_icon_from_file(ICON_DIR + "/sudoku.png")
+        about.connect("response", lambda d, r: d.destroy())
         about.show()
 
     @simple_debug
