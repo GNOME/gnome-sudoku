@@ -199,7 +199,7 @@ class UI (gconf_wrapper.GConfWrapper):
             ('About',gtk.STOCK_ABOUT,None,
              None,None,self.show_about),
             ('ShowHelp',gtk.STOCK_HELP, _('_Contents'),
-             None,None,self.show_help),
+             'F1',None,self.show_help),
             ('HighScores',None,_('High _Scores'),
              None,_('Show high scores or replay old games.'),
              self.show_high_scores_cb),
