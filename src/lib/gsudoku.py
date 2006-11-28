@@ -227,6 +227,7 @@ class NumberBox (gtk.Widget):
     def key_press_cb (self, w, e):
         if self.read_only: return
         txt = gtk.gdk.keyval_name(e.keyval)
+        txt = txt.replace('KP_', '')
         if self.get_text() == txt:
             # If there's no change, do nothing
             return
