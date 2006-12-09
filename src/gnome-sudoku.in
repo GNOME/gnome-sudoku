@@ -7,7 +7,8 @@ try:
     from gnome_sudoku.gnome_sudoku import start_game
 except ImportError:
     import sys
-    sys.path.append('/usr/share/gnome-sudoku/')
+    if "@pyexecdir@" not in sys.path:
+      sys.path.insert(0, "@pyexecdir@")
     from gnome_sudoku.gnome_sudoku import start_game
 
 start_game()
