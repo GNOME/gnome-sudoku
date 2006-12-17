@@ -752,6 +752,8 @@ class UI (gconf_wrapper.GConfWrapper):
         about.set_name(APPNAME)
         about.set_version(VERSION)
         about.set_copyright(COPYRIGHT)
+	about.set_license(LICENSE)
+	about.set_wrap_license(True)
         about.set_comments(DESCRIPTION)
         about.set_authors(AUTHORS)
         about.set_website("http://www.gnome.org/projects/gnome-games/")
