@@ -143,6 +143,7 @@ class UI (gconf_wrapper.GConfWrapper):
         gnome.program_init('gnome-sudoku',VERSION,
                            properties={gnome.PARAM_APP_DATADIR:APP_DATA_DIR}
                            )
+	self.w.set_title(APPNAME);
         self.w.connect('delete-event',self.quit_cb)
         self.vb = gtk.VBox()
         self.uimanager = gtk.UIManager()
