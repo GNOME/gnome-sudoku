@@ -1,3 +1,9 @@
+try:
+    import pygtk
+    pygtk.require('2.0')
+except ImportError, err:
+    print ("PyGTK not found. Please make sure it is installed properly and referenced in your PYTHONPATH environment variable.")
+
 import gtk, gobject, gtk.glade
 import gnome, gnome.ui, pango
 import os, os.path
