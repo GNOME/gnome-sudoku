@@ -790,16 +790,22 @@ class ParallelDict (dict):
                 self[i].add(k)
             else:
                 dict.__setitem__(self,i,set([k]))
-            
+
     def __delitem__ (self, k):
         v=self[k]
         dict.__delitem__(self,k)
         for i in v:
             if i==k: continue
-            if k in self[i]: self[i].remove(k)
-            if not self[i]:
-                dict.__delitem__(self,i)
-
+            if self.has_key(i):
+                # Make sure we have a reference to i. If we don't
+                # something has gone wrong... but according to bug
+                # 385937 this has gone wrong at least once, so we'd
+                # better check for it.
+                if k in self[i]: self[i].remove(k)
+                if not self[i]:
+                    # If k was the last value in the list of values
+                    # for i, then we delete i from our dictionary
+                    `dict.__delitem__(self,i)
 
 class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
 
