@@ -805,7 +805,7 @@ class ParallelDict (dict):
                 if not self[i]:
                     # If k was the last value in the list of values
                     # for i, then we delete i from our dictionary
-                    `dict.__delitem__(self,i)
+                    dict.__delitem__(self,i)
 
 class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
 
