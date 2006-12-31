@@ -118,7 +118,6 @@ class UI (gconf_wrapper.GConfWrapper):
                      'always_show_hints':0,
                      'player':os.environ.get('USERNAME',''),
                      'difficulty':0.0,
-                     'minimum_font_size':pango.SCALE * 7, # minimum font-size
                      'minimum_number_of_new_puzzles':MIN_NEW_PUZZLES,
                      'bg_black':1,
                      'bg_custom_color':'',
