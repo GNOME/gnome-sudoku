@@ -30,6 +30,11 @@ ERROR_HIGHLIGHT_COLOR = (1.0,0,0)
 
 BASE_SIZE = 35 # The "normal" size of a box (in pixels)
 
+# And the standard font-sizes -- these should fit nicely with the
+# BASE_SIZE
+BASE_FONT_SIZE = pango.SCALE * 13 
+NOTE_FONT_SIZE = pango.SCALE * 6
+
 BORDER_WIDTH = 9.0 # The size of space we leave for a box
 
 BORDER_LINE_WIDTH = 4 # The size of the line we draw around a selected box
@@ -138,9 +143,9 @@ class NumberBox (gtk.Widget):
         gtk.Widget.__init__(self)
         self.upper = upper
         self.font = self.style.font_desc
-        self.font.set_size(pango.SCALE*13)
+        self.font.set_size(BASE_FONT_SIZE)
         self.note_font = self.font.copy()
-        self.note_font.set_size(pango.SCALE*6)
+        self.note_font.set_size(NOTE_FONT_SIZE)
         self.set_property('can-focus',True)
         self.set_property('events',gtk.gdk.ALL_EVENTS_MASK)
         self.connect('button-press-event',self.button_press_cb)
@@ -402,10 +407,13 @@ class NumberBox (gtk.Widget):
         # that gtk+ will actually give this size to the widget
 
         # In this case, we say that we want to be as big as the
-        # text is, plus a little border around it.
+        # text is, and a square
         width, height = self._layout.get_size()
-        requisition.width = (width / pango.SCALE)+(BORDER_LINE_WIDTH+BORDER_WIDTH)*2
-        requisition.height = height / pango.SCALE+(BORDER_LINE_WIDTH+BORDER_WIDTH)*2
+        if width > height:
+            side = width/pango.SCALE
+        else:
+            side = height/pango.SCALE
+        requisition.width = side; requisition.height = side
 
     def do_size_allocate(self, allocation):
         # The do_size_allocate is called by when the actual size is known
@@ -1293,7 +1301,6 @@ if __name__ == '__main__':
     #test_sng()
     test_sudoku_game()
 
-        
         
             
     
