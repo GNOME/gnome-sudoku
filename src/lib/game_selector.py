@@ -307,8 +307,11 @@ class HighScores (GameSelector):
         
         if self.highlight_newest:
             itr = most_recent[1]
-            self.model.set_value(itr,6,1)
-            self.highlight_path = self.model.get_path(itr)            
+            if itr:
+                self.model.set_value(itr,6,1)
+                self.highlight_path = self.model.get_path(itr)
+            else:
+                print 'We are supposed to highlight newest, but there is no newest!'
 
     def highlight (self):
         if hasattr(self,'highlight_path'):
