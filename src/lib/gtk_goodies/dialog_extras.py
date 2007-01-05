@@ -351,7 +351,7 @@ class ProgressDialog (ModalDialog):
         
         
 class BooleanDialog (MessageDialog):
-    def __init__ (self, title="", default=True, label=_("Do you really want to do this"),
+    def __init__ (self, title="", default=True, label=_("Do you really want to do this?"),
                   sublabel=False, cancel=True,
                   parent=None, custom_yes=None, custom_no=None, expander=None,
                   dont_ask_cb=None, dont_ask_custom_text=None,
