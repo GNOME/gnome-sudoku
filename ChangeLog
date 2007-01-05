@@ -1,5 +1,13 @@
 2007-01-05  Andreas Røsdal  <andreasr@gnome.org>
 
+	* src/lib/sudoku_generator_gui.py: Add a temporary solution
+	to the puzzle generator generating more puzzles than asked,
+	so that the bug is not visible to the user. This will be fixed 
+	"the correct way" during the 2.19.x development cycle. Patch 
+	from Thomas Andersen in Bug #392165. 
+
+2007-01-05  Andreas Røsdal  <andreasr@gnome.org>
+
 	* src/lib/sudoku_generator_gui.py: Fix three issues with the 
 	progress bar in the puzzle generator. Patch from Thomas Andersen 
 	in Bug #392616.

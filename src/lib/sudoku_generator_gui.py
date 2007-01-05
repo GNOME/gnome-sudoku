@@ -192,12 +192,14 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
                     if (not self.generateForTargetRadio.get_active() or
                         self.veryHardCheckButton.get_active()):
                         self.toward_target += 1
-            self.update_progress_bar()
             if (self.generateForTargetRadio.get_active()
                 and
-                self.newSudokusSpinButton.get_value()==self.toward_target):
+                self.newSudokusSpinButton.get_value()<=self.toward_target):
+                self.toward_target=int(self.newSudokusSpinButton.get_value())
+                self.update_progress_bar()
                 self.stop_cb()
                 return False
+            self.update_progress_bar()
         if self.paused: self.prog.set_text(_('Paused'))
         elif self.generateEndlesslyRadio.get_active():
             self.prog.pulse()
