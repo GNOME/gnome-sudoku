@@ -54,7 +54,9 @@ class SwappableArea (gtk.Notebook):
             print 'forge on fearlessly...'
         self.set_current_page(self.main_page)
         self.running = None
-        return self.response
+        tmp_response = self.response
+        self.response = None
+        return tmp_response
 
         
 

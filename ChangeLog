@@ -1,3 +1,9 @@
+2007-01-05  Andreas Røsdal  <andreasr@gnome.org>
+
+	* src/lib/dialog_swallower.py: Correct Bug #384684: Crash when 
+	closing game with "x", which was caused by reading data from
+	memory which had already been freed by the garbage collection. 
+
 2006-12-29  Andreas Røsdal  <andreasr@gnome.org>
 
 	* src/lib/gsudoku.py: Fix syntax error introduced by change from
