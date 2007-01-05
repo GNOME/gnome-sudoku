@@ -50,7 +50,6 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
                                    self.newSudokusSpinButton.get_adjustment()
                                    )
         self.generate_for_target_widgets.append(self.newSudokusSpinButton)
-        self.generate_method_changed_cb()
         self.generateButton = self.glade.get_widget('generateButton')
         self.generateButton.connect('clicked',self.generate_cb)
         self.closeButton = self.glade.get_widget('closeButton')
@@ -64,6 +63,11 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         self.prog = self.glade.get_widget('progressbar1')
         self.prog.set_show_text(True)
         self.working = False
+        self.easyCheckButton.connect('clicked',self.criteria_cb)
+        self.mediumCheckButton.connect('clicked',self.criteria_cb)
+        self.hardCheckButton.connect('clicked',self.criteria_cb)
+        self.veryHardCheckButton.connect('clicked',self.criteria_cb)
+        self.generate_method_changed_cb()
         self.dialog = self.glade.get_widget('PuzzleGenerator')
         self.dialog.show_all()
         self.dialog.present()
@@ -73,9 +77,21 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         if not self.generateForTargetRadio.get_active():
             for w in self.generate_for_target_widgets:
                 w.set_sensitive(False)
+            if not self.working:
+                self.generateButton.set_sensitive(True)
         else:
             for w in self.generate_for_target_widgets:
                 w.set_sensitive(True)
+                self.criteria_cb()
+
+    def criteria_cb (self, *args):
+        if (self.easyCheckButton.get_active()
+            or self.mediumCheckButton.get_active()
+            or self.hardCheckButton.get_active()
+            or self.veryHardCheckButton.get_active()):
+            self.generateButton.set_sensitive(True)
+        else:
+            self.generateButton.set_sensitive(False)
 
     def generate_cb (self, *args):
         self.ngenerated = 0
@@ -83,6 +99,10 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         self.pauseButton.set_sensitive(True)
         self.stopButton.set_sensitive(True)
         self.generateButton.set_sensitive(False)
+        self.generateForTargetRadio.set_sensitive(False)
+        self.generateEndlesslyRadio.set_sensitive(False)
+        for w in self.generate_for_target_widgets:
+            w.set_sensitive(False)
         self.working = True
         self.paused = False
         self.prog.set_text(_('Working...'))
@@ -105,6 +125,11 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         self.pauseButton.set_sensitive(False)
         self.pauseButton.set_active(False)
         self.generateButton.set_sensitive(True)
+        self.generateForTargetRadio.set_sensitive(True)
+        self.generateEndlesslyRadio.set_sensitive(True)
+        if self.generateForTargetRadio.get_active():
+            for w in self.generate_for_target_widgets:
+                w.set_sensitive(True)
         self.working = False
 
     def close_cb (self, widg):
