@@ -1,5 +1,11 @@
 2007-01-05  Andreas Røsdal  <andreasr@gnome.org>
 
+	* glade/puzzle_generator.glade: Change shortcuts in gnome-sudoku:
+	Set alt+v to "Very hard" and alt+u to "Generate new puzzles until
+	stopped". Patch from Thomas Andersen in Bug #392172.
+
+2007-01-05  Andreas Røsdal  <andreasr@gnome.org>
+
 	* src/lib/sudoku_generator_gui.py: Add a temporary solution
 	to the puzzle generator generating more puzzles than asked,
 	so that the bug is not visible to the user. This will be fixed 
