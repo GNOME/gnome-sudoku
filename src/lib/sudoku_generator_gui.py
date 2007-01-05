@@ -61,7 +61,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         self.pauseButton.set_sensitive(False)
         self.stopButton.set_sensitive(False)
         self.prog = self.glade.get_widget('progressbar1')
-        self.prog.set_show_text(True)
+        self.prog.set_text('0 %')
         self.working = False
         self.easyCheckButton.connect('clicked',self.criteria_cb)
         self.mediumCheckButton.connect('clicked',self.criteria_cb)
@@ -214,7 +214,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
     def update_progress_bar (self):
         if self.generateForTargetRadio.get_active():
             tot = int(self.newSudokusSpinButton.get_value())
-            self.prog.set_percentage(
+            self.prog.set_fraction(
                 float(self.toward_target)/tot
                 )
             try:
@@ -236,7 +236,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
                     txt = 'Generated %s out of %s puzzles'%(self.toward_target,tot)
         else:
             self.prog.pulse()
-            txt = ngettext('Generated %s puzzle','Generated %s puzzles')%(self.toward_target)
+            txt = ngettext('Generated %s puzzle','Generated %s puzzles',self.toward_target)%(self.toward_target)
         if self.paused: txt = txt + ' (' + _('Paused') + ')'
         self.prog.set_text(txt)
 
