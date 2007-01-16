@@ -1,3 +1,20 @@
+2007-01-15  Thomas M. Hinkle  <thinkle@cvs.gnome.org>
+
+	* src/lib/gnome_sudoku.py Use new add_value_to_ui method for
+	inserting values in squares on an "undo" of clearing the
+	grid. This method will re-insert values whether or not they were
+	valid parts of the grid.
+	
+	* src/lib/gsudoku.py When clearing the grid, clear all
+	user-entered values, whether or not they are part of our internal
+	grid (or internal grid doesn't stores values that were invalid
+	when entered). Add new add_value_to_ui convenience method for
+	adding a value to the entry whether or not its valid. Use
+	entry_validate to add previously-conflicting values to our
+	internal grid when the conflicting value is deleted; this gives us
+	error handling for free in case other conflicts arise (should fix
+	bug #396823).
+	
 2007-01-07  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* gnome-sudoku.desktop.in: Add missing bugzilla stuff.

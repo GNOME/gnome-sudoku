@@ -955,11 +955,10 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         for x in range(self.group_size):
             for y in range(self.group_size):
                 if not self.grid.virgin._get_(x,y):
-                    val = self.grid._get_(x,y)
+                    val = self.__entries__[(x,y)].get_value() # get the value from the user-visible grid, 
                     if val:
                         removed.append((x,y,val,self.trackers_for_point(x,y,val)))
-                        self.remove(x,y)
-                        self.grid.remove(x,y)
+                        self.remove(x,y,do_removal=True)
         return removed
 
     def clear_notes (self, clear_args={'top_text':'','bottom_text':''}):
@@ -1079,6 +1078,17 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                 self.__entries__[conflict].set_error_highlight(True)
             self.__error_pairs__[(err.x,err.y)]=conflicts
 
+    def add_value_to_ui (self, x, y, val, trackers=[]):
+        """Add our value back to our grid come hell or high water.
+
+        We add our value -- if there is an error, we make the value
+        appear as if the user had typed it; i.e. it will show up with
+        error highlighting."""
+        try:
+            self.add_value(x, y, val, trackers=[])
+        except sudoku.ConflictError:
+            self.entry_validate(self.__entries__[(x,y)])
+
     @simple_debug
     def add_value (self, x, y, val, trackers=[]):
         """Add value val at position x,y.
@@ -1115,6 +1125,8 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         If do_removal, remove it from our underlying grid as well.
         """        
         e=self.__entries__[(x,y)]
+        if do_removal and self.grid and self.grid._get_(x,y):
+            self.grid.remove(x,y)
         if self.__error_pairs__.has_key((x,y)):
             e.set_error_highlight(False)
             errors_removed = self.__error_pairs__[(x,y)]
@@ -1128,7 +1140,10 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                     # added to our internal grid, in which case we'd
                     # better make sure it is...
                     if not self.grid._get_(linked_entry.x,linked_entry.y):
-                        self.add_value(linked_entry.x,linked_entry.y,linked_entry.get_value()) 
+                        # entry_validate will add the value to our
+                        # internal grid if there are no other
+                        # conflicts
+                        self.entry_validate(linked_entry)
         # remove trackers
         for t in self.trackers_for_point(x,y):
             remove = []
@@ -1139,8 +1154,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                 self.trackers[t].remove(r)
         if e.get_text(): e.set_value(0)
         e.unset_color()
-        if do_removal and self.grid:
-            self.grid.remove(x,y)
 
     @simple_debug
     def auto_fill (self):

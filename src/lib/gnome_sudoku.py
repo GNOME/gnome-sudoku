@@ -572,7 +572,7 @@ class UI (gconf_wrapper.GConfWrapper):
     def clear_cb (self,*args):        
         clearer=Undo.UndoableObject(
             lambda *args: self.cleared.append(self.gsd.reset_grid()), #action
-            lambda *args: [self.gsd.add_value(*entry) for entry in self.cleared.pop()], #inverse
+            lambda *args: [self.gsd.add_value_to_ui(*entry) for entry in self.cleared.pop()], #inverse
             self.history #history
             )
         clearer.perform()
