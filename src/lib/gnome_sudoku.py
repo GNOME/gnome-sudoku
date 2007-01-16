@@ -36,6 +36,29 @@ try:
 except:
     STOCK_FULLSCREEN = _('Full Screen')
 
+def inactivate_new_game_etc (fun):
+    def _ (ui, *args, **kwargs):
+        paths = [
+            '/MenuBar/File/New',
+            '/MenuBar/File/Open',
+            '/MenuBar/File/ByHand',
+            '/MenuBar/File/Print',
+            '/MenuBar/Edit',
+            '/MenuBar/Game',
+            ]
+        for p in paths:
+            action = ui.uimanager.get_action(p)
+            if not action: action = ui.uimanager.get_widget(p)
+            if not action: print 'No action at path',p
+            else: action.set_sensitive(False)
+        fun(ui,*args,**kwargs)
+        for p in paths:
+            action = ui.uimanager.get_action(p)
+            if not action: action = ui.uimanager.get_widget(p)
+            if not action: print 'No action at path',p
+            else: action.set_sensitive(True)
+    return _
+
 class UI (gconf_wrapper.GConfWrapper):
     ui='''<ui>
     <menubar name="MenuBar">
@@ -442,7 +465,8 @@ class UI (gconf_wrapper.GConfWrapper):
                 self.gconf[k]=v
 
     @simple_debug
-    def new_cb (self,*args):        
+    @inactivate_new_game_etc
+    def new_cb (self,*args):
         gs = game_selector.NewGameSelector(self.sudoku_tracker)
         gs.difficulty = self.gconf['difficulty']
         ret =  gs.run_swallowed_dialog(self.swallower)
@@ -451,7 +475,8 @@ class UI (gconf_wrapper.GConfWrapper):
             self.gconf['difficulty']=d.value
             self.stop_game()
             self.gsd.change_grid(puz,9)
-
+            self.history.clear()
+            
     @simple_debug
     def stop_game (self):
         if self.gsd.grid and self.gsd.grid.is_changed():
@@ -503,6 +528,7 @@ class UI (gconf_wrapper.GConfWrapper):
         gtk.main_quit()
 
     @simple_debug
+    @inactivate_new_game_etc
     def enter_game_by_hand (self, *args):
         self.stop_game()
         self.gsd.change_grid(sudoku.InteractiveSudoku(),9)
@@ -515,12 +541,14 @@ class UI (gconf_wrapper.GConfWrapper):
         self.won = False
         self.gsd.change_grid(self.gsd.grid,9)
         self.sudoku_maker.names[self.gsd.grid.to_string()]=self.sudoku_maker.get_puzzle_name('Custom Puzzle')
+        self.history.clear()
 
     @simple_debug
     def cancel_handmade_grid (self, *args):
         for w in self.by_hand_widgets: w.hide()
 
     @simple_debug
+    @inactivate_new_game_etc    
     def open_game (self, *args):
         #game_file = dialog_extras.getFileOpen(_("Load saved game"),
         #                        default_file=os.path.join(DATA_DIR,'games/')
@@ -533,6 +561,7 @@ class UI (gconf_wrapper.GConfWrapper):
         if puzzl:
             self.stop_game()
             saver.open_game(self,puzzl)
+            self.history.clear()
 
     @simple_debug
     def save_game (self, *args):

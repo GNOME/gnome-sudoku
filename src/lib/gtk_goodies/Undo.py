@@ -349,6 +349,11 @@ class UndoHistoryList (list):
         list.remove(self,obj)
         self.gui_update()
 
+    def clear (self):
+        while self: list.remove(self,self[0])
+        self.gui_update()
+        
+
 class MultipleUndoLists:
     """For tabbed interfaces and other places where it makes sense for one
     Action (menu item, etc.) to control multiple UndoLists (since presumably

@@ -1,10 +1,24 @@
 2007-01-15  Thomas M. Hinkle  <thinkle@cvs.gnome.org>
 
+	* src/lib/gnome_sudoku.py Wrap methods that bring up a "swallowed
+	dialog" (New Game, etc.) with a decorator that inactivates widgets
+	that would lead to a confused state for gnome sudoku (e.g. don't
+	allow the user to go two levels deep into "New Game" dialogs,
+	don't allow them to "print" a game that isn't visible, etc.). This
+	fixes bug #392997.
+
+	Clear history when starting new game or opening game (#388744)
+	
+	* src/lib/gtk_goodies/Undo.py Add clear() method to undo history
+	list.
+
+2007-01-15  Thomas M. Hinkle  <thinkle@cvs.gnome.org>
+
 	* src/lib/gnome_sudoku.py Use new add_value_to_ui method for
 	inserting values in squares on an "undo" of clearing the
 	grid. This method will re-insert values whether or not they were
 	valid parts of the grid.
-	
+
 	* src/lib/gsudoku.py When clearing the grid, clear all
 	user-entered values, whether or not they are part of our internal
 	grid (or internal grid doesn't stores values that were invalid
