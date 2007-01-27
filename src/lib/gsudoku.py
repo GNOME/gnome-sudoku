@@ -1174,7 +1174,8 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
     @simple_debug
     def auto_fill_current_entry (self):
         e = self.get_focused_entry()
-        filled = self.grid.auto_fill_for_xy(e.x,e.y)
+        if not e: return
+	filled = self.grid.auto_fill_for_xy(e.x,e.y)
         if filled and filled!=-1:
             self.add_value(filled[0][0],filled[0][1],filled[1])
     
