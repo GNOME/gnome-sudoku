@@ -3,6 +3,14 @@
 # software under the terms of the GNU General Public License, version
 # 2 or later
 
+# Setup bugbuddy to report unhandled exceptions.
+try: 
+  import bugbuddy
+  bugbuddy.install('gnome-sudoku')
+except:
+  #No bugbuddy support
+  none 
+
 try:
     from gnome_sudoku.gnome_sudoku import start_game
 except ImportError:
