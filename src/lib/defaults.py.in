@@ -1,12 +1,19 @@
 import os, os.path
 import gettext
-#DOMAIN = 'gnome-sudoku'
+
+APP_DATA_DIR = os.path.join('@prefix@', 'share') 
+ICON_DIR =     os.path.join(APP_DATA_DIR,'pixmaps')
+IMAGE_DIR = os.path.join(ICON_DIR,'gnome-sudoku')
+LOCALEDIR 	= os.path.join(APP_DATA_DIR, 'locale')
+GLADE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
+BASE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
+
 DOMAIN = 'gnome-games'
-gettext.bindtextdomain(DOMAIN)
+gettext.bindtextdomain(DOMAIN, LOCALEDIR)
 gettext.textdomain(DOMAIN)
 from gettext import gettext as _
 import gtk.glade
-gtk.glade.bindtextdomain (DOMAIN)
+gtk.glade.bindtextdomain (DOMAIN, LOCALEDIR)
 gtk.glade.textdomain (DOMAIN)
 
 VERSION = "@VERSION@"
@@ -22,11 +29,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA"""
 
-APP_DATA_DIR = os.path.join('@prefix@', 'share') 
-ICON_DIR =     os.path.join(APP_DATA_DIR,'pixmaps')
-IMAGE_DIR = os.path.join(ICON_DIR,'gnome-sudoku')
-GLADE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
-BASE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
 
 DATA_DIR = os.path.expanduser('~/.gnome2/gnome-sudoku/')
 

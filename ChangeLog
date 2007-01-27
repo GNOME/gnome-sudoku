@@ -1,5 +1,10 @@
 2007-01-27  Andreas Røsdal  <andreasr@gnome.org>
 
+	* src/lib/defaults.py.in: Resolve Bug #393882: strings not translated. 
+	This is done by specifying the locale directory specifically.
+
+2007-01-27  Andreas Røsdal  <andreasr@gnome.org>
+
 	* src/lib/gsudoku.py: Prevent exception from occuring when
 	clicking on the autofill button, when nothing is selected.
 	Closes Bug #400279.
