@@ -787,7 +787,7 @@ class UI (gconf_wrapper.GConfWrapper):
         about.set_name(APPNAME)
         about.set_version(VERSION)
         about.set_copyright(COPYRIGHT)
-	about.set_license(LICENSE)
+	about.set_license(LICENSE[0] + '\n\n' + LICENSE[1] + '\n\n' +LICENSE[2])
 	about.set_wrap_license(True)
         about.set_comments(DESCRIPTION)
         about.set_authors(AUTHORS)
