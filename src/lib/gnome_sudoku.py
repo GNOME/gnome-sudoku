@@ -180,7 +180,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.gsd.connect('puzzle-finished',self.you_win_callback)
         self.main_actions = gtk.ActionGroup('MainActions')        
         self.main_actions.add_actions([
-            ('File',None,'_File'),
+            ('File',None,_('_File')),
             ('New',gtk.STOCK_NEW,None,
              '<Control>n',_('New game'),self.new_cb),
             ('Print',gtk.STOCK_PRINT,None,
@@ -269,7 +269,7 @@ class UI (gconf_wrapper.GConfWrapper):
         
         self.edit_actions = gtk.ActionGroup('EditActions')
         self.edit_actions.add_actions(
-            [('Edit',None,'_Edit'),
+            [('Edit',None,_('_Edit')),
              ('Undo',gtk.STOCK_UNDO,_('_Undo'),'<Control>z',_('Undo last action')),
              ('Redo',gtk.STOCK_REDO,_('_Redo'),'<Shift><Control>z',_('Redo last action')),
              ('Clear',gtk.STOCK_CLEAR,_('_Clear'),'<Control>b',_("Clear entries you've filled in"),self.clear_cb),
