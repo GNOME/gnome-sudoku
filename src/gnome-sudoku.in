@@ -9,7 +9,7 @@ try:
   bugbuddy.install('gnome-sudoku')
 except:
   #No bugbuddy support
-  none 
+  pass 
 
 try:
     from gnome_sudoku.gnome_sudoku import start_game
