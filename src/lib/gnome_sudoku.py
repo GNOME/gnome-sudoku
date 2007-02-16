@@ -43,8 +43,18 @@ def inactivate_new_game_etc (fun):
             '/MenuBar/File/Open',
             '/MenuBar/File/ByHand',
             '/MenuBar/File/Print',
-            '/MenuBar/Edit',
-            '/MenuBar/Game',
+            '/MenuBar/Edit/Undo',
+            '/MenuBar/Edit/Redo',
+            '/MenuBar/Edit/Clear',
+            '/MenuBar/Edit/ClearNotes',
+            '/MenuBar/Game/ShowPossible',
+            '/MenuBar/Game/AutofillCurrentSquare',
+            '/MenuBar/Game/Autofill',
+            '/MenuBar/Game/AlwaysShowPossible',
+            '/MenuBar/Game/ShowImpossibleImplications',
+            '/MenuBar/Game/Tracker',
+            '/MenuBar/Game/PuzzleInfo',
+            '/MenuBar/Game/HighScores',
             ]
         for p in paths:
             action = ui.uimanager.get_action(p)

@@ -1,5 +1,11 @@
 2007-02-16  Andreas Røsdal  <andreasr@gnome.org>
 
+	* src/lib/gnome_sudoku.py: do not make menu titles insensitive,
+	but the menu items instead. This complies with the HIG guidelines.
+	Patch from Mariano Suárez-Alvarez in Bug #408439.  
+
+2007-02-16  Andreas Røsdal  <andreasr@gnome.org>
+
 	* src/lib/gsudoku.py: Check that a txt object isn't NoneType,
 	which causes a crash when removing the A/C charger (!!!!).
 	Patch from Thomas Andersen in Bug #408334.
