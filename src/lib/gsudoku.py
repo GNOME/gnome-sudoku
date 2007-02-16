@@ -232,6 +232,9 @@ class NumberBox (gtk.Widget):
     def key_press_cb (self, w, e):
         if self.read_only: return
         txt = gtk.gdk.keyval_name(e.keyval)
+        if type(txt) == type(None):
+            # Make sure we don't trigger on unplugging the A/C charger etc
+            return        
         txt = txt.replace('KP_', '')
         if self.get_text() == txt:
             # If there's no change, do nothing
