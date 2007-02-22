@@ -116,7 +116,10 @@ class SudokuGrid:
                     import traceback
                     traceback.print_exc()
             else:
-                raise AlreadySetError
+		#FIXME:  This is called when the fill button
+		#is clicked multiple times, which causes this exception:
+		#raise AlreadySetError
+                return;
         if val in self.rows[y]:
             raise ConflictError(TYPE_ROW,(x,y),val)
         if val in self.cols[x]:
