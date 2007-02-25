@@ -1,5 +1,22 @@
 2007-02-25  Thomas M. Hinkle  <thinkle@cvs.gnome.org>
 
+	* src/lib/gsudoku.py: Fix bug #409472 crash in Sudoku: pressed
+	Clear on one of....  This was caused by a bug in
+	entry_validate. We've now simplified the find_error routine that
+	entry_validate calls so that it will never return None (which
+	caused the key error). We also fix a typo in
+	SudokuGameDisplay.remove that was causing errors to get
+	un-highlighted when they should not be (this error could also have
+	caused some bugs in which the game the user sees would not be
+	reflected in gnome-sudoku's internal grid, resulting in finished
+	games that were not considered finished by gnome-sudoku).
+ 
+	* src/lib/sudoku.py: Change find_conflict method to
+	find_conflicts, which will return all conflicts. This fixes bug
+	#409472 and also assures we will highlight all conflicts. 
+
+2007-02-25  Thomas M. Hinkle  <thinkle@cvs.gnome.org>
+
 	* src/lib/gnome_sudoku.py: Fix bug #400976 "Sudoku crashes on
 	logout with a TypeError exception". We fix this two ways -- first,
 	insensitize the clear buttons so that we won't get the clear_cb

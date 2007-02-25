@@ -177,17 +177,28 @@ class SudokuGrid:
                     possibilities[(x,y)]=self.possible_values(x,y)
         return possibilities
 
-    def find_conflict (self, x, y, val, conflict_type):
+    def find_conflicts (self, x, y, val, conflict_type=None):
+        '''Find all squares that conflict with value val at position x,y.
+        
+        If conflict_type is specified, we only find conflicts of given
+        type (ROW, COLUMN OR BOX).
+        '''
         if conflict_type==TYPE_ROW:
             coords = self.row_coords[y]
         elif conflict_type==TYPE_COLUMN:
             coords = self.col_coords[x]
         elif conflict_type==TYPE_BOX:
             coords = self.box_coords[self.box_by_coords[(x,y)]]
-        else: return None
+        else:
+            coords = (self.row_coords[y]
+                      + self.col_coords[x]
+                      + self.box_coords[self.box_by_coords[(x,y)]]
+                      )
+        conflicting_coordinates = []
         for x,y in coords:
             if self._get_(x,y)==val:
-                return x,y
+                conflicting_coordinates.append((x,y))
+        return conflicting_coordinates
 
     def to_string (self):
         """Output our grid as a string."""

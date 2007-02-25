@@ -1066,16 +1066,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             if self.grid.check_for_completeness():
                 self.emit('puzzle-finished')
         except sudoku.ConflictError, err:
-            conflicts=[self.grid.find_conflict(err.x,err.y,err.value,err.type)]
-            # We check for more than one conflict...  We count on the
-            # order conflicts are checked for in our initial script in
-            # sudoku.py -- ROW then COLUMN then BOX
-            if err.type==sudoku.TYPE_ROW:
-                if err.value in self.grid.cols[err.x]:
-                    conflicts.append(self.grid.find_conflict(err.x,err.y,err.value,sudoku.TYPE_COLUMN))
-            if err.type in [sudoku.TYPE_COLUMN,sudoku.TYPE_ROW]:
-                if err.value in self.grid.boxes[self.grid.box_by_coords[(err.x,err.y)]]:
-                    conflicts.append(self.grid.find_conflict(err.x,err.y,err.value,sudoku.TYPE_BOX))
+            conflicts=self.grid.find_conflicts(err.x,err.y,err.value)
             for conflict in conflicts:
                 widget.set_error_highlight(True)
                 self.__entries__[conflict].set_error_highlight(True)
@@ -1136,7 +1127,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             del self.__error_pairs__[(x,y)]
             for coord in errors_removed:
                 # If we're not an error by some other pairing...
-                if not self.__error_pairs__.has_key((x,y)):
+                if not self.__error_pairs__.has_key(coord):
                     linked_entry = self.__entries__[coord]
                     linked_entry.set_error_highlight(False)
                     # Its possible this highlighted error was never
