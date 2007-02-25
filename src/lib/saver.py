@@ -47,13 +47,13 @@ def open_game (ui, jar):
     # this is a bit easily breakable... we take advantage of the fact
     # that we create tracker IDs sequentially and that {}.items()
     # sorts by keys by default
-    for tracker,tracked in jar['trackers'].items():
+    for tracker,tracked in jar.get('trackers',{}).items():
         # add 1 tracker per existing tracker...
         ui.tracker_ui.add_tracker()
         #ui.tracker_ui.show() # Leave this to the toggle setting
         for x,y,val in tracked:
             ui.gsd.add_tracker(x,y,tracker,val=val)
-    for tracker,tracking in jar['tracking'].items():
+    for tracker,tracking in jar.get('tracking',{}).items():
         if tracking:
             ui.tracker_ui.select_tracker(tracker)
     for attr in SAVE_ATTRIBUTES:

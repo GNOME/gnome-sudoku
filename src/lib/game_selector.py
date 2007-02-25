@@ -178,7 +178,9 @@ class OldGameSelector (GameSelector):
         for game,jar in self.sudoku_tracker.playing.items():
             diff = self.sudoku_tracker.get_difficulty(game)
             if jar.has_key('printed') and jar['printed']:
-                status=_('Printed %s ago')%format_time(status_val,round_at=2)
+                status=_('Printed %s ago')%format_time(
+                    time.time()-jar['printed_at'],
+                    round_at=2)
                 status_val = 0
                 start_time=jar['printed_at']
                 finish_time=jar['printed_at']

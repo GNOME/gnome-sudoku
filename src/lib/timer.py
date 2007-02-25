@@ -89,8 +89,10 @@ class ActiveTimer (gobject.GObject):
             self.toggle_timing(False)
 
     def toggle_timing (self, on):
+        if not self.__absolute_start_time__:
+            self.reset_timer()
         if self.__paused__: return False
-        if on and not self.__timing__:
+        if on and not self.__timing__:            
             self.timing_started_at = time.time()
             self.__timing__ = True
             self.emit('timing-started')

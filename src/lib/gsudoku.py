@@ -1009,16 +1009,20 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         virgin self and line two represents our game-in-progress.
         """
         self.blank_grid()
-        virgin,in_prog = game.split('\n')
+        if '\n' in game:
+            virgin,in_prog = game.split('\n')
+        else:
+            virgin = game; in_prog = ''
         group_size=int(math.sqrt(len(virgin.split())))
         self.change_grid(virgin,group_size=group_size)
         # This int() will break if we go to 16x16 grids...
-        values = [int(c) for c in in_prog.split()]
-        for row in range(group_size):
-            for col in range(group_size):
-                index = row * 9 + col
-                if values[index] and not self.grid._get_(col,row):
-                    self.add_value(col,row,values[index])
+        if in_prog:
+            values = [int(c) for c in in_prog.split()]
+            for row in range(group_size):
+                for col in range(group_size):
+                    index = row * 9 + col
+                    if values[index] and not self.grid._get_(col,row):
+                        self.add_value(col,row,values[index])
 
     @simple_debug
     def setup_grid (self, grid, group_size):

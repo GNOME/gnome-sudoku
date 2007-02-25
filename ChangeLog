@@ -1,5 +1,23 @@
 2007-02-25  Thomas M. Hinkle  <thinkle@cvs.gnome.org>
 
+	* src/lib/game_selector.py Fix display of games that were printed
+	and "marked as played" in resume-game dialog.
+	* src/lib/timer.py Handle games that don't have proper
+	__absolute_start_time__ set gracefully. This is to account for
+	games that are printed and marked-as-played, which don't have any
+	timer information when they are restored. As a result, we put a
+	check into toggle_timing which resets the timer if there is no
+	__absolute_start_time__ set.
+	* src/lib/saver.py Handle saved games with no tracker information
+	(this is to make restoring printed games that were
+	marked-as-played workable).
+	* src/lib/gsudoku.py Handle games without any in_progress
+	information saved. This is to handle restoring games that were
+	marked-as-played. This fixes Bug 408787 - crash in Sudoku:
+	ValueError: need more than 1 value to unpack.
+	
+2007-02-25  Thomas M. Hinkle  <thinkle@cvs.gnome.org>
+
 	* src/lib/gsudoku.py: Fix bug #409472 crash in Sudoku: pressed
 	Clear on one of....  This was caused by a bug in
 	entry_validate. We've now simplified the find_error routine that
