@@ -885,6 +885,8 @@ class TrackerBox (gtk.VBox):
             a.connect_proxy(self.glade.get_widget(widget_name))
         self.glade.get_widget('AddTrackerButton').connect('clicked',
                                                           self.add_tracker)
+        # Default to insensitive (they only become sensitive once a tracker is added)
+        self.tracker_actions.set_sensitive(False)
 
     @simple_debug
     def add_tracker (self,*args):
@@ -927,8 +929,11 @@ class TrackerBox (gtk.VBox):
     @simple_debug
     def clear_cb (self, action):
         mod,itr=self.tracker_tree.get_selection().get_selected()
-        selected_tracker_id=mod.get_value(itr,0)
-        self.tracker_delete_tracks(selected_tracker_id)
+        # This should only be called if there is an itr, but we'll
+        # double-check just in case.
+        if itr:
+            selected_tracker_id=mod.get_value(itr,0)
+            self.tracker_delete_tracks(selected_tracker_id)
 
     @simple_debug
     def keep_cb (self, action):

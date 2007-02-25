@@ -1,3 +1,12 @@
+2007-02-25  Thomas M. Hinkle  <thinkle@cvs.gnome.org>
+
+	* src/lib/gnome_sudoku.py: Fix bug #400976 "Sudoku crashes on
+	logout with a TypeError exception". We fix this two ways -- first,
+	insensitize the clear buttons so that we won't get the clear_cb
+	called if there are no trackers selected. Second, add a check to
+	clear_cb so that it doesn't give a traceback if for some reason it
+	is called with no trackers selected.
+
 2007-02-22  Andreas Røsdal  <andreasr@gnome.org>
 
 	* src/lib/sudoku.py: Fix bug #409878 "crash in Sudoku:
