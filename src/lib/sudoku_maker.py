@@ -1,3 +1,4 @@
+import sys
 import os
 import os.path
 import sudoku
@@ -330,7 +331,12 @@ class SudokuMaker:
         
     def load_initial_batch (self):
         ifi = open(os.path.join(BASE_DIR,'starter_puzzles'))
-        self.puzzles_by_solution = pickle.load(ifi)
+        try:
+            self.puzzles_by_solution = pickle.load(ifi)
+        except:
+            (type, value, traceback) = sys.exc_info()
+            print 'Unable to load puzzles: %s: %s' % (str(type), str(value))
+            self.puzzles_by_solution = {}
         ifi.close()
 
     def make_batch (self, diff_min=None, diff_max=None):
@@ -392,15 +398,21 @@ class SudokuMaker:
                 generated += 1
 
     def load (self):
-        if os.path.exists(self.pickle_to):
+        ifi = None
+        try:
             ifi = file(self.pickle_to,'r')
             loaded = pickle.load(ifi)
+        except:
+            (type, value, traceback) = sys.exc_info()
+            print 'Unable to load puzzles: %s: %s' % (str(type), str(value))
+            if ifi:
+                ifi.close()
+            self.load_initial_batch()
+        else:
             ifi.close()
             self.puzzles_by_solution= loaded['by_solution']
             self.names = loaded['names']
             self.top_name = loaded['metaname']
-        else:
-            self.load_initial_batch()
 
     def save (self):
         directory =  os.path.split(self.pickle_to)[0]
