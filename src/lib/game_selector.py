@@ -563,7 +563,7 @@ class GamePrinter (NewGameSelector):
                 parent = mod[path].parent
                 if parent and not parent.path in rows:
                     # then we select the parent...
-                    selection.select_iter(parent)
+                    selection.select_path(parent.path)
                     # and we stop handling because we should be called
                     # again as a result of our selection
                     break
