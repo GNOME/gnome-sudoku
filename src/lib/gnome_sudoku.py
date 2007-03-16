@@ -945,7 +945,7 @@ class TrackerBox (gtk.VBox):
     def tracker_delete_tracks (self, tracker_id):
         clearer=Undo.UndoableObject(
             lambda *args: self.main_ui.cleared.append(self.main_ui.gsd.delete_by_tracker(tracker_id)),
-            lambda *args: [self.main_ui.gsd.add(*entry) for entry in self.main_ui.cleared.pop()],
+            lambda *args: [self.main_ui.gsd.add_value(*entry) for entry in self.main_ui.cleared.pop()],
             self.main_ui.history)
         clearer.perform()
 
@@ -953,7 +953,7 @@ class TrackerBox (gtk.VBox):
     def tracker_keep_tracks (self, tracker_id):
         clearer=Undo.UndoableObject(
             lambda *args: self.main_ui.cleared.append(self.main_ui.gsd.delete_except_for_tracker(tracker_id)),
-            lambda *args: [self.main_ui.gsd.add(*entry) for entry in self.main_ui.cleared.pop()],
+            lambda *args: [self.main_ui.gsd.add_value(*entry) for entry in self.main_ui.cleared.pop()],
             self.main_ui.history)
         clearer.perform()
 
