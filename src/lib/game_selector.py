@@ -122,6 +122,8 @@ class NewGameSelector (GameSelector):
         
     def selection_changed_cb (self, selection):
         mod,itr = selection.get_selected()
+        if itr is None:
+            return
         while mod.iter_parent(itr):
             itr = mod.iter_parent(itr)
         difficulty = mod.get_value(itr,4)
