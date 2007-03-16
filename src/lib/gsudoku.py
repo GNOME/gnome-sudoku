@@ -1,6 +1,7 @@
 import gtk, cairo, pango, gobject
 import colors
 import math
+import random
 from simple_debug import simple_debug
 from gettext import gettext as _
 import sudoku
