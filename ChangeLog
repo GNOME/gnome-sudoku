@@ -1,5 +1,10 @@
 2007-03-16  Robert Ancell <robert.ancell@gmail.com>
 
+	* src/lib/sudoku_maker.py Correctly mark game name as unicode so
+	  can be split on character boundaries (Bug #409740)
+
+2007-03-16  Robert Ancell <robert.ancell@gmail.com>
+
 	* src/lib/gsudoku.py Load random module (Bug #411073).
 	* src/lib/game_selector.py Fix PyGtk tree selection bug (Bug #416063)
        	* src/lib/gnome_sudoku.py Fix undo tracker deletion (Bug #417805)

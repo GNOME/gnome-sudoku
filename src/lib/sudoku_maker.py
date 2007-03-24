@@ -453,7 +453,7 @@ class SudokuMaker:
             self.top_name[base_name]=1
         n=self.top_name[base_name]
         self.top_name[base_name]=n+1
-        return base_name + " " + str(n)
+        return unicode("%s %i" % (base_name, n))
         
 class SudokuTracker:
 
