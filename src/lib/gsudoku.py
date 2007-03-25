@@ -289,7 +289,8 @@ class NumberBox (gtk.Widget):
         #return
         w = gtk.Window()
         w.set_app_paintable(True)
-        w.set_type_hint(gtk.WINDOW_POPUP)
+        w.set_property('skip-pager-hint', True)
+        w.set_property('skip-taskbar-hint', True)
         w.set_decorated(False)
         ns = NumberSelector(upper=self.upper,default=self.get_value())
         def number_changed_cb (b):
@@ -304,7 +305,6 @@ class NumberBox (gtk.Widget):
         r = w.get_allocation()
         my_origin = self.window.get_origin()
         x,y = self.window.get_size()
-        w.show()
         popupx,popupy = w.get_size()
         overlapx = popupx-x
         overlapy = popupy-y
@@ -313,6 +313,7 @@ class NumberBox (gtk.Widget):
         #print 'popup size is',popupx,popupy
         #print 'overlaps are ',overlapx,overlapy
         w.move(my_origin[0]-(overlapx/2),my_origin[1]-(overlapy/2))
+        w.show()
         self.npicker = w
 
     def set_text_interactive (self,text):
