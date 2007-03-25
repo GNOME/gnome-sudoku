@@ -277,6 +277,17 @@ class HighScores (GameSelector):
         most_recent = (None,None)
         for game,finishers in self.sudoku_tracker.finished.items():
             for finisher in finishers:
+                try:
+                    name = self.sudoku_tracker.sudoku_maker.names[game]
+                except KeyError:
+                    name = _('Not in database')
+                try:
+                    puzzle = self.sudoku_tracker.sudoku_maker.all_puzzles[game]
+                except KeyError:
+                    difficulty = _('Unknown difficulty')
+                else:
+                    difficulty = '%s (%f)' % (puzzle.value_string(), puzzle.value)
+                
                 score=self.calculate_score(game,finisher)
                 finish_time = finisher['finish_time']           
                 itr=self.model.append(None,
@@ -291,13 +302,9 @@ class HighScores (GameSelector):
                                    finisher,
                                    ])
                 if finish_time > most_recent[0]: most_recent = (finish_time,itr)
-                for label,detail in [(_('Puzzle'), self.sudoku_tracker.sudoku_maker.names[game]),
-                                     (_('Difficulty'),
-                                      self.sudoku_tracker.sudoku_maker.all_puzzles[game].value_string() + \
-                                      ' (' + \
-                                      str(self.sudoku_tracker.sudoku_maker.all_puzzles[game].value) \
-                                      + ')'
-                                      ),
+
+                for label,detail in [(_('Puzzle'), name),
+                                     (_('Difficulty'), difficulty),
                                      (_('Hints'),'hints'),
                                      (_('Warnings about unfillable squares'),
                                       'impossible_hints'),
