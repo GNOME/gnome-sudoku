@@ -172,10 +172,8 @@ class UI (gconf_wrapper.GConfWrapper):
 
         self.cleared = [] # used for Undo memory
         self.cleared_notes = [] # used for Undo memory
-        gnome.program_init('gnome-sudoku',VERSION,
-                           properties={gnome.PARAM_APP_DATADIR:APP_DATA_DIR}
-                           )
-	self.w.set_title(APPNAME);
+        gnome.program_init('gnome-sudoku',VERSION, properties={gnome.PARAM_APP_DATADIR:APP_DATA_DIR})
+        self.w.set_title('Sudoku');
         self.w.connect('delete-event',self.quit_cb)
         self.vb = gtk.VBox()
         self.uimanager = gtk.UIManager()
