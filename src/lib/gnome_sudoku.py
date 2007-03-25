@@ -443,16 +443,16 @@ class UI (gconf_wrapper.GConfWrapper):
         #                                )
         #sublabel = _("You completed the puzzle in %s")%time_string
         #sublabel += "\n"
-        #sublabel += ngettext("You got %s hint","You got %s hints",self.gsd.hints)%self.gsd.hints
+        #sublabel += ngettext("You got %(n)s hint","You got %(n)s hints",self.gsd.hints)%{'n':self.gsd.hints}
         #sublabel += "\n"
         #if self.gsd.impossible_hints:
-        #    sublabel += ngettext("You had %s impossibility pointed out.",
-        #                         "You had %s impossibilities pointed out.",
-        #                         self.gsd.impossible_hints)%self.gsd.impossible_hints
+        #    sublabel += ngettext("You had %(n)s impossibility pointed out.",
+        #                         "You had %(n)s impossibilities pointed out.",
+        #                         self.gsd.impossible_hints)%{'c':self.gsd.impossible_hints}
         #if self.gsd.auto_fills:
-        #    sublabel += ngettext("You used the auto-fill %s time",
-        #                         "You used the auto-fill %s times",
-        #                         self.gsd.auto_fills)%self.gsd.auto_fills
+        #    sublabel += ngettext("You used the auto-fill %(n)s time",
+        #                         "You used the auto-fill %(n)s times",
+        #                         self.gsd.auto_fills)%{'n':self.gsd.auto_fills}
         #dialog_extras.show_message("You win!",label="You win!",
         #                           icon=os.path.join(IMAGE_DIR,'winner2.png'),
         #                           sublabel=sublabel
@@ -719,11 +719,11 @@ class UI (gconf_wrapper.GConfWrapper):
         #        time_string += " %s"%_('paused')
         #    tot_string += " - " + time_string
         #if self.gsd.hints and not self.gconf['always_show_hints']:
-        #    tot_string += " -  " +ngettext("%s hint","%s hints",
-        #                           self.gsd.hints)%self.gsd.hints
+        #    tot_string += " -  " +ngettext("%(n)s hint","%(n)s hints",
+        #                           self.gsd.hints)%{'n':self.gsd.hints}
         #if self.gsd.auto_fills:
-        #    tot_string += "  " +ngettext("%s auto-fill","%s auto-fills",
-        #                            self.gsd.auto_fills)%self.gsd.auto_fills
+        #    tot_string += "  " +ngettext("%(n)s auto-fill","%(n)s auto-fills",
+        #                            self.gsd.auto_fills)%{'n':self.gsd.auto_fills}
         if not hasattr(self,'sbid'):
             self.sbid = self.statusbar.get_context_id('game_info')
         self.statusbar.pop(self.sbid)

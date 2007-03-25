@@ -9,19 +9,19 @@ def format_time (time, round_at=None):
     time = int(time)
     time_strings = []
     units = [(int(365.25*24*60*60),
-              lambda years: ngettext("%s year","%s years",years)%years),
+              lambda years: ngettext("%(n)s year","%(n)s years",years)%{'n':years}),
              (31*24*60*60,
-              lambda months: ngettext("%s month","%s months",months)%months),
+              lambda months: ngettext("%(n)s month","%(n)s months",months)%{'n':months}),
              (7*24*60*60,
-              lambda weeks: ngettext("%s week","%s weeks",weeks)%weeks),
+              lambda weeks: ngettext("%(n)s week","%(n)s weeks",weeks)%{'n':weeks}),
              (24*60*60,
-              lambda days: ngettext("%s day","%s days",days)%days),
+              lambda days: ngettext("%(n)s day","%(n)s days",days)%{'n':days}),
              (60*60,
-              lambda hours: ngettext("%s hour","%s hours",hours)%hours),
+              lambda hours: ngettext("%(n)s hour","%(n)s hours",hours)%{'n':hours}),
              (60,
-              lambda minutes: ngettext("%s minute","%s minutes",minutes)%minutes),
+              lambda minutes: ngettext("%(n)s minute","%(n)s minutes",minutes)%{'n':minutes}),
              (1,
-              lambda seconds: ngettext("%s second","%s seconds",seconds)%seconds)]
+              lambda seconds: ngettext("%(n)s second","%(n)s seconds",seconds)%{'n':seconds})]
     for divisor,unit_formatter in units:
         time_covered = time / divisor
         if time_covered:

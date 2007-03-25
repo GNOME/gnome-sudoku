@@ -159,7 +159,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         else:
             curval = int(curtext.split()[0])
             newval = curval + val
-        newtext = ngettext("%s puzzle","%s puzzles",newval)%newval
+        newtext = ngettext("%(npuzzles)s puzzle","%(npuzzles)s puzzles",newval)%{'npuzzles':newval}
         lab.set_text(newtext)
 
     def update_status (self, *args):
@@ -238,7 +238,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
                     txt = 'Generated %s out of %s puzzles'%(self.toward_target,tot)
         else:
             self.prog.pulse()
-            txt = ngettext('Generated %s puzzle','Generated %s puzzles',self.toward_target)%(self.toward_target)
+            txt = ngettext('Generated %(npuzzles)s puzzle','Generated %(npuzzles)s puzzles',self.toward_target)%{'npuzzles':self.toward_target}
         if self.paused: txt = txt + ' (' + _('Paused') + ')'
         self.prog.set_text(txt)
 
