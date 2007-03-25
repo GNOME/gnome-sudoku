@@ -260,7 +260,8 @@ class NumberBox (gtk.Widget):
     def show_note_editor (self, top=True):
         alloc = self.get_allocation()
         w = gtk.Window()
-        w.set_type_hint(gtk.WINDOW_POPUP)
+        w.set_property('skip-pager-hint', True)
+        w.set_property('skip-taskbar-hint', True)
         w.set_decorated(False)
         w.set_position(gtk.WIN_POS_MOUSE)
         w.set_size_request(alloc.width,alloc.height/2)
