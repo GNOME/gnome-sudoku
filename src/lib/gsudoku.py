@@ -287,7 +287,12 @@ class NumberBox (gtk.Widget):
     def show_number_picker (self):
         #self.number_picker_mode = True
         #return
+
+        # This should be gtk.WINDOW_POPUP - the current implementation is abusing too many hints
+        # and has problems with non-focus operations (i.e. hiding the main window).
+        # YOU should rewrite this. Yes, you the reader :)
         w = gtk.Window()
+        
         w.set_app_paintable(True)
         w.set_property('skip-pager-hint', True)
         w.set_property('skip-taskbar-hint', True)
