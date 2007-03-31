@@ -155,13 +155,14 @@ class UI (gconf_wrapper.GConfWrapper):
                      'bg_black':1,
                      'bg_custom_color':'',
                      'show_tracker':False,
+                     'width': 700,
+                     'height': 675
                      #'show_notes':0
                      }    
 
     @simple_debug
     def __init__ (self):
         self.w = gtk.Window()
-        self.w.set_default_size(700,675)
         self.timer = ActiveTimer(self.w)
         self.won = False
         gconf_wrapper.GConfWrapper.__init__(self,
@@ -173,7 +174,9 @@ class UI (gconf_wrapper.GConfWrapper):
         self.cleared = [] # used for Undo memory
         self.cleared_notes = [] # used for Undo memory
         gnome.program_init('gnome-sudoku',VERSION, properties={gnome.PARAM_APP_DATADIR:APP_DATA_DIR})
+        self.w.set_default_size(self.gconf['width'], self.gconf['height'])
         self.w.set_title(APPNAME_SHORT)
+        self.w.connect('configure-event',self.resize_cb)
         self.w.connect('delete-event',self.quit_cb)
         self.vb = gtk.VBox()
         self.uimanager = gtk.UIManager()
@@ -494,6 +497,11 @@ class UI (gconf_wrapper.GConfWrapper):
         self.timer.reset_timer()
         self.timer.start_timing()
         self.won = False
+        
+    @simple_debug
+    def resize_cb (self, widget, event):
+        self.gconf['width'] = event.width
+        self.gconf['height'] = event.height
 
     @simple_debug
     def quit_cb (self, *args):
