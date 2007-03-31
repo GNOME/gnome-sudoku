@@ -160,6 +160,10 @@ class OldGameSelector (GameSelector):
         col2.set_sort_column_id(7)
         self.setup_model()
         self.tv.set_model(self.model)
+        self.tv.get_selection().set_mode(gtk.SELECTION_BROWSE)
+        iter = self.model.get_iter_first()
+        if iter is not None:
+            self.tv.get_selection().select_iter(iter)
         self.tv.get_selection().connect('changed',self.selection_changed_cb)
         self.selection_changed_cb(self.tv.get_selection())
 
@@ -229,6 +233,8 @@ class OldGameSelector (GameSelector):
 
     def get_puzzle (self):
         mod,itr = self.tv.get_selection().get_selected()
+        if itr is None:
+            return None
         jar = mod.get_value(itr,1)
         return jar
     
