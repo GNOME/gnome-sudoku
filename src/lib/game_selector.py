@@ -6,6 +6,41 @@ from timer import format_time,format_date
 from defaults import *
 from gtk_goodies import gconf_wrapper
 
+def _compareGameNames(model, iter1, iter2, nameColumn):
+    # Don't sort child nodes
+    if model.iter_parent(iter1) is not None or model.iter_parent(iter2) is not None:
+        return 0
+
+    name1 = model.get_value(iter1, nameColumn)
+    name2 = model.get_value(iter2, nameColumn)
+
+    # Compare each word treating numbers as numbers not strings
+    words1 = name1.split()
+    words2 = name2.split()
+    for i in xrange(min(len(words1), len(words2))):
+        w1 = words1[i]
+        w2 = words2[i]
+        
+        try:
+            i1 = int(w1)
+        except ValueError:
+            i1 = None
+        try:
+            i2 = int(w2)
+        except ValueError:
+            i2 = None
+
+        if i1 is None or i2 is None:
+            if w1 < w2:
+                return -1
+            elif w2 > w1:
+                return 1
+        else:
+            if i1 != i2:
+                return i1 - i2
+        
+    return 0
+
 class GameSelector (gconf_wrapper.GConfWrapper):
 
     def __init__ (self, sudoku_tracker, gconf=None):
@@ -68,6 +103,7 @@ class NewGameSelector (GameSelector):
         # puzzle [0], difficulty [1], value string [2], other string
         # [3], diff value (float) [4], game name [5]
         self.model = gtk.TreeStore(str, gobject.TYPE_PYOBJECT, str, str, float, str)
+        self.model.set_sort_func(5, _compareGameNames, 5)
 
     def add_puzzle_to_model (self, p, d):
         """Add puzzle (with difficulty object d) to our treeview.
@@ -75,7 +111,6 @@ class NewGameSelector (GameSelector):
         if not self.sudoku_tracker.sudoku_maker.names.has_key(p):
             self.sudoku_tracker.sudoku_maker.names[p]=self.sudoku_tracker.sudoku_maker.get_puzzle_name(
                 _('Puzzle'))
-        self.sudoku_tracker.sudoku_maker.names[p]
         itr = self.model.append(None,
                                 [p, # puzzle
                                  d, # difficulty                                     
@@ -102,6 +137,7 @@ class NewGameSelector (GameSelector):
         for puzzobj in self.sudoku_tracker.list_new_puzzles():
             self.add_puzzle_to_model(*puzzobj)
         self.setup_treeview_columns()
+        self.model.set_sort_column_id(5, gtk.SORT_ASCENDING)
         
     def setup_treeview_columns (self):
         col0 = gtk.TreeViewColumn(_('Name'),gtk.CellRendererText(),text=5)
@@ -212,6 +248,8 @@ class OldGameSelector (GameSelector):
                                status_val, # total time
                                name
                                ])
+        self.model.set_sort_func(8, _compareGameNames, 8)
+        self.model.set_sort_column_id(8, gtk.SORT_ASCENDING)
 
     def cell_data_func (self, tree_column, cell, model, titer, data_col):
         val = model.get_value(titer,data_col)
@@ -320,7 +358,8 @@ class HighScores (GameSelector):
                         detail = finisher[detail]
                     self.model.append(itr,
                                       [label, detail, 0, None, 0,None,0,None])
-        self.model.set_sort_column_id(2,gtk.SORT_DESCENDING)
+        self.model.set_sort_func(0, _compareGameNames, 0)
+        self.model.set_sort_column_id(2, gtk.SORT_DESCENDING)
         
         if self.highlight_newest:
             itr = most_recent[1]
