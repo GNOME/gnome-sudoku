@@ -817,7 +817,11 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     def show_help (self, *args):
         #dialog_extras.show_faq(faq_file=os.path.join(BASE_DIR,_('FAQ')))
-        gnome.help_display('gnome-sudoku')
+        try:
+            gnome.help_display('gnome-sudoku')
+        except gobject.GError, e:
+            # FIXME: This should create a pop-up dialog
+            print _('Unable to display help: %s') % str(e)
 
     @simple_debug
     def print_game (self, *args):
