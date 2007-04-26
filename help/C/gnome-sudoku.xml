@@ -119,10 +119,10 @@
   </articleinfo> 
 
   <indexterm zone="index"> 
-    <primary>MY-GNOME-APP</primary> 
+    <primary>GNOME Sudoku</primary> 
   </indexterm> 
   <indexterm zone="index"> 
-    <primary>mygnomeapp</primary> 
+    <primary>sudoku</primary> 
   </indexterm>
 
 <!-- ============= Document Body ============================= -->
@@ -275,7 +275,7 @@
 	</screenshot>
       </figure>
     </note>
-    <sect3 id="myapp-saving">
+    <sect2 id="myapp-saving">
     <title>Saving and Resuming Games</title>
     <para>When you close &app;, your current game is automatically saved; when you start, you will continue playing your game where you left off.</para>
     <para>If you'd like to stop playing one game and begin another, just select <guibutton>New</guibutton> and begin your new game.</para>
@@ -288,7 +288,7 @@
     		<guimenuitem>High Scores</guimenuitem>
     		</menuchoice>. Then select the game you would like to replay and click <guibutton>Replay Game</guibutton>.
 		</para>
-    </sect3>
+    </sect2>
 
   </sect1>
 
@@ -307,7 +307,7 @@
       <variablelist>
     	<varlistentry><term>Notes</term>
 	<listitem>
-		<para><term>Notes</term> or <term>Pencilmarks</term> let
+		<para><firstterm>Notes</firstterm> or <firstterm>Pencilmarks</firstterm> let
         you take notes in each square. Many players use
         notes to track possible values for squares.</para>
 	</listitem>
@@ -316,7 +316,7 @@
 	<term>Hints and Auto-Fill</term>
 	<listitem>
 	<para>	 You can use
-        <term>hints</term> and <term>auto-fill</term> to have GNOME
+        <firstterm>hints</firstterm> and <firstterm>auto-fill</firstterm> to have GNOME
         Sudoku tell you about possible values for a square or
         automatically fill in a square for you.</para>
 	</listitem>
@@ -335,7 +335,7 @@
 	  <para>
 
 		Trackers make trial-and-error solutions easier to keep
-		track of. When you <term>track</term> a set of moves,
+		track of. When you <firstterm>track</firstterm> a set of moves,
 		the numbers are entered in a special color to help you
 		distinguish those moves from moves made earlier in the
 		game.
@@ -349,12 +349,12 @@
       <title>Taking Notes</title> 
       <para>To write notes (also known as &ldquo;pencilmarks&rdquo;) in a square, first select the square with the keyboard or mouse. Then, do one of the following:</para>
       <itemizedlist>
-      <listitem>Click in the upper region of the square (the region is highlighted with a square when you move the mouse over a selected square).</listitem>
-      <listitem>Type <keycap>N</keycap></listitem>
+      <listitem><para>Click in the upper region of the square (the region is highlighted with a square when you move the mouse over a selected square).</para></listitem>
+      <listitem><para>Type <keycap>N</keycap></para></listitem>
       </itemizedlist>
       <para>This will bring up a field in which you can type your notes. Type <keycap>Return</keycap> when you are finished editing your note.</para>
       
-      <note><para>You can also take notes in the bottom of the square by clicking in the bottom of the square or by typing <keycap>M</keycap>. However, this area is used when you ask for a <term>hint</term>, so you should not use this area for your own notes if you also plan to use hints.</para></note>
+      <note><para>You can also take notes in the bottom of the square by clicking in the bottom of the square or by typing <keycap>M</keycap>. However, this area is used when you ask for a <firstterm>hint</firstterm>, so you should not use this area for your own notes if you also plan to use hints.</para></note>
 </sect2>
     <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="myapp-manipulate-view"> 
@@ -364,7 +364,7 @@
 
 	      <para>
 
-	      The <term>Hint</term> and <term>Fill</term> features
+	      The <firstterm>Hint</firstterm> and <firstterm>Fill</firstterm> features
 	      work based on the logical possibilities given the
 	      current board. They do <emphasis>not</emphasis> work by looking at
 	      the solution. If you have made an error in
@@ -450,8 +450,8 @@
       <title>Highlighting</title> 
       <para>You can turn on highlighting to automatically highlight the current row, column and box in different colors. This can make it easier to see which values cannot go into a current square. To toggle highlighting, you can:</para> 
       <itemizedlist>
-      <listitem>Click <guibutton>Highlighter</guibutton></listitem>
-      <listitem><menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Highlighter</guimenuitem></menuchoice></listitem>
+      <listitem><para>Click <guibutton>Highlighter</guibutton></para></listitem>
+      <listitem><para><menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Highlighter</guimenuitem></menuchoice></para></listitem>
       </itemizedlist>
 
 <figure id="highlight-fig"> 
@@ -582,7 +582,7 @@
   <para>High scores are arguably an extraneous part of a sudoku game, but they seem like fun, so &app; includes them. The algorithm for high scores gives you points for speed and for puzzle difficulty and takes away points for using hints. The algorithm is designed to give reasonable-looking scores, but it sometimes produces negative scores, which can be upsetting for users.</para>
   </sect2>
  </sect1>
--->
+
 <!-- ============= About ================================== -->
 <!-- This section contains info about the program (not docs), such as
       author's name(s), web page, license, feedback address. This
