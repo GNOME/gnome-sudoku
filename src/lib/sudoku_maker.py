@@ -419,10 +419,18 @@ class SudokuMaker:
         if not os.path.exists(directory):
             os.makedirs(directory)
         ofi = file(self.pickle_to,'w')
-        pickle.dump({'by_solution':self.puzzles_by_solution,
-                     'names':self.names,
-                     'metaname':self.top_name},
-                     ofi)
+	try:
+	    sys.setcheckinterval(sys.maxint)
+	    # Statements in this block are assured to run atomically. 
+	    # The following statement has been known to create thread 
+	    # race conditions where several threads modify the object
+	    # being pickled, resulting in a crash.          - Andreas  
+            pickle.dump({'by_solution':self.puzzles_by_solution,
+                         'names':self.names,
+                         'metaname':self.top_name},
+                         ofi)
+	finally:
+	    sys.setcheckinterval(100)
         ofi.close()
 
     def list_difficulties (self):

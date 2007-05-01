@@ -1,3 +1,15 @@
+2007-05-01  Andreas Røsdal  <andreasr@gnome.org>
+
+	* src/lib/sudoku_generator_gui.py: Fix a i18n related crash,
+	by strong the number of generated puzzles in a variable,
+	instead of extracting it from the label. This solves Bug #428560.
+
+2007-05-01  Andreas Røsdal  <andreasr@gnome.org>
+
+	* src/lib/sudoku_maker.py: Fix a race condition which occurs
+	when saving puzzles on exit. The solution is to run the pickle
+	operation atomically. This solves Bug #409172 et al.
+
 2007-04-22  Robert Ancell <robert.ancell@gmail.com>
 
 	* src/lib/gnome_sudoku.py Catch exceptions when launching help (Bug #418193)

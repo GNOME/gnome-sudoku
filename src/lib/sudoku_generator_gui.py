@@ -155,11 +155,10 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
     def increment_label (self, lab, val=1):
         curtext = lab.get_text()
         if not curtext:
-            newval = val
+	    lab.pcount = val
         else:
-            curval = int(curtext.split()[0])
-            newval = curval + val
-        newtext = ngettext("%(n)s puzzle","%(n)s puzzles",newval)%{'n':newval}
+	    lab.pcount += 1
+        newtext = ngettext("%(n)s puzzle","%(n)s puzzles",lab.pcount)%{'n':lab.pcount}
         lab.set_text(newtext)
 
     def update_status (self, *args):
