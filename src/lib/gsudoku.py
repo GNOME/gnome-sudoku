@@ -1183,7 +1183,8 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         if not e: return
 	filled = self.grid.auto_fill_for_xy(e.x,e.y)
         if filled and filled!=-1:
-            self.add_value(filled[0][0],filled[0][1],filled[1])
+            e.set_text_interactive('')
+            e.set_text_interactive(str(filled[1]))
     
     @simple_debug
     def mark_impossible_implications (self, x, y):
