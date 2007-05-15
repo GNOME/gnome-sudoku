@@ -214,7 +214,7 @@ class UI (gconf_wrapper.GConfWrapper):
             ('Game',None,_('_Game')),
             ('View',None,_('_View')),
             ('ShowPossible',gtk.STOCK_DIALOG_INFO,_('_Hint'),
-             '<Control>i',
+             '<Control>h',
              _('Show which numbers could go in the current square.'),
              self.show_hint_cb),
             ('AutofillCurrentSquare',gtk.STOCK_APPLY,_('_Fill'),'<Control>f',
