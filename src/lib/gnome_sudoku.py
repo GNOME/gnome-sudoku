@@ -39,22 +39,22 @@ except:
 def inactivate_new_game_etc (fun):
     def _ (ui, *args, **kwargs):
         paths = [
-            '/MenuBar/File/New',
-            '/MenuBar/File/Open',
-            '/MenuBar/File/ByHand',
-            '/MenuBar/File/Print',
+            '/MenuBar/Game/New',
+            '/MenuBar/Game/Open',
+            '/MenuBar/Game/ByHand',
+            '/MenuBar/Game/Print',
             '/MenuBar/Edit/Undo',
             '/MenuBar/Edit/Redo',
             '/MenuBar/Edit/Clear',
             '/MenuBar/Edit/ClearNotes',
-            '/MenuBar/Game/ShowPossible',
-            '/MenuBar/Game/AutofillCurrentSquare',
-            '/MenuBar/Game/Autofill',
-            '/MenuBar/Game/AlwaysShowPossible',
-            '/MenuBar/Game/ShowImpossibleImplications',
-            '/MenuBar/Game/Tracker',
-            '/MenuBar/Game/PuzzleInfo',
-            '/MenuBar/Game/HighScores',
+            '/MenuBar/Tools/ShowPossible',
+            '/MenuBar/Tools/AutofillCurrentSquare',
+            '/MenuBar/Tools/Autofill',
+            '/MenuBar/Tools/AlwaysShowPossible',
+            '/MenuBar/Tools/ShowImpossibleImplications',
+            '/MenuBar/Tools/Tracker',
+            '/MenuBar/Tools/PuzzleInfo',
+            '/MenuBar/Tools/HighScores',
             ]
         for p in paths:
             action = ui.uimanager.get_action(p)
@@ -72,7 +72,7 @@ def inactivate_new_game_etc (fun):
 class UI (gconf_wrapper.GConfWrapper):
     ui='''<ui>
     <menubar name="MenuBar">
-      <menu name="File" action="File">
+      <menu name="Game" action="Game">
         <menuitem action="New"/>
         <menuitem action="Open"/>
         <menuitem action="ByHand"/>
@@ -102,7 +102,7 @@ class UI (gconf_wrapper.GConfWrapper):
         <menuitem action="ToggleBackground"/>
         <menuitem action="ToggleHighlight"/>        
       </menu>
-      <menu action="Game">
+      <menu action="Tools">
          <menuitem action="ShowPossible"/>
           <menuitem action="AutofillCurrentSquare"/>
           <menuitem action="Autofill"/>
@@ -191,7 +191,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.gsd.connect('puzzle-finished',self.you_win_callback)
         self.main_actions = gtk.ActionGroup('MainActions')        
         self.main_actions.add_actions([
-            ('File',None,_('_File')),
+            ('Game',None,_('_Game')),
             ('New',gtk.STOCK_NEW,None,
              '<Control>n',_('New game'),self.new_cb),
             ('Print',gtk.STOCK_PRINT,None,
@@ -211,7 +211,7 @@ class UI (gconf_wrapper.GConfWrapper):
             ('Open',gtk.STOCK_OPEN,_('_Resume old game'),
              '<Control>r',_('Resume a previous saved game.'),
              self.open_game),
-            ('Game',None,_('_Game')),
+            ('Tools',None,_('_Tools')),
             ('View',None,_('_View')),
             ('ShowPossible',gtk.STOCK_DIALOG_INFO,_('_Hint'),
              '<Control>h',

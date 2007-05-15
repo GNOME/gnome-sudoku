@@ -286,11 +286,11 @@
     <para>When you close &app;, your current game is automatically saved; when you start, you will continue playing your game where you left off.</para>
     <para>If you'd like to stop playing one game and begin another, just select <guibutton>New</guibutton> and begin your new game.</para>
     <para>To resume an old game that you interrupted, select <menuchoice>
-    		<guisubmenu>File</guisubmenu>
+    		<guisubmenu>Game</guisubmenu>
     		<guimenuitem>Resume old game</guimenuitem>
     		</menuchoice>. You can then select any game you've played before from a list.</para>
     <para>To replay a game that you have already won, select <menuchoice>
-    		<guisubmenu>Game</guisubmenu>
+    		<guisubmenu>Tools</guisubmenu>
     		<guimenuitem>High Scores</guimenuitem>
     		</menuchoice>. Then select the game you would like to replay and click <guibutton>Replay Game</guibutton>.
 		</para>
@@ -384,7 +384,7 @@
       
       <sect3 id="myapp-hint">
           <title>Hints</title>
-	              <para>GNOME Sudoku can give you hints based on your current board. You can ask for a hint for the currently selected square by clicking <guibutton>hint</guibutton>, selecting <menuchoice><guisubmenu>Game</guisubmenu><guimenuitem>Hint</guimenuitem></menuchoice>, or typing <keycap>Control-I</keycap>. This will put a list of possible values in the bottom of the square.</para>
+	              <para>GNOME Sudoku can give you hints based on your current board. You can ask for a hint for the currently selected square by clicking <guibutton>hint</guibutton>, selecting <menuchoice><guisubmenu>Tools</guisubmenu><guimenuitem>Hint</guimenuitem></menuchoice>, or typing <keycap>Control-I</keycap>. This will put a list of possible values in the bottom of the square.</para>
     <figure id="hint-fig"> 
 	<title>Hints</title> 
 	<screenshot> 
@@ -400,7 +400,7 @@
       </figure>
 		      
 	    <para>If you want to remove or alter the hint, you can edit the text by clicking in the bottom of the square.</para>
-	    <para>For very difficult puzzles, you can choose to have &app; show you the possible values for all squares. To turn this mode on, toggle <menuchoice><guisubmenu>Game</guisubmenu><guimenuitem>Always show hint</guimenuitem></menuchoice>. Note that this can make easy puzzles <emphasis>too</emphasis> easy, so you should use this mode sparingly.</para>
+	    <para>For very difficult puzzles, you can choose to have &app; show you the possible values for all squares. To turn this mode on, toggle <menuchoice><guisubmenu>Tools</guisubmenu><guimenuitem>Always show hint</guimenuitem></menuchoice>. Note that this can make easy puzzles <emphasis>too</emphasis> easy, so you should use this mode sparingly.</para>
 <figure id="all-hints-fig"> 
 	<title>&app; in Always-Show-Hint Mode</title> 
 	<screenshot> 
@@ -425,7 +425,7 @@
 	    To automatically fill in a square for which there is only
 	    one possible value, you can click
 	    <guibutton>Fill</guibutton>, select
-	    <menuchoice><guisubmenu>Game</guisubmenu><guimenuitem>Fill</guimenuitem></menuchoice>,
+	    <menuchoice><guisubmenu>Tools</guisubmenu><guimenuitem>Fill</guimenuitem></menuchoice>,
 	    or type <keycap>Control-F</keycap>. This is useful, for
 	    example, when you have filled in 8 or 9 squares in a row and want to quickly fill in the last empty square.
 	    
@@ -440,7 +440,7 @@
 	    <para>You can automatically fill in all squares for which
 	    there is logically only one value at the moment. To do so, 
 	    	    select
-	    <menuchoice><guisubmenu>Game</guisubmenu><guimenuitem>Fill all squares</guimenuitem></menuchoice>,
+	    <menuchoice><guisubmenu>Tools</guisubmenu><guimenuitem>Fill all squares</guimenuitem></menuchoice>,
 	    or type <keycap>Control-A</keycap>.
 	    </para>
 	    
@@ -489,7 +489,7 @@
 	      <listitem>
 	       <para>
 		<menuchoice> 
-			  <guimenu>Game</guimenu> 
+			  <guimenu>Tools</guimenu> 
 			  <guimenuitem>Track additions</guimenuitem>
 		</menuchoice>
 	       </para>
@@ -511,12 +511,12 @@
     </para>
 
     <para>To print the puzzle you are in the midst of playing, click <guibutton>Print</guibutton> or select <menuchoice> 
-	<guimenu>File</guimenu> 
+	<guimenu>Game</guimenu> 
 	<guimenuitem>Print</guimenuitem> 
       </menuchoice>. This will include the numbers you have already filled in.</para>
     
     <para>To print blank puzzles, select <menuchoice> 
-	<guimenu>File</guimenu> 
+	<guimenu>Game</guimenu> 
 	<guimenuitem>Print multiple sudokus</guimenuitem> 
       </menuchoice>.</para>
 
