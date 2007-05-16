@@ -1,6 +1,4 @@
-EXTRA_DIST = sudoku.png footprints.png
-icondir = $(datadir)/pixmaps
-icon_DATA = sudoku.png
+EXTRA_DIST = footprints.png
 
 pixmapdir = $(datadir)/pixmaps/gnome-sudoku/
 pixmap_DATA = footprints.png

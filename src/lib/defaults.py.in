@@ -2,9 +2,8 @@ import os, os.path
 import gettext
 
 APP_DATA_DIR = os.path.join('@prefix@', 'share') 
-ICON_DIR =     os.path.join(APP_DATA_DIR,'pixmaps')
-IMAGE_DIR = os.path.join(ICON_DIR,'gnome-sudoku')
-LOCALEDIR 	= os.path.join(APP_DATA_DIR, 'locale')
+IMAGE_DIR = os.path.join(APP_DATA_DIR, 'pixmaps', 'gnome-sudoku')
+LOCALEDIR = os.path.join(APP_DATA_DIR, 'locale')
 GLADE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
 BASE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
 

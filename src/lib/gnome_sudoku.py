@@ -408,8 +408,7 @@ class UI (gconf_wrapper.GConfWrapper):
             gobject.timeout_add(1000,lambda *args: self.start_worker_thread() and True)
         self.gsd.show()
         
-        icon = gtk.gdk.pixbuf_new_from_file(os.path.join(ICON_DIR,'sudoku.png'))
-        self.w.set_icon(icon)
+        self.w.set_icon_name('gnome-sudoku')
         self.w.show()
 
     @simple_debug
@@ -808,9 +807,8 @@ class UI (gconf_wrapper.GConfWrapper):
         about.set_comments(DESCRIPTION)
         about.set_authors(AUTHORS)
         about.set_website("http://www.gnome.org/projects/gnome-games/")
-        about.set_logo_icon_name("sudoku")
+        about.set_logo_icon_name("gnome-sudoku")
         about.set_translator_credits(_("translator-credits"))
-        about.set_icon_from_file(ICON_DIR + "/sudoku.png")
         about.connect("response", lambda d, r: d.destroy())
         about.show()
 
