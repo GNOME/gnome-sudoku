@@ -162,6 +162,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def __init__ (self):
+        gtk.window_set_default_icon_name('gnome-sudoku')
         self.w = gtk.Window()
         self.timer = ActiveTimer(self.w)
         self.won = False
@@ -408,7 +409,6 @@ class UI (gconf_wrapper.GConfWrapper):
             gobject.timeout_add(1000,lambda *args: self.start_worker_thread() and True)
         self.gsd.show()
         
-        self.w.set_icon_name('gnome-sudoku')
         self.w.show()
 
     @simple_debug
