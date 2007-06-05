@@ -40,8 +40,8 @@ def inactivate_new_game_etc (fun):
     def _ (ui, *args, **kwargs):
         paths = [
             '/MenuBar/Game/New',
-            '/MenuBar/Game/Open',
-            '/MenuBar/Game/ByHand',
+            #'/MenuBar/Game/Open',
+            #'/MenuBar/Game/ByHand',
             '/MenuBar/Game/Print',
             '/MenuBar/Edit/Undo',
             '/MenuBar/Edit/Redo',
@@ -74,8 +74,8 @@ class UI (gconf_wrapper.GConfWrapper):
     <menubar name="MenuBar">
       <menu name="Game" action="Game">
         <menuitem action="New"/>
-        <menuitem action="Open"/>
-        <menuitem action="ByHand"/>
+        <!--<menuitem action="Open"/>-->
+        <!--<menuitem action="ByHand"/>-->
         <separator/>
         <menuitem action="Print"/>
         <menuitem action="PrintMany"/>
@@ -202,16 +202,16 @@ class UI (gconf_wrapper.GConfWrapper):
             #('Quit',gtk.STOCK_QUIT,None,'<Control>q',
             # 'Quit Sudoku game',self.quit_cb),
             ('Close',gtk.STOCK_CLOSE,None,'<Control>w',
-             _('Close Sudoku (save game for later)'),self.quit_cb),
+             _('Close Sudoku'),self.quit_cb),
             #('Save',gtk.STOCK_SAVE,_('_Save'),
             # '<Control>s','Save game to play later.',
             # self.save_game),
-            ('ByHand',gtk.STOCK_EDIT,_('_Enter custom game'),
-             None,_('Enter new puzzle by hand (use this to copy a puzzle from another source).'),
-             self.enter_game_by_hand),
-            ('Open',gtk.STOCK_OPEN,_('_Resume old game'),
-             '<Control>r',_('Resume a previous saved game.'),
-             self.open_game),
+            #('ByHand',gtk.STOCK_EDIT,_('_Enter custom game'),
+            # None,_('Enter new puzzle by hand (use this to copy a puzzle from another source).'),
+            # self.enter_game_by_hand),
+            #('Open',gtk.STOCK_OPEN,_('_Resume old game'),
+            # '<Control>r',_('Resume a previous saved game.'),
+            # self.open_game),
             ('Tools',None,_('_Tools')),
             ('View',None,_('_View')),
             ('ShowPossible',gtk.STOCK_DIALOG_INFO,_('_Hint'),
@@ -376,10 +376,10 @@ class UI (gconf_wrapper.GConfWrapper):
         # setup sudoku maker...
         self.sudoku_maker = sudoku_maker.SudokuMaker()
         self.sudoku_tracker = sudoku_maker.SudokuTracker(self.sudoku_maker)
-        if not self.sudoku_tracker.playing:
-            self.main_actions.get_action('Open').set_sensitive(False)
-        else:
-            self.main_actions.get_action('Open').set_sensitive(True)
+        #if not self.sudoku_tracker.playing:
+        #    self.main_actions.get_action('Open').set_sensitive(False)
+        #else:
+        #    self.main_actions.get_action('Open').set_sensitive(True)
 
         if not self.sudoku_tracker.finished:
             self.main_actions.get_action('HighScores').set_sensitive(False)
@@ -389,7 +389,7 @@ class UI (gconf_wrapper.GConfWrapper):
         except:
             self.gconf['current_game']=""
             game = ""
-        if game:
+        '''if game:
             try:
                 self.sudoku_tracker.open_game(self, game)
             except:
@@ -399,11 +399,11 @@ class UI (gconf_wrapper.GConfWrapper):
                 except:
                     puz,d=self.sudoku_tracker.get_new_puzzle(self.gconf['difficulty'])
         else:
-            # select an easy puzzle...
-            puz,d=self.sudoku_tracker.get_new_puzzle(self.gconf['difficulty'])
-            #print 'Default to ',puz
-            self.gsd.change_grid(puz,
-                                 9)
+        '''
+        # select an easy puzzle...
+        puz,d=self.sudoku_tracker.get_new_puzzle(self.gconf['difficulty'])
+        #print 'Default to ',puz
+        self.gsd.change_grid(puz, 9)
         # generate puzzles while our use is working...
         if self.gconf['generate_puzzles_in_background']:
             gobject.timeout_add(1000,lambda *args: self.start_worker_thread() and True)
@@ -489,9 +489,9 @@ class UI (gconf_wrapper.GConfWrapper):
             
     @simple_debug
     def stop_game (self):
-        if self.gsd.grid and self.gsd.grid.is_changed():
-            self.sudoku_tracker.save_game(self)
-            self.main_actions.get_action('Open').set_sensitive(True)
+        #if self.gsd.grid and self.gsd.grid.is_changed():
+        #    self.sudoku_tracker.save_game(self)
+        #    self.main_actions.get_action('Open').set_sensitive(True)
         self.tracker_ui.reset()
         self.timer.reset_timer()
         self.timer.start_timing()
@@ -536,10 +536,10 @@ class UI (gconf_wrapper.GConfWrapper):
         if not self.won:
             if not self.gsd.grid:
                 self.gconf['current_game']=''
-            else: #always save the game
-                self.gconf['current_game']=self.sudoku_tracker.save_game(self)
+            #else: #always save the game
+            #    self.gconf['current_game']=self.sudoku_tracker.save_game(self)
         self.stop_worker_thread()
-        self.sudoku_tracker.save()
+        #self.sudoku_tracker.save()
         gtk.main_quit()
 
     @simple_debug
@@ -565,6 +565,10 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     @inactivate_new_game_etc    
     def open_game (self, *args):
+
+	#disabled!
+	return;
+	
         #game_file = dialog_extras.getFileOpen(_("Load saved game"),
         #                        default_file=os.path.join(DATA_DIR,'games/')
         #                        )        
