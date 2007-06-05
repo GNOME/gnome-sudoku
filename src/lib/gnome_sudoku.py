@@ -979,12 +979,18 @@ class GamesTracker (sudoku_maker.SudokuTracker):
 
 def start_game ():
     if options.debug: print 'Starting GNOME Sudoku in debug mode'
+
+    ##  You must call g_thread_init() before executing any other GLib
+    ##  functions in a threaded GLib program.
+    gobject.threads_init()
+
     if options.profile:
         options.profile = False
         profile_me()
         return
+
     u = UI()
-    gobject.threads_init()
+
     try:
         gtk.main()        
     except KeyboardInterrupt:

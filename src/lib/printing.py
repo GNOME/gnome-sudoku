@@ -328,36 +328,3 @@ def my_print ():
     #sp.run()
     print 'and...\n...\nreturns',sp.run(),'!'
 
-if __name__ == '__main__':
-    import os
-    w = gtk.Window()
-    hb = gtk.HButtonBox()
-    b = gtk.Button(stock=gtk.STOCK_PRINT)
-    hb.add(b)
-    
-    def do_print (*args):
-        #gtk.threads_leave()
-        my_print()
-        #gtk.threads_enter()
-        #os.spawnv(os.P_NOWAIT,'/usr/bin/evince',['/home/tom/Projects/gnome-sudoku/src/lib/output.ps'])
-    b.connect('clicked',do_print)
-
-    def do_quit (*args):
-        w.hide()
-        gtk.mainquit()
-
-    qb = gtk.Button(stock=gtk.STOCK_QUIT)
-    hb.add(qb)
-    qb.connect('clicked',do_quit)
-
-    
-    w.add(hb)
-    w.show_all()
-    
-    import gobject
-    gobject.threads_init()
-    gtk.main()
-
-    #pass
-            
-        

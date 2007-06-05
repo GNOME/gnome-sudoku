@@ -1,3 +1,13 @@
+2007-06-15  Andreas Røsdal  <andreasr@gnome.org>
+
+	* src/lib/gnome_sudoku.py:
+	* src/lib/printing.py: Ensure that g_thread_init is called
+	before all other GLib functions. This will prevent memory 
+	corruption, crashes, leaks and/or unexpected aborts.
+
+	Reported by Tom London:
+	https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=241917
+
 2007-05-20  Robert Ancell  <robert.ancell@gmail.com>
 
 	* src/lib/gnome_sudoku.py: Set default icon for all windows (Bug #393250)
