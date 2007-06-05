@@ -53,8 +53,8 @@ def inactivate_new_game_etc (fun):
             '/MenuBar/Tools/AlwaysShowPossible',
             '/MenuBar/Tools/ShowImpossibleImplications',
             '/MenuBar/Tools/Tracker',
-            '/MenuBar/Tools/PuzzleInfo',
-            '/MenuBar/Tools/HighScores',
+            '/MenuBar/Game/PuzzleInfo',
+            '/MenuBar/Game/HighScores',
             ]
         for p in paths:
             action = ui.uimanager.get_action(p)
