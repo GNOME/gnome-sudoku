@@ -74,6 +74,9 @@ class UI (gconf_wrapper.GConfWrapper):
     <menubar name="MenuBar">
       <menu name="Game" action="Game">
         <menuitem action="New"/>
+        <separator/>
+        <menuitem action="PuzzleInfo"/>
+        <menuitem action="HighScores"/>
         <!--<menuitem action="Open"/>-->
         <!--<menuitem action="ByHand"/>-->
         <separator/>
@@ -81,10 +84,6 @@ class UI (gconf_wrapper.GConfWrapper):
         <menuitem action="PrintMany"/>
         <separator/>
         <!--<menuitem action="Save"/>-->
-        <separator/>
-        <menuitem action="Generator"/>
-        <menuitem action="BackgroundGenerator"/>
-        <separator/>
         <menuitem action="Close"/>
         <!--<menuitem action="Quit"/>-->
       </menu>
@@ -109,13 +108,13 @@ class UI (gconf_wrapper.GConfWrapper):
           <separator/>
           <menuitem action="AlwaysShowPossible"/>
           <menuitem action="ShowImpossibleImplications"/>
+
+        <separator/>
+        <menuitem action="Generator"/>
+        <menuitem action="BackgroundGenerator"/>
         <separator/>
         <menuitem action="Tracker"/>
-        <separator/>
-        <menuitem action="PuzzleInfo"/>
-        <separator/>
-        <menuitem action="HighScores"/>
-       </menu>
+        </menu>
        <menu action="Help">
          <menuitem action="ShowHelp"/>
          <menuitem action="About"/>
