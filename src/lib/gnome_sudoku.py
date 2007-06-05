@@ -98,7 +98,6 @@ class UI (gconf_wrapper.GConfWrapper):
         <menuitem action="FullScreen"/>
         <separator/>
         <menuitem action="ToggleToolbar"/>
-        <menuitem action="ToggleBackground"/>
         <menuitem action="ToggleHighlight"/>        
       </menu>
       <menu action="Tools">
@@ -261,15 +260,7 @@ class UI (gconf_wrapper.GConfWrapper):
              '<Control>T',
              _('Mark new additions in a separate color so you can keep track of them.'),
              self.tracker_toggle_cb,False),
-            #('ZoomOnResize',None,_('_Adjust size of grid when resizing window'),
-            # None,_('Automatically change the size of numbers and squares to fit the window.'),
-            # ),
             ('ToggleToolbar',None,_('Show _Toolbar'),None,None,self.toggle_toolbar_cb,True),
-            #('ToggleNotes',None,_('Show _Notes'),'<Control>O',
-            # _('Include room for notes at the top and bottom of squares.'),self.toggle_notes_cb),
-            ('ToggleBackground',None,_('_Black background'),
-             None,_("Background of game is black; otherwise, the background will follow your theme colors."),
-             self.toggle_background_cb,True),
             ('ToggleHighlight',gtk.STOCK_SELECT_COLOR,_('_Highlighter'),
              None,_('Highlight the current row, column and box'),self.toggle_highlight_cb,False),
             ('BackgroundGenerator',None,_('Generate new puzzles _while you play'),
@@ -366,8 +357,6 @@ class UI (gconf_wrapper.GConfWrapper):
               self.main_actions.get_action('BackgroundGenerator')),
              ('show_toolbar',
               self.main_actions.get_action('ToggleToolbar')),
-             ('bg_black',
-              self.main_actions.get_action('ToggleBackground')),
              ('show_tracker',
               self.main_actions.get_action('Tracker')),
              ])
@@ -738,13 +727,6 @@ class UI (gconf_wrapper.GConfWrapper):
         self.statusbar.push(self.sbid,
                             tot_string)
         return True
-
-    @simple_debug
-    def toggle_background_cb (self, widg):
-        if widg.get_active():
-            self.gsd.set_bg_color('black')
-        else:
-            self.gsd.set_bg_color(None)
 
     def toggle_highlight_cb (self, widg):
         if widg.get_active():
