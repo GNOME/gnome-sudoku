@@ -188,6 +188,7 @@ class NumberBox (gtk.Widget):
             self.queue_draw()                            
 
     def button_press_cb (self, w, e):        
+        if self.read_only: return
         if e.type == gtk.gdk._2BUTTON_PRESS:
             # ignore second click (this makes a double click in the
             # middle of a cell get us a display of the numbers, rather
