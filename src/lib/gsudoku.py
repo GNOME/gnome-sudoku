@@ -294,7 +294,7 @@ class NumberBox (gtk.Widget):
         # and has problems with non-focus operations (i.e. hiding the main window).
         # YOU should rewrite this. Yes, you the reader :)
         w = gtk.Window()
-        
+        w.set_transient_for(self.get_toplevel())
         w.set_app_paintable(True)
         w.set_property('skip-pager-hint', True)
         w.set_property('skip-taskbar-hint', True)
