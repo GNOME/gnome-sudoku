@@ -150,7 +150,6 @@ class UI (gconf_wrapper.GConfWrapper):
                      'player':os.environ.get('USERNAME',''),
                      'difficulty':0.0,
                      'minimum_number_of_new_puzzles':MIN_NEW_PUZZLES,
-                     'highlight':0,
                      'bg_black':1,
                      'bg_custom_color':'',
                      'show_tracker':False,
@@ -358,8 +357,6 @@ class UI (gconf_wrapper.GConfWrapper):
               self.main_actions.get_action('BackgroundGenerator')),
              ('show_toolbar',
               self.main_actions.get_action('ToggleToolbar')),
-             ('highlight',
-              self.main_actions.get_action('ToggleHighlight')),
              ('show_tracker',
               self.main_actions.get_action('Tracker')),
              ])
