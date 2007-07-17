@@ -1,6 +1,5 @@
 import gtk, gnomeprint, gnomeprint.ui, math
 import sudoku, gsudoku
-from gtk_goodies.image_extras import html_to_tuple
 from gettext import gettext as _
 from gettext import ngettext
 
@@ -162,8 +161,6 @@ class SudokuDrawer (GridDrawer):
                             if trackers:
                                 tracker=trackers[0]
                                 color=self.sgd.get_tracker_color(tracker)
-                                color=html_to_tuple(color)
-                                color=[float(c)/256 for c in color]
                             else:
                                 color = self.alt_color
                         self.draw_number(
