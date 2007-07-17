@@ -420,7 +420,7 @@ class SudokuMaker:
             os.makedirs(directory)
         ofi = file(self.pickle_to,'w')
 	try:
-	    sys.setcheckinterval(sys.maxint)
+	    sys.setcheckinterval(pow(2, 31)-1)
 	    # Statements in this block are assured to run atomically. 
 	    # The following statement has been known to create thread 
 	    # race conditions where several threads modify the object

@@ -1,5 +1,10 @@
 2007-07-17  Thomas H.P. Andersen  <phomes@gmail.com>
 
+	* /src/lib/sudoku_maker.py: Set sys.setcheckinterval to 2^31-1 
+	instead of sys.maxint (bug #437270)
+
+2007-07-17  Thomas H.P. Andersen  <phomes@gmail.com>
+
 	* /src/lib/printing.py: Remove faulty conversion from html to rgb 
 	color when printing puzzles with trackers (bug #429854)
 
