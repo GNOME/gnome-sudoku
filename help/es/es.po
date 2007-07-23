@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku.HEAD.es\n"
 "POT-Creation-Date: 2007-06-15 03:29+0100\n"
-"PO-Revision-Date: 2007-07-22 16:56+0200\n"
+"PO-Revision-Date: 2007-07-23 14:37+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -546,6 +546,10 @@ msgid ""
 "used when you ask for a <firstterm>hint</firstterm>, so you should not use "
 "this area for your own notes if you also plan to use hints."
 msgstr ""
+"También puede tomar notas en la casilla inferior pulsando en la parte inferior "
+"del cuadrado o pulsando la tecla <keycap>M</keycap>. No obstante este área "
+"se usa cuando pide <firstterm>sugerencias</firstterm>, así que no debería "
+"usarla para tomar sus notas si también planea usar las sugerencias."
 
 #: C/gnome-sudoku.xml:371(para)
 msgid ""
@@ -555,6 +559,10 @@ msgid ""
 "an error in an earlier move, these features may fill in or suggest incorrect "
 "values."
 msgstr ""
+"Las características <firstterm>Sugerencia</firstterm> y <firstterm>Rellenar</firstterm> "
+"funcionan basándose en las posibilidades lógicas proporcionadas por el tablero actual. "
+"<emphasis>No</emphasis> trabajan basándose en la solución. Si ha cometido un error "
+"en un movimiento anterior, estas características pueden fallar al rellenar o sugerir un valor."
 
 #: C/gnome-sudoku.xml:386(title) C/gnome-sudoku.xml:389(title)
 msgid "Hints"
@@ -569,6 +577,10 @@ msgid ""
 "<keycap>Control-H</keycap>. This will put a list of possible values in the "
 "bottom of the square."
 msgstr ""
+"Sudoku puede proporcionarle sugerencias basándose en el tablero actual. Entonces "
+"puede preguntar una sugerencia para la casilla seleccionar pulsando <guibutton>Sugerencia</guibutton>, "
+"seleccionarndo <menuchoice><guisubmenu>Herramientas</guisubmenu><guimenuitem>Sugerencia</guimenuitem></menuchoice>, "
+"o pulsando <keycap>Ctrl+H</keycap>. Esto mostrará una lista de posibles valores en la parte inferior del cuadrado."
 
 #: C/gnome-sudoku.xml:396(phrase)
 msgid "When you click on Hint, possible values are shown in the bottom of a square."
@@ -591,6 +603,12 @@ msgid ""
 "that this can make easy puzzles <emphasis>too</emphasis> easy, so you should "
 "use this mode sparingly."
 msgstr ""
+"Para los puzles más difíciles, puede elegir la opción que muestra todos los valores posibles "
+"para cada caja en <application>Sudoku</application>. Para activar esta opción, pulse "
+"<menuchoice><guisubmenu>Herramientas</guisubmenu><guimenuitem>Siempre mostrar "
+"sugerencias</guimenuitem></menuchoice>. Nótese que esto puede conllevar que los puzles "
+"fáciles sean <emphasis>demasiado</emphasis> fáciles, de tal forma que deberá usar esta opción "
+"consecuentemente."
 
 #: C/gnome-sudoku.xml:405(title)
 msgid "<application>GNOME Sudoku</application> in Always-Show-Hint Mode"
@@ -613,6 +631,10 @@ msgid ""
 "example, when you have filled in 8 or 9 squares in a row and want to quickly "
 "fill in the last empty square."
 msgstr ""
+"Para rellenar una casilla automáticamente para la que sólo hay un valor posible, puede "
+"seleccionar <guibutton>Rellenar</guibutton>, seleccione <menuchoice><guisubmenu>Herramientas</guisubmenu><guimenuitem>Rellenar</guimenuitem></menuchoice> o pulse "
+"<keycap>Ctrl+F</keycap>. Esto es útil cuando ha rellenado 8 o 9 casillas de una fila y quiere rellenar "
+"rápidamente el último cuadrado vacío."
 
 #: C/gnome-sudoku.xml:433(para)
 msgid "If there are more than one valid value for the entry, nothing will happen."
@@ -629,6 +651,9 @@ msgid ""
 "guisubmenu><guimenuitem>Fill all squares</guimenuitem></menuchoice>, or type "
 "<keycap>Control-A</keycap>."
 msgstr ""
+"Puede rellenar automáticamente todos los cuadrados para los que lógicamente sólo pueda haber "
+"un valor en ese momento. Para ello seleccione <menuchoice><guisubmenu>Herramientas</guisubmenu><guimenuitem>"
+"Rellenar todos los cuadrados</guimenuitem></menuchoice>, o pulse <keycap>Ctrl+A</keycap>."
 
 #: C/gnome-sudoku.xml:449(para)
 msgid ""
@@ -636,6 +661,9 @@ msgid ""
 "difficult game. Using this feature on an easy game can solve the entire "
 "puzzle in one click, resulting in a very boring game!"
 msgstr ""
+"Esta característica sólo debería usarse para ayudarle cuando está estancado durante "
+"un sudoku muy difícil. Usar esta característica en un juego fácil puede resolver el puzle "
+"entero, haciéndolo aburrido."
 
 #: C/gnome-sudoku.xml:457(para)
 msgid ""
@@ -643,10 +671,13 @@ msgid ""
 "column and box in different colors. This can make it easier to see which "
 "values cannot go into a current square. To toggle highlighting, you can:"
 msgstr ""
+"Puede activar el resaltado para resaltar automáticamente la fila, columna "
+"y caja actuales en diferentes colores. Esto puede hacer que vea los valores "
+"que pueden ir, o no, más fácilmente en el cuadrado actual. Para conmutar el resaltado puede:"
 
 #: C/gnome-sudoku.xml:459(para)
 msgid "Click <guibutton>Highlighter</guibutton>"
-msgstr "Pulse <guibutton>Resaltador</guibutton>"
+msgstr "Pulsar <guibutton>Resaltador</guibutton>"
 
 #: C/gnome-sudoku.xml:460(guisubmenu)
 msgid "View"
@@ -671,16 +702,22 @@ msgid ""
 "You can also delete all tracked moves at one time. This is particularly "
 "useful for solving difficult puzzles by trial-and-error."
 msgstr ""
+"Puede usar los seguimientos para mantener el seguimiento de múltiples movimientos a la vez. "
+"Los movimientos bajo seguimiento se introducen en un color distinto para distinguirlos visualmente. "
+"También puede borrar los movimientos bajo seguimiento de una vez. Esto es particularmente "
+"útil para resolver puzles difíciles por el método de prueba y error."
 
 #: C/gnome-sudoku.xml:483(para)
 msgid ""
 "Some sudoku players believe you should never use trial-and-error to solve a "
 "puzzle. These players should not use this feature."
 msgstr ""
+"Algunos jugadores de sudoku piensan que nunca debería usar el método de prueba y error para "
+"resolver un puzle. Estos jugadores no deberían usar esta característica."
 
 #: C/gnome-sudoku.xml:485(para)
 msgid "You can toggle the tracker-interface by doing one of the following:"
-msgstr ""
+msgstr "Puede conmutar el interfaz de seguimiento con una de las siguientes acciones:"
 
 #: C/gnome-sudoku.xml:492(guimenu)
 msgid "Tools"
@@ -701,6 +738,10 @@ msgid ""
 "this point forward, any number you enter will be part of the selected "
 "tracker."
 msgstr ""
+"Esta acción mostrará una lista de los seguimientos en la parte derecha del juego actual. "
+"Cree un nuevo seguimiento pulsando <guibutton>Añadir seguimiento</guibutton>. Desde "
+"este punto en adelante cualquier número que introduzca formará parte del seguimiento "
+"seleccionado."
 
 #: C/gnome-sudoku.xml:500(para)
 msgid ""
@@ -709,6 +750,10 @@ msgid ""
 "can clear all values that are <emphasis>not</emphasis> part of a tracker by "
 "clicking <guibutton>Clear Others</guibutton>."
 msgstr ""
+"Puede limpiar todos los valores que forman parte de un seguimiento seleccionando "
+"el seguimiento de la lista y pulsando <guibutton>Limpiar seguimiento</guibutton>. Puede "
+"limpiar todos los valores que <emphasis>no</emphasis> forman parte del seguimiento "
+"pulsando <guibutton>Limpiar otros</guibutton>."
 
 #: C/gnome-sudoku.xml:506(title)
 msgid "Printing Sudoku"
@@ -720,6 +765,9 @@ msgid ""
 "have to leave the computer but want to finish a game you have started, or if "
 "you want to print out a bunch of puzzles to do later."
 msgstr ""
+"Sudoku puede imprimir puzles en papel. Útil si quiere "
+"dejar el equipo pero quiere terminar un juego que haya comenzado o si "
+"quiere imprimir un puñado de puzles para resolver más tarde."
 
 #: C/gnome-sudoku.xml:513(para)
 msgid ""
@@ -728,12 +776,15 @@ msgid ""
 "guimenuitem></menuchoice>. This will include the numbers you have already "
 "filled in."
 msgstr ""
+"Para imprimir el puzle al que está jugando, pulse <guibutton>Imprimir</guibutton> o seleccione "
+"<menuchoice><guimenu>Juego</guimenu><guimenuitem>Imprimir</guimenuitem></menuchoice>. "
+"Esto incluirá los números que ya haya rellenado."
 
 #: C/gnome-sudoku.xml:518(para)
 msgid ""
 "To print blank puzzles, select <menuchoice><guimenu>Game</"
 "guimenu><guimenuitem>Print multiple sudokus</guimenuitem></menuchoice>."
-msgstr ""
+msgstr "Para imprimir puzles vacíos seleccione <menuchoice><guimenu>Juego</guimenu><guimenuitem>Imprimir múltiples sudokus</guimenuitem></menuchoice>."
 
 #: C/gnome-sudoku.xml:523(para)
 msgid ""
@@ -741,22 +792,29 @@ msgid ""
 "would like to print and how many games you want to print on each page (the "
 "more pages you print per page, the smaller the games will be)."
 msgstr ""
+"Entones se le presentará un diálogo que le permitirá elegir la cantidad de juegos "
+"que desea imprimir y el número de juegos que quiere imprimir por página (cuantos "
+"más sudokus por página imprima más pequeños serán)."
 
 #: C/gnome-sudoku.xml:528(para)
 msgid ""
 "You can also select the range of difficulty you want the games to be in. The "
 "games will print in order of difficulty from easiest to hardest."
 msgstr ""
+"También puede seleccionar el rango de dificultad que quiere para los juegos. Los "
+"juegos se imprimirán en orden de dificultad ascendente, del más fácil al más difícil."
 
 #: C/gnome-sudoku.xml:530(para)
 msgid ""
 "To create a 25 page mini sudoku book for yourself, you could select to print "
 "100 sudokus, at 4 sudokus per page, with games ranging from easy to hard."
 msgstr ""
+"Para crear un libro de 25 páginas de minisudokus puede seleccionar imprimir "
+"100 sudokus, 4 por página, con dificultad ascendente."
 
 #: C/gnome-sudoku.xml:533(title)
 msgid "Printing a Mini-Sudoku book from <application>GNOME Sudoku</application>"
-msgstr ""
+msgstr "Imprimir un libro de minisudokus desde <application>Sudoku</application>"
 
 #: C/gnome-sudoku.xml:540(phrase)
 msgid "This will print 25 pages with 4 sudokus on each page."
@@ -769,12 +827,18 @@ msgid ""
 "if you don't care about repeating games, you can check <guibutton>Include "
 "games you've already played in list of games to print</guibutton>."
 msgstr ""
+"De forma predeterminada <application>Sudoku</application> no imprimirá "
+"los juegos a los que ya haya jugado. Si está imprimiendo juegos para un amigo o "
+"no le importa que se impriman juegos repetidos, puede activar <application>Incluir "
+"juegos que ya haya jugado en la lista de juegos a imprimir</application>."
 
 #: C/gnome-sudoku.xml:548(para)
 msgid ""
 "You can also hand-select the games you would like to print by expanding the "
 "<guibutton>Games List</guibutton> and selecting multiple puzzles on the list."
 msgstr ""
+"También puede seleccionar a mano los juegos que desea imprimir expandiendo la "
+"<guibutton>Lista de juegos</guibutton> y seleccionando múltiples puzles de la lista."
 
 #: C/gnome-sudoku.xml:553(title)
 msgid "Known Bugs and Limitations"
@@ -782,7 +846,7 @@ msgstr "Errores conocidos y limitaciones"
 
 #: C/gnome-sudoku.xml:555(title)
 msgid "Limited Puzzle Statistics"
-msgstr ""
+msgstr "Estadísticas limitadas de los puzles"
 
 #: C/gnome-sudoku.xml:557(para)
 msgid ""
@@ -790,24 +854,33 @@ msgid ""
 "rapidly filled. The puzzle statistics box shows you the overall rating and "
 "shows you three pieces of information:"
 msgstr ""
+"Sudoku categoriza los puzles basándose en el número de cuadrados que pueden "
+"rellenarse rápidamente. La caja de estadísticas del puzle le muestra la puntuación global "
+"así como tres informaciones adicionales:"
 
 #: C/gnome-sudoku.xml:560(para)
 msgid ""
 "The number of squares fillable by elimination, starting from the blank grid "
 "(i.e. only a 2 can go in this box, so it must be a 2)."
 msgstr ""
+"El número de cuadrados rellenables por eliminación, comenzando por la rejilla vacía "
+"(ej. sólo puede ir un 2 en tal cuadrado, así que debe ser un 2)."
 
 #: C/gnome-sudoku.xml:561(para)
 msgid ""
 "The number of squares fillable by filling, starting from the blank grid (i."
 "e. only only one square in this row can be a 2, so it must be a 2)."
 msgstr ""
+"El número de cuadrados rellenables por rellenado, comenzando por la rejilla vacía "
+"(ej. sólo puede haber un 2 en esta fila, así que debe ser un 2)."
 
 #: C/gnome-sudoku.xml:562(para)
 msgid ""
 "The number of times in solving the puzzle that the computer had to use trial-"
 "and-error, or &ldquo;guessing&rdquo;, to solve the puzzle."
 msgstr ""
+"El número de veces que el computador tuvo que que usar prueba y error o «adivinanzas» "
+"para solucionar el puzle."
 
 #: C/gnome-sudoku.xml:564(para)
 msgid ""
@@ -816,6 +889,11 @@ msgid ""
 "puzzle. There are a number of other algorithms that can be implemented to "
 "help the computer solve sudoku, such as the swordfish and X-wings patterns."
 msgstr ""
+"Muchos usuarios se decepcionan cuando averiguan que el computador usa el método "
+"de prueba y error para solucionar puzles, especialmente desde que algunos gurús del "
+"Sudoku dijeron que nunca se debería adivinar un puzle para completarlo. Existen un número "
+"de algoritmos que pueden implementarse para ayudar al equipo a completar sudokus "
+"tales como los patrones «swordfish» y «X-wing»."
 
 #: C/gnome-sudoku.xml:574(para)
 msgid ""
@@ -825,6 +903,11 @@ msgid ""
 "and-error X number of times, it does <emphasis>not</emphasis> mean that a "
 "human would have to use trial-and-error to solve the puzzle."
 msgstr ""
+"<application>Sudoku</application> sólo usa los dos algoritmos descritos anteriormente "
+"así como el método de prueba y error. Cuando las cajas de estadísticas digan que "
+"<application>Sudoku</application> necesita usar el método de prueba y error X veces "
+"<emphasis>no</emphasis> significa que una persona deba usar el método de prueba y error "
+"para resolver el puzle."
 
 #: C/gnome-sudoku.xml:587(title)
 msgid "Negative High Scores"
@@ -839,6 +922,12 @@ msgid ""
 "to give reasonable-looking scores, but it sometimes produces negative "
 "scores, which can be upsetting for users."
 msgstr ""
+"Las puntuaciones son una parte extraña de un juego sudoku pero parecen "
+"divertidas, así que <application>Sudoku</application> las incluye. El "
+"algoritmo para las puntuaciones le da puntos por la velocidad y la dificultad "
+"del puzle y le quita puntos por usar sugerencias. El algoritmo está diseñado "
+"para dar puntuaciones que parezcan razonables pero a veces proporciona "
+"puntuaciones negativas que pueden desilusionar a los usuarios."
 
 #: C/gnome-sudoku.xml:599(title)
 msgid "About <application>GNOME Sudoku</application>"
