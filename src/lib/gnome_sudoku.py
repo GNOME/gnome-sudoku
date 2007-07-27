@@ -527,11 +527,12 @@ class UI (gconf_wrapper.GConfWrapper):
         if not self.won:
             if not self.gsd.grid:
                 self.gconf['current_game']=''
-            #else: #always save the game
-            #    self.gconf['current_game']=self.sudoku_tracker.save_game(self)
         self.stop_worker_thread()
-        #self.sudoku_tracker.save()
-        gtk.main_quit()
+        # allow KeyboardInterrupts, which calls quit_cb outside the main loop
+        try:
+            gtk.main_quit()
+        except RuntimeError, e:
+            pass
 
     @simple_debug
     @inactivate_new_game_etc
