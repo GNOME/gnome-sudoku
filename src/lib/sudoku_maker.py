@@ -448,7 +448,7 @@ class SudokuMaker:
                     puzzle_list=None):
         closest = None
         ret = None
-        if not puzzle_list: puzzle_list = self.all_puzzles
+        if not puzzle_list: puzzle_list = self.all_puzzles.items()
         for p,d in puzzle_list:
             diff = abs(d.value-difficulty)
             if closest == None or diff < closest:
