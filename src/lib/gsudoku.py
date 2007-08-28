@@ -258,6 +258,12 @@ class NumberBox (gtk.Widget):
             # Then add
             self.set_text_interactive(txt)
 
+    def note_changed_cb (self, w, top=False):
+        if top:
+            self.set_note_text_interactive(top_text=w.get_text())
+        else:
+            self.set_note_text_interactive(bottom_text=w.get_text())
+
     def show_note_editor (self, top=True):
         alloc = self.get_allocation()
         w = gtk.Window()
@@ -272,12 +278,9 @@ class NumberBox (gtk.Widget):
         if top: e.set_text(self.top_note_text)
         else: e.set_text(self.bottom_note_text)
         w.add(f)
-        if top:
-            e.connect('changed',lambda *args: self.set_note_text_interactive(top_text=e.get_text()))
-        else:
-            e.connect('changed',lambda *args: self.set_note_text_interactive(bottom_text=e.get_text()))
-        e.connect('focus-out-event',lambda *args: w.destroy())
-        e.connect('activate',lambda *args: w.destroy())
+        e.connect('changed', self.note_changed_cb, top)
+        e.connect('focus-out-event',lambda e, ev, w: w.destroy(), w)
+        e.connect('activate',lambda e, w: w.destroy(), w)
         x,y = self.window.get_origin()
         if top:
             w.move(x,y)
@@ -285,6 +288,11 @@ class NumberBox (gtk.Widget):
             w.move(x,y+int(alloc.height*0.6))
         w.show_all()
         e.grab_focus()
+
+    def number_changed_cb (self, ns, w):
+        w.destroy()
+        self.set_text_interactive('')
+        self.set_text_interactive(str(ns.get_value()))
 
     def show_number_picker (self):
         #self.number_picker_mode = True
@@ -300,13 +308,9 @@ class NumberBox (gtk.Widget):
         w.set_property('skip-taskbar-hint', True)
         w.set_decorated(False)
         ns = NumberSelector(upper=self.upper,default=self.get_value())
-        def number_changed_cb (b):
-            w.destroy()
-            self.set_text_interactive('')
-            self.set_text_interactive(str(b.get_value()))
-        ns.connect('changed',number_changed_cb)
+        ns.connect('changed', self.number_changed_cb, w)
         w.grab_focus()
-        w.connect('focus-out-event',lambda *args: w.destroy())
+        w.connect('focus-out-event',lambda w, ev: w.destroy())
         w.add(ns)
         w.show()
         r = w.get_allocation()

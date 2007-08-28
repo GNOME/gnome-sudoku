@@ -28,18 +28,15 @@ class SwappableArea (gtk.Notebook):
         w.unparent()
         return self.append_page(w)
 
+    def response_cb (self, w, response, data=None):
+        gtk.main_quit()
+        self.response = response
+
     def swallow_dialog (self, d):
-        action_widgets = d.action_area.get_children()
-        actions = dict([
-            (w,d.get_response_for_widget(w)) for w in action_widgets
-            ])
         n = self.swallow_window(d)
         self.swallowed[d] = n
-        def cb (w,*args):
-            gtk.main_quit()
-            self.response = actions[w]
         self.set_current_page(n)
-        for w in action_widgets: w.connect('clicked',cb)
+        d.connect('response', self.response_cb)
 
     def run_dialog (self, d):
         self.running = d
@@ -76,7 +73,7 @@ if __name__ == '__main__':
     sa = SwappableArea(b)
     sa.show()
     w.add(sa)
-    b.connect('clicked', lambda *args: sa.run_dialog(d))
+    b.connect_object('clicked', sa.run_dialog, d)
     w.show()
     gtk.main()
     
