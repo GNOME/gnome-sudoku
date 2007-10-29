@@ -1,5 +1,5 @@
 import sys
-import os
+import os, shutil
 import os.path
 import sudoku
 import random
@@ -301,9 +301,8 @@ class SudokuMaker:
                                   'group_size':9},
                   puzzle_maker_args={'symmetrical':True},
                   batch_size = 5,
-                  pickle_to = os.path.join(DATA_DIR,'generated_puzzles')):
-
-        self.new_puzzles=[]
+                  pickle_to = os.path.join(DATA_DIR,'puzzles')):
+        self.new_puzzles={}
         self.pickle_to = pickle_to
         self.paused = False
         self.terminated = False
@@ -312,53 +311,179 @@ class SudokuMaker:
         self.batch_size = batch_size
         self.load()
         self.all_puzzles = {}
-        # names to help our users keep track of the different puzzles!
-        self.names = {}
-        # and a dictionary of how high we've counted with our
-        # different names (this may be getting absurdly complicated,
-        # but what can you do...)
-        self.top_name = {}
-        
-        self.solutions_by_puzzle = {}
-        for solution,puzzles in self.puzzles_by_solution.items():
-            for p,d in puzzles:
-                self.all_puzzles[p]=d
-                self.solutions_by_puzzle[p]=solution
-                if not self.names.has_key(p):
-                    self.names[p]=self.get_puzzle_name(_('Puzzle'))
+        self.reread_played_list()
 
-
+    # Convenience methods for accessing puzzles we've created
+    
+    def reread_played_list (self):
+        played_fn = os.path.join(self.pickle_to,'finished')
+        self.played = []
+        if os.path.exists(played_fn):
+            for line in file(played_fn,'r'):
+                self.played.append(line.strip('\n'))
         
-    def load_initial_batch (self):
-        ifi = open(os.path.join(BASE_DIR,'starter_puzzles'))
-        try:
-            self.puzzles_by_solution = pickle.load(ifi)
-        except:
-            (type, value, traceback) = sys.exc_info()
-            print 'Unable to load puzzles: %s: %s' % (str(type), str(value))
-            self.puzzles_by_solution = {}
-        ifi.close()
+    def load (self):
+        if not os.path.exists(self.pickle_to):
+            os.makedirs(self.pickle_to)
+        for cat in sudoku.DifficultyRating.categories:
+            if not os.path.exists(os.path.join(self.pickle_to,
+                                               cat.replace(' ','_'))):
+                shutil.copy(os.path.join(os.path.join(BASE_DIR,'puzzles'),cat.replace(' ','_')),
+                            os.path.join(self.pickle_to,cat.replace(' ','_'))
+                            )
+
+    def get_new_puzzle (self, difficulty, new=True):
+        """Return puzzle with difficulty near difficulty.
+
+        If new is True, we return only unplayed puzzles.
+        Return a tuple containing a new puzzle and difficulty object.
+        """
+        val_cat = sudoku.get_difficulty_category(difficulty)
+        if not val_cat:
+            print 'WARNING, no val cat for difficulty:',difficulty
+            if val_cat > 1: val_cat = 'very hard'
+            else: val_cat = 'easy'
+        puzzles = []
+        ifi = file(os.path.join(self.pickle_to,
+                                val_cat.replace(' ','_'))
+                   )
+        closest = 10000000000000,None
+        for l in ifi.readlines():
+            puzzle,diff = l.split('\t')
+            if new and (puzzle in self.played): continue
+            if not sudoku.is_valid_puzzle(puzzle):
+                print 'WARNING: invalid puzzle %s in file %s'%(puzzle,ifi)
+                continue
+            diff = float(diff)
+            closeness_to_target = abs(diff - difficulty)
+            if closest[0] > closeness_to_target:
+                closest = diff,puzzle
+        return closest[1],sudoku.SudokuRater(
+            sudoku.sudoku_grid_from_string(closest[1]).grid
+            ).difficulty()
+
+    def n_puzzles (self, difficulty_category=None, new=True):
+        if not difficulty_category:
+            return sum([self.n_puzzles(c,new=new) for c in sudoku.DifficultyRating.categories])
+        else:
+            path = os.path.join(self.pickle_to,
+                                difficulty_category.replace(' ','_')
+                                )
+            if os.path.exists(path):
+                ifi = file(path,'r')
+                count = 0
+                for line in ifi:
+                    if (not new) or line.split('\t')[0] not in self.played:
+                        count+=1
+                return count
+
+    def list_puzzles (self, difficulty_category=None, new=True):
+        """Return a list of all puzzles we have generated.
+        """
+        puzzle_list = []
+        if not difficulty_category:
+            for c in sudoku.DifficultyRating.categories:
+                puzzle_list.extend(self.list_puzzles(c,new=new))
+        else:
+            path = os.path.join(self.pickle_to,
+                                difficulty_category.replace(' ','_')
+                                )
+            if os.path.exists(path):
+                ifi = file(path,'r')
+                for l in ifi.readlines():
+                    puzzle = l.split('\t')[0]
+                    if (not new) or puzzle not in self.played:
+                        puzzle_list.append(puzzle)
+        return puzzle_list
+
+    def get_puzzles (self, n, levels, new=True):
+        """Return a list of n puzzles and difficulty values (as floats).
+
+        The puzzles will correspond as closely as possible to levels.
+        If new, we only return puzzles not yet played.
+        """
+        if not n: return []
+        assert(levels)
+        puzzles = []
+        # Open files to read puzzles...
+        files = dict([(l,
+                       file(os.path.join(self.pickle_to,
+                                         l.replace(' ','_')),
+                            'r')) for l in levels])
+        i = 0; il = 0
+        n_per_level = {}
+        finished = []
+        while i < n and len(finished) < len(levels):
+            if il >= len(levels): il = 0
+            lev = levels[il]
+            # skip any levels that we've exhausted
+            if lev in finished:
+                il += 1
+                continue
+            line = files[lev].readline()
+            if not line:
+                finished.append(lev)
+            else:
+                p,d = line.split('\t')
+                if sudoku.is_valid_puzzle(p):
+                    if not new or p not in self.played:
+                        puzzles.append((p,float(d)))
+                        i += 1
+                else:
+                    print 'WARNING: invalid puzzle %s in file %s'%(p,files[lev])
+            il += 1
+        if i < n:
+            print 'WARNING: Not able to provide %s puzzles in levels %s'%(n,levels)
+            print 'WARNING: Generate more puzzles if you really need this many puzzles!'
+        for fi in files.values(): fi.close()
+        return puzzles    
+
+    # End convenience methods for accessing puzzles we've created
+
+    # Methods for creating new puzzles
 
     def make_batch (self, diff_min=None, diff_max=None):
         self.new_generator = InterruptibleSudokuGenerator(**self.generator_args)
         key = self.new_generator.start_grid.to_string()        
-        while self.puzzles_by_solution.has_key(key):
-            self.new_generator = InterruptibleSudokuGenerator(**self.generator_args)
-            key = self.new_generator.start_grid.to_string()
+        #while 
+        #    self.new_generator = InterruptibleSudokuGenerator(**self.generator_args)
+        #    key = self.new_generator.start_grid.to_string()
         #print 'We have our solution grid'
-        self.puzzles_by_solution[key]=[]
+        #self.puzzles_by_solution[key]=[]
         ug = self.new_generator.unique_generator(**self.puzzle_maker_args)
+        open_files = {}
         for n in range(self.batch_size):
+            #print 'start next item...',n
             puz,diff = ug.next()
+            #print "GENERATED ",puz,diff
             if ((not diff_min or diff.value >= diff_min)
                 and
                 (not diff_max or diff.value <= diff_max)):
                 puzstring = puz.to_string()
-                self.puzzles_by_solution[key].append((puzstring,diff))
-                self.solutions_by_puzzle[puzstring]=key
-                self.all_puzzles[puzstring] = diff
-                self.names[puzstring] = self.get_puzzle_name(_('Puzzle'))
-                self.new_puzzles.append((puzstring,diff))
+                # self.puzzles_by_solution[key].append((puzstring,diff))
+                # self.solutions_by_puzzle[puzstring]=key
+                # self.all_puzzles[puzstring] = diff
+                # self.names[puzstring] = self.get_puzzle_name(_('Puzzle'))
+                self.new_puzzles[diff.value_category()] = self.new_puzzles.get(diff.value_category(),0) + 1
+                outpath = os.path.join(self.pickle_to,
+                                       diff.value_category().replace(' ','_'))
+                print 'Writing to ',os.path.join(self.pickle_to,
+                                       diff.value_category().replace(' ','_'))
+                # Read through the existing file and make sure we're
+                # not a duplicate puzzle
+                infi = file(outpath,'r')
+                l = infi.readline()
+                while l:
+                    if l==puzstring:
+                        continue
+                    l = infi.readline()
+                infi.close()
+                outfi = file(outpath,'a')
+                outfi.write(puzstring+'\t'+str(diff.value)+'\n')
+                outfi.close()
+                print 'done writing...'
+        # Close all our open files...
+        #for f in open_files.values(): f.close()
 
     def pause (self, *args):
         if hasattr(self,'new_generator'): self.new_generator.pause()
@@ -382,7 +507,7 @@ class SudokuMaker:
         self.terminated = False
         if hasattr(self,'new_generator'): self.new_generator.termintaed = False
         self.paused = False
-        self.new_puzzles = []
+        #self.new_puzzles = {}
         generated = 0
         while not limit or generated < limit:
             if self.terminated:
@@ -397,172 +522,12 @@ class SudokuMaker:
             else:
                 generated += 1
 
-    def load (self):
-        ifi = None
-        try:
-            ifi = file(self.pickle_to,'r')
-            loaded = pickle.load(ifi)
-        except:
-            (type, value, traceback) = sys.exc_info()
-            print 'Unable to load puzzles: %s: %s' % (str(type), str(value))
-            if ifi:
-                ifi.close()
-            self.load_initial_batch()
-        else:
-            ifi.close()
-            self.puzzles_by_solution= loaded['by_solution']
-            self.names = loaded['names']
-            self.top_name = loaded['metaname']
+    def get_difficulty (self, puz):
+        return sudoku.SudokuRater(puz).difficulty()
 
-    def save (self):
-        directory =  os.path.split(self.pickle_to)[0]
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        ofi = file(self.pickle_to,'w')
-	try:
-	    sys.setcheckinterval(pow(2, 31)-1)
-	    # Statements in this block are assured to run atomically. 
-	    # The following statement has been known to create thread 
-	    # race conditions where several threads modify the object
-	    # being pickled, resulting in a crash.          - Andreas  
-            pickle.dump({'by_solution':self.puzzles_by_solution,
-                         'names':self.names,
-                         'metaname':self.top_name},
-                         ofi)
-	finally:
-	    sys.setcheckinterval(100)
-        ofi.close()
-
-    def list_difficulties (self):
-        ret = self.all_puzzles.values()
-        ret.sort(lambda a,b: a.value>b.value and 1 or a.value<b.value and -1 or 0)
-        return ret
-
-    def get_difficulty_bounds (self):
-        """Return minimum and maximum difficulty puzzles"""
-        diffs=self.list_difficulties()
-        return diffs[0].value,diffs[-1].value
-
-    def get_puzzle (self,
-                    difficulty,
-                    puzzle_list=None):
-        closest = None
-        ret = None
-        if not puzzle_list: puzzle_list = self.all_puzzles.items()
-        for p,d in puzzle_list:
-            diff = abs(d.value-difficulty)
-            if closest == None or diff < closest:
-                ret = p,d
-                closest = diff
-        return ret
-
-    def get_puzzle_name (self, base_name=_("Puzzle")):
-        if not self.top_name.has_key(base_name):
-            self.top_name[base_name]=1
-        n=self.top_name[base_name]
-        self.top_name[base_name]=n+1
-        return unicode("%s %i" % (base_name, n))
         
-class SudokuTracker:
-
-    """A class to track games.
-
-    We keep track of games that have been started and abandoned, games
-    that have been completed, and games that have yet to be played.
-    """
-    
-    def __init__ (self, sudoku_maker,
-                  pickle_to=os.path.join(DATA_DIR,'games_in_progress')
-                  ):
-        self.sudoku_maker = sudoku_maker
-        self.playing = {}
-        self.finished = {}
-        self.pickle_to = pickle_to
-        self.load()
-
-    def save (self):
-        self.sudoku_maker.save()
-        ofi = file(self.pickle_to,'w')
-        pickle.dump({'playing':self.playing,
-                     'finished':self.finished},
-                   ofi)
-        ofi.close()
-
-    def load (self):
-        if os.path.exists(self.pickle_to):
-            ifi = file(self.pickle_to,'r')
-            loaded = pickle.load(ifi)
-            ifi.close()
-            for attr in 'playing','finished': setattr(self,attr,loaded[attr])
-
-    def game_from_ui (self, ui): return ui.gsd.grid.virgin.to_string()
-
-    def save_game (self, ui):
-        game = self.game_from_ui(ui)
-        jar=saver.jar_game(ui)
-        jar['solution']=self.sudoku_maker.solutions_by_puzzle.get(game,'')
-        jar['saved_at']=time.time()
-        self.playing[game]=jar
-        return game
-
-    def open_game (self, ui, game):
-        saver.open_game(ui,self.playing[game])
-
-    def get_difficulty (self, game):
-        if not self.sudoku_maker.all_puzzles.has_key(game):
-            self.sudoku_maker.all_puzzles[game]=sudoku.SudokuRater(game).difficulty()
-        return self.sudoku_maker.all_puzzles[game]
-
-    def finish_game (self, ui):
-        game = self.game_from_ui(ui)
-        if not self.finished.has_key(game):
-            self.finished[game]=[]
-        self.finished[game].append(
-            {'player':ui.player,
-             'hints':ui.gsd.hints,
-             'impossible_hints':ui.gsd.impossible_hints,
-             'auto_fills':ui.gsd.auto_fills,
-             'time':ui.timer.tot_time,
-             'finish_time':time.time()
-             })
-        if self.playing.has_key(game):
-            del self.playing[game]
-
-    def get_new_puzzle (self, difficulty, repeat_solutions=False):
-        return self.sudoku_maker.get_puzzle(
-            difficulty,
-            puzzle_list=self.list_new_puzzles(repeat_solutions=repeat_solutions)
-            )
-
-    def list_new_puzzles (self,
-                          repeat_solutions=False):
-        """List new puzzles and difficulties.
-        """
-        if not repeat_solutions:
-            keys = filter(lambda x: (not self.playing.has_key(x)
-                                     and not self.finished.has_key(x)),
-                          self.sudoku_maker.all_puzzles.keys())
-        else:
-            keys = []
-            solved = [self.solutions_by_puzzle[p] for p in self.finished.keys()]
-            solved.extend(
-                [jar['solution'] for jar in self.playing.values()]
-                )
-            for solution,puzzles in self.sudoku_maker.puzzles_by_solution.items():
-                if solution in solved: continue
-                else: keys.extend(puzzles)
-        return [(k,self.sudoku_maker.all_puzzles[k]) for k in keys]
-    
 if __name__ == '__main__':
     import time
-    for n in range(20):
-        start = time.time()
-        sg = SudokuGenerator(16)
-        result = sg.make_unique_puzzle()
-        if result: print result
-        else: print 'Failed...'
-        finish = time.time() - start
-        print finish
     #puzzles=sg.generate_puzzles(30)
     #
     #print sg.make_symmetric_puzzle()
@@ -572,9 +537,9 @@ if __name__ == '__main__':
     #    unique.append(unique_maker.next())
     #    print 'Generated Unique...'
     #unique_puzzles=filter(lambda x: sudoku.SudokuSolver(x[0].grid,verbose=False).has_unique_solution(),puzzles)
-    #sm = SudokuMaker()
+    sm = SudokuMaker()
     #st = SudokuTracker(sm)
-
+elif False:    
     usage="""Commands are:
     run: Run sudoku-maker
     len: \# of puzzles generated

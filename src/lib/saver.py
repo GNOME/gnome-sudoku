@@ -1,4 +1,5 @@
-import pickle
+import pickle, types, os, os.path, sudoku
+from defaults import *
 
 SAVE_ATTRIBUTES = [('gsd.hints'),
                    ('gsd.impossible_hints'),
@@ -64,7 +65,7 @@ def open_game (ui, jar):
         
 def pickle_game (ui, target):
     close_me = False
-    if type(target)==str:
+    if type(target) in types.StringTypes:
         target = file(target,'w')
         close_me = True
     to_dump = jar_game(ui)
@@ -78,3 +79,83 @@ def unpickle_game (ui, target):
         close_me = True
     open_game(ui,pickle.load(target))
     if close_me: target.close()
+
+class SudokuTracker:
+
+    """A class to track games in progress and games completed.
+    """
+
+    def __init__ (self):
+        self.save_path = os.path.expanduser('~/.sudoku/saved')
+        self.finished_path = os.path.expanduser('~/.sudoku/finished')
+        if not os.path.exists(self.save_path):
+            os.makedirs(self.save_path)
+        if not os.path.exists(self.finished_path):
+            os.makedirs(self.finished_path)
+
+    def are_finished_games (self):
+        if os.listdir(self.finished_path): return True
+        else: return False
+
+    def game_from_ui (self, ui):
+        return ui.gsd.grid.virgin.to_string()
+
+    def get_filename (self, gamestring):
+        return gamestring.split('\n')[0].replace(' ','')
+
+    def save_game (self, ui):
+        game = self.game_from_ui(ui)
+        jar = jar_game(ui)
+        #jar['saved_at'] = time.time()
+        outfi = file(os.path.join(self.save_path,self.get_filename(jar['game'])),
+                     'w')
+        pickle.dump(jar,outfi)
+        outfi.close()
+
+    def finish_game (self, ui):
+        game = self.game_from_ui(ui)
+        jar  = jar_game(ui)
+        self.finish_jar(jar)
+
+    def finish_jar (self, jar):
+        self.remove_from_saved_games(jar) # 
+        outfi = file(os.path.join(self.finished_path,
+                                  self.get_filename(jar['game'])),
+                     'w'
+                     )
+        pickle.dump(jar,outfi)
+        outfi.close()
+        list_of_finished_games = os.path.join(
+            os.path.join(DATA_DIR,'puzzles'),'finished'
+            )
+        ofi = open(list_of_finished_games,'a')
+        ofi.write(jar['game'].split('\n')[0]+'\n')
+        ofi.close()
+
+    def remove_from_saved_games (self, jar):
+        previously_saved_game = os.path.join(
+            self.save_path,self.get_filename(jar['game'])
+            )
+        if os.path.exists(previously_saved_game):
+            os.remove(os.path.join(previously_saved_game))
+
+    def abandon_game (self, ui):
+        game = self.game_from_ui(ui)
+        jar  = jar_game(ui)
+        self.remove_from_saved_games(jar)
+        
+    def list_saved_games (self):
+        files = os.listdir(self.save_path)
+        games = []
+        for f in files:
+            f = os.path.join(self.save_path,f)
+            try:
+                jar = pickle.load(file(f,'r'))
+            except:
+                print 'Warning: could not read file',f
+            else:
+                jar['saved_at']=os.stat(f)[8]
+                games.append(jar)
+        return games
+        
+

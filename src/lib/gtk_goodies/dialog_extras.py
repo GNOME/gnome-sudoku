@@ -5,6 +5,9 @@ from gettext import gettext as _
 H_PADDING=12
 Y_PADDING=12
 
+class UserCancelledError (Exception):
+    pass
+
 class ModalDialog (gtk.Dialog):
     def __init__ (self, default=None, title="", okay=True, label=False, sublabel=False, parent=None, cancel=True, modal=True, expander=None, image=None):
         """Our basic class. We allow for a label. Possibly an expander
@@ -404,6 +407,10 @@ class BooleanDialog (MessageDialog):
         if self.cancel_returns != None:
             self.ret = self.cancel_returns
             self.okcb()
+        else:
+            self.hide()
+            if self.modal: gtk.main_quit()
+            raise UserCancelledError("%s Cancelled"%self)
 
     def nocb (self, *args):
         self.ret=False
@@ -569,7 +576,7 @@ def getBoolean (*args,**kwargs):
     d = BooleanDialog(*args,**kwargs)
     retval = d.run()
     if retval==None:
-        raise "getBoolean dialog cancelled!"
+        raise UserCancelledError("getBoolean dialog cancelled!")
     else:
         return retval
 
@@ -597,9 +604,12 @@ def getFile (*args, **kwargs):
     fsd = gtk.FileChooserDialog(*args,**kwargs)
     fsd.set_default_response(gtk.RESPONSE_OK)
     if default_file:
-        path,name = os.path.split(default_file)
-        fsd.set_current_folder(path)
-        fsd.set_current_name(name)
+        if os.path.isdir(default_file):
+            fsd.set_current_folder(default_file)
+        else:
+            path,name = os.path.split(default_file)
+            fsd.set_current_folder(path)
+            fsd.set_current_name(name)
     if fsd.run() == gtk.RESPONSE_OK:
         fsd.hide()
         return fsd.get_filename()

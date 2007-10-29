@@ -1,3 +1,139 @@
+2007-10-29  Thomas M. Hinkle  <thinkle@cvs.gnome.org>
+
+	* gnome-sudoku/src/lib/sudoku_maker.py: Keep generated puzzles in
+	plain text files, with one file per difficulty level, rather than
+	in one giant pickle. Remove "names" (what did the names mean
+	anyway?).
+
+	Organize module into two sections -- "methods for
+	accessing puzzles we've created" and "methods for creating new
+	puzzles". The methods for accessing have changed substantially
+	(and changed names), resulting in changes throughout
+	gnome-sudoku. The methods for generating puzzles have changed only
+	slightly, with writes to files replacing holding things in memory,
+	but the method names etc. staying the same.
+
+	Remove SudokuTracker from this module to the module saver,
+	reflecting it's new role (saving games rather than holding all
+	games ever played in memory).
+
+	* gnome-sudoku/src/lib/gnome_sudoku.py:
+
+	inactivate_new_game_etc - decorator now returns whatever the
+	wrapped function returns.
+
+	disable "Save", "Open", "ByHand", "HighScore" menu items.
+
+	Remove "Clear" and "Clear Notes" from toolbar.
+
+	Add gconf key auto_save_interval (default to 60) -- interval
+	between autosaves in seconds.
+
+	UI.__init__ - reorganize into various setup_* functions for
+	greater clarity. New methods are: setup_gui, setup_main_window,
+	setup_actions, setup_undo, setup_color, setup_autosave,
+	setup_main_boxes, setup_by_hand_area, setup_toggles
+
+	UI.start_worker_thread - make use of new sudoku_maker convenience
+	method n_puzzles to count puzzles.
+
+	UI.you_win_callback - disable high scores and display simple dialog.
+
+	UI.new_cb - use new "select game" interface (for opening game or
+	new game).
+
+	UI.quit_cb - save unfinished puzzle on quit
+
+	UI.save_game - use new saver.sudoku_tracker saving
+
+	UI.autosave - method to autosave, called on a gobject.timeout
+
+	GamesTracker - remove stub class that has no use.
+
+	* gnome-sudoku/src/lib/sudoku_thumber.py: Create module to draw
+	pretty thumbnails of sudoku.
+
+	* gnome-sudoku/src/lib/colors.py: color_hex_to_float - Add a
+	convenience method to allow us to turn html colors into gtk color
+	tuples. This makes it more convenient to follow tango guidelines
+	from their website.
+
+	* gnome-sudoku/src/lib/gtk_goodies/dialog_extras.py:
+	UserCancelledError exception type for convient catching of user
+	cancellations of dialogs.
+
+	* gnome-sudoku/src/lib/game_selector.py:
+
+	_compareGameNames - Deleted - no need for this function any more.
+
+	color_from_difficulty - Added function to conveniently generate
+	color-coding for difficulties for out gameselector thumbnails.
+
+	NewOrSavedGameSelector - Create new Selector to allow user to
+	select either a new or used game in one, simple package. This will
+	replace the NewGameSelector and the OldGameSelector
+
+	NewGameSelector - delete
+	OldGameSelector - delete
+	HighScores - delete
+
+	GamePrinter - Simplified. No longer includes a list of all
+	puzzles; nor does it include difficulty sliders. Instead, we have
+	a simpler, checkbox-style interface.
+
+	* gnome-sudoku/src/lib/sudoku.py:
+
+	is_valid_puzzle - convenience method to check the validity of a
+	puzzle (i.e. crash-proofness). Loaders can use this to avoid
+	showing users tracebacks when files have been corrupted.
+
+	sudoku_grid_from_string - convenience method to go from puzzle
+	string to grid quickly (this had been included in a SudokuDisplay
+	class but should be here as it is more generally useful.
+
+	DifficultyRating - Add dictionaries to make it easy to go from a
+	category description ('easy') to an i18n label (_('Easy') to a
+	range (0.0-0.35).
+
+	DifficultyRating.value_category - Add convenience method to return
+	the name of the "level" (easy, hard, etc)
+
+	get_difficulty_category_name and get_difficulty_category -
+	convenience methods for going from float difficulty values to
+	category name.
+
+	* gnome-sudoku/src/lib/timer.py:
+
+	format_time - Add "friendly" option which makes short,
+	user-friendly time strings.
+
+	format_time_compact - Alternate method of showing user a time in
+	00:00:00 format
+
+	format_friendly_date - Format date/times with nice words like "2
+	minutes ago", "Yesterday", etc. if the date is recent.
+
+	* gnome-sudoku/src/lib/saver.py:
+
+	SudokuTracker - move SudokuTracker class here, since it's main
+	purpose is now to deal with saved games. Games are saved into a
+	~/.sudoku/ directory. Finished games are moved into a finished
+	folder (in case we ever want to reimplement high scores).
+
+	* gnome-sudoku/src/lib/sudoku_generator_gui.py: Update to use new
+	sudoku_maker. Counting puzzles got substantially simpler.
+
+	* gnome-sudoku/data/easy:
+	* gnome-sudoku/data/medium:
+	* gnome-sudoku/data/hard:
+	* gnome-sudoku/data/very_hard: - New starter puzzles
+	in new format.
+
+	* gnome-sudoku/glade/print_games.glade: - New slider-less, simplified
+	print dialog.
+
+	* gnome-sudoku/glade/select_game.glade: - New open-and-new dialog
+
 2007-10-23  Robert Ancell  <robert.ancell@gmail.com>
 
 	* gnome-sudoku.in: Display error dialog and quit if unable to import gnome-sudoku.gnome-sudoku (Bug #418427)

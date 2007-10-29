@@ -4,6 +4,8 @@ import math
 import re
 from gettext import gettext as _
 
+
+
 GROUP_SIZE = 9
 
 TYPE_ROW = 0
@@ -203,6 +205,47 @@ class SudokuGrid:
     def to_string (self):
         """Output our grid as a string."""
         return " ".join([" ".join([str(x) for x in row]) for row in self.grid])
+
+def is_valid_puzzle (p):
+    """Check puzzle for basic validity.
+    
+    This does not check for solvability or ensure a unique
+    solution -- it merely checks well-formedness. This should
+    provide some protection again file corruption, etc. (i.e. if
+    we use this function to check puzzles before handing them out
+    to the rest of the app, we'll prevent tracebacks related to
+    corrupted puzzles).
+    """
+    try:
+        sudoku_grid_from_string(p)
+    except:
+        return False
+    else:
+        return True
+
+def sudoku_grid_from_string (s):
+    """Given an 81 character string, return a grid."""
+    s=s.replace(' ','')
+    assert(len(s)<=GROUP_SIZE**2)
+    grid = []
+    i = 0
+    for x in range(GROUP_SIZE):
+        row = []
+        for y in range(GROUP_SIZE): 
+            if len(s) <= i: n = 0
+            else: n = s[i]
+            try:
+                n = int(n)
+            except:
+                n = n or 0
+            if n in digit_set:
+                row.append(n)
+            else:
+                row.append(0)
+            i += 1
+        grid.append(row)
+    return SudokuGrid(grid)
+    
 
 class SudokuSolver (SudokuGrid):
     """A SudokuGrid that can solve itself."""
@@ -605,19 +648,30 @@ class InteractiveSudoku (SudokuSolver):
         return True
 
     def is_changed (self):
-        return 1 in self.grid!=self.virgin.grid
+        return (self.grid!=self.virgin.grid)
 
 class DifficultyRating:
-
+    
     very_hard = _('Very Hard')
     hard = _('Hard')
     medium = _('Medium')
     easy = _('Easy')
 
-    very_hard_range = [0.75,None]
-    hard_range = [0.6,0.75]
-    medium_range = [0.45,0.6]
-    easy_range = [0,0.45]
+    very_hard_range = (0.75,10)
+    hard_range = (0.6,0.75)
+    medium_range = (0.45,0.6)
+    easy_range = (-10,0.45)
+
+    categories = {'very hard':very_hard_range,
+                  'hard':hard_range,
+                  'medium':medium_range,
+                  'easy':easy_range}
+
+    ordered_categories = ['easy','medium','hard','very hard']
+    label_by_cat = {'easy':easy,
+                    'medium':medium,
+                    'hard':hard,
+                    'very hard':very_hard}
     
     def __init__ (self,
                   fill_must_fillables,
@@ -685,8 +739,28 @@ class DifficultyRating:
         if self.value > self.very_hard_range[0]: return _(self.very_hard)
         elif self.value > self.hard_range[0]: return _(self.hard)
         elif self.value > self.medium_range[0]: return _(self.medium)
-        #elif self.value > 0.3: return "Medium"
         else: return _(self.easy)
+
+    def value_category (self):
+        """Get category string, without i18n or capitalization
+
+        For use in categorizing category.
+        """
+        if self.value > self.very_hard_range[0]: return 'very hard'
+        elif self.value > self.hard_range[0]: return 'hard'
+        elif self.value > self.medium_range[0]: return 'medium'
+        else: return 'easy'
+
+def get_difficulty_category_name (diff_float):
+    return DifficultyRating.label_by_cat.get(
+        get_difficulty_category(diff_float),
+        '?'
+        )
+
+def get_difficulty_category (diff_float):
+    for category,range in DifficultyRating.categories.items():
+        if range[0] <= diff_float < range[1]:
+            return category
 
 class SudokuRater (SudokuSolver):
 

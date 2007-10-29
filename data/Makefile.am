@@ -1,3 +1,3 @@
-EXTRA_DIST = starter_puzzles
-puzzledir = $(datadir)/gnome-sudoku/
-puzzle_DATA = starter_puzzles
+EXTRA_DIST = easy medium hard very_hard
+puzzledir = $(datadir)/gnome-sudoku/puzzles/
+puzzle_DATA = easy medium hard very_hard

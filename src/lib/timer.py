@@ -5,7 +5,15 @@ from gettext import gettext as _
 from gettext import ngettext
 from defaults import *
 
-def format_time (time, round_at=None):
+def format_time (time, round_at=None, friendly=False):
+    """Format a time for display to the user.
+
+    If round_at, we round all times to some number of seconds.
+
+    If friendly, we don't bother showing the user more than two
+    units. i.e. 3 days 2 hours, or 2 minutes 30 seconds, but not 3
+    days, 4 hours, 2 minutes and 3 seconds...
+    """
     time = int(time)
     time_strings = []
     units = [(int(365.25*24*60*60),
@@ -32,6 +40,8 @@ def format_time (time, round_at=None):
             else:
                 time_strings.append(unit_formatter(time_covered))
                 time = time - time_covered * divisor
+    if friendly and len(time_strings)>2:
+        time_stings = time_strings[:2]
     if len(time_strings)>2:
         # Translators... this is a messay way of concatenating
         # lists. In English we do lists this way: 1, 2, 3, 4, 5
@@ -41,7 +51,14 @@ def format_time (time, round_at=None):
         # ", " and " and " with the same string.
         return _(" and ").join([_(", ").join(time_strings[0:-1]),time_strings[-1]])
     else:
-        return _(" and ").join(time_strings)
+        return _(" ").join(time_strings)
+
+def format_time_compact (tim):
+    tim = int(tim)
+    hours = tim / (60*60)
+    minutes = (tim % (60*60)) / 60
+    seconds = ((tim % (60*60)) % 60)
+    return "%d:%02d:%02d"%(hours,minutes,seconds)
 
 def format_date (tim):
     lt = time.localtime(tim)
@@ -59,6 +76,32 @@ def format_date (tim):
     else:
         return time.strftime("%A %B %d %R %p",lt)
 
+def format_friendly_date (tim):
+    lt = time.localtime(tim)
+    hours = int(time.strftime("%H",lt))
+    minutes = int(time.strftime("%M",lt))
+    diff = time.time() - tim
+    ct = time.localtime(); chour=ct[3]; cmin=ct[4]
+    to_yesterday = chour*60*60+cmin*60
+    if diff < to_yesterday:
+        # Then we're today
+        if diff < (60*60): # within the hour...
+            if (int(diff) / 60):
+                m = (diff / 60)
+                return ngettext("%(n)s minute ago",
+                                "%(n)s minutes ago",m)%{'n':int(m)}
+            else: # within the minute
+                return ngettext("%(n)s second ago",
+                                "%(n)s seconds ago",
+                                int(diff))%{'n':int(diff)}
+        else:
+            return "at %(time)s"%{'time':time.strftime("%I:%M %p",lt)}
+    elif diff < to_yesterday + (60*60*24):
+        return _("yesterday at %s")%time.strftime("%I:%M %p",lt)
+    elif diff < to_yesterday + (60*60*24)*6:
+        return time.strftime("%A %I:%M %p",lt)
+    else:
+        return time.strftime("%B%e",lt)
 
 class ActiveTimer (gobject.GObject):
     """A timer to keep track of how much time a window is active."""

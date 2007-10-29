@@ -54,3 +54,18 @@ def rotate_hue_rgb (r,g,b, rotate_by=0.25, maxval=255):
     h,s,v = rgb_to_hsv(r,g,b,maxval=maxval)
     h,s,v = rotate_hue (h,s,v,rotate_by=rotate_by)
     return hsv_to_rgb(h,s,v)
+
+def color_hex_to_float (hstr):
+    hstr = hstr.strip('#')
+    if len(hstr)==6:
+        r = hstr[:2]
+        g = hstr[2:4]
+        b = hstr[4:]
+        maxval = 255
+    elif len(hstr)==3:
+        r,g,b = hstr
+        maxval = 15
+    else:
+        raise ValueError('%s is not a 6 or 3 digit color string'%hstr)
+    r,g,b = int(r,16),int(g,16),int(b,16)
+    return r/float(maxval),g/float(maxval),b/float(maxval)

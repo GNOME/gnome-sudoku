@@ -18,16 +18,16 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
                      'generate_for_target':0,
                      'number_of_sudokus_to_generate':10,
                      }
-    
+
     def __init__ (self, UI, gconf):
         self.ui = UI
-        self.sudoku_tracker = self.ui.sudoku_tracker
         self.sudoku_maker = self.ui.sudoku_maker
         # Don't work in background...
         self.ui.stop_worker_thread()
         gconf_wrapper.GConfWrapper.__init__(self,gconf)
         self.glade = gtk.glade.XML(self.glade_file)
         self.generate_for_target_widgets = []
+        self.cat_to_label = {}
         for d in ['easy',
                   'medium',
                   'hard',
@@ -40,6 +40,8 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
             gconf_setting = 'generate_target_%s'%d
             self.gconf_wrap_toggle(gconf_setting,widget)
             self.generate_for_target_widgets.append(widget)
+            self.cat_to_label[d] = getattr(self,label_widget_name)
+        self.cat_to_label['very hard'] = self.cat_to_label['veryHard']
         self.generateEndlesslyRadio = self.glade.get_widget('generateEndlesslyRadio')
         self.generateForTargetRadio = self.glade.get_widget('generateForTargetRadio')
         self.gconf_wrap_toggle('generate_endlessly',self.generateEndlesslyRadio)
@@ -95,6 +97,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
 
     def generate_cb (self, *args):
         self.ngenerated = 0
+        self.generated_by_cat = {}
         self.toward_target = 0
         self.pauseButton.set_sensitive(True)
         self.stopButton.set_sensitive(True)
@@ -141,20 +144,16 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
     def setup_base_status (self):
         """Setup basic status.
         """
-        for puzz,diff in self.sudoku_tracker.list_new_puzzles():
-            diffstr = diff.value_string()
-            if diffstr == sudoku.DifficultyRating.easy:
-                self.increment_label(self.easyLabel)
-            elif diffstr == sudoku.DifficultyRating.medium:
-                self.increment_label(self.mediumLabel)
-            elif diffstr == sudoku.DifficultyRating.hard:
-                self.increment_label(self.hardLabel)
-            else:
-                self.increment_label(self.veryHardLabel)
+        for diff,lab in [('easy',self.easyLabel),
+                         ('medium',self.mediumLabel),
+                         ('hard',self.hardLabel),
+                         ('very hard',self.veryHardLabel)]:
+            num = self.sudoku_maker.n_puzzles(diff)
+            self.increment_label(lab,num)
 
-    def increment_label (self, lab, val=1):
+    def increment_label (self, lab, val=0):
         curtext = lab.get_text()
-        if not curtext:
+        if (not curtext):
 	    lab.pcount = val
         else:
 	    lab.pcount += 1
@@ -164,41 +163,24 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
     def update_status (self, *args):
         """Update status of our progress bar and puzzle table.
         """
-        npuzzles = len(self.sudoku_maker.new_puzzles)
+        #print 'update_status!'
+        npuzzles = sum(self.sudoku_maker.new_puzzles.values())
+        #print 'npuzzles=',npuzzles,'ngenerated=',self.ngenerated
         if npuzzles > self.ngenerated:
             # updating gui...
-            to_add = self.sudoku_maker.new_puzzles[self.ngenerated:]
-            self.ngenerated=npuzzles
-            for puzz,diff in to_add:
-                diffstr = diff.value_string()
-                if diffstr == sudoku.DifficultyRating.easy:
-                    self.increment_label(self.easyLabel)
-                    if (not self.generateForTargetRadio.get_active() or
-                        self.easyCheckButton.get_active()):
-                        self.toward_target += 1
-                elif diffstr == sudoku.DifficultyRating.medium:
-                    self.increment_label(self.mediumLabel)
-                    if (not self.generateForTargetRadio.get_active() or
-                        self.mediumCheckButton.get_active()):
-                        self.toward_target += 1
-                elif diffstr == sudoku.DifficultyRating.hard:                    
-                    self.increment_label(self.hardLabel)
-                    if (not self.generateForTargetRadio.get_active() or
-                        self.hardCheckButton.get_active()):
-                        self.toward_target += 1
-                else:
-                    self.increment_label(self.veryHardLabel)
-                    if (not self.generateForTargetRadio.get_active() or
-                        self.veryHardCheckButton.get_active()):
-                        self.toward_target += 1
-            if (self.generateForTargetRadio.get_active()
-                and
-                self.newSudokusSpinButton.get_value()<=self.toward_target):
-                self.toward_target=int(self.newSudokusSpinButton.get_value())
-                self.update_progress_bar()
-                self.stop_cb()
-                return False
-            self.update_progress_bar()
+            self.ngenerated=self.toward_target=npuzzles
+            for cat in self.sudoku_maker.new_puzzles:
+                to_add = self.sudoku_maker.new_puzzles[cat] - self.generated_by_cat.get(cat,0)
+                self.increment_label(self.cat_to_label[cat],to_add)
+                self.generated_by_cat[cat] = self.sudoku_maker.new_puzzles[cat]
+        self.update_progress_bar()
+        if (self.generateForTargetRadio.get_active()
+            and
+            self.toward_target>=int(self.newSudokusSpinButton.get_value())
+            ):
+            print 'Done!'
+            self.stop_cb()
+            return False
         if self.paused: self.prog.set_text(_('Paused'))
         elif self.generateEndlesslyRadio.get_active():
             self.prog.pulse()

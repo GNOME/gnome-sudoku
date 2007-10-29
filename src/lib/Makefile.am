@@ -16,5 +16,6 @@ gnomesudoku_PYTHON = \
 	sudoku_generator_gui.py	\
 	sudoku_labeller.py	\
 	sudoku_maker.py	\
+	sudoku_thumber.py \
 	sudoku.py	\
 	timer.py
