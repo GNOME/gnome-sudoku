@@ -46,7 +46,7 @@ NORMAL_LINE_WIDTH = 1 # The size of the line we draw around a box
 SPACING_FACTOR = 40 # The size of a box compared (roughly) to the size
                     # of padding -- the larger this is, the smaller
                     # the spaces
-SMALL_TO_BIG_FACTOR = 3.5 # The number of times wider than a small line a big line is.
+SMALL_TO_BIG_FACTOR = 3 # The number of times wider than a small line a big line is.
 
 class NumberSelector (gtk.EventBox):
 

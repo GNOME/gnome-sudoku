@@ -349,6 +349,12 @@ class SudokuMaker:
                    )
         closest = 10000000000000,None
         for l in ifi.readlines():
+            if not l.strip():
+                print 'Warning: file %s contains an empty line'%ifi
+                continue
+            if not l.find('\t')>=0:
+                print 'Warning: line "%s" of file %s has no tab character.'%(l,ifi)
+                continue
             puzzle,diff = l.split('\t')
             if new and (puzzle in self.played): continue
             if not sudoku.is_valid_puzzle(puzzle):
