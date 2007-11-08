@@ -46,7 +46,7 @@ NORMAL_LINE_WIDTH = 1 # The size of the line we draw around a box
 SPACING_FACTOR = 40 # The size of a box compared (roughly) to the size
                     # of padding -- the larger this is, the smaller
                     # the spaces
-SMALL_TO_BIG_FACTOR = 3 # The number of times wider than a small line a big line is.
+SMALL_TO_BIG_FACTOR = 3.5 # The number of times wider than a small line a big line is.
 
 class NumberSelector (gtk.EventBox):
 
@@ -752,7 +752,7 @@ class SudokuNumberGrid (gtk.AspectFrame):
         if rect.width > rect.height: side = rect.height
         else: side = rect.width
         # we want our small spacing to be 1/15th the size of a box
-        spacing = int(rect.width / (self.group_size * SPACING_FACTOR))
+        spacing = float(side) / (self.group_size * SPACING_FACTOR)
         if spacing == 0: spacing = 1
         if hasattr(self,'small_spacing') and spacing == self.small_spacing:
             return
@@ -761,9 +761,9 @@ class SudokuNumberGrid (gtk.AspectFrame):
 
     def change_spacing (self, small_spacing):
         self.small_spacing = small_spacing
-        self.big_spacing = small_spacing*SMALL_TO_BIG_FACTOR
-        self.table.set_row_spacings(small_spacing)
-        self.table.set_col_spacings(small_spacing)
+        self.big_spacing = int(small_spacing*SMALL_TO_BIG_FACTOR)
+        self.table.set_row_spacings(int(small_spacing))
+        self.table.set_col_spacings(int(small_spacing))
         box_side = int(math.sqrt(self.group_size))
         for n in range(1,box_side):
             self.table.set_row_spacing(box_side*n-1,self.big_spacing)
