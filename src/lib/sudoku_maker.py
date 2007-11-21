@@ -430,7 +430,11 @@ class SudokuMaker:
             if not line:
                 finished.append(lev)
             else:
-                p,d = line.split('\t')
+                try:
+                    p,d = line.split('\t')
+                except ValueError:
+                    print 'WARNING: invalid line %s in file %s'%(line,files[lev])
+                    continue
                 if sudoku.is_valid_puzzle(p):
                     if not new or p not in self.played:
                         puzzles.append((p,float(d)))

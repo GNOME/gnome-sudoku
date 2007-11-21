@@ -1,4 +1,11 @@
-2007-11-20  Thomas Mills HInkle  <tom@hydrophax>
+2007-11-21  Thomas Mills HInkle  <thinkle@gnome.org>
+
+	* gnome-sudoku/src/lib/sudoku.py Don't print tracebacks -- just
+	warn about invalid lines.
+	* gnome-sudoku/src/lib/sudoku_maker.py Ignore invalid lines in
+	puzzle files.
+
+2007-11-20  Thomas Mills HInkle  <thinkle@gnome.org>
 
 	* gnome-sudoku/src/lib/simple_debug.py Add walk-through option to step through code.
 	* gnome-sudoku/src/lib/gnome_sudoku.py Fix error that made

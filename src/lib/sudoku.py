@@ -221,7 +221,7 @@ def is_valid_puzzle (p):
         assert(len(p.replace(' ',''))==81)
         [int(c) for c in p.replace(' ','')]
     except:
-        import traceback; traceback.print_exc()
+        #import traceback; traceback.print_exc()
         return False
     else:
         return True
