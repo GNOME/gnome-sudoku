@@ -6,6 +6,7 @@ import gnomeprint
 from gettext import gettext as _
 from timer import format_time,format_date,format_friendly_date,format_time_compact
 from defaults import *
+from simple_debug import simple_debug
 from colors import color_hex_to_float
 from gtk_goodies import gconf_wrapper
 
@@ -41,7 +42,8 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
     SAVED_GAME = 1
 
     glade_file = os.path.join(GLADE_DIR,'select_game.glade')
-    
+
+    @simple_debug
     def __init__ (self, sudokuMaker=None, gconf = None):
         if gconf:
             gconf_wrapper.GConfWrapper.__init__(self,gconf)
@@ -86,22 +88,26 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
         self.saved_game_view.connect('item-activated',self.saved_item_activated_cb)
         self.new_game_view.connect('item-activated',self.new_item_activated_cb)
 
+    @simple_debug
     def make_new_game_model (self):
         # Description, Pixbuf, Puzzle (str)
         self.new_game_model = gtk.ListStore(str,gtk.gdk.Pixbuf,str)        
         for cat in DR.ordered_categories:
             rng = DR.categories[cat]; label = DR.label_by_cat[cat]
-            puzzle,diff = self.sudoku_maker.get_new_puzzle(.01*random.randint(*[r*100 for r in rng]))
+            #puzzle,diff = self.sudoku_maker.get_new_puzzle(.01*random.randint(*[r*100 for r in rng]))
+            #diff_val = diff.value
+            puzzle,diff_val = self.sudoku_maker.get_puzzles(1,[cat],new=True)[0]
             #print 'Got new puzzle for ',cat,'difficulty:',diff
             grid = sudoku.sudoku_grid_from_string(puzzle).grid
             self.new_game_model.append(('<b><i>'+label+'</i></b>',
                                         sudoku_thumber.make_pixbuf(grid,
                                                                    None,
-                                                                   color_from_difficulty(diff.value)
+                                                                   color_from_difficulty(diff_val)
                                                                    ),
                                         puzzle
                                         ))
 
+    @simple_debug
     def make_saved_game_model (self):
         # Description, Image, Last-Access time (for sorting), Puzzle (jar)
         self.saved_game_model = gtk.ListStore(str,gtk.gdk.Pixbuf,int,gobject.TYPE_PYOBJECT)
@@ -128,23 +134,29 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
                 g
                 ))
 
+    @simple_debug
     def new_item_activated_cb (self, iconview, path):
         self.play_game(iconview.get_model()[path][2])
-        
+
+    @simple_debug
     def saved_item_activated_cb (self, iconview, path):
         self.resume_game(iconview.get_model()[path][3])
 
+    @simple_debug
     def resume_game (self, jar):
         self.puzzle = (self.SAVED_GAME, jar)
         self.dialog.emit('response',gtk.RESPONSE_OK)
 
+    @simple_debug
     def play_game (self, puzzle):
         self.puzzle = (self.NEW_GAME,puzzle)
         self.dialog.emit('response',gtk.RESPONSE_OK)
-        
+
+    @simple_debug        
     def close (self):
         self.dialog.emit('response',gtk.RESPONSE_CLOSE)        
 
+    @simple_debug
     def handle_response (self, response):
         #print 'handle_response',response
         if response==gtk.RESPONSE_OK:

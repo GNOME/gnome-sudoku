@@ -217,8 +217,11 @@ def is_valid_puzzle (p):
     corrupted puzzles).
     """
     try:
-        sudoku_grid_from_string(p)
+        p = p.replace(' ','')
+        assert(len(p.replace(' ',''))==81)
+        [int(c) for c in p.replace(' ','')]
     except:
+        import traceback; traceback.print_exc()
         return False
     else:
         return True

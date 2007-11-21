@@ -729,7 +729,7 @@ class UI (gconf_wrapper.GConfWrapper):
         else: self.tb.hide()
 
     def update_statusbar_cb (self, *args):
-        if not self.gsd.grid: return
+        if not self.gsd.grid: return True
         puzz = self.gsd.grid.virgin.to_string()
         if (not hasattr(self,'current_puzzle_string') or
             self.current_puzzle_string != puzz):

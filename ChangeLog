@@ -1,3 +1,17 @@
+2007-11-20  Thomas Mills HInkle  <tom@hydrophax>
+
+	* gnome-sudoku/src/lib/simple_debug.py Add walk-through option to step through code.
+	* gnome-sudoku/src/lib/gnome_sudoku.py Fix error that made
+	status-bar not update after 1st puzzle played.
+	* gnome-sudoku/src/lib/game_selector.py Add debug
+	statements. Speed up make_new_game_model substantially by calling
+	get_puzzles() rather than get_new_puzzle() -- the real solution
+	here is to improve the algorithm in get_new_puzzle or eliminate
+	it, but this is a quick fix.
+	* gnome-sudoku/src/lib/sudoku.py Speed up is_valid_puzzle -- we
+	now do a really simple test to make sure we actually have a list
+	of 81 integers.
+
 2007-11-08  Thomas H.P. Andersen  <phomes@gmail.com>
 
 	* gnome-sudoku/src/lib/gsudoku.py: Fix calculation of big/small borders.
