@@ -455,22 +455,22 @@ class UI (gconf_wrapper.GConfWrapper):
         self.gconf['difficulty']=self.gconf['difficulty']+0.1
         self.timer.finish_timing()
         self.sudoku_tracker.finish_game(self)
-        time_string = "%s (%s active)"%(self.timer.total_time_string(),
-                                       self.timer.active_time_string()
-                                        )
-        sublabel = _("You completed the puzzle in %s")%time_string
+        sublabel = _("You completed the puzzle in %(totalTime)s (%(activeTime)s active)")%{'totalTime': self.timer.total_time_string(),
+        'activeTime': self.timer.active_time_string()
+                }
         sublabel += "\n"
         sublabel += ngettext("You got %(n)s hint","You got %(n)s hints",self.gsd.hints)%{'n':self.gsd.hints}
         sublabel += "\n"
         if self.gsd.impossible_hints:
             sublabel += ngettext("You had %(n)s impossibility pointed out.",
                                  "You had %(n)s impossibilities pointed out.",
-                                 self.gsd.impossible_hints)%{'c':self.gsd.impossible_hints}
+                                 self.gsd.impossible_hints)%{'n':self.gsd.impossible_hints}
+            sublabel += "\n"
         if self.gsd.auto_fills:
             sublabel += ngettext("You used the auto-fill %(n)s time",
                                  "You used the auto-fill %(n)s times",
                                  self.gsd.auto_fills)%{'n':self.gsd.auto_fills}
-        dialog_extras.show_message("You win!",label="You win!",
+        dialog_extras.show_message(_("You win!"),label=_("You win!"),
                                    #icon=os.path.join(IMAGE_DIR,'winner2.png'),
                                    sublabel=sublabel
                                    )

@@ -95,7 +95,7 @@ def format_friendly_date (tim):
                                 "%(n)s seconds ago",
                                 int(diff))%{'n':int(diff)}
         else:
-            return "at %(time)s"%{'time':time.strftime("%I:%M %p",lt)}
+            return _("at %(time)s")%{'time':time.strftime("%I:%M %p",lt)}
     elif diff < to_yesterday + (60*60*24):
         return _("yesterday at %s")%time.strftime("%I:%M %p",lt)
     elif diff < to_yesterday + (60*60*24)*6:

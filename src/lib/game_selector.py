@@ -118,10 +118,13 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
             grid = sudoku.sudoku_grid_from_string(game)
             sr = sudoku.SudokuRater(grid.grid)
             sdifficulty = sr.difficulty()
-            desc = "<b><i>%s</i></b>\n<span size='small'><i>Last played %s</i>\n<i>Played for %s.</i></span>"%(
-                _("%s puzzle")%sdifficulty.value_string(),
-                format_friendly_date(g['saved_at']),
-                format_time(g['timer.tot_time'],round_at=15,friendly=True)
+            lastPlayedText = _("Last Played %(timeAgo)s") % {'timeAgo': format_friendly_date(g['saved_at'])}
+            levelText =  _("%(level)s puzzle")% {'level': sdifficulty.value_string()}
+            durationText = _("Played for %(duration)s") % {'duration': format_time(g['timer.tot_time'],round_at=15,friendly=True)}
+            desc = "<b><i>%s</i></b>\n<span size='small'><i>%s</i>\n<i>%s.</i></span>"%(
+                levelText,
+                lastPlayedText,
+                durationText,
                 )
             #print 'Adding to saved...',g
             self.saved_game_model.append((
