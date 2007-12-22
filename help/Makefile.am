@@ -1,6 +1,6 @@
 include $(top_srcdir)/gnome-doc-utils.make
 
-DOC_LINGUAS = ca es fr oc sv
+DOC_LINGUAS = ca es fr oc pt_BR sv
 
 DOC_MODULE = gnome-sudoku
 
