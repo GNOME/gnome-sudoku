@@ -1036,7 +1036,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                 for col in range(group_size):
                     index = row * 9 + col
                     if values[index] and not self.grid._get_(col,row):
-                        self.add_value(col,row,values[index])
+                        self.add_value_to_ui(col,row,values[index])
 
     @simple_debug
     def setup_grid (self, grid, group_size):
