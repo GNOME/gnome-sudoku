@@ -2,11 +2,18 @@ import os, os.path
 import errno
 import gettext
 
-APP_DATA_DIR = os.path.join('@prefix@', 'share') 
-IMAGE_DIR = os.path.join(APP_DATA_DIR, 'pixmaps', 'gnome-sudoku')
-LOCALEDIR = os.path.join(APP_DATA_DIR, 'locale')
-GLADE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
-BASE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
+if sys.modules["glchess"].installed_mode:
+    APP_DATA_DIR = os.path.join('@prefix@', 'share') 
+    IMAGE_DIR = os.path.join(APP_DATA_DIR, 'pixmaps', 'gnome-sudoku')
+    LOCALEDIR = os.path.join(APP_DATA_DIR, 'locale')
+    GLADE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
+    BASE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
+else:
+    APP_DATA_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'data') 
+    IMAGE_DIR = os.path.join('@abs_top_builddir@', 'glchess', 'images')
+    LOCALEDIR = os.path.join(APP_DATA_DIR, 'locale')
+    GLADE_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'glade')
+    BASE_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'data') 
 
 DOMAIN = 'gnome-games'
 gettext.bindtextdomain(DOMAIN, LOCALEDIR)
