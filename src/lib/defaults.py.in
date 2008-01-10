@@ -1,8 +1,8 @@
-import os, os.path
+import sys, os, os.path
 import errno
 import gettext
 
-if sys.modules["glchess"].installed_mode:
+if sys.modules["gnome_sudoku"].installed_mode:
     APP_DATA_DIR = os.path.join('@prefix@', 'share') 
     IMAGE_DIR = os.path.join(APP_DATA_DIR, 'pixmaps', 'gnome-sudoku')
     LOCALEDIR = os.path.join(APP_DATA_DIR, 'locale')
@@ -10,7 +10,7 @@ if sys.modules["glchess"].installed_mode:
     BASE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
 else:
     APP_DATA_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'data') 
-    IMAGE_DIR = os.path.join('@abs_top_builddir@', 'glchess', 'images')
+    IMAGE_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'images')
     LOCALEDIR = os.path.join(APP_DATA_DIR, 'locale')
     GLADE_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'glade')
     BASE_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'data') 
