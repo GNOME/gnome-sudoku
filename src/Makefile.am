@@ -11,3 +11,4 @@ gnome-sudoku: $(srcdir)/gnome-sudoku.in
 	sed \
 		-e "s|\@pyexecdir\@|$(pyexecdir)|" \
 	    	$< > $@
+	if test -f $@; then chmod u+x $@; fi
