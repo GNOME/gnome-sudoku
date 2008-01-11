@@ -28,8 +28,8 @@ except ImportError:
       from gnome_sudoku.gnome_sudoku import start_game
     except ImportError:
       import sys
-      if "@pyexecdir@" not in sys.path:
-          sys.path.insert(0, "@pyexecdir@")
+      if "#pyexecdir#" not in sys.path:
+          sys.path.insert(0, "#pyexecdir#")
 
       try:
           # Import gnome-sudoku from system installation (with pyexecdir in path).
