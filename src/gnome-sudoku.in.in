@@ -15,24 +15,26 @@ import sys
 installed_mode = True
 
 try:
-    # Import gnome-sudoku from system installation.
+    # Import gnome-sudoku module from source distribution.
+    import lib;
+    sys.modules["gnome_sudoku"] = sys.modules["lib"];
     from gnome_sudoku.gnome_sudoku import start_game
-except ImportError:
-    import sys
-    if "@pyexecdir@" not in sys.path:
-        sys.path.insert(0, "@pyexecdir@")
+    installed_mode = False
 
+except ImportError:
     try:
-	# Import gnome-sudoku from system installation (with pyexecdir in path).
-        from gnome_sudoku.gnome_sudoku import start_game
+      # Import gnome-sudoku from system installation.
+      installed_mode = True
+      from gnome_sudoku.gnome_sudoku import start_game
     except ImportError:
+      import sys
+      if "@pyexecdir@" not in sys.path:
+          sys.path.insert(0, "@pyexecdir@")
 
       try:
-	  # Import gnome_sudoku module from source distribution.
-          import lib;
-          sys.modules["gnome_sudoku"] = sys.modules["lib"];
+          # Import gnome-sudoku from system installation (with pyexecdir in path).
           from gnome_sudoku.gnome_sudoku import start_game
-	  installed_mode = False
+
       except ImportError:
 	  # Import of gnome-sudoku failed. Show error message.
           import gtk
