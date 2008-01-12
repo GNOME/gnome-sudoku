@@ -23,34 +23,29 @@ try:
 
 except ImportError:
     try:
-      # Import gnome-sudoku from system installation.
+      # Import gnome-sudoku from pyexecdir or system installation.
       installed_mode = True
-      from gnome_sudoku.gnome_sudoku import start_game
-    except ImportError:
       import sys
       if "#pyexecdir#" not in sys.path:
           sys.path.insert(0, "#pyexecdir#")
+      from gnome_sudoku.gnome_sudoku import start_game
 
-      try:
-          # Import gnome-sudoku from system installation (with pyexecdir in path).
-          from gnome_sudoku.gnome_sudoku import start_game
-
-      except ImportError:
-	  # Import of gnome-sudoku failed. Show error message.
-          import gtk
-  	  import os.path
-	  import gettext
-          from gettext import gettext as _
+    except ImportError:
+      # Import of gnome-sudoku failed. Show error message.
+      import gtk
+      import os.path
+      import gettext
+      from gettext import gettext as _
         
-	  gettext.bindtextdomain('gnome-games', os.path.join('@prefix@', 'share', 'locale'))
-	  gettext.textdomain('gnome-games')
-          title = _("Sudoku incorrectly installed")
-          description = _("""Sudoku is not able to start because required application files are not installed. If you are currently upgrading your system please wait until the upgrade has completed.""")
-          dialog = gtk.MessageDialog(type = gtk.MESSAGE_ERROR, message_format = title)
-          dialog.format_secondary_text(description)
-          dialog.add_button(gtk.STOCK_QUIT, gtk.RESPONSE_CLOSE)
-          dialog.run()
-          sys.exit(0)
+      gettext.bindtextdomain('gnome-games', os.path.join('@prefix@', 'share', 'locale'))
+      gettext.textdomain('gnome-games')
+      title = _("Sudoku incorrectly installed")
+      description = _("""Sudoku is not able to start because required application files are not installed. If you are currently upgrading your system please wait until the upgrade has completed.""")
+      dialog = gtk.MessageDialog(type = gtk.MESSAGE_ERROR, message_format = title)
+      dialog.format_secondary_text(description)
+      dialog.add_button(gtk.STOCK_QUIT, gtk.RESPONSE_CLOSE)
+      dialog.run()
+      sys.exit(0)
 
 sys.modules["gnome_sudoku"].installed_mode = installed_mode
 

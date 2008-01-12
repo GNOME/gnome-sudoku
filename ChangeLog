@@ -1,7 +1,12 @@
+2008-01-12  Thomas H.P. Andersen  <phomes@gmail.com>
+
+	* src/gnome-sudoku.in.in: Reorder to load from prefix before system 
+	wide. Fixes bug #406672.
+
 2008-01-10  Andreas Røsdal  <andreasr@gnome.org>
 
-	* src/glchess.in:
-	* src/glchess.in.in:
+	* src/gnome-sudoku.in:
+	* src/gnome-sudoku.in.in:
 	* src/lib/defaults.py.in: Allow Sudoku to be run from source 
 	distribution, without requiring a full install. To run Sudoku
 	from the source distribution, simply execute:
