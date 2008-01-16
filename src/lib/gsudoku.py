@@ -172,6 +172,9 @@ class NumberBox (gtk.Widget):
         self.set_state(gtk.STATE_NORMAL)
         self.base_state = gtk.STATE_NORMAL
         self.number_picker_mode = False
+        if hasattr(self,'npicker') and self.npicker:
+            self.npicker.destroy()
+            self.npicker = None
 
     def motion_notify_cb (self, *args):
         if self.is_focus():
@@ -297,22 +300,11 @@ class NumberBox (gtk.Widget):
     def show_number_picker (self):
         #self.number_picker_mode = True
         #return
-
-        # This should be gtk.WINDOW_POPUP - the current implementation is abusing too many hints
-        # and has problems with non-focus operations (i.e. hiding the main window).
-        # YOU should rewrite this. Yes, you the reader :)
-        w = gtk.Window()
-        w.set_transient_for(self.get_toplevel())
-        w.set_app_paintable(True)
-        w.set_property('skip-pager-hint', True)
-        w.set_property('skip-taskbar-hint', True)
-        w.set_decorated(False)
+        w = gtk.Window(type=gtk.WINDOW_POPUP)
         ns = NumberSelector(upper=self.upper,default=self.get_value())
         ns.connect('changed', self.number_changed_cb, w)
         w.grab_focus()
-        w.connect('focus-out-event',lambda w, ev: w.destroy())
         w.add(ns)
-        w.show()
         r = w.get_allocation()
         my_origin = self.window.get_origin()
         x,y = self.window.get_size()
@@ -1322,7 +1314,6 @@ if __name__ == '__main__':
         w.add(ns)
         w.show_all()
         gtk.main()
-        
 
     #test_number_selector()
     #test_sng()

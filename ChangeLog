@@ -1,3 +1,9 @@
+2008-01-15  Thomas Mills HInkle  <tmhinkle@gmail.com>
+
+	* src/lib/gsudoku.py (NumberBox.show_number_picker): Use
+	type=gtk.WINDOW_POPUP instead of crazy abuse of hints &c.
+	This fixes bug #479938
+
 2008-01-12  Thomas H.P. Andersen  <phomes@gmail.com>
 
 	* src/gnome-sudoku.in.in: Reorder to load from prefix before system 
@@ -7,7 +13,7 @@
 
 	* src/gnome-sudoku.in:
 	* src/gnome-sudoku.in.in:
-	* src/lib/defaults.py.in: Allow Sudoku to be run from source 
+	* src/lib/defaults.py.in: Allow Sudoku to be run from source
 	distribution, without requiring a full install. To run Sudoku
 	from the source distribution, simply execute:
 	$ python gnome-sudoku/src/gnome-sudoku
