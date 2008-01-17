@@ -728,12 +728,32 @@ class UI (gconf_wrapper.GConfWrapper):
         if widg.get_active(): self.tb.show()
         else: self.tb.hide()
 
+    def set_statusbar_value (self, status):
+        if not hasattr(self,'sbid'):
+            self.sbid = self.statusbar.get_context_id('game_info')
+        self.statusbar.pop(self.sbid)
+        self.statusbar.push(self.sbid, status)
+
+
     def update_statusbar_cb (self, *args):
-        if not self.gsd.grid: return True
+        if not self.gsd.grid: 
+            self.set_statusbar_value(" ")
+            return True
+
         puzz = self.gsd.grid.virgin.to_string()
+
+        if (puzz == "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "\
+                    "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "\
+                    "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "\
+                    "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "\
+                    "0 0 0 0 0 0 0 0 0"):
+            self.set_statusbar_value(" ")
+            return True
+        
         if (not hasattr(self,'current_puzzle_string') or
             self.current_puzzle_string != puzz):
             self.current_puzzle_diff = self.sudoku_maker.get_difficulty(puzz)
+        self.current_puzzle_string = puzz
 	tot_string = _("Playing %(difficulty)s puzzle.")%{'difficulty':self.current_puzzle_diff.value_string()}
         tot_string += " " + "(%1.2f)"%self.current_puzzle_diff.value
         #if self.timer.tot_time or self.timer.tot_time_complete:
@@ -750,11 +770,7 @@ class UI (gconf_wrapper.GConfWrapper):
         #if self.gsd.auto_fills:
         #    tot_string += "  " +ngettext("%(n)s auto-fill","%(n)s auto-fills",
         #                            self.gsd.auto_fills)%{'n':self.gsd.auto_fills}
-        if not hasattr(self,'sbid'):
-            self.sbid = self.statusbar.get_context_id('game_info')
-        self.statusbar.pop(self.sbid)
-        self.statusbar.push(self.sbid,
-                            tot_string)
+        self.set_statusbar_value(tot_string)
         return True
 
     def toggle_highlight_cb (self, widg):
