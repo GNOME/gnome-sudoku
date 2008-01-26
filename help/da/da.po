@@ -1,0 +1,553 @@
+# GNOME Sudoku Manual. Danish translation.
+# Copyright (c) 2007 Gnome
+# This file is distributed under the same license as Gnome.
+# Joe Hansen (joedalton2@yahoo.dk), 2007
+#
+# Konventioner:
+# click -> klik
+# hint -> fif
+# print -> udskriv
+# square -> firkant
+# type -> tast
+# tracker -> spor
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: GNOME 2.20\n"
+"POT-Creation-Date: 2007-07-11 03:26+0100\n"
+"PO-Revision-Date: 2008-01-27 00:34+0100\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnome-sudoku.xml:275(None) 
+msgid "@@image: 'figures/error_highlighting.png'; md5=c23aa5087a503ffdefd891cc01be2849"
+msgstr "@@image: 'figures/error_highlighting.png'; md5=c23aa5087a503ffdefd891cc01be2849"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnome-sudoku.xml:393(None) 
+msgid "@@image: 'figures/hints.png'; md5=3ab9ef90aa32fee1fd3cdc95f1e40945"
+msgstr "@@image: 'figures/hints.png'; md5=3ab9ef90aa32fee1fd3cdc95f1e40945"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnome-sudoku.xml:409(None) 
+msgid "@@image: 'figures/always_show_hint.png'; md5=c97972c7861ffe5c9038dc91d3429985"
+msgstr "@@image: 'figures/always_show_hint.png'; md5=c97972c7861ffe5c9038dc91d3429985"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnome-sudoku.xml:468(None) 
+msgid "@@image: 'figures/highlighting.png'; md5=915eb28b353ed2ace530aebbef6f8347"
+msgstr "@@image: 'figures/highlighting.png'; md5=915eb28b353ed2ace530aebbef6f8347"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnome-sudoku.xml:537(None) 
+msgid "@@image: 'figures/Print_Sudokus.png'; md5=695e5bccf1743121417d54b3edc4c9f7"
+msgstr "@@image: 'figures/Print_Sudokus.png'; md5=695e5bccf1743121417d54b3edc4c9f7"
+
+#: C/gnome-sudoku.xml:28(title) 
+msgid "<application>GNOME Sudoku</application> Manual"
+msgstr "<application>GNOME Sudoku</application>-manual"
+
+#: C/gnome-sudoku.xml:31(para) 
+msgid "GNOME Sudoku is a logic puzzle game."
+msgstr "GNOME Sudoku er et logisk puslespil."
+
+#: C/gnome-sudoku.xml:37(year) 
+msgid "2006"
+msgstr "2006"
+
+#: C/gnome-sudoku.xml:38(holder) C/gnome-sudoku.xml:106(para) 
+msgid "Thomas M. Hinkle"
+msgstr "Thomas M. Hinkle"
+
+#: C/gnome-sudoku.xml:52(publishername) C/gnome-sudoku.xml:65(orgname) C/gnome-sudoku.xml:110(para) 
+msgid "GNOME Documentation Project"
+msgstr "GNOME dokumentationsprojektet"
+
+#: C/gnome-sudoku.xml:2(para) 
+msgid "Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any later version published by the Free Software Foundation with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You can find a copy of the GFDL at this <ulink type=\"help\" url=\"ghelp:fdl\">link</ulink> or in the file COPYING-DOCS distributed with this manual."
+msgstr "Tilladelse er givet til at kopiere, distribuere og/eller ændre dette dokument under betingelserne i GNU Free Documentation License (GFDL), Version 1.1 eller enhver senere version udgivet af Free Software Foundation; uden invariante afsnit, forsidetekster, samt bagsidetekster. Du kan se en kopi af GFDL her <ulink type=\"help\" url=\"ghelp:fdl\">link</ulink> eller i filen COPYING-DOCS som distribueres sammen med denne manual."
+
+#: C/gnome-sudoku.xml:12(para) 
+msgid "This manual is part of a collection of GNOME manuals distributed under the GFDL. If you want to distribute this manual separately from the collection, you can do so by adding a copy of the license to the manual, as described in section 6 of the license."
+msgstr "Denne manual er en del af den samling af GNOME-manualer som udgives under GFDL. Hvis du ønsker at distribuere denne manuel adskilt fra samlingen, kan du gøre dette ved at tilføje en kopi af licensen til manualen, som beskrevet i afsnit 6 af licensen."
+
+#: C/gnome-sudoku.xml:19(para) 
+msgid "Many of the names used by companies to distinguish their products and services are claimed as trademarks. Where those names appear in any GNOME documentation, and the members of the GNOME Documentation Project are made aware of those trademarks, then the names are in capital letters or initial capital letters."
+msgstr "En stor del af de navne som anvendes af firmaer til at identificere deres produkter og tjenester hævdes som værende varemærker. Hvor disse navne fremgår i enhver GNOME-dokumentation, og medlemmerne af GNOME dokumentationsprojeket er gjort opmærksom på disse varemærker, så er disse navne vist med store bogstaver eller stort begyndelsesbogstav."
+
+# Har indtil videre udeladt oversættelse af ansvarsfraskrivelsen. Men der bør nok stå noget ala
+# "Uofficiel dansk oversættelse af ansvarsfraskrivelsen.\n"
+# "\n"
+# "DETTE DOKUMENT ER TIL RÅDIGHED SOM DET SER UD, UDEN NOGEN FORM FOR GARANTI, DER ENTEN FREMGÅR DI# REKTE ELLER UNDERFORSTÅET, "
+#: C/gnome-sudoku.xml:35(para) 
+msgid "DOCUMENT IS PROVIDED ON AN \"AS IS\" BASIS, WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS FREE OF DEFECTS MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY, ACCURACY, AND PERFORMANCE OF THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS WITH YOU. SHOULD ANY DOCUMENT OR MODIFIED VERSION PROVE DEFECTIVE IN ANY RESPECT, YOU (NOT THE INITIAL WRITER, AUTHOR OR ANY CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY SERVICING, REPAIR OR CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS LICENSE. NO USE OF ANY DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER; AND"
+msgstr ""
+
+#: C/gnome-sudoku.xml:55(para) 
+msgid "UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY CONTRIBUTOR, OR ANY DISTRIBUTOR OF THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT, OR ANY SUPPLIER OF ANY OF SUCH PARTIES, BE LIABLE TO ANY PERSON FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF ANY CHARACTER INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER DAMAGES OR LOSSES ARISING OUT OF OR RELATING TO USE OF THE DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT, EVEN IF SUCH PARTY SHALL HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGES."
+msgstr ""
+
+#: C/gnome-sudoku.xml:28(para) 
+msgid "DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED UNDER THE TERMS OF THE GNU FREE DOCUMENTATION LICENSE WITH THE FURTHER UNDERSTANDING THAT: <placeholder-1/>"
+msgstr "DOKUMENTET OG ÆNDREDE VERSIONER AF DOKUMENTET STILLES TIL RÅDIGHED UNDER GNU FREE DOCOMENTATION LICENSE MED FØLGENDE BETINGELSER: <placeholder-1/>"
+
+#: C/gnome-sudoku.xml:62(firstname) 
+msgid "Thomas"
+msgstr "Thomas"
+
+#: C/gnome-sudoku.xml:63(surname) 
+msgid "Hinkle"
+msgstr "Hinkle"
+
+#: C/gnome-sudoku.xml:103(revnumber) 
+msgid "GNOME Sudoku Manual V2.0"
+msgstr "GNOME Sudoku manual version 2.0"
+
+#: C/gnome-sudoku.xml:104(date) 
+msgid "October 2006"
+msgstr "Oktober 2006"
+
+#: C/gnome-sudoku.xml:115(releaseinfo) 
+msgid "This manual describes version 0.7 of MY-GNOME-APPLICATION."
+msgstr "Denne manual beskriver version 0.7 af MY-GNOME-APPLICATION."
+
+#: C/gnome-sudoku.xml:118(title) 
+msgid "Feedback"
+msgstr "Tilbagemeldinger"
+
+#: C/gnome-sudoku.xml:119(para) 
+msgid "To report a bug or make a suggestion regarding the <application>GNOME Sudoku</application> application or this manual, follow the directions in the <ulink url=\"ghelp:gnome-feedback\" type=\"help\">GNOME Feedback Page</ulink>."
+msgstr "Hvis du ønsker at indrapportere en fejl eller komme med et forslag vedrørende <application>GNOME Sudoku</application> eller denne manual så følg vejledningen på siden <ulink url=\"ghelp:gnome-feedback\" type=\"help\">tilbagemeldinger omkring GNOME</ulink>."
+
+#: C/gnome-sudoku.xml:128(primary) 
+msgid "GNOME Sudoku"
+msgstr "GNOME Sudoku"
+
+#: C/gnome-sudoku.xml:131(primary) 
+msgid "sudoku"
+msgstr "sudoku"
+
+#: C/gnome-sudoku.xml:139(title) 
+msgid "Introduction"
+msgstr "Introduktion"
+
+# Har ikke oversat (also known as Number Place), da jeg ikke kender til et andet dansk navn.
+#: C/gnome-sudoku.xml:140(para) 
+msgid "<application>GNOME Sudoku</application> is an application to generate and play the popular Sudoku logic puzzle (also known as Number Place)."
+msgstr "<application>GNOME Sudoku</application> er et program, som er beregnet til at spille det populære logiske Sudoku-puslespil."
+
+#: C/gnome-sudoku.xml:144(para) 
+msgid "The rules of Sudoku are quite simple. In order to complete the puzzle, you must fill each square with a number between 1 and 9 such that every row, column and 3x3 box on the board contains the numbers 1 through 9. Stated another way, you must fill each square such that no number appears twice in the same row, column, or 3x3 box."
+msgstr "Reglerne i Sudoku er meget simple. For at færdiggøre puslespillet skal du udfylde alle firkanter med et nummer mellem 1 og 9 således at alle rækker, kolonner og 3x3 bokse på spillepladen indeholder numrene 1 til 9. Sagt på en anden måde så skal hver firkant udfyldes, på en sådan måde at intet tal indgår mere end 1 gang i hver række, kolonne eller 3x3 boks."
+
+#: C/gnome-sudoku.xml:155(para) 
+msgid "These two different ways of looking at the puzzle are two of the principle ways players think as they play. On the one hand, you ask yourself, &ldquo;How can I fit all the numbers in this box?&rdquo; On the other hand, you ask yourself, &ldquo;What numbers can fit in this square without causing a conflict with other numbers in the same row, column, or 3x3 box?&rdquo;"
+msgstr "Disse to forskellige måder, at se på puslespillet, er to af de principielle måder spillere tænker. På den ene side spørger du dig selv, &ldquo;Hvordan kan jeg indsætte alle numrene i denne boks?&rdquo; På den anden side spørger du sig selv, &ldquo;Hvilke numre kan passe ind i denne firkant uden at medføre en konflikt med andre numre i den samme række, kolonne eller 3x3 boks?&rdquo;"
+
+#: C/gnome-sudoku.xml:165(para) 
+msgid "In spite of the simplicity of the game, Sudoku puzzles can vary widely in their difficulty. <application>GNOME Sudoku</application> allows you to select the difficulty of the puzzle you want to play. By default, it will begin with easy puzzles and gradually increase the difficulty of puzzles as you improve."
+msgstr "På trods af sin enkelhed kan Sudoku-puslespil variere betydeligt i sværhedsgrad. <application>GNOME Sudoku</application> giver dig mulighed for at vælge sværhedsgrad på puslespillet. Til at starte med vil du få nemme puslespil, som så gradvist vil blive sværere, når du bliver dygtigere."
+
+#: C/gnome-sudoku.xml:187(title) 
+msgid "Getting Started"
+msgstr "Sådan kommer du i gang"
+
+#: C/gnome-sudoku.xml:190(title) 
+msgid "To Start <application>GNOME Sudoku</application>"
+msgstr "Start af <application>GNOME Sudoku</application>"
+
+#: C/gnome-sudoku.xml:191(para) 
+msgid "You can start <application><application>GNOME Sudoku</application></application> in the following ways:"
+msgstr "Du kan starte <application><application>GNOME Sudoku</application></application> på følgende måder:"
+
+#: C/gnome-sudoku.xml:195(term) 
+msgid "<guimenu>Applications</guimenu> menu"
+msgstr "Menuen <guimenu>Programmer</guimenu>"
+
+#: C/gnome-sudoku.xml:197(para) 
+msgid "Choose <menuchoice><guisubmenu>Games </guisubmenu><guimenuitem>Sudoku</guimenuitem></menuchoice>."
+msgstr "Vælg <menuchoice><guisubmenu>Spil </guisubmenu><guimenuitem>Sudoku</guimenuitem></menuchoice>."
+
+#: C/gnome-sudoku.xml:205(term) 
+msgid "Command line"
+msgstr "Kommandolinje"
+
+#: C/gnome-sudoku.xml:207(para) 
+msgid "To start <application><application>GNOME Sudoku</application></application> from a command line, type the following command, then press <keycap>Return</keycap>:"
+msgstr "Du kan starte <application><application>GNOME Sudoku</application></application> ved hjælp af kommandolinjen ved at skrive den følgende kommando og derefter taste <keycap>Return</keycap>:"
+
+#: C/gnome-sudoku.xml:210(command) 
+msgid "gnome-sudoku"
+msgstr "gnome-sudoku"
+
+#: C/gnome-sudoku.xml:218(title) 
+msgid "When You Start <application>GNOME Sudoku</application>"
+msgstr "Når du starter <application>GNOME Sudoku</application>"
+
+#: C/gnome-sudoku.xml:219(para) 
+msgid "When you start <application><application>GNOME Sudoku</application></application>, a puzzle will be displayed. If it is your first time playing, you will begin with an easy puzzle by default. If it is not your first time playing, the game will open to the last puzzle you were working on by default."
+msgstr "Når du starter <application><application>GNOME Sudoku</application></application> vises et puslespil. Hvis det er dit første spil, begynder du som standard med et nemt puslespil. Hvis det ikke er dit første spil, vil spillet åbne med det sidst spillede spil."
+
+#: C/gnome-sudoku.xml:229(para) 
+msgid "To play different puzzle, click on <guibutton>New</guibutton>. This will bring you to the puzzle selection screen, where you can select whatever puzzle you like."
+msgstr "Hvis du ønsker at spille et andet puslespil så tryk på <guibutton>Ny</guibutton>. Så kommer der et vindue frem hvor du kan vælge det puslespile du ønsker."
+
+#: C/gnome-sudoku.xml:241(title) 
+msgid "Basic game play"
+msgstr "Grundlæggende spilide"
+
+#: C/gnome-sudoku.xml:242(para) 
+msgid "To play the game, start filling numbers 1-9 in the squares such that no row, column, or 3x3 box has any number more than one time."
+msgstr "Du begynder spillet ved at indsætte numrene 1-9 i firkanterne på en sådan måde at ingen række, kolonne eller 3x3 boks har det samme tal mere end en gang."
+
+#: C/gnome-sudoku.xml:243(para) 
+msgid "You can fill a number in a square with the keyboard or the mouse."
+msgstr "Du kan indtaste et tal i en firkant enten med tastaturet eller musen."
+
+#: C/gnome-sudoku.xml:246(term) 
+msgid "Keyboard"
+msgstr "Tastatur"
+
+#: C/gnome-sudoku.xml:247(para) 
+msgid "Use the arrow keys or the mouse to select the square you would like to fill. Then type the number you want to put in the square. Typing <keycap>Backspace</keycap> will remove the number."
+msgstr "Anvend piletasterne eller musen til at vælge den firkant du ønsker at udfylde. Herefter indtaster du det nummer du ønsker at placere i firkantet. Tasten <keycap>tilbage</keycap> vil fjerne tallet."
+
+#: C/gnome-sudoku.xml:250(term) 
+msgid "Mouse"
+msgstr "Mus"
+
+#: C/gnome-sudoku.xml:252(para) 
+msgid "Click on a square to select it, then click in the center of the square to bring up buttons with the numbers 1-9. Click on a number to select it, or click on <guibutton>clear</guibutton> to clear the square. You can also double-click in the center of a square to bring up the number buttons."
+msgstr "Klik på en firkant for at vælge den. Klik herefter i centrum af firkanten for at få knapperne med numrene 1-9 frem. Klik på et nummer for at vælge det, eller klik på <guibutton>Ryd</guibutton> for at slette indholdet. Du kan også dobbeltklikke i centrum af en firkant for at få nummerknapperne op."
+
+#: C/gnome-sudoku.xml:266(para) 
+msgid "If you enter a number that is in conflict with other numbers on the grid, the conflicting numbers will be highlighted in red."
+msgstr "Hvis du indtaster et nummer som er i konflikt med andre numre på spillepladen, vil de numre der er i konflikt blive fremhævet med rødt."
+
+#: C/gnome-sudoku.xml:271(title) 
+msgid "Error highlighting"
+msgstr "Fejlmarkering"
+
+# Er der ikke noget galt med den engelske tekst her. move -> number
+# med mindre move netop forstås som indtastningen af et tal.
+#: C/gnome-sudoku.xml:278(phrase) 
+msgid "An illegal move will be highlighted in red."
+msgstr "Et ugyldigt træk vil blive markeret med rødt."
+
+#: C/gnome-sudoku.xml:285(title) 
+msgid "Saving and Resuming Games"
+msgstr "Gemme og genoptage spil"
+
+#: C/gnome-sudoku.xml:286(para) 
+msgid "When you close <application>GNOME Sudoku</application>, your current game is automatically saved; when you start, you will continue playing your game where you left off."
+msgstr "Når du afslutter <application>GNOME Sudoku</application> vil dit igangværende spil automatisk blive gemt. Når du senere starter spillet igen fortsætter det der hvor du sluttede."
+
+#: C/gnome-sudoku.xml:287(para) 
+msgid "If you'd like to stop playing one game and begin another, just select <guibutton>New</guibutton> and begin your new game."
+msgstr "Hvis du ønsker at stoppe et spil og starte et andet, så skal du bare trykke på <guibutton>Ny</guibutton> og så får du et nyt spil."
+
+#: C/gnome-sudoku.xml:288(para) 
+msgid "To resume an old game that you interrupted, select <menuchoice><guisubmenu>Game</guisubmenu><guimenuitem>Resume old game</guimenuitem></menuchoice>. You can then select any game you've played before from a list."
+msgstr "For at genoptage et gammelt spil som du har afbrudt vælges <menuchoice><guisubmenu>Fil</guisubmenu><guimenuitem>Fortsæt tidligere spil</guimenuitem></menuchoice>. Du kan herfra vælge ethvert spil du har spillet før fra en liste."
+
+#: C/gnome-sudoku.xml:292(para) 
+msgid "To replay a game that you have already won, select <menuchoice><guisubmenu>Tools</guisubmenu><guimenuitem>High Scores</guimenuitem></menuchoice>. Then select the game you would like to replay and click <guibutton>Replay Game</guibutton>."
+msgstr "For at spille et spil du allerede har gennemført vælges <menuchoice><guisubmenu>Spil</guisubmenu><guimenuitem>Bedste resultater</guimenuitem></menuchoice>. Vælg så et spil du ønsker at spille igen og klik på <guibutton>Spil igen</guibutton>."
+
+#: C/gnome-sudoku.xml:305(title) 
+msgid "Features"
+msgstr "Funktioner"
+
+#. ================ Usage Subsection ================================
+#: C/gnome-sudoku.xml:308(para) 
+msgid "GNOME Sudoku provides a number of features that help you play puzzles."
+msgstr "GNOME Sudoku har en række funktioner som kan hjælpe dig med at løse puslespillet."
+
+#: C/gnome-sudoku.xml:314(term) 
+msgid "Notes"
+msgstr "Bemærkninger"
+
+#: C/gnome-sudoku.xml:316(para) 
+msgid "<firstterm>Notes</firstterm> or <firstterm>Pencilmarks</firstterm> let you take notes in each square. Many players use notes to track possible values for squares."
+msgstr "<firstterm>Noter</firstterm> eller <firstterm>Blyantmarkeringer</firstterm> gør det muligt at skrive noter i hver enkelt firkanter. Mange spillere bruger noter til at holde styr på mulige værdier i en firkant."
+
+#: C/gnome-sudoku.xml:322(term) C/gnome-sudoku.xml:367(title) 
+msgid "Hints and Auto-Fill"
+msgstr "Fif og automatisk udfyldning"
+
+#: C/gnome-sudoku.xml:324(para) 
+msgid "You can use <firstterm>hints</firstterm> and <firstterm>auto-fill</firstterm> to have GNOME Sudoku tell you about possible values for a square or automatically fill in a square for you."
+msgstr "Du kan bruge <firstterm>fif</firstterm> og <firstterm>autoudfyldning</firstterm> til at lade GNOME Sudoku fortælle om mulige værdier i et felt eller automatisk udfylde firkanten for dig."
+
+#: C/gnome-sudoku.xml:332(term) C/gnome-sudoku.xml:456(title) 
+msgid "Highlighting"
+msgstr "Markering"
+
+#: C/gnome-sudoku.xml:334(para) 
+msgid "In highlighting mode, the current row, column and box are highlighted in different colors to make scanning the board easier."
+msgstr "Hvis du anvender markeringstilstand så vil den aktuelle række, kolonne eller boks bliver markeret i forskellige farver for at gøre overblikket over spillet bedre."
+
+#: C/gnome-sudoku.xml:339(term) C/gnome-sudoku.xml:481(title) 
+msgid "Trackers"
+msgstr "Spor"
+
+#: C/gnome-sudoku.xml:341(para) 
+msgid "Trackers make trial-and-error solutions easier to keep track of. When you <firstterm>track</firstterm> a set of moves, the numbers are entered in a special color to help you distinguish those moves from moves made earlier in the game."
+msgstr "Spor gør løsninger der findes ved at prøve sig frem nemmere at holde styr på. Når du <firstterm>sporer</firstterm> en række tal, så vises tallene i en speciel farve for at hjælpe dig med at afgrænse disse tal fra tal placeret tidligere i spillet."
+
+#: C/gnome-sudoku.xml:355(title) 
+msgid "Taking Notes"
+msgstr "Skrive noter"
+
+#: C/gnome-sudoku.xml:356(para) 
+msgid "To write notes (also known as &ldquo;pencilmarks&rdquo;) in a square, first select the square with the keyboard or mouse. Then, do one of the following:"
+msgstr "For at skrive noter i en firkant vælg da først firkanten med tastaturet eller musen. Udfør derefter et af følgende:"
+
+#: C/gnome-sudoku.xml:358(para) 
+msgid "Click in the upper region of the square (the region is highlighted with a square when you move the mouse over a selected square)."
+msgstr "Klik i den øverste del af firkanten (området markeres med en firkant når du flytter musen over en valgt firkant)."
+
+#: C/gnome-sudoku.xml:359(para) 
+msgid "Type <keycap>N</keycap>"
+msgstr "Tast <keycap>N</keycap>"
+
+#: C/gnome-sudoku.xml:361(para) 
+msgid "This will bring up a field in which you can type your notes. Type <keycap>Return</keycap> when you are finished editing your note."
+msgstr "Dette vil få et felt frem, hvor du kan skrive dine noter. Tast <keycap>Retur</keycap> når du er færdig med noten."
+
+#: C/gnome-sudoku.xml:363(para) 
+msgid "You can also take notes in the bottom of the square by clicking in the bottom of the square or by typing <keycap>M</keycap>. However, this area is used when you ask for a <firstterm>hint</firstterm>, so you should not use this area for your own notes if you also plan to use hints."
+msgstr "Du kan også skrive noter i bunden af en firkant ved at klikke der eller ved at taste <keycap>M</keycap>. Dette område anvendes dog når du beder om et <firstterm>fif</firstterm>, så du bør ikke bruge dette felt til dine egen noter hvis du også ønsker at anvende fif."
+
+#: C/gnome-sudoku.xml:371(para) 
+msgid "The <firstterm>Hint</firstterm> and <firstterm>Fill</firstterm> features work based on the logical possibilities given the current board. They do <emphasis>not</emphasis> work by looking at the solution. If you have made an error in an earlier move, these features may fill in or suggest incorrect values."
+msgstr "<firstterm>Fif</firstterm> og <firstterm>Udfyld</firstterm> virker på baggrund af de logiske muligheder ved det aktuelle spil. De fungerer <emphasis>ikke</emphasis> ved at kigge på løsningen. Hvis du har foretaget en fejl i en tidligere udfyldt firkant, vil fif og udfyld måske udfylde eller foreslå forkerte værdier."
+
+#: C/gnome-sudoku.xml:386(title) C/gnome-sudoku.xml:389(title) 
+msgid "Hints"
+msgstr "Fif"
+
+#: C/gnome-sudoku.xml:387(para) 
+msgid "GNOME Sudoku can give you hints based on your current board. You can ask for a hint for the currently selected square by clicking <guibutton>hint</guibutton>, selecting <menuchoice><guisubmenu>Tools</guisubmenu><guimenuitem>Hint</guimenuitem></menuchoice>, or typing <keycap>Control-H</keycap>. This will put a list of possible values in the bottom of the square."
+msgstr "GNOME Sudoku kan give dig et fif baseret på din nuværende spilsituation. Du kan anmode om et fif for den aktuelt valgte firkant ved at taste <guibutton>fif</guibutton> og vælge <menuchoice><guisubmenu>Spil</guisubmenu><guimenuitem>Fif</guimenuitem></menuchoice>, eller trykke <keycap>Ctrl-H</keycap>. Dette vil placere en liste med mulige valg i bunden af firkanten."
+
+#: C/gnome-sudoku.xml:396(phrase) 
+msgid "When you click on Hint, possible values are shown in the bottom of a square."
+msgstr "Når du klikker på Fif vises mulige værdier i bunden af firkanten."
+
+#: C/gnome-sudoku.xml:402(para) 
+msgid "If you want to remove or alter the hint, you can edit the text by clicking in the bottom of the square."
+msgstr "Hvis du ønsker at fjerne eller ændre fiffet, kan du redigere teksten ved at klikke i bunden af firkanten."
+
+#: C/gnome-sudoku.xml:403(para) 
+msgid "For very difficult puzzles, you can choose to have <application>GNOME Sudoku</application> show you the possible values for all squares. To turn this mode on, toggle <menuchoice><guisubmenu>Tools</guisubmenu><guimenuitem>Always show hint</guimenuitem></menuchoice>. Note that this can make easy puzzles <emphasis>too</emphasis> easy, so you should use this mode sparingly."
+msgstr "I meget svære puslespil kan du vælge at lade <application>GNOME Sudoku</application> vise dig fif for alle firkanter. Du kan slå denne funktion til eller fra ved hjælp af <menuchoice><guisubmenu>Spil</guisubmenu><guimenuitem>Vis altid fif</guimenuitem></menuchoice>. Bemærk at denne funktion kan gøre nemme puslespil <emphasis>for</emphasis> nemme, så anvend den med omtanke."
+
+#: C/gnome-sudoku.xml:405(title) 
+msgid "<application>GNOME Sudoku</application> in Always-Show-Hint Mode"
+msgstr "<application>GNOME Sudoku</application> med Vis-altid-fif slået til"
+
+#: C/gnome-sudoku.xml:412(phrase) 
+msgid "A difficult puzzle with Always-Show Hint Mode enabled."
+msgstr "Et svært puslespil med Vis-altid-fif slået til."
+
+#: C/gnome-sudoku.xml:421(title) 
+msgid "Fill Square"
+msgstr "Udfyld firkant"
+
+#: C/gnome-sudoku.xml:423(para) 
+msgid "To automatically fill in a square for which there is only one possible value, you can click <guibutton>Fill</guibutton>, select <menuchoice><guisubmenu>Tools</guisubmenu><guimenuitem>Fill</guimenuitem></menuchoice>, or type <keycap>Control-F</keycap>. This is useful, for example, when you have filled in 8 or 9 squares in a row and want to quickly fill in the last empty square."
+msgstr "For automatisk at udfylde en firkant hvor der kun er en korrekt værdi, kan du klikke på <guibutton>Udfyld</guibutton>, vælge <menuchoice><guisubmenu>Spil</guisubmenu><guimenuitem>Udfyld</guimenuitem></menuchoice>, eller taste <keycap>Kontrol-F</keycap>. Dette er for eksempel brugbart når du har udfyldt 8 eller 9 firkanter i en række eller hurtigt ønsker at udfylde den sidste tomme firkant."
+
+#: C/gnome-sudoku.xml:433(para) 
+msgid "If there are more than one valid value for the entry, nothing will happen."
+msgstr "Hvis der er mere en en gyldig værdi, sker der intet."
+
+#: C/gnome-sudoku.xml:438(title) 
+msgid "Fill All Squares"
+msgstr "Udfyld alle firkanter"
+
+#: C/gnome-sudoku.xml:440(para) 
+msgid "You can automatically fill in all squares for which there is logically only one value at the moment. To do so, select <menuchoice><guisubmenu>Tools</guisubmenu><guimenuitem>Fill all squares</guimenuitem></menuchoice>, or type <keycap>Control-A</keycap>."
+msgstr "Du kan automatisk udfylde alle firkanter hvor der logisk kun kan være en værdi. Det gøres ved at vælge <menuchoice><guisubmenu>Spil</guisubmenu><guimenuitem>Find alle felter</guimenuitem></menuchoice>, eller taste <keycap>Kontrol-A</keycap>."
+
+#: C/gnome-sudoku.xml:449(para) 
+msgid "This feature should only be used to help you when you are very stuck on a difficult game. Using this feature on an easy game can solve the entire puzzle in one click, resulting in a very boring game!"
+msgstr "Denne funktion bør kun bruges, når du er gået i stå i et svært spil. Anvendelse af denne funktionalitet kan i et nemt spil løse hele puslespillet med et klik, hvilket vil resultere i et meget kedeligt spil!"
+
+#: C/gnome-sudoku.xml:457(para) 
+msgid "You can turn on highlighting to automatically highlight the current row, column and box in different colors. This can make it easier to see which values cannot go into a current square. To toggle highlighting, you can:"
+msgstr "Du kan aktivere automatisk markering af den aktuelle række, kolonne eller boks i forskellige farver. Dette kan gøre det nemmere, at se hvike værdier der ikke kan indgå i en aktuelt firkant. For at slå markinger til/fra gør du følgende:"
+
+#: C/gnome-sudoku.xml:459(para) 
+msgid "Click <guibutton>Highlighter</guibutton>"
+msgstr "Klik <guibutton>Markør</guibutton>"
+
+#: C/gnome-sudoku.xml:460(guisubmenu) 
+msgid "View"
+msgstr "Vis"
+
+#: C/gnome-sudoku.xml:460(guimenuitem) 
+msgid "Highlighter"
+msgstr "Markering"
+
+#: C/gnome-sudoku.xml:464(title) 
+msgid "<application>GNOME Sudoku</application> with highlighting"
+msgstr "<application>GNOME Sudoku</application> med markering"
+
+#: C/gnome-sudoku.xml:471(phrase) 
+msgid "Highlighting makes it easy to scan rows, columns, and boxes."
+msgstr "Markering gør det nemmere at overskue rækker, kolonner og bokse."
+
+#: C/gnome-sudoku.xml:482(para) 
+msgid "You can use trackers to keep track of multiple moves at a time. Tracked moves will be entered in a different color to make them visually distinct. You can also delete all tracked moves at one time. This is particularly useful for solving difficult puzzles by trial-and-error."
+msgstr "Du kan bruge spor til at holde styr på flere tal på en gang. Sporede tal bliver indtastet i en anden farve der gør dem visuelt tydelige. Du kan også slette alle sporede tal på en gang. Dette er specielt brugbart i svære spil, hvor du må forsøge dig frem."
+
+#: C/gnome-sudoku.xml:483(para) 
+msgid "Some sudoku players believe you should never use trial-and-error to solve a puzzle. These players should not use this feature."
+msgstr "Nogle sudoku spillere mener ikke, at man skal prøve sig frem under løsning af et puslespil. Disse spillere bør ikke anvende denne funktion."
+
+#: C/gnome-sudoku.xml:485(para) 
+msgid "You can toggle the tracker-interface by doing one of the following:"
+msgstr "Du kan slå sporfunktioner til eller fra på en af følgende måder:"
+
+#: C/gnome-sudoku.xml:492(guimenu) 
+msgid "Tools"
+msgstr "Spil"
+
+#: C/gnome-sudoku.xml:493(guimenuitem) 
+msgid "Track additions"
+msgstr "Spor tilføjelser"
+
+#: C/gnome-sudoku.xml:497(para) 
+msgid "Click <guibutton>Track additions</guibutton>"
+msgstr "Klik <guibutton>Spor tilføjelser</guibutton>"
+
+#: C/gnome-sudoku.xml:499(para) 
+msgid "This will bring up a list of trackers on to the right of the current game. Create a new tracker by clicking <guibutton>Add Tracker</guibutton>. From this point forward, any number you enter will be part of the selected tracker."
+msgstr ""
+"Dette vil vise en liste af spor til højre for det nuværende spil. Opret et nyt spor ved at trykke på <guibutton>Tilføj spor</guibutton>. Herefter vil ethvert nummer, du indtaster, blive en del af det valgte spor."
+
+#: C/gnome-sudoku.xml:500(para) 
+msgid "You can clear all the values that are part of a tracker by selecting the tracker from the list and clicking <guibutton>Clear Tracker</guibutton>. You can clear all values that are <emphasis>not</emphasis> part of a tracker by clicking <guibutton>Clear Others</guibutton>."
+msgstr "Du kan fjerne alle værdier, som er en del af et spor ved at vælge spor fra listen og klikke <guibutton>Nulstil spor</guibutton>. Du kan fjerne alle værdier, som <emphasis>ikke</emphasis> er en del af et spor ved at klikke på <guibutton>Nulstil andre</guibutton>."
+
+#: C/gnome-sudoku.xml:506(title) 
+msgid "Printing Sudoku"
+msgstr "Udskriv Sudoku"
+
+#: C/gnome-sudoku.xml:507(para) 
+msgid "GNOME Sudoku can print games for you to play on paper. This is useful if you have to leave the computer but want to finish a game you have started, or if you want to print out a bunch of puzzles to do later."
+msgstr "GNOME Sudoku kan udskrive spil, du så kan udfylde på papir. Dette er nyttigt, hvis du skal forlade computeren, men ønsker at afslutte et spil du har påbegyndt, eller hvis du ønsker at udskrive en stak puslespil til senere brug."
+
+#: C/gnome-sudoku.xml:513(para) 
+msgid "To print the puzzle you are in the midst of playing, click <guibutton>Print</guibutton> or select <menuchoice><guimenu>Game</guimenu><guimenuitem>Print</guimenuitem></menuchoice>. This will include the numbers you have already filled in."
+msgstr "For at udskrive puslespillet du er i gang med klik <guibutton>Udskriv</guibutton> eller vælg <menuchoice><guimenu>Fil</guimenu><guimenuitem>Udskriv</guimenuitem></menuchoice>. Dette vil inkludere numrene du allerede har udfyldt."
+
+#: C/gnome-sudoku.xml:518(para) 
+msgid "To print blank puzzles, select <menuchoice><guimenu>Game</guimenu><guimenuitem>Print multiple sudokus</guimenuitem></menuchoice>."
+msgstr "For at udskrive nye puslespil vælges <menuchoice><guimenu>Fil</guimenu><guimenuitem>Udskriv flere sudokuer</guimenuitem></menuchoice>."
+
+# Fejl i engelsk tekst? more pages -> more games
+#: C/gnome-sudoku.xml:523(para) 
+msgid "You will then see a print dialog that lets you choose how many games you would like to print and how many games you want to print on each page (the more pages you print per page, the smaller the games will be)."
+msgstr "Du ser så et udskrivningsbillede som lader dig vælge hvor mange spil du ønsker at udskrive og hvor mange spil der skal være på hver side (jo flere spil du udskriver per side, desto mindre vil spillene være)."
+
+#: C/gnome-sudoku.xml:528(para) 
+msgid "You can also select the range of difficulty you want the games to be in. The games will print in order of difficulty from easiest to hardest."
+msgstr "Du kan også vælge den sværhedsgrad du ønsker spillene skal være i. Spillene bliver udskrivet i sværhedsgrads-rækkefølge med de nemmeste først."
+
+#: C/gnome-sudoku.xml:530(para) 
+msgid "To create a 25 page mini sudoku book for yourself, you could select to print 100 sudokus, at 4 sudokus per page, with games ranging from easy to hard."
+msgstr "For at lave en 25 siders mini sudokubog, kan du vælge at udskrive 100 sudokuer, 4 per side, med spil rangerende fra nemme til svære."
+
+#: C/gnome-sudoku.xml:533(title) 
+msgid "Printing a Mini-Sudoku book from <application>GNOME Sudoku</application>"
+msgstr "Udskrivning af en lille sudokubog fra <application>GNOME Sudoku</application>"
+
+#: C/gnome-sudoku.xml:540(phrase) 
+msgid "This will print 25 pages with 4 sudokus on each page."
+msgstr "Dette vil udskrive 25 sider med 4 sudokuer på hver side."
+
+#: C/gnome-sudoku.xml:546(para) 
+msgid "By default, <application>GNOME Sudoku</application> will not print games that you have already played. If you're printing out games for a friend, or if you don't care about repeating games, you can check <guibutton>Include games you've already played in list of games to print</guibutton>."
+msgstr "Normalt vil <application>GNOME Sudoku</application> ikke udskrive spil som du allerede har spillet. Hvis du udskriver spil til en ven, eller hvis du ikke har noget imod at gentage spil så kan du afkrydse <guibutton>Inkluder spil du allerede har spillet i listen af spil til udskrivning</guibutton>."
+
+#: C/gnome-sudoku.xml:548(para) 
+msgid "You can also hand-select the games you would like to print by expanding the <guibutton>Games List</guibutton> and selecting multiple puzzles on the list."
+msgstr "Du kan også specifikt vælge hvilke spil du vil udskrive ved at udvide <guibutton>Spilliste</guibutton> og vælge flere puslespil på listen."
+
+#: C/gnome-sudoku.xml:553(title) 
+msgid "Known Bugs and Limitations"
+msgstr "Kendte fejl og begrænsninger"
+
+#: C/gnome-sudoku.xml:555(title) 
+msgid "Limited Puzzle Statistics"
+msgstr "Begrænset puslespilsstatistik"
+
+#: C/gnome-sudoku.xml:557(para) 
+msgid "GNOME Sudoku ranks puzzles based on the number of squares that can be rapidly filled. The puzzle statistics box shows you the overall rating and shows you three pieces of information:"
+msgstr "GNOME Sudoku rangerer puslespil baseret på det antal af firkanterne som hurtigt kan udfyldes. Puslespilstatistikboksen viser din rangering og yderligere tre informationer:"
+
+#: C/gnome-sudoku.xml:560(para) 
+msgid "The number of squares fillable by elimination, starting from the blank grid (i.e. only a 2 can go in this box, so it must be a 2)."
+msgstr "Antallet af firkanter som kan udfyldes ved udelukkelse, begyndende fra det tomme spil (for eksempel kun 2 kan være i denne firkant, så det må være 2)."
+
+# engelsk fejl only only
+#: C/gnome-sudoku.xml:561(para) 
+msgid "The number of squares fillable by filling, starting from the blank grid (i.e. only only one square in this row can be a 2, so it must be a 2)."
+msgstr "Antallet af firkanter som direkte kan udfyldes, begyndende med en ikke udfyldt opgave (for eksempel kun en firkant i denne række kan udfyldes med et 2-tal, så det må være et 2-tal)."
+
+#: C/gnome-sudoku.xml:562(para) 
+msgid "The number of times in solving the puzzle that the computer had to use trial-and-error, or &ldquo;guessing&rdquo;, to solve the puzzle."
+msgstr "Antallet af gange i løsningen af denne opgave at computeren måtte forsøge sig frem, eller &ldquo;gætte&rdquo;, for at løse opgaven."
+
+#: C/gnome-sudoku.xml:564(para) 
+msgid "Many users are upset to know that the computer solver uses trial-and-error, especially since some Sudoku gurus say you should never guess to solve a puzzle. There are a number of other algorithms that can be implemented to help the computer solve sudoku, such as the swordfish and X-wings patterns."
+msgstr "Mange brugere er blevet oprørte over at computeren forsøger sig frem, specielt da nogle Sudoku guruer mener at man aldrig bør gætte sig til en løsning. Der er en række andre algoritmer som kan anvendes for at hjælpe computeren med at løse en sudoku, såsom swordfish og X-wings mønstre."
+
+#: C/gnome-sudoku.xml:574(para) 
+msgid "At present, <application>GNOME Sudoku</application> only uses the two algorithms described above as well as trial-and-error. When the statistics box says that <application>GNOME Sudoku</application> needed to use trial-and-error X number of times, it does <emphasis>not</emphasis> mean that a human would have to use trial-and-error to solve the puzzle."
+msgstr "På nuværende tidspunkt anvender <application>GNOME Sudoku</application> kun to algoritmer som beskrevet ovenfor og metoden med at forsøge sig frem. Når statistikboksen anfører at <application>GNOME Sudoku</application> måtte forsøge sig frem x gange, betyder det <emphasis>ikke</emphasis> at et menneske nødvendigvis skal forsøge sig frem for at løse opgaven."
+
+#: C/gnome-sudoku.xml:587(title) 
+msgid "Negative High Scores"
+msgstr "Negative Bedste resultater"
+
+#: C/gnome-sudoku.xml:588(para) 
+msgid "High scores are arguably an extraneous part of a sudoku game, but they seem like fun, so <application>GNOME Sudoku</application> includes them. The algorithm for high scores gives you points for speed and for puzzle difficulty and takes away points for using hints. The algorithm is designed to give reasonable-looking scores, but it sometimes produces negative scores, which can be upsetting for users."
+msgstr "Oversigten over bedste resultater er ikke en vital del af et sudokuspil, men den kan være sjov at have, så <application>GNOME Sudoku</application> har den med. Algoritmen for bedste point giver dig point for hastighed og for puslespillets sværhedsgrad og fjerne point for brugen af fif. Algoritmen er designet til at give rimelige point, men sommetider beregner den negative point, hvilket kan være oprørende for nogle spillere."
+
+#: C/gnome-sudoku.xml:599(title) 
+msgid "About <application>GNOME Sudoku</application>"
+msgstr "Om <application>GNOME Sudoku</application>"
+
+#: C/gnome-sudoku.xml:600(para) 
+msgid "<application>GNOME Sudoku</application> was written by Tom Hinkle (<email>thomas_hinkle@sf.net</email>). To find more information about <application>GNOME Sudoku</application>, please visit the <ulink url=\"http://gnome-sudoku.sf.net\" type=\"http\"><application>GNOME Sudoku</application> Web page</ulink>."
+msgstr "<application>GNOME Sudoku</application> er skrevet af Tom Hinkle (<email>thomas_hinkle@sf.net</email>). Du kan finde yderligere information om <application>GNOME Sudoku</application> på spillets <ulink url=\"http://gnome-sudoku.sf.net\" type=\"http\">Hjemmeside</ulink>."
+
+#: C/gnome-sudoku.xml:605(para) 
+msgid "To report a bug or make a suggestion regarding this application or this manual, see the Feedback section of the <ulink url=\"ghelp:user-guide?feedback-bugs\" type=\"help\">GNOME User Guide</ulink>."
+msgstr "Du kan finde information om hvordan man indrapporterer fejl, eller kommer med forslag til spillet eller denne manual, i responsafsnittet <ulink url=\"ghelp:user-guide?feedback-bugs\" type=\"help\">GNOME User Guide</ulink>."
+
+#: C/gnome-sudoku.xml:611(para) 
+msgid "This program is distributed under the terms of the GNU General Public license as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. A copy of this license can be found at this <ulink url=\"ghelp:gpl\" type=\"help\">link</ulink>, or in the file COPYING included with the source code of this program."
+msgstr "Dette program distribueres under betingelserne i licensen GNU General Public der udgives af Free Software Foundation; enten version 2 eller (ved dit valg) enhver senere version. En kopi af denne licens kan findes her <ulink url=\"ghelp:gpl\" type=\"help\">link</ulink>, eller i filen COPYING der er inkluderet med kildekoden til dette program."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#: C/gnome-sudoku.xml:0(None) 
+msgid "translator-credits"
+msgstr ""
+"Joe Hansen <joedalton2@yahoo.dk>, 2007\n"
+"\n"
+"Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
+"Mere info: http://www.dansk-gruppen.dk"
