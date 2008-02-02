@@ -328,9 +328,14 @@ class SudokuMaker:
         for cat in sudoku.DifficultyRating.categories:
             if not os.path.exists(os.path.join(self.pickle_to,
                                                cat.replace(' ','_'))):
-                shutil.copy(os.path.join(os.path.join(BASE_DIR,'puzzles'),cat.replace(' ','_')),
-                            os.path.join(self.pickle_to,cat.replace(' ','_'))
-                            )
+                try:
+                    shutil.copy(os.path.join(os.path.join(PUZZLE_DIR),cat.replace(' ','_')),
+                                os.path.join(self.pickle_to,cat.replace(' ','_')))
+                except:
+                    print 'Problem copying base puzzles'
+                    print 'Attempted to copy from ',os.path.join(os.path.join(PUZZLE_DIR),cat.replace(' ','_'))
+                    print 'to',os.path.join(self.pickle_to,cat.replace(' ','_'))
+                    raise
 
     def get_new_puzzle (self, difficulty, new=True):
         """Return puzzle with difficulty near difficulty.
@@ -402,7 +407,8 @@ class SudokuMaker:
                         puzzle_list.append(puzzle)
         return puzzle_list
 
-    def get_puzzles (self, n, levels, new=True):
+    def get_puzzles (self, n, levels, new=True,
+                     exclude=[]):
         """Return a list of n puzzles and difficulty values (as floats).
 
         The puzzles will correspond as closely as possible to levels.
@@ -436,7 +442,7 @@ class SudokuMaker:
                     print 'WARNING: invalid line %s in file %s'%(line,files[lev])
                     continue
                 if sudoku.is_valid_puzzle(p):
-                    if not new or p not in self.played:
+                    if (p not in exclude) and (not new or p not in self.played):
                         puzzles.append((p,float(d)))
                         i += 1
                 else:

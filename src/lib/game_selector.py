@@ -67,6 +67,7 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
         self.glade.get_widget('newGameLabel').set_mnemonic_widget(
             self.new_game_view
             )
+        self.saved_games = saver.SudokuTracker().list_saved_games()
         self.make_new_game_model()
         self.new_game_view.set_model(self.new_game_model)
         self.new_game_view.set_markup_column(0)
@@ -91,12 +92,17 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
     @simple_debug
     def make_new_game_model (self):
         # Description, Pixbuf, Puzzle (str)
-        self.new_game_model = gtk.ListStore(str,gtk.gdk.Pixbuf,str)        
+        self.new_game_model = gtk.ListStore(str,gtk.gdk.Pixbuf,str)
+        saved_games_to_exclude = [
+            g['game'].split('\n')[0] for g in self.saved_games
+            ]
         for cat in DR.ordered_categories:
             rng = DR.categories[cat]; label = DR.label_by_cat[cat]
             #puzzle,diff = self.sudoku_maker.get_new_puzzle(.01*random.randint(*[r*100 for r in rng]))
             #diff_val = diff.value
-            puzzle,diff_val = self.sudoku_maker.get_puzzles(1,[cat],new=True)[0]
+            puzzle,diff_val = self.sudoku_maker.get_puzzles(1,[cat],new=True,
+                                                            exclude=saved_games_to_exclude
+                                                            )[0]
             #print 'Got new puzzle for ',cat,'difficulty:',diff
             grid = sudoku.sudoku_grid_from_string(puzzle).grid
             self.new_game_model.append(('<b><i>'+label+'</i></b>',
@@ -111,9 +117,7 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
     def make_saved_game_model (self):
         # Description, Image, Last-Access time (for sorting), Puzzle (jar)
         self.saved_game_model = gtk.ListStore(str,gtk.gdk.Pixbuf,int,gobject.TYPE_PYOBJECT)
-        t = saver.SudokuTracker()
-        for g in t.list_saved_games():
-            #print 'game',g
+        for g in self.saved_games:
             game = g['game'].split('\n')[0]
             grid = sudoku.sudoku_grid_from_string(game)
             sr = sudoku.SudokuRater(grid.grid)

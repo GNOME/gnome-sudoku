@@ -1,3 +1,15 @@
+2008-02-02  Thomas Hinkle  <tmhinkle@gmail.com>
+
+	* src/lib/defaults.py.in (PUZZLE_DIR): Add PUZZLE_DIR parameter to
+	point to where default starter puzzles are stored.
+	* src/lib/sudoku_maker.py (SudokuMaker.load): Use PUZZLE_DIR from
+	defaults to load puzzles (fixes in-place running of gnome-sudoku).
+	(SudokuMaker.get_puzzles): Add parameter 'exclude' which is a list
+	of puzzles not to include in results. This allows caller to exclude
+	saved games (which SudokuMaker doesn't know about)
+	* src/lib/game_selector.py (NewOrSavedGameSelector.make_new_game_model):
+	Exclude saved games from list of new games.
+
 2008-01-16  Thomas Mills Hinkle  <tmhinkle@gmail.com>
 
 	* src/lib/main.py Apply patch from Didier Vidal fixing bug #502675.
