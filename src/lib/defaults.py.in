@@ -2,7 +2,12 @@ import sys, os, os.path
 import errno
 import gettext
 
-if sys.modules["gnome_sudoku"].installed_mode:
+if (sys.modules.has_key('gnome_sudoku') and
+    hasattr(sys.modules["gnome_sudoku"],'installed_mode') and
+    sys.modules["gnome_sudoku"].installed_mode):
+    # If the installed_mode attribute is not set, then we are
+    # importing from something other than the gnome-sudoku script; we
+    # assume anyone importing in this way is doing testing etc.
     APP_DATA_DIR = os.path.join('@prefix@', 'share') 
     IMAGE_DIR = os.path.join(APP_DATA_DIR, 'pixmaps', 'gnome-sudoku')
     LOCALEDIR = os.path.join(APP_DATA_DIR, 'locale')
@@ -15,7 +20,7 @@ else:
     LOCALEDIR = os.path.join(APP_DATA_DIR, 'locale')
     GLADE_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'glade')
     BASE_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'data')
-    PUZZLE_DIR = BASE_DIR    
+    PUZZLE_DIR = BASE_DIR
 
 DOMAIN = 'gnome-games'
 gettext.bindtextdomain(DOMAIN, LOCALEDIR)

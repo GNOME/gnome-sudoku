@@ -1,5 +1,17 @@
 2008-02-02  Thomas Hinkle  <tmhinkle@gmail.com>
 
+	* src/lib/main.py (UI.you_win_callback): Make sudoku grid have
+	silly animation when we win.
+
+	* src/lib/gsudoku.py (GridDancer): Add silly sudoku animations to
+	make victory feel more victorious!
+
+	* src/lib/defaults.py.in Allow defaults to be run in-place if
+	gnome_sudoku module has not yet been loaded by anyone (allows
+	testing of individual modules)
+
+2008-02-02  Thomas Hinkle  <tmhinkle@gmail.com>
+
 	* src/lib/defaults.py.in (PUZZLE_DIR): Add PUZZLE_DIR parameter to
 	point to where default starter puzzles are stored.
 	* src/lib/sudoku_maker.py (SudokuMaker.load): Use PUZZLE_DIR from

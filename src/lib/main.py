@@ -470,6 +470,9 @@ class UI (gconf_wrapper.GConfWrapper):
             sublabel += ngettext("You used the auto-fill %(n)s time",
                                  "You used the auto-fill %(n)s times",
                                  self.gsd.auto_fills)%{'n':self.gsd.auto_fills}
+        from gsudoku import GridDancer
+        self.dancer = GridDancer(self.gsd)
+        self.dancer.start_dancing()            
         dialog_extras.show_message(_("You win!"),label=_("You win!"),
                                    #icon=os.path.join(IMAGE_DIR,'winner2.png'),
                                    sublabel=sublabel
@@ -483,7 +486,7 @@ class UI (gconf_wrapper.GConfWrapper):
         #hs.run_dialog()
         #self.main_actions.get_action('HighScores').set_sensitive(True)
         #self.gsd.blank_grid()
-        self.new_cb()
+        #self.new_cb()
 
     @simple_debug
     def initialize_prefs (self):
@@ -527,6 +530,9 @@ class UI (gconf_wrapper.GConfWrapper):
             self.do_stop()
             
     def do_stop (self):
+        if hasattr(self,'dancer'):
+            self.dancer.stop_dancing()
+            delattr(self,'dancer')
         self.gsd.grid = None
         self.tracker_ui.reset()
         self.timer.reset_timer()
