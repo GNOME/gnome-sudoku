@@ -1,5 +1,7 @@
-import pickle, types, os, os.path, sudoku
+import pickle, types, os, os.path, sudoku, errno
 from defaults import *
+from gtk_goodies.dialog_extras import show_message
+from gettext import gettext as _
 
 SAVE_ATTRIBUTES = [('gsd.hints'),
                    ('gsd.impossible_hints'),
@@ -88,10 +90,30 @@ class SudokuTracker:
     def __init__ (self):
         self.save_path = os.path.expanduser('~/.sudoku/saved')
         self.finished_path = os.path.expanduser('~/.sudoku/finished')
-        if not os.path.exists(self.save_path):
-            os.makedirs(self.save_path)
-        if not os.path.exists(self.finished_path):
-            os.makedirs(self.finished_path)
+        self.create_dir_safely(self.save_path)
+        self.create_dir_safely(self.finished_path)
+
+    def create_dir_safely (self, path):
+        if not os.path.exists(path):
+            try:
+                os.makedirs(path)
+            except OSError, e:                
+                if e.errno == errno.ENOSPC:
+                    show_message(
+                        title=_('No Space'),
+                        label=_('No space left on disk'),
+                        message_type=gtk.MESSAGE_ERROR,
+                        sublabel=_('Sudoku is unable to created data folder %(path)s.')%locals() +\
+                                 _('There is no disk space left!')
+                        )
+                else:
+                    show_message(
+                        title='Error creating directory',
+                        label='Error creating directory',
+                        sublabel=_('Sudoku was unable to create data folder %(path)s.')%locals() +\
+                        _('Error %(errno)s: %(error)s')%{'errno':e.errno,
+                                                         'error':e.strerror}
+                        )
 
     def are_finished_games (self):
         if os.listdir(self.finished_path): return True
@@ -107,10 +129,23 @@ class SudokuTracker:
         game = self.game_from_ui(ui)
         jar = jar_game(ui)
         #jar['saved_at'] = time.time()
-        outfi = file(os.path.join(self.save_path,self.get_filename(jar['game'])),
-                     'w')
-        pickle.dump(jar,outfi)
-        outfi.close()
+        filename = os.path.join(self.save_path,self.get_filename(jar['game']))
+        try:
+            outfi = file(filename,'w')
+            pickle.dump(jar,outfi)
+            outfi.close()
+        except (OSError, IOError), e:
+            show_message(
+                title=_('Sudoku unable to save game.'),
+                label=_('Sudoku unable to save game.'),
+                message_type=gtk.MESSAGE_ERROR,
+                sublabel=(_('Unable to save file %(filename)s.')%locals()
+                          + '\n' +
+                          _('Error %(errno)s: %(error)s')%{
+                'errno':e.errno,
+                'error':e.strerror
+                })
+                )
 
     def finish_game (self, ui):
         game = self.game_from_ui(ui)
@@ -119,18 +154,42 @@ class SudokuTracker:
 
     def finish_jar (self, jar):
         self.remove_from_saved_games(jar) # 
-        outfi = file(os.path.join(self.finished_path,
-                                  self.get_filename(jar['game'])),
-                     'w'
-                     )
-        pickle.dump(jar,outfi)
-        outfi.close()
-        list_of_finished_games = os.path.join(
-            os.path.join(DATA_DIR,'puzzles'),'finished'
-            )
-        ofi = open(list_of_finished_games,'a')
-        ofi.write(jar['game'].split('\n')[0]+'\n')
-        ofi.close()
+        try:
+            filename = file(os.path.join(self.finished_path,
+                                      self.get_filename(jar['game'])),
+                         'w'
+                         )
+            pickle.dump(jar,filename)
+            outfi.close()
+        except (OSError, IOError), e:
+            show_message(
+                title=_('Sudoku unable to mark game as finished.'),
+                label=_('Sudoku unable to mark game as finished.'),
+                message_type=gtk.MESSAGE_ERROR,
+                sublabel=(_('Unable to save file %(filename)s.'%locals) + '\n' +
+                          _('Error %(errno)s: %(error)s')%{
+                'errno':e.errno,
+                'error':e.strerror
+                })
+                )
+        try:
+            filename = list_of_finished_games = os.path.join(
+                os.path.join(DATA_DIR,'puzzles'),'finished'
+                )
+            ofi = open(list_of_finished_games,'a')
+            ofi.write(jar['game'].split('\n')[0]+'\n')
+            ofi.close()
+        except (OSError, IOError), e:
+            show_message(
+                title=_('Sudoku unable to mark game as finished.'),
+                label=_('Sudoku unable to mark game as finished.'),
+                message_type=gtk.MESSAGE_ERROR,
+                sublabel=(_('Unable to save file %(filename)s.'%locals) + '\n' +
+                          _('Error %(errno)s: %(error)s')%{
+                'errno':e.errno,
+                'error':e.strerror
+                })
+                )
 
     def remove_from_saved_games (self, jar):
         previously_saved_game = os.path.join(

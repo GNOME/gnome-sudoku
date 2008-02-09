@@ -163,7 +163,13 @@ class UI (gconf_wrapper.GConfWrapper):
                      }    
 
     @simple_debug
-    def __init__ (self):
+    def __init__ (self, run_selector=True):
+        """run_selector means that we start our regular game.
+
+        For testing purposes, it will be convenient to hand a
+        run_selector=False to this method to avoid running the dialog
+        and allow a tester to set up a game programmatically.
+        """
         gconf_wrapper.GConfWrapper.__init__(self,
                                             gconf_wrapper.GConf('gnome-sudoku')
                                             )
@@ -189,16 +195,18 @@ class UI (gconf_wrapper.GConfWrapper):
         # generate puzzles while our use is working...        
         self.show()
         #print 'Select game!'
-        if self.select_game():
-            # If this return True, the user closed...
-            #print 'select game returned True - exit'
-            self.quit = True
-        else:
-            self.quit = False
-            # Generate puzzles in background...
-            if self.gconf['generate_puzzles_in_background']:
-                gobject.timeout_add(1000,lambda *args: self.start_worker_thread() and True)
-                
+        if run_selector:
+            self.do_stop()
+            if self.select_game():
+                # If this return True, the user closed...
+                #print 'select game returned True - exit'                
+                self.quit = True
+            else:
+                self.quit = False
+                # Generate puzzles in background...
+                if self.gconf['generate_puzzles_in_background']:
+                    gobject.timeout_add(1000,lambda *args: self.start_worker_thread() and True)
+        
 
     @inactivate_new_game_etc
     def select_game (self):
@@ -876,7 +884,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def print_multiple_games (self, *args):
-        gp=game_selector.GamePrinter(self.sudoku_tracker, self.gconf)
+        gp=game_selector.GamePrinter(self.sudoku_maker, self.gconf)
         gp.run_dialog()
 
     @simple_debug

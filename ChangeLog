@@ -1,3 +1,24 @@
+2008-02-09  Thomas Hinkle  <tmhinkle@gmail.com>
+
+	* src/lib/saver.py (SudokuTracker.save_game): Display dialog
+	warning user if unable to save. bug #486385
+	(SudokuTracker.finish_jar): Display dialog warning user if unable
+	to save. bug #486385
+	(SudokuTracker.__init__): Display dialog warning user if unable to
+	create directories for saved and finished files
+	* src/lib/dialog_swallower.py (SwappableArea.run_dialog): Queue
+	redraw when we switch back to main page. This fixes the annoying
+	display bug that made numbers render badly when you started up
+	gnome sudoku.
+	* src/lib/main.py (UI.print_multiple_games): Fix bug #515411 -
+	GamePrinter expected an instance of SudokuMaker, not SudokuTracker
+	(UI.__init__): Add run_selector keyword arg to allow us to turn
+	off selector dialog for testing purposes.
+	* src/lib/gsudoku.py (SudokuGameDisplay.add_value): Clean up and
+	comment function.
+	(GridDancer): Speed up animation so people can appreciate all the
+	awesomeness that is the victory dance.
+
 2008-02-02  Thomas Hinkle  <tmhinkle@gmail.com>
 
 	* src/lib/main.py (UI.you_win_callback): Make sudoku grid have

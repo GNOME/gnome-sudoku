@@ -1,4 +1,4 @@
-import gtk
+import gtk, gobject
 
 # Convenience library for a new kind of UI -- for e.g. this game, we
 # don't really want to have dialogs. Nonetheless, it's convenient to
@@ -50,6 +50,9 @@ class SwappableArea (gtk.Notebook):
             import traceback; traceback.print_exc()
             print 'forge on fearlessly...'
         self.set_current_page(self.main_page)
+        def redraw_page (*args):
+            self.get_nth_page(self.main_page).queue_draw()
+        gobject.timeout_add(100,redraw_page)
         self.running = None
         tmp_response = self.response
         self.response = None

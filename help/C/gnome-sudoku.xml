@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appversion "0.7">
-  <!ENTITY manrevision "2.0">
-  <!ENTITY date "October 2006">
+  <!ENTITY appversion "2.21.90">
+  <!ENTITY manrevision "3.0">
+  <!ENTITY date "February 2008">
   <!ENTITY app "<application>Sudoku</application>">
   <!-- Information about the entities
        The legal.xml file contains legal information, there is no need to edit the file. 
@@ -35,7 +35,7 @@
     </abstract>
 
     <copyright> 
-      <year>2006</year> 
+      <year>2008</year> 
       <holder>Thomas M. Hinkle</holder> 
     </copyright>
 <!-- translators: uncomment this:
@@ -219,17 +219,38 @@
     <title>When You Start &app;</title>
     <para>
 
-    When you start &app;, a puzzle will be
-    displayed. If it is your first time playing, you will begin with
-    an easy puzzle by default. If it is not your first time playing,
-    the game will open to the last puzzle you were working on by
-    default.
-
+    When you start &app; for the first time, you will see the puzzle
+    selector screen, where you can choose the difficulty of the puzzle
+    you want to play. If you've played before and have any unfinished
+    puzzles, you can select those puzzles from this screen as well.
+    </para>
+    <para>
+    In the puzzle selector screen, the difficulty of the puzzle is
+    displayed. The color surrounding the puzzle image corresponds to
+    the difficulty. A dark red puzzle is harder than a light red
+    puzzle, for example.
+    </para>
+    <para>
+    Double click on the puzzle of your choice to start playing.
     </para>
 
+<figure id="new-game-fig"> 
+	<title>Starting Sudoku</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/starting.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>Starting up Sudoku: choose a difficulty level.</phrase> 
+	    </textobject>
+	  </mediaobject> 
+	</screenshot>
+      </figure>
+    
     <para>
     
-    To play different puzzle, click on
+    You can change puzzles at any time by pressing  
     <guibutton>New</guibutton>. This will bring you to the puzzle
     selection screen, where you can select whatever puzzle you like.
 
@@ -282,22 +303,26 @@
 	</screenshot>
       </figure>
     </note>
-    <sect2 id="myapp-saving">
+    </sect1>
+    <sect1 id="myapp-saving">
     <title>Saving and Resuming Games</title>
-    <para>When you close &app;, your current game is automatically saved; when you start, you will continue playing your game where you left off.</para>
+    <para>Sudokus are saved automatically every few minutes and whenever you change games or close the application.</para>
+        <figure id="open-game-fig"> 
+	<title>Resuming old games</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/resuming.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>Resuming an old game from the puzzle selector screen.</phrase> 
+	    </textobject>
+	  </mediaobject> 
+	</screenshot>
+      </figure>
+    <para>Whenever you start &app; or click <guibutton>New</guibutton>, your saved games will be listed in the puzzle selection screen. You will see a miniature image of the saved puzzle, the date you last played it, and how long you have played it for. To open the puzzle, just double click on it.</para>
     <para>If you'd like to stop playing one game and begin another, just select <guibutton>New</guibutton> and begin your new game.</para>
-    <para>To resume an old game that you interrupted, select <menuchoice>
-    		<guisubmenu>Game</guisubmenu>
-    		<guimenuitem>Resume old game</guimenuitem>
-    		</menuchoice>. You can then select any game you've played before from a list.</para>
-    <para>To replay a game that you have already won, select <menuchoice>
-    		<guisubmenu>Tools</guisubmenu>
-    		<guimenuitem>High Scores</guimenuitem>
-    		</menuchoice>. Then select the game you would like to replay and click <guibutton>Replay Game</guibutton>.
-		</para>
-    </sect2>
-
-  </sect1>
+    </sect1>
 
 <!-- ================ Usage ================================ -->
 <!-- Use this section to describe how to use the application to perform the tasks for 
@@ -584,10 +609,6 @@
   
   </sect2>
 
-  <sect2>
-  <title>Negative High Scores</title>
-  <para>High scores are arguably an extraneous part of a sudoku game, but they seem like fun, so &app; includes them. The algorithm for high scores gives you points for speed and for puzzle difficulty and takes away points for using hints. The algorithm is designed to give reasonable-looking scores, but it sometimes produces negative scores, which can be upsetting for users.</para>
-  </sect2>
  </sect1>
 
 <!-- ============= About ================================== -->
@@ -599,10 +620,7 @@
   <sect1 id="myapp-about"> 
     <title>About &app;</title> 
     <para> &app; was written by Tom Hinkle
-      (<email>thomas_hinkle@sf.net</email>). To find more information about
-      &app;, please visit the 
-      <ulink url="http://gnome-sudoku.sf.net" type="http">&app; Web
-	page</ulink>. </para>
+      (<email>tmhinkle@gmail.com</email>). &app is now part of GNOME games. </para>
     <para>
       To report a bug or make a suggestion regarding this application or
       this manual, see the Feedback section of the

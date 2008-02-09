@@ -12,6 +12,8 @@ DOC_FIGURES = \
 	figures/error_highlighting.png \
 	figures/highlighting.png \
 	figures/hints.png \
-	figures/Print_Sudokus.png
+	figures/Print_Sudokus.png \
+	figures/resuming.png \
+	figures/starting.png
 
 dist-hook: doc-dist-hook

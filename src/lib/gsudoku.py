@@ -1106,11 +1106,13 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
 
         To specify NO trackers, use trackers=[-1]
         """
+        # Add the value to the UI to display
         self.__entries__[(x,y)].set_value(val)
         if self.doing_initial_setup:
             self.__entries__[(x,y)].set_read_only(True)
-        self.grid.add(x,y,val,True)
+        # Handle any trackers.
         if trackers:
+            # Explicitly specified tracker
             for tracker in trackers:
                 if tracker==-1: pass
                 self.__entries__[(x,y)].set_color(self.get_tracker_color(tracker))
@@ -1120,6 +1122,11 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                 if v:
                     self.__entries__[(x,y)].set_color(self.get_tracker_color(k))
                     self.trackers[k].append((x,y,val))
+        # Add value to our underlying sudoku grid -- this will raise
+        # an error if the value is out of bounds with the current
+        # rules. 
+        self.grid.add(x,y,val,True)
+        # Draw our entry
         self.__entries__[(x,y)].queue_draw()
 
     @simple_debug
@@ -1291,7 +1298,7 @@ class GridDancer:
         '#75507b', ]
                     ]
 
-    STEPS_PER_ANIMATION = 18
+    STEPS_PER_ANIMATION = 10
     
     def __init__ (self, grid):
         self.animations = [self.value_dance,
@@ -1308,7 +1315,7 @@ class GridDancer:
 
     def start_dancing (self):
         self.dancing = True
-        gobject.timeout_add(500,self.dance_grid)
+        gobject.timeout_add(350,self.dance_grid)
 
     def stop_dancing (self):
         self.dancing = False
@@ -1382,9 +1389,7 @@ def test_dance_grid (grid):
     dancer = GridDancer(grid)
     dancer.start_dancing()
     def stop (*args): dancer.stop_dancing()
-    gobject.timeout_add(2000,stop)
-
-
+    gobject.timeout_add(15000,stop)
 
 if __name__ == '__main__':
     def test_sng ():
@@ -1409,6 +1414,38 @@ if __name__ == '__main__':
         w.show_all()
         gtk.main()
 
+    def reproduce_foobared_rendering ():
+        from sudoku import SudokuGrid, sample_open_sudoku
+        from dialog_swallower import SwappableArea
+        sgd = SudokuGameDisplay()
+        sgd.set_bg_color('black')
+        w = gtk.Window()
+        w.connect('delete-event', gtk.main_quit)
+        vb = gtk.VBox()
+        hb = gtk.HBox()
+        swallower = SwappableArea(hb)        
+        tb = gtk.Toolbar()
+        b = gtk.ToolButton(stock_id=gtk.STOCK_QUIT)
+        b.connect('clicked',lambda x: w.hide() or gtk.main_quit())
+        tb.add(b)
+        def run_swallowed_dialog (*args):
+            md = MessageDialog(title="Bar",label="Bar",sublabel="Baz "*12)
+            swallower.run_dialog(md)
+        b2 = gtk.ToolButton(label='Dialog')
+        b2.connect('clicked',run_swallowed_dialog)
+        tb.add(b2)
+        vb.pack_start(tb,fill=False,expand=False)
+        vb.pack_start(swallower,padding=12)
+        w.add(vb)
+        w.show_all()
+        #test_dance_grid(sgd)
+        from gtk_goodies.dialog_extras import MessageDialog
+        md = MessageDialog(title="Foo",label="Foo",sublabel="Bar "*12)
+        swallower.run_dialog(md)
+        hb.pack_start(sgd,padding=6)        
+        sgd.change_grid(SudokuGrid(sample_open_sudoku),9)
+        gtk.main()        
+
     def test_sudoku_game ():
         from sudoku import SudokuGrid, sample_open_sudoku
         sgd = SudokuGameDisplay(grid=SudokuGrid(sample_open_sudoku))
@@ -1432,7 +1469,8 @@ if __name__ == '__main__':
 
     #test_number_selector()
     #test_sng()
-    test_sudoku_game()
+    #test_sudoku_game()
+    reproduce_foobared_rendering()
 
         
             
