@@ -155,11 +155,10 @@ class SudokuTracker:
     def finish_jar (self, jar):
         self.remove_from_saved_games(jar) # 
         try:
-            filename = file(os.path.join(self.finished_path,
-                                      self.get_filename(jar['game'])),
-                         'w'
-                         )
-            pickle.dump(jar,filename)
+            filename = os.path.join(self.finished_path,
+                                    self.get_filename(jar['game']))
+            outfi = file(filename,'w')
+            pickle.dump(jar,outfi)
             outfi.close()
         except (OSError, IOError), e:
             show_message(

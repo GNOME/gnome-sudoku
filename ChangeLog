@@ -1,3 +1,10 @@
+2008-02-10  Thomas Hinkle  <tmhinkle@gmail.com>
+
+	* src/lib/saver.py (SudokuTracker.finish_jar): Fix regression from
+	last commit (stupid typo).
+	* src/lib/printing.py (SudokuPrinter.__init__): Define self.drawn
+	right away (should fix bug #488636).
+
 2008-02-10  Andreas Røsdal  <andreasr@gnome.org>
 
 	* src/lib/sudoku_generator_gui.py:

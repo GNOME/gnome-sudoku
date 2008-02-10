@@ -182,6 +182,7 @@ class SudokuPrinter:
                   sudokus_per_page=None,
                   dialog_parent=None
                   ):
+        self.drawn = False
         self.margin = margin
         self.sudokus_per_page=sudokus_per_page
         self.dialog_parent = dialog_parent
@@ -193,7 +194,6 @@ class SudokuPrinter:
         self.sudokus = sudokus
         #print 'Getting default config'
         self.job = gnomeprint.Job(gnomeprint.config_default())
-        self.drawn = False
 
     def run (self):
         self.dialog = gnomeprint.ui.Dialog(self.job,
