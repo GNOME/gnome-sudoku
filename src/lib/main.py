@@ -855,6 +855,7 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     def show_about (self, *args):
         about = gtk.AboutDialog()
+        about.set_transient_for(self.w)
         about.set_name(APPNAME)
         about.set_version(VERSION)
         about.set_copyright(COPYRIGHT)

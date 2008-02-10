@@ -72,6 +72,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         self.generate_method_changed_cb()
         self.dialog = self.glade.get_widget('PuzzleGenerator')
         self.dialog.show_all()
+        self.dialog.set_transient_for(self.ui.w)
         self.dialog.present()
         self.setup_base_status()
 
