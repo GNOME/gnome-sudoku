@@ -1314,12 +1314,16 @@ class GridDancer:
             box.queue_draw()
 
     def start_dancing (self):
+        for box in self.grid.__entries__.values():
+            box.props.can_focus = False
+        self.grid.get_toplevel().child_focus(gtk.DIR_TAB_BACKWARD)
         self.dancing = True
         gobject.timeout_add(350,self.dance_grid)
 
     def stop_dancing (self):
         self.dancing = False
-        print 'unhighlight_cells'
+        for box in self.grid.__entries__.values():
+            box.props.can_focus = True
         self.grid.unhighlight_cells()
 
     def do_dance_step (self):
@@ -1469,8 +1473,8 @@ if __name__ == '__main__':
 
     #test_number_selector()
     #test_sng()
-    #test_sudoku_game()
-    reproduce_foobared_rendering()
+    test_sudoku_game()
+    #reproduce_foobared_rendering()
 
         
             

@@ -1,3 +1,10 @@
+2008-02-12  Thomas Hinkle  <tmhinkle@gmail.com>
+
+	* src/lib/gsudoku.py (GridDancer): Make grid un-focus-able while
+	dancing, so that user can't do things like erase numbers and win
+	again (this led to seriously weird, seizure-inducing behavior when
+	two dancing routines got triggered simultaneously)
+
 2008-02-10  Thomas Hinkle  <tmhinkle@gmail.com>
 
 	* src/lib/saver.py (SudokuTracker.finish_jar): Fix regression from
