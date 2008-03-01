@@ -902,6 +902,10 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         self.unhighlight_cells()
         if not hasattr(self,'box_color'): self.get_highlight_colors()
         my_x,my_y = self.focused.x,self.focused.y        
+
+        # col_coords can sometimes be null.
+        if not hasattr(self.grid, 'col_coords'): return
+
         for x,y in self.grid.col_coords[my_x]:
             if (x,y) != (my_x,my_y):
                 self.__entries__[(x,y)].set_background_color(self.col_color)
@@ -1150,7 +1154,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                     # Its possible this highlighted error was never
                     # added to our internal grid, in which case we'd
                     # better make sure it is...
-                    if not self.grid._get_(linked_entry.x,linked_entry.y):
+                    if self.grid and not self.grid._get_(linked_entry.x,linked_entry.y):
                         # entry_validate will add the value to our
                         # internal grid if there are no other
                         # conflicts
