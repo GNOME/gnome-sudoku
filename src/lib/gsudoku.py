@@ -295,7 +295,9 @@ class NumberBox (gtk.Widget):
     def number_changed_cb (self, ns, w):
         w.destroy()
         self.set_text_interactive('')
-        self.set_text_interactive(str(ns.get_value()))
+        newval = ns.get_value()
+        if newval:
+            self.set_text_interactive(str(newval))
 
     def show_number_picker (self):
         #self.number_picker_mode = True

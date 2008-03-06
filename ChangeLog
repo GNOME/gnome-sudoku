@@ -1,3 +1,9 @@
+2008-03-05  Thomas Mills HInkle  <tmhinkle@gmail.com>
+
+	* src/lib/gsudoku.py (number_changed_cb): Fix bug that led to game
+	not being registered as solved after user had used "clear"
+	button. Patch from Greg Fawcett to bug #423478
+
 2008-03-01  Andreas Røsdal  <andreasr@gnome.org>
 
 	* src/lib/gsudoku.py: Fix crash when starting new game. 
