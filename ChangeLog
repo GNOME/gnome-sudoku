@@ -1,3 +1,9 @@
+2008-04-06  Thomas Mills HInkle  <tmhinkle@gmail.com>
+
+	* src/lib/gsudoku.py (SudokuGameDisplay.delete_by_tracker)
+	(delete_except_for_tracker): Check whether there is a value in
+	grid before calling grid.remove (fixes bug #435816)
+
 2008-03-05  Thomas Mills HInkle  <tmhinkle@gmail.com>
 
 	* src/lib/gsudoku.py (number_changed_cb): Fix bug that led to game

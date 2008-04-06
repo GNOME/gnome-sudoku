@@ -1258,7 +1258,8 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             x,y,v = self.trackers[identifier][0]
             ret.append((x,y,v,self.trackers_for_point(x,y,v)))
             self.remove(x,y)
-            self.grid.remove(x,y)
+            if self.grid and self.grid._get_(x,y):
+                self.grid.remove(x,y)
         return ret
 
     def delete_except_for_tracker (self, identifier):
@@ -1273,7 +1274,9 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                     ):
                     removed.append((x,y,val,self.trackers_for_point(x,y,val)))
                     self.remove(x,y)
-                    self.grid.remove(x,y)
+                    if self.grid and self.grid._get_(x,y):
+                        self.grid.remove(x,y)
+
         return removed
 
     def add_tracker (self, x, y, tracker, val=None):
