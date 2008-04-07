@@ -100,9 +100,23 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
             rng = DR.categories[cat]; label = DR.label_by_cat[cat]
             #puzzle,diff = self.sudoku_maker.get_new_puzzle(.01*random.randint(*[r*100 for r in rng]))
             #diff_val = diff.value
-            puzzle,diff_val = self.sudoku_maker.get_puzzles(1,[cat],new=True,
-                                                            exclude=saved_games_to_exclude
-                                                            )[0]
+            puzzles = self.sudoku_maker.get_puzzles(1,[cat],new=True,
+                                                    exclude=saved_games_to_exclude
+                                                    )
+            if puzzles:
+                puzzle,diff_val = puzzles[0]
+            else:
+                print 'WARNING: Repeating puzzle for difficulty %s -- generate more puzzles to avoid this.'%cat
+                puzzles = self.sudoku_maker.get_puzzles(1,[cat],new=False)
+                if puzzles:
+                    puzzle,diff_val = puzzles[0]
+                    lpuz = list(puzzle)
+                    lpuz.reverse() # we reverse the puzzle so it at least looks different :-)
+                    puzzle = ''
+                    for n in lpuz: puzzle += n
+                else:
+                    print 'WARNING: No puzzle for difficulty',cat
+                    continue
             #print 'Got new puzzle for ',cat,'difficulty:',diff
             grid = sudoku.sudoku_grid_from_string(puzzle).grid
             self.new_game_model.append(('<b><i>'+label+'</i></b>',

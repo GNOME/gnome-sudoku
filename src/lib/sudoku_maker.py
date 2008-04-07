@@ -407,13 +407,63 @@ class SudokuMaker:
                         puzzle_list.append(puzzle)
         return puzzle_list
 
-    def get_puzzles (self, n, levels, new=True,
+    def get_puzzles_random (self, n, levels, new=True, exclude=[]):
+        """Return a list of n puzzles and difficulty values (as floats).
+
+        The puzzles will correspond as closely as possible to levels.
+        If new, we only return puzzles not yet played.
+        """
+        if not n: return []
+        assert(levels)
+        puzzles = []
+        # Open files to read puzzles...
+        puzzles_by_level = {}; files = {}
+        for l in levels:
+            files[l] = os.path.join(self.pickle_to,
+                                    l.replace(' ','_'))
+            fi = file(files[l],'r')
+            puzzles_by_level[l] = fi.readlines(); fi.close()
+            random.shuffle(puzzles_by_level[l])
+        i = 0; il = 0
+        n_per_level = {}
+        finished = []
+        while i < n and len(finished) < len(levels):
+            if il >= len(levels): il = 0
+            lev = levels[il]
+            # skip any levels that we've exhausted
+            if lev in finished:
+                il += 1
+                continue
+            try:
+                line = puzzles_by_level[lev].pop()
+            except IndexError:
+                finished.append(lev)
+            else:
+                try:
+                    p,d = line.split('\t')
+                except ValueError:
+                    print 'WARNING: invalid line %s in file %s'%(line,files[lev])
+                    continue
+                if sudoku.is_valid_puzzle(p):
+                    if (p not in exclude) and (not new or p not in self.played):
+                        puzzles.append((p,float(d)))
+                        i += 1
+                else:
+                    print 'WARNING: invalid puzzle %s in file %s'%(p,files[lev])
+            il += 1
+        if i < n:
+            print 'WARNING: Not able to provide %s puzzles in levels %s'%(n,levels)
+            print 'WARNING: Generate more puzzles if you really need this many puzzles!'
+        return puzzles    
+
+    def get_puzzles (self, n, levels, new=True, randomize=True,
                      exclude=[]):
         """Return a list of n puzzles and difficulty values (as floats).
 
         The puzzles will correspond as closely as possible to levels.
         If new, we only return puzzles not yet played.
         """
+        if randomize: return self.get_puzzles_random(n,levels,new=new,exclude=exclude)
         if not n: return []
         assert(levels)
         puzzles = []

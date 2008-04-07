@@ -1,5 +1,29 @@
 2008-04-06  Thomas Mills HInkle  <tmhinkle@gmail.com>
 
+	* src/lib/sudoku_maker.py (SudokuMaker.get_puzzles): By default,
+	randomize our new puzzle selection. Otherwise, the same puzzle
+	will come up for each difficulty level until it has been finished
+	or saved.
+	(SudokuMaker.get_puzzles_random): A variant of the previous
+	get_puzzles method that randomizes the selection. This is
+	accomplished by reading the puzzle data file into memory and
+	shuffling the lines around before looping through the lines until
+	retrieving the desired number of puzzles. This doesn't appear to
+	cause any substantial performance/memory problems (they are just
+	small text files after all) but this may theoretically introduce a
+	regression in the case of very large data files (large numbers of
+	generated puzzles) if reading those lines into memory and
+	shuffling them would cause a slow-down.
+	* src/lib/game_selector.py (NewOrSavedGameSelector.make_new_game_model):
+	Check to make sure we have enough puzzles for our difficulty
+	level. If we're out of puzzles, print a warning and repeat a
+	puzzle (reverse it so it at least looks new). If we're really out
+	of puzzles (as in we somehow have an empty data file), then we
+	simply don't display the icon in question for the difficulty
+	level. This fixes bug #516903
+
+2008-04-06  Thomas Mills HInkle  <tmhinkle@gmail.com>
+
 	* src/lib/gsudoku.py (SudokuGameDisplay.delete_by_tracker)
 	(delete_except_for_tracker): Check whether there is a value in
 	grid before calling grid.remove (fixes bug #435816)
