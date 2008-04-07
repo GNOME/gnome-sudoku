@@ -1,5 +1,10 @@
 2008-04-07  Thomas H.P. Andersen  <phomes@gmail.com>
 
+	* /src/lib/sudoku_maker.py: Just try to create the dir and catch all
+	exceptions except EEXIST (bug #524190)
+
+2008-04-07  Thomas H.P. Andersen  <phomes@gmail.com>
+
 	* /src/lib/gtk_goodies/dialog_extras.py: Remove exception as it will be
 	raised elsewhere based on retval (bug #515041)
 

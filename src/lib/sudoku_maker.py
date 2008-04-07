@@ -323,8 +323,11 @@ class SudokuMaker:
                 self.played.append(line.strip('\n'))
         
     def load (self):
-        if not os.path.exists(self.pickle_to):
+        try:
             os.makedirs(self.pickle_to)
+        except os.error, e:
+            if e.errno != errno.EEXIST:
+                raise
         for cat in sudoku.DifficultyRating.categories:
             if not os.path.exists(os.path.join(self.pickle_to,
                                                cat.replace(' ','_'))):
