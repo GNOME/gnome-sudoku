@@ -410,7 +410,6 @@ class BooleanDialog (MessageDialog):
         else:
             self.hide()
             if self.modal: gtk.main_quit()
-            raise UserCancelledError("%s Cancelled"%self)
 
     def nocb (self, *args):
         self.ret=False
