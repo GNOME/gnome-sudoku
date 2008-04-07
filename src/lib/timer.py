@@ -68,13 +68,17 @@ def format_date (tim):
     to_yesterday = hours*60*60+minutes*60
     if diff < to_yesterday:
         # then we're today
-        return time.strftime(_('Today') + " %R %p",lt)
+        # Translators, see strftime manual in order to translate %? format strings
+        return time.strftime(_('Today %R %p'),lt)
     elif diff < (to_yesterday + 60*60*24):
-        return time.strftime(_('Yesterday') + " %R %p",lt)
+        # Translators, see strftime manual in order to translate %? format strings
+        return time.strftime(_('Yesterday %R %p'),lt)
     elif diff < (60*60*24*7): # less than a week
-        return time.strftime("%A %H:%M",lt) # Day, Hour:Minutes
+        # Translators, see strftime manual in order to translate %? format strings
+        return time.strftime(_("%A %H:%M"),lt) # Day, Hour:Minutes
     else:
-        return time.strftime("%A %B %d %R %p",lt)
+        # Translators, see strftime manual in order to translate %? format strings
+        return time.strftime(_("%A %B %d %R %p"),lt)
 
 def format_friendly_date (tim):
     lt = time.localtime(tim)
@@ -95,13 +99,17 @@ def format_friendly_date (tim):
                                 "%(n)s seconds ago",
                                 int(diff))%{'n':int(diff)}
         else:
-            return _("at %(time)s")%{'time':time.strftime("%I:%M %p",lt)}
+            # Translators, see strftime manual in order to translate %? format strings
+            return time.strftime(_("at %I:%M %p"),lt)
     elif diff < to_yesterday + (60*60*24):
-        return _("yesterday at %s")%time.strftime("%I:%M %p",lt)
+        # Translators, see strftime manual in order to translate %? format strings
+        return time.strftime(_("yesterday at %I:%M %p"),lt)
     elif diff < to_yesterday + (60*60*24)*6:
-        return time.strftime("%A %I:%M %p",lt)
+        # Translators, see strftime manual in order to translate %? format strings
+        return time.strftime(_("%A %I:%M %p"),lt)
     else:
-        return time.strftime("%B%e",lt)
+        # Translators, see strftime manual in order to translate %? format strings
+        return time.strftime(_("%B%e"),lt)
 
 class ActiveTimer (gobject.GObject):
     """A timer to keep track of how much time a window is active."""
