@@ -1,3 +1,8 @@
+2008-05-14  Robert Ancell  <robert.ancell@gmail.com>
+
+	* src/gnome-sudoku.in.in: Don't modify sys.path as this can cause modules to be loaded that
+	  don't match the intepreter version (Bug #528953)
+
 2008-04-08  Thomas H.P. Andersen  <phomes@gmail.com>
 
 	* /src/lib/timer.py: Don't hardcode time formats. Patch by Claude Paroz
