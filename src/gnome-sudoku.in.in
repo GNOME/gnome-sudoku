@@ -18,19 +18,16 @@ except:
   pass 
 
 import sys
-installed_mode = True
 
 try:
     # Import gnome-sudoku module from source distribution.
     import lib;
     sys.modules["gnome_sudoku"] = sys.modules["lib"];
     from gnome_sudoku.gnome_sudoku import start_game
-    installed_mode = False
 
 except ImportError:
     try:
       # Import gnome-sudoku from pyexecdir or system installation.
-      installed_mode = True
       from gnome_sudoku.gnome_sudoku import start_game
 
     except ImportError:
@@ -49,7 +46,5 @@ except ImportError:
       dialog.add_button(gtk.STOCK_QUIT, gtk.RESPONSE_CLOSE)
       dialog.run()
       sys.exit(0)
-
-sys.modules["gnome_sudoku"].installed_mode = installed_mode
 
 start_game()

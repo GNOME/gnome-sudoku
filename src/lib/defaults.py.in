@@ -9,12 +9,9 @@ import sys, os, os.path
 import errno
 import gettext
 
-if (sys.modules.has_key('gnome_sudoku') and
-    hasattr(sys.modules["gnome_sudoku"],'installed_mode') and
-    sys.modules["gnome_sudoku"].installed_mode):
-    # If the installed_mode attribute is not set, then we are
-    # importing from something other than the gnome-sudoku script; we
-    # assume anyone importing in this way is doing testing etc.
+root_dir = os.path.dirname(os.path.dirname(__file__))
+if not os.path.exists(os.path.join(root_dir, "Makefile.am")):
+    # Running in installed mode
     APP_DATA_DIR = os.path.join('@prefix@', 'share') 
     IMAGE_DIR = os.path.join(APP_DATA_DIR, 'pixmaps', 'gnome-sudoku')
     LOCALEDIR = os.path.join(APP_DATA_DIR, 'locale')
@@ -22,12 +19,14 @@ if (sys.modules.has_key('gnome_sudoku') and
     BASE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
     PUZZLE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku','puzzles')    
 else:
-    APP_DATA_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'data') 
-    IMAGE_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'images')
-    LOCALEDIR = os.path.join(APP_DATA_DIR, 'locale')
-    GLADE_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'glade')
-    BASE_DIR = os.path.join('@abs_top_builddir@', 'gnome-sudoku', 'data')
-    PUZZLE_DIR = BASE_DIR
+    # Running in uninstalled mode
+    sys.path.insert(0, os.path.abspath(root_dir))
+    APP_DATA_DIR = os.path.join(root_dir, '../data') 
+    IMAGE_DIR    = os.path.join(root_dir, '../images')
+    LOCALEDIR    = os.path.join(APP_DATA_DIR, 'locale')
+    GLADE_DIR    = os.path.join(root_dir, '../glade')
+    BASE_DIR     = os.path.join(root_dir, '../data')
+    PUZZLE_DIR   = BASE_DIR
 
 DOMAIN = 'gnome-games'
 gettext.bindtextdomain(DOMAIN, LOCALEDIR)

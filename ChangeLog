@@ -1,3 +1,10 @@
+2008-05-29  Jason D. Clinton  <me@jasonclinton.com>
+
+	* src/gnome-sudoku.in.in:
+	* src/Makefile.am:
+	* src/lib/defaults.py.in:
+	* src/lib/gnome-sudoku.py: make everyone happy with sys.path shenanigans (Bug #524665, Bug #528953)
+
 2008-05-14  Robert Ancell  <robert.ancell@gmail.com>
 
 	* src/gnome-sudoku.in.in: Don't modify sys.path as this can cause modules to be loaded that
