@@ -67,10 +67,6 @@ if __name__ == '__main__':
     d.vbox.show_all()
     d.add_button(gtk.STOCK_CLOSE,gtk.RESPONSE_CLOSE)
     import defaults
-    defaults.IMAGE_DIR = defaults.BASE_DIR \
-    = defaults.GLADE_DIR = defaults.BASE_DIR = '/usr/share/gnome-sudoku/'
-    import os, os.path, sys; sys.path.append(os.path.realpath(os.curdir))
-    sys.path.append('/usr/share/')
     w = gtk.Window()
     b = gtk.Button('show d'); b.show()
     sa = SwappableArea(b)
