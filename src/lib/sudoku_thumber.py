@@ -1,6 +1,5 @@
 import cairo
 import pango
-import tempfile
 import gtk
 
 SUDOKU_SIZE = 9
@@ -114,10 +113,10 @@ def make_image_surface (sudoku, played, highlight_color):
 
 def make_pixbuf (sudoku, played, highlight_color):
     surf = make_image_surface(sudoku,played,highlight_color)
-    fn = tempfile.mktemp('.png')
-    surf.write_to_png(fn)
+    pixbuf = gtk.gdk.pixbuf_new_from_data(surf.get_data(), gtk.gdk.COLORSPACE_RGB,
+                                          True, 8, SIZE, SIZE, SIZE*4)
     del surf
-    return gtk.gdk.pixbuf_new_from_file(fn)
+    return pixbuf
 
 if __name__ == '__main__':
     make_image_surface(sudoku,played,
