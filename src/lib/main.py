@@ -220,7 +220,11 @@ class UI (gconf_wrapper.GConfWrapper):
             self.gsd.change_grid(choice[1],9)
         if choice[0] == game_selector.NewOrSavedGameSelector.SAVED_GAME:
             saver.open_game(self,choice[1])
-        if self.gconf['show_toolbar']: self.tb.show()
+        if self.gconf['show_toolbar']: 
+            self.tb.show()
+        if self.gconf['always_show_hints']:
+            self.gsd.update_all_hints()
+
 
     def show (self):
         self.gsd.show()
