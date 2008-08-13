@@ -40,11 +40,8 @@ def inactivate_new_game_etc (fun):
     def _ (ui, *args, **kwargs):
         paths = [
             '/MenuBar/Game/New',
-            #'/MenuBar/Game/Open',
-            #'/MenuBar/Game/ByHand',
             '/MenuBar/Game/Print',
-            '/MenuBar/Edit/Undo',
-            '/MenuBar/Edit/Redo',
+            # undo/redo is handled elsewhere as it can't simply be turned on/off.
             '/MenuBar/Edit/Clear',
             '/MenuBar/Edit/ClearNotes',
             '/MenuBar/Tools/ShowPossible',
@@ -54,7 +51,6 @@ def inactivate_new_game_etc (fun):
             '/MenuBar/Tools/ShowImpossibleImplications',
             '/MenuBar/Tools/Tracker',
             '/MenuBar/Game/PuzzleInfo',
-            #'/MenuBar/Game/HighScores',
             ]
         for p in paths:
             action = ui.uimanager.get_action(p)
