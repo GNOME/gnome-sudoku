@@ -174,7 +174,6 @@ class UI (gconf_wrapper.GConfWrapper):
         self.won = False
         # add the accelerator group to our toplevel window
         self.worker_connections=[]
-        self.timer.start_timing()
         # setup sudoku maker...
         self.sudoku_maker = sudoku_maker.SudokuMaker()
         self.sudoku_tracker = saver.SudokuTracker()
@@ -212,6 +211,7 @@ class UI (gconf_wrapper.GConfWrapper):
         if not choice:
             return True
         #print 'choice is ',choice
+        self.timer.start_timing()
         if choice[0] == game_selector.NewOrSavedGameSelector.NEW_GAME:
             self.gsd.change_grid(choice[1],9)
         if choice[0] == game_selector.NewOrSavedGameSelector.SAVED_GAME:
@@ -543,8 +543,6 @@ class UI (gconf_wrapper.GConfWrapper):
             delattr(self,'dancer')
         self.gsd.grid = None
         self.tracker_ui.reset()
-        self.timer.reset_timer()
-        self.timer.start_timing()
         self.history.clear()        
         self.won = False
         
@@ -770,20 +768,6 @@ class UI (gconf_wrapper.GConfWrapper):
         self.current_puzzle_string = puzz
 	tot_string = _("Playing %(difficulty)s puzzle.")%{'difficulty':self.current_puzzle_diff.value_string()}
         tot_string += " " + "(%1.2f)"%self.current_puzzle_diff.value
-        #if self.timer.tot_time or self.timer.tot_time_complete:
-        #    time_string = _("%s (%s active)")%(
-        #        self.timer.total_time_string(),
-        #        self.timer.active_time_string()
-        #        )
-        #    if not self.timer.__timing__:
-        #        time_string += " %s"%_('paused')
-        #    tot_string += " - " + time_string
-        #if self.gsd.hints and not self.gconf['always_show_hints']:
-        #    tot_string += " -  " +ngettext("%(n)s hint","%(n)s hints",
-        #                           self.gsd.hints)%{'n':self.gsd.hints}
-        #if self.gsd.auto_fills:
-        #    tot_string += "  " +ngettext("%(n)s auto-fill","%(n)s auto-fills",
-        #                            self.gsd.auto_fills)%{'n':self.gsd.auto_fills}
         self.set_statusbar_value(tot_string)
         return True
 

@@ -122,9 +122,8 @@ class ActiveTimer (gobject.GObject):
     def __init__ (self, window):
         gobject.GObject.__init__(self)
         self.window = window
-        self.__timing__ = False
+        self.timing_running = False
         self.__absolute_start_time__ = 0
-        self.__paused__ = False
         self.tot_time = 0
         self.tot_time_complete = 0
         self.window.connect('window-state-event',self.window_state_event_cb)
@@ -141,57 +140,44 @@ class ActiveTimer (gobject.GObject):
 
     def toggle_timing (self, on):
         if not self.__absolute_start_time__:
-            self.reset_timer()
-        if self.__paused__: return False
-        if on and not self.__timing__:            
+            return
+
+        if on and not self.timing_running:            
             self.timing_started_at = time.time()
-            self.__timing__ = True
+            self.timing_running = True
             self.emit('timing-started')
-            #print 'timing!'
-        if not on and self.__timing__:
+
+        if not on and self.timing_running:
             end_time = time.time()
-            self.__timing__ = False
+            self.timing_running = False
             self.tot_time += (end_time - self.timing_started_at)
             self.tot_time_complete = end_time - self.__absolute_start_time__
-            #print 'Stopped timing...',self.tot_time
             self.emit('timing-stopped')
-        #print on,'represents no change'
+
+    def start_timing (self):
+        self.timing_running = False
+        self.__absolute_start_time__ = 0
+        self.tot_time = 0
+        self.tot_time_complete = 0
+        self.__absolute_start_time__ = time.time()
+        self.toggle_timing(True)
 
     def finish_timing (self):
         self.toggle_timing(False)
-        if not self.tot_time_complete:
-            self.tot_time_complete = time.time() - self.__absolute_start_time__
-        #print 'tot_time ',self.tot_time
-        #print 'tot_time_complete ',self.tot_time_complete
-        
+        if self.tot_time < 1:
+            self.tot_time = 1;
+        # dirty hack: never let total time be less than active time
+        if self.tot_time > self.tot_time_complete:
+            self.tot_time_complete = self.tot_time;
+        self.__absolute_start_time__ = 0
+
+    # make sure to call finish_timing before using this function
     def active_time_string (self):
-        if self.__timing__ and not self.__paused__:
-            return format_time(self.tot_time+time.time()-self.timing_started_at)
-        else:
-            return format_time(self.tot_time)
+        return format_time(self.tot_time)
     
+    # make sure to call finish_timing before using this function
     def total_time_string (self):
-        if self.__timing__:
-            return format_time(time.time()-self.__absolute_start_time__)
-        else:
-            return format_time(self.tot_time_complete)
-
-    def reset_timer (self):
-        self.__absolute_start_time__ = time.time()
-        self.tot_time = 0
-        self.toggle_timing(False)
-
-    def start_timing (self):
-        self.__absolute_start_time__ = time.time()
-        self.toggle_timing(True)
-
-    def pause_timing (self):
-        self.toggle_timing(False)
-        self.__paused__ = True
-
-    def resume_timing (self):
-        self.__paused = False
-        self.toggle_timing(True)
+        return format_time(self.tot_time_complete)
 
 if gtk.pygtk_version[1]<8: gobject.type_register(ActiveTimer)
 
