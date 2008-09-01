@@ -329,7 +329,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.edit_actions = gtk.ActionGroup('EditActions')
         self.edit_actions.add_actions(
             [('Edit',None,_('_Edit')),
-             ('Undo',gtk.STOCK_UNDO,_('_Undo'),'<Control>z',_('Undo last action')),
+             ('Undo',gtk.STOCK_UNDO,_('_Undo'),'<Control>z',_('Undo last action'), self.stop_dancer),
              ('Redo',gtk.STOCK_REDO,_('_Redo'),'<Shift><Control>z',_('Redo last action')),
              ('Clear',gtk.STOCK_CLEAR,_('_Clear'),'<Control>b',_("Clear entries you've filled in"),self.clear_cb),
              ('ClearNotes',None,_('Clear _Notes'),None,_("Clear notes and hints"),self.clear_notes_cb),             
@@ -456,6 +456,11 @@ class UI (gconf_wrapper.GConfWrapper):
             for c in self.worker_connections:
                 self.timer.disconnect(c)
 
+    def stop_dancer (self, *args):
+        if hasattr(self, 'dancer'):
+             self.dancer.stop_dancing()
+             delattr(self, 'dancer')
+
     @simple_debug
     def you_win_callback (self,grid):
         self.won = True
@@ -538,9 +543,7 @@ class UI (gconf_wrapper.GConfWrapper):
             self.do_stop()
             
     def do_stop (self):
-        if hasattr(self,'dancer'):
-            self.dancer.stop_dancing()
-            delattr(self,'dancer')
+        self.stop_dancer()
         self.gsd.grid = None
         self.tracker_ui.reset()
         self.history.clear()        
@@ -653,11 +656,23 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     def clear_cb (self,*args):        
         clearer=Undo.UndoableObject(
-            lambda *args: self.cleared.append(self.gsd.reset_grid()), #action
-            lambda *args: [self.gsd.add_value_to_ui(*entry) for entry in self.cleared.pop()], #inverse
+            self.do_clear, #action
+            self.undo_clear, #inverse
             self.history #history
             )
         clearer.perform()
+
+    # add a check to stop the dancer if she is dancing
+    def do_clear (self, *args):
+        self.cleared.append(self.gsd.reset_grid())
+        self.stop_dancer()
+
+    # add a check for finish in the undo to clear
+    def undo_clear (self, *args):
+        for entry in self.cleared.pop():
+            self.gsd.add_value_to_ui(*entry) 
+        if self.gsd.grid.check_for_completeness():
+            self.gsd.emit('puzzle-finished')
 
     def clear_notes_cb (self, *args):
         clearer = Undo.UndoableObject(
@@ -694,11 +709,22 @@ class UI (gconf_wrapper.GConfWrapper):
         if not hasattr(self,'autofilled'): self.autofilled=[]
         if not hasattr(self,'autofiller'):
             self.autofiller = Undo.UndoableObject(
-                lambda *args: self.autofilled.append(self.gsd.auto_fill()),
-                lambda *args: [self.gsd.remove(entry[0],entry[1],do_removal=True) for entry in self.autofilled.pop()],
+                self.do_auto_fill,
+                self.undo_auto_fill,
                 self.history
                 )
         self.autofiller.perform()
+
+    def do_auto_fill (self, *args):
+        self.autofilled.append(self.gsd.auto_fill())
+        if self.gconf['always_show_hints']:
+            self.gsd.update_all_hints()
+
+    def undo_auto_fill (self, *args):
+        for entry in self.autofilled.pop():
+            self.gsd.remove(entry[0],entry[1],do_removal=True)
+        if self.gconf['always_show_hints']:
+            self.gsd.update_all_hints()
 
     @simple_debug
     def auto_fill_current_square_cb (self, *args):

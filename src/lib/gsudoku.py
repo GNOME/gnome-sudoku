@@ -119,6 +119,7 @@ class NumberBox (gtk.Widget):
     top_note_text = ''
     bottom_note_text = ''    
     read_only = False
+    read_only_hidden = False
     _layout = None
     _top_note_layout = None
     _bottom_note_layout = None    
@@ -1319,7 +1320,9 @@ class GridDancer:
         self.grid = grid
         self.dancing = False
         for box in self.grid.__entries__.values():
-            box.read_only = False
+            if box.read_only == True:
+                box.read_only = False
+                box.read_only_hidden = True
             box.queue_draw()
 
     def start_dancing (self):
@@ -1333,6 +1336,9 @@ class GridDancer:
         self.dancing = False
         for box in self.grid.__entries__.values():
             box.props.can_focus = True
+            if box.read_only_hidden == True:
+                box.read_only = True
+                box.read_only_hidden = False
         self.grid.unhighlight_cells()
 
     def do_dance_step (self):
