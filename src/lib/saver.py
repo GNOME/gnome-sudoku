@@ -164,7 +164,7 @@ class SudokuTracker:
                 title=_('Sudoku unable to mark game as finished.'),
                 label=_('Sudoku unable to mark game as finished.'),
                 message_type=gtk.MESSAGE_ERROR,
-                sublabel=(_('Unable to save file %(filename)s.'%locals) + '\n' +
+                sublabel=(_('Unable to save file %(filename)s.')%locals() + '\n' +
                           _('Error %(errno)s: %(error)s')%{
                 'errno':e.errno,
                 'error':e.strerror
@@ -182,7 +182,7 @@ class SudokuTracker:
                 title=_('Sudoku unable to mark game as finished.'),
                 label=_('Sudoku unable to mark game as finished.'),
                 message_type=gtk.MESSAGE_ERROR,
-                sublabel=(_('Unable to save file %(filename)s.'%locals) + '\n' +
+                sublabel=(_('Unable to save file %(filename)s.')%locals() + '\n' +
                           _('Error %(errno)s: %(error)s')%{
                 'errno':e.errno,
                 'error':e.strerror
