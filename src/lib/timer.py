@@ -151,7 +151,7 @@ class ActiveTimer (gobject.GObject):
             end_time = time.time()
             self.timing_running = False
             self.tot_time += (end_time - self.timing_started_at)
-            self.tot_time_complete = end_time - self.__absolute_start_time__
+            self.tot_time_complete += end_time - self.__absolute_start_time__
             self.emit('timing-stopped')
 
     def start_timing (self):
@@ -169,7 +169,6 @@ class ActiveTimer (gobject.GObject):
         # dirty hack: never let total time be less than active time
         if self.tot_time > self.tot_time_complete:
             self.tot_time_complete = self.tot_time;
-        self.__absolute_start_time__ = 0
 
     # make sure to call finish_timing before using this function
     def active_time_string (self):

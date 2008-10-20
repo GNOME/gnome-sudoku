@@ -8,6 +8,7 @@ SAVE_ATTRIBUTES = [('gsd.hints'),
                    ('gsd.auto_fills'),
                    ('timer.__absolute_start_time__'),
                    ('timer.tot_time'),
+                   ('timer.tot_time_complete'),
                    ]
 
 def super_getattr (obj, attr):
