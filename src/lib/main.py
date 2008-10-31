@@ -463,6 +463,8 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def you_win_callback (self,grid):
+        if hasattr(self, 'dancer'):
+            return
         self.won = True
         # increase difficulty for next time.
         self.gconf['difficulty']=self.gconf['difficulty']+0.1
