@@ -61,6 +61,9 @@ def open_game (ui, jar):
             ui.tracker_ui.select_tracker(tracker)
     for attr in SAVE_ATTRIBUTES:
         super_setattr(ui,attr,jar.get(attr,None))
+    for attr in SAVE_ATTRIBUTES:
+        if jar.get(attr,None) == None:
+            super_setattr(ui,attr,0)
     if jar.has_key('notes') and jar['notes']:
         for x,y,top,bot in jar['notes']:
             ui.gsd.__entries__[(x,y)].set_note_text(top,bot)
