@@ -44,6 +44,7 @@ def inactivate_new_game_etc (fun):
             # undo/redo is handled elsewhere as it can't simply be turned on/off.
             '/MenuBar/Edit/Clear',
             '/MenuBar/Edit/ClearNotes',
+            '/MenuBar/View/ToggleToolbar',
             '/MenuBar/Tools/ShowPossible',
             '/MenuBar/Tools/AutofillCurrentSquare',
             '/MenuBar/Tools/Autofill',
