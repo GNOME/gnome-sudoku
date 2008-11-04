@@ -1,4 +1,3 @@
-
 uidir = $(datadir)/gnome-sudoku
 ui_DATA = \
 	print_games.glade	\
