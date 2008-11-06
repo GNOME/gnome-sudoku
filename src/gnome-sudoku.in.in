@@ -9,6 +9,21 @@
 # software under the terms of the GNU General Public License, version
 # 2 or later.
 
+# Ignore any exceptions writing to stdout using print statements
+class SafeStdout:
+    def __init__(self):
+        self.stdout = sys.stdout
+    
+    def fileno(self):
+        return self.stdout.fileno()
+
+    def write(self, data):
+        try:
+            self.stdout.write(data)
+        except:
+            pass
+sys.stdout = SafeStdout()
+
 # Setup bugbuddy to report unhandled exceptions.
 try: 
   import bugbuddy
