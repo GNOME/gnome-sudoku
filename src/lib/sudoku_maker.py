@@ -311,35 +311,35 @@ class SudokuMaker:
         self.batch_size = batch_size
         self.load()
         self.all_puzzles = {}
-        self.reread_played_list()
+        self.played = self.get_pregenerated('finished')
 
-    # Convenience methods for accessing puzzles we've created
-    
-    def reread_played_list (self):
-        played_fn = os.path.join(self.pickle_to,'finished')
-        self.played = []
-        if os.path.exists(played_fn):
-            for line in file(played_fn,'r'):
-                self.played.append(line.strip('\n'))
-        
     def load (self):
         try:
             os.makedirs(self.pickle_to)
         except os.error, e:
             if e.errno != errno.EEXIST:
-                raise
+                return
         for cat in sudoku.DifficultyRating.categories:
-            if not os.path.exists(os.path.join(self.pickle_to,
-                                               cat.replace(' ','_'))):
+            source = os.path.join(os.path.join(PUZZLE_DIR),cat.replace(' ','_'))
+            target = os.path.join(self.pickle_to, cat.replace(' ','_'))
+            if not os.path.exists(target):
                 try:
-                    shutil.copy(os.path.join(os.path.join(PUZZLE_DIR),cat.replace(' ','_')),
-                                os.path.join(self.pickle_to,cat.replace(' ','_')))
+                    shutil.copy(source, target)
                 except:
                     print 'Problem copying base puzzles'
-                    print 'Attempted to copy from ',os.path.join(os.path.join(PUZZLE_DIR),cat.replace(' ','_'))
-                    print 'to',os.path.join(self.pickle_to,cat.replace(' ','_'))
-                    raise
-
+                    print 'Attempted to copy from %s to %s' % (source, target)
+                
+    def get_pregenerated (self, difficulty):
+        fname = os.path.join(self.pickle_to, difficulty.replace(' ','_'))
+        try:
+            lines = file(fname).readlines()
+        except IOError, e:
+            if e.errno != errno.ENOENT:
+                print 'Error reading pregenerated puzzles for difficulty \'%s\': %s' % (difficulty, e.strerror)
+            return []
+        else:
+            return [line.strip() for line in lines]
+        
     def get_new_puzzle (self, difficulty, new=True):
         """Return puzzle with difficulty near difficulty.
 
@@ -352,21 +352,20 @@ class SudokuMaker:
             if val_cat > 1: val_cat = 'very hard'
             else: val_cat = 'easy'
         puzzles = []
-        ifi = file(os.path.join(self.pickle_to,
-                                val_cat.replace(' ','_'))
-                   )
+
+        lines = self.get_pregenerated(val_cat)
         closest = 10000000000000,None
-        for l in ifi.readlines():
-            if not l.strip():
-                print 'Warning: file %s contains an empty line'%ifi
+        for l in lines:
+            if len(l) == 0:
+                print 'Warning: file %s contains an empty line'%fname
                 continue
             if not l.find('\t')>=0:
-                print 'Warning: line "%s" of file %s has no tab character.'%(l,ifi)
+                print 'Warning: line "%s" of file %s has no tab character.'%(l,fname)
                 continue
             puzzle,diff = l.split('\t')
             if new and (puzzle in self.played): continue
             if not sudoku.is_valid_puzzle(puzzle):
-                print 'WARNING: invalid puzzle %s in file %s'%(puzzle,ifi)
+                print 'WARNING: invalid puzzle %s in file %s'%(puzzle,fname)
                 continue
             diff = float(diff)
             closeness_to_target = abs(diff - difficulty)
@@ -380,16 +379,12 @@ class SudokuMaker:
         if not difficulty_category:
             return sum([self.n_puzzles(c,new=new) for c in sudoku.DifficultyRating.categories])
         else:
-            path = os.path.join(self.pickle_to,
-                                difficulty_category.replace(' ','_')
-                                )
-            if os.path.exists(path):
-                ifi = file(path,'r')
-                count = 0
-                for line in ifi:
-                    if (not new) or line.split('\t')[0] not in self.played:
-                        count+=1
-                return count
+            lines = self.get_pregenerated(difficulty_category)
+            count = 0
+            for line in lines:
+                if (not new) or line.split('\t')[0] not in self.played:
+                    count+=1
+            return count
 
     def list_puzzles (self, difficulty_category=None, new=True):
         """Return a list of all puzzles we have generated.
@@ -399,15 +394,11 @@ class SudokuMaker:
             for c in sudoku.DifficultyRating.categories:
                 puzzle_list.extend(self.list_puzzles(c,new=new))
         else:
-            path = os.path.join(self.pickle_to,
-                                difficulty_category.replace(' ','_')
-                                )
-            if os.path.exists(path):
-                ifi = file(path,'r')
-                for l in ifi.readlines():
-                    puzzle = l.split('\t')[0]
-                    if (not new) or puzzle not in self.played:
-                        puzzle_list.append(puzzle)
+            lines = self.get_pregenerated(difficulty_category)
+            for l in lines:
+                puzzle = l.split('\t')[0]
+                if (not new) or puzzle not in self.played:
+                    puzzle_list.append(puzzle)
         return puzzle_list
 
     def get_puzzles_random (self, n, levels, new=True, exclude=[]):
@@ -422,10 +413,7 @@ class SudokuMaker:
         # Open files to read puzzles...
         puzzles_by_level = {}; files = {}
         for l in levels:
-            files[l] = os.path.join(self.pickle_to,
-                                    l.replace(' ','_'))
-            fi = file(files[l],'r')
-            puzzles_by_level[l] = fi.readlines(); fi.close()
+            puzzles_by_level[l] = self.get_pregenerated(l)
             random.shuffle(puzzles_by_level[l])
         i = 0; il = 0
         n_per_level = {}
@@ -470,11 +458,12 @@ class SudokuMaker:
         if not n: return []
         assert(levels)
         puzzles = []
+        
         # Open files to read puzzles...
-        files = dict([(l,
-                       file(os.path.join(self.pickle_to,
-                                         l.replace(' ','_')),
-                            'r')) for l in levels])
+        files = {}
+        for l in levels:
+            files[l] = self.get_pregenerated(l)
+
         i = 0; il = 0
         n_per_level = {}
         finished = []
@@ -485,10 +474,12 @@ class SudokuMaker:
             if lev in finished:
                 il += 1
                 continue
-            line = files[lev].readline()
-            if not line:
+            
+            if len(files[lev]) == 0:
                 finished.append(lev)
             else:
+                line = files[lev][0]
+                files[lev] = files[lev][1:]
                 try:
                     p,d = line.split('\t')
                 except ValueError:
@@ -504,7 +495,7 @@ class SudokuMaker:
         if i < n:
             print 'WARNING: Not able to provide %s puzzles in levels %s'%(n,levels)
             print 'WARNING: Generate more puzzles if you really need this many puzzles!'
-        for fi in files.values(): fi.close()
+
         return puzzles    
 
     # End convenience methods for accessing puzzles we've created
@@ -540,19 +531,16 @@ class SudokuMaker:
                                        diff.value_category().replace(' ','_'))
                 # Read through the existing file and make sure we're
                 # not a duplicate puzzle
-                infi = file(outpath,'r')
-                l = infi.readline()
-                while l:
-                    if l==puzstring:
-                        continue
-                    l = infi.readline()
-                infi.close()
-                outfi = file(outpath,'a')
-                outfi.write(puzstring+'\t'+str(diff.value)+'\n')
-                outfi.close()
+                existing = self.get_pregenerated(diff.value_category())
+                if not puzstring in existing:
+                    try:
+                        outfi = file(outpath,'a')
+                        outfi.write(puzstring+'\t'+str(diff.value)+'\n')
+                        outfi.close()
+                    except IOError, e:
+                        print 'Error appending pregenerated puzzle: %s' % e.message
+
                 print 'done writing...'
-        # Close all our open files...
-        #for f in open_files.values(): f.close()
 
     def pause (self, *args):
         if hasattr(self,'new_generator'): self.new_generator.pause()
