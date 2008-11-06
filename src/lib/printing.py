@@ -273,7 +273,7 @@ class SudokuPrinter:
             drawer.draw_grid()
             drawer.draw_sudoku()
             count += 1
-        self.gpc.showpage()
+        if count: self.gpc.showpage()
         self.job.close()
         self.drawn = True
         
