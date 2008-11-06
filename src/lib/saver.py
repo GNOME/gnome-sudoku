@@ -117,11 +117,7 @@ class SudokuTracker:
                         _('Error %(errno)s: %(error)s')%{'errno':e.errno,
                                                          'error':e.strerror}
                         )
-
-    def are_finished_games (self):
-        if os.listdir(self.finished_path): return True
-        else: return False
-
+                        
     def game_from_ui (self, ui):
         return ui.gsd.grid.virgin.to_string()
 
@@ -206,7 +202,10 @@ class SudokuTracker:
         self.remove_from_saved_games(jar)
         
     def list_saved_games (self):
-        files = os.listdir(self.save_path)
+        try:
+            files = os.listdir(self.save_path)
+        except OSError, e:
+            files = []
         games = []
         for f in files:
             f = os.path.join(self.save_path,f)
