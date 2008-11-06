@@ -538,7 +538,7 @@ class SudokuMaker:
                         outfi.write(puzstring+'\t'+str(diff.value)+'\n')
                         outfi.close()
                     except IOError, e:
-                        print 'Error appending pregenerated puzzle: %s' % e.message
+                        print 'Error appending pregenerated puzzle: %s' % e.strerror
 
                 print 'done writing...'
 
