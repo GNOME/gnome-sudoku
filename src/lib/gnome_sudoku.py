@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 
 # Ignore any exceptions writing to stdout using print statements

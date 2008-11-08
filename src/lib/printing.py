@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import gtk, gnomeprint, gnomeprint.ui, math
 import sudoku, gsudoku
 from gettext import gettext as _

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import gtk, gobject, os.path
 import re
 import xml.sax.saxutils

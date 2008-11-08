@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import gtk, cairo, pango, gobject
 import colors
 import math

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # GConf wrapper1
 # COPIED VERBATIM FROM http://www.daa.com.au/pipermail/pygtk/2002-August/003220.html
 # by Johan Dahlin

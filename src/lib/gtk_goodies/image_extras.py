@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import gtk
 import string
 import StringIO

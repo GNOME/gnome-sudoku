@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def rgb_to_hsv (r,g,b,maxval=255):
     if type(r)==int: r = r/float(maxval)
     if type(g)==int: g = g/float(maxval)

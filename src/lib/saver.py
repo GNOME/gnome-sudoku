@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import pickle, types, os, os.path, sudoku, errno
 from defaults import *
 from gtk_goodies.dialog_extras import show_message

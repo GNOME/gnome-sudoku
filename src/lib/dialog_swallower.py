@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import gtk, gobject
 
 # Convenience library for a new kind of UI -- for e.g. this game, we

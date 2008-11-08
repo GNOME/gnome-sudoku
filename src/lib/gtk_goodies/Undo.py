@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import gtk, difflib,re
 DEBUG=False
 def debug (*args,**kwargs):

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import gtk, gtk.glade, gobject
 import sudoku
 from gtk_goodies import gconf_wrapper

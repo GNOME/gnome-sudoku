@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # NOTE: We could also play in hexidecimal for kicks...
 import random
 import math

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import gtk, gobject, time
 import sudoku, saver, sudoku_maker, random
 from sudoku import DifficultyRating as DR

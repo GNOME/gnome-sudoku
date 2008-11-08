@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import gtk, gobject, gtk.glade
 import os, os.path
 import time
