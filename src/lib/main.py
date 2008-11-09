@@ -22,7 +22,11 @@ from dialog_swallower import SwappableArea
 icon_factory = gtk.IconFactory()
 STOCK_PIXBUFS = {}
 for filename,stock_id in [('footprints.png','tracks'),]:
-    pb = gtk.gdk.pixbuf_new_from_file(os.path.join(IMAGE_DIR,filename))
+    try:
+        pb = gtk.gdk.pixbuf_new_from_file(os.path.join(IMAGE_DIR,filename))
+    except gobject.GError, e:
+        print 'Failed to load pixbuf: %s' % e
+        continue
     STOCK_PIXBUFS[stock_id]=pb
     iconset = gtk.IconSet(pb)
     icon_factory.add(stock_id,iconset)
