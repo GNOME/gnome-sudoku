@@ -226,6 +226,8 @@ class UI (gconf_wrapper.GConfWrapper):
             self.tb.show()
         if self.gconf['always_show_hints']:
             self.gsd.update_all_hints()
+        if self.gconf['highlight']:
+            self.gsd.toggle_highlight(True)
 
 
     def show (self):
