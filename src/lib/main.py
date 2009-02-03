@@ -77,19 +77,13 @@ class UI (gconf_wrapper.GConfWrapper):
     <menubar name="MenuBar">
       <menu name="Game" action="Game">
         <menuitem action="New"/>
-        <!--<menuitem action="ByHand"/>-->
-        <!--<menuitem action="Open"/>-->
-        <!--<separator/>
-        <menuitem action="Save"/>-->
         <separator/>
         <menuitem action="PuzzleInfo"/>
-        <!--<menuitem action="HighScores"/>-->
         <separator/>        
         <menuitem action="Print"/>
         <menuitem action="PrintMany"/>
         <separator/>
         <menuitem action="Close"/>
-        <!--<menuitem action="Quit"/>-->
       </menu>
       <menu action="Edit">
         <menuitem action="Undo"/>
@@ -105,47 +99,37 @@ class UI (gconf_wrapper.GConfWrapper):
         <menuitem action="ToggleHighlight"/>        
       </menu>
       <menu action="Tools">
-         <menuitem action="ShowPossible"/>
-          <menuitem action="AutofillCurrentSquare"/>
-          <menuitem action="Autofill"/>
-          <separator/>
-          <menuitem action="AlwaysShowPossible"/>
-          <menuitem action="ShowImpossibleImplications"/>
-
+        <menuitem action="ShowPossible"/>
+        <menuitem action="AutofillCurrentSquare"/>
+        <menuitem action="Autofill"/>
+        <separator/>
+        <menuitem action="AlwaysShowPossible"/>
+        <menuitem action="ShowImpossibleImplications"/>
         <separator/>
         <menuitem action="Generator"/>
         <menuitem action="BackgroundGenerator"/>
         <separator/>
         <menuitem action="Tracker"/>
         </menu>
-       <menu action="Help">
-         <menuitem action="ShowHelp"/>
-         <menuitem action="About"/>
-       </menu>
-     </menubar>
-     <toolbar name="Toolbar">
-      <!--<toolitem action="Quit"/>-->
+      <menu action="Help">
+        <menuitem action="ShowHelp"/>
+        <menuitem action="About"/>
+      </menu>
+    </menubar>
+    <toolbar name="Toolbar">
       <toolitem action="New"/>
-      <!--<toolitem action="Open"/>-->
       <toolitem action="Print"/>
-      <!--<toolitem action="Save"/>-->
-      <!--<separator/>-->
-      <!--<toolitem action="Clear"/>      -->
-      <!--<toolitem action="ClearNotes"/>-->
       <separator/>
       <toolitem action="Undo"/>
       <toolitem action="Redo"/>
       <separator/>
       <toolitem action="ShowPossible"/>
-      <!--<toolitem action="AlwaysShowPossible"/>-->
       <toolitem action="AutofillCurrentSquare"/>      
       <separator/>
       <toolitem action="ToggleHighlight"/>
-      <!--<toolitem action="AlwaysShowPossible"/>-->
-      
       <toolitem action="Tracker"/>
-     </toolbar>
-     </ui>'''
+    </toolbar>
+    </ui>'''
 
     initial_prefs = {'group_size':9,
                      'font_zoom':0,
@@ -161,7 +145,6 @@ class UI (gconf_wrapper.GConfWrapper):
                      'width': 700,
                      'height': 675,
                      'auto_save_interval':60 # auto-save interval in seconds...
-                     #'show_notes':0
                      }    
 
     @simple_debug
@@ -183,24 +166,12 @@ class UI (gconf_wrapper.GConfWrapper):
         # setup sudoku maker...
         self.sudoku_maker = sudoku_maker.SudokuMaker()
         self.sudoku_tracker = saver.SudokuTracker()
-        #if not self.sudoku_tracker.playing:
-        #    self.main_actions.get_action('Open').set_sensitive(False)
-        #else:
-        #self.main_actions.get_action('Open').set_sensitive(True)
-        #if not self.sudoku_tracker.are_finished_games():
-        #    self.main_actions.get_action('HighScores').set_sensitive(False)
-        # select an easy puzzle...
-        #puz,d=self.sudoku_maker.get_new_puzzle(self.gconf['difficulty'])
-        #print 'Default to ',puz
-        #self.gsd.change_grid(puz, 9)
         # generate puzzles while our use is working...        
         self.show()
-        #print 'Select game!'
         if run_selector:
             self.do_stop()
             if self.select_game():
                 # If this return True, the user closed...
-                #print 'select game returned True - exit'                
                 self.quit = True
             else:
                 self.quit = False
@@ -213,10 +184,8 @@ class UI (gconf_wrapper.GConfWrapper):
     def select_game (self):
         self.tb.hide()
         choice = game_selector.NewOrSavedGameSelector().run_swallowed_dialog(self.swallower)
-        #print "The user's choice is ",choice
         if not choice:
             return True
-        #print 'choice is ',choice
         self.timer.start_timing()
         if choice[0] == game_selector.NewOrSavedGameSelector.NEW_GAME:
             self.gsd.change_grid(choice[1],9)
@@ -268,19 +237,8 @@ class UI (gconf_wrapper.GConfWrapper):
              None,_('Print current game'),self.print_game),
             ('PrintMany',gtk.STOCK_PRINT,_('Print _Multiple Sudokus'),
              None,_('Print more than one sudoku at a time.'),self.print_multiple_games),
-            #('Quit',gtk.STOCK_QUIT,None,'<Control>q',
-            # 'Quit Sudoku game',self.quit_cb),
             ('Close',gtk.STOCK_CLOSE,None,'<Control>w',
              _('Close Sudoku'),self.quit_cb),
-            #('Save',gtk.STOCK_SAVE,_('_Save'),
-            # '<Control>s','Save game to play later.',
-            # self.save_game_cb),
-            #('ByHand',gtk.STOCK_EDIT,_('_Enter custom game'),
-            # None,_('Enter new puzzle by hand (use this to copy a puzzle from another source).'),
-            # self.enter_game_by_hand),
-            #('Open',gtk.STOCK_OPEN,_('Open game'),
-            # '<Control>o',_('Open a saved game from file.'),
-            # self.open_game),
             ('Tools',None,_('_Tools')),
             ('View',None,_('_View')),
             ('ShowPossible',gtk.STOCK_DIALOG_INFO,_('_Hint'),
@@ -304,9 +262,6 @@ class UI (gconf_wrapper.GConfWrapper):
              None,None,self.show_about),
             ('ShowHelp',gtk.STOCK_HELP, _('_Contents'),
              'F1',None,self.show_help),
-            #('HighScores',None,_('High _Scores'),
-            # None,_('Show high scores or replay old games.'),
-            # self.show_high_scores_cb),
             ])
         self.main_actions.add_toggle_actions([
             ('AlwaysShowPossible',
@@ -447,15 +402,12 @@ class UI (gconf_wrapper.GConfWrapper):
     def start_worker_thread (self, *args):
         n_new_puzzles = self.sudoku_maker.n_puzzles(new=True)
         if n_new_puzzles < self.gconf['minimum_number_of_new_puzzles']:
-            #print 'Generate puzzles'
             self.worker = threading.Thread(target=lambda *args: self.sudoku_maker.work(limit=5))
             self.worker_connections = [
                 self.timer.connect('timing-started',self.sudoku_maker.resume),
                 self.timer.connect('timing-stopped',self.sudoku_maker.pause)
                 ]
             self.worker.start()
-        #else:
-        #    print "Don't generate...",'We already have ',n_new_puzzles,'!'
 
     @simple_debug
     def stop_worker_thread (self, *args):
@@ -497,19 +449,8 @@ class UI (gconf_wrapper.GConfWrapper):
         self.dancer = GridDancer(self.gsd)
         self.dancer.start_dancing()            
         dialog_extras.show_message(_("You win!"),label=_("You win!"),
-                                   #icon=os.path.join(IMAGE_DIR,'winner2.png'),
                                    sublabel=sublabel
                                    )
-        # High scores is complicated and kind of unnecessary for now...
-        # If we reimplement, we should use the proper gnome-games system.
-        #hs = game_selector.HighScores(self.sudoku_tracker)
-        #hs.highlight_newest=True
-        #hs.run_swallowed_dialog(self.swallower)
-        #print 'Run high scores dialog!'
-        #hs.run_dialog()
-        #self.main_actions.get_action('HighScores').set_sensitive(True)
-        #self.gsd.blank_grid()
-        #self.new_cb()
 
     @simple_debug
     def initialize_prefs (self):
@@ -566,15 +507,10 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def quit_cb (self, *args):
-        # Offer a save...
-        #try:
         if (self.gsd.grid
             and self.gsd.grid.is_changed()
             and (not self.won)):
-            #and dialog_extras.getBoolean(label=_("Save game before closing?"))):
             self.save_game(self) # autosave...
-        #except dialog_extras.UserCancelledError:
-        #    return
         if gtk.main_level() > 1:
             # If we are in an embedded mainloop, that means that one
             # of our "swallowed" dialogs is active, in which case we
@@ -588,15 +524,6 @@ class UI (gconf_wrapper.GConfWrapper):
                                                # to quit the main
                                                # mainloop
             return
-            #buttons = d.action_area.get_children()
-            #for b in buttons:
-            #    if d.get_response_for_widget(b) in [gtk.RESPONSE_CLOSE,gtk.RESPONSE_CANCEL]:
-            #        print 'clicking button',b
-            #        b.emit('clicked')
-            #        while gtk.events_pending():
-            #            print 'Take care of iters...'
-            #            gtk.main_iteration()
-            #        break
         self.w.hide()
         # make sure we really go away before doing our saving --
         # otherwise we appear sluggish.
@@ -633,12 +560,6 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     def cancel_handmade_grid (self, *args):
         for w in self.by_hand_widgets: w.hide()
-
-    #def save_game_cb (self, *args):
-    #    try:
-    #        self.save_game(*args)
-    #    except dialog_extras.UserCancelledError:
-    #        pass
 
     @simple_debug
     def save_game (self, *args):
@@ -765,8 +686,6 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     def tracker_toggle_cb (self, widg):
         if widg.get_active():
-            #if len(self.tracker_ui.tracker_model)<=1:
-            #    self.tracker_ui.add_tracker()
             self.tracker_ui.show_all()
         else:
             self.tracker_ui.hide()
@@ -870,8 +789,6 @@ class UI (gconf_wrapper.GConfWrapper):
         saver.unpickle_game(self,filename)
         self.history.clear()
         
-    #def toggle_autosave ():
-
     @simple_debug
     def show_about (self, *args):
         about = gtk.AboutDialog()
@@ -976,9 +893,7 @@ class TrackerBox (gtk.VBox):
 
     @simple_debug
     def add_tracker (self,*args):
-        #print 'Adding tracker!'
         tracker_id = self.main_ui.gsd.create_tracker()
-        #print 'tracker_id = ',tracker_id
         pb=image_extras.pixbuf_transform_color(
             STOCK_PIXBUFS['tracks'],
             (0,0,0),#white

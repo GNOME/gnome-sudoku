@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
-# NOTE: We could also play in hexidecimal for kicks...
 import random
 import math
 import re
 from gettext import gettext as _
-
-
 
 GROUP_SIZE = 9
 
@@ -14,7 +11,6 @@ TYPE_COLUMN = 1
 TYPE_BOX = 2
 
 digit_set = range(1,GROUP_SIZE+1)
-#random.shuffle(digit_set)
 sets = [digit_set] * 9
 
 def is_set (row):
@@ -264,7 +260,6 @@ class SudokuSolver (SudokuGrid):
         self.initialized=True
         self.solved = False
         self.trail = []
-        #self.complete_crumbs = BreadcrumbTrail()
 
     def auto_fill_for_xy (self, x, y):
         """Fill the square x,y if possible."""
@@ -385,17 +380,12 @@ class SudokuSolver (SudokuGrid):
                 # just work on the open squares
                 coord_set = filter(lambda coords: not self._get_(*coords),coord_set)                
                 for xy,poss_set in [(c,self.possible_values(*c)) for c in coord_set]:
-                    #print 'Looking at ',coords
-                    #print 'Possible vals: ',poss_set
                     # our set of values we can fill is now greater...
                     values = values|poss_set
                     # track who can fill our needs...
                     for v in poss_set: needed_dic[v].append(xy)
                 # check if our set of fillable values is sufficient
-                #print 'Needed dic: ',needed_dic
                 if values != self.gen_set:
-                    #if self.verbose: print 'PROBLEM in ',label,' ',n
-                    #print 'Initial puzzle was: ',self.virgin
                     raise UnsolvablePuzzle("Impossible to solve! We are missing %s in %s"%(self.gen_set-values,label))
                 # Check if there are any values for which only one cell will suffice
                 needed_filled_by = needed_dic.items()
@@ -414,7 +404,6 @@ class SudokuSolver (SudokuGrid):
                                 "Impossible to solve! %s,%s must be two values at once!"%(coords)
                                 )
         if self.verbose: print 'fill_must_fills returning ',has_changed
-        #print 'fill_must_fills returning ',has_changed
         return has_changed
 
     def scan_must_fills (self):
@@ -436,7 +425,6 @@ class SudokuSolver (SudokuGrid):
             self.add(coords[0],coords[1],val)
             retval.append([(coords[0],coords[1]),val])
         if self.verbose: print 'deterministically returning ',retval
-        #print 'deterministically filled ',retval
         return retval
 
     def solve (self):
@@ -451,7 +439,6 @@ class SudokuSolver (SudokuGrid):
         self.solved=True
         yield tuple([tuple(r) for r in self.grid[0:]])
         while self.breadcrumbs:
-            #print self.breadcrumbs
             self.unwrap_guess(self.breadcrumbs[-1])
             try:
                 while not self.guess_least_open_square(): 1
@@ -492,8 +479,6 @@ class SudokuSolver (SudokuGrid):
         if not possible_values:
             if self.breadcrumbs:
                 self.backtraces += 1
-                #print self.breadcrumbs
-                #raw_input('Hit return to back up...')
                 self.unwrap_guess(self.breadcrumbs[-1])
                 return self.guess_least_open_square()
             else:
@@ -504,18 +489,10 @@ class SudokuSolver (SudokuGrid):
                                             self.guesses.guesses_for_coord(*least[0]),
                                             self.guesses))
         guess = random.choice(list(possible_values))
-        #print 'Our trail so far: ',self.breadcrumbs
-        #print 'Guessing ',guess,' from ',possible_values,' for ',least[0]
-        #raw_input('Continue...')
-        # If we have a trail, we mark our parent
-        #if self.breadcrumbs: parent=self.breadcrumbs[-1]
-        #else: parent=None
         # Create guess object
         guess_obj = Guess(least[0][0],least[0][1],guess)
         if self.breadcrumbs:
             self.breadcrumbs[-1].children.append(guess_obj)
-        #print 'Guessing ',guess_obj        
-        #print 'adding guess ',least[0],guess
         self.current_guess = None #reset (we're tracked via guess.child)
         self.add(least[0][0],least[0][1],guess)
         self.current_guess = guess_obj # (All deterministic additions
@@ -526,49 +503,24 @@ class SudokuSolver (SudokuGrid):
         self.breadcrumbs.append(guess_obj)
         try:
             filled = self.auto_fill()
-            #print 'filled :',filled
-            #print 'Done with guess.'
         except NotImplementedError:
-            #print 'Bad Guess!!!'
-            #print self
             self.trail.append('Problem filling coordinates after guess')
-            #raw_input('Hit return to unwrap %s'%guess_obj)
             self.unwrap_guess(guess_obj)
             return self.guess_least_open_square()
-            #print self
         if set([]) in self.calculate_open_squares().values():
-            #print 'BAD GUESS!!!'
-            #print self
             self.trail.append('Guess leaves us with impossible squares.')
-            #raw_input('Hit return to unwrap %s'%guess_obj)
             self.unwrap_guess(guess_obj)
             return self.guess_least_open_square()
-            #print self
 
     def unwrap_guess (self, guess):
-        #print 'Unwrapping guess ',guess
-        #print self
-        #raw_input('Unwrap...')
-        #print 'Before:'
-        #print self
         self.trail.append(('-',guess))
         if self._get_(guess.x,guess.y): self.remove(guess.x,guess.y)
         for consequence in guess.consequences.keys():
             if self._get_(*consequence): self.remove(*consequence)
-        #for d in self.guesses.remove_children(guess):
         for child in guess.children:
-            #if self._get_(d.x,d.y):
-            #print 'remove descendant ',child.x,child.y
             self.unwrap_guess(child)
             if child in self.guesses: self.guesses.remove(child)
-        #print 'removing %s from breadcrumbs (%s)'%(guess,self.breadcrumbs)
         if guess in self.breadcrumbs: self.breadcrumbs.remove(guess)
-        #print 'Remaining crumbs: ',self.breadcrumbs
-        #print 'Remaining guesses: ',self.guesses
-        #print 'New unwrapped self:'
-        #print self
-        #print 'After:'
-        #print self
 
     def print_possibilities (self):
         poss = self.calculate_open_squares()
@@ -594,19 +546,6 @@ class SudokuSolver (SudokuGrid):
         if self.current_guess:
             self.current_guess.add_consequence(x,y,val)
         SudokuGrid.add(self,x,y,val,*args,**kwargs)
-    #    if self.initialized:
-    #        stack = traceback.extract_stack()
-    #        print ":".join(str(x) for x in stack[-5][1:-1]),            
-    #        print ":".join(str(x) for x in stack[-4][1:-1]),
-    #        print ":".join(str(x) for x in stack[-3][1:-1]),
-    #        print ': adding ',x,y,val
-    #        
-    #    SudokuGrid.add(self,x,y,val,*args,**kwargs)
-
-    #def remove (self, x, y):
-    #    #if self.initialized: self.complete_crumbs.remove_guesses_for_coord(x,y)
-    #    SudokuGrid.remove(self,x,y)
-        
 
 
 class InteractiveSudoku (SudokuSolver):
@@ -614,7 +553,6 @@ class InteractiveSudoku (SudokuSolver):
     functions for helping along a human.who is in the midst of
     solving."""
     def __init__ (self, grid=False, verbose=False, group_size=9):
-        #self.virgin_self = SudokuSolver(grid,verbose,group_size)
         SudokuSolver.__init__(self,grid,verbose,group_size)
 
     def to_string (self):
@@ -638,17 +576,10 @@ class InteractiveSudoku (SudokuSolver):
     def check_for_completeness (self):
         for r in self.rows:
             if len(r)!=self.group_size:
-                #print 'Row not complete: ',r
                 return False
         for c in self.cols:
             if len(c)!=self.group_size:
-                #print 'Column not complete: ',c
                 return False
-        # (This is redundant)
-        #for b in self.boxes:
-        #    if len(b)!=self.group_size:
-        #        print 'Box not complete: ',b
-        #        return False
         return True
 
     def is_changed (self):
@@ -782,13 +713,10 @@ class SudokuRater (SudokuSolver):
     def add (self,*args,**kwargs):
         if not self.fake_add:
             if self.initialized and not self.guessing:
-                #print 'Scanning fillables'
                 self.scan_fillables()
-                #print 'Done scanning fillables'
                 for delayed_args in self.add_me_queue:
                     coords = (delayed_args[0],delayed_args[1])
                     if not self._get_(*coords):
-                        #print 'Adding scanned fillable:'
                         SudokuSolver.add(self,*delayed_args)
                 if not self._get_(args[0],args[1]):
                     SudokuSolver.add(self,*args)
@@ -820,7 +748,6 @@ class SudokuRater (SudokuSolver):
         self.fake_add = False
 
     def guess_least_open_square (self):
-        #print 'guessing'
         self.guessing = True
         return SudokuSolver.guess_least_open_square(self)
 
@@ -832,7 +759,6 @@ class SudokuRater (SudokuSolver):
                           r),
             self.virgin.grid)
         self.numbers_added = self.group_size**2 - self.clues
-        #self.auto_fill()
         rating = DifficultyRating(self.fill_must_fillables,
                                   self.elimination_fillables,
                                   self.guesses,
@@ -852,12 +778,9 @@ class GuessList (list):
     def remove_children (self, guess):
         removed = []
         for g in guess.children:
-            #print 'removing descendant of ',guess,':',g
             if g in self:
                 removed.append(g)
                 self.remove(g)
-                #print 'recursion from ',g,'->'
-                #removed.extend(self.remove_descendants(g))
         return removed
 
     def remove_guesses_for_coord (self, x, y):
@@ -868,7 +791,6 @@ class GuessList (list):
             if g.x==x and g.y == y:
                 nuking=True
             if nuking:
-                #print 'nuking ',g
                 self.remove(g)
                 nuked += [g]
         return nuked
@@ -890,7 +812,6 @@ class Guess:
         self.consequences = {}
 
     def add_consequence (self, x, y, val):
-        #print 'Guess: adding consequence ',x,y,val
         self.consequences[(x,y)]=val
 
     def __repr__ (self):
@@ -908,132 +829,3 @@ def add_with_diminishing_importance (lst, diminish_by=lambda x: x+1):
         sum += float(n) / diminish_by(i)
     return sum
 
-
-daily_sudoku = [
-    [7,0,0,0,9,0,5,2,0],
-    [0,9,8,0,0,2,0,0,0],
-    [0,0,3,0,0,4,8,0,0],
-    [3,0,0,0,4,0,0,8,0],
-    [0,8,4,0,0,0,9,5,0],
-    [0,6,0,0,3,0,0,0,2],
-    [0,0,9,2,0,0,3,0,0],
-    [0,0,0,4,0,0,2,1,0],
-    [0,4,1,0,0,0,0,0,7]
-    ]
-
-easy_sudoku = [
-    [8,0,4,6,7,1,2,5,3],
-    [0,0,0,0,0,5,0,7,1],
-    [0,0,0,0,0,0,0,0,0],
-    [5,0,0,9,1,0,0,8,4],
-    [3,7,0,0,0,0,0,9,6],
-    [4,1,0,0,6,8,0,0,5],
-    [0,0,0,0,0,0,0,0,0],
-    [9,6,0,7,0,0,0,0,0],
-    [1,8,3,4,9,2,5,0,7]
-    ]
-
-sample_open_sudoku = [
-    [0,4,0,5,9,0,0,0,0],
-    [3,0,6,0,4,0,0,0,0],
-    [0,5,9,0,0,0,0,0,6],
-    [0,0,0,4,0,1,0,5,0],
-    [6,1,0,0,7,0,0,9,0],
-    [5,2,0,3,0,9,0,8,0],
-    [0,0,8,0,5,2,4,0,0],
-    [0,9,0,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0,0,0]]
-
-hard_open_sudoku = [
-    [0,0,9,0,0,3,0,0,2],
-    [0,0,0,4,0,1,0,0,8],
-    [0,0,5,0,0,0,0,0,4],
-    [0,3,0,0,4,0,0,7,0],
-    [0,8,0,0,9,0,0,2,0],
-    [0,1,0,0,6,0,0,5,0],
-    [7,0,0,0,0,0,6,0,0],
-    [4,0,0,8,0,7,0,0,0],
-    [3,0,0,2,0,0,1,0,0]
-    ]
-
-fiendish_sudoku = [
-    [0,7,0,0,0,0,2,0,0],
-    [0,1,0,0,0,0,8,3,0],
-    [0,0,0,0,3,5,6,0,7],
-    [8,0,0,0,0,0,0,0,0],
-    [0,0,0,2,9,6,0,0,0],
-    [0,0,0,0,0,0,0,0,4],
-    [1,0,2,7,8,0,0,0,0],
-    [0,3,5,0,0,0,0,1,0],
-    [0,0,4,0,0,0,0,9,0],
-    ]
-#while 1:
-#    try:
-#        g=RandomGridGenerator()
-#        #print 'We did it!!!'
-#        #print g
-#        break
-#    except IndexError:
-#        n += 1
-#        if n % 10 == 0:
-#            print 'Failed: Try ',n
-
-sample_sudoku = [
-    [6,9,2,7,3,8,5,4,1],
-    [4,8,3,1,5,6,2,9,7],
-    [1,7,5,2,9,4,6,8,3],
-    [7,5,9,6,2,3,8,1,4],
-    [2,3,4,8,1,5,9,7,6],
-    [8,1,6,4,7,9,3,5,2],
-    [5,6,8,3,4,7,1,2,9],
-    [9,4,1,5,6,2,7,3,8],
-    [3,2,7,9,8,1,4,6,5],
-    ]
-#is_sudoku(sample_sudoku)
-
-hard_hex_sudoku=[
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0],
-    [9, 0, 5, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 10, 0, 0, 0, 0],
-    [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-    [2, 11, 3, 0, 16, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 6, 0, 5, 0, 0, 0, 0, 11, 0],
-    [0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [3, 0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0],
-    [0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 8, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 9, 0, 0, 0, 0, 15, 2, 0, 0, 0, 0, 0, 0, 0],
-    ]
-
-hard_hex_sudoku_solution = [
-    [15, 10, 7, 14, 11, 3, 16, 1, 8, 6, 2, 4, 9, 13, 12, 5],
-    [6, 9, 12, 3, 15, 7, 14, 2, 13, 1, 11, 5, 16, 4, 8, 10],
-    [1, 13, 16, 5, 4, 8, 12, 9, 10, 3, 15, 14, 6, 7, 2, 11],
-    [8, 4, 2, 11, 6, 5, 10, 13, 9, 16, 12, 7, 1, 3, 15, 14],
-    [9, 7, 5, 13, 1, 15, 4, 10, 16, 12, 14, 11, 3, 8, 6, 2],
-    [16, 12, 15, 6, 9, 2, 11, 8, 4, 7, 3, 10, 5, 14, 1, 13],
-    [10, 14, 8, 4, 5, 6, 13, 3, 15, 9, 1, 2, 12, 11, 7, 16],
-    [2, 11, 3, 1, 16, 14, 7, 12, 5, 8, 6, 13, 15, 10, 9, 4],
-    [13, 2, 10, 16, 12, 4, 3, 6, 1, 5, 9, 8, 14, 15, 11, 7],
-    [5, 1, 11, 8, 2, 9, 15, 7, 14, 13, 4, 3, 10, 12, 16, 6],
-    [3, 6, 14, 7, 8, 13, 5, 11, 12, 15, 10, 16, 2, 9, 4, 1],
-    [12, 15, 4, 9, 14, 10, 1, 16, 11, 2, 7, 6, 13, 5, 3, 8],
-    [4, 16, 1, 12, 3, 11, 8, 5, 6, 10, 13, 15, 7, 2, 14, 9],
-    [7, 5, 6, 2, 13, 12, 9, 4, 3, 14, 8, 1, 11, 16, 10, 15],
-    [11, 3, 13, 15, 10, 1, 2, 14, 7, 4, 16, 9, 8, 6, 5, 12],
-    [14, 8, 9, 10, 7, 16, 6, 15, 2, 11, 5, 12, 4, 1, 13, 3],
-    ]
-
-if __name__ == '__main__':
-    #sgs = {}
-    #for n in range(20):
-    #    sg=SudokuGenerator()
-    #    sg.generate_puzzles(20)
-    #    sgs[sg]=sg.average_difficulty()
-        
-    pass

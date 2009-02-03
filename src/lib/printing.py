@@ -28,8 +28,6 @@ class GridDrawer:
         self.left_upper = start_at
         self.right_lower = self.left_upper[0]+self.grid_side_size,self.left_upper[1]-self.grid_side_size
         self.box_size = math.sqrt(grid_size)
-        #print 'beginpage 1'
-        #self.gpc.beginpage("1")
         # get the right font size for our increment...
         self.increment * 0.7
         # start with our maximum font...
@@ -42,7 +40,6 @@ class GridDrawer:
             self.font = gnomeprint.font_find_closest('Helvetica',
                                                      max_size)
         self.THICK_WIDTH = 1 + float(max_size) / 8
-        #print 'FONT SIZE ',max_size, 'BORDER SIZE: ',self.THICK_WIDTH
         self.gpc.setfont(
             self.font
             )
@@ -66,10 +63,8 @@ class GridDrawer:
         move_to = list(self.left_upper)
         char_w=font.get_width_utf8(str(val))
         char_h = font.get_ascender()
-        #print 'Center by ',(self.increment - char_w)/2
         move_to[self.X] += (self.increment * x + (self.increment - char_w)/2)
         move_to[self.Y] = move_to[self.Y] - (((y+1) * self.increment) - (self.increment - char_h)/2)
-        #print 'Printing ',x,y,val,' at ',move_to
         self.gpc.moveto(*move_to)
         self.gpc.show(str(val))
         if color: self.gpc.setrgbcolor(*self.default_color) #unset color
@@ -105,8 +100,6 @@ class GridDrawer:
                 else:
                     dest_pos[opposite]=dest_pos[opposite]-self.grid_side_size-length_adjustment*2
                 self.gpc.lineto(*dest_pos)
-                #print 'Printing line ',direction,':',n
-                #print dest_pos,':',start_pos
                 self.gpc.stroke()
                 # Reset our width to normal if need be...
                 if n % self.box_size == 0: self.gpc.setlinewidth(1)                
@@ -193,7 +186,6 @@ class SudokuPrinter:
             sudokus = [sudokus] # assume they passed us one sudoku by
             self.nsudokus = 1        # mistake and be nice
         self.sudokus = sudokus
-        #print 'Getting default config'
         self.job = gnomeprint.Job(gnomeprint.config_default())
 
     def run (self):
@@ -206,19 +198,16 @@ class SudokuPrinter:
         self.dialog.show()
 
     def response_cb (self, dialog, response):
-        #print 'Ran dialog.'
         if response == gnomeprint.ui.DIALOG_RESPONSE_CANCEL:
             dialog.hide()            
         elif response == gnomeprint.ui.DIALOG_RESPONSE_PREVIEW:
             if not self.drawn: self.draw_sudokus()
             w=gnomeprint.ui.JobPreview(self.job,_('Print Preview'))
             w.set_transient_for(dialog)
-            #w.present()
             w.set_property('allow-grow',1)
             w.set_property('allow-shrink',1)
             w.show_all()
             w.present()
-            #self.dialog.emit_stop_by_name('response')
         elif response == gnomeprint.ui.DIALOG_RESPONSE_PRINT:
             if not self.drawn: self.draw_sudokus()
             self.job.print_()
@@ -226,7 +215,6 @@ class SudokuPrinter:
 
             
     def draw_sudokus (self):
-        #print 'getting context'
         self.gpc = self.job.get_context()    
         width,height = gnomeprint.job_get_page_size_from_config(self.job.get_config())
         self.margin = 50
@@ -242,7 +230,6 @@ class SudokuPrinter:
                 dimensions, square_size = fit_squares_in_rectangle(width,height,self.sudokus_per_page,self.margin)
         else:
             dimensions,square_size =  fit_squares_in_rectangle(width,height,self.sudokus_per_page,self.margin)
-        #print 'SQUARE_SIZE=',square_size
         count = 0
         for sudoku in self.sudokus:
             if type(sudoku)==tuple:
@@ -302,7 +289,6 @@ def fit_squares_in_rectangle (width, height, n, margin=0):
             square_size = across_size
         else:
             square_size = down_size
-        #print n_across,'x',n_down,'=>',square_size,'x',square_size,'squares.'
         if square_size > best_square_size:
             best_square_size = square_size
             best_fit = n_across,n_down
@@ -312,17 +298,4 @@ def fit_squares_in_rectangle (width, height, n, margin=0):
 def print_sudokus(*args,**kwargs):
     sp = SudokuPrinter(*args,**kwargs)
     sp.run()
-
-    
-def my_print ():
-    sud=sudoku.SudokuSolver(sudoku.easy_sudoku)
-    sud.fill_deterministically()
-    sud2 = sudoku.SudokuSolver(sudoku.fiendish_sudoku)
-    sud2.fill_deterministically()
-    sud3 = sudoku.SudokuSolver(sudoku.hard_open_sudoku)
-    #print_sudokus([sud,sud2,sud3,sud,sud2,sud3,sud,sud2,sud3],
-    #              )
-    sp = SudokuPrinter([sud,sud2,sud3,sud,sud2,sud3,sud,sud2,sud3])
-    #sp.run()
-    print 'and...\n...\nreturns',sp.run(),'!'
 

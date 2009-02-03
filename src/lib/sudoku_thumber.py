@@ -37,14 +37,12 @@ def make_image_surface (sudoku, played, highlight_color):
                  (SIZE-(BORDER)),
                  (SIZE-(BORDER)),
         )
-    #print 'HIGHLIGHT: ',BORDER*0.5,'-',SIZE-BORDER
     cr.set_source_rgb(1,1,1)
     cr.fill_preserve()
     cr.set_source_rgb(*highlight_color)
     cr.stroke()
     cr.set_source_rgb(*LINE_GREY)
     cr.set_line_width(THICK)
-    #cr.set_line_join(cairo.LINE_JOIN_MITER)
     cr.rectangle(BORDER,
                  BORDER,
                  (SIZE-(BORDER+2*THICK)),
@@ -55,25 +53,17 @@ def make_image_surface (sudoku, played, highlight_color):
     position = BORDER + THICK
     pos = {}
     pos[0] = position + (SQUARE_SIZE/2.0)
-    #print 'Full size=',SIZE
-    #print 'border =',BORDER
-    #print 'thin lines=',THIN
-    #print 'thick lines=',THICK
-    #print 'square size=',SQUARE_SIZE
     last_line = 0
     for n in range(1,SUDOKU_SIZE):
         if n % N_BOXES == 0:
             cr.set_line_width(THICK)
             position += SQUARE_SIZE + last_line/2.0 + THICK/2.0
             last_line = THICK
-            #print 'THICK',
         else:
             cr.set_line_width(THIN)
             position += SQUARE_SIZE + last_line/2.0 + THIN/2.0
             last_line = THIN
-            #print 'THIN ',
         pos[n] = position + ((last_line + SQUARE_SIZE)/2.0)
-        #print 'draw at ',position
         cr.move_to(BORDER,position)
         cr.line_to(SIZE-BORDER,position)
         cr.move_to(position,BORDER)
@@ -83,15 +73,12 @@ def make_image_surface (sudoku, played, highlight_color):
     for x in range(SUDOKU_SIZE):
         for y in range(SUDOKU_SIZE):
             cr.move_to(pos[x],pos[y])
-            #cr.arc(pos[x],pos[y],SQUARE_SIZE/3.0,0.1,0)
-            #cr.stroke()
             letter = None
             if sudoku[y][x]:
                 letter = str(sudoku[y][x])
                 cr.select_font_face("",
                          cairo.FONT_SLANT_NORMAL,
                          cairo.FONT_WEIGHT_BOLD)
-                         #cairo.FONT_WEIGHT_NORMAL)
                 cr.set_source_rgb(0,0,0)    
                 xbearing,ybearing,width,height,xadvance,yadvance = (
                     cr.text_extents(letter)
@@ -119,10 +106,3 @@ def make_pixbuf (sudoku, played, highlight_color):
     del surf
     return pixbuf
 
-if __name__ == '__main__':
-    make_image_surface(sudoku,played,
-                       (1.0,0.5,0.5)).write_to_png(
-        '/home/tom/Desktop/test.png'
-        )
-                                               
-                   

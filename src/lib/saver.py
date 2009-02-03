@@ -31,7 +31,6 @@ def super_setattr (obj, attr, val):
 
 def jar_game (ui):
     jar = {} # what we will pickle
-    #jar['undo_history']=ui.history
     ui.timer.finish_timing()
     jar['game']=ui.gsd.grid.to_string()
     jar['trackers']=ui.gsd.trackers
@@ -46,7 +45,6 @@ def jar_game (ui):
     return jar
 
 def open_game (ui, jar):
-    #ui.history = jar['undo_history']
     ui.gsd.load_game(jar['game'])
     # this is a bit easily breakable... we take advantage of the fact
     # that we create tracker IDs sequentially and that {}.items()
@@ -54,7 +52,6 @@ def open_game (ui, jar):
     for tracker,tracked in jar.get('trackers',{}).items():
         # add 1 tracker per existing tracker...
         ui.tracker_ui.add_tracker()
-        #ui.tracker_ui.show() # Leave this to the toggle setting
         for x,y,val in tracked:
             ui.gsd.add_tracker(x,y,tracker,val=val)
     for tracker,tracking in jar.get('tracking',{}).items():
@@ -128,7 +125,6 @@ class SudokuTracker:
     def save_game (self, ui):
         game = self.game_from_ui(ui)
         jar = jar_game(ui)
-        #jar['saved_at'] = time.time()
         filename = os.path.join(self.save_path,self.get_filename(jar['game']))
         try:
             outfi = file(filename,'w')
@@ -153,7 +149,7 @@ class SudokuTracker:
         self.finish_jar(jar)
 
     def finish_jar (self, jar):
-        self.remove_from_saved_games(jar) # 
+        self.remove_from_saved_games(jar)
         try:
             filename = os.path.join(self.finished_path,
                                     self.get_filename(jar['game']))

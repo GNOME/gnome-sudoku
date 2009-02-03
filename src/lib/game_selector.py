@@ -34,7 +34,6 @@ def color_from_difficulty (diff):
             c='#cc0000'
         else:
             c='#a40000'  
-    #print 'diff=',diff,'color=',c
     return color_hex_to_float(c)
 
 class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
@@ -99,8 +98,6 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
             ]
         for cat in DR.ordered_categories:
             rng = DR.categories[cat]; label = DR.label_by_cat[cat]
-            #puzzle,diff = self.sudoku_maker.get_new_puzzle(.01*random.randint(*[r*100 for r in rng]))
-            #diff_val = diff.value
             puzzles = self.sudoku_maker.get_puzzles(1,[cat],new=True,
                                                     exclude=saved_games_to_exclude
                                                     )
@@ -118,7 +115,6 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
                 else:
                     print 'WARNING: No puzzle for difficulty',cat
                     continue
-            #print 'Got new puzzle for ',cat,'difficulty:',diff
             grid = sudoku.sudoku_grid_from_string(puzzle).grid
             self.new_game_model.append(('<b><i>'+label+'</i></b>',
                                         sudoku_thumber.make_pixbuf(grid,
@@ -145,7 +141,6 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
                 lastPlayedText,
                 durationText,
                 )
-            #print 'Adding to saved...',g
             self.saved_game_model.append((
                 desc,
                 sudoku_thumber.make_pixbuf(grid.grid,
@@ -180,12 +175,9 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def handle_response (self, response):
-        #print 'handle_response',response
         if response==gtk.RESPONSE_OK:
-            #print 'Returning ',self.puzzle
             return self.puzzle
         else:
-            #print 'handle_response returning',None
             return None    
 
     def run_swallowed_dialog (self, swallower):
@@ -309,7 +301,6 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
 
     def print_dialog_response_cb (self, dialog, response):
         if response == gnomeprint.ui.DIALOG_RESPONSE_CANCEL:
-            #self.dialog.hide()
             pass
         elif response == gnomeprint.ui.DIALOG_RESPONSE_PREVIEW:
             pass
@@ -328,26 +319,3 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
         #self.setup_dialog()
         self.dialog.show()
 
-# if __name__ == '__main__':
-#     try:
-#         IMAGE_DIR='/usr/share/gnome-sudoku/'
-#         import defaults
-#         from gnome_sudoku import sudoku_maker
-#         st = sudoku_maker.SudokuTracker(sudoku_maker.SudokuMaker(pickle_to='/tmp/foo'))
-#         hs=HighScores(st)
-#         hs.highlight_newest=True
-#         hs.run_dialog()
-#         st.save()
-#     except:
-#         import sys
-#         print 'path was ',sys.path
-#         raise
-#
-#if __name__ == '__main__':
-#    gs = NewOrSavedGameSelector()
-#    print 'DIALOG RETURNS:',gs.run_dialog()
-#
-#    import saver; sudoku_maker = sudoku_maker.SudokuMaker()
-#    gs = GamePrinter(sudoku_maker,gconf_wrapper.GConf('gnome-sudoku'))
-#    gs.run_dialog()
-#    gtk.main()

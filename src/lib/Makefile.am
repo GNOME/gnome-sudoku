@@ -20,7 +20,6 @@ gnomesudoku_PYTHON = \
 	saver.py	\
 	simple_debug.py	\
 	sudoku_generator_gui.py	\
-	sudoku_labeller.py	\
 	sudoku_maker.py	\
 	sudoku_thumber.py \
 	sudoku.py	\

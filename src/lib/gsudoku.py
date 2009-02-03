@@ -302,8 +302,6 @@ class NumberBox (gtk.Widget):
             self.set_text_interactive(str(newval))
 
     def show_number_picker (self):
-        #self.number_picker_mode = True
-        #return
         w = gtk.Window(type=gtk.WINDOW_POPUP)
         ns = NumberSelector(upper=self.upper,default=self.get_value())
         ns.connect('changed', self.number_changed_cb, w)
@@ -315,10 +313,6 @@ class NumberBox (gtk.Widget):
         popupx,popupy = w.get_size()
         overlapx = popupx-x
         overlapy = popupy-y
-        #print 'origin is ',my_origin
-        #print 'widget size is',x,y
-        #print 'popup size is',popupx,popupy
-        #print 'overlaps are ',overlapx,overlapy
         w.move(my_origin[0]-(overlapx/2),my_origin[1]-(overlapy/2))
         w.show()
         self.npicker = w
@@ -466,9 +460,6 @@ class NumberBox (gtk.Widget):
     def draw_background_color (self, cr):        
         if self.read_only:
             if self.custom_background_color:
-                #h,s,v = colors.rgb_to_hsv(*self.custom_background_color)
-                #s = s*0.5 # Halve our saturation
-                #v = v*0.5 # Halve our brightness
                 r,g,b = self.custom_background_color
                 cr.set_source_rgb(
                     r*0.6,g*0.6,b*0.6
@@ -507,7 +498,6 @@ class NumberBox (gtk.Widget):
         cr.stroke()
         # And now draw a thinner line around the very outside...
         cr.set_source_color(
-            #self.style.dark[gtk.STATE_NORMAL]
             self.style.dark[state]
             )
         cr.rectangle(
@@ -614,8 +604,6 @@ class NumberBox (gtk.Widget):
         val = self.get_value()
         cols = (BASE_SIZE-NORMAL_LINE_WIDTH*2) / self.small_digit_width
         rows = (BASE_SIZE-NORMAL_LINE_WIDTH*2) / self.small_digit_height
-        #if cols > 4: cols=4
-        #if rows > 4: rows=4
         cols = 3; rows=3
         row_size = BASE_SIZE/rows
         col_size = BASE_SIZE/cols
@@ -729,17 +717,12 @@ class SudokuNumberGrid (gtk.AspectFrame):
                 e.x = x
                 e.y = y
                 self.table.attach(e,x,x+1,y,y+1,
-                                  #xpadding=2,
-                                  #ypadding=2)
                                   )
                 self.__entries__[(x,y)] = e
         gtk.AspectFrame.__init__(self,obey_child=False)
         self.set_shadow_type(gtk.SHADOW_NONE)
         self.eb = gtk.EventBox()
-        #self.alignment = gtk.Alignment()
-        #self.alignment.add(self.eb)
         self.eb.add(self.table)
-        #self.add(self.alignment)
         self.add(self.eb)
         self.connect('size-allocate',self.allocate_cb)
         self.show_all()
@@ -869,9 +852,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         entry = self.__entries__.values()[0]
         default_color = gtkcolor_to_rgb(entry.style.bg[gtk.STATE_SELECTED])
         hsv = colors.rgb_to_hsv(*default_color)
-        #print 'default rgb = ',default_color
-        #print 'default hsv = ',hsv
-        #print 'halve saturation'
         box_s = hsv[1]
         box_v = hsv[2]
         if box_v < 0.5: box_v = box_v*2
@@ -880,8 +860,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         else:
             box_s = box_s*1.5
             if box_s > 1: box_s = 1.0
-        #if box_s < 0.25: box_s = box_s*2
-        #else: box_s = box_s*0.5
         self.box_color = colors.hsv_to_rgb(
             hsv[0],box_s,box_v
             )
@@ -889,9 +867,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         self.row_color = colors.rotate_hue_rgb(*self.box_color,**{'rotate_by':0.33})
         self.col_color = colors.rotate_hue_rgb(*self.box_color,**{'rotate_by':0.66})
         self.box_and_col_color = colors.rotate_hue_rgb(*self.box_color,**{'rotate_by':1.0-(0.33/2)})
-        #print 'Default color = ',default_color
-        #for att in ['box_color','row_color','box_and_col_color','col_color','box_and_row_color']:
-        #    print att,'=',getattr(self,att)
 
     def toggle_highlight (self, val):
         self.do_highlight_cells = val
@@ -1177,8 +1152,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
     @simple_debug
     def auto_fill (self):
         changed=self.grid.auto_fill()
-        #changed=self.grid.fill_must_fills        
-        #changed=self.grid.fill_deterministically()
         retval = []
         for coords,val in changed:
             self.add_value(coords[0],coords[1],val)
@@ -1218,7 +1191,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         if not identifier: identifier = 0
         while self.trackers.has_key(identifier): identifier+=1
         self.trackers[identifier]=[]
-        #self.__trackers_tracking__[identifier]=True
         return identifier
 
     def trackers_for_point (self, x, y, val=None):
@@ -1294,12 +1266,10 @@ class GridDancer:
 
     DANCE_COLORS = [colors.color_hex_to_float(hx) for hx in 
                     [
-
         '#cc0000', # red
         '#ef2929',
         '#f57900', # orange
         '#fcaf3e',
-        #'#edd400', # yellow
         '#fce94f',
         '#8ae234', # green
         '#73d216',
@@ -1429,8 +1399,6 @@ if __name__ == '__main__':
         t.__entries__[(3,1)].set_error_highlight(False)
         t.__entries__[(3,1)].set_value(3)
         t.__entries__[(3,1)].set_note_text('2,3,4','1,2')
-        #t.__entries__[(4,4)].set_value(5)
-        #t.__entries__[(4,4)].set_note_text('2,7,8')
         w.show_all()
         gtk.main()
 
@@ -1458,7 +1426,6 @@ if __name__ == '__main__':
         vb.pack_start(swallower,padding=12)
         w.add(vb)
         w.show_all()
-        #test_dance_grid(sgd)
         from gtk_goodies.dialog_extras import MessageDialog
         md = MessageDialog(title="Foo",label="Foo",sublabel="Bar "*12)
         swallower.run_dialog(md)
@@ -1487,11 +1454,5 @@ if __name__ == '__main__':
         w.show_all()
         gtk.main()
 
-    #test_number_selector()
-    #test_sng()
     test_sudoku_game()
-    #reproduce_foobared_rendering()
 
-        
-            
-    

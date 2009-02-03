@@ -153,9 +153,6 @@ class MessageDialog (gtk.MessageDialog, ModalDialog):
         self.label.set_use_markup(True)
 
     def setup_sublabel (self, sublabel):
-        #curtext = self.label.get_text()
-        #curtext += "\n%s"%sublabel
-        #self.label.set_text(xml.sax.saxutils.escape(curtext))
         self.format_secondary_text(sublabel)
                   
 class NumberDialog (ModalDialog):
@@ -167,7 +164,6 @@ class NumberDialog (ModalDialog):
         ModalDialog.__init__(self,default=default, parent=parent)
         self.hbox=gtk.HBox()
         self.vbox.add(self.hbox)
-        #self.spinButton=gtk.SpinButton(climb_rate=climb_rate,digits=digits)
         if not default:
             val = 0
         else:
@@ -633,8 +629,5 @@ def getFileOpen (*args, **kwargs):
 
     
 if __name__ == '__main__':
-    #show_message("You win!",label="You win",
-    #             icon='/home/tom/Projects/gnome-sudoku/images/winner2.png',
-    #             sublabel="You completed the puzzle in %s"%'1 hour 25 minutes')
     print getFileSaveAs()
     gtk.main()
