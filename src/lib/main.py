@@ -5,8 +5,7 @@ try:
 except ImportError, err:
     print ("PyGTK not found. Please make sure it is installed properly and referenced in your PYTHONPATH environment variable.")
 
-import gtk, gobject, gtk.glade
-import gnome, gnome.ui, pango
+import gtk, gobject, gtk.glade, pango
 import os, os.path
 from gtk_goodies import gconf_wrapper, Undo, dialog_extras, image_extras
 import gsudoku, sudoku, saver, sudoku_maker, printing, sudoku_generator_gui
@@ -204,7 +203,6 @@ class UI (gconf_wrapper.GConfWrapper):
         self.w.show()
 
     def setup_gui (self):
-        gnome.program_init('gnome-sudoku',VERSION, properties={gnome.PARAM_APP_DATADIR:APP_DATA_DIR})
         self.initialize_prefs()
         self.setup_main_window()
         self.gsd = gsudoku.SudokuGameDisplay()
@@ -809,9 +807,8 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def show_help (self, *args):
-        #dialog_extras.show_faq(faq_file=os.path.join(BASE_DIR,_('FAQ')))
         try:
-            gnome.help_display('gnome-sudoku')
+            gtk.show_uri(self.w.get_screen(), "ghelp:gnome-sudoku", gtk.get_current_event_time())
         except gobject.GError, e:
             # FIXME: This should create a pop-up dialog
             print _('Unable to display help: %s') % str(e)
