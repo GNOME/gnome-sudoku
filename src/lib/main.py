@@ -893,7 +893,6 @@ class TrackerBox (gtk.VBox):
         tracker_id = self.main_ui.gsd.create_tracker()
         pb=image_extras.pixbuf_transform_color(
             STOCK_PIXBUFS['tracks'],
-            (0,0,0),#white
             self.main_ui.gsd.get_tracker_color(tracker_id),
             )
         # select our new tracker

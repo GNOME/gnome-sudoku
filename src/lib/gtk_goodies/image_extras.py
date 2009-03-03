@@ -37,33 +37,28 @@ def color_tuple_float_to_int (tup):
             int(tup[2]*255))
 
 def pixbuf_transform_color (pb,
-                            initial_color,
                             target_color):
     """Return a pixbuf with one color transformed."""
-    if type(initial_color)==str: initial_color=html_to_tuple(initial_color)
+    initial_color = (chr(0),chr(0),chr(0))
     if type(target_color)==str: target_color=html_to_tuple(target_color)
-    if type(initial_color[0])==float:
-        initial_color = color_tuple_float_to_int(initial_color)
-    if type(target_color[1])==float:
-        target_color = color_tuple_float_to_int(target_color)
-    arr = pb.get_pixels_array()
-    arr = arr.copy()
-    for row in arr:
-        for pxl in row:
-            if int(pxl[3])!=0: # not transparent
-                if (not initial_color) or ((int(pxl[0])==initial_color[0] and
-                                            int(pxl[1])==initial_color[1] and
-                                            int(pxl[2])==initial_color[2])):
-                    pxl[0]=target_color[0]
-                    pxl[1]=target_color[1]
-                    pxl[2]=target_color[2]
-                elif pxl[0]==0:
-                    print pxl[0]==initial_color[0]
-                    print pxl[1]==initial_color[1]
-                    print pxl[2]==initial_color[2]                    
-    return gtk.gdk.pixbuf_new_from_array(arr,
-                                         pb.get_colorspace(),
-                                         pb.get_bits_per_sample()
-                                         )
+    if type(target_color[1])==float: target_color = color_tuple_float_to_int(target_color)
+
+    pb_str = pb.get_pixels()
+    pb_str_new = ""
+
+    for index in range(len(pb_str)/4):
+        pxl = [pb_str[(index*4)+0],
+               pb_str[(index*4)+1],
+               pb_str[(index*4)+2],
+               pb_str[(index*4)+3]]
+
+        if pxl[3] != chr(0): # not transparent
+            if (pxl[0],pxl[1],pxl[2]) == initial_color:
+                pxl[0] = chr(target_color[0])
+                pxl[1] = chr(target_color[1])
+                pxl[2] = chr(target_color[2])
+        pb_str_new += pxl[0] + pxl[1] + pxl[2] + pxl[3] 
+    
+    return gtk.gdk.pixbuf_new_from_data(pb_str_new, gtk.gdk.COLORSPACE_RGB, True, 8, pb.get_width(), pb.get_height(), pb.get_rowstride())
 
 
