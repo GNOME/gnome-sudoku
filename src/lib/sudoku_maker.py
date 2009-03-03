@@ -303,7 +303,6 @@ class SudokuMaker:
                   puzzle_maker_args={'symmetrical':True},
                   batch_size = 5,
                   pickle_to = os.path.join(DATA_DIR,'puzzles')):
-        self.new_puzzles={}
         self.pickle_to = pickle_to
         self.paused = False
         self.terminated = False
@@ -313,6 +312,7 @@ class SudokuMaker:
         self.load()
         self.all_puzzles = {}
         self.played = self.get_pregenerated('finished')
+        self.n_available_sudokus = {'easy':None,'medium':None,'hard':None,'very hard':None}
 
     def load (self):
         try:
@@ -380,12 +380,15 @@ class SudokuMaker:
         if not difficulty_category:
             return sum([self.n_puzzles(c,new=new) for c in sudoku.DifficultyRating.categories])
         else:
+            if self.n_available_sudokus[difficulty_category]:
+                return self.n_available_sudokus[difficulty_category]
             lines = self.get_pregenerated(difficulty_category)
             count = 0
             for line in lines:
                 if (not new) or line.split('\t')[0] not in self.played:
                     count+=1
-            return count
+            self.n_available_sudokus[difficulty_category] = count
+            return self.n_available_sudokus[difficulty_category]
 
     def list_puzzles (self, difficulty_category=None, new=True):
         """Return a list of all puzzles we have generated.
@@ -525,10 +528,7 @@ class SudokuMaker:
                 # self.solutions_by_puzzle[puzstring]=key
                 # self.all_puzzles[puzstring] = diff
                 # self.names[puzstring] = self.get_puzzle_name(_('Puzzle'))
-                self.new_puzzles[diff.value_category()] = self.new_puzzles.get(diff.value_category(),0) + 1
                 outpath = os.path.join(self.pickle_to,
-                                       diff.value_category().replace(' ','_'))
-                print 'Writing to ',os.path.join(self.pickle_to,
                                        diff.value_category().replace(' ','_'))
                 # Read through the existing file and make sure we're
                 # not a duplicate puzzle
@@ -538,10 +538,9 @@ class SudokuMaker:
                         outfi = file(outpath,'a')
                         outfi.write(puzstring+'\t'+str(diff.value)+'\n')
                         outfi.close()
+                        self.n_available_sudokus[diff.value_category()]+=1
                     except IOError, e:
                         print 'Error appending pregenerated puzzle: %s' % e.strerror
-
-                print 'done writing...'
 
     def pause (self, *args):
         if hasattr(self,'new_generator'): self.new_generator.pause()
@@ -565,7 +564,6 @@ class SudokuMaker:
         self.terminated = False
         if hasattr(self,'new_generator'): self.new_generator.termintaed = False
         self.paused = False
-        #self.new_puzzles = {}
         generated = 0
         while not limit or generated < limit:
             if self.terminated:

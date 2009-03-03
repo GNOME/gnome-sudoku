@@ -75,7 +75,8 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         self.dialog.show_all()
         self.dialog.set_transient_for(self.ui.w)
         self.dialog.present()
-        self.setup_base_status()
+        self.update_available()
+        self.initally_generated = self.sudoku_maker.n_puzzles()
 
     def generate_method_changed_cb (self, *args):
         if not self.generateForTargetRadio.get_active():
@@ -98,9 +99,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
             self.generateButton.set_sensitive(False)
 
     def generate_cb (self, *args):
-        self.ngenerated = 0
-        self.generated_by_cat = {}
-        self.toward_target = 0
+        self.initally_generated = self.sudoku_maker.n_puzzles()
         self.pauseButton.set_sensitive(True)
         self.stopButton.set_sensitive(True)
         self.generateButton.set_sensitive(False)
@@ -143,7 +142,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         self.dialog.hide()
         self.dialog.destroy()
 
-    def setup_base_status (self):
+    def update_available (self):
         """Setup basic status.
         """
         for diff,lab in [('easy',self.easyLabel),
@@ -151,34 +150,20 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
                          ('hard',self.hardLabel),
                          ('very hard',self.veryHardLabel)]:
             num = self.sudoku_maker.n_puzzles(diff)
-            self.increment_label(lab,num)
+            lab.set_text(ngettext("%(n)s puzzle","%(n)s puzzles",num)%{'n':num})
 
-    def increment_label (self, lab, val=0):
-        curtext = lab.get_text()
-        if (not curtext):
-	    lab.pcount = val
-        else:
-	    lab.pcount += 1
-        newtext = ngettext("%(n)s puzzle","%(n)s puzzles",lab.pcount)%{'n':lab.pcount}
-        lab.set_text(newtext)
+    def generated (self):
+        return self.sudoku_maker.n_puzzles() - self.initally_generated
 
     def update_status (self, *args):
         """Update status of our progress bar and puzzle table.
         """
         #print 'update_status!'
-        npuzzles = sum(self.sudoku_maker.new_puzzles.values())
-        #print 'npuzzles=',npuzzles,'ngenerated=',self.ngenerated
-        if npuzzles > self.ngenerated:
-            # updating gui...
-            self.ngenerated=self.toward_target=npuzzles
-            for cat in self.sudoku_maker.new_puzzles:
-                to_add = self.sudoku_maker.new_puzzles[cat] - self.generated_by_cat.get(cat,0)
-                self.increment_label(self.cat_to_label[cat],to_add)
-                self.generated_by_cat[cat] = self.sudoku_maker.new_puzzles[cat]
+        self.update_available()
         self.update_progress_bar()
         if (self.generateForTargetRadio.get_active()
             and
-            self.toward_target>=int(self.newSudokusSpinButton.get_value())
+            self.generated()>=int(self.newSudokusSpinButton.get_value())
             ):
             print 'Done!'
             self.stop_cb()
@@ -200,12 +185,12 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         if self.generateForTargetRadio.get_active():
             tot = int(self.newSudokusSpinButton.get_value())
             self.prog.set_fraction(
-                float(self.toward_target)/tot
+                float(self.generated())/tot
                 )
             try:
                 txt = ngettext('Generated %(n)s out of %(total)s puzzle',
                                'Generated %(n)s out of %(total)s puzzles',
-                               tot)%{'n':self.toward_target,'total':tot}
+                               tot)%{'n':self.generated(),'total':tot}
             except TypeError:
                 # Allow for fuzzy translation badness caused by a
                 # previous version having this done the wrong way
@@ -215,13 +200,13 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
                 try:
                     txt = ngettext('Generated %(n)s out of %(total)s puzzle',
                                    'Generated %(n)s out of %(total)s puzzles',
-                                   tot)%(self.toward_target,tot)
+                                   tot)%(self.generated(),tot)
                 except:
                     # Fallback to English
-                    txt = 'Generated %s out of %s puzzles'%(self.toward_target,tot)
+                    txt = 'Generated %s out of %s puzzles'%(self.generated(),tot)
         else:
             self.prog.pulse()
-            txt = ngettext('Generated %(n)s puzzle','Generated %(n)s puzzles',self.toward_target)%{'n':self.toward_target}
+            txt = ngettext('Generated %(n)s puzzle','Generated %(n)s puzzles',self.generated())%{'n':self.generated()}
         if self.paused: txt = txt + ' (' + _('Paused') + ')'
         self.prog.set_text(txt)
 
