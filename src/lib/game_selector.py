@@ -3,7 +3,6 @@ import gtk, gobject, time
 import sudoku, saver, sudoku_maker, random
 from sudoku import DifficultyRating as DR
 import sudoku_thumber
-import gnomeprint
 from gettext import gettext as _
 from timer import format_time,format_date,format_friendly_date,format_time_compact
 from defaults import *
@@ -292,19 +291,15 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
                     ) for puzzle,d in sudokus]
         from printing import SudokuPrinter
         sp = SudokuPrinter(sudokus,
-                           sudokus_per_page=self.sudokusPerPageSpinButton.get_adjustment().get_value(),
-                           dialog_parent=self.dialog)
-        self.sudokus_printed = sudokus
-        sp.run()
-        sp.dialog.connect('response',
-                          self.print_dialog_response_cb)
+                           self.dialog,
+                           sudokus_per_page=self.sudokusPerPageSpinButton.get_adjustment().get_value())
 
-    def print_dialog_response_cb (self, dialog, response):
-        if response == gnomeprint.ui.DIALOG_RESPONSE_CANCEL:
+        self.sudokus_printed = sudokus
+        response = sp.print_op.run(gtk.PRINT_OPERATION_ACTION_PRINT_DIALOG, sp.main_window)
+
+        if response   == gtk.PRINT_OPERATION_RESULT_ERROR:
             pass
-        elif response == gnomeprint.ui.DIALOG_RESPONSE_PREVIEW:
-            pass
-        elif response==gnomeprint.ui.DIALOG_RESPONSE_PRINT:
+        elif response == gtk.PRINT_OPERATION_RESULT_APPLY:
             if self.markAsPlayedToggle.get_active():
                 for sud,lab in self.sudokus_printed:
                     jar = {}
@@ -316,6 +311,5 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
             self.dialog.hide()
 
     def run_dialog (self):
-        #self.setup_dialog()
         self.dialog.show()
 

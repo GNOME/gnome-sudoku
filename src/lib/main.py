@@ -815,7 +815,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def print_game (self, *args):
-        printing.print_sudokus([self.gsd])
+        printing.print_sudokus([self.gsd], self.w)
 
     @simple_debug
     def print_multiple_games (self, *args):
