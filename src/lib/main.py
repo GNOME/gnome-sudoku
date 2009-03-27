@@ -7,7 +7,7 @@ except ImportError, err:
 
 import gtk, gobject, gtk.glade, pango
 import os, os.path
-from gtk_goodies import gconf_wrapper, Undo, dialog_extras, image_extras
+from gtk_goodies import gconf_wrapper, Undo, dialog_extras
 import gsudoku, sudoku, saver, sudoku_maker, printing, sudoku_generator_gui
 import game_selector
 import time, threading
@@ -891,7 +891,7 @@ class TrackerBox (gtk.VBox):
     @simple_debug
     def add_tracker (self,*args):
         tracker_id = self.main_ui.gsd.create_tracker()
-        pb=image_extras.pixbuf_transform_color(
+        pb = self.pixbuf_transform_color(
             STOCK_PIXBUFS['tracks'],
             self.main_ui.gsd.get_tracker_color(tracker_id),
             )
@@ -902,7 +902,21 @@ class TrackerBox (gtk.VBox):
                                   _("Tracker %s")%(tracker_id+1)]
                                   )
             )
+
+    @simple_debug
+    def pixbuf_transform_color (self, pb, tc):
+        """Return new pixbuf with color changed to tc"""
+        pb_str = pb.get_pixels()
+        pb_str_new = ""
+
+        for alpha in pb_str[3::4]:
+            pb_str_new += chr(int(tc[0]*255))
+            pb_str_new += chr(int(tc[1]*255))
+            pb_str_new += chr(int(tc[2]*255))
+            pb_str_new += alpha
         
+        return gtk.gdk.pixbuf_new_from_data(pb_str_new, gtk.gdk.COLORSPACE_RGB, True, 8, pb.get_width(), pb.get_height(), pb.get_rowstride())
+
     @simple_debug
     def select_tracker (self, tracker_id):
         for row in self.tracker_model:
