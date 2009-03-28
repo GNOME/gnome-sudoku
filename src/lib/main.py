@@ -182,14 +182,17 @@ class UI (gconf_wrapper.GConfWrapper):
     @inactivate_new_game_etc
     def select_game (self):
         self.tb.hide()
+        self.update_statusbar()
         choice = game_selector.NewOrSavedGameSelector().run_swallowed_dialog(self.swallower)
         if not choice:
             return True
         self.timer.start_timing()
         if choice[0] == game_selector.NewOrSavedGameSelector.NEW_GAME:
             self.gsd.change_grid(choice[1],9)
+            self.update_statusbar()
         if choice[0] == game_selector.NewOrSavedGameSelector.SAVED_GAME:
             saver.open_game(self,choice[1])
+            self.update_statusbar()
         if self.gconf['show_toolbar']: 
             self.tb.show()
         if self.gconf['always_show_hints']:
@@ -358,7 +361,6 @@ class UI (gconf_wrapper.GConfWrapper):
         self.game_box.show()
         self.main_area.pack_start(self.game_box,False,padding=12)
         self.statusbar = gtk.Statusbar(); self.statusbar.show()
-        gobject.timeout_add(500,self.update_statusbar_cb)        
         self.vb.pack_end(self.statusbar,fill=False,expand=False)        
         self.w.add(self.vb)
 
@@ -700,27 +702,17 @@ class UI (gconf_wrapper.GConfWrapper):
         self.statusbar.push(self.sbid, status)
 
 
-    def update_statusbar_cb (self, *args):
+    def update_statusbar (self, *args):
         if not self.gsd.grid: 
             self.set_statusbar_value(" ")
             return True
 
-        puzz = self.gsd.grid.virgin.to_string()
+        puzzle = self.gsd.grid.virgin.to_string()
+        puzzle_diff = self.sudoku_maker.get_difficulty(puzzle)
 
-        if (puzz == "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "\
-                    "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "\
-                    "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "\
-                    "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "\
-                    "0 0 0 0 0 0 0 0 0"):
-            self.set_statusbar_value(" ")
-            return True
-        
-        if (not hasattr(self,'current_puzzle_string') or
-            self.current_puzzle_string != puzz):
-            self.current_puzzle_diff = self.sudoku_maker.get_difficulty(puzz)
-        self.current_puzzle_string = puzz
-	tot_string = _("Playing %(difficulty)s puzzle.")%{'difficulty':self.current_puzzle_diff.value_string()}
-        tot_string += " " + "(%1.2f)"%self.current_puzzle_diff.value
+        tot_string = _("Playing %(difficulty)s puzzle.")%{'difficulty':puzzle_diff.value_string()}
+        tot_string += " " + "(%1.2f)"%puzzle_diff.value
+
         self.set_statusbar_value(tot_string)
         return True
 
@@ -763,14 +755,6 @@ class UI (gconf_wrapper.GConfWrapper):
             self.start_worker_thread()
         else:
             self.stop_worker_thread()
-
-    @simple_debug
-    def show_high_scores_cb (self, *args):
-        hs=game_selector.HighScores(self.sudoku_tracker)
-        replay_game = hs.run_dialog()
-        if replay_game:
-            self.stop_game()
-            self.gsd.change_grid(replay_game,9)
 
     @simple_debug
     def autosave (self):
