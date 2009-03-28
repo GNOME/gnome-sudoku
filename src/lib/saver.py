@@ -211,8 +211,22 @@ class SudokuTracker:
             except:
                 print 'Warning: could not read file',f
             else:
-                jar['saved_at']=os.stat(f)[8]
-                games.append(jar)
+                if self.is_valid(jar):
+                    jar['saved_at']=os.stat(f)[8]
+                    games.append(jar)
+                else:
+                    print 'Warning: malformed save game',f
         return games
-        
+
+    def is_valid (self, jar):
+        virgin = jar['game'].split('\n')[0].replace(' ','')
+        played = jar['game'].split('\n')[1].replace(' ','')
+
+        if len(virgin) != 81 or len(played) != 81:
+            return False
+
+        if not virgin.isdigit() or not played.isdigit():
+            return False
+
+        return True
 
