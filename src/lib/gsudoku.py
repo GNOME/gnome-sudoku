@@ -123,7 +123,6 @@ class NumberBox (gtk.Widget):
         }
 
     base_state = gtk.STATE_NORMAL
-    number_picker_mode = False
     npicker = None
     draw_boxes = False
     
@@ -161,7 +160,6 @@ class NumberBox (gtk.Widget):
         self.destroy_npicker()
 
     def destroy_npicker (self):
-        self.number_picker_mode = False
         if self.npicker:
             self.npicker.destroy()
             self.npicker = None
@@ -192,36 +190,16 @@ class NumberBox (gtk.Widget):
             alloc = self.get_allocation()
             my_w = alloc.width
             my_h = alloc.height
-            if self.number_picker_mode:
-                # If we are a number picker...
-                xperc = float(x)/my_w
-                yperc = float(y)/my_h
-                if xperc > 0.75:
-                    # If we're in the right quadrant, we get out of number picker mode
-                    self.set_text_interactive('')
-                    self.number_picker_mode = False
-                    self.queue_draw()
-                    return
-                else:
-                    if xperc > 0.5: xval = 3
-                    elif xperc > 0.25: xval = 2
-                    else: xval = 1
-                    if yperc > 0.66: yval = 6
-                    elif yperc > 0.33: yval = 3
-                    else: yval = 0
-                    self.number_picker_mode = False
-                    self.set_text_interactive('')
-                    self.set_text_interactive(str(xval+yval))
-            else:
-                border_height = float(BORDER_WIDTH)/BASE_SIZE
-                if float(y)/my_h < border_height:
-                    self.show_note_editor(top=True)
-                elif float(y)/my_h > (1-border_height):
-                    self.show_note_editor(top=False)
-                elif not self.npicker:
-                    # In this case we're a normal old click...
-                    # make sure there is only one numer selector
-                    self.show_number_picker()
+            border_height = float(BORDER_WIDTH)/BASE_SIZE
+
+            if float(y)/my_h < border_height:
+                self.show_note_editor(top=True)
+            elif float(y)/my_h > (1-border_height):
+                self.show_note_editor(top=False)
+            elif not self.npicker:
+                # In this case we're a normal old click...
+                # makes sure there is only one numer selector
+                self.show_number_picker()
         else:
             self.grab_focus()
 
@@ -437,9 +415,6 @@ class NumberBox (gtk.Widget):
             scale = w/float(BASE_SIZE)
         cr.scale(scale,scale)
         self.draw_background_color(cr)
-        if self.number_picker_mode:
-            self.draw_numbers(cr)
-            return
         if self.is_focus():
             self.draw_highlight_box(cr)
         self.draw_normal_box(cr)
@@ -572,61 +547,6 @@ class NumberBox (gtk.Widget):
                 )
             cr.update_layout(self._bottom_note_layout)
             cr.show_layout(self._bottom_note_layout)
-
-    def draw_numbers (self, cr):        
-        if not hasattr(self,'number_text'):
-            self.small_digit_height = 1
-            self.small_digit_width = 1
-            self.number_text = []
-            for n in range(self.upper): # + ['X']:
-                if type(n)==int:
-                    n = str(n+1)
-                txt = self.create_pango_layout(n)
-                txt.set_font_description(self.note_font)
-                if not hasattr(self,'bold_note_font'):
-                    self.bold_note_font = self.note_font.copy()
-                    self.bold_note_font.set_weight(pango.WEIGHT_BOLD)
-                bold_txt = self.create_pango_layout(n)
-                bold_txt.set_font_description(self.bold_note_font)
-                self.number_text.append((txt,bold_txt))
-                w,h = bold_txt.get_pixel_size()
-                if w > self.small_digit_width: self.small_digit_width = w*1.2
-                if h > self.small_digit_height: self.small_digit_height = h
-        val = self.get_value()
-        cols = (BASE_SIZE-NORMAL_LINE_WIDTH*2) / self.small_digit_width
-        rows = (BASE_SIZE-NORMAL_LINE_WIDTH*2) / self.small_digit_height
-        cols = 3; rows=3
-        row_size = BASE_SIZE/rows
-        col_size = BASE_SIZE/cols
-        n = 0
-        for y in range(rows):
-            for x in range(cols):
-                if y < 2 and x > 2: continue
-                if n >= len(self.number_text):
-                    break
-                txt = self.number_text[n]
-                if val==(n+1):
-                    layout = txt[1] # grab bold layout
-                else:
-                    layout = txt[0] # grab normal layout
-                w,h = layout.get_pixel_size()
-                xpadding = (col_size - w)/2
-                ypadding = (row_size - h)/2
-                # draw little boxes...
-                cr.set_source_color(gtk.gdk.Color(2**16,0,0))
-                cr.set_line_width(LITTLE_LINE_WIDTH)
-                cr.rectangle(LITTLE_LINE_WIDTH*0.5+NORMAL_LINE_WIDTH*0.5+(x*col_size),
-                             LITTLE_LINE_WIDTH*0.5+NORMAL_LINE_WIDTH*0.5+(y*row_size),
-                             LITTLE_LINE_WIDTH*0.5+NORMAL_LINE_WIDTH*0.5+((x+1)*col_size),
-                             LITTLE_LINE_WIDTH*0.5+NORMAL_LINE_WIDTH*0.5+((y+1)*row_size),
-                             )
-                cr.stroke()
-                cr.set_source_color(self.style.text[self.state])
-                cr.move_to(NORMAL_LINE_WIDTH+(x*col_size)+xpadding,
-                             NORMAL_LINE_WIDTH+(y*row_size)+ypadding)
-                cr.update_layout(layout)
-                cr.show_layout(layout)
-                n+=1
 
     def set_text_color (self, color):
         self.text_color = color
