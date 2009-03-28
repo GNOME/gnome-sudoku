@@ -86,23 +86,7 @@ class NumberSelector (gtk.EventBox):
             db.add(l); l.show()
             db.connect('clicked',self.number_clicked,0)
             self.table.attach(db,0,side,y+1,y+2)
-        self.connect('key-release-event',self.key_press_cb)
         self.show_all()
-
-    def key_press_cb (self, w, e):
-        txt = gtk.gdk.keyval_name(e.keyval)
-        if txt == 'Escape':
-            self.emit('changed')
-        elif txt in ['0','Delete','BackSpace']:
-            self.value = None
-            self.emit('changed')
-        else:
-            try:
-                self.value = int(txt)
-            except:
-                print "Can't make sense of %s"%txt
-            else:
-                self.emit('changed')
 
     def number_clicked (self, button, n):
         self.value = n
@@ -140,6 +124,7 @@ class NumberBox (gtk.Widget):
 
     base_state = gtk.STATE_NORMAL
     number_picker_mode = False
+    npicker = None
     draw_boxes = False
     
     def __init__ (self, upper=9, text=''):
@@ -173,8 +158,11 @@ class NumberBox (gtk.Widget):
     def focus_out_cb (self, *args):
         self.set_state(gtk.STATE_NORMAL)
         self.base_state = gtk.STATE_NORMAL
+        self.destroy_npicker()
+
+    def destroy_npicker (self):
         self.number_picker_mode = False
-        if hasattr(self,'npicker') and self.npicker:
+        if self.npicker:
             self.npicker.destroy()
             self.npicker = None
 
@@ -230,17 +218,17 @@ class NumberBox (gtk.Widget):
                     self.show_note_editor(top=True)
                 elif float(y)/my_h > (1-border_height):
                     self.show_note_editor(top=False)
-                else:
+                elif not self.npicker:
                     # In this case we're a normal old click...
-                    if hasattr(self,'npicker') and self.npicker:
-                        self.npicker.destroy()
-                        self.npicker = None
+                    # make sure there is only one numer selector
                     self.show_number_picker()
         else:
             self.grab_focus()
 
     def key_press_cb (self, w, e):
         if self.read_only: return
+        if self.npicker: # kill number picker no matter what is pressed
+            self.destroy_npicker()
         txt = gtk.gdk.keyval_name(e.keyval)
         if type(txt) == type(None):
             # Make sure we don't trigger on unplugging the A/C charger etc
@@ -297,17 +285,17 @@ class NumberBox (gtk.Widget):
         w.show_all()
         e.grab_focus()
 
-    def number_changed_cb (self, ns, w):
-        w.destroy()
+    def number_changed_cb (self, num_selector):
+        self.destroy_npicker()
         self.set_text_interactive('')
-        newval = ns.get_value()
+        newval = num_selector.get_value()
         if newval:
             self.set_text_interactive(str(newval))
 
     def show_number_picker (self):
         w = gtk.Window(type=gtk.WINDOW_POPUP)
         ns = NumberSelector(upper=self.upper,default=self.get_value())
-        ns.connect('changed', self.number_changed_cb, w)
+        ns.connect('changed', self.number_changed_cb)
         w.grab_focus()
         w.add(ns)
         r = w.get_allocation()
@@ -1014,7 +1002,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                 for col in range(group_size):
                     index = row * 9 + col
                     if values[index] and not self.grid._get_(col,row):
-                        self.add_value_to_ui(col,row,values[index])
+                        self.add_value(col,row,values[index])
 
     @simple_debug
     def setup_grid (self, grid, group_size):
@@ -1057,27 +1045,16 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
     @simple_debug
     def entry_validate (self, widget, *args):
         val = widget.get_value()
-        try:
-            self.add_value(widget.x,widget.y,val)
-            if self.grid.check_for_completeness():
-                self.emit('puzzle-finished')
-        except sudoku.ConflictError, err:
-            conflicts=self.grid.find_conflicts(err.x,err.y,err.value)
-            for conflict in conflicts:
-                widget.set_error_highlight(True)
-                self.__entries__[conflict].set_error_highlight(True)
-            self.__error_pairs__[(err.x,err.y)]=conflicts
+        self.add_value(widget.x,widget.y,val)
+        if self.grid.check_for_completeness():
+            self.emit('puzzle-finished')
 
-    def add_value_to_ui (self, x, y, val, trackers=[]):
-        """Add our value back to our grid come hell or high water.
-
-        We add our value -- if there is an error, we make the value
-        appear as if the user had typed it; i.e. it will show up with
-        error highlighting."""
-        try:
-            self.add_value(x, y, val, trackers=[])
-        except sudoku.ConflictError:
-            self.entry_validate(self.__entries__[(x,y)])
+    def complain_conflicts (self, origin):
+        self.__entries__[origin.x, origin.y].set_error_highlight(True)
+        conflicts = self.grid.find_conflicts(origin.x, origin.y, origin.value)
+        for conflict in conflicts:
+            self.__entries__[conflict].set_error_highlight(True)
+        self.__error_pairs__[(origin.x,origin.y)]=conflicts
 
     @simple_debug
     def add_value (self, x, y, val, trackers=[]):
@@ -1111,7 +1088,10 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         # Add value to our underlying sudoku grid -- this will raise
         # an error if the value is out of bounds with the current
         # rules. 
-        self.grid.add(x,y,val,True)
+        try:
+            self.grid.add(x,y,val,True)
+        except sudoku.ConflictError, err:
+            self.complain_conflicts(err)
         # Draw our entry
         self.__entries__[(x,y)].queue_draw()
 

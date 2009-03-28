@@ -601,7 +601,7 @@ class UI (gconf_wrapper.GConfWrapper):
     # add a check for finish in the undo to clear
     def undo_clear (self, *args):
         for entry in self.cleared.pop():
-            self.gsd.add_value_to_ui(*entry) 
+            self.gsd.add_value(*entry)
         if self.gsd.grid.check_for_completeness():
             self.gsd.emit('puzzle-finished')
 
@@ -940,7 +940,7 @@ class TrackerBox (gtk.VBox):
     def tracker_delete_tracks (self, tracker_id):
         clearer=Undo.UndoableObject(
             lambda *args: self.main_ui.cleared.append(self.main_ui.gsd.delete_by_tracker(tracker_id)),
-            lambda *args: [self.main_ui.gsd.add_value_to_ui(*entry) for entry in self.main_ui.cleared.pop()],
+            lambda *args: [self.main_ui.gsd.add_value(*entry) for entry in self.main_ui.cleared.pop()],
             self.main_ui.history)
         clearer.perform()
 
@@ -948,7 +948,7 @@ class TrackerBox (gtk.VBox):
     def tracker_keep_tracks (self, tracker_id):
         clearer=Undo.UndoableObject(
             lambda *args: self.main_ui.cleared.append(self.main_ui.gsd.delete_except_for_tracker(tracker_id)),
-            lambda *args: [self.main_ui.gsd.add_value_to_ui(*entry) for entry in self.main_ui.cleared.pop()],
+            lambda *args: [self.main_ui.gsd.add_value(*entry) for entry in self.main_ui.cleared.pop()],
             self.main_ui.history)
         clearer.perform()
 
