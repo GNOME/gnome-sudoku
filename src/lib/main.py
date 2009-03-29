@@ -803,7 +803,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def print_multiple_games (self, *args):
-        gp=game_selector.GamePrinter(self.sudoku_maker, self.gconf)
+        gp=printing.GamePrinter(self.sudoku_maker, self.gconf)
         gp.run_dialog()
 
     @simple_debug
