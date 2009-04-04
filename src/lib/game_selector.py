@@ -4,7 +4,7 @@ import sudoku, saver, sudoku_maker, random
 from sudoku import DifficultyRating as DR
 import sudoku_thumber
 from gettext import gettext as _
-from timer import format_time,format_date,format_friendly_date,format_time_compact
+from timer import format_time,format_friendly_date
 from defaults import *
 from simple_debug import simple_debug
 from colors import color_hex_to_float
@@ -188,41 +188,4 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
     def run_dialog (self):
         self.setup_dialog()
         return self.handle_response(self.dialog.run())
-
-class GameSelector (gconf_wrapper.GConfWrapper):
-
-    def __init__ (self, sudoku_tracker, gconf=None):
-        self.sudoku_tracker = sudoku_tracker
-        if gconf:
-            gconf_wrapper.GConfWrapper.__init__(self,gconf)
-
-    def setup_dialog (self):
-        self.glade = gtk.glade.XML(self.glade_file)
-        self.dialog = self.glade.get_widget('dialog1')
-        self.dialog.set_default_response(gtk.RESPONSE_OK)
-        self.dialog.hide()
-        self.tv = self.glade.get_widget('treeview1')        
-        self.setup_tree()
-
-    def setup_up_tree (self): raise NotImplementedError
-    def get_puzzle (self): raise NotImplementedError
-    
-    def run_dialog (self):
-        self.setup_dialog()
-        self.dialog.show()
-        ret = self.dialog.run()
-        self.dialog.hide()
-        return self.handle_response(ret)
-
-    def run_swallowed_dialog (self, swallower):
-        self.setup_dialog()
-        response = swallower.run_dialog(self.dialog)
-        return self.handle_response(response)
-    
-    def handle_response (self, ret):
-        if ret==gtk.RESPONSE_OK:
-            return self.get_puzzle()
-        else:
-            return None
-
 
