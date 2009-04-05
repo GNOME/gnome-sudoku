@@ -40,7 +40,7 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
     NEW_GAME = 0
     SAVED_GAME = 1
 
-    glade_file = os.path.join(GLADE_DIR,'select_game.glade')
+    ui_file = os.path.join(GLADE_DIR,'select_game.ui')
 
     @simple_debug
     def __init__ (self, sudokuMaker=None, gconf = None):
@@ -49,21 +49,22 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
         self.sudoku_maker = sudokuMaker or sudoku_maker.SudokuMaker()
     
     def setup_dialog (self):
-        self.glade = gtk.glade.XML(self.glade_file)
-        self.dialog = self.glade.get_widget('dialog1')
+        self.builder = gtk.Builder()
+        self.builder.add_from_file(self.ui_file)
+        self.dialog = self.builder.get_object('dialog1')
         self.dialog.set_default_response(gtk.RESPONSE_CANCEL)
         self.dialog.connect('close',self.close)
         self.dialog.hide()
-        self.saved_game_view = self.glade.get_widget('savedGameIconView')
+        self.saved_game_view = self.builder.get_object('savedGameIconView')
         self.saved_game_widgets = [
             self.saved_game_view,
-            self.glade.get_widget('savedGameLabel')
+            self.builder.get_object('savedGameLabel')
             ]
-        self.glade.get_widget('savedGameLabel').set_mnemonic_widget(
+        self.builder.get_object('savedGameLabel').set_mnemonic_widget(
             self.saved_game_view
             )
-        self.new_game_view = self.glade.get_widget('newGameIconView')
-        self.glade.get_widget('newGameLabel').set_mnemonic_widget(
+        self.new_game_view = self.builder.get_object('newGameIconView')
+        self.builder.get_object('newGameLabel').set_mnemonic_widget(
             self.new_game_view
             )
         self.saved_games = saver.SudokuTracker().list_saved_games()

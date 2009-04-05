@@ -32,9 +32,6 @@ DOMAIN = 'gnome-games'
 gettext.bindtextdomain(DOMAIN, LOCALEDIR)
 gettext.textdomain(DOMAIN)
 from gettext import gettext as _
-import gtk.glade
-gtk.glade.bindtextdomain (DOMAIN, LOCALEDIR)
-gtk.glade.textdomain (DOMAIN)
 
 VERSION = "@VERSION@"
 APPNAME = _("GNOME Sudoku")

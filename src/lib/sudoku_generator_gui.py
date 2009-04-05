@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk, gtk.glade, gobject
+import gtk, gobject
 import sudoku
 from gtk_goodies import gconf_wrapper
 from defaults import *
@@ -9,7 +9,7 @@ import threading
 
 class GameGenerator (gconf_wrapper.GConfWrapper):
 
-    glade_file = os.path.join(GLADE_DIR,'puzzle_generator.glade')
+    ui_file = os.path.join(GLADE_DIR,'puzzle_generator.ui')
 
     initial_prefs = {'generate_target_easy':1,
                      'generate_target_medium':0,
@@ -26,7 +26,8 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         # Don't work in background...
         self.ui.stop_worker_thread()
         gconf_wrapper.GConfWrapper.__init__(self,gconf)
-        self.glade = gtk.glade.XML(self.glade_file)
+        self.builder = gtk.Builder()
+        self.builder.add_from_file(self.ui_file)
         self.generate_for_target_widgets = []
         self.cat_to_label = {}
         for d in ['easy',
@@ -34,36 +35,36 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
                   'hard',
                   'veryHard']:
             widget_name = '%sCheckButton'%d
-            widget = self.glade.get_widget(widget_name)
+            widget = self.builder.get_object(widget_name)
             label_widget_name = '%sLabel'%d
-            setattr(self,label_widget_name,self.glade.get_widget(label_widget_name))
+            setattr(self,label_widget_name,self.builder.get_object(label_widget_name))
             setattr(self,widget_name,widget)
             gconf_setting = 'generate_target_%s'%d
             self.gconf_wrap_toggle(gconf_setting,widget)
             self.generate_for_target_widgets.append(widget)
             self.cat_to_label[d] = getattr(self,label_widget_name)
         self.cat_to_label['very hard'] = self.cat_to_label['veryHard']
-        self.generateEndlesslyRadio = self.glade.get_widget('generateEndlesslyRadio')
-        self.generateForTargetRadio = self.glade.get_widget('generateForTargetRadio')
+        self.generateEndlesslyRadio = self.builder.get_object('generateEndlesslyRadio')
+        self.generateForTargetRadio = self.builder.get_object('generateForTargetRadio')
         self.gconf_wrap_toggle('generate_endlessly',self.generateEndlesslyRadio)
         self.gconf_wrap_toggle('generate_for_target',self.generateForTargetRadio)
         self.generateEndlesslyRadio.connect('toggled',self.generate_method_changed_cb)
-        self.newSudokusSpinButton = self.glade.get_widget('newSudokusSpinButton')
+        self.newSudokusSpinButton = self.builder.get_object('newSudokusSpinButton')
         self.gconf_wrap_adjustment('number_of_sudokus_to_generate',
                                    self.newSudokusSpinButton.get_adjustment()
                                    )
         self.generate_for_target_widgets.append(self.newSudokusSpinButton)
-        self.generateButton = self.glade.get_widget('generateButton')
+        self.generateButton = self.builder.get_object('generateButton')
         self.generateButton.connect('clicked',self.generate_cb)
-        self.closeButton = self.glade.get_widget('closeButton')
+        self.closeButton = self.builder.get_object('closeButton')
         self.closeButton.connect('clicked',self.close_cb)
-        self.pauseButton = self.glade.get_widget('pauseButton')
+        self.pauseButton = self.builder.get_object('pauseButton')
         self.pauseButton.connect('clicked',self.pause_cb)
-        self.stopButton = self.glade.get_widget('stopButton')
+        self.stopButton = self.builder.get_object('stopButton')
         self.stopButton.connect('clicked',self.stop_cb)
         self.pauseButton.set_sensitive(False)
         self.stopButton.set_sensitive(False)
-        self.prog = self.glade.get_widget('progressbar1')
+        self.prog = self.builder.get_object('progressbar1')
         self.prog.set_text('0 %')
         self.working = False
         self.easyCheckButton.connect('clicked',self.criteria_cb)
@@ -71,7 +72,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         self.hardCheckButton.connect('clicked',self.criteria_cb)
         self.veryHardCheckButton.connect('clicked',self.criteria_cb)
         self.generate_method_changed_cb()
-        self.dialog = self.glade.get_widget('PuzzleGenerator')
+        self.dialog = self.builder.get_object('PuzzleGenerator')
         self.dialog.show_all()
         self.dialog.set_transient_for(self.ui.w)
         self.dialog.present()

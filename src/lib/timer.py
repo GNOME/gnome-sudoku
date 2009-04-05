@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk, gobject, gtk.glade
+import gtk, gobject
 import os, os.path
 import time
 from gettext import gettext as _

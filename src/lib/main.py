@@ -5,7 +5,7 @@ try:
 except ImportError, err:
     print ("PyGTK not found. Please make sure it is installed properly and referenced in your PYTHONPATH environment variable.")
 
-import gtk, gobject, gtk.glade, pango
+import gtk, gobject, pango
 import os, os.path
 from gtk_goodies import gconf_wrapper, Undo, dialog_extras
 import gsudoku, sudoku, saver, sudoku_maker, printing, sudoku_generator_gui
@@ -816,9 +816,10 @@ class TrackerBox (gtk.VBox):
     def __init__ (self, main_ui):
         
         gtk.VBox.__init__(self)
-        self.glade = gtk.glade.XML(os.path.join(GLADE_DIR,'tracker.glade'))
+        self.builder = gtk.Builder()
+        self.builder.add_from_file(os.path.join(GLADE_DIR,'tracker.ui'))
         self.main_ui = main_ui
-        self.vb = self.glade.get_widget('vbox1')
+        self.vb = self.builder.get_object('vbox1')
         self.vb.unparent()
         self.pack_start(self.vb,expand=True,fill=True)
         self.setup_actions()
@@ -834,7 +835,7 @@ class TrackerBox (gtk.VBox):
 
     @simple_debug
     def setup_tree (self):
-        self.tracker_tree = self.glade.get_widget('treeview1')
+        self.tracker_tree = self.builder.get_object('treeview1')
         self.tracker_model = gtk.ListStore(int,gtk.gdk.Pixbuf,str)
         self.tracker_tree.set_model(self.tracker_model)
         col1 = gtk.TreeViewColumn("",gtk.CellRendererPixbuf(),pixbuf=1)
@@ -866,8 +867,8 @@ class TrackerBox (gtk.VBox):
                                    ('Keep','KeepTrackerButton'),
                                    ]:
             a=self.tracker_actions.get_action(action)
-            a.connect_proxy(self.glade.get_widget(widget_name))
-        self.glade.get_widget('AddTrackerButton').connect('clicked',
+            a.connect_proxy(self.builder.get_object(widget_name))
+        self.builder.get_object('AddTrackerButton').connect('clicked',
                                                           self.add_tracker)
         # Default to insensitive (they only become sensitive once a tracker is added)
         self.tracker_actions.set_sensitive(False)

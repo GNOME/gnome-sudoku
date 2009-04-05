@@ -117,7 +117,7 @@ def print_sudokus(*args,**kwargs):
 
 class GamePrinter (gconf_wrapper.GConfWrapper):
 
-    glade_file = os.path.join(GLADE_DIR,'print_games.glade')
+    ui_file = os.path.join(GLADE_DIR,'print_games.ui')
 
     initial_prefs = {'sudokus_per_page':2,
                      'print_multiple_sudokus_to_print':4,
@@ -132,7 +132,8 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
     def __init__ (self, sudoku_maker, gconf):
         gconf_wrapper.GConfWrapper.__init__(self,gconf)
         self.sudoku_maker = sudoku_maker
-        self.glade = gtk.glade.XML(self.glade_file)
+        self.builder = gtk.Builder()
+        self.builder.add_from_file(self.ui_file)
         # Set up toggles...
         for key,wname in [('mark_printed_as_played','markAsPlayedToggle'),
                           ('print_already_played_games','includeOldGamesToggle'),
@@ -141,17 +142,17 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
                           ('print_hard','hardCheckButton'),
                           ('print_very_hard','very_hardCheckButton'),                          
                           ]:
-            setattr(self,wname,self.glade.get_widget(wname))
+            setattr(self,wname,self.builder.get_object(wname))
             try: assert(getattr(self,wname))
             except: raise AssertionError('Widget %s does not exist'%wname)
             self.gconf_wrap_toggle(key,getattr(self,wname))
-        self.sudokusToPrintSpinButton = self.glade.get_widget('sudokusToPrintSpinButton')
-        self.sudokusPerPageSpinButton = self.glade.get_widget('sudokusPerPageSpinButton')
+        self.sudokusToPrintSpinButton = self.builder.get_object('sudokusToPrintSpinButton')
+        self.sudokusPerPageSpinButton = self.builder.get_object('sudokusPerPageSpinButton')
         for key,widg in [('print_multiple_sudokus_to_print',self.sudokusToPrintSpinButton.get_adjustment()),
                          ('sudokus_per_page',self.sudokusPerPageSpinButton.get_adjustment())
                          ]:
             self.gconf_wrap_adjustment(key,widg)
-        self.dialog = self.glade.get_widget('dialog')
+        self.dialog = self.builder.get_object('dialog')
         self.dialog.set_default_response(gtk.RESPONSE_OK)
         self.dialog.connect('response',self.response_cb)
 
