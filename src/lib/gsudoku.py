@@ -752,7 +752,30 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             e.connect('undo-change',self.entry_callback)
             e.connect('changed',self.entry_callback)
             e.connect('focus-in-event',self.focus_callback)
+            e.connect('key-press-event', self.key_press_cb, e.x, e.y)
         self.connect('focus-changed',self.highlight_cells)
+
+    def key_press_cb (self, widget, event, x, y):
+        key = gtk.gdk.keyval_name(event.keyval)
+        dest = self.go_around(x, y, key)
+        if dest:
+            self.table.set_focus_child(self.__entries__[dest])
+
+    def go_around (self, x, y, direction):
+        '''return the coordinate if we should go to the other side of the grid.
+        Or else return None.'''
+        (limit_min, limit_max) = (0, self.group_size -1)
+        if   (y, direction) == (limit_min, 'Up'):
+            dest = (x, limit_max)
+        elif (y, direction) == (limit_max, 'Down'):
+            dest = (x, limit_min)
+        elif (x, direction) == (limit_min, 'Left'):
+            dest = (limit_max, y)
+        elif (x, direction) == (limit_max, 'Right'):
+            dest = (limit_min, y)
+        else:
+            return None
+        return dest
 
     @simple_debug
     def focus_callback (self, e, event):
