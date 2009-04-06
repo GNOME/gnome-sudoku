@@ -165,7 +165,7 @@ class NumberBox (gtk.Widget):
             self.npicker = None
 
     def motion_notify_cb (self, *args):
-        if self.is_focus():
+        if self.is_focus() and not self.read_only:
             self._toggle_box_drawing_(True)
         else:
             self._toggle_box_drawing_(False)                        
