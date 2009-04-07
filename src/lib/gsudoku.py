@@ -661,9 +661,7 @@ class SudokuNumberGrid (gtk.AspectFrame):
         self.table.set_border_width(self.big_spacing)
         
     def get_focused_entry (self):
-        for e in self.__entries__.values():
-            if e.is_focus():
-                return e
+        return self.table.focus_child
 
     def set_bg_color (self, color):
         if type(color)==str:
@@ -1093,7 +1091,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
     def auto_fill_current_entry (self):
         e = self.get_focused_entry()
         if not e: return
-	filled = self.grid.auto_fill_for_xy(e.x,e.y)
+        filled = self.grid.auto_fill_for_xy(e.x,e.y)
         if filled and filled!=-1:
             e.set_text_interactive('')
             e.set_text_interactive(str(filled[1]))
