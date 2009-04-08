@@ -505,6 +505,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def quit_cb (self, *args):
+        self.w.hide()
         if (self.gsd.grid
             and self.gsd.grid.is_changed()
             and (not self.won)):
@@ -522,7 +523,6 @@ class UI (gconf_wrapper.GConfWrapper):
                                                # to quit the main
                                                # mainloop
             return
-        self.w.hide()
         # make sure we really go away before doing our saving --
         # otherwise we appear sluggish.
         while gtk.events_pending():
