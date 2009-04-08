@@ -174,7 +174,7 @@ class UI (gconf_wrapper.GConfWrapper):
                 self.quit = False
                 # Generate puzzles in background...
                 if self.gconf['generate_puzzles_in_background']:
-                    gobject.timeout_add(1000,lambda *args: self.start_worker_thread() and True)
+                    gobject.timeout_add_seconds(1,lambda *args: self.start_worker_thread() and True)
 
 
     @inactivate_new_game_etc
@@ -337,7 +337,7 @@ class UI (gconf_wrapper.GConfWrapper):
         if bgcol: self.gsd.set_bg_color(bgcol)
 
     def setup_autosave (self):
-        gobject.timeout_add(1000*(self.gconf['auto_save_interval'] or 60), # in seconds...
+        gobject.timeout_add_seconds(self.gconf['auto_save_interval'] or 60, # in seconds...
                             self.autosave)
 
     def setup_main_boxes (self):
@@ -389,6 +389,7 @@ class UI (gconf_wrapper.GConfWrapper):
                 self.timer.connect('timing-stopped',self.sudoku_maker.pause)
                 ]
             self.worker.start()
+        return True
 
     @simple_debug
     def stop_worker_thread (self, *args):
@@ -713,6 +714,7 @@ class UI (gconf_wrapper.GConfWrapper):
         # have reason to...
         if self.gsd.grid and self.gsd.grid.is_changed() and not self.won:
             self.sudoku_tracker.save_game(self)
+        return True
 
     @simple_debug
     def show_about (self, *args):
