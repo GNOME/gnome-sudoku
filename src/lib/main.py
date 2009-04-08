@@ -362,23 +362,6 @@ class UI (gconf_wrapper.GConfWrapper):
         self.vb.pack_end(self.statusbar,fill=False,expand=False)
         self.w.add(self.vb)
 
-    def setup_by_hand_area (self):
-        # Set up area for by-hand editing...
-        self.by_hand_label = gtk.Label()
-        self.by_hand_label.set_alignment(0,0)
-        self.by_hand_label.set_markup('<i>%s</i>'%_('Entering custom grid...'))
-        self.game_box.pack_start(self.by_hand_label,False,)#padding=12)
-        self.by_hand_buttonbox = gtk.HButtonBox()
-        self.by_hand_buttonbox.set_spacing(12)
-        self.by_hand_save_button = gtk.Button(_('_Play game'))
-        self.by_hand_save_button.connect('clicked',self.save_handmade_grid)
-        self.by_hand_cancel_button = gtk.Button(stock=gtk.STOCK_CANCEL)
-        self.by_hand_cancel_button.connect('clicked',self.cancel_handmade_grid)
-        self.by_hand_buttonbox.add(self.by_hand_cancel_button)
-        self.by_hand_buttonbox.add(self.by_hand_save_button)
-        self.game_box.pack_start(self.by_hand_buttonbox,False,padding=18)
-        self.by_hand_widgets = [self.by_hand_label,self.by_hand_buttonbox]
-
     def setup_toggles (self):
         # sync up toggles with gconf values...
         map(lambda tpl: self.gconf_wrap_toggle(*tpl),
@@ -538,26 +521,6 @@ class UI (gconf_wrapper.GConfWrapper):
             gtk.main_quit()
         except RuntimeError, e:
             pass
-
-    @simple_debug
-    @inactivate_new_game_etc
-    def enter_game_by_hand (self, *args):
-        self.stop_game()
-        self.gsd.change_grid(sudoku.InteractiveSudoku(),9)
-        for w in self.by_hand_widgets: w.show_all()
-
-    @simple_debug
-    def save_handmade_grid (self, *args):
-        for w in self.by_hand_widgets: w.hide()
-        # this should make our active grid into our virgin grid
-        self.won = False
-        self.gsd.change_grid(self.gsd.grid,9)
-        self.sudoku_maker.names[self.gsd.grid.to_string()]=self.sudoku_maker.get_puzzle_name('Custom Puzzle')
-        self.history.clear()
-
-    @simple_debug
-    def cancel_handmade_grid (self, *args):
-        for w in self.by_hand_widgets: w.hide()
 
     @simple_debug
     def save_game (self, *args):
