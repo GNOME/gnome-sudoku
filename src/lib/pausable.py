@@ -32,7 +32,7 @@ class PausableWrapper (MethodWrapper):
         cls.terminate = lambda *args: self.terminate(cls)
         cls.stop = lambda *args: self.terminate(cls)
         self.init_wrap(cls.__init__)
-        
+
 
     def init_wrap (self, f):
         def _(cls, *args, **kwargs):
@@ -58,6 +58,6 @@ class PausableWrapper (MethodWrapper):
         while cls.paused:
             if cls.terminated: raise "Terminated!"
             time.sleep(self.sleep_for)
-    
-            
+
+
 make_pausable = PausableWrapper()

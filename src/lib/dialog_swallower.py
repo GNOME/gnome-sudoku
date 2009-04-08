@@ -13,7 +13,7 @@ class SwappableArea (gtk.Notebook):
     response = None
     running = False
 
-    
+
     def __init__ (self,main_area):
         gtk.Notebook.__init__(self)
         self.set_show_tabs(False)
@@ -24,7 +24,7 @@ class SwappableArea (gtk.Notebook):
         child = d.child
         d.remove(child)
         return self.swallow_widget(child)
-        
+
     def swallow_widget (self, w):
         w.unparent()
         return self.append_page(w)
@@ -56,7 +56,7 @@ class SwappableArea (gtk.Notebook):
         self.response = None
         return tmp_response
 
-        
+
 
 if __name__ == '__main__':
 

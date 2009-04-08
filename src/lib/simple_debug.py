@@ -19,8 +19,8 @@ parser = optparse.OptionParser(
 
 options,args = parser.parse_args()
 
-    
-# Make a lovely wrapper 
+
+# Make a lovely wrapper
 if options.debug:
     def simple_debug (f):
         def _ (self, *args,**kwargs):

@@ -44,7 +44,7 @@ class UnsolvablePuzzle (TypeError):
 
 
 class ConflictError (ValueError):
-    
+
     def __init__ (self, conflict_type, coordinates, value):
         self.args = conflict_type,coordinates,value
         self.type = conflict_type
@@ -55,7 +55,7 @@ class ConflictError (ValueError):
 
 class AlreadySetError (ValueError):
     pass
-    
+
 class SudokuGrid:
     def __init__ (self, grid=False, verbose=False, group_size=9):
         self.grid = []
@@ -115,9 +115,9 @@ class SudokuGrid:
                     import traceback
                     traceback.print_exc()
             else:
-		#FIXME:  This is called when the fill button
-		#is clicked multiple times, which causes this exception:
-		#raise AlreadySetError
+                #FIXME:  This is called when the fill button
+                #is clicked multiple times, which causes this exception:
+                #raise AlreadySetError
                 return;
         if val in self.rows[y]:
             raise ConflictError(TYPE_ROW,(x,y),val)
@@ -178,7 +178,7 @@ class SudokuGrid:
 
     def find_conflicts (self, x, y, val, conflict_type=None):
         '''Find all squares that conflict with value val at position x,y.
-        
+
         If conflict_type is specified, we only find conflicts of given
         type (ROW, COLUMN OR BOX).
         '''
@@ -205,7 +205,7 @@ class SudokuGrid:
 
 def is_valid_puzzle (p):
     """Check puzzle for basic validity.
-    
+
     This does not check for solvability or ensure a unique
     solution -- it merely checks well-formedness. This should
     provide some protection again file corruption, etc. (i.e. if
@@ -231,7 +231,7 @@ def sudoku_grid_from_string (s):
     i = 0
     for x in range(GROUP_SIZE):
         row = []
-        for y in range(GROUP_SIZE): 
+        for y in range(GROUP_SIZE):
             if len(s) <= i: n = 0
             else: n = s[i]
             try:
@@ -245,11 +245,11 @@ def sudoku_grid_from_string (s):
             i += 1
         grid.append(row)
     return SudokuGrid(grid)
-    
+
 
 class SudokuSolver (SudokuGrid):
     """A SudokuGrid that can solve itself."""
-    def __init__ (self, grid=False, verbose=False,group_size=9):        
+    def __init__ (self, grid=False, verbose=False,group_size=9):
         self.current_guess = None
         self.initialized=False
         SudokuGrid.__init__(self,grid,verbose=verbose,group_size=group_size)
@@ -291,7 +291,7 @@ class SudokuSolver (SudokuGrid):
                     return -1
             if len(needed_set)>1:
                 return -1
-            
+
     def auto_fill (self):
         changed = []
         try: changed = self.fill_must_fills()
@@ -333,7 +333,7 @@ class SudokuSolver (SudokuGrid):
                                 "%s,%s must be two values at once!"%(coords)
                                 )
         return changed
-    
+
     def fill_must_fills_2 (self):
         changed = []
         for label,coord_dic,filled_dic in [('Column',self.col_coords,self.cols),
@@ -378,7 +378,7 @@ class SudokuSolver (SudokuGrid):
                 needed_dic = {}
                 for c in needed: needed_dic[c]=[]
                 # just work on the open squares
-                coord_set = filter(lambda coords: not self._get_(*coords),coord_set)                
+                coord_set = filter(lambda coords: not self._get_(*coords),coord_set)
                 for xy,poss_set in [(c,self.possible_values(*c)) for c in coord_set]:
                     # our set of values we can fill is now greater...
                     values = values|poss_set
@@ -409,7 +409,7 @@ class SudokuSolver (SudokuGrid):
     def scan_must_fills (self):
         """Scan to find how many fill_must_fills we could fill in with
         100% positivity based on the grid as it currently stands (not
-        using the *cumulative* results"""        
+        using the *cumulative* results"""
         # we do this by temporarily disabling the add call
         self.fake_add = True
         self.fake_added = []
@@ -470,7 +470,7 @@ class SudokuSolver (SudokuGrid):
         if not poss:
             if self.verbose: print 'Solved!'
             return True
-        # otherwise, find the possibility with the least possibilities        
+        # otherwise, find the possibility with the least possibilities
         poss.sort(lambda a,b: len(a[1])>len(b[1]) and 1 or len(a[1])<len(b[1]) and -1 or \
                   a[0]>b[0] and 1 or a[1]<b[1] and -1 or 0)
         least = poss[0]
@@ -586,7 +586,7 @@ class InteractiveSudoku (SudokuSolver):
         return (self.grid!=self.virgin.grid)
 
 class DifficultyRating:
-    
+
     very_hard = _('Very Hard')
     hard = _('Hard')
     medium = _('Medium')
@@ -607,7 +607,7 @@ class DifficultyRating:
                     'medium':medium,
                     'hard':hard,
                     'very hard':very_hard}
-    
+
     def __init__ (self,
                   fill_must_fillables,
                   elimination_fillables,
@@ -615,7 +615,7 @@ class DifficultyRating:
                   backtraces,
                   squares_filled):
         self.fill_must_fillables = fill_must_fillables
-        self.elimination_fillables = elimination_fillables        
+        self.elimination_fillables = elimination_fillables
         self.guesses = guesses
         self.backtraces = backtraces
         self.squares_filled = squares_filled
@@ -627,7 +627,7 @@ class DifficultyRating:
             self.instant_elimination_fillable = float(len(self.elimination_fillables[0]))
         else:
             self.instant_elimination_fillable = 0.0
-        
+
         self.proportion_instant_elimination_fillable = self.instant_elimination_fillable/self.squares_filled
         # some more numbers that may be crazy...
         self.proportion_instant_fill_fillable = self.instant_fill_fillable/self.squares_filled
@@ -794,7 +794,7 @@ class GuessList (list):
                 self.remove(g)
                 nuked += [g]
         return nuked
-    
+
 class BreadcrumbTrail (GuessList):
     def append (self, guess):
         # Raise an error if we add something to ourselves twice

@@ -5,7 +5,7 @@ import sys
 class SafeStdout:
     def __init__(self):
         self.stdout = sys.stdout
-    
+
     def fileno(self):
         return self.stdout.fileno()
 
@@ -18,5 +18,5 @@ class SafeStdout:
 sys.stdout = SafeStdout()
 
 def start_game ():
-	import main
-	main.start_game()
+    import main
+    main.start_game()

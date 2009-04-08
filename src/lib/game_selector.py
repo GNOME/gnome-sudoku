@@ -32,7 +32,7 @@ def color_from_difficulty (diff):
         elif diff < DR.very_hard_range[0]+ span*2/3:
             c='#cc0000'
         else:
-            c='#a40000'  
+            c='#a40000'
     return color_hex_to_float(c)
 
 class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
@@ -47,7 +47,7 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
         if gconf:
             gconf_wrapper.GConfWrapper.__init__(self,gconf)
         self.sudoku_maker = sudokuMaker or sudoku_maker.SudokuMaker()
-    
+
     def setup_dialog (self):
         self.builder = gtk.Builder()
         self.builder.add_from_file(self.ui_file)
@@ -169,16 +169,16 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
         self.puzzle = (self.NEW_GAME,puzzle)
         self.dialog.emit('response',gtk.RESPONSE_OK)
 
-    @simple_debug        
+    @simple_debug
     def close (self):
-        self.dialog.emit('response',gtk.RESPONSE_CLOSE)        
+        self.dialog.emit('response',gtk.RESPONSE_CLOSE)
 
     @simple_debug
     def handle_response (self, response):
         if response==gtk.RESPONSE_OK:
             return self.puzzle
         else:
-            return None    
+            return None
 
     def run_swallowed_dialog (self, swallower):
         self.setup_dialog()

@@ -34,7 +34,7 @@ BASE_SIZE = 35 # The "normal" size of a box (in pixels)
 
 # And the standard font-sizes -- these should fit nicely with the
 # BASE_SIZE
-BASE_FONT_SIZE = pango.SCALE * 13 
+BASE_FONT_SIZE = pango.SCALE * 13
 NOTE_FONT_SIZE = pango.SCALE * 6
 
 BORDER_WIDTH = 9.0 # The size of space we leave for a box
@@ -54,7 +54,7 @@ class NumberSelector (gtk.EventBox):
     __gsignals__ = {
         'changed':(gobject.SIGNAL_RUN_LAST,gobject.TYPE_NONE,()),
         }
-    
+
     def __init__ (self,default=None,upper=9):
         self.value = default
         gtk.EventBox.__init__(self)
@@ -102,12 +102,12 @@ class NumberBox (gtk.Widget):
 
     text = ''
     top_note_text = ''
-    bottom_note_text = ''    
+    bottom_note_text = ''
     read_only = False
     read_only_hidden = False
     _layout = None
     _top_note_layout = None
-    _bottom_note_layout = None    
+    _bottom_note_layout = None
     text_color = None
     highlight_color = None
     custom_background_color = None
@@ -118,14 +118,14 @@ class NumberBox (gtk.Widget):
         # undo-change - A hacky way to handle the fact that we want to
         # respond to undo's changes but we don't want undo to respond
         # to itself...
-        'undo-change':(gobject.SIGNAL_RUN_LAST,gobject.TYPE_NONE,()), 
+        'undo-change':(gobject.SIGNAL_RUN_LAST,gobject.TYPE_NONE,()),
         'notes-changed':(gobject.SIGNAL_RUN_LAST,gobject.TYPE_NONE,()),
         }
 
     base_state = gtk.STATE_NORMAL
     npicker = None
     draw_boxes = False
-    
+
     def __init__ (self, upper=9, text=''):
         gtk.Widget.__init__(self)
         self.upper = upper
@@ -168,7 +168,7 @@ class NumberBox (gtk.Widget):
         if self.is_focus() and not self.read_only:
             self._toggle_box_drawing_(True)
         else:
-            self._toggle_box_drawing_(False)                        
+            self._toggle_box_drawing_(False)
 
     def _toggle_box_drawing_ (self, val):
         if val and not self.draw_boxes:
@@ -176,7 +176,7 @@ class NumberBox (gtk.Widget):
             self.queue_draw()
         if (not val) and self.draw_boxes:
             self.draw_boxes = False
-            self.queue_draw()                            
+            self.queue_draw()
 
     def button_press_cb (self, w, e):
         if self.read_only: return
@@ -186,7 +186,7 @@ class NumberBox (gtk.Widget):
             # than selecting a number.
             return
         if self.is_focus():
-            x,y = e.get_coords()        
+            x,y = e.get_coords()
             alloc = self.get_allocation()
             my_w = alloc.width
             my_h = alloc.height
@@ -210,7 +210,7 @@ class NumberBox (gtk.Widget):
         txt = gtk.gdk.keyval_name(e.keyval)
         if type(txt) == type(None):
             # Make sure we don't trigger on unplugging the A/C charger etc
-            return        
+            return
         txt = txt.replace('KP_', '')
         if self.get_text() == txt:
             # If there's no change, do nothing
@@ -290,7 +290,7 @@ class NumberBox (gtk.Widget):
         self.emit('value-about-to-change')
         self.set_text(text)
         self.queue_draw()
-        self.emit('changed')        
+        self.emit('changed')
 
     def set_font (self, font):
         if type(font)==str:
@@ -337,7 +337,7 @@ class NumberBox (gtk.Widget):
         self.emit('value-about-to-change')
         self.set_note_text(*args,**kwargs)
         self.emit('notes-changed')
-    
+
     def do_realize (self):
         # The do_realize method is responsible for creating GDK (windowing system)
         # resources. In this example we will create a new gdk.Window which we
@@ -396,7 +396,7 @@ class NumberBox (gtk.Widget):
 
         # Save the allocated space
         self.allocation = allocation
-        
+
         # If we're realized, move and resize the window to the
         # requested coordinates/positions
         if self.flags() & gtk.REALIZED:
@@ -408,7 +408,7 @@ class NumberBox (gtk.Widget):
         # a good idea to write this code as optimized as it can be, don't
         # Create any resources in here.
         x, y, w, h = self.allocation
-        cr = self.window.cairo_create()        
+        cr = self.window.cairo_create()
         if h<w:
             scale = h/float(BASE_SIZE)
         else:
@@ -421,9 +421,9 @@ class NumberBox (gtk.Widget):
         self.draw_text(cr)
         if self.draw_boxes and self.is_focus():
             self.draw_note_area_highlight_box(cr)
-        
 
-    def draw_background_color (self, cr):        
+
+    def draw_background_color (self, cr):
         if self.read_only:
             if self.custom_background_color:
                 r,g,b = self.custom_background_color
@@ -433,7 +433,7 @@ class NumberBox (gtk.Widget):
             else:
                 cr.set_source_color(self.style.base[gtk.STATE_INSENSITIVE])
         elif self.is_focus():
-            cr.set_source_color(self.style.base[gtk.STATE_SELECTED])                
+            cr.set_source_color(self.style.base[gtk.STATE_SELECTED])
         elif self.custom_background_color:
             cr.set_source_rgb(*self.custom_background_color)
         else:
@@ -512,7 +512,7 @@ class NumberBox (gtk.Widget):
                      BASE_SIZE-NORMAL_LINE_WIDTH #y2
                      )
         cr.stroke()
-    
+
     def draw_text (self, cr):
         if self.text_color:
             cr.set_source_rgb(*self.text_color)
@@ -529,7 +529,7 @@ class NumberBox (gtk.Widget):
                 )
             cr.update_layout(self._layout)
             cr.show_layout(self._layout)
-        cr.set_source_color(self.style.text[self.state])        
+        cr.set_source_color(self.style.text[self.state])
         # And draw any note text...
         if self._top_note_layout:
             fontw, fonth = self._top_note_layout.get_pixel_size()
@@ -613,14 +613,14 @@ class SudokuNumberBox (NumberBox):
         if val: self.set_text('X')
         else: self.set_text('')
 
-    
+
 gobject.type_register(NumberBox)
 
 class SudokuNumberGrid (gtk.AspectFrame):
 
     def __init__ (self, group_size=9):
         self.table = gtk.Table(rows=group_size,columns=group_size,homogeneous=True)
-        self.group_size = group_size        
+        self.group_size = group_size
         self.__entries__ = {}
         for x in range(self.group_size):
             for y in range(self.group_size):
@@ -659,7 +659,7 @@ class SudokuNumberGrid (gtk.AspectFrame):
             self.table.set_row_spacing(box_side*n-1,self.big_spacing)
             self.table.set_col_spacing(box_side*n-1,self.big_spacing)
         self.table.set_border_width(self.big_spacing)
-        
+
     def get_focused_entry (self):
         return self.table.focus_child
 
@@ -689,7 +689,7 @@ class ParallelDict (dict):
     Now for the cool part...
     del pd[1]
     pd -> {2: [2,3],3:[2],4:[2]}
-    
+
     Pretty neat, no?
     """
     def __init__ (self, *args):
@@ -728,7 +728,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         }
 
     do_highlight_cells = False
-    
+
     @simple_debug
     def __init__ (self,grid=None,group_size=9,
                   show_impossible_implications=False):
@@ -812,7 +812,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         if not self.do_highlight_cells: return
         self.unhighlight_cells()
         if not hasattr(self,'box_color'): self.get_highlight_colors()
-        my_x,my_y = self.focused.x,self.focused.y        
+        my_x,my_y = self.focused.x,self.focused.y
 
         # col_coords can sometimes be null.
         if not hasattr(self.grid, 'col_coords'): return
@@ -832,10 +832,10 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                     e.set_background_color(self.box_and_row_color)
                 else:
                     e.set_background_color(self.box_color)
-        
+
 
     @simple_debug
-    def show_hint (self):        
+    def show_hint (self):
         if hasattr(self,'focused'):
             entry = self.focused
             if entry.read_only or entry.get_text():
@@ -879,7 +879,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         for x in range(self.group_size):
             for y in range(self.group_size):
                 if not self.grid.virgin._get_(x,y):
-                    val = self.__entries__[(x,y)].get_value() # get the value from the user-visible grid, 
+                    val = self.__entries__[(x,y)].get_value() # get the value from the user-visible grid,
                     if val:
                         removed.append((x,y,val,self.trackers_for_point(x,y,val)))
                         self.remove(x,y,do_removal=True)
@@ -900,7 +900,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
 
     def clear_hints (self):
         self.clear_notes(clear_args={'bottom_text':''})
-    
+
     @simple_debug
     def blank_grid (self):
         for x in range(self.group_size):
@@ -920,7 +920,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         self.__trackers_tracking__ = {}
         self.__colors_used__ = [None,ERROR_HIGHLIGHT_COLOR]
         self.blank_grid()
-        self.setup_grid(grid,group_size)        
+        self.setup_grid(grid,group_size)
 
     @simple_debug
     def load_game (self, game):
@@ -960,7 +960,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         self.doing_initial_setup = False
 
     @simple_debug
-    def entry_callback (self, widget, *args):        
+    def entry_callback (self, widget, *args):
         if not widget.get_text():
             if self.grid and self.grid._get_(widget.x,widget.y):
                 self.grid.remove(widget.x,widget.y)
@@ -1021,14 +1021,14 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                 if tracker==-1: pass
                 self.__entries__[(x,y)].set_color(self.get_tracker_color(tracker))
                 self.trackers[tracker].append((x,y,val))
-        elif True in self.__trackers_tracking__.values():        
+        elif True in self.__trackers_tracking__.values():
             for k,v in self.__trackers_tracking__.items():
                 if v:
                     self.__entries__[(x,y)].set_color(self.get_tracker_color(k))
                     self.trackers[k].append((x,y,val))
         # Add value to our underlying sudoku grid -- this will raise
         # an error if the value is out of bounds with the current
-        # rules. 
+        # rules.
         try:
             self.grid.add(x,y,val,True)
         except sudoku.ConflictError, err:
@@ -1041,7 +1041,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         """Remove x,y from our visible grid.
 
         If do_removal, remove it from our underlying grid as well.
-        """        
+        """
         e=self.__entries__[(x,y)]
         if do_removal and self.grid and self.grid._get_(x,y):
             self.grid.remove(x,y)
@@ -1095,7 +1095,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         if filled and filled!=-1:
             e.set_text_interactive('')
             e.set_text_interactive(str(filled[1]))
-    
+
     @simple_debug
     def mark_impossible_implications (self, x, y):
         if not self.grid: return
@@ -1167,7 +1167,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             for y in range(self.group_size):
                 val = self.grid._get_(x,y)
                 if (val
-                    and (x,y,val) not in tracks 
+                    and (x,y,val) not in tracks
                     and not self.grid.virgin._get_(x,y)
                     ):
                     removed.append((x,y,val,self.trackers_for_point(x,y,val)))
@@ -1188,7 +1188,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
 
 class GridDancer:
 
-    DANCE_COLORS = [colors.color_hex_to_float(hx) for hx in 
+    DANCE_COLORS = [colors.color_hex_to_float(hx) for hx in
                     [
         '#cc0000', # red
         '#ef2929',
@@ -1204,7 +1204,7 @@ class GridDancer:
                     ]
 
     STEPS_PER_ANIMATION = 10
-    
+
     def __init__ (self, grid):
         self.animations = [self.value_dance,
                            self.box_dance,
@@ -1242,7 +1242,7 @@ class GridDancer:
                               ].set_background_color(
             random.choice(self.DANCE_COLORS)
             )
-    
+
     def rotate_animation (self):
         ci = self.animations.index(self.current_animation)
         if (ci+1) == len(self.animations):
@@ -1275,7 +1275,7 @@ class GridDancer:
             color = self.DANCE_COLORS[n]
             for y in range(9):
                 self.grid.__entries__[(x,y)].set_background_color(color)
-                
+
     def row_dance (self):
         for y in range(9):
             n = (y + self.adjustment) % len(self.DANCE_COLORS)
@@ -1289,7 +1289,7 @@ class GridDancer:
             color = self.DANCE_COLORS[n]
             for x,y in self.grid.grid.box_coords[box]:
                 self.grid.__entries__[(x,y)].set_background_color(color)
-        
+
     def value_dance (self):
         for value in range(10):
             n = (value + self.adjustment) % len(self.DANCE_COLORS)
@@ -1308,7 +1308,7 @@ def test_dance_grid (grid):
 if __name__ == '__main__':
     def test_sng ():
         w = gtk.Window()
-        w.connect('delete-event', gtk.main_quit)    
+        w.connect('delete-event', gtk.main_quit)
         t = SudokuNumberGrid(4)
         w.add(t)
         t.__entries__[(0,1)].set_color((0.0,1.0,0.0))
@@ -1335,7 +1335,7 @@ if __name__ == '__main__':
         w.connect('delete-event', gtk.main_quit)
         vb = gtk.VBox()
         hb = gtk.HBox()
-        swallower = SwappableArea(hb)        
+        swallower = SwappableArea(hb)
         tb = gtk.Toolbar()
         b = gtk.ToolButton(stock_id=gtk.STOCK_QUIT)
         b.connect('clicked',lambda x: w.hide() or gtk.main_quit())
@@ -1353,9 +1353,9 @@ if __name__ == '__main__':
         from gtk_goodies.dialog_extras import MessageDialog
         md = MessageDialog(title="Foo",label="Foo",sublabel="Bar "*12)
         swallower.run_dialog(md)
-        hb.pack_start(sgd,padding=6)        
+        hb.pack_start(sgd,padding=6)
         sgd.change_grid(SudokuGrid(sample_open_sudoku),9)
-        gtk.main()        
+        gtk.main()
 
     def test_sudoku_game ():
         from sudoku import SudokuGrid, sample_open_sudoku
@@ -1367,7 +1367,7 @@ if __name__ == '__main__':
         w.show_all()
         test_dance_grid(sgd)
         gtk.main()
-        
+
     def test_number_selector ():
         w = gtk.Window()
         w.connect('delete-event',gtk.main_quit)

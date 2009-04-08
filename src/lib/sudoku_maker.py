@@ -51,7 +51,7 @@ class SudokuGenerator:
         x,y = upper - y,upper-x
         # reflect twice...
         return y, x
-            
+
     def make_symmetric_puzzle (self):
         nclues = self.clues/2
         buckshot = set(random.sample(self.all_coords,nclues))
@@ -86,7 +86,7 @@ class SudokuGenerator:
             new_puzzle.add(x,y,self.start_grid._get_(x,y))
         self.puzzles.append(new_puzzle)
         return new_puzzle
-    
+
     def make_puzzle_by_boxes (self,
                               skew_by=0.0,
                               max_squares=None,):
@@ -133,7 +133,7 @@ class SudokuGenerator:
             clued += clues
             if skew_by:
                 # Reduce our number of squares proportionally to
-                # skewiness. 
+                # skewiness.
                 max_squares = round(max_squares * skew_by)
         # shuffle ourselves...
         random.shuffle(nclues)
@@ -171,7 +171,7 @@ class SudokuGenerator:
             return solver.difficulty()
         else:
             return None
-        
+
     def generate_puzzle_for_difficulty (self,
                                         lower_target=0.3,
                                         upper_target=0.5,
@@ -329,7 +329,7 @@ class SudokuMaker:
                 except:
                     print 'Problem copying base puzzles'
                     print 'Attempted to copy from %s to %s' % (source, target)
-                
+
     def get_pregenerated (self, difficulty):
         fname = os.path.join(self.pickle_to, difficulty.replace(' ','_'))
         try:
@@ -340,7 +340,7 @@ class SudokuMaker:
             return []
         else:
             return [line.strip() for line in lines]
-        
+
     def get_new_puzzle (self, difficulty, new=True):
         """Return puzzle with difficulty near difficulty.
 
@@ -449,7 +449,7 @@ class SudokuMaker:
         if i < n:
             print 'WARNING: Not able to provide %s puzzles in levels %s'%(n,levels)
             print 'WARNING: Generate more puzzles if you really need this many puzzles!'
-        return puzzles    
+        return puzzles
 
     def get_puzzles (self, n, levels, new=True, randomize=True,
                      exclude=[]):
@@ -462,7 +462,7 @@ class SudokuMaker:
         if not n: return []
         assert(levels)
         puzzles = []
-        
+
         # Open files to read puzzles...
         files = {}
         for l in levels:
@@ -478,7 +478,7 @@ class SudokuMaker:
             if lev in finished:
                 il += 1
                 continue
-            
+
             if len(files[lev]) == 0:
                 finished.append(lev)
             else:
@@ -500,7 +500,7 @@ class SudokuMaker:
             print 'WARNING: Not able to provide %s puzzles in levels %s'%(n,levels)
             print 'WARNING: Generate more puzzles if you really need this many puzzles!'
 
-        return puzzles    
+        return puzzles
 
     # End convenience methods for accessing puzzles we've created
 
@@ -508,8 +508,8 @@ class SudokuMaker:
 
     def make_batch (self, diff_min=None, diff_max=None):
         self.new_generator = InterruptibleSudokuGenerator(**self.generator_args)
-        key = self.new_generator.start_grid.to_string()        
-        #while 
+        key = self.new_generator.start_grid.to_string()
+        #while
         #    self.new_generator = InterruptibleSudokuGenerator(**self.generator_args)
         #    key = self.new_generator.start_grid.to_string()
         #print 'We have our solution grid'
@@ -581,7 +581,7 @@ class SudokuMaker:
     def get_difficulty (self, puz):
         return sudoku.SudokuRater(puz).difficulty()
 
-        
+
 if __name__ == '__main__':
     import time
     #puzzles=sg.generate_puzzles(30)
@@ -595,7 +595,7 @@ if __name__ == '__main__':
     #unique_puzzles=filter(lambda x: sudoku.SudokuSolver(x[0].grid,verbose=False).has_unique_solution(),puzzles)
     sm = SudokuMaker()
     #st = SudokuTracker(sm)
-elif False:    
+elif False:
     usage="""Commands are:
     run: Run sudoku-maker
     len: \# of puzzles generated

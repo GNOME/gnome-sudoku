@@ -23,7 +23,7 @@ def draw_sudoku (cr, sudoku, played, size, offset_x=0, offset_y=0, border_color=
                   )
 
     SQUARE_SIZE = WHITE_SPACE / SUDOKU_SIZE
-    FONT_SIZE = SQUARE_SIZE 
+    FONT_SIZE = SQUARE_SIZE
 
     outer = {}
     outer["left"]   = offset_x
@@ -54,7 +54,7 @@ def draw_sudoku (cr, sudoku, played, size, offset_x=0, offset_y=0, border_color=
     cr.set_source_rgb(*border_color)
     cr.stroke()
 
-    #Outer thick lines 
+    #Outer thick lines
     cr.set_line_join(cairo.LINE_JOIN_MITER)
     cr.set_line_width(THICK)
     cr.rectangle(outer["left"]   + BORDER +   THICK/2.0,
@@ -100,10 +100,10 @@ def draw_sudoku (cr, sudoku, played, size, offset_x=0, offset_y=0, border_color=
                 cr.select_font_face("",
                          cairo.FONT_SLANT_NORMAL,
                          cairo.FONT_WEIGHT_BOLD)
-                cr.set_source_rgb(0,0,0)    
+                cr.set_source_rgb(0,0,0)
                 xbearing,ybearing,width,height,xadvance,yadvance = (
                     cr.text_extents(letter)
-                    )                
+                    )
 
             elif played and played[y][x]:
                 cr.select_font_face("Times",

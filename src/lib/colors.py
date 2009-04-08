@@ -27,7 +27,7 @@ def rgb_to_hsv (r,g,b,maxval=255):
         if (h < 0): h+=1
         if (h > 1): h -= 1
     return h,s,v
-            
+
 def hsv_to_rgb (h,s,v):
     if s==0:
         return v,v,v

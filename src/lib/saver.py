@@ -65,7 +65,7 @@ def open_game (ui, jar):
     if jar.has_key('notes') and jar['notes']:
         for x,y,top,bot in jar['notes']:
             ui.gsd.__entries__[(x,y)].set_note_text(top,bot)
-        
+
 def pickle_game (ui, target):
     close_me = False
     if type(target) in types.StringTypes:
@@ -74,7 +74,7 @@ def pickle_game (ui, target):
     to_dump = jar_game(ui)
     pickle.dump(to_dump,target)
     if close_me: target.close()
-    
+
 def unpickle_game (ui, target):
     close_me = False
     if type(target)==str:
@@ -98,7 +98,7 @@ class SudokuTracker:
         if not os.path.exists(path):
             try:
                 os.makedirs(path)
-            except OSError, e:                
+            except OSError, e:
                 if e.errno == errno.ENOSPC:
                     show_message(
                         title=_('No Space'),
@@ -115,7 +115,7 @@ class SudokuTracker:
                         _('Error %(errno)s: %(error)s')%{'errno':e.errno,
                                                          'error':e.strerror}
                         )
-                        
+
     def game_from_ui (self, ui):
         return ui.gsd.grid.virgin.to_string()
 
@@ -197,7 +197,7 @@ class SudokuTracker:
         game = self.game_from_ui(ui)
         jar  = jar_game(ui)
         self.remove_from_saved_games(jar)
-        
+
     def list_saved_games (self):
         try:
             files = os.listdir(self.save_path)

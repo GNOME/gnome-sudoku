@@ -119,7 +119,7 @@ class ActiveTimer (gobject.GObject):
         'timing-started':(gobject.SIGNAL_RUN_LAST,gobject.TYPE_NONE,()),
         'timing-stopped':(gobject.SIGNAL_RUN_LAST,gobject.TYPE_NONE,())
         }
-    
+
     def __init__ (self, window):
         gobject.GObject.__init__(self)
         self.window = window
@@ -130,8 +130,8 @@ class ActiveTimer (gobject.GObject):
         self.window.connect('window-state-event',self.window_state_event_cb)
         self.window.connect('state-changed',self.window_state_event_cb)
         self.window.connect('visibility-notify-event',self.window_state_event_cb)
-        self.window.connect('expose-event',self.window_state_event_cb)        
-        self.window.connect('no-expose-event',self.window_state_event_cb)        
+        self.window.connect('expose-event',self.window_state_event_cb)
+        self.window.connect('no-expose-event',self.window_state_event_cb)
 
     def window_state_event_cb (self, *args):
         if self.window.is_active():
@@ -143,7 +143,7 @@ class ActiveTimer (gobject.GObject):
         if not self.__absolute_start_time__:
             return
 
-        if on and not self.timing_running:            
+        if on and not self.timing_running:
             self.timing_started_at = time.time()
             self.timing_running = True
             self.emit('timing-started')
@@ -174,7 +174,7 @@ class ActiveTimer (gobject.GObject):
     # make sure to call finish_timing before using this function
     def active_time_string (self):
         return format_time(self.tot_time)
-    
+
     # make sure to call finish_timing before using this function
     def total_time_string (self):
         return format_time(self.tot_time_complete)

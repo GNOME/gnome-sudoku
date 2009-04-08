@@ -78,7 +78,7 @@ class UI (gconf_wrapper.GConfWrapper):
         <menuitem action="New"/>
         <separator/>
         <menuitem action="PuzzleInfo"/>
-        <separator/>        
+        <separator/>
         <menuitem action="Print"/>
         <menuitem action="PrintMany"/>
         <separator/>
@@ -89,13 +89,13 @@ class UI (gconf_wrapper.GConfWrapper):
         <menuitem action="Redo"/>
         <separator/>
         <menuitem action="Clear"/>
-        <menuitem action="ClearNotes"/>        
+        <menuitem action="ClearNotes"/>
       </menu>
       <menu action="View">
         <menuitem action="FullScreen"/>
         <separator/>
         <menuitem action="ToggleToolbar"/>
-        <menuitem action="ToggleHighlight"/>        
+        <menuitem action="ToggleHighlight"/>
       </menu>
       <menu action="Tools">
         <menuitem action="ShowPossible"/>
@@ -123,7 +123,7 @@ class UI (gconf_wrapper.GConfWrapper):
       <toolitem action="Redo"/>
       <separator/>
       <toolitem action="ShowPossible"/>
-      <toolitem action="AutofillCurrentSquare"/>      
+      <toolitem action="AutofillCurrentSquare"/>
       <separator/>
       <toolitem action="ToggleHighlight"/>
       <toolitem action="Tracker"/>
@@ -144,7 +144,7 @@ class UI (gconf_wrapper.GConfWrapper):
                      'width': 700,
                      'height': 675,
                      'auto_save_interval':60 # auto-save interval in seconds...
-                     }    
+                     }
 
     @simple_debug
     def __init__ (self, run_selector=True):
@@ -165,7 +165,7 @@ class UI (gconf_wrapper.GConfWrapper):
         # setup sudoku maker...
         self.sudoku_maker = sudoku_maker.SudokuMaker()
         self.sudoku_tracker = saver.SudokuTracker()
-        # generate puzzles while our use is working...        
+        # generate puzzles while our use is working...
         self.show()
         if run_selector:
             self.do_stop()
@@ -177,7 +177,7 @@ class UI (gconf_wrapper.GConfWrapper):
                 # Generate puzzles in background...
                 if self.gconf['generate_puzzles_in_background']:
                     gobject.timeout_add(1000,lambda *args: self.start_worker_thread() and True)
-        
+
 
     @inactivate_new_game_etc
     def select_game (self):
@@ -193,7 +193,7 @@ class UI (gconf_wrapper.GConfWrapper):
         if choice[0] == game_selector.NewOrSavedGameSelector.SAVED_GAME:
             saver.open_game(self,choice[1])
             self.update_statusbar()
-        if self.gconf['show_toolbar']: 
+        if self.gconf['show_toolbar']:
             self.tb.show()
         if self.gconf['always_show_hints']:
             self.gsd.update_all_hints()
@@ -209,15 +209,15 @@ class UI (gconf_wrapper.GConfWrapper):
         self.initialize_prefs()
         self.setup_main_window()
         self.gsd = gsudoku.SudokuGameDisplay()
-        self.gsd.connect('puzzle-finished',self.you_win_callback)        
+        self.gsd.connect('puzzle-finished',self.you_win_callback)
         self.setup_color()
         self.setup_actions()
         self.setup_undo()
         self.setup_autosave()
         self.w.add_accel_group(self.uimanager.get_accel_group())
-        self.setup_main_boxes()        
+        self.setup_main_boxes()
         self.setup_tracker_interface()
-        self.setup_toggles()        
+        self.setup_toggles()
 
     def setup_main_window (self):
         gtk.window_set_default_icon_name('gnome-sudoku')
@@ -225,11 +225,11 @@ class UI (gconf_wrapper.GConfWrapper):
         self.w.set_default_size(self.gconf['width'], self.gconf['height'])
         self.w.set_title(APPNAME_SHORT)
         self.w.connect('configure-event',self.resize_cb)
-        self.w.connect('delete-event',self.quit_cb) 
+        self.w.connect('delete-event',self.quit_cb)
         self.uimanager = gtk.UIManager()
 
     def setup_actions (self):
-        self.main_actions = gtk.ActionGroup('MainActions')        
+        self.main_actions = gtk.ActionGroup('MainActions')
         self.main_actions.add_actions([
             ('Game',None,_('_Game')),
             ('New',gtk.STOCK_NEW,None,
@@ -289,14 +289,14 @@ class UI (gconf_wrapper.GConfWrapper):
              _('Generate new puzzles in the background while you play. This will automatically pause when the game goes into the background.'),
              self.toggle_generator_cb, True),
             ])
-        
+
         self.edit_actions = gtk.ActionGroup('EditActions')
         self.edit_actions.add_actions(
             [('Edit',None,_('_Edit')),
              ('Undo',gtk.STOCK_UNDO,_('_Undo'),'<Control>z',_('Undo last action'), self.stop_dancer),
              ('Redo',gtk.STOCK_REDO,_('_Redo'),'<Shift><Control>z',_('Redo last action')),
              ('Clear',gtk.STOCK_CLEAR,_('_Clear'),'<Control>b',_("Clear entries you've filled in"),self.clear_cb),
-             ('ClearNotes',None,_('Clear _Notes'),None,_("Clear notes and hints"),self.clear_notes_cb),             
+             ('ClearNotes',None,_('Clear _Notes'),None,_("Clear notes and hints"),self.clear_notes_cb),
              # Trackers...
              ('Tracker%s',None,_('No Tracker'),'<Control>0',None,lambda *args: self.set_tracker(-1)),
              ('Generator',None,_('_Generate new puzzles'),None,_('Generate new puzzles.'),
@@ -336,7 +336,7 @@ class UI (gconf_wrapper.GConfWrapper):
             bgcol = 'black'
         else:
             bgcol = None
-        if bgcol: self.gsd.set_bg_color(bgcol)            
+        if bgcol: self.gsd.set_bg_color(bgcol)
 
     def setup_autosave (self):
         gobject.timeout_add(1000*(self.gconf['auto_save_interval'] or 60), # in seconds...
@@ -361,7 +361,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.game_box.show()
         self.main_area.pack_start(self.game_box,False,padding=12)
         self.statusbar = gtk.Statusbar(); self.statusbar.show()
-        self.vb.pack_end(self.statusbar,fill=False,expand=False)        
+        self.vb.pack_end(self.statusbar,fill=False,expand=False)
         self.w.add(self.vb)
 
     def setup_by_hand_area (self):
@@ -369,7 +369,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.by_hand_label = gtk.Label()
         self.by_hand_label.set_alignment(0,0)
         self.by_hand_label.set_markup('<i>%s</i>'%_('Entering custom grid...'))
-        self.game_box.pack_start(self.by_hand_label,False,)#padding=12)        
+        self.game_box.pack_start(self.by_hand_label,False,)#padding=12)
         self.by_hand_buttonbox = gtk.HButtonBox()
         self.by_hand_buttonbox.set_spacing(12)
         self.by_hand_save_button = gtk.Button(_('_Play game'))
@@ -379,7 +379,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.by_hand_buttonbox.add(self.by_hand_cancel_button)
         self.by_hand_buttonbox.add(self.by_hand_save_button)
         self.game_box.pack_start(self.by_hand_buttonbox,False,padding=18)
-        self.by_hand_widgets = [self.by_hand_label,self.by_hand_buttonbox]        
+        self.by_hand_widgets = [self.by_hand_label,self.by_hand_buttonbox]
 
     def setup_toggles (self):
         # sync up toggles with gconf values...
@@ -396,7 +396,7 @@ class UI (gconf_wrapper.GConfWrapper):
               self.main_actions.get_action('ToggleHighlight')),
              ('show_tracker',
               self.main_actions.get_action('Tracker')),
-             ])        
+             ])
 
     @simple_debug
     def start_worker_thread (self, *args):
@@ -447,7 +447,7 @@ class UI (gconf_wrapper.GConfWrapper):
                                  self.gsd.auto_fills)%{'n':self.gsd.auto_fills}
         from gsudoku import GridDancer
         self.dancer = GridDancer(self.gsd)
-        self.dancer.start_dancing()            
+        self.dancer.start_dancing()
         dialog_extras.show_message(_("You win!"),label=_("You win!"),
                                    sublabel=sublabel
                                    )
@@ -480,7 +480,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.do_stop()
         self.select_game()
 
-            
+
     @simple_debug
     def stop_game (self):
        if (self.gsd.grid
@@ -492,14 +492,14 @@ class UI (gconf_wrapper.GConfWrapper):
             except dialog_extras.UserCancelledError:
                 return
             self.do_stop()
-            
+
     def do_stop (self):
         self.stop_dancer()
         self.gsd.grid = None
         self.tracker_ui.reset()
-        self.history.clear()        
+        self.history.clear()
         self.won = False
-        
+
     @simple_debug
     def resize_cb (self, widget, event):
         self.gconf['width'] = event.width
@@ -533,7 +533,7 @@ class UI (gconf_wrapper.GConfWrapper):
             self.gconf['current_game']=''
         if not self.won:
             if not self.gsd.grid:
-                self.gconf['current_game']=''            
+                self.gconf['current_game']=''
         self.stop_worker_thread()
         # allow KeyboardInterrupts, which calls quit_cb outside the main loop
         try:
@@ -547,7 +547,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.stop_game()
         self.gsd.change_grid(sudoku.InteractiveSudoku(),9)
         for w in self.by_hand_widgets: w.show_all()
-        
+
     @simple_debug
     def save_handmade_grid (self, *args):
         for w in self.by_hand_widgets: w.hide()
@@ -563,12 +563,12 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def save_game (self, *args):
-	self.sudoku_tracker.save_game(self)
+        self.sudoku_tracker.save_game(self)
 
     @simple_debug
     def zoom_in_cb (self,*args):
         self.gh.change_font_size(multiplier=1.1)
-        self.zoom = self.zoom * 1.1        
+        self.zoom = self.zoom * 1.1
 
     @simple_debug
     def zoom_out_cb (self,*args):
@@ -583,9 +583,9 @@ class UI (gconf_wrapper.GConfWrapper):
         else:
             self.w.fullscreen()
             self.is_fullscreen = True
-        
+
     @simple_debug
-    def clear_cb (self,*args):        
+    def clear_cb (self,*args):
         clearer=Undo.UndoableObject(
             self.do_clear, #action
             self.undo_clear, #inverse
@@ -625,7 +625,7 @@ class UI (gconf_wrapper.GConfWrapper):
             self.gsd.always_show_hints = True
             self.gsd.update_all_hints()
         else:
-            self.gsd.always_show_hints = False            
+            self.gsd.always_show_hints = False
             self.gsd.clear_hints()
 
     @simple_debug
@@ -663,7 +663,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def setup_tracker_interface (self):
-        self.trackers = {}        
+        self.trackers = {}
         self.tracker_ui = TrackerBox(self)
         self.tracker_ui.show_all()
         self.tracker_ui.hide()
@@ -682,7 +682,7 @@ class UI (gconf_wrapper.GConfWrapper):
                     self.gsd.add_tracker(e.x,e.y,n)
         else:
             print 'No tracker ',n,'yet'
-        
+
     @simple_debug
     def tracker_toggle_cb (self, widg):
         if widg.get_active():
@@ -703,7 +703,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
 
     def update_statusbar (self, *args):
-        if not self.gsd.grid: 
+        if not self.gsd.grid:
             self.set_statusbar_value(" ")
             return True
 
@@ -762,15 +762,15 @@ class UI (gconf_wrapper.GConfWrapper):
         # have reason to...
         if self.gsd.grid and self.gsd.grid.is_changed() and not self.won:
             self.sudoku_tracker.save_game(self)
-    
+
     def offer_to_load_autosaved_file (self):
-    	pass    
+        pass
 
     @simple_debug
     def load_autosave (self, filename):
         saver.unpickle_game(self,filename)
         self.history.clear()
-        
+
     @simple_debug
     def show_about (self, *args):
         about = gtk.AboutDialog()
@@ -778,8 +778,8 @@ class UI (gconf_wrapper.GConfWrapper):
         about.set_name(APPNAME)
         about.set_version(VERSION)
         about.set_copyright(COPYRIGHT)
-	about.set_license(LICENSE[0] + '\n\n' + LICENSE[1] + '\n\n' +LICENSE[2])
-	about.set_wrap_license(True)
+        about.set_license(LICENSE[0] + '\n\n' + LICENSE[1] + '\n\n' +LICENSE[2])
+        about.set_wrap_license(True)
         about.set_comments(DESCRIPTION)
         about.set_authors(AUTHORS)
         about.set_website(WEBSITE)
@@ -814,7 +814,7 @@ class TrackerBox (gtk.VBox):
 
     @simple_debug
     def __init__ (self, main_ui):
-        
+
         gtk.VBox.__init__(self)
         self.builder = gtk.Builder()
         self.builder.add_from_file(os.path.join(GLADE_DIR,'tracker.ui'))
@@ -828,7 +828,7 @@ class TrackerBox (gtk.VBox):
 
     @simple_debug
     def reset (self):
-        
+
         for tree in self.tracker_model:
             if tree[0]>-1:
                 self.tracker_model.remove(tree.iter)
@@ -848,7 +848,7 @@ class TrackerBox (gtk.VBox):
 
     @simple_debug
     def setup_actions (self):
-        self.tracker_actions = gtk.ActionGroup('tracker_actions')        
+        self.tracker_actions = gtk.ActionGroup('tracker_actions')
         self.tracker_actions.add_actions(
             [('Clear',
               gtk.STOCK_CLEAR,
@@ -899,7 +899,7 @@ class TrackerBox (gtk.VBox):
             pb_str_new += chr(int(tc[1]*255))
             pb_str_new += chr(int(tc[2]*255))
             pb_str_new += alpha
-        
+
         return gtk.gdk.pixbuf_new_from_data(pb_str_new, gtk.gdk.COLORSPACE_RGB, True, 8, pb.get_width(), pb.get_height(), pb.get_rowstride())
 
     @simple_debug
@@ -969,7 +969,7 @@ def start_game ():
     u = UI()
     if not u.quit:
         try:
-            gtk.main()        
+            gtk.main()
         except KeyboardInterrupt:
             # properly quit on a keyboard interrupt...
             u.quit_cb()
@@ -983,13 +983,13 @@ def profile_me ():
     prof.runcall(start_game)
     stats = hotshot.stats.load(pname)
     stats.strip_dirs()
-    stats.sort_stats('time','calls').print_stats()    
+    stats.sort_stats('time','calls').print_stats()
 
-    
-        
-        
+
+
+
 if __name__ == '__main__':
     import defaults
     defaults.DATA_DIR == '/tmp/'; DATA_DIR=='/tmp/'
-    
+
     

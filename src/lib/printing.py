@@ -84,7 +84,7 @@ class SudokuPrinter:
 
             cr.set_font_size(12)
             cr.select_font_face("", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
-            cr.set_source_rgb(0,0,0)    
+            cr.set_source_rgb(0,0,0)
             xbearing, ybearing, width, height, xadvance, yadvance = cr.text_extents(label)
             cr.move_to(left, top-height/2)
             cr.show_text(label)
@@ -140,7 +140,7 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
                           ('print_easy','easyCheckButton'),
                           ('print_medium','mediumCheckButton'),
                           ('print_hard','hardCheckButton'),
-                          ('print_very_hard','very_hardCheckButton'),                          
+                          ('print_very_hard','very_hardCheckButton'),
                           ]:
             setattr(self,wname,self.builder.get_object(wname))
             try: assert(getattr(self,wname))
