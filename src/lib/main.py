@@ -131,8 +131,6 @@ class UI (gconf_wrapper.GConfWrapper):
     </ui>'''
 
     initial_prefs = {'group_size':9,
-                     'font_zoom':0,
-                     'zoom_on_resize':1,
                      'always_show_hints':0,
                      'player':os.environ.get('USERNAME',''),
                      'difficulty':0.0,
@@ -510,7 +508,7 @@ class UI (gconf_wrapper.GConfWrapper):
         if (self.gsd.grid
             and self.gsd.grid.is_changed()
             and (not self.won)):
-            self.save_game(self) # autosave...
+            self.save_game(self)
         if gtk.main_level() > 1:
             # If we are in an embedded mainloop, that means that one
             # of our "swallowed" dialogs is active, in which case we
@@ -564,16 +562,6 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     def save_game (self, *args):
         self.sudoku_tracker.save_game(self)
-
-    @simple_debug
-    def zoom_in_cb (self,*args):
-        self.gh.change_font_size(multiplier=1.1)
-        self.zoom = self.zoom * 1.1
-
-    @simple_debug
-    def zoom_out_cb (self,*args):
-        self.gh.change_font_size(multiplier=0.9)
-        self.zoom = self.zoom * 0.9
 
     def full_screen_cb (self, *args):
         if not hasattr(self,'is_fullscreen'): self.is_fullscreen = False
@@ -762,14 +750,6 @@ class UI (gconf_wrapper.GConfWrapper):
         # have reason to...
         if self.gsd.grid and self.gsd.grid.is_changed() and not self.won:
             self.sudoku_tracker.save_game(self)
-
-    def offer_to_load_autosaved_file (self):
-        pass
-
-    @simple_debug
-    def load_autosave (self, filename):
-        saver.unpickle_game(self,filename)
-        self.history.clear()
 
     @simple_debug
     def show_about (self, *args):
@@ -992,4 +972,3 @@ if __name__ == '__main__':
     import defaults
     defaults.DATA_DIR == '/tmp/'; DATA_DIR=='/tmp/'
 
-    
