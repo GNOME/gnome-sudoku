@@ -8,9 +8,25 @@ SAVE_ATTRIBUTES = [('gsd.hints'),
                    ('gsd.impossible_hints'),
                    ('gsd.auto_fills'),
                    ('timer.__absolute_start_time__'),
-                   ('timer.tot_time'),
-                   ('timer.tot_time_complete'),
+                   ('timer.active_time'),
+                   ('timer.total_time'),
                    ]
+
+def update_saved_attributes (jar):
+    '''Make sure all SAVE_ATTRIBUTES are available and valid.
+    '''
+    for attr in SAVE_ATTRIBUTES:
+        # default to 0, which is reasonable for current SAVE_ATTRIBUTES.
+        if not attr in jar:
+            jar[attr] = 0
+    # special case for timing things
+    if 'timer.tot_time' in jar: # tot_time was renamed to active_time
+        jar['timer.active_time'] = jar['timer.tot_time']
+    if 'timer.tot_time_complete' in jar: # tot_time_complete renamed to total_time
+        jar['timer.total_time'] = jar['timer.tot_time_complete']
+    if not jar['timer.active_time']:
+        # FIXME set to 1 in order to display well at game-selecting page
+        jar['timer.active_time'] = 1
 
 def super_getattr (obj, attr):
     """getattr, following the dots."""
@@ -44,6 +60,10 @@ def jar_game (ui):
         jar[attr]=super_getattr(ui,attr)
     return jar
 
+def set_value_from_jar (dest, jar):
+    for attr in SAVE_ATTRIBUTES:
+        super_setattr(dest, attr, jar[attr])
+
 def open_game (ui, jar):
     ui.gsd.load_game(jar['game'])
     # this is a bit easily breakable... we take advantage of the fact
@@ -57,11 +77,7 @@ def open_game (ui, jar):
     for tracker,tracking in jar.get('tracking',{}).items():
         if tracking:
             ui.tracker_ui.select_tracker(tracker)
-    for attr in SAVE_ATTRIBUTES:
-        super_setattr(ui,attr,jar.get(attr,None))
-    for attr in SAVE_ATTRIBUTES:
-        if jar.get(attr,None) == None:
-            super_setattr(ui,attr,0)
+    set_value_from_jar(ui, jar)
     if jar.has_key('notes') and jar['notes']:
         for x,y,top,bot in jar['notes']:
             ui.gsd.__entries__[(x,y)].set_note_text(top,bot)
@@ -211,6 +227,7 @@ class SudokuTracker:
             except:
                 print 'Warning: could not read file',f
             else:
+                update_saved_attributes(jar)
                 if self.is_valid(jar):
                     jar['saved_at']=os.stat(f)[8]
                     games.append(jar)
@@ -228,5 +245,8 @@ class SudokuTracker:
         if not virgin.isdigit() or not played.isdigit():
             return False
 
-        return True
+        for attr in SAVE_ATTRIBUTES:
+            if jar.get(attr,None) == None:
+                return False
 
+        return True

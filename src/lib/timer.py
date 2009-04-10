@@ -123,61 +123,53 @@ class ActiveTimer (gobject.GObject):
     def __init__ (self, window):
         gobject.GObject.__init__(self)
         self.window = window
-        self.timing_running = False
-        self.__absolute_start_time__ = 0
-        self.tot_time = 0
-        self.tot_time_complete = 0
-        self.window.connect('window-state-event',self.window_state_event_cb)
-        self.window.connect('state-changed',self.window_state_event_cb)
-        self.window.connect('visibility-notify-event',self.window_state_event_cb)
-        self.window.connect('expose-event',self.window_state_event_cb)
-        self.window.connect('no-expose-event',self.window_state_event_cb)
+        # whether we have 'start_timing'; affects total_time
+        self.timer_running = False
+        # whether the timer is running/paused; affects active_time
+        self.is_timing = False
+        self.window.connect('focus-in-event',
+                lambda *args: self.resume_timing())
+        self.window.connect('focus-out-event',
+                lambda *args: self.pause_timing())
 
-    def window_state_event_cb (self, *args):
-        if self.window.is_active():
-            self.toggle_timing(True)
-        else:
-            self.toggle_timing(False)
-
-    def toggle_timing (self, on):
-        if not self.__absolute_start_time__:
-            return
-
-        if on and not self.timing_running:
-            self.timing_started_at = time.time()
-            self.timing_running = True
+    def resume_timing (self):
+        if self.timer_running and not self.is_timing:
+            self.is_timing = True
+            self.interval_start = time.time()
             self.emit('timing-started')
 
-        if not on and self.timing_running:
-            end_time = time.time()
-            self.timing_running = False
-            self.tot_time += (end_time - self.timing_started_at)
-            self.tot_time_complete += end_time - self.__absolute_start_time__
+    def pause_timing (self):
+        if self.timer_running and self.is_timing:
+            self.is_timing = False
+            interval_end = time.time()
+            # active_time is composed of intervals between pausing and resuming
+            self.active_time += (interval_end - self.interval_start)
             self.emit('timing-stopped')
 
     def start_timing (self):
-        self.timing_running = False
-        self.__absolute_start_time__ = 0
-        self.tot_time = 0
-        self.tot_time_complete = 0
+        self.timer_running = True
+        self.active_time = 0
+        self.total_time = 0
         self.__absolute_start_time__ = time.time()
-        self.toggle_timing(True)
+        self.resume_timing()
 
     def finish_timing (self):
-        self.toggle_timing(False)
-        if self.tot_time < 1:
-            self.tot_time = 1;
+        self.pause_timing()
+        self.timer_running = False
+        self.total_time = time.time() - self.__absolute_start_time__
+        if self.active_time < 1:
+            self.active_time = 1;
         # dirty hack: never let total time be less than active time
-        if self.tot_time > self.tot_time_complete:
-            self.tot_time_complete = self.tot_time;
+        if self.active_time > self.total_time:
+            self.total_time = self.active_time;
 
     # make sure to call finish_timing before using this function
     def active_time_string (self):
-        return format_time(self.tot_time)
+        return format_time(self.active_time)
 
     # make sure to call finish_timing before using this function
     def total_time_string (self):
-        return format_time(self.tot_time_complete)
+        return format_time(self.total_time)
 
 if gtk.pygtk_version[1]<8: gobject.type_register(ActiveTimer)
 

@@ -135,7 +135,8 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
             sdifficulty = sr.difficulty()
             lastPlayedText = _("Last Played %(timeAgo)s") % {'timeAgo': format_friendly_date(g['saved_at'])}
             levelText =  _("%(level)s puzzle")% {'level': sdifficulty.value_string()}
-            durationText = _("Played for %(duration)s") % {'duration': format_time(g['timer.tot_time'],round_at=15,friendly=True)}
+            durationText = _("Played for %(duration)s") % {
+                    'duration': format_time(g['timer.active_time'],round_at=15,friendly=True)}
             desc = "<b><i>%s</i></b>\n<span size='small'><i>%s</i>\n<i>%s.</i></span>"%(
                 levelText,
                 lastPlayedText,
