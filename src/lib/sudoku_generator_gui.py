@@ -9,7 +9,7 @@ import threading
 
 class GameGenerator (gconf_wrapper.GConfWrapper):
 
-    ui_file = os.path.join(GLADE_DIR,'puzzle_generator.ui')
+    ui_file = os.path.join(UI_DIR,'puzzle_generator.ui')
 
     initial_prefs = {'generate_target_easy':1,
                      'generate_target_medium':0,

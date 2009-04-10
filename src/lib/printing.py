@@ -117,7 +117,7 @@ def print_sudokus(*args,**kwargs):
 
 class GamePrinter (gconf_wrapper.GConfWrapper):
 
-    ui_file = os.path.join(GLADE_DIR,'print_games.ui')
+    ui_file = os.path.join(UI_DIR,'print_games.ui')
 
     initial_prefs = {'sudokus_per_page':2,
                      'print_multiple_sudokus_to_print':4,

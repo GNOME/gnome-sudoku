@@ -40,7 +40,7 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
     NEW_GAME = 0
     SAVED_GAME = 1
 
-    ui_file = os.path.join(GLADE_DIR,'select_game.ui')
+    ui_file = os.path.join(UI_DIR,'select_game.ui')
 
     @simple_debug
     def __init__ (self, sudokuMaker=None, gconf = None):

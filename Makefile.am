@@ -1,4 +1,4 @@
-SUBDIRS =  data glade images help src
+SUBDIRS =  data images help src
 
 #################################################################
 # Launcher

@@ -762,7 +762,7 @@ class TrackerBox (gtk.VBox):
 
         gtk.VBox.__init__(self)
         self.builder = gtk.Builder()
-        self.builder.add_from_file(os.path.join(GLADE_DIR,'tracker.ui'))
+        self.builder.add_from_file(os.path.join(UI_DIR,'tracker.ui'))
         self.main_ui = main_ui
         self.vb = self.builder.get_object('vbox1')
         self.vb.unparent()
