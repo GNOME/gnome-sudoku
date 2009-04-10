@@ -921,19 +921,11 @@ def start_game ():
 
 def profile_me ():
     print 'Profiling GNOME Sudoku'
-    import tempfile,os.path
-    import hotshot, hotshot.stats
+    import tempfile, hotshot, hotshot.stats
     pname = os.path.join(tempfile.gettempdir(),'GNOME_SUDOKU_HOTSHOT_PROFILE')
     prof = hotshot.Profile(pname)
     prof.runcall(start_game)
     stats = hotshot.stats.load(pname)
     stats.strip_dirs()
     stats.sort_stats('time','calls').print_stats()
-
-
-
-
-if __name__ == '__main__':
-    import defaults
-    defaults.DATA_DIR == '/tmp/'; DATA_DIR=='/tmp/'
 

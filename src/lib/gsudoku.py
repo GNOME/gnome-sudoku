@@ -865,11 +865,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             set_method(bottom_text="")
 
     @simple_debug
-    def num_to_str (self, n):
-        if n >= 10: return SuperNumberEntry.conversions[n]
-        else: return str(n)
-
-    @simple_debug
     def reset_grid (self):
         """Reset grid to its original setup.
 

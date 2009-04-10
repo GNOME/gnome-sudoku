@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-import cairo
-import pango
-import gtk
+import gtk, cairo
 
 SUDOKU_SIZE = 9
 N_BOXES = 3

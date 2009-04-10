@@ -42,7 +42,7 @@ def format_time (time, round_at=None, friendly=False):
                 time_strings.append(unit_formatter(time_covered))
                 time = time - time_covered * divisor
     if friendly and len(time_strings)>2:
-        time_stings = time_strings[:2]
+        time_strings = time_strings[:2]
     if len(time_strings)>2:
         # Translators... this is a messay way of concatenating
         # lists. In English we do lists this way: 1, 2, 3, 4, 5
@@ -83,8 +83,6 @@ def format_date (tim):
 
 def format_friendly_date (tim):
     lt = time.localtime(tim)
-    hours = int(time.strftime("%H",lt))
-    minutes = int(time.strftime("%M",lt))
     diff = time.time() - tim
     ct = time.localtime(); chour=ct[3]; cmin=ct[4]
     to_yesterday = chour*60*60+cmin*60

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import pickle, types, os, os.path, sudoku, errno
+import gtk, pickle, types, os, os.path, errno
 from defaults import *
 from gtk_goodies.dialog_extras import show_message
 from gettext import gettext as _
@@ -139,7 +139,6 @@ class SudokuTracker:
         return gamestring.split('\n')[0].replace(' ','')
 
     def save_game (self, ui):
-        game = self.game_from_ui(ui)
         jar = jar_game(ui)
         filename = os.path.join(self.save_path,self.get_filename(jar['game']))
         try:
@@ -160,7 +159,6 @@ class SudokuTracker:
                 )
 
     def finish_game (self, ui):
-        game = self.game_from_ui(ui)
         jar  = jar_game(ui)
         self.finish_jar(jar)
 
@@ -210,14 +208,13 @@ class SudokuTracker:
             os.remove(os.path.join(previously_saved_game))
 
     def abandon_game (self, ui):
-        game = self.game_from_ui(ui)
         jar  = jar_game(ui)
         self.remove_from_saved_games(jar)
 
     def list_saved_games (self):
         try:
             files = os.listdir(self.save_path)
-        except OSError, e:
+        except OSError:
             files = []
         games = []
         for f in files:

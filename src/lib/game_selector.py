@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import gtk, gobject, time
-import sudoku, saver, sudoku_maker, random
-from sudoku import DifficultyRating as DR
+import sudoku, saver, sudoku_maker
 import sudoku_thumber
 from gettext import gettext as _
 from timer import format_time,format_friendly_date
@@ -11,6 +10,7 @@ from colors import color_hex_to_float
 from gtk_goodies import gconf_wrapper
 
 def color_from_difficulty (diff):
+    DR = sudoku.DifficultyRating
     if diff < DR.easy_range[1]:
         if diff < DR.easy_range[1]/3: c='#8ae234' # green
         elif diff < 2*DR.easy_range[1]/3: c='#73d216'
@@ -72,7 +72,6 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
         self.new_game_view.set_model(self.new_game_model)
         self.new_game_view.set_markup_column(0)
         self.new_game_view.set_pixbuf_column(1)
-        selected_puzzle = None
         self.make_saved_game_model()
         if len(self.saved_game_model)==0:
             for w in self.saved_game_widgets: w.hide()
@@ -96,8 +95,8 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
         saved_games_to_exclude = [
             g['game'].split('\n')[0] for g in self.saved_games
             ]
-        for cat in DR.ordered_categories:
-            rng = DR.categories[cat]; label = DR.label_by_cat[cat]
+        for cat in sudoku.DifficultyRating.ordered_categories:
+            label = sudoku.DifficultyRating.label_by_cat[cat]
             puzzles = self.sudoku_maker.get_puzzles(1,[cat],new=True,
                                                     exclude=saved_games_to_exclude
                                                     )

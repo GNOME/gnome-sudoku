@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-import gtk, cairo
-import sudoku, gsudoku
+import gtk, cairo, time
+import sudoku, gsudoku, saver
 from defaults import *
-from sudoku import DifficultyRating as DR
 from gtk_goodies import gconf_wrapper
 from gettext import gettext as _
 from gettext import ngettext
@@ -59,7 +58,6 @@ class SudokuPrinter:
         operation.set_n_pages(pages)
 
     def draw_page(self, operation, context, page_nr):
-        import pango
         import sudoku_thumber
 
         margin = 25
@@ -107,7 +105,7 @@ def print_sudokus(*args,**kwargs):
     sp = SudokuPrinter(*args,**kwargs)
     res = sp.print_op.run(gtk.PRINT_OPERATION_ACTION_PRINT_DIALOG, sp.main_window)
     if res == gtk.PRINT_OPERATION_RESULT_ERROR:
-        error_dialog = gtk.MessageDialog(main_window,
+        error_dialog = gtk.MessageDialog(sp.main_window,
                                       gtk.DIALOG_DESTROY_WITH_PARENT,
                                       gtk.MESSAGE_ERROR,
                                       gtk.BUTTONS_CLOSE,
@@ -162,13 +160,13 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
             return
         # Otherwise, we're printing!
         levels = []
-        for cat in DR.categories:
+        for cat in sudoku.DifficultyRating.categories:
             if getattr(self,
                        cat.replace(' ','_')+'CheckButton'
                        ).get_active():
                 levels.append(cat)
         if not levels:
-            levels = DR.categories.keys()
+            levels = sudoku.DifficultyRating.categories.keys()
         nsudokus = self.sudokusToPrintSpinButton.get_adjustment().get_value()
         sudokus = self.sudoku_maker.get_puzzles(
             nsudokus,
@@ -180,7 +178,6 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
         sudokus = [(sudoku.sudoku_grid_from_string(puzzle),
                     "%s (%.2f)"%(sudoku.get_difficulty_category_name(d),d)
                     ) for puzzle,d in sudokus]
-        from printing import SudokuPrinter
         sp = SudokuPrinter(sudokus,
                            self.dialog,
                            sudokus_per_page=self.sudokusPerPageSpinButton.get_adjustment().get_value())
