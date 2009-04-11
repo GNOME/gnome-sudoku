@@ -5,12 +5,12 @@ try:
 except ImportError, err:
     print ("PyGTK not found. Please make sure it is installed properly and referenced in your PYTHONPATH environment variable.")
 
-import gtk, gobject, pango
+import gtk, gobject
 import os, os.path
 from gtk_goodies import gconf_wrapper, Undo, dialog_extras
-import gsudoku, sudoku, saver, sudoku_maker, printing, sudoku_generator_gui
+import gsudoku, saver, sudoku_maker, printing, sudoku_generator_gui
 import game_selector
-import time, threading
+import threading
 from gettext import gettext as _
 from gettext import ngettext
 from defaults import *

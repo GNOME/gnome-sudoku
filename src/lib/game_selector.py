@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk, gobject, time
+import gtk, gobject
 import sudoku, saver, sudoku_maker
 import sudoku_thumber
 from gettext import gettext as _

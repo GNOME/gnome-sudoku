@@ -3,8 +3,6 @@ import gtk, cairo, time
 import sudoku, gsudoku, saver
 from defaults import *
 from gtk_goodies import gconf_wrapper
-from gettext import gettext as _
-from gettext import ngettext
 
 def fit_squares_in_rectangle (width, height, n, margin=0):
     """Optimally fit squares into a rectangle.

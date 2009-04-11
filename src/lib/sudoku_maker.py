@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
-import sys
 import os, shutil
 import os.path
 import sudoku
 import random
-import pickle
 import time
 import pausable
 import threading
-import saver
-from gettext import gettext as _
 from defaults import *
 
 class SudokuGenerator:

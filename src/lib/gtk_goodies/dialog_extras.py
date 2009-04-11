@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk, gobject, os.path
+import gtk, os.path
 import re
 import xml.sax.saxutils
 from gettext import gettext as _
@@ -456,7 +456,7 @@ class SimpleFaqDialog (ModalDialog):
             self.vbox.show_all()
             self.hp.set_position(325)
         else:
-            self.vbox.add(textwin)
+            self.vbox.add(self.textwin)
             self.vbox.show_all()
         if jump_to: self.jump_to_header(jump_to)
 

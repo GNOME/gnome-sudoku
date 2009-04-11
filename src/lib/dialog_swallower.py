@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk, gobject
+import gtk
 
 # Convenience library for a new kind of UI -- for e.g. this game, we
 # don't really want to have dialogs. Nonetheless, it's convenient to
