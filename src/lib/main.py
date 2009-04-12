@@ -18,7 +18,7 @@ from timer import ActiveTimer
 from simple_debug import simple_debug,options
 from dialog_swallower import SwappableArea
 
-icon_factory = gtk.IconFactory()
+ICON_FACTORY = gtk.IconFactory()
 STOCK_PIXBUFS = {}
 for filename,stock_id in [('footprints.png','tracks'),]:
     try:
@@ -28,20 +28,15 @@ for filename,stock_id in [('footprints.png','tracks'),]:
         continue
     STOCK_PIXBUFS[stock_id]=pb
     iconset = gtk.IconSet(pb)
-    icon_factory.add(stock_id,iconset)
-    icon_factory.add_default()
+    ICON_FACTORY.add(stock_id,iconset)
+    ICON_FACTORY.add_default()
 
 gtk.stock_add([('tracks',
                 _('Track moves'),
                 0,0,""),])
 
-try:
-    STOCK_FULLSCREEN = gtk.STOCK_FULLSCREEN
-except:
-    STOCK_FULLSCREEN = _('Full Screen')
-
 def inactivate_new_game_etc (fun):
-    def _ (ui, *args, **kwargs):
+    def inactivate_new_game_etc_ (ui, *args, **kwargs):
         paths = [
             '/MenuBar/Game/New',
             '/MenuBar/Game/Print',
@@ -59,17 +54,23 @@ def inactivate_new_game_etc (fun):
             ]
         for p in paths:
             action = ui.uimanager.get_action(p)
-            if not action: action = ui.uimanager.get_widget(p)
-            if not action: print 'No action at path',p
-            else: action.set_sensitive(False)
+            if not action:
+                action = ui.uimanager.get_widget(p)
+            if not action:
+                print 'No action at path',p
+            else:
+                action.set_sensitive(False)
         ret = fun(ui,*args,**kwargs)
         for p in paths:
             action = ui.uimanager.get_action(p)
-            if not action: action = ui.uimanager.get_widget(p)
-            if not action: print 'No action at path',p
-            else: action.set_sensitive(True)
+            if not action:
+                action = ui.uimanager.get_widget(p)
+            if not action:
+                print 'No action at path',p
+            else:
+                action.set_sensitive(True)
         return ret
-    return _
+    return inactivate_new_game_etc_
 
 class UI (gconf_wrapper.GConfWrapper):
     ui='''<ui>
@@ -250,7 +251,7 @@ class UI (gconf_wrapper.GConfWrapper):
             ('Autofill',gtk.STOCK_REFRESH,_('Fill _all squares'),'<Control>a',
              _('Automatically fill in all squares for which there is only one valid value.'),
              self.auto_fill_cb),
-            ('FullScreen',STOCK_FULLSCREEN,None,
+            ('FullScreen',gtk.STOCK_FULLSCREEN,None,
              'F11',None,self.full_screen_cb),
             ('PuzzleInfo',gtk.STOCK_ABOUT,_('Puzzle _Statistics'),
              None,_('Show statistics about current puzzle'),
@@ -282,6 +283,8 @@ class UI (gconf_wrapper.GConfWrapper):
             ('ToggleToolbar',None,_('Show _Toolbar'),None,None,self.toggle_toolbar_cb,True),
             ('ToggleHighlight',gtk.STOCK_SELECT_COLOR,_('_Highlighter'),
              None,_('Highlight the current row, column and box'),self.toggle_highlight_cb,False),
+            ('Generator',None,_('_Generate new puzzles'),None,_('Generate new puzzles.'),
+              self.generate_puzzle_gui,),
             ('BackgroundGenerator',None,_('Generate new puzzles _while you play'),
              None,
              _('Generate new puzzles in the background while you play. This will automatically pause when the game goes into the background.'),
@@ -295,14 +298,7 @@ class UI (gconf_wrapper.GConfWrapper):
              ('Redo',gtk.STOCK_REDO,_('_Redo'),'<Shift><Control>z',_('Redo last action')),
              ('Clear',gtk.STOCK_CLEAR,_('_Clear'),'<Control>b',_("Clear entries you've filled in"),self.clear_cb),
              ('ClearNotes',None,_('Clear _Notes'),None,_("Clear notes and hints"),self.clear_notes_cb),
-             # Trackers...
-             ('Tracker%s',None,_('No Tracker'),'<Control>0',None,lambda *args: self.set_tracker(-1)),
-             ('Generator',None,_('_Generate new puzzles'),None,_('Generate new puzzles.'),
-              self.generate_puzzle_gui,),
              ])
-        self.edit_actions.add_actions(
-            [('Tracker%s'%n,None,'Tracker _%s'%n,'<Control>%s'%n,None,lambda *args: self.set_tracker(n-1)) for
-             n in range(1,9)])
         self.uimanager.insert_action_group(self.main_actions,0)
         self.uimanager.insert_action_group(self.edit_actions,0)
         self.uimanager.add_ui_from_string(self.ui)
@@ -314,12 +310,12 @@ class UI (gconf_wrapper.GConfWrapper):
         undo_widg = self.edit_actions.get_action('Undo')
         redo_widg = self.edit_actions.get_action('Redo')
         self.history = Undo.UndoHistoryList(undo_widg,redo_widg)
-        for e in self.gsd.__entries__.values():
-            Undo.UndoableGenericWidget(e,self.history,
+        for entry in self.gsd.__entries__.values():
+            Undo.UndoableGenericWidget(entry,self.history,
                                        set_method='set_value_from_undo',
                                        pre_change_signal='value-about-to-change'
                                        )
-            Undo.UndoableGenericWidget(e,self.history,
+            Undo.UndoableGenericWidget(entry,self.history,
                                        set_method='set_notes',
                                        get_method='get_note_text',
                                        signal='notes-changed',
@@ -334,7 +330,8 @@ class UI (gconf_wrapper.GConfWrapper):
             bgcol = 'black'
         else:
             bgcol = None
-        if bgcol: self.gsd.set_bg_color(bgcol)
+        if bgcol:
+            self.gsd.set_bg_color(bgcol)
 
     def setup_autosave (self):
         gobject.timeout_add_seconds(self.gconf['auto_save_interval'] or 60, # in seconds...
@@ -343,7 +340,8 @@ class UI (gconf_wrapper.GConfWrapper):
     def setup_main_boxes (self):
         self.vb = gtk.VBox()
         # Add menu bar and toolbar...
-        mb = self.uimanager.get_widget('/MenuBar'); mb.show()
+        mb = self.uimanager.get_widget('/MenuBar')
+        mb.show()
         self.vb.pack_start(mb,fill=False,expand=False)
         self.tb = self.uimanager.get_widget('/Toolbar')
         self.vb.pack_start(self.tb,fill=False,expand=False)
@@ -358,7 +356,8 @@ class UI (gconf_wrapper.GConfWrapper):
         self.vb.show()
         self.game_box.show()
         self.main_area.pack_start(self.game_box,False,padding=12)
-        self.statusbar = gtk.Statusbar(); self.statusbar.show()
+        self.statusbar = gtk.Statusbar()
+        self.statusbar.show()
         self.vb.pack_end(self.statusbar,fill=False,expand=False)
         self.w.add(self.vb)
 
@@ -400,8 +399,8 @@ class UI (gconf_wrapper.GConfWrapper):
 
     def stop_dancer (self, *args):
         if hasattr(self, 'dancer'):
-             self.dancer.stop_dancing()
-             delattr(self, 'dancer')
+            self.dancer.stop_dancing()
+            delattr(self, 'dancer')
 
     @simple_debug
     def you_win_callback (self,grid):
@@ -465,7 +464,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def stop_game (self):
-       if (self.gsd.grid
+        if (self.gsd.grid
             and self.gsd.grid.is_changed()
             and (not self.won)):
             try:
@@ -520,7 +519,7 @@ class UI (gconf_wrapper.GConfWrapper):
         # allow KeyboardInterrupts, which calls quit_cb outside the main loop
         try:
             gtk.main_quit()
-        except RuntimeError, e:
+        except RuntimeError:
             pass
 
     @simple_debug
@@ -528,7 +527,8 @@ class UI (gconf_wrapper.GConfWrapper):
         self.sudoku_tracker.save_game(self)
 
     def full_screen_cb (self, *args):
-        if not hasattr(self,'is_fullscreen'): self.is_fullscreen = False
+        if not hasattr(self,'is_fullscreen'):
+            self.is_fullscreen = False
         if self.is_fullscreen:
             self.w.unfullscreen()
             self.is_fullscreen = False
@@ -589,7 +589,8 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def auto_fill_cb (self, *args):
-        if not hasattr(self,'autofilled'): self.autofilled=[]
+        if not hasattr(self,'autofilled'):
+            self.autofilled=[]
         if not hasattr(self,'autofiller'):
             self.autofiller = Undo.UndoableObject(
                 self.do_auto_fill,
@@ -622,20 +623,6 @@ class UI (gconf_wrapper.GConfWrapper):
         self.game_box.add(self.tracker_ui)
 
     @simple_debug
-    def set_tracker (self, n):
-        if self.gsd.trackers.has_key(n):
-            self.tracker_ui.select_tracker(n)
-            e = self.gsd.get_focused_entry()
-            if e:
-                if n==-1:
-                    for tid in self.gsd.trackers_for_point(e.x,e.y):
-                        self.gsd.remove_tracker(e.x,e.y,tid)
-                else:
-                    self.gsd.add_tracker(e.x,e.y,n)
-        else:
-            print 'No tracker ',n,'yet'
-
-    @simple_debug
     def tracker_toggle_cb (self, widg):
         if widg.get_active():
             self.tracker_ui.show_all()
@@ -644,8 +631,10 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def toggle_toolbar_cb (self, widg):
-        if widg.get_active(): self.tb.show()
-        else: self.tb.hide()
+        if widg.get_active():
+            self.tb.show()
+        else:
+            self.tb.hide()
 
     def set_statusbar_value (self, status):
         if not hasattr(self,'sbid'):
@@ -738,9 +727,9 @@ class UI (gconf_wrapper.GConfWrapper):
     def show_help (self, *args):
         try:
             gtk.show_uri(self.w.get_screen(), "ghelp:gnome-sudoku", gtk.get_current_event_time())
-        except gobject.GError, e:
+        except gobject.GError, error:
             # FIXME: This should create a pop-up dialog
-            print _('Unable to display help: %s') % str(e)
+            print _('Unable to display help: %s') % str(error)
 
     @simple_debug
     def print_game (self, *args):
@@ -821,31 +810,32 @@ class TrackerBox (gtk.VBox):
     @simple_debug
     def add_tracker (self,*args):
         tracker_id = self.main_ui.gsd.create_tracker()
-        pb = self.pixbuf_transform_color(
+        pixbuf = self.pixbuf_transform_color(
             STOCK_PIXBUFS['tracks'],
             self.main_ui.gsd.get_tracker_color(tracker_id),
             )
         # select our new tracker
         self.tracker_tree.get_selection().select_iter(
             self.tracker_model.append([tracker_id,
-                                  pb,
+                                  pixbuf,
                                   _("Tracker %s")%(tracker_id+1)]
                                   )
             )
 
     @simple_debug
-    def pixbuf_transform_color (self, pb, tc):
-        """Return new pixbuf with color changed to tc"""
-        pb_str = pb.get_pixels()
-        pb_str_new = ""
+    def pixbuf_transform_color (self, pixbuf, color):
+        """Return new pixbuf with color changed to color"""
+        pixbuf_str = pixbuf.get_pixels()
+        pixbuf_str_new = ""
 
-        for alpha in pb_str[3::4]:
-            pb_str_new += chr(int(tc[0]*255))
-            pb_str_new += chr(int(tc[1]*255))
-            pb_str_new += chr(int(tc[2]*255))
-            pb_str_new += alpha
+        for alpha in pixbuf_str[3::4]:
+            pixbuf_str_new += chr(int(color[0]*255))
+            pixbuf_str_new += chr(int(color[1]*255))
+            pixbuf_str_new += chr(int(color[2]*255))
+            pixbuf_str_new += alpha
 
-        return gtk.gdk.pixbuf_new_from_data(pb_str_new, gtk.gdk.COLORSPACE_RGB, True, 8, pb.get_width(), pb.get_height(), pb.get_rowstride())
+        return gtk.gdk.pixbuf_new_from_data(pixbuf_str_new, gtk.gdk.COLORSPACE_RGB, True, 8, 
+                                            pixbuf.get_width(), pixbuf.get_height(), pixbuf.get_rowstride())
 
     @simple_debug
     def select_tracker (self, tracker_id):
@@ -856,8 +846,10 @@ class TrackerBox (gtk.VBox):
     @simple_debug
     def selection_changed_cb (self, selection):
         mod,itr = selection.get_selected()
-        if itr: selected_tracker_id = mod.get_value(itr,0)
-        else: selected_tracker_id=-1
+        if itr:
+            selected_tracker_id = mod.get_value(itr,0)
+        else:
+            selected_tracker_id=-1
         # This should be cheap since we don't expect many trackers...
         # We cycle through each row and toggle it off if it's not
         # selected; on if it is selected
@@ -900,7 +892,8 @@ class TrackerBox (gtk.VBox):
 
 
 def start_game ():
-    if options.debug: print 'Starting GNOME Sudoku in debug mode'
+    if options.debug:
+        print 'Starting GNOME Sudoku in debug mode'
 
     ##  You must call g_thread_init() before executing any other GLib
     ##  functions in a threaded GLib program.
