@@ -1216,54 +1216,50 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         self.trackers[tracker].remove((x, y, val))
 
 if __name__ == '__main__':
-    def test_sng ():
-        w = gtk.Window()
-        w.connect('delete-event', gtk.main_quit)
+    window = gtk.Window()
+    window.connect('delete-event', gtk.main_quit)
+
+    def test_number_grid ():
         t = SudokuNumberGrid(4)
-        w.add(t)
-        t.__entries__[(0,1)].set_color((0.0,1.0,0.0))
-        t.__entries__[(0,1)].set_value(4)
-        t.__entries__[(1,1)].set_error_highlight(True)
-        t.__entries__[(1,1)].set_value(1)
-        t.__entries__[(2,1)].set_color((0.0,0.0,1.0))
-        t.__entries__[(2,1)].set_error_highlight(True)
-        t.__entries__[(2,1)].set_value(2)
-        t.__entries__[(3,1)].set_color((0.0,0.0,1.0))
-        t.__entries__[(3,1)].set_error_highlight(True)
-        t.__entries__[(3,1)].set_error_highlight(False)
-        t.__entries__[(3,1)].set_value(3)
-        t.__entries__[(3,1)].set_note_text('2,3,4','1,2')
-        w.show_all()
-        gtk.main()
+        window.add(t)
+        t.__entries__[(0, 1)].set_color((0.0, 1.0, 0.0))
+        t.__entries__[(0, 1)].set_value(4)
+        t.__entries__[(1, 1)].set_error_highlight(True)
+        t.__entries__[(1, 1)].set_value(1)
+        t.__entries__[(2, 1)].set_color((0.0, 0.0, 1.0))
+        t.__entries__[(2, 1)].set_error_highlight(True)
+        t.__entries__[(2, 1)].set_value(2)
+        t.__entries__[(3, 1)].set_color((0.0, 0.0, 1.0))
+        t.__entries__[(3, 1)].set_error_highlight(True)
+        t.__entries__[(3, 1)].set_error_highlight(False)
+        t.__entries__[(3, 1)].set_value(3)
+        t.__entries__[(3, 1)].set_note_text('234', '12')
 
     def reproduce_foobared_rendering ():
-        from sudoku import SudokuGrid
         from dialog_swallower import SwappableArea
         sgd = SudokuGameDisplay()
         sgd.set_bg_color('black')
-        w = gtk.Window()
-        w.connect('delete-event', gtk.main_quit)
         vb = gtk.VBox()
         hb = gtk.HBox()
         swallower = SwappableArea(hb)
         tb = gtk.Toolbar()
-        b = gtk.ToolButton(stock_id=gtk.STOCK_QUIT)
-        b.connect('clicked',lambda x: w.hide() or gtk.main_quit())
+        b = gtk.ToolButton(stock_id = gtk.STOCK_QUIT)
+        b.connect('clicked', lambda x: window.hide() or gtk.main_quit())
         tb.add(b)
         def run_swallowed_dialog (*args):
-            md = MessageDialog(title="Bar",label="Bar",sublabel="Baz "*12)
+            md = MessageDialog(title = "Bar", label = "Bar", sublabel = "Baz "*12)
             swallower.run_dialog(md)
-        b2 = gtk.ToolButton(label='Dialog')
-        b2.connect('clicked',run_swallowed_dialog)
+        b2 = gtk.ToolButton(label = 'Dialog')
+        b2.connect('clicked', run_swallowed_dialog)
         tb.add(b2)
-        vb.pack_start(tb,fill=False,expand=False)
-        vb.pack_start(swallower,padding=12)
-        w.add(vb)
-        w.show_all()
+        vb.pack_start(tb, fill = False, expand = False)
+        vb.pack_start(swallower, padding = 12)
+        window.add(vb)
+        window.show_all()
         from gtk_goodies.dialog_extras import MessageDialog
-        md = MessageDialog(title="Foo",label="Foo",sublabel="Bar "*12)
+        md = MessageDialog(title = "Foo", label = "Foo", sublabel = "Bar "*12)
         swallower.run_dialog(md)
-        hb.pack_start(sgd,padding=6)
+        hb.pack_start(sgd, padding = 6)
         game = '''1 8 4 2 0 0 0 0 0
                   0 6 0 0 0 9 1 2 0
                   0 2 0 0 8 0 0 0 0
@@ -1274,10 +1270,8 @@ if __name__ == '__main__':
                   0 5 7 1 0 0 0 9 0
                   0 0 0 0 0 3 5 4 7'''
         sgd.change_grid(game, 9)
-        gtk.main()
 
     def test_sudoku_game ():
-        from sudoku import SudokuGrid
         game = '''1 8 4 2 0 0 0 0 0
                   0 6 0 0 0 9 1 2 0
                   0 2 0 0 8 0 0 0 0
@@ -1289,21 +1283,24 @@ if __name__ == '__main__':
                   0 0 0 0 0 3 5 4 7'''
         sgd = SudokuGameDisplay(game)
         sgd.set_bg_color('black')
-        w = gtk.Window()
-        w.connect('delete-event', gtk.main_quit)
-        w.add(sgd)
-        w.show_all()
-        gtk.main()
+        window.add(sgd)
+        window.show_all()
 
     def test_number_selector ():
-        w = gtk.Window()
-        w.connect('delete-event',gtk.main_quit)
-        ns = NumberSelector(default=3)
-        def tell_me (b): print 'value->',b.get_value()
-        ns.connect('changed',tell_me)
-        w.add(ns)
-        w.show_all()
-        gtk.main()
+        nselector = NumberSelector(default = 3)
+        def tell_me (b):
+            print 'value->', b.get_value()
+        nselector.connect('changed', tell_me)
+        window.add(nselector)
 
-    test_sudoku_game()
+    def test_number_box ():
+        nbox = NumberBox()
+        window.add(nbox)
 
+#    test_number_grid()
+#    reproduce_foobared_rendering()
+#    test_sudoku_game()
+#    test_number_selector()
+    test_number_box()
+    window.show_all()
+    gtk.main()
