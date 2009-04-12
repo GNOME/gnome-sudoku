@@ -104,7 +104,6 @@ class NumberBox (gtk.Widget):
     top_note_text = ''
     bottom_note_text = ''
     read_only = False
-    read_only_hidden = False
     _layout = None
     _top_note_layout = None
     _bottom_note_layout = None
@@ -1181,125 +1180,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         if not val: val = self.grid._get_(x,y)
         self.trackers[tracker].remove((x,y,val))
 
-class GridDancer:
-
-    DANCE_COLORS = [colors.color_hex_to_float(hx) for hx in
-                    [
-        '#cc0000', # red
-        '#ef2929',
-        '#f57900', # orange
-        '#fcaf3e',
-        '#fce94f',
-        '#8ae234', # green
-        '#73d216',
-        '#729fcf', # blue
-        '#3465a4',
-        '#ad7fa8', # violet
-        '#75507b', ]
-                    ]
-
-    STEPS_PER_ANIMATION = 10
-
-    def __init__ (self, grid):
-        self.animations = [self.value_dance,
-                           self.box_dance,
-                           self.col_dance,
-                           self.row_dance,]
-        self.current_animation = self.value_dance
-        self.step = 0
-        self.grid = grid
-        self.dancing = False
-        for box in self.grid.__entries__.values():
-            if box.read_only == True:
-                box.read_only = False
-                box.read_only_hidden = True
-            box.queue_draw()
-
-    def start_dancing (self):
-        for box in self.grid.__entries__.values():
-            box.props.can_focus = False
-        self.grid.get_toplevel().child_focus(gtk.DIR_TAB_BACKWARD)
-        self.dancing = True
-        gobject.timeout_add(350,self.dance_grid)
-
-    def stop_dancing (self):
-        self.dancing = False
-        for box in self.grid.__entries__.values():
-            box.props.can_focus = True
-            if box.read_only_hidden == True:
-                box.read_only = True
-                box.read_only_hidden = False
-        self.grid.unhighlight_cells()
-
-    def do_dance_step (self):
-        self.grid.__entries__[(random.randint(0,8),
-                               random.randint(0,8))
-                              ].set_background_color(
-            random.choice(self.DANCE_COLORS)
-            )
-
-    def rotate_animation (self):
-        ci = self.animations.index(self.current_animation)
-        if (ci+1) == len(self.animations):
-            ni = 0
-        else:
-            ni = ci + 1
-        self.current_animation = self.animations[ni]
-        self.step = 0
-
-    def dance_grid (self):
-        if not self.dancing: return
-        if self.step > self.STEPS_PER_ANIMATION:
-            self.rotate_animation()
-        if hasattr(self,'adjustment'):
-            self.adjustment += 1
-        else:
-            self.adjustment = 0
-        if self.adjustment >= 9: self.adjustment = 0
-        try:
-            self.current_animation()
-        except AttributeError:
-            return True
-        self.step += 1
-        if self.dancing:
-            return True
-
-    def col_dance (self):
-        for x in range(9):
-            n = (x + self.adjustment) % len(self.DANCE_COLORS)
-            color = self.DANCE_COLORS[n]
-            for y in range(9):
-                self.grid.__entries__[(x,y)].set_background_color(color)
-
-    def row_dance (self):
-        for y in range(9):
-            n = (y + self.adjustment) % len(self.DANCE_COLORS)
-            color = self.DANCE_COLORS[n]
-            for x in range(9):
-                self.grid.__entries__[(x,y)].set_background_color(color)
-
-    def box_dance (self):
-        for box in range(9):
-            n = (box + self.adjustment) % len(self.DANCE_COLORS)
-            color = self.DANCE_COLORS[n]
-            for x,y in self.grid.grid.box_coords[box]:
-                self.grid.__entries__[(x,y)].set_background_color(color)
-
-    def value_dance (self):
-        for value in range(10):
-            n = (value + self.adjustment) % len(self.DANCE_COLORS)
-            color = self.DANCE_COLORS[n]
-            for x in range(9):
-                for y in range(9):
-                    if self.grid.grid._get_(x,y)==value:
-                        self.grid.__entries__[(x,y)].set_background_color(color)
-
-def test_dance_grid (grid):
-    dancer = GridDancer(grid)
-    dancer.start_dancing()
-    def stop (*args): dancer.stop_dancing()
-    gobject.timeout_add(15000,stop)
-
 if __name__ == '__main__':
     def test_sng ():
         w = gtk.Window()
@@ -1322,7 +1202,7 @@ if __name__ == '__main__':
         gtk.main()
 
     def reproduce_foobared_rendering ():
-        from sudoku import SudokuGrid, sample_open_sudoku
+        from sudoku import SudokuGrid
         from dialog_swallower import SwappableArea
         sgd = SudokuGameDisplay()
         sgd.set_bg_color('black')
@@ -1349,18 +1229,35 @@ if __name__ == '__main__':
         md = MessageDialog(title="Foo",label="Foo",sublabel="Bar "*12)
         swallower.run_dialog(md)
         hb.pack_start(sgd,padding=6)
-        sgd.change_grid(SudokuGrid(sample_open_sudoku),9)
+        game = '''1 8 4 2 0 0 0 0 0
+                  0 6 0 0 0 9 1 2 0
+                  0 2 0 0 8 0 0 0 0
+                  0 1 8 0 5 0 0 0 0
+                  9 0 0 0 0 0 0 0 3
+                  0 0 0 0 1 0 6 5 0
+                  0 0 0 0 9 0 0 8 0
+                  0 5 7 1 0 0 0 9 0
+                  0 0 0 0 0 3 5 4 7'''
+        sgd.change_grid(game, 9)
         gtk.main()
 
     def test_sudoku_game ():
-        from sudoku import SudokuGrid, sample_open_sudoku
-        sgd = SudokuGameDisplay(grid=SudokuGrid(sample_open_sudoku))
+        from sudoku import SudokuGrid
+        game = '''1 8 4 2 0 0 0 0 0
+                  0 6 0 0 0 9 1 2 0
+                  0 2 0 0 8 0 0 0 0
+                  0 1 8 0 5 0 0 0 0
+                  9 0 0 0 0 0 0 0 3
+                  0 0 0 0 1 0 6 5 0
+                  0 0 0 0 9 0 0 8 0
+                  0 5 7 1 0 0 0 9 0
+                  0 0 0 0 0 3 5 4 7'''
+        sgd = SudokuGameDisplay(game)
         sgd.set_bg_color('black')
         w = gtk.Window()
         w.connect('delete-event', gtk.main_quit)
         w.add(sgd)
         w.show_all()
-        test_dance_grid(sgd)
         gtk.main()
 
     def test_number_selector ():

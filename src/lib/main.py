@@ -6,7 +6,7 @@ except ImportError, err:
     print ("PyGTK not found. Please make sure it is installed properly and referenced in your PYTHONPATH environment variable.")
 
 import gtk, gobject
-import os, os.path
+import os.path
 from gtk_goodies import gconf_wrapper, Undo, dialog_extras
 import gsudoku, saver, sudoku_maker, printing, sudoku_generator_gui
 import game_selector
@@ -426,8 +426,8 @@ class UI (gconf_wrapper.GConfWrapper):
             sublabel += ngettext("You used the auto-fill %(n)s time",
                                  "You used the auto-fill %(n)s times",
                                  self.gsd.auto_fills)%{'n':self.gsd.auto_fills}
-        from gsudoku import GridDancer
-        self.dancer = GridDancer(self.gsd)
+        import dancer
+        self.dancer = dancer.GridDancer(self.gsd)
         self.dancer.start_dancing()
         dialog_extras.show_message(_("You win!"),label=_("You win!"),
                                    sublabel=sublabel

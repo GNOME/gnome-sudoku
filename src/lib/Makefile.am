@@ -8,6 +8,7 @@ dist-hook:
 gnomesudokudir = $(pythondir)/gnome_sudoku
 gnomesudoku_PYTHON = \
 	colors.py	\
+	dancer.py	\
 	defaults.py	\
 	dialog_swallower.py	\
 	game_selector.py	\
