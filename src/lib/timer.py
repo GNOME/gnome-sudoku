@@ -146,9 +146,6 @@ class ActiveTimer (gobject.GObject):
     def total_time_string (self):
         return format_time(self.total_time)
 
-if gtk.pygtk_version[1] < 8:
-    gobject.type_register(ActiveTimer)
-
 if __name__ == '__main__':
     def report (timer):
         print 'active:', timer.active_time_string()
