@@ -15,25 +15,25 @@ from gettext import gettext as _
 from gettext import ngettext
 from defaults import *
 from timer import ActiveTimer
-from simple_debug import simple_debug,options
+from simple_debug import simple_debug, options
 from dialog_swallower import SwappableArea
 
 ICON_FACTORY = gtk.IconFactory()
 STOCK_PIXBUFS = {}
-for filename,stock_id in [('footprints.png','tracks'),]:
+for filename, stock_id in [('footprints.png', 'tracks'), ]:
     try:
-        pb = gtk.gdk.pixbuf_new_from_file(os.path.join(IMAGE_DIR,filename))
+        pb = gtk.gdk.pixbuf_new_from_file(os.path.join(IMAGE_DIR, filename))
     except gobject.GError, e:
         print 'Failed to load pixbuf: %s' % e
         continue
-    STOCK_PIXBUFS[stock_id]=pb
+    STOCK_PIXBUFS[stock_id] = pb
     iconset = gtk.IconSet(pb)
-    ICON_FACTORY.add(stock_id,iconset)
+    ICON_FACTORY.add(stock_id, iconset)
     ICON_FACTORY.add_default()
 
 gtk.stock_add([('tracks',
                 _('Track moves'),
-                0,0,""),])
+                0, 0, ""), ])
 
 def inactivate_new_game_etc (fun):
     def inactivate_new_game_etc_ (ui, *args, **kwargs):
@@ -57,23 +57,23 @@ def inactivate_new_game_etc (fun):
             if not action:
                 action = ui.uimanager.get_widget(p)
             if not action:
-                print 'No action at path',p
+                print 'No action at path', p
             else:
                 action.set_sensitive(False)
-        ret = fun(ui,*args,**kwargs)
+        ret = fun(ui, *args, **kwargs)
         for p in paths:
             action = ui.uimanager.get_action(p)
             if not action:
                 action = ui.uimanager.get_widget(p)
             if not action:
-                print 'No action at path',p
+                print 'No action at path', p
             else:
                 action.set_sensitive(True)
         return ret
     return inactivate_new_game_etc_
 
 class UI (gconf_wrapper.GConfWrapper):
-    ui='''<ui>
+    ui = '''<ui>
     <menubar name="MenuBar">
       <menu name="Game" action="Game">
         <menuitem action="New"/>
@@ -133,7 +133,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
     initial_prefs = {'group_size':9,
                      'always_show_hints':0,
-                     'player':os.environ.get('USERNAME',''),
+                     'player':os.environ.get('USERNAME', ''),
                      'difficulty':0.0,
                      'minimum_number_of_new_puzzles':MIN_NEW_PUZZLES,
                      'highlight':0,
@@ -146,7 +146,7 @@ class UI (gconf_wrapper.GConfWrapper):
                      }
 
     @simple_debug
-    def __init__ (self, run_selector=True):
+    def __init__ (self, run_selector = True):
         """run_selector means that we start our regular game.
 
         For testing purposes, it will be convenient to hand a
@@ -160,7 +160,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.timer = ActiveTimer(self.w)
         self.won = False
         # add the accelerator group to our toplevel window
-        self.worker_connections=[]
+        self.worker_connections = []
         # setup sudoku maker...
         self.sudoku_maker = sudoku_maker.SudokuMaker()
         self.sudoku_tracker = saver.SudokuTracker()
@@ -175,7 +175,7 @@ class UI (gconf_wrapper.GConfWrapper):
                 self.quit = False
                 # Generate puzzles in background...
                 if self.gconf['generate_puzzles_in_background']:
-                    gobject.timeout_add_seconds(1,lambda *args: self.start_worker_thread() and True)
+                    gobject.timeout_add_seconds(1, lambda *args: self.start_worker_thread() and True)
 
 
     @inactivate_new_game_etc
@@ -187,10 +187,10 @@ class UI (gconf_wrapper.GConfWrapper):
             return True
         self.timer.start_timing()
         if choice[0] == game_selector.NewOrSavedGameSelector.NEW_GAME:
-            self.gsd.change_grid(choice[1],9)
+            self.gsd.change_grid(choice[1], 9)
             self.update_statusbar()
         if choice[0] == game_selector.NewOrSavedGameSelector.SAVED_GAME:
-            saver.open_game(self,choice[1])
+            saver.open_game(self, choice[1])
             self.update_statusbar()
         if self.gconf['show_toolbar']:
             self.tb.show()
@@ -208,7 +208,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.initialize_prefs()
         self.setup_main_window()
         self.gsd = gsudoku.SudokuGameDisplay()
-        self.gsd.connect('puzzle-finished',self.you_win_callback)
+        self.gsd.connect('puzzle-finished', self.you_win_callback)
         self.setup_color()
         self.setup_actions()
         self.setup_undo()
@@ -223,45 +223,45 @@ class UI (gconf_wrapper.GConfWrapper):
         self.w = gtk.Window()
         self.w.set_default_size(self.gconf['width'], self.gconf['height'])
         self.w.set_title(APPNAME_SHORT)
-        self.w.connect('configure-event',self.resize_cb)
-        self.w.connect('delete-event',self.quit_cb)
+        self.w.connect('configure-event', self.resize_cb)
+        self.w.connect('delete-event', self.quit_cb)
         self.uimanager = gtk.UIManager()
 
     def setup_actions (self):
         self.main_actions = gtk.ActionGroup('MainActions')
         self.main_actions.add_actions([
-            ('Game',None,_('_Game')),
-            ('New',gtk.STOCK_NEW,None,
-             '<Control>n',_('New game'),self.new_cb),
-            ('Print',gtk.STOCK_PRINT,None,
-             None,_('Print current game'),self.print_game),
-            ('PrintMany',gtk.STOCK_PRINT,_('Print _Multiple Sudokus'),
-             None,_('Print more than one sudoku at a time.'),self.print_multiple_games),
-            ('Close',gtk.STOCK_CLOSE,None,'<Control>w',
-             _('Close Sudoku'),self.quit_cb),
-            ('Tools',None,_('_Tools')),
-            ('View',None,_('_View')),
-            ('ShowPossible',gtk.STOCK_DIALOG_INFO,_('_Hint'),
+            ('Game', None, _('_Game')),
+            ('New', gtk.STOCK_NEW, None,
+             '<Control>n', _('New game'), self.new_cb),
+            ('Print', gtk.STOCK_PRINT, None,
+             None, _('Print current game'), self.print_game),
+            ('PrintMany', gtk.STOCK_PRINT, _('Print _Multiple Sudokus'),
+             None, _('Print more than one sudoku at a time.'), self.print_multiple_games),
+            ('Close', gtk.STOCK_CLOSE, None, '<Control>w',
+             _('Close Sudoku'), self.quit_cb),
+            ('Tools', None, _('_Tools')),
+            ('View', None, _('_View')),
+            ('ShowPossible', gtk.STOCK_DIALOG_INFO, _('_Hint'),
              '<Control>h',
              _('Show which numbers could go in the current square.'),
              self.show_hint_cb),
-            ('AutofillCurrentSquare',gtk.STOCK_APPLY,_('_Fill'),'<Control>f',
+            ('AutofillCurrentSquare', gtk.STOCK_APPLY, _('_Fill'), '<Control>f',
              _('Automatically fill in the current square if possible.'),
              self.auto_fill_current_square_cb),
-            ('Autofill',gtk.STOCK_REFRESH,_('Fill _all squares'),'<Control>a',
+            ('Autofill', gtk.STOCK_REFRESH, _('Fill _all squares'), '<Control>a',
              _('Automatically fill in all squares for which there is only one valid value.'),
              self.auto_fill_cb),
-            ('FullScreen',gtk.STOCK_FULLSCREEN,None,
-             'F11',None,self.full_screen_cb),
-            ('PuzzleInfo',gtk.STOCK_ABOUT,_('Puzzle _Statistics'),
-             None,_('Show statistics about current puzzle'),
+            ('FullScreen', gtk.STOCK_FULLSCREEN, None,
+             'F11', None, self.full_screen_cb),
+            ('PuzzleInfo', gtk.STOCK_ABOUT, _('Puzzle _Statistics'),
+             None, _('Show statistics about current puzzle'),
              self.show_info_cb),
-            ('Help',None,_('_Help'),
-             None,None,None),
-            ('About',gtk.STOCK_ABOUT,None,
-             None,None,self.show_about),
-            ('ShowHelp',gtk.STOCK_HELP, _('_Contents'),
-             'F1',None,self.show_help),
+            ('Help', None, _('_Help'),
+             None, None, None),
+            ('About', gtk.STOCK_ABOUT, None,
+             None, None, self.show_about),
+            ('ShowHelp', gtk.STOCK_HELP, _('_Contents'),
+             'F1', None, self.show_help),
             ])
         self.main_actions.add_toggle_actions([
             ('AlwaysShowPossible',
@@ -276,16 +276,16 @@ class UI (gconf_wrapper.GConfWrapper):
              None,
              _('Warn about squares made unfillable by a move'),
              self.impossible_implication_cb),
-            ('Tracker','tracks',_('_Track additions'),
+            ('Tracker', 'tracks', _('_Track additions'),
              '<Control>T',
              _('Mark new additions in a separate color so you can keep track of them.'),
-             self.tracker_toggle_cb,False),
-            ('ToggleToolbar',None,_('Show _Toolbar'),None,None,self.toggle_toolbar_cb,True),
-            ('ToggleHighlight',gtk.STOCK_SELECT_COLOR,_('_Highlighter'),
-             None,_('Highlight the current row, column and box'),self.toggle_highlight_cb,False),
-            ('Generator',None,_('_Generate new puzzles'),None,_('Generate new puzzles.'),
-              self.generate_puzzle_gui,),
-            ('BackgroundGenerator',None,_('Generate new puzzles _while you play'),
+             self.tracker_toggle_cb, False),
+            ('ToggleToolbar', None, _('Show _Toolbar'), None, None, self.toggle_toolbar_cb, True),
+            ('ToggleHighlight', gtk.STOCK_SELECT_COLOR, _('_Highlighter'),
+             None, _('Highlight the current row, column and box'), self.toggle_highlight_cb, False),
+            ('Generator', None, _('_Generate new puzzles'), None, _('Generate new puzzles.'),
+              self.generate_puzzle_gui, ),
+            ('BackgroundGenerator', None, _('Generate new puzzles _while you play'),
              None,
              _('Generate new puzzles in the background while you play. This will automatically pause when the game goes into the background.'),
              self.toggle_generator_cb, True),
@@ -293,14 +293,14 @@ class UI (gconf_wrapper.GConfWrapper):
 
         self.edit_actions = gtk.ActionGroup('EditActions')
         self.edit_actions.add_actions(
-            [('Edit',None,_('_Edit')),
-             ('Undo',gtk.STOCK_UNDO,_('_Undo'),'<Control>z',_('Undo last action'), self.stop_dancer),
-             ('Redo',gtk.STOCK_REDO,_('_Redo'),'<Shift><Control>z',_('Redo last action')),
-             ('Clear',gtk.STOCK_CLEAR,_('_Clear'),'<Control>b',_("Clear entries you've filled in"),self.clear_cb),
-             ('ClearNotes',None,_('Clear _Notes'),None,_("Clear notes and hints"),self.clear_notes_cb),
+            [('Edit', None, _('_Edit')),
+             ('Undo', gtk.STOCK_UNDO, _('_Undo'), '<Control>z', _('Undo last action'), self.stop_dancer),
+             ('Redo', gtk.STOCK_REDO, _('_Redo'), '<Shift><Control>z', _('Redo last action')),
+             ('Clear', gtk.STOCK_CLEAR, _('_Clear'), '<Control>b', _("Clear entries you've filled in"), self.clear_cb),
+             ('ClearNotes', None, _('Clear _Notes'), None, _("Clear notes and hints"), self.clear_notes_cb),
              ])
-        self.uimanager.insert_action_group(self.main_actions,0)
-        self.uimanager.insert_action_group(self.edit_actions,0)
+        self.uimanager.insert_action_group(self.main_actions, 0)
+        self.uimanager.insert_action_group(self.edit_actions, 0)
         self.uimanager.add_ui_from_string(self.ui)
 
     def setup_undo (self):
@@ -309,17 +309,17 @@ class UI (gconf_wrapper.GConfWrapper):
         # Set up our UNDO stuff
         undo_widg = self.edit_actions.get_action('Undo')
         redo_widg = self.edit_actions.get_action('Redo')
-        self.history = Undo.UndoHistoryList(undo_widg,redo_widg)
+        self.history = Undo.UndoHistoryList(undo_widg, redo_widg)
         for entry in self.gsd.__entries__.values():
-            Undo.UndoableGenericWidget(entry,self.history,
-                                       set_method='set_value_from_undo',
-                                       pre_change_signal='value-about-to-change'
+            Undo.UndoableGenericWidget(entry, self.history,
+                                       set_method = 'set_value_from_undo',
+                                       pre_change_signal = 'value-about-to-change'
                                        )
-            Undo.UndoableGenericWidget(entry,self.history,
-                                       set_method='set_notes',
-                                       get_method='get_note_text',
-                                       signal='notes-changed',
-                                       pre_change_signal='value-about-to-change',
+            Undo.UndoableGenericWidget(entry, self.history,
+                                       set_method = 'set_notes',
+                                       get_method = 'get_note_text',
+                                       signal = 'notes-changed',
+                                       pre_change_signal = 'value-about-to-change',
                                        )
 
     def setup_color (self):
@@ -342,23 +342,23 @@ class UI (gconf_wrapper.GConfWrapper):
         # Add menu bar and toolbar...
         mb = self.uimanager.get_widget('/MenuBar')
         mb.show()
-        self.vb.pack_start(mb,fill=False,expand=False)
+        self.vb.pack_start(mb, fill = False, expand = False)
         self.tb = self.uimanager.get_widget('/Toolbar')
-        self.vb.pack_start(self.tb,fill=False,expand=False)
+        self.vb.pack_start(self.tb, fill = False, expand = False)
         self.main_area = gtk.HBox()
         self.swallower = SwappableArea(self.main_area)
         self.swallower.show()
-        self.vb.pack_start(self.swallower,True,padding=12)
-        self.main_area.pack_start(self.gsd,padding=6)
+        self.vb.pack_start(self.swallower, True, padding = 12)
+        self.main_area.pack_start(self.gsd, padding = 6)
         self.main_actions.set_visible(True)
         self.game_box = gtk.VBox()
         self.main_area.show()
         self.vb.show()
         self.game_box.show()
-        self.main_area.pack_start(self.game_box,False,padding=12)
+        self.main_area.pack_start(self.game_box, False, padding = 12)
         self.statusbar = gtk.Statusbar()
         self.statusbar.show()
-        self.vb.pack_end(self.statusbar,fill=False,expand=False)
+        self.vb.pack_end(self.statusbar, fill = False, expand = False)
         self.w.add(self.vb)
 
     def setup_toggles (self):
@@ -380,19 +380,19 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def start_worker_thread (self, *args):
-        n_new_puzzles = self.sudoku_maker.n_puzzles(new=True)
+        n_new_puzzles = self.sudoku_maker.n_puzzles(new = True)
         if n_new_puzzles < self.gconf['minimum_number_of_new_puzzles']:
-            self.worker = threading.Thread(target=lambda *args: self.sudoku_maker.work(limit=5))
+            self.worker = threading.Thread(target = lambda *args: self.sudoku_maker.work(limit = 5))
             self.worker_connections = [
-                self.timer.connect('timing-started',self.sudoku_maker.resume),
-                self.timer.connect('timing-stopped',self.sudoku_maker.pause)
+                self.timer.connect('timing-started', self.sudoku_maker.resume),
+                self.timer.connect('timing-stopped', self.sudoku_maker.pause)
                 ]
             self.worker.start()
         return True
 
     @simple_debug
     def stop_worker_thread (self, *args):
-        if hasattr(self,'worker'):
+        if hasattr(self, 'worker'):
             self.sudoku_maker.stop()
             for c in self.worker_connections:
                 self.timer.disconnect(c)
@@ -403,54 +403,54 @@ class UI (gconf_wrapper.GConfWrapper):
             delattr(self, 'dancer')
 
     @simple_debug
-    def you_win_callback (self,grid):
+    def you_win_callback (self, grid):
         if hasattr(self, 'dancer'):
             return
         self.won = True
         # increase difficulty for next time.
-        self.gconf['difficulty']=self.gconf['difficulty']+0.1
+        self.gconf['difficulty'] = self.gconf['difficulty'] + 0.1
         self.timer.finish_timing()
         self.sudoku_tracker.finish_game(self)
-        sublabel = _("You completed the puzzle in %(totalTime)s (%(activeTime)s active)")%{'totalTime': self.timer.total_time_string(),
+        sublabel = _("You completed the puzzle in %(totalTime)s (%(activeTime)s active)") % {'totalTime': self.timer.total_time_string(),
         'activeTime': self.timer.active_time_string()
                 }
         sublabel += "\n"
-        sublabel += ngettext("You got %(n)s hint","You got %(n)s hints",self.gsd.hints)%{'n':self.gsd.hints}
+        sublabel += ngettext("You got %(n)s hint", "You got %(n)s hints", self.gsd.hints) % {'n':self.gsd.hints}
         sublabel += "\n"
         if self.gsd.impossible_hints:
             sublabel += ngettext("You had %(n)s impossibility pointed out.",
                                  "You had %(n)s impossibilities pointed out.",
-                                 self.gsd.impossible_hints)%{'n':self.gsd.impossible_hints}
+                                 self.gsd.impossible_hints) % {'n':self.gsd.impossible_hints}
             sublabel += "\n"
         if self.gsd.auto_fills:
             sublabel += ngettext("You used the auto-fill %(n)s time",
                                  "You used the auto-fill %(n)s times",
-                                 self.gsd.auto_fills)%{'n':self.gsd.auto_fills}
+                                 self.gsd.auto_fills) % {'n':self.gsd.auto_fills}
         import dancer
         self.dancer = dancer.GridDancer(self.gsd)
         self.dancer.start_dancing()
-        dialog_extras.show_message(_("You win!"),label=_("You win!"),
-                                   sublabel=sublabel
+        dialog_extras.show_message(_("You win!"), label = _("You win!"),
+                                   sublabel = sublabel
                                    )
 
     @simple_debug
     def initialize_prefs (self):
-        for k,v in self.initial_prefs.items():
+        for k, v in self.initial_prefs.items():
             try:
                 self.gconf[k]
             except:
-                self.gconf[k]=v
+                self.gconf[k] = v
         self.player = self.gconf['player']
 
     @simple_debug
     @inactivate_new_game_etc
-    def new_cb (self,*args):
+    def new_cb (self, *args):
         if (self.gsd.grid and self.gsd.grid.is_changed() and not self.won):
             try:
                 if dialog_extras.getBoolean(
-                    label=_("Save this game before starting new one?"),
-                    custom_yes=_("_Save game for later"),
-                    custom_no=_("_Abandon game"),
+                    label = _("Save this game before starting new one?"),
+                    custom_yes = _("_Save game for later"),
+                    custom_no = _("_Abandon game"),
                     ):
                     self.save_game()
                 else:
@@ -468,7 +468,7 @@ class UI (gconf_wrapper.GConfWrapper):
             and self.gsd.grid.is_changed()
             and (not self.won)):
             try:
-                if dialog_extras.getBoolean(label=_("Save game before closing?")):
+                if dialog_extras.getBoolean(label = _("Save game before closing?")):
                     self.save_game(self)
             except dialog_extras.UserCancelledError:
                 return
@@ -502,7 +502,7 @@ class UI (gconf_wrapper.GConfWrapper):
                 d = self.swallower.running
                 d.response(gtk.RESPONSE_DELETE_EVENT)
             gtk.main_quit() # Quit the embedded mainloop
-            gobject.idle_add(self.quit_cb,100) # Call ourselves again
+            gobject.idle_add(self.quit_cb, 100) # Call ourselves again
                                                # to quit the main
                                                # mainloop
             return
@@ -511,10 +511,10 @@ class UI (gconf_wrapper.GConfWrapper):
         while gtk.events_pending():
             gtk.main_iteration()
         if self.won:
-            self.gconf['current_game']=''
+            self.gconf['current_game'] = ''
         if not self.won:
             if not self.gsd.grid:
-                self.gconf['current_game']=''
+                self.gconf['current_game'] = ''
         self.stop_worker_thread()
         # allow KeyboardInterrupts, which calls quit_cb outside the main loop
         try:
@@ -527,7 +527,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.sudoku_tracker.save_game(self)
 
     def full_screen_cb (self, *args):
-        if not hasattr(self,'is_fullscreen'):
+        if not hasattr(self, 'is_fullscreen'):
             self.is_fullscreen = False
         if self.is_fullscreen:
             self.w.unfullscreen()
@@ -537,8 +537,8 @@ class UI (gconf_wrapper.GConfWrapper):
             self.is_fullscreen = True
 
     @simple_debug
-    def clear_cb (self,*args):
-        clearer=Undo.UndoableObject(
+    def clear_cb (self, *args):
+        clearer = Undo.UndoableObject(
             self.do_clear, #action
             self.undo_clear, #inverse
             self.history #history
@@ -562,7 +562,7 @@ class UI (gconf_wrapper.GConfWrapper):
             lambda *args: self.cleared_notes.append(self.gsd.clear_notes()), #action
             # clear_notes returns a list of tuples indicating the cleared notes...
             # (x,y,(top,bottom)) -- this is what we need for undoing
-            lambda *args: [self.gsd.__entries__[t[0],t[1]].set_notes(t[2]) for t in self.cleared_notes.pop()], #inverse
+            lambda *args: [self.gsd.__entries__[t[0], t[1]].set_notes(t[2]) for t in self.cleared_notes.pop()], #inverse
             self.history
             )
         clearer.perform()
@@ -589,9 +589,9 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def auto_fill_cb (self, *args):
-        if not hasattr(self,'autofilled'):
-            self.autofilled=[]
-        if not hasattr(self,'autofiller'):
+        if not hasattr(self, 'autofilled'):
+            self.autofilled = []
+        if not hasattr(self, 'autofiller'):
             self.autofiller = Undo.UndoableObject(
                 self.do_auto_fill,
                 self.undo_auto_fill,
@@ -606,7 +606,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
     def undo_auto_fill (self, *args):
         for entry in self.autofilled.pop():
-            self.gsd.remove(entry[0],entry[1],do_removal=True)
+            self.gsd.remove(entry[0], entry[1], do_removal = True)
         if self.gconf['always_show_hints']:
             self.gsd.update_all_hints()
 
@@ -637,7 +637,7 @@ class UI (gconf_wrapper.GConfWrapper):
             self.tb.hide()
 
     def set_statusbar_value (self, status):
-        if not hasattr(self,'sbid'):
+        if not hasattr(self, 'sbid'):
             self.sbid = self.statusbar.get_context_id('game_info')
         self.statusbar.pop(self.sbid)
         self.statusbar.push(self.sbid, status)
@@ -651,8 +651,8 @@ class UI (gconf_wrapper.GConfWrapper):
         puzzle = self.gsd.grid.virgin.to_string()
         puzzle_diff = self.sudoku_maker.get_difficulty(puzzle)
 
-        tot_string = _("Playing %(difficulty)s puzzle.")%{'difficulty':puzzle_diff.value_string()}
-        tot_string += " " + "(%1.2f)"%puzzle_diff.value
+        tot_string = _("Playing %(difficulty)s puzzle.") % {'difficulty':puzzle_diff.value_string()}
+        tot_string += " " + "(%1.2f)" % puzzle_diff.value
 
         self.set_statusbar_value(tot_string)
         return True
@@ -666,16 +666,16 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     def show_info_cb (self, *args):
         if not self.gsd.grid:
-            dialog_extras.show_message(parent=self.w,
-                                       title=_("Puzzle Information"),
-                                       label=_("There is no current puzzle.")
+            dialog_extras.show_message(parent = self.w,
+                                       title = _("Puzzle Information"),
+                                       label = _("There is no current puzzle.")
                                        )
             return
         puzzle = self.gsd.grid.virgin.to_string()
         diff = self.sudoku_maker.get_difficulty(puzzle)
         information = _("Calculated difficulty: ")
         information += diff.value_string()
-        information += " (%1.2f)"%diff.value
+        information += " (%1.2f)" % diff.value
         information += "\n"
         information += _("Number of moves instantly fillable by elimination: ")
         information += str(int(diff.instant_elimination_fillable))
@@ -685,10 +685,10 @@ class UI (gconf_wrapper.GConfWrapper):
         information += "\n"
         information += _("Amount of trial-and-error required to solve: ")
         information += str(len(diff.guesses))
-        dialog_extras.show_message(parent=self.w,
-                                   title=_("Puzzle Statistics"),
-                                   label=_("Puzzle Statistics"),
-                                   sublabel=information)
+        dialog_extras.show_message(parent = self.w,
+                                   title = _("Puzzle Statistics"),
+                                   label = _("Puzzle Statistics"),
+                                   sublabel = information)
 
     @simple_debug
     def toggle_generator_cb (self, toggle):
@@ -712,7 +712,7 @@ class UI (gconf_wrapper.GConfWrapper):
         about.set_name(APPNAME)
         about.set_version(VERSION)
         about.set_copyright(COPYRIGHT)
-        about.set_license(LICENSE[0] + '\n\n' + LICENSE[1] + '\n\n' +LICENSE[2])
+        about.set_license(LICENSE[0] + '\n\n' + LICENSE[1] + '\n\n'  + LICENSE[2])
         about.set_wrap_license(True)
         about.set_comments(DESCRIPTION)
         about.set_authors(AUTHORS)
@@ -737,12 +737,12 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def print_multiple_games (self, *args):
-        gp=printing.GamePrinter(self.sudoku_maker, self.gconf)
+        gp = printing.GamePrinter(self.sudoku_maker, self.gconf)
         gp.run_dialog()
 
     @simple_debug
     def generate_puzzle_gui (self, *args):
-        sudoku_generator_gui.GameGenerator(self,self.gconf)
+        sudoku_generator_gui.GameGenerator(self, self.gconf)
 
 class TrackerBox (gtk.VBox):
 
@@ -751,11 +751,11 @@ class TrackerBox (gtk.VBox):
 
         gtk.VBox.__init__(self)
         self.builder = gtk.Builder()
-        self.builder.add_from_file(os.path.join(UI_DIR,'tracker.ui'))
+        self.builder.add_from_file(os.path.join(UI_DIR, 'tracker.ui'))
         self.main_ui = main_ui
         self.vb = self.builder.get_object('vbox1')
         self.vb.unparent()
-        self.pack_start(self.vb,expand=True,fill=True)
+        self.pack_start(self.vb, expand = True, fill = True)
         self.setup_actions()
         self.setup_tree()
         self.show_all()
@@ -764,21 +764,21 @@ class TrackerBox (gtk.VBox):
     def reset (self):
 
         for tree in self.tracker_model:
-            if tree[0]>-1:
+            if tree[0] > -1:
                 self.tracker_model.remove(tree.iter)
 
     @simple_debug
     def setup_tree (self):
         self.tracker_tree = self.builder.get_object('treeview1')
-        self.tracker_model = gtk.ListStore(int,gtk.gdk.Pixbuf,str)
+        self.tracker_model = gtk.ListStore(int, gtk.gdk.Pixbuf, str)
         self.tracker_tree.set_model(self.tracker_model)
-        col1 = gtk.TreeViewColumn("",gtk.CellRendererPixbuf(),pixbuf=1)
-        col2 = gtk.TreeViewColumn("",gtk.CellRendererText(),text=2)
+        col1 = gtk.TreeViewColumn("", gtk.CellRendererPixbuf(), pixbuf = 1)
+        col2 = gtk.TreeViewColumn("", gtk.CellRendererText(), text = 2)
         self.tracker_tree.append_column(col2)
         self.tracker_tree.append_column(col1)
         # Our initial row...
-        self.tracker_model.append([-1,None,_('No Tracker')])
-        self.tracker_tree.get_selection().connect('changed',self.selection_changed_cb)
+        self.tracker_model.append([-1, None, _('No Tracker')])
+        self.tracker_tree.get_selection().connect('changed', self.selection_changed_cb)
 
     @simple_debug
     def setup_actions (self):
@@ -787,20 +787,20 @@ class TrackerBox (gtk.VBox):
             [('Clear',
               gtk.STOCK_CLEAR,
               _('_Clear Tracker'),
-              None,_('Clear all moves tracked by selected tracker.'),
+              None, _('Clear all moves tracked by selected tracker.'),
               self.clear_cb
               ),
-             ('Keep',None,
+             ('Keep', None,
               _('_Clear Others'),
               None,
               _('Clear all moves not tracked by selected tracker.'),
               self.keep_cb),
              ]
             )
-        for action,widget_name in [('Clear','ClearTrackerButton'),
-                                   ('Keep','KeepTrackerButton'),
+        for action, widget_name in [('Clear', 'ClearTrackerButton'),
+                                   ('Keep', 'KeepTrackerButton'),
                                    ]:
-            a=self.tracker_actions.get_action(action)
+            a = self.tracker_actions.get_action(action)
             a.connect_proxy(self.builder.get_object(widget_name))
         self.builder.get_object('AddTrackerButton').connect('clicked',
                                                           self.add_tracker)
@@ -808,7 +808,7 @@ class TrackerBox (gtk.VBox):
         self.tracker_actions.set_sensitive(False)
 
     @simple_debug
-    def add_tracker (self,*args):
+    def add_tracker (self, *args):
         tracker_id = self.main_ui.gsd.create_tracker()
         pixbuf = self.pixbuf_transform_color(
             STOCK_PIXBUFS['tracks'],
@@ -818,7 +818,7 @@ class TrackerBox (gtk.VBox):
         self.tracker_tree.get_selection().select_iter(
             self.tracker_model.append([tracker_id,
                                   pixbuf,
-                                  _("Tracker %s")%(tracker_id+1)]
+                                  _("Tracker %s") % (tracker_id + 1)]
                                   )
             )
 
@@ -840,43 +840,43 @@ class TrackerBox (gtk.VBox):
     @simple_debug
     def select_tracker (self, tracker_id):
         for row in self.tracker_model:
-            if row[0]==tracker_id:
+            if row[0] == tracker_id:
                 self.tracker_tree.get_selection().select_iter(row.iter)
 
     @simple_debug
     def selection_changed_cb (self, selection):
-        mod,itr = selection.get_selected()
+        mod, itr = selection.get_selected()
         if itr:
-            selected_tracker_id = mod.get_value(itr,0)
+            selected_tracker_id = mod.get_value(itr, 0)
         else:
-            selected_tracker_id=-1
+            selected_tracker_id = -1
         # This should be cheap since we don't expect many trackers...
         # We cycle through each row and toggle it off if it's not
         # selected; on if it is selected
         for row in self.tracker_model:
             tid = row[0]
             if tid != -1: # -1 == no tracker
-                self.main_ui.gsd.toggle_tracker(tid,tid==selected_tracker_id)
+                self.main_ui.gsd.toggle_tracker(tid, tid == selected_tracker_id)
         self.tracker_actions.set_sensitive(selected_tracker_id != -1)
 
     @simple_debug
     def clear_cb (self, action):
-        mod,itr=self.tracker_tree.get_selection().get_selected()
+        mod, itr = self.tracker_tree.get_selection().get_selected()
         # This should only be called if there is an itr, but we'll
         # double-check just in case.
         if itr:
-            selected_tracker_id=mod.get_value(itr,0)
+            selected_tracker_id = mod.get_value(itr, 0)
             self.tracker_delete_tracks(selected_tracker_id)
 
     @simple_debug
     def keep_cb (self, action):
-        mod,itr=self.tracker_tree.get_selection().get_selected()
-        selected_tracker_id=mod.get_value(itr,0)
+        mod, itr = self.tracker_tree.get_selection().get_selected()
+        selected_tracker_id = mod.get_value(itr, 0)
         self.tracker_keep_tracks(selected_tracker_id)
 
     @simple_debug
     def tracker_delete_tracks (self, tracker_id):
-        clearer=Undo.UndoableObject(
+        clearer = Undo.UndoableObject(
             lambda *args: self.main_ui.cleared.append(self.main_ui.gsd.delete_by_tracker(tracker_id)),
             lambda *args: [self.main_ui.gsd.add_value(*entry) for entry in self.main_ui.cleared.pop()],
             self.main_ui.history)
@@ -884,7 +884,7 @@ class TrackerBox (gtk.VBox):
 
     @simple_debug
     def tracker_keep_tracks (self, tracker_id):
-        clearer=Undo.UndoableObject(
+        clearer = Undo.UndoableObject(
             lambda *args: self.main_ui.cleared.append(self.main_ui.gsd.delete_except_for_tracker(tracker_id)),
             lambda *args: [self.main_ui.gsd.add_value(*entry) for entry in self.main_ui.cleared.pop()],
             self.main_ui.history)
@@ -915,10 +915,10 @@ def start_game ():
 def profile_me ():
     print 'Profiling GNOME Sudoku'
     import tempfile, hotshot, hotshot.stats
-    pname = os.path.join(tempfile.gettempdir(),'GNOME_SUDOKU_HOTSHOT_PROFILE')
+    pname = os.path.join(tempfile.gettempdir(), 'GNOME_SUDOKU_HOTSHOT_PROFILE')
     prof = hotshot.Profile(pname)
     prof.runcall(start_game)
     stats = hotshot.stats.load(pname)
     stats.strip_dirs()
-    stats.sort_stats('time','calls').print_stats()
+    stats.sort_stats('time', 'calls').print_stats()
 

@@ -84,7 +84,7 @@ class NumberSelector (gtk.EventBox):
             db.add(l)
             l.show()
             db.connect('clicked', self.number_clicked, 0)
-            self.table.attach(db, 0, side, y+1, y+2)
+            self.table.attach(db, 0, side, side + 1, side + 2)
         self.show_all()
 
     def number_clicked (self, button, n):
@@ -769,12 +769,12 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             e.connect('undo-change', self.entry_callback)
             e.connect('changed', self.entry_callback)
             e.connect('focus-in-event', self.focus_callback)
-            e.connect('key-press-event', self.key_press_cb, e.x, e.y)
+            e.connect('key-press-event', self.key_press_cb)
         self.connect('focus-changed', self.highlight_cells)
 
-    def key_press_cb (self, widget, event, x, y):
+    def key_press_cb (self, widget, event):
         key = gtk.gdk.keyval_name(event.keyval)
-        dest = self.go_around(x, y, key)
+        dest = self.go_around(widget.x, widget.y, key)
         if dest:
             self.table.set_focus_child(self.__entries__[dest])
 
