@@ -334,87 +334,6 @@ class SudokuSolver (SudokuGrid):
                                 )
         return changed
 
-    def fill_must_fills_2 (self):
-        changed = []
-        for label,coord_dic,filled_dic in [('Column',self.col_coords,self.cols),
-                                           ('Row',self.row_coords,self.rows),
-                                           ('Box',self.box_coords,self.boxes)]:
-            for n,coord_set in coord_dic.items():
-                needs = dict([(n,[]) for n in range(1,self.group_size+1)])
-                for coord in coord_set:
-                    val = self._get_(*coord)
-                    if val:
-                        del needs[val]
-                    else:
-                        for v in self.possible_values(*coord):
-                            needs[v].append(coord)
-                for n,coords in needs.items():
-                    if len(coords)==0:
-                        raise UnsolvablePuzzle('Missing a %s in %s'%(n,label))
-                    elif len(coords)==1:
-                        try:
-                            self.add(coords[0][0],coords[0][1],n)
-                            changed.append((coords[0],n))
-                        except AlreadySetError:
-                            raise UnsolvablePuzzle(
-                                "%s,%s must be two values at once!"%(coords[0])
-                                )
-        return changed
-
-    def fill_must_fills_old (self):
-        """If we have a row where only one column can be a 3, it must be a 3.
-
-        We raise an error if we discover an impossible situation.
-        We return a list of what we've changed
-        """
-        has_changed = []
-        for label,coord_dic,filled_dic in [('Column',self.col_coords,self.cols),
-                                           ('Row',self.row_coords,self.rows),
-                                           ('Box',self.box_coords,self.boxes)]:
-            for n,coord_set in coord_dic.items():
-                values = filled_dic[n] # get set of filled in values for our column
-                needed = self.gen_set - values
-                # A dictionary to track who can fill our various needs...
-                needed_dic = {}
-                for c in needed: needed_dic[c]=[]
-                # just work on the open squares
-                coord_set = filter(lambda coords: not self._get_(*coords),coord_set)
-                for xy,poss_set in [(c,self.possible_values(*c)) for c in coord_set]:
-                    # our set of values we can fill is now greater...
-                    values = values|poss_set
-                    # track who can fill our needs...
-                    for v in poss_set: needed_dic[v].append(xy)
-                # check if our set of fillable values is sufficient
-                if values != self.gen_set:
-                    raise UnsolvablePuzzle("Impossible to solve! We are missing %s in %s"%(self.gen_set-values,label))
-                # Check if there are any values for which only one cell will suffice
-                needed_filled_by = needed_dic.items()
-                values_only_one_can_fill = filter(lambda x: len(x[1])==1,needed_filled_by)
-                for v,coords in values_only_one_can_fill:
-                    coords = coords[0]
-                    if self.verbose: print 'Setting ',coords,v,' by necessity!'
-                    if self.verbose: print '(No other item in this ',label,' can be a ',v,')'
-                    has_changed.append([(coords[0],coords[1]),v])
-                    try:
-                        self.add(coords[0],coords[1],v)
-                    except AlreadySetError:
-                        if self._get_(coords[0],coords[1])==v: pass
-                        else:
-                            raise UnsolvablePuzzle(
-                                "Impossible to solve! %s,%s must be two values at once!"%(coords)
-                                )
-        if self.verbose: print 'fill_must_fills returning ',has_changed
-        return has_changed
-
-    def scan_must_fills (self):
-        """Scan to find how many fill_must_fills we could fill in with
-        100% positivity based on the grid as it currently stands (not
-        using the *cumulative* results"""
-        # we do this by temporarily disabling the add call
-        self.fake_add = True
-        self.fake_added = []
-        self.fill_must_fills()
-
     def fill_deterministically (self):
         poss = self.calculate_open_squares().items()
         one_choice=filter(lambda x: len(x[1])==1,poss)
@@ -453,15 +372,6 @@ class SudokuSolver (SudokuGrid):
         sf.next()
         if sf.next(): return False
         else: return True
-
-    def find_all_solutions (self):
-        solutions = set([])
-        sf = self.solution_finder()
-        sol = sf.next()
-        while sol:
-            solutions.add(sol)
-            sol = sf.next()
-        return solutions
 
     def guess_least_open_square (self):
         # get open squares and check them
