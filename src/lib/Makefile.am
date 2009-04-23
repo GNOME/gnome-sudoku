@@ -16,6 +16,7 @@ gnomesudoku_PYTHON = \
 	gsudoku.py	\
 	__init__.py	\
 	main.py 	\
+	number_box.py 	\
 	pausable.py	\
 	printing.py	\
 	saver.py	\
