@@ -325,8 +325,9 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
     def blank_grid (self):
         for x in range(self.group_size):
             for y in range(self.group_size):
-                self.remove(x, y)
                 e = self.__entries__[(x, y)]
+                if e.get_value():
+                    self.remove(x, y)
                 e.set_read_only(False)
         self.grid = None
         self.clear_notes()
@@ -470,23 +471,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         e = self.__entries__[(x, y)]
         if do_removal and self.grid and self.grid._get_(x, y):
             self.grid.remove(x, y)
-        if self.__error_pairs__.has_key((x, y)):
-            e.set_error_highlight(False)
-            errors_removed = self.__error_pairs__[(x, y)]
-            del self.__error_pairs__[(x, y)]
-            for coord in errors_removed:
-                # If we're not an error by some other pairing...
-                if not self.__error_pairs__.has_key(coord):
-                    linked_entry = self.__entries__[coord]
-                    linked_entry.set_error_highlight(False)
-                    # Its possible this highlighted error was never
-                    # added to our internal grid, in which case we'd
-                    # better make sure it is...
-                    if self.grid and not self.grid._get_(linked_entry.x, linked_entry.y):
-                        # entry_validate will add the value to our
-                        # internal grid if there are no other
-                        # conflicts
-                        self.entry_validate(linked_entry)
+        self.remove_error_highlight(x, y)
         # remove trackers
         for t in self.trackers_for_point(x, y):
             remove = []
@@ -498,6 +483,19 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         if e.get_text():
             e.set_value(0)
         e.unset_color()
+
+    def remove_error_highlight (self, x, y):
+        '''remove error highlight from [x, y] and also all errors caused by it'''
+        if self.__error_pairs__.has_key((x, y)):
+            entry = self.__entries__[(x, y)]
+            entry.set_error_highlight(False)
+            errors_removed = self.__error_pairs__[(x, y)]
+            del self.__error_pairs__[(x, y)]
+            for coord in errors_removed:
+                # If we're not an error by some other pairing...
+                if not self.__error_pairs__.has_key(coord):
+                    linked_entry = self.__entries__[coord]
+                    linked_entry.set_error_highlight(False)
 
     @simple_debug
     def auto_fill (self):
