@@ -410,12 +410,16 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         if self.grid.check_for_completeness():
             self.emit('puzzle-finished')
 
-    def complain_conflicts (self, origin):
-        self.__entries__[origin.x, origin.y].set_error_highlight(True)
-        conflicts = self.grid.find_conflicts(origin.x, origin.y, origin.value)
+    def complain_conflicts (self, x, y, value):
+        '''set error highlights on [x, y] and all related box.
+
+        We think the error is caused by `value`. But the box at [x, y] could
+        have a different value.'''
+        self.__entries__[x, y].set_error_highlight(True)
+        conflicts = self.grid.find_conflicts(x, y, value)
         for conflict in conflicts:
             self.__entries__[conflict].set_error_highlight(True)
-        self.__error_pairs__[(origin.x, origin.y)] = conflicts
+        self.__error_pairs__[(x, y)] = conflicts
 
     @simple_debug
     def add_value (self, x, y, val, trackers = []):
@@ -453,7 +457,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         try:
             self.grid.add(x, y, val, True)
         except sudoku.ConflictError, err:
-            self.complain_conflicts(err)
+            self.complain_conflicts(err.x, err.y, err.value)
         # Draw our entry
         self.__entries__[(x, y)].queue_draw()
 
