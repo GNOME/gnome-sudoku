@@ -64,7 +64,6 @@ if __name__ == '__main__':
     d.vbox.add(gtk.Label('Foo, bar, baz'))
     d.vbox.show_all()
     d.add_button(gtk.STOCK_CLOSE,gtk.RESPONSE_CLOSE)
-    import defaults
     w = gtk.Window()
     b = gtk.Button('show d'); b.show()
     sa = SwappableArea(b)

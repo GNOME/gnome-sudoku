@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import gtk, cairo, time
-import sudoku, gsudoku, saver
-from defaults import *
+import os.path
+import sudoku, gsudoku, saver, defaults
 from gtk_goodies import gconf_wrapper
 
 def fit_squares_in_rectangle (width, height, n, margin=0):
@@ -113,7 +113,7 @@ def print_sudokus(*args,**kwargs):
 
 class GamePrinter (gconf_wrapper.GConfWrapper):
 
-    ui_file = os.path.join(UI_DIR,'print_games.ui')
+    ui_file = os.path.join(defaults.UI_DIR, 'print_games.ui')
 
     initial_prefs = {'sudokus_per_page':2,
                      'print_multiple_sudokus_to_print':4,

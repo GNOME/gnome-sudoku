@@ -13,7 +13,8 @@ import game_selector
 import threading
 from gettext import gettext as _
 from gettext import ngettext
-from defaults import *
+from defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION,
+        IMAGE_DIR, LICENSE, MIN_NEW_PUZZLES, UI_DIR, VERSION, WEBSITE, WEBSITE_LABEL)
 from timer import ActiveTimer
 from simple_debug import simple_debug, options
 from dialog_swallower import SwappableArea

@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 import os, shutil
-import os.path
+import errno
 import sudoku
 import random
 import time
 import pausable
 import threading
-from defaults import *
+import defaults
 
 class SudokuGenerator:
 
@@ -298,7 +298,7 @@ class SudokuMaker:
                                   'group_size':9},
                   puzzle_maker_args={'symmetrical':True},
                   batch_size = 5,
-                  pickle_to = os.path.join(DATA_DIR,'puzzles')):
+                  pickle_to = os.path.join(defaults.DATA_DIR, 'puzzles')):
         self.pickle_to = pickle_to
         self.paused = False
         self.terminated = False
@@ -317,7 +317,7 @@ class SudokuMaker:
             if e.errno != errno.EEXIST:
                 return
         for cat in sudoku.DifficultyRating.categories:
-            source = os.path.join(os.path.join(PUZZLE_DIR),cat.replace(' ','_'))
+            source = os.path.join(os.path.join(defaults.PUZZLE_DIR), cat.replace(' ', '_'))
             target = os.path.join(self.pickle_to, cat.replace(' ','_'))
             if not os.path.exists(target):
                 try:

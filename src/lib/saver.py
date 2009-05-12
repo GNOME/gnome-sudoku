@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import gtk, pickle, types, os, os.path, errno
-from defaults import *
+import defaults
 from gtk_goodies.dialog_extras import show_message
 from gettext import gettext as _
 
@@ -184,7 +184,7 @@ class SudokuTracker:
                 )
         try:
             filename = list_of_finished_games = os.path.join(
-                os.path.join(DATA_DIR,'puzzles'),'finished'
+                os.path.join(defaults.DATA_DIR, 'puzzles'), 'finished'
                 )
             ofi = open(list_of_finished_games,'a')
             ofi.write(jar['game'].split('\n')[0]+'\n')

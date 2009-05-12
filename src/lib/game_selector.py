@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 import gtk, gobject
+import os.path
 import sudoku, saver, sudoku_maker
 import sudoku_thumber
 from gettext import gettext as _
 from timer import format_time,format_friendly_date
-from defaults import *
+import defaults
 from simple_debug import simple_debug
 from colors import color_hex_to_float
 from gtk_goodies import gconf_wrapper
@@ -40,7 +41,7 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
     NEW_GAME = 0
     SAVED_GAME = 1
 
-    ui_file = os.path.join(UI_DIR,'select_game.ui')
+    ui_file = os.path.join(defaults.UI_DIR, 'select_game.ui')
 
     @simple_debug
     def __init__ (self, sudokuMaker=None, gconf = None):
