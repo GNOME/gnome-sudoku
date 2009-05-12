@@ -120,16 +120,17 @@ class SudokuTracker:
                         title=_('No Space'),
                         label=_('No space left on disk'),
                         message_type=gtk.MESSAGE_ERROR,
-                        sublabel=_('Sudoku is unable to created data folder %(path)s.')%locals() +\
-                                 _('There is no disk space left!')
+                        sublabel = _('Unable to create data folder %(path)s.') % locals() + '\n' + \
+                                   _('There is no disk space left!')
                         )
                 else:
                     show_message(
                         title='Error creating directory',
                         label='Error creating directory',
-                        sublabel=_('Sudoku was unable to create data folder %(path)s.')%locals() +\
-                        _('Error %(errno)s: %(error)s')%{'errno':e.errno,
-                                                         'error':e.strerror}
+                        sublabel = (_('Unable to create data folder %(path)s.') % locals() + '\n' +
+                                    _('Error %(errno)s: %(error)s') % {
+                                        'errno': e.errno,
+                                        'error': e.strerror})
                         )
 
     def game_from_ui (self, ui):
