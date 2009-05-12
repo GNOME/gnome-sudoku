@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk, pickle, types, os, os.path, errno
+import gtk, pickle, types, os, errno
 import defaults
 from gtk_goodies.dialog_extras import show_message
 from gettext import gettext as _
