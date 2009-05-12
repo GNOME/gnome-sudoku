@@ -89,7 +89,8 @@ def pickle_game (ui, target):
         close_me = True
     to_dump = jar_game(ui)
     pickle.dump(to_dump, target)
-    if close_me: target.close()
+    if close_me:
+        target.close()
 
 def unpickle_game (ui, target):
     close_me = False
@@ -97,7 +98,8 @@ def unpickle_game (ui, target):
         target = file(target, 'r')
         close_me = True
     open_game(ui, pickle.load(target))
-    if close_me: target.close()
+    if close_me:
+        target.close()
 
 class SudokuTracker:
 
