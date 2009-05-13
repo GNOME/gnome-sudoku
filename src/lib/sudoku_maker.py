@@ -191,7 +191,7 @@ class SudokuGenerator:
         if symmetrical:
             puz = self.make_symmetric_puzzle()
         else:
-            puz = make_puzzle()
+            puz = self.make_puzzle()
         diff = False
         if self.clues > 10:
             clues = self.clues - 8
