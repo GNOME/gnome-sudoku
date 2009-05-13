@@ -5,22 +5,22 @@ class MethodWrapper:
 
     def __call__ (self, cls):
         for attr in dir(cls):
-            attrobj = getattr(cls,attr)
+            attrobj = getattr(cls, attr)
             if callable(attrobj) and attr.find('__')!=0:
-                setattr(cls,attr,self.wrap(attrobj))
+                setattr(cls, attr, self.wrap(attrobj))
 
-    def wrap (self,f):
+    def wrap (self, f):
         def _(*args, **kwargs):
-            self.wrapper(*args,**kwargs)
-            return f(*args,**kwargs)
+            self.wrapper(*args, **kwargs)
+            return f(*args, **kwargs)
         return _
 
     def wrapper (self, *args, **kwargs):
-        print args,kwargs
+        print args, kwargs
 
 class PausableWrapper (MethodWrapper):
 
-    def __init__ (self,sleep_for=1):
+    def __init__ (self, sleep_for=1):
         self.sleep_for = sleep_for
 
     def __call__ (self, cls):
@@ -38,7 +38,7 @@ class PausableWrapper (MethodWrapper):
         def _(cls, *args, **kwargs):
             cls.paused = False
             cls.terminated = False
-            return f(cls,*args,**kwargs)
+            return f(cls, *args, **kwargs)
         return _
 
     def pause (self, cls):
@@ -54,9 +54,11 @@ class PausableWrapper (MethodWrapper):
         cls.terminated = False
 
     def wrapper (self, cls, *args, **kwargs):
-        if cls.terminated: raise "Terminated!"
+        if cls.terminated:
+            raise "Terminated!"
         while cls.paused:
-            if cls.terminated: raise "Terminated!"
+            if cls.terminated:
+                raise "Terminated!"
             time.sleep(self.sleep_for)
 
 

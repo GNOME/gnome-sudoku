@@ -114,7 +114,7 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
             if puzzles:
                 puzzle, diff_val = puzzles[0]
             else:
-                print 'WARNING: Repeating puzzle for difficulty %s -- generate more puzzles to avoid this.'%cat
+                print 'WARNING: Repeating puzzle for difficulty %s -- generate more puzzles to avoid this.' % cat
                 puzzles = self.sudoku_maker.get_puzzles(1, [cat], new = False)
                 if puzzles:
                     puzzle, diff_val = puzzles[0]

@@ -14,7 +14,7 @@ class SwappableArea (gtk.Notebook):
     running = False
 
 
-    def __init__ (self,main_area):
+    def __init__ (self, main_area):
         gtk.Notebook.__init__(self)
         self.set_show_tabs(False)
         self.set_show_border(False)
@@ -48,7 +48,8 @@ class SwappableArea (gtk.Notebook):
             gtk.main()
         except:
             print 'Error in dialog!'
-            import traceback; traceback.print_exc()
+            import traceback
+            traceback.print_exc()
             print 'forge on fearlessly...'
         self.set_current_page(self.main_page)
         self.running = None
@@ -63,9 +64,10 @@ if __name__ == '__main__':
     d = gtk.Dialog()
     d.vbox.add(gtk.Label('Foo, bar, baz'))
     d.vbox.show_all()
-    d.add_button(gtk.STOCK_CLOSE,gtk.RESPONSE_CLOSE)
+    d.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
     w = gtk.Window()
-    b = gtk.Button('show d'); b.show()
+    b = gtk.Button('show d')
+    b.show()
     sa = SwappableArea(b)
     sa.show()
     w.add(sa)

@@ -15,9 +15,9 @@ if not os.path.exists(os.path.join(root_dir, "Makefile.am")):
     APP_DATA_DIR = os.path.join('@prefix@', 'share') 
     IMAGE_DIR = os.path.join(APP_DATA_DIR, 'pixmaps', 'gnome-sudoku')
     LOCALEDIR = os.path.join(APP_DATA_DIR, 'locale')
-    UI_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
-    BASE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku')
-    PUZZLE_DIR = os.path.join(APP_DATA_DIR,'gnome-sudoku','puzzles')    
+    UI_DIR = os.path.join(APP_DATA_DIR, 'gnome-sudoku')
+    BASE_DIR = os.path.join(APP_DATA_DIR, 'gnome-sudoku')
+    PUZZLE_DIR = os.path.join(APP_DATA_DIR, 'gnome-sudoku', 'puzzles')
 else:
     # Running in uninstalled mode
     sys.path.insert(0, os.path.abspath(root_dir))
@@ -41,7 +41,7 @@ DESCRIPTION = _('GNOME Sudoku is a simple sudoku generator and player. Sudoku is
 AUTHORS = ["Thomas M. Hinkle"]
 WEBSITE       = 'http://www.gnome.org/projects/gnome-games/'
 WEBSITE_LABEL = _('GNOME Games web site')
-AUTO_SAVE= True
+AUTO_SAVE = True
 MIN_NEW_PUZZLES = 90
 
 # The GPL license string will be translated, and the game name inserted.

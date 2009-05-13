@@ -12,14 +12,14 @@ class SudokuGenerator:
 
     """A class to generate new Sudoku Puzzles."""
 
-    def __init__ (self, start_grid=None, clues=2, group_size=9):
+    def __init__ (self, start_grid = None, clues = 2, group_size = 9):
         self.generated = []
         self.clues = clues
         self.all_coords = []
         self.group_size = group_size
         for x in range(self.group_size):
             for y in range(self.group_size):
-                self.all_coords.append((x,y))
+                self.all_coords.append((x, y))
         if start_grid:
             self.start_grid = sudoku.SudokuGrid(start_grid)
         else:
@@ -36,32 +36,32 @@ class SudokuGenerator:
             return sum(difficulties)/len(difficulties)
 
     def generate_grid (self):
-        self.start_grid = sudoku.SudokuSolver(verbose=False,group_size=self.group_size)
+        self.start_grid = sudoku.SudokuSolver(verbose = False, group_size = self.group_size)
         self.start_grid.solve()
         return self.start_grid
 
-    def reflect (self, x, y, axis=1):
+    def reflect (self, x, y, axis = 1):
         #downward sloping
         upper = self.group_size - 1
         # reflect once...
-        x,y = upper - y,upper-x
+        x, y = upper - y, upper-x
         # reflect twice...
         return y, x
 
     def make_symmetric_puzzle (self):
         nclues = self.clues/2
-        buckshot = set(random.sample(self.all_coords,nclues))
-        new_puzzle = sudoku.SudokuGrid(verbose=False,group_size=self.group_size)
+        buckshot = set(random.sample(self.all_coords, nclues))
+        new_puzzle = sudoku.SudokuGrid(verbose = False, group_size = self.group_size)
         reflections = set()
-        for x,y in buckshot:
-            reflection = self.reflect(x,y)
+        for x, y in buckshot:
+            reflection = self.reflect(x, y)
             if reflection:
                 nclues += 1
                 reflections.add(reflection)
         buckshot = buckshot | reflections # unite our sets
         remaining_coords = set(self.all_coords) - set(buckshot)
         while len(buckshot) < self.clues:
-            coord = random.sample(remaining_coords,1)[0]
+            coord = random.sample(remaining_coords, 1)[0]
             buckshot.add(coord)
             reflection = self.reflect(*coord)
             if reflection:
@@ -70,22 +70,22 @@ class SudokuGenerator:
         return self.make_puzzle_from_coords(buckshot)
 
     def make_puzzle (self):
-        buckshot = random.sample(self.all_coords,self.clues)
+        buckshot = random.sample(self.all_coords, self.clues)
         while buckshot in self.generated:
-            buckshot = random.sample(self.all_coords,self.clues)
+            buckshot = random.sample(self.all_coords, self.clues)
         return self.make_puzzle_from_coords(buckshot)
 
     def make_puzzle_from_coords (self, buckshot):
-        new_puzzle = sudoku.SudokuGrid(verbose=False,group_size=self.group_size)
+        new_puzzle = sudoku.SudokuGrid(verbose = False, group_size = self.group_size)
         self.generated.append(set(buckshot))
-        for x,y in buckshot:
-            new_puzzle.add(x,y,self.start_grid._get_(x,y))
+        for x, y in buckshot:
+            new_puzzle.add(x, y, self.start_grid._get_(x, y))
         self.puzzles.append(new_puzzle)
         return new_puzzle
 
     def make_puzzle_by_boxes (self,
-                              skew_by=0.0,
-                              max_squares=None,):
+                              skew_by = 0.0,
+                              max_squares = None):
         """Make a puzzle paying attention to evenness of clue
         distribution.
 
@@ -144,9 +144,9 @@ class SudokuGenerator:
 
     def assess_difficulty (self, sudoku_grid):
         try:
-            solver = sudoku.SudokuRater(sudoku_grid,verbose=False,group_size=self.group_size)
+            solver = sudoku.SudokuRater(sudoku_grid, verbose = False, group_size = self.group_size)
             d = solver.difficulty()
-            self.rated_puzzles.append((sudoku_grid,d))
+            self.rated_puzzles.append((sudoku_grid, d))
             return d
         except:
             print 'Impossible!'
@@ -162,18 +162,18 @@ class SudokuGenerator:
         """If puzzle is unique, return its difficulty.
 
         Otherwise, return None."""
-        solver = sudoku.SudokuRater(sudoku_grid,verbose=False,group_size=self.group_size)
+        solver = sudoku.SudokuRater(sudoku_grid, verbose = False, group_size = self.group_size)
         if solver.has_unique_solution():
             return solver.difficulty()
         else:
             return None
 
     def generate_puzzle_for_difficulty (self,
-                                        lower_target=0.3,
-                                        upper_target=0.5,
+                                        lower_target = 0.3,
+                                        upper_target = 0.5,
                                         max_tries = 100,
-                                        by_box=False,
-                                        by_box_kwargs={}):
+                                        by_box = False,
+                                        by_box_kwargs = {}):
         for i in range(max_tries):
             if by_box:
                 puz = self.make_puzzle_by_boxes(**by_box_kwargs)
@@ -183,10 +183,11 @@ class SudokuGenerator:
             if (d and (not lower_target or d.value > lower_target) and\
                (not upper_target or
                 d.value < upper_target)):
-                return puz,d
-        else: return None,None
+                return puz, d
+        else:
+            return None, None
 
-    def make_unique_puzzle (self, symmetrical=True, strict_number_of_clues=False):
+    def make_unique_puzzle (self, symmetrical = True, strict_number_of_clues = False):
         if symmetrical:
             puz = self.make_symmetric_puzzle()
         else:
@@ -197,43 +198,47 @@ class SudokuGenerator:
         else:
             clues = 2
         while 1:
-            solver = sudoku.SudokuRater(puz.grid,verbose=False,group_size=self.group_size)
+            solver = sudoku.SudokuRater(puz.grid, verbose = False, group_size = self.group_size)
             if solver.has_unique_solution():
                 diff = solver.difficulty()
                 #raw_input('Unique puzzle!')
                 break
             # Otherwise...
             crumb = solver.breadcrumbs[-1]
-            fill_in = [(crumb.x,crumb.y)]
-            reflection = self.reflect(crumb.x,crumb.y)
-            if reflection: fill_in.append(reflection)
-            for x,y in fill_in:
-                solver.virgin._set_(x,y,self.start_grid._get_(x,y))
-            puz = sudoku.SudokuGrid(solver.virgin.grid, verbose=False)
+            fill_in = [(crumb.x, crumb.y)]
+            reflection = self.reflect(crumb.x, crumb.y)
+            if reflection:
+                fill_in.append(reflection)
+            for x, y in fill_in:
+                solver.virgin._set_(x, y, self.start_grid._get_(x, y))
+            puz = sudoku.SudokuGrid(solver.virgin.grid, verbose = False)
             #print 'Not unique, adding ',fill_in
             clues += len(fill_in)
-            if strict_number_of_clues==True and clues > self.clues: return None
+            if strict_number_of_clues  == True and clues > self.clues:
+                return None
             #print clues, "clues..."
             #raw_input('Continue: ')
         # make sure we have the proper number of clues
         if strict_number_of_clues:
-            changed=False
+            changed = False
             while clues < self.clues:
-                x,y=random.randint(0,8),random.randint(0,8)
-                while puz._get_(x,y): x,y=random.randint(0,8),random.randint(0,8)
-                puz._set_(x,y,self.start_grid._get_(x,y))
+                x, y = random.randint(0, 8), random.randint(0, 8)
+                while puz._get_(x, y):
+                    x, y = random.randint(0, 8), random.randint(0, 8)
+                puz._set_(x, y, self.start_grid._get_(x, y))
                 clues += 1
-                reflection = self.reflect(x,y)
+                reflection = self.reflect(x, y)
                 if reflection:
-                    puz._set_(x,y,self.start_grid._get_(x,y))
+                    puz._set_(x, y, self.start_grid._get_(x, y))
                     clues += 1
-                changed=True
-            if changed: diff = sudoku.SudokuRater(puz.grid,
-                                                  verbose=False,
-                                                  group_size=self.group_size).difficulty()
-        return puz,diff
+                changed = True
+            if changed:
+                diff = sudoku.SudokuRater(puz.grid,
+                                                  verbose = False,
+                                                  group_size = self.group_size).difficulty()
+        return puz, diff
 
-    def make_unique_puzzles (self, n=10, ugargs={}):
+    def make_unique_puzzles (self, n = 10, ugargs = {}):
         ug = self.unique_generator(**ugargs)
         ret = []
         for i in range(n):
@@ -243,20 +248,21 @@ class SudokuGenerator:
         return ret
 
     def unique_generator (self,
-                          symmetrical=True,
-                          strict_number_of_clues=False,
-                          by_box=False,
-                          by_box_kwargs={}):
+                          symmetrical = True,
+                          strict_number_of_clues = False,
+                          by_box = False,
+                          by_box_kwargs = {}):
         while 1:
             result = self.make_unique_puzzle(
-                symmetrical=symmetrical,
-                strict_number_of_clues=strict_number_of_clues)
-            if result: yield result
+                symmetrical = symmetrical,
+                strict_number_of_clues = strict_number_of_clues)
+            if result:
+                yield result
 
-    def generate_puzzles (self, n=10,
-                          symmetrical=True,
-                          by_box=False,
-                          by_box_kwargs={}):
+    def generate_puzzles (self, n = 10,
+                          symmetrical = True,
+                          by_box = False,
+                          by_box_kwargs = {}):
         ret = []
         for i in range(n):
             #print 'Generating puzzle ',i
@@ -268,23 +274,23 @@ class SudokuGenerator:
                 puz = self.make_puzzle()
             #print 'Assessing puzzle ',puz
             try:
-                d=self.assess_difficulty(puz.grid)
+                d = self.assess_difficulty(puz.grid)
             except:
                 raise
             if d:
-                ret.append((puz,d))
-        ret.sort(lambda a,b: a[1].value>b[1].value and 1 or a[1].value<b[1].value and -1 or 0)
+                ret.append((puz, d))
+        ret.sort(lambda a, b: a[1].value>b[1].value and 1 or a[1].value<b[1].value and -1 or 0)
         return ret
 
 
 class InterruptibleSudokuGenerator (SudokuGenerator):
-    def __init__ (self,*args,**kwargs):
+    def __init__ (self, *args, **kwargs):
         self.paused = False
         self.terminated = False
-        SudokuGenerator.__init__(self,*args,**kwargs)
-    def work (self,*args,**kwargs):
+        SudokuGenerator.__init__(self, *args, **kwargs)
+    def work (self, *args, **kwargs):
         self.unterminate()
-        SudokuGenerator(self,*args,**kwargs)
+        SudokuGenerator(self, *args, **kwargs)
 
 pausable.make_pausable(InterruptibleSudokuGenerator)
 
@@ -294,9 +300,9 @@ class SudokuMaker:
     """A class to create unique, symmetrical sudoku puzzles."""
 
     def __init__ (self,
-                  generator_args={'clues':27,
+                  generator_args = {'clues':27,
                                   'group_size':9},
-                  puzzle_maker_args={'symmetrical':True},
+                  puzzle_maker_args = {'symmetrical':True},
                   batch_size = 5,
                   pickle_to = os.path.join(defaults.DATA_DIR, 'puzzles')):
         self.pickle_to = pickle_to
@@ -308,7 +314,7 @@ class SudokuMaker:
         self.load()
         self.all_puzzles = {}
         self.played = self.get_pregenerated('finished')
-        self.n_available_sudokus = {'easy':None,'medium':None,'hard':None,'very hard':None}
+        self.n_available_sudokus = {'easy':None, 'medium':None, 'hard':None, 'very hard':None}
 
     def load (self):
         try:
@@ -318,7 +324,7 @@ class SudokuMaker:
                 return
         for cat in sudoku.DifficultyRating.categories:
             source = os.path.join(os.path.join(defaults.PUZZLE_DIR), cat.replace(' ', '_'))
-            target = os.path.join(self.pickle_to, cat.replace(' ','_'))
+            target = os.path.join(self.pickle_to, cat.replace(' ', '_'))
             if not os.path.exists(target):
                 try:
                     shutil.copy(source, target)
@@ -327,7 +333,7 @@ class SudokuMaker:
                     print 'Attempted to copy from %s to %s' % (source, target)
 
     def get_pregenerated (self, difficulty):
-        fname = os.path.join(self.pickle_to, difficulty.replace(' ','_'))
+        fname = os.path.join(self.pickle_to, difficulty.replace(' ', '_'))
         try:
             lines = file(fname).readlines()
         except IOError, e:
@@ -337,7 +343,7 @@ class SudokuMaker:
         else:
             return [line.strip() for line in lines]
 
-    def get_new_puzzle (self, difficulty, new=True):
+    def get_new_puzzle (self, difficulty, new = True):
         """Return puzzle with difficulty near difficulty.
 
         If new is True, we return only unplayed puzzles.
@@ -345,36 +351,39 @@ class SudokuMaker:
         """
         val_cat = sudoku.get_difficulty_category(difficulty)
         if not val_cat:
-            print 'WARNING, no val cat for difficulty:',difficulty
-            if val_cat > 1: val_cat = 'very hard'
-            else: val_cat = 'easy'
+            print 'WARNING, no val cat for difficulty:', difficulty
+            if val_cat > 1:
+                val_cat = 'very hard'
+            else:
+                val_cat = 'easy'
         puzzles = []
 
         lines = self.get_pregenerated(val_cat)
-        closest = 10000000000000,None
+        closest = 10000000000000, None
         for l in lines:
             if len(l) == 0:
-                print 'Warning: file %s contains an empty line'%fname
+                print 'Warning: file %s contains an empty line' % fname
                 continue
             if not l.find('\t')>=0:
-                print 'Warning: line "%s" of file %s has no tab character.'%(l,fname)
+                print 'Warning: line "%s" of file %s has no tab character.' % (l, fname)
                 continue
-            puzzle,diff = l.split('\t')
-            if new and (puzzle in self.played): continue
+            puzzle, diff = l.split('\t')
+            if new and (puzzle in self.played):
+                continue
             if not sudoku.is_valid_puzzle(puzzle):
-                print 'WARNING: invalid puzzle %s in file %s'%(puzzle,fname)
+                print 'WARNING: invalid puzzle %s in file %s' % (puzzle, fname)
                 continue
             diff = float(diff)
             closeness_to_target = abs(diff - difficulty)
             if closest[0] > closeness_to_target:
-                closest = diff,puzzle
-        return closest[1],sudoku.SudokuRater(
+                closest = diff, puzzle
+        return closest[1], sudoku.SudokuRater(
             sudoku.sudoku_grid_from_string(closest[1]).grid
             ).difficulty()
 
-    def n_puzzles (self, difficulty_category=None, new=True):
+    def n_puzzles (self, difficulty_category = None, new = True):
         if not difficulty_category:
-            return sum([self.n_puzzles(c,new=new) for c in sudoku.DifficultyRating.categories])
+            return sum([self.n_puzzles(c, new = new) for c in sudoku.DifficultyRating.categories])
         else:
             if self.n_available_sudokus[difficulty_category]:
                 return self.n_available_sudokus[difficulty_category]
@@ -382,17 +391,17 @@ class SudokuMaker:
             count = 0
             for line in lines:
                 if (not new) or line.split('\t')[0] not in self.played:
-                    count+=1
+                    count += 1
             self.n_available_sudokus[difficulty_category] = count
             return self.n_available_sudokus[difficulty_category]
 
-    def list_puzzles (self, difficulty_category=None, new=True):
+    def list_puzzles (self, difficulty_category = None, new = True):
         """Return a list of all puzzles we have generated.
         """
         puzzle_list = []
         if not difficulty_category:
             for c in sudoku.DifficultyRating.categories:
-                puzzle_list.extend(self.list_puzzles(c,new=new))
+                puzzle_list.extend(self.list_puzzles(c, new = new))
         else:
             lines = self.get_pregenerated(difficulty_category)
             for l in lines:
@@ -401,25 +410,29 @@ class SudokuMaker:
                     puzzle_list.append(puzzle)
         return puzzle_list
 
-    def get_puzzles_random (self, n, levels, new=True, exclude=[]):
+    def get_puzzles_random (self, n, levels, new = True, exclude = []):
         """Return a list of n puzzles and difficulty values (as floats).
 
         The puzzles will correspond as closely as possible to levels.
         If new, we only return puzzles not yet played.
         """
-        if not n: return []
+        if not n:
+            return []
         assert(levels)
         puzzles = []
         # Open files to read puzzles...
-        puzzles_by_level = {}; files = {}
+        puzzles_by_level = {}
+        files = {}
         for l in levels:
             puzzles_by_level[l] = self.get_pregenerated(l)
             random.shuffle(puzzles_by_level[l])
-        i = 0; il = 0
+        i = 0
+        il = 0
         n_per_level = {}
         finished = []
         while i < n and len(finished) < len(levels):
-            if il >= len(levels): il = 0
+            if il >= len(levels):
+                il = 0
             lev = levels[il]
             # skip any levels that we've exhausted
             if lev in finished:
@@ -431,31 +444,33 @@ class SudokuMaker:
                 finished.append(lev)
             else:
                 try:
-                    p,d = line.split('\t')
+                    p, d = line.split('\t')
                 except ValueError:
-                    print 'WARNING: invalid line %s in file %s'%(line,files[lev])
+                    print 'WARNING: invalid line %s in file %s' % (line, files[lev])
                     continue
                 if sudoku.is_valid_puzzle(p):
                     if (p not in exclude) and (not new or p not in self.played):
-                        puzzles.append((p,float(d)))
+                        puzzles.append((p, float(d)))
                         i += 1
                 else:
-                    print 'WARNING: invalid puzzle %s in file %s'%(p,files[lev])
+                    print 'WARNING: invalid puzzle %s in file %s' % (p, files[lev])
             il += 1
         if i < n:
-            print 'WARNING: Not able to provide %s puzzles in levels %s'%(n,levels)
+            print 'WARNING: Not able to provide %s puzzles in levels %s' % (n, levels)
             print 'WARNING: Generate more puzzles if you really need this many puzzles!'
         return puzzles
 
-    def get_puzzles (self, n, levels, new=True, randomize=True,
-                     exclude=[]):
+    def get_puzzles (self, n, levels, new = True, randomize = True,
+                     exclude = []):
         """Return a list of n puzzles and difficulty values (as floats).
 
         The puzzles will correspond as closely as possible to levels.
         If new, we only return puzzles not yet played.
         """
-        if randomize: return self.get_puzzles_random(n,levels,new=new,exclude=exclude)
-        if not n: return []
+        if randomize:
+            return self.get_puzzles_random(n, levels, new = new, exclude = exclude)
+        if not n:
+            return []
         assert(levels)
         puzzles = []
 
@@ -464,11 +479,13 @@ class SudokuMaker:
         for l in levels:
             files[l] = self.get_pregenerated(l)
 
-        i = 0; il = 0
+        i = 0
+        il = 0
         n_per_level = {}
         finished = []
         while i < n and len(finished) < len(levels):
-            if il >= len(levels): il = 0
+            if il >= len(levels):
+                il = 0
             lev = levels[il]
             # skip any levels that we've exhausted
             if lev in finished:
@@ -481,19 +498,19 @@ class SudokuMaker:
                 line = files[lev][0]
                 files[lev] = files[lev][1:]
                 try:
-                    p,d = line.split('\t')
+                    p, d = line.split('\t')
                 except ValueError:
-                    print 'WARNING: invalid line %s in file %s'%(line,files[lev])
+                    print 'WARNING: invalid line %s in file %s' % (line, files[lev])
                     continue
                 if sudoku.is_valid_puzzle(p):
                     if (p not in exclude) and (not new or p not in self.played):
-                        puzzles.append((p,float(d)))
+                        puzzles.append((p, float(d)))
                         i += 1
                 else:
-                    print 'WARNING: invalid puzzle %s in file %s'%(p,files[lev])
+                    print 'WARNING: invalid puzzle %s in file %s' % (p, files[lev])
             il += 1
         if i < n:
-            print 'WARNING: Not able to provide %s puzzles in levels %s'%(n,levels)
+            print 'WARNING: Not able to provide %s puzzles in levels %s' % (n, levels)
             print 'WARNING: Generate more puzzles if you really need this many puzzles!'
 
         return puzzles
@@ -502,7 +519,7 @@ class SudokuMaker:
 
     # Methods for creating new puzzles
 
-    def make_batch (self, diff_min=None, diff_max=None):
+    def make_batch (self, diff_min = None, diff_max = None):
         self.new_generator = InterruptibleSudokuGenerator(**self.generator_args)
         key = self.new_generator.start_grid.to_string()
         #while
@@ -514,7 +531,7 @@ class SudokuMaker:
         open_files = {}
         for n in range(self.batch_size):
             #print 'start next item...',n
-            puz,diff = ug.next()
+            puz, diff = ug.next()
             #print "GENERATED ",puz,diff
             if ((not diff_min or diff.value >= diff_min)
                 and
@@ -525,13 +542,13 @@ class SudokuMaker:
                 # self.all_puzzles[puzstring] = diff
                 # self.names[puzstring] = self.get_puzzle_name(_('Puzzle'))
                 outpath = os.path.join(self.pickle_to,
-                                       diff.value_category().replace(' ','_'))
+                                       diff.value_category().replace(' ', '_'))
                 # Read through the existing file and make sure we're
                 # not a duplicate puzzle
                 existing = self.get_pregenerated(diff.value_category())
                 if not puzstring in existing:
                     try:
-                        outfi = file(outpath,'a')
+                        outfi = file(outpath, 'a')
                         outfi.write(puzstring+'\t'+str(diff.value)+'\n')
                         outfi.close()
                         self.n_available_sudokus[diff.value_category()]+=1
@@ -539,26 +556,31 @@ class SudokuMaker:
                         print 'Error appending pregenerated puzzle: %s' % e.strerror
 
     def pause (self, *args):
-        if hasattr(self,'new_generator'): self.new_generator.pause()
+        if hasattr(self, 'new_generator'):
+            self.new_generator.pause()
         self.paused = True
 
     def resume (self, *args):
-        if hasattr(self,'new_generator'): self.new_generator.resume()
+        if hasattr(self, 'new_generator'):
+            self.new_generator.resume()
         self.paused = False
 
     def stop (self, *args):
-        if hasattr(self,'new_generator'): self.new_generator.terminate()
+        if hasattr(self, 'new_generator'):
+            self.new_generator.terminate()
         self.terminated = True
 
     def hesitate (self):
         while self.paused:
-            if self.terminated: break
+            if self.terminated:
+                break
             time.sleep(1)
 
-    def work (self, limit = None, diff_min=None, diff_max=None):
+    def work (self, limit = None, diff_min = None, diff_max = None):
         """Intended to be called as a worker thread, make puzzles!"""
         self.terminated = False
-        if hasattr(self,'new_generator'): self.new_generator.termintaed = False
+        if hasattr(self, 'new_generator'):
+            self.new_generator.termintaed = False
         self.paused = False
         generated = 0
         while not limit or generated < limit:
@@ -567,8 +589,8 @@ class SudokuMaker:
             if self.paused:
                 self.hesitate()
             try:
-                self.make_batch(diff_min=diff_min,
-                                diff_max=diff_max)
+                self.make_batch(diff_min = diff_min,
+                                diff_max = diff_max)
             except:
                 raise
             else:
@@ -579,7 +601,6 @@ class SudokuMaker:
 
 
 if __name__ == '__main__':
-    import time
     #puzzles=sg.generate_puzzles(30)
     #
     #print sg.make_symmetric_puzzle()
@@ -592,7 +613,7 @@ if __name__ == '__main__':
     sm = SudokuMaker()
     #st = SudokuTracker(sm)
 elif False:
-    usage="""Commands are:
+    usage = """Commands are:
     run: Run sudoku-maker
     len: \# of puzzles generated
     pause: pause
@@ -603,25 +624,25 @@ elif False:
     print usage
     while 1:
         inp = raw_input('choose:')
-        if inp=='run':
-            t=threading.Thread(target=sm.make_batch)
+        if inp == 'run':
+            t = threading.Thread(target = sm.make_batch)
             t.start()
-        elif inp=='show':
+        elif inp == 'show':
             print sm.puzzles
-        elif inp=='len':
+        elif inp == 'len':
             print len(sm.puzzles)
-        elif inp=='pause':
+        elif inp == 'pause':
             sm.new_generator.pause()
-        elif inp=='resume':
+        elif inp == 'resume':
             sm.new_generator.resume()
-        elif inp=='terminate':
+        elif inp == 'terminate':
             sm.new_generator.terminate()
-        elif inp=='quit':
+        elif inp == 'quit':
             sm.new_generator.terminate()
             break
         else:
             try:
-                getattr(sm,inp)()
+                getattr(sm, inp)()
             except:
                 print usage
         
