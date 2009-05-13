@@ -343,44 +343,6 @@ class SudokuMaker:
         else:
             return [line.strip() for line in lines]
 
-    def get_new_puzzle (self, difficulty, new = True):
-        """Return puzzle with difficulty near difficulty.
-
-        If new is True, we return only unplayed puzzles.
-        Return a tuple containing a new puzzle and difficulty object.
-        """
-        val_cat = sudoku.get_difficulty_category(difficulty)
-        if not val_cat:
-            print 'WARNING, no val cat for difficulty:', difficulty
-            if val_cat > 1:
-                val_cat = 'very hard'
-            else:
-                val_cat = 'easy'
-        puzzles = []
-
-        lines = self.get_pregenerated(val_cat)
-        closest = 10000000000000, None
-        for l in lines:
-            if len(l) == 0:
-                print 'Warning: file %s contains an empty line' % fname
-                continue
-            if not l.find('\t')>=0:
-                print 'Warning: line "%s" of file %s has no tab character.' % (l, fname)
-                continue
-            puzzle, diff = l.split('\t')
-            if new and (puzzle in self.played):
-                continue
-            if not sudoku.is_valid_puzzle(puzzle):
-                print 'WARNING: invalid puzzle %s in file %s' % (puzzle, fname)
-                continue
-            diff = float(diff)
-            closeness_to_target = abs(diff - difficulty)
-            if closest[0] > closeness_to_target:
-                closest = diff, puzzle
-        return closest[1], sudoku.SudokuRater(
-            sudoku.sudoku_grid_from_string(closest[1]).grid
-            ).difficulty()
-
     def n_puzzles (self, difficulty_category = None, new = True):
         if not difficulty_category:
             return sum([self.n_puzzles(c, new = new) for c in sudoku.DifficultyRating.categories])
