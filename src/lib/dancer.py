@@ -120,11 +120,14 @@ if __name__ == '__main__':
 
         button = gtk.Button('toggle')
         button.connect('clicked',
-                lambda *args: dancer.stop_dancing if dancer.dancing
-                    else dancer.start_dancing)
+                lambda *args: dancer.stop_dancing() if dancer.dancing
+                    else dancer.start_dancing())
+
         vbox = gtk.VBox()
         vbox.pack_start(gsd)
         vbox.pack_end(button)
+        vbox.set_focus_child(button)
+
         window.add(vbox)
         window.show_all()
         window.connect('delete-event', gtk.main_quit)
