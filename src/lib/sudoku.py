@@ -272,7 +272,6 @@ class SudokuSolver (SudokuGrid):
     def auto_fill_for_xy (self, x, y):
         """Fill the square x,y if possible."""
         possible = self.gen_set - self.rows[y] - self.cols[x] - self.boxes[self.box_by_coords[(x, y)]]
-        changed = []
         if len(possible) == 1:
             val = possible.pop()
             self.add(x, y, val)
@@ -434,7 +433,7 @@ class SudokuSolver (SudokuGrid):
         self.trail.append(('+', guess_obj))
         self.breadcrumbs.append(guess_obj)
         try:
-            filled = self.auto_fill()
+            self.auto_fill()
         except NotImplementedError:
             self.trail.append('Problem filling coordinates after guess')
             self.unwrap_guess(guess_obj)
