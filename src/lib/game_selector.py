@@ -204,3 +204,7 @@ class NewOrSavedGameSelector ():
         self.setup_dialog()
         return self.handle_response(self.dialog.run())
 
+if __name__ == '__main__':
+    selector = NewOrSavedGameSelector()
+    import pprint
+    pprint.pprint (selector.run_dialog())
