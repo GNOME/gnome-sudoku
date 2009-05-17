@@ -8,7 +8,6 @@ from timer import format_time, format_friendly_date
 import defaults
 from simple_debug import simple_debug
 from colors import color_hex_to_float
-from gtk_goodies import gconf_wrapper
 
 def color_from_difficulty (diff):
     DR = sudoku.DifficultyRating
@@ -45,7 +44,7 @@ def color_from_difficulty (diff):
             c = '#a40000'
     return color_hex_to_float(c)
 
-class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
+class NewOrSavedGameSelector ():
 
     NEW_GAME = 0
     SAVED_GAME = 1
@@ -53,10 +52,8 @@ class NewOrSavedGameSelector (gconf_wrapper.GConfWrapper):
     ui_file = os.path.join(defaults.UI_DIR, 'select_game.ui')
 
     @simple_debug
-    def __init__ (self, sudokuMaker = None, gconf = None):
-        if gconf:
-            gconf_wrapper.GConfWrapper.__init__(self, gconf)
-        self.sudoku_maker = sudokuMaker or sudoku_maker.SudokuMaker()
+    def __init__ (self):
+        self.sudoku_maker = sudoku_maker.SudokuMaker()
 
     def setup_dialog (self):
         self.builder = gtk.Builder()
