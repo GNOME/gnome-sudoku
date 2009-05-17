@@ -54,47 +54,52 @@ class NewOrSavedGameSelector ():
     @simple_debug
     def __init__ (self):
         self.sudoku_maker = sudoku_maker.SudokuMaker()
+        self.dialog = None
+        self.puzzle = None
+        self.new_game_model = None
+        self.saved_game_model = None
+        self.saved_games = None
 
     def setup_dialog (self):
-        self.builder = gtk.Builder()
-        self.builder.add_from_file(self.ui_file)
-        self.dialog = self.builder.get_object('dialog1')
+        builder = gtk.Builder()
+        builder.add_from_file(self.ui_file)
+        self.dialog = builder.get_object('dialog1')
         self.dialog.set_default_response(gtk.RESPONSE_CANCEL)
         self.dialog.connect('close', self.close)
         self.dialog.hide()
-        self.saved_game_view = self.builder.get_object('savedGameIconView')
-        self.saved_game_widgets = [
-            self.saved_game_view,
-            self.builder.get_object('savedGameLabel')
+        saved_game_view = builder.get_object('savedGameIconView')
+        saved_game_widgets = [
+            saved_game_view,
+            builder.get_object('savedGameLabel')
             ]
-        self.builder.get_object('savedGameLabel').set_mnemonic_widget(
-            self.saved_game_view
+        builder.get_object('savedGameLabel').set_mnemonic_widget(
+            saved_game_view
             )
-        self.new_game_view = self.builder.get_object('newGameIconView')
-        self.builder.get_object('newGameLabel').set_mnemonic_widget(
-            self.new_game_view
+        new_game_view = builder.get_object('newGameIconView')
+        builder.get_object('newGameLabel').set_mnemonic_widget(
+            new_game_view
             )
         self.saved_games = saver.SudokuTracker().list_saved_games()
         self.make_new_game_model()
-        self.new_game_view.set_model(self.new_game_model)
-        self.new_game_view.set_markup_column(0)
-        self.new_game_view.set_pixbuf_column(1)
+        new_game_view.set_model(self.new_game_model)
+        new_game_view.set_markup_column(0)
+        new_game_view.set_pixbuf_column(1)
         self.make_saved_game_model()
         if len(self.saved_game_model) == 0:
-            for w in self.saved_game_widgets:
+            for w in saved_game_widgets:
                 w.hide()
         else:
             self.saved_game_model.set_sort_column_id(2, gtk.SORT_DESCENDING)
-            self.saved_game_view.set_model(self.saved_game_model)
-            self.saved_game_view.set_markup_column(0)
-            self.saved_game_view.set_pixbuf_column(1)
-        for view in self.saved_game_view, self.new_game_view:
+            saved_game_view.set_model(self.saved_game_model)
+            saved_game_view.set_markup_column(0)
+            saved_game_view.set_pixbuf_column(1)
+        for view in saved_game_view, new_game_view:
             view.set_item_width(150)
             view.set_columns(4)
             view.set_spacing(12)
             view.set_selection_mode(gtk.SELECTION_SINGLE)
-        self.saved_game_view.connect('item-activated', self.saved_item_activated_cb)
-        self.new_game_view.connect('item-activated', self.new_item_activated_cb)
+        saved_game_view.connect('item-activated', self.saved_item_activated_cb)
+        new_game_view.connect('item-activated', self.new_item_activated_cb)
 
     @simple_debug
     def make_new_game_model (self):
