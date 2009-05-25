@@ -169,6 +169,8 @@ class UI (gconf_wrapper.GConfWrapper):
         self.won = False
         # add the accelerator group to our toplevel window
         self.worker_connections = []
+        self.is_fullscreen = False
+
         # setup sudoku maker...
         self.sudoku_maker = sudoku_maker.SudokuMaker()
         self.sudoku_tracker = saver.SudokuTracker()
@@ -535,8 +537,6 @@ class UI (gconf_wrapper.GConfWrapper):
         self.sudoku_tracker.save_game(self)
 
     def full_screen_cb (self, *args):
-        if not hasattr(self, 'is_fullscreen'):
-            self.is_fullscreen = False
         if self.is_fullscreen:
             self.w.unfullscreen()
             self.is_fullscreen = False
