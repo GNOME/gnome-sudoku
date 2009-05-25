@@ -5,19 +5,26 @@ try:
 except ImportError, err:
     print ("PyGTK not found. Please make sure it is installed properly and referenced in your PYTHONPATH environment variable.")
 
-import gtk, gobject
 import os.path
-from gtk_goodies import gconf_wrapper, Undo, dialog_extras
-import gsudoku, saver, sudoku_maker, printing, sudoku_generator_gui
-import game_selector
 import threading
+
+import gobject
+import gtk
 from gettext import gettext as _
 from gettext import ngettext
+
+import dialog_swallower
+import game_selector
+import gsudoku
+import printing
+import saver
+import sudoku_generator_gui
+import sudoku_maker
+import timer
 from defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION,
         IMAGE_DIR, LICENSE, MIN_NEW_PUZZLES, UI_DIR, VERSION, WEBSITE, WEBSITE_LABEL)
-from timer import ActiveTimer
+from gtk_goodies import gconf_wrapper, Undo, dialog_extras
 from simple_debug import simple_debug, options
-from dialog_swallower import SwappableArea
 
 ICON_FACTORY = gtk.IconFactory()
 STOCK_PIXBUFS = {}
@@ -158,7 +165,7 @@ class UI (gconf_wrapper.GConfWrapper):
                                             gconf_wrapper.GConf('gnome-sudoku')
                                             )
         self.setup_gui()
-        self.timer = ActiveTimer(self.w)
+        self.timer = timer.ActiveTimer(self.w)
         self.won = False
         # add the accelerator group to our toplevel window
         self.worker_connections = []
@@ -347,7 +354,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.tb = self.uimanager.get_widget('/Toolbar')
         self.vb.pack_start(self.tb, fill = False, expand = False)
         self.main_area = gtk.HBox()
-        self.swallower = SwappableArea(self.main_area)
+        self.swallower = dialog_swallower.SwappableArea(self.main_area)
         self.swallower.show()
         self.vb.pack_start(self.swallower, True, padding = 12)
         self.main_area.pack_start(self.gsd, padding = 6)
