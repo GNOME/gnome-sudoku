@@ -145,8 +145,7 @@ class UI (gconf_wrapper.GConfWrapper):
                      'difficulty':0.0,
                      'minimum_number_of_new_puzzles':MIN_NEW_PUZZLES,
                      'highlight':False,
-                     'bg_black':True,
-                     'bg_custom_color':'',
+                     'bg_color':'black',
                      'show_tracker':False,
                      'width': 700,
                      'height': 675,
@@ -334,13 +333,8 @@ class UI (gconf_wrapper.GConfWrapper):
 
     def setup_color (self):
         # setup background colors
-        if self.gconf['bg_custom_color']:
-            bgcol = self.gconf['bg_custom_color']
-        elif self.gconf['bg_black']:
-            bgcol = 'black'
-        else:
-            bgcol = None
-        if bgcol:
+        bgcol = self.gconf['bg_color']
+        if bgcol != '':
             self.gsd.set_bg_color(bgcol)
 
     def setup_autosave (self):
