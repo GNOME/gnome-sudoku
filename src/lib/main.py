@@ -520,11 +520,6 @@ class UI (gconf_wrapper.GConfWrapper):
         # otherwise we appear sluggish.
         while gtk.events_pending():
             gtk.main_iteration()
-        if self.won:
-            self.gconf['current_game'] = ''
-        if not self.won:
-            if not self.gsd.grid:
-                self.gconf['current_game'] = ''
         self.stop_worker_thread()
         # allow KeyboardInterrupts, which calls quit_cb outside the main loop
         try:

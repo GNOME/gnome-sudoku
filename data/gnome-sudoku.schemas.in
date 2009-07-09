@@ -1,0 +1,253 @@
+<gconfschemafile>
+  <schemalist>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/auto_save_interval</key>
+      <applyto>/apps/gnome-sudoku/auto_save_interval</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>int</type>
+      <default>60</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/number_of_sudokus_to_generate</key>
+      <applyto>/apps/gnome-sudoku/number_of_sudokus_to_generate</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>int</type>
+      <default>10</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/print_already_played_games</key>
+      <applyto>/apps/gnome-sudoku/print_already_played_games</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/mark_printed_as_played</key>
+      <applyto>/apps/gnome-sudoku/mark_printed_as_played</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/group_size</key>
+      <applyto>/apps/gnome-sudoku/group_size</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>int</type>
+      <default>9</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/generate_target_easy</key>
+      <applyto>/apps/gnome-sudoku/generate_target_easy</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/generate_target_medium</key>
+      <applyto>/apps/gnome-sudoku/generate_target_medium</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+    </schema>
+    
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/generate_target_hard</key>
+      <applyto>/apps/gnome-sudoku/generate_target_hard</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+    </schema>
+    
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/generate_target_veryHard</key>
+      <applyto>/apps/gnome-sudoku/generate_target_veryHard</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+    </schema>
+    
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/print_easy</key>
+      <applyto>/apps/gnome-sudoku/print_easy</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/print_medium</key>
+      <applyto>/apps/gnome-sudoku/print_medium</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/print_hard</key>
+      <applyto>/apps/gnome-sudoku/print_hard</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/print_very_hard</key>
+      <applyto>/apps/gnome-sudoku/print_very_hard</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/generate_puzzles_in_background</key>
+      <applyto>/apps/gnome-sudoku/generate_puzzles_in_background</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/minimum_number_of_new_puzzles</key>
+      <applyto>/apps/gnome-sudoku/minimum_number_of_new_puzzles</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>int</type>
+      <default>90</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/difficulty</key>
+      <applyto>/apps/gnome-sudoku/difficulty</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>float</type>
+      <default>0.0</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/width</key>
+      <applyto>/apps/gnome-sudoku/width</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>int</type>
+      <default>700</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/height</key>
+      <applyto>/apps/gnome-sudoku/height</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>int</type>
+      <default>675</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/print_multiple_sudokus_to_print</key>
+      <applyto>/apps/gnome-sudoku/print_multiple_sudokus_to_print</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>int</type>
+      <default>4</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/highlight</key>
+      <applyto>/apps/gnome-sudoku/highlight</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/show_tracker</key>
+      <applyto>/apps/gnome-sudoku/show_tracker</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/bg_custom_color</key>
+      <applyto>/apps/gnome-sudoku/bg_custom_color</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>string</type>
+      <default></default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/show_toolbar</key>
+      <applyto>/apps/gnome-sudoku/show_toolbar</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/show_impossible_implications</key>
+      <applyto>/apps/gnome-sudoku/show_impossible_implications</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/bg_black</key>
+      <applyto>/apps/gnome-sudoku/bg_black</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/always_show_hints</key>
+      <applyto>/apps/gnome-sudoku/always_show_hints</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/generate_for_target</key>
+      <applyto>/apps/gnome-sudoku/generate_for_target</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/generate_endlessly</key>
+      <applyto>/apps/gnome-sudoku/generate_endlessly</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/print_multiple_maximum_difficulty</key>
+      <applyto>/apps/gnome-sudoku/print_multiple_maximum_difficulty</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>float</type>
+      <default>0.0</default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/player</key>
+      <applyto>/apps/gnome-sudoku/player</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>string</type>
+      <default></default>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnome-sudoku/sudokus_per_page</key>
+      <applyto>/apps/gnome-sudoku/sudokus_per_page</applyto>
+      <owner>gnome-sudoku</owner>
+      <type>int</type>
+      <default>2</default>
+    </schema>
+    
+  </schemalist>
+</gconfschemafile>
