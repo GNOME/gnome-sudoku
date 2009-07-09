@@ -140,12 +140,12 @@ class UI (gconf_wrapper.GConfWrapper):
     </ui>'''
 
     initial_prefs = {'group_size':9,
-                     'always_show_hints':0,
+                     'always_show_hints':False,
                      'player':os.environ.get('USERNAME', ''),
                      'difficulty':0.0,
                      'minimum_number_of_new_puzzles':MIN_NEW_PUZZLES,
-                     'highlight':0,
-                     'bg_black':1,
+                     'highlight':False,
+                     'bg_black':True,
                      'bg_custom_color':'',
                      'show_tracker':False,
                      'width': 700,

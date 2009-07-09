@@ -11,12 +11,12 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
 
     ui_file = os.path.join(defaults.UI_DIR, 'puzzle_generator.ui')
 
-    initial_prefs = {'generate_target_easy':1,
-                     'generate_target_medium':0,
-                     'generate_target_hard':1,
-                     'generate_target_veryHard':1,
-                     'generate_endlessly':1,
-                     'generate_for_target':0,
+    initial_prefs = {'generate_target_easy':True,
+                     'generate_target_medium':False,
+                     'generate_target_hard':True,
+                     'generate_target_veryHard':True,
+                     'generate_endlessly':True,
+                     'generate_for_target':False,
                      'number_of_sudokus_to_generate':10,
                      }
 

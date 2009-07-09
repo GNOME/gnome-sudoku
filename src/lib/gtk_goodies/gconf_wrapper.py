@@ -178,7 +178,7 @@ class GConfWrapper:
 
     def gconf_wrap_toggle (self, key_name, action):
         self.gconf_wrap(key_name,action,
-                        get_method=lambda w: int(w.get_active()),
+                        get_method=lambda w: w.get_active(),
                         set_method=lambda w,v: w.set_active(v),
                         signal='toggled')
 
