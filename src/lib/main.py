@@ -141,7 +141,6 @@ class UI (gconf_wrapper.GConfWrapper):
 
     initial_prefs = {'group_size':9,
                      'always_show_hints':False,
-                     'player':os.environ.get('USERNAME', ''),
                      'difficulty':0.0,
                      'minimum_number_of_new_puzzles':MIN_NEW_PUZZLES,
                      'highlight':False,
@@ -444,7 +443,6 @@ class UI (gconf_wrapper.GConfWrapper):
                 self.gconf[k]
             except:
                 self.gconf[k] = v
-        self.player = self.gconf['player']
 
     @simple_debug
     @inactivate_new_game_etc
