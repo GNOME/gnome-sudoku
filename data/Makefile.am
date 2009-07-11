@@ -12,9 +12,12 @@ ui_DATA = \
 	select_game.ui \
 	tracker.ui
 
-schemadir   = @GCONF_SCHEMA_FILE_DIR@
 schema_in_files = gnome-sudoku.schemas.in
+if HAVE_GNOME
+schemadir = $(GCONF_SCHEMA_FILE_DIR)
 schema_DATA = $(schema_in_files:.schemas.in=.schemas)
+endif
+
 @INTLTOOL_SCHEMAS_RULE@	
 
 EXTRA_DIST = $(puzzle_DATA) $(ui_DATA)
