@@ -18,7 +18,26 @@ schemadir = $(GCONF_SCHEMA_FILE_DIR)
 schema_DATA = $(schema_in_files:.schemas.in=.schemas)
 endif
 
-@INTLTOOL_SCHEMAS_RULE@	
+install-schemas-local: $(schema_DATA)
+if GCONF_SCHEMAS_INSTALL
+	if test -z "$(DESTDIR)" ; then \
+		for p in $^ ; do \
+			GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $$p 2>&1 > /dev/null; \
+		done \
+	fi
+endif
 
-EXTRA_DIST = $(puzzle_DATA) $(ui_DATA)
+install-data-local: install-schemas-local
 
+EXTRA_DIST = \
+	$(puzzle_DATA)	\
+	$(ui_DATA)	\
+	$(schema_in_files)
+
+CLEANFILES = \
+	$(schema_DATA)
+
+DISTCLEANFILES = \
+	$(schema_DATA)
+
+@INTLTOOL_SCHEMAS_RULE@
