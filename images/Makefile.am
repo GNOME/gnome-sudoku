@@ -1,4 +1,4 @@
 EXTRA_DIST = footprints.png
 
-pixmapdir = $(pkgdatadir)/gnome-sudoku/pixmaps/
+pixmapdir = $(datadir)/gnome-sudoku/images/
 pixmap_DATA = footprints.png
