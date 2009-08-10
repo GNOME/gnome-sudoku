@@ -384,13 +384,16 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     def start_worker_thread (self, *args):
         n_new_puzzles = self.sudoku_maker.n_puzzles(new = True)
-        if n_new_puzzles < self.gconf['minimum_number_of_new_puzzles']:
-            self.worker = threading.Thread(target = lambda *args: self.sudoku_maker.work(limit = 5))
-            self.worker_connections = [
-                self.timer.connect('timing-started', self.sudoku_maker.resume),
-                self.timer.connect('timing-stopped', self.sudoku_maker.pause)
-                ]
-            self.worker.start()
+        try:
+            if n_new_puzzles < self.gconf['minimum_number_of_new_puzzles']:
+                self.worker = threading.Thread(target = lambda *args: self.sudoku_maker.work(limit = 5))
+                self.worker_connections = [
+                    self.timer.connect('timing-started', self.sudoku_maker.resume),
+                    self.timer.connect('timing-stopped', self.sudoku_maker.pause)
+                    ]
+                self.worker.start()
+        except gconf_wrapper.GConfError:
+            pass # assume we have enough new puzzles
         return True
 
     @simple_debug
