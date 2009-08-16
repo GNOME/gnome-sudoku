@@ -7,5 +7,4 @@ bin_SCRIPTS = gnome-sudoku
 CLEANFILES  = gnome-sudoku gnome-sudoku.in
 
 gnome-sudoku: gnome-sudoku.in
-	cp gnome-sudoku.in $@
-	if test -f $@; then chmod u+x $@; fi
+	$(AM_V_GEN) cp gnome-sudoku.in $@ && then chmod u+x
