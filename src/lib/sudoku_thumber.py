@@ -7,9 +7,12 @@ N_BOXES = 3
 PENCIL_GREY = (0.3, 0.3, 0.3)
 BACKGROUND_COLOR = (1., 1., 1.)
 
-def draw_sudoku (cr, sudoku, played, size, offset_x = 0, offset_y = 0, border_color = (1.0, 1.0, 1.0), line_color = (0.0, 0.0, 0.0)):
+def draw_sudoku (cr, sudoku, played, size, offset_x = 0, offset_y = 0, border_color = (1.0, 1.0, 1.0), line_color = (0.0, 0.0, 0.0), for_printing = False):
 
     THIN = size / 100.
+    if for_printing:
+        THIN /= 3
+
     THICK = THIN * 2.
     BORDER = THICK
 
@@ -22,6 +25,11 @@ def draw_sudoku (cr, sudoku, played, size, offset_x = 0, offset_y = 0, border_co
 
     SQUARE_SIZE = WHITE_SPACE / SUDOKU_SIZE
     FONT_SIZE = SQUARE_SIZE
+    FONT_WEIGHT = cairo.FONT_WEIGHT_BOLD
+
+    if for_printing:
+        FONT_SIZE /= 2
+        FONT_WEIGHT = cairo.FONT_WEIGHT_NORMAL
 
     outer = {}
     outer["left"]   = offset_x
@@ -97,7 +105,7 @@ def draw_sudoku (cr, sudoku, played, size, offset_x = 0, offset_y = 0, border_co
                 letter = str(sudoku[y][x])
                 cr.select_font_face("",
                          cairo.FONT_SLANT_NORMAL,
-                         cairo.FONT_WEIGHT_BOLD)
+                         FONT_WEIGHT)
                 cr.set_source_rgb(0, 0, 0)
                 xbearing, ybearing, width, height, xadvance, yadvance = (
                     cr.text_extents(letter)

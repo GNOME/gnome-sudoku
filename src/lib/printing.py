@@ -88,7 +88,7 @@ class SudokuPrinter:
             if isinstance(sudoku, gsudoku.SudokuGameDisplay):
                 sudoku = sudoku.grid
 
-            sudoku_thumber.draw_sudoku (cr, sudoku.grid, None, best_square_size, left, top)
+            sudoku_thumber.draw_sudoku (cr, sudoku.grid, None, best_square_size, left, top, for_printing = True)
             if pos[0] < best_fit[0]:
                 left = left + best_square_size + margin
                 pos[0]  += 1
