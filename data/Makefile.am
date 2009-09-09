@@ -29,10 +29,13 @@ endif
 
 install-data-local: install-schemas-local
 
+man_MANS = gnome-sudoku.6
+
 EXTRA_DIST = \
 	$(puzzle_DATA)	\
 	$(ui_DATA)	\
-	$(schema_in_files)
+	$(schema_in_files) \
+	$(man_MANS)
 
 CLEANFILES = \
 	$(schema_DATA)
