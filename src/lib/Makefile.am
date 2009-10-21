@@ -26,3 +26,5 @@ gnomesudoku_PYTHON = \
 	sudoku_thumber.py \
 	sudoku.py	\
 	timer.py
+
+-include $(top_srcdir)/git.mk

@@ -44,3 +44,5 @@ DISTCLEANFILES = \
 	$(schema_DATA)
 
 @INTLTOOL_SCHEMAS_RULE@
+
+-include $(top_srcdir)/git.mk

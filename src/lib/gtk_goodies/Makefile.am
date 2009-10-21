@@ -4,3 +4,5 @@ gnomesudoku_PYTHON = \
 	gconf_wrapper.py	\
 	__init__.py		\
 	Undo.py
+
+-include $(top_srcdir)/git.mk

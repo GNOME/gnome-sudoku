@@ -9,3 +9,5 @@ desktop_in_files = gnome-sudoku.desktop.in.in
 desktop_DATA = $(desktop_in_files:.desktop.in.in=.desktop)
 
 CLEANFILES = $(desktop_DATA)
+
+-include $(top_srcdir)/git.mk
