@@ -44,7 +44,7 @@ def color_from_difficulty (diff):
             c = '#a40000'
     return color_hex_to_float(c)
 
-class NewOrSavedGameSelector ():
+class NewOrSavedGameSelector:
 
     NEW_GAME = 0
     SAVED_GAME = 1
