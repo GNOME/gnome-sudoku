@@ -27,6 +27,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         self.ui.stop_worker_thread()
         gconf_wrapper.GConfWrapper.__init__(self, gconf)
         self.builder = gtk.Builder()
+        self.builder.set_translation_domain(defaults.DOMAIN)
         self.builder.add_from_file(self.ui_file)
         self.generate_for_target_widgets = []
         self.cat_to_label = {}

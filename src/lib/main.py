@@ -21,7 +21,7 @@ import saver
 import sudoku_generator_gui
 import sudoku_maker
 import timer
-from defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION,
+from defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION, DOMAIN, 
         IMAGE_DIR, LICENSE, MIN_NEW_PUZZLES, UI_DIR, VERSION, WEBSITE, WEBSITE_LABEL)
 from gtk_goodies import gconf_wrapper, Undo, dialog_extras
 from simple_debug import simple_debug, options
@@ -746,6 +746,7 @@ class TrackerBox (gtk.VBox):
 
         gtk.VBox.__init__(self)
         self.builder = gtk.Builder()
+        self.builder.set_translation_domain(DOMAIN)
         self.builder.add_from_file(os.path.join(UI_DIR, 'tracker.ui'))
         self.main_ui = main_ui
         self.vb = self.builder.get_object('vbox1')

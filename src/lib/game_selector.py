@@ -62,6 +62,7 @@ class NewOrSavedGameSelector:
 
     def setup_dialog (self):
         builder = gtk.Builder()
+        builder.set_translation_domain(defaults.DOMAIN)
         builder.add_from_file(self.ui_file)
         self.dialog = builder.get_object('dialog1')
         self.dialog.set_default_response(gtk.RESPONSE_CANCEL)

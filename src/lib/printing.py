@@ -129,6 +129,7 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
         gconf_wrapper.GConfWrapper.__init__(self, gconf)
         self.sudoku_maker = sudoku_maker
         self.builder = gtk.Builder()
+        self.builder.set_translation_domain(defaults.DOMAIN)
         self.builder.add_from_file(self.ui_file)
         # Set up toggles...
         for key, wname in [('mark_printed_as_played', 'markAsPlayedToggle'),
