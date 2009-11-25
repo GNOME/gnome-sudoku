@@ -3,6 +3,7 @@ import random
 import math
 import re
 from gettext import gettext as _
+import defaults
 
 GROUP_SIZE = 9
 
