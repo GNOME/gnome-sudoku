@@ -47,7 +47,7 @@ def super_setattr (obj, attr, val):
 
 def jar_game (ui):
     jar = {} # what we will pickle
-    ui.timer.finish_timing()
+    ui.timer.mark_timing()
     jar['game'] = ui.gsd.grid.to_string()
     jar['trackers'] = ui.gsd.trackers
     jar['tracking'] = ui.gsd.__trackers_tracking__
