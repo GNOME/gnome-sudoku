@@ -604,14 +604,10 @@ class UI (gconf_wrapper.GConfWrapper):
 
     def do_auto_fill (self, *args):
         self.autofilled.append(self.gsd.auto_fill())
-        if self.gconf['always_show_hints']:
-            self.gsd.update_all_hints()
 
     def undo_auto_fill (self, *args):
         for entry in self.autofilled.pop():
             self.gsd.remove(entry[0], entry[1], do_removal = True)
-        if self.gconf['always_show_hints']:
-            self.gsd.update_all_hints()
 
     @simple_debug
     def auto_fill_current_square_cb (self, *args):

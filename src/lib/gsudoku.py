@@ -352,8 +352,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             self.entry_validate(widget)
         if self.show_impossible_implications:
             self.mark_impossible_implications(widget.x, widget.y)
-        if self.always_show_hints:
-            self.update_all_hints()
 
     def update_all_hints (self):
         for x in range(self.group_size):
@@ -425,6 +423,9 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         self.highlight_conflicts(x, y)
         # Draw our entry
         self.__entries__[(x, y)].queue_draw()
+        # Update all hints if we need to
+        if self.always_show_hints and not self.doing_initial_setup:
+            self.update_all_hints()
 
     @simple_debug
     def remove (self, x, y, do_removal = False):
@@ -448,6 +449,9 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         if e.get_text():
             e.set_value(0)
         e.unset_color()
+        # Update all hints if we need to
+        if self.grid and self.always_show_hints and not self.doing_initial_setup:
+            self.update_all_hints()
 
     def remove_error_highlight (self):
         '''remove error highlight from [x, y] and also all errors caused by it
