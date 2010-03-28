@@ -96,51 +96,6 @@ class SudokuNumberGrid (gtk.AspectFrame):
         for e in self.__entries__.values():
             e.modify_bg(gtk.STATE_NORMAL, color)
 
-class ParallelDict (dict):
-    """A handy new sort of dictionary for tracking conflicts.
-
-    pd = ParallelDict()
-    pd[1] = [2, 3, 4] # 1 is linked with 2, 3 and 4
-    pd -> {1:[2, 3, 4], 2:[1], 3:[1], 4:[1]}
-    pd[2] = [1, 3, 4] # 2 is linked with 3 and 4 as well as 1
-    pd -> {1: [2, 3, 4], 2:[3, 4], 3:[1, 2], 4:[1, 2]}
-    Now for the cool part...
-    del pd[1]
-    pd -> {2: [2, 3], 3:[2], 4:[2]}
-
-    Pretty neat, no?
-    """
-    def __init__ (self, *args):
-        dict.__init__(self, *args)
-
-    def __setitem__ (self, k, v):
-        dict.__setitem__(self, k, set(v))
-        for i in v:
-            if i == k:
-                continue
-            if self.has_key(i):
-                self[i].add(k)
-            else:
-                dict.__setitem__(self, i, set([k]))
-
-    def __delitem__ (self, k):
-        v = self[k]
-        dict.__delitem__(self, k)
-        for i in v:
-            if i == k:
-                continue
-            if self.has_key(i):
-                # Make sure we have a reference to i. If we don't
-                # something has gone wrong... but according to bug
-                # 385937 this has gone wrong at least once, so we'd
-                # better check for it.
-                if k in self[i]:
-                    self[i].remove(k)
-                if not self[i]:
-                    # If k was the last value in the list of values
-                    # for i, then we delete i from our dictionary
-                    dict.__delitem__(self, i)
-
 class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
 
     __gsignals__ = {
@@ -368,7 +323,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
     @simple_debug
     def setup_grid (self, grid, group_size):
         self.doing_initial_setup = True
-        self.__error_pairs__ = ParallelDict()
         if isinstance(grid, sudoku.SudokuGrid):
             self.grid = sudoku.InteractiveSudoku(grid.grid, group_size = grid.group_size)
         else:
@@ -411,16 +365,21 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         if self.grid.check_for_completeness():
             self.emit('puzzle-finished')
 
-    def complain_conflicts (self, x, y, value):
-        '''set error highlights on [x, y] and all related box.
+    def highlight_conflicts (self, x, y):
+        '''highlight any squares that conflict with position x,y.
 
-        We think the error is caused by `value`. But the box at [x, y] could
-        have a different value.'''
-        self.__entries__[x, y].set_error_highlight(True)
-        conflicts = self.grid.find_conflicts(x, y, value)
-        for conflict in conflicts:
-            self.__entries__[conflict].set_error_highlight(True)
-        self.__error_pairs__[(x, y)] = conflicts
+        Conflict resolution is taken care of completely within
+        the InteractiveGrid class.  A list of conflicting cells
+        are stored in InteractiveGrid.conflicts
+        '''
+        # Return if there are no conflicts for this cell
+        if not self.grid.conflicts.has_key((x, y)):
+            return
+        # Highlight the current cell
+        self.__entries__[(x, y)].set_error_highlight(True)
+        # Then highlight any cells that conflict with it
+        for coord in self.grid.conflicts[(x, y)]:
+            self.__entries__[coord].set_error_highlight(True)
 
     @simple_debug
     def add_value (self, x, y, val, trackers = []):
@@ -452,13 +411,10 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                 if v:
                     self.__entries__[(x, y)].set_color(self.get_tracker_color(k))
                     self.trackers[k].append((x, y, val))
-        # Add value to our underlying sudoku grid -- this will raise
-        # an error if the value is out of bounds with the current
-        # rules.
-        try:
-            self.grid.add(x, y, val, True)
-        except sudoku.ConflictError, err:
-            self.complain_conflicts(err.x, err.y, err.value)
+        # Add it to the underlying grid
+        self.grid.add(x, y, val, True)
+        # Highlight any conflicts that the new value creates
+        self.highlight_conflicts(x, y)
         # Draw our entry
         self.__entries__[(x, y)].queue_draw()
 
@@ -469,9 +425,10 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         If do_removal, remove it from our underlying grid as well.
         """
         e = self.__entries__[(x, y)]
-        if do_removal and self.grid and self.grid._get_(x, y):
+        # Always call the grid's remove() for proper conflict resolution
+        if self.grid:
             self.grid.remove(x, y)
-        self.remove_error_highlight(x, y)
+            self.remove_error_highlight()
         # remove trackers
         for t in self.trackers_for_point(x, y):
             remove = []
@@ -484,18 +441,18 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             e.set_value(0)
         e.unset_color()
 
-    def remove_error_highlight (self, x, y):
-        '''remove error highlight from [x, y] and also all errors caused by it'''
-        if self.__error_pairs__.has_key((x, y)):
-            entry = self.__entries__[(x, y)]
-            entry.set_error_highlight(False)
-            errors_removed = self.__error_pairs__[(x, y)]
-            del self.__error_pairs__[(x, y)]
-            for coord in errors_removed:
-                # If we're not an error by some other pairing...
-                if not self.__error_pairs__.has_key(coord):
-                    linked_entry = self.__entries__[coord]
-                    linked_entry.set_error_highlight(False)
+    def remove_error_highlight (self):
+        '''remove error highlight from [x, y] and also all errors caused by it
+
+        Conflict resolution is now handled within the InteractiveSudoku class.
+        If any conflicts were cleared on the last remove() then they are
+        stored in grid.cleared_conflicts
+        '''
+        if not self.grid.cleared_conflicts:
+            return
+        for coord in self.grid.cleared_conflicts:
+            linked_entry = self.__entries__[coord]
+            linked_entry.set_error_highlight(False)
 
     @simple_debug
     def auto_fill (self):
@@ -608,6 +565,9 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
 
     def add_tracker (self, x, y, tracker, val = None):
         self.__entries__[(x, y)].set_color(self.get_tracker_color(tracker))
+        # Highlight the conflicts when opening a saved game
+        if self.grid.conflicts.has_key((x, y)):
+            self.__entries__[(x, y)].set_error_highlight(True)
         if not val:
             val = self.grid._get_(x, y)
         self.trackers[tracker].append((x, y, val))

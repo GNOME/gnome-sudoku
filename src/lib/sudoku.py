@@ -60,7 +60,52 @@ class ConflictError (ValueError):
 class AlreadySetError (ValueError):
     pass
 
-class SudokuGrid:
+class ParallelDict (dict):
+    """A handy new sort of dictionary for tracking conflicts.
+
+    pd = ParallelDict()
+    pd[1] = [2, 3, 4] # 1 is linked with 2, 3 and 4
+    pd -> {1:[2, 3, 4], 2:[1], 3:[1], 4:[1]}
+    pd[2] = [1, 3, 4] # 2 is linked with 3 and 4 as well as 1
+    pd -> {1: [2, 3, 4], 2:[3, 4], 3:[1, 2], 4:[1, 2]}
+    Now for the cool part...
+    del pd[1]
+    pd -> {2: [2, 3], 3:[2], 4:[2]}
+
+    Pretty neat, no?
+    """
+    def __init__ (self, *args):
+        dict.__init__(self, *args)
+
+    def __setitem__ (self, k, v):
+        dict.__setitem__(self, k, set(v))
+        for i in v:
+            if i == k:
+                continue
+            if self.has_key(i):
+                self[i].add(k)
+            else:
+                dict.__setitem__(self, i, set([k]))
+
+    def __delitem__ (self, k):
+        v = self[k]
+        dict.__delitem__(self, k)
+        for i in v:
+            if i == k:
+                continue
+            if self.has_key(i):
+                # Make sure we have a reference to i. If we don't
+                # something has gone wrong... but according to bug
+                # 385937 this has gone wrong at least once, so we'd
+                # better check for it.
+                if k in self[i]:
+                    self[i].remove(k)
+                if not self[i]:
+                    # If k was the last value in the list of values
+                    # for i, then we delete i from our dictionary
+                    dict.__delitem__(self, i)
+
+class SudokuGrid(object):
     def __init__ (self, grid = False, verbose = False, group_size = 9):
         self.grid = []
         self.cols = []
@@ -124,6 +169,10 @@ class SudokuGrid:
                 #is clicked multiple times, which causes this exception:
                 #raise AlreadySetError
                 return
+        # Always store the value in the underlying grid
+        self._set_(x, y, val)
+        # But don't add it to the solution hints(rows/cols/boxes) if there is
+        # a conflict
         if val in self.rows[y]:
             raise ConflictError(TYPE_ROW, (x, y), val)
         if val in self.cols[x]:
@@ -135,13 +184,12 @@ class SudokuGrid:
         self.rows[y].add(val)
         self.cols[x].add(val)
         self.boxes[box].add(val)
-        self._set_(x, y, val)
 
     def remove (self, x, y):
         val = self._get_(x, y)
-        self.rows[y].remove(val)
-        self.cols[x].remove(val)
-        self.boxes[self.box_by_coords[(x, y)]].remove(val)
+        self.rows[y].discard(val)
+        self.cols[x].discard(val)
+        self.boxes[self.box_by_coords[(x, y)]].discard(val)
         self._set_(x, y, 0)
 
     def _get_ (self, x, y):
@@ -165,7 +213,10 @@ class SudokuGrid:
         for y, row in enumerate(grid):
             for x, cell in enumerate(row):
                 if cell:
-                    self.add(x, y, cell)
+                    try:
+                        self.add(x, y, cell)
+                    except ConflictError:
+                        pass
 
     def __repr__ (self):
         s = "<Grid\n       "
@@ -182,29 +233,6 @@ class SudokuGrid:
                 if not self._get_(x, y):
                     possibilities[(x, y)] = self.possible_values(x, y)
         return possibilities
-
-    def find_conflicts (self, x, y, val, conflict_type = None):
-        '''Find all squares that conflict with value val at position x,y.
-
-        If conflict_type is specified, we only find conflicts of given
-        type (ROW, COLUMN OR BOX).
-        '''
-        if conflict_type == TYPE_ROW:
-            coords = self.row_coords[y]
-        elif conflict_type == TYPE_COLUMN:
-            coords = self.col_coords[x]
-        elif conflict_type == TYPE_BOX:
-            coords = self.box_coords[self.box_by_coords[(x, y)]]
-        else:
-            coords = (self.row_coords[y]
-                      + self.col_coords[x]
-                      + self.box_coords[self.box_by_coords[(x, y)]]
-                      )
-        conflicting_coordinates = []
-        for x, y in coords:
-            if self._get_(x, y) == val:
-                conflicting_coordinates.append((x, y))
-        return conflicting_coordinates
 
     def to_string (self):
         """Output our grid as a string."""
@@ -477,6 +505,8 @@ class InteractiveSudoku (SudokuSolver):
     solving."""
     def __init__ (self, grid = False, verbose = False, group_size = 9):
         SudokuSolver.__init__(self, grid, verbose, group_size)
+        self.conflicts = ParallelDict()
+        self.cleared_conflicts = []
 
     def to_string (self):
         return self.virgin.to_string() + '\n' + SudokuSolver.to_string(self)
@@ -507,6 +537,137 @@ class InteractiveSudoku (SudokuSolver):
 
     def is_changed (self):
         return (self.grid != self.virgin.grid)
+
+    def add (self, x, y, val, force = False):
+        '''Add a value to the grid.
+
+        The main feature of this method is conflict resolution.  When conflicts
+        are found they are stored in the conflicts ParallelDict.  A cell that
+        is in conflict is stored in the underlying grid(SudokuGrid.grid), but
+        it has all of its solution hints cleared(SudokuGrid.rows/cols/boxes).
+        Care must be taken so that solution hints from the original
+        grid(SudokuSolver.virgin) are not cleared.
+        '''
+        # First just add it to SudokuGrid
+        no_exception = True
+        try:
+            super(InteractiveSudoku, self).add(x, y, val, force)
+        except ConflictError:
+            no_exception = False
+
+        # Find any cells that conflict with the new value for this cell
+        coords = set([])
+        coords.update(self.row_coords[y],
+                      self.col_coords[x],
+                      self.box_coords[self.box_by_coords[(x, y)]])
+        coords.discard((x, y))
+        conflicting_coordinates = []
+        for xx, yy in coords:
+            if self._get_(xx, yy) == val:
+                conflicting_coordinates.append((xx, yy))
+        # Store the conflicts for access
+        if conflicting_coordinates:
+            self.conflicts[(x, y)] = conflicting_coordinates
+        # Resume when there are no conflicts
+        else:
+            return
+        # But when we do have conflicts, the values from cols/rows/boxes need
+        # to be removed so the hinting doesn't consider them. We must be
+        # chaste with the virgin though.
+        try:
+            if no_exception and not self.virgin._get_(x, y):
+                self.rows[y].discard(val)
+                self.cols[x].discard(val)
+                self.boxes[self.box_by_coords[(x, y)]].discard(val)
+            for xx, yy in conflicting_coordinates:
+                if self.virgin._get_(xx, yy):
+                    continue
+                if not val in self.virgin.rows[yy]:
+                    self.rows[yy].discard(val)
+                if not val in self.virgin.cols[xx]:
+                    self.cols[xx].discard(val)
+                if not val in self.virgin.box_coords[self.box_by_coords[(xx, yy)]]:
+                    self.boxes[self.box_by_coords[(xx, yy)]].discard(val)
+        # This class can be used before the virgin is created.  Pass through
+        # for the initialization phase
+        except AttributeError:
+            pass
+
+    def remove (self, x, y):
+        '''Remove a value from the grid.
+
+        The main feature of this method is conflict resolution.  All
+        conflicting cells are checked to see if they are actually
+        conflict-free.  A list of conflict-free cells are stored in
+        InteractiveSudoku.cleared_conflicts.  The cleared_conflicts list is
+        cleared for each meaningful call to remove(), so it must be processed
+        before another remove() call.
+        All solution hints(SudokuGrid.rows/cols/boxes) are reinstated for
+        conflict-free cells.
+        '''
+        # Grab the value that we're clearing.  Skip out if its nothing
+        val = self._get_(x, y)
+        if not val:
+            return
+        # Pop the conflicts resolved by this removal
+        self.cleared_conflicts = []
+        errors_removed = []
+        if self.conflicts.has_key((x, y)):
+            errors_removed = self.conflicts[(x, y)]
+            del self.conflicts[(x, y)]
+        # If there are no conflicts for this cell then just remove it in from
+        # the grid
+        else :
+            super(InteractiveSudoku, self).remove(x, y)
+            return
+        # Grid clearance flags
+        if val in self.rows[y]:
+            clear_row = True
+        else:
+            clear_row = False
+        if val in self.cols[x]:
+            clear_col = True
+        else:
+            clear_col = False
+        if val in self.boxes[self.box_by_coords[(x, y)]]:
+            clear_box = True
+        else:
+            clear_box = False
+        # Scroll through the conflicts
+        for coord in errors_removed:
+            # If it is not an error by some other pairing, append it to a list
+            # of conflicts that were actually cleared by this removal.
+            if not self.conflicts.has_key(coord):
+                self.cleared_conflicts.append(coord)
+            # When a conflict remains, we need to correct the rows, cols, and
+            # boxes arrays properly
+            else:
+                if clear_row and coord in self.row_coords[y]:
+                    clear_row = False
+                if clear_col and coord in self.col_coords[x]:
+                    clear_col = False
+                if clear_box and coord in self.box_coords[self.box_by_coords[(x, y)]]:
+                    clear_box = False
+
+        # Clear the rows, cols, and boxes if we need to.
+        if clear_row:
+            self.rows[y].remove(val)
+        if clear_col:
+            self.cols[x].remove(val)
+        if clear_box:
+            self.boxes[self.box_by_coords[(x, y)]].remove(val)
+        # Clear the cell
+        self._set_(x, y, 0)
+
+        # Scroll through the cleared conflicts and commit them to ensure they
+        # are represented in the grid properly.  It is possible for add() to do
+        # subsequent remove()s, so hold onto the cleared conflict list for the
+        # caller.
+        hold_conflicts = self.cleared_conflicts
+        for xx, yy in self.cleared_conflicts:
+            self.add(xx, yy, val, True)
+        self.cleared_conflicts = hold_conflicts
+
 
 class DifficultyRating:
 
