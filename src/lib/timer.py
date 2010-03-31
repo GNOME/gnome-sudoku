@@ -132,13 +132,15 @@ class ActiveTimer (gobject.GObject):
         self.resume_timing()
 
     def mark_timing(self):
+        currently_timing = self.is_timing
         self.pause_timing()
         if self.active_time < 1:
             self.active_time = 1
         # dirty hack: never let total time be less than active time
         if self.active_time > self.total_time:
             self.total_time = self.active_time
-        self.resume_timing()
+        if currently_timing:
+            self.resume_timing()
 
     def finish_timing (self):
         self.mark_timing()
