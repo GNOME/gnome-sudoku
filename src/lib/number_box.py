@@ -98,6 +98,7 @@ class NumberBox (gtk.Widget):
     def __init__ (self, upper = 9, text = ''):
         gtk.Widget.__init__(self)
         self.upper = upper
+        self.parent_win = None
         self.font = self.style.font_desc
         self.font.set_size(BASE_FONT_SIZE)
         self.note_font = self.font.copy()
@@ -112,6 +113,9 @@ class NumberBox (gtk.Widget):
         self.connect('focus-out-event', self.focus_out_cb)
         self.connect('motion-notify-event', self.motion_notify_cb)
         self.set_text(text)
+
+    def set_parent_win(self, new_parent):
+        self.parent_win = new_parent
 
     def pointer_enter_cb (self, *args):
         if not self.is_focus():
@@ -220,6 +224,8 @@ class NumberBox (gtk.Widget):
         w.set_decorated(False)
         w.set_position(gtk.WIN_POS_MOUSE)
         w.set_size_request(alloc.width, alloc.height/2)
+        if self.parent_win:
+            w.set_transient_for(self.parent_win)
         f = gtk.Frame()
         e = gtk.Entry()
         f.add(e)

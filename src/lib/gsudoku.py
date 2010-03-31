@@ -53,6 +53,10 @@ class SudokuNumberGrid (gtk.AspectFrame):
         self.connect('size-allocate', self.allocate_cb)
         self.show_all()
 
+    def set_parent_for(self, parent):
+        for entry in self.__entries__.values():
+            entry.set_parent_win(parent)
+
     def allocate_cb (self, w, rect):
         if rect.width > rect.height:
             side = rect.height

@@ -216,6 +216,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.initialize_prefs()
         self.setup_main_window()
         self.gsd = gsudoku.SudokuGameDisplay()
+        self.gsd.set_parent_for(self.w)
         self.gsd.connect('puzzle-finished', self.you_win_callback)
         self.setup_color()
         self.setup_actions()
