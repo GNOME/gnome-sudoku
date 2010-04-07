@@ -7,6 +7,7 @@
 
 import sys, os
 import errno
+import locale
 import gettext
 
 root_dir = os.path.dirname(os.path.dirname(__file__))
@@ -29,6 +30,7 @@ else:
     PUZZLE_DIR   = BASE_DIR
 
 DOMAIN = 'gnome-games'
+locale.bind_textdomain_codeset(DOMAIN, "UTF-8") # See Bug 608425
 gettext.bindtextdomain(DOMAIN, LOCALEDIR)
 gettext.textdomain(DOMAIN)
 from gettext import gettext as _
