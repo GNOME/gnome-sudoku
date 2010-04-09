@@ -410,6 +410,11 @@ class UI (gconf_wrapper.GConfWrapper):
             self.dancer.stop_dancing()
             delattr(self, 'dancer')
 
+    def start_dancer (self):
+        import dancer
+        self.dancer = dancer.GridDancer(self.gsd)
+        self.dancer.start_dancing()
+
     @simple_debug
     def you_win_callback (self, grid):
         if hasattr(self, 'dancer'):
@@ -437,9 +442,7 @@ class UI (gconf_wrapper.GConfWrapper):
             sublabel += ngettext("You used the auto-fill %(n)s time.",
                                  "You used the auto-fill %(n)s times.",
                                  self.gsd.auto_fills) % {'n':self.gsd.auto_fills}
-        import dancer
-        self.dancer = dancer.GridDancer(self.gsd)
-        self.dancer.start_dancing()
+        self.start_dancer()
         dialog_extras.show_message(_("You win!"), label = _("You win!"),
                                    sublabel = sublabel
                                    )
@@ -563,12 +566,19 @@ class UI (gconf_wrapper.GConfWrapper):
     def clear_notes_cb (self, *args):
         clearer = Undo.UndoableObject(
             lambda *args: self.cleared_notes.append(self.gsd.clear_notes()), #action
-            # clear_notes returns a list of tuples indicating the cleared notes...
-            # (x,y,(top,bottom)) -- this is what we need for undoing
-            lambda *args: [self.gsd.__entries__[t[0], t[1]].set_notes(t[2]) for t in self.cleared_notes.pop()], #inverse
+            self.undo_clear_notes, #inverse
             self.history
             )
         clearer.perform()
+
+    # add a check for finish in the undo to clear notes
+    def undo_clear_notes (self, *args):
+        # clear_notes returns a list of tuples indicating the cleared notes...
+        # (x,y,(top,bottom)) -- this is what we need for undoing
+        for entry in self.cleared_notes.pop():
+            self.gsd.__entries__[entry[0], entry[1]].set_notes(entry[2])
+        if self.gsd.grid.check_for_completeness():
+            self.start_dancer()
 
     @simple_debug
     def show_hint_cb (self, *args):
