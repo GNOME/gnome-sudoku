@@ -296,6 +296,7 @@ class SudokuSolver (SudokuGrid):
         self.backtraces = 0
         self.initialized = True
         self.solved = False
+        self.solving = False
         self.trail = []
 
     def auto_fill_for_xy (self, x, y):
@@ -390,11 +391,15 @@ class SudokuSolver (SudokuGrid):
         return retval
 
     def solve (self):
+        if self.solving:
+            return
+        self.solving = True
         self.auto_fill()
         while not self.guess_least_open_square():
             pass
         if self.verbose:
             print 'Solved!\n', self
+        self.solving = False
         self.solved = True
 
     def solution_finder (self):
