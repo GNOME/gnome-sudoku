@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <interface>
-  <requires lib="gtk+" version="2.14"/>
+  <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkAdjustment" id="adjustment1">
     <property name="value">1</property>
@@ -34,8 +34,11 @@
                       <object class="GtkLabel" id="label16">
                         <property name="visible">True</property>
                         <property name="xalign">0</property>
-                        <property name="label" translatable="yes">&lt;span size="larger" weight="bold"&gt;Puzzle Generator&lt;/span&gt;</property>
-                        <property name="use_markup">True</property>
+                        <property name="label" translatable="yes">Puzzle Generator</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                          <attribute name="scale" value="1.2"/>
+                        </attributes>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -66,8 +69,11 @@
                           <object class="GtkLabel" id="label17">
                             <property name="visible">True</property>
                             <property name="xalign">0</property>
-                            <property name="label" translatable="yes">&lt;i&gt;&lt;u&gt;Number of Puzzles&lt;/u&gt;&lt;/i&gt;</property>
-                            <property name="use_markup">True</property>
+                            <property name="label" translatable="yes">Number of Puzzles</property>
+                            <attributes>
+                              <attribute name="style" value="italic"/>
+                              <attribute name="underline" value="True"/>
+                            </attributes>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -80,8 +86,10 @@
                           <object class="GtkLabel" id="label18">
                             <property name="visible">True</property>
                             <property name="xalign">0</property>
-                            <property name="label" translatable="yes">&lt;i&gt;Easy:&lt;/i&gt;</property>
-                            <property name="use_markup">True</property>
+                            <property name="label" translatable="yes">Easy:</property>
+                            <attributes>
+                              <attribute name="style" value="italic"/>
+                            </attributes>
                           </object>
                           <packing>
                             <property name="top_attach">1</property>
@@ -94,8 +102,10 @@
                           <object class="GtkLabel" id="label19">
                             <property name="visible">True</property>
                             <property name="xalign">0</property>
-                            <property name="label" translatable="yes">&lt;i&gt;Medium:&lt;/i&gt;</property>
-                            <property name="use_markup">True</property>
+                            <property name="label" translatable="yes">Medium:</property>
+                            <attributes>
+                              <attribute name="style" value="italic"/>
+                            </attributes>
                           </object>
                           <packing>
                             <property name="top_attach">2</property>
@@ -108,8 +118,10 @@
                           <object class="GtkLabel" id="label20">
                             <property name="visible">True</property>
                             <property name="xalign">0</property>
-                            <property name="label" translatable="yes">&lt;i&gt;Hard:&lt;/i&gt;</property>
-                            <property name="use_markup">True</property>
+                            <property name="label" translatable="yes">Hard:</property>
+                            <attributes>
+                              <attribute name="style" value="italic"/>
+                            </attributes>
                           </object>
                           <packing>
                             <property name="top_attach">3</property>
@@ -122,9 +134,10 @@
                           <object class="GtkLabel" id="label21">
                             <property name="visible">True</property>
                             <property name="xalign">0</property>
-                            <property name="label" translatable="yes">&lt;i&gt;Very Hard:&lt;/i&gt;</property>
-                            <property name="use_markup">True</property>
-                            <property name="use_underline">True</property>
+                            <property name="label" translatable="yes">Very Hard:</property>
+                            <attributes>
+                              <attribute name="style" value="italic"/>
+                            </attributes>
                           </object>
                           <packing>
                             <property name="top_attach">4</property>
