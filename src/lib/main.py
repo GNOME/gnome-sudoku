@@ -418,11 +418,14 @@ class UI (gconf_wrapper.GConfWrapper):
         self.gconf['difficulty'] = self.gconf['difficulty'] + 0.1
         self.timer.finish_timing()
         self.sudoku_tracker.finish_game(self)
-        sublabel = _("You completed the puzzle in %(totalTime)s (%(activeTime)s active)") % {'totalTime': self.timer.total_time_string(),
-        'activeTime': self.timer.active_time_string()
-                }
+        if self.timer.active_time != self.timer.total_time:
+            sublabel = _("You completed the puzzle in %(totalTime)s (%(activeTime)s active).") % {'totalTime': self.timer.total_time_string(),
+            'activeTime': self.timer.active_time_string()
+                    }
+        else:
+            sublabel = _("You completed the puzzle in %(totalTime)s.") % {'totalTime': self.timer.total_time_string()}
         sublabel += "\n"
-        sublabel += ngettext("You got %(n)s hint", "You got %(n)s hints", self.gsd.hints) % {'n':self.gsd.hints}
+        sublabel += ngettext("You got %(n)s hint.", "You got %(n)s hints.", self.gsd.hints) % {'n':self.gsd.hints}
         sublabel += "\n"
         if self.gsd.impossible_hints:
             sublabel += ngettext("You had %(n)s impossibility pointed out.",
@@ -430,8 +433,8 @@ class UI (gconf_wrapper.GConfWrapper):
                                  self.gsd.impossible_hints) % {'n':self.gsd.impossible_hints}
             sublabel += "\n"
         if self.gsd.auto_fills:
-            sublabel += ngettext("You used the auto-fill %(n)s time",
-                                 "You used the auto-fill %(n)s times",
+            sublabel += ngettext("You used the auto-fill %(n)s time.",
+                                 "You used the auto-fill %(n)s times.",
                                  self.gsd.auto_fills) % {'n':self.gsd.auto_fills}
         import dancer
         self.dancer = dancer.GridDancer(self.gsd)
