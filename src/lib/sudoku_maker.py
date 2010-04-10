@@ -481,7 +481,7 @@ class SudokuMaker:
 
     # Methods for creating new puzzles
 
-    def make_batch (self, diff_min = None, diff_max = None):
+    def make_batch (self, diffs = None):
         self.new_generator = InterruptibleSudokuGenerator(**self.generator_args)
         key = self.new_generator.start_grid.to_string()
         #while
@@ -495,9 +495,7 @@ class SudokuMaker:
             #print 'start next item...',n
             puz, diff = ug.next()
             #print "GENERATED ",puz,diff
-            if ((not diff_min or diff.value >= diff_min)
-                and
-                (not diff_max or diff.value <= diff_max)):
+            if (diffs == None or diff.value_category() in diffs):
                 puzstring = puz.to_string()
                 # self.puzzles_by_solution[key].append((puzstring,diff))
                 # self.solutions_by_puzzle[puzstring]=key
@@ -538,7 +536,7 @@ class SudokuMaker:
                 break
             time.sleep(1)
 
-    def work (self, limit = None, diff_min = None, diff_max = None):
+    def work (self, limit = None, diffs = None):
         """Intended to be called as a worker thread, make puzzles!"""
         self.terminated = False
         if hasattr(self, 'new_generator'):
@@ -551,8 +549,7 @@ class SudokuMaker:
             if self.paused:
                 self.hesitate()
             try:
-                self.make_batch(diff_min = diff_min,
-                                diff_max = diff_max)
+                self.make_batch(diffs = diffs)
             except:
                 raise
             else:

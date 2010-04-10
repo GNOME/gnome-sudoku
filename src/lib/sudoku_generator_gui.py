@@ -113,7 +113,7 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         self.paused = False
         self.prog.set_text(_('Working...'))
         gobject.timeout_add(100, self.update_status)
-        self.worker = threading.Thread(target=lambda *args: self.sudoku_maker.work(limit=None, diff_min=self.get_diff_min(), diff_max=self.get_diff_max()))
+        self.worker = threading.Thread(target=lambda *args: self.sudoku_maker.work(limit=None, diffs=self.get_diffs()))
         self.worker.start()
 
     def pause_cb (self, widg):
@@ -214,27 +214,17 @@ class GameGenerator (gconf_wrapper.GConfWrapper):
         if self.paused:
             txt = txt + ' (' + _('Paused') + ')'
         self.prog.set_text(txt)
-
-    def get_diff_min (self):
+    
+    def get_diffs(self):
         if self.generateEndlesslyRadio.get_active():
-            return None
+            return ['easy', 'medium', 'hard', 'very hard']
+        diffs = []
         if self.easyCheckButton.get_active():
-            return None
+            diffs.append('easy')
         if self.mediumCheckButton.get_active():
-            return sudoku.DifficultyRating.medium_range[0]
+            diffs.append('medium')
         if self.hardCheckButton.get_active():
-            return sudoku.DifficultyRating.hard_range[0]
+            diffs.append('hard')
         if self.veryHardCheckButton.get_active():
-            return sudoku.DifficultyRating.very_hard_range[0]
-
-    def get_diff_max (self):
-        if self.generateEndlesslyRadio.get_active():
-            return None
-        if self.veryHardCheckButton.get_active():
-            return None
-        if self.hardCheckButton.get_active():
-            return sudoku.DifficultyRating.hard_range[1]
-        if self.mediumCheckButton.get_active():
-            return sudoku.DifficultyRating.medium_range[1]
-        if self.easyCheckButton.get_active():
-            return sudoku.DifficultyRating.easy_range[1]
+            diffs.append('very hard')
+        return diffs
