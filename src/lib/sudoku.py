@@ -111,6 +111,7 @@ class SudokuGrid(object):
         self.cols = []
         self.rows = []
         self.boxes = []
+        self.conflicts = ParallelDict()
         self.group_size = int(group_size)
         self.verbose = False
         self.gen_set = set(range(1, self.group_size + 1))
@@ -347,12 +348,20 @@ class SudokuSolver (SudokuGrid):
                                            ('Row', self.row_coords, self.rows),
                                            ('Box', self.box_coords, self.boxes)]:
             for n, coord_set in coord_dic.items():
+                skip_set = False
+                for coord in coord_set:
+                    if self.conflicts.has_key(coord):
+                        skip_set = True
+                        break
+                if skip_set:
+                    continue
                 needs = dict([(n, False) for n in range(1, self.group_size + 1)])
                 for coord in coord_set:
                     val = self._get_(*coord)
                     if val:
                         # We already have this value set...
-                        del needs[val]
+                        if needs.has_key(val):
+                            del needs[val]
                     else:
                         # Otherwise, register ourselves as possible
                         # for each number we could be
@@ -510,7 +519,6 @@ class InteractiveSudoku (SudokuSolver):
     solving."""
     def __init__ (self, grid = False, verbose = False, group_size = 9):
         SudokuSolver.__init__(self, grid, verbose, group_size)
-        self.conflicts = ParallelDict()
         self.cleared_conflicts = []
 
     def to_string (self):
