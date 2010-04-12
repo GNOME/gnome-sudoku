@@ -57,6 +57,10 @@ class SudokuNumberGrid (gtk.AspectFrame):
         for entry in self.__entries__.values():
             entry.set_parent_win(parent)
 
+    def set_timer(self, timer):
+        for entry in self.__entries__.values():
+            entry.set_timer(timer)
+
     def allocate_cb (self, w, rect):
         if rect.width > rect.height:
             side = rect.height

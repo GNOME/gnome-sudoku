@@ -3,6 +3,7 @@
 
 import gtk, gobject, pango, cairo
 import math
+import timer
 from gettext import gettext as _
 
 ERROR_HIGHLIGHT_COLOR = (1.0, 0, 0)
@@ -99,6 +100,7 @@ class NumberBox (gtk.Widget):
         gtk.Widget.__init__(self)
         self.upper = upper
         self.parent_win = None
+        self.timer = None
         self.font = self.style.font_desc
         self.font.set_size(BASE_FONT_SIZE)
         self.note_font = self.font.copy()
@@ -116,6 +118,9 @@ class NumberBox (gtk.Widget):
 
     def set_parent_win(self, new_parent):
         self.parent_win = new_parent
+
+    def set_timer(self, new_timer):
+        self.timer = new_timer
 
     def pointer_enter_cb (self, *args):
         if not self.is_focus():
@@ -216,6 +221,14 @@ class NumberBox (gtk.Widget):
         else:
             self.set_note_text_interactive(bottom_text = w.get_text())
 
+    def note_focus_in(self, win, evt):
+        if (self.timer):
+            self.timer.resume_timing()
+
+    def note_focus_out(self, wgt, evt):
+        if (self.timer):
+            self.timer.pause_timing()
+
     def show_note_editor (self, top = True):
         alloc = self.get_allocation()
         w = gtk.Window()
@@ -235,7 +248,9 @@ class NumberBox (gtk.Widget):
             e.set_text(self.bottom_note_text)
         w.add(f)
         e.connect('changed', self.note_changed_cb, top)
+        e.connect('focus-in-event', self.note_focus_in)
         e.connect('focus-out-event', lambda e, ev, w: w.destroy(), w)
+        e.connect('focus-out-event', self.note_focus_out)
         e.connect('activate', lambda e, w: w.destroy(), w)
         x, y = self.window.get_origin()
         if top:

@@ -164,6 +164,7 @@ class UI (gconf_wrapper.GConfWrapper):
                                             )
         self.setup_gui()
         self.timer = timer.ActiveTimer(self.w)
+        self.gsd.set_timer(self.timer)
         self.won = False
         # add the accelerator group to our toplevel window
         self.worker_connections = []
