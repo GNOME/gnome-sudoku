@@ -615,8 +615,11 @@ class SudokuNumberBox (NumberBox):
 
     def set_impossible (self, val):
         if val:
-            self.set_text('X')
-        else: self.set_text('')
+            if not self.get_text():
+                self.set_text('X')
+        elif self.get_text() == 'X':
+            self.set_text('')
+        self.queue_draw()
 
 
 gobject.type_register(NumberBox)

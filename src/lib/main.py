@@ -586,9 +586,9 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     def impossible_implication_cb (self, action):
         if action.get_active():
-            self.gsd.show_impossible_implications = True
+            self.gsd.display_impossible_implications()
         else:
-            self.gsd.show_impossible_implications = False
+            self.gsd.hide_impossible_implications()
 
     @simple_debug
     def auto_fill_cb (self, *args):

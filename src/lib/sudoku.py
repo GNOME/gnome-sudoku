@@ -525,18 +525,18 @@ class InteractiveSudoku (SudokuSolver):
         return self.virgin.to_string() + '\n' + SudokuSolver.to_string(self)
 
     def find_impossible_implications (self, x, y):
-        """Return a list of impossibilities implied by the users actions."""
+        """Return a set of impossibilities implied by the users actions."""
         row_cells = self.row_coords[y]
         col_cells = self.col_coords[x]
         box = self.box_by_coords[(x, y)]
         box_cells = self.box_coords[box]
+        broken = set()
         for coord_set in [row_cells, col_cells, box_cells]:
-            broken = []
             # just work on the open squares
             coord_set = filter(lambda coords: not self._get_(*coords), coord_set)
             for coords in coord_set:
                 if not self.possible_values(*coords):
-                    broken.append(coords)
+                    broken.add(coords)
         return broken
 
     def check_for_completeness (self):

@@ -292,6 +292,9 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                 if e.get_value():
                     self.remove(x, y)
                 e.set_read_only(False)
+        for imp_cell in self.impossibilities:
+            self.__entries__[imp_cell].set_text('')
+        self.impossibilities = []
         self.grid = None
         self.clear_notes()
 
@@ -350,8 +353,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             self.remove(widget.x, widget.y)
         else:
             self.entry_validate(widget)
-        if self.show_impossible_implications:
-            self.mark_impossible_implications(widget.x, widget.y)
 
     def update_all_hints (self):
         for x in range(self.group_size):
@@ -426,6 +427,8 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         # Update all hints if we need to
         if self.always_show_hints and not self.doing_initial_setup:
             self.update_all_hints()
+        if not self.doing_initial_setup:
+            self.mark_impossible_implications(x, y)
 
     @simple_debug
     def remove (self, x, y, do_removal = False):
@@ -452,6 +455,8 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         # Update all hints if we need to
         if self.grid and self.always_show_hints and not self.doing_initial_setup:
             self.update_all_hints()
+        if not self.doing_initial_setup:
+            self.mark_impossible_implications(x, y)
 
     def remove_error_highlight (self):
         '''remove error highlight from [x, y] and also all errors caused by it
@@ -473,8 +478,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         for coords, val in changed:
             self.add_value(coords[0], coords[1], val)
             retval.append((coords[0], coords[1], val))
-            if self.show_impossible_implications:
-                self.mark_impossible_implications(*coords)
         if retval:
             self.auto_fills += 1
         if self.grid.check_for_completeness():
@@ -491,20 +494,92 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             e.set_text_interactive('')
             e.set_text_interactive(str(filled[1]))
 
+    def __set_impossible (self, coords, setting):
+        '''Call set_impossible() on a grid entry
+
+        This function is a helper for the 'Warn about unfillable squares'
+        feature.  It only calls set_impossible() if the option is on to prevent
+        a check against the show_impossible_implications flag elsewhere.  The
+        return from this function indicates whether or not the cell "may"
+        have been modified, which is basically the value of the option setting.
+        '''
+        if self.show_impossible_implications:
+            self.__entries__[coords].set_impossible(setting)
+        return self.show_impossible_implications
+
+    def display_impossible_implications (self):
+        '''Start X-marking cells that have no possible values
+        '''
+        self.show_impossible_implications = True
+        for imp_cell in self.impossibilities:
+            self.__set_impossible(imp_cell, True)
+            self.impossible_hints += 1
+        if self.always_show_hints:
+            self.update_all_hints()
+
+    def hide_impossible_implications (self):
+        '''Stop X-marking cells that have no possible values
+        '''
+        for imp_cell in self.impossibilities:
+            self.__set_impossible(imp_cell, False)
+        self.show_impossible_implications = False
+        if self.always_show_hints:
+            self.update_all_hints()
+
     @simple_debug
-    def mark_impossible_implications (self, x, y):
+    def mark_impossible_implications (self, x, y, check_conflicts = True):
+        '''Mark cells with X if they have no possible values
+
+        The hint this method provides can be turned on and off from the
+        menu Tools->'Warn about unfillable squares' option.
+
+        The check_conflicts parameter is for internal use only.  It is used as
+        a one level recursion on conflicts that the original target is involved
+        with.
+
+        Impossibilities are tracked regardless of the user's option setting.
+        This was done to allow the user to toggle the option mid-game and still
+        behave properly.  Conditional X-marking of cells happens in the
+        __set_impossible() function.
+        '''
+        # Make sure we have a grid to work with
         if not self.grid:
             return
+        # Flag whether or not we need to update hints
+        grid_modified = False
+        # Find any new impossible cells based on calling cell
         implications = self.grid.find_impossible_implications(x, y)
         if implications:
-            for x, y in implications:
-                self.__entries__[(x, y)].set_impossible(True)
-                if not (x, y) in self.impossibilities:
-                    self.impossible_hints += 1
-        for x, y in self.impossibilities:
-            if not (x, y) in implications:
-                self.__entries__[(x, y)].set_impossible(False)
-        self.impossibilities = implications
+            for imp_cell in implications:
+                grid_modified = self.__set_impossible(imp_cell, True)
+                # Add them to the list if they aren't there already...
+                if not imp_cell in self.impossibilities:
+                    self.impossibilities.append(imp_cell)
+                    # But don't score it unless the option is on
+                    if self.show_impossible_implications:
+                        self.impossible_hints += 1
+        # Reset the list of impossible cells ignoring the called cell. Use a
+        # copy to iterate over, so items can be removed while looping.
+        if self.impossibilities:
+            for imp_cell in self.impossibilities[:]:
+                if imp_cell == (x, y):
+                    continue
+                if self.grid.possible_values(*imp_cell):
+                    self.impossibilities.remove(imp_cell)
+                    grid_modified = self.__set_impossible(imp_cell, False)
+                else:
+                    grid_modified = self.__set_impossible(imp_cell, True)
+        # If any conflicts have been cleared or created, mark any impossible
+        # cells they may have caused or removed
+        if check_conflicts:
+            for xx, yy in self.grid.cleared_conflicts:
+                self.mark_impossible_implications(xx, yy, False)
+            if self.grid.conflicts.has_key((x, y)):
+                for xx, yy in self.grid.conflicts[(x, y)]:
+                    self.mark_impossible_implications(xx, yy, False)
+        # Update the hints if we need to
+        if grid_modified and self.always_show_hints:
+            self.update_all_hints()
 
     @simple_debug
     def create_tracker (self, identifier = 0):
