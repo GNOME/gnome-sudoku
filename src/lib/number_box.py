@@ -194,26 +194,65 @@ class NumberBox (gtk.Widget):
             # Make sure we don't trigger on unplugging the A/C charger etc
             return
         txt = txt.replace('KP_', '')
-        if self.get_text() == txt:
-            # If there's no change, do nothing
-            return
-        if txt in ['0', 'Delete', 'BackSpace']:
+
+        # Add the new value if need be
+        if txt in [str(n) for n in range(1, self.upper+1)]:
+            if e.state & gtk.gdk.CONTROL_MASK:
+                self.add_note_text(txt, top = True)
+            elif e.state & gtk.gdk.MOD1_MASK:
+                self.remove_note_text(txt, top = True)
+            elif self.get_text() != txt:
+                # If there's no change, do nothing
+
+                # First do a removal event -- this is something of a
+                # kludge, but it works nicely with old code that was based
+                # on entries, which also behave this way (they generate 2
+                # events for replacing a number with a new number - a
+                # removal event and an addition event)
+
+                if self.get_text():
+                    self.set_text_interactive('')
+                # Then add
+                self.set_text_interactive(txt)
+        elif txt in ['0', 'Delete', 'BackSpace']:
             self.set_text_interactive('')
         elif txt in ['n', 'N']:
-            self.show_note_editor(top = True)
+            if e.state & gtk.gdk.MOD1_MASK:
+                self.set_note_text_interactive(top_text = '')
+            else:
+                self.show_note_editor(top = True)
         elif txt in ['m', 'M']:
-            self.show_note_editor(top = False)
-        # And then add the new value if need be
-        elif txt in [str(n) for n in range(1, self.upper+1)]:
-            # First do a removal event -- this is something of a
-            # kludge, but it works nicely with old code that was based
-            # on entries, which also behave this way (they generate 2
-            # events for replacing a number with a new number - a
-            # removal event and an addition event)
-            if self.get_text():
-                self.set_text_interactive('')
-            # Then add
-            self.set_text_interactive(txt)
+            if e.state & gtk.gdk.MOD1_MASK:
+                self.set_note_text_interactive(bottom_text = '')
+            else:
+                self.show_note_editor(top = False)
+
+    def add_note_text(self, txt, top = False):
+        if top:
+            note = self.top_note_text
+        else:
+            note = self.bottom_note_text
+        if txt not in note:
+            tmp = list(note)
+            tmp.append(txt)
+            tmp.sort()
+            note = ''.join(tmp)
+            if top:
+                self.set_note_text_interactive(top_text = note)
+            else:
+                self.set_note_text_interactive(bottom_text = note)
+
+    def remove_note_text(self, txt, top = False):
+        if top:
+            note = self.top_note_text
+        else:
+            note = self.bottom_note_text
+        if txt in note:
+            note = note.replace(txt,'')
+            if top:
+                self.set_note_text_interactive(top_text = note)
+            else:
+                self.set_note_text_interactive(bottom_text = note)
 
     def note_changed_cb (self, w, top = False):
         if top:
