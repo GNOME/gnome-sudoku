@@ -26,11 +26,6 @@ def gtkcolor_to_rgb (color):
             color.green / float(2**16),
             color.blue  / float(2**16))
 
-SPACING_FACTOR = 40 # The size of a box compared (roughly) to the size
-                    # of padding -- the larger this is, the smaller
-                    # the spaces
-SMALL_TO_BIG_FACTOR = 3.5 # The number of times wider than a small line a big line is.
-
 class SudokuNumberGrid (gtk.AspectFrame):
 
     def __init__ (self, group_size = 9):
@@ -50,7 +45,13 @@ class SudokuNumberGrid (gtk.AspectFrame):
         self.eb = gtk.EventBox()
         self.eb.add(self.table)
         self.add(self.eb)
-        self.connect('size-allocate', self.allocate_cb)
+        self.table.set_row_spacings(1)
+        self.table.set_col_spacings(1)
+        box_side = int(math.sqrt(self.group_size))
+        for n in range(1, box_side):
+            self.table.set_row_spacing(box_side*n-1, 2)
+            self.table.set_col_spacing(box_side*n-1, 2)
+        self.table.set_border_width(2)
         self.show_all()
 
     def set_parent_for(self, parent):
@@ -60,30 +61,6 @@ class SudokuNumberGrid (gtk.AspectFrame):
     def set_timer(self, timer):
         for entry in self.__entries__.values():
             entry.set_timer(timer)
-
-    def allocate_cb (self, w, rect):
-        if rect.width > rect.height:
-            side = rect.height
-        else: side = rect.width
-        # we want our small spacing to be 1/15th the size of a box
-        spacing = float(side) / (self.group_size * SPACING_FACTOR)
-        if spacing == 0:
-            spacing = 1
-        if hasattr(self, 'small_spacing') and spacing == self.small_spacing:
-            return
-        else:
-            self.change_spacing(spacing)
-
-    def change_spacing (self, small_spacing):
-        self.small_spacing = small_spacing
-        self.big_spacing = int(small_spacing*SMALL_TO_BIG_FACTOR)
-        self.table.set_row_spacings(int(small_spacing))
-        self.table.set_col_spacings(int(small_spacing))
-        box_side = int(math.sqrt(self.group_size))
-        for n in range(1, box_side):
-            self.table.set_row_spacing(box_side*n-1, self.big_spacing)
-            self.table.set_col_spacing(box_side*n-1, self.big_spacing)
-        self.table.set_border_width(self.big_spacing)
 
     def get_focused_entry (self):
         return self.table.focus_child

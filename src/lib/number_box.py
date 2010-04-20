@@ -17,7 +17,7 @@ NOTE_FONT_SIZE = pango.SCALE * 6
 
 BORDER_WIDTH = 9.0 # The size of space we leave for a box
 BORDER_LINE_WIDTH = 4 # The size of the line we draw around a selected box
-NORMAL_LINE_WIDTH = 1 # The size of the line we draw around a box
+NORMAL_LINE_WIDTH = 0 # The size of the line we draw around a box
 
 class NumberSelector (gtk.EventBox):
 
@@ -446,12 +446,12 @@ class NumberBox (gtk.Widget):
         # Create any resources in here.
         x, y, w, h = self.allocation
         cr = self.window.cairo_create()
+        self.draw_background_color(cr, w, h)
         if h < w:
             scale = h/float(BASE_SIZE)
         else:
             scale = w/float(BASE_SIZE)
         cr.scale(scale, scale)
-        self.draw_background_color(cr)
         if self.is_focus():
             self.draw_highlight_box(cr)
         self.draw_normal_box(cr)
@@ -460,7 +460,7 @@ class NumberBox (gtk.Widget):
             self.draw_note_area_highlight_box(cr)
 
 
-    def draw_background_color (self, cr):
+    def draw_background_color (self, cr, w, h):
         if self.read_only:
             if self.custom_background_color:
                 r, g, b = self.custom_background_color
@@ -478,7 +478,7 @@ class NumberBox (gtk.Widget):
                 self.style.base[self.state]
                 )
         cr.rectangle(
-            0, 0, BASE_SIZE, BASE_SIZE
+            0, 0, w, h,
             )
         cr.fill()
 
@@ -497,20 +497,6 @@ class NumberBox (gtk.Widget):
             BASE_SIZE-NORMAL_LINE_WIDTH,
             )
         cr.set_line_width(NORMAL_LINE_WIDTH)
-        cr.set_line_join(cairo.LINE_JOIN_ROUND)
-        cr.stroke()
-        # And now draw a thinner line around the very outside...
-        cr.set_source_color(
-            self.style.dark[state]
-            )
-        cr.rectangle(
-            NORMAL_LINE_WIDTH*0.25,
-            NORMAL_LINE_WIDTH*0.25,
-            BASE_SIZE-NORMAL_LINE_WIDTH*0.5,
-            BASE_SIZE-NORMAL_LINE_WIDTH*0.5,
-            )
-        cr.set_line_width(NORMAL_LINE_WIDTH*0.5)
-        cr.set_line_join(cairo.LINE_JOIN_MITER)
         cr.stroke()
 
     def draw_highlight_box (self, cr):
@@ -526,7 +512,6 @@ class NumberBox (gtk.Widget):
             BASE_SIZE-(BORDER_LINE_WIDTH),
             )
         cr.set_line_width(BORDER_LINE_WIDTH)
-        cr.set_line_join(cairo.LINE_JOIN_ROUND)
         cr.stroke()
 
     def draw_note_area_highlight_box (self, cr):
@@ -535,7 +520,6 @@ class NumberBox (gtk.Widget):
             self.style.mid[self.state]
             )
         cr.set_line_width(NORMAL_LINE_WIDTH)
-        cr.set_line_join(cairo.LINE_JOIN_ROUND)
         # top rectangle
         cr.rectangle(NORMAL_LINE_WIDTH*0.5,
                      NORMAL_LINE_WIDTH*0.5,
