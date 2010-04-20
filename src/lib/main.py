@@ -18,7 +18,6 @@ import game_selector
 import gsudoku
 import printing
 import saver
-import sudoku_generator_gui
 import sudoku_maker
 import timer
 from defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION, DOMAIN, 
@@ -114,9 +113,6 @@ class UI (gconf_wrapper.GConfWrapper):
         <menuitem action="AlwaysShowPossible"/>
         <menuitem action="ShowImpossibleImplications"/>
         <separator/>
-        <menuitem action="Generator"/>
-        <menuitem action="BackgroundGenerator"/>
-        <separator/>
         <menuitem action="Tracker"/>
         </menu>
       <menu action="Help">
@@ -182,10 +178,9 @@ class UI (gconf_wrapper.GConfWrapper):
                 self.quit = True
             else:
                 self.quit = False
-                # Generate puzzles in background...
-                if self.gconf['generate_puzzles_in_background']:
-                    gobject.timeout_add_seconds(1, lambda *args: self.start_worker_thread() and True)
 
+        # Generate puzzles in background...
+        gobject.timeout_add_seconds(1, lambda *args: self.start_worker_thread() and True)
 
     @inactivate_new_game_etc
     def select_game (self):
@@ -260,8 +255,6 @@ class UI (gconf_wrapper.GConfWrapper):
              self.auto_fill_cb),
             ('FullScreen', gtk.STOCK_FULLSCREEN, None,
              'F11', None, self.full_screen_cb),
-            ('Generator', None, _('_Generate new puzzles'), None, _('Generate new puzzles.'),
-              self.generate_puzzle_gui, ),
             ('PuzzleInfo', gtk.STOCK_ABOUT, _('Puzzle _Statistics'),
              None, _('Show statistics about current puzzle'),
              self.show_info_cb),
@@ -291,11 +284,7 @@ class UI (gconf_wrapper.GConfWrapper):
              self.tracker_toggle_cb, False),
             ('ToggleToolbar', None, _('Show _Toolbar'), None, None, self.toggle_toolbar_cb, True),
             ('ToggleHighlight', gtk.STOCK_SELECT_COLOR, _('_Highlighter'),
-             None, _('Highlight the current row, column and box'), self.toggle_highlight_cb, False),
-            ('BackgroundGenerator', None, _('Generate new puzzles _while you play'),
-             None,
-             _('Generate new puzzles in the background while you play. This will automatically pause when the game goes into the background.'),
-             self.toggle_generator_cb, True),
+             None, _('Highlight the current row, column and box'), self.toggle_highlight_cb, False)
             ])
 
         self.edit_actions = gtk.ActionGroup('EditActions')
@@ -367,8 +356,6 @@ class UI (gconf_wrapper.GConfWrapper):
               self.main_actions.get_action('AlwaysShowPossible')),
              ('show_impossible_implications',
               self.main_actions.get_action('ShowImpossibleImplications')),
-             ('generate_puzzles_in_background',
-              self.main_actions.get_action('BackgroundGenerator')),
              ('show_toolbar',
               self.main_actions.get_action('ToggleToolbar')),
              ('highlight',
@@ -673,13 +660,6 @@ class UI (gconf_wrapper.GConfWrapper):
                                    sublabel = information)
 
     @simple_debug
-    def toggle_generator_cb (self, toggle):
-        if toggle.get_active():
-            self.start_worker_thread()
-        else:
-            self.stop_worker_thread()
-
-    @simple_debug
     def autosave (self):
         # this is called on a regular loop and will autosave if we
         # have reason to...
@@ -721,10 +701,6 @@ class UI (gconf_wrapper.GConfWrapper):
     def print_multiple_games (self, *args):
         gp = printing.GamePrinter(self.sudoku_maker, self.gconf)
         gp.run_dialog()
-
-    @simple_debug
-    def generate_puzzle_gui (self, *args):
-        sudoku_generator_gui.GameGenerator(self, self.gconf)
 
 class TrackerBox (gtk.VBox):
 

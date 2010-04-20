@@ -21,7 +21,6 @@ gnomesudoku_PYTHON = \
 	printing.py	\
 	saver.py	\
 	simple_debug.py	\
-	sudoku_generator_gui.py	\
 	sudoku_maker.py	\
 	sudoku_thumber.py \
 	sudoku.py	\
