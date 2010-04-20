@@ -190,17 +190,14 @@ class UI (gconf_wrapper.GConfWrapper):
     @inactivate_new_game_etc
     def select_game (self):
         self.tb.hide()
-        self.update_statusbar()
         choice = game_selector.NewOrSavedGameSelector().run_swallowed_dialog(self.swallower)
         if not choice:
             return True
         self.timer.start_timing()
         if choice[0] == game_selector.NewOrSavedGameSelector.NEW_GAME:
             self.gsd.change_grid(choice[1], 9)
-            self.update_statusbar()
         if choice[0] == game_selector.NewOrSavedGameSelector.SAVED_GAME:
             saver.open_game(self, choice[1])
-            self.update_statusbar()
         if self.gconf['show_toolbar']:
             self.tb.show()
         if self.gconf['always_show_hints']:
@@ -361,9 +358,6 @@ class UI (gconf_wrapper.GConfWrapper):
         self.vb.show()
         self.game_box.show()
         self.main_area.pack_start(self.game_box, False, padding = 12)
-        self.statusbar = gtk.Statusbar()
-        self.statusbar.show()
-        self.vb.pack_end(self.statusbar, fill = False, expand = False)
         self.w.add(self.vb)
 
     def setup_toggles (self):
@@ -644,27 +638,6 @@ class UI (gconf_wrapper.GConfWrapper):
             self.tb.show()
         else:
             self.tb.hide()
-
-    def set_statusbar_value (self, status):
-        if not hasattr(self, 'sbid'):
-            self.sbid = self.statusbar.get_context_id('game_info')
-        self.statusbar.pop(self.sbid)
-        self.statusbar.push(self.sbid, status)
-
-
-    def update_statusbar (self, *args):
-        if not self.gsd.grid:
-            self.set_statusbar_value(" ")
-            return True
-
-        puzzle = self.gsd.grid.virgin.to_string()
-        puzzle_diff = self.sudoku_maker.get_difficulty(puzzle)
-
-        tot_string = _("Playing %(difficulty)s puzzle.") % {'difficulty':puzzle_diff.value_string()}
-        tot_string += " " + "(%1.2f)" % puzzle_diff.value
-
-        self.set_statusbar_value(tot_string)
-        return True
 
     def toggle_highlight_cb (self, widg):
         if widg.get_active():
