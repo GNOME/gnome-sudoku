@@ -49,24 +49,24 @@ class ModalDialog (gtk.Dialog):
         # we're going to add pango markup to our
         # label to make it bigger as per GNOME HIG
         label = '<span weight="bold" size="larger">%s</span>'%label
-        self.label = gtk.Label(label)
+        self.label = gtk.Label()
         self.label.set_line_wrap(True)
         self.label.set_selectable(True)
         self.vbox.pack_start(self.label,expand=False)
         self.label.set_padding(H_PADDING,Y_PADDING)
         self.label.set_alignment(0,0)
         self.label.set_justify(gtk.JUSTIFY_LEFT)
-        self.label.set_use_markup(True)
+        self.label.ste_markup(label)
         self.label.show()
         
     def setup_sublabel (self,sublabel):
-        self.sublabel = gtk.Label(sublabel)
+        self.sublabel = gtk.Label()
         self.sublabel.set_selectable(True)
         self.vbox.pack_start(self.sublabel, expand=False)
         self.sublabel.set_padding(H_PADDING,Y_PADDING)
         self.sublabel.set_alignment(0,0)
         self.sublabel.set_justify(gtk.JUSTIFY_LEFT)
-        self.sublabel.set_use_markup(True)
+        self.sublabel.set_markup(sublabel)
         self.sublabel.set_line_wrap(True)
         self.sublabel.show()
 
@@ -148,8 +148,7 @@ class MessageDialog (gtk.MessageDialog, ModalDialog):
 
     def setup_label (self, label):
         label = '<span weight="bold" size="larger">%s</span>'%xml.sax.saxutils.escape(label)
-        self.label.set_text(label)
-        self.label.set_use_markup(True)
+        self.label.set_markup(label)
 
     def setup_sublabel (self, sublabel):
         self.format_secondary_text(sublabel)
