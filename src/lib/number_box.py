@@ -16,7 +16,6 @@ BASE_FONT_SIZE = pango.SCALE * 13
 NOTE_FONT_SIZE = pango.SCALE * 6
 
 BORDER_WIDTH = 9.0 # The size of space we leave for a box
-BORDER_LINE_WIDTH = 4 # The size of the line we draw around a selected box
 NORMAL_LINE_WIDTH = 0 # The size of the line we draw around a box
 
 class NumberSelector (gtk.EventBox):
@@ -447,13 +446,13 @@ class NumberBox (gtk.Widget):
         x, y, w, h = self.allocation
         cr = self.window.cairo_create()
         self.draw_background_color(cr, w, h)
+        if self.is_focus():
+            self.draw_highlight_box(cr, w, h)
         if h < w:
             scale = h/float(BASE_SIZE)
         else:
             scale = w/float(BASE_SIZE)
         cr.scale(scale, scale)
-        if self.is_focus():
-            self.draw_highlight_box(cr)
         self.draw_normal_box(cr)
         self.draw_text(cr)
         if self.draw_boxes and self.is_focus():
@@ -499,19 +498,20 @@ class NumberBox (gtk.Widget):
         cr.set_line_width(NORMAL_LINE_WIDTH)
         cr.stroke()
 
-    def draw_highlight_box (self, cr):
+    def draw_highlight_box (self, cr, w, h):
         cr.set_source_color(
             self.style.base[gtk.STATE_SELECTED]
             )
+        border = 4 * w / BASE_SIZE
         cr.rectangle(
             # left-top
-            BORDER_LINE_WIDTH*0.5,
-            BORDER_LINE_WIDTH*0.5,
+            border*0.5,
+            border*0.5,
             # bottom-right
-            BASE_SIZE-(BORDER_LINE_WIDTH),
-            BASE_SIZE-(BORDER_LINE_WIDTH),
+            w-border,
+            h-border,
             )
-        cr.set_line_width(BORDER_LINE_WIDTH)
+        cr.set_line_width(border)
         cr.stroke()
 
     def draw_note_area_highlight_box (self, cr):
