@@ -16,7 +16,7 @@ BASE_FONT_SIZE = pango.SCALE * 13
 NOTE_FONT_SIZE = pango.SCALE * 6
 
 BORDER_WIDTH = 9.0 # The size of space we leave for a box
-NORMAL_LINE_WIDTH = 0 # The size of the line we draw around a box
+NORMAL_LINE_WIDTH = 1 # The size of the line we draw around a box
 
 class NumberSelector (gtk.EventBox):
 
@@ -453,7 +453,6 @@ class NumberBox (gtk.Widget):
         else:
             scale = w/float(BASE_SIZE)
         cr.scale(scale, scale)
-        self.draw_normal_box(cr)
         self.draw_text(cr)
         if self.draw_boxes and self.is_focus():
             self.draw_note_area_highlight_box(cr)
@@ -480,23 +479,6 @@ class NumberBox (gtk.Widget):
             0, 0, w, h,
             )
         cr.fill()
-
-    def draw_normal_box (self, cr):
-        state = self.state
-        if state == gtk.STATE_SELECTED:
-            # When the widget is selected, we still want the outer box to look normal
-            state = gtk.STATE_NORMAL
-        cr.set_source_color(
-            self.style.mid[state]
-            )
-        cr.rectangle(
-            NORMAL_LINE_WIDTH*0.5,
-            NORMAL_LINE_WIDTH*0.5,
-            BASE_SIZE-NORMAL_LINE_WIDTH,
-            BASE_SIZE-NORMAL_LINE_WIDTH,
-            )
-        cr.set_line_width(NORMAL_LINE_WIDTH)
-        cr.stroke()
 
     def draw_highlight_box (self, cr, w, h):
         cr.set_source_color(
