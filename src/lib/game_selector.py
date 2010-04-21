@@ -105,7 +105,9 @@ class NewOrSavedGameSelector:
             view.set_spacing(12)
             view.set_selection_mode(gtk.SELECTION_SINGLE)
         saved_game_view.connect('item-activated', self.saved_item_activated_cb)
+        saved_game_view.connect('button-press-event', self.item_clicked_cb)
         new_game_view.connect('item-activated', self.new_item_activated_cb)
+        new_game_view.connect('button-press-event', self.item_clicked_cb)
 
     @simple_debug
     def make_new_game_model (self):
@@ -178,6 +180,23 @@ class NewOrSavedGameSelector:
     @simple_debug
     def saved_item_activated_cb (self, iconview, path):
         self.resume_game(iconview.get_model()[path][3])
+
+    @simple_debug
+    def item_clicked_cb (self, wdgt, evt):
+        '''Single click event handler
+
+        This callback activates the selected icon with a single click.
+        '''
+        if evt.button != 1:
+            return False
+        # See if the player clicked an icon
+        position = wdgt.get_path_at_pos(int(evt.x), int(evt.y))
+        if not position:
+            return False
+        # Select it, redraw it(strictly aesthetic), and then activate it
+        wdgt.select_path(position)
+        wdgt.get_parent_window().process_updates(False)
+        wdgt.item_activated(position)
 
     @simple_debug
     def resume_game (self, jar):
