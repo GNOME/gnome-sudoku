@@ -51,11 +51,16 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkIconView" id="newGameIconView">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="selection_mode">none</property>
+                      <object class="GtkFrame" id="newGameFrame">
+                        <property name="shadow-type">GTK_SHADOW_IN</property>
+                        <child>
+                          <object class="GtkIconView" id="newGameIconView">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                            <property name="selection_mode">none</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="padding">12</property>
@@ -82,11 +87,16 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkIconView" id="savedGameIconView">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="selection_mode">none</property>
+                      <object class="GtkFrame" id="savedGameFrame">
+                        <property name="shadow-type">GTK_SHADOW_IN</property>
+                        <child>
+                          <object class="GtkIconView" id="savedGameIconView">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                            <property name="selection_mode">none</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="position">3</property>

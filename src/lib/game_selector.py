@@ -68,14 +68,18 @@ class NewOrSavedGameSelector:
         self.dialog.set_default_response(gtk.RESPONSE_CANCEL)
         self.dialog.connect('close', self.close)
         self.dialog.hide()
+        saved_game_frame = builder.get_object('savedGameFrame')
         saved_game_view = builder.get_object('savedGameIconView')
         saved_game_widgets = [
+            saved_game_frame,
             saved_game_view,
             builder.get_object('savedGameLabel')
             ]
         builder.get_object('savedGameLabel').set_mnemonic_widget(
             saved_game_view
             )
+        new_game_frame = builder.get_object('newGameFrame')
+        new_game_frame.show()
         new_game_view = builder.get_object('newGameIconView')
         builder.get_object('newGameLabel').set_mnemonic_widget(
             new_game_view
@@ -90,6 +94,7 @@ class NewOrSavedGameSelector:
             for w in saved_game_widgets:
                 w.hide()
         else:
+            saved_game_frame.show()
             self.saved_game_model.set_sort_column_id(2, gtk.SORT_DESCENDING)
             saved_game_view.set_model(self.saved_game_model)
             saved_game_view.set_markup_column(0)
