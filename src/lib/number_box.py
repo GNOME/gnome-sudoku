@@ -591,6 +591,7 @@ class NumberBox (gtk.Widget):
 class SudokuNumberBox (NumberBox):
 
     normal_color = None
+    error_color = (1.0, 0, 0)
     highlight_color = ERROR_HIGHLIGHT_COLOR
 
     def set_color (self, color):
@@ -602,7 +603,7 @@ class SudokuNumberBox (NumberBox):
 
     def set_error_highlight (self, val):
         if val:
-            self.set_text_color((1.0, 0, 0))
+            self.set_text_color(self.error_color)
         else:
             self.set_text_color(self.normal_color)
 
@@ -622,8 +623,10 @@ class SudokuNumberBox (NumberBox):
         if val:
             if not self.get_text():
                 self.set_text('X')
+                self.set_text_color(self.error_color)
         elif self.get_text() == 'X':
             self.set_text('')
+            self.set_text_color(self.normal_color)
         self.queue_draw()
 
 
