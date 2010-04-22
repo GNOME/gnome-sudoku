@@ -245,21 +245,40 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                         self.remove(x, y, do_removal = True)
         return removed
 
-    def clear_notes (self, clear_args = {'top_text':'', 'bottom_text':''}):
-        """Remove all notes."""
-        self.removed = []
+    def clear_notes (self, side = 'Both'):
+        '''Remove notes
+
+        The list of notes removed by this function are returned in a list.
+        The side argument determines what notes get cleared as well as what
+        notes get returned.
+        'Both' - Clears both the top and bottom notes
+        'Top' - Clear only the top notes
+        'Bottom' - Clear only the bottom notes
+        '''
+        # Set the argument list for NumberBox.set_note_text()
+        if side == 'Both':
+            clear_args = {'top_text':'', 'bottom_text':''}
+        elif side == 'Top':
+            clear_args = {'top_text':''}
+        else:
+            clear_args = {'bottom_text':''}
+        # Storage for removed notes
+        removed = []
         for x in range(self.group_size):
             for y in range(self.group_size):
                 e = self.__entries__[(x, y)]
                 top, bottom = e.get_note_text()
+                # Don't return the bottom notes if we're only clearing the top
+                # or the top notes if we're only clearing the bottom.
+                if side == 'Top':
+                    bottom = ''
+                elif side == 'Bottom':
+                    top = ''
                 if top or bottom:
-                    self.removed.append((x, y, (top, bottom)))
+                    removed.append((x, y, (top, bottom)))
                     e.set_note_text(**clear_args)
                     e.queue_draw()
-        return self.removed
-
-    def clear_hints (self):
-        self.clear_notes(clear_args = {'bottom_text':''})
+        return removed
 
     @simple_debug
     def blank_grid (self):

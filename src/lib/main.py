@@ -46,10 +46,11 @@ def inactivate_new_game_etc (fun):
     def inactivate_new_game_etc_ (ui, *args, **kwargs):
         paths = [
             '/MenuBar/Game/New',
+            '/MenuBar/Game/Reset',
             '/MenuBar/Game/Print',
             # undo/redo is handled elsewhere as it can't simply be turned on/off.
-            '/MenuBar/Edit/Clear',
-            '/MenuBar/Edit/ClearNotes',
+            '/MenuBar/Edit/ClearTopNotes',
+            '/MenuBar/Edit/ClearBottomNotes',
             '/MenuBar/View/ToggleToolbar',
             '/MenuBar/Tools/ShowPossible',
             '/MenuBar/Tools/AutofillCurrentSquare',
@@ -57,7 +58,7 @@ def inactivate_new_game_etc (fun):
             '/MenuBar/Tools/AlwaysShowPossible',
             '/MenuBar/Tools/ShowImpossibleImplications',
             '/MenuBar/Tools/Tracker',
-            '/MenuBar/Game/PuzzleInfo',
+            '/MenuBar/Game/PuzzleInfo'
             ]
         for p in paths:
             action = ui.uimanager.get_action(p)
@@ -76,6 +77,10 @@ def inactivate_new_game_etc (fun):
                 print 'No action at path', p
             else:
                 action.set_sensitive(True)
+        # Only turn on Clear Bottom Notes when auto hint is off
+        bottom_note_wdgt = ui.uimanager.get_action('/MenuBar/Edit/ClearBottomNotes')
+        if ui.gconf['always_show_hints']:
+            bottom_note_wdgt.set_sensitive(False)
         return ret
     return inactivate_new_game_etc_
 
@@ -84,6 +89,7 @@ class UI (gconf_wrapper.GConfWrapper):
     <menubar name="MenuBar">
       <menu name="Game" action="Game">
         <menuitem action="New"/>
+        <menuitem action="Reset"/>
         <separator/>
         <menuitem action="PuzzleInfo"/>
         <separator/>
@@ -96,8 +102,8 @@ class UI (gconf_wrapper.GConfWrapper):
         <menuitem action="Undo"/>
         <menuitem action="Redo"/>
         <separator/>
-        <menuitem action="Clear"/>
-        <menuitem action="ClearNotes"/>
+        <menuitem action="ClearTopNotes"/>
+        <menuitem action="ClearBottomNotes"/>
       </menu>
       <menu action="View">
         <menuitem action="FullScreen"/>
@@ -235,6 +241,7 @@ class UI (gconf_wrapper.GConfWrapper):
             ('Game', None, _('_Game')),
             ('New', gtk.STOCK_NEW, None,
              '<Control>n', _('New game'), self.new_cb),
+            ('Reset', gtk.STOCK_CLEAR, _('_Reset'), '<Control>b', _("Reset current grid(do-over)"), self.game_reset_cb),
             ('Print', gtk.STOCK_PRINT, None,
              None, _('Print current game'), self.print_game),
             ('PrintMany', gtk.STOCK_PRINT, _('Print _Multiple Sudokus...'),
@@ -292,8 +299,8 @@ class UI (gconf_wrapper.GConfWrapper):
             [('Edit', None, _('_Edit')),
              ('Undo', gtk.STOCK_UNDO, _('_Undo'), '<Control>z', _('Undo last action'), self.stop_dancer),
              ('Redo', gtk.STOCK_REDO, _('_Redo'), '<Shift><Control>z', _('Redo last action')),
-             ('Clear', gtk.STOCK_CLEAR, _('_Clear'), '<Control>b', _("Clear entries you've filled in"), self.clear_cb),
-             ('ClearNotes', None, _('Clear _Notes'), None, _("Clear notes and hints"), self.clear_notes_cb),
+             ('ClearTopNotes', None, _('Clear _Top Notes'), '<Control>j', _("Clear all of the top notes"), self.clear_top_notes_cb),
+             ('ClearBottomNotes', None, _('Clear _Bottom Notes'), '<Control>k', _("Clear all of the bottom notes"), self.clear_bottom_notes_cb)
              ])
         self.uimanager.insert_action_group(self.main_actions, 0)
         self.uimanager.insert_action_group(self.edit_actions, 0)
@@ -524,40 +531,75 @@ class UI (gconf_wrapper.GConfWrapper):
             self.is_fullscreen = True
 
     @simple_debug
-    def clear_cb (self, *args):
+    def game_reset_cb (self, *args):
         clearer = Undo.UndoableObject(
-            self.do_clear, #action
-            self.undo_clear, #inverse
+            self.do_game_reset, #action
+            self.undo_game_reset, #inverse
             self.history #history
             )
         clearer.perform()
 
-    # add a check to stop the dancer if she is dancing
-    def do_clear (self, *args):
+    def do_game_reset (self, *args):
         self.cleared.append(self.gsd.reset_grid())
         self.stop_dancer()
+        self.do_clear_notes()
 
-    # add a check for finish in the undo to clear
-    def undo_clear (self, *args):
+    def undo_game_reset (self, *args):
         for entry in self.cleared.pop():
             self.gsd.add_value(*entry)
-        if self.gsd.grid.check_for_completeness():
-            self.gsd.emit('puzzle-finished')
+        self.undo_clear_notes()
 
-    def clear_notes_cb (self, *args):
+    def clear_top_notes_cb (self, *args):
         clearer = Undo.UndoableObject(
-            lambda *args: self.cleared_notes.append(self.gsd.clear_notes()), #action
+            lambda *args: self.do_clear_notes('Top'), #action
             self.undo_clear_notes, #inverse
             self.history
             )
         clearer.perform()
 
-    # add a check for finish in the undo to clear notes
-    def undo_clear_notes (self, *args):
-        # clear_notes returns a list of tuples indicating the cleared notes...
-        # (x,y,(top,bottom)) -- this is what we need for undoing
-        for entry in self.cleared_notes.pop():
-            self.gsd.__entries__[entry[0], entry[1]].set_notes(entry[2])
+    def clear_bottom_notes_cb (self, *args):
+        clearer = Undo.UndoableObject(
+            lambda *args: self.do_clear_notes('Bottom'), #action
+            self.undo_clear_notes, #inverse
+            self.history
+            )
+        clearer.perform()
+
+    def do_clear_notes(self, side = 'Both'):
+        ''' Clear top, bottom, or all notes - in undoable fashion
+
+        The side argument is used to specify which notes
+        are to be cleared.
+        'Top' - just clear the top notes
+        'Bottom' - just clear the bottom notes
+        'Both' - clear all notes(argument default)
+
+        Store all of the cleared notes in the cleared_notes list so the undo
+        can pick up on them later.  The list items are in the format
+        (x, y, (top note, bottom note)).
+        '''
+        self.cleared_notes.append(self.gsd.clear_notes(side))
+        # Update the hints...in case we're redoing a clear of them
+        if self.gconf['always_show_hints']:
+            self.gsd.update_all_hints()
+
+    def undo_clear_notes(self):
+        ''' Undo previously cleared notes
+
+        Clearing notes sets the cleared_notes list of tuples indicating the
+        notes that were cleared. They are in the format
+        (x, y, (top note ,bottom note))
+        '''
+        for x, y, notes in self.cleared_notes.pop():
+            top, bottom = notes
+            if top:
+                self.gsd.__entries__[x, y].set_note_text(top_text = top)
+            if bottom:
+                self.gsd.__entries__[x, y].set_note_text(bottom_text = bottom)
+        # Update the hints...in case we're undoing over top of them
+        if self.gconf['always_show_hints']:
+            self.gsd.update_all_hints()
+        # Make sure we're still dancing if we undo after win
         if self.gsd.grid.check_for_completeness():
             self.start_dancer()
 
@@ -567,12 +609,15 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def auto_hint_cb (self, action):
+        clear_bottom_notes_widg = self.edit_actions.get_action('ClearBottomNotes')
         if action.get_active():
             self.gsd.always_show_hints = True
+            clear_bottom_notes_widg.set_sensitive(False)
             self.gsd.update_all_hints()
         else:
             self.gsd.always_show_hints = False
-            self.gsd.clear_hints()
+            self.gsd.clear_notes('Bottom')
+            clear_bottom_notes_widg.set_sensitive(True)
 
     @simple_debug
     def impossible_implication_cb (self, action):
