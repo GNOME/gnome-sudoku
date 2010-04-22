@@ -684,7 +684,7 @@ class InteractiveSudoku (SudokuSolver):
 
 class DifficultyRating:
 
-    very_hard = _('Very Hard')
+    very_hard = _('Very hard')
     hard = _('Hard')
     medium = _('Medium')
     easy = _('Easy')
