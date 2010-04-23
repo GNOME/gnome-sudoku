@@ -123,7 +123,6 @@ class UI (gconf_wrapper.GConfWrapper):
     </menubar>
     <toolbar name="Toolbar">
       <toolitem action="New"/>
-      <toolitem action="Print"/>
       <separator/>
       <toolitem action="Undo"/>
       <toolitem action="Redo"/>
@@ -241,7 +240,7 @@ class UI (gconf_wrapper.GConfWrapper):
              _('Redo last action')),
             ('PuzzleInfo', gtk.STOCK_ABOUT, _('Puzzle _Statistics...'), None,
              _('Show statistics about current puzzle'), self.show_info_cb),
-            ('Print', gtk.STOCK_PRINT, None, None, _('Print current game'), self.print_game),
+            ('Print', gtk.STOCK_PRINT, _('_Print...'), '<Control>p', _('Print current game'), self.print_game),
             ('PrintMany', gtk.STOCK_PRINT, _('Print _Multiple Sudokus...'), None,
              _('Print more than one sudoku at a time.'), self.print_multiple_games),
             ('Close', gtk.STOCK_CLOSE, None, '<Control>w', _('Close Sudoku'), self.quit_cb),
