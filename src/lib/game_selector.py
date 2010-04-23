@@ -105,9 +105,9 @@ class NewOrSavedGameSelector:
             view.set_spacing(12)
             view.set_selection_mode(gtk.SELECTION_SINGLE)
         saved_game_view.connect('item-activated', self.saved_item_activated_cb)
-        saved_game_view.connect('button-press-event', self.item_clicked_cb)
+        saved_game_view.connect('button-release-event', self.item_clicked_cb)
         new_game_view.connect('item-activated', self.new_item_activated_cb)
-        new_game_view.connect('button-press-event', self.item_clicked_cb)
+        new_game_view.connect('button-release-event', self.item_clicked_cb)
 
     @simple_debug
     def make_new_game_model (self):
@@ -192,6 +192,8 @@ class NewOrSavedGameSelector:
         # See if the player clicked an icon
         position = wdgt.get_path_at_pos(int(evt.x), int(evt.y))
         if not position:
+            return False
+        if not wdgt.path_is_selected(position):
             return False
         # Select it, redraw it(strictly aesthetic), and then activate it
         wdgt.select_path(position)
