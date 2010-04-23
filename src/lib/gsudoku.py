@@ -96,7 +96,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         group_size = int(group_size)
         self.hints = 0
         self.always_show_hints = False
-        self.auto_fills = 0
         self.show_impossible_implications = show_impossible_implications
         self.impossible_hints = 0
         self.impossibilities = []
@@ -296,7 +295,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
 
     @simple_debug
     def change_grid (self, grid, group_size):
-        self.auto_fills = 0
         self.hints = 0
         self.impossible_hints = 0
         self.trackers = {}
@@ -474,8 +472,6 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         for coords, val in changed:
             self.add_value(coords[0], coords[1], val)
             retval.append((coords[0], coords[1], val))
-        if retval:
-            self.auto_fills += 1
         if self.grid.check_for_completeness():
             self.emit('puzzle-finished')
         return retval

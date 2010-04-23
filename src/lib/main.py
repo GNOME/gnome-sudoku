@@ -55,8 +55,6 @@ def inactivate_new_game_etc (fun):
             '/MenuBar/Settings/AlwaysShowPossible',
             '/MenuBar/Settings/ShowImpossibleImplications',
             '/MenuBar/Tools/ShowPossible',
-            '/MenuBar/Tools/AutofillCurrentSquare',
-            '/MenuBar/Tools/Autofill',
             '/MenuBar/Tools/ClearTopNotes',
             '/MenuBar/Tools/ClearBottomNotes',
             '/MenuBar/Tools/Tracker',
@@ -108,8 +106,6 @@ class UI (gconf_wrapper.GConfWrapper):
       </menu>
       <menu action="Tools">
         <menuitem action="ShowPossible"/>
-        <menuitem action="AutofillCurrentSquare"/>
-        <menuitem action="Autofill"/>
         <separator/>
         <menuitem action="ClearTopNotes"/>
         <menuitem action="ClearBottomNotes"/>
@@ -249,10 +245,6 @@ class UI (gconf_wrapper.GConfWrapper):
             ('Tools', None, _('_Tools')),
             ('ShowPossible', gtk.STOCK_DIALOG_INFO, _('_Hint'), '<Control>h',
              _('Show which numbers could go in the current square.'), self.show_hint_cb),
-            ('AutofillCurrentSquare', gtk.STOCK_APPLY, _('_Fill'), '<Control>f',
-             _('Automatically fill in the current square if possible.'), self.auto_fill_current_square_cb),
-            ('Autofill', gtk.STOCK_REFRESH, _('Fill _All Squares'), '<Control>a',
-             _('Automatically fill in all squares for which there is only one valid value.'), self.auto_fill_cb),
             ('ClearTopNotes', None, _('Clear _Top Notes'), '<Control>j',
              _("Clear all of the top notes"), self.clear_top_notes_cb),
             ('ClearBottomNotes', None, _('Clear _Bottom Notes'), '<Control>k',
@@ -411,10 +403,6 @@ class UI (gconf_wrapper.GConfWrapper):
                                  "You had %(n)s impossibilities pointed out.",
                                  self.gsd.impossible_hints) % {'n':self.gsd.impossible_hints}
             sublabel += "\n"
-        if self.gsd.auto_fills:
-            sublabel += ngettext("You used the auto-fill %(n)s time.",
-                                 "You used the auto-fill %(n)s times.",
-                                 self.gsd.auto_fills) % {'n':self.gsd.auto_fills}
         self.start_dancer()
         dialog_extras.show_message(_("You win!"), label = _("You win!"),
                                    sublabel = sublabel
@@ -611,29 +599,6 @@ class UI (gconf_wrapper.GConfWrapper):
             self.gsd.display_impossible_implications()
         else:
             self.gsd.hide_impossible_implications()
-
-    @simple_debug
-    def auto_fill_cb (self, *args):
-        if not hasattr(self, 'autofilled'):
-            self.autofilled = []
-        if not hasattr(self, 'autofiller'):
-            self.autofiller = Undo.UndoableObject(
-                self.do_auto_fill,
-                self.undo_auto_fill,
-                self.history
-                )
-        self.autofiller.perform()
-
-    def do_auto_fill (self, *args):
-        self.autofilled.append(self.gsd.auto_fill())
-
-    def undo_auto_fill (self, *args):
-        for entry in self.autofilled.pop():
-            self.gsd.remove(entry[0], entry[1], do_removal = True)
-
-    @simple_debug
-    def auto_fill_current_square_cb (self, *args):
-        self.gsd.auto_fill_current_entry()
 
     @simple_debug
     def setup_tracker_interface (self):

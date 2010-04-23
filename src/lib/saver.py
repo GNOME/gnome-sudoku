@@ -6,7 +6,6 @@ from gettext import gettext as _
 
 SAVE_ATTRIBUTES = [('gsd.hints'),
                    ('gsd.impossible_hints'),
-                   ('gsd.auto_fills'),
                    ('timer.__absolute_start_time__'),
                    ('timer.active_time'),
                    ('timer.total_time'),
