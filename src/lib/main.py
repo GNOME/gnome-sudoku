@@ -77,10 +77,6 @@ def inactivate_new_game_etc (fun):
                 print 'No action at path', p
             else:
                 action.set_sensitive(True)
-        # Only turn on Clear Bottom Notes when auto hint is off
-        bottom_note_wdgt = ui.uimanager.get_action('/MenuBar/Edit/ClearBottomNotes')
-        if ui.gconf['always_show_hints']:
-            bottom_note_wdgt.set_sensitive(False)
         return ret
     return inactivate_new_game_etc_
 
@@ -579,6 +575,10 @@ class UI (gconf_wrapper.GConfWrapper):
         (x, y, (top note, bottom note)).
         '''
         self.cleared_notes.append(self.gsd.clear_notes(side))
+        # Turn off auto-hint if the player clears the bottom notes
+        if side == 'Bottom' and self.gconf['always_show_hints']:
+            always_show_hint_wdgt = self.main_actions.get_action('AlwaysShowPossible')
+            always_show_hint_wdgt.activate()
         # Update the hints...in case we're redoing a clear of them
         if self.gconf['always_show_hints']:
             self.gsd.update_all_hints()
@@ -609,15 +609,12 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def auto_hint_cb (self, action):
-        clear_bottom_notes_widg = self.edit_actions.get_action('ClearBottomNotes')
         if action.get_active():
             self.gsd.always_show_hints = True
-            clear_bottom_notes_widg.set_sensitive(False)
             self.gsd.update_all_hints()
         else:
             self.gsd.always_show_hints = False
             self.gsd.clear_notes('Bottom')
-            clear_bottom_notes_widg.set_sensitive(True)
 
     @simple_debug
     def impossible_implication_cb (self, action):
