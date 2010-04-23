@@ -745,18 +745,10 @@ class TrackerBox (gtk.VBox):
               None, _('Clear all moves tracked by selected tracker.'),
               self.clear_cb
               ),
-             ('Keep', None,
-              _('_Clear Others'),
-              None,
-              _('Clear all moves not tracked by selected tracker.'),
-              self.keep_cb),
              ]
             )
-        for action, widget_name in [('Clear', 'ClearTrackerButton'),
-                                   ('Keep', 'KeepTrackerButton'),
-                                   ]:
-            a = self.tracker_actions.get_action(action)
-            a.connect_proxy(self.builder.get_object(widget_name))
+        a = self.tracker_actions.get_action('Clear')
+        a.connect_proxy(self.builder.get_object('ClearTrackerButton'))
         self.builder.get_object('AddTrackerButton').connect('clicked',
                                                           self.add_tracker)
         # Default to insensitive (they only become sensitive once a tracker is added)
@@ -824,27 +816,12 @@ class TrackerBox (gtk.VBox):
             self.tracker_delete_tracks(selected_tracker_id)
 
     @simple_debug
-    def keep_cb (self, action):
-        mod, itr = self.tracker_tree.get_selection().get_selected()
-        selected_tracker_id = mod.get_value(itr, 0)
-        self.tracker_keep_tracks(selected_tracker_id)
-
-    @simple_debug
     def tracker_delete_tracks (self, tracker_id):
         clearer = Undo.UndoableObject(
             lambda *args: self.main_ui.cleared.append(self.main_ui.gsd.delete_by_tracker(tracker_id)),
             lambda *args: [self.main_ui.gsd.add_value(*entry) for entry in self.main_ui.cleared.pop()],
             self.main_ui.history)
         clearer.perform()
-
-    @simple_debug
-    def tracker_keep_tracks (self, tracker_id):
-        clearer = Undo.UndoableObject(
-            lambda *args: self.main_ui.cleared.append(self.main_ui.gsd.delete_except_for_tracker(tracker_id)),
-            lambda *args: [self.main_ui.gsd.add_value(*entry) for entry in self.main_ui.cleared.pop()],
-            self.main_ui.history)
-        clearer.perform()
-
 
 def start_game ():
     if options.debug:
