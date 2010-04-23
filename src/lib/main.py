@@ -129,9 +129,7 @@ class UI (gconf_wrapper.GConfWrapper):
       <toolitem action="Redo"/>
       <separator/>
       <toolitem action="ShowPossible"/>
-      <toolitem action="AutofillCurrentSquare"/>
       <separator/>
-      <toolitem action="ToggleHighlight"/>
       <toolitem action="Tracker"/>
     </toolbar>
     </ui>'''
@@ -285,7 +283,7 @@ class UI (gconf_wrapper.GConfWrapper):
             ('ToggleHighlight', gtk.STOCK_SELECT_COLOR, _('_Highlighter'),
              None, _('Highlight the current row, column and box'), self.toggle_highlight_cb, False)
             ])
-            
+
         self.main_actions.get_action('Undo').set_is_important(True)
         self.main_actions.get_action('Redo').set_is_important(True)
         self.main_actions.get_action('ShowPossible').set_is_important(True)
