@@ -47,18 +47,19 @@ def inactivate_new_game_etc (fun):
         paths = [
             '/MenuBar/Game/New',
             '/MenuBar/Game/Reset',
+            '/MenuBar/Game/PuzzleInfo',
             '/MenuBar/Game/Print',
             # undo/redo is handled elsewhere as it can't simply be turned on/off.
-            '/MenuBar/Edit/ClearTopNotes',
-            '/MenuBar/Edit/ClearBottomNotes',
-            '/MenuBar/View/ToggleToolbar',
+            '/MenuBar/Settings/ToggleToolbar',
+            '/MenuBar/Settings/ToggleHighlight',
+            '/MenuBar/Settings/AlwaysShowPossible',
+            '/MenuBar/Settings/ShowImpossibleImplications',
             '/MenuBar/Tools/ShowPossible',
             '/MenuBar/Tools/AutofillCurrentSquare',
             '/MenuBar/Tools/Autofill',
-            '/MenuBar/Tools/AlwaysShowPossible',
-            '/MenuBar/Tools/ShowImpossibleImplications',
+            '/MenuBar/Tools/ClearTopNotes',
+            '/MenuBar/Tools/ClearBottomNotes',
             '/MenuBar/Tools/Tracker',
-            '/MenuBar/Game/PuzzleInfo'
             ]
         for p in paths:
             action = ui.uimanager.get_action(p)
@@ -87,6 +88,9 @@ class UI (gconf_wrapper.GConfWrapper):
         <menuitem action="New"/>
         <menuitem action="Reset"/>
         <separator/>
+        <menuitem action="Undo"/>
+        <menuitem action="Redo"/>
+        <separator/>
         <menuitem action="PuzzleInfo"/>
         <separator/>
         <menuitem action="Print"/>
@@ -94,29 +98,24 @@ class UI (gconf_wrapper.GConfWrapper):
         <separator/>
         <menuitem action="Close"/>
       </menu>
-      <menu action="Edit">
-        <menuitem action="Undo"/>
-        <menuitem action="Redo"/>
-        <separator/>
-        <menuitem action="ClearTopNotes"/>
-        <menuitem action="ClearBottomNotes"/>
-      </menu>
-      <menu action="View">
+      <menu action="Settings">
         <menuitem action="FullScreen"/>
-        <separator/>
         <menuitem action="ToggleToolbar"/>
+        <separator/>
         <menuitem action="ToggleHighlight"/>
+        <menuitem action="AlwaysShowPossible"/>
+        <menuitem action="ShowImpossibleImplications"/>
       </menu>
       <menu action="Tools">
         <menuitem action="ShowPossible"/>
         <menuitem action="AutofillCurrentSquare"/>
         <menuitem action="Autofill"/>
         <separator/>
-        <menuitem action="AlwaysShowPossible"/>
-        <menuitem action="ShowImpossibleImplications"/>
+        <menuitem action="ClearTopNotes"/>
+        <menuitem action="ClearBottomNotes"/>
         <separator/>
         <menuitem action="Tracker"/>
-        </menu>
+      </menu>
       <menu action="Help">
         <menuitem action="ShowHelp"/>
         <menuitem action="About"/>
@@ -235,43 +234,40 @@ class UI (gconf_wrapper.GConfWrapper):
         self.main_actions = gtk.ActionGroup('MainActions')
         self.main_actions.add_actions([
             ('Game', None, _('_Game')),
-            ('New', gtk.STOCK_NEW, None,
-             '<Control>n', _('New game'), self.new_cb),
-            ('Reset', gtk.STOCK_CLEAR, _('_Reset'), '<Control>b', _("Reset current grid(do-over)"), self.game_reset_cb),
-            ('Print', gtk.STOCK_PRINT, None,
-             None, _('Print current game'), self.print_game),
-            ('PrintMany', gtk.STOCK_PRINT, _('Print _Multiple Sudokus...'),
-             None, _('Print more than one sudoku at a time.'), self.print_multiple_games),
-            ('Close', gtk.STOCK_CLOSE, None, '<Control>w',
-             _('Close Sudoku'), self.quit_cb),
+            ('New', gtk.STOCK_NEW, None, '<Control>n', _('New game'), self.new_cb),
+            ('Reset', gtk.STOCK_CLEAR, _('_Reset'), '<Control>b',
+             _("Reset current grid(do-over)"), self.game_reset_cb),
+            ('Undo', gtk.STOCK_UNDO, _('_Undo'), '<Control>z',
+             _('Undo last action'), self.stop_dancer),
+            ('Redo', gtk.STOCK_REDO, _('_Redo'), '<Shift><Control>z',
+             _('Redo last action')),
+            ('PuzzleInfo', gtk.STOCK_ABOUT, _('Puzzle _Statistics...'), None,
+             _('Show statistics about current puzzle'), self.show_info_cb),
+            ('Print', gtk.STOCK_PRINT, None, None, _('Print current game'), self.print_game),
+            ('PrintMany', gtk.STOCK_PRINT, _('Print _Multiple Sudokus...'), None,
+             _('Print more than one sudoku at a time.'), self.print_multiple_games),
+            ('Close', gtk.STOCK_CLOSE, None, '<Control>w', _('Close Sudoku'), self.quit_cb),
+            ('Settings', None, _('_Settings')),
+            ('FullScreen', gtk.STOCK_FULLSCREEN, None, 'F11', None, self.full_screen_cb),
             ('Tools', None, _('_Tools')),
-            ('View', None, _('_View')),
-            ('ShowPossible', gtk.STOCK_DIALOG_INFO, _('_Hint'),
-             '<Control>h',
-             _('Show which numbers could go in the current square.'),
-             self.show_hint_cb),
+            ('ShowPossible', gtk.STOCK_DIALOG_INFO, _('_Hint'), '<Control>h',
+             _('Show which numbers could go in the current square.'), self.show_hint_cb),
             ('AutofillCurrentSquare', gtk.STOCK_APPLY, _('_Fill'), '<Control>f',
-             _('Automatically fill in the current square if possible.'),
-             self.auto_fill_current_square_cb),
+             _('Automatically fill in the current square if possible.'), self.auto_fill_current_square_cb),
             ('Autofill', gtk.STOCK_REFRESH, _('Fill _All Squares'), '<Control>a',
-             _('Automatically fill in all squares for which there is only one valid value.'),
-             self.auto_fill_cb),
-            ('FullScreen', gtk.STOCK_FULLSCREEN, None,
-             'F11', None, self.full_screen_cb),
-            ('PuzzleInfo', gtk.STOCK_ABOUT, _('Puzzle _Statistics...'),
-             None, _('Show statistics about current puzzle'),
-             self.show_info_cb),
-            ('Help', None, _('_Help'),
-             None, None, None),
-            ('About', gtk.STOCK_ABOUT, None,
-             None, None, self.show_about),
-            ('ShowHelp', gtk.STOCK_HELP, _('_Contents'),
-             'F1', None, self.show_help),
+             _('Automatically fill in all squares for which there is only one valid value.'), self.auto_fill_cb),
+            ('ClearTopNotes', None, _('Clear _Top Notes'), '<Control>j',
+             _("Clear all of the top notes"), self.clear_top_notes_cb),
+            ('ClearBottomNotes', None, _('Clear _Bottom Notes'), '<Control>k',
+             _("Clear all of the bottom notes"), self.clear_bottom_notes_cb),
+            ('Help', None, _('_Help'), None, None, None),
+            ('ShowHelp', gtk.STOCK_HELP, _('_Contents'), 'F1', None, self.show_help),
+            ('About', gtk.STOCK_ABOUT, None, None, None, self.show_about),
             ])
         self.main_actions.add_toggle_actions([
             ('AlwaysShowPossible',
              None,
-             _('_Always Show Hint'),
+             _('Show _Possible Numbers'),
              None,
              _('Always show possible numbers in a square'),
              self.auto_hint_cb),
@@ -290,24 +286,15 @@ class UI (gconf_wrapper.GConfWrapper):
              None, _('Highlight the current row, column and box'), self.toggle_highlight_cb, False)
             ])
 
-        self.edit_actions = gtk.ActionGroup('EditActions')
-        self.edit_actions.add_actions(
-            [('Edit', None, _('_Edit')),
-             ('Undo', gtk.STOCK_UNDO, _('_Undo'), '<Control>z', _('Undo last action'), self.stop_dancer),
-             ('Redo', gtk.STOCK_REDO, _('_Redo'), '<Shift><Control>z', _('Redo last action')),
-             ('ClearTopNotes', None, _('Clear _Top Notes'), '<Control>j', _("Clear all of the top notes"), self.clear_top_notes_cb),
-             ('ClearBottomNotes', None, _('Clear _Bottom Notes'), '<Control>k', _("Clear all of the bottom notes"), self.clear_bottom_notes_cb)
-             ])
         self.uimanager.insert_action_group(self.main_actions, 0)
-        self.uimanager.insert_action_group(self.edit_actions, 0)
         self.uimanager.add_ui_from_string(self.ui)
 
     def setup_undo (self):
         self.cleared = [] # used for Undo memory
         self.cleared_notes = [] # used for Undo memory
         # Set up our UNDO stuff
-        undo_widg = self.edit_actions.get_action('Undo')
-        redo_widg = self.edit_actions.get_action('Redo')
+        undo_widg = self.main_actions.get_action('Undo')
+        redo_widg = self.main_actions.get_action('Redo')
         self.history = Undo.UndoHistoryList(undo_widg, redo_widg)
         for entry in self.gsd.__entries__.values():
             Undo.UndoableGenericWidget(entry, self.history,
