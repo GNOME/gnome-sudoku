@@ -570,9 +570,9 @@ class InteractiveSudoku (SudokuSolver):
 
         # Find any cells that conflict with the new value for this cell
         coords = set([])
-        coords.update(self.row_coords[y],
-                      self.col_coords[x],
-                      self.box_coords[self.box_by_coords[(x, y)]])
+        coords.update(self.row_coords[y])
+        coords.update(self.col_coords[x])
+        coords.update(self.box_coords[self.box_by_coords[(x, y)]])
         coords.discard((x, y))
         conflicting_coordinates = []
         for xx, yy in coords:
