@@ -796,9 +796,9 @@ class TrackerBox (gtk.VBox):
         if model.get_value(iter, 0) == self.tinfo.showing_tracker and \
             self.tinfo.showing_tracker != tracker_info.NO_TRACKER and \
             self.tinfo.showing_tracker !=  self.tinfo.current_tracker:
-            cell.set_property('underline', pango.UNDERLINE_DOUBLE)
+            cell.set_property('weight', pango.WEIGHT_BOLD)
         else:
-            cell.set_property('underline', pango.UNDERLINE_NONE)
+            cell.set_property('weight', pango.WEIGHT_NORMAL)
 
     @simple_debug
     def add_tracker (self, *args, **keys):
