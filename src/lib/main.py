@@ -793,9 +793,7 @@ class TrackerBox (gtk.VBox):
         self.tracker_actions.set_sensitive(False)
 
     def draw_tracker_name(self, column, cell, model, iter):
-        if model.get_value(iter, 0) == self.tinfo.showing_tracker and \
-            self.tinfo.showing_tracker != tracker_info.NO_TRACKER and \
-            self.tinfo.showing_tracker !=  self.tinfo.current_tracker:
+        if model.get_value(iter, 0) == self.tinfo.showing_tracker:
             cell.set_property('weight', pango.WEIGHT_BOLD)
         else:
             cell.set_property('weight', pango.WEIGHT_NORMAL)
@@ -899,6 +897,7 @@ class TrackerBox (gtk.VBox):
         self.main_ui.gsd.update_all_notes()
         self.set_tracker_action_sense(False)
         self.redraw_row(hiding_tracker)
+        self.redraw_row(tracker_info.NO_TRACKER)
 
     @simple_debug
     def apply_tracker_cb (self, action):
