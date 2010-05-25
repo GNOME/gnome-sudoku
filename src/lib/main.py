@@ -774,7 +774,7 @@ class TrackerBox (gtk.VBox):
               self.hide_tracker_cb
               ),
              ('Apply',
-              gtk.STOCK_CLEAR,
+              gtk.STOCK_APPLY,
               _('A_pply'),
               None, _('Apply all tracked values and remove the tracker.'),
               self.apply_tracker_cb
