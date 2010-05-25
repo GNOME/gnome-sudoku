@@ -2,24 +2,10 @@
 import gtk, gobject
 import colors
 import math
-import random
 from simple_debug import simple_debug
 import sudoku
 import number_box
-
-TRACKER_COLORS = [
-    # Use tango colors recommended here:
-    # http://tango.freedesktop.org/Tango_Icon_Theme_Guidelines
-    tuple([x / 255.0 for x in cols]) for cols in
-    [(32, 74, 135), # Sky Blue 3
-     (78, 154, 6), # Chameleon 3
-     (206, 92, 0), # Orange 3
-     (143, 89, 2), # Chocolate 3
-     (92, 53, 102), # Plum 3
-     (85, 87, 83), # Aluminium 5
-     (196, 160, 0), # Butter 3
-     ]
-    ]
+import tracker_info
 
 def gtkcolor_to_rgb (color):
     return (color.red   / float(2**16),
@@ -100,13 +86,13 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         self.impossible_hints = 0
         self.impossibilities = []
         self.trackers = {}
-        self.__trackers_tracking__ = {}
+        self.tinfo = tracker_info.TrackerInfo()
         gobject.GObject.__init__(self)
         SudokuNumberGrid.__init__(self, group_size = group_size)
         self.setup_grid(grid, group_size)
         for e in self.__entries__.values():
             e.show()
-            e.connect('undo-change', self.entry_callback)
+            e.connect('undo-change', self.entry_callback, 'undo-change')
             e.connect('changed', self.entry_callback)
             e.connect('focus-in-event', self.focus_callback)
             e.connect('key-press-event', self.key_press_cb)
@@ -219,68 +205,127 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             ''.join([str(v) for v in vals])
             txt = ''.join([str(v) for v in vals])
             if txt != entry.get_text():
-                set_method(bottom_text = txt)
+                set_method(bottom_text = txt, for_hint = True)
                 self.hints += 1
         elif not entry.get_text():
             if entry.get_text() != 'X':
                 self.hints += 1
-                set_method(bottom_text = 'X')
+                set_method(bottom_text = 'X', for_hint = True)
         else:
-            set_method(bottom_text = "")
+            set_method(bottom_text = "", for_hint = True)
 
     @simple_debug
     def reset_grid (self):
-        """Reset grid to its original setup.
+        '''Remove all untracked values from the grid
 
-        Return a list of items we removed so that callers can handle
-        e.g. Undo properly"""
+        This method is used to clear all untracked values from the grid for
+        the undo processing.  The tracked values and notes are handled higher
+        up by the caller.
+        '''
         removed = []
         for x in range(self.group_size):
             for y in range(self.group_size):
                 if not self.grid.virgin._get_(x, y):
-                    val = self.__entries__[(x, y)].get_value() # get the value from the user-visible grid,
-                    if val:
-                        removed.append((x, y, val, self.trackers_for_point(x, y, val)))
-                        self.remove(x, y, do_removal = True)
+                    e = self.__entries__[(x, y)]
+                    val = e.get_value()
+                    track = e.tracker_id
+                    if val and track == tracker_info.NO_TRACKER:
+                        removed.append((x, y, val))
+                    self.remove(x, y)
         return removed
 
-    def clear_notes (self, side = 'Both'):
+    def clear_notes (self, side = 'Both', tracker = None):
         '''Remove notes
 
         The list of notes removed by this function are returned in a list.
+        The notes are returned in the format (x, y, (side, pos, tid, note)) where:
+        x and y are the cell's coordinates
+        side is either 'Top' or 'Bottom'
+        pos is the index of the note within the notelist
+        tid is the tracker id for the note
+        note is the value of the note
+
         The side argument determines what notes get cleared as well as what
         notes get returned.
-        'Both' - Clears both the top and bottom notes
+        'Both' - Clears both the top and bottom notes(default)
         'Top' - Clear only the top notes
         'Bottom' - Clear only the bottom notes
+        'AutoHint' - Clear all bottom notes for all trackers
+        'All' - Reset all notes
+
+        For 'Top', 'Bottom', and 'Both', the tracker argument can be supplied
+        to clear for a specific tracker.  Set tracker to None(default) to
+        operate on just what is currently displayed.
         '''
-        # Set the argument list for NumberBox.set_note_text()
-        if side == 'Both':
-            clear_args = {'top_text':'', 'bottom_text':''}
-        elif side == 'Top':
-            clear_args = {'top_text':''}
-        else:
-            clear_args = {'bottom_text':''}
         # Storage for removed notes
         removed = []
         for x in range(self.group_size):
             for y in range(self.group_size):
                 e = self.__entries__[(x, y)]
-                top, bottom = e.get_note_text()
-                # Don't return the bottom notes if we're only clearing the top
-                # or the top notes if we're only clearing the bottom.
-                if side == 'Top':
-                    bottom = ''
-                elif side == 'Bottom':
-                    top = ''
-                if top or bottom:
-                    removed.append((x, y, (top, bottom)))
-                    e.set_note_text(**clear_args)
-                    e.queue_draw()
+                if side in ['Top', 'Both']:
+                    if tracker == None:
+                        top_display_list = e.get_note_display(e.top_note_list)[0]
+                    else:
+                        top_display_list = e.get_note_display(e.top_note_list, tracker, False)[0]
+                    for offset, (notelist_index, tracker_id, note) in enumerate(top_display_list):
+                        removed.append((x, y, ('Top', notelist_index, tracker_id, note)))
+                        del e.top_note_list[notelist_index - offset]
+                if side in ['Bottom', 'Both']:
+                    if tracker == None:
+                        bottom_display_list = e.get_note_display(e.bottom_note_list)[0]
+                    else:
+                        bottom_display_list = e.get_note_display(e.bottom_note_list, tracker, False)[0]
+                    for offset, (notelist_index, tracker_id, note) in enumerate(bottom_display_list):
+                        removed.append((x, y, ('Bottom', notelist_index, tracker_id, note)))
+                        del e.bottom_note_list[notelist_index - offset]
+                if side == 'All':
+                    for notelist_index, (tracker_id, note) in enumerate(e.top_note_list):
+                        removed.append((x, y, ('Top', notelist_index, tracker_id, note)))
+                    e.top_note_list = []
+                if side in ['All', 'AutoHint']:
+                    for notelist_index, (tracker_id, note) in enumerate(e.bottom_note_list):
+                        removed.append((x, y, ('Bottom', notelist_index, tracker_id, note)))
+                    e.bottom_note_list = []
+        # Redraw the notes
+        self.update_all_notes()
         return removed
+
+    def apply_notelist(self, notelist, apply_tracker = False):
+        '''Re-apply notes
+
+        Re-apply notes that have been removed with the clear_notes() function.
+        The apply_tracker argument is used for the "Apply Tracker" button
+        functionality, which requires the history to be updated.
+        '''
+        for x, y, (side, notelist_index, tracker_id, note) in notelist:
+            cell = self.__entries__[x, y]
+            if apply_tracker:
+                use_tracker = tracker_info.NO_TRACKER
+                cell.emit('notes-about-to-change')
+            else:
+                use_tracker = tracker_id
+            if side == 'Top':
+                cell.top_note_list.insert(notelist_index, (use_tracker, note))
+            if side == 'Bottom':
+                cell.bottom_note_list.insert(notelist_index, (use_tracker, note))
+            if apply_tracker:
+                cell.emit('notes-changed')
+                # When applying a tracker - update the notes to remove
+                # duplicates from other trackers.
+                if side == 'Top':
+                    cell.trim_untracked_notes(cell.top_note_list)
+                else:
+                    cell.trim_untracked_notes(cell.bottom_note_list)
+        # Redraw the notes
+        self.update_all_notes()
 
     @simple_debug
     def blank_grid (self):
+        '''Wipe out everything on the grid.
+
+        This blanks all values, notes, tracked values, virgin values.  You end
+        up with a blank grid ready for a new puzzle.
+        '''
         for x in range(self.group_size):
             for y in range(self.group_size):
                 e = self.__entries__[(x, y)]
@@ -291,14 +336,13 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             self.__entries__[imp_cell].set_text('')
         self.impossibilities = []
         self.grid = None
-        self.clear_notes()
+        self.clear_notes('All')
+        self.tinfo.reset()
 
     @simple_debug
     def change_grid (self, grid, group_size):
         self.hints = 0
         self.impossible_hints = 0
-        self.trackers = {}
-        self.__trackers_tracking__ = {}
         self.blank_grid()
         self.setup_grid(grid, group_size)
 
@@ -342,11 +386,12 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
     @simple_debug
     def entry_callback (self, widget, *args):
         if not widget.get_text():
-            if self.grid and self.grid._get_(widget.x, widget.y):
-                self.grid.remove(widget.x, widget.y)
-            self.remove(widget.x, widget.y)
+            self.remove(widget.x, widget.y, *args)
+            # Trackers need to be redisplayed on an undo
+            if args and args[0] == 'undo-change':
+                self.show_track()
         else:
-            self.entry_validate(widget)
+            self.entry_validate(widget, *args)
 
     def update_all_hints (self):
         for x in range(self.group_size):
@@ -359,10 +404,26 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                 else:
                     self.show_hint_for_entry(e)
 
+    def update_all_notes (self):
+        '''Display the notes for all the cells
+
+        The notes are context sensitive to the trackers.  This method displays
+        all of the notes for the currently viewed selection.
+        '''
+        for x in range(self.group_size):
+            for y in range(self.group_size):
+                self.__entries__[(x, y)].show_note_text()
+
     @simple_debug
     def entry_validate (self, widget, *args):
         val = widget.get_value()
-        self.add_value(widget.x, widget.y, val)
+        if (args and args[0] == 'undo-change'):
+            # When undoing from one value to another - remove the errors from
+            # the previous value and add the new value to the proper tracker
+            self.remove_error_highlight()
+            self.add_value(widget.x, widget.y, val, widget.tracker_id)
+        else:
+            self.add_value(widget.x, widget.y, val)
         if self.grid.check_for_completeness():
             self.emit('puzzle-finished')
 
@@ -382,36 +443,45 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         for coord in self.grid.conflicts[(x, y)]:
             self.__entries__[coord].set_error_highlight(True)
 
+    def set_value(self, x, y, val):
+        '''Sets value for position x, y to val.
+
+        Calls set_text_interactive so the history list is updated.
+        '''
+        self.__entries__[(x, y)].set_text_interactive(str(val))
+
     @simple_debug
-    def add_value (self, x, y, val, trackers = []):
+    def add_value (self, x, y, val, tracker = None):
         """Add value val at position x, y.
 
-        If tracker is True, we track it with tracker ID tracker.
-
-        Otherwise, we use any currently tracking trackers to track our addition.
-
-        Providing the tracker arg is mostly useful for e.g. undo/redo
-        or removed items.
-
-        To specify NO trackers, use trackers = [-1]
+        If tracker is set, we track the value with it.  Otherwise,
+        the current tracker is used(default).
         """
-        # Add the value to the UI to display
-        self.__entries__[(x, y)].set_value(val)
-        if self.doing_initial_setup:
-            self.__entries__[(x, y)].set_read_only(True)
-        # Handle any trackers.
-        if trackers:
-            # Explicitly specified tracker
-            for tracker in trackers:
-                if tracker == -1:
-                    pass
-                self.__entries__[(x, y)].set_color(self.get_tracker_color(tracker))
-                self.trackers[tracker].append((x, y, val))
-        elif True in self.__trackers_tracking__.values():
-            for k, v in self.__trackers_tracking__.items():
-                if v:
-                    self.__entries__[(x, y)].set_color(self.get_tracker_color(k))
-                    self.trackers[k].append((x, y, val))
+        # If the cell already has a value - remove it first.
+        e = self.__entries__[(x, y)]
+        if e.get_value():
+            self.remove(x, y)
+        # Explicitly specified tracker
+        if tracker:
+            # Only add it to the display when it's tracker is visible
+            if tracker == tracker_info.NO_TRACKER or tracker == self.tinfo.showing_tracker:
+                self.__entries__[(x, y)].set_value(val, tracker)
+            # If the tracker isn't showing at the moment - add it as a trace
+            if tracker != tracker_info.NO_TRACKER:
+                self.tinfo.add_trace(x, y, val, tracker)
+        else:
+            # Add a trace(tracked value) if a tracker is selected
+            if self.tinfo.current_tracker != tracker_info.NO_TRACKER:
+                self.tinfo.add_trace(x, y, val)
+            # Remove all tracked values(all traces) for the cell if the player
+            # adds an untracked value
+            else:
+                self.tinfo.remove_trace(x, y)
+            self.__entries__[(x, y)].set_value(val, self.tinfo.current_tracker)
+            if self.doing_initial_setup:
+                self.__entries__[(x, y)].set_read_only(True)
+            else:
+                self.__entries__[(x, y)].recolor(self.tinfo.current_tracker)
         # Add it to the underlying grid
         self.grid.add(x, y, val, True)
         # Highlight any conflicts that the new value creates
@@ -425,27 +495,23 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             self.mark_impossible_implications(x, y)
 
     @simple_debug
-    def remove (self, x, y, do_removal = False):
+    def remove (self, x, y, *args):
         """Remove x, y from our visible grid.
 
-        If do_removal, remove it from our underlying grid as well.
+        *args is passed from the undo mechanism
         """
         e = self.__entries__[(x, y)]
         # Always call the grid's remove() for proper conflict resolution
         if self.grid:
             self.grid.remove(x, y)
             self.remove_error_highlight()
-        # remove trackers
-        for t in self.trackers_for_point(x, y):
-            remove = []
-            for crumb in self.trackers[t]:
-                if crumb[0] == x and crumb[1] == y:
-                    remove.append(crumb)
-            for r in remove:
-                self.trackers[t].remove(r)
-        if e.get_text():
-            e.set_value(0)
-        e.unset_color()
+        # Remove it from the tracker.  When removing via undo, the trace
+        # manipulation is handled at a higher level
+        if not args or args[0] != 'undo-change':
+            if e.tracker_id != tracker_info.NO_TRACKER:
+                self.tinfo.remove_trace(x, y, e.tracker_id)
+        # Reset the value and tracker id
+        e.set_value(0, tracker_info.NO_TRACKER)
         # Update all hints if we need to
         if self.grid and self.always_show_hints and not self.doing_initial_setup:
             self.update_all_hints()
@@ -573,88 +639,64 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         if grid_modified and self.always_show_hints:
             self.update_all_hints()
 
-    @simple_debug
-    def create_tracker (self, identifier = 0):
-        if not identifier:
-            identifier = 0
-        while self.trackers.has_key(identifier):
-            identifier += 1
-        self.trackers[identifier] = []
-        return identifier
+    def delete_by_tracker (self):
+        '''Delete all cells tracked by the current tracker
 
-    def trackers_for_point (self, x, y, val = None):
-        if val:
-            # if we have a value we can do this a simpler way...
-            track_for_point = filter(
-                lambda t: (x, y, val) in t[1],
-                self.trackers.items()
-                )
-        else:
-            track_for_point = filter(
-                lambda tkr: True in [t[0] == x and t[1] == y for t in tkr[1]],
-                self.trackers.items())
-        return [t[0] for t in track_for_point]
-
-    def get_tracker_color (self, identifier):
-        if len(TRACKER_COLORS)>identifier:
-            return TRACKER_COLORS[identifier]
-        else:
-            random_color = TRACKER_COLORS[0]
-            while random_color in TRACKER_COLORS:
-                # If we have generated all possible colors, this will
-                # enter an infinite loop
-                random_color = (random.randint(0, 100)/100.0,
-                                random.randint(0, 100)/100.0,
-                                random.randint(0, 100)/100.0)
-            TRACKER_COLORS.append(random_color)
-            return self.get_tracker_color(identifier)
-
-    @simple_debug
-    def toggle_tracker (self, identifier, value):
-        """Toggle tracking for tracker identified by identifier."""
-        self.__trackers_tracking__[identifier] = value
-
-    def delete_by_tracker (self, identifier):
-        """Delete all cells tracked by tracker ID identifer."""
+        The values are deleted from the tracker as well as the visible grid.
+        '''
         ret = []
-        while self.trackers[identifier]:
-            x, y, v = self.trackers[identifier][0]
-            ret.append((x, y, v, self.trackers_for_point(x, y, v)))
+        tracker = self.tinfo.get_tracker(self.tinfo.showing_tracker)
+        if not tracker:
+            return ret
+        for (x, y), value in tracker.items():
+            ret.append((x, y, value, self.tinfo.showing_tracker))
             self.remove(x, y)
             if self.grid and self.grid._get_(x, y):
                 self.grid.remove(x, y)
         return ret
 
-    def delete_except_for_tracker (self, identifier):
-        tracks = self.trackers[identifier]
-        removed = []
-        for x in range(self.group_size):
-            for y in range(self.group_size):
-                val = self.grid._get_(x, y)
-                if (val
-                    and (x, y, val) not in tracks
-                    and not self.grid.virgin._get_(x, y)
-                    ):
-                    removed.append((x, y, val, self.trackers_for_point(x, y, val)))
-                    self.remove(x, y)
-                    if self.grid and self.grid._get_(x, y):
-                        self.grid.remove(x, y)
+    def cover_track(self, hide = False):
+        '''Hide the current tracker
 
-        return removed
+        All tracked values are deleted from the display, but kept by the
+        tracker.  Setting hide to True changes prevents anything but untracked
+        values to be shown after the call.
+        '''
+        track = self.tinfo.get_tracker(self.tinfo.showing_tracker)
+        if track:
+            for coord in track.keys():
+                self.__entries__[coord].set_value(0, tracker_info.NO_TRACKER)
+                self.grid.remove(*coord)
+                self.remove_error_highlight()
+                self.mark_impossible_implications(*coord)
+        if hide:
+            self.tinfo.hide_tracker()
+        # Update all hints if we need to
+        if self.always_show_hints and not self.doing_initial_setup:
+            self.update_all_hints()
 
-    def add_tracker (self, x, y, tracker, val = None):
-        self.__entries__[(x, y)].set_color(self.get_tracker_color(tracker))
-        # Highlight the conflicts when opening a saved game
-        if self.grid.conflicts.has_key((x, y)):
-            self.__entries__[(x, y)].set_error_highlight(True)
-        if not val:
-            val = self.grid._get_(x, y)
-        self.trackers[tracker].append((x, y, val))
+    def show_track(self):
+        '''Displays the current tracker items
 
-    def remove_tracker (self, x, y, tracker, val = None):
-        if not val:
-            val = self.grid._get_(x, y)
-        self.trackers[tracker].remove((x, y, val))
+        The values and notes for the currently showing tracker will be
+        displayed
+        '''
+        track = self.tinfo.get_tracker(self.tinfo.showing_tracker)
+        if not track:
+            return
+        for (x, y), value in track.items():
+            self.__entries__[(x, y)].set_value(value, self.tinfo.showing_tracker)
+            self.__entries__[(x, y)].recolor(self.tinfo.showing_tracker)
+            # Add it to the underlying grid
+            self.grid.add(x, y, value, True)
+            # Highlight any conflicts that the new value creates
+            self.highlight_conflicts(x, y)
+            # Draw our entry
+            self.__entries__[(x, y)].queue_draw()
+            self.mark_impossible_implications(x, y)
+        # Update all hints if we need to
+        if self.always_show_hints and not self.doing_initial_setup:
+            self.update_all_hints()
 
 if __name__ == '__main__':
     window = gtk.Window()

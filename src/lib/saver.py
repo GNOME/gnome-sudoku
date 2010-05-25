@@ -3,6 +3,7 @@ import gtk, pickle, types, os, errno
 import defaults
 from gtk_goodies.dialog_extras import show_message
 from gettext import gettext as _
+import tracker_info
 
 SAVE_ATTRIBUTES = [('gsd.hints'),
                    ('gsd.impossible_hints'),
@@ -48,13 +49,11 @@ def jar_game (ui):
     jar = {} # what we will pickle
     ui.timer.mark_timing()
     jar['game'] = ui.gsd.grid.to_string()
-    jar['trackers'] = ui.gsd.trackers
-    jar['tracking'] = ui.gsd.__trackers_tracking__
-    jar['notes'] = []
+    jar['tracker_info'] = tracker_info.TrackerInfo().save()
+    jar['tracked_notes'] = []
     for e in ui.gsd.__entries__.values():
-        top, bot = e.get_note_text()
-        if top or bot:
-            jar['notes'].append((e.x, e.y, top, bot))
+        if e.top_note_list or e.bottom_note_list:
+            jar['tracked_notes'].append((e.x, e.y, e.top_note_list, e.bottom_note_list))
     for attr in SAVE_ATTRIBUTES:
         jar[attr] = super_getattr(ui, attr)
     return jar
@@ -64,22 +63,39 @@ def set_value_from_jar (dest, jar):
         super_setattr(dest, attr, jar[attr])
 
 def open_game (ui, jar):
+    tinfo = tracker_info.TrackerInfo()
+    tinfo.set_tracker(tracker_info.NO_TRACKER)
     ui.gsd.load_game(jar['game'])
-    # this is a bit easily breakable... we take advantage of the fact
-    # that we create tracker IDs sequentially and that {}.items()
-    # sorts by keys by default
-    for tracker, tracked in jar.get('trackers', {}).items():
-        # add 1 tracker per existing tracker...
-        ui.tracker_ui.add_tracker()
-        for x, y, val in tracked:
-            ui.gsd.add_tracker(x, y, tracker, val = val)
-    for tracker, tracking in jar.get('tracking', {}).items():
-        if tracking:
-            ui.tracker_ui.select_tracker(tracker)
-    set_value_from_jar(ui, jar)
+    # The 'notes' and 'trackers' sections are for transition from the old
+    # style tracker storage.  The tracker values and notes are stored in the
+    # 'tracked_notes' and 'tracker_info' sections now.
     if jar.has_key('notes') and jar['notes']:
         for x, y, top, bot in jar['notes']:
             ui.gsd.__entries__[(x, y)].set_note_text(top, bot)
+    if jar.has_key('trackers'):
+        for tracker, tracked in jar.get('trackers', {}).items():
+            # add 1 tracker per existing tracker...
+            ui.tracker_ui.add_tracker()
+            for x, y, val in tracked:
+                tinfo.add_trace(x, y, val)
+    set_value_from_jar(ui, jar)
+    if jar.has_key('tracking'):
+        for tracker, tracking in jar.get('tracking', {}).items():
+            if tracking:
+                ui.tracker_ui.select_tracker(tracker)
+    if jar.has_key('tracked_notes') and jar['tracked_notes']:
+        for x, y, top, bot in jar['tracked_notes']:
+            ui.gsd.__entries__[(x, y)].set_notelist(top, bot)
+    if jar.has_key('tracker_info'):
+        trackers = jar['tracker_info'][2]
+        for tracking in trackers.keys():
+            ui.tracker_ui.add_tracker(tracker_id = tracking)
+        tinfo.load(jar['tracker_info'])
+        ui.tracker_ui.select_tracker(tinfo.current_tracker)
+        if tinfo.showing_tracker != tracker_info.NO_TRACKER:
+            ui.gsd.show_track()
+    # Display the notes
+    ui.gsd.update_all_notes()
 
 def pickle_game (ui, target):
     close_me = False

@@ -3,7 +3,7 @@
 
 import gtk, gobject, pango, cairo
 import math
-import timer
+import tracker_info
 from gettext import gettext as _
 
 ERROR_HIGHLIGHT_COLOR = (1.0, 0, 0)
@@ -79,10 +79,12 @@ class NumberBox (gtk.Widget):
     _bottom_note_layout = None
     text_color = None
     highlight_color = None
+    shadow_color = None
     custom_background_color = None
 
     __gsignals__ = {
         'value-about-to-change':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
+        'notes-about-to-change':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
         'changed':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
         # undo-change - A hacky way to handle the fact that we want to
         # respond to undo's changes but we don't want undo to respond
@@ -104,6 +106,13 @@ class NumberBox (gtk.Widget):
         self.font.set_size(BASE_FONT_SIZE)
         self.note_font = self.font.copy()
         self.note_font.set_size(NOTE_FONT_SIZE)
+        self._top_note_layout = pango.Layout(self.create_pango_context())
+        self._top_note_layout.set_font_description(self.note_font)
+        self._bottom_note_layout = pango.Layout(self.create_pango_context())
+        self._bottom_note_layout.set_font_description(self.note_font)
+        self.top_note_list = []
+        self.bottom_note_list = []
+        self.tinfo = tracker_info.TrackerInfo()
         self.set_property('can-focus', True)
         self.set_property('events', gtk.gdk.ALL_EVENTS_MASK)
         self.connect('button-press-event', self.button_press_cb)
@@ -200,18 +209,12 @@ class NumberBox (gtk.Widget):
                 self.add_note_text(txt, top = True)
             elif e.state & gtk.gdk.MOD1_MASK:
                 self.remove_note_text(txt, top = True)
-            elif self.get_text() != txt:
-                # If there's no change, do nothing
-
-                # First do a removal event -- this is something of a
-                # kludge, but it works nicely with old code that was based
-                # on entries, which also behave this way (they generate 2
-                # events for replacing a number with a new number - a
-                # removal event and an addition event)
-
-                if self.get_text():
-                    self.set_text_interactive('')
-                # Then add
+            elif self.get_text() != txt or \
+                (self.tracker_id != tracker_info.NO_TRACKER and
+                 self.tinfo.current_tracker == tracker_info.NO_TRACKER):
+                # If there's no change, do nothing unless the player wants to
+                # change a tracked item while not tracking(ie commit a tracked
+                # change)
                 self.set_text_interactive(txt)
         elif txt in ['0', 'Delete', 'BackSpace']:
             self.set_text_interactive('')
@@ -300,7 +303,6 @@ class NumberBox (gtk.Widget):
 
     def number_changed_cb (self, num_selector):
         self.destroy_npicker()
-        self.set_text_interactive('')
         newval = num_selector.get_value()
         if newval:
             self.set_text_interactive(str(newval))
@@ -339,9 +341,8 @@ class NumberBox (gtk.Widget):
         if type(font) == str:
             font = pango.FontDescription(font)
         self.note_font = font
-        if self.top_note_text or self.bottom_note_text:
-            self.set_note_text(self.top_note_text,
-                               self.bottom_note_text)
+        self._top_note_layout.set_font_description(font)
+        self._bottom_note_layout.set_font_description(font)
         self.queue_draw()
 
     def set_text (self, text):
@@ -349,30 +350,158 @@ class NumberBox (gtk.Widget):
         self._layout = self.create_pango_layout(text)
         self._layout.set_font_description(self.font)
 
-    def set_notes (self, notes):
-        """Hackish method to allow easy use of Undo API.
-
-        Undo API requires a set method that is called with one
-        argument (the result of a get method)"""
-        self.set_note_text(top_text = notes[0],
-                           bottom_text = notes[1])
+    def show_note_text (self):
+        '''Display the notes for the current view
+        '''
+        self.top_note_text = self.get_note_display(self.top_note_list)[1]
+        self._top_note_layout.set_markup(self.get_note_display(self.top_note_list)[2])
+        self.bottom_note_text = self.get_note_display(self.bottom_note_list)[1]
+        self._bottom_note_layout.set_markup(self.get_note_display(self.bottom_note_list)[2])
         self.queue_draw()
 
-    def set_note_text (self, top_text = None, bottom_text = None):
+    def set_note_text (self, top_text = None, bottom_text = None, for_hint = False):
+        '''Change the notes
+        '''
         if top_text is not None:
-            self.top_note_text = top_text
-            self._top_note_layout = self.create_pango_layout(top_text)
-            self._top_note_layout.set_font_description(self.note_font)
+            self.update_notelist(self.top_note_list, top_text)
         if bottom_text is not None:
-            self.bottom_note_text = bottom_text
-            self._bottom_note_layout = self.create_pango_layout(bottom_text)
-            self._bottom_note_layout.set_font_description(self.note_font)
-        self.queue_draw()
+            self.update_notelist(self.bottom_note_list, bottom_text, for_hint)
+        self.show_note_text()
 
     def set_note_text_interactive (self, *args, **kwargs):
-        self.emit('value-about-to-change')
+        self.emit('notes-about-to-change')
         self.set_note_text(*args, **kwargs)
         self.emit('notes-changed')
+
+    def set_notelist(self, top_notelist, bottom_notelist):
+        '''Assign new note lists
+        '''
+        if top_notelist:
+            self.top_note_list = top_notelist
+        if bottom_notelist:
+            self.bottom_note_list = bottom_notelist
+
+    def get_note_display(self, notelist, tracker_id = None, include_untracked = True):
+        '''Parse a notelist for display
+
+        Parse a notelist for the display.
+        notelist - This method works on one notelist at a time, so
+            top_note_list or bottom_note_list must be passed in.
+        tracker_id - can specify a particular tracker.  The default is to use
+            tracker that is currently showing.
+        include_untracked - When set to True(default), the untracked notes will
+            be included in the output.  Set it to false to exclude untracked
+            notes.
+
+        The output is returned in 3 formats:
+        display_list - is tuple list in the format (notelist_index, tid, note)
+            notelist_index - the index within the notelist
+            tid - tracker id
+            note - value of the note
+        display_text - vanilla string representing all the values
+        markup_text - pango markup string that colors each note for its tracker
+        '''
+        display_list = []
+        display_text = ''
+        markup_text = ''
+        if tracker_id == None:
+            tracker_id = self.tinfo.showing_tracker
+        if include_untracked:
+            track_filter = [tracker_info.NO_TRACKER, tracker_id]
+        else:
+            track_filter = [tracker_id]
+        last_tracker = tracker_info.NO_TRACKER
+        for notelist_index, (tid, note) in enumerate(notelist[:]):
+            if tid not in track_filter:
+                continue
+            display_list.append((notelist_index, tid, note))
+            display_text += note
+            if tid != last_tracker:
+                if self.tinfo.get_color_markup(last_tracker):
+                    markup_text += '</span>'
+                if self.tinfo.get_color_markup(tid):
+                    markup_text += '<span foreground="' + str(self.tinfo.get_color_markup(tid)) + '">'
+                last_tracker = tid
+            markup_text += note
+        if self.tinfo.get_color_markup(last_tracker):
+            markup_text += '</span>'
+        return((display_list, display_text, markup_text))
+
+    def update_notelist(self, notelist, new_notes, for_hint = False):
+        '''Parse notes for a notelist
+
+        A notelist stores individual notes in the format (tracker, note).  The
+        sequence is also meaningful - it dictates the order in which the notes
+        are displayed.  One notelist is maintained for the top
+        notes(top_note_list), and one for the bottom(bottom_note_list).  This
+        method is responsible for maintaining those lists.
+
+        When updating for hints(for_hint == True), the old notes are replaced
+        completely by the new notes and set with NO_TRACKER.
+        '''
+        # Remove any duplicates
+        unique_notes = ""
+        for note in new_notes:
+            if note not in unique_notes:
+                unique_notes += note
+        # Create a list and text version of the notelist
+        display_list = self.get_note_display(notelist)[0]
+        display_text = self.get_note_display(notelist)[1]
+        if display_text == unique_notes:
+            return
+        # Remove deleted values from the notelist
+        del_offset = 0
+        for display_index, (notelist_index, tid, old_note) in enumerate(display_list[:]):
+            if old_note not in unique_notes or for_hint:
+                del notelist[notelist_index + del_offset]
+                del display_list[display_index + del_offset]
+                del_offset -= 1
+            else:
+                # Adjust the display_list index
+                display_list[display_index + del_offset] = (notelist_index + del_offset, tid, old_note)
+        # Insert any new values into the notelist
+        ins_offset = 0
+        display_index = 0
+        for new_index, new_note in enumerate(unique_notes):
+            add_note = False
+            # if the new notes are longer than the current ones - append
+            if len(display_list) <= display_index:
+                notelist_index = len(notelist)
+                ins_offset = 0
+                add_note = True
+            # Otherwise - advance until we find the appropriate place to insert
+            else:
+                old_note = display_list[display_index][2]
+                if new_note != old_note:
+                    notelist_index = display_list[display_index][0]
+                    add_note = True
+                display_index += 1
+            if add_note:
+                if for_hint:
+                    use_tracker = tracker_info.NO_TRACKER
+                else:
+                    use_tracker = self.tinfo.current_tracker
+                notelist.insert(notelist_index + ins_offset, (use_tracker, new_note))
+                display_list.insert(new_index, (notelist_index + ins_offset, self.tinfo.current_tracker, new_note))
+                ins_offset = ins_offset + 1
+        self.trim_untracked_notes(notelist)
+
+    def trim_untracked_notes(self, notelist):
+        untracked_text = self.get_note_display(notelist, tracker_info.NO_TRACKER)[1]
+        for tid, note in notelist[:]:
+            if note in untracked_text and tid != tracker_info.NO_TRACKER:
+                notelist.remove((tid, note))
+
+    def get_notes_for_undo(self):
+        '''Return the top and bottom notelists
+        '''
+        return((self.top_note_list[:], self.bottom_note_list[:]))
+
+    def set_notes_for_undo(self, notelists):
+        '''Reset the top and bottom notelists from an undo
+        '''
+        self.top_note_list, self.bottom_note_list = notelists
+        self.show_note_text()
 
     def do_realize (self):
         # The do_realize method is responsible for creating GDK (windowing system)
@@ -517,6 +646,14 @@ class NumberBox (gtk.Widget):
         cr.stroke()
 
     def draw_text (self, cr):
+        fontw, fonth = self._layout.get_pixel_size()
+        # Draw a shadow for tracked conflicts.  This is done to
+        # differentiate between tracked and untracked conflicts.
+        if self.shadow_color:
+            cr.set_source_rgb(*self.shadow_color)
+            for xoff, yoff in [(1,1),(2,2)]:
+                cr.move_to((BASE_SIZE/2)-(fontw/2) + xoff, (BASE_SIZE/2) - (fonth/2) + yoff)
+                cr.show_layout(self._layout)
         if self.text_color:
             cr.set_source_rgb(*self.text_color)
         elif self.read_only:
@@ -525,7 +662,6 @@ class NumberBox (gtk.Widget):
             cr.set_source_color(self.style.text[self.state])
         # And draw the text in the middle of the allocated space
         if self._layout:
-            fontw, fonth = self._layout.get_pixel_size()
             cr.move_to(
                 (BASE_SIZE/2)-(fontw/2),
                 (BASE_SIZE/2) - (fonth/2),
@@ -551,7 +687,8 @@ class NumberBox (gtk.Widget):
             cr.update_layout(self._bottom_note_layout)
             cr.show_layout(self._bottom_note_layout)
 
-    def set_text_color (self, color):
+    def set_text_color (self, color, shadow = None):
+        self.shadow_color = shadow
         self.text_color = color
         self.queue_draw()
 
@@ -564,10 +701,6 @@ class NumberBox (gtk.Widget):
 
     def show_notes (self):
         pass
-
-    def set_value_from_undo (self, v):
-        self.set_value(v)
-        self.emit('undo_change')
 
     def set_value (self, v):
         if 0 < v <= self.upper:
@@ -591,19 +724,41 @@ class NumberBox (gtk.Widget):
 class SudokuNumberBox (NumberBox):
 
     normal_color = None
+    tracker_id = None
     error_color = (1.0, 0, 0)
     highlight_color = ERROR_HIGHLIGHT_COLOR
 
-    def set_color (self, color):
-        self.normal_color = color
+    def set_value(self, val, tracker_id = None):
+        if tracker_id == None:
+            self.tracker_id = self.tinfo.current_tracker
+        else:
+            self.tracker_id = tracker_id
+        self.normal_color = self.tinfo.get_color(self.tracker_id)
         self.set_text_color(self.normal_color)
+        super(SudokuNumberBox, self).set_value(val)
 
-    def unset_color (self):
-        self.set_color(None)
+    def get_value_for_undo(self):
+        return(self.tracker_id, self.get_value(), self.tinfo.get_trackers_for_cell(self.x, self.y))
+
+    def set_value_for_undo (self, undo_val):
+        tracker_id, value, all_traces = undo_val
+        # When undo sets a value, switch to that tracker
+        if value:
+            self.tinfo.ui.select_tracker(tracker_id)
+        self.set_value(value, tracker_id)
+        self.tinfo.reset_trackers_for_cell(self.x, self.y, all_traces)
+        self.emit('undo_change')
+
+    def recolor(self, tracker_id):
+        self.normal_color = self.tinfo.get_color(tracker_id)
+        self.set_text_color(self.normal_color)
 
     def set_error_highlight (self, val):
         if val:
-            self.set_text_color(self.error_color)
+            if (self.tracker_id != tracker_info.NO_TRACKER):
+                self.set_text_color(self.error_color, self.normal_color)
+            else:
+                self.set_text_color(self.error_color)
         else:
             self.set_text_color(self.normal_color)
 

@@ -10,6 +10,7 @@ import threading
 
 import gobject
 import gtk
+import pango
 from gettext import gettext as _
 from gettext import ngettext
 
@@ -20,6 +21,7 @@ import printing
 import saver
 import sudoku_maker
 import timer
+import tracker_info
 from defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION, DOMAIN, 
         IMAGE_DIR, LICENSE, MIN_NEW_PUZZLES, UI_DIR, VERSION, WEBSITE, WEBSITE_LABEL)
 from gtk_goodies import gconf_wrapper, Undo, dialog_extras
@@ -292,14 +294,15 @@ class UI (gconf_wrapper.GConfWrapper):
         self.history = Undo.UndoHistoryList(undo_widg, redo_widg)
         for entry in self.gsd.__entries__.values():
             Undo.UndoableGenericWidget(entry, self.history,
-                                       set_method = 'set_value_from_undo',
+                                       set_method = 'set_value_for_undo',
+                                       get_method = 'get_value_for_undo',
                                        pre_change_signal = 'value-about-to-change'
                                        )
             Undo.UndoableGenericWidget(entry, self.history,
-                                       set_method = 'set_notes',
-                                       get_method = 'get_note_text',
+                                       set_method = 'set_notes_for_undo',
+                                       get_method = 'get_notes_for_undo',
                                        signal = 'notes-changed',
-                                       pre_change_signal = 'value-about-to-change',
+                                       pre_change_signal = 'notes-about-to-change',
                                        )
 
     def setup_color (self):
@@ -454,6 +457,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.tracker_ui.reset()
         self.history.clear()
         self.won = False
+        self.old_tracker_view = None
 
     @simple_debug
     def resize_cb (self, widget, event):
@@ -513,13 +517,20 @@ class UI (gconf_wrapper.GConfWrapper):
         clearer.perform()
 
     def do_game_reset (self, *args):
+        self.gsd.cover_track()
+        self.cleared.append(self.tinfo.save())
         self.cleared.append(self.gsd.reset_grid())
+        self.cleared_notes.append((tracker_info.NO_TRACKER, self.gsd.clear_notes('All')))
+        self.tinfo.reset()
         self.stop_dancer()
-        self.do_clear_notes()
 
     def undo_game_reset (self, *args):
+        self.tracker_ui.select_tracker(tracker_info.NO_TRACKER)
         for entry in self.cleared.pop():
             self.gsd.add_value(*entry)
+        self.tinfo.load(self.cleared.pop())
+        self.tracker_ui.select_tracker(self.tinfo.current_tracker)
+        self.gsd.show_track()
         self.undo_clear_notes()
 
     def clear_top_notes_cb (self, *args):
@@ -538,20 +549,14 @@ class UI (gconf_wrapper.GConfWrapper):
             )
         clearer.perform()
 
-    def do_clear_notes(self, side = 'Both'):
+    def do_clear_notes(self, side):
         ''' Clear top, bottom, or all notes - in undoable fashion
 
-        The side argument is used to specify which notes
-        are to be cleared.
-        'Top' - just clear the top notes
-        'Bottom' - just clear the bottom notes
-        'Both' - clear all notes(argument default)
-
-        Store all of the cleared notes in the cleared_notes list so the undo
-        can pick up on them later.  The list items are in the format
-        (x, y, (top note, bottom note)).
+        The side argument is used to specify which notes are to be cleared.
+        'Top' - Clear only the top notes
+        'Bottom' - Clear only the bottom notes
         '''
-        self.cleared_notes.append(self.gsd.clear_notes(side))
+        self.cleared_notes.append((self.tinfo.current_tracker, self.gsd.clear_notes(side)))
         # Turn off auto-hint if the player clears the bottom notes
         if side == 'Bottom' and self.gconf['always_show_hints']:
             always_show_hint_wdgt = self.main_actions.get_action('AlwaysShowPossible')
@@ -563,19 +568,18 @@ class UI (gconf_wrapper.GConfWrapper):
     def undo_clear_notes(self):
         ''' Undo previously cleared notes
 
-        Clearing notes sets the cleared_notes list of tuples indicating the
-        notes that were cleared. They are in the format
-        (x, y, (top note ,bottom note))
+        Clearing notes fills the cleared_notes list of notes that were cleared.
         '''
-        for x, y, notes in self.cleared_notes.pop():
-            top, bottom = notes
-            if top:
-                self.gsd.__entries__[x, y].set_note_text(top_text = top)
-            if bottom:
-                self.gsd.__entries__[x, y].set_note_text(bottom_text = bottom)
+        cleared_tracker, cleared_notes = self.cleared_notes.pop()
+        # Change the tracker selection if it was tracking during the clear
+        if cleared_tracker != tracker_info.NO_TRACKER:
+            self.tracker_ui.select_tracker(cleared_tracker)
+        self.gsd.apply_notelist(cleared_notes)
         # Update the hints...in case we're undoing over top of them
         if self.gconf['always_show_hints']:
             self.gsd.update_all_hints()
+        # Redraw the notes
+        self.gsd.update_all_notes()
         # Make sure we're still dancing if we undo after win
         if self.gsd.grid.check_for_completeness():
             self.start_dancer()
@@ -591,7 +595,7 @@ class UI (gconf_wrapper.GConfWrapper):
             self.gsd.update_all_hints()
         else:
             self.gsd.always_show_hints = False
-            self.gsd.clear_notes('Bottom')
+            self.gsd.clear_notes('AutoHint')
 
     @simple_debug
     def impossible_implication_cb (self, action):
@@ -602,17 +606,24 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def setup_tracker_interface (self):
-        self.trackers = {}
         self.tracker_ui = TrackerBox(self)
         self.tracker_ui.show_all()
         self.tracker_ui.hide()
+        self.tinfo = tracker_info.TrackerInfo()
+        self.old_tracker_view = None
         self.game_box.add(self.tracker_ui)
 
     @simple_debug
     def tracker_toggle_cb (self, widg):
         if widg.get_active():
+            if self.old_tracker_view:
+                self.tinfo.set_tracker_view(self.old_tracker_view)
+                self.tracker_ui.select_tracker(self.tinfo.current_tracker)
+                self.gsd.show_track()
             self.tracker_ui.show_all()
         else:
+            self.old_tracker_view = self.tinfo.get_tracker_view()
+            self.tracker_ui.hide_tracker_cb(None)
             self.tracker_ui.hide()
 
     @simple_debug
@@ -708,6 +719,8 @@ class TrackerBox (gtk.VBox):
         self.builder.set_translation_domain(DOMAIN)
         self.builder.add_from_file(os.path.join(UI_DIR, 'tracker.ui'))
         self.main_ui = main_ui
+        self.tinfo = tracker_info.TrackerInfo()
+        self.tinfo.ui = self
         self.vb = self.builder.get_object('vbox1')
         self.vb.unparent()
         self.pack_start(self.vb, expand = True, fill = True)
@@ -721,45 +734,77 @@ class TrackerBox (gtk.VBox):
         for tree in self.tracker_model:
             if tree[0] > -1:
                 self.tracker_model.remove(tree.iter)
+        self.tinfo.reset()
+        self.tracker_actions.set_sensitive(False)
 
     @simple_debug
     def setup_tree (self):
         self.tracker_tree = self.builder.get_object('treeview1')
         self.tracker_model = gtk.ListStore(int, gtk.gdk.Pixbuf, str)
+        self.tracker_model.set_sort_column_id(0, gtk.SORT_ASCENDING)
         self.tracker_tree.set_model(self.tracker_model)
         col1 = gtk.TreeViewColumn("", gtk.CellRendererPixbuf(), pixbuf = 1)
-        col2 = gtk.TreeViewColumn("", gtk.CellRendererText(), text = 2)
+        rend = gtk.CellRendererText()
+        col2 = gtk.TreeViewColumn("", rend, text = 2)
+        col2.set_cell_data_func(rend, self.draw_tracker_name)
         self.tracker_tree.append_column(col2)
         self.tracker_tree.append_column(col1)
         # Our initial row...
-        self.tracker_model.append([-1, None, _('No Tracker')])
+        self.tracker_model.append([-1, None, _('Untracked')])
         self.tracker_tree.get_selection().connect('changed', self.selection_changed_cb)
 
     @simple_debug
     def setup_actions (self):
         self.tracker_actions = gtk.ActionGroup('tracker_actions')
         self.tracker_actions.add_actions(
-            [('Clear',
+            [('Remove',
               gtk.STOCK_CLEAR,
-              _('_Clear Tracker'),
-              None, _('Clear all moves tracked by selected tracker.'),
-              self.clear_cb
+              _('_Remove'),
+              None, _('Delete selected tracker.'),
+              self.remove_tracker_cb
+              ),
+             ('Hide',
+              gtk.STOCK_CLEAR,
+              _('H_ide'),
+              None, _('Hide current tracker entries.'),
+              self.hide_tracker_cb
+              ),
+             ('Apply',
+              gtk.STOCK_CLEAR,
+              _('A_pply'),
+              None, _('Apply all tracked values and remove the tracker.'),
+              self.apply_tracker_cb
               ),
              ]
             )
-        a = self.tracker_actions.get_action('Clear')
-        a.connect_proxy(self.builder.get_object('ClearTrackerButton'))
+        a = self.tracker_actions.get_action('Remove')
+        a.connect_proxy(self.builder.get_object('RemoveTrackerButton'))
+        a = self.tracker_actions.get_action('Hide')
+        a.connect_proxy(self.builder.get_object('HideTrackerButton'))
+        a = self.tracker_actions.get_action('Apply')
+        a.connect_proxy(self.builder.get_object('ApplyTrackerButton'))
         self.builder.get_object('AddTrackerButton').connect('clicked',
                                                           self.add_tracker)
         # Default to insensitive (they only become sensitive once a tracker is added)
         self.tracker_actions.set_sensitive(False)
 
+    def draw_tracker_name(self, column, cell, model, iter):
+        if model.get_value(iter, 0) == self.tinfo.showing_tracker and \
+            self.tinfo.showing_tracker != tracker_info.NO_TRACKER and \
+            self.tinfo.showing_tracker !=  self.tinfo.current_tracker:
+            cell.set_property('underline', pango.UNDERLINE_DOUBLE)
+        else:
+            cell.set_property('underline', pango.UNDERLINE_NONE)
+
     @simple_debug
-    def add_tracker (self, *args):
-        tracker_id = self.main_ui.gsd.create_tracker()
+    def add_tracker (self, *args, **keys):
+        if keys and keys.has_key('tracker_id'):
+            tracker_id = self.tinfo.create_tracker(keys['tracker_id'])
+        else:
+            tracker_id = self.tinfo.create_tracker()
         pixbuf = self.pixbuf_transform_color(
             STOCK_PIXBUFS['tracks'],
-            self.main_ui.gsd.get_tracker_color(tracker_id),
+            self.tinfo.get_color(tracker_id)
             )
         # select our new tracker
         self.tracker_tree.get_selection().select_iter(
@@ -768,6 +813,7 @@ class TrackerBox (gtk.VBox):
                                   _("Tracker %s") % (tracker_id + 1)]
                                   )
             )
+        self.tinfo.set_tracker(tracker_id)
 
     @simple_debug
     def pixbuf_transform_color (self, pixbuf, color):
@@ -785,10 +831,28 @@ class TrackerBox (gtk.VBox):
                                             pixbuf.get_width(), pixbuf.get_height(), pixbuf.get_rowstride())
 
     @simple_debug
-    def select_tracker (self, tracker_id):
+    def find_tracker (self, tracker_id):
         for row in self.tracker_model:
             if row[0] == tracker_id:
-                self.tracker_tree.get_selection().select_iter(row.iter)
+                return row
+        return None
+
+    @simple_debug
+    def select_tracker (self, tracker_id):
+        track_row = self.find_tracker(tracker_id)
+        if track_row:
+            self.tracker_tree.get_selection().select_iter(track_row.iter)
+            self.tinfo.set_tracker(tracker_id)
+
+    def redraw_row(self, tracker_id):
+        track_row = self.find_tracker(tracker_id)
+        if track_row:
+            self.tracker_model.row_changed(self.tracker_model.get_path(track_row.iter), track_row.iter)
+
+    def set_tracker_action_sense(self, enabled):
+        self.tracker_actions.set_sensitive(True)
+        for action in self.tracker_actions.list_actions():
+            action.set_sensitive(self.tinfo.showing_tracker != tracker_info.NO_TRACKER)
 
     @simple_debug
     def selection_changed_cb (self, selection):
@@ -796,32 +860,129 @@ class TrackerBox (gtk.VBox):
         if itr:
             selected_tracker_id = mod.get_value(itr, 0)
         else:
-            selected_tracker_id = -1
-        # This should be cheap since we don't expect many trackers...
-        # We cycle through each row and toggle it off if it's not
-        # selected; on if it is selected
-        for row in self.tracker_model:
-            tid = row[0]
-            if tid != -1: # -1 == no tracker
-                self.main_ui.gsd.toggle_tracker(tid, tid == selected_tracker_id)
-        self.tracker_actions.set_sensitive(selected_tracker_id != -1)
+            selected_tracker_id = tracker_info.NO_TRACKER
+        if selected_tracker_id != tracker_info.NO_TRACKER:
+            self.main_ui.gsd.cover_track()
+        # Remove the underline on the showing_tracker
+        self.redraw_row(self.tinfo.showing_tracker)
+        self.tinfo.set_tracker(selected_tracker_id)
+        self.set_tracker_action_sense(self.tinfo.showing_tracker != tracker_info.NO_TRACKER)
+        # Show the tracker
+        if selected_tracker_id != tracker_info.NO_TRACKER:
+            self.main_ui.gsd.show_track()
+        self.main_ui.gsd.update_all_notes()
+        if self.main_ui.gconf['always_show_hints']:
+            self.main_ui.gsd.update_all_hints()
 
     @simple_debug
-    def clear_cb (self, action):
+    def remove_tracker_cb (self, action):
         mod, itr = self.tracker_tree.get_selection().get_selected()
         # This should only be called if there is an itr, but we'll
         # double-check just in case.
         if itr:
-            selected_tracker_id = mod.get_value(itr, 0)
-            self.tracker_delete_tracks(selected_tracker_id)
+            clearer = Undo.UndoableObject(
+                self.do_delete_tracker,
+                self.undo_delete_tracker,
+                self.main_ui.history
+                )
+            clearer.perform()
 
     @simple_debug
-    def tracker_delete_tracks (self, tracker_id):
-        clearer = Undo.UndoableObject(
-            lambda *args: self.main_ui.cleared.append(self.main_ui.gsd.delete_by_tracker(tracker_id)),
-            lambda *args: [self.main_ui.gsd.add_value(*entry) for entry in self.main_ui.cleared.pop()],
-            self.main_ui.history)
-        clearer.perform()
+    def hide_tracker_cb (self, action):
+        hiding_tracker = self.tinfo.showing_tracker
+        self.select_tracker(tracker_info.NO_TRACKER)
+        self.main_ui.gsd.cover_track(True)
+        self.main_ui.gsd.update_all_notes()
+        self.set_tracker_action_sense(False)
+        self.redraw_row(hiding_tracker)
+
+    @simple_debug
+    def apply_tracker_cb (self, action):
+        '''Apply Tracker button action
+        '''
+        # Shouldn't be here if no tracker is showing
+        if self.tinfo.showing_tracker == tracker_info.NO_TRACKER:
+            return
+        # Apply the tracker in undo-able fashion
+        applyer = Undo.UndoableObject(
+            self.do_apply_tracker,
+            self.undo_apply_tracker,
+            self.main_ui.history
+            )
+        applyer.perform()
+
+    def do_apply_tracker(self):
+        '''Apply the showing tracker to untracked
+
+        All of the values and notes will be transferred to untracked and
+        the tracker is deleted.
+        '''
+        track_row = self.find_tracker(self.tinfo.showing_tracker)
+        if not track_row:
+            return
+        # Delete the tracker
+        cleared_values, cleared_notes = self.do_delete_tracker(True)
+        # Apply the values
+        for x, y, val, tid in cleared_values:
+            self.main_ui.gsd.set_value(x, y, val)
+        # Then apply the notes
+        self.main_ui.gsd.apply_notelist(cleared_notes, True)
+        # Store the undo counts
+        self.main_ui.cleared.append(len(cleared_values))
+        self.main_ui.cleared_notes.append(len(cleared_notes))
+
+    def undo_apply_tracker(self):
+        '''Undo a previous tracker apply
+
+        The number of cleared values and notes are stored during the apply.
+        The undo is called for each of them, then the tracker delete is
+        undone.
+        '''
+        # Undo all of the applied values and notes
+        value_count = self.main_ui.cleared.pop()
+        note_count = self.main_ui.cleared_notes.pop()
+        count = 0
+        while count < (value_count + note_count):
+            self.main_ui.history.undo()
+            count += 1
+        # Undo the tracker delete
+        self.undo_delete_tracker()
+
+    def do_delete_tracker(self, for_apply = False):
+        '''Delete the current tracker
+        '''
+        track_row = self.find_tracker(self.tinfo.showing_tracker)
+        if not track_row:
+            return
+        ui_row = [track_row[0], track_row[1], track_row[2]]
+        # For the values, store it like (tracker_id, list_of_cleared_values)
+        cleared_values = self.main_ui.gsd.delete_by_tracker()
+        self.main_ui.cleared.append((self.tinfo.showing_tracker, ui_row, cleared_values))
+        # The notes already have tracker info in them, so just store the list
+        cleared_notes = self.main_ui.gsd.clear_notes(tracker = self.tinfo.showing_tracker)
+        self.main_ui.cleared_notes.append(cleared_notes)
+        # Delete it from tracker_info
+        self.hide_tracker_cb(None)
+        self.tracker_model.remove(track_row.iter)
+        self.tinfo.delete_tracker(ui_row[0])
+        # Return all of the data for "Apply Tracker" button
+        if for_apply:
+            return (cleared_values, cleared_notes)
+
+    def undo_delete_tracker(self):
+        '''Undo a tracker delete
+        '''
+        # Values are stored like (tracker_id, list_of_cleared_values)
+        tracker_id, ui_row, cleared_values = self.main_ui.cleared.pop()
+        # Recreate it in tracker_info
+        self.tinfo.create_tracker(tracker_id)
+        # Add it to the tree
+        self.tracker_tree.get_selection().select_iter(self.tracker_model.append(ui_row))
+        # Add all the values
+        for value in cleared_values:
+            self.main_ui.gsd.add_value(*value)
+        # The notes already have tracker info in them, so just store the list
+        self.main_ui.gsd.apply_notelist(self.main_ui.cleared_notes.pop())
 
 def start_game ():
     if options.debug:
