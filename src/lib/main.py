@@ -739,7 +739,7 @@ class TrackerBox (gtk.VBox):
 
     @simple_debug
     def setup_tree (self):
-        self.tracker_tree = self.builder.get_object('treeview1')
+        self.tracker_tree = self.builder.get_object('TrackerTreeView')
         self.tracker_model = gtk.ListStore(int, gtk.gdk.Pixbuf, str)
         self.tracker_model.set_sort_column_id(0, gtk.SORT_ASCENDING)
         self.tracker_tree.set_model(self.tracker_model)
@@ -750,7 +750,11 @@ class TrackerBox (gtk.VBox):
         self.tracker_tree.append_column(col2)
         self.tracker_tree.append_column(col1)
         # Our initial row...
-        self.tracker_model.append([-1, None, _('Untracked')])
+        pixbuf = self.pixbuf_transform_color(
+            STOCK_PIXBUFS['tracks'],
+            (0, 0, 0)
+            )
+        self.tracker_model.append([-1, pixbuf, _('Untracked')])
         self.tracker_tree.get_selection().connect('changed', self.selection_changed_cb)
 
     @simple_debug
