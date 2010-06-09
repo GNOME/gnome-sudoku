@@ -55,10 +55,10 @@ class PausableWrapper (MethodWrapper):
 
     def wrapper (self, cls, *args, **kwargs):
         if cls.terminated:
-            raise "Terminated!"
+            raise Exception("Terminated!")
         while cls.paused:
             if cls.terminated:
-                raise "Terminated!"
+                raise Exception("Terminated!")
             time.sleep(self.sleep_for)
 
 

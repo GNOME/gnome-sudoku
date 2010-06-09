@@ -27,7 +27,7 @@ class GConf:
         if allowed.has_key (key):
             if not key in allowed[key]:
                 good = ', '.join (allowed[key])
-            raise GConfError, '%s must be one of: (%s)' % (key, good)
+            raise GConfError('%s must be one of: (%s)' % (key, good))
         self.set_value (key, val)
 
     def _get_type (self, key):
@@ -41,7 +41,7 @@ class GConf:
         elif KeyType == BooleanType:
             return 'bool'
         else:
-            raise GConfError, 'unsupported type: %s' % str (KeyType)
+            raise GConfError('unsupported type: %s' % str (KeyType))
 
     # Public functions
 
@@ -60,11 +60,11 @@ class GConf:
     def get_value (self, key):
         '''returns the value of key `key' ''' #'
         if '/' in key:
-            raise GConfError, 'key must not contain /'
+            raise GConfError('key must not contain /')
 
         value = self._gconf_client.get (self._domain + key)
         if value == None:
-            raise GConfError, "gconf_client returned a None!"
+            raise GConfError("gconf_client returned a None!")
         ValueType = value.type
         if ValueType == VALUE_BOOL:
             return value.get_bool ()
@@ -80,66 +80,66 @@ class GConf:
         value_type = self._get_type (value)
 
         if '/' in key:
-            raise GConfError, 'key must not contain /'
+            raise GConfError('key must not contain /')
 
         func = getattr (self._gconf_client, 'set_' + value_type)
         apply (func, (self._domain + key, value))
 
     def get_string (self, key):
         if '/' in key:
-            raise GConfError, 'key must not contain /'
+            raise GConfError('key must not contain /')
 
         return self._gconf_client.get_string (self._domain + key)
    
     def set_string (self, key, value):
         if type (value) != StringType:
-            raise GConfError, 'value must be a string'
+            raise GConfError('value must be a string')
         if '/' in key:
-            raise GConfError, 'key must not contain /'
+            raise GConfError('key must not contain /')
 
         self._gconf_client.set_string (self._domain + key, value)
 
     def get_bool (self, key):
         if '/' in key:
-            raise GConfError, 'key must not contain /'
+            raise GConfError('key must not contain /')
 
         return self._gconf_client.get_bool (self._domain + key)
    
     def set_bool (self, key, value):
         if type (value) != IntType and \
            (key != 0 or key != 1):
-            raise GConfError, 'value must be a boolean'
+            raise GConfError('value must be a boolean')
         if '/' in key:
-            raise GConfError, 'key must not contain /'
+            raise GConfError('key must not contain /')
 
         self._gconf_client.set_bool (self._domain + key, value)
 
     def get_int (self, key):
         if '/' in key:
-            raise GConfError, 'key must not contain /'
+            raise GConfError('key must not contain /')
 
         return self._gconf_client.get_int (self._domain + key)
    
     def set_int (self, key, value):
         if type (value) != IntType:
-            raise GConfError, 'value must be an int'
+            raise GConfError('value must be an int')
         if '/' in key:
-            raise GConfError, 'key must not contain /'
+            raise GConfError('key must not contain /')
 
         self._gconf_client.set_int (self._domain + key, value)
 
     def get_float (self, key):
         if '/' in key:
-            raise GConfError, 'key must not contain /'
+            raise GConfError('key must not contain /')
 
         return self._gconf_client.get_float (self._domain + key)
    
     def set_float (self, key, value):
         if type (value) != FloatType:
-            raise GConfError, 'value must be an float'
+            raise GConfError('value must be an float')
 
         if '/' in key:
-            raise GConfError, 'key must not contain /'
+            raise GConfError('key must not contain /')
 
         self._gconf_client.set_float (self._domain + key, value)
 

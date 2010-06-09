@@ -177,14 +177,14 @@ class UndoableTextContainer:
         self.txt = txt
         
     def setup_widgets (self): pass
-    def get_text (self): raise NotImplementedError
+    def get_text (self): raise NotImplementedError()
 
     def _set_text (self,txt):
         self._setting = True
         self.set_text(txt)
         self._setting = False
         
-    def set_text (self,txt): raise NotImplementedError
+    def set_text (self,txt): raise NotImplementedError()
 
 class UndoableEntry (UndoableTextContainer):
     def __init__ (self, entry,history):
