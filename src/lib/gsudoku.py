@@ -2,6 +2,7 @@
 import gtk, gobject
 import colors
 import math
+import random
 from simple_debug import simple_debug
 import sudoku
 import number_box
@@ -81,6 +82,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                   show_impossible_implications = False):
         group_size = int(group_size)
         self.hints = 0
+        self.hint_square = None
         self.always_show_hints = False
         self.show_impossible_implications = show_impossible_implications
         self.impossible_hints = 0
@@ -183,15 +185,52 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
                 else:
                     e.set_background_color(self.box_color)
 
+    def animate_hint (self):
+        if self.hint_animate_count % 2 == 0:
+            color = (1.0, 0.0, 0.0)
+        else:
+            color = None
+        self.hint_square.set_border_color(color)
+        self.hint_animate_count += 1
+
+        if self.hint_animate_count == 4:
+            self.hint_square = None
+            return False
+
+        return True;
+
+    def set_hint_square (self, square):
+        if self.hint_square is not None:
+            self.hint_square.set_border_color(None)
+            gobject.source_remove(self.hint_timer)
+            self.hint_timer = None
+
+        if square is None:
+            self.hint_square = None
+        else:
+            self.hint_square = self.__entries__[square]
+            self.hint_animate_count = 0
+            self.animate_hint()
+            self.hint_timer = gobject.timeout_add(150, self.animate_hint)
 
     @simple_debug
     def show_hint (self):
-        if hasattr(self, 'focused'):
-            entry = self.focused
-            if entry.read_only or entry.get_text():
-                pass
-            else:
-                self.show_hint_for_entry(entry, interactive = True)
+        min_options = 10;
+        squares = []
+        for x in xrange(9):
+            for y in xrange(9):
+                if self.grid._get_(x, y) != 0:
+                    continue
+                n_options = len(self.grid.possible_values(x, y))
+                if n_options < min_options:
+                    squares = [(x, y)]
+                    min_options = n_options
+                elif n_options == min_options:
+                    squares.append((x, y))
+
+        if len(squares) != 0:
+            self.set_hint_square(random.choice(squares))
+            self.hints += 1
 
     def show_hint_for_entry (self, entry, interactive = False):
         if interactive:
@@ -206,10 +245,8 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             txt = ''.join([str(v) for v in vals])
             if txt != entry.get_text():
                 set_method(bottom_text = txt, for_hint = True)
-                self.hints += 1
         elif not entry.get_text():
             if entry.get_text() != 'X':
-                self.hints += 1
                 set_method(bottom_text = 'X', for_hint = True)
         else:
             set_method(bottom_text = "", for_hint = True)

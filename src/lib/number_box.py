@@ -81,6 +81,7 @@ class NumberBox (gtk.Widget):
     highlight_color = None
     shadow_color = None
     custom_background_color = None
+    border_color = None
 
     __gsignals__ = {
         'value-about-to-change':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
@@ -577,6 +578,12 @@ class NumberBox (gtk.Widget):
         self.draw_background_color(cr, w, h)
         if self.is_focus():
             self.draw_highlight_box(cr, w, h)
+        if self.border_color is not None:
+            border_width = 3.0
+            cr.set_source_rgb(*self.border_color)
+            cr.rectangle(border_width*0.5, border_width*0.5, w-border_width, h-border_width)
+            cr.set_line_width(border_width)
+            cr.stroke()
         if h < w:
             scale = h/float(BASE_SIZE)
         else:
@@ -585,7 +592,6 @@ class NumberBox (gtk.Widget):
         self.draw_text(cr)
         if self.draw_boxes and self.is_focus():
             self.draw_note_area_highlight_box(cr)
-
 
     def draw_background_color (self, cr, w, h):
         if self.read_only:
@@ -694,6 +700,10 @@ class NumberBox (gtk.Widget):
 
     def set_background_color (self, color):
         self.custom_background_color = color
+        self.queue_draw()
+
+    def set_border_color (self, color):
+        self.border_color = color
         self.queue_draw()
 
     def hide_notes (self):
