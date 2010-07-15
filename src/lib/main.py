@@ -246,7 +246,7 @@ class UI (gconf_wrapper.GConfWrapper):
             ('FullScreen', gtk.STOCK_FULLSCREEN, None, 'F11', None, self.full_screen_cb),
             ('Tools', None, _('_Tools')),
             ('ShowPossible', gtk.STOCK_DIALOG_INFO, _('_Hint'), '<Control>h',
-             _('Show which numbers could go in the current square.'), self.show_hint_cb),
+             _('Show a square that is easy to fill.'), self.show_hint_cb),
             ('ClearTopNotes', None, _('Clear _Top Notes'), '<Control>j',
              _("Clear all of the top notes"), self.clear_top_notes_cb),
             ('ClearBottomNotes', None, _('Clear _Bottom Notes'), '<Control>k',
