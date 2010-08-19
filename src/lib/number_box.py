@@ -307,6 +307,8 @@ class NumberBox (gtk.Widget):
         newval = num_selector.get_value()
         if newval:
             self.set_text_interactive(str(newval))
+        else:
+            self.set_text_interactive('')            
 
     def show_number_picker (self):
         w = gtk.Window(type = gtk.WINDOW_POPUP)
