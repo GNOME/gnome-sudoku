@@ -1,18 +1,20 @@
 # Czech translation of gnome-sudoku help.
 # Copyright (C) 2009 the author(s) of gnome-games.
 # This file is distributed under the same license as the gnome-sudoku help.
-# Marek Černocký <marek@manet.cz>, 2009.
+#
+# Marek Černocký <marek@manet.cz>, 2009, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-games gnome-2-28\n"
-"POT-Creation-Date: 2009-07-01 18:47+0000\n"
-"PO-Revision-Date: 2009-07-03 18:17+0100\n"
+"Project-Id-Version: gnome-games master\n"
+"POT-Creation-Date: 2010-09-23 12:39+0000\n"
+"PO-Revision-Date: 2010-09-25 08:06+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
@@ -42,13 +44,13 @@ msgstr "@@image: 'figures/resuming.png'; md5=6415792e740a4e1891d8b15f2820c698"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/gnome-sudoku.xml:422(None)
+#: C/gnome-sudoku.xml:424(None)
 msgid "@@image: 'figures/hints.png'; md5=3ab9ef90aa32fee1fd3cdc95f1e40945"
 msgstr "@@image: 'figures/hints.png'; md5=3ab9ef90aa32fee1fd3cdc95f1e40945"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/gnome-sudoku.xml:438(None)
+#: C/gnome-sudoku.xml:440(None)
 msgid ""
 "@@image: 'figures/always_show_hint.png'; md5=c97972c7861ffe5c9038dc91d3429985"
 msgstr ""
@@ -56,7 +58,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/gnome-sudoku.xml:497(None)
+#: C/gnome-sudoku.xml:499(None)
 msgid ""
 "@@image: 'figures/highlighting.png'; md5=915eb28b353ed2ace530aebbef6f8347"
 msgstr ""
@@ -64,7 +66,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/gnome-sudoku.xml:566(None)
+#: C/gnome-sudoku.xml:568(None)
 msgid ""
 "@@image: 'figures/Print_Sudokus.png'; md5=695e5bccf1743121417d54b3edc4c9f7"
 msgstr ""
@@ -506,7 +508,7 @@ msgstr ""
 "<firstterm>Poznámky</firstterm> vám umožňují si značit u každého políčka "
 "údaje. Spousta hráčů to využívá ke sledování možných hodnot políčka."
 
-#: C/gnome-sudoku.xml:351(term) C/gnome-sudoku.xml:396(title)
+#: C/gnome-sudoku.xml:351(term) C/gnome-sudoku.xml:398(title)
 msgid "Hints and Auto-Fill"
 msgstr "Rady a automatické vyplnění"
 
@@ -520,7 +522,7 @@ msgstr ""
 "firstterm>, aby vám GNOME Sudoku sdělilo možné hodnoty pro dané políčko, "
 "případně vám jej automaticky vyplnilo."
 
-#: C/gnome-sudoku.xml:361(term) C/gnome-sudoku.xml:485(title)
+#: C/gnome-sudoku.xml:361(term) C/gnome-sudoku.xml:487(title)
 msgid "Highlighting"
 msgstr "Zvýrazňování"
 
@@ -532,7 +534,7 @@ msgstr ""
 "V režimu zvýrazňování se současný řádek, sloupec a čtverec zvýrazní "
 "odlišnými barvami, aby se vám snadněji prozkoumávaly."
 
-#: C/gnome-sudoku.xml:368(term) C/gnome-sudoku.xml:510(title)
+#: C/gnome-sudoku.xml:368(term) C/gnome-sudoku.xml:512(title)
 msgid "Trackers"
 msgstr "Sledování tahů"
 
@@ -592,7 +594,26 @@ msgstr ""
 "používá, když si požádáte o <firstterm>radu</firstterm>, neměli byste ji "
 "využívat pro své poznámky v případě, že plánujete rady používat."
 
-#: C/gnome-sudoku.xml:400(para)
+#: C/gnome-sudoku.xml:393(para)
+msgid ""
+"You can clear the notes at the top of the square by typing <keycap>Alt-N</"
+"keycap> and at the bottom of the square by typing <keycap>Alt-M</keycap>."
+msgstr ""
+"Poznámky v horní části políčka můžete zadat zmáčknutím <keycap>Alt-N</"
+"keycap> a obdobně v dolní části políčka zmáčknutím <keycap>Alt-M</keycap>."
+
+#: C/gnome-sudoku.xml:394(para)
+msgid ""
+"You can add a number to the notes at the top of the square by typing "
+"<keycap>Ctrl-1</keycap> through <keycap>Ctrl-9</keycap> and remove a number "
+"from the notes by typing <keycap>Alt-1</keycap> through <keycap>Alt-9</"
+"keycap>."
+msgstr ""
+"V horní části políčka můžete do poznámek přidat čísla zmáčknutím "
+"<keycap>Ctrl-1</keycap> až <keycap>Ctrl-9</keycap> a nebo je zase z poznámek "
+"odebrat zmáčknutím <keycap>Alt-1</keycap> až <keycap>Alt-9</keycap>."
+
+#: C/gnome-sudoku.xml:402(para)
 msgid ""
 "The <firstterm>Hint</firstterm> and <firstterm>Fill</firstterm> features "
 "work based on the logical possibilities given the current board. They do "
@@ -606,11 +627,11 @@ msgstr ""
 "některém dřívějším tahu, mohou tyto funkce vyplnit nebo předpokládat "
 "nesprávné hodnoty."
 
-#: C/gnome-sudoku.xml:415(title) C/gnome-sudoku.xml:418(title)
+#: C/gnome-sudoku.xml:417(title) C/gnome-sudoku.xml:420(title)
 msgid "Hints"
 msgstr "Rady"
 
-#: C/gnome-sudoku.xml:416(para)
+#: C/gnome-sudoku.xml:418(para)
 msgid ""
 "GNOME Sudoku can give you hints based on your current board. You can ask for "
 "a hint for the currently selected square by clicking <guibutton>hint</"
@@ -626,13 +647,13 @@ msgstr ""
 "<keycap>Control-H</keycap>. Tím se do spodní části políčka vloží seznam "
 "možných hodnot."
 
-#: C/gnome-sudoku.xml:425(phrase)
+#: C/gnome-sudoku.xml:427(phrase)
 msgid ""
 "When you click on Hint, possible values are shown in the bottom of a square."
 msgstr ""
 "Když kliknete na Radu, ve spodní části políčka se ukážou možné hodnoty."
 
-#: C/gnome-sudoku.xml:431(para)
+#: C/gnome-sudoku.xml:433(para)
 msgid ""
 "If you want to remove or alter the hint, you can edit the text by clicking "
 "in the bottom of the square."
@@ -640,7 +661,7 @@ msgstr ""
 "Pokud chcete radu odstranit nebo změnit, můžete její text upravit kliknutím "
 "do spodní části políčka."
 
-#: C/gnome-sudoku.xml:432(para)
+#: C/gnome-sudoku.xml:434(para)
 msgid ""
 "For very difficult puzzles, you can choose to have <application>Sudoku</"
 "application> show you the possible values for all squares. To turn this mode "
@@ -655,19 +676,19 @@ msgstr ""
 "jednoduchých her je to může udělat až <emphasis>příliš</emphasis> "
 "jednoduchými, takže byste tento režim měli používat zřídka."
 
-#: C/gnome-sudoku.xml:434(title)
+#: C/gnome-sudoku.xml:436(title)
 msgid "<application>Sudoku</application> in Always-Show-Hint Mode"
 msgstr "<application>Sudoku</application> v režimu „Vždy zobrazovat nápovědu“"
 
-#: C/gnome-sudoku.xml:441(phrase)
+#: C/gnome-sudoku.xml:443(phrase)
 msgid "A difficult puzzle with Always-Show Hint Mode enabled."
 msgstr "Náročná hra se zapnutým režimem „Vždy zobrazovat nápovědu“."
 
-#: C/gnome-sudoku.xml:450(title)
+#: C/gnome-sudoku.xml:452(title)
 msgid "Fill Square"
 msgstr "Vyplnit políčko"
 
-#: C/gnome-sudoku.xml:452(para)
+#: C/gnome-sudoku.xml:454(para)
 msgid ""
 "To automatically fill in a square for which there is only one possible "
 "value, you can click <guibutton>Fill</guibutton>, select "
@@ -683,16 +704,16 @@ msgstr ""
 "funkce je použitelná v případě, kdy například máte v řádku vyplněných 8 z 9 "
 "políček a chcete rychle vyplnit poslední prázdné políčko."
 
-#: C/gnome-sudoku.xml:462(para)
+#: C/gnome-sudoku.xml:464(para)
 msgid ""
 "If there are more than one valid value for the entry, nothing will happen."
 msgstr "Pokud je platná více než jedna hodnota, tak se nestane nic."
 
-#: C/gnome-sudoku.xml:467(title)
+#: C/gnome-sudoku.xml:469(title)
 msgid "Fill All Squares"
 msgstr "Vyplnit všechna políčka"
 
-#: C/gnome-sudoku.xml:469(para)
+#: C/gnome-sudoku.xml:471(para)
 msgid ""
 "You can automatically fill in all squares for which there is logically only "
 "one value at the moment. To do so, select <menuchoice><guisubmenu>Tools</"
@@ -704,7 +725,7 @@ msgstr ""
 "<menuchoice><guisubmenu>Nástroje</guisubmenu><guimenuitem>Vyplnit všechny "
 "čtverce</guimenuitem></menuchoice> nebo zmáčknete <keycap>Control-A</keycap>."
 
-#: C/gnome-sudoku.xml:478(para)
+#: C/gnome-sudoku.xml:480(para)
 msgid ""
 "This feature should only be used to help you when you are very stuck on a "
 "difficult game. Using this feature on an easy game can solve the entire "
@@ -714,7 +735,7 @@ msgstr ""
 "složité hře. Když ji použijete v jednoduché hře, tak se může stát, že se "
 "celá vyřeší jedním kliknutím, čehož výsledkem je velmi nudná hra!"
 
-#: C/gnome-sudoku.xml:486(para)
+#: C/gnome-sudoku.xml:488(para)
 msgid ""
 "You can turn on highlighting to automatically highlight the current row, "
 "column and box in different colors. This can make it easier to see which "
@@ -724,27 +745,27 @@ msgstr ""
 "a čtverec v různých barvách. Tím si usnadníte hledání, které hodnoty nemohou "
 "být v aktuálním políčku. Když chcete režim  zvýrazňování přepnout, můžete:"
 
-#: C/gnome-sudoku.xml:488(para)
+#: C/gnome-sudoku.xml:490(para)
 msgid "Click <guibutton>Highlighter</guibutton>"
 msgstr "Kliknout na <guibutton>Zvýrazňovat</guibutton>"
 
-#: C/gnome-sudoku.xml:489(guisubmenu)
+#: C/gnome-sudoku.xml:491(guisubmenu)
 msgid "View"
 msgstr "Zobrazit"
 
-#: C/gnome-sudoku.xml:489(guimenuitem)
+#: C/gnome-sudoku.xml:491(guimenuitem)
 msgid "Highlighter"
 msgstr "Zvýrazňovat"
 
-#: C/gnome-sudoku.xml:493(title)
+#: C/gnome-sudoku.xml:495(title)
 msgid "<application>Sudoku</application> with highlighting"
 msgstr "<application>Sudoku</application> se zvýrazňováním"
 
-#: C/gnome-sudoku.xml:500(phrase)
+#: C/gnome-sudoku.xml:502(phrase)
 msgid "Highlighting makes it easy to scan rows, columns, and boxes."
 msgstr "Zvýrazňování usnadňuje procházení řádků, sloupců a čtverců."
 
-#: C/gnome-sudoku.xml:511(para)
+#: C/gnome-sudoku.xml:513(para)
 msgid ""
 "You can use trackers to keep track of multiple moves at a time. Tracked "
 "moves will be entered in a different color to make them visually distinct. "
@@ -756,7 +777,7 @@ msgstr ""
 "všechny sledované tahy naráz odstranit. To je částečně použitelné pro řešení "
 "složitých her metodou pokus-omyl."
 
-#: C/gnome-sudoku.xml:512(para)
+#: C/gnome-sudoku.xml:514(para)
 msgid ""
 "Some sudoku players believe you should never use trial-and-error to solve a "
 "puzzle. These players should not use this feature."
@@ -764,23 +785,23 @@ msgstr ""
 "Někteří hráči sudoku věří, že by se nikdy k řešení neměl používat postup "
 "pokus-omyl. Tito hráči by neměli tuto funkci používat."
 
-#: C/gnome-sudoku.xml:514(para)
+#: C/gnome-sudoku.xml:516(para)
 msgid "You can toggle the tracker-interface by doing one of the following:"
 msgstr "Přepínat sledování tahů můžete provedením následujícího:"
 
-#: C/gnome-sudoku.xml:521(guimenu)
+#: C/gnome-sudoku.xml:523(guimenu)
 msgid "Tools"
 msgstr "Nástroje"
 
-#: C/gnome-sudoku.xml:522(guimenuitem)
+#: C/gnome-sudoku.xml:524(guimenuitem)
 msgid "Track additions"
 msgstr "Sledovat tahy"
 
-#: C/gnome-sudoku.xml:526(para)
+#: C/gnome-sudoku.xml:528(para)
 msgid "Click <guibutton>Track additions</guibutton>"
 msgstr "Kliknout na <guibutton>Sledovat tahy</guibutton>"
 
-#: C/gnome-sudoku.xml:528(para)
+#: C/gnome-sudoku.xml:530(para)
 msgid ""
 "This will bring up a list of trackers on to the right of the current game. "
 "Create a new tracker by clicking <guibutton>Add Tracker</guibutton>. From "
@@ -791,7 +812,7 @@ msgstr ""
 "vytvoříte kliknutím na <guibutton>Přidat sledování</guibutton>. Od tohoto "
 "okamžiku budou všechna čísla, která vložíte, součástí daného sledování."
 
-#: C/gnome-sudoku.xml:529(para)
+#: C/gnome-sudoku.xml:531(para)
 msgid ""
 "You can clear all the values that are part of a tracker by selecting the "
 "tracker from the list and clicking <guibutton>Clear Tracker</guibutton>. You "
@@ -804,11 +825,11 @@ msgstr ""
 "hodnoty, které naopak <emphasis>nejsou</emphasis> součástí sledování, "
 "kliknutím na <guibutton>Vyčistit ostatní</guibutton>."
 
-#: C/gnome-sudoku.xml:535(title)
+#: C/gnome-sudoku.xml:537(title)
 msgid "Printing Sudoku"
 msgstr "Tisk sudoku"
 
-#: C/gnome-sudoku.xml:536(para)
+#: C/gnome-sudoku.xml:538(para)
 msgid ""
 "GNOME Sudoku can print games for you to play on paper. This is useful if you "
 "have to leave the computer but want to finish a game you have started, or if "
@@ -818,7 +839,7 @@ msgstr ""
 "hodí, pokud musíte odejít od počítače, ale chcete dokončit svoji rozehranou "
 "hru a nebo si vytisknout svazek her na později."
 
-#: C/gnome-sudoku.xml:542(para)
+#: C/gnome-sudoku.xml:544(para)
 msgid ""
 "To print the puzzle you are in the midst of playing, click <guibutton>Print</"
 "guibutton> or select <menuchoice><guimenu>Game</guimenu><guimenuitem>Print</"
@@ -830,7 +851,7 @@ msgstr ""
 "guimenu><guimenuitem>Tisk</guimenuitem></menuchoice>. Do tisku se zahrnou i "
 "čísla, které jste již vyplnili."
 
-#: C/gnome-sudoku.xml:547(para)
+#: C/gnome-sudoku.xml:549(para)
 msgid ""
 "To print blank puzzles, select <menuchoice><guimenu>Game</"
 "guimenu><guimenuitem>Print multiple sudokus</guimenuitem></menuchoice>."
@@ -838,7 +859,7 @@ msgstr ""
 "Pokud si chcete natisknout nevyplněné hry, zvolte <menuchoice><guimenu>Hra</"
 "guimenu><guimenuitem>Vytisknout více sudoku</guimenuitem></menuchoice>."
 
-#: C/gnome-sudoku.xml:552(para)
+#: C/gnome-sudoku.xml:554(para)
 msgid ""
 "You will then see a print dialog that lets you choose how many games you "
 "would like to print and how many games you want to print on each page (the "
@@ -848,7 +869,7 @@ msgstr ""
 "přejete vytisknout a kolik her má být na jedné stránce (čím více her na "
 "stránku, tím menší budou)."
 
-#: C/gnome-sudoku.xml:557(para)
+#: C/gnome-sudoku.xml:559(para)
 msgid ""
 "You can also select the range of difficulty you want the games to be in. The "
 "games will print in order of difficulty from easiest to hardest."
@@ -856,7 +877,7 @@ msgstr ""
 "Můžete si zvolit i rozsah obtížností, do kterého mají hry spadat. Hry se "
 "vytisknou v pořadí od nejlehčí po nejtěžší úroveň."
 
-#: C/gnome-sudoku.xml:559(para)
+#: C/gnome-sudoku.xml:561(para)
 msgid ""
 "To create a 25 page mini sudoku book for yourself, you could select to print "
 "100 sudokus, at 4 sudokus per page, with games ranging from easy to hard."
@@ -865,15 +886,15 @@ msgstr ""
 "zvolit tisk 100 sudoku, 4 sudoku na stránku, rozsah her od nejlehčí po "
 "nejtěžší."
 
-#: C/gnome-sudoku.xml:562(title)
+#: C/gnome-sudoku.xml:564(title)
 msgid "Printing a Mini-Sudoku book from <application>Sudoku</application>"
 msgstr "Tisk knížky Mini-Sudoku z aplikace <application>Sudoku</application>."
 
-#: C/gnome-sudoku.xml:569(phrase)
+#: C/gnome-sudoku.xml:571(phrase)
 msgid "This will print 25 pages with 4 sudokus on each page."
 msgstr "Tímto vytisknete 25 stránek po 4 sudoku na každé stránce."
 
-#: C/gnome-sudoku.xml:575(para)
+#: C/gnome-sudoku.xml:577(para)
 msgid ""
 "By default, <application>Sudoku</application> will not print games that you "
 "have already played. If you're printing out games for a friend, or if you "
@@ -885,7 +906,7 @@ msgstr ""
 "zopakujete, můžete zaškrtnout <guibutton>Zahrnout do seznamu her k vytištění "
 "i hry, které jste již hráli</guibutton>."
 
-#: C/gnome-sudoku.xml:577(para)
+#: C/gnome-sudoku.xml:579(para)
 msgid ""
 "You can also hand-select the games you would like to print by expanding the "
 "<guibutton>Games List</guibutton> and selecting multiple puzzles on the list."
@@ -893,15 +914,15 @@ msgstr ""
 "Můžete si také ručně vybrat, které hry byste rádi vytiskli, rozbalením "
 "<guibutton>Seznamu her</guibutton> a výběrem několika her v tomto seznamu."
 
-#: C/gnome-sudoku.xml:582(title)
+#: C/gnome-sudoku.xml:584(title)
 msgid "Known Bugs and Limitations"
 msgstr "Známé chyby a omezení"
 
-#: C/gnome-sudoku.xml:584(title)
+#: C/gnome-sudoku.xml:586(title)
 msgid "Limited Puzzle Statistics"
 msgstr "Omezené statistiky hry"
 
-#: C/gnome-sudoku.xml:586(para)
+#: C/gnome-sudoku.xml:588(para)
 msgid ""
 "GNOME Sudoku ranks puzzles based on the number of squares that can be "
 "rapidly filled. The puzzle statistics box shows you the overall rating and "
@@ -911,7 +932,7 @@ msgstr ""
 "Statistiky hlavolamu vám sdělují celkové hodnocení hry a ukazují tři kusé "
 "informace:"
 
-#: C/gnome-sudoku.xml:589(para)
+#: C/gnome-sudoku.xml:591(para)
 msgid ""
 "The number of squares fillable by elimination, starting from the blank grid "
 "(i.e. only a 2 can go in this box, so it must be a 2)."
@@ -919,7 +940,7 @@ msgstr ""
 "Počet políček, která lze vyplnit díky eliminaci, počínaje nevyplněnou mřžkou "
 "(např. v tomto políčku může být pouze 2, proto to musí být 2)."
 
-#: C/gnome-sudoku.xml:590(para)
+#: C/gnome-sudoku.xml:592(para)
 msgid ""
 "The number of squares fillable by filling, starting from the blank grid (i."
 "e. only only one square in this row can be a 2, so it must be a 2)."
@@ -928,7 +949,7 @@ msgstr ""
 "mřížkou (např. pouze jedno políčko v tomto řádku může být 2, proto to musí "
 "být 2)."
 
-#: C/gnome-sudoku.xml:591(para)
+#: C/gnome-sudoku.xml:593(para)
 msgid ""
 "The number of times in solving the puzzle that the computer had to use trial-"
 "and-error, or “guessing”, to solve the puzzle."
@@ -936,7 +957,7 @@ msgstr ""
 "Množství času strávené během řešení hry tím, že počítač musel použít k "
 "vyřešení metodu pokus-omyl nebo „hádání“."
 
-#: C/gnome-sudoku.xml:593(para)
+#: C/gnome-sudoku.xml:595(para)
 msgid ""
 "Many users are upset to know that the computer solver uses trial-and-error, "
 "especially since some Sudoku gurus say you should never guess to solve a "
@@ -949,7 +970,7 @@ msgstr ""
 "algoritmů, které lze implementovat, aby počítač mohl řešit sudoku, např. "
 "swordfish a X-wings patterns."
 
-#: C/gnome-sudoku.xml:603(para)
+#: C/gnome-sudoku.xml:605(para)
 msgid ""
 "At present, <application>Sudoku</application> only uses the two algorithms "
 "described above as well as trial-and-error. When the statistics box says "
@@ -963,11 +984,11 @@ msgstr ""
 "potřebuje X krát použít metodu pokus-omyl, ještě <emphasis>neznamená</"
 "emphasis>, že by člověk musel k vyřešení hry postup pokus-omyl použít."
 
-#: C/gnome-sudoku.xml:624(title)
+#: C/gnome-sudoku.xml:626(title)
 msgid "About <application>Sudoku</application>"
 msgstr "O <application>Sudoku</application>"
 
-#: C/gnome-sudoku.xml:625(para)
+#: C/gnome-sudoku.xml:627(para)
 msgid ""
 "<application>Sudoku</application> was written by Tom Hinkle "
 "(<email>tmhinkle@gmail.com</email>). <application>Sudoku</application> is "
@@ -977,7 +998,7 @@ msgstr ""
 "com</email>). V současné době je <application>Sudoku</application> součástí "
 "her GNOME."
 
-#: C/gnome-sudoku.xml:627(para)
+#: C/gnome-sudoku.xml:629(para)
 msgid ""
 "To report a bug or make a suggestion regarding this application or this "
 "manual, see the Feedback section of the <ulink url=\"ghelp:user-guide?"
@@ -988,7 +1009,7 @@ msgstr ""
 "\"ghelp:user-guide?feedback-bugs\" type=\"help\">Průvodci uživatele GNOME</"
 "ulink>."
 
-#: C/gnome-sudoku.xml:633(para)
+#: C/gnome-sudoku.xml:635(para)
 msgid ""
 "This program is distributed under the terms of the GNU General Public "
 "license as published by the Free Software Foundation; either version 2 of "
@@ -1002,7 +1023,8 @@ msgstr ""
 "pod tímto <ulink url=\"ghelp:gpl\" type=\"help\">odkazem</ulink> nebo v "
 "souboru COPYING přiloženém ke zdrojovým kódům tohoto programu. "
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: C/gnome-sudoku.xml:0(None)
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>, 2009."
+
