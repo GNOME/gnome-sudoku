@@ -4,7 +4,9 @@ import os.path
 import sudoku, saver, sudoku_maker
 import sudoku_thumber
 from gettext import gettext as _
-from timer import format_time, format_friendly_date
+from gettext import ngettext
+import time
+from timer import format_time
 import defaults
 from simple_debug import simple_debug
 from colors import color_hex_to_float
@@ -145,6 +147,33 @@ class NewOrSavedGameSelector:
                                         puzzle
                                         ))
 
+    def format_friendly_date (self, tim):
+        local_tim = time.localtime(tim)
+        diff = int(time.time() - tim)
+        curr_hour, curr_min = time.localtime()[3:5]
+        now_to_yesterday = curr_hour * 60 * 60 + curr_min * 60
+        if diff < now_to_yesterday:
+            # Then we're today
+            if diff < 60: # within the minute
+                return ngettext("Last played %(n)s second ago",
+                                "Last played %(n)s seconds ago", diff) % {'n': diff}
+            elif diff < (60 * 60): # within the hour...
+                minute = int(diff / 60)
+                return ngettext("Last played %(n)s minute ago",
+                                "Last played %(n)s minutes ago", minute) % {'n': minute}
+            else:
+                # Translators, see strftime manual in order to translate %? format strings
+                return time.strftime(_("Last played at %I:%M %p"), local_tim)
+        elif diff < now_to_yesterday + (60 * 60 * 24):
+            # Translators, see strftime manual in order to translate %? format strings
+            return time.strftime(_("Last played yesterday at %I:%M %p"), local_tim)
+        elif diff < now_to_yesterday + (60 * 60 * 24) * 6:
+            # Translators, see strftime manual in order to translate %? format strings
+            return time.strftime(_("Last played on %A at %I:%M %p"), local_tim)
+        else:
+            # Translators, see strftime manual in order to translate %? format strings
+            return time.strftime(_("Last played on %B %e %Y"), local_tim)
+
     @simple_debug
     def make_saved_game_model (self):
         # Description, Image, Last-Access time (for sorting), Puzzle (jar)
@@ -154,8 +183,8 @@ class NewOrSavedGameSelector:
             grid = sudoku.sudoku_grid_from_string(game)
             sr = sudoku.SudokuRater(grid.grid)
             sdifficulty = sr.difficulty()
-            lastPlayedText = _("Last played %(timeAgo)s") % {'timeAgo': format_friendly_date(g['saved_at'])}
-            levelText =  _("%(level)s puzzle") % {'level': sdifficulty.value_string()}
+            lastPlayedText = self.format_friendly_date(g['saved_at'])
+            levelText = _("%(level)s puzzle") % {'level': sdifficulty.value_string()}
             durationText = _("Played for %(duration)s") % {
                     'duration': format_time(g['timer.active_time'], round_at = 15, friendly = True)}
             desc = "<b><i>%s</i></b>\n<span size='small'><i>%s</i>\n<i>%s.</i></span>" % (

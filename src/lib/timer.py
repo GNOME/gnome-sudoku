@@ -52,33 +52,6 @@ def format_time (tim, round_at = None, friendly = False):
     else:
         return _(" ").join(time_strings)
 
-def format_friendly_date (tim):
-    local_tim = time.localtime(tim)
-    diff = int(time.time() - tim)
-    curr_hour, curr_min = time.localtime()[3:5]
-    now_to_yesterday = curr_hour * 60 * 60 + curr_min * 60
-    if diff < now_to_yesterday:
-        # Then we're today
-        if diff < 60: # within the minute
-            return ngettext("%(n)s second ago",
-                            "%(n)s seconds ago", diff) % {'n': diff}
-        elif diff < (60 * 60): # within the hour...
-            minute = int(diff / 60)
-            return ngettext("%(n)s minute ago",
-                            "%(n)s minutes ago", minute) % {'n': minute}
-        else:
-            # Translators, see strftime manual in order to translate %? format strings
-            return time.strftime(_("at %I:%M %p"), local_tim)
-    elif diff < now_to_yesterday + (60 * 60 * 24):
-        # Translators, see strftime manual in order to translate %? format strings
-        return time.strftime(_("yesterday at %I:%M %p"), local_tim)
-    elif diff < now_to_yesterday + (60 * 60 * 24) * 6:
-        # Translators, see strftime manual in order to translate %? format strings
-        return time.strftime(_("%A %I:%M %p"), local_tim)
-    else:
-        # Translators, see strftime manual in order to translate %? format strings
-        return time.strftime(_("%B %e"), local_tim)
-
 class ActiveTimer (gobject.GObject):
     """A timer to keep track of how much time a window is active."""
 
