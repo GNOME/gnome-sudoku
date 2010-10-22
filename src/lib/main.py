@@ -662,7 +662,13 @@ class UI (gconf_wrapper.GConfWrapper):
         puzzle = self.gsd.grid.virgin.to_string()
         diff = self.sudoku_maker.get_difficulty(puzzle)
         information = _("Calculated difficulty: ")
-        information += diff.value_string()
+        try:
+            information += {'easy': _('Easy'),
+                            'medium': _('Medium'),
+                            'hard': _('Hard'),
+                            'very hard': _('Very Hard')}[diff.value_category()]
+        except KeyError:
+            information += diff.value_category()
         information += " (%1.2f)" % diff.value
         information += "\n"
         information += _("Number of moves instantly fillable by elimination: ")

@@ -683,12 +683,6 @@ class InteractiveSudoku (SudokuSolver):
 
 
 class DifficultyRating:
-
-    very_hard = _('Very hard')
-    hard = _('Hard')
-    medium = _('Medium')
-    easy = _('Easy')
-
     very_hard_range = (0.75, 10)
     hard_range = (0.6, 0.75)
     medium_range = (0.45, 0.6)
@@ -700,10 +694,6 @@ class DifficultyRating:
                   'easy':easy_range}
 
     ordered_categories = ['easy', 'medium', 'hard', 'very hard']
-    label_by_cat = {'easy':easy,
-                    'medium':medium,
-                    'hard':hard,
-                    'very hard':very_hard}
 
     def __init__ (self,
                   fill_must_fillables,
@@ -768,16 +758,6 @@ class DifficultyRating:
                           ]:
             print name, ': ', stat
 
-    def value_string (self):
-        if self.value > self.very_hard_range[0]:
-            return _(self.very_hard)
-        elif self.value > self.hard_range[0]:
-            return _(self.hard)
-        elif self.value > self.medium_range[0]:
-            return _(self.medium)
-        else:
-            return _(self.easy)
-
     def value_category (self):
         """Get category string, without i18n or capitalization
 
@@ -791,12 +771,6 @@ class DifficultyRating:
             return 'medium'
         else:
             return 'easy'
-
-def get_difficulty_category_name (diff_float):
-    return DifficultyRating.label_by_cat.get(
-        get_difficulty_category(diff_float),
-        '?'
-        )
 
 def get_difficulty_category (diff_float):
     for category, range in DifficultyRating.categories.items():

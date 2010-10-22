@@ -118,7 +118,10 @@ class NewOrSavedGameSelector:
             g['game'].split('\n')[0] for g in self.saved_games
             ]
         for cat in sudoku.DifficultyRating.ordered_categories:
-            label = sudoku.DifficultyRating.label_by_cat[cat]
+            label = {'easy': _('Easy'),
+                     'medium': _('Medium'),
+                     'hard': _('Hard'),
+                     'very hard': _('Very hard')}[cat]
             puzzles = self.sudoku_maker.get_puzzles(1, [cat], new = True,
                                                     exclude = saved_games_to_exclude
                                                     )
@@ -183,7 +186,13 @@ class NewOrSavedGameSelector:
             sr = sudoku.SudokuRater(grid.grid)
             sdifficulty = sr.difficulty()
             lastPlayedText = self.format_friendly_date(g['saved_at'])
-            levelText = _("%(level)s puzzle") % {'level': sdifficulty.value_string()}
+            try:
+                levelText = {'easy': _('Easy puzzle'),
+                             'medium': _('Medium puzzle'),
+                             'hard': _('Hard puzzle'),
+                             'very hard': _('Very hard puzzle')}[sdifficulty.value_category()]
+            except KeyError:
+                levelText = sdifficulty.value_category()
             tim = g['timer.active_time']
             if tim >= 3600.0:
                 hours = int(tim / 3600)

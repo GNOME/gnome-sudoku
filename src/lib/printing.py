@@ -3,6 +3,7 @@ import gtk, cairo, time
 import os.path
 import sudoku, gsudoku, saver, defaults
 from gtk_goodies import gconf_wrapper
+from gettext import gettext as _
 
 def fit_squares_in_rectangle (width, height, n, margin = 0):
     """Optimally fit squares into a rectangle.
@@ -176,8 +177,12 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
             )
         # Convert floating point difficulty into a label string
         sudokus.sort(cmp = lambda a, b: cmp(a[1], b[1]))
+        labels = {'easy': _('Easy'),
+                  'medium': _('Medium'),
+                  'hard': _('Hard'),
+                  'very hard': _('Very hard')}
         sudokus = [(sudoku.sudoku_grid_from_string(puzzle),
-                    "%s (%.2f)" % (sudoku.get_difficulty_category_name(d), d)
+                    "%s (%.2f)" % (labels[sudoku.get_difficulty_category(d)], d)
                     ) for puzzle, d in sudokus]
         sp = SudokuPrinter(sudokus,
                            self.dialog,
