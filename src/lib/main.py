@@ -392,12 +392,24 @@ class UI (gconf_wrapper.GConfWrapper):
         self.gconf['difficulty'] = self.gconf['difficulty'] + 0.1
         self.timer.finish_timing()
         self.sudoku_tracker.finish_game(self)
-        if self.timer.active_time != self.timer.total_time:
-            sublabel = _("You completed the puzzle in %(totalTime)s (%(activeTime)s active).") % {'totalTime': self.timer.total_time_string(),
-            'activeTime': self.timer.active_time_string()
-                    }
+        if self.timer.active_time < 60:
+            seconds = int(self.timer.active_time)
+            sublabel = ngettext("You completed the puzzle in %d second",
+                                "You completed the puzzle in %d seconds", seconds) % seconds
+        elif self.timer.active_time < 3600:
+            minutes = int(self.timer.active_time / 60)
+            seconds = int(self.timer.active_time - minutes*60)
+            minute_string = ngettext("%d minute", "%d minutes", minutes) % minutes
+            second_string = ngettext("%d second", "%d seconds", seconds) % seconds
+            sublabel = _("You completed the puzzle in %(minute)s and %(second)s") % {'minute': minute_string, 'second': second_string}
         else:
-            sublabel = _("You completed the puzzle in %(totalTime)s.") % {'totalTime': self.timer.total_time_string()}
+            hours = int(self.timer.active_time / 3600)
+            minutes = int((self.timer.active_time - hours*3600) / 60)
+            seconds = int(self.timer.active_time - hours*3600 - minutes*60)
+            hour_string = ngettext("%d hour", "%d hours", hours) % hours
+            minute_string = ngettext("%d minute", "%d minutes", minutes) % minutes
+            second_string = ngettext("%d second", "%d seconds", seconds) % seconds
+            sublabel = _("You completed the puzzle in %(hour)s, %(minute)s and %(second)s") % {'hour': hour_string, 'minute': minute_string, 'second': second_string}
         sublabel += "\n"
         sublabel += ngettext("You got %(n)s hint.", "You got %(n)s hints.", self.gsd.hints) % {'n':self.gsd.hints}
         sublabel += "\n"

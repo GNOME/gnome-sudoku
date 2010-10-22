@@ -6,7 +6,6 @@ import sudoku_thumber
 from gettext import gettext as _
 from gettext import ngettext
 import time
-from timer import format_time
 import defaults
 from simple_debug import simple_debug
 from colors import color_hex_to_float
@@ -185,8 +184,16 @@ class NewOrSavedGameSelector:
             sdifficulty = sr.difficulty()
             lastPlayedText = self.format_friendly_date(g['saved_at'])
             levelText = _("%(level)s puzzle") % {'level': sdifficulty.value_string()}
-            durationText = _("Played for %(duration)s") % {
-                    'duration': format_time(g['timer.active_time'], round_at = 15, friendly = True)}
+            tim = g['timer.active_time']
+            if tim >= 3600.0:
+                hours = int(tim / 3600)
+                durationText = ngettext("Played for %d hour", "Played for %d hours", hours) % hours
+            elif tim >= 60.0:
+                minutes = int(tim / 60)
+                durationText = ngettext("Played for %d minute", "Played for %d minutes", minutes) % minutes
+            else:
+                seconds = int(tim)
+                durationText = ngettext("Played for %d second", "Played for %d seconds", seconds) % seconds            
             desc = "<b><i>%s</i></b>\n<span size='small'><i>%s</i>\n<i>%s.</i></span>" % (
                 levelText,
                 lastPlayedText,
