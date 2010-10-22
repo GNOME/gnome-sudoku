@@ -165,8 +165,8 @@ class SudokuTracker:
             outfi.close()
         except (OSError, IOError), e:
             show_message(
-                title = _('Sudoku unable to save game.'),
-                label = _('Sudoku unable to save game.'),
+                title = _('Unable to save game.'),
+                label = _('Unable to save game.'),
                 message_type = gtk.MESSAGE_ERROR,
                 sublabel = (_('Unable to save file %(filename)s.') % locals()
                           + '\n' +
@@ -190,8 +190,8 @@ class SudokuTracker:
             outfi.close()
         except (OSError, IOError), e:
             show_message(
-                title = _('Sudoku unable to mark game as finished.'),
-                label = _('Sudoku unable to mark game as finished.'),
+                title = _('Unable to mark game as finished.'),
+                label = _('Unable to mark game as finished.'),
                 message_type = gtk.MESSAGE_ERROR,
                 sublabel = (_('Unable to save file %(filename)s.') % locals() + '\n' +
                           _('Error %(errno)s: %(error)s') % {
