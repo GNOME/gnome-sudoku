@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-import gtk, cairo, time
+import gtk
+import cairo
+import time
 import os.path
 import sudoku, gsudoku, saver, defaults
 from gtk_goodies import gconf_wrapper

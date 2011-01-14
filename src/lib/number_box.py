@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
 
-import gtk, gobject, pango, cairo
+import gtk
+import gobject
+import pango
+import cairo
 import math
 import tracker_info
 from gettext import gettext as _

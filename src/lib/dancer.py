@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-import gtk, colors, gobject
+import gtk
+import gobject
+import colors
 
 class GridDancer:
 

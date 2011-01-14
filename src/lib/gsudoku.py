@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import gtk, gobject
+import gtk
+import gobject
 import colors
 import math
 import random

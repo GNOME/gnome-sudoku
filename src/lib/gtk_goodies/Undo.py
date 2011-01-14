@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import gtk, difflib,re
+import gtk
+import difflib,re
 DEBUG=False
 def debug (*args,**kwargs):
     if DEBUG: print args,kwargs
