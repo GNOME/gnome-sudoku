@@ -13,7 +13,7 @@ class GConfError (Exception):
     pass
 
 
-class GConf:
+class GConfWrap:
     def __init__ (self, appname, allowed={}):
         self._domain = '/apps/%s/' % appname
         self._allowed = allowed
@@ -195,7 +195,7 @@ class GConfWrapper:
     
 
 def test():
-    c = GConf ('test-gconf')
+    c = GConfWrap ('test-gconf')
     c['foo'] = '1'
     c['bar'] = 2
     c['baz'] = 3.0

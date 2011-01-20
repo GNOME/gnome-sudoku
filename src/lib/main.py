@@ -152,7 +152,7 @@ class UI (gconf_wrapper.GConfWrapper):
         and allow a tester to set up a game programmatically.
         """
         gconf_wrapper.GConfWrapper.__init__(self,
-                                            gconf_wrapper.GConf('gnome-sudoku')
+                                            gconf_wrapper.GConfWrap('gnome-sudoku')
                                             )
         self.setup_gui()
         self.timer = timer.ActiveTimer(self.w)
