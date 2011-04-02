@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-try:
-    import pygtk
-    pyGtk.require('2.0')
-except ImportError, err:
-    print ("PyGTK not found. Please make sure it is installed properly and referenced in your PYTHONPATH environment variable.")
-
 import os.path
 import threading
+
+import gi
+gi.require_version("Gtk", "3.0")
 
 import gobject
 from gi.repository import Gtk
