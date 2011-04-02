@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk
+from gi.repository import Gtk
 import gobject
 import os.path
 import sudoku, saver, sudoku_maker
@@ -63,11 +63,11 @@ class NewOrSavedGameSelector:
         self.saved_games = None
 
     def setup_dialog (self):
-        builder = gtk.Builder()
+        builder = Gtk.Builder()
         builder.set_translation_domain(defaults.DOMAIN)
         builder.add_from_file(self.ui_file)
         self.dialog = builder.get_object('dialog1')
-        self.dialog.set_default_response(gtk.RESPONSE_CANCEL)
+        self.dialog.set_default_response(Gtk.ResponseType.CANCEL)
         self.dialog.connect('close', self.close)
         self.dialog.hide()
         saved_game_frame = builder.get_object('savedGameFrame')
@@ -97,7 +97,7 @@ class NewOrSavedGameSelector:
                 w.hide()
         else:
             saved_game_frame.show()
-            self.saved_game_model.set_sort_column_id(2, gtk.SORT_DESCENDING)
+            self.saved_game_model.set_sort_column_id(2, Gtk.SortType.DESCENDING)
             saved_game_view.set_model(self.saved_game_model)
             saved_game_view.set_markup_column(0)
             saved_game_view.set_pixbuf_column(1)
@@ -105,7 +105,7 @@ class NewOrSavedGameSelector:
             view.set_item_width(150)
             view.set_columns(4)
             view.set_spacing(12)
-            view.set_selection_mode(gtk.SELECTION_SINGLE)
+            view.set_selection_mode(Gtk.SelectionMode.SINGLE)
         saved_game_view.connect('item-activated', self.saved_item_activated_cb)
         saved_game_view.connect('button-release-event', self.item_clicked_cb)
         new_game_view.connect('item-activated', self.new_item_activated_cb)
@@ -114,7 +114,7 @@ class NewOrSavedGameSelector:
     @simple_debug
     def make_new_game_model (self):
         # Description, Pixbuf, Puzzle (str)
-        self.new_game_model = gtk.ListStore(str, gtk.gdk.Pixbuf, str)
+        self.new_game_model = Gtk.ListStore(str, GdkPixbuf.Pixbuf, str)
         saved_games_to_exclude = [
             g['game'].split('\n')[0] for g in self.saved_games
             ]
@@ -180,7 +180,7 @@ class NewOrSavedGameSelector:
     @simple_debug
     def make_saved_game_model (self):
         # Description, Image, Last-Access time (for sorting), Puzzle (jar)
-        self.saved_game_model = gtk.ListStore(str, gtk.gdk.Pixbuf, int, gobject.TYPE_PYOBJECT)
+        self.saved_game_model = Gtk.ListStore(str, GdkPixbuf.Pixbuf, int, GObject.TYPE_PYOBJECT)
         for g in self.saved_games:
             game = g['game'].split('\n')[0]
             grid = sudoku.sudoku_grid_from_string(game)
@@ -249,20 +249,20 @@ class NewOrSavedGameSelector:
     @simple_debug
     def resume_game (self, jar):
         self.puzzle = (self.SAVED_GAME, jar)
-        self.dialog.emit('response', gtk.RESPONSE_OK)
+        self.dialog.emit('response', Gtk.ResponseType.OK)
 
     @simple_debug
     def play_game (self, puzzle):
         self.puzzle = (self.NEW_GAME, puzzle)
-        self.dialog.emit('response', gtk.RESPONSE_OK)
+        self.dialog.emit('response', Gtk.ResponseType.OK)
 
     @simple_debug
     def close (self):
-        self.dialog.emit('response', gtk.RESPONSE_CLOSE)
+        self.dialog.emit('response', Gtk.ResponseType.CLOSE)
 
     @simple_debug
     def handle_response (self, response):
-        if response == gtk.RESPONSE_OK:
+        if response == Gtk.ResponseType.OK:
             return self.puzzle
         else:
             return None

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk
+from gi.repository import Gtk
 import gobject
 import colors
 import math
@@ -14,10 +14,10 @@ def gtkcolor_to_rgb (color):
             color.green / float(2**16),
             color.blue  / float(2**16))
 
-class SudokuNumberGrid (gtk.AspectFrame):
+class SudokuNumberGrid (Gtk.AspectFrame):
 
     def __init__ (self, group_size = 9):
-        self.table = gtk.Table(rows = group_size, columns = group_size, homogeneous = True)
+        self.table = Gtk.Table(rows = group_size, columns = group_size, homogeneous = True)
         self.group_size = group_size
         self.__entries__ = {}
         for x in range(self.group_size):
@@ -28,9 +28,9 @@ class SudokuNumberGrid (gtk.AspectFrame):
                 self.table.attach(e, x, x+1, y, y+1,
                                   )
                 self.__entries__[(x, y)] = e
-        gtk.AspectFrame.__init__(self, obey_child = False)
-        self.set_shadow_type(gtk.SHADOW_NONE)
-        self.eb = gtk.EventBox()
+        GObject.GObject.__init__(self, obey_child = False)
+        self.set_shadow_type(Gtk.ShadowType.NONE)
+        self.eb = Gtk.EventBox()
         self.eb.add(self.table)
         self.add(self.eb)
         self.table.set_row_spacings(1)
@@ -56,24 +56,24 @@ class SudokuNumberGrid (gtk.AspectFrame):
     def set_bg_color (self, color):
         if type(color) == str:
             try:
-                color = gtk.gdk.color_parse(color)
+                color = Gdk.color_parse(color)
             except:
                 print 'set_bg_color handed Bad color', color
                 return
-        self.eb.modify_bg(gtk.STATE_NORMAL, color)
-        self.eb.modify_base(gtk.STATE_NORMAL, color)
-        self.eb.modify_fg(gtk.STATE_NORMAL, color)
-        self.table.modify_bg(gtk.STATE_NORMAL, color)
-        self.table.modify_base(gtk.STATE_NORMAL, color)
-        self.table.modify_fg(gtk.STATE_NORMAL, color)
+        self.eb.modify_bg(Gtk.StateType.NORMAL, color)
+        self.eb.modify_base(Gtk.StateType.NORMAL, color)
+        self.eb.modify_fg(Gtk.StateType.NORMAL, color)
+        self.table.modify_bg(Gtk.StateType.NORMAL, color)
+        self.table.modify_base(Gtk.StateType.NORMAL, color)
+        self.table.modify_fg(Gtk.StateType.NORMAL, color)
         for e in self.__entries__.values():
-            e.modify_bg(gtk.STATE_NORMAL, color)
+            e.modify_bg(Gtk.StateType.NORMAL, color)
 
-class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
+class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
 
     __gsignals__ = {
-        'focus-changed':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
-        'puzzle-finished':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ())
+        'focus-changed':(GObject.SignalFlags.RUN_LAST, None, ()),
+        'puzzle-finished':(GObject.SignalFlags.RUN_LAST, None, ())
         }
 
     do_highlight_cells = False
@@ -90,7 +90,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         self.impossibilities = []
         self.trackers = {}
         self.tinfo = tracker_info.TrackerInfo()
-        gobject.GObject.__init__(self)
+        GObject.GObject.__init__(self)
         SudokuNumberGrid.__init__(self, group_size = group_size)
         self.setup_grid(grid, group_size)
         for e in self.__entries__.values():
@@ -102,7 +102,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
         self.connect('focus-changed', self.highlight_cells)
 
     def key_press_cb (self, widget, event):
-        key = gtk.gdk.keyval_name(event.keyval)
+        key = Gdk.keyval_name(event.keyval)
         dest = self.go_around(widget.x, widget.y, key)
         if dest:
             self.table.set_focus_child(self.__entries__[dest])
@@ -130,7 +130,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
 
     def get_highlight_colors (self):
         entry = self.__entries__.values()[0]
-        default_color = gtkcolor_to_rgb(entry.style.bg[gtk.STATE_SELECTED])
+        default_color = gtkcolor_to_rgb(entry.style.bg[Gtk.StateType.SELECTED])
         hsv = colors.rgb_to_hsv(*default_color)
         box_s = hsv[1]
         box_v = hsv[2]
@@ -203,7 +203,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
     def set_hint_square (self, square):
         if self.hint_square is not None:
             self.hint_square.set_border_color(None)
-            gobject.source_remove(self.hint_timer)
+            GObject.source_remove(self.hint_timer)
             self.hint_timer = None
 
         if square is None:
@@ -212,7 +212,7 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             self.hint_square = self.__entries__[square]
             self.hint_animate_count = 0
             self.animate_hint()
-            self.hint_timer = gobject.timeout_add(150, self.animate_hint)
+            self.hint_timer = GObject.timeout_add(150, self.animate_hint)
 
     @simple_debug
     def show_hint (self):
@@ -737,8 +737,8 @@ class SudokuGameDisplay (SudokuNumberGrid, gobject.GObject):
             self.update_all_hints()
 
 if __name__ == '__main__':
-    window = gtk.Window()
-    window.connect('delete-event', gtk.main_quit)
+    window = Gtk.Window()
+    window.connect('delete-event', Gtk.main_quit)
 
     def test_number_grid ():
         t = SudokuNumberGrid(4)
@@ -760,17 +760,17 @@ if __name__ == '__main__':
         from dialog_swallower import SwappableArea
         sgd = SudokuGameDisplay()
         sgd.set_bg_color('black')
-        vb = gtk.VBox()
-        hb = gtk.HBox()
+        vb = Gtk.VBox()
+        hb = Gtk.HBox()
         swallower = SwappableArea(hb)
-        tb = gtk.Toolbar()
-        b = gtk.ToolButton(stock_id = gtk.STOCK_QUIT)
-        b.connect('clicked', lambda x: window.hide() or gtk.main_quit())
+        tb = Gtk.Toolbar()
+        b = Gtk.ToolButton(stock_id = Gtk.STOCK_QUIT)
+        b.connect('clicked', lambda x: window.hide() or Gtk.main_quit())
         tb.add(b)
         def run_swallowed_dialog (*args):
             md = MessageDialog(title = "Bar", label = "Bar", sublabel = "Baz "*12)
             swallower.run_dialog(md)
-        b2 = gtk.ToolButton(label = 'Dialog')
+        b2 = Gtk.ToolButton(label = 'Dialog')
         b2.connect('clicked', run_swallowed_dialog)
         tb.add(b2)
         vb.pack_start(tb, fill = False, expand = False)
@@ -811,4 +811,4 @@ if __name__ == '__main__':
 #    reproduce_foobared_rendering()
     test_sudoku_game()
     window.show_all()
-    gtk.main()
+    Gtk.main()

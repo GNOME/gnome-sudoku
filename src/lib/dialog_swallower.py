@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-import gtk
+from gi.repository import Gtk
 
 # Convenience library for a new kind of UI -- for e.g. this game, we
 # don't really want to have dialogs. Nonetheless, it's convenient to
 # design dialogs in gtkbuilder and run them in the standard manner... So we
 # create a new "dialog" interface via a hidden notebook.
 
-class SwappableArea (gtk.Notebook):
+class SwappableArea (Gtk.Notebook):
 
 
     swallowed = {}
@@ -15,13 +15,13 @@ class SwappableArea (gtk.Notebook):
 
 
     def __init__ (self, main_area):
-        gtk.Notebook.__init__(self)
+        GObject.GObject.__init__(self)
         self.set_show_tabs(False)
         self.set_show_border(False)
         self.main_page = self.append_page(main_area)
 
     def swallow_window (self, d):
-        child = d.child
+        child = d.get_child()
         d.remove(child)
         return self.swallow_widget(child)
 
@@ -30,7 +30,7 @@ class SwappableArea (gtk.Notebook):
         return self.append_page(w)
 
     def response_cb (self, w, response, data=None):
-        gtk.main_quit()
+        Gtk.main_quit()
         self.response = response
 
     def swallow_dialog (self, d):
@@ -45,7 +45,7 @@ class SwappableArea (gtk.Notebook):
             self.swallow_dialog(d)
         self.set_current_page(self.swallowed[d])
         try:
-            gtk.main()
+            Gtk.main()
         except:
             print 'Error in dialog!'
             import traceback
@@ -61,17 +61,17 @@ class SwappableArea (gtk.Notebook):
 
 if __name__ == '__main__':
 
-    d = gtk.Dialog()
-    d.vbox.add(gtk.Label('Foo, bar, baz'))
+    d = Gtk.Dialog()
+    d.vbox.add(Gtk.Label('Foo, bar, baz'))
     d.vbox.show_all()
-    d.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
-    w = gtk.Window()
-    b = gtk.Button('show d')
+    d.add_button(Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE)
+    w = Gtk.Window()
+    b = Gtk.Button('show d')
     b.show()
     sa = SwappableArea(b)
     sa.show()
     w.add(sa)
     b.connect_object('clicked', sa.run_dialog, d)
     w.show()
-    gtk.main()
+    Gtk.main()
     

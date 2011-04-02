@@ -467,7 +467,7 @@ class SudokuSolver (SudokuGrid):
         guess_obj = Guess(least[0][0], least[0][1], guess)
         if self.breadcrumbs:
             self.breadcrumbs[-1].children.append(guess_obj)
-        self.current_guess = None #reset (we're tracked via guess.child)
+        self.current_guess = None #reset (we're tracked via guess.get_child())
         self.add(least[0][0], least[0][1], guess)
         self.current_guess = guess_obj # (All deterministic additions
                                        # get added to our

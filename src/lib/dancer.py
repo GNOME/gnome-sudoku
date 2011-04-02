@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk
+from gi.repository import Gtk
 import gobject
 import colors
 
@@ -41,9 +41,9 @@ class GridDancer:
                 box.need_restore = True
             else:
                 box.need_restore = False
-        self.grid.get_toplevel().child_focus(gtk.DIR_TAB_BACKWARD)
+        self.grid.get_toplevel().child_focus(Gtk.DIR_TAB_BACKWARD)
         self.dancing = True
-        gobject.timeout_add(350, self.dance_grid)
+        GObject.timeout_add(350, self.dance_grid)
 
     def stop_dancing (self):
         self.dancing = False
@@ -107,7 +107,7 @@ class GridDancer:
 if __name__ == '__main__':
     def test_dance_grid ():
         import gsudoku
-        window = gtk.Window()
+        window = Gtk.Window()
         game = '''9 1 6 3 2 8 4 5 7
                   5 7 4 6 1 9 2 8 3
                   8 3 2 5 7 4 9 6 1
@@ -120,19 +120,19 @@ if __name__ == '__main__':
         gsd = gsudoku.SudokuGameDisplay(game)
         dancer = GridDancer(gsd)
 
-        button = gtk.Button('toggle')
+        button = Gtk.Button('toggle')
         button.connect('clicked',
                 lambda *args: dancer.stop_dancing() if dancer.dancing
                     else dancer.start_dancing())
 
-        vbox = gtk.VBox()
-        vbox.pack_start(gsd)
+        vbox = Gtk.VBox()
+        vbox.pack_start(gsd, True, True, 0)
         vbox.pack_end(button)
         vbox.set_focus_child(button)
 
         window.add(vbox)
         window.show_all()
-        window.connect('delete-event', gtk.main_quit)
-        gtk.main()
+        window.connect('delete-event', Gtk.main_quit)
+        Gtk.main()
 
     test_dance_grid()

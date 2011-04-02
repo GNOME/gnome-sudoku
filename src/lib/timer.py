@@ -2,16 +2,16 @@
 import gobject
 import time
 
-class ActiveTimer (gobject.GObject):
+class ActiveTimer (GObject.GObject):
     """A timer to keep track of how much time a window is active."""
 
     __gsignals__ = {
-        'timing-started': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
-        'timing-stopped': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ())
+        'timing-started': (GObject.SignalFlags.RUN_LAST, None, ()),
+        'timing-stopped': (GObject.SignalFlags.RUN_LAST, None, ())
         }
 
     def __init__ (self, window):
-        gobject.GObject.__init__(self)
+        GObject.GObject.__init__(self)
         self.window = window
         # whether we have 'start_timing'; affects total_time
         self.timer_running = False
@@ -70,18 +70,18 @@ class ActiveTimer (gobject.GObject):
         self.timer_running = False
 
 if __name__ == '__main__':
-    import gtk
+    from gi.repository import Gtk
 
     def report (timer):
         pass
 
     def test_active_timer ():
-        win = gtk.Window()
+        win = Gtk.Window()
         timer = ActiveTimer(win)
         timer.start_timing()
         win.connect('focus-out-event', lambda *args: report(timer))
-        win.connect('delete-event', gtk.main_quit)
+        win.connect('delete-event', Gtk.main_quit)
         win.show()
-        gtk.main()
+        Gtk.main()
 
     test_active_timer()

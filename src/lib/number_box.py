@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
 
-import gtk
+from gi.repository import Gtk
 import gobject
-import pango
+from gi.repository import Pango
 import cairo
 import math
 import tracker_info
@@ -15,35 +15,35 @@ BASE_SIZE = 35 # The "normal" size of a box (in pixels)
 
 # And the standard font-sizes -- these should fit nicely with the
 # BASE_SIZE
-BASE_FONT_SIZE = pango.SCALE * 13
-NOTE_FONT_SIZE = pango.SCALE * 6
+BASE_FONT_SIZE = Pango.SCALE * 13
+NOTE_FONT_SIZE = Pango.SCALE * 6
 
 BORDER_WIDTH = 9.0 # The size of space we leave for a box
 NORMAL_LINE_WIDTH = 1 # The size of the line we draw around a box
 
-class NumberSelector (gtk.EventBox):
+class NumberSelector (Gtk.EventBox):
 
     __gsignals__ = {
-        'changed':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
+        'changed':(GObject.SignalFlags.RUN_LAST, None, ()),
         }
 
     def __init__ (self, default = None, upper = 9):
         self.value = default
-        gtk.EventBox.__init__(self)
-        self.table = gtk.Table()
+        GObject.GObject.__init__(self)
+        self.table = Gtk.Table()
         self.add(self.table)
         side = int(math.sqrt(upper))
         n = 1
         for y in range(side):
             for x in range(side):
-                b = gtk.Button()
-                l = gtk.Label()
+                b = Gtk.Button()
+                l = Gtk.Label()
                 if n == self.value:
                     l.set_markup('<b><span size="x-small">%s</span></b>'%n)
                 else:
                     l.set_markup('<span size="x-small">%s</span>'%n)
                 b.add(l)
-                b.set_relief(gtk.RELIEF_HALF)
+                b.set_relief(Gtk.ReliefStyle.HALF)
                 l = b.get_children()[0]
                 b.set_border_width(0)
                 l.set_padding(0, 0)
@@ -52,8 +52,8 @@ class NumberSelector (gtk.EventBox):
                 self.table.attach(b, x, x+1, y, y+1)
                 n += 1
         if self.value:
-            db = gtk.Button()
-            l = gtk.Label()
+            db = Gtk.Button()
+            l = Gtk.Label()
             l.set_markup_with_mnemonic('<span size="x-small">'+_('_Clear')+'</span>')
             db.add(l)
             l.show()
@@ -71,7 +71,7 @@ class NumberSelector (gtk.EventBox):
     def set_value (self, n):
         self.value = n
 
-class NumberBox (gtk.Widget):
+class NumberBox (Gtk.Widget):
 
     text = ''
     top_note_text = ''
@@ -87,22 +87,22 @@ class NumberBox (gtk.Widget):
     border_color = None
 
     __gsignals__ = {
-        'value-about-to-change':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
-        'notes-about-to-change':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
-        'changed':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
+        'value-about-to-change':(GObject.SignalFlags.RUN_LAST, None, ()),
+        'notes-about-to-change':(GObject.SignalFlags.RUN_LAST, None, ()),
+        'changed':(GObject.SignalFlags.RUN_LAST, None, ()),
         # undo-change - A hacky way to handle the fact that we want to
         # respond to undo's changes but we don't want undo to respond
         # to itself...
-        'undo-change':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
-        'notes-changed':(gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
+        'undo-change':(GObject.SignalFlags.RUN_LAST, None, ()),
+        'notes-changed':(GObject.SignalFlags.RUN_LAST, None, ()),
         }
 
-    base_state = gtk.STATE_NORMAL
+    base_state = Gtk.StateType.NORMAL
     npicker = None
     draw_boxes = False
 
     def __init__ (self, upper = 9, text = ''):
-        gtk.Widget.__init__(self)
+        GObject.GObject.__init__(self)
         self.upper = upper
         self.parent_win = None
         self.timer = None
@@ -110,15 +110,15 @@ class NumberBox (gtk.Widget):
         self.font.set_size(BASE_FONT_SIZE)
         self.note_font = self.font.copy()
         self.note_font.set_size(NOTE_FONT_SIZE)
-        self._top_note_layout = pango.Layout(self.create_pango_context())
+        self._top_note_layout = Pango.Layout(self.create_pango_context())
         self._top_note_layout.set_font_description(self.note_font)
-        self._bottom_note_layout = pango.Layout(self.create_pango_context())
+        self._bottom_note_layout = Pango.Layout(self.create_pango_context())
         self._bottom_note_layout.set_font_description(self.note_font)
         self.top_note_list = []
         self.bottom_note_list = []
         self.tinfo = tracker_info.TrackerInfo()
         self.set_property('can-focus', True)
-        self.set_property('events', gtk.gdk.ALL_EVENTS_MASK)
+        self.set_property('events', Gdk.EventMask.ALL_EVENTS_MASK)
         self.connect('button-press-event', self.button_press_cb)
         self.connect('key-release-event', self.key_press_cb)
         self.connect('enter-notify-event', self.pointer_enter_cb)
@@ -136,19 +136,19 @@ class NumberBox (gtk.Widget):
 
     def pointer_enter_cb (self, *args):
         if not self.is_focus():
-            self.set_state(gtk.STATE_PRELIGHT)
+            self.set_state(Gtk.StateType.PRELIGHT)
 
     def pointer_leave_cb (self, *args):
         self.set_state(self.base_state)
         self._toggle_box_drawing_(False)
 
     def focus_in_cb (self, *args):
-        self.set_state(gtk.STATE_SELECTED)
-        self.base_state = gtk.STATE_SELECTED
+        self.set_state(Gtk.StateType.SELECTED)
+        self.base_state = Gtk.StateType.SELECTED
 
     def focus_out_cb (self, *args):
-        self.set_state(gtk.STATE_NORMAL)
-        self.base_state = gtk.STATE_NORMAL
+        self.set_state(Gtk.StateType.NORMAL)
+        self.base_state = Gtk.StateType.NORMAL
         self.destroy_npicker()
 
     def destroy_npicker (self):
@@ -173,7 +173,7 @@ class NumberBox (gtk.Widget):
     def button_press_cb (self, w, e):
         if self.read_only:
             return
-        if e.type == gtk.gdk._2BUTTON_PRESS:
+        if e.type == Gdk._2BUTTON_PRESS:
             # ignore second click (this makes a double click in the
             # middle of a cell get us a display of the numbers, rather
             # than selecting a number.
@@ -201,7 +201,7 @@ class NumberBox (gtk.Widget):
             return
         if self.npicker: # kill number picker no matter what is pressed
             self.destroy_npicker()
-        txt = gtk.gdk.keyval_name(e.keyval)
+        txt = Gdk.keyval_name(e.keyval)
         if type(txt) == type(None):
             # Make sure we don't trigger on unplugging the A/C charger etc
             return
@@ -209,9 +209,9 @@ class NumberBox (gtk.Widget):
 
         # Add the new value if need be
         if txt in [str(n) for n in range(1, self.upper+1)]:
-            if e.state & gtk.gdk.CONTROL_MASK:
+            if e.state & Gdk.EventMask.CONTROL_MASK:
                 self.add_note_text(txt, top = True)
-            elif e.state & gtk.gdk.MOD1_MASK:
+            elif e.state & Gdk.ModifierType.MOD1_MASK:
                 self.remove_note_text(txt, top = True)
             elif self.get_text() != txt or \
                 (self.tracker_id != tracker_info.NO_TRACKER and
@@ -223,12 +223,12 @@ class NumberBox (gtk.Widget):
         elif txt in ['0', 'Delete', 'BackSpace']:
             self.set_text_interactive('')
         elif txt in ['n', 'N']:
-            if e.state & gtk.gdk.MOD1_MASK:
+            if e.state & Gdk.ModifierType.MOD1_MASK:
                 self.set_note_text_interactive(top_text = '')
             else:
                 self.show_note_editor(top = True)
         elif txt in ['m', 'M']:
-            if e.state & gtk.gdk.MOD1_MASK:
+            if e.state & Gdk.ModifierType.MOD1_MASK:
                 self.set_note_text_interactive(bottom_text = '')
             else:
                 self.show_note_editor(top = False)
@@ -276,16 +276,16 @@ class NumberBox (gtk.Widget):
 
     def show_note_editor (self, top = True):
         alloc = self.get_allocation()
-        w = gtk.Window()
+        w = Gtk.Window()
         w.set_property('skip-pager-hint', True)
         w.set_property('skip-taskbar-hint', True)
         w.set_decorated(False)
-        w.set_position(gtk.WIN_POS_MOUSE)
+        w.set_position(Gtk.WindowPosition.MOUSE)
         w.set_size_request(alloc.width, alloc.height/2)
         if self.parent_win:
             w.set_transient_for(self.parent_win)
-        f = gtk.Frame()
-        e = gtk.Entry()
+        f = Gtk.Frame()
+        e = Gtk.Entry()
         f.add(e)
         if top:
             e.set_text(self.top_note_text)
@@ -314,7 +314,7 @@ class NumberBox (gtk.Widget):
             self.set_text_interactive('')            
 
     def show_number_picker (self):
-        w = gtk.Window(type = gtk.WINDOW_POPUP)
+        w = Gtk.Window(type = Gtk.WindowType.POPUP)
         ns = NumberSelector(upper = self.upper, default = self.get_value())
         ns.connect('changed', self.number_changed_cb)
         w.grab_focus()
@@ -337,7 +337,7 @@ class NumberBox (gtk.Widget):
 
     def set_font (self, font):
         if type(font) == str:
-            font = pango.FontDescription(font)
+            font = Pango.FontDescription(font)
         self.font = font
         if self.text:
             self.set_text(self.text)
@@ -345,7 +345,7 @@ class NumberBox (gtk.Widget):
 
     def set_note_font (self, font):
         if type(font) == str:
-            font = pango.FontDescription(font)
+            font = Pango.FontDescription(font)
         self.note_font = font
         self._top_note_layout.set_font_description(font)
         self._bottom_note_layout.set_font_description(font)
@@ -511,34 +511,34 @@ class NumberBox (gtk.Widget):
 
     def do_realize (self):
         # The do_realize method is responsible for creating GDK (windowing system)
-        # resources. In this example we will create a new gdk.Window which we
+        # resources. In this example we will create a new Gdk.Window which we
         # then draw on
 
         # First set an internal flag telling that we're realized
-        self.set_flags(self.flags() | gtk.REALIZED)
+        self.set_flags(self.flags() | Gtk.REALIZED)
 
-        # Create a new gdk.Window which we can draw on.
+        # Create a new Gdk.Window which we can draw on.
         # Also say that we want to receive exposure events by setting
         # the event_mask
-        self.window = gtk.gdk.Window(
+        self.window = Gdk.Window(
             self.get_parent_window(),
             width = self.allocation.width,
             height = self.allocation.height,
-            window_type = gtk.gdk.WINDOW_CHILD,
-            wclass = gtk.gdk.INPUT_OUTPUT,
-            event_mask = self.get_events() | gtk.gdk.EXPOSURE_MASK)
+            window_type = Gdk.WINDOW_CHILD,
+            wclass = Gdk.INPUT_OUTPUT,
+            event_mask = self.get_events() | Gdk.EventMask.EXPOSURE_MASK)
 
-        # Associate the gdk.Window with ourselves, Gtk+ needs a reference
+        # Associate the Gdk.Window with ourselves, Gtk+ needs a reference
         # between the widget and the gdk window
         self.window.set_user_data(self)
 
-        # Attach the style to the gdk.Window, a style contains colors and
+        # Attach the style to the Gdk.Window, a style contains colors and
         # GC contextes used for drawing
         self.style.attach(self.window)
 
         # The default color of the background should be what
         # the style (theme engine) tells us.
-        self.style.set_background(self.window, gtk.STATE_NORMAL)
+        self.style.set_background(self.window, Gtk.StateType.NORMAL)
         self.window.move_resize(*self.allocation)
 
     def do_unrealize (self):
@@ -556,9 +556,9 @@ class NumberBox (gtk.Widget):
         # text is, and a square
         width, height = self._layout.get_size()
         if width > height:
-            side = width/pango.SCALE
+            side = width/Pango.SCALE
         else:
-            side = height/pango.SCALE
+            side = height/Pango.SCALE
         (requisition.width, requisition.height) = (side, side)
 
     def do_size_allocate(self, allocation):
@@ -570,7 +570,7 @@ class NumberBox (gtk.Widget):
 
         # If we're realized, move and resize the window to the
         # requested coordinates/positions
-        if self.flags() & gtk.REALIZED:
+        if self.get_realized():
             self.window.move_resize(*allocation)
 
     def do_expose_event(self, event):
@@ -606,9 +606,9 @@ class NumberBox (gtk.Widget):
                     r*0.6, g*0.6, b*0.6
                     )
             else:
-                cr.set_source_color(self.style.base[gtk.STATE_INSENSITIVE])
+                cr.set_source_color(self.style.base[Gtk.StateType.INSENSITIVE])
         elif self.is_focus():
-            cr.set_source_color(self.style.base[gtk.STATE_SELECTED])
+            cr.set_source_color(self.style.base[Gtk.StateType.SELECTED])
         elif self.custom_background_color:
             cr.set_source_rgb(*self.custom_background_color)
         else:
@@ -622,7 +622,7 @@ class NumberBox (gtk.Widget):
 
     def draw_highlight_box (self, cr, w, h):
         cr.set_source_color(
-            self.style.base[gtk.STATE_SELECTED]
+            self.style.base[Gtk.StateType.SELECTED]
             )
         border = 4 * w / BASE_SIZE
         cr.rectangle(
@@ -668,7 +668,7 @@ class NumberBox (gtk.Widget):
         if self.text_color:
             cr.set_source_rgb(*self.text_color)
         elif self.read_only:
-            cr.set_source_color(self.style.text[gtk.STATE_NORMAL])
+            cr.set_source_color(self.style.text[Gtk.StateType.NORMAL])
         else:
             cr.set_source_color(self.style.text[self.state])
         # And draw the text in the middle of the allocated space
@@ -782,7 +782,7 @@ class SudokuNumberBox (NumberBox):
         if not hasattr(self, 'bold_font'):
             self.normal_font = self.font
             self.bold_font = self.font.copy()
-            self.bold_font.set_weight(pango.WEIGHT_BOLD)
+            self.bold_font.set_weight(Pango.Weight.BOLD)
         if self.read_only:
             self.set_font(self.bold_font)
         else:
@@ -800,11 +800,11 @@ class SudokuNumberBox (NumberBox):
         self.queue_draw()
 
 
-gobject.type_register(NumberBox)
+GObject.type_register(NumberBox)
 
 if __name__ == '__main__':
-    window = gtk.Window()
-    window.connect('delete-event', gtk.main_quit)
+    window = Gtk.Window()
+    window.connect('delete-event', Gtk.main_quit)
 
     def test_number_selector ():
         nselector = NumberSelector(default = 3)
@@ -821,4 +821,4 @@ if __name__ == '__main__':
 #    test_number_selector()
     test_number_box()
     window.show_all()
-    gtk.main()
+    Gtk.main()

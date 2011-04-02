@@ -49,7 +49,7 @@ except ImportError:
 
     except ImportError:
       # Import of gnome-sudoku failed. Show error message.
-      import gtk
+      from gi.repository import Gtk
       import os.path
       import gettext
       from gettext import gettext as _
@@ -58,9 +58,9 @@ except ImportError:
       gettext.textdomain('gnome-games')
       title = _("Sudoku incorrectly installed")
       description = _("""Sudoku is not able to start because required application files are not installed. If you are currently upgrading your system please wait until the upgrade has completed.""")
-      dialog = gtk.MessageDialog(type = gtk.MESSAGE_ERROR, message_format = title)
+      dialog = Gtk.MessageDialog(type = Gtk.MessageType.ERROR, message_format = title)
       dialog.format_secondary_text(description)
-      dialog.add_button(gtk.STOCK_QUIT, gtk.RESPONSE_CLOSE)
+      dialog.add_button(Gtk.STOCK_QUIT, Gtk.ResponseType.CLOSE)
       dialog.run()
       sys.exit(0)
 

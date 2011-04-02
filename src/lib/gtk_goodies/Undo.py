@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk
+from gi.repository import Gtk
 import difflib,re
 DEBUG=False
 def debug (*args,**kwargs):
@@ -304,8 +304,8 @@ class UndoHistoryList (list):
             w.set_sensitive(val)
             debug('%s.set_sensitive succeeded'%w,0)
         except AttributeError:
-            # 2.6 will give gtk.Action a set_sensitive property, but for now...
-            #if type(w)==gtk.Action:
+            # 2.6 will give Gtk.Action a set_sensitive property, but for now...
+            #if type(w)==Gtk.Action:
             for p in w.get_proxies():
                 debug('setting %s sensitivity to %s'%(w,val),0)
                 #p.set_sensitive(val)
@@ -331,7 +331,7 @@ class UndoHistoryList (list):
                 debug('Sensitizing "reapply" widgets',0)
                 self.set_sensitive(self.reapply_widget,True)
                 if self[-1].reapply_name:
-                    if type(self.reapply_widget)==gtk.MenuItem:
+                    if type(self.reapply_widget)==Gtk.MenuItem:
                         alabel = self.reapply_widget.get_children()[0]
                         alabel.set_text_with_mnemonic(self[-1].reapply_name)
                         alabel.set_use_markup(True)
@@ -442,15 +442,15 @@ if __name__ == '__main__':
     #while txt:
     #    txt = raw_input('Text: ')
     #    history[-1].add_text(txt)
-    import gtk
-    w = gtk.Window()
-    e = gtk.Entry()
-    tv = gtk.TextView()
-    ub = gtk.Button(stock=gtk.STOCK_UNDO)
-    rb = gtk.Button(stock=gtk.STOCK_REDO)
-    sc = gtk.Button('show changes')
-    vb = gtk.VBox()
-    bb = gtk.HButtonBox()
+    from gi.repository import Gtk
+    w = Gtk.Window()
+    e = Gtk.Entry()
+    tv = Gtk.TextView()
+    ub = Gtk.Button(stock=Gtk.STOCK_UNDO)
+    rb = Gtk.Button(stock=Gtk.STOCK_REDO)
+    sc = Gtk.Button('show changes')
+    vb = Gtk.VBox()
+    bb = Gtk.HButtonBox()
     bb.add(ub)
     bb.add(rb)
     bb.add(sc)
@@ -462,13 +462,13 @@ if __name__ == '__main__':
     UndoableTextView(tv,uhl)
     UndoableEntry(e,uhl)
     w.show_all()
-    w.connect('delete-event',lambda *args:gtk.main_quit())
+    w.connect('delete-event',lambda *args:Gtk.main_quit())
     def show_changes (*args):
         for c in uhl:
             print c,' initial: ',c.initial_text,' current: ',c.text
     ub.connect('clicked',lambda *args: debug('Undo clicked!',0))
     sc.connect('clicked',show_changes)
     rb.connect('clicked',lambda *args: debug('Redo clicked!',0))    
-    gtk.main()
+    Gtk.main()
 
 

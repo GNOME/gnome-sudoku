@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 try:
     import pygtk
-    pygtk.require('2.0')
+    pyGtk.require('2.0')
 except ImportError, err:
     print ("PyGTK not found. Please make sure it is installed properly and referenced in your PYTHONPATH environment variable.")
 
@@ -9,8 +9,8 @@ import os.path
 import threading
 
 import gobject
-import gtk
-import pango
+from gi.repository import Gtk
+from gi.repository import Pango
 from gettext import gettext as _
 from gettext import ngettext
 
@@ -27,20 +27,20 @@ from defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION, D
 from gtk_goodies import gconf_wrapper, Undo, dialog_extras
 from simple_debug import simple_debug, options
 
-ICON_FACTORY = gtk.IconFactory()
+ICON_FACTORY = Gtk.IconFactory()
 STOCK_PIXBUFS = {}
 for filename, stock_id in [('footprints.png', 'tracks'), ]:
     try:
-        pb = gtk.gdk.pixbuf_new_from_file(os.path.join(IMAGE_DIR, filename))
-    except gobject.GError, e:
+        pb = GdkPixbuf.Pixbuf.new_from_file(os.path.join(IMAGE_DIR, filename))
+    except GObject.GError, e:
         print 'Failed to load pixbuf: %s' % e
         continue
     STOCK_PIXBUFS[stock_id] = pb
-    iconset = gtk.IconSet(pb)
+    iconset = Gtk.IconSet(pb)
     ICON_FACTORY.add(stock_id, iconset)
     ICON_FACTORY.add_default()
 
-gtk.stock_add([('tracks',
+Gtk.stock_add([('tracks',
                 _('Track moves'),
                 0, 0, ""), ])
 
@@ -176,7 +176,7 @@ class UI (gconf_wrapper.GConfWrapper):
                 self.quit = False
 
         # Generate puzzles in background...
-        gobject.timeout_add_seconds(1, lambda *args: self.start_worker_thread() and True)
+        GObject.timeout_add_seconds(1, lambda *args: self.start_worker_thread() and True)
 
     @inactivate_new_game_etc
     def select_game (self):
@@ -217,43 +217,43 @@ class UI (gconf_wrapper.GConfWrapper):
         self.setup_toggles()
 
     def setup_main_window (self):
-        gtk.window_set_default_icon_name('gnome-sudoku')
-        self.w = gtk.Window()
+        Gtk.Window.set_default_icon_name('gnome-sudoku')
+        self.w = Gtk.Window()
         self.w.set_default_size(self.gconf['width'], self.gconf['height'])
         self.w.set_title(APPNAME_SHORT)
         self.w.connect('configure-event', self.resize_cb)
         self.w.connect('delete-event', self.quit_cb)
-        self.uimanager = gtk.UIManager()
+        self.uimanager = Gtk.UIManager()
 
     def setup_actions (self):
-        self.main_actions = gtk.ActionGroup('MainActions')
+        self.main_actions = Gtk.ActionGroup('MainActions')
         self.main_actions.add_actions([
             ('Game', None, _('_Game')),
-            ('New', gtk.STOCK_NEW, None, '<Control>n', _('New game'), self.new_cb),
-            ('Reset', gtk.STOCK_CLEAR, _('_Reset'), '<Control>b',
+            ('New', Gtk.STOCK_NEW, None, '<Control>n', _('New game'), self.new_cb),
+            ('Reset', Gtk.STOCK_CLEAR, _('_Reset'), '<Control>b',
              None, self.game_reset_cb),
-            ('Undo', gtk.STOCK_UNDO, _('_Undo'), '<Control>z',
+            ('Undo', Gtk.STOCK_UNDO, _('_Undo'), '<Control>z',
              _('Undo last action'), self.stop_dancer),
-            ('Redo', gtk.STOCK_REDO, _('_Redo'), '<Shift><Control>z',
+            ('Redo', Gtk.STOCK_REDO, _('_Redo'), '<Shift><Control>z',
              _('Redo last action')),
-            ('PuzzleInfo', gtk.STOCK_ABOUT, _('Puzzle _Statistics...'), None,
+            ('PuzzleInfo', Gtk.STOCK_ABOUT, _('Puzzle _Statistics...'), None,
              None, self.show_info_cb),
-            ('Print', gtk.STOCK_PRINT, _('_Print...'), '<Control>p', None, self.print_game),
-            ('PrintMany', gtk.STOCK_PRINT, _('Print _Multiple Sudokus...'), None,
+            ('Print', Gtk.STOCK_PRINT, _('_Print...'), '<Control>p', None, self.print_game),
+            ('PrintMany', Gtk.STOCK_PRINT, _('Print _Multiple Sudokus...'), None,
              None, self.print_multiple_games),
-            ('Close', gtk.STOCK_CLOSE, None, '<Control>w', None, self.quit_cb),
+            ('Close', Gtk.STOCK_CLOSE, None, '<Control>w', None, self.quit_cb),
             ('Settings', None, _('_Settings')),
-            ('FullScreen', gtk.STOCK_FULLSCREEN, None, 'F11', None, self.full_screen_cb),
+            ('FullScreen', Gtk.STOCK_FULLSCREEN, None, 'F11', None, self.full_screen_cb),
             ('Tools', None, _('_Tools')),
-            ('ShowPossible', gtk.STOCK_DIALOG_INFO, _('_Hint'), '<Control>h',
+            ('ShowPossible', Gtk.STOCK_DIALOG_INFO, _('_Hint'), '<Control>h',
              _('Show a square that is easy to fill.'), self.show_hint_cb),
             ('ClearTopNotes', None, _('Clear _Top Notes'), '<Control>j',
              None, self.clear_top_notes_cb),
             ('ClearBottomNotes', None, _('Clear _Bottom Notes'), '<Control>k',
              None, self.clear_bottom_notes_cb),
             ('Help', None, _('_Help'), None, None, None),
-            ('ShowHelp', gtk.STOCK_HELP, _('_Contents'), 'F1', None, self.show_help),
-            ('About', gtk.STOCK_ABOUT, None, None, None, self.show_about),
+            ('ShowHelp', Gtk.STOCK_HELP, _('_Contents'), 'F1', None, self.show_help),
+            ('About', Gtk.STOCK_ABOUT, None, None, None, self.show_about),
             ])
         self.main_actions.add_toggle_actions([
             ('AlwaysShowPossible',
@@ -273,7 +273,7 @@ class UI (gconf_wrapper.GConfWrapper):
              _('Mark new additions in a separate color so you can keep track of them.'),
              self.tracker_toggle_cb, False),
             ('ToggleToolbar', None, _('Show _Toolbar'), None, None, self.toggle_toolbar_cb, True),
-            ('ToggleHighlight', gtk.STOCK_SELECT_COLOR, _('_Highlighter'),
+            ('ToggleHighlight', Gtk.STOCK_SELECT_COLOR, _('_Highlighter'),
              None, _('Highlight the current row, column and box'), self.toggle_highlight_cb, False)
             ])
 
@@ -312,24 +312,24 @@ class UI (gconf_wrapper.GConfWrapper):
             self.gsd.set_bg_color(bgcol)
 
     def setup_autosave (self):
-        gobject.timeout_add_seconds(self.gconf['auto_save_interval'] or 60, # in seconds...
+        GObject.timeout_add_seconds(self.gconf['auto_save_interval'] or 60, # in seconds...
                             self.autosave)
 
     def setup_main_boxes (self):
-        self.vb = gtk.VBox()
+        self.vb = Gtk.VBox()
         # Add menu bar and toolbar...
         mb = self.uimanager.get_widget('/MenuBar')
         mb.show()
         self.vb.pack_start(mb, fill = False, expand = False)
         self.tb = self.uimanager.get_widget('/Toolbar')
         self.vb.pack_start(self.tb, fill = False, expand = False)
-        self.main_area = gtk.HBox()
+        self.main_area = Gtk.HBox()
         self.swallower = dialog_swallower.SwappableArea(self.main_area)
         self.swallower.show()
         self.vb.pack_start(self.swallower, True, padding = 12)
         self.main_area.pack_start(self.gsd, padding = 6)
         self.main_actions.set_visible(True)
-        self.game_box = gtk.VBox()
+        self.game_box = Gtk.VBox()
         self.main_area.show()
         self.vb.show()
         self.game_box.show()
@@ -483,27 +483,27 @@ class UI (gconf_wrapper.GConfWrapper):
             and self.gsd.grid.is_changed()
             and (not self.won)):
             self.save_game(self)
-        if gtk.main_level() > 1:
+        if Gtk.main_level() > 1:
             # If we are in an embedded mainloop, that means that one
             # of our "swallowed" dialogs is active, in which case we
             # have to quit that mainloop before we can quit
             # properly.
             if self.swallower.running:
                 d = self.swallower.running
-                d.response(gtk.RESPONSE_DELETE_EVENT)
-            gtk.main_quit() # Quit the embedded mainloop
-            gobject.idle_add(self.quit_cb, 100) # Call ourselves again
+                d.response(Gtk.ResponseType.DELETE_EVENT)
+            Gtk.main_quit() # Quit the embedded mainloop
+            GObject.idle_add(self.quit_cb, 100) # Call ourselves again
                                                # to quit the main
                                                # mainloop
             return
         # make sure we really go away before doing our saving --
         # otherwise we appear sluggish.
-        while gtk.events_pending():
-            gtk.main_iteration()
+        while Gtk.events_pending():
+            Gtk.main_iteration()
         self.stop_worker_thread()
         # allow KeyboardInterrupts, which calls quit_cb outside the main loop
         try:
-            gtk.main_quit()
+            Gtk.main_quit()
         except RuntimeError:
             pass
 
@@ -694,7 +694,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def show_about (self, *args):
-        about = gtk.AboutDialog()
+        about = Gtk.AboutDialog()
         about.set_transient_for(self.w)
         about.set_name(APPNAME)
         about.set_version(VERSION)
@@ -713,8 +713,8 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     def show_help (self, *args):
         try:
-            gtk.show_uri(self.w.get_screen(), "ghelp:gnome-sudoku", gtk.get_current_event_time())
-        except gobject.GError, error:
+            Gtk.show_uri(self.w.get_screen(), "ghelp:gnome-sudoku", Gtk.get_current_event_time())
+        except GObject.GError, error:
             # FIXME: This should create a pop-up dialog
             print _('Unable to display help: %s') % str(error)
 
@@ -727,13 +727,13 @@ class UI (gconf_wrapper.GConfWrapper):
         gp = printing.GamePrinter(self.sudoku_maker, self.gconf)
         gp.run_dialog()
 
-class TrackerBox (gtk.VBox):
+class TrackerBox (Gtk.VBox):
 
     @simple_debug
     def __init__ (self, main_ui):
 
-        gtk.VBox.__init__(self)
-        self.builder = gtk.Builder()
+        GObject.GObject.__init__(self)
+        self.builder = Gtk.Builder()
         self.builder.set_translation_domain(DOMAIN)
         self.builder.add_from_file(os.path.join(UI_DIR, 'tracker.ui'))
         self.main_ui = main_ui
@@ -758,12 +758,12 @@ class TrackerBox (gtk.VBox):
     @simple_debug
     def setup_tree (self):
         self.tracker_tree = self.builder.get_object('TrackerTreeView')
-        self.tracker_model = gtk.ListStore(int, gtk.gdk.Pixbuf, str)
-        self.tracker_model.set_sort_column_id(0, gtk.SORT_ASCENDING)
+        self.tracker_model = Gtk.ListStore(int, GdkPixbuf.Pixbuf, str)
+        self.tracker_model.set_sort_column_id(0, Gtk.SortType.ASCENDING)
         self.tracker_tree.set_model(self.tracker_model)
-        col1 = gtk.TreeViewColumn("", gtk.CellRendererPixbuf(), pixbuf = 1)
-        rend = gtk.CellRendererText()
-        col2 = gtk.TreeViewColumn("", rend, text = 2)
+        col1 = Gtk.TreeViewColumn("", Gtk.CellRendererPixbuf(), pixbuf = 1)
+        rend = Gtk.CellRendererText()
+        col2 = Gtk.TreeViewColumn("", rend, text = 2)
         col2.set_cell_data_func(rend, self.draw_tracker_name)
         self.tracker_tree.append_column(col2)
         self.tracker_tree.append_column(col1)
@@ -777,22 +777,22 @@ class TrackerBox (gtk.VBox):
 
     @simple_debug
     def setup_actions (self):
-        self.tracker_actions = gtk.ActionGroup('tracker_actions')
+        self.tracker_actions = Gtk.ActionGroup('tracker_actions')
         self.tracker_actions.add_actions(
             [('Remove',
-              gtk.STOCK_CLEAR,
+              Gtk.STOCK_CLEAR,
               _('_Remove'),
               None, _('Delete selected tracker.'),
               self.remove_tracker_cb
               ),
              ('Hide',
-              gtk.STOCK_CLEAR,
+              Gtk.STOCK_CLEAR,
               _('H_ide'),
               None, _('Hide current tracker entries.'),
               self.hide_tracker_cb
               ),
              ('Apply',
-              gtk.STOCK_APPLY,
+              Gtk.STOCK_APPLY,
               _('A_pply'),
               None, _('Apply all tracked values and remove the tracker.'),
               self.apply_tracker_cb
@@ -812,9 +812,9 @@ class TrackerBox (gtk.VBox):
 
     def draw_tracker_name(self, column, cell, model, iter):
         if model.get_value(iter, 0) == self.tinfo.showing_tracker:
-            cell.set_property('weight', pango.WEIGHT_BOLD)
+            cell.set_property('weight', Pango.Weight.BOLD)
         else:
-            cell.set_property('weight', pango.WEIGHT_NORMAL)
+            cell.set_property('weight', Pango.Weight.NORMAL)
 
     @simple_debug
     def add_tracker (self, *args, **keys):
@@ -847,7 +847,7 @@ class TrackerBox (gtk.VBox):
             pixbuf_str_new += chr(int(color[2]*255))
             pixbuf_str_new += alpha
 
-        return gtk.gdk.pixbuf_new_from_data(pixbuf_str_new, gtk.gdk.COLORSPACE_RGB, True, 8, 
+        return GdkPixbuf.Pixbuf.new_from_data(pixbuf_str_new, GdkPixbuf.Colorspace.RGB, True, 8,
                                             pixbuf.get_width(), pixbuf.get_height(), pixbuf.get_rowstride())
 
     @simple_debug
@@ -1011,7 +1011,7 @@ def start_game ():
 
     ##  You must call g_thread_init() before executing any other GLib
     ##  functions in a threaded GLib program.
-    gobject.threads_init()
+    GObject.threads_init()
 
     if options.profile:
         options.profile = False
@@ -1021,7 +1021,7 @@ def start_game ():
     u = UI()
     if not u.quit:
         try:
-            gtk.main()
+            Gtk.main()
         except KeyboardInterrupt:
             # properly quit on a keyboard interrupt...
             u.quit_cb()

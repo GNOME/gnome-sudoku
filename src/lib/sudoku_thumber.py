@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk
+from gi.repository import Gtk
 import cairo
 
 SUDOKU_SIZE = 9
@@ -133,7 +133,7 @@ def make_pixbuf (sudoku, played, border_color, line_color = (0.4, 0.4, 0.4)):
     surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, size, size)
     cr = cairo.Context(surface)
     draw_sudoku(cr, sudoku, played,  size, 0, 0, border_color, line_color)
-    pixbuf = gtk.gdk.pixbuf_new_from_data(surface.get_data(), gtk.gdk.COLORSPACE_RGB,
+    pixbuf = GdkPixbuf.Pixbuf.new_from_data(surface.get_data(), GdkPixbuf.Colorspace.RGB,
                                           True, 8, surface.get_width(), surface.get_height(), surface.get_stride())
     del surface
     return pixbuf
@@ -149,15 +149,15 @@ if __name__ == "__main__":
     surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, 750, 750)
     cr = cairo.Context(surface)
     draw_sudoku(cr, sudoku, played,  size, 100, 250, border_color, line_color)
-    pb = gtk.gdk.pixbuf_new_from_data(surface.get_data(), gtk.gdk.COLORSPACE_RGB,
+    pb = GdkPixbuf.Pixbuf.new_from_data(surface.get_data(), GdkPixbuf.Colorspace.RGB,
                                           True, 8, surface.get_width(), surface.get_height(), surface.get_stride())
     del surface
 
 
-    w = gtk.Window()
-    img = gtk.Image()
+    w = Gtk.Window()
+    img = Gtk.Image()
     img.set_from_pixbuf(pb)
     w.add(img)
     w.show_all()
-    gtk.main()
+    Gtk.main()
 

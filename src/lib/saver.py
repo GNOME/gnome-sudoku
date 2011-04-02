@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk
+from gi.repository import Gtk
 import pickle, types, os, errno
 import defaults
 from gtk_goodies.dialog_extras import show_message
@@ -137,7 +137,7 @@ class SudokuTracker:
                     show_message(
                         title = _('No Space'),
                         label = _('No space left on disk'),
-                        message_type = gtk.MESSAGE_ERROR,
+                        message_type = Gtk.MessageType.ERROR,
                         sublabel = _('Unable to create data folder %(path)s.') % locals() + '\n' + \
                                    _('There is no disk space left!')
                         )
@@ -168,7 +168,7 @@ class SudokuTracker:
             show_message(
                 title = _('Unable to save game.'),
                 label = _('Unable to save game.'),
-                message_type = gtk.MESSAGE_ERROR,
+                message_type = Gtk.MessageType.ERROR,
                 sublabel = (_('Unable to save file %(filename)s.') % locals()
                           + '\n' +
                           _('Error %(errno)s: %(error)s') % {
@@ -193,7 +193,7 @@ class SudokuTracker:
             show_message(
                 title = _('Unable to mark game as finished.'),
                 label = _('Unable to mark game as finished.'),
-                message_type = gtk.MESSAGE_ERROR,
+                message_type = Gtk.MessageType.ERROR,
                 sublabel = (_('Unable to save file %(filename)s.') % locals() + '\n' +
                           _('Error %(errno)s: %(error)s') % {
                 'errno':e.errno,
@@ -211,7 +211,7 @@ class SudokuTracker:
             show_message(
                 title = _('Sudoku unable to mark game as finished.'),
                 label = _('Sudoku unable to mark game as finished.'),
-                message_type = gtk.MESSAGE_ERROR,
+                message_type = Gtk.MessageType.ERROR,
                 sublabel = (_('Unable to save file %(filename)s.') % locals() + '\n' +
                           _('Error %(errno)s: %(error)s') % {
                 'errno':e.errno,

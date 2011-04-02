@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gtk
+from gi.repository import Gtk
 import cairo
 import time
 import os.path
@@ -48,7 +48,7 @@ class SudokuPrinter:
         self.sudokus_per_page = sudokus_per_page
         self.n_sudokus = len(sudokus)
         self.sudokus = sudokus
-        self.print_op = gtk.PrintOperation()
+        self.print_op = Gtk.PrintOperation()
         self.print_op.connect( "begin-print", self.begin_print)
         self.print_op.connect("draw-page", self.draw_page)
         self.main_window = main_window
@@ -104,12 +104,12 @@ class SudokuPrinter:
 
 def print_sudokus(*args, **kwargs):
     sp = SudokuPrinter(*args, **kwargs)
-    res = sp.print_op.run(gtk.PRINT_OPERATION_ACTION_PRINT_DIALOG, sp.main_window)
-    if res == gtk.PRINT_OPERATION_RESULT_ERROR:
-        error_dialog = gtk.MessageDialog(sp.main_window,
-                                      gtk.DIALOG_DESTROY_WITH_PARENT,
-                                      gtk.MESSAGE_ERROR,
-                                      gtk.BUTTONS_CLOSE,
+    res = sp.print_op.run(Gtk.PRINT_OPERATION_ACTION_PRINT_DIALOG, sp.main_window)
+    if res == Gtk.PRINT_OPERATION_RESULT_ERROR:
+        error_dialog = Gtk.MessageDialog(sp.main_window,
+                                      Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                                      Gtk.MessageType.ERROR,
+                                      Gtk.ButtonsType.CLOSE,
                                       "Error printing file:\n")
         error_dialog.connect("response", lambda w, id: w.destroy())
         error_dialog.show()
@@ -131,7 +131,7 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
     def __init__ (self, sudoku_maker, gconf):
         gconf_wrapper.GConfWrapper.__init__(self, gconf)
         self.sudoku_maker = sudoku_maker
-        self.builder = gtk.Builder()
+        self.builder = Gtk.Builder()
         self.builder.set_translation_domain(defaults.DOMAIN)
         self.builder.add_from_file(self.ui_file)
         # Set up toggles...
@@ -155,11 +155,11 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
                          ]:
             self.gconf_wrap_adjustment(key, widg)
         self.dialog = self.builder.get_object('dialog')
-        self.dialog.set_default_response(gtk.RESPONSE_OK)
+        self.dialog.set_default_response(Gtk.ResponseType.OK)
         self.dialog.connect('response', self.response_cb)
 
     def response_cb (self, dialog, response):
-        if response not in (gtk.RESPONSE_ACCEPT, gtk.RESPONSE_OK):
+        if response not in (Gtk.ResponseType.ACCEPT, Gtk.ResponseType.OK):
             self.dialog.hide()
             return
         # Otherwise, we're printing!
@@ -191,11 +191,11 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
                            sudokus_per_page = self.sudokusPerPageSpinButton.get_adjustment().get_value())
 
         self.sudokus_printed = sudokus
-        response = sp.print_op.run(gtk.PRINT_OPERATION_ACTION_PRINT_DIALOG, sp.main_window)
+        response = sp.print_op.run(Gtk.PRINT_OPERATION_ACTION_PRINT_DIALOG, sp.main_window)
 
-        if response   == gtk.PRINT_OPERATION_RESULT_ERROR:
+        if response   == Gtk.PRINT_OPERATION_RESULT_ERROR:
             pass
-        elif response == gtk.PRINT_OPERATION_RESULT_APPLY:
+        elif response == Gtk.PRINT_OPERATION_RESULT_APPLY:
             if self.markAsPlayedToggle.get_active():
                 for sud, lab in self.sudokus_printed:
                     jar = {}
