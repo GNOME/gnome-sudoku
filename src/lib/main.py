@@ -5,9 +5,7 @@ import threading
 import gi
 gi.require_version("Gtk", "3.0")
 
-import gobject
-from gi.repository import Gtk
-from gi.repository import Pango
+from gi.repository import Gtk,GdkPixbuf,GObject,Pango
 from gettext import gettext as _
 from gettext import ngettext
 

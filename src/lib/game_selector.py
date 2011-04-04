@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from gi.repository import Gtk
-import gobject
+from gi.repository import Gtk,GObject
 import os.path
 import sudoku, saver, sudoku_maker
 import sudoku_thumber

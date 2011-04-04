@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
 
-from gi.repository import Gtk
-import gobject
-from gi.repository import Pango
+from gi.repository import Gtk,GObject,Pango
 import cairo
 import math
 import tracker_info

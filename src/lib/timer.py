@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import gobject
+from gi.repository import GObject
 import time
 
 class ActiveTimer (GObject.GObject):

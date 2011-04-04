@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from gi.repository import Gtk
-import gobject
+from gi.repository import Gtk,GObject
 import colors
 
 class GridDancer:
