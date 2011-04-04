@@ -4,7 +4,6 @@
 # by Johan Dahlin
 
 from gi.repository import GConf
-from gconf import VALUE_BOOL, VALUE_INT, VALUE_STRING, VALUE_FLOAT
 from types import StringType, IntType, FloatType, BooleanType
 
 verbose = False
@@ -17,7 +16,7 @@ class GConfWrap:
     def __init__ (self, appname, allowed={}):
         self._domain = '/apps/%s/' % appname
         self._allowed = allowed
-        self._gconf_client = GConf.Client.get_default ()
+        self._gconf_client = GConf.Client.get_default()
 
     def __getitem__ (self, attr):
         return self.get_value (attr)
@@ -66,13 +65,13 @@ class GConfWrap:
         if value == None:
             raise GConfError("gconf_client returned a None!")
         ValueType = value.type
-        if ValueType == VALUE_BOOL:
+        if ValueType == GConf.ValueType.BOOL:
             return value.get_bool ()
-        elif ValueType == VALUE_INT:
+        elif ValueType == GConf.ValueType.INT:
             return value.get_int ()
-        elif ValueType == VALUE_STRING:
+        elif ValueType == GConf.ValueType.STRING:
             return value.get_string ()
-        elif ValueType == VALUE_FLOAT:
+        elif ValueType == GConf.ValueType.FLOAT:
             return value.get_float ()
    
     def set_value (self, key, value):
