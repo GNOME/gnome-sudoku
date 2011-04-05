@@ -31,13 +31,13 @@ for filename, stock_id in [('footprints.png', 'tracks'), ]:
         print 'Failed to load pixbuf: %s' % e
         continue
     STOCK_PIXBUFS[stock_id] = pb
-    iconset = Gtk.IconSet(pb)
+    iconset = Gtk.IconSet.new_from_pixbuf(pb)
     ICON_FACTORY.add(stock_id, iconset)
     ICON_FACTORY.add_default()
 
-Gtk.stock_add([('tracks',
-                _('Track moves'),
-                0, 0, ""), ])
+#Gtk.stock_add([('tracks',
+#                _('Track moves'),
+#                0, 0, ""), ])
 
 def inactivate_new_game_etc (fun):
     def inactivate_new_game_etc_ (ui, *args, **kwargs):
@@ -315,9 +315,9 @@ class UI (gconf_wrapper.GConfWrapper):
         # Add menu bar and toolbar...
         mb = self.uimanager.get_widget('/MenuBar')
         mb.show()
-        self.vb.pack_start(mb, fill = False, expand = False)
+        self.vb.pack_start(mb, False, False, 0)
         self.tb = self.uimanager.get_widget('/Toolbar')
-        self.vb.pack_start(self.tb, fill = False, expand = False)
+        self.vb.pack_start(self.tb, False, False, 0)
         self.main_area = Gtk.HBox()
         self.swallower = dialog_swallower.SwappableArea(self.main_area)
         self.swallower.show()

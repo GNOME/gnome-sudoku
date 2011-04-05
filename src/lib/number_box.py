@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
 
-from gi.repository import Gtk,GObject,Pango
+from gi.repository import Gtk,Gdk,GObject,Pango
 import cairo
 import math
 import tracker_info
@@ -104,7 +104,7 @@ class NumberBox (Gtk.Widget):
         self.upper = upper
         self.parent_win = None
         self.timer = None
-        self.font = self.style.font_desc
+        self.font = self.get_style().font_desc
         self.font.set_size(BASE_FONT_SIZE)
         self.note_font = self.font.copy()
         self.note_font.set_size(NOTE_FONT_SIZE)
