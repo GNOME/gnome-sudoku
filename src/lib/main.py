@@ -321,14 +321,14 @@ class UI (gconf_wrapper.GConfWrapper):
         self.main_area = Gtk.HBox()
         self.swallower = dialog_swallower.SwappableArea(self.main_area)
         self.swallower.show()
-        self.vb.pack_start(self.swallower, True, padding = 12)
-        self.main_area.pack_start(self.gsd, padding = 6)
+        self.vb.pack_start(self.swallower, True, True, 12)
+        self.main_area.pack_start(self.gsd, True, True, 6)
         self.main_actions.set_visible(True)
         self.game_box = Gtk.VBox()
         self.main_area.show()
         self.vb.show()
         self.game_box.show()
-        self.main_area.pack_start(self.game_box, False, padding = 12)
+        self.main_area.pack_start(self.game_box, False, False, 12)
         self.w.add(self.vb)
 
     def setup_toggles (self):
@@ -736,7 +736,7 @@ class TrackerBox (Gtk.VBox):
         self.tinfo.ui = self
         self.vb = self.builder.get_object('vbox1')
         self.vb.unparent()
-        self.pack_start(self.vb, expand = True, fill = True)
+        self.pack_start(self.vb, True, True, 0)
         self.setup_actions()
         self.setup_tree()
         self.show_all()

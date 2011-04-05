@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from gi.repository import Gtk
+from gi.repository import Gtk,GObject
 
 # Convenience library for a new kind of UI -- for e.g. this game, we
 # don't really want to have dialogs. Nonetheless, it's convenient to
@@ -18,7 +18,7 @@ class SwappableArea (Gtk.Notebook):
         GObject.GObject.__init__(self)
         self.set_show_tabs(False)
         self.set_show_border(False)
-        self.main_page = self.append_page(main_area)
+        self.main_page = self.append_page(main_area, None)
 
     def swallow_window (self, d):
         child = d.get_child()
@@ -27,7 +27,7 @@ class SwappableArea (Gtk.Notebook):
 
     def swallow_widget (self, w):
         w.unparent()
-        return self.append_page(w)
+        return self.append_page(w, None)
 
     def response_cb (self, w, response, data=None):
         Gtk.main_quit()
