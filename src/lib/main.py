@@ -794,12 +794,15 @@ class TrackerBox (Gtk.VBox):
               ),
              ]
             )
-        a = self.tracker_actions.get_action('Remove')
-        a.connect_proxy(self.builder.get_object('RemoveTrackerButton'))
-        a = self.tracker_actions.get_action('Hide')
-        a.connect_proxy(self.builder.get_object('HideTrackerButton'))
-        a = self.tracker_actions.get_action('Apply')
-        a.connect_proxy(self.builder.get_object('ApplyTrackerButton'))
+        o = self.builder.get_object('RemoveTrackerButton')
+        o.set_related_action(self.tracker_actions.get_action('Remove'))
+
+        o = self.builder.get_object('HideTrackerButton')
+        o.set_related_action(self.tracker_actions.get_action('Hide'))
+
+        o = self.builder.get_object('ApplyTrackerButton')
+        o.set_related_action(self.tracker_actions.get_action('Apply'))
+
         self.builder.get_object('AddTrackerButton').connect('clicked',
                                                           self.add_tracker)
         # Default to insensitive (they only become sensitive once a tracker is added)
