@@ -513,7 +513,7 @@ class NumberBox (Gtk.Widget):
         # then draw on
 
         # First set an internal flag telling that we're realized
-        self.set_flags(self.flags() | Gtk.REALIZED)
+        self.set_realized(True)
 
         # Create a new Gdk.Window which we can draw on.
         # Also say that we want to receive exposure events by setting

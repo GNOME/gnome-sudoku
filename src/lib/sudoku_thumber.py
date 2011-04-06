@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from gi.repository import Gtk
+from gi.repository import Gtk,GdkPixbuf
 import cairo
 
 SUDOKU_SIZE = 9
