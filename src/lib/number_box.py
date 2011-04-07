@@ -522,8 +522,8 @@ class NumberBox (Gtk.Widget):
             self.get_parent_window(),
             width = self.allocation.width,
             height = self.allocation.height,
-            window_type = Gdk.WINDOW_CHILD,
-            wclass = Gdk.INPUT_OUTPUT,
+            window_type = Gdk.WindowType.CHILD,
+            wclass = Gdk.WindowWindowClass.OUTPUT,
             event_mask = self.get_events() | Gdk.EventMask.EXPOSURE_MASK)
 
         # Associate the Gdk.Window with ourselves, Gtk+ needs a reference
