@@ -518,13 +518,21 @@ class NumberBox (Gtk.Widget):
         # Create a new Gdk.Window which we can draw on.
         # Also say that we want to receive exposure events by setting
         # the event_mask
+        #
+        # Its a little convoluted to construct the window this way, nevertheless note
+        #   "fields in GdkWindowAttr not covered by a bit in this enum are required;
+        #    for example, the width/height, wclass, and window_type fields are required,
+        #    they have no corresponding flag in GdkWindowAttributesType.
+        attr = Gdk.WindowAttr()
+        attr.width = self.allocation.width
+        attr.height = self.allocation.height
+        attr.window_type = Gdk.WindowType.CHILD
+        attr.wclass = Gdk.WindowWindowClass.OUTPUT
+        attr.event_mask = self.get_events() | Gdk.EventMask.EXPOSURE_MASK
+
         self.window = Gdk.Window(
-            self.get_parent_window(),
-            width = self.allocation.width,
-            height = self.allocation.height,
-            window_type = Gdk.WindowType.CHILD,
-            wclass = Gdk.WindowWindowClass.OUTPUT,
-            event_mask = self.get_events() | Gdk.EventMask.EXPOSURE_MASK)
+            self.get_parent_window(), attr,
+            Gdk.WindowAttributesType.WMCLASS)
 
         # Associate the Gdk.Window with ourselves, Gtk+ needs a reference
         # between the widget and the gdk window
@@ -532,12 +540,13 @@ class NumberBox (Gtk.Widget):
 
         # Attach the style to the Gdk.Window, a style contains colors and
         # GC contextes used for drawing
-        self.style.attach(self.window)
+        #self.style.attach(self.window)
 
         # The default color of the background should be what
         # the style (theme engine) tells us.
-        self.style.set_background(self.window, Gtk.StateType.NORMAL)
-        self.window.move_resize(*self.allocation)
+        #self.style.set_background(self.window, Gtk.StateType.NORMAL)
+
+        self.window.move_resize(self.allocation.x, self.allocation.y, self.allocation.width, self.allocation.height)
 
     def do_unrealize (self):
         # The do_unrealized method is responsible for freeing the GDK resources
@@ -569,14 +578,15 @@ class NumberBox (Gtk.Widget):
         # If we're realized, move and resize the window to the
         # requested coordinates/positions
         if self.get_realized():
-            self.window.move_resize(*allocation)
+            x, y, w, h = self.allocation.x, self.allocation.y, self.allocation.width, self.allocation.height
+            self.window.move_resize(self.allocation.x,self.allocation.y,self.allocation.width,self.allocation.height)
 
     def do_expose_event(self, event):
         # The do_expose_event is called when the widget is asked to draw itself
         # Remember that this will be called a lot of times, so it's usually
         # a good idea to write this code as optimized as it can be, don't
         # Create any resources in here.
-        x, y, w, h = self.allocation
+        x, y, w, h = self.allocation.x, self.allocation.y, self.allocation.width, self.allocation.height
         cr = self.window.cairo_create()
         self.draw_background_color(cr, w, h)
         if self.is_focus():

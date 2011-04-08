@@ -835,18 +835,20 @@ class TrackerBox (Gtk.VBox):
 
     @simple_debug
     def pixbuf_transform_color (self, pixbuf, color):
-        """Return new pixbuf with color changed to color"""
-        pixbuf_str = pixbuf.get_pixels()
-        pixbuf_str_new = ""
+        return pixbuf
 
-        for alpha in pixbuf_str[3::4]:
-            pixbuf_str_new += chr(int(color[0]*255))
-            pixbuf_str_new += chr(int(color[1]*255))
-            pixbuf_str_new += chr(int(color[2]*255))
-            pixbuf_str_new += alpha
-
-        return GdkPixbuf.Pixbuf.new_from_data(pixbuf_str_new, GdkPixbuf.Colorspace.RGB, True, 8,
-                                            pixbuf.get_width(), pixbuf.get_height(), pixbuf.get_rowstride())
+#        """Return new pixbuf with color changed to color"""
+#        pixbuf_str = pixbuf.get_pixels()
+#        pixbuf_str_new = ""
+#
+#        for alpha in pixbuf_str[3::4]:
+#            pixbuf_str_new += chr(int(color[0]*255))
+#            pixbuf_str_new += chr(int(color[1]*255))
+#            pixbuf_str_new += chr(int(color[2]*255))
+#            pixbuf_str_new += alpha
+#
+#        return GdkPixbuf.Pixbuf.new_from_data(pixbuf_str_new, GdkPixbuf.Colorspace.RGB, True, 8,
+#                                            pixbuf.get_width(), pixbuf.get_height(), pixbuf.get_rowstride())
 
     @simple_debug
     def find_tracker (self, tracker_id):
