@@ -358,9 +358,9 @@ class NumberBox (Gtk.Widget):
         '''Display the notes for the current view
         '''
         self.top_note_text = self.get_note_display(self.top_note_list)[1]
-        self._top_note_layout.set_markup(self.get_note_display(self.top_note_list)[2])
+        self._top_note_layout.set_markup(self.get_note_display(self.top_note_list)[2], -1)
         self.bottom_note_text = self.get_note_display(self.bottom_note_list)[1]
-        self._bottom_note_layout.set_markup(self.get_note_display(self.bottom_note_list)[2])
+        self._bottom_note_layout.set_markup(self.get_note_display(self.bottom_note_list)[2], -1)
         self.queue_draw()
 
     def set_note_text (self, top_text = None, bottom_text = None, for_hint = False):
