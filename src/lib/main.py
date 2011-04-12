@@ -467,7 +467,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.old_tracker_view = None
 
     @simple_debug
-    def resize_cb (self, widget, event):
+    def resize_cb (self, widget, event, user_data=None):
         self.gconf['width'] = event.width
         self.gconf['height'] = event.height
 
@@ -596,7 +596,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.gsd.show_hint()
 
     @simple_debug
-    def auto_hint_cb (self, action):
+    def auto_hint_cb (self, action, user_data=None):
         if action.get_active():
             self.gsd.always_show_hints = True
             self.gsd.update_all_hints()
@@ -605,7 +605,7 @@ class UI (gconf_wrapper.GConfWrapper):
             self.gsd.clear_notes('AutoHint')
 
     @simple_debug
-    def impossible_implication_cb (self, action):
+    def impossible_implication_cb (self, action, user_data=None):
         if action.get_active():
             self.gsd.display_impossible_implications()
         else:
@@ -621,7 +621,7 @@ class UI (gconf_wrapper.GConfWrapper):
         self.game_box.add(self.tracker_ui)
 
     @simple_debug
-    def tracker_toggle_cb (self, widg):
+    def tracker_toggle_cb (self, widg, user_data=None):
         if widg.get_active():
             if self.old_tracker_view:
                 self.tinfo.set_tracker_view(self.old_tracker_view)
@@ -634,13 +634,13 @@ class UI (gconf_wrapper.GConfWrapper):
             self.tracker_ui.hide()
 
     @simple_debug
-    def toggle_toolbar_cb (self, widg):
+    def toggle_toolbar_cb (self, widg, user_data=None):
         if widg.get_active():
             self.tb.show()
         else:
             self.tb.hide()
 
-    def toggle_highlight_cb (self, widg):
+    def toggle_highlight_cb (self, widg, user_data=None):
         if widg.get_active():
             self.gsd.toggle_highlight(True)
         else:
@@ -808,7 +808,7 @@ class TrackerBox (Gtk.VBox):
         # Default to insensitive (they only become sensitive once a tracker is added)
         self.tracker_actions.set_sensitive(False)
 
-    def draw_tracker_name(self, column, cell, model, iter):
+    def draw_tracker_name(self, column, cell, model, iter, user_data=None):
         if model.get_value(iter, 0) == self.tinfo.showing_tracker:
             cell.set_property('weight', Pango.Weight.BOLD)
         else:
@@ -875,7 +875,7 @@ class TrackerBox (Gtk.VBox):
             action.set_sensitive(self.tinfo.showing_tracker != tracker_info.NO_TRACKER)
 
     @simple_debug
-    def selection_changed_cb (self, selection):
+    def selection_changed_cb (self, selection, user_data=None):
         mod, itr = selection.get_selected()
         if itr:
             selected_tracker_id = mod.get_value(itr, 0)
@@ -895,7 +895,7 @@ class TrackerBox (Gtk.VBox):
             self.main_ui.gsd.update_all_hints()
 
     @simple_debug
-    def remove_tracker_cb (self, action):
+    def remove_tracker_cb (self, action, user_data=None):
         mod, itr = self.tracker_tree.get_selection().get_selected()
         # This should only be called if there is an itr, but we'll
         # double-check just in case.
@@ -908,7 +908,7 @@ class TrackerBox (Gtk.VBox):
             clearer.perform()
 
     @simple_debug
-    def hide_tracker_cb (self, action):
+    def hide_tracker_cb (self, action, user_data=None):
         hiding_tracker = self.tinfo.showing_tracker
         self.select_tracker(tracker_info.NO_TRACKER)
         self.main_ui.gsd.cover_track(True)
@@ -918,7 +918,7 @@ class TrackerBox (Gtk.VBox):
         self.redraw_row(tracker_info.NO_TRACKER)
 
     @simple_debug
-    def apply_tracker_cb (self, action):
+    def apply_tracker_cb (self, action, user_data=None):
         '''Apply Tracker button action
         '''
         # Shouldn't be here if no tracker is showing
