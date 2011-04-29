@@ -2,11 +2,12 @@
 #!/usr/bin/python
 
 from gi.repository import Gtk,Gdk,GObject,Pango,PangoCairo
-import cairo
 import math
 import random
 import tracker_info
 from gettext import gettext as _
+
+from simple_debug import simple_debug
 
 ERROR_HIGHLIGHT_COLOR = (1.0, 0, 0)
 
@@ -518,84 +519,7 @@ class NumberBox (Gtk.DrawingArea):
         self.top_note_list, self.bottom_note_list = notelists
         self.show_note_text()
 
-    def do_configure_event(self, *args):
-        print 1234
-
-    def FIXME_do_realize (self):
-        # The do_realize method is responsible for creating GDK (windowing system)
-        # resources. In this example we will create a new Gdk.Window which we
-        # then draw on
-
-        # First set an internal flag telling that we're realized
-        self.set_realized(True)
-
-        # Create a new Gdk.Window which we can draw on.
-        # Also say that we want to receive exposure events by setting
-        # the event_mask
-        #
-        # Its a little convoluted to construct the window this way, nevertheless note
-        #   "fields in GdkWindowAttr not covered by a bit in this enum are required;
-        #    for example, the width/height, wclass, and window_type fields are required,
-        #    they have no corresponding flag in GdkWindowAttributesType.
-        attr = Gdk.WindowAttr()
-        attr.width = self.allocation.width
-        attr.height = self.allocation.height
-        attr.window_type = Gdk.WindowType.CHILD
-        attr.wclass = Gdk.WindowWindowClass.OUTPUT
-        attr.event_mask = self.get_events() | Gdk.EventMask.EXPOSURE_MASK
-
-        self.window = Gdk.Window(
-            self.get_parent_window(), attr,
-            Gdk.WindowAttributesType.WMCLASS)
-
-        # Associate the Gdk.Window with ourselves, Gtk+ needs a reference
-        # between the widget and the gdk window
-        self.window.set_user_data(self)
-
-        # Attach the style to the Gdk.Window, a style contains colors and
-        # GC contextes used for drawing
-        #self.style.attach(self.window)
-
-        # The default color of the background should be what
-        # the style (theme engine) tells us.
-        #self.style.set_background(self.window, Gtk.StateFlags.NORMAL)
-
-        self.window.move_resize(self.allocation.x, self.allocation.y, self.allocation.width, self.allocation.height)
-
-    def FIXME_do_unrealize (self):
-        # The do_unrealized method is responsible for freeing the GDK resources
-
-        # De-associate the window we created in do_realize with ourselves
-        self.window.set_user_data(None)
-
-    def FIXME_do_size_request (self, requisition):
-        # The do_size_request method Gtk+ is calling on a widget to ask
-        # it the widget how large it wishes to be. It's not guaranteed
-        # that gtk+ will actually give this size to the widget
-
-        # In this case, we say that we want to be as big as the
-        # text is, and a square
-        width, height = self._layout.get_size()
-        if width > height:
-            side = width/Pango.SCALE
-        else:
-            side = height/Pango.SCALE
-        (requisition.width, requisition.height) = (side, side)
-
-    def FIXME_do_size_allocate(self, allocation):
-        # The do_size_allocate is called by when the actual size is known
-        # and the widget is told how much space could actually be allocated
-
-        # Save the allocated space
-        self.allocation = allocation
-
-        # If we're realized, move and resize the window to the
-        # requested coordinates/positions
-        #if self.get_realized():
-        #    x, y, w, h = self.allocation.x, self.allocation.y, self.allocation.width, self.allocation.height
-        #    self.window.move_resize(self.allocation.x,self.allocation.y,self.allocation.width,self.allocation.height)
-        return True
-
+    @simple_debug
     def do_draw(self, cr):
         print 'draw'
 
@@ -625,12 +549,11 @@ class NumberBox (Gtk.DrawingArea):
             self.draw_note_area_highlight_box(cr, style_ctx)
 
     def is_focus(self):
-        print "FIXME: always returns 0? =", Gtk.DrawingArea.is_focus(self)
+        print "FIXME: is_focus always returns 0, e.g:", Gtk.DrawingArea.is_focus(self)
         return True
 
     def draw_background_color (self, cr, style_ctx, w, h):
         if self.read_only:
-            print "read only"
             if self.custom_background_color:
                 r, g, b = self.custom_background_color
                 cr.set_source_rgb(
