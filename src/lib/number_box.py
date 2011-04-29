@@ -308,7 +308,7 @@ class NumberBox (Gtk.DrawingArea):
         e.connect('focus-out-event', lambda e, ev, w: w.destroy(), w)
         e.connect('focus-out-event', self.note_focus_out)
         e.connect('activate', lambda e, w: w.destroy(), w)
-        x, y = self.get_window().get_origin()
+        _, x, y = self.get_window().get_origin()
         if top:
             w.move(x, y)
         else:
@@ -330,12 +330,12 @@ class NumberBox (Gtk.DrawingArea):
         ns.connect('changed', self.number_changed_cb)
         w.grab_focus()
         w.add(ns)
-        my_origin = self.get_window().get_origin()
+        _, xorigin, yorigin = self.get_window().get_origin()
         x, y = (self.get_allocated_width(), self.get_allocated_height())
         popupx, popupy = w.get_size()
         overlapx = popupx-x
         overlapy = popupy-y
-        w.move(my_origin[1]-(overlapx/2), my_origin[2]-(overlapy/2))
+        w.move(xorigin - (overlapx/2), yorigin - (overlapy/2))
         w.show()
         self.npicker = w
 
