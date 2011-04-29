@@ -183,7 +183,7 @@ class NumberBox (Gtk.DrawingArea):
     def button_press_cb (self, w, e):
         if self.read_only:
             return
-        if e.type == Gdk._2BUTTON_PRESS:
+        if e.type == Gdk.EventType._2BUTTON_PRESS:
             # ignore second click (this makes a double click in the
             # middle of a cell get us a display of the numbers, rather
             # than selecting a number.
@@ -307,7 +307,7 @@ class NumberBox (Gtk.DrawingArea):
         e.connect('focus-out-event', lambda e, ev, w: w.destroy(), w)
         e.connect('focus-out-event', self.note_focus_out)
         e.connect('activate', lambda e, w: w.destroy(), w)
-        x, y = self.window.get_origin()
+        x, y = self.get_window().get_origin()
         if top:
             w.move(x, y)
         else:
@@ -330,8 +330,8 @@ class NumberBox (Gtk.DrawingArea):
         w.grab_focus()
         w.add(ns)
         r = w.get_allocation()
-        my_origin = self.window.get_origin()
-        x, y = self.window.get_size()
+        my_origin = self.get_window().get_origin()
+        x, y = (self.get_allocated_width(), self.get_allocated_height())
         popupx, popupy = w.get_size()
         overlapx = popupx-x
         overlapy = popupy-y
