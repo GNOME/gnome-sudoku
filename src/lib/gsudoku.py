@@ -129,7 +129,9 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
 
     def get_highlight_colors (self):
         entry = self.__entries__.values()[0]
-        default_color = gtkcolor_to_rgb(entry.style.bg[Gtk.StateType.SELECTED])
+        #default_color = gtkcolor_to_rgb(entry.style.bg[Gtk.StateType.SELECTED])
+        print "fixme: get default bg color from widget..."
+        default_color = (0.0, 1.0, 0.0)
         hsv = colors.rgb_to_hsv(*default_color)
         box_s = hsv[1]
         box_v = hsv[2]

@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
 
-from gi.repository import Gtk,Gdk,GObject,Pango
+from gi.repository import Gtk,Gdk,GObject,Pango,PangoCairo
 import cairo
 import math
+import random
 import tracker_info
 from gettext import gettext as _
 
@@ -18,6 +19,17 @@ NOTE_FONT_SIZE = Pango.SCALE * 6
 
 BORDER_WIDTH = 9.0 # The size of space we leave for a box
 NORMAL_LINE_WIDTH = 1 # The size of the line we draw around a box
+
+DEBUG_COLORS = True
+
+def debug_set_color(cr, rgba):
+    COLORS = ("red","green","blue","yellow","purple","wheat","maroon","gray")
+
+    if DEBUG_COLORS:
+        rgba = Gdk.RGBA()
+        rgba.parse(COLORS[random.randint(0,len(COLORS)-1)])
+
+    Gdk.cairo_set_source_rgba(cr, rgba)
 
 class NumberSelector (Gtk.EventBox):
 
@@ -69,7 +81,7 @@ class NumberSelector (Gtk.EventBox):
     def set_value (self, n):
         self.value = n
 
-class NumberBox (Gtk.Widget):
+class NumberBox (Gtk.DrawingArea):
 
     text = ''
     top_note_text = ''
@@ -95,12 +107,12 @@ class NumberBox (Gtk.Widget):
         'notes-changed':(GObject.SignalFlags.RUN_LAST, None, ()),
         }
 
-    base_state = Gtk.StateType.NORMAL
+    base_state = Gtk.StateFlags.NORMAL
     npicker = None
     draw_boxes = False
 
     def __init__ (self, upper = 9, text = ''):
-        GObject.GObject.__init__(self)
+        Gtk.DrawingArea.__init__(self)
         self.upper = upper
         self.parent_win = None
         self.timer = None
@@ -134,19 +146,19 @@ class NumberBox (Gtk.Widget):
 
     def pointer_enter_cb (self, *args):
         if not self.is_focus():
-            self.set_state(Gtk.StateType.PRELIGHT)
+            self.set_state(Gtk.StateFlags.PRELIGHT)
 
     def pointer_leave_cb (self, *args):
         self.set_state(self.base_state)
         self._toggle_box_drawing_(False)
 
     def focus_in_cb (self, *args):
-        self.set_state(Gtk.StateType.SELECTED)
-        self.base_state = Gtk.StateType.SELECTED
+        self.set_state(Gtk.StateFlags.SELECTED)
+        self.base_state = Gtk.StateFlags.SELECTED
 
     def focus_out_cb (self, *args):
-        self.set_state(Gtk.StateType.NORMAL)
-        self.base_state = Gtk.StateType.NORMAL
+        self.set_state(Gtk.StateFlags.NORMAL)
+        self.base_state = Gtk.StateFlags.NORMAL
         self.destroy_npicker()
 
     def destroy_npicker (self):
@@ -507,7 +519,10 @@ class NumberBox (Gtk.Widget):
         self.top_note_list, self.bottom_note_list = notelists
         self.show_note_text()
 
-    def do_realize (self):
+    def do_configure_event(self, *args):
+        print 1234
+
+    def FIXME_do_realize (self):
         # The do_realize method is responsible for creating GDK (windowing system)
         # resources. In this example we will create a new Gdk.Window which we
         # then draw on
@@ -544,17 +559,17 @@ class NumberBox (Gtk.Widget):
 
         # The default color of the background should be what
         # the style (theme engine) tells us.
-        #self.style.set_background(self.window, Gtk.StateType.NORMAL)
+        #self.style.set_background(self.window, Gtk.StateFlags.NORMAL)
 
         self.window.move_resize(self.allocation.x, self.allocation.y, self.allocation.width, self.allocation.height)
 
-    def do_unrealize (self):
+    def FIXME_do_unrealize (self):
         # The do_unrealized method is responsible for freeing the GDK resources
 
         # De-associate the window we created in do_realize with ourselves
         self.window.set_user_data(None)
 
-    def do_size_request (self, requisition):
+    def FIXME_do_size_request (self, requisition):
         # The do_size_request method Gtk+ is calling on a widget to ask
         # it the widget how large it wishes to be. It's not guaranteed
         # that gtk+ will actually give this size to the widget
@@ -568,7 +583,7 @@ class NumberBox (Gtk.Widget):
             side = height/Pango.SCALE
         (requisition.width, requisition.height) = (side, side)
 
-    def do_size_allocate(self, allocation):
+    def FIXME_do_size_allocate(self, allocation):
         # The do_size_allocate is called by when the actual size is known
         # and the widget is told how much space could actually be allocated
 
@@ -577,61 +592,85 @@ class NumberBox (Gtk.Widget):
 
         # If we're realized, move and resize the window to the
         # requested coordinates/positions
-        if self.get_realized():
-            x, y, w, h = self.allocation.x, self.allocation.y, self.allocation.width, self.allocation.height
-            self.window.move_resize(self.allocation.x,self.allocation.y,self.allocation.width,self.allocation.height)
+        #if self.get_realized():
+        #    x, y, w, h = self.allocation.x, self.allocation.y, self.allocation.width, self.allocation.height
+        #    self.window.move_resize(self.allocation.x,self.allocation.y,self.allocation.width,self.allocation.height)
+        return True
 
-    def do_expose_event(self, event):
-        # The do_expose_event is called when the widget is asked to draw itself
-        # Remember that this will be called a lot of times, so it's usually
-        # a good idea to write this code as optimized as it can be, don't
-        # Create any resources in here.
-        x, y, w, h = self.allocation.x, self.allocation.y, self.allocation.width, self.allocation.height
-        cr = self.window.cairo_create()
-        self.draw_background_color(cr, w, h)
+    def do_draw(self, cr):
+        print 'draw'
+
+        w = self.get_allocated_width()
+        h = self.get_allocated_height()
+        style_ctx = self.get_style_context()
+
+        self.draw_background_color(cr, style_ctx, w, h)
         if self.is_focus():
-            self.draw_highlight_box(cr, w, h)
+            self.draw_highlight_box(cr, style_ctx, w, h)
         if self.border_color is not None:
             border_width = 3.0
             cr.set_source_rgb(*self.border_color)
             cr.rectangle(border_width*0.5, border_width*0.5, w-border_width, h-border_width)
             cr.set_line_width(border_width)
             cr.stroke()
+
         if h < w:
             scale = h/float(BASE_SIZE)
         else:
             scale = w/float(BASE_SIZE)
         cr.scale(scale, scale)
-        self.draw_text(cr)
-        if self.draw_boxes and self.is_focus():
-            self.draw_note_area_highlight_box(cr)
 
-    def draw_background_color (self, cr, w, h):
+        self.draw_text(cr, style_ctx)
+        if self.draw_boxes and self.is_focus():
+            print "draw highlight"
+            self.draw_note_area_highlight_box(cr, style_ctx)
+
+    def is_focus(self):
+        print "FIXME: always returns 0? =", Gtk.DrawingArea.is_focus(self)
+        return True
+
+    def draw_background_color (self, cr, style_ctx, w, h):
         if self.read_only:
+            print "read only"
             if self.custom_background_color:
                 r, g, b = self.custom_background_color
                 cr.set_source_rgb(
                     r*0.6, g*0.6, b*0.6
                     )
             else:
-                cr.set_source_color(self.style.base[Gtk.StateType.INSENSITIVE])
+                #cr.set_source_color(self.style.base[Gtk.StateFlags.INSENSITIVE])
+                #Gdk.cairo_set_source_rgba(
+                debug_set_color(
+                        cr, style_ctx.get_color(Gtk.StateFlags.INSENSITIVE))
         elif self.is_focus():
-            cr.set_source_color(self.style.base[Gtk.StateType.SELECTED])
+            #cr.set_source_color(self.style.base[Gtk.StateFlags.SELECTED])
+            #Gdk.cairo_set_source_rgba(
+            debug_set_color(
+                    cr, style_ctx.get_color(Gtk.StateFlags.SELECTED))
         elif self.custom_background_color:
             cr.set_source_rgb(*self.custom_background_color)
         else:
-            cr.set_source_color(
-                self.style.base[self.state]
-                )
+            #cr.set_source_color(
+            #    self.style.base[self.state]
+            #    )
+            #Gdk.cairo_set_source_rgba(
+            debug_set_color(
+                    cr, style_ctx.get_color(self.get_state_flags()))
         cr.rectangle(
             0, 0, w, h,
             )
         cr.fill()
 
-    def draw_highlight_box (self, cr, w, h):
-        cr.set_source_color(
-            self.style.base[Gtk.StateType.SELECTED]
-            )
+    def draw_highlight_box (self, cr, style_ctx, w, h):
+        #cr.set_source_color(
+        #    self.style.base[Gtk.StateFlags.SELECTED]
+        #    )
+        #Gdk.cairo_set_source_rgba(
+        debug_set_color(
+                    cr, style_ctx.get_color(Gtk.StateFlags.SELECTED))
+
+        cr.set_source_rgb(1.0,0.5,0.5)
+
         border = 4 * w / BASE_SIZE
         cr.rectangle(
             # left-top
@@ -644,11 +683,17 @@ class NumberBox (Gtk.Widget):
         cr.set_line_width(border)
         cr.stroke()
 
-    def draw_note_area_highlight_box (self, cr):
+    def draw_note_area_highlight_box (self, cr, style_ctx):
         # set up our paint brush...
-        cr.set_source_color(
-            self.style.mid[self.state]
-            )
+        #cr.set_source_color(
+        #    self.style.mid[self.state]
+        #    )
+        #Gdk.cairo_set_source_rgba(
+        debug_set_color(
+                cr, style_ctx.get_color(self.get_state_flags()))
+
+        cr.set_source_rgb(0.5,1.0,0.5)
+
         cr.set_line_width(NORMAL_LINE_WIDTH)
         # top rectangle
         cr.rectangle(NORMAL_LINE_WIDTH*0.5,
@@ -664,7 +709,7 @@ class NumberBox (Gtk.Widget):
                      )
         cr.stroke()
 
-    def draw_text (self, cr):
+    def draw_text (self, cr, style_ctx):
         fontw, fonth = self._layout.get_pixel_size()
         # Draw a shadow for tracked conflicts.  This is done to
         # differentiate between tracked and untracked conflicts.
@@ -676,18 +721,30 @@ class NumberBox (Gtk.Widget):
         if self.text_color:
             cr.set_source_rgb(*self.text_color)
         elif self.read_only:
-            cr.set_source_color(self.style.text[Gtk.StateType.NORMAL])
+            #cr.set_source_color(self.style.text[Gtk.StateFlags.NORMAL])
+            #Gdk.cairo_set_source_rgba(
+            debug_set_color(
+                cr, style_ctx.get_color(Gtk.StateFlags.NORMAL))
         else:
-            cr.set_source_color(self.style.text[self.state])
+            #cr.set_source_color(self.style.text[self.state])
+            #Gdk.cairo_set_source_rgba(
+            debug_set_color(
+                cr, style_ctx.get_color(Gtk.StateFlags.NORMAL))
+
         # And draw the text in the middle of the allocated space
         if self._layout:
             cr.move_to(
                 (BASE_SIZE/2)-(fontw/2),
                 (BASE_SIZE/2) - (fonth/2),
                 )
-            cr.update_layout(self._layout)
-            cr.show_layout(self._layout)
-        cr.set_source_color(self.style.text[self.state])
+            PangoCairo.update_layout(cr, self._layout)
+            PangoCairo.show_layout(cr, self._layout)
+
+        #cr.set_source_color(self.style.text[self.state])
+        #Gdk.cairo_set_source_rgba(
+        debug_set_color(
+            cr, style_ctx.get_color(Gtk.StateFlags.NORMAL))
+
         # And draw any note text...
         if self._top_note_layout:
             fontw, fonth = self._top_note_layout.get_pixel_size()
@@ -695,16 +752,16 @@ class NumberBox (Gtk.Widget):
                 NORMAL_LINE_WIDTH,
                 0,
                 )
-            cr.update_layout(self._top_note_layout)
-            cr.show_layout(self._top_note_layout)
+            PangoCairo.update_layout(cr, self._top_note_layout)
+            PangoCairo.update_layout(cr, self._top_note_layout)
         if self._bottom_note_layout:
             fontw, fonth = self._bottom_note_layout.get_pixel_size()
             cr.move_to(
                 NORMAL_LINE_WIDTH,
                 BASE_SIZE-fonth,
                 )
-            cr.update_layout(self._bottom_note_layout)
-            cr.show_layout(self._bottom_note_layout)
+            PangoCairo.update_layout(cr, self._bottom_note_layout)
+            PangoCairo.update_layout(cr, self._bottom_note_layout)
 
     def set_text_color (self, color, shadow = None):
         self.shadow_color = shadow
