@@ -414,7 +414,7 @@ class UI (gconf_wrapper.GConfWrapper):
                                  self.gsd.impossible_hints) % {'n':self.gsd.impossible_hints}
             sublabel += "\n"
         self.start_dancer()
-        dialog_extras.show_message(_("You win!"), label = _("You win!"),
+        dialog_extras.show_message_dialog(_("You win!"), label = _("You win!"),
                                    sublabel = sublabel
                                    )
 
@@ -431,7 +431,7 @@ class UI (gconf_wrapper.GConfWrapper):
     def new_cb (self, *args):
         if (self.gsd.grid and self.gsd.grid.is_changed() and not self.won):
             try:
-                if dialog_extras.getBoolean(
+                if dialog_extras.show_boolean_dialog(
                     label = _("Save this game before starting new one?"),
                     custom_yes = _("_Save game for later"),
                     custom_no = _("_Abandon game"),
@@ -452,7 +452,7 @@ class UI (gconf_wrapper.GConfWrapper):
             and self.gsd.grid.is_changed()
             and (not self.won)):
             try:
-                if dialog_extras.getBoolean(label = _("Save game before closing?")):
+                if dialog_extras.show_boolean_dialog(label = _("Save game before closing?")):
                     self.save_game(self)
             except dialog_extras.UserCancelledError:
                 return
@@ -649,7 +649,7 @@ class UI (gconf_wrapper.GConfWrapper):
     @simple_debug
     def show_info_cb (self, *args):
         if not self.gsd.grid:
-            dialog_extras.show_message(parent = self.w,
+            dialog_extras.show_message_dialog(parent = self.w,
                                        title = _("Puzzle Information"),
                                        label = _("There is no current puzzle.")
                                        )
@@ -674,7 +674,7 @@ class UI (gconf_wrapper.GConfWrapper):
         information += "\n"
         information += _("Amount of trial-and-error required to solve: ")
         information += str(len(diff.guesses))
-        dialog_extras.show_message(parent = self.w,
+        dialog_extras.show_message_dialog(parent = self.w,
                                    title = _("Puzzle Statistics"),
                                    label = _("Puzzle Statistics"),
                                    sublabel = information)

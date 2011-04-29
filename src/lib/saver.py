@@ -2,7 +2,7 @@
 from gi.repository import Gtk
 import pickle, types, os, errno
 import defaults
-from gtk_goodies.dialog_extras import show_message
+from gtk_goodies.dialog_extras import show_message_dialog
 from gettext import gettext as _
 import tracker_info
 
@@ -134,7 +134,7 @@ class SudokuTracker:
                 os.makedirs(path)
             except OSError, e:
                 if e.errno == errno.ENOSPC:
-                    show_message(
+                    show_message_dialog(
                         title = _('No Space'),
                         label = _('No space left on disk'),
                         message_type = Gtk.MessageType.ERROR,
@@ -142,7 +142,7 @@ class SudokuTracker:
                                    _('There is no disk space left!')
                         )
                 else:
-                    show_message(
+                    show_message_dialog(
                         title = 'Error creating directory',
                         label = 'Error creating directory',
                         sublabel = (_('Unable to create data folder %(path)s.') % locals() + '\n' +
@@ -165,7 +165,7 @@ class SudokuTracker:
             pickle.dump(jar, outfi)
             outfi.close()
         except (OSError, IOError), e:
-            show_message(
+            show_message_dialog(
                 title = _('Unable to save game.'),
                 label = _('Unable to save game.'),
                 message_type = Gtk.MessageType.ERROR,
@@ -190,7 +190,7 @@ class SudokuTracker:
             pickle.dump(jar, outfi)
             outfi.close()
         except (OSError, IOError), e:
-            show_message(
+            show_message_dialog(
                 title = _('Unable to mark game as finished.'),
                 label = _('Unable to mark game as finished.'),
                 message_type = Gtk.MessageType.ERROR,
@@ -208,7 +208,7 @@ class SudokuTracker:
             ofi.write(jar['game'].split('\n')[0]+'\n')
             ofi.close()
         except (OSError, IOError), e:
-            show_message(
+            show_message_dialog(
                 title = _('Sudoku unable to mark game as finished.'),
                 label = _('Sudoku unable to mark game as finished.'),
                 message_type = Gtk.MessageType.ERROR,

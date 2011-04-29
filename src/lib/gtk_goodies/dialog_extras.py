@@ -63,16 +63,16 @@ class ModalDialog (Gtk.Dialog):
         self.get_content_area().pack_start(label,expand=False)
         
     def setup_sublabel (self,sublabel):
-        self.sublabel = Gtk.Label()
-        self.sublabel.set_selectable(True)
-        self.sublabel.set_padding(H_PADDING,Y_PADDING)
-        self.sublabel.set_alignment(0,0)
-        self.sublabel.set_justify(Gtk.Justification.LEFT)
-        self.sublabel.set_markup(sublabel)
-        self.sublabel.set_line_wrap(True)
-        self.sublabel.show()
+        sublabel = Gtk.Label()
+        sublabel.set_selectable(True)
+        sublabel.set_padding(H_PADDING,Y_PADDING)
+        sublabel.set_alignment(0,0)
+        sublabel.set_justify(Gtk.Justification.LEFT)
+        sublabel.set_markup(sublabel)
+        sublabel.set_line_wrap(True)
+        sublabel.show()
 
-        self.get_content_area().pack_start(self.sublabel, False, True, 0)
+        self.get_content_area().pack_start(sublabel, False, True, 0)
 
     def setup_buttons (self, cancel, okay):
         if cancel:
@@ -82,42 +82,37 @@ class ModalDialog (Gtk.Dialog):
         self.connect('response',self.response_cb)
 
     def response_cb (self, dialog, response, *params):
-        #print 'response CB ',dialog,response,params
         if self.responses.has_key(response):
-            #print 'we have a response!'
             self.responses[response]()
         else:
             print 'WARNING, no response for ',response
             
     def setup_expander (self, expander):
-        label=expander[0]
-        body = expander[1]
-        self.expander = Gtk.Expander(label)
-        self.expander.set_use_underline(True)
-        self.expander_vbox = Gtk.VBox()
-        self.expander.add(self.expander_vbox)
-        self._add_expander_item(body)
-        self.expander.show()
-        self.expander_vbox.show_all()
+        label,body = expander
+        expander = Gtk.Expander(label)
+        expander.set_use_underline(True)
+        expander_vbox = Gtk.VBox()
+        expander.add(self.expander_vbox)
+        self._add_expander_item(expander_vbox, body)
+        expander.show_all()
 
-        self.get_content_area().add(self.expander)
+        self.get_content_area().add(expander)
             
-    def _add_expander_item (self, item):
-        if type(item)==type(""):
-            l=Gtk.Label(label=item)
+    def _add_expander_item (self, expander_vbox, item):
+        if type(item) == type(""):
+            l = Gtk.Label(label=item)
             l.set_selectable(True)
             l.set_line_wrap(True)
-            self.expander_vbox.pack_start(l,
-                                          expand=False,
-                                          fill=False)
-        elif type(item)==[] or type(item)==():
-            map(self._add_expander_item,item)
+            expander_vbox.pack_start(l, expand=False, fill=False)
+        elif type(item) == [] or type(item) == ():
+            map(self._add_expander_item, expander_vbox, item)
         else:
-            self.expander_vbox.pack_start(item, True, True, 0)
+            expander_vbox.pack_start(item, True, True, 0)
             
     def run (self):
         self.show()
-        if self.widget_that_grabs_focus: self.widget_that_grabs_focus.grab_focus()
+        if self.widget_that_grabs_focus:
+            self.widget_that_grabs_focus.grab_focus()
         if self.props.modal:
             Gtk.main()
         return self.ret
@@ -226,16 +221,16 @@ class BooleanDialog (MessageDialog):
         self.ret=False
         self.okcb()
 
-def show_message (*args, **kwargs):
+def show_message_dialog (*args, **kwargs):
     d = MessageDialog(*args, **kwargs)
     return d.run()
 
-def getBoolean (*args,**kwargs):
+def show_boolean_dialog (*args,**kwargs):
     """Run BooleanDialog, passing along all args, waiting on input and
     passing along the results."""
     d = BooleanDialog(*args,**kwargs)
     retval = d.run()
-    if retval==None:
-        raise UserCancelledError("getBoolean dialog cancelled!")
+    if retval == None:
+        raise UserCancelledError("show_boolean_dialog dialog cancelled!")
     else:
         return retval
