@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from gi.repository import Gtk
+from gi.repository import Gtk,GObject
 import xml.sax.saxutils
 from gettext import gettext as _
 H_PADDING=12
@@ -27,7 +27,8 @@ class ModalDialog (Gtk.Dialog):
                           Gtk.ResponseType.NONE:self.cancelcb,
                           Gtk.ResponseType.CLOSE:self.cancelcb,
                           Gtk.ResponseType.DELETE_EVENT:self.cancelcb}
-        if modal: self.set_modal(True)
+        if modal:
+            self.set_modal(True)
         if label:
             self.setup_label(label)
         if sublabel:
@@ -40,7 +41,8 @@ class ModalDialog (Gtk.Dialog):
             self.setup_expander(expander)
         if cancel or okay:
             self.setup_buttons(cancel, okay)
-        self.vbox.show_all()
+
+        self.show_all()
 
     def setup_dialog (self, *args, **kwargs):
         GObject.GObject.__init__(self, *args, **kwargs)
@@ -49,26 +51,28 @@ class ModalDialog (Gtk.Dialog):
         # we're going to add pango markup to our
         # label to make it bigger as per GNOME HIG
         label = '<span weight="bold" size="larger">%s</span>'%label
-        self.label = Gtk.Label()
-        self.label.set_line_wrap(True)
-        self.label.set_selectable(True)
-        self.vbox.pack_start(self.label,expand=False)
-        self.label.set_padding(H_PADDING,Y_PADDING)
-        self.label.set_alignment(0,0)
-        self.label.set_justify(Gtk.Justification.LEFT)
-        self.label.ste_markup(label)
-        self.label.show()
+        label = Gtk.Label()
+        label.set_line_wrap(True)
+        label.set_selectable(True)
+        label.set_padding(H_PADDING,Y_PADDING)
+        label.set_alignment(0,0)
+        label.set_justify(Gtk.Justification.LEFT)
+        label.set_markup(label)
+        label.show()
+
+        self.get_content_area().pack_start(label,expand=False)
         
     def setup_sublabel (self,sublabel):
         self.sublabel = Gtk.Label()
         self.sublabel.set_selectable(True)
-        self.vbox.pack_start(self.sublabel, False, True, 0)
         self.sublabel.set_padding(H_PADDING,Y_PADDING)
         self.sublabel.set_alignment(0,0)
         self.sublabel.set_justify(Gtk.Justification.LEFT)
         self.sublabel.set_markup(sublabel)
         self.sublabel.set_line_wrap(True)
         self.sublabel.show()
+
+        self.get_content_area().pack_start(self.sublabel, False, True, 0)
 
     def setup_buttons (self, cancel, okay):
         if cancel:
@@ -86,16 +90,17 @@ class ModalDialog (Gtk.Dialog):
             print 'WARNING, no response for ',response
             
     def setup_expander (self, expander):
-            label=expander[0]
-            body = expander[1]
-            self.expander = Gtk.Expander(label)
-            self.expander.set_use_underline(True)
-            self.expander_vbox = Gtk.VBox()
-            self.expander.add(self.expander_vbox)
-            self._add_expander_item(body)
-            self.expander.show()
-            self.expander_vbox.show_all()
-            self.vbox.add(self.expander)
+        label=expander[0]
+        body = expander[1]
+        self.expander = Gtk.Expander(label)
+        self.expander.set_use_underline(True)
+        self.expander_vbox = Gtk.VBox()
+        self.expander.add(self.expander_vbox)
+        self._add_expander_item(body)
+        self.expander.show()
+        self.expander_vbox.show_all()
+
+        self.get_content_area().add(self.expander)
             
     def _add_expander_item (self, item):
         if type(item)==type(""):
@@ -113,17 +118,20 @@ class ModalDialog (Gtk.Dialog):
     def run (self):
         self.show()
         if self.widget_that_grabs_focus: self.widget_that_grabs_focus.grab_focus()
-        if self.modal: Gtk.main()
+        if self.props.modal:
+            Gtk.main()
         return self.ret
 
     def okcb (self, *args):
         self.hide()
-        if self.modal: Gtk.main_quit()
+        if self.props.modal:
+            Gtk.main_quit()
 
     def cancelcb (self, *args):
         self.hide()
         self.ret=None
-        if self.modal: Gtk.main_quit()
+        if self.props.modal:
+            Gtk.main_quit()
 
 class MessageDialog (Gtk.MessageDialog, ModalDialog):
 
@@ -145,10 +153,11 @@ class MessageDialog (Gtk.MessageDialog, ModalDialog):
                 self.image.set_from_file(self.icon)
             else:
                 self.image.set_from_pixbuf(self.icon)
+        print "123"
 
     def setup_label (self, label):
         label = '<span weight="bold" size="larger">%s</span>'%xml.sax.saxutils.escape(label)
-        self.label.set_markup(label)
+        self.set_markup(label)
 
     def setup_sublabel (self, sublabel):
         self.format_secondary_text(sublabel)
@@ -192,7 +201,7 @@ class BooleanDialog (MessageDialog):
                 dont_ask_custom_text=_("Don't ask me this again.")
             self.dont_ask = Gtk.CheckButton(dont_ask_custom_text)
             self.dont_ask.connect('toggled',dont_ask_cb)
-            self.vbox.add(self.dont_ask)
+            self.get_content_area().add(self.dont_ask)
             self.dont_ask.show()
 
     def setup_buttons (self, cancel, okay):
@@ -210,7 +219,8 @@ class BooleanDialog (MessageDialog):
             self.okcb()
         else:
             self.hide()
-            if self.modal: Gtk.main_quit()
+            if self.props.modal:
+                Gtk.main_quit()
 
     def nocb (self, *args):
         self.ret=False
