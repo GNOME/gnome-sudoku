@@ -329,13 +329,12 @@ class NumberBox (Gtk.DrawingArea):
         ns.connect('changed', self.number_changed_cb)
         w.grab_focus()
         w.add(ns)
-        r = w.get_allocation()
         my_origin = self.get_window().get_origin()
         x, y = (self.get_allocated_width(), self.get_allocated_height())
         popupx, popupy = w.get_size()
         overlapx = popupx-x
         overlapy = popupy-y
-        w.move(my_origin[0]-(overlapx/2), my_origin[1]-(overlapy/2))
+        w.move(my_origin[1]-(overlapx/2), my_origin[2]-(overlapy/2))
         w.show()
         self.npicker = w
 
