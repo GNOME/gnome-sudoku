@@ -23,7 +23,7 @@ NORMAL_LINE_WIDTH = 1 # The size of the line we draw around a box
 
 DEBUG_COLORS = True
 
-def debug_set_color(cr, rgba):
+def debug_set_color_rgba(cr, rgba):
     COLORS = ("red","green","blue","yellow","purple","wheat","maroon","gray")
 
     if DEBUG_COLORS:
@@ -521,7 +521,6 @@ class NumberBox (Gtk.DrawingArea):
 
     @simple_debug
     def do_draw(self, cr):
-        print 'draw'
 
         w = self.get_allocated_width()
         h = self.get_allocated_height()
@@ -545,11 +544,11 @@ class NumberBox (Gtk.DrawingArea):
 
         self.draw_text(cr, style_ctx)
         if self.draw_boxes and self.is_focus():
-            print "draw highlight"
             self.draw_note_area_highlight_box(cr, style_ctx)
 
     def is_focus(self):
-        print "FIXME: is_focus always returns 0, e.g:", Gtk.DrawingArea.is_focus(self)
+        print "FIXME: is_focus always 0 (%s). state flags not updated (%s)" % (
+            Gtk.DrawingArea.is_focus(self), self.get_state_flags())
         return True
 
     def draw_background_color (self, cr, style_ctx, w, h):
@@ -562,12 +561,12 @@ class NumberBox (Gtk.DrawingArea):
             else:
                 #cr.set_source_color(self.style.base[Gtk.StateFlags.INSENSITIVE])
                 #Gdk.cairo_set_source_rgba(
-                debug_set_color(
+                debug_set_color_rgba(
                         cr, style_ctx.get_color(Gtk.StateFlags.INSENSITIVE))
         elif self.is_focus():
             #cr.set_source_color(self.style.base[Gtk.StateFlags.SELECTED])
             #Gdk.cairo_set_source_rgba(
-            debug_set_color(
+            debug_set_color_rgba(
                     cr, style_ctx.get_color(Gtk.StateFlags.SELECTED))
         elif self.custom_background_color:
             cr.set_source_rgb(*self.custom_background_color)
@@ -576,7 +575,7 @@ class NumberBox (Gtk.DrawingArea):
             #    self.style.base[self.state]
             #    )
             #Gdk.cairo_set_source_rgba(
-            debug_set_color(
+            debug_set_color_rgba(
                     cr, style_ctx.get_color(self.get_state_flags()))
         cr.rectangle(
             0, 0, w, h,
@@ -588,10 +587,8 @@ class NumberBox (Gtk.DrawingArea):
         #    self.style.base[Gtk.StateFlags.SELECTED]
         #    )
         #Gdk.cairo_set_source_rgba(
-        debug_set_color(
+        debug_set_color_rgba(
                     cr, style_ctx.get_color(Gtk.StateFlags.SELECTED))
-
-        cr.set_source_rgb(1.0,0.5,0.5)
 
         border = 4 * w / BASE_SIZE
         cr.rectangle(
@@ -611,10 +608,8 @@ class NumberBox (Gtk.DrawingArea):
         #    self.style.mid[self.state]
         #    )
         #Gdk.cairo_set_source_rgba(
-        debug_set_color(
+        debug_set_color_rgba(
                 cr, style_ctx.get_color(self.get_state_flags()))
-
-        cr.set_source_rgb(0.5,1.0,0.5)
 
         cr.set_line_width(NORMAL_LINE_WIDTH)
         # top rectangle
@@ -645,12 +640,12 @@ class NumberBox (Gtk.DrawingArea):
         elif self.read_only:
             #cr.set_source_color(self.style.text[Gtk.StateFlags.NORMAL])
             #Gdk.cairo_set_source_rgba(
-            debug_set_color(
+            debug_set_color_rgba(
                 cr, style_ctx.get_color(Gtk.StateFlags.NORMAL))
         else:
             #cr.set_source_color(self.style.text[self.state])
             #Gdk.cairo_set_source_rgba(
-            debug_set_color(
+            debug_set_color_rgba(
                 cr, style_ctx.get_color(Gtk.StateFlags.NORMAL))
 
         # And draw the text in the middle of the allocated space
@@ -664,7 +659,7 @@ class NumberBox (Gtk.DrawingArea):
 
         #cr.set_source_color(self.style.text[self.state])
         #Gdk.cairo_set_source_rgba(
-        debug_set_color(
+        debug_set_color_rgba(
             cr, style_ctx.get_color(Gtk.StateFlags.NORMAL))
 
         # And draw any note text...
