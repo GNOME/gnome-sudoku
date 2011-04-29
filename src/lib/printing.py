@@ -104,8 +104,8 @@ class SudokuPrinter:
 
 def print_sudokus(*args, **kwargs):
     sp = SudokuPrinter(*args, **kwargs)
-    res = sp.print_op.run(Gtk.PRINT_OPERATION_ACTION_PRINT_DIALOG, sp.main_window)
-    if res == Gtk.PRINT_OPERATION_RESULT_ERROR:
+    res = sp.print_op.run(Gtk.PrintOperationAction.PRINT_DIALOG, sp.main_window)
+    if res == Gtk.PrintOperationResult.ERROR:
         error_dialog = Gtk.MessageDialog(sp.main_window,
                                       Gtk.DialogFlags.DESTROY_WITH_PARENT,
                                       Gtk.MessageType.ERROR,
@@ -191,11 +191,11 @@ class GamePrinter (gconf_wrapper.GConfWrapper):
                            sudokus_per_page = self.sudokusPerPageSpinButton.get_adjustment().get_value())
 
         self.sudokus_printed = sudokus
-        response = sp.print_op.run(Gtk.PRINT_OPERATION_ACTION_PRINT_DIALOG, sp.main_window)
+        response = sp.print_op.run(Gtk.PrintOperationAction.PRINT_DIALOG, sp.main_window)
 
-        if response   == Gtk.PRINT_OPERATION_RESULT_ERROR:
+        if response   == Gtk.PrintOperationResult.ERROR:
             pass
-        elif response == Gtk.PRINT_OPERATION_RESULT_APPLY:
+        elif response == Gtk.PrintOperationResult.APPLY:
             if self.markAsPlayedToggle.get_active():
                 for sud, lab in self.sudokus_printed:
                     jar = {}
