@@ -634,7 +634,7 @@ class NumberBox (Gtk.DrawingArea):
             cr.set_source_rgb(*self.shadow_color)
             for xoff, yoff in [(1,1),(2,2)]:
                 cr.move_to((BASE_SIZE/2)-(fontw/2) + xoff, (BASE_SIZE/2) - (fonth/2) + yoff)
-                cr.show_layout(self._layout)
+                PangoCairo.show_layout(cr, self._layout)
         if self.text_color:
             cr.set_source_rgb(*self.text_color)
         elif self.read_only:
