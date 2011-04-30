@@ -5,10 +5,11 @@ import threading
 import gi
 gi.require_version("Gtk", "3.0")
 
-from gi.repository import Gtk,GdkPixbuf,GObject,Pango
+from gi.repository import Gtk,GdkPixbuf,GObject,Pango,Gdk
 from gettext import gettext as _
 from gettext import ngettext
 
+import cairo
 import dialog_swallower
 import game_selector
 import gsudoku
@@ -21,23 +22,6 @@ from defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION, D
         IMAGE_DIR, LICENSE, MIN_NEW_PUZZLES, UI_DIR, VERSION, WEBSITE, WEBSITE_LABEL)
 from gtk_goodies import gconf_wrapper, Undo, dialog_extras
 from simple_debug import simple_debug, options
-
-ICON_FACTORY = Gtk.IconFactory()
-STOCK_PIXBUFS = {}
-for filename, stock_id in [('footprints.png', 'tracks'), ]:
-    try:
-        pb = GdkPixbuf.Pixbuf.new_from_file(os.path.join(IMAGE_DIR, filename))
-    except GObject.GError, e:
-        print 'Failed to load pixbuf: %s' % e
-        continue
-    STOCK_PIXBUFS[stock_id] = pb
-    iconset = Gtk.IconSet.new_from_pixbuf(pb)
-    ICON_FACTORY.add(stock_id, iconset)
-    ICON_FACTORY.add_default()
-
-#Gtk.stock_add([('tracks',
-#                _('Track moves'),
-#                0, 0, ""), ])
 
 def inactivate_new_game_etc (fun):
     def inactivate_new_game_etc_ (ui, *args, **kwargs):
@@ -726,8 +710,9 @@ class TrackerBox (Gtk.VBox):
 
     @simple_debug
     def __init__ (self, main_ui):
-
         GObject.GObject.__init__(self)
+        self.footprint_img =  cairo.ImageSurface.create_from_png(
+                                    os.path.join(IMAGE_DIR, "footprints.png"));
         self.builder = Gtk.Builder()
         self.builder.set_translation_domain(DOMAIN)
         self.builder.add_from_file(os.path.join(UI_DIR, 'tracker.ui'))
@@ -763,8 +748,7 @@ class TrackerBox (Gtk.VBox):
         self.tracker_tree.append_column(col2)
         self.tracker_tree.append_column(col1)
         # Our initial row...
-        pixbuf = self.pixbuf_transform_color(
-            STOCK_PIXBUFS['tracks'],
+        pixbuf = self.get_tracker_pixbuf(
             (0, 0, 0)
             )
         self.tracker_model.append([-1, pixbuf, _('Untracked')])
@@ -820,8 +804,7 @@ class TrackerBox (Gtk.VBox):
             tracker_id = self.tinfo.create_tracker(keys['tracker_id'])
         else:
             tracker_id = self.tinfo.create_tracker()
-        pixbuf = self.pixbuf_transform_color(
-            STOCK_PIXBUFS['tracks'],
+        pixbuf = self.get_tracker_pixbuf(
             self.tinfo.get_color(tracker_id)
             )
         # select our new tracker
@@ -834,21 +817,14 @@ class TrackerBox (Gtk.VBox):
         self.tinfo.set_tracker(tracker_id)
 
     @simple_debug
-    def pixbuf_transform_color (self, pixbuf, color):
-        return pixbuf
+    def get_tracker_pixbuf (self, color):
+        surface = cairo.ImageSurface (cairo.FORMAT_ARGB32, 64, 64)
+        cr = cairo.Context(surface)
+        cr.set_source_rgb(*color);
+        cr.mask_surface(self.footprint_img, 0, 0)
+        cr.fill()
 
-#        """Return new pixbuf with color changed to color"""
-#        pixbuf_str = pixbuf.get_pixels()
-#        pixbuf_str_new = ""
-#
-#        for alpha in pixbuf_str[3::4]:
-#            pixbuf_str_new += chr(int(color[0]*255))
-#            pixbuf_str_new += chr(int(color[1]*255))
-#            pixbuf_str_new += chr(int(color[2]*255))
-#            pixbuf_str_new += alpha
-#
-#        return GdkPixbuf.Pixbuf.new_from_data(pixbuf_str_new, GdkPixbuf.Colorspace.RGB, True, 8,
-#                                            pixbuf.get_width(), pixbuf.get_height(), pixbuf.get_rowstride())
+        return Gdk.pixbuf_get_from_surface(surface, 0, 0, 64, 64)
 
     @simple_debug
     def find_tracker (self, tracker_id):
