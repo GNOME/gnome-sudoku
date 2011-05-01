@@ -21,7 +21,7 @@ NOTE_FONT_SIZE = Pango.SCALE * 6
 BORDER_WIDTH = 9.0 # The size of space we leave for a box
 NORMAL_LINE_WIDTH = 1 # The size of the line we draw around a box
 
-DEBUG_COLORS = True
+DEBUG_COLORS = False
 
 def debug_set_color_rgba(cr, rgba):
     COLORS = ("red","green","blue","yellow","purple","wheat","maroon","gray")
