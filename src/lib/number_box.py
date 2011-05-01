@@ -125,6 +125,7 @@ class NumberBox (Gtk.DrawingArea):
         self._top_note_layout.set_font_description(self.note_font)
         self._bottom_note_layout = Pango.Layout(self.create_pango_context())
         self._bottom_note_layout.set_font_description(self.note_font)
+        self._base_stateflags = Gtk.StateFlags.NORMAL
         self.top_note_list = []
         self.bottom_note_list = []
         self.tinfo = tracker_info.TrackerInfo()
@@ -147,19 +148,19 @@ class NumberBox (Gtk.DrawingArea):
 
     def pointer_enter_cb (self, *args):
         if not self.is_focus():
-            self.set_state(Gtk.StateFlags.PRELIGHT)
+            self.set_state_flags(Gtk.StateFlags.PRELIGHT, False)
 
     def pointer_leave_cb (self, *args):
-        self.set_state(self.base_state)
+        self.set_state_flags(self._base_stateflags, True)
         self._toggle_box_drawing_(False)
 
     def focus_in_cb (self, *args):
-        self.set_state(Gtk.StateFlags.SELECTED)
-        self.base_state = Gtk.StateFlags.SELECTED
+        self.set_state_flags(Gtk.StateFlags.SELECTED, True)
+        self._base_stateflags = Gtk.StateFlags.SELECTED
 
     def focus_out_cb (self, *args):
-        self.set_state(Gtk.StateFlags.NORMAL)
-        self.base_state = Gtk.StateFlags.NORMAL
+        self.set_state_flags(Gtk.StateFlags.NORMAL, True)
+        self._base_stateflags = Gtk.StateFlags.NORMAL
         self.destroy_npicker()
 
     def destroy_npicker (self):
@@ -545,11 +546,6 @@ class NumberBox (Gtk.DrawingArea):
         self.draw_text(cr, style_ctx)
         if self.draw_boxes and self.is_focus():
             self.draw_note_area_highlight_box(cr, style_ctx)
-
-    def is_focus(self):
-        print "FIXME: is_focus always 0 (%s). state flags not updated (%s)" % (
-            Gtk.DrawingArea.is_focus(self), self.get_state_flags())
-        return True
 
     def draw_background_color (self, cr, style_ctx, w, h):
         if self.read_only:
