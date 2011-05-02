@@ -40,7 +40,7 @@ class GridDancer:
                 box.need_restore = True
             else:
                 box.need_restore = False
-        self.grid.get_toplevel().child_focus(Gtk.DIR_TAB_BACKWARD)
+        self.grid.get_toplevel().child_focus(Gtk.DirectionType.TAB_BACKWARD)
         self.dancing = True
         GObject.timeout_add(350, self.dance_grid)
 
@@ -126,7 +126,7 @@ if __name__ == '__main__':
 
         vbox = Gtk.VBox()
         vbox.pack_start(gsd, True, True, 0)
-        vbox.pack_end(button)
+        vbox.pack_end(button, True, True, 0)
         vbox.set_focus_child(button)
 
         window.add(vbox)
