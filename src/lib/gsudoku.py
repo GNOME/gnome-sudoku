@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from gi.repository import Gtk,GObject
+from gi.repository import Gtk,Gdk,GObject
 import colors
 import math
 import random
@@ -55,7 +55,7 @@ class SudokuNumberGrid (Gtk.AspectFrame):
     def set_bg_color (self, color):
         if type(color) == str:
             try:
-                color = Gdk.color_parse(color)
+                color = Gdk.color_parse(color)[1]
             except:
                 print 'set_bg_color handed Bad color', color
                 return
