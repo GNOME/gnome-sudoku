@@ -221,7 +221,7 @@ class NumberBox (Gtk.DrawingArea):
 
         # Add the new value if need be
         if txt in [str(n) for n in range(1, self.upper+1)]:
-            if e.state & Gdk.EventMask.CONTROL_MASK:
+            if e.state & Gdk.ModifierType.CONTROL_MASK:
                 self.add_note_text(txt, top = True)
             elif e.state & Gdk.ModifierType.MOD1_MASK:
                 self.remove_note_text(txt, top = True)
