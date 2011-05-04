@@ -301,6 +301,7 @@ class UI (gconf_wrapper.GConfWrapper):
         mb.show()
         self.vb.pack_start(mb, False, False, 0)
         self.tb = self.uimanager.get_widget('/Toolbar')
+        self.tb.get_style_context().add_class(Gtk.STYLE_CLASS_PRIMARY_TOOLBAR)
         self.vb.pack_start(self.tb, False, False, 0)
         self.main_area = Gtk.HBox()
         self.swallower = dialog_swallower.SwappableArea(self.main_area)
