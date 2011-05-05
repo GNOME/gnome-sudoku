@@ -666,7 +666,7 @@ class NumberBox (Gtk.DrawingArea):
                 0,
                 )
             PangoCairo.update_layout(cr, self._top_note_layout)
-            PangoCairo.update_layout(cr, self._top_note_layout)
+            PangoCairo.show_layout(cr, self._top_note_layout)
         if self._bottom_note_layout:
             fontw, fonth = self._bottom_note_layout.get_pixel_size()
             cr.move_to(
@@ -674,7 +674,7 @@ class NumberBox (Gtk.DrawingArea):
                 BASE_SIZE-fonth,
                 )
             PangoCairo.update_layout(cr, self._bottom_note_layout)
-            PangoCairo.update_layout(cr, self._bottom_note_layout)
+            PangoCairo.show_layout(cr, self._bottom_note_layout)
 
     def set_text_color (self, color, shadow = None):
         self.shadow_color = shadow
