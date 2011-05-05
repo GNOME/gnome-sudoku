@@ -3,6 +3,7 @@ from gi.repository import Gtk,Gdk,GObject
 import colors
 import math
 import random
+import logging
 from simple_debug import simple_debug
 import sudoku
 import number_box
@@ -53,20 +54,23 @@ class SudokuNumberGrid (Gtk.AspectFrame):
         return self.table.focus_child
 
     def set_bg_color (self, color):
-        if type(color) == str:
-            try:
+        try:
+            if type(color) == str:
                 color = Gdk.color_parse(color)[1]
-            except:
-                print 'set_bg_color handed Bad color', color
-                return
-        self.eb.modify_bg(Gtk.StateType.NORMAL, color)
-        self.eb.modify_base(Gtk.StateType.NORMAL, color)
-        self.eb.modify_fg(Gtk.StateType.NORMAL, color)
-        self.table.modify_bg(Gtk.StateType.NORMAL, color)
-        self.table.modify_base(Gtk.StateType.NORMAL, color)
-        self.table.modify_fg(Gtk.StateType.NORMAL, color)
+                color = Gdk.RGBA(color.red/65535.0, color.green/65535.0, color.blue/65535.0)
+            else:
+                color = Gdk.RGBA(*color)
+        except:
+            logging.critical("set_bg_color handed Bad color: %s" % color, exc_info=True)
+            return
+
+        self.eb.override_color(Gtk.StateFlags.NORMAL, color)
+        self.eb.override_background_color(Gtk.StateFlags.NORMAL, color)
+        self.table.override_color(Gtk.StateFlags.NORMAL, color)
+        self.table.override_background_color(Gtk.StateFlags.NORMAL, color)
+
         for e in self.__entries__.values():
-            e.modify_bg(Gtk.StateType.NORMAL, color)
+            e.override_background_color(Gtk.StateFlags.NORMAL, color)
 
 class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
 
@@ -128,10 +132,8 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
         self.emit('focus-changed')
 
     def get_highlight_colors (self):
-        entry = self.__entries__.values()[0]
-        #default_color = gtkcolor_to_rgb(entry.style.bg[Gtk.StateType.SELECTED])
-        print "fixme: get default bg color from widget..."
-        default_color = (0.0, 1.0, 0.0)
+        bg = self.get_style_context().get_background_color(Gtk.StateFlags.SELECTED)
+        default_color = (bg.red, bg.green, bg.blue)
         hsv = colors.rgb_to_hsv(*default_color)
         box_s = hsv[1]
         box_v = hsv[2]
