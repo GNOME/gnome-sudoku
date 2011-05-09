@@ -571,8 +571,7 @@ class NumberBox (Gtk.DrawingArea):
             #    self.style.base[self.state]
             #    )
             #Gdk.cairo_set_source_rgba(
-            debug_set_color_rgba(
-                    cr, style_ctx.get_color(self.get_state_flags()))
+            cr.set_source_rgb(1.0, 1.0, 1.0)
         cr.rectangle(
             0, 0, w, h,
             )
@@ -584,7 +583,7 @@ class NumberBox (Gtk.DrawingArea):
         #    )
         #Gdk.cairo_set_source_rgba(
         debug_set_color_rgba(
-                    cr, style_ctx.get_color(Gtk.StateFlags.SELECTED))
+                    cr, style_ctx.get_background_color(Gtk.StateFlags.SELECTED))
 
         border = 4 * w / BASE_SIZE
         cr.rectangle(
@@ -605,7 +604,7 @@ class NumberBox (Gtk.DrawingArea):
         #    )
         #Gdk.cairo_set_source_rgba(
         debug_set_color_rgba(
-                cr, style_ctx.get_color(self.get_state_flags()))
+                cr, style_ctx.get_border_color(self.get_state_flags()))
 
         cr.set_line_width(NORMAL_LINE_WIDTH)
         # top rectangle
