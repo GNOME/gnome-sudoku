@@ -3,12 +3,13 @@ SUBDIRS = gtk_goodies
 # Don't distribute generated defaults.py. If you know a simpler way that works
 # e.g. nodist_gnomesudoku_PYTHON=defaults.py then please fix this
 dist-hook:
-	rm $(distdir)/defaults.py
+	rm $(distdir)/defs.py
 
 gnomesudokudir = $(pythondir)/gnome_sudoku
 gnomesudoku_PYTHON = \
 	colors.py	\
 	dancer.py	\
+	defs.py	\
 	defaults.py	\
 	dialog_swallower.py	\
 	game_selector.py	\
