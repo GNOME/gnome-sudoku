@@ -46,20 +46,6 @@ WEBSITE_LABEL = _('GNOME Games web site')
 AUTO_SAVE = True
 MIN_NEW_PUZZLES = 90
 
-# The GPL license string will be translated, and the game name inserted.
-# This license is the same as in libgames-support/games-stock.c 
-LICENSE = [_("%s is free software; you can redistribute it and/or modify " 
-       "it under the terms of the GNU General Public License as published by " 
-       "the Free Software Foundation; either version 2 of the License, or " 
-       "(at your option) any later version.").replace("%s", APPNAME),
-_("%s is distributed in the hope that it will be useful, "
-       "but WITHOUT ANY WARRANTY; without even the implied warranty of "
-       "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the "
-       "GNU General Public License for more details.").replace("%s", APPNAME),
-_("You should have received a copy of the GNU General Public License "
-       "along with %s; if not, write to the Free Software Foundation, Inc., "
-       "51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA").replace("%s", APPNAME)]
-
 DATA_DIR = os.path.expanduser('~/.gnome2/gnome-sudoku/')
 
 def initialize_games_dir ():

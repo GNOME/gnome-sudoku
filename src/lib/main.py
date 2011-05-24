@@ -19,7 +19,7 @@ import sudoku_maker
 import timer
 import tracker_info
 from defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION, DOMAIN, 
-        IMAGE_DIR, LICENSE, MIN_NEW_PUZZLES, UI_DIR, VERSION, WEBSITE, WEBSITE_LABEL)
+        IMAGE_DIR, MIN_NEW_PUZZLES, UI_DIR, VERSION, WEBSITE, WEBSITE_LABEL)
 from gtk_goodies import gconf_wrapper, Undo, dialog_extras
 from simple_debug import simple_debug, options
 
@@ -674,19 +674,18 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def show_about (self, *args):
-        about = Gtk.AboutDialog()
-        about.set_transient_for(self.w)
-        about.set_name(APPNAME)
-        about.set_version(VERSION)
-        about.set_copyright(COPYRIGHT)
-        about.set_license(LICENSE[0] + '\n\n' + LICENSE[1] + '\n\n'  + LICENSE[2])
-        about.set_wrap_license(True)
-        about.set_comments(DESCRIPTION)
-        about.set_authors(AUTHORS)
-        about.set_website(WEBSITE)
-        about.set_website_label(WEBSITE_LABEL)
-        about.set_logo_icon_name("gnome-sudoku")
-        about.set_translator_credits(_("translator-credits"))
+        about = Gtk.AboutDialog(
+                    transient_for=self.w,
+                    program_name=APPNAME,
+                    version=VERSION,
+                    copyright=COPYRIGHT,
+                    license_type=Gtk.License.GPL_2_0,
+                    comments=DESCRIPTION,
+                    authors=AUTHORS,
+                    website=WEBSITE,
+                    website_label=WEBSITE_LABEL,
+                    logo_icon_name="gnome-sudoku",
+                    translator_credits=_("translator-credits"))
         about.connect("response", lambda d, r: d.destroy())
         about.show()
 
