@@ -3,6 +3,6 @@ SUBDIRS = lib
 #################################################################
 
 ## Executable
-bin_SCRIPTS = gnome-sudoku
+dist_bin_SCRIPTS = gnome-sudoku
 
 -include $(top_srcdir)/git.mk
