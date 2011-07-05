@@ -359,7 +359,7 @@ class UndoHistoryList (list):
 class MultipleUndoLists:
     """For tabbed interfaces and other places where it makes sense for one
     Action (menu item, etc.) to control multiple UndoLists (since presumably
-    nobody wants to undo things they can't see)"""
+    nobody wants to undo things they cannot see)"""
     def __init__ (self, undo_widget, redo_widget, reapply_widget=None, signal='activate',
                   get_current_id=None):
         self.undo_widget = undo_widget
