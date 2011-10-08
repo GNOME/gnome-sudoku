@@ -56,7 +56,7 @@ class SudokuNumberGrid (Gtk.AspectFrame):
     def set_bg_color (self, color):
         try:
             if type(color) == str:
-                color = Gdk.color_parse(color)[1]
+                color = Gdk.color_parse(color)
                 color = Gdk.RGBA(color.red/65535.0, color.green/65535.0, color.blue/65535.0)
             else:
                 color = Gdk.RGBA(*color)
