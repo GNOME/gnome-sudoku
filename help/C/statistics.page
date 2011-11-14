@@ -3,7 +3,7 @@
 	id="statistics">
 
   <info>
-   <link type="guide" xref="index#advanced"/>
+   <link type="guide" xref="index#tips"/>
     
     <revision pkgversion="3.4" version="0.1" date="2011-11-06" status="stub"/>
     <credit type="author">
@@ -17,7 +17,33 @@
   </info>
 
 <title>Statistics</title>
-    
+<p>To view the statistics about the current puzzle, click <guiseq><gui>Game</gui><gui>Puzzle Statistics</gui></guiseq>.
+</p>
+  <figure>
+            <desc>Very hard puzzle statistics box example</desc>
+            <media type="image" mime="image/png"
+            src="figures/stats-very-hard.png" width="400" >
+            </media>
+      </figure>
 
-
+<section>
+<p>
+<app>GNOME Sudoku</app> ranks puzzles based on the number of squares that can be rapidly filled. 
+</p>
+<p>
+The puzzle statistics box shows:
+</p>
+<list>
+ <item><p>the overall difficulty</p></item>
+ <item><p>the number of squares which can be filled by elimination, starting from the blank grid (i.e. only a 2 can go in this box, so it must be a 2)</p></item>
+  <item><p>the number of squares that can be filled by the process of filling, starting from the blank grid (i.e. only only one square in this row can be a 2, so it must be a 2)</p></item>
+  <item><p>the number of times in solving the puzzle that the program used the trial-and-error algorithm to solve the puzzle</p></item>
+</list>
+<note>
+<p>
+All sudoku puzzles can be solved without ever having to guess. 
+When the statistics box says that Sudoku used trial-and-error X number of times, it does not mean that a human would have to use trial-and-error to solve the puzzle.
+</p>
+</note>
+</section>
 </page>
