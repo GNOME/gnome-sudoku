@@ -4,11 +4,10 @@
 
   <info>
    <link type="guide" xref="index#advanced"/>
-    
     <revision pkgversion="3.4" version="0.1" date="2011-11-12" status="stub"/>
     <credit type="author">
-      <name>Tiffany Antopolski</name>
-      <email>tiffany.antopolski@gmail.com</email>
+      <name>Chris Beiser</name>
+      <email>ctbeiser@gmail.com</email>
     </credit>
     <license>
       <p>Creative Commons Share Alike 3.0</p>
@@ -17,7 +16,83 @@
   </info>
 
 <title>Keyboard shortcuts</title>
-    
+<p> This is a list of the keyboard shortcuts you can use in Sudoku. </p>
 
+<!--page xmlns="http://projectmallard.org/1.0/"
+type="topic" style="task"
+id="keyboard-shortcuts"-->
 
+<section id="starting-restarting">
+	<title>Starting and exiting</title>	
+<comment>Is there a word that encapsulates both starting AND restarting? Didn't include restarting here for the sake of brevity - Chris</comment>
+	<table frame="all" rules="cols" shade="rows">
+		<tr>
+			<td><p>New game</p></td>
+			<td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+		</tr>
+		<tr>
+			<td><p>Reset game</p></td>
+			<td><p><keyseq><key>Ctrl</key><key>B</key></keyseq></p></td>
+		</tr>
+		<tr>
+			<td><p>Close the sudoku window</p></td>
+			<td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
+		</tr>
+	</table>
+</section>
+<section id="helpers">
+	<title>Hints and Notes</title>
+	<table frame="all" rules="cols" shade="rows">
+		<tr>
+			<td><p>Hint</p></td>
+			<td><p><keyseq><key>Ctrl</key><key>H</key></keyseq></p></td>
+		</tr>
+		<tr>
+			<td><p>Track Additions</p></td>
+			<td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
+		</tr>
+		<tr>
+			<td><p>Clear notes from the top of a cell</p></td>
+			<td><p><keyseq><key>Ctrl</key><key>J</key></keyseq></p></td>
+		</tr>
+		<tr>
+			<td><p>Clear notes from the bottom of a cell</p></td>
+			<td><p><keyseq><key>Ctrl</key><key>K</key></keyseq></p></td>
+		</tr>
+		<tr>
+			<td><p>Add a number to the top notes of a cell</p></td>
+			<td><p><keyseq><key>Ctrl</key><key>#</key></keyseq></p></td>
+		</tr>
+		<tr>
+			<td><p>Remove a number to the top notes of a cell</p></td>
+			<td><p><keyseq><key>Alt</key><key>#</key></keyseq></p></td>
+		</tr>
+	</table>
+</section>
+<section id="other">
+	<title>Other</title>
+	<table frame="all" rules="cols" shade="rows">
+		<tr>
+			<td><p>Print displayed puzzle</p></td>
+			<td><p><keyseq><key>Ctrl</key><key>P</key></keyseq></p></td>
+		</tr>
+		<tr>
+			<td><p>Undo</p></td>
+			<td><p><keyseq><key>Ctrl</key><key>Z</key></keyseq></p></td>
+		</tr>
+		<tr>
+			<td><p>Redo</p></td>
+			<td><p><keyseq><key>Ctrl</key><key>Shift</key><key>Z</key></keyseq></p></td>
+		</tr>
+		<tr>
+			<td><p>Open Help</p></td>
+			<td><p><key>F1</key></p></td>
+		</tr>
+		<tr>
+			<td><p>Switch to fullscreen mode</p></td>
+			<td><p><key>F11</key></p></td>
+		</tr>
+	</table>
+</section>
+<!--/page-->
 </page>

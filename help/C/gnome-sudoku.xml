@@ -148,10 +148,10 @@
     <para>
 
         The rules of Sudoku are quite simple. In order to complete the
-        puzzle, you must fill each square with a number between 1 and
+        puzzle, you must fill each cell with a number between 1 and
         9 such that every row, column and 3x3 box on the board
         contains the numbers 1 through 9.  Stated another way, you
-        must fill each square such that no number appears twice in the
+        must fill each cell such that no number appears twice in the
         same row, column, or 3x3 box.
 	
     </para>
@@ -161,7 +161,7 @@
     the principle ways players think as they play. On the one hand,
     you ask yourself, “How can I fit all the numbers in this
     box?” On the other hand, you ask yourself, “What
-    numbers can fit in this square without causing a conflict with
+    numbers can fit in this cell without causing a conflict with
     other numbers in the same row, column, or 3x3 box?”
 
     </para>
@@ -264,22 +264,22 @@
     </sect1>
     <sect1 id="myapp-basic-play">
     <title>Basic game play</title>
-    <para>To play the game, start filling numbers 1-9 in the squares such that no row, column, or 3x3 box has any number more than one time.</para>
-    <para>You can fill a number in a square with the keyboard or the mouse.</para>
+    <para>To play the game, start filling numbers 1-9 in the cells such that no row, column, or 3x3 box has any number more than one time.</para>
+    <para>You can fill a number in a cell with the keyboard or the mouse.</para>
     <variablelist>
     	<varlistentry>
 	<term>Keyboard</term>
-	<listitem><para>Use the arrow keys or the mouse to select the square you would like to fill. Then type the number you want to put in the square. Typing <keycap>Backspace</keycap> will remove the number.</para></listitem>
+	<listitem><para>Use the arrow keys or the mouse to select the cell you would like to fill. Then type the number you want to put in the cell. Typing <keycap>Backspace</keycap> will remove the number.</para></listitem>
 	</varlistentry>
 	<varlistentry>
 	<term>Mouse</term>
 	<listitem>
 	  <para>
 
-	  Click on a square to select it, then click in the center of
-	  the square to bring up buttons with the numbers 1-9.  Click
+	  Click on a cell to select it, then click in the center of
+	  the cell to bring up buttons with the numbers 1-9.  Click
 	  on a number to select it, or click on
-	  <guibutton>clear</guibutton> to clear the square. You can
+	  <guibutton>clear</guibutton> to clear the cell. You can
 	  also double-click in the center of a square to bring up the
 	  number buttons.
 	  
