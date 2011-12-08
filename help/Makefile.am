@@ -8,6 +8,7 @@ DOC_FIGURES = \
 	figures/logo32.png		\
 	figures/logo.png		\
 	figures/possible-numbers.png	\
+	figures/rowcolumnbox.png	\
 	figures/stats-very-hard.png	\
 	figures/trackers.webm
 
