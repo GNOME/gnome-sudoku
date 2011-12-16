@@ -5,7 +5,10 @@
   <info>
    <link type="guide" xref="index#advanced"/>
     
-    <revision pkgversion="3.4" version="0.1" date="2011-11-06" status="stub"/>
+    <revision pkgversion="3.4" version="0.1" date="2011-11-06" status="review"/>
+    <credit type="copyright">
+     <years>2011</years>
+    </credit>
     <credit type="author">
       <name>Tiffany Antopolski</name>
       <email>tiffany.antopolski@gmail.com</email>
@@ -17,7 +20,23 @@
   </info>
 
 <title>Commandline</title>
-    
+<p>To view commandline options for gnome-sudoku:  <cmd>gnome-sudoku --help</cmd></p>
+<p>To view the version number of your gnome-sudoku:  <cmd>gnome-sudoku --version</cmd></p>
 
+<section id="debug">
+<title>Print debug information</title>
+<p>This command may be useful when your are filing a bug and need to post debug information:  <cmd>gnome-sudoku -v</cmd></p>
+</section>
 
+<section id="profile">
+<title>Profile information</title>
+<p>This command is useful if you are filing a bug about slow performance.  It will show the perfomance of different functions that run, and possibly reveal which specific function(s) may be responsible for poor performance. This information attached to a bug could make it easier to fix the problem, however, this command is mostly used by programmers.</p>
+<p><cmd>gnome-sudoku -p</cmd></p>
+<p>When you exit the application, the terminal will show you performance statistics.</p>
+</section>
+
+<section id="step">
+<title>Step through <app>GNOME Sudoku</app></title>
+<p>This command is mostly used by programmers to step through the code:  <cmd>gnome-sudoku -w</cmd></p>
+</section>
 </page>
