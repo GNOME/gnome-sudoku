@@ -1,52 +1,45 @@
 <page xmlns="http://projectmallard.org/1.0/"
 	type="topic" style="task"
 	id="statistics">
-
   <info>
-   <link type="guide" xref="index#tips"/>
-    
     <revision pkgversion="3.4" version="0.1" date="2011-11-06" status="review"/>
-    <credit type="copyright">
-     <years>2011</years>
-    </credit>
-    <credit type="author">
+    <link type="guide" xref="index#tips"/>
+    <credit type="editor copyright">
       <name>Tiffany Antopolski</name>
       <email>tiffany.antopolski@gmail.com</email>
+      <years>2011</years>
     </credit>
     <license>
       <p>Creative Commons Share Alike 3.0</p>
     </license>
-    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude" />
   </info>
 
 <title>Statistics</title>
-<p>To view the statistics about the current puzzle, click <guiseq><gui>Game</gui><gui>Puzzle Statistics</gui></guiseq>.
-</p>
+<p>To view the statistics about the current puzzle, click <guiseq><gui>Game</gui><gui>Puzzle Statistics</gui></guiseq>.</p>
   <figure>
-            <desc>Very hard puzzle statistics box example</desc>
-            <media type="image" mime="image/png"
-            src="figures/stats-very-hard.png" width="400" >
-            </media>
-      </figure>
+    <desc>Very hard puzzle statistics box example</desc>
+    <media type="image" mime="image/png"
+    src="figures/stats-very-hard.png" width="400" >
+    </media>
+  </figure>
 
-<section>
 <p>
 <app>GNOME Sudoku</app> ranks puzzles based on the number of cells that can be rapidly filled. 
 </p>
+
 <p>
 The puzzle statistics box shows:
 </p>
+
 <list>
  <item><p>the overall difficulty</p></item>
  <item><p>the number of cells which can be filled by elimination, starting from the blank grid (i.e. only a 2 can go in this box, so it must be a 2)</p></item>
   <item><p>the number of cells that can be filled by the process of filling, starting from the blank grid (i.e. only one cell in this row can be a 2, so it must be a 2)</p></item>
   <item><p>the number of times in solving the puzzle that the program used the trial-and-error algorithm to solve the puzzle</p></item>
 </list>
-<note>
-<p>
+
+<note><p>
 All sudoku puzzles can be solved without ever having to guess. 
 When the statistics box says that Sudoku used trial-and-error X number of times, it does not mean that a human would have to use trial-and-error to solve the puzzle.
-</p>
-</note>
-</section>
+</p></note>
 </page>
