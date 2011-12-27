@@ -10,6 +10,8 @@ DOC_FIGURES = \
 	figures/possible-numbers.png	\
 	figures/rowcolumnbox.png	\
 	figures/stats-very-hard.png	\
+	figures/strategy1.png		\
+	figures/strategy2.png		\
 	figures/trackers.webm
 
 DOC_PAGES = \
@@ -29,6 +31,7 @@ DOC_PAGES = \
 	rules.page			\
 	save-resume.page		\
 	statistics.page			\
+	strategy.page
 	toolbar.page			\
 	trackers.page			\
 	translate.page
