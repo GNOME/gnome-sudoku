@@ -1,17 +1,48 @@
 <page xmlns="http://projectmallard.org/1.0/"
-      type="topic" style="task"
-      id="strategy">
-  <info>
-    <revision version="0.1" date="2011-12-15" status="review"/>
-   <link type="guide" xref="index#play"/>
-    <credit type="author copyright">
-      <name></name>
-      <email></email>
-      <years>2011</years>
-    </credit>
+	type="topic" style="task"
+	id="strategy">
+	<info>
+		<revision version="0.1" date="2011-12-15" status="review"/>
+		<link type="guide" xref="index#play"/>
+		<credit type="author copyright">
+		<name>Radoslav Asparuhov</name>
+		<email>rasparuhov@gmail.com</email>
+		<years>2011</years>
+		</credit>
+		<license>
+			<p>Creative Commons Share Alike 3.0</p>
+		</license>
+	</info>
 
-  </info>
-
-  <title>Strategy</title>
-  <p></p>
+	<title>Strategy</title>
+	<p>First strategy:</p>
+		<steps>
+		<item><p>Find the row with the most numbers.</p></item>
+		<item><p>Find which numbers in it are missing(If there are more than one, choose one).</p></item>
+		<item><p>Choose one cell and then see which of the missing numbers are in that column.</p></item>
+		<item><p>Then write in the upper field(see also <link xref="notes">Notes	</link>) which of the missing numbers aren't in the column
+		(that means which numbers could be in that cell) and in the bottom write the 
+		numbers that might be there.</p></item>
+		<item><p>5.Go to the next cell of the chosen row.
+		Repeat this for every row or column(it doesn't matter.)
+		Always look carefully for the numbers and don't forget the 3x3 boxes:)</p></item>
+		<item><p>If it doesn't help try with the strategy explained below.</p></item>
+		</steps>
+	<p>Second strategy:</p>
+		<steps>
+		<item><p>Find the number that appears the most.</p></item>
+		<item><p>Now look at the column of 3x3 boxes and find in which of the rows you see the chosen number.</p></item>
+		<item><p>Write in the upper field of every cell of the row of the 3x3 boxe in which you don't see the chosen number(if there is any,
+		if there isn't: look at the row in which this 3x3 boxe is and make that step again but insteed of columns look at the rows)
+		which means that the chosen number might be in that cell and in the other cells of that 3x3 boxe write in the bottom field 
+		the same number to know that this number can't be there.</p></item>
+		<item><p>If it doesn't help look at the upper strategy.</p></item>
+		</steps>
+	<p>Third strategy:</p>
+	<steps>
+	<item><p>If neither strategy explained above works, try this...</p></item>	
+	<item><p>Find the number which appears most often.</p></item>	
+	<item><p>Try the both strategies one after another.</p></item>	
+	<item><p>If the first chosen don't work try the other for the same cell you have chosen.</p></item>	
+	</steps>
 </page>
