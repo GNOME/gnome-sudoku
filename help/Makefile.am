@@ -31,7 +31,7 @@ DOC_PAGES = \
 	rules.page			\
 	save-resume.page		\
 	statistics.page			\
-	strategy.page
+	strategy.page			\
 	toolbar.page			\
 	trackers.page			\
 	translate.page
