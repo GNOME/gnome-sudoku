@@ -41,6 +41,8 @@ install-data-local: install-schemas-local
 man_MANS = gnome-sudoku.6
 
 EXTRA_DIST = \
+	$(pixmap_DATA)	\
+	$(desktop_DATA)	\
 	$(puzzle_DATA)	\
 	$(ui_DATA)	\
 	$(schema_in_files) \
