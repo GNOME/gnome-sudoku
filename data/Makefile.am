@@ -1,5 +1,13 @@
 SUBDIRS = icons
 
+desktopdir = $(datadir)/applications
+desktop_in_files = gnome-sudoku.desktop.in.in
+desktop_DATA = $(desktop_in_files:.desktop.in.in=.desktop)
+@INTLTOOL_DESKTOP_RULE@
+
+pixmapdir = $(datadir)/gnome-sudoku/images/
+pixmap_DATA = footprints.png
+
 puzzledir = $(datadir)/gnome-sudoku/puzzles/
 puzzle_DATA = \
 	easy \
@@ -39,6 +47,7 @@ EXTRA_DIST = \
 	$(man_MANS)
 
 CLEANFILES = \
+	$(desktop_DATA) \
 	$(schema_DATA)
 
 DISTCLEANFILES = \
