@@ -1,3 +1,5 @@
+SUBDIRS = icons
+
 puzzledir = $(datadir)/gnome-sudoku/puzzles/
 puzzle_DATA = \
 	easy \
