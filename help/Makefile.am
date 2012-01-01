@@ -25,6 +25,7 @@ DOC_PAGES = \
 	index.page			\
 	intro.page			\
 	keyboard-shortcuts.page		\
+	license.page			\
 	notes.page			\
 	print-blank-puzzles.page	\
 	print-inprogress-game.page	\
