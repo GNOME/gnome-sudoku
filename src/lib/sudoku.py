@@ -130,7 +130,7 @@ class SudokuGrid(object):
         for n, col in enumerate([[(x, y) for y in range(self.group_size)] for x in range(self.group_size)]):
             self.col_coords[n] = col
         if grid:
-            if type(grid) == str:
+            if isinstance(grid, basestring):
                 g = re.split("\s+", grid)
                 side = int(math.sqrt(len(g)))
                 grid = []
