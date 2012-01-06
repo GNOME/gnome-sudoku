@@ -53,6 +53,7 @@ CLEANFILES = \
 	$(schema_DATA)
 
 DISTCLEANFILES = \
+	$(desktop_DATA) \
 	$(schema_DATA)
 
 @INTLTOOL_SCHEMAS_RULE@
