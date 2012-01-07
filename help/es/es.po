@@ -1,12 +1,12 @@
 # translation of gnome-sudoku.HEAD.po to Español
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2010.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2010, 2011.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2010, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku.HEAD\n"
-"POT-Creation-Date: 2011-12-28 01:52+0000\n"
-"PO-Revision-Date: 2011-12-28 13:58+0100\n"
+"POT-Creation-Date: 2012-01-01 10:27+0000\n"
+"PO-Revision-Date: 2012-01-07 19:11+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -86,6 +86,8 @@ msgid ""
 "There are <link href=\"http://l10n.gnome.org/module/gnome-games/\">many "
 "languages</link> for which translations are still needed."
 msgstr ""
+"Hay <link href=\"http://l10n.gnome.org/module/gnome-games/\">muchos idiomas</"
+"link> para los que se siguen necesitando traducciones."
 
 #: C/translate.page:30(p)
 msgid ""
@@ -94,6 +96,10 @@ msgid ""
 "teams/\">translation team</link> for your language. This will give you the "
 "ability to upload new translations."
 msgstr ""
+"Para empezar a traducir necesitará <link href=\"http:l10n.gnome.org\">crear "
+"una cuenta</link> y unirse al <link href=\"http://l10n.gnome.org/teams/"
+"\">equipo de traducción</link> de su idioma. Esto le dará la posibilidad de "
+"subir traducciones nuevas."
 
 #: C/translate.page:34(p)
 msgid ""
@@ -102,6 +108,11 @@ msgid ""
 "channel are located worldwide, so you may not get an immediate response as a "
 "result of timezone differences."
 msgstr ""
+"Puede chatear con los traductores de GNOME usando <link href=\"https://"
+"cbe003.chat.mibbit.com/?url=irc%3A%2F%2Firc.gnome.org%2Fi18n\">irc</link>. "
+"La gente de los canales se encuentra en cualquier parte del mundo, por lo "
+"que puede que no obtenga una respuesa inmediata debido a las diferencias "
+"horarias."
 
 #: C/translate.page:37(p)
 msgid ""
@@ -109,6 +120,9 @@ msgid ""
 "<link href=\"http://mail.gnome.org/mailman/listinfo/gnome-i18n\">mailing "
 "list</link>."
 msgstr ""
+"Alternativamente, puede contactar con el equipo de internacionalización "
+"usando su <link href=\"http://mail.gnome.org/mailman/listinfo/gnome-i18n"
+"\">lista de correo</link>."
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -247,18 +261,13 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/strategy.page:42(None)
-#| msgid ""
-#| "@@image: 'figures/resuming.png'; md5=1ab6c0b1b34262bd0fb6bb6c5f622506"
+#: C/strategy.page:40(None)
 msgid "@@image: 'figures/strategy1.png'; md5=a4e70720924fa75d0f466be7bd670a61"
 msgstr "@@image: 'figures/strategy1.png'; md5=a4e70720924fa75d0f466be7bd670a61"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/strategy.page:58(None)
-#| msgid ""
-#| "@@image: 'figures/stats-very-hard.png'; "
-#| "md5=13bff6de1e513a499dece168d4e69af5"
+#: C/strategy.page:56(None)
 msgid "@@image: 'figures/strategy2.png'; md5=5cd4e27a7d2b8977964359f53336051a"
 msgstr "@@image: 'figures/strategy2.png'; md5=5cd4e27a7d2b8977964359f53336051a"
 
@@ -267,7 +276,6 @@ msgid "Radoslav Asparuhov"
 msgstr "Radoslav Asparuhov"
 
 #: C/strategy.page:9(email)
-#| msgid "ctbeiser@gmail.com"
 msgid "rasparuhov@gmail.com"
 msgstr "rasparuhov@gmail.com"
 
@@ -302,8 +310,8 @@ msgstr ""
 
 #: C/strategy.page:33(p)
 msgid ""
-"Choose one of the cells with a missing number. Determine which of the "
-"missing numbers are in that column or in that 3x3 box."
+"Choose one of the empty cells in this row. Determine which of the missing "
+"numbers are in that column or in that 3x3 box."
 msgstr ""
 
 #: C/strategy.page:34(p)
@@ -316,59 +324,60 @@ msgstr ""
 #: C/strategy.page:35(p)
 msgid ""
 "Go to the next empty cell of the chosen row and repeat the above method. "
-"Repeat this for every row. Always look carefully for the numbers and don't "
-"forget the 3x3 boxes."
+"Repeat this for every row and column, starting at those with the most "
+"numbers and continuing through to the least. Always look carefully for the "
+"numbers and don't forget the 3x3 boxes."
 msgstr ""
 
-#: C/strategy.page:36(p) C/strategy.page:54(p)
+#: C/strategy.page:37(p) C/strategy.page:53(p)
 msgid ""
-"The strategy will help reveal the cells which have only one possible choice. "
-"At this point, you can fill those cells in with that choice, and repeat the "
-"strategy again until the entire puzzle is solved."
+"This strategy will help reveal the cells which have only one possible "
+"choice. When revealed, you can fill those cells in with that choice, and "
+"repeat the strategy again until the entire puzzle is solved."
 msgstr ""
 
-#: C/strategy.page:41(desc)
+#: C/strategy.page:39(desc)
 msgid "Example use of strategy 1."
 msgstr ""
 
-#: C/strategy.page:47(p)
+#: C/strategy.page:45(p)
 msgid "Strategy 2:"
 msgstr "Estrategia 2:"
 
-#: C/strategy.page:49(p)
+#: C/strategy.page:47(p)
 msgid "Find the number which appears most often."
 msgstr ""
 
-#: C/strategy.page:50(p)
+#: C/strategy.page:48(p)
 msgid ""
 "Now look at the left vertical alignment of the 3x3 boxes and locate the "
-"columns in which this number appears."
+"column(s) in which this number appears."
 msgstr ""
 
-#: C/strategy.page:51(p)
+#: C/strategy.page:49(p)
 msgid ""
 "In this alignment, go to a 3x3 box which does not contain this number in any "
 "of its cells. Using <link xref=\"notes\">notes</link>, enter this number in "
-"every empty cell of the column in whihc this number does not appear."
+"every empty cell of the column in which this number does not appear. If the "
+"number appears in the row of one of these cells, do not enter it in that "
+"cell's notes."
 msgstr ""
 
-#: C/strategy.page:52(p)
-msgid ""
-"Repeat the last two steps for the center and right vertical alignments, and "
-"then for the horizontal alignments."
+#: C/strategy.page:50(p)
+msgid "Repeat the last two steps for the center and right vertical alignments."
 msgstr ""
 
-#: C/strategy.page:53(p)
+#: C/strategy.page:51(p)
 msgid ""
 "Find the next number which appears most, and repeat until you have done this "
 "for all 9 numbers."
 msgstr ""
 
-#: C/strategy.page:57(desc)
+#: C/strategy.page:55(desc)
 msgid "Example use of strategy2."
 msgstr ""
 
-#: C/strategy.page:61(p)
+#: C/strategy.page:59(p)
 msgid ""
 "If neither of the above strategies solves the puzzle on its own, you can "
 "alternate strategies. You can also combine the strategies."
@@ -742,6 +751,88 @@ msgstr ""
 "quitar un número de las notas pulsando desde <keycap>Alt+1</keycap> hasta "
 "<keycap>Alt+9</keycap>."
 
+#: C/license.page:8(desc)
+#, fuzzy
+#| msgid "Profile information"
+msgid "Legal information."
+msgstr "Información del perfil"
+
+#: C/license.page:11(title)
+msgid "License"
+msgstr "Licencia"
+
+#: C/license.page:12(p)
+msgid ""
+"This work is distributed under a CreativeCommons Attribution-Share Alike 3.0 "
+"Unported license."
+msgstr ""
+"Este trabajo está licenciado bajo una Licencia Creative Commons Atribución - "
+"Compartir igual 3.0 sin soporte."
+
+#: C/license.page:20(p)
+msgid "You are free:"
+msgstr "Es libre de:"
+
+#: C/license.page:25(em)
+msgid "To share"
+msgstr "Compartir"
+
+#: C/license.page:26(p)
+msgid "To copy, distribute and transmit the work."
+msgstr "Copiar, distribuir y transmitir la obra."
+
+#: C/license.page:29(em)
+msgid "To remix"
+msgstr "Hacer obras derivadas"
+
+#: C/license.page:30(p)
+msgid "To adapt the work."
+msgstr "Adaptar el trabajo."
+
+#: C/license.page:33(p)
+msgid "Under the following conditions:"
+msgstr "Bajo las siguientes condiciones:"
+
+#: C/license.page:38(em)
+#| msgid "Introduction"
+msgid "Attribution"
+msgstr "Atribución"
+
+#: C/license.page:39(p)
+msgid ""
+"You must attribute the work in the manner specified by the author or "
+"licensor (but not in any way that suggests that they endorse you or your use "
+"of the work)."
+msgstr ""
+"Debe reconocer los créditos de la obra de la manera especificada por el "
+"autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo "
+"o apoyan el uso que hace de su obra)."
+
+#: C/license.page:46(em)
+msgid "Share Alike"
+msgstr "Compartir igual"
+
+#: C/license.page:47(p)
+msgid ""
+"If you alter, transform, or build upon this work, you may distribute the "
+"resulting work only under the same, similar or a compatible license."
+msgstr ""
+"Si altera, transforma o amplía esta obra para crear una obra derivada, sólo "
+"puede distribuir la obra resultante bajo la misma licencia, una similar o "
+"una compatible."
+
+#: C/license.page:53(p)
+msgid ""
+"For the full text of the license, see the <link href=\"http://"
+"creativecommons.org/licenses/by-sa/3.0/legalcode\">CreativeCommons website</"
+"link>, or read the full <link href=\"http://creativecommons.org/licenses/by-"
+"sa/3.0/\">Commons Deed</link>."
+msgstr ""
+"Para ver el texto completo de la licencia consulte la <link href=\"http://"
+"creativecommons.org/licenses/by-sa/3.0/legalcode\">página web de Creative "
+"Commons</link> o lea el <link href=\"http://creativecommons.org/licenses/by-"
+"sa/3.0/\"> Escrito de Commons</link>."
+
 #: C/keyboard-shortcuts.page:22(title)
 msgid "Keyboard shortcuts"
 msgstr "Atajo de teclado"
@@ -794,16 +885,14 @@ msgid "W"
 msgstr ""
 
 #: C/keyboard-shortcuts.page:44(title)
-#, fuzzy
 #| msgid "Hints and Auto-Fill"
 msgid "Hints and Notes"
-msgstr "Sugerencias y autorellenar"
+msgstr "Sugerencias y notas"
 
 #: C/keyboard-shortcuts.page:47(p)
-#, fuzzy
 #| msgid "Hints"
 msgid "Hint"
-msgstr "Sugerencias"
+msgstr "Sugerencia"
 
 #: C/keyboard-shortcuts.page:48(key)
 msgid "H"
@@ -900,9 +989,6 @@ msgid "Introduction"
 msgstr "Introducción"
 
 #: C/intro.page:18(p)
-#| msgid ""
-#| "Sudoku is an application for playing the popular sudoku logic puzzle "
-#| "game, in which one must fill a 9 by 9 square with the correct digits."
 msgid ""
 "Gnome Sudoku is an application to generate and play games of Sudoku, a "
 "popular number-based logic puzzle in which one must fill a 9 X 9 square with "
@@ -987,7 +1073,8 @@ msgstr "Para mostrar los valores posibles de todos los cuadrados, pulse:"
 #: C/hints.page:21(p)
 msgid "<guiseq><gui>Settings</gui><gui>Show Possible Numbers</gui></guiseq>."
 msgstr ""
-"<guiseq><gui>Ajustes</gui><gui>Mostrar los números posibles</gui></guiseq>."
+"<guiseq><gui>Configuración</gui><gui>Mostrar los números posibles</gui></"
+"guiseq>."
 
 #: C/hints.page:25(p)
 #, fuzzy
@@ -1092,6 +1179,8 @@ msgid ""
 "Our <link href=\"https://live.gnome.org/DocumentationProject/Contributing"
 "\">wiki</link> page contains useful information."
 msgstr ""
+"El <link href=\"https://live.gnome.org/DocumentationProject/Contributing"
+"\">wiki</link> contiene información útil."
 
 #: C/develop.page:19(title)
 msgid "Help develop"
@@ -1112,6 +1201,12 @@ msgid ""
 "href=\"http://mail.gnome.org/mailman/listinfo/games-list\">mailing list</"
 "link>."
 msgstr ""
+"Si quiere <link href=\"https://live.gnome.org/GnomeGames/Contributing"
+"\">contribuir al desarrollo de los <app>juegos de GNOME</app></link>, puede "
+"ponerse en contacto con los desarrolladores usando <link href=\"https://"
+"cbe005.chat.mibbit.com/?url=irc%3A%2F%2Firc.gnome.org%2Fgnome-games\">irc</"
+"link>, o mediante la <link href=\"http://mail.gnome.org/mailman/listinfo/"
+"games-list\">lista de correo</link>."
 
 #: C/commandline.page:21(title)
 msgid "Commandline"
@@ -1222,6 +1317,12 @@ msgid ""
 "\"https://bugzilla.gnome.org/browse.cgi?product=gnome-games\">browse</link> "
 "for the bug to see if it already exists."
 msgstr ""
+"Una vez que tenga su cuenta, inicie sesión y pulse en <guiseq><gui>Informar "
+"de un error</gui><gui>Aplicaciones</gui><gui>gnome-games</gui></guiseq>. "
+"Antes de informar de un error, lea las <link href=\"https://bugzilla.gnome."
+"org/page.cgi?id=bug-writing.html\">guías para informar de un error</link> y "
+"<link href=\"https://bugzilla.gnome.org/browse.cgi?product=evince\">busque</"
+"link> el error para ver si ya existe."
 
 #: C/bug-filing.page:33(p)
 msgid ""
@@ -1251,7 +1352,7 @@ msgstr ""
 
 #: C/basics.page:21(title)
 msgid "Basics"
-msgstr ""
+msgstr "Conceptos básicos"
 
 #: C/basics.page:22(p)
 msgid ""
