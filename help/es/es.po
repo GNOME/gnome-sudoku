@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku.HEAD\n"
-"POT-Creation-Date: 2012-01-01 10:27+0000\n"
-"PO-Revision-Date: 2012-01-07 19:11+0100\n"
+"POT-Creation-Date: 2012-01-07 18:21+0000\n"
+"PO-Revision-Date: 2012-01-08 20:53+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -160,23 +160,25 @@ msgid "Using the tracker:"
 msgstr "Usando el teclado"
 
 #: C/trackers.page:29(p)
-#, fuzzy
 #| msgid "You can toggle the tracker-interface by doing one of the following:"
 msgid "You can toggle the tracker interface in one of the following ways:"
 msgstr ""
-"Puede conmutar el interfaz de seguimiento con una de las siguientes acciones:"
+"Puede conmutar la interfaz de seguimiento de una de las siguientes maneras:"
 
 #: C/trackers.page:33(p) C/trackers.page:62(p)
-#, fuzzy
 #| msgid "Click <guibutton>Track additions</guibutton>"
 msgid "Click <guiseq><gui>Tools</gui><gui>Track Additions</gui></guiseq>."
-msgstr "Pulse <guibutton>Seguir adiciones</guibutton>"
+msgstr ""
+"Pulse <guiseq><gui>Herramientas</gui><gui>Seguir adiciones</gui></guiseq>."
 
 #: C/trackers.page:34(p)
 msgid ""
 "Click <gui>Track Additions</gui> in the toolbar. If the toolbar is not "
 "visible, click <guiseq><gui>Settings</gui><gui>Show Toolbar</gui></guiseq>."
 msgstr ""
+"Pulse <gui>Seguir adiciones</gui> en la barra de herramientas. Si la barra "
+"de herramientas no está visible, pulse <guiseq><gui>Configuración</"
+"gui><gui>Mostrar la barra de herramientas</gui></guiseq>."
 
 #: C/trackers.page:36(p) C/trackers.page:67(p)
 msgid "You can make untracked moves if no tracker is selected."
@@ -242,14 +244,15 @@ msgid "Toolbar"
 msgstr "Barra de herramientas"
 
 #: C/toolbar.page:19(p)
-#, fuzzy
 #| msgid ""
 #| "<guiseq><gui>Settings</gui><gui>Show Possible Numbers</gui></guiseq>."
 msgid ""
 "To show or hide the toolbar, click <guiseq><gui>Settings</gui><gui>Show "
 "Toolbar</gui></guiseq>."
 msgstr ""
-"<guiseq><gui>Ajustes</gui><gui>Mostrar los números posibles</gui></guiseq>."
+"Para mostrar u ocultar la barra de herramientas, pulse "
+"<guiseq><gui>Configuración</gui><gui>Mostrar la barra de herramientas</gui></"
+"guiseq>."
 
 #: C/toolbar.page:21(p)
 msgid ""
@@ -289,6 +292,9 @@ msgid ""
 "following strategies will help you systematically discover the solution for "
 "every cell."
 msgstr ""
+"Sólo hay una posibilidad para cada cuadrado en un sudoku. Las siguientes "
+"estrategias se ayudarán a descubrir sistemáticamente la solución para cada "
+"cuadrado."
 
 #: C/strategy.page:25(p)
 msgid "Strategy 1:"
@@ -296,7 +302,7 @@ msgstr "Estrategia 1:"
 
 #: C/strategy.page:27(p)
 msgid "Choose the row with the most numbers in it."
-msgstr ""
+msgstr "Elija la fila que contiene más números"
 
 #: C/strategy.page:28(p)
 msgid ""
@@ -306,7 +312,7 @@ msgstr ""
 
 #: C/strategy.page:32(p)
 msgid "Determine which numbers in the row are missing."
-msgstr ""
+msgstr "Determine que números faltan en la fila."
 
 #: C/strategy.page:33(p)
 msgid ""
@@ -338,7 +344,7 @@ msgstr ""
 
 #: C/strategy.page:39(desc)
 msgid "Example use of strategy 1."
-msgstr ""
+msgstr "Ejemplo de uso de la estrategia 1."
 
 #: C/strategy.page:45(p)
 msgid "Strategy 2:"
@@ -346,7 +352,7 @@ msgstr "Estrategia 2:"
 
 #: C/strategy.page:47(p)
 msgid "Find the number which appears most often."
-msgstr ""
+msgstr "Encuentre el número que aparece con mayor frecuencia."
 
 #: C/strategy.page:48(p)
 msgid ""
@@ -375,13 +381,15 @@ msgstr ""
 
 #: C/strategy.page:55(desc)
 msgid "Example use of strategy2."
-msgstr ""
+msgstr "Ejemplo de uso de la estrategia 2."
 
 #: C/strategy.page:59(p)
 msgid ""
 "If neither of the above strategies solves the puzzle on its own, you can "
 "alternate strategies. You can also combine the strategies."
 msgstr ""
+"Si ninguna de las estrategias anteriores resuelve el puzle por sí sola, "
+"puede alternarlas. También puede combinar las estrategias."
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -408,7 +416,6 @@ msgid "Very hard puzzle statistics box example"
 msgstr ""
 
 #: C/statistics.page:26(p)
-#, fuzzy
 #| msgid ""
 #| "GNOME Sudoku ranks puzzles based on the number of squares that can be "
 #| "rapidly filled. The puzzle statistics box shows you the overall rating "
@@ -417,20 +424,18 @@ msgid ""
 "<app>GNOME Sudoku</app> ranks puzzles based on the number of cells that can "
 "be rapidly filled."
 msgstr ""
-"Sudoku categoriza los puzles basándose en el número de cuadrados que pueden "
-"rellenarse rápidamente. La caja de estadísticas del puzle le muestra la "
-"puntuación global así como tres informaciones adicionales:"
+"<app>GNOME Sudoku</app> categoriza los puzles basándose en el número de "
+"cuadrados que pueden rellenarse rápidamente."
 
 #: C/statistics.page:30(p)
 msgid "The puzzle statistics box shows:"
-msgstr "El cuadro de estadísticas del puzle muestra:"
+msgstr "El cuadrado de estadísticas del puzle muestra:"
 
 #: C/statistics.page:35(p)
 msgid "the overall difficulty"
 msgstr "la dificultad total"
 
 #: C/statistics.page:36(p)
-#, fuzzy
 #| msgid ""
 #| "the number of squares which can be filled by elimination, starting from "
 #| "the blank grid (i.e. only a 2 can go in this box, so it must be a 2)"
@@ -440,10 +445,9 @@ msgid ""
 msgstr ""
 "el número de cuadrados rellenables por eliminación, comenzando por la "
 "rejilla vacía (ej. sólo puede ir un 2 en este cuadrado, así que debe ser un "
-"2)."
+"2)"
 
 #: C/statistics.page:37(p)
-#, fuzzy
 #| msgid ""
 #| "the number of squares that can be filled by the process of filling, "
 #| "starting from the blank grid (i.e. only one square in this row can be a "
@@ -453,12 +457,11 @@ msgid ""
 "from the blank grid (i.e. only one cell in this row can be a 2, so it must "
 "be a 2)"
 msgstr ""
-"el número de cuadrados rellenables por el rellenado, comenzando por la "
-"rejilla vacía (ej. sólo puede haber un 2 en esta fila, así que debe ser un "
-"2)."
+"el número de cuadrado rellenables por el proceso de rellenado, comenzando "
+"por la rejilla vacía (ej. sólo puede haber un 2 en esta fila, así que debe "
+"ser un 2)."
 
 #: C/statistics.page:38(p)
-#, fuzzy
 #| msgid ""
 #| "The number of times in solving the puzzle that the computer had to use "
 #| "trial-and-error, or “guessing”, to solve the puzzle."
@@ -466,8 +469,8 @@ msgid ""
 "the number of times in solving the puzzle that the program used the trial-"
 "and-error algorithm to solve the puzzle"
 msgstr ""
-"El número de veces que el computador tuvo que que usar prueba y error o "
-"«adivinanzas» para solucionar el puzle."
+"el número de veces que el equipo tuvo que que usar el algoritmo de prueba y "
+"error para solucionar el puzle"
 
 #: C/statistics.page:41(p)
 #, fuzzy
@@ -514,7 +517,6 @@ msgid "Saving your game"
 msgstr "Guardar su juego"
 
 #: C/save-resume.page:27(p)
-#, fuzzy
 #| msgid ""
 #| "Sudokus are saved automatically every few minutes and whenever you change "
 #| "games or close the application."
@@ -522,7 +524,7 @@ msgid ""
 "Your games are saved automatically every few minutes and whenever you change "
 "games or close the application."
 msgstr ""
-"Los sudokus se guardan automáticamente cada pocos minutos y siempre que "
+"Las partidas se guardan automáticamente cada pocos minutos y siempre que "
 "cambie de partida o cierre la aplicación."
 
 #: C/save-resume.page:32(title)
@@ -592,7 +594,7 @@ msgstr ""
 
 #: C/rules.page:25(p)
 msgid "Each puzzle has only one solution."
-msgstr ""
+msgstr "Cada puzle tiene una única solución."
 
 #: C/rules.page:29(desc)
 msgid "Outline of a row, a column and a 3x3 box using highlighting option."
@@ -714,7 +716,7 @@ msgstr "Escriba sus notas"
 
 #: C/notes.page:34(p)
 msgid "Press <key>Enter</key> or click outside of the text box."
-msgstr ""
+msgstr "Pulse <key>Intro</key> o pulse fuera de la caja de texto."
 
 #: C/notes.page:37(p)
 #, fuzzy
@@ -794,7 +796,6 @@ msgid "Under the following conditions:"
 msgstr "Bajo las siguientes condiciones:"
 
 #: C/license.page:38(em)
-#| msgid "Introduction"
 msgid "Attribution"
 msgstr "Atribución"
 
@@ -839,7 +840,7 @@ msgstr "Atajo de teclado"
 
 #: C/keyboard-shortcuts.page:23(p)
 msgid "This is a list of the keyboard shortcuts you can use in Sudoku."
-msgstr ""
+msgstr "Esta es una lista de los atajos de teclado que puede usar en Sudoku."
 
 #: C/keyboard-shortcuts.page:26(title)
 msgid "Starting and exiting"
@@ -866,7 +867,7 @@ msgstr "Ctrl"
 
 #: C/keyboard-shortcuts.page:31(key)
 msgid "N"
-msgstr ""
+msgstr "N"
 
 #: C/keyboard-shortcuts.page:34(p)
 msgid "Reset game"
@@ -874,7 +875,7 @@ msgstr "Reiniciar el juego"
 
 #: C/keyboard-shortcuts.page:35(key)
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #: C/keyboard-shortcuts.page:38(p)
 msgid "Close the sudoku window"
@@ -882,31 +883,28 @@ msgstr "Cerrar la ventana de Sudoku"
 
 #: C/keyboard-shortcuts.page:39(key)
 msgid "W"
-msgstr ""
+msgstr "W"
 
 #: C/keyboard-shortcuts.page:44(title)
-#| msgid "Hints and Auto-Fill"
 msgid "Hints and Notes"
 msgstr "Sugerencias y notas"
 
 #: C/keyboard-shortcuts.page:47(p)
-#| msgid "Hints"
 msgid "Hint"
 msgstr "Sugerencia"
 
 #: C/keyboard-shortcuts.page:48(key)
 msgid "H"
-msgstr ""
+msgstr "H"
 
 #: C/keyboard-shortcuts.page:51(p)
-#, fuzzy
 #| msgid "Track additions"
 msgid "Track Additions"
 msgstr "Seguir adiciones"
 
 #: C/keyboard-shortcuts.page:52(key)
 msgid "T"
-msgstr ""
+msgstr "T"
 
 #: C/keyboard-shortcuts.page:55(p)
 msgid "Clear notes from the top of a cell"
@@ -914,7 +912,7 @@ msgstr ""
 
 #: C/keyboard-shortcuts.page:56(key)
 msgid "J"
-msgstr ""
+msgstr "J"
 
 #: C/keyboard-shortcuts.page:59(p)
 msgid "Clear notes from the bottom of a cell"
@@ -922,7 +920,7 @@ msgstr ""
 
 #: C/keyboard-shortcuts.page:60(key)
 msgid "K"
-msgstr ""
+msgstr "K"
 
 #: C/keyboard-shortcuts.page:63(p)
 msgid "Add a number to the top notes of a cell"
@@ -942,7 +940,7 @@ msgstr "Alt"
 
 #: C/keyboard-shortcuts.page:73(title)
 msgid "Other"
-msgstr ""
+msgstr "Otros"
 
 #: C/keyboard-shortcuts.page:76(p)
 msgid "Print displayed puzzle"
@@ -950,7 +948,7 @@ msgstr "Imprimir el puzle mostrado"
 
 #: C/keyboard-shortcuts.page:77(key)
 msgid "P"
-msgstr ""
+msgstr "P"
 
 #: C/keyboard-shortcuts.page:80(p)
 msgid "Undo"
@@ -958,7 +956,7 @@ msgstr "Deshacer"
 
 #: C/keyboard-shortcuts.page:81(key) C/keyboard-shortcuts.page:85(key)
 msgid "Z"
-msgstr ""
+msgstr "Z"
 
 #: C/keyboard-shortcuts.page:84(p)
 msgid "Redo"
@@ -1065,7 +1063,6 @@ msgid "Hints"
 msgstr "Sugerencias"
 
 #: C/hints.page:18(p)
-#, fuzzy
 #| msgid "To show possible values for all squares click:"
 msgid "To show possible values for all cells click:"
 msgstr "Para mostrar los valores posibles de todos los cuadrados, pulse:"
@@ -1077,10 +1074,9 @@ msgstr ""
 "guiseq>."
 
 #: C/hints.page:25(p)
-#, fuzzy
 #| msgid "To ask Sudoku to show a square that is easy to fill:"
 msgid "To ask Sudoku to show a cell that is easy to fill:"
-msgstr "Pedir a Sudoku que muestre un cuadrado fácil de rellenar:"
+msgstr "Para pedir a Sudoku que muestre un cuadrado fácil de rellenar:"
 
 #: C/hints.page:30(p)
 msgid ""
@@ -1091,7 +1087,6 @@ msgstr ""
 "gui> en la <link xref=\"toolbar\">barra de herramientas</link>."
 
 #: C/hints.page:35(p)
-#, fuzzy
 #| msgid ""
 #| "The <firstterm>Hint</firstterm> and <firstterm>Fill</firstterm> features "
 #| "work based on the logical possibilities given the current board. They do "
@@ -1104,11 +1099,10 @@ msgid ""
 "an error in an earlier move, these features may show incorrect possible "
 "values."
 msgstr ""
-"Las características <firstterm>Sugerencia</firstterm> y <firstterm>Rellenar</"
-"firstterm> funcionan basándose en las posibilidades lógicas proporcionadas "
-"por el tablero actual. <emphasis>No</emphasis> trabajan basándose en la "
-"solución. Si ha cometido un error en un movimiento anterior, estas "
-"características pueden fallar al rellenar o sugerir un valor."
+"Estas características funcionan basándose en las posibilidades lógicas "
+"proporcionadas por el tablero actual, no trabajan basándose en la solución. "
+"Si ha cometido un error en un movimiento anterior, estas características "
+"pueden mostrar valores posibles incorrectos."
 
 #: C/hints.page:41(p)
 msgid ""
@@ -1121,7 +1115,6 @@ msgid ""
 msgstr ""
 
 #: C/hints.page:46(p)
-#, fuzzy
 #| msgid ""
 #| "You can edit the possible numbers by clicking in the bottom of the square."
 msgid ""
@@ -1216,12 +1209,16 @@ msgstr "Línea de comandos"
 msgid ""
 "To view commandline options for gnome-sudoku: <cmd>gnome-sudoku --help</cmd>"
 msgstr ""
+"Para ver las opciones de línea de comandos de gnome-sudoku: <cmd>gnome-"
+"sudoku --help</cmd>"
 
 #: C/commandline.page:23(p)
 msgid ""
 "To view the version number of your gnome-sudoku: <cmd>gnome-sudoku --"
 "version</cmd>"
 msgstr ""
+"Para ver el número de versión de gnome-sudoku: <cmd>gnome-sudoku --version</"
+"cmd>"
 
 #: C/commandline.page:26(title)
 msgid "Print debug information"
