@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-from gi.repository import Gtk
+from gi.repository import Gtk,Gio
 import cairo
 import time
 import os.path
 import sudoku, gsudoku, saver, defaults
-from gtk_goodies import gconf_wrapper
 from gettext import gettext as _
 
 def fit_squares_in_rectangle (width, height, n, margin = 0):
@@ -114,49 +113,53 @@ def print_sudokus(*args, **kwargs):
         error_dialog.connect("response", lambda w, id: w.destroy())
         error_dialog.show()
 
-class GamePrinter (gconf_wrapper.GConfWrapper):
+class GamePrinter:
 
     ui_file = os.path.join(defaults.UI_DIR, 'print_games.ui')
 
-    initial_prefs = {'sudokus_per_page':2,
-                     'print_multiple_sudokus_to_print':4,
-                     'print_minimum_difficulty':0,
-                     'print_maximum_difficulty':0.9,
-                     'print_easy':True,
-                     'print_medium':True,
-                     'print_hard':True,
-                     'print_very_hard':True,
-                     }
-
-    def __init__ (self, sudoku_maker, gconf):
-        gconf_wrapper.GConfWrapper.__init__(self, gconf)
+    def __init__ (self, sudoku_maker):
         self.sudoku_maker = sudoku_maker
+        self.settings = Gio.Settings("org.gnome.gnome-sudoku")
         self.builder = Gtk.Builder()
         self.builder.set_translation_domain(defaults.DOMAIN)
         self.builder.add_from_file(self.ui_file)
         # Set up toggles...
-        for key, wname in [('mark_printed_as_played', 'markAsPlayedToggle'),
-                          ('print_already_played_games', 'includeOldGamesToggle'),
-                          ('print_easy', 'easyCheckButton'),
-                          ('print_medium', 'mediumCheckButton'),
-                          ('print_hard', 'hardCheckButton'),
-                          ('print_very_hard', 'very_hardCheckButton'),
+        for key, wname in [('mark-printed-as-played', 'markAsPlayedToggle'),
+                          ('print-already-played-games', 'includeOldGamesToggle'),
+                          ('print-easy', 'easyCheckButton'),
+                          ('print-medium', 'mediumCheckButton'),
+                          ('print-hard', 'hardCheckButton'),
+                          ('print-very-hard', 'very_hardCheckButton'),
                           ]:
             setattr(self, wname, self.builder.get_object(wname))
             try:
                 assert(getattr(self, wname))
             except:
                 raise AssertionError('Widget %s does not exist' % wname)
-            self.gconf_wrap_toggle(key, getattr(self, wname))
+            self.wrap_toggle(key, getattr(self, wname))
         self.sudokusToPrintSpinButton = self.builder.get_object('sudokusToPrintSpinButton')
         self.sudokusPerPageSpinButton = self.builder.get_object('sudokusPerPageSpinButton')
-        for key, widg in [('print_multiple_sudokus_to_print', self.sudokusToPrintSpinButton.get_adjustment()),
-                          ('sudokus_per_page', self.sudokusPerPageSpinButton.get_adjustment())
+        for key, widg in [('print-multiple-sudokus-to-print', self.sudokusToPrintSpinButton.get_adjustment()),
+                          ('sudokus-per-page', self.sudokusPerPageSpinButton.get_adjustment())
                          ]:
-            self.gconf_wrap_adjustment(key, widg)
+            self.wrap_adjustment(key, widg)
         self.dialog = self.builder.get_object('dialog')
         self.dialog.set_default_response(Gtk.ResponseType.OK)
         self.dialog.connect('response', self.response_cb)
+
+    def wrap_toggle (self, key_name, action):
+        action.set_active(self.settings.get_boolean(key_name))
+        action.connect('toggled', self.set_boolean_key, key_name)
+
+    def set_boolean_key (self, action, key_name):
+        self.settings.set_boolean(key_name, action.get_active())
+
+    def wrap_adjustment (self, key_name, action):
+        action.set_value(self.settings.get_int(key_name))
+        action.connect('value-changed', self.set_int_key, key_name)
+
+    def set_int_key (self, action, key_name):
+        self.settings.set_int(key_name, action.get_value())
 
     def response_cb (self, dialog, response):
         if response not in (Gtk.ResponseType.ACCEPT, Gtk.ResponseType.OK):

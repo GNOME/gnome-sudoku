@@ -5,7 +5,7 @@ import threading
 import gi
 gi.require_version("Gtk", "3.0")
 
-from gi.repository import Gtk,GdkPixbuf,GObject,Pango,Gdk
+from gi.repository import Gtk,GdkPixbuf,GObject,Pango,Gdk,Gio
 from gettext import gettext as _
 from gettext import ngettext
 
@@ -20,7 +20,7 @@ import timer
 import tracker_info
 from defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION, DOMAIN, 
         IMAGE_DIR, MIN_NEW_PUZZLES, UI_DIR, VERSION, WEBSITE, WEBSITE_LABEL)
-from gtk_goodies import gconf_wrapper, Undo, dialog_extras
+from gtk_goodies import Undo, dialog_extras
 from simple_debug import simple_debug, options
 
 def inactivate_new_game_etc (fun):
@@ -60,7 +60,7 @@ def inactivate_new_game_etc (fun):
         return ret
     return inactivate_new_game_etc_
 
-class UI (gconf_wrapper.GConfWrapper):
+class UI:
     ui = '''<ui>
     <menubar name="MenuBar">
       <menu name="Game" action="Game">
@@ -110,18 +110,6 @@ class UI (gconf_wrapper.GConfWrapper):
     </toolbar>
     </ui>'''
 
-    initial_prefs = {'group_size':9,
-                     'always_show_hints':False,
-                     'difficulty':0.0,
-                     'minimum_number_of_new_puzzles':MIN_NEW_PUZZLES,
-                     'highlight':False,
-                     'bg_color':'black',
-                     'show_tracker':False,
-                     'width': 700,
-                     'height': 675,
-                     'auto_save_interval':60 # auto-save interval in seconds...
-                     }
-
     @simple_debug
     def __init__ (self, run_selector = True):
         """run_selector means that we start our regular game.
@@ -130,9 +118,7 @@ class UI (gconf_wrapper.GConfWrapper):
         run_selector=False to this method to avoid running the dialog
         and allow a tester to set up a game programmatically.
         """
-        gconf_wrapper.GConfWrapper.__init__(self,
-                                            gconf_wrapper.GConfWrap('gnome-sudoku')
-                                            )
+        self.settings = Gio.Settings("org.gnome.gnome-sudoku")
         self.setup_gui()
         self.timer = timer.ActiveTimer(self.w)
         self.gsd.set_timer(self.timer)
@@ -168,11 +154,11 @@ class UI (gconf_wrapper.GConfWrapper):
             self.gsd.change_grid(choice[1], 9)
         if choice[0] == game_selector.NewOrSavedGameSelector.SAVED_GAME:
             saver.open_game(self, choice[1])
-        if self.gconf['show_toolbar']:
+        if self.settings.get_boolean('show-toolbar'):
             self.tb.show()
-        if self.gconf['always_show_hints']:
+        if self.settings.get_boolean('always-show-hints'):
             self.gsd.update_all_hints()
-        if self.gconf['highlight']:
+        if self.settings.get_boolean('highlight'):
             self.gsd.toggle_highlight(True)
 
 
@@ -181,7 +167,6 @@ class UI (gconf_wrapper.GConfWrapper):
         self.w.show()
 
     def setup_gui (self):
-        self.initialize_prefs()
         self.setup_main_window()
         self.gsd = gsudoku.SudokuGameDisplay()
         self.gsd.set_parent_for(self.w)
@@ -198,7 +183,7 @@ class UI (gconf_wrapper.GConfWrapper):
     def setup_main_window (self):
         Gtk.Window.set_default_icon_name('gnome-sudoku')
         self.w = Gtk.Window()
-        self.w.set_default_size(self.gconf['width'], self.gconf['height'])
+        self.w.set_default_size(self.settings.get_int('width'), self.settings.get_int('height'))
         self.w.set_title(APPNAME_SHORT)
         self.w.connect('configure-event', self.resize_cb)
         self.w.connect('delete-event', self.quit_cb)
@@ -286,12 +271,12 @@ class UI (gconf_wrapper.GConfWrapper):
 
     def setup_color (self):
         # setup background colors
-        bgcol = self.gconf['bg_color']
+        bgcol = self.settings.get_string('bg-color')
         if bgcol != '':
             self.gsd.set_bg_color(bgcol)
 
     def setup_autosave (self):
-        GObject.timeout_add_seconds(self.gconf['auto_save_interval'] or 60, # in seconds...
+        GObject.timeout_add_seconds(self.settings.get_int('auto-save-interval') or 60, # in seconds...
                             self.autosave)
 
     def setup_main_boxes (self):
@@ -316,34 +301,38 @@ class UI (gconf_wrapper.GConfWrapper):
         self.main_area.pack_start(self.game_box, False, False, 12)
         self.w.add(self.vb)
 
+    def wrap_toggle (self, key_name, action):
+        action.set_active(self.settings.get_boolean(key_name))
+        action.connect('toggled', self.set_key, key_name)
+
+    def set_key (self, action, key_name):
+        self.settings.set_boolean(key_name, action.get_active())
+
     def setup_toggles (self):
-        # sync up toggles with gconf values...
-        map(lambda tpl: self.gconf_wrap_toggle(*tpl),
-            [('always_show_hints',
+        # sync up toggles with gsettings values...
+        map(lambda tpl: self.wrap_toggle(*tpl),
+            [('always-show-hints',
               self.main_actions.get_action('AlwaysShowPossible')),
-             ('show_impossible_implications',
+             ('show-impossible-implications',
               self.main_actions.get_action('ShowImpossibleImplications')),
-             ('show_toolbar',
+             ('show-toolbar',
               self.main_actions.get_action('ToggleToolbar')),
              ('highlight',
               self.main_actions.get_action('ToggleHighlight')),
-             ('show_tracker',
+             ('show-tracker',
               self.main_actions.get_action('Tracker')),
              ])
 
     @simple_debug
     def start_worker_thread (self, *args):
         n_new_puzzles = self.sudoku_maker.n_puzzles(new = True)
-        try:
-            if n_new_puzzles < self.gconf['minimum_number_of_new_puzzles']:
-                self.worker = threading.Thread(target = lambda *args: self.sudoku_maker.work(limit = 5))
-                self.worker_connections = [
-                    self.timer.connect('timing-started', self.sudoku_maker.resume),
-                    self.timer.connect('timing-stopped', self.sudoku_maker.pause)
-                    ]
-                self.worker.start()
-        except gconf_wrapper.GConfError:
-            pass # assume we have enough new puzzles
+        if n_new_puzzles < self.settings.get_int('minimum-number-of-new-puzzles'):
+            self.worker = threading.Thread(target = lambda *args: self.sudoku_maker.work(limit = 5))
+            self.worker_connections = [
+                self.timer.connect('timing-started', self.sudoku_maker.resume),
+                self.timer.connect('timing-stopped', self.sudoku_maker.pause)
+                ]
+            self.worker.start()
         return True
 
     @simple_debug
@@ -369,7 +358,7 @@ class UI (gconf_wrapper.GConfWrapper):
             return
         self.won = True
         # increase difficulty for next time.
-        self.gconf['difficulty'] = self.gconf['difficulty'] + 0.1
+        self.settings.set_double('difficulty', self.settings.get_double('difficulty') + 0.1)
         self.timer.finish_timing()
         self.sudoku_tracker.finish_game(self)
         if self.timer.active_time < 60:
@@ -402,14 +391,6 @@ class UI (gconf_wrapper.GConfWrapper):
         dialog_extras.show_message_dialog(_("You win!"), label = _("You win!"),
                                    sublabel = sublabel
                                    )
-
-    @simple_debug
-    def initialize_prefs (self):
-        for k, v in self.initial_prefs.items():
-            try:
-                self.gconf[k]
-            except:
-                self.gconf[k] = v
 
     @simple_debug
     @inactivate_new_game_etc
@@ -453,8 +434,8 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def resize_cb (self, widget, event, user_data=None):
-        self.gconf['width'] = event.width
-        self.gconf['height'] = event.height
+        self.settings.set_int('width', event.width)
+        self.settings.set_int('height', event.height)
 
     @simple_debug
     def quit_cb (self, *args):
@@ -550,11 +531,11 @@ class UI (gconf_wrapper.GConfWrapper):
         '''
         self.cleared_notes.append((self.tinfo.current_tracker, self.gsd.clear_notes(side)))
         # Turn off auto-hint if the player clears the bottom notes
-        if side == 'Bottom' and self.gconf['always_show_hints']:
+        if side == 'Bottom' and self.settings.get_boolean('always_show_hints'):
             always_show_hint_wdgt = self.main_actions.get_action('AlwaysShowPossible')
             always_show_hint_wdgt.activate()
         # Update the hints...in case we're redoing a clear of them
-        if self.gconf['always_show_hints']:
+        if self.settings.get_boolean ('always_show_hints'):
             self.gsd.update_all_hints()
 
     def undo_clear_notes(self):
@@ -568,7 +549,7 @@ class UI (gconf_wrapper.GConfWrapper):
             self.tracker_ui.select_tracker(cleared_tracker)
         self.gsd.apply_notelist(cleared_notes)
         # Update the hints...in case we're undoing over top of them
-        if self.gconf['always_show_hints']:
+        if self.settings.get_boolean('always-show-hints'):
             self.gsd.update_all_hints()
         # Redraw the notes
         self.gsd.update_all_notes()
@@ -703,7 +684,7 @@ class UI (gconf_wrapper.GConfWrapper):
 
     @simple_debug
     def print_multiple_games (self, *args):
-        gp = printing.GamePrinter(self.sudoku_maker, self.gconf)
+        gp = printing.GamePrinter(self.sudoku_maker)
         gp.run_dialog()
 
 class TrackerBox (Gtk.VBox):
@@ -867,7 +848,7 @@ class TrackerBox (Gtk.VBox):
         if selected_tracker_id != tracker_info.NO_TRACKER:
             self.main_ui.gsd.show_track()
         self.main_ui.gsd.update_all_notes()
-        if self.main_ui.gconf['always_show_hints']:
+        if self.main_ui.settings.get_boolean('always-show-hints'):
             self.main_ui.gsd.update_all_hints()
 
     @simple_debug
