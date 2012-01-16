@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku.HEAD\n"
-"POT-Creation-Date: 2012-01-08 20:02+0000\n"
-"PO-Revision-Date: 2012-01-10 17:44+0100\n"
+"POT-Creation-Date: 2012-01-10 16:45+0000\n"
+"PO-Revision-Date: 2012-01-16 18:06+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -138,7 +138,6 @@ msgid "Track trial-and-error solutions"
 msgstr ""
 
 #: C/trackers.page:23(p)
-#, fuzzy
 #| msgid ""
 #| "You can use trackers to keep track of multiple moves at a time. Tracked "
 #| "moves will be entered in a different color to make them visually "
@@ -150,17 +149,15 @@ msgid ""
 "distinct from moves made earlier in the game. This feature is particularly "
 "useful when solving difficult games."
 msgstr ""
-"Puede usar los seguimientos para mantener el seguimiento de múltiples "
-"movimientos a la vez. Los movimientos bajo seguimiento se introducen en un "
-"color distinto para distinguirlos visualmente. También puede borrar los "
-"movimientos bajo seguimiento de una vez. Esto es particularmente útil para "
-"resolver puzles difíciles por el método de prueba y error."
+"Los seguimientos se pueden usar para mantener las soluciones de prueba y "
+"error. Los movimientos bajo seguimiento se introducen en un color distinto "
+"para distinguirlos visualmente de los realizados en un puzle anterior. Esto "
+"es particularmente útil para resolver puzles difíciles."
 
 #: C/trackers.page:26(p)
-#, fuzzy
 #| msgid "Using the keyboard"
 msgid "Using the tracker:"
-msgstr "Usando el teclado"
+msgstr "Usar el seguimiento:"
 
 #: C/trackers.page:29(p)
 msgid "You can toggle the tracker interface in one of the following ways:"
@@ -186,7 +183,6 @@ msgid "You can make untracked moves if no tracker is selected."
 msgstr ""
 
 #: C/trackers.page:39(p) C/trackers.page:72(p)
-#, fuzzy
 #| msgid ""
 #| "This will bring up a list of trackers on to the right of the current "
 #| "game. Create a new tracker by clicking <guibutton>Add Tracker</"
@@ -196,10 +192,9 @@ msgid ""
 "To create a new tracker click <gui>Add</gui>. From this point on, any number "
 "you enter will be part of the selected tracker."
 msgstr ""
-"Esta acción mostrará una lista de los seguimientos en la parte derecha del "
-"juego actual. Cree un nuevo seguimiento pulsando <guibutton>Añadir "
-"seguimiento</guibutton>. Desde este punto en adelante cualquier número que "
-"introduzca formará parte del seguimiento seleccionado."
+"Para crear un seguimiento nuevo pulse <gui>Añadir</gui>. Desde este punto en "
+"adelante, cualquier número que introduzca será parte del seguimiento "
+"seleccionado."
 
 #: C/trackers.page:42(p) C/trackers.page:77(p)
 msgid "You can create as many trackers as you want by clicking <gui>Add</gui>."
@@ -260,6 +255,11 @@ msgid ""
 "left to right, are New Game, Undo, Redo, <link xref=\"hints\">Hint</link>, "
 "and <link xref=\"trackers\">Track Additions</link>."
 msgstr ""
+"La barra de herramientas, situada debajo de la barra de menú, le permite "
+"realizar acciones comunes con el ratón. Para usar un elemento de la barra de "
+"herramientas, simplemente pulse sobre él. Los botones, de izquierda a "
+"derecha, son «Juego nuevo», «Deshace» «Rehacer», <link xref=\"hints"
+"\">Sugerencia</link>, y <link xref=\"trackers\">Seguir adiciones</link>."
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -308,6 +308,9 @@ msgid ""
 "You should choose the row or column with the most numbers. For simplicity, "
 "these instructions are written as if a row had the most numbers in it."
 msgstr ""
+"Debe elegir la fila o la columna con más números. Para simplificar, estas "
+"instrucciones se han escrito como si una fila tuviera la mayoría de los "
+"números."
 
 #: C/strategy.page:32(p)
 msgid "Determine which numbers in the row are missing."
@@ -514,7 +517,6 @@ msgid "Resuming your game"
 msgstr "Reanudar el juego"
 
 #: C/save-resume.page:33(p)
-#, fuzzy
 #| msgid ""
 #| "Whenever you start <application>Sudoku</application> or click "
 #| "<guibutton>New</guibutton>, your saved games will be listed in the puzzle "
@@ -528,13 +530,12 @@ msgid ""
 "long you have played it. To open the puzzle, just double click on it."
 msgstr ""
 "Siempre que inicie <application>Sudoku</application> o pulse "
-"<guibutton>Nuevo</guibutton> se listarán sus partidas guardadas en la "
-"pantalla de selección de puzles. Verá una imagen en miniatura del puzle "
-"guardado, la fecha en la que lo jugó por última vez y cuánto tiempo lo ha "
-"jugado. Para abrir el puzle simplemente pulse dos veces sobre él."
+"<guibutton>Nuevo</guibutton> se listarán sus partidas guardadas en la "
+"pantalla de selección de puzles. Verá una imagen en miniatura del puzle "
+"guardado, la fecha en la que lo jugó por última vez y cuánto tiempo lo ha "
+"jugado. Para abrir el puzle simplemente pulse dos veces sobre él."
 
 #: C/save-resume.page:35(p)
-#, fuzzy
 #| msgid ""
 #| "If you'd like to stop playing one game and begin another, just select "
 #| "<guibutton>New</guibutton> and begin your new game."
@@ -543,7 +544,7 @@ msgid ""
 "<gui>New</gui> and begin your new game."
 msgstr ""
 "Si quiere dejar de jugar una partida y comenzar otra, simplemente seleccione "
-"<guibutton>Nuevo</guibutton> y comience su nuevo juego."
+"<gui>Nuevo</gui> y comience su partida nueva."
 
 #: C/save-resume.page:39(desc)
 msgid "Resuming previous games."
@@ -567,12 +568,17 @@ msgid ""
 "between 1 and 9, inclusive, such that no number is repeated in any row, "
 "column or 3x3 box."
 msgstr ""
+"Para completar el puzle, debe rellenar cada cuadrado con un número entre 1 y "
+"9, ambos inclusive, de manera que no se repita ningún número en ninguna "
+"fila, columna o cuadrado de 3x3."
 
 #: C/rules.page:22(p)
 msgid ""
 "In a solved sudoku, each row, column, and 3x3 box contains all the numbers 1 "
 "through 9."
 msgstr ""
+"En un sudoku resuelto, cada fila, columna y cuadrado de 3x3 contienen todos "
+"los números, del 1 al 9."
 
 #: C/rules.page:25(p)
 msgid "Each puzzle has only one solution."
@@ -630,7 +636,6 @@ msgstr ""
 "Pulse <guiseq><gui>Juego</gui><gui>Imprimir múltiples sudokus</gui></guiseq>."
 
 #: C/print-blank-puzzles.page:30(p)
-#, fuzzy
 #| msgid "Select total number of sudokus to print from the drop down menu."
 msgid "Select the total number of sudokus to print from the drop down menu."
 msgstr ""
@@ -701,7 +706,6 @@ msgid "Press <key>Enter</key> or click outside of the text box."
 msgstr "Pulse <key>Intro</key> o pulse fuera de la caja de texto."
 
 #: C/notes.page:37(p)
-#, fuzzy
 #| msgid ""
 #| "You can also take notes in the bottom of the square by clicking in the "
 #| "bottom of the square or by typing <keycap>M</keycap>. However, this area "
@@ -713,13 +717,13 @@ msgid ""
 "click <link xref=\"hints\">Show All Possible Numbers</link>. If you plan to "
 "use this area, you should not use <gui>Show All Possible Numbers</gui>."
 msgstr ""
-"También puede tomar notas en la casilla inferior pulsando en la parte "
-"inferior del cuadrado o pulsando la tecla <keycap>M</keycap>. No obstante "
-"este área se usa cuando pide <firstterm>sugerencias</firstterm>, así que no "
-"debería usarla para tomar sus notas si también planea usar las sugerencias."
+"También puede tomar notas en la parte inferior del cuadrado pulsando en su "
+"parte inferior o pulsando la tecla <key>M</key>. Sin embargo, este área se "
+"usa cuando pulsa <link xref=\"hints\">mostrar todos los números posibles</"
+"link>. Si planea usar este área, no debería usar <link xref=\"hints"
+"\">mostrar todos los números posibles</link>."
 
 #: C/notes.page:39(p)
-#, fuzzy
 #| msgid ""
 #| "You can add a number to the notes at the top of the square by typing "
 #| "<keycap>Ctrl-1</keycap> through <keycap>Ctrl-9</keycap> and remove a "
@@ -731,15 +735,13 @@ msgid ""
 "key><key>9</key></keyseq>"
 msgstr ""
 "Puede añadir un número a las notas en la parte superior del cuadrado "
-"pulsando desde <keycap>Ctrl+1</keycap> hasta <keycap>Ctrl+9</keycap> y "
-"quitar un número de las notas pulsando desde <keycap>Alt+1</keycap> hasta "
-"<keycap>Alt+9</keycap>."
+"pulsando desde <keyseq><key>Ctrl</key><key>1</key></keyseq> hasta "
+"<keyseq><key>Ctrl</key><key>9</key></keyseq>"
 
 #: C/license.page:8(desc)
-#, fuzzy
 #| msgid "Profile information"
 msgid "Legal information."
-msgstr "Información del perfil"
+msgstr "Información legal."
 
 #: C/license.page:11(title)
 msgid "License"
@@ -889,7 +891,7 @@ msgstr "T"
 
 #: C/keyboard-shortcuts.page:55(p)
 msgid "Clear notes from the top of a cell"
-msgstr ""
+msgstr "Limpiar las notas superiores de un cuadrado"
 
 #: C/keyboard-shortcuts.page:56(key)
 msgid "J"
@@ -905,7 +907,7 @@ msgstr "K"
 
 #: C/keyboard-shortcuts.page:63(p)
 msgid "Add a number to the top notes of a cell"
-msgstr ""
+msgstr "Añadir un número a las notas superiores de un cuadrado"
 
 #: C/keyboard-shortcuts.page:64(key) C/keyboard-shortcuts.page:68(key)
 msgid "#"
@@ -913,7 +915,7 @@ msgstr "#"
 
 #: C/keyboard-shortcuts.page:67(p)
 msgid "Remove a number to the top notes of a cell"
-msgstr ""
+msgstr "Quitar un número de las notas superiores de un cuadrado"
 
 #: C/keyboard-shortcuts.page:68(key)
 msgid "Alt"
@@ -1098,6 +1100,8 @@ msgid ""
 "These features can make easy puzzles too easy, so you should use this mode "
 "sparingly."
 msgstr ""
+"Esta características pueden hacer que los puzles sean demasiado fáciles, por "
+"lo que debe usarlas con moderación."
 
 #: C/highlighting.page:19(title)
 msgid "Highlighting"
@@ -1129,6 +1133,8 @@ msgid ""
 "The <app>GNOME Games</app> documentation is maintained by a volunteer "
 "community. You are welcome to participate."
 msgstr ""
+"La documentación de los <app>juegos de GNOME</app> las mantiene una "
+"comunidad de voluntarios. Si quiere participar es bienvenido."
 
 #: C/documentation.page:22(p)
 msgid ""
@@ -1155,6 +1161,8 @@ msgid ""
 "The <app>GNOME Games</app> are developed and maintained by a volunteer "
 "community. You are welcome to participate."
 msgstr ""
+"Los <app>juegos de GNOME</app> los desarrolla y los mantiene una comunidad "
+"de voluntarios. Si quiere participar es bienvenido."
 
 #: C/develop.page:23(p)
 msgid ""
@@ -1200,6 +1208,8 @@ msgid ""
 "This command may be useful when your are filing a bug and need to post debug "
 "information: <cmd>gnome-sudoku -v</cmd>"
 msgstr ""
+"Este comando puede ser útil cuando está rellenando un informe de error y "
+"necesita enviar información de depuración: <cmd>gnome-sudoku -v</cmd>"
 
 #: C/commandline.page:31(title)
 msgid "Profile information"
@@ -1223,16 +1233,20 @@ msgid ""
 "When you exit the application, the terminal will show you performance "
 "statistics."
 msgstr ""
+"Cuando salga de la aplicación, la terminal mostrará estadísticas de "
+"rendimiento."
 
 #: C/commandline.page:38(title)
 msgid "Step through <app>GNOME Sudoku</app>"
-msgstr ""
+msgstr "Ejecutar <app>GNOME Sudoku</app> paso a paso"
 
 #: C/commandline.page:39(p)
 msgid ""
 "This command is mostly used by programmers to step through the code: "
 "<cmd>gnome-sudoku -w</cmd>"
 msgstr ""
+"Este comando es útil principalmente para desarrolladores, para examinar paso "
+"a paso el código: <cmd>gnome-sudoku -w</cmd>"
 
 #: C/bug-filing.page:11(email)
 msgid "tiffany@antopolski.com"
@@ -1327,6 +1341,8 @@ msgid ""
 "Sudoku can be played using the keyboard, the mouse, or any combination of "
 "the two."
 msgstr ""
+"Puede jugar a Sudoku usando el teclado, el ratón o cualquier combinación de "
+"los dos."
 
 #: C/basics.page:26(title)
 msgid "Using the keyboard"
@@ -1335,16 +1351,22 @@ msgstr "Usando el teclado"
 #: C/basics.page:28(p)
 msgid "To select a cell, use the arrow keys to move the blue outline onto it."
 msgstr ""
+"Para seleccionar un cuadrado, use las teclas de flechas para mover el borde "
+"azul hasta ella."
 
 #: C/basics.page:29(p)
 msgid "To put a number in a cell, select the cell, and then press the number."
 msgstr ""
+"Para poner un número en un cuadrado, seleccione el cuadrado y pulse en el "
+"número."
 
 #: C/basics.page:30(p)
 msgid ""
 "To remove a number from a cell, select the cell, and then press the "
 "<key>Delete</key> key, the <key>Backspace</key>, or the <key>0</key> key."
 msgstr ""
+"Para quitar un número de un cuadrado, selecciónelo y pulse la tecla "
+"<key>Supr</key>, la tecla <key>Retroceso</key> o la tecla <key>0</key>"
 
 #: C/basics.page:36(title)
 msgid "Using the mouse"
@@ -1359,12 +1381,16 @@ msgid ""
 "To put a number in a selected cell, click on the center of the cell, and "
 "then click on the number you wish to input."
 msgstr ""
+"Para poner un número en un cuadrado seleccionado, pulse en el centro del "
+"cuadrado y pulse en el número que quiere introducir."
 
 #: C/basics.page:40(p)
 msgid ""
 "To remove a number from a selected cell, click in the center of the cell and "
 "then click <gui>Clear</gui>."
 msgstr ""
+"Para quitar un número de una celda seleccionada, pulse en el centro de la "
+"celda y elija <gui>Limpiar</gui>."
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: C/index.page:0(None)
