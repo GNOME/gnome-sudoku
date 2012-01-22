@@ -1,10 +1,7 @@
-include $(top_srcdir)/gnome-doc-utils.make
-dist-hook: doc-dist-hook
+@YELP_HELP_RULES@
+HELP_ID = gnome-sudoku
 
-DOC_ID = gnome-sudoku
-DOC_INCLUDES = legal.xml
-
-DOC_FIGURES = \
+HELP_MEDIA = \
 	figures/logo32.png		\
 	figures/logo.png		\
 	figures/possible-numbers.png	\
@@ -14,7 +11,7 @@ DOC_FIGURES = \
 	figures/strategy2.png		\
 	figures/trackers.webm
 
-DOC_PAGES = \
+HELP_FILES = \
 	basics.page			\
 	bug-filing.page			\
 	commandline.page		\
@@ -25,6 +22,7 @@ DOC_PAGES = \
 	index.page			\
 	intro.page			\
 	keyboard-shortcuts.page		\
+	legal.xml			\
 	license.page			\
 	notes.page			\
 	print-blank-puzzles.page	\
@@ -37,6 +35,6 @@ DOC_PAGES = \
 	trackers.page			\
 	translate.page
 
-DOC_LINGUAS = ca cs de el en_GB es eu fr it oc pt_BR ru sl sr sr@latin sv da zh_CN
+HELP_LINGUAS = ca cs de en_GB el es eu fr it oc pt_BR ru sl sr sr@latin sv da zh_CN
 
 -include $(top_srcdir)/git.mk
