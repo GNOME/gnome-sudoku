@@ -12,7 +12,7 @@
 	  <credit type="editor">
 	    <name>Tiffany Antopolski</name>
 	    <email>tiffany.antopolski@gmail.com</email>
-	  </credit>	
+	  </credit>
 	  <license>
 		<p>Creative Commons Share Alike 3.0</p>
 	  </license>
@@ -21,8 +21,8 @@
 	<title>Strategy</title>
         <p>There is only one possibility for each cell in a Sudoku puzzle. The following strategies will help
           you systematically discover the solution for every cell.</p>
- 
-	<p>Strategy 1:</p>
+ <section>
+	<title>Strategy 1:</title>
 	  <steps>
 	    <item><p>Choose the row with the most numbers in it.</p>
                   <note><p>You should choose the row or column with the most numbers.  For simplicity, these
@@ -40,9 +40,10 @@
   <media type="image" mime="image/png" src="figures/strategy1.png" width="400" ></media>
 </figure>
 
+</section>
+<section>
 
-
-	<p>Strategy 2:</p>
+	<title>Strategy 2:</title>
 	  <steps>
 	    <item><p>Find the number which appears most often.</p></item>
 	    <item><p>Now look at the left vertical alignment of the 3x3 boxes and locate the column(s) in which this number appears.</p></item>
@@ -56,5 +57,6 @@
   <media type="image" mime="image/png" src="figures/strategy2.png" width="400" ></media>
 </figure>
 
-	   <note><p>If neither of the above strategies solves the puzzle on its own, you can alternate strategies. You can also combine the strategies.</p></note>	
+	   <note><p>If neither of the above strategies solves the puzzle on its own, you can alternate strategies. You can also combine the strategies.</p></note>
+</section>
 </page>

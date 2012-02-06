@@ -20,7 +20,6 @@ HELP_FILES = \
 	highlighting.page		\
 	hints.page			\
 	index.page			\
-	intro.page			\
 	keyboard-shortcuts.page		\
 	legal.xml			\
 	license.page			\
