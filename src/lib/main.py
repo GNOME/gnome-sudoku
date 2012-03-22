@@ -673,7 +673,7 @@ class UI:
     @simple_debug
     def show_help (self, *args):
         try:
-            Gtk.show_uri(self.w.get_screen(), "ghelp:gnome-sudoku", Gtk.get_current_event_time())
+            Gtk.show_uri(self.w.get_screen(), "help:gnome-sudoku", Gtk.get_current_event_time())
         except GObject.GError, error:
             # FIXME: This should create a pop-up dialog
             print _('Unable to display help: %s') % str(error)
