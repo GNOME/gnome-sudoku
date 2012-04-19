@@ -5,6 +5,7 @@ HELP_MEDIA = \
 	figures/logo32.png		\
 	figures/logo.png		\
 	figures/possible-numbers.png	\
+	figures/resuming.png		\
 	figures/rowcolumnbox.png	\
 	figures/stats-very-hard.png	\
 	figures/strategy1.png		\
