@@ -123,10 +123,27 @@ class SudokuTracker:
     """
 
     def __init__ (self):
-        self.save_path = os.path.expanduser('~/.sudoku/saved')
-        self.finished_path = os.path.expanduser('~/.sudoku/finished')
+        self.save_path = os.path.join(defaults.DATA_DIR,"saved")
+        self.finished_path = os.path.join(defaults.DATA_DIR,"finished")
+        self.migrate_data()
         self.create_dir_safely(self.save_path)
         self.create_dir_safely(self.finished_path)
+
+    def migrate_data (self):
+        old_path = os.path.expanduser('~/.sudoku')
+        if os.path.exists(old_path) and (not os.path.exists(self.save_path) and not os.path.exists(self.finished_path)):
+            try:
+                os.rename(os.path.join(old_path,"saved"),self.save_path)
+            except:
+                pass
+            try:
+                os.rename(os.path.join(old_path,"finished"),self.finished_path)
+            except:
+                pass
+            try:
+                os.rmdir(old_path)
+            except:
+                pass
 
     def create_dir_safely (self, path):
         if not os.path.exists(path):
