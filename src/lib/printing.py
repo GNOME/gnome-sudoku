@@ -3,7 +3,7 @@ from gi.repository import Gtk,Gio
 import cairo
 import time
 import os.path
-import sudoku, gsudoku, saver, defaults
+from . import sudoku, gsudoku, saver, defaults
 from gettext import gettext as _
 
 def fit_squares_in_rectangle (width, height, n, margin = 0):
@@ -58,7 +58,7 @@ class SudokuPrinter:
         operation.set_n_pages(pages)
 
     def draw_page(self, operation, context, page_nr):
-        import sudoku_thumber
+        from . import sudoku_thumber
 
         margin = 25
         cr = context.get_cairo_context()
@@ -174,7 +174,7 @@ class GamePrinter:
                        ).get_active():
                 levels.append(cat)
         if not levels:
-            levels = sudoku.DifficultyRating.categories.keys()
+            levels = list(sudoku.DifficultyRating.categories.keys())
         nsudokus = self.sudokusToPrintSpinButton.get_adjustment().get_value()
         sudokus = self.sudoku_maker.get_puzzles(
             nsudokus,
@@ -182,7 +182,7 @@ class GamePrinter:
             new = not self.includeOldGamesToggle.get_active()
             )
         # Convert floating point difficulty into a label string
-        sudokus.sort(cmp = lambda a, b: cmp(a[1], b[1]))
+        sudokus.sort(key=lambda a: a[1])
         labels = {'easy': _('Easy'),
                   'medium': _('Medium'),
                   'hard': _('Hard'),

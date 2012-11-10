@@ -3,7 +3,7 @@ from gi.repository import Gtk
 import difflib,re
 DEBUG=False
 def debug (*args,**kwargs):
-    if DEBUG: print args,kwargs
+    if DEBUG: print(args,kwargs)
 
 class TooManyChanges (Exception):
     def __init__ (self, value):
@@ -99,7 +99,7 @@ class UndoableTextChange (UndoableObject):
         blocks=self.sm.get_matching_blocks()
         # we only are interested in similar blocks at different positions
         # (which tell us where the changes happened).
-        ch_blocks = filter(lambda x: x[0] != x[1] and x[2] != 0, blocks)
+        ch_blocks = [x for x in blocks if x[0] != x[1] and x[2] != 0]
         if ch_blocks and len(ch_blocks)>1:
             raise TooManyChanges("More than one block changed: %s in %s"%(ch_blocks,text2))
         if ch_blocks:
@@ -418,7 +418,7 @@ class MultipleUndoLists:
 
     def get_history (self):
         hid=self.get_current_id()
-        if self.histories.has_key(hid):
+        if hid in self.histories:
             #debug('Returning history %s for id %s'%([repr(i) for i in self.histories[hid]],hid),0)
             return self.histories[hid]
         else:
@@ -465,7 +465,7 @@ if __name__ == '__main__':
     w.connect('delete-event',lambda *args:Gtk.main_quit())
     def show_changes (*args):
         for c in uhl:
-            print c,' initial: ',c.initial_text,' current: ',c.text
+            print(c,' initial: ',c.initial_text,' current: ',c.text)
     ub.connect('clicked',lambda *args: debug('Undo clicked!',0))
     sc.connect('clicked',show_changes)
     rb.connect('clicked',lambda *args: debug('Redo clicked!',0))    

@@ -9,6 +9,9 @@ class SafeStdout:
     def fileno(self):
         return self.stdout.fileno()
 
+    def flush(self):
+        return self.stdout.flush()
+
     def write(self, data):
         try:
             self.stdout.write(data)
@@ -18,5 +21,5 @@ class SafeStdout:
 sys.stdout = SafeStdout()
 
 def start_game ():
-    import main
+    from . import main
     main.start_game()

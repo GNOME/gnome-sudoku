@@ -70,17 +70,17 @@ class TrackerInfo(object):
         '''
         if not tracker_id:
             tracker_id = 0
-        while self._tracks.has_key(tracker_id):
+        while tracker_id in self._tracks:
             tracker_id += 1
         self._tracks[tracker_id] = {}
         return tracker_id
 
     def get_tracker(self, tracker_id):
-        if self._tracks.has_key(tracker_id):
+        if tracker_id in self._tracks:
             return self._tracks[tracker_id]
 
     def delete_tracker(self, tracker_id):
-        if self._tracks.has_key(tracker_id):
+        if tracker_id in self._tracks:
             del self._tracks[tracker_id]
 
     def reset (self):
@@ -115,9 +115,9 @@ class TrackerInfo(object):
         if tracker_id == NO_TRACKER:
             return None
         # Create a random color for new trackers that are beyond the defaults
-        if not self._colors.has_key(tracker_id):
+        if tracker_id not in self._colors:
             random_color = self._colors[0]
-            while random_color in self._colors.values():
+            while random_color in list(self._colors.values()):
                 # If we have generated all possible colors, this will
                 # enter an infinite loop
                 random_color = (random.randint(0, 100)/100.0,
@@ -157,7 +157,7 @@ class TrackerInfo(object):
         if to_tracker == NO_TRACKER:
             return
         # Make sure the dictionary is available for the tracker.
-        if not self._tracks.has_key(to_tracker):
+        if to_tracker not in self._tracks:
             self._tracks[to_tracker] = {}
         # Add it
         self._tracks[to_tracker][(x, y)] = value
@@ -170,12 +170,12 @@ class TrackerInfo(object):
         to remove tracked values from a particular tracker only.
         '''
         if from_tracker == None:
-            from_tracks = self._tracks.keys()
+            from_tracks = list(self._tracks.keys())
         else:
             from_tracks = [from_tracker]
         # Delete them
         for tracker in from_tracks:
-            if self._tracks.has_key(tracker) and self._tracks[tracker].has_key((x, y)):
+            if tracker in self._tracks and (x, y) in self._tracks[tracker]:
                 del self._tracks[tracker][(x, y)]
 
     def get_trackers_for_cell(self, x, y):
@@ -186,8 +186,8 @@ class TrackerInfo(object):
         reset_trackers_for_cell().
         '''
         ret = []
-        for tracker, track in self._tracks.items():
-            if track.has_key((x, y)):
+        for tracker, track in list(self._tracks.items()):
+            if (x, y) in track:
                 ret.append((tracker, track[(x, y)]))
         return ret
 
@@ -198,8 +198,8 @@ class TrackerInfo(object):
         tracked values the list created by get_trackers_for_cell().
         '''
         # Remove all the current traces
-        for tracker, track in self._tracks.items():
-            if track.has_key((x, y)):
+        for tracker, track in list(self._tracks.items()):
+            if (x, y) in track:
                 del self._tracks[tracker][(x, y)]
         # Add the old ones back
         for tracker, value in old_trackers:

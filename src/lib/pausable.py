@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import time
+import collections
 
 class MethodWrapper:
 
     def __call__ (self, cls):
         for attr in dir(cls):
             attrobj = getattr(cls, attr)
-            if callable(attrobj) and attr.find('__')!=0:
+            if isinstance(attrobj, collections.Callable) and attr.find('__')!=0:
                 setattr(cls, attr, self.wrap(attrobj))
 
     def wrap (self, f):
@@ -16,7 +17,7 @@ class MethodWrapper:
         return _
 
     def wrapper (self, *args, **kwargs):
-        print args, kwargs
+        print(args, kwargs)
 
 class PausableWrapper (MethodWrapper):
 

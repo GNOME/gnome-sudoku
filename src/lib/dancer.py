@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk,GObject
-import colors
+from . import colors
 
 class GridDancer:
 
@@ -33,7 +33,7 @@ class GridDancer:
         self.adjustment = 0
 
     def start_dancing (self):
-        for box in self.grid.__entries__.values():
+        for box in list(self.grid.__entries__.values()):
             box.props.can_focus = False
             if box.read_only:
                 box.read_only = False
@@ -46,7 +46,7 @@ class GridDancer:
 
     def stop_dancing (self):
         self.dancing = False
-        for box in self.grid.__entries__.values():
+        for box in list(self.grid.__entries__.values()):
             box.props.can_focus = True
             if box.need_restore:
                 box.read_only = True
@@ -105,7 +105,7 @@ class GridDancer:
 
 if __name__ == '__main__':
     def test_dance_grid ():
-        import gsudoku
+        from . import gsudoku
         window = Gtk.Window()
         game = '''9 1 6 3 2 8 4 5 7
                   5 7 4 6 1 9 2 8 3

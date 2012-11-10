@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk,GdkPixbuf,GObject
 import os.path
-import sudoku, saver, sudoku_maker
-import sudoku_thumber
+from . import sudoku, saver, sudoku_maker
+from . import sudoku_thumber
 from gettext import gettext as _
 from gettext import ngettext
 import time
-import defaults
-from simple_debug import simple_debug
-from colors import color_hex_to_float
+from . import defaults
+from .simple_debug import simple_debug
+from .colors import color_hex_to_float
 
 def color_from_difficulty (diff):
     DR = sudoku.DifficultyRating
@@ -128,7 +128,7 @@ class NewOrSavedGameSelector:
             if puzzles:
                 puzzle, diff_val = puzzles[0]
             else:
-                print 'WARNING: Repeating puzzle for difficulty %s -- generate more puzzles to avoid this.' % cat
+                print('WARNING: Repeating puzzle for difficulty %s -- generate more puzzles to avoid this.' % cat)
                 puzzles = self.sudoku_maker.get_puzzles(1, [cat], new = False)
                 if puzzles:
                     puzzle, diff_val = puzzles[0]
@@ -138,7 +138,7 @@ class NewOrSavedGameSelector:
                     for n in lpuz:
                         puzzle += n
                 else:
-                    print 'WARNING: No puzzle for difficulty', cat
+                    print('WARNING: No puzzle for difficulty', cat)
                     continue
             grid = sudoku.sudoku_grid_from_string(puzzle).grid
             self.new_game_model.append(('<b><i>' + label + '</i></b>',

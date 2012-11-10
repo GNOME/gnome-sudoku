@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 import os, shutil
 import errno
-import sudoku
+from . import sudoku
 import random
 import time
-import pausable
+from . import pausable
 import threading
-import defaults
+from . import defaults
 
 class SudokuGenerator:
 
@@ -149,13 +149,13 @@ class SudokuGenerator:
             self.rated_puzzles.append((sudoku_grid, d))
             return d
         except:
-            print 'Impossible!'
-            print 'Puzzle was:'
-            print solver.virgin
-            print 'Solution: ',
-            print self.start_grid
-            print 'Puzzle foobared in following state:',
-            print solver
+            print('Impossible!')
+            print('Puzzle was:')
+            print(solver.virgin)
+            print('Solution: ', end=' ')
+            print(self.start_grid)
+            print('Puzzle foobared in following state:', end=' ')
+            print(solver)
             raise
 
     def is_unique (self, sudoku_grid):
@@ -243,7 +243,7 @@ class SudokuGenerator:
         ret = []
         for i in range(n):
             #print 'Working on puzzle ',i
-            ret.append(ug.next())
+            ret.append(next(ug))
             #print 'Got one!'
         return ret
 
@@ -319,7 +319,7 @@ class SudokuMaker:
     def load (self):
         try:
             os.makedirs(self.pickle_to)
-        except os.error, e:
+        except os.error as e:
             if e.errno != errno.EEXIST:
                 return
         for cat in sudoku.DifficultyRating.categories:
@@ -329,16 +329,17 @@ class SudokuMaker:
                 try:
                     shutil.copy(source, target)
                 except:
-                    print 'Problem copying base puzzles'
-                    print 'Attempted to copy from %s to %s' % (source, target)
+                    print('Problem copying base puzzles')
+                    print('Attempted to copy from %s to %s' % (source, target))
 
     def get_pregenerated (self, difficulty):
         fname = os.path.join(self.pickle_to, difficulty.replace(' ', '_'))
         try:
-            lines = file(fname).readlines()
-        except IOError, e:
+            with open(fname, 'r') as lines_file:
+                lines = lines_file.readlines()
+        except IOError as e:
             if e.errno != errno.ENOENT:
-                print 'Error reading pregenerated puzzles for difficulty \'%s\': %s' % (difficulty, e.strerror)
+                print('Error reading pregenerated puzzles for difficulty \'%s\': %s' % (difficulty, e.strerror))
             return []
         else:
             return [line.strip() for line in lines]
@@ -408,18 +409,18 @@ class SudokuMaker:
                 try:
                     p, d = line.split('\t')
                 except ValueError:
-                    print 'WARNING: invalid line %s in file %s' % (line, files[lev])
+                    print('WARNING: invalid line %s in file %s' % (line, files[lev]))
                     continue
                 if sudoku.is_valid_puzzle(p):
                     if (p not in exclude) and (not new or p not in self.played):
                         puzzles.append((p, float(d)))
                         i += 1
                 else:
-                    print 'WARNING: invalid puzzle %s in file %s' % (p, files[lev])
+                    print('WARNING: invalid puzzle %s in file %s' % (p, files[lev]))
             il += 1
         if i < n:
-            print 'WARNING: Not able to provide %s puzzles in levels %s' % (n, levels)
-            print 'WARNING: Generate more puzzles if you really need this many puzzles!'
+            print('WARNING: Not able to provide %s puzzles in levels %s' % (n, levels))
+            print('WARNING: Generate more puzzles if you really need this many puzzles!')
         return puzzles
 
     def get_puzzles (self, n, levels, new = True, randomize = True,
@@ -462,18 +463,18 @@ class SudokuMaker:
                 try:
                     p, d = line.split('\t')
                 except ValueError:
-                    print 'WARNING: invalid line %s in file %s' % (line, files[lev])
+                    print('WARNING: invalid line %s in file %s' % (line, files[lev]))
                     continue
                 if sudoku.is_valid_puzzle(p):
                     if (p not in exclude) and (not new or p not in self.played):
                         puzzles.append((p, float(d)))
                         i += 1
                 else:
-                    print 'WARNING: invalid puzzle %s in file %s' % (p, files[lev])
+                    print('WARNING: invalid puzzle %s in file %s' % (p, files[lev]))
             il += 1
         if i < n:
-            print 'WARNING: Not able to provide %s puzzles in levels %s' % (n, levels)
-            print 'WARNING: Generate more puzzles if you really need this many puzzles!'
+            print('WARNING: Not able to provide %s puzzles in levels %s' % (n, levels))
+            print('WARNING: Generate more puzzles if you really need this many puzzles!')
 
         return puzzles
 
@@ -493,7 +494,7 @@ class SudokuMaker:
         open_files = {}
         for n in range(self.batch_size):
             #print 'start next item...',n
-            puz, diff = ug.next()
+            puz, diff = next(ug)
             #print "GENERATED ",puz,diff
             if (diffs == None or diff.value_category() in diffs):
                 puzstring = puz.to_string()
@@ -508,12 +509,12 @@ class SudokuMaker:
                 existing = self.get_pregenerated(diff.value_category())
                 if not puzstring in existing:
                     try:
-                        outfi = file(outpath, 'a')
+                        outfi = open(outpath, 'a')
                         outfi.write(puzstring+'\t'+str(diff.value)+'\n')
                         outfi.close()
                         self.n_available_sudokus[diff.value_category()]+=1
-                    except IOError, e:
-                        print 'Error appending pregenerated puzzle: %s' % e.strerror
+                    except IOError as e:
+                        print('Error appending pregenerated puzzle: %s' % e.strerror)
 
     def pause (self, *args):
         if hasattr(self, 'new_generator'):
@@ -580,16 +581,16 @@ elif False:
     terminate: kill thread
     quit: to quit
     """
-    print usage
+    print(usage)
     while 1:
-        inp = raw_input('choose:')
+        inp = input('choose:')
         if inp == 'run':
             t = threading.Thread(target = sm.make_batch)
             t.start()
         elif inp == 'show':
-            print sm.puzzles
+            print(sm.puzzles)
         elif inp == 'len':
-            print len(sm.puzzles)
+            print(len(sm.puzzles))
         elif inp == 'pause':
             sm.new_generator.pause()
         elif inp == 'resume':
@@ -603,5 +604,5 @@ elif False:
             try:
                 getattr(sm, inp)()
             except:
-                print usage
+                print(usage)
         

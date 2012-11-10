@@ -4,10 +4,10 @@
 from gi.repository import Gtk,Gdk,GObject,Pango,PangoCairo
 import math
 import random
-import tracker_info
+from . import tracker_info
 from gettext import gettext as _
 
-from simple_debug import simple_debug
+from .simple_debug import simple_debug
 
 ERROR_HIGHLIGHT_COLOR = (1.0, 0, 0)
 
@@ -800,7 +800,7 @@ if __name__ == '__main__':
     def test_number_selector ():
         nselector = NumberSelector(default = 3)
         def tell_me (b):
-            print 'value->', b.get_value()
+            print('value->', b.get_value())
         nselector.connect('changed', tell_me)
         window.add(nselector)
 

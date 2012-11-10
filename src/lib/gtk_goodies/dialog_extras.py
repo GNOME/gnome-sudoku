@@ -82,10 +82,10 @@ class ModalDialog (Gtk.Dialog):
         self.connect('response',self.response_cb)
 
     def response_cb (self, dialog, response, *params):
-        if self.responses.has_key(response):
+        if response in self.responses:
             self.responses[response]()
         else:
-            print 'WARNING, no response for ',response
+            print('WARNING, no response for ',response)
             
     def setup_expander (self, expander):
         label,body = expander
@@ -105,7 +105,7 @@ class ModalDialog (Gtk.Dialog):
             l.set_line_wrap(True)
             expander_vbox.pack_start(l, expand=False, fill=False)
         elif type(item) == [] or type(item) == ():
-            map(self._add_expander_item, expander_vbox, item)
+            list(map(self._add_expander_item, expander_vbox, item))
         else:
             expander_vbox.pack_start(item, True, True, 0)
             
@@ -140,7 +140,7 @@ class MessageDialog (Gtk.MessageDialog, ModalDialog):
 
     def setup_dialog (self, *args, **kwargs):
         kwargs['type']=self.message_type
-        if kwargs.has_key('title'):
+        if 'title' in kwargs:
             del kwargs['title']
         GObject.GObject.__init__(self, *args, **kwargs)
         if self.icon:
@@ -148,7 +148,7 @@ class MessageDialog (Gtk.MessageDialog, ModalDialog):
                 self.image.set_from_file(self.icon)
             else:
                 self.image.set_from_pixbuf(self.icon)
-        print "123"
+        print("123")
 
     def setup_label (self, label):
         label = '<span weight="bold" size="larger">%s</span>'%xml.sax.saxutils.escape(label)

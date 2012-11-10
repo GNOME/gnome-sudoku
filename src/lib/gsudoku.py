@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk,Gdk,GObject
-import colors
+from . import colors
 import math
 import random
 import logging
-from simple_debug import simple_debug
-import sudoku
-import number_box
-import tracker_info
+from .simple_debug import simple_debug
+from . import sudoku
+from . import number_box
+from . import tracker_info
 
 def gtkcolor_to_rgb (color):
     return (color.red   / float(2**16),
@@ -43,11 +43,11 @@ class SudokuNumberGrid (Gtk.AspectFrame):
         self.show_all()
 
     def set_parent_for(self, parent):
-        for entry in self.__entries__.values():
+        for entry in list(self.__entries__.values()):
             entry.set_parent_win(parent)
 
     def set_timer(self, timer):
-        for entry in self.__entries__.values():
+        for entry in list(self.__entries__.values()):
             entry.set_timer(timer)
 
     def get_focused_entry (self):
@@ -69,7 +69,7 @@ class SudokuNumberGrid (Gtk.AspectFrame):
         self.table.override_color(Gtk.StateFlags.NORMAL, color)
         self.table.override_background_color(Gtk.StateFlags.NORMAL, color)
 
-        for e in self.__entries__.values():
+        for e in list(self.__entries__.values()):
             e.override_background_color(Gtk.StateFlags.NORMAL, color)
 
 class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
@@ -96,7 +96,7 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
         GObject.GObject.__init__(self)
         SudokuNumberGrid.__init__(self, group_size = group_size)
         self.setup_grid(grid, group_size)
-        for e in self.__entries__.values():
+        for e in list(self.__entries__.values()):
             e.show()
             e.connect('undo-change', self.entry_callback, 'undo-change')
             e.connect('changed', self.entry_callback)
@@ -158,7 +158,7 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
             self.highlight_cells()
 
     def unhighlight_cells (self, *args):
-        for e in self.__entries__.values():
+        for e in list(self.__entries__.values()):
             e.set_background_color(None)
 
     def highlight_cells (self, *args):
@@ -221,8 +221,8 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
     def show_hint (self):
         min_options = 10;
         squares = []
-        for x in xrange(9):
-            for y in xrange(9):
+        for x in range(9):
+            for y in range(9):
                 if self.grid._get_(x, y) != 0:
                     continue
                 n_options = len(self.grid.possible_values(x, y))
@@ -476,7 +476,7 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
         are stored in InteractiveGrid.conflicts
         '''
         # Return if there are no conflicts for this cell
-        if not self.grid.conflicts.has_key((x, y)):
+        if (x, y) not in self.grid.conflicts:
             return
         # Highlight the current cell
         self.__entries__[(x, y)].set_error_highlight(True)
@@ -673,7 +673,7 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
         if check_conflicts:
             for xx, yy in self.grid.cleared_conflicts:
                 self.mark_impossible_implications(xx, yy, False)
-            if self.grid.conflicts.has_key((x, y)):
+            if (x, y) in self.grid.conflicts:
                 for xx, yy in self.grid.conflicts[(x, y)]:
                     self.mark_impossible_implications(xx, yy, False)
         # Update the hints if we need to
@@ -689,7 +689,7 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
         tracker = self.tinfo.get_tracker(self.tinfo.showing_tracker)
         if not tracker:
             return ret
-        for (x, y), value in tracker.items():
+        for (x, y), value in list(tracker.items()):
             ret.append((x, y, value, self.tinfo.showing_tracker))
             self.remove(x, y)
             if self.grid and self.grid._get_(x, y):
@@ -705,7 +705,7 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
         '''
         track = self.tinfo.get_tracker(self.tinfo.showing_tracker)
         if track:
-            for coord in track.keys():
+            for coord in list(track.keys()):
                 self.__entries__[coord].set_value(0, tracker_info.NO_TRACKER)
                 self.grid.remove(*coord)
                 self.remove_error_highlight()
@@ -725,7 +725,7 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
         track = self.tinfo.get_tracker(self.tinfo.showing_tracker)
         if not track:
             return
-        for (x, y), value in track.items():
+        for (x, y), value in list(track.items()):
             self.__entries__[(x, y)].set_value(value, self.tinfo.showing_tracker)
             self.__entries__[(x, y)].recolor(self.tinfo.showing_tracker)
             # Add it to the underlying grid
@@ -760,7 +760,7 @@ if __name__ == '__main__':
         t.__entries__[(3, 1)].set_note_text('234', '12')
 
     def reproduce_foobared_rendering ():
-        from dialog_swallower import SwappableArea
+        from .dialog_swallower import SwappableArea
         sgd = SudokuGameDisplay()
         sgd.set_bg_color('black')
         vb = Gtk.VBox()
@@ -780,7 +780,7 @@ if __name__ == '__main__':
         vb.pack_start(swallower, padding = 12)
         window.add(vb)
         window.show_all()
-        from gtk_goodies.dialog_extras import MessageDialog
+        from .gtk_goodies.dialog_extras import MessageDialog
         md = MessageDialog(title = "Foo", label = "Foo", sublabel = "Bar "*12)
         swallower.run_dialog(md)
         hb.pack_start(sgd, padding = 6)

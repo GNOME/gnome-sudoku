@@ -10,18 +10,18 @@ from gettext import gettext as _
 from gettext import ngettext
 
 import cairo
-import dialog_swallower
-import game_selector
-import gsudoku
-import printing
-import saver
-import sudoku_maker
-import timer
-import tracker_info
-from defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION, DOMAIN, 
+from . import dialog_swallower
+from . import game_selector
+from . import gsudoku
+from . import printing
+from . import saver
+from . import sudoku_maker
+from . import timer
+from . import tracker_info
+from .defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION, DOMAIN,
         IMAGE_DIR, MIN_NEW_PUZZLES, UI_DIR, VERSION, WEBSITE, WEBSITE_LABEL)
-from gtk_goodies import Undo, dialog_extras
-from simple_debug import simple_debug, options
+from .gtk_goodies import Undo, dialog_extras
+from .simple_debug import simple_debug, options
 
 def inactivate_new_game_etc (fun):
     def inactivate_new_game_etc_ (ui, *args, **kwargs):
@@ -45,7 +45,7 @@ def inactivate_new_game_etc (fun):
             if not action:
                 action = ui.uimanager.get_widget(p)
             if not action:
-                print 'No action at path', p
+                print('No action at path', p)
             else:
                 action.set_sensitive(False)
         ret = fun(ui, *args, **kwargs)
@@ -54,7 +54,7 @@ def inactivate_new_game_etc (fun):
             if not action:
                 action = ui.uimanager.get_widget(p)
             if not action:
-                print 'No action at path', p
+                print('No action at path', p)
             else:
                 action.set_sensitive(True)
         return ret
@@ -256,7 +256,7 @@ class UI:
         undo_widg = self.main_actions.get_action('Undo')
         redo_widg = self.main_actions.get_action('Redo')
         self.history = Undo.UndoHistoryList(undo_widg, redo_widg)
-        for entry in self.gsd.__entries__.values():
+        for entry in list(self.gsd.__entries__.values()):
             Undo.UndoableGenericWidget(entry, self.history,
                                        set_method = 'set_value_for_undo',
                                        get_method = 'get_value_for_undo',
@@ -310,7 +310,7 @@ class UI:
 
     def setup_toggles (self):
         # sync up toggles with gsettings values...
-        map(lambda tpl: self.wrap_toggle(*tpl),
+        list(map(lambda tpl: self.wrap_toggle(*tpl),
             [('always-show-hints',
               self.main_actions.get_action('AlwaysShowPossible')),
              ('show-impossible-implications',
@@ -321,7 +321,7 @@ class UI:
               self.main_actions.get_action('ToggleHighlight')),
              ('show-tracker',
               self.main_actions.get_action('Tracker')),
-             ])
+             ]))
 
     @simple_debug
     def start_worker_thread (self, *args):
@@ -348,7 +348,7 @@ class UI:
             delattr(self, 'dancer')
 
     def start_dancer (self):
-        import dancer
+        from . import dancer
         self.dancer = dancer.GridDancer(self.gsd)
         self.dancer.start_dancing()
 
@@ -674,9 +674,9 @@ class UI:
     def show_help (self, *args):
         try:
             Gtk.show_uri(self.w.get_screen(), "help:gnome-sudoku", Gtk.get_current_event_time())
-        except GObject.GError, error:
+        except GObject.GError as error:
             # FIXME: This should create a pop-up dialog
-            print _('Unable to display help: %s') % str(error)
+            print(_('Unable to display help: %s') % str(error))
 
     @simple_debug
     def print_game (self, *args):
@@ -781,7 +781,7 @@ class TrackerBox (Gtk.VBox):
 
     @simple_debug
     def add_tracker (self, *args, **keys):
-        if keys and keys.has_key('tracker_id'):
+        if keys and 'tracker_id' in keys:
             tracker_id = self.tinfo.create_tracker(keys['tracker_id'])
         else:
             tracker_id = self.tinfo.create_tracker()
@@ -964,7 +964,7 @@ class TrackerBox (Gtk.VBox):
 
 def start_game ():
     if options.debug:
-        print 'Starting GNOME Sudoku in debug mode'
+        print('Starting GNOME Sudoku in debug mode')
 
     ##  You must call g_thread_init() before executing any other GLib
     ##  functions in a threaded GLib program.
@@ -984,7 +984,7 @@ def start_game ():
             u.quit_cb()
 
 def profile_me ():
-    print 'Profiling GNOME Sudoku'
+    print('Profiling GNOME Sudoku')
     import tempfile, hotshot, hotshot.stats
     pname = os.path.join(tempfile.gettempdir(), 'GNOME_SUDOKU_HOTSHOT_PROFILE')
     prof = hotshot.Profile(pname)
@@ -992,4 +992,3 @@ def profile_me ():
     stats = hotshot.stats.load(pname)
     stats.strip_dirs()
     stats.sort_stats('time', 'calls').print_stats()
-

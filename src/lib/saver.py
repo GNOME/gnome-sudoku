@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk
 import pickle, types, os, errno
-import defaults
-from gtk_goodies.dialog_extras import show_message_dialog
+from . import defaults
+from .gtk_goodies.dialog_extras import show_message_dialog
 from gettext import gettext as _
-import tracker_info
+from . import tracker_info
 
 SAVE_ATTRIBUTES = [('gsd.hints'),
                    ('gsd.impossible_hints'),
@@ -52,7 +52,7 @@ def jar_game (ui):
     jar['game'] = ui.gsd.grid.to_string()
     jar['tracker_info'] = tracker_info.TrackerInfo().save()
     jar['tracked_notes'] = []
-    for e in ui.gsd.__entries__.values():
+    for e in list(ui.gsd.__entries__.values()):
         if e.top_note_list or e.bottom_note_list:
             jar['tracked_notes'].append((e.x, e.y, e.top_note_list, e.bottom_note_list))
     for attr in SAVE_ATTRIBUTES:
@@ -70,26 +70,26 @@ def open_game (ui, jar):
     # The 'notes' and 'trackers' sections are for transition from the old
     # style tracker storage.  The tracker values and notes are stored in the
     # 'tracked_notes' and 'tracker_info' sections now.
-    if jar.has_key('notes') and jar['notes']:
+    if 'notes' in jar and jar['notes']:
         for x, y, top, bot in jar['notes']:
             ui.gsd.__entries__[(x, y)].set_note_text(top, bot)
-    if jar.has_key('trackers'):
-        for tracker, tracked in jar.get('trackers', {}).items():
+    if 'trackers' in jar:
+        for tracker, tracked in list(jar.get('trackers', {}).items()):
             # add 1 tracker per existing tracker...
             ui.tracker_ui.add_tracker()
             for x, y, val in tracked:
                 tinfo.add_trace(x, y, val)
     set_value_from_jar(ui, jar)
-    if jar.has_key('tracking'):
-        for tracker, tracking in jar.get('tracking', {}).items():
+    if 'tracking' in jar:
+        for tracker, tracking in list(jar.get('tracking', {}).items()):
             if tracking:
                 ui.tracker_ui.select_tracker(tracker)
-    if jar.has_key('tracked_notes') and jar['tracked_notes']:
+    if 'tracked_notes' in jar and jar['tracked_notes']:
         for x, y, top, bot in jar['tracked_notes']:
             ui.gsd.__entries__[(x, y)].set_notelist(top, bot)
-    if jar.has_key('tracker_info'):
+    if 'tracker_info' in jar:
         trackers = jar['tracker_info'][2]
-        for tracking in trackers.keys():
+        for tracking in list(trackers.keys()):
             ui.tracker_ui.add_tracker(tracker_id = tracking)
         tinfo.load(jar['tracker_info'])
         ui.tracker_ui.select_tracker(tinfo.current_tracker)
@@ -99,23 +99,19 @@ def open_game (ui, jar):
     ui.gsd.update_all_notes()
 
 def pickle_game (ui, target):
-    close_me = False
-    if type(target) in types.StringTypes:
-        target = file(target, 'w')
-        close_me = True
     to_dump = jar_game(ui)
-    pickle.dump(to_dump, target)
-    if close_me:
-        target.close()
+    if isinstance(target, str):
+        with open(target, 'wb'):
+            pickle.dump(to_dump, target)
+    else:
+        pickle.dump(to_dump, target)
 
 def unpickle_game (ui, target):
-    close_me = False
-    if type(target) == str:
-        target = file(target, 'r')
-        close_me = True
-    open_game(ui, pickle.load(target))
-    if close_me:
-        target.close()
+    if isinstance(target, str):
+        with open(target, 'rb'):
+            open_game(ui, pickle.load(target))
+    else:
+        open_game(ui, pickle.load(target))
 
 class SudokuTracker:
 
@@ -149,7 +145,7 @@ class SudokuTracker:
         if not os.path.exists(path):
             try:
                 os.makedirs(path)
-            except OSError, e:
+            except OSError as e:
                 if e.errno == errno.ENOSPC:
                     show_message_dialog(
                         title = _('No Space'),
@@ -178,10 +174,10 @@ class SudokuTracker:
         jar = jar_game(ui)
         filename = os.path.join(self.save_path, self.get_filename(jar['game']))
         try:
-            outfi = file(filename, 'w')
+            outfi = open(filename, 'wb')
             pickle.dump(jar, outfi)
             outfi.close()
-        except (OSError, IOError), e:
+        except (OSError, IOError) as e:
             show_message_dialog(
                 title = _('Unable to save game.'),
                 label = _('Unable to save game.'),
@@ -203,10 +199,10 @@ class SudokuTracker:
         try:
             filename = os.path.join(self.finished_path,
                                     self.get_filename(jar['game']))
-            outfi = file(filename, 'w')
+            outfi = open(filename, 'wb')
             pickle.dump(jar, outfi)
             outfi.close()
-        except (OSError, IOError), e:
+        except (OSError, IOError) as e:
             show_message_dialog(
                 title = _('Unable to mark game as finished.'),
                 label = _('Unable to mark game as finished.'),
@@ -224,7 +220,7 @@ class SudokuTracker:
             ofi = open(list_of_finished_games, 'a')
             ofi.write(jar['game'].split('\n')[0]+'\n')
             ofi.close()
-        except (OSError, IOError), e:
+        except (OSError, IOError) as e:
             show_message_dialog(
                 title = _('Sudoku unable to mark game as finished.'),
                 label = _('Sudoku unable to mark game as finished.'),
@@ -256,16 +252,16 @@ class SudokuTracker:
         for f in files:
             f = os.path.join(self.save_path, f)
             try:
-                jar = pickle.load(file(f, 'r'))
+                jar = pickle.load(open(f, 'rb'))
             except:
-                print 'Warning: could not read file', f
+                print('Warning: could not read file', f)
             else:
                 update_saved_attributes(jar)
                 if self.is_valid(jar):
                     jar['saved_at'] = os.stat(f)[8]
                     games.append(jar)
                 else:
-                    print 'Warning: malformed save game', f
+                    print('Warning: malformed save game', f)
         return games
 
     def is_valid (self, jar):

@@ -3,7 +3,7 @@ import random
 import math
 import re
 from gettext import gettext as _
-import defaults
+from . import defaults
 
 GROUP_SIZE = 9
 
@@ -11,7 +11,7 @@ TYPE_ROW = 0
 TYPE_COLUMN = 1
 TYPE_BOX = 2
 
-digit_set = range(1, GROUP_SIZE + 1)
+digit_set = list(range(1, GROUP_SIZE + 1))
 sets = [digit_set] * 9
 
 def is_set (row):
@@ -82,7 +82,7 @@ class ParallelDict (dict):
         for i in v:
             if i == k:
                 continue
-            if self.has_key(i):
+            if i in self:
                 self[i].add(k)
             else:
                 dict.__setitem__(self, i, set([k]))
@@ -93,7 +93,7 @@ class ParallelDict (dict):
         for i in v:
             if i == k:
                 continue
-            if self.has_key(i):
+            if i in self:
                 # Make sure we have a reference to i. If we don't
                 # something has gone wrong... but according to bug
                 # 385937 this has gone wrong at least once, so we'd
@@ -130,7 +130,7 @@ class SudokuGrid(object):
         for n, col in enumerate([[(x, y) for y in range(self.group_size)] for x in range(self.group_size)]):
             self.col_coords[n] = col
         if grid:
-            if isinstance(grid, basestring):
+            if isinstance(grid, str):
                 g = re.split("\s+", grid)
                 side = int(math.sqrt(len(g)))
                 grid = []
@@ -162,7 +162,7 @@ class SudokuGrid(object):
                 try:
                     self.remove(x, y)
                 except:
-                    print 'Strange: problem with add(', x, y, val, force, ')'
+                    print('Strange: problem with add(', x, y, val, force, ')')
                     import traceback
                     traceback.print_exc()
             else:
@@ -203,12 +203,12 @@ class SudokuGrid(object):
         return self.gen_set - self.rows[y] - self.cols[x] - self.boxes[self.box_by_coords[(x, y)]]
 
     def pretty_print (self):
-        print 'SUDOKU'
+        print('SUDOKU')
         for r in self.grid:
             for i in r:
-                print i,
-            print
-        print
+                print(i, end=' ')
+            print()
+        print()
 
     def populate_from_grid (self, grid):
         for y, row in enumerate(grid):
@@ -347,10 +347,10 @@ class SudokuSolver (SudokuGrid):
         for label, coord_dic, filled_dic in [('Column', self.col_coords, self.cols),
                                            ('Row', self.row_coords, self.rows),
                                            ('Box', self.box_coords, self.boxes)]:
-            for n, coord_set in coord_dic.items():
+            for n, coord_set in list(coord_dic.items()):
                 skip_set = False
                 for coord in coord_set:
-                    if self.conflicts.has_key(coord):
+                    if coord in self.conflicts:
                         skip_set = True
                         break
                 if skip_set:
@@ -360,19 +360,19 @@ class SudokuSolver (SudokuGrid):
                     val = self._get_(*coord)
                     if val:
                         # We already have this value set...
-                        if needs.has_key(val):
+                        if val in needs:
                             del needs[val]
                     else:
                         # Otherwise, register ourselves as possible
                         # for each number we could be
                         for v in self.possible_values(*coord):
                             # if we don't yet have a possible number, plug ourselves in
-                            if needs.has_key(v):
+                            if v in needs:
                                 if not needs[v]:
                                     needs[v] = coord
                                 else:
                                     del needs[v]
-                for n, coords in needs.items():
+                for n, coords in list(needs.items()):
                     if not coords:
                         raise UnsolvablePuzzle('Missing a %s in %s' % (n, label))
                     else:
@@ -386,17 +386,17 @@ class SudokuSolver (SudokuGrid):
         return changed
 
     def fill_deterministically (self):
-        poss = self.calculate_open_squares().items()
-        one_choice = filter(lambda x: len(x[1]) == 1, poss)
+        poss = list(self.calculate_open_squares().items())
+        one_choice = [x for x in poss if len(x[1]) == 1]
         retval = []
         for coords, choices in one_choice:
             if self.verbose:
-                print 'Deterministically adding ', coords, choices
+                print('Deterministically adding ', coords, choices)
             val = choices.pop()
             self.add(coords[0], coords[1], val)
             retval.append([(coords[0], coords[1]), val])
         if self.verbose:
-            print 'deterministically returning ', retval
+            print('deterministically returning ', retval)
         return retval
 
     def solve (self):
@@ -407,7 +407,7 @@ class SudokuSolver (SudokuGrid):
         while not self.guess_least_open_square():
             pass
         if self.verbose:
-            print 'Solved!\n', self
+            print('Solved!\n', self)
         self.solving = False
         self.solved = True
 
@@ -430,19 +430,19 @@ class SudokuSolver (SudokuGrid):
 
     def has_unique_solution (self):
         sf = self.solution_finder()
-        sf.next()
-        if sf.next():
+        next(sf)
+        if next(sf):
             return False
         else:
             return True
 
     def guess_least_open_square (self):
         # get open squares and check them
-        poss = self.calculate_open_squares().items()
+        poss = list(self.calculate_open_squares().items())
         # if there are no open squares, we're done!
         if not poss:
             if self.verbose:
-                print 'Solved!'
+                print('Solved!')
             return True
         # otherwise, find the possibility with the least possibilities
         poss.sort(lambda a, b: len(a[1]) > len(b[1]) and 1 or len(a[1]) < len(b[1]) and -1 or \
@@ -481,7 +481,7 @@ class SudokuSolver (SudokuGrid):
             self.trail.append('Problem filling coordinates after guess')
             self.unwrap_guess(guess_obj)
             return self.guess_least_open_square()
-        if set([]) in self.calculate_open_squares().values():
+        if set([]) in list(self.calculate_open_squares().values()):
             self.trail.append('Guess leaves us with impossible squares.')
             self.unwrap_guess(guess_obj)
             return self.guess_least_open_square()
@@ -490,7 +490,7 @@ class SudokuSolver (SudokuGrid):
         self.trail.append(('-', guess))
         if self._get_(guess.x, guess.y):
             self.remove(guess.x, guess.y)
-        for consequence in guess.consequences.keys():
+        for consequence in list(guess.consequences.keys()):
             if self._get_(*consequence):
                 self.remove(*consequence)
         for child in guess.children:
@@ -533,7 +533,7 @@ class InteractiveSudoku (SudokuSolver):
         broken = set()
         for coord_set in [row_cells, col_cells, box_cells]:
             # just work on the open squares
-            coord_set = filter(lambda coords: not self._get_(*coords), coord_set)
+            coord_set = [coords for coords in coord_set if not self._get_(*coords)]
             for coords in coord_set:
                 if not self.possible_values(*coords):
                     broken.add(coords)
@@ -625,7 +625,7 @@ class InteractiveSudoku (SudokuSolver):
         # Pop the conflicts resolved by this removal
         self.cleared_conflicts = []
         errors_removed = []
-        if self.conflicts.has_key((x, y)):
+        if (x, y) in self.conflicts:
             errors_removed = self.conflicts[(x, y)]
             del self.conflicts[(x, y)]
         # If there are no conflicts for this cell then just remove it in from
@@ -650,7 +650,7 @@ class InteractiveSudoku (SudokuSolver):
         for coord in errors_removed:
             # If it is not an error by some other pairing, append it to a list
             # of conflicts that were actually cleared by this removal.
-            if not self.conflicts.has_key(coord):
+            if coord not in self.conflicts:
                 self.cleared_conflicts.append(coord)
             # When a conflict remains, we need to correct the rows, cols, and
             # boxes arrays properly
@@ -727,7 +727,7 @@ class DifficultyRating:
         self.value = self.calculate()
 
     def count_values (self, dct):
-        kk = dct.keys()
+        kk = list(dct.keys())
         kk.sort()
         return [len(dct[k]) for k in kk]
 
@@ -756,7 +756,7 @@ class DifficultyRating:
                           ('Ease by elimination', self.elimination_ease),
                           ('Calculated difficulty', self.value)
                           ]:
-            print name, ': ', stat
+            print(name, ': ', stat)
 
     def value_category (self):
         """Get category string, without i18n or capitalization
@@ -773,7 +773,7 @@ class DifficultyRating:
             return 'easy'
 
 def get_difficulty_category (diff_float):
-    for category, range in DifficultyRating.categories.items():
+    for category, range in list(DifficultyRating.categories.items()):
         if range[0] <= diff_float < range[1]:
             return category
 
@@ -836,9 +836,8 @@ class SudokuRater (SudokuSolver):
             self.solve()
         self.clues = 0
         # Add up the number of our initial clues through some nifty mapping calls
-        map(lambda r: map(lambda i: setattr(self, 'clues', self.clues.__add__(i and 1 or 0)),
-                          r),
-            self.virgin.grid)
+        list(map(lambda r: [setattr(self, 'clues', self.clues.__add__(i and 1 or 0)) for i in r],
+            self.virgin.grid))
         self.numbers_added = self.group_size ** 2 - self.clues
         rating = DifficultyRating(self.fill_must_fillables,
                                   self.elimination_fillables,
@@ -854,7 +853,7 @@ class GuessList (list):
 
 
     def guesses_for_coord (self, x, y):
-        return set([guess.val for guess in filter(lambda guess: guess.x == x and guess.y == y, self)])
+        return set([guess.val for guess in [guess for guess in self if guess.x == x and guess.y == y]])
 
     def remove_children (self, guess):
         removed = []
@@ -899,7 +898,7 @@ class Guess:
         s =  "<Guess (%s, %s)=%s" % (self.x, self.y, self.val)
         if self.consequences:
             s +=   " implies: "
-            s += ", ".join(["%s->%s" % (k, v) for k, v in self.consequences.items()])
+            s += ", ".join(["%s->%s" % (k, v) for k, v in list(self.consequences.items())])
         s += ">"
         return s
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import optparse
-import defaults
+from . import defaults
 
 parser = optparse.OptionParser(
     version=defaults.VERSION,
@@ -24,7 +24,7 @@ options, args = parser.parse_args()
 if options.debug:
     def simple_debug (f):
         def _ (self, *args, **kwargs):
-            print self.__class__, f.__name__, args, kwargs
+            print(self.__class__, f.__name__, args, kwargs)
             return f(self, *args, **kwargs)
         return _
 
@@ -33,8 +33,8 @@ elif options.walk:
     def simple_debug (f):
         def _ (self, *args, **kwargs):
             if (self.__class__, f.__name__) not in ff:
-                print self.__class__, f.__name__, args, kwargs
-                if raw_input('Hit return to step forward (hit i to ignore this function): ')=='i':
+                print(self.__class__, f.__name__, args, kwargs)
+                if input('Hit return to step forward (hit i to ignore this function): ')=='i':
                     ff.append((self.__class__, f.__name__))
             return f(self, *args, **kwargs)
         return _

@@ -41,16 +41,16 @@ class SwappableArea (Gtk.Notebook):
 
     def run_dialog (self, d):
         self.running = d
-        if not self.swallowed.has_key(d):
+        if d not in self.swallowed:
             self.swallow_dialog(d)
         self.set_current_page(self.swallowed[d])
         try:
             Gtk.main()
         except:
-            print 'Error in dialog!'
+            print('Error in dialog!')
             import traceback
             traceback.print_exc()
-            print 'forge on fearlessly...'
+            print('forge on fearlessly...')
         self.set_current_page(self.main_page)
         self.running = None
         tmp_response = self.response
