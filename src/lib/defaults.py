@@ -32,7 +32,7 @@ else:
     # Running in uninstalled mode
     sys.path.insert(0, os.path.abspath(root_dir))
     APP_DATA_DIR    = os.path.join(root_dir, '../data') 
-    IMAGE_DIR       = os.path.join(root_dir, '../images')
+    IMAGE_DIR       = os.path.join(root_dir, '../data')
     LOCALEDIR       = os.path.join(APP_DATA_DIR, 'locale')
     UI_DIR          = os.path.join(root_dir, '../data')
     BASE_DIR        = os.path.join(root_dir, '../data')
