@@ -41,7 +41,8 @@ class NumberSelector (Gtk.EventBox):
     def __init__ (self, default = None, upper = 9):
         self.value = default
         GObject.GObject.__init__(self)
-        self.table = Gtk.Table()
+        self.table = Gtk.Grid()
+        self.table.get_style_context().add_class(Gtk.STYLE_CLASS_LINKED)
         self.add(self.table)
         side = int(math.sqrt(upper))
         n = 1
@@ -55,12 +56,25 @@ class NumberSelector (Gtk.EventBox):
                     l.set_markup('<span size="x-small">%s</span>'%n)
                 b.add(l)
                 b.set_relief(Gtk.ReliefStyle.HALF)
+
+                ctx = b.get_style_context()
+                flags = Gtk.JunctionSides.NONE
+                if y < 2:
+                    flags |= Gtk.JunctionSides.BOTTOM
+                if y > 0:
+                    flags |= Gtk.JunctionSides.TOP
+                if x < 2:
+                    flags |= Gtk.JunctionSides.RIGHT
+                if x > 0:
+                    flags |= Gtk.JunctionSides.LEFT
+                ctx.set_junction_sides(flags)
+
                 l = b.get_children()[0]
                 b.set_border_width(0)
                 l.set_padding(0, 0)
                 l.get_alignment()
                 b.connect('clicked', self.number_clicked, n)
-                self.table.attach(b, x, x+1, y, y+1)
+                self.table.attach(b, x, y, 1, 1)
                 n += 1
         if self.value:
             db = Gtk.Button()
@@ -69,7 +83,7 @@ class NumberSelector (Gtk.EventBox):
             db.add(l)
             l.show()
             db.connect('clicked', self.number_clicked, 0)
-            self.table.attach(db, 0, side, side + 1, side + 2)
+            self.table.attach(db, 0, side, 3, 1)
         self.show_all()
 
     def number_clicked (self, button, n):
