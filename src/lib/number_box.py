@@ -130,7 +130,7 @@ class NumberBox (Gtk.DrawingArea):
         self.bottom_note_list = []
         self.tinfo = tracker_info.TrackerInfo()
         self.set_property('can-focus', True)
-        self.set_property('events', Gdk.EventMask.ALL_EVENTS_MASK)
+        self.add_events(Gdk.EventMask.ALL_EVENTS_MASK)
         self.connect('button-press-event', self.button_press_cb)
         self.connect('key-release-event', self.key_press_cb)
         self.connect('enter-notify-event', self.pointer_enter_cb)
