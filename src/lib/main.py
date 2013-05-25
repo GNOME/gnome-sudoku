@@ -5,7 +5,7 @@ import threading
 import gi
 gi.require_version("Gtk", "3.0")
 
-from gi.repository import Gtk,GdkPixbuf,GObject,Pango,Gdk,Gio
+from gi.repository import Gtk,GdkPixbuf,GObject,Pango,Gdk,Gio,GLib
 from gettext import gettext as _
 from gettext import ngettext
 
@@ -141,7 +141,7 @@ class UI:
                 self.quit = False
 
         # Generate puzzles in background...
-        GObject.timeout_add_seconds(1, lambda *args: self.start_worker_thread() and True)
+        GLib.timeout_add_seconds(1, lambda *args: self.start_worker_thread() and True)
 
     @inactivate_new_game_etc
     def select_game (self):
@@ -276,7 +276,7 @@ class UI:
             self.gsd.set_bg_color(bgcol)
 
     def setup_autosave (self):
-        GObject.timeout_add_seconds(self.settings.get_int('auto-save-interval') or 60, # in seconds...
+        GLib.timeout_add_seconds(self.settings.get_int('auto-save-interval') or 60, # in seconds...
                             self.autosave)
 
     def setup_main_boxes (self):
