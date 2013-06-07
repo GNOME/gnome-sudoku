@@ -1,0 +1,501 @@
+using Gtk;
+using Gee;
+
+public class Sudoku : Gtk.Application
+{
+    private GLib.Settings settings;
+    private Builder builder;
+
+    private ApplicationWindow window;
+    private CheckMenuItem fullscreen_menu;
+
+    // The current game and view, if they exist
+    private SudokuGame game;
+    private SudokuView view;
+
+    // The start box (contains the new game previews)
+    private Box start_box;
+    private Box game_box; // Holds the grid and controls boxes
+    private Box grid_box; // Holds the view
+    private Box help_box;
+
+    private Box controls_box; // Holds the controls (including the number picker)
+    private NumberPicker number_picker;
+
+    private SudokuView easy_preview;
+    private SudokuView medium_preview;
+    private SudokuView hard_preview;
+    private SudokuView very_hard_preview;
+
+    private SudokuStore sudoku_store;
+
+    // Help Stuff
+    private Box naked_single_items;
+    private Box hidden_single_items;
+    private Box naked_subset_items;
+
+    private const GLib.ActionEntry action_entries[] =
+    {
+        {"new-game", new_game_cb                                                                },
+        {"reset", reset_cb                                                                      },
+        {"undo", undo_cb                                                                        },
+        {"redo", redo_cb                                                                        },
+        {"print", print_cb                                                                      },
+        {"print-multiple", print_multiple_cb                                                    },
+        {"possible-numbers",   possible_numbers_cb,   null, "false", possible_numbers_changed   },
+        {"unfillable-squares", unfillable_squares_cb, null, "false", unfillable_squares_changed },
+        {"help", help_cb                                                                        },
+        {"about", about_cb                                                                      },
+        {"quit", quit_cb                                                                        }
+    };
+
+    public Sudoku ()
+    {
+        Object (application_id: "org.gnome.gnome-sudoku", flags: ApplicationFlags.FLAGS_NONE);
+    }
+
+    protected override void startup()
+    {
+        base.startup ();
+        add_action_entries (action_entries, this);
+    }
+
+    protected override void activate () {
+        settings = new GLib.Settings ("org.gnome.gnome-sudoku");
+
+        builder = new Builder ();
+        try
+        {
+            builder.add_from_resource ("/org/gnome/gnome-sudoku/ui/gnome-sudoku.ui");
+            builder.add_from_resource ("/org/gnome/gnome-sudoku/ui/gnome-sudoku-menu.ui");
+        }
+        catch (GLib.Error e)
+        {
+            GLib.warning ("Could not load UI: %s", e.message);
+        }
+        window = (ApplicationWindow) builder.get_object ("sudoku_app");
+
+        if (settings.get_boolean ("fullscreen"))
+            window.fullscreen ();
+
+        add_window (window);
+
+        set_app_menu (builder.get_object ("sudoku-menu") as MenuModel);
+
+        fullscreen_menu = (CheckMenuItem) builder.get_object ("toggle_fullscreen_imagemenuitem");
+
+        start_box = (Box) builder.get_object ("start_box");
+        game_box = (Box) builder.get_object ("game_box");
+        grid_box = (Box) builder.get_object ("grid_box");
+        help_box = (Box) builder.get_object ("help_box");
+
+        naked_single_items = (Box) builder.get_object ("naked_single_items");
+        hidden_single_items = (Box) builder.get_object ("hidden_single_items");
+
+        controls_box = (Box) builder.get_object ("number_picker_box");
+
+        var back_button = (Button) builder.get_object ("back_button");
+        back_button.clicked.connect (() => {
+            undo_cb();
+        });
+
+        var hint_button = (Button) builder.get_object ("hint_button");
+        hint_button.clicked.connect (() => {
+            view.hint ();
+        });
+
+        var help_button = (Button) builder.get_object ("help_button");
+        help_button.clicked.connect (() => {
+            help_box.visible = !help_box.visible;
+        });
+
+        sudoku_store = new SudokuStore ();
+        //SudokuGenerator gen = new SudokuGenerator();
+
+        var easy_grid = (Box) builder.get_object ("easy_grid");
+        var medium_grid = (Box) builder.get_object ("medium_grid");
+        var hard_grid = (Box) builder.get_object ("hard_grid");
+        var very_hard_grid = (Box) builder.get_object ("very_hard_grid");
+
+        SudokuBoard easy_board = sudoku_store.get_random_easy_board ();
+        //gen.make_symmetric_puzzle(Random.int_range(0, 4));
+        //gen.generate (DifficultyRating.easy_range);
+        easy_preview = new SudokuView (new SudokuGame (easy_board), true);
+        easy_preview.show ();
+        easy_grid.pack_start (easy_preview);
+
+        easy_grid.button_press_event.connect ((event) => {
+            if (event.button == 1)
+                start_game (easy_board);
+
+            return false;
+        });
+
+        SudokuBoard medium_board = sudoku_store.get_random_medium_board ();
+        //gen.make_symmetric_puzzle(Random.int_range(0, 4));
+        // gen.generate (DifficultyRating.medium_range);
+        medium_preview = new SudokuView (new SudokuGame (medium_board), true);
+        medium_preview.show ();
+        medium_grid.pack_start (medium_preview);
+
+        medium_grid.button_press_event.connect ((event) => {
+            if (event.button == 1)
+                start_game (medium_board);
+
+            return false;
+        });
+
+        SudokuBoard hard_board = sudoku_store.get_random_hard_board ();
+        //gen.make_symmetric_puzzle(Random.int_range(0, 4));
+        //gen.generate (DifficultyRating.hard_range);
+        hard_preview = new SudokuView (new SudokuGame (hard_board), true);
+        hard_preview.show ();
+        hard_grid.pack_start (hard_preview);
+
+        hard_grid.button_press_event.connect ((event) => {
+            if (event.button == 1)
+                start_game (hard_board);
+
+            return false;
+        });
+
+        SudokuBoard very_hard_board = sudoku_store.get_random_very_hard_board ();
+        //gen.make_symmetric_puzzle(Random.int_range(0, 4));
+        //gen.generate (DifficultyRating.very_hard_range);
+        very_hard_preview = new SudokuView (new SudokuGame (very_hard_board), true);
+        very_hard_preview.show ();
+        very_hard_grid.pack_start (very_hard_preview);
+
+        very_hard_grid.button_press_event.connect ((event) => {
+            if (event.button == 1)
+                start_game (very_hard_board);
+
+            return false;
+        });
+
+        show_start ();
+
+        builder.connect_signals (this);
+
+        window.show ();
+    }
+
+    private void start_game (SudokuBoard board)
+    {
+        SudokuBoard completed_board = board.clone ();
+
+        SudokuRater rater = new SudokuRater(ref completed_board);
+        DifficultyRating rating = rater.get_difficulty ();
+        rating.pretty_print ();
+
+        bool show_possibilities = false;
+        bool show_warnings = false;
+
+        if (view != null) {
+            show_possibilities = view.show_possibilities;
+            show_warnings = view.show_warnings;
+
+            grid_box.remove (view);
+            controls_box.remove (number_picker);
+        }
+
+        game_box.visible = true;
+        start_box.visible = false;
+
+        game = new SudokuGame (board);
+
+        if (game.timer.elapsed() <= 0.000002)
+        {
+            game.timer.start ();
+        }
+        else
+        {
+            game.timer.continue ();
+        }
+
+        view = new SudokuView (game);
+
+        view.show_possibilities = show_possibilities;
+        view.show_warnings = show_warnings;
+
+        view.show ();
+        grid_box.pack_start (view);
+
+        LogicalSudokuSolver logical_solver = new LogicalSudokuSolver(ref game.board);
+        update_help (logical_solver);
+
+        number_picker = new NumberPicker(ref game.board);
+        controls_box.pack_start (number_picker);
+
+        view.cell_focus_in_event.connect ((row, col) => {
+            // Only enable the NumberPicker for unfixed cells
+            number_picker.sensitive = !game.board.is_fixed[row, col];
+        });
+
+        view.cell_value_changed_event.connect ((row, col) => {
+            update_help (logical_solver);
+        });
+
+
+        number_picker.number_picked.connect ((number) => {
+            view.set_cell_value (view.selected_x, view.selected_y, number);
+        });
+
+        game.board.completed.connect (() => {
+            view.dance ();
+
+            double time = game.timer.elapsed ();
+
+            for (var i = 0; i < game.board.rows; i++)
+            {
+                for (var j = 0; j < game.board.cols; j++)
+                {
+                    view.can_focus = false;
+                }
+            }
+
+            var dialog = new MessageDialog(null, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, "Well done, you completed the puzzle in %f seconds", time);
+
+            dialog.add_button ("Same difficulty again", 0);
+            dialog.add_button ("New difficulty", 1);
+
+            dialog.response.connect ((response_id) => {
+                switch (response_id)
+                {
+                    case 0:
+                        start_game (sudoku_store.get_random_board (rating.get_catagory ()));
+                        break;
+                    case 1:
+                        show_start ();
+                        break;
+                }
+                dialog.destroy ();
+            });
+
+            dialog.show ();
+        });
+    }
+
+    private void update_help (LogicalSudokuSolver logical_solver)
+    {
+        foreach (Widget w in naked_single_items.get_children())
+        {
+            naked_single_items.remove (w);
+        }
+
+        ArrayList<Cell?> naked_singles = logical_solver.get_naked_singles ();
+
+        foreach (Cell? cell in naked_singles)
+        {
+            var event_box = new Gtk.EventBox ();
+
+            var label = new Gtk.Label ("%d is the only possiblility in %d, %d".printf (cell.val, cell.coord.col, cell.coord.row));
+
+            event_box.enter_notify_event.connect ((event) => {
+                view.cell_grab_focus (cell.coord.row, cell.coord.col);
+                return true;
+            });
+
+            label.use_markup = true;
+            event_box.add (label);
+            naked_single_items.add (event_box);
+            event_box.show ();
+            label.show ();
+        }
+
+        foreach (Widget w in hidden_single_items.get_children())
+        {
+            hidden_single_items.remove (w);
+        }
+
+        foreach (HiddenSingle? hidden_single in logical_solver.get_hidden_singles ())
+        {
+            var event_box = new Gtk.EventBox ();
+
+            string description = "%d should go in %d, %d because its the only place it can go in the associated ".printf (hidden_single.cell.val, hidden_single.cell.coord.col, hidden_single.cell.coord.row);
+            if (hidden_single.row && hidden_single.col && hidden_single.block)
+            {
+                description += "row, column and block";
+            }
+            else if (hidden_single.row && hidden_single.col)
+            {
+                description += "row and column";
+            }
+            else if (hidden_single.col && hidden_single.block)
+            {
+                description += "column and block";
+            }
+            else if (hidden_single.row && hidden_single.block)
+            {
+                description += "row and block";
+            }
+            else if (hidden_single.row)
+            {
+                description += "row";
+            }
+            else if (hidden_single.col)
+            {
+                description += "column";
+            }
+            else if (hidden_single.block)
+            {
+                description += "block";
+            }
+
+            var label = new Gtk.Label (description);
+
+            event_box.enter_notify_event.connect ((event) => {
+                view.cell_grab_focus (hidden_single.cell.coord.row, hidden_single.cell.coord.col);
+                return true;
+            });
+
+            label.enter_notify_event.connect ((event) => {
+                view.selected_x = hidden_single.cell.coord.col;
+                view.selected_y = hidden_single.cell.coord.row;
+                return true;
+            });
+
+            label.use_markup = true;
+            event_box.add (label);
+            hidden_single_items.add (event_box);
+            event_box.show ();
+            label.show ();
+        }
+    }
+
+    private void show_start ()
+    {
+        game_box.visible = false;
+        start_box.visible = true;
+    }
+
+    public void new_game_cb ()
+    {
+        show_start ();
+    }
+
+    public void reset_cb ()
+    {
+        game.reset ();
+    }
+
+    public void undo_cb ()
+    {
+        game.undo ();
+    }
+
+    public void redo_cb ()
+    {
+        game.redo ();
+    }
+
+    public void print_cb ()
+    {
+        stdout.printf ("TODO: Print\n");
+    }
+
+    public void print_multiple_cb ()
+    {
+        stdout.printf ("TODO: Print multiple\n");
+    }
+
+    public void possible_numbers_cb ()
+    {
+        view.show_possibilities = !view.show_possibilities;
+    }
+
+    private void possible_numbers_changed (SimpleAction action, Variant state)
+    {
+        view.show_possibilities = (bool) state;
+    }
+
+    public void unfillable_squares_cb ()
+    {
+        view.show_warnings = !view.show_warnings;
+    }
+
+    private void unfillable_squares_changed (SimpleAction action, Variant state)
+    {
+        view.show_warnings = (bool) state;
+    }
+
+    public void quit_cb ()
+    {
+        window.destroy ();
+    }
+
+    public bool sudoku_app_window_state_event_cb (Widget widget, Gdk.EventWindowState event)
+    {
+        if ((event.changed_mask & Gdk.WindowState.FULLSCREEN) != 0)
+        {
+            bool is_fullscreen = (event.new_window_state & Gdk.WindowState.FULLSCREEN) != 0;
+            settings.set_boolean ("fullscreen", is_fullscreen);
+            fullscreen_menu.active = is_fullscreen;
+        }
+
+        return false;
+    }
+
+    public void toggle_hints_cb (Widget widget)
+    {
+        view.show_hints = !view.show_hints;
+    }
+
+    public void toggle_warnings_cb (Widget widget)
+    {
+        view.show_warnings = !view.show_warnings;
+    }
+
+    public void hint_cb (Widget widget)
+    {
+        view.hint ();
+    }
+
+    public void clear_top_notes_cb (Widget widget)
+    {
+        view.clear_top_notes ();
+    }
+
+    public void clear_bottom_notes_cb (Widget widget)
+    {
+        view.clear_bottom_notes ();
+    }
+
+    public void toggle_tracker_cb (Widget widget)
+    {
+        stdout.printf ("TODO: Toggle tracker\n");
+    }
+
+    public void help_cb ()
+    {
+        try
+        {
+            show_uri (window.get_screen (), "ghelp:gnome-sudoku", get_current_event_time ());
+        }
+        catch (GLib.Error e)
+        {
+            GLib.warning ("Unable to open help: %s", e.message);
+        }
+    }
+
+    private const string[] authors = { "Robert Ancell <robert.ancell@gmail.com>", "Christopher Baines <cbaines8@gmail.com>" };
+    private const string[] artists = { "Place Holder <place@holder.com>" };
+
+    public void about_cb ()
+    {
+        show_about_dialog (window,
+                               "program-name", _("Sudoku"),
+                               "logo-icon-name", "gnome-sudoku",
+                               "version", Config.VERSION,
+                               "comments", _("GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese logic puzzle.\n\nGNOME Sudoku is a part of GNOME Games."),
+                               "copyright", "Copyright 2010-2011 Robert Ancell <robert.ancell@gmail.com>",
+                               "license-type", License.GPL_2_0,
+                               "wrap-license", false,
+                               "authors", authors,
+                               "artists", artists,
+                               "translator-credits", _("translator-credits"),
+                               "website", "http://www.gnome.org/projects/gnome-games/",
+                               "website-label", _("GNOME Games web site")
+                               );
+    }
+}

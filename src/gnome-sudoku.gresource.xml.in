@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/gnome-sudoku/ui">
+    <file alias="gnome-sudoku.ui" preprocess="xml-stripblanks">@top_srcdir@/data/gnome-sudoku.ui</file>
+    <file alias="gnome-sudoku-menu.ui" preprocess="xml-stripblanks">@top_srcdir@/data/gnome-sudoku-menu.ui</file>
+  </gresource>
+  <gresource prefix="/org/gnome/gnome-sudoku/puzzles">
+    <file alias="easy">@top_srcdir@/data/easy</file>
+    <file alias="medium">@top_srcdir@/data/medium</file>
+    <file alias="hard">@top_srcdir@/data/hard</file>
+    <file alias="very_hard">@top_srcdir@/data/very_hard</file>
+  </gresource>
+</gresources>

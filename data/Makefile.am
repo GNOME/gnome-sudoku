@@ -20,11 +20,8 @@ puzzle_DATA = \
 	hard \
 	very_hard
 
-uidir = $(datadir)/gnome-sudoku
-ui_DATA = \
-	print_games.ui \
-	select_game.ui \
-	tracker.ui
+dist_noinst_DATA = \
+	gnome-sudoku.ui
 
 man_MANS = gnome-sudoku.6
 
