@@ -243,4 +243,3 @@ public struct HiddenSingle
         this.block = block;
     }
 }
-

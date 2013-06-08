@@ -107,7 +107,7 @@ public class SudokuBoard
 
         broken_coords = new HashSet<Coord?>((GLib.HashFunc) Coord.hash, (GLib.EqualFunc) Coord.equal);
 
-        coords_for_col = new ArrayList<Gee.List<Coord?>> ();
+        coords_for_col = new ArrayList<ArrayList<Coord?>> ();
         for (int col = 0; col < _cols; col++)
         {
             coords_for_col.add (new ArrayList<Coord?> ((GLib.EqualFunc) Coord.equal));
@@ -119,7 +119,7 @@ public class SudokuBoard
         }
         coords_for_col = coords_for_col.read_only_view;
 
-        coords_for_row = new ArrayList<Gee.List<Coord?>> ();
+        coords_for_row = new ArrayList<ArrayList<Coord?>> ();
         for (int row = 0; row < _rows; row++)
         {
             coords_for_row.add (new ArrayList<Coord?> ((GLib.EqualFunc) Coord.equal));
@@ -131,7 +131,7 @@ public class SudokuBoard
         }
         coords_for_row = coords_for_row.read_only_view;
 
-        coords_for_block = new HashMap<Coord?, Gee.List<Coord?>> ((GLib.HashFunc) Coord.hash, (GLib.EqualFunc) Coord.equal);
+        coords_for_block = new HashMap<Coord?, ArrayList<Coord?>> ((GLib.HashFunc) Coord.hash, (GLib.EqualFunc) Coord.equal);
         for (int col = 0; col < _block_cols; col++)
         {
             for (int row = 0; row < _block_rows; row++)
@@ -469,6 +469,12 @@ public class SudokuBoard
         }
         return possibilities;
     }
+}
+
+public enum House {
+    ROW,
+    COLUMN,
+    BLOCK
 }
 
 public struct Coord

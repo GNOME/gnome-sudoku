@@ -58,7 +58,7 @@ public static int main (string[] args)
 
     var c = new OptionContext (/* Arguments and description for --help text */
                                    _("[FILE] - Play Sudoku"));
-    c.add_main_entries (options, Config.GETTEXT_PACKAGE);
+    c.add_main_entries (options, GETTEXT_PACKAGE);
     c.add_group (Gtk.get_option_group (true));
     try
     {
@@ -75,7 +75,7 @@ public static int main (string[] args)
     if (show_version)
     {
         /* Note, not translated so can be easily parsed */
-        stderr.printf ("gnome-sudoku %s\n", Config.VERSION);
+        stderr.printf ("gnome-sudoku %s\n", VERSION);
         return Posix.EXIT_SUCCESS;
     }
 
