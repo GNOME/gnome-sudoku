@@ -23,7 +23,8 @@ gnome_sudoku_CFLAGS = \
 	$(GNOME_SUDOKU_CFLAGS)
 
 gnome_sudoku_LDADD = \
-	$(GNOME_SUDOKU_LIBS)
+	$(GNOME_SUDOKU_LIBS) \
+	-lm
 
 gnome_sudoku_VALAFLAGS = \
 	--pkg posix \
