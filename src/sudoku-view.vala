@@ -539,7 +539,7 @@ public class SudokuView : Gtk.AspectFrame
     private bool previous_board_broken_state = false;
 
     private Gtk.EventBox box;
-    private Gtk.Table table;
+    private Gtk.Grid grid;
 
     private int dance_step;
 
@@ -597,25 +597,19 @@ public class SudokuView : Gtk.AspectFrame
 
     public void set_game (SudokuGame game, bool preview = false)
     {
-        if (table != null)
+        if (grid != null)
         {
-            box.remove (table);
+            box.remove (grid);
         }
 
         this.game = game;
 
-        table = new Gtk.Table (game.board.rows, game.board.cols, false);
-        table.row_spacing = 1;
-        table.column_spacing = 1;
-        for (var row = game.board.block_rows; row < game.board.rows; row += game.board.block_rows)
-        {
-            table.set_row_spacing (row - 1, 2);
-        }
-        for (var col = game.board.block_cols; col < game.board.cols; col += game.board.block_cols)
-        {
-            table.set_col_spacing (col - 1, 2);
-        }
-        table.border_width = 2;
+        grid = new Gtk.Grid ();
+        grid.row_spacing = 1;
+        grid.column_spacing = 1;
+        grid.border_width = 2;
+        grid.column_homogeneous = true;
+        grid.row_homogeneous = true;
 
         cells = new SudokuCellView[game.board.rows, game.board.cols];
         for (var row = 0; row < game.board.rows; row++)
@@ -667,12 +661,12 @@ public class SudokuView : Gtk.AspectFrame
 
                 cells[row, col] = cell;
                 cell.show ();
-                table.attach_defaults (cell, col, col+1, row, row+1);
+                grid.attach (cell, col, row, 1, 1);
 
             }
         }
-        box.add (table);
-        table.show ();
+        box.add (grid);
+        grid.show ();
     }
 
     private bool _show_highlights = false;
