@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-    <requires lib="gtk+" version="2.16"/>
-    <!-- interface-naming-policy project-wide -->
-    <object class="GtkApplicationWindow" id="sudoku_app">
+  <!-- interface-requires gtk+ 3.4 -->
+  <object class="GtkApplicationWindow" id="sudoku_app">
         <property name="title" translatable="yes">Sudoku</property>
         <property name="hide_titlebar_when_maximized">True</property>
         <child>
