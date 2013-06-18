@@ -128,14 +128,7 @@ private class SudokuCellView : Gtk.DrawingArea
         this._row = row;
         this._col = col;
 
-        if (is_fixed)
-        {
-            _background_color = { 0.8, 0.8, 0.8, 0.0 };
-        }
-        else
-        {
-            _background_color = { 1.0, 1.0, 1.0, 0.0 };
-        }
+        // background_color is set in the SudokuView, as it manages the color of the cells
 
         set_can_focus(true);
         can_focus = true;
@@ -556,6 +549,9 @@ public class SudokuView : Gtk.AspectFrame
                                         {0.4588235294117647, 0.3137254901960784, 0.4823529411764706, 0.0}
                                       };
 
+    public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
+    public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
+
     private int _selected_x = 0;
     public int selected_x
     {
@@ -619,6 +615,15 @@ public class SudokuView : Gtk.AspectFrame
                 var cell = new SudokuCellView (row, col, ref this.game, preview);
                 var cell_row = row;
                 var cell_col = col;
+
+                if (cell.is_fixed)
+                {
+                    cell.background_color = fixed_cell_color;
+                }
+                else
+                {
+                    cell.background_color = free_cell_color;
+                }
 
                 if (!preview)
                 {
@@ -769,20 +774,7 @@ public class SudokuView : Gtk.AspectFrame
     public void stop_dance ()
     {
         dance_step = -1;
-        for (var j = 0; j < game.board.cols; j++)
-        {
-            for (var i = 0; i < game.board.rows; i++)
-            {
-                if (cells[i,j].is_fixed)
-                {
-                    cells[i,j].background_color = { 0.8, 0.8, 0.8, 0.0 };
-                }
-                else
-                {
-                    cells[i,j].background_color = { 1.0, 1.0, 1.0, 0.0 };
-                }
-            }
-        }
+        reset_cell_background_colors ();
     }
 
     private RGBA get_next_color (RGBA color)
@@ -809,5 +801,56 @@ public class SudokuView : Gtk.AspectFrame
     public void cell_grab_focus(int row, int col)
     {
         cells[row, col].grab_focus ();
+    }
+
+    public void set_cell_background_color (int row, int col, RGBA color) {
+        cells[row, col].background_color = color;
+    }
+
+    public void set_row_background_color (int row, RGBA color, RGBA fixed_color = fixed_cell_color) {
+        for (var col = 0; col < game.board.cols; col++) {
+            if (cells[row, col].is_fixed) {
+                cells[row, col].background_color = fixed_color;
+            } else {
+                cells[row, col].background_color = color;
+            }
+        }
+    }
+
+    public void set_col_background_color (int col, RGBA color, RGBA fixed_color = fixed_cell_color) {
+        for (var row = 0; row < game.board.rows; row++) {
+            if (cells[row, col].is_fixed) {
+                cells[row, col].background_color = fixed_color;
+            } else {
+                cells[row, col].background_color = color;
+            }
+        }
+    }
+
+    public void set_block_background_color (int block_row, int block_col, RGBA color, RGBA fixed_color = fixed_cell_color) {
+        foreach (Coord? coord in game.board.coords_for_block.get(Coord(block_row, block_col))) {
+            if (cells[coord.row, coord.col].is_fixed) {
+                cells[coord.row, coord.col].background_color = fixed_color;
+            } else {
+                cells[coord.row, coord.col].background_color = color;
+            }
+        }
+    }
+
+    public void reset_cell_background_colors () {
+        for (var j = 0; j < game.board.cols; j++)
+        {
+            for (var i = 0; i < game.board.rows; i++)
+            {
+                if (cells[i,j].is_fixed)
+                {
+                    cells[i,j].background_color = fixed_cell_color;
+                }
+                else
+                {
+                    cells[i,j].background_color = free_cell_color;
+                }
+            }
+        }
     }
 }
