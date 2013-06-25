@@ -160,8 +160,8 @@ class SudokuTracker:
                         )
                 else:
                     show_message_dialog(
-                        title = 'Error creating directory',
-                        label = 'Error creating directory',
+                        title = _('Error creating directory'),
+                        label = _('Error creating directory'),
                         sublabel = (_('Unable to create data folder %(path)s.') % locals() + '\n' +
                                     _('Error %(errno)s: %(error)s') % {
                                         'errno': e.errno,
