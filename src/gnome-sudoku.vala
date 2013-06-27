@@ -432,6 +432,7 @@ public class Sudoku : Gtk.Application
     private void show_start ()
     {
         game_box.visible = false;
+        help_box.visible = false;
         start_box.visible = true;
     }
 
