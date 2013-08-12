@@ -117,7 +117,7 @@ class GamePrinter:
 
     ui_file = os.path.join(defaults.UI_DIR, 'print_games.ui')
 
-    def __init__ (self, sudoku_maker):
+    def __init__ (self, sudoku_maker, window):
         self.sudoku_maker = sudoku_maker
         self.settings = Gio.Settings("org.gnome.gnome-sudoku")
         self.builder = Gtk.Builder()
@@ -144,6 +144,7 @@ class GamePrinter:
                          ]:
             self.wrap_adjustment(key, widg)
         self.dialog = self.builder.get_object('dialog')
+        self.dialog.set_transient_for(window)
         self.dialog.set_default_response(Gtk.ResponseType.OK)
         self.dialog.connect('response', self.response_cb)
 

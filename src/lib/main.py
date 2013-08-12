@@ -684,7 +684,7 @@ class UI:
 
     @simple_debug
     def print_multiple_games (self, *args):
-        gp = printing.GamePrinter(self.sudoku_maker)
+        gp = printing.GamePrinter(self.sudoku_maker, self.w)
         gp.run_dialog()
 
 class TrackerBox (Gtk.VBox):
