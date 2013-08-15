@@ -13,3 +13,5 @@ icon48_DATA = 48x48/gnome-sudoku.png
 iconscalable_DATA = scalable/gnome-sudoku.svg
 
 EXTRA_DIST = $(icon16_DATA) $(icon22_DATA) $(icon24_DATA) $(icon32_DATA) $(icon48_DATA) $(iconscalable_DATA)
+
+-include $(top_srcdir)/git.mk
