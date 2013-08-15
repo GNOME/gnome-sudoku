@@ -4,4 +4,6 @@ gnomesudoku_PYTHON = \
 	__init__.py		\
 	Undo.py
 
+CLEANFILES = *.pyc
+
 -include $(top_srcdir)/git.mk

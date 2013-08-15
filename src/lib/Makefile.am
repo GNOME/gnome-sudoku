@@ -28,4 +28,6 @@ gnomesudoku_PYTHON = \
 	timer.py	\
 	tracker_info.py
 
+CLEANFILES = *.pyc
+
 -include $(top_srcdir)/git.mk
