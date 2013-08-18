@@ -47,7 +47,7 @@ from gettext import gettext as _
 APPNAME             = _("GNOME Sudoku")
 APPNAME_SHORT       = _("Sudoku")
 COPYRIGHT           = 'Copyright \xc2\xa9 2005-2008, Thomas M. Hinkle'
-DESCRIPTION         = _('GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese logic puzzle.\n\nGNOME Sudoku is a part of GNOME Games.')
+DESCRIPTION         = _('The popular Japanese logic puzzle\n\nGNOME Sudoku is a part of GNOME Games.')
 AUTHORS             = ("Thomas M. Hinkle","John Stowers")
 WEBSITE             = 'http://www.gnome.org/projects/gnome-games/'
 WEBSITE_LABEL       = _('GNOME Games web site')
