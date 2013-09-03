@@ -531,11 +531,11 @@ class UI:
         '''
         self.cleared_notes.append((self.tinfo.current_tracker, self.gsd.clear_notes(side)))
         # Turn off auto-hint if the player clears the bottom notes
-        if side == 'Bottom' and self.settings.get_boolean('always_show_hints'):
+        if side == 'Bottom' and self.settings.get_boolean('always-show-hints'):
             always_show_hint_wdgt = self.main_actions.get_action('AlwaysShowPossible')
             always_show_hint_wdgt.activate()
         # Update the hints...in case we're redoing a clear of them
-        if self.settings.get_boolean ('always_show_hints'):
+        if self.settings.get_boolean ('always-show-hints'):
             self.gsd.update_all_hints()
 
     def undo_clear_notes(self):
