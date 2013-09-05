@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: Gnomove igre\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-28 23:15+0000\n"
-"PO-Revision-Date: 2013-02-17 10:08+0200\n"
+"POT-Creation-Date: 2013-08-18 14:52+0000\n"
+"PO-Revision-Date: 2013-09-05 10:43+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -118,14 +118,17 @@ msgid "GNOME Sudoku"
 msgstr "Gnom sudoku"
 
 #: ../src/lib/defaults.py:50
+#| msgid ""
+#| "GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a "
+#| "Japanese logic puzzle.\n"
+#| "\n"
+#| "GNOME Sudoku is a part of GNOME Games."
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
-"logic puzzle.\n"
+"The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"Gnom sudoku je jednostavan Sudoku generator i igrač. Sudoku je japanska "
-"logička slagalica.\n"
+"Popularna japanska logička slagalica.\n"
 "\n"
 "Gnom sudoku je deo Gnomovih igara."
 
@@ -134,21 +137,21 @@ msgid "GNOME Games web site"
 msgstr "Veb sajt Gnomovih igara"
 
 #: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
+#: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Lako"
 
 #: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
+#: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Srednje"
 
 #: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
+#: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Teško"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
+#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
 msgid "Very hard"
 msgstr "Veoma teško"
 
@@ -474,6 +477,7 @@ msgstr ""
 "Dušan Marjanović <madafaka@root.co.yu>\n"
 "Miloš Popović <gpopac@gmail.com>\n"
 "Branko Kokanović <branko.kokanovic@gmail.com>\n"
+"Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "\n"
 "http://prevod.org — prevod na srpski jezik"
 
@@ -532,6 +536,10 @@ msgstr "Ne mogu da napravim fasciklu sa podacima %(path)s."
 #: ../src/lib/saver.py:159
 msgid "There is no disk space left!"
 msgstr "Nema više mesta na disku!"
+
+#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+msgid "Error creating directory"
+msgstr "Greška stvaranja direktorijuma"
 
 #: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
 #: ../src/lib/saver.py:233
