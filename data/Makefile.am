@@ -40,10 +40,6 @@ EXTRA_DIST = \
 	$(gsettings_in_file) \
 	$(man_MANS)
 
-CLEANFILES = \
-	$(desktop_DATA) \
-	$(gsettings_SCHEMAS)
-
 DISTCLEANFILES = \
 	$(desktop_DATA) \
 	$(gsettings_SCHEMAS)
