@@ -6,10 +6,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.8\n"
+"Project-Id-Version: 3.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-15 15:37+0000\n"
-"PO-Revision-Date: 2013-03-15 15:40+0000\n"
+"POT-Creation-Date: 2013-09-23 02:08+0100\n"
+"PO-Revision-Date: 2013-09-23 02:10+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "Language: pt\n"
@@ -112,13 +112,11 @@ msgstr "Sudoku GNOME"
 
 #: ../src/lib/defaults.py:50
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
-"logic puzzle.\n"
+"The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"Sudoku GNOME é um simples gerador e interface de jogo para o Sudoku. Sudoku "
-"é um puzzle lógico de origem japonesa.\n"
+"O popular puzzle lógico Japonês\n"
 "\n"
 "Sudoku GNOME faz parte dos Jogos GNOME."
 
@@ -127,21 +125,21 @@ msgid "GNOME Games web site"
 msgstr "Página dos jogos GNOME"
 
 #: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
+#: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Fácil"
 
 #: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
+#: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Médio"
 
 #: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
+#: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Difícil"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
+#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
 msgid "Very hard"
 msgstr "Muito difícil"
 
@@ -480,7 +478,7 @@ msgstr "Aplicar todas as jogadas registadas e remover o registo."
 msgid "Tracker %s"
 msgstr "Registo %s"
 
-#: ../src/lib/number_box.py:68
+#: ../src/lib/number_box.py:82
 msgid "_Clear"
 msgstr "_Limpar"
 
@@ -500,6 +498,10 @@ msgstr "Incapaz de criar a pasta de dados %(path)s."
 #: ../src/lib/saver.py:159
 msgid "There is no disk space left!"
 msgstr "Não existe espaço livre no disco!"
+
+#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+msgid "Error creating directory"
+msgstr "Erro ao criar o diretório"
 
 #: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
 #: ../src/lib/saver.py:233
@@ -6959,9 +6961,6 @@ msgstr "Sudoku incapaz de marcar o jogo como terminado."
 
 #~ msgid "You must highlight a table before you can watch it."
 #~ msgstr "Tem de selecionar uma mesa antes de a poder observar."
-
-#~ msgid "Error Spectating"
-#~ msgstr "Erro ao ser espectador"
 
 #~ msgid ""
 #~ "Failed to join table.\n"
