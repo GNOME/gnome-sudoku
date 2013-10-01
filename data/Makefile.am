@@ -1,8 +1,6 @@
 SUBDIRS = icons
 
-gsettings_in_file = org.gnome.gnome-sudoku.gschema.xml.in
-gsettings_SCHEMAS = $(gsettings_in_file:.xml.in=.xml)
-@INTLTOOL_XML_NOMERGE_RULE@
+gsettings_SCHEMAS = org.gnome.gnome-sudoku.gschema.xml
 @GSETTINGS_RULES@
 
 desktopdir = $(datadir)/applications
@@ -37,14 +35,10 @@ EXTRA_DIST = \
 	$(appdata_DATA)	\
 	$(puzzle_DATA)	\
 	$(ui_DATA)	\
-	$(gsettings_in_file) \
+	$(gsettings_SCHEMAS) \
 	$(man_MANS)
 
 CLEANFILES = \
-	$(desktop_DATA) \
-	$(gsettings_SCHEMAS)
-
-DISTCLEANFILES = \
-	$(gsettings_SCHEMAS)
+	$(desktop_DATA)
 
 -include $(top_srcdir)/git.mk
