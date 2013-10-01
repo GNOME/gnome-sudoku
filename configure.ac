@@ -42,7 +42,6 @@ data/Makefile
 data/icons/Makefile
 data/icons/hicolor/Makefile
 data/icons/HighContrast/Makefile
-data/gnome-sudoku.desktop.in
 help/Makefile
 src/Makefile
 src/lib/Makefile

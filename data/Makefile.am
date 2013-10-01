@@ -6,8 +6,8 @@ gsettings_SCHEMAS = $(gsettings_in_file:.xml.in=.xml)
 @GSETTINGS_RULES@
 
 desktopdir = $(datadir)/applications
-desktop_in_files = gnome-sudoku.desktop.in.in
-desktop_DATA = $(desktop_in_files:.desktop.in.in=.desktop)
+desktop_in_files = gnome-sudoku.desktop.in
+desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
 appdatadir = $(datadir)/appdata
@@ -45,7 +45,6 @@ CLEANFILES = \
 	$(gsettings_SCHEMAS)
 
 DISTCLEANFILES = \
-	$(desktop_DATA) \
 	$(gsettings_SCHEMAS)
 
 -include $(top_srcdir)/git.mk
