@@ -41,4 +41,7 @@ EXTRA_DIST = \
 CLEANFILES = \
 	$(desktop_DATA)
 
+check-local: $(appdata_DATA)
+	$(APPDATA_VALIDATE) $(appdata_DATA)
+
 -include $(top_srcdir)/git.mk

@@ -18,6 +18,8 @@ PKG_CHECK_MODULES(PYGOBJECT, [
     pygobject-3.0 >= $PYGOBJECT_REQUIRED
 ])
 
+AC_PATH_PROG(APPDATA_VALIDATE, appdata-validate)
+
 dnl ###########################################################################
 dnl Internationalization
 dnl ###########################################################################
