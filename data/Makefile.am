@@ -9,7 +9,9 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
 appdatadir = $(datadir)/appdata
-appdata_DATA = gnome-sudoku.appdata.xml
+appdata_in_files = gnome-sudoku.appdata.xml.in
+appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+@INTLTOOL_XML_RULE@
 
 pixmapdir = $(datadir)/gnome-sudoku/images/
 pixmap_DATA = footprints.png
@@ -32,13 +34,14 @@ man_MANS = gnome-sudoku.6
 EXTRA_DIST = \
 	$(pixmap_DATA)	\
 	$(desktop_in_files) \
-	$(appdata_DATA)	\
+	$(appdata_in_files)	\
 	$(puzzle_DATA)	\
 	$(ui_DATA)	\
 	$(gsettings_SCHEMAS) \
 	$(man_MANS)
 
 CLEANFILES = \
+	$(appdata_DATA) \
 	$(desktop_DATA)
 
 check-local: $(appdata_DATA) $(desktop_DATA)
