@@ -19,6 +19,7 @@ PKG_CHECK_MODULES(PYGOBJECT, [
 ])
 
 AC_PATH_PROG(APPDATA_VALIDATE, appdata-validate)
+AC_PATH_PROG(DESKTOP_FILE_VALIDATE, desktop-file-validate)
 
 dnl ###########################################################################
 dnl Internationalization
