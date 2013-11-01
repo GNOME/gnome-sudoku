@@ -45,7 +45,11 @@ CLEANFILES = \
 	$(desktop_DATA)
 
 check-local: $(appdata_DATA) $(desktop_DATA)
+if VALIDATE_APPDATA
 	$(APPDATA_VALIDATE) $(appdata_DATA)
+endif
+if VALIDATE_DESKTOP_FILE
 	$(DESKTOP_FILE_VALIDATE) $(desktop_DATA)
+endif
 
 -include $(top_srcdir)/git.mk
