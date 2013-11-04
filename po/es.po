@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-games.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-18 14:52+0000\n"
-"PO-Revision-Date: 2013-08-19 11:35+0200\n"
+"POT-Creation-Date: 2013-10-20 03:21+0000\n"
+"PO-Revision-Date: 2013-11-04 18:00+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -24,18 +24,93 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.5\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+msgid "GNOME Sudoku"
+msgstr "GNOME Sudoku"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:2
+msgid ""
+"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
+"make playing Sudoku fun. Games are automatically saved when you quit, and "
+"you can always come back to any game that you've played."
+msgstr ""
+"GNOME Sudoku tiene una interfaz discreta con todas las características que "
+"hacen divertido jugar a Sudoku. Los juegos de guardan automáticamente cuando "
+"sale y siempre puede volver a cualquier juego al que ya haya jugado."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites. You can also see detailed information about how the computer "
+"solved the puzzle."
+msgstr ""
+"Cada juego tiene un nivel de dificultad similar a los que aparecen en los "
+"periódicos y en las páginas web. También puede ver información detallada "
+"sobre cómo ha resuelto el equipo la partida."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"Si quiere jugar en papel, puede imprimir los juegos. Puede elegir cuántos "
+"juegos por página quiere imprimir y su nivel de dificultad: el resultado es "
+"que GNOME Sudoku puede convertirse en un libro de Sudokus renovables por "
+"usted mismo."
+
+#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:2
+#: ../data/gnome-sudoku.desktop.in.h:2
 msgid "Test your logic skills in this number grid puzzle"
 msgstr ""
 "Ponga a prueba sus habilidades de lógica en este puzle de rejilla numérica"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:3
+#: ../data/gnome-sudoku.desktop.in.h:3
 msgid "game;board;tiles;japanese;"
 msgstr "juego;tablero;fichas;japonés;"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
+msgid "The number of seconds between automatic saves"
+msgstr "El número de segundos entre guardados automáticos"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
+msgid "Print games that have been played"
+msgstr "Mostrar juegos a los que se ha jugado"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
+msgid "Mark printed games as played"
+msgstr "Marcar los juegos mostrados como jugados"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
+msgid "Width of application window in pixels"
+msgstr "La anchura de la ventana de la aplicación en píxeles."
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
+msgid "Height of application window in pixels"
+msgstr "La altura de la ventana de la aplicación en píxeles."
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
+msgid "Show hint highlights"
+msgstr "Mostrar sugerencias destacadas"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
+msgid "Color of the grid border"
+msgstr "Color del borde de la rejilla"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
+msgid "Show the application toolbar"
+msgstr "Mostrar la barra de herramientas de la aplicación"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
+msgid "Show hints"
+msgstr "Mostrar sugerencias"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
+msgid "Number of puzzles to print on a page"
+msgstr "Número de puzles que imprimir en una página"
 
 #: ../data/print_games.ui.h:1
 msgid "Print Sudokus"
@@ -113,16 +188,7 @@ msgstr "_Ocultar"
 msgid "Hide the tracked values"
 msgstr "Ocultar los valores en seguimiento"
 
-#: ../src/lib/defaults.py:47
-msgid "GNOME Sudoku"
-msgstr "GNOME Sudoku"
-
 #: ../src/lib/defaults.py:50
-#| msgid ""
-#| "GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a "
-#| "Japanese logic puzzle.\n"
-#| "\n"
-#| "GNOME Sudoku is a part of GNOME Games."
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -495,7 +561,7 @@ msgstr "Aplicar todos los valores del seguimiento y quitarlo."
 msgid "Tracker %s"
 msgstr "Seguimiento %s"
 
-#: ../src/lib/number_box.py:68
+#: ../src/lib/number_box.py:82
 msgid "_Clear"
 msgstr "_Limpiar"
 
@@ -517,7 +583,6 @@ msgid "There is no disk space left!"
 msgstr "No hay espacio libre en el disco."
 
 #: ../src/lib/saver.py:163 ../src/lib/saver.py:164
-#| msgid "Error Spectating"
 msgid "Error creating directory"
 msgstr "Error crear la carpeta"
 
@@ -3412,36 +3477,6 @@ msgstr "No se puede marcar la partida como terminada."
 
 #~ msgid "_Use random block colors"
 #~ msgstr "Colores de bloq_ues al azar"
-
-#~ msgid "Color of the grid border"
-#~ msgstr "Color del borde de la rejilla"
-
-#~ msgid "Height of application window in pixels"
-#~ msgstr "La altura de la ventana de la aplicación en píxeles."
-
-#~ msgid "Mark printed games as played"
-#~ msgstr "Marcar los juegos mostrados como jugados"
-
-#~ msgid "Number of puzzles to print on a page"
-#~ msgstr "Número de puzles que imprimir en una página"
-
-#~ msgid "Print games that have been played"
-#~ msgstr "Mostrar juegos a los que se ha jugado"
-
-#~ msgid "Show hint highlights"
-#~ msgstr "Mostrar sugerencias destacadas"
-
-#~ msgid "Show hints"
-#~ msgstr "Mostrar sugerencias"
-
-#~ msgid "Show the application toolbar"
-#~ msgstr "Mostrar la barra de herramientas de la aplicación"
-
-#~ msgid "The number of seconds between automatic saves"
-#~ msgstr "El número de segundos entre guardados automáticos"
-
-#~ msgid "Width of application window in pixels"
-#~ msgstr "La anchura de la ventana de la aplicación en píxeles."
 
 #~ msgid ""
 #~ "The name of the key used to hold still. The name is a standard X key name."
