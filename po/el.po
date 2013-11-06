@@ -30,13 +30,14 @@
 # Michael Kotsarinis <mk73628@hotmail.com>, 2010.
 # George Stefanakis <george.stefanakis@gmail.com>, 2011.
 # Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013.
+# Efstathios Iosifidis <iosifidis@opensuse.org>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.el\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-28 23:15+0000\n"
-"PO-Revision-Date: 2013-03-08 17:12+0300\n"
+"POT-Creation-Date: 2013-10-28 13:18+0000\n"
+"PO-Revision-Date: 2013-11-06 08:08+0300\n"
 "Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
@@ -47,17 +48,93 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+msgid "GNOME Sudoku"
+msgstr "Σουντόκου GNOME"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:2
+msgid ""
+"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
+"make playing Sudoku fun. Games are automatically saved when you quit, and "
+"you can always come back to any game that you've played."
+msgstr ""
+"Το Σουντόκου GNOME έχει μια απλή διεπαφή με όλα τα χαρακτηριστικά που κάνουν "
+"το Σουντόκου διασκεδαστικό. Τα παιχνίδια αποθηκεύονται αυτόματα κατά τον "
+"τερματισμό σας και πάντα μπορείτε να επιστρέψετε στο παιχνίδι που έχετε "
+"αφήσει στη μέση."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites. You can also see detailed information about how the computer "
+"solved the puzzle."
+msgstr ""
+"Κάθε παιχνίδι αντιστοιχεί σε επίπεδο δυσκολίας παρόμοιο με αυτό που δίνεται "
+"στις εφημερίδες και τις ιστοσελίδες. Μπορείτε να δείτε λεπτομερείς "
+"πληροφορίες σχετικά με τον τρόπο που επιλύει ο υπολογιστής τους γρίφους."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"Εάν σας αρέσει να παίξετε σε χαρτί, μπορείτε να εκτυπώσετε τα παιχνίδια. "
+"Μπορείτε να επιλέξετε πόσα παιχνίδια θέλετε να εκτυπώσετε ανά σελίδα και τι "
+"επίπεδο δυσκολίας θέλετε να έχουν: ως αποτέλεσμα, το Σουντόκου GNOME μπορεί "
+"να αποτελέσει ένα ανανεώσιμο βιβλίο Σουντόκου για εσάς."
+
+#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
 msgid "Sudoku"
 msgstr "Σουντόκου"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:2
+#: ../data/gnome-sudoku.desktop.in.h:2
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "Δοκιμάστε τη λογική σας σε αυτό το παιχνίδι με αριθμούς"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:3
+#: ../data/gnome-sudoku.desktop.in.h:3
 msgid "game;board;tiles;japanese;"
 msgstr "παιχνίδι;πίνακας;παραθέσεις;ιαπωνικό;"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
+msgid "The number of seconds between automatic saves"
+msgstr "Δευτερόλεπτα που μεσολαβούν μεταξύ δύο αυτόματων αποθηκεύσεων"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
+msgid "Print games that have been played"
+msgstr "Εκτύπωση παιχνιδιών που έχουν παιχτεί"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
+msgid "Mark printed games as played"
+msgstr "Σημείωση παιχνιδιών που εκτυπώθηκαν ως παιγμένων"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
+msgid "Width of application window in pixels"
+msgstr "Το πλάτος του παραθύρου της εφαρμογής σε pixels"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
+msgid "Height of application window in pixels"
+msgstr "Το ύψος του κυρίως παραθύρου σε pixels."
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
+msgid "Show hint highlights"
+msgstr "Εμφάνιση κυριότερων υποδείξεων"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
+msgid "Color of the grid border"
+msgstr "Χρώμα του περιγράμματος"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
+msgid "Show the application toolbar"
+msgstr "Εμφάνιση της εργαλειοθήκης της εφαρμογής"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
+msgid "Show hints"
+msgstr "Εμφάνιση υποδείξεων"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
+msgid "Number of puzzles to print on a page"
+msgstr "Εμφάνιση αριθμού γρίφων ανά σελίδα"
 
 #: ../data/print_games.ui.h:1
 msgid "Print Sudokus"
@@ -137,20 +214,13 @@ msgstr "Απόκρυ_ψη"
 msgid "Hide the tracked values"
 msgstr "Απόκρυψη των καταγραφόμενων τιμών"
 
-#: ../src/lib/defaults.py:47
-msgid "GNOME Sudoku"
-msgstr "Σουντόκου GNOME"
-
 #: ../src/lib/defaults.py:50
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
-"logic puzzle.\n"
+"The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"Το Σουντόκου GNOME είναι μια απλή μηχανή παραγωγής και αναπαραγωγής "
-"σουντόκου. Το σουντόκου είναι ένα ιαπωνικό πρόβλημα που στηρίζεται στη "
-"λογική.\n"
+"Το δημοφιλέστερο Ιαπωνικό παιχνίδι γρίφων λογικής.\n"
 "\n"
 "Το Σουντόκου GNOME είναι μέρος των παιχνιδιών του GNOME."
 
@@ -159,21 +229,21 @@ msgid "GNOME Games web site"
 msgstr "Ιστοσελίδα των παιχνιδιών του GNOME"
 
 #: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
+#: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Εύκολο"
 
 #: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
+#: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Μεσαίο"
 
 #: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
+#: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Δύσκολο"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
+#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
 msgid "Very hard"
 msgstr "Πολύ δύσκολο"
 
@@ -472,7 +542,7 @@ msgstr "Απαιτούμενες δοκιμές για επίλυση: "
 
 #: ../src/lib/main.py:644 ../src/lib/main.py:645
 msgid "Puzzle Statistics"
-msgstr "Στατιστικά προβλήματος"
+msgstr "Στατιστικά Γρίφων"
 
 #: ../src/lib/main.py:669
 msgid "translator-credits"
@@ -481,7 +551,8 @@ msgstr ""
 "Spiros Papadimitriou <spapadim+@cs.cmu.edu>\n"
 "Συμεών (Σίμος) Ξενιτέλλης <simos@hellug.gr>\n"
 "Κώστας Παπαδήμας <pkst@gmx.net>\n"
-"Τζένη Πετούμενου <epetoumenou@gmail.com>"
+"Τζένη Πετούμενου <epetoumenou@gmail.com>\n"
+"Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>"
 
 #. FIXME: This should create a pop-up dialog
 #: ../src/lib/main.py:679
@@ -518,47 +589,51 @@ msgstr "Εφαρμογή όλων των καταγραφέντων τιμών �
 msgid "Tracker %s"
 msgstr "Μνήμη %s"
 
-#: ../src/lib/number_box.py:68
+#: ../src/lib/number_box.py:82
 msgid "_Clear"
 msgstr "Εκκα_θάριση"
 
-#: ../src/lib/saver.py:155
+#: ../src/lib/saver.py:151
 msgid "No Space"
 msgstr "Δεν υπάρχει χώρος"
 
-#: ../src/lib/saver.py:156
+#: ../src/lib/saver.py:152
 msgid "No space left on disk"
 msgstr "Δεν έχει μείνει χώρος στο δίσκο"
 
-#: ../src/lib/saver.py:158 ../src/lib/saver.py:165
+#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
 #, python-format
 msgid "Unable to create data folder %(path)s."
 msgstr "Αδυναμία δημιουργίας του φακέλου δεδομένων %(path)s."
 
-#: ../src/lib/saver.py:159
+#: ../src/lib/saver.py:155
 msgid "There is no disk space left!"
 msgstr "Δεν υπάρχει διαθέσιμος χώρος στο δίσκο!"
 
-#: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
-#: ../src/lib/saver.py:233
+#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
+msgid "Error creating directory"
+msgstr "Σφάλμα δημιουργίας καταλόγου"
+
+#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
+#: ../src/lib/saver.py:229
 #, python-format
 msgid "Error %(errno)s: %(error)s"
 msgstr "Σφάλμα %(errno)s: %(error)s"
 
-#: ../src/lib/saver.py:186 ../src/lib/saver.py:187
+#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
 msgid "Unable to save game."
 msgstr "Αδυναμία αποθήκευσης του παιχνιδιού."
 
-#: ../src/lib/saver.py:189 ../src/lib/saver.py:214 ../src/lib/saver.py:232
+#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
 #, python-format
 msgid "Unable to save file %(filename)s."
 msgstr "Αδυναμία αποθήκευσης αρχείου %(filename)s."
 
-#: ../src/lib/saver.py:211 ../src/lib/saver.py:212
+#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
 msgid "Unable to mark game as finished."
 msgstr "Αδυναμία σημείωσης παιχνιδιού ως ολοκληρωμένο."
 
-#: ../src/lib/saver.py:229 ../src/lib/saver.py:230
+#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
 msgid "Sudoku unable to mark game as finished."
 msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει το παιχνίδι ως ολοκληρωμένο."
 
@@ -717,9 +792,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 
 #~ msgid "Piece Style:"
 #~ msgstr "Στυλ κομματιών:"
-
-#~ msgid "Show _History"
-#~ msgstr "Προβολή ι_στορικού"
 
 #~ msgid "_Move Hints"
 #~ msgstr "Υπόδειξη _κινήσεων"
@@ -1257,12 +1329,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 #~ msgid "Game preview from last saved session."
 #~ msgstr "Προεπισκόπηση παιχνιδιού από την τελευταία αποθηκευμένη συνεδρία."
 
-#~ msgid "Width of the window in pixels"
-#~ msgstr "Το πλάτος του παραθύρου σε εικονοστοιχεία"
-
-#~ msgid "Height of the window in pixels"
-#~ msgstr "Το ύψος του παραθύρου σε εικονοστοιχεία"
-
 #~ msgid "true if the window is maximized"
 #~ msgstr "αληθής αν το παράθυρο είναι μεγιστοποιημένο"
 
@@ -1723,9 +1789,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 #~ msgid "Size of game tiles."
 #~ msgstr "Μέγεθος των πλακιδίων του παιχνιδιού."
 
-#~ msgid "Color to use for worm"
-#~ msgstr "Χρώμα που θα χρησιμοποιείται για το σκουλήκι"
-
 #~ msgid "Color to use for worm."
 #~ msgstr "Χρώμα που θα χρησιμοποιείται για το σκουλήκι."
 
@@ -2181,9 +2244,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 #~ msgid "_Toolbar"
 #~ msgstr "_Γραμμή εργαλείων"
 
-#~ msgid "Show or hide the toolbar"
-#~ msgstr "Προβολή ή απόκρυψη της εργαλειοθήκης"
-
 #~ msgid ""
 #~ "Based on classic BSD Robots.\n"
 #~ "\n"
@@ -2402,9 +2462,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 #~ msgid "Number of rows in a custom game"
 #~ msgstr "Αριθμός γραμμών σε προσαρμοσμένο παιχνίδι"
 
-#~ msgid "The number of mines in a custom game"
-#~ msgstr "Ο αριθμός των ναρκών σε ένα προσαρμοσμένο παιχνίδι"
-
 #~ msgid "Board size"
 #~ msgstr "Μέγεθος ταμπλό"
 
@@ -2475,9 +2532,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 
 #~ msgid "_Use \"I'm not sure\" flags"
 #~ msgstr "Χρήση των σημάνσεων \"Δεν είμαι σίγουρος/η\""
-
-#~ msgid "_Warn if too many flags have been placed"
-#~ msgstr "Π_ροειδοποίησε αν έχουν τοποθετηθεί πολλές σημαίες"
 
 #~ msgid "%u × %u, %u mine"
 #~ msgid_plural "%u × %u, %u mines"
