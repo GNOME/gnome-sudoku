@@ -1,4 +1,4 @@
-AC_INIT(gnome-sudoku, 3.11.1)
+AC_INIT([gnome-sudoku],[3.11.1])
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
 AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE([enable])
@@ -38,7 +38,7 @@ dnl ###########################################################################
 dnl Files to generate
 dnl ###########################################################################
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 po/Makefile.in
 data/Makefile
@@ -51,3 +51,4 @@ src/lib/Makefile
 src/lib/defs.py
 src/lib/gtk_goodies/Makefile
 ])
+AC_OUTPUT
