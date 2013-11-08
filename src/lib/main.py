@@ -15,6 +15,7 @@ import game_selector
 import gsudoku
 import printing
 import saver
+import signal
 import sudoku_maker
 import timer
 import tracker_info
@@ -965,6 +966,9 @@ class TrackerBox (Gtk.VBox):
 def start_game ():
     if options.debug:
         print 'Starting GNOME Sudoku in debug mode'
+
+    # Quick fix for bug #703169
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
 
     ##  You must call g_thread_init() before executing any other GLib
     ##  functions in a threaded GLib program.
