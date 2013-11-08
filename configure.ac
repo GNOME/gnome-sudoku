@@ -6,7 +6,7 @@ GNOME_MAINTAINER_MODE_DEFINES
 
 GLIB_GSETTINGS
 
-AM_PATH_PYTHON([3.0],,AC_MSG_ERROR([Python not found]))
+AM_PATH_PYTHON([3.2],,AC_MSG_ERROR([Python not found]))
 
 dnl ###########################################################################
 dnl Dependencies

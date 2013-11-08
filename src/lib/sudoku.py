@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import functools
 import random
 import math
 import re
@@ -445,8 +446,9 @@ class SudokuSolver (SudokuGrid):
                 print('Solved!')
             return True
         # otherwise, find the possibility with the least possibilities
-        poss.sort(lambda a, b: len(a[1]) > len(b[1]) and 1 or len(a[1]) < len(b[1]) and -1 or \
-                  a[0] > b[0] and 1 or a[1] < b[1] and -1 or 0)
+        poss.sort(key=functools.cmp_to_key(lambda a, b: len(a[1]) > len(b[1]) \
+                                  and 1 or len(a[1]) < len(b[1]) and -1 or \
+                                  a[0] > b[0] and 1 or a[1] < b[1] and -1 or 0))
         least = poss[0]
         # remove anything we've already guessed
         possible_values = least[1] - self.guesses.guesses_for_coord(*least[0])
