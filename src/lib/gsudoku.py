@@ -33,13 +33,13 @@ class SudokuNumberGrid (Gtk.AspectFrame):
         self.eb = Gtk.EventBox()
         self.eb.add(self.table)
         self.add(self.eb)
-        self.table.set_row_spacings(1)
-        self.table.set_col_spacings(1)
+        self.table.set_row_spacings(2)
+        self.table.set_col_spacings(2)
         box_side = int(math.sqrt(self.group_size))
         for n in range(1, box_side):
-            self.table.set_row_spacing(box_side*n-1, 2)
-            self.table.set_col_spacing(box_side*n-1, 2)
-        self.table.set_border_width(2)
+            self.table.set_row_spacing(box_side*n-1, 4)
+            self.table.set_col_spacing(box_side*n-1, 4)
+        self.table.set_border_width(4)
         self.show_all()
 
     def set_parent_for(self, parent):
