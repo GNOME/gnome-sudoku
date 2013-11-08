@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os.path
+import signal
 import threading
 
 import gi
@@ -19,7 +20,6 @@ from . import sudoku_maker
 from . import timer
 from . import tracker_info
 from .defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION, DOMAIN,
-        IMAGE_DIR, MIN_NEW_PUZZLES, UI_DIR, VERSION, WEBSITE, WEBSITE_LABEL)
 from .gtk_goodies import Undo, dialog_extras
 from .simple_debug import simple_debug, options
 
@@ -965,6 +965,9 @@ class TrackerBox (Gtk.VBox):
 def start_game ():
     if options.debug:
         print('Starting GNOME Sudoku in debug mode')
+
+    # Quick fix for bug #703169
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
 
     ##  You must call g_thread_init() before executing any other GLib
     ##  functions in a threaded GLib program.
