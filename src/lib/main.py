@@ -20,6 +20,7 @@ from . import sudoku_maker
 from . import timer
 from . import tracker_info
 from .defaults import (APPNAME, APPNAME_SHORT, AUTHORS, COPYRIGHT, DESCRIPTION, DOMAIN,
+                       IMAGE_DIR, MIN_NEW_PUZZLES, UI_DIR, VERSION, WEBSITE, WEBSITE_LABEL)
 from .gtk_goodies import Undo, dialog_extras
 from .simple_debug import simple_debug, options
 
