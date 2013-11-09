@@ -603,9 +603,9 @@ public class SudokuView : Gtk.AspectFrame
         grid = new Gtk.Grid ();
         grid.row_spacing = 1;
         grid.column_spacing = 1;
-        grid.border_width = 2;
-        grid.column_homogeneous = true;
-        grid.row_homogeneous = true;
+        grid.border_width = 3;
+        grid.column_homogeneous = false;
+        grid.row_homogeneous = false;
 
         cells = new SudokuCellView[game.board.rows, game.board.cols];
         for (var row = 0; row < game.board.rows; row++)
@@ -666,6 +666,15 @@ public class SudokuView : Gtk.AspectFrame
 
                 cells[row, col] = cell;
                 cell.show ();
+
+                if (col != 0 && (col % game.board.block_rows) == 0)
+                {
+                    cell.set_margin_left ((int) grid.border_width);
+                }
+                if (row != 0 && (row % game.board.block_cols) == 0)
+                {
+                    cell.set_margin_top ((int) grid.border_width);
+                }
                 grid.attach (cell, col, row, 1, 1);
 
             }
