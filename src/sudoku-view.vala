@@ -667,11 +667,11 @@ public class SudokuView : Gtk.AspectFrame
                 cells[row, col] = cell;
                 cell.show ();
 
-                if (col != 0 && (col % game.board.block_rows) == 0)
+                if (col != 0 && (col % game.board.block_cols) == 0)
                 {
                     cell.set_margin_left ((int) grid.border_width);
                 }
-                if (row != 0 && (row % game.board.block_cols) == 0)
+                if (row != 0 && (row % game.board.block_rows) == 0)
                 {
                     cell.set_margin_top ((int) grid.border_width);
                 }
