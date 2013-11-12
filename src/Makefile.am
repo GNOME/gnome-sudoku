@@ -14,6 +14,7 @@ gnome_sudoku_SOURCES = \
 	logical-sudoku-solver.vala \
 	sudoku-view.vala \
 	number-picker.vala \
+	sudoku-printer.vala \
 	$(BUILT_SOURCES)
 
 gnome_sudoku_CFLAGS = \

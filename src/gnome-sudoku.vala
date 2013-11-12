@@ -458,7 +458,11 @@ public class Sudoku : Gtk.Application
 
     public void print_cb ()
     {
-        stdout.printf ("TODO: Print\n");
+        if (game_box.visible)
+        {
+            SudokuPrinter printer = new SudokuPrinter (game.board.clone (), ref window);
+            printer.print_sudoku ();
+        }
     }
 
     public void print_multiple_cb ()
