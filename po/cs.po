@@ -23,8 +23,8 @@ msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-28 23:15+0000\n"
-"PO-Revision-Date: 2013-02-17 22:07+0100\n"
+"POT-Creation-Date: 2013-08-18 14:52+0000\n"
+"PO-Revision-Date: 2013-08-16 09:33+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -89,11 +89,11 @@ msgstr "Podrobnosti"
 
 #: ../data/print_games.ui.h:11
 msgid "_Mark games as played once you've printed them."
-msgstr "O_značit hry za odehrané, pokud jsou vytištěny."
+msgstr "O_značit hry za odehrané, pokud jsou vytištěny"
 
 #: ../data/print_games.ui.h:12
 msgid "_Include games you've already played in list of games to print"
-msgstr "Zahrnout do seznamu her k vytištění i hry, které jste j_iž hráli"
+msgstr "Zahrnout do t_ištěných her i ty, které jste již hráli"
 
 #: ../data/select_game.ui.h:1
 msgid "_New Game"
@@ -129,13 +129,11 @@ msgstr "GNOME Sudoku"
 
 #: ../src/lib/defaults.py:50
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
-"logic puzzle.\n"
+"The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"GNOME Sudoku je jednoduchý program pro generování a hraní sudoku. Sudoku je "
-"japonská logická hra.\n"
+"Populární japonský hlavolam\n"
 "\n"
 "GNOME Sudoku je součástí her GNOME."
 
@@ -144,21 +142,21 @@ msgid "GNOME Games web site"
 msgstr "Webové stránky her GNOME"
 
 #: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
+#: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Jednoduché"
 
 #: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
+#: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Střední"
 
 #: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
+#: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Těžké"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
+#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
 msgid "Very hard"
 msgstr "Velmi těžké"
 
@@ -346,7 +344,7 @@ msgstr "Označit nově vyplněná čísla jinou barvou, takže je můžete sledo
 
 #: ../src/lib/main.py:239
 msgid "Show _Toolbar"
-msgstr "Zobrazi_t lištu nástrojů"
+msgstr "Zobrazi_t nástrojovou lištu"
 
 #: ../src/lib/main.py:240
 msgid "_Highlighter"
@@ -520,7 +518,7 @@ msgstr "Sledování %s"
 
 #: ../src/lib/number_box.py:68
 msgid "_Clear"
-msgstr "Vyči_stit"
+msgstr "Vy_mazat"
 
 #: ../src/lib/saver.py:155
 msgid "No Space"
@@ -538,6 +536,10 @@ msgstr "Nelze vytvořit datovou složku %(path)s."
 #: ../src/lib/saver.py:159
 msgid "There is no disk space left!"
 msgstr "Nedostatek místa na disku!"
+
+#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+msgid "Error creating directory"
+msgstr "Chyba při vytváření složky"
 
 #: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
 #: ../src/lib/saver.py:233

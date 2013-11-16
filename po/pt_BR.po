@@ -1,6 +1,6 @@
-# Brazilian Portuguese translation of gnome-games.
+# Brazilian Portuguese translation of gnome-sudoku.
 # Copyright (C) 1999-2013 Free Software Foundation, Inc.
-# This file is distributed under the same license as the gnome-games package.
+# This file is distributed under the same license as the gnome-sudoku package.
 # Sandro Nunes Henrique <sandro@conectiva.com.br>, 1999.
 # Cândida Nunes da Silva <candida@zaz.com.br>, 2000-2001.
 # Gustavo Noronha Silva <kov@debian.org>, 2002.
@@ -21,22 +21,23 @@
 # Rodrigo Padula de Oliveira <contato@rodrigopadula.com>, 2011.
 # Flamarion Jorge <jorge.flamarion@gmail.com>, 2011.
 # Djavan Fagundes <djavan@comum.org>, 2012.
+# Rafael Ferreira <rafael.f.f1@gmail.com>, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-games\n"
+"Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-07 12:07+0000\n"
-"PO-Revision-Date: 2013-03-07 15:40-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2013-08-18 14:57+0000\n"
+"PO-Revision-Date: 2013-08-18 21:23-0300\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
@@ -133,13 +134,11 @@ msgstr "GNOME Sudoku"
 
 #: ../src/lib/defaults.py:50
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
-"logic puzzle.\n"
+"The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"GNOME Sudoku é um jogo simples de sudoku . Sudoku é um quebra-cabeças "
-"japonês.\n"
+"O popular quebra-cabeças japonês de lógica.\n"
 "\n"
 "GNOME Sudoku faz parte do GNOME Games."
 
@@ -148,21 +147,21 @@ msgid "GNOME Games web site"
 msgstr "Site do GNOME Games"
 
 #: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
+#: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Fácil"
 
 #: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
+#: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Médio"
 
 #: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
+#: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Difícil"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
+#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
 msgid "Very hard"
 msgstr "Muito difícil"
 
@@ -535,6 +534,10 @@ msgstr "Não foi possível criar a pasta de dados %(path)s."
 #: ../src/lib/saver.py:159
 msgid "There is no disk space left!"
 msgstr "Não há mais espaço no disco!"
+
+#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+msgid "Error creating directory"
+msgstr "Erro ao criar o diretório"
 
 #: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
 #: ../src/lib/saver.py:233

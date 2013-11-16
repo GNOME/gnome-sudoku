@@ -1,4 +1,4 @@
-AC_INIT(gnome-sudoku, 3.8.0)
+AC_INIT([gnome-sudoku],[3.11.2])
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
 AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE([enable])
@@ -21,6 +21,9 @@ PKG_CHECK_MODULES(GNOME_SUDOKU, [
   gee-1.0
 ])
 
+AC_PATH_PROG([APPDATA_VALIDATE], [appdata-validate], [/bin/true])
+AC_PATH_PROG([DESKTOP_FILE_VALIDATE], [desktop-file-validate], [/bin/true])
+
 dnl ###########################################################################
 dnl GResources
 dnl ###########################################################################
@@ -31,7 +34,7 @@ dnl ###########################################################################
 dnl Internationalization
 dnl ###########################################################################
 
-IT_PROG_INTLTOOL([0.35.0])
+IT_PROG_INTLTOOL([0.50])
 AC_SUBST(GETTEXT_PACKAGE, gnome-sudoku)
 
 dnl ###########################################################################
@@ -44,15 +47,15 @@ dnl ###########################################################################
 dnl Files to generate
 dnl ###########################################################################
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 po/Makefile.in
 data/Makefile
 data/icons/Makefile
 data/icons/hicolor/Makefile
 data/icons/HighContrast/Makefile
-data/gnome-sudoku.desktop.in
 help/Makefile
 src/Makefile
 src/gnome-sudoku.gresource.xml
 ])
+AC_OUTPUT

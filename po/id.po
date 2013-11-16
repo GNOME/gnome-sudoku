@@ -7,11 +7,11 @@
 # Dirgita <dirgitadevina@yahoo.co.id>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-sudoku gnome-3-8\n"
+"Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-27 16:36+0000\n"
-"PO-Revision-Date: 2013-05-05 18:54+0700\n"
+"POT-Creation-Date: 2013-08-18 14:52+0000\n"
+"PO-Revision-Date: 2013-09-16 19:41+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id_ID\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Rosetta-Export-Date: 2007-04-23 05:58:10+0000\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
 msgid "Sudoku"
@@ -117,36 +117,34 @@ msgstr "GNOME Sudoku"
 
 #: ../src/lib/defaults.py:50
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
-"logic puzzle.\n"
+"The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"GNOME Sudoku adalah pembuat dan tempat memainkan Sudoku yang sederhana. "
-"Sudoku adalah teka-teki logika Jepang.\n"
+"Teka-teki logika Jepang yang populer\n"
 "\n"
-"GNOME Sudoku adalah bagian dari GNOME Games."
+"GNOME Sudoku adalah bagian dari Permainan GNOME."
 
 #: ../src/lib/defaults.py:53
 msgid "GNOME Games web site"
-msgstr "Situa web Permainan GNOME"
+msgstr "Situs web Permainan GNOME"
 
 #: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
+#: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Mudah"
 
 #: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
+#: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Sedang"
 
 #: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
+#: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Sulit"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
+#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
 msgid "Very hard"
 msgstr "Sangat sulit"
 
@@ -497,6 +495,10 @@ msgstr "Tidak dapat membuat folder data %(path)s."
 #: ../src/lib/saver.py:159
 msgid "There is no disk space left!"
 msgstr "Tidak ada ruang tersisa dalam disk!"
+
+#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+msgid "Error creating directory"
+msgstr "Galat saat membuat direktori"
 
 #: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
 #: ../src/lib/saver.py:233

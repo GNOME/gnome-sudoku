@@ -1,3 +1,8 @@
 SUBDIRS = data help po src
 
+MAINTAINERCLEANFILES = \
+	$(GITIGNORE_MAINTAINERCLEANFILES_TOPLEVEL) \
+	$(GITIGNORE_MAINTAINERCLEANFILES_MAKEFILE_IN) \
+	py-compile
+
 -include $(top_srcdir)/git.mk

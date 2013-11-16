@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-17 18:37+0100\n"
-"PO-Revision-Date: 2013-02-17 18:38+0100\n"
+"POT-Creation-Date: 2013-08-20 21:55+0200\n"
+"PO-Revision-Date: 2013-08-20 21:58+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -128,12 +128,11 @@ msgstr "GNOME Sudoku"
 
 #: ../src/lib/defaults.py:50
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
-"logic puzzle.\n"
+"The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"GNOME Sudoku to prosty generator japońskich łamigłówek sudoku.\n"
+"Popularne japońskie łamigłówki logiczne\n"
 "\n"
 "Gra GNOME Sudoku jest częścią gier GNOME."
 
@@ -142,21 +141,21 @@ msgid "GNOME Games web site"
 msgstr "Witryna gier GNOME"
 
 #: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
+#: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Łatwy"
 
 #: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
+#: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Średni"
 
 #: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
+#: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Trudny"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
+#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
 msgid "Very hard"
 msgstr "Bardzo trudny"
 
@@ -181,17 +180,17 @@ msgstr[2] "Ostatni raz grano %(n)s minut temu"
 #. Translators, see strftime manual in order to translate %? format strings
 #: ../src/lib/game_selector.py:168
 msgid "Last played at %I:%M %p"
-msgstr "Ostatni raz grano %H:%M"
+msgstr "Ostatni raz grano %H∶%M"
 
 #. Translators, see strftime manual in order to translate %? format strings
 #: ../src/lib/game_selector.py:171
 msgid "Last played yesterday at %I:%M %p"
-msgstr "Ostatni raz grano wczoraj o %H:%M"
+msgstr "Ostatni raz grano wczoraj o %H∶%M"
 
 #. Translators, see strftime manual in order to translate %? format strings
 #: ../src/lib/game_selector.py:174
 msgid "Last played on %A at %I:%M %p"
-msgstr "Ostatni raz grano w %A o %H:%M"
+msgstr "Ostatni raz grano w %A o %H∶%M"
 
 #. Translators, see strftime manual in order to translate %? format strings
 #: ../src/lib/game_selector.py:177
@@ -449,12 +448,10 @@ msgstr "Oszacowana trudność: "
 msgid "Very Hard"
 msgstr "Bardzo trudny"
 
-# jm: sudoku, game statistics
 #: ../src/lib/main.py:635
 msgid "Number of moves instantly fillable by elimination: "
 msgstr "Liczba pól do wypełnienia od razu, dzięki eliminacji: "
 
-# jm: sudoku, game statistics
 #: ../src/lib/main.py:638
 msgid "Number of moves instantly fillable by filling: "
 msgstr "Liczba pól do wypełnienia od razu, dzięki już wypełnionym: "
@@ -539,6 +536,10 @@ msgstr "Nie można utworzyć katalogu z danymi %(path)s."
 #: ../src/lib/saver.py:159
 msgid "There is no disk space left!"
 msgstr "Brak miejsca na dysku."
+
+#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+msgid "Error creating directory"
+msgstr "Błąd podczas tworzenia katalogu"
 
 #: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
 #: ../src/lib/saver.py:233

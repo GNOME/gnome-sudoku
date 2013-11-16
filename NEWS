@@ -1,3 +1,51 @@
+3.11.2 - November 16, 2013
+==========================
+
+Updated Dependencies: python >= 3.2
+
+WARNING: Python 3 programs are currently incompatible with jhbuild.
+For a workaround, see https://bugzilla.gnome.org/show_bug.cgi?id=688353#c2
+
+* Port to Python 3 (Dmitrijs Ledkovs)
+* Thicken 3x3 grids (Pooja Prakash)
+* Exit on SIGINT (Michael Catanzaro)
+* Updated translations
+
+3.11.1 - October 27, 2013
+=========================
+
+Updated Dependencies: intltool >= 0.50
+
+* Appdata is now translatable
+* Updated translations
+
+GNOME Sudoku 3.10.0
+===================
+
+* Translation updates
+
+GNOME Sudoku 3.9.92
+===================
+
+* Fix everything being initially hidden
+* Fix a crash when clearing notes
+* Slightly improve the look of the number pad
+* Fix the high contrast icon
+* Add an appdata file for GNOME Software
+* Translation updates
+
+GNOME Sudoku 3.9.90
+===================
+
+* Fix running uninstalled
+* Fix NumberBox events configuration with latest pygobject
+* Game no longer disappears when opening "print multiple sudokus" in fullscreen
+* Reduce the width of the About dialog
+* Don't use deprecated GObject.timeout_add_seconds
+* Use /usr/bin/python instead of /usr/bin/env/python
+* Fix some broken links in user help
+* Translation updates
+
 gnome-sudoku 3.8.0
 ==================
 

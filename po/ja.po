@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games gnome-2-32\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-02-17 21:09+0000\n"
-"PO-Revision-Date: 2013-02-15 23:01+0900\n"
+"POT-Creation-Date: 2013-08-18 14:52+0000\n"
+"PO-Revision-Date: 2013-09-16 13:27+0900\n"
 "Last-Translator: Jiro Matsuzawa <jmatsuzawa@gnome.org>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -23,7 +23,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
 msgid "Sudoku"
@@ -35,7 +34,7 @@ msgstr "あなたの思考能力を番号の付いたマス目のパズルでテ
 
 #: ../data/gnome-sudoku.desktop.in.in.h:3
 msgid "game;board;tiles;japanese;"
-msgstr "game;board;tiles;japanese;ゲーム;ボード;タイル;日本;"
+msgstr "game;board;tiles;japanese;ゲーム;ボード;タイル;日本;logic;ロジック;論理;puzzle;パズル;sudoku;ナンバープレース;ナンプレ;"
 
 #: ../data/print_games.ui.h:1
 msgid "Print Sudokus"
@@ -119,12 +118,11 @@ msgstr "GNOME 数独"
 
 #: ../src/lib/defaults.py:50
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese logic puzzle.\n"
+"The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"GNOME 数独は数独のパターンを生成しゲームとして提供します。\n"
-"数独は日本で生まれた思考型のパズルです。\n"
+"日本生まれのポピュラーな論理パズル\n"
 "\n"
 "GNOME 数独は GNOME ゲーム集の一部です。"
 
@@ -133,21 +131,21 @@ msgid "GNOME Games web site"
 msgstr "GNOME ゲーム集のウェブサイト"
 
 #: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
+#: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "初級"
 
 #: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
+#: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "中級"
 
 #: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
+#: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "上級"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
+#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
 msgid "Very hard"
 msgstr "超難問"
 
@@ -503,6 +501,10 @@ msgstr "データフォルダー %(path)s を作成できませんでした。"
 #: ../src/lib/saver.py:159
 msgid "There is no disk space left!"
 msgstr "ディスクに空き容量がありません!"
+
+#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+msgid "Error creating directory"
+msgstr "フォルダー作成時にエラー"
 
 #: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
 #: ../src/lib/saver.py:233

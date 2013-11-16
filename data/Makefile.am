@@ -1,14 +1,17 @@
 SUBDIRS = icons
 
-gsettings_in_file = org.gnome.gnome-sudoku.gschema.xml.in
-gsettings_SCHEMAS = $(gsettings_in_file:.xml.in=.xml)
-@INTLTOOL_XML_NOMERGE_RULE@
+gsettings_SCHEMAS = org.gnome.gnome-sudoku.gschema.xml
 @GSETTINGS_RULES@
 
 desktopdir = $(datadir)/applications
-desktop_in_files = gnome-sudoku.desktop.in.in
-desktop_DATA = $(desktop_in_files:.desktop.in.in=.desktop)
+desktop_in_files = gnome-sudoku.desktop.in
+desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
+
+appdatadir = $(datadir)/appdata
+appdata_in_files = gnome-sudoku.appdata.xml.in
+appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+@INTLTOOL_XML_RULE@
 
 pixmapdir = $(datadir)/gnome-sudoku/images/
 pixmap_DATA = footprints.png
@@ -27,18 +30,19 @@ man_MANS = gnome-sudoku.6
 
 EXTRA_DIST = \
 	$(pixmap_DATA)	\
-	$(desktop_DATA)	\
+	$(desktop_in_files) \
+	$(appdata_in_files)	\
 	$(puzzle_DATA)	\
 	$(ui_DATA)	\
-	$(gsettings_in_file) \
+	$(gsettings_SCHEMAS) \
 	$(man_MANS)
 
 CLEANFILES = \
-	$(desktop_DATA) \
-	$(gsettings_SCHEMAS)
+	$(appdata_DATA) \
+	$(desktop_DATA)
 
-DISTCLEANFILES = \
-	$(desktop_DATA) \
-	$(gsettings_SCHEMAS)
+check-local: $(appdata_DATA) $(desktop_DATA)
+	$(APPDATA_VALIDATE) $(appdata_DATA)
+	$(DESKTOP_FILE_VALIDATE) $(desktop_DATA)
 
 -include $(top_srcdir)/git.mk

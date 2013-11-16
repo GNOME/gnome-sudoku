@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-30 21:44+0000\n"
-"PO-Revision-Date: 2013-01-31 22:31+0100\n"
+"POT-Creation-Date: 2013-09-12 07:24+0000\n"
+"PO-Revision-Date: 2013-09-12 13:19+0200\n"
 "Last-Translator: Ján Kyselica <kyselica.jan@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -117,13 +117,11 @@ msgstr "GNOME Sudoku"
 
 #: ../src/lib/defaults.py:50
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
-"logic puzzle.\n"
+"The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"GNOME Sudoku je jednoduchá aplikácia na generovanie a hranie Sudoku. Sudoku "
-"je japonský logický hlavolam.\n"
+"Populárny japonský logický hlavolam\n"
 "\n"
 "GNOME Sudoku je súčasťou Hier GNOME."
 
@@ -132,21 +130,21 @@ msgid "GNOME Games web site"
 msgstr "Webové stránky Hier GNOME"
 
 #: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
+#: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Ľahká"
 
 #: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
+#: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Stredná"
 
 #: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
+#: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Ťažká"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
+#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
 msgid "Very hard"
 msgstr "Veľmi ťažká"
 
@@ -265,21 +263,22 @@ msgstr "_Opakovať vrátené"
 msgid "Redo last action"
 msgstr "Zopakuje vrátenú akciu"
 
+
 #: ../src/lib/main.py:203
 msgid "Puzzle _Statistics..."
-msgstr "Š_tatistiky o hlavolame..."
+msgstr "Š_tatistiky o _hlavolame…"
 
 #: ../src/lib/main.py:205
 msgid "_Print..."
-msgstr "_Tlačiť..."
+msgstr "_Tlačiť…"
 
 #: ../src/lib/main.py:206
 msgid "Print _Multiple Sudokus..."
-msgstr "Vytlačiť _viacero sudoku..."
+msgstr "Vytlačiť _viacero sudoku…"
 
 #: ../src/lib/main.py:209
 msgid "_Settings"
-msgstr "_Nastavenia"
+msgstr "Nas_tavenia"
 
 #: ../src/lib/main.py:211
 msgid "_Tools"
@@ -458,7 +457,7 @@ msgstr "Štatistiky o hlavolame"
 #: ../src/lib/main.py:669
 msgid "translator-credits"
 msgstr ""
-"Stanislav Višňovský (visnovsky@nenya.ms.mff.cuni.cz)\n"
+"Stanislav Višňovský <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Marcel Telka <marcel@telka.sk>\n"
 "Peter Mráz <etkinator@gmail.com>\n"
 "Ján Kyselica <kyselica.jan@gmail.com>"
@@ -498,7 +497,7 @@ msgstr "Použije všetky sledované hodnoty a odstráni sledovanie."
 msgid "Tracker %s"
 msgstr "Sledovanie %s"
 
-#: ../src/lib/number_box.py:68
+#: ../src/lib/number_box.py:82
 msgid "_Clear"
 msgstr "_Zmazať"
 
@@ -518,6 +517,10 @@ msgstr "Nie je možné vytvoriť dátový priečinok %(path)s."
 #: ../src/lib/saver.py:159
 msgid "There is no disk space left!"
 msgstr "Na disku nezostalo žiadne voľné miesto!"
+
+#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+msgid "Error creating directory"
+msgstr "Chyba pri vytváraní adresára"
 
 #: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
 #: ../src/lib/saver.py:233
@@ -541,136 +544,3 @@ msgstr "Nie je možné označiť hru za dokončenú."
 #: ../src/lib/saver.py:229 ../src/lib/saver.py:230
 msgid "Sudoku unable to mark game as finished."
 msgstr "Sudoku nemôže označiť hru za dokončenú."
-
-#~ msgid "Chess"
-#~ msgstr "Šach"
-
-#~ msgid "Play the classic two-player boardgame of chess"
-#~ msgstr "Hrajte klasický stolný šach pre dvoch hráčov"
-
-#~ msgid "_Undo Move"
-#~ msgstr "_Vrátiť ťah"
-
-#~ msgid "_Resign"
-#~ msgstr "V_zdať sa"
-
-#~ msgid "Claim _Draw"
-#~ msgstr "Navrhnúť _remízu"
-
-#~ msgid "Start a new game"
-#~ msgstr "Začať novú hru"
-
-#~ msgid "New Game"
-#~ msgstr "Nová hra"
-
-#~ msgid "Undo Move"
-#~ msgstr "Vrátiť ťah"
-
-#~ msgid "Resign"
-#~ msgstr "Vzdať sa"
-
-#~ msgid "Rewind to the game start"
-#~ msgstr "Presunie hru na začiatok"
-
-#~ msgid "Show the previous move"
-#~ msgstr "Ukáže predchádzajúci ťah"
-
-#~ msgid "Show the next move"
-#~ msgstr "Ukáže ďalší ťah"
-
-#~ msgid "Show the current move"
-#~ msgstr "Ukáže aktuálny stav hry"
-
-#~ msgid "The width of the window"
-#~ msgstr "Šírka okna"
-
-#~ msgid "The width of the main window in pixels."
-#~ msgstr "Šírka hlavného okna v pixeloch."
-
-#~ msgid "The height of the window"
-#~ msgstr "Výška okna"
-
-#~ msgid "The height of the main window in pixels."
-#~ msgstr "Výška hlavného okna v pixeloch."
-
-#~ msgid "A flag to enable maximized mode"
-#~ msgstr "Príznak povoľujúci režim maximalizovaného okna"
-
-#~ msgid "A flag to enable fullscreen mode"
-#~ msgstr "Príznak povoľujúci režim zobrazenia na celú obrazovku"
-
-#~ msgid "The piece to promote pawns to"
-#~ msgstr "Figúrka, na ktorú premieňať pešiakov"
-
-#~ msgid ""
-#~ "The piece to promote to when a human player moves a pawn to the far rank"
-#~ msgstr ""
-#~ "Figúrka, na ktorú sa premení pešiak, keď ho hráč posunie na posledné pole"
-
-#~ msgid "A flag to enable 3D mode"
-#~ msgstr "Príznak povoľujúci 3D režim"
-
-#~ msgid "A flag to smooth (anti-alias) the 3D display"
-#~ msgstr "Príznak vyhladzujúci (anti-alias) 3D zobrazenie"
-
-#~ msgid "The piece theme to use"
-#~ msgstr "Téma figúrok, ktorá sa má použiť"
-
-#~ msgid "A flag to enable move hints"
-#~ msgstr "Príznak povoľujúci zobrazenie možných ťahov"
-
-#~ msgid "A flag to enable board numbering"
-#~ msgstr "Príznak povoľujúci číslovanie šachovnice"
-
-#~ msgid "A flag to enable the move history browser"
-#~ msgstr "Príznak povoľujúci prechádzať históriou ťahov"
-
-#~ msgid "A flag to enable the toolbar"
-#~ msgstr "Príznak povoľujúci lištu nástrojov"
-
-#~ msgid "The directory to open the save game dialog in"
-#~ msgstr "Adresár, ktorý sa má otvoriť v dialógovom okne na uloženie hry"
-
-#~ msgid "The directory to open the load game dialog in"
-#~ msgstr "Adresár, ktorý sa má otvoriť v dialógovom okne na nahranie hry"
-
-#~ msgid "The format to display moves in"
-#~ msgstr "Formát zobrazenia ťahov"
-
-#~ msgid "The side of the board that is in the foreground"
-#~ msgstr "Strana šachovnice, ktorá je vpredu"
-
-#~ msgid "The duration of a game in seconds (0 for no limit)"
-#~ msgstr "Trvanie hry v sekundách (0 znamená bez obmedzenia)"
-
-#~ msgid "true if the human player is playing white"
-#~ msgstr "true, ak človek hrá bielymi figúrkami"
-
-#~ msgid "The opponent player"
-#~ msgstr "Protihráč"
-
-#~ msgid ""
-#~ "Can be 'human' (play against another human player), '' (use the first "
-#~ "available chess engine) or the name of a specific engine to play against"
-#~ msgstr ""
-#~ "Môže byť 'human' (hra proti druhému človeku v úlohe protihráča), "
-#~ "'' (použije prvý dostupný šachový stroj) alebo názov konkrétneho "
-#~ "šachového stroja, proti ktorému sa bude hrať"
-
-#~ msgid "Difficulty of the opponent chess engine"
-#~ msgstr "Obtiažnosť šachového stroja v úlohe protihráča"
-
-#~ msgid "Preferences"
-#~ msgstr "Nastavenia"
-
-#~ msgid "Play as:"
-#~ msgstr "Hrá ako:"
-
-#~ msgid "Opposing Player:"
-#~ msgstr "Protihráč:"
-
-#~ msgid "Difficulty:"
-#~ msgstr "Obtiažnosť:"
-
-#~ msgid "Game Duration:"
-#~ msgstr "Trvanie hry:"

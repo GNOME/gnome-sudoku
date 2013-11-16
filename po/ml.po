@@ -8,14 +8,14 @@
 # Mohammed Sadik pk <sadiqpkp@gmail.com>, 2012.
 # Nandaja Varma <nandaja.varma@gmail.com>, 2013.
 # Anish A <aneesh.nl@gmail.com>, 2013.
+# Shafeeq K <shafeeq94@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.master.ml\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-17 18:26+0000\n"
-"PO-Revision-Date: 2013-04-23 23:44+0530\n"
-"Last-Translator: Anish A <aneesh.nl@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-sudoku&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-10-28 13:18+0000\n"
+"PO-Revision-Date: 2013-11-01 07:06+0530\n"
+"Last-Translator: Balasankar C <c.balasankar@gmail.com>\n"
 "Language-Team: Swatantra Malayalam Computing\n"
 "Language: ml\n"
 "MIME-Version: 1.0\n"
@@ -26,17 +26,75 @@ msgstr ""
 "X-DamnedLies-Scope: partial\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
-msgid "Sudoku"
-msgstr "സുഡോകു"
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
+#: ../src/lib/defaults.py:47
+msgid "GNOME Sudoku"
+msgstr "ഗ്നോം സുഡോക്കു"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2
+msgid "GNOME Sudoku has a simple, unobstrusive interface with all the features that make playing Sudoku fun. Games are automatically saved when you quit, and you can always come back to any game that you've played."
+msgstr "ഗ്നോം സുഡോക്കുവിന് ലളിതവും രസകരവുമായി സുഡോക്കു കളിക്കാവുന്ന, പ്രതിബന്ധങ്ങള്‍ സൃഷ്ട്ടിക്കാത്ത വിനിമയതലമാണുള്ളത്. വിട്ടുപോകുമ്പോള്‍ കളികള്‍ താനേ സൂക്ഷിക്കപ്പെടുന്നു. പിന്നീട് നിങ്ങള്‍ കളിച്ചുകൊണ്ടിരുന്ന ഏത് കളിയിലേക്കും തിരികെ വരാവുന്നതാണു്."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
+msgid "Each game is assigned a difficulty similar to those given by newspapers and websites. You can also see detailed information about how the computer solved the puzzle."
+msgstr "പത്രങ്ങളിലും വെബ്‌സൈറ്റുകളിലും ഉള്ളതുപോലെ ഓരോ കളിക്കും ഒരു പ്രയാസ നില നല്‍കിയിരിക്കും. കമ്പ്യൂട്ടര്‍ എങ്ങിനെയാണ് കളിക്ക് ഉത്തരം കാണുന്നതെന്ന് നിങ്ങള്‍ക്ക് വിശദമായി നിരീക്ഷിക്കാം."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
+msgid "If you like to play on paper, you can print games out. You can choose how many games you want to print per page and what difficulty of games you want to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr "നിങ്ങള്‍ക്ക് പേപ്പറില്‍ കളിക്കാനാണ് താല്പര്യമെങ്കില്‍ കളികള്‍ അച്ചടിക്കാവുന്നതാണ്. ഓരോ പേജിലും എത്ര കളികള്‍ വേണമെന്നും അവ എത്രമാത്രം ബുദ്ധിമുട്ടുള്ളവയാവണമെന്നും നിങ്ങള്‍ക്ക് തിരഞ്ഞെടുക്കാം. ഇപ്രകാരം നിങ്ങള്‍ക്കായി ഗ്നോം സുഡോക്കുവിന് ഒരു പുനരുപയോഗിക്കാന്‍ കഴിയുന്ന സുഡോക്കു പുസ്തകമായി പ്രവര്‍ത്തിക്കാന്‍ കഴിയും."
+
+#: ../data/gnome-sudoku.desktop.in.h:1
+#: ../src/lib/defaults.py:48
+msgid "Sudoku"
+msgstr "സുഡോക്കു"
+
+#: ../data/gnome-sudoku.desktop.in.h:2
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "ഈ ഗ്രിഡ് പസ്സിലിലൂടെ നിങ്ങലുടെ സാമാന്യ ബുദ്ധി പരീക്ഷിക്കുക"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:3
+#: ../data/gnome-sudoku.desktop.in.h:3
 msgid "game;board;tiles;japanese;"
 msgstr "കളി;ബോഡ്;ടൈലുകള്‍;ജാപ്പനീസ്;"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
+msgid "The number of seconds between automatic saves"
+msgstr "സ്വയമായി സൂക്ഷിക്കുന്നതിനിടയിലുള്ള സെക്കന്‍ഡുകള്‍"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
+msgid "Print games that have been played"
+msgstr "നിങ്ങള്‍ കളിച്ച കളികള്‍ പ്രിന്റ് ചെയ്യുക"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
+msgid "Mark printed games as played"
+msgstr "അച്ചടിച്ച ചെയ്ത കളികള്‍ കളിച്ചതായി രേഖപ്പെടുത്തുക"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
+msgid "Width of application window in pixels"
+msgstr "പ്രയോഗത്തിനുള്ള ജാലകത്തിന്റെ വീതി പിക്സലുകളില്‍."
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
+msgid "Height of application window in pixels"
+msgstr "പ്രയോഗത്തിനുള്ള ജാലകത്തിന്റെ ഉയരം പിക്സലുകളില്‍."
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
+msgid "Show hint highlights"
+msgstr "സൂചന എടുത്തുകാണിക്കുന്നതു് കാണിക്കുക"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
+msgid "Color of the grid border"
+msgstr "ഗ്രിഡിന്റെ അതിരുകളുടെ നിറം"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
+msgid "Show the application toolbar"
+msgstr "പ്രയോഗത്തിനുള്ള ടൂള്‍ബാര്‍ കാണിക്കുക"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
+msgid "Show hints"
+msgstr "സൂചനകള്‍ കാണിക്കുക"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
+msgid "Number of puzzles to print on a page"
+msgstr "ഒരു താളില്‍ പ്രിന്റ് ചെയ്യുവാനുള്ള പദപ്രശ്നങ്ങളുടെ എണ്ണം"
 
 #: ../data/print_games.ui.h:1
 msgid "Print Sudokus"
@@ -106,7 +164,8 @@ msgstr "തിരഞ്ഞെടുത്ത ട്രാക്കര്‍ ന�
 msgid "Make the tracked changes permanent"
 msgstr "ട്രാക്ക് ചെയ്യപ്പെട്ട മാറ്റങ്ങള്‍ സ്ഥിരമാക്കുക"
 
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:750
+#: ../data/tracker.ui.h:4
+#: ../src/lib/main.py:750
 msgid "H_ide"
 msgstr "_മറയ്ക്കുക"
 
@@ -114,41 +173,40 @@ msgstr "_മറയ്ക്കുക"
 msgid "Hide the tracked values"
 msgstr "ട്രാക്ക് ചെയ്യപ്പെട്ട അക്കങ്ങള്‍ മറയ്ക്കുക"
 
-#: ../src/lib/defaults.py:47
-msgid "GNOME Sudoku"
-msgstr "ഗ്നോം സുടോക്കു"
-
 #: ../src/lib/defaults.py:50
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
-"logic puzzle.\n"
+"The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"ഗ്നോം സുടോക്കു ഒരു ലളിതമായ സുടോക്കു ഉത്പാദിനി ആണ്.\n"
-"സുടോക്കു ഒരു ജാപ്പനീസ് ലോജിക്ക് കളിയാണ്.\n"
+"പ്രസിദ്ധമായ ജാപ്പനീസ് ലോജിക്ക് കളി.\n"
+"\n"
 "ഗ്നോം കളികളുടെ ഭാഗമാണ് ഗ്നോം സുഡോക്കു."
 
 #: ../src/lib/defaults.py:53
 msgid "GNOME Games web site"
 msgstr "ഗ്നോം കളികളുടെ വെബ് സൈറ്റ്"
 
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
+#: ../src/lib/game_selector.py:121
+#: ../src/lib/main.py:627
+#: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "എളുപ്പം"
 
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
+#: ../src/lib/game_selector.py:122
+#: ../src/lib/main.py:628
+#: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "ഇടത്തരം"
 
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
+#: ../src/lib/game_selector.py:123
+#: ../src/lib/main.py:629
+#: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "കഠിനം"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
+#: ../src/lib/game_selector.py:124
+#: ../src/lib/printing.py:189
 msgid "Very hard"
 msgstr "വളരെ കഠിനമായ"
 
@@ -327,8 +385,7 @@ msgstr "കൂട്ടി ചേക്കപ്പെടുന്നവയെ �
 
 #: ../src/lib/main.py:237
 msgid "Mark new additions in a separate color so you can keep track of them."
-msgstr ""
-"മാറ്റങ്ങള്‍ തിരിച്ചറിയുവാന്‍  പുതിയതായി കൂട്ടി ചേര്‍ക്കപ്പെട്ടവയെ പ്രത്യേക നിറത്തിലടയാളപ്പെടുത്തുക "
+msgstr "മാറ്റങ്ങള്‍ തിരിച്ചറിയുവാന്‍  പുതിയതായി കൂട്ടി ചേര്‍ക്കപ്പെട്ടവയെ പ്രത്യേക നിറത്തിലടയാളപ്പെടുത്തുക "
 
 #: ../src/lib/main.py:239
 msgid "Show _Toolbar"
@@ -349,14 +406,16 @@ msgid_plural "You completed the puzzle in %d seconds"
 msgstr[0] "നിങ്ങള്‍ പസ്സില്‍ %d നിമിഷം കൊണ്ടു പൂര്‍ത്തിയാക്കി"
 msgstr[1] "നിങ്ങള്‍ പസ്സില്‍ %d നിമിഷങ്ങള്‍ കൊണ്ടു പൂര്‍ത്തിയാക്കി"
 
-#: ../src/lib/main.py:371 ../src/lib/main.py:379
+#: ../src/lib/main.py:371
+#: ../src/lib/main.py:379
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d  മിനിറ്റ്"
 msgstr[1] "%d മിനിറ്റുകള്‍"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
+#: ../src/lib/main.py:372
+#: ../src/lib/main.py:380
 #, python-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -442,7 +501,8 @@ msgstr "ഇത് പൂരിപ്പിക്കുന്നതുവഴി �
 msgid "Amount of trial-and-error required to solve: "
 msgstr "പരിഹരിക്കാന്‍ ആവശ്യമായ പരീക്ഷണങ്ങലുടെ എണ്ണം"
 
-#: ../src/lib/main.py:644 ../src/lib/main.py:645
+#: ../src/lib/main.py:644
+#: ../src/lib/main.py:645
 msgid "Puzzle Statistics"
 msgstr "പസ്സിലിന്റെ സ്ഥിതിവിവരങ്ങള്‍"
 
@@ -489,47 +549,60 @@ msgstr "ട്രാക്ക് ചെയ്ത എല്ലാ വിവരങ
 msgid "Tracker %s"
 msgstr "ട്രാക്കര്‍ %s"
 
-#: ../src/lib/number_box.py:68
+#: ../src/lib/number_box.py:82
 msgid "_Clear"
 msgstr "_വെടിപ്പാക്കുക"
 
-#: ../src/lib/saver.py:155
+#: ../src/lib/saver.py:151
 msgid "No Space"
 msgstr "സ്ഥലം ഇല്ല"
 
-#: ../src/lib/saver.py:156
+#: ../src/lib/saver.py:152
 msgid "No space left on disk"
 msgstr "ഡിസ്കില്‍ സ്ഥലം ലഭ്യമല്ല"
 
-#: ../src/lib/saver.py:158 ../src/lib/saver.py:165
+#: ../src/lib/saver.py:154
+#: ../src/lib/saver.py:161
 #, python-format
 msgid "Unable to create data folder %(path)s."
 msgstr "ഡേറ്റാ ഫോള്‍ഡര്‍ %(path)s ഉണ്ടാക്കുവാന്‍ സാധിച്ചില്ല."
 
-#: ../src/lib/saver.py:159
+#: ../src/lib/saver.py:155
 msgid "There is no disk space left!"
 msgstr "ഡിസ്കില്‍ സ്ഥലം ലഭ്യമല്ല!"
 
-#: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
-#: ../src/lib/saver.py:233
+#: ../src/lib/saver.py:159
+#: ../src/lib/saver.py:160
+msgid "Error creating directory"
+msgstr "അറ ഉണ്ടാക്കുന്നതില്‍ പിഴവ്"
+
+#: ../src/lib/saver.py:162
+#: ../src/lib/saver.py:187
+#: ../src/lib/saver.py:211
+#: ../src/lib/saver.py:229
 #, python-format
 msgid "Error %(errno)s: %(error)s"
 msgstr "പിശക് %(errno)s: %(error)s"
 
-#: ../src/lib/saver.py:186 ../src/lib/saver.py:187
+#: ../src/lib/saver.py:182
+#: ../src/lib/saver.py:183
 msgid "Unable to save game."
 msgstr "കളി സൂക്ഷിക്കുവാന്‍ സാധിച്ചില്ല"
 
-#: ../src/lib/saver.py:189 ../src/lib/saver.py:214 ../src/lib/saver.py:232
+#: ../src/lib/saver.py:185
+#: ../src/lib/saver.py:210
+#: ../src/lib/saver.py:228
 #, python-format
 msgid "Unable to save file %(filename)s."
 msgstr "ഫയല്‍ %(filename)s സൂക്ഷിക്കുവാന്‍ സാധിച്ചില്ല."
 
-#: ../src/lib/saver.py:211 ../src/lib/saver.py:212
+#: ../src/lib/saver.py:207
+#: ../src/lib/saver.py:208
 msgid "Unable to mark game as finished."
 msgstr "സുടോക്കു കളി അവസാനിച്ചതായി രേഖപ്പെടുത്താന്‍ സാധിച്ചില്ല."
 
-#: ../src/lib/saver.py:229 ../src/lib/saver.py:230
+#: ../src/lib/saver.py:225
+#: ../src/lib/saver.py:226
 msgid "Sudoku unable to mark game as finished."
 msgstr "സുടോക്കു കളി അവസാനിച്ചതായി രേഖപ്പെടുത്താന്‍ സാധിച്ചില്ല."
 
@@ -696,32 +769,32 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "_Smooth Display"
 #~ msgstr "ലളിതമായ പ്രദര്‍ശനം"
-
 #~ msgctxt "chess-move-format"
+
 #~ msgid "Figurine"
 #~ msgstr "ഫിഗറിന്‍"
-
 #~ msgctxt "chess-move-format"
+
 #~ msgid "Human"
 #~ msgstr "മനുഷ്യന്‍"
-
 #~ msgctxt "chess-move-format"
+
 #~ msgid "Long Algebraic"
 #~ msgstr "ലോങ് അല്‍ജീബ്രായിക്"
-
 #~ msgctxt "chess-move-format"
+
 #~ msgid "Standard Algebraic"
 #~ msgstr "സ്റ്റാന്‍ഡേര്‍ഡ് ആല്‍ജീബ്രായിക്"
-
 #~ msgctxt "chess-opponent"
+
 #~ msgid "Human"
 #~ msgstr "മനുഷ്യന്‍"
-
 #~ msgctxt "chess-piece"
+
 #~ msgid "Bishop"
 #~ msgstr "ആന"
-
 #~ msgctxt "chess-piece"
+
 #~ msgid "Knight"
 #~ msgstr "കുതിര"
 
@@ -729,328 +802,232 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 #~ msgctxt "chess-piece"
 #~ msgid "Queen"
 #~ msgstr "രാജ്ഞി "
-
 #~ msgctxt "chess-piece"
 #~ msgid "Rook"
 #~ msgstr "തേര്"
-
 #~ msgctxt "chess-player"
 #~ msgid "Black"
 #~ msgstr "കറുപ്പ്"
-
 #~ msgctxt "chess-player"
 #~ msgid "White"
 #~ msgstr "വെളുപ്പ്"
-
 #~ msgctxt "chess-side"
 #~ msgid "Black Side"
 #~ msgstr "കറുത്ത ഭാഗം"
-
 #~ msgctxt "chess-side"
 #~ msgid "Current Player"
 #~ msgstr "ഇപ്പോഴുള്ള കളിക്കാരന്‍"
-
 #~ msgctxt "chess-side"
 #~ msgid "Face to Face"
 #~ msgstr "മുഖാമുഖം"
-
 #~ msgctxt "chess-side"
 #~ msgid "Human Side"
 #~ msgstr "മനുഷ്യന്റെ ഭാഗം"
-
 #~ msgctxt "chess-side"
 #~ msgid "White Side"
 #~ msgstr "വെള്ള ഭാഗം"
-
 #~ msgctxt "difficulty"
 #~ msgid "Easy"
 #~ msgstr "എളുപ്പം"
-
 #~ msgctxt "difficulty"
 #~ msgid "Hard"
 #~ msgstr "കഠിനം"
-
 #~ msgctxt "difficulty"
 #~ msgid "Normal"
 #~ msgstr "സാധാരണ"
-
 #~ msgid "%1$s (%2$s) - Chess"
 #~ msgstr "%1$s (%2$s) - ചെസ്സ്"
-
 #~ msgid "Game Start"
 #~ msgstr "കളിയുടെ തുടക്കം"
-
 #~ msgid "White pawn moves from %1$s to %2$s"
 #~ msgstr "വെളുത്ത കാലാള്‍ %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "White pawn at %1$s takes the black pawn at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത കാലാള്‍ %2$s-ലെ കറുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "White pawn at %1$s takes the black rook at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത കാലാള്‍ %2$s-ലെ കറുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "White pawn at %1$s takes the black knight at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത കാലാള്‍ %2$s-ലെ കറുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "White pawn at %1$s takes the black bishop at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത കാലാള്‍ %2$s-ലെ കറുത്ത ആനയെ വെട്ടി"
-
 #~ msgid "White pawn at %1$s takes the black queen at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത കാലാള്‍ %2$s-ലെ കറുത്ത റാണിയെ വെട്ടി"
-
 #~ msgid "White rook moves from %1$s to %2$s"
 #~ msgstr "വെളുത്ത തേര് %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "White rook at %1$s takes the black pawn at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത തേര് %2$s-ലെ കറുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "White rook at %1$s takes the black rook at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത തേര് %2$s-ലെ കറുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "White rook at %1$s takes the black knight at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത തേര് %2$s-ലെ കറുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "White rook at %1$s takes the black bishop at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത തേര് %2$s-ലെ കറുത്ത ആനയെ വെട്ടി"
-
 #~ msgid "White rook at %1$s takes the black queen at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത തേര് %2$s-ലെ കറുത്ത റാണിയെ വെട്ടി"
-
 #~ msgid "White knight moves from %1$s to %2$s"
 #~ msgstr "വെളുത്ത കുതിര %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "White knight at %1$s takes the black pawn at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത കുതിര %2$s-ലെ കറുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "White knight at %1$s takes the black rook at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത കുതിര %2$s-ലെ കറുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "White knight at %1$s takes the black knight at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത കുതിര %2$s-ലെ കറുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "White knight at %1$s takes the black bishop at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത കുതിര %2$s-ലെ കറുത്ത ആനയെ വെട്ടി"
-
 #~ msgid "White knight at %1$s takes the black queen at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത കുതിര %2$s-ലെ കറുത്ത റാണിയെ വെട്ടി"
-
 #~ msgid "White bishop moves from %1$s to %2$s"
 #~ msgstr "വെളുത്ത ആന %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "White bishop at %1$s takes the black pawn at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത ആന %2$s-ലെ കറുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "White bishop at %1$s takes the black rook at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത ആന %2$s-ലെ കറുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "White bishop at %1$s takes the black knight at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത ആന %2$s-ലെ കറുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "White bishop at %1$s takes the black bishop at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത ആന %2$s-ലെ കറുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "White bishop at %1$s takes the black queen at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത ആന %2$s-ലെ കറുത്ത റാണിയെ വെട്ടി"
-
 #~ msgid "White queen moves from %1$s to %2$s"
 #~ msgstr "വെളുത്ത റാണി %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "White queen at %1$s takes the black pawn at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത റാണി %2$s-ലെ കറുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "White queen at %1$s takes the black rook at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത റാണി %2$s-ലെ കറുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "White queen at %1$s takes the black knight at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത റാണി %2$s-ലെ കറുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "White queen at %1$s takes the black bishop at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത റാണി %2$s-ലെ കറുത്ത ആനയെ വെട്ടി"
-
 #~ msgid "White queen at %1$s takes the black queen at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത റാണി %2$s-ലെ കറുത്ത റാണിയെ വെട്ടി"
-
 #~ msgid "White king moves from %1$s to %2$s"
 #~ msgstr "വെളുത്ത രാജാവ് %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "White king at %1$s takes the black pawn at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത രാജാവ്  %2$s-ലെ കറുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "White king at %1$s takes the black rook at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത രാജാവ്  %2$s-ലെ കറുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "White king at %1$s takes the black knight at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത രാജാവ്  %2$s-ലെ കറുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "White king at %1$s takes the black bishop at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത രാജാവ്  %2$s-ലെ കറുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "White king at %1$s takes the black queen at %2$s"
 #~ msgstr "%1$s-ലെ വെളുത്ത രാജാവ്  %2$s-ലെ കറുത്ത രാജ്ഞിയെ വെട്ടി"
-
 #~ msgid "Black pawn moves from %1$s to %2$s"
 #~ msgstr "കറുത്ത കാലാള്‍ %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "Black pawn at %1$s takes the white pawn at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത കാലാള്‍ %2$s-ലെ വെളുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "Black pawn at %1$s takes the white rook at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത കാലാള്‍ %2$s-ലെ വെളുത്ത ആനയെ വെട്ടി"
-
 #~ msgid "Black pawn at %1$s takes the white knight at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത കാലാള്‍ %2$s-ലെ വെളുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "Black pawn at %1$s takes the white bishop at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത കാലാള്‍ %2$s-ലെ വെളുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "Black pawn at %1$s takes the white queen at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത കാലാള്‍ %2$s-ലെ വെളുത്ത രാജ്ഞിയെ വെട്ടി"
-
 #~ msgid "Black rook moves from %1$s to %2$s"
 #~ msgstr "കറുത്ത ആന %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "Black rook at %1$s takes the white pawn at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത ആന %2$s-ലെ വെളുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "Black rook at %1$s takes the white rook at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത ആന %2$s-ലെ വെളുത്ത ആനയെ വെട്ടി"
-
 #~ msgid "Black rook at %1$s takes the white knight at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത ആന %2$s-ലെ വെളുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "Black rook at %1$s takes the white bishop at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത ആന %2$s-ലെ വെളുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "Black rook at %1$s takes the white queen at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത ആന %2$s-ലെ വെളുത്ത രാജ്ഞിയെ വെട്ടി"
-
 #~ msgid "Black knight moves from %1$s to %2$s"
 #~ msgstr "കറുത്ത കുതിര %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "Black knight at %1$s takes the white pawn at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത കുതിര %2$s-ലെ വെളുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "Black knight at %1$s takes the white rook at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത കുതിര %2$s-ലെ വെളുത്ത ആനയെ വെട്ടി"
-
 #~ msgid "Black knight at %1$s takes the white knight at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത കുതിര %2$s-ലെ വെളുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "Black knight at %1$s takes the white bishop at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത കുതിര %2$s-ലെ വെളുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "Black knight at %1$s takes the white queen at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത കുതിര %2$s-ലെ വെളുത്ത രാജ്ഞിയെ വെട്ടി"
-
 #~ msgid "Black bishop moves from %1$s to %2$s"
 #~ msgstr "കറുത്ത തേര് %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "Black bishop at %1$s takes the white pawn at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത തേര് %2$s-ലെ വെളുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "Black bishop at %1$s takes the white rook at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത തേര് %2$s-ലെ വെളുത്ത ആനയെ വെട്ടി"
-
 #~ msgid "Black bishop at %1$s takes the white knight at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത തേര് %2$s-ലെ വെളുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "Black bishop at %1$s takes the white bishop at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത തേര് %2$s-ലെ വെളുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "Black bishop at %1$s takes the white queen at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത തേര് %2$s-ലെ വെളുത്ത രാജ്ഞിയെ വെട്ടി"
-
 #~ msgid "Black queen moves from %1$s to %2$s"
 #~ msgstr "കറുത്ത രാജ്ഞി %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "Black queen at %1$s takes the white pawn at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത രാജ്ഞി %2$s-ലെ വെളുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "Black queen at %1$s takes the white rook at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത രാജ്ഞി %2$s-ലെ വെളുത്ത ആനയെ വെട്ടി"
-
 #~ msgid "Black queen at %1$s takes the white knight at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത രാജ്ഞി %2$s-ലെ വെളുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "Black queen at %1$s takes the white bishop at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത രാജ്ഞി %2$s-ലെ വെളുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "Black queen at %1$s takes the white queen at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത രാജ്ഞി %2$s-ലെ വെളുത്ത രാജ്ഞിയെ വെട്ടി"
-
 #~ msgid "Black king moves from %1$s to %2$s"
 #~ msgstr "കറുത്ത രാജാവ് %1$s-ല്‍ നിന്ന് %2$s-ലേക്ക് നീങ്ങി"
-
 #~ msgid "Black king at %1$s takes the white pawn at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത രാജാവ്  %2$s-ലെ വെളുത്ത കാലാളിനെ വെട്ടി"
-
 #~ msgid "Black king at %1$s takes the white rook at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത രാജാവ്  %2$s-ലെ വെളുത്ത ആനയെ വെട്ടി"
-
 #~ msgid "Black king at %1$s takes the white knight at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത രാജാവ്  %2$s-ലെ വെളുത്ത കുതിരയെ വെട്ടി"
-
 #~ msgid "Black king at %1$s takes the white bishop at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത രാജാവ്  %2$s-ലെ വെളുത്ത തേരിനെ വെട്ടി"
-
 #~ msgid "Black king at %1$s takes the white queen at %2$s"
 #~ msgstr "%1$s-ലെ കറുത്ത രാജാവ് %2$s-ലെ വെളുത്ത രാജ്ഞിയെ വെട്ടി"
-
 #~ msgid "White wins"
 #~ msgstr "വെള്ള വിജയിച്ചു"
-
 #~ msgid "Black wins"
 #~ msgstr "കറുത്ത വിജയിച്ചു"
-
 #~ msgid "Game is drawn"
 #~ msgstr "കളി സമനിലയില്‍"
-
 #~ msgid "Opponent is in check and cannot move (checkmate)"
 #~ msgstr "എതിരാളി ചെക്കിലാണ്, ഇനി നീങ്ങുവാന്‍ സാധ്യമല്ല (ചെക്ക്മേറ്റ്)"
-
 #~ msgid "Opponent cannot move (stalemate)"
 #~ msgstr "എതിരാളിയ്ക്ക് നീങ്ങുവാന്‍ സാധ്യമല്ല (സ്റ്റേല്‍മേറ്റ്)"
-
 #~ msgid "No piece has been taken or pawn moved in the last fifty moves"
 #~ msgstr "കഴിഞ്ഞ 50 നീക്കങ്ങളില്‍ ഒരു കരുവും വെട്ടപ്പെടുകയോ കാലാള്‍ നീങ്ങുകയോ ചെയ്തിട്ടില്ല"
-
 #~ msgid "Opponent has run out of time"
 #~ msgstr "എതിരാളിയുടെ സമയം കഴിഞ്ഞിരിക്കുന്നു"
-
 #~ msgid ""
 #~ "The same board state has occurred three times (three fold repetition)"
 #~ msgstr "ഈ ബോര്‍ഡിന്റെ അവസ്ഥ മൂന്നു തവണ ഉണ്ടായിരിക്കുന്നു (മൂന്ന് ആവര്‍ത്തനം)"
-
 #~ msgid "Neither player can cause checkmate (insufficient material)"
 #~ msgstr "ഒരു കളിക്കാരനും ചെക്ക്മേറ്റ് ആകുവാന്‍ സാധ്യമല്ല (ആവശ്യമുള്ളവ ലഭ്യമല്ല)"
-
 #~ msgid "The black player has resigned"
 #~ msgstr "കറുത്ത കളിക്കാരന്‍ കളി നിര്‍ത്തിയിരിക്കുന്നു"
-
 #~ msgid "The white player has resigned"
 #~ msgstr "വെളുത്ത കളിക്കാരന്‍ കളി നിര്‍ത്തിയിരിക്കുന്നു"
-
 #~ msgid "The game has been abandoned"
 #~ msgstr "കളി ഉപേക്ഷിച്ചു"
-
 #~ msgid "One of the players has died"
 #~ msgstr "ഒരു കളിക്കാരന്‍ അവസാനിച്ചിരിക്കുന്നു"
-
 #, fuzzy
 #~ msgid "Save this game before starting a new one?"
 #~ msgstr "പുതിയ കളി തുടങ്ങുന്നതിന് മുമ്പ് ഈ കളി സൂക്ഷിക്കണമോ?"
 
 #~ msgid "second"
+
 #~ msgid_plural "seconds"
 #~ msgstr[0] "നിമിഷം"
 #~ msgstr[1] "നിമിഷങ്ങള്‍"
 
 #~ msgid "minute"
+
 #~ msgid_plural "minutes"
 #~ msgstr[0] "മിനിറ്റ്"
 #~ msgstr[1] "മിനിറ്റുകള്‍"
 
 #~ msgid "hour"
+
 #~ msgid_plural "hours"
 #~ msgstr[0] "മണിക്കൂര്‍"
 #~ msgstr[1] "മണിക്കൂറുകള്‍"
@@ -1172,16 +1149,16 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "Time between moves in milliseconds."
 #~ msgstr "നീക്കങ്ങളുടെ ഇടയിലുള്ള സമയം മില്ലി സെക്കന്‍ഡുകളില്‍."
-
 #~ msgctxt "board size"
+
 #~ msgid "Small"
 #~ msgstr "ചെറുത്‌"
-
 #~ msgctxt "board size"
+
 #~ msgid "Medium"
 #~ msgstr "ഇടത്തരം"
-
 #~ msgctxt "board size"
+
 #~ msgid "Large"
 #~ msgstr "വലുത്‌"
 
@@ -1517,20 +1494,20 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "Your score has made the top ten."
 #~ msgstr "നിങ്ങളുടെ സ്കോര്‍ ആദ്യത്തെ പത്തിലായിരിക്കുന്നു."
-
 #~ msgctxt "game speed"
+
 #~ msgid "Beginner"
 #~ msgstr "തുടക്കക്കാരന്‍"
-
 #~ msgctxt "game speed"
+
 #~ msgid "Slow"
 #~ msgstr "പതിയെ"
-
 #~ msgctxt "game speed"
+
 #~ msgid "Medium"
 #~ msgstr "ഇടത്തരം"
-
 #~ msgctxt "game speed"
+
 #~ msgid "Fast"
 #~ msgstr "വേഗത്തില്‍"
 
@@ -1958,8 +1935,8 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "Warning about too many flags"
 #~ msgstr "അനവധി ഫ്ളാഗുകള്‍ എന്ന മുന്നറിയിപ്പ്"
-
 #~ msgctxt "board size"
+
 #~ msgid "Custom"
 #~ msgstr "യഥേഷ്ടം"
 
@@ -1982,6 +1959,7 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 #~ msgstr "മൈനുകളുടെ _എണ്ണം:"
 
 #~ msgid "<b>%d</b> mine"
+
 #~ msgid_plural "<b>%d</b> mines"
 #~ msgstr[0] "<b>%d</b> മൈന്‍"
 #~ msgstr[1] "<b>%d</b> മൈനുകള്‍"
@@ -2266,12 +2244,12 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "STRING"
 #~ msgstr "STRING"
-
 #~ msgctxt "game type"
+
 #~ msgid "Regular"
 #~ msgstr "സാധാരണ"
-
 #~ msgctxt "game type"
+
 #~ msgid "Colors"
 #~ msgstr "നിറങ്ങള്‍"
 
@@ -2288,6 +2266,7 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 #~ msgstr "ടാലി സ്കോറുകള്‍"
 
 #~ msgid "%s wins the game with %d point"
+
 #~ msgid_plural "%s wins the game with %d points"
 #~ msgstr[0] "%s കളി ജയിച്ചു, പോയിന്റ് - %d"
 #~ msgstr[1] "%s കളി ജയിച്ചു, പോയിന്റുകള്‍ - %d"
@@ -2324,8 +2303,8 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "_Difficulty:"
 #~ msgstr "_കാഠിന്യത:"
-
 #~ msgctxt "difficulty"
+
 #~ msgid "Medium"
 #~ msgstr "ഇടത്തരം"
 
@@ -2445,20 +2424,20 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "Unknown Command"
 #~ msgstr "അപരിചിതമായ കമാന്‍ഡ്"
-
 #~ msgctxt "score-dialog"
+
 #~ msgid "Time"
 #~ msgstr " സമയം"
-
 #~ msgctxt "score-dialog"
+
 #~ msgid "Score"
 #~ msgstr "സ്കോര്‍"
-
 #~ msgctxt "score-dialog"
+
 #~ msgid "%1$dm %2$ds"
 #~ msgstr "%1$dm %2$ds"
-
 #~ msgctxt "score-dialog"
+
 #~ msgid "Name"
 #~ msgstr "പേര്"
 
@@ -2620,36 +2599,36 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "Mahjongg"
 #~ msgstr "മാജ്ജോങ്"
-
 #~ msgctxt "mahjongg map name"
+
 #~ msgid "The Ziggurat"
 #~ msgstr "സിഗ്ഗറത്ത്"
-
 #~ msgctxt "mahjongg map name"
+
 #~ msgid "Four Bridges"
 #~ msgstr "നാല് പാലങ്ങള്‍"
-
 #~ msgctxt "mahjongg map name"
+
 #~ msgid "Cloud"
 #~ msgstr "മേഘം"
-
 #~ msgctxt "mahjongg map name"
+
 #~ msgid "Tic-Tac-Toe"
 #~ msgstr "ടിക്-ടാക്-ടോ"
-
 #~ msgctxt "mahjongg map name"
+
 #~ msgid "Red Dragon"
 #~ msgstr "ചുവന്ന വ്യാളി"
-
 #~ msgctxt "mahjongg map name"
+
 #~ msgid "Pyramid's Walls"
 #~ msgstr "പിരമിഡിന്റെ മതിലുകള്‍"
-
 #~ msgctxt "mahjongg map name"
+
 #~ msgid "Confounding Cross"
 #~ msgstr "കോണ്‍ഫൌണ്ടിങ് ക്രോസ്സ്"
-
 #~ msgctxt "mahjongg map name"
+
 #~ msgid "Difficult"
 #~ msgstr "കഠിനം"
 
@@ -3610,8 +3589,8 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "Display cards with “%s” card theme"
 #~ msgstr "“%s” പ്രമേയമുള്ള ചീട്ടുകള്‍ കാണിക്കുക"
-
 #~ msgctxt "score"
+
 #~ msgid "%6d"
 #~ msgstr "%6d"
 
@@ -4993,9 +4972,6 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 #~ msgid "You must highlight a table before you can watch it."
 #~ msgstr "നിങ്ങള്‍ ഒരു ടേബിള്‍ കാണുന്നതിന് മുമ്പായി അത് തിരഞ്ഞെടുക്കുക."
 
-#~ msgid "Error Spectating"
-#~ msgstr "കാണുന്നതില്‍ പിഴവ്"
-
 #~ msgid ""
 #~ "Failed to join table.\n"
 #~ "Join aborted."
@@ -5474,92 +5450,92 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "AI (%s)"
 #~ msgstr "AI (%s)"
-
 #~ msgctxt "chess-file"
+
 #~ msgid "a"
 #~ msgstr "a"
-
 #~ msgctxt "chess-file"
+
 #~ msgid "b"
 #~ msgstr "b"
-
 #~ msgctxt "chess-file"
+
 #~ msgid "c"
 #~ msgstr "c"
-
 #~ msgctxt "chess-file"
+
 #~ msgid "d"
 #~ msgstr "d"
-
 #~ msgctxt "chess-file"
+
 #~ msgid "e"
 #~ msgstr "e"
-
 #~ msgctxt "chess-file"
+
 #~ msgid "f"
 #~ msgstr "f"
-
 #~ msgctxt "chess-file"
+
 #~ msgid "g"
 #~ msgstr "g"
-
 #~ msgctxt "chess-file"
+
 #~ msgid "h"
 #~ msgstr "h"
-
 #~ msgctxt "chess-rank"
+
 #~ msgid "1"
 #~ msgstr "1"
-
 #~ msgctxt "chess-rank"
+
 #~ msgid "2"
 #~ msgstr "2"
-
 #~ msgctxt "chess-rank"
+
 #~ msgid "3"
 #~ msgstr "3"
-
 #~ msgctxt "chess-rank"
+
 #~ msgid "4"
 #~ msgstr "4"
-
 #~ msgctxt "chess-rank"
+
 #~ msgid "5"
 #~ msgstr "5"
-
 #~ msgctxt "chess-rank"
+
 #~ msgid "6"
 #~ msgstr "6"
-
 #~ msgctxt "chess-rank"
+
 #~ msgid "7"
 #~ msgstr "7"
-
 #~ msgctxt "chess-rank"
+
 #~ msgid "8"
 #~ msgstr "8"
-
 #~ msgctxt "chess-notation"
+
 #~ msgid "P"
 #~ msgstr "P"
-
 #~ msgctxt "chess-notation"
+
 #~ msgid "N"
 #~ msgstr "N"
-
 #~ msgctxt "chess-notation"
+
 #~ msgid "B"
 #~ msgstr "B"
-
 #~ msgctxt "chess-notation"
+
 #~ msgid "R"
 #~ msgstr "R"
-
 #~ msgctxt "chess-notation"
+
 #~ msgid "Q"
 #~ msgstr "Q"
-
 #~ msgctxt "chess-notation"
+
 #~ msgid "K"
 #~ msgstr "K"
 
@@ -5622,8 +5598,8 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "Themes"
 #~ msgstr "ഥീമുകള്‍"
-
 #~ msgctxt "preferences"
+
 #~ msgid "General"
 #~ msgstr "ജനറല്‍"
 
@@ -5742,35 +5718,8 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 #~ msgid "Gnometris Scores"
 #~ msgstr "ഗ്നോമെട്രിസ് സ്ക്കോറുകള്‍ "
 
-#~ msgid "Color of the grid border"
-#~ msgstr "ഗ്രിഡിന്റെ അതിരുകളുടെ നിറം"
-
 #~ msgid "Generate new puzzles in the background"
 #~ msgstr "പശ്ചാത്തലത്തില്‍ പുതിയ പദപ്രശ്നങ്ങളുണ്ടാക്കുക"
-
-#~ msgid "Height of application window in pixels"
-#~ msgstr "പ്രയോഗത്തിനുള്ള ജാലകത്തിന്റെ ഉയരം പിക്സലുകളില്‍."
-
-#~ msgid "Number of puzzles to print on a page"
-#~ msgstr "ഒരു താളില്‍ പ്രിന്റ് ചെയ്യുവാനുള്ള പദപ്രശ്നങ്ങളുടെ എണ്ണം"
-
-#~ msgid "Print games that have been played"
-#~ msgstr "നിങ്ങള്‍ കളിച്ച കളികള്‍ പ്രിന്റ് ചെയ്യുക"
-
-#~ msgid "Show hint highlights"
-#~ msgstr "സൂചന എടുത്തുകാണിക്കുന്നതു് കാണിക്കുക"
-
-#~ msgid "Show hints"
-#~ msgstr "സൂചനകള്‍ കാണിക്കുക"
-
-#~ msgid "Show the application toolbar"
-#~ msgstr "പ്രയോഗത്തിനുള്ള ടൂള്‍ബാര്‍ കാണിക്കുക"
-
-#~ msgid "The number of seconds between automatic saves"
-#~ msgstr "സ്വയമായി സൂക്ഷിക്കുന്നതിനിടയിലുള്ള സെക്കന്‍ഡുകള്‍"
-
-#~ msgid "Width of application window in pixels"
-#~ msgstr "പ്രയോഗത്തിനുള്ള ജാലകത്തിന്റെ വീതി പിക്സലുകളില്‍."
 
 #~ msgid "<b><i>Details</i></b>"
 #~ msgstr "<b><i>വിശദാംശങ്ങള്‍</i></b>"
@@ -5873,6 +5822,7 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 #~ msgstr "കുറിപ്പുകളും സൂചനകളും വെടിപ്പാക്കുക"
 
 #~ msgid "You used the auto-fill %(n)s time"
+
 #~ msgid_plural "You used the auto-fill %(n)s times"
 #~ msgstr[0] "താങ്കള്‍ ഓട്ടോ-ഫില്‍ %(n)s തവണ ഉപയോഗിച്ചു"
 #~ msgstr[1] "താങ്കള്‍ ഓട്ടോ-ഫില്‍ %(n)s തവണ ഉപയോഗിച്ചു"
@@ -5900,26 +5850,31 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 #~ msgstr "നിര്‍ത്തിയിരിക്കുന്നു"
 
 #~ msgid "Generated %(n)s puzzle"
+
 #~ msgid_plural "Generated %(n)s puzzles"
 #~ msgstr[0] "%(n)s പസില്‍ ഉണ്ടാക്കിയിരിക്കുന്നു"
 #~ msgstr[1] "%(n)s പസിലുകള്‍ ഉണ്ടാക്കിയിരിക്കുന്നു"
 
 #~ msgid "%(n)s year"
+
 #~ msgid_plural "%(n)s years"
 #~ msgstr[0] "%(n)s വര്‍ഷം"
 #~ msgstr[1] "%(n)s വര്‍ഷങ്ങള്‍"
 
 #~ msgid "%(n)s month"
+
 #~ msgid_plural "%(n)s months"
 #~ msgstr[0] "%(n)s മാസം"
 #~ msgstr[1] "%(n)s മാസങ്ങള്‍"
 
 #~ msgid "%(n)s week"
+
 #~ msgid_plural "%(n)s weeks"
 #~ msgstr[0] "%(n)s ആഴ്ച"
 #~ msgstr[1] "%(n)s ആഴ്ചകള്‍"
 
 #~ msgid "%(n)s day"
+
 #~ msgid_plural "%(n)s days"
 #~ msgstr[0] "%(n)s ദിവസം"
 #~ msgstr[1] "%(n)s ദിവസങ്ങള്‍"
@@ -5977,40 +5932,40 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "Could not load images"
 #~ msgstr "ഇമേജുകള്‍ ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല"
-
 #~ msgctxt "number"
+
 #~ msgid "1"
 #~ msgstr "1"
-
 #~ msgctxt "number"
+
 #~ msgid "2"
 #~ msgstr "2"
-
 #~ msgctxt "number"
+
 #~ msgid "3"
 #~ msgstr "3"
-
 #~ msgctxt "number"
+
 #~ msgid "4"
 #~ msgstr "4"
-
 #~ msgctxt "number"
+
 #~ msgid "5"
 #~ msgstr "5"
-
 #~ msgctxt "number"
+
 #~ msgid "6"
 #~ msgstr "6"
-
 #~ msgctxt "number"
+
 #~ msgid "7"
 #~ msgstr "7"
-
 #~ msgctxt "number"
+
 #~ msgid "8"
 #~ msgstr "8"
-
 #~ msgctxt "number"
+
 #~ msgid "9"
 #~ msgstr "9"
 
@@ -6187,60 +6142,60 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "Drop reservation"
 #~ msgstr "നീക്കി വച്ചത് വേണ്ടെന്ന് വയ്ക്കുക"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "JOKER"
 #~ msgstr "ജോക്കര്‍"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "A"
 #~ msgstr "എ"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "2"
 #~ msgstr "2"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "3"
 #~ msgstr "3"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "4"
 #~ msgstr "4"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "5"
 #~ msgstr "5"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "6"
 #~ msgstr "6"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "7"
 #~ msgstr "7"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "8"
 #~ msgstr "8"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "9"
 #~ msgstr "9"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "J"
 #~ msgstr "ജെ"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "Q"
 #~ msgstr "ക്യൂ"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "K"
 #~ msgstr "കെ"
-
 #~ msgctxt "card symbol"
+
 #~ msgid "1"
 #~ msgstr "1"
 
@@ -6303,8 +6258,8 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 
 #~ msgid "Remove matching pairs of tiles."
 #~ msgstr "ചേരുന്ന ടൈലുകള്‍ നീക്കം ചെയ്യുന്നു."
-
 #~ msgctxt "mahjongg map name"
+
 #~ msgid "Easy"
 #~ msgstr "എളുപ്പം"
 
@@ -6359,6 +6314,7 @@ msgstr "സുടോക്കു കളി അവസാനിച്ചതായ�
 #~ msgstr "നിങ്ങളുടെ ബോര്‍ഡിന്റെ വീതി"
 
 #~ msgid "%d point"
+
 #~ msgid_plural "%d points"
 #~ msgstr[0] "%d പോയിന്‍റ്"
 #~ msgstr[1] "%d പോയിന്‍റുകള്‍"

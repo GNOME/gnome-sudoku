@@ -19,9 +19,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-28 23:15+0000\n"
-"PO-Revision-Date: 2013-03-19 01:23+0900\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"sudoku&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-08-18 14:52+0000\n"
+"PO-Revision-Date: 2013-09-14 21:23+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: Korean\n"
@@ -89,7 +90,7 @@ msgstr "인쇄하면 플레이한 게임으로 표시(_M)"
 
 #: ../data/print_games.ui.h:12
 msgid "_Include games you've already played in list of games to print"
-msgstr "인쇄할 게임 목록에 이미 플레이한 게임을 포함(_I)"
+msgstr "인쇄할 게임 목록에 이미 플레이한 게임 포함(_I)"
 
 #: ../data/select_game.ui.h:1
 msgid "_New Game"
@@ -125,13 +126,11 @@ msgstr "그놈 스도쿠"
 
 #: ../src/lib/defaults.py:50
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
-"logic puzzle.\n"
+"The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"그놈 스도쿠는 간단한 스도쿠 게임 생성 및 플레이 프로그램입니다. 스도쿠는 일본"
-"에서 시작된 논리 퍼즐 게임입니다.\n"
+"일본에서 시작된 유명한 논리 퍼즐\n"
 "\n"
 "그놈 스도쿠는 그놈 게임의 일부입니다."
 
@@ -140,21 +139,21 @@ msgid "GNOME Games web site"
 msgstr "그놈 게임 웹사이트"
 
 #: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
+#: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "쉬움"
 
 #: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
+#: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "중간"
 
 #: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
+#: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "어려움"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
+#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
 msgid "Very hard"
 msgstr "매우 어려움"
 
@@ -499,6 +498,10 @@ msgstr "%(path)s 데이터 폴더를 만들 수 없습니다."
 #: ../src/lib/saver.py:159
 msgid "There is no disk space left!"
 msgstr "디스크 공간이 부족합니다!"
+
+#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+msgid "Error creating directory"
+msgstr "디렉터리를 만드는데 오류"
 
 #: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
 #: ../src/lib/saver.py:233
