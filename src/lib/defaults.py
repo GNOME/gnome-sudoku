@@ -14,7 +14,7 @@ import gettext
 from gi.repository import GLib
 
 try:
-    from defs import VERSION, PREFIX
+    from .defs import VERSION, PREFIX
 except ImportError:
     PREFIX = "/usr"
     VERSION = "0.0.0"
