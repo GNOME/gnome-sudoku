@@ -277,10 +277,10 @@ public class SudokuSolver
             return new ArrayList<Cell?> ();
 
         // This list holds the changes that are made to the board
-        ArrayList<Cell?> changed = new ArrayList<Cell?> ((GLib.EqualFunc) Coord.equal);
+        ArrayList<Cell?> changed = new ArrayList<Cell?> ((EqualDataFunc<Coord>) Coord.equal);
 
         // Maps the number needed to a cell that can hold it
-        var needs = new HashMap<int, Coord?> (null, null, (GLib.EqualFunc) Coord.equal);
+        var needs = new HashMap<int, Coord?> (null, null, (EqualDataFunc<Coord>) Coord.equal);
         for (int i=1; i <= board.max_val; i++)
             needs[i] = null;
 
@@ -350,7 +350,6 @@ public class SudokuSolver
 
         // Find the square with the least possibilties
         MapIterator<Coord?, ArrayList<int>> iter = poss.map_iterator ();
-        iter.first ();
         Coord least_coord = iter.get_key ();
         ArrayList<int> least_coord_possibilties = iter.get_value ();
 
@@ -500,7 +499,7 @@ class SudokuRater : SudokuSolver {
         guessing = false;
         fake_add = false;
         fake_additions = new ArrayList<Cell?> ();
-        filled = new HashSet<Cell?> ((GLib.HashFunc) Cell.hash, (GLib.EqualFunc) Cell.equal);
+        filled = new HashSet<Cell?> ((HashDataFunc<Coord>) Cell.hash, (EqualDataFunc<Coord>) Cell.equal);
         fill_must_fillables = new HashMap<int, HashSet<Cell?>> ();
         elimination_fillables = new HashMap<int, HashSet<Cell?>> ();
         tier = 0;
@@ -541,7 +540,7 @@ class SudokuRater : SudokuSolver {
             fill_must_fills();
         } catch (SudokuError e) {
         }
-        fill_must_fillables[tier] = new HashSet<Cell?> ((GLib.HashFunc) Cell.hash, (GLib.EqualFunc) Cell.equal);
+        fill_must_fillables[tier] = new HashSet<Cell?> ((HashDataFunc<Coord>) Cell.hash, (EqualDataFunc<Coord>) Cell.equal);
         foreach (Cell cell in fake_additions) {
             if (!filled.contains(cell))
                 fill_must_fillables[tier].add (cell);
@@ -555,7 +554,7 @@ class SudokuRater : SudokuSolver {
         } catch (SudokuError e) {
         }
 
-        elimination_fillables[tier] = new HashSet<Cell?> ((GLib.HashFunc) Cell.hash, (GLib.EqualFunc) Cell.equal);
+        elimination_fillables[tier] = new HashSet<Cell?> ((HashDataFunc<Coord>) Cell.hash, (EqualDataFunc<Coord>) Cell.equal);
         foreach (Cell cell in fake_additions) {
             if (!filled.contains(cell))
                 elimination_fillables[tier].add (cell);
@@ -642,7 +641,7 @@ public class Guess {
         _row = row;
         _col = col;
         _val = val;
-        consequences = new HashMap<Coord?, int> ((GLib.HashFunc) Coord.hash, (GLib.EqualFunc) Coord.equal);
+        consequences = new HashMap<Coord?, int> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         children = new ArrayList<Guess> ();
     }
 

@@ -105,12 +105,12 @@ public class SudokuBoard
             }
         }
 
-        broken_coords = new HashSet<Coord?>((GLib.HashFunc) Coord.hash, (GLib.EqualFunc) Coord.equal);
+        broken_coords = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
 
         coords_for_col = new ArrayList<ArrayList<Coord?>> ();
         for (int col = 0; col < _cols; col++)
         {
-            coords_for_col.add (new ArrayList<Coord?> ((GLib.EqualFunc) Coord.equal));
+            coords_for_col.add (new ArrayList<Coord?> ((EqualDataFunc<Coord>) Coord.equal));
             for (int row = 0; row < _rows; row++)
             {
                 coords_for_col.get (col).add (Coord(row, col));
@@ -122,7 +122,7 @@ public class SudokuBoard
         coords_for_row = new ArrayList<ArrayList<Coord?>> ();
         for (int row = 0; row < _rows; row++)
         {
-            coords_for_row.add (new ArrayList<Coord?> ((GLib.EqualFunc) Coord.equal));
+            coords_for_row.add (new ArrayList<Coord?> ((EqualDataFunc<Coord>) Coord.equal));
             for (int col = 0; col < _cols; col++)
             {
                 coords_for_row.get (row).add (Coord(row, col));
@@ -131,12 +131,12 @@ public class SudokuBoard
         }
         coords_for_row = coords_for_row.read_only_view;
 
-        coords_for_block = new HashMap<Coord?, ArrayList<Coord?>> ((GLib.HashFunc) Coord.hash, (GLib.EqualFunc) Coord.equal);
+        coords_for_block = new HashMap<Coord?, ArrayList<Coord?>> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         for (int col = 0; col < _block_cols; col++)
         {
             for (int row = 0; row < _block_rows; row++)
             {
-                coords_for_block.set (Coord(row, col), new ArrayList<Coord?> ((GLib.EqualFunc) Coord.equal));
+                coords_for_block.set (Coord(row, col), new ArrayList<Coord?> ((EqualDataFunc<Coord>) Coord.equal));
             }
         }
         for (int col = 0; col < _cols; col++)
@@ -351,7 +351,7 @@ public class SudokuBoard
 
     public Set<Coord?> get_occurances(Gee.List<Coord?> coords, int val)
     {
-        Set<Coord?> occurances = new HashSet<Coord?>((GLib.HashFunc) Coord.hash, (GLib.EqualFunc) Coord.equal);
+        Set<Coord?> occurances = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         foreach (Coord coord in coords)
         {
             if (cells[coord.row, coord.col] == val) {
@@ -451,7 +451,7 @@ public class SudokuBoard
     }
 
     public HashMap<Coord?, ArrayList<int>> calculate_open_squares () {
-        var possibilities = new HashMap<Coord?, ArrayList<int>> ((GLib.HashFunc) Coord.hash, (GLib.EqualFunc) Coord.equal);
+        var possibilities = new HashMap<Coord?, ArrayList<int>> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         for (var l1 = 0; l1 < _rows; l1++)
         {
             for (var l2 = 0; l2 < _cols; l2++)

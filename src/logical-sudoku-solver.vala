@@ -68,7 +68,7 @@ class LogicalSudokuSolver
     private void fill_possibility_arrays () {
         row_possibilities = new ArrayList<Coord?>[board.rows, board.max_val + 1];
         col_possibilities = new ArrayList<Coord?>[board.cols, board.max_val + 1];
-        block_possibilities = new HashMap<Coord?, ArrayList<ArrayList<Coord?>>> ((GLib.HashFunc) Coord.hash, (GLib.EqualFunc) Coord.equal);
+        block_possibilities = new HashMap<Coord?, ArrayList<ArrayList<Coord?>>> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
 
         for (int row = 0; row < board.rows; row++) {
             for (int col = 0; col < board.cols; col++) {
@@ -156,7 +156,7 @@ class LogicalSudokuSolver
             if (open_squares[initial_coord] == null || open_squares[initial_coord].size < 2)
                 continue;
 
-            ArrayList<Coord?> subset_coords = new ArrayList<Coord?> ((GLib.EqualFunc) Coord.equal);
+            ArrayList<Coord?> subset_coords = new ArrayList<Coord?> ((EqualDataFunc<Coord>) Coord.equal);
             subset_coords.add (initial_coord);
 
             int subset_size = open_squares[initial_coord].size;

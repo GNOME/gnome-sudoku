@@ -18,7 +18,7 @@ GTK_REQUIRED=3.4.0
 PKG_CHECK_MODULES(GNOME_SUDOKU, [
   gio-2.0
   gtk+-3.0 >= $GTK_REQUIRED
-  gee-1.0
+  gee-0.8
 ])
 
 AC_PATH_PROG([APPDATA_VALIDATE], [appdata-validate], [/bin/true])
