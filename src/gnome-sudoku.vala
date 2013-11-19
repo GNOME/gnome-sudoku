@@ -558,7 +558,7 @@ public class Sudoku : Gtk.Application
                                "program-name", _("Sudoku"),
                                "logo-icon-name", "gnome-sudoku",
                                "version", VERSION,
-                               "comments", _("GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese logic puzzle.\n\nGNOME Sudoku is a part of GNOME Games."),
+                               "comments", _("The popular Japanese logic puzzle\n\nGNOME Sudoku is a part of GNOME Games."),
                                "copyright", "Copyright 2010-2011 Robert Ancell <robert.ancell@gmail.com>",
                                "license-type", License.GPL_2_0,
                                "authors", authors,
