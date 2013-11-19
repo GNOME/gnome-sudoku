@@ -559,7 +559,7 @@ public class Sudoku : Gtk.Application
                                "logo-icon-name", "gnome-sudoku",
                                "version", VERSION,
                                "comments", _("The popular Japanese logic puzzle\n\nGNOME Sudoku is a part of GNOME Games."),
-                               "copyright", "Copyright 2010-2011 Robert Ancell <robert.ancell@gmail.com>",
+                               "copyright", "Copyright \xc2\xa9 2010-2011 Robert Ancell <robert.ancell@gmail.com>",
                                "license-type", License.GPL_2_0,
                                "authors", authors,
                                "artists", artists,
