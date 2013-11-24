@@ -460,14 +460,15 @@ public class Sudoku : Gtk.Application
     {
         if (game_box.visible)
         {
-            SudokuPrinter printer = new SudokuPrinter (game.board.clone (), ref window);
+            SudokuPrinter printer = new SudokuPrinter ({game.board.clone ()}, ref window);
             printer.print_sudoku ();
         }
     }
 
     public void print_multiple_cb ()
     {
-        stdout.printf ("TODO: Print multiple\n");
+        GamePrinter printer = new GamePrinter (sudoku_store, ref window);
+        printer.run_dialog ();
     }
 
     public void possible_numbers_cb ()

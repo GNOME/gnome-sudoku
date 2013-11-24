@@ -1,6 +1,6 @@
 using Gee;
 
-class SudokuStore
+public class SudokuStore
 {
     private ArrayList<SudokuBoard> easy_boards = new ArrayList<SudokuBoard> ();
     private ArrayList<SudokuBoard> medium_boards = new ArrayList<SudokuBoard> ();
@@ -18,7 +18,7 @@ class SudokuStore
                 // Read lines until end of file (null) is reached
                 while ((line = dis.read_line (null)) != null) {
                     SudokuBoard board = new SudokuBoard();
-                    board.set_from_string(line[0:161], " ");
+                    board.set_from_string(line, " ");
 
                     easy_boards.add(board);
                 }
@@ -33,7 +33,7 @@ class SudokuStore
                 // Read lines until end of file (null) is reached
                 while ((line = dis.read_line (null)) != null) {
                     SudokuBoard board = new SudokuBoard();
-                    board.set_from_string(line[0:161], " ");
+                    board.set_from_string(line, " ");
 
                     medium_boards.add(board);
                 }
@@ -48,7 +48,7 @@ class SudokuStore
                 // Read lines until end of file (null) is reached
                 while ((line = dis.read_line (null)) != null) {
                     SudokuBoard board = new SudokuBoard();
-                    board.set_from_string(line[0:161], " ");
+                    board.set_from_string(line, " ");
 
                     hard_boards.add(board);
                 }
@@ -63,7 +63,7 @@ class SudokuStore
                 // Read lines until end of file (null) is reached
                 while ((line = dis.read_line (null)) != null) {
                     SudokuBoard board = new SudokuBoard();
-                    board.set_from_string(line[0:161], " ");
+                    board.set_from_string(line, " ");
 
                     very_hard_boards.add(board);
                 }
@@ -105,5 +105,31 @@ class SudokuStore
             return get_random_very_hard_board();
         else
             assert_not_reached();
+    }
+
+    public ArrayList<SudokuBoard> get_assorted_boards(int n, owned DifficultyCatagory[] levels)
+    {
+        var boards = new ArrayList<SudokuBoard> ();
+        int i = 0;
+
+        if (levels.length == 0)
+            levels = {DifficultyCatagory.EASY, DifficultyCatagory.MEDIUM, DifficultyCatagory.HARD, DifficultyCatagory.VERY_HARD};
+
+        while (i < n)
+        {
+            // In future, modify this while loop to accomodate 'exclude' and 'new' parameters
+            boards.add (get_random_board ((DifficultyCatagory) levels[i++ % levels.length]));
+        }
+
+        CompareDataFunc<SudokuBoard> CompareDifficultyRatings = (a, b) => {
+            if (a.difficulty_rating > b.difficulty_rating)
+                return 1;
+            if (a.difficulty_rating == b.difficulty_rating)
+                return 0;
+            return -1;
+        };
+
+        boards.sort (CompareDifficultyRatings);
+        return boards;
     }
 }

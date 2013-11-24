@@ -61,6 +61,27 @@ public class SudokuBoard
         get { return _filled == _cols * _rows && !broken; }
     }
 
+    public double difficulty_rating { get; private set; }
+
+    private bool in_range (float[] range)
+    {
+        return (difficulty_rating >= range[0] && difficulty_rating < range[1]);
+    }
+
+    public DifficultyCatagory get_difficulty_catagory ()
+    {
+        if (in_range(DifficultyRating.EASY_RANGE))
+            return DifficultyCatagory.EASY;
+        else if (in_range(DifficultyRating.MEDIUM_RANGE))
+            return DifficultyCatagory.MEDIUM;
+        else if (in_range(DifficultyRating.HARD_RANGE))
+            return DifficultyCatagory.HARD;
+        else if (in_range(DifficultyRating.VERY_HARD_RANGE))
+            return DifficultyCatagory.VERY_HARD;
+        else
+            return DifficultyCatagory.EASY;
+    }
+
     public signal void completed ();
 
     /* The set of coordinates on the board which are invalid */
@@ -170,7 +191,7 @@ public class SudokuBoard
         return board;
     }
 
-    public void set_from_string (string s, string delimiter = "", string empty_value = "0")
+    public void set_from_string (string s, string delimiter = "", string empty_value = "0", string rating_delimiter = "\t")
     {
         //stdout.printf("Processing %s\n", s);
 
@@ -178,7 +199,10 @@ public class SudokuBoard
 
         string[] cells = s.split (delimiter, number_of_cells);
 
-        //stdout.printf("Cells %d %d\n", number_of_cells, cells.length);
+        string[] rating = cells[cells.length -1].split (rating_delimiter, 2);
+        cells[cells.length - 1] = rating[0];
+        difficulty_rating = double.parse (rating[1]);
+
         for (int i = 0; i < number_of_cells; i++)
         {
             string cell = cells[i];

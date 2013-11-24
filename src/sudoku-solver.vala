@@ -753,7 +753,24 @@ public enum DifficultyCatagory {
     EASY,
     MEDIUM,
     HARD,
-    VERY_HARD
+    VERY_HARD;
+
+    public string to_string ()
+    {
+        switch (this)
+        {
+            case EASY:
+                return "Easy";
+            case MEDIUM:
+                return "Medium";
+            case HARD:
+                return "Hard";
+            case VERY_HARD:
+                return "Very hard";
+            default:
+                return "Undefined";
+        }
+    }
 }
 
 public class DifficultyRating {

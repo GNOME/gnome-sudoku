@@ -6,8 +6,6 @@ about dialog: artwork has "placeholder"
 "show possible numbers" results in critical warning. No result
 "warn about unfillable squares" results in critical warning. No result
 
-Print multiple: just writes TODO to terminal
-
 Undo/redo are clickable, even before starting a game
 
 "Saved game" shown in start screen, even if none exist
@@ -19,6 +17,13 @@ The "Back" back seems to function like undo. Is that the case?
 The ingame Help: (I like it!)
   Should maybe have different name. Help is the common word for opening the help manual.
   Left align the text
-  Perhaps start with a general description of the method, instead of repeating the same sentance for each line.
+  Perhaps start with a general description of the method, instead of repeating the same sentence for each line.
 
 No way to save a game
+
+No way to know if a game has already been played or not:
+  For this SudokuTracker class needs to be ported. Once it is complete, enable the corresponding options -
+  'MarkAsPlayedToggle' and 'includeOldGamesToggle' in data/print_games.ui (for multiple print dialog)
+  
+Currently we only read sudokus from data files:
+  We need to complete the port of SudokuGenerator class to be able to generate sudokus as desired.
