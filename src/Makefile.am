@@ -38,3 +38,7 @@ gnome-sudoku-resources.c: gnome-sudoku.gresource.xml $(shell $(GLIB_COMPILE_RESO
 
 EXTRA_DIST = \
 	gnome_sudoku.gresource.xml
+
+CLEANFILES = \
+	$(patsubst %.vala,%.c,$(filter %.vala, $(SOURCES))) \
+	*_vala.stamp
