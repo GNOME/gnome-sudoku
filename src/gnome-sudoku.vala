@@ -119,7 +119,7 @@ public class Sudoku : Gtk.Application
         var hard_grid = (Box) builder.get_object ("hard_grid");
         var very_hard_grid = (Box) builder.get_object ("very_hard_grid");
 
-        SudokuBoard easy_board = sudoku_store.get_random_easy_board ();
+        var easy_board = sudoku_store.get_random_easy_board ();
         //gen.make_symmetric_puzzle(Random.int_range(0, 4));
         //gen.generate (DifficultyRating.easy_range);
         easy_preview = new SudokuView (new SudokuGame (easy_board), true);
@@ -133,7 +133,7 @@ public class Sudoku : Gtk.Application
             return false;
         });
 
-        SudokuBoard medium_board = sudoku_store.get_random_medium_board ();
+        var medium_board = sudoku_store.get_random_medium_board ();
         //gen.make_symmetric_puzzle(Random.int_range(0, 4));
         // gen.generate (DifficultyRating.medium_range);
         medium_preview = new SudokuView (new SudokuGame (medium_board), true);
@@ -147,7 +147,7 @@ public class Sudoku : Gtk.Application
             return false;
         });
 
-        SudokuBoard hard_board = sudoku_store.get_random_hard_board ();
+        var hard_board = sudoku_store.get_random_hard_board ();
         //gen.make_symmetric_puzzle(Random.int_range(0, 4));
         //gen.generate (DifficultyRating.hard_range);
         hard_preview = new SudokuView (new SudokuGame (hard_board), true);
@@ -161,7 +161,7 @@ public class Sudoku : Gtk.Application
             return false;
         });
 
-        SudokuBoard very_hard_board = sudoku_store.get_random_very_hard_board ();
+        var very_hard_board = sudoku_store.get_random_very_hard_board ();
         //gen.make_symmetric_puzzle(Random.int_range(0, 4));
         //gen.generate (DifficultyRating.very_hard_range);
         very_hard_preview = new SudokuView (new SudokuGame (very_hard_board), true);
@@ -184,14 +184,14 @@ public class Sudoku : Gtk.Application
 
     private void start_game (SudokuBoard board)
     {
-        SudokuBoard completed_board = board.clone ();
+        var completed_board = board.clone ();
 
-        SudokuRater rater = new SudokuRater(ref completed_board);
-        DifficultyRating rating = rater.get_difficulty ();
+        var rater = new SudokuRater(ref completed_board);
+        var rating = rater.get_difficulty ();
         rating.pretty_print ();
 
-        bool show_possibilities = false;
-        bool show_warnings = false;
+        var show_possibilities = false;
+        var show_warnings = false;
 
         if (view != null) {
             show_possibilities = view.show_possibilities;
@@ -245,7 +245,7 @@ public class Sudoku : Gtk.Application
         game.board.completed.connect (() => {
             view.dance ();
 
-            double time = game.timer.elapsed ();
+            var time = game.timer.elapsed ();
 
             for (var i = 0; i < game.board.rows; i++)
             {
@@ -279,7 +279,7 @@ public class Sudoku : Gtk.Application
 
     private void update_help ()
     {
-        LogicalSudokuSolver logical_solver = new LogicalSudokuSolver(ref game.board);
+        var logical_solver = new LogicalSudokuSolver(ref game.board);
 
         view.reset_cell_background_colors ();
         view.queue_draw ();
@@ -319,7 +319,7 @@ public class Sudoku : Gtk.Application
         {
             var event_box = new Gtk.EventBox ();
 
-            string description = "%d should go in %d, %d because its the only place it can go in the associated ".printf (hidden_single.cell.val, hidden_single.cell.coord.col, hidden_single.cell.coord.row);
+            var description = "%d should go in %d, %d because its the only place it can go in the associated ".printf (hidden_single.cell.val, hidden_single.cell.coord.col, hidden_single.cell.coord.row);
             if (hidden_single.row && hidden_single.col && hidden_single.block)
             {
                 description += "row, column and block";
@@ -397,7 +397,7 @@ public class Sudoku : Gtk.Application
         foreach (Subset? subset in logical_solver.get_naked_subsets()) {
             var event_box = new Gtk.EventBox ();
 
-            string description = "naked subset";
+            var description = "naked subset";
 
             var label = new Gtk.Label (description);
 
@@ -460,14 +460,14 @@ public class Sudoku : Gtk.Application
     {
         if (game_box.visible)
         {
-            SudokuPrinter printer = new SudokuPrinter ({game.board.clone ()}, ref window);
+            var printer = new SudokuPrinter ({game.board.clone ()}, ref window);
             printer.print_sudoku ();
         }
     }
 
     public void print_multiple_cb ()
     {
-        GamePrinter printer = new GamePrinter (sudoku_store, ref window);
+        var printer = new GamePrinter (sudoku_store, ref window);
         printer.run_dialog ();
     }
 
