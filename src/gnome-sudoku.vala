@@ -550,8 +550,11 @@ public class Sudoku : Gtk.Application
         }
     }
 
-    private const string[] authors = { "Robert Ancell <robert.ancell@gmail.com>", "Christopher Baines <cbaines8@gmail.com>" };
-    private const string[] artists = { "Place Holder <place@holder.com>" };
+    private const string[] authors = { "Robert Ancell <robert.ancell@gmail.com>",
+                                       "Christopher Baines <cbaines8@gmail.com>",
+                                       "Thomas M. Hinkle <Thomas_Hinkle@alumni.brown.edu>",
+                                       "John Stowers <john.stowers@gmail.com>",
+                                       null };
 
     public void about_cb ()
     {
@@ -560,10 +563,10 @@ public class Sudoku : Gtk.Application
                                "logo-icon-name", "gnome-sudoku",
                                "version", VERSION,
                                "comments", _("The popular Japanese logic puzzle\n\nGNOME Sudoku is a part of GNOME Games."),
-                               "copyright", "Copyright \xc2\xa9 2010-2011 Robert Ancell <robert.ancell@gmail.com>",
+                               "copyright", "Copyright \xc2\xa9 2005-2008 Thomas M. Hinkle\nCopyright \xc2\xa9 2010-2011 Robert Ancell",
                                "license-type", License.GPL_2_0,
                                "authors", authors,
-                               "artists", artists,
+                               "artists", null,
                                "translator-credits", _("translator-credits"),
                                "website", "http://www.gnome.org/projects/gnome-games/",
                                "website-label", _("GNOME Games web site")
