@@ -36,9 +36,8 @@ gnome_sudoku_VALAFLAGS = \
 gnome-sudoku-resources.c: gnome-sudoku.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies gnome-sudoku.gresource.xml)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $<
 
-EXTRA_DIST = \
-	gnome_sudoku.gresource.xml
-
 CLEANFILES = \
 	$(patsubst %.vala,%.c,$(filter %.vala, $(SOURCES))) \
 	*_vala.stamp
+
+DISTCLEANFILES = gnome-sudoku.gresource.xml
