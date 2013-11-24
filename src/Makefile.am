@@ -41,3 +41,5 @@ CLEANFILES = \
 	*_vala.stamp
 
 DISTCLEANFILES = gnome-sudoku.gresource.xml
+
+-include $(top_srcdir)/git.mk
