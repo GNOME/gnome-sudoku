@@ -49,8 +49,8 @@ APPNAME_SHORT       = _("Sudoku")
 COPYRIGHT           = 'Copyright © 2005-2008, Thomas M. Hinkle'
 DESCRIPTION         = _('The popular Japanese logic puzzle\n\nGNOME Sudoku is a part of GNOME Games.')
 AUTHORS             = ("Thomas M. Hinkle","John Stowers")
-WEBSITE             = 'http://www.gnome.org/projects/gnome-games/'
-WEBSITE_LABEL       = _('GNOME Games web site')
+WEBSITE             = 'https://wiki.gnome.org/Apps/Sudoku'
+WEBSITE_LABEL       = _('Website')
 AUTO_SAVE           = True
 MIN_NEW_PUZZLES     = 90
 
