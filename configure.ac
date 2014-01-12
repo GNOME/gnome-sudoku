@@ -12,7 +12,7 @@ dnl ###########################################################################
 dnl Dependencies
 dnl ###########################################################################
 
-PYGOBJECT_REQUIRED=2.28.3
+PYGOBJECT_REQUIRED=3.11
 
 PKG_CHECK_MODULES(PYGOBJECT, [
     pygobject-3.0 >= $PYGOBJECT_REQUIRED
