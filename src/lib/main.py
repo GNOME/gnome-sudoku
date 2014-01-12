@@ -119,7 +119,7 @@ class UI:
         run_selector=False to this method to avoid running the dialog
         and allow a tester to set up a game programmatically.
         """
-        self.settings = Gio.Settings("org.gnome.gnome-sudoku")
+        self.settings = Gio.Settings(schema="org.gnome.gnome-sudoku")
         self.setup_gui()
         self.timer = timer.ActiveTimer(self.w)
         self.gsd.set_timer(self.timer)
@@ -191,7 +191,7 @@ class UI:
         self.uimanager = Gtk.UIManager()
 
     def setup_actions (self):
-        self.main_actions = Gtk.ActionGroup('MainActions')
+        self.main_actions = Gtk.ActionGroup(name='MainActions')
         self.main_actions.add_actions([
             ('Game', None, _('_Game')),
             ('New', Gtk.STOCK_NEW, None, '<Control>n', _('New game'), self.new_cb),
@@ -738,7 +738,7 @@ class TrackerBox (Gtk.VBox):
 
     @simple_debug
     def setup_actions (self):
-        self.tracker_actions = Gtk.ActionGroup('tracker_actions')
+        self.tracker_actions = Gtk.ActionGroup(name='tracker_actions')
         self.tracker_actions.add_actions(
             [('Remove',
               Gtk.STOCK_CLEAR,

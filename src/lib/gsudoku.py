@@ -17,7 +17,7 @@ def gtkcolor_to_rgb (color):
 class SudokuNumberGrid (Gtk.AspectFrame):
 
     def __init__ (self, group_size = 9):
-        self.table = Gtk.Table(rows = group_size, columns = group_size, homogeneous = True)
+        self.table = Gtk.Table(n_rows = group_size, n_columns = group_size, homogeneous = True)
         self.group_size = group_size
         self.__entries__ = {}
         for x in range(self.group_size):
