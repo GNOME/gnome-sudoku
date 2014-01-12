@@ -970,10 +970,6 @@ def start_game ():
     # Quick fix for bug #703169
     signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-    ##  You must call g_thread_init() before executing any other GLib
-    ##  functions in a threaded GLib program.
-    GObject.threads_init()
-
     if options.profile:
         options.profile = False
         profile_me()
