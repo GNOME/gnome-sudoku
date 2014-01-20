@@ -1,3 +1,4 @@
+AC_PREREQ([2.63])
 AC_INIT([GNOME Sudoku], [3.11.3], [https://bugzilla.gnome.org/],
         [gnome-sudoku], [https://wiki.gnome.org/Apps/Sudoku])
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
