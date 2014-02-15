@@ -103,35 +103,35 @@ class GridDancer:
                     if box.get_value() == value:
                         box.set_background_color(color)
 
+def test_dance_grid ():
+    from . import gsudoku
+    window = Gtk.Window()
+    game = '''9 1 6 3 2 8 4 5 7
+              5 7 4 6 1 9 2 8 3
+              8 3 2 5 7 4 9 6 1
+              6 8 7 2 4 1 3 9 5
+              2 9 5 7 3 6 1 4 8
+              3 4 1 8 9 5 7 2 6
+              4 6 9 1 8 7 5 3 2
+              1 2 8 9 5 3 6 7 4
+              7 5 3 4 6 2 8 1 9'''
+    gsd = gsudoku.SudokuGameDisplay(game)
+    dancer = GridDancer(gsd)
+
+    button = Gtk.Button('toggle')
+    button.connect('clicked',
+            lambda *args: dancer.stop_dancing() if dancer.dancing
+                else dancer.start_dancing())
+
+    vbox = Gtk.VBox()
+    vbox.pack_start(gsd, True, True, 0)
+    vbox.pack_end(button, True, True, 0)
+    vbox.set_focus_child(button)
+
+    window.add(vbox)
+    window.show_all()
+    window.connect('delete-event', Gtk.main_quit)
+    Gtk.main()
+
 if __name__ == '__main__':
-    def test_dance_grid ():
-        from . import gsudoku
-        window = Gtk.Window()
-        game = '''9 1 6 3 2 8 4 5 7
-                  5 7 4 6 1 9 2 8 3
-                  8 3 2 5 7 4 9 6 1
-                  6 8 7 2 4 1 3 9 5
-                  2 9 5 7 3 6 1 4 8
-                  3 4 1 8 9 5 7 2 6
-                  4 6 9 1 8 7 5 3 2
-                  1 2 8 9 5 3 6 7 4
-                  7 5 3 4 6 2 8 1 9'''
-        gsd = gsudoku.SudokuGameDisplay(game)
-        dancer = GridDancer(gsd)
-
-        button = Gtk.Button('toggle')
-        button.connect('clicked',
-                lambda *args: dancer.stop_dancing() if dancer.dancing
-                    else dancer.start_dancing())
-
-        vbox = Gtk.VBox()
-        vbox.pack_start(gsd, True, True, 0)
-        vbox.pack_end(button, True, True, 0)
-        vbox.set_focus_child(button)
-
-        window.add(vbox)
-        window.show_all()
-        window.connect('delete-event', Gtk.main_quit)
-        Gtk.main()
-
     test_dance_grid()
