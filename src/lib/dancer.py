@@ -42,7 +42,7 @@ class GridDancer:
                 box.need_restore = False
         self.grid.get_toplevel().child_focus(Gtk.DirectionType.TAB_BACKWARD)
         self.dancing = True
-        GObject.timeout_add(350, self.dance_grid)
+        GObject.timeout_add(500, self.dance_grid)
 
     def stop_dancing (self):
         self.dancing = False
@@ -57,7 +57,7 @@ class GridDancer:
             return
         if self.step > self.STEPS_PER_ANIMATION:
             self.rotate_animation()
-        self.adjustment = (self.adjustment + 1) % 9
+        #self.adjustment = (self.adjustment + 1) % 9
         try:
             self.current_animation()
         except AttributeError:
