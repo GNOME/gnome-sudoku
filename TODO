@@ -24,6 +24,49 @@ No way to save a game
 No way to know if a game has already been played or not:
   For this SudokuTracker class needs to be ported. Once it is complete, enable the corresponding options -
   'MarkAsPlayedToggle' and 'includeOldGamesToggle' in data/print_games.ui (for multiple print dialog)
-  
+
 Currently we only read sudokus from data files:
   We need to complete the port of SudokuGenerator class to be able to generate sudokus as desired.
+
+Port saver.py for saving games, fullscreen mode feature, highlighter feature
+
+mcatanzaro: We're removing Fullscreen from most other games because it usually
+            looks pretty bad. Games maximized with the header bar usually fit
+            nicely against the top bar of the shell, which is probably
+            sufficient. I'm also not sure if highlighter is really desirable.
+
+Known Bugs -
+- Once the number pad is brought up, it does not get hidden unless a button on it is clicked
+  (http://i.imgur.com/FDLukf2.png)
+  Will be resolved when the Popup window is replaced by popover
+
+- 'Back' button below number-pad and 'Undo' option in the Panel menu (don't know what to call it),
+  are redundant and have the same callback - 'undo_cb'.
+
+- The preview window does not resize to it's original size (the size at startup) after 'New Game' is clicked.
+
+- GLib-CRITICAL **: g_timer_continue: assertion 'timer->active == FALSE' failed
+  Above error message is shown after 1st game is started.
+
+- Sometimes starting a 'Hard' or 'Very Hard' game causes the application to crash with the following error -
+  ERROR:hashmap.c:3434:gee_hash_map_map_iterator_real_get_key: assertion failed: (_node != null)
+  Aborted (core dumped)
+
+- Help is not working :
+  The URI ‘ghelp:gnome-sudoku’ does not point to a valid page.
+
+- No way to save a game (port saver.py)
+
+- Sudoku master has total 19 menu options (8 in 'Game', 5 in 'Settings', 4 in 'Tools', 2 in 'Help')
+  Current vala-port design and mockups have only one panel menu and it cannot accomodate all the 19 options
+  Ask aday about this.
+
+- Mockups have alloted a separate place for notes.
+  This is totally different than the current design (top, bottom notes for each cell).
+  Ask aday about this.
+
+- No icon is displayed in panel for vala-port
+
+- When 'Show possible numbers' is checked, the numbers are not displayed in an organized manner at the bottom.
+  (http://i.imgur.com/MYiloXw.png)
+  Instead, they are displayed at random positions in the cells (looks random, maybe there is a bug in display offsets)
