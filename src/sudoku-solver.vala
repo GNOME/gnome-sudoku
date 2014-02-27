@@ -350,6 +350,8 @@ public class SudokuSolver
 
         // Find the square with the least possibilties
         MapIterator<Coord?, ArrayList<int>> iter = poss.map_iterator ();
+
+        iter.next ();
         Coord least_coord = iter.get_key ();
         ArrayList<int> least_coord_possibilties = iter.get_value ();
 
