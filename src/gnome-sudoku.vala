@@ -206,14 +206,7 @@ public class Sudoku : Gtk.Application
 
         game = new SudokuGame (board);
 
-        if (game.timer.elapsed() <= 0.000002)
-        {
-            game.timer.start ();
-        }
-        else
-        {
-            game.timer.continue ();
-        }
+        game.timer.start ();
 
         view = new SudokuView (game);
 
