@@ -61,13 +61,6 @@ mcatanzaro: This number pad was from an earlier design; I think we can remove
 
 - The preview window does not resize to it's original size (the size at startup) after 'New Game' is clicked.
 
-- GLib-CRITICAL **: g_timer_continue: assertion 'timer->active == FALSE' failed
-  Above error message is shown after 1st game is started.
-
-- Sometimes starting a 'Hard' or 'Very Hard' game causes the application to crash with the following error -
-  ERROR:hashmap.c:3434:gee_hash_map_map_iterator_real_get_key: assertion failed: (_node != null)
-  Aborted (core dumped)
-
 - No way to save a game (port saver.py)
 
 - Sudoku master has total 19 menu options (8 in 'Game', 5 in 'Settings', 4 in 'Tools', 2 in 'Help')
