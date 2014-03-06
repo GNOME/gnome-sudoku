@@ -8,34 +8,119 @@
 # Andras Timar <timar at gnome dot hu>, 2002, 2003.
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Szabolcs Varga <shirokuma at shirokuma dot hu>, 2005.
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
 # Balázs Úr <urbalazs at gmail dot com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-13 11:33+0200\n"
-"PO-Revision-Date: 2013-09-13 11:29+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"sudoku&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-01-12 17:47+0000\n"
+"PO-Revision-Date: 2014-03-06 15:10+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
-"Language-Team: Hungarian <openscope at googlegroups dot com>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.4\n"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+msgid "GNOME Sudoku"
+msgstr "GNOME Sudoku"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:2
+msgid ""
+"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
+"make playing Sudoku fun. Games are automatically saved when you quit, and "
+"you can always come back to any game that you've played."
+msgstr ""
+"A GNOME Sudoku kezelőfelülete egyszerű és tolakodásmentes, és minden "
+"funkciója megvan egy igazán szórakoztató Sudoku játékhoz. A játszmák "
+"kilépéskor automatikusan mentődnek, így bármikor visszatérhet bármelyik "
+"mentett álláshoz."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites. You can also see detailed information about how the computer "
+"solved the puzzle."
+msgstr ""
+"Minden játszma különböző nehézségi fokon játszható, hasonlóan az újságok "
+"és a weboldalak feladványaihoz. Részletes információt kaphat arról, hogy "
+"a számítógép hogyan oldaná meg az adott feladványt."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"A játszmák kinyomtathatók, ha papíron szeretne játszani. A nyomtatásnál "
+"beállítható, hogy oldalanként hány játszmát és milyen nehézségi fokon "
+"szeretne nyomtatni; melynek eredményeként a GNOME Sudoku újrafelhasználható "
+"feladványkötetként használható."
+
+#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:2
+#: ../data/gnome-sudoku.desktop.in.h:2
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "Tesztelje logikai képességeit ezzel a számrács-fejtörővel"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:3
+#: ../data/gnome-sudoku.desktop.in.h:3
 msgid "game;board;tiles;japanese;"
 msgstr "játék;tábla;csempék;japán;"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
+#| msgid "The number of mines in a custom game"
+msgid "The number of seconds between automatic saves"
+msgstr "Másodpercek száma az automatikus mentések között"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
+#| msgid "_Warn if too many flags have been placed"
+msgid "Print games that have been played"
+msgstr "Lejátszott játékok nyomtatása"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
+msgid "Mark printed games as played"
+msgstr "Kinyomtatott játékok megjelölése játszottként"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
+#| msgid "Width of the window in pixels"
+msgid "Width of application window in pixels"
+msgstr "Az alkalmazásablak szélessége képpontokban"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
+#| msgid "Height of the window in pixels"
+msgid "Height of application window in pixels"
+msgstr "Az alkalmazásablak magassága képpontokban"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
+msgid "Show hint highlights"
+msgstr "Tippkiemelések megjelenítése"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
+#| msgid "Color to use for worm"
+msgid "Color of the grid border"
+msgstr "A rácsszegély színe"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
+#| msgid "Show or hide the toolbar"
+msgid "Show the application toolbar"
+msgstr "Eszköztár megjelenítése"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
+#| msgid "Show _History"
+msgid "Show hints"
+msgstr "Tippek megjelenítése"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
+#| msgid "_Number of sudoku to print: "
+msgid "Number of puzzles to print on a page"
+msgstr "Egy oldalra nyomtatandó fejtörők száma"
 
 #: ../data/print_games.ui.h:1
 msgid "Print Sudokus"
@@ -105,17 +190,13 @@ msgstr "A kijelölt követő eltávolítása"
 msgid "Make the tracked changes permanent"
 msgstr "A követett változtatások véglegessé tétele"
 
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:750
+#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
 msgid "H_ide"
 msgstr "_Elrejtés"
 
 #: ../data/tracker.ui.h:5
 msgid "Hide the tracked values"
 msgstr "A követett értékek elrejtése"
-
-#: ../src/lib/defaults.py:47
-msgid "GNOME Sudoku"
-msgstr "GNOME Sudoku"
 
 #: ../src/lib/defaults.py:50
 msgid ""
@@ -128,20 +209,20 @@ msgstr ""
 "A GNOME Sudoku a GNOME játékok része."
 
 #: ../src/lib/defaults.py:53
-msgid "GNOME Games web site"
-msgstr "A GNOME játékok weboldala"
+msgid "Website"
+msgstr "Weboldal"
 
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
+#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
 #: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Könnyű"
 
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
+#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
 #: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Közepes"
 
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
+#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
 #: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Nehéz"
@@ -231,220 +312,220 @@ msgstr "Valóban ezt szeretné tenni?"
 msgid "Don't ask me this again."
 msgstr "Ne kérdezze újra."
 
-#: ../src/lib/main.py:195
+#: ../src/lib/main.py:196
 msgid "_Game"
 msgstr "_Játék"
 
-#: ../src/lib/main.py:196
+#: ../src/lib/main.py:197
 msgid "New game"
 msgstr "Új játék"
 
 # aisleriot/dialog.c:112
-#: ../src/lib/main.py:197
+#: ../src/lib/main.py:198
 msgid "_Reset"
 msgstr "_Visszaállítás"
 
-#: ../src/lib/main.py:199
+#: ../src/lib/main.py:200
 msgid "_Undo"
 msgstr "_Visszavonás"
 
-#: ../src/lib/main.py:200
+#: ../src/lib/main.py:201
 msgid "Undo last action"
 msgstr "Utolsó lépés visszavonása"
 
-#: ../src/lib/main.py:201
+#: ../src/lib/main.py:202
 msgid "_Redo"
 msgstr "Mé_gis"
 
-#: ../src/lib/main.py:202
+#: ../src/lib/main.py:203
 msgid "Redo last action"
 msgstr "Mégis az utolsó lépést"
 
-#: ../src/lib/main.py:203
+#: ../src/lib/main.py:204
 msgid "Puzzle _Statistics..."
 msgstr "Fejtörő-_statisztika…"
 
-#: ../src/lib/main.py:205
+#: ../src/lib/main.py:206
 msgid "_Print..."
 msgstr "_Nyomtatás…"
 
-#: ../src/lib/main.py:206
+#: ../src/lib/main.py:207
 msgid "Print _Multiple Sudokus..."
 msgstr "_Több sudoku nyomtatása*"
 
-#: ../src/lib/main.py:209
+#: ../src/lib/main.py:210
 msgid "_Settings"
 msgstr "_Beállítások"
 
-#: ../src/lib/main.py:211
+#: ../src/lib/main.py:212
 msgid "_Tools"
 msgstr "_Eszközök"
 
-#: ../src/lib/main.py:212
+#: ../src/lib/main.py:213
 msgid "_Hint"
 msgstr "_Javaslat"
 
-#: ../src/lib/main.py:213
+#: ../src/lib/main.py:214
 msgid "Show a square that is easy to fill."
 msgstr "Egyszerűen kitölthető négyzetrács megjelenítése"
 
-#: ../src/lib/main.py:214
+#: ../src/lib/main.py:215
 msgid "Clear _Top Notes"
 msgstr "_Felső megjegyzések törlése"
 
-#: ../src/lib/main.py:216
+#: ../src/lib/main.py:217
 msgid "Clear _Bottom Notes"
 msgstr "_Alsó megjegyzések törlése"
 
-#: ../src/lib/main.py:218
+#: ../src/lib/main.py:219
 msgid "_Help"
 msgstr "_Súgó"
 
-#: ../src/lib/main.py:219
+#: ../src/lib/main.py:220
 msgid "_Contents"
 msgstr "_Tartalom"
 
-#: ../src/lib/main.py:225
+#: ../src/lib/main.py:226
 msgid "Show _Possible Numbers"
 msgstr "_Lehetséges számok megjelenítése"
 
-#: ../src/lib/main.py:227
+#: ../src/lib/main.py:228
 msgid "Always show possible numbers in a square"
 msgstr "Mindig mutassa a négyzetben lehetséges számokat"
 
-#: ../src/lib/main.py:231
+#: ../src/lib/main.py:232
 msgid "Warn About _Unfillable Squares"
 msgstr "_Figyelmeztessen a kitölthetetlen négyzetekre"
 
-#: ../src/lib/main.py:233
+#: ../src/lib/main.py:234
 msgid "Warn about squares made unfillable by a move"
 msgstr "Figyelmeztessen a lépés által kitölthetetlenné tett négyzetekre"
 
-#: ../src/lib/main.py:235
+#: ../src/lib/main.py:236
 msgid "_Track Additions"
 msgstr "_Módosítások követése"
 
-#: ../src/lib/main.py:237
+#: ../src/lib/main.py:238
 msgid "Mark new additions in a separate color so you can keep track of them."
 msgstr "Új elemek követése eltérő színnel, így követheti azokat."
 
-#: ../src/lib/main.py:239
+#: ../src/lib/main.py:240
 msgid "Show _Toolbar"
 msgstr "Es_zköztár megjelenítése"
 
-#: ../src/lib/main.py:240
+#: ../src/lib/main.py:241
 msgid "_Highlighter"
 msgstr "Kie_melő"
 
-#: ../src/lib/main.py:241
+#: ../src/lib/main.py:242
 msgid "Highlight the current row, column and box"
 msgstr "Kiemeli az aktuális sort, oszlopot és dobozt"
 
-#: ../src/lib/main.py:366
+#: ../src/lib/main.py:367
 #, python-format
 msgid "You completed the puzzle in %d second"
 msgid_plural "You completed the puzzle in %d seconds"
 msgstr[0] "A fejtörőt %d másodperc alatt oldotta meg"
 msgstr[1] "A fejtörőt %d másodperc alatt oldotta meg"
 
-#: ../src/lib/main.py:371 ../src/lib/main.py:379
+#: ../src/lib/main.py:372 ../src/lib/main.py:380
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d perc"
 msgstr[1] "%d perc"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
+#: ../src/lib/main.py:373 ../src/lib/main.py:381
 #, python-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d másodperc"
 msgstr[1] "%d másodperc"
 
-#: ../src/lib/main.py:373
+#: ../src/lib/main.py:374
 #, python-format
 msgid "You completed the puzzle in %(minute)s and %(second)s"
 msgstr "A fejtörőt %(minute)s %(second)s alatt oldotta meg"
 
-#: ../src/lib/main.py:378
+#: ../src/lib/main.py:379
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d óra"
 msgstr[1] "%d óra"
 
-#: ../src/lib/main.py:381
+#: ../src/lib/main.py:382
 #, python-format
 msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
 msgstr "A fejtörőt %(hour)s %(minute)s %(second)s alatt oldotta meg"
 
-#: ../src/lib/main.py:383
+#: ../src/lib/main.py:384
 #, python-format
 msgid "You got %(n)s hint."
 msgid_plural "You got %(n)s hints."
 msgstr[0] "%(n)s tippet kapott."
 msgstr[1] "%(n)s tippet kapott."
 
-#: ../src/lib/main.py:386
+#: ../src/lib/main.py:387
 #, python-format
 msgid "You had %(n)s impossibility pointed out."
 msgid_plural "You had %(n)s impossibilities pointed out."
 msgstr[0] "%(n)s lehetetlen helyzetre mutatott rá."
 msgstr[1] "%(n)s lehetetlen helyzetre mutatott rá."
 
-#: ../src/lib/main.py:391
+#: ../src/lib/main.py:392
 msgid "You win!"
 msgstr "Ön nyert!"
 
-#: ../src/lib/main.py:401
+#: ../src/lib/main.py:402
 msgid "Save this game before starting new one?"
 msgstr "Menti a játékot egy új elkezdése előtt?"
 
-#: ../src/lib/main.py:402
+#: ../src/lib/main.py:403
 msgid "_Save game for later"
 msgstr "A játék _mentése"
 
-#: ../src/lib/main.py:403
+#: ../src/lib/main.py:404
 msgid "_Abandon game"
 msgstr "_Játék elhagyása"
 
-#: ../src/lib/main.py:421
+#: ../src/lib/main.py:422
 msgid "Save game before closing?"
 msgstr "Menti a játékot kilépés előtt?"
 
-#: ../src/lib/main.py:619
+#: ../src/lib/main.py:620
 msgid "Puzzle Information"
 msgstr "Fejtörő-információk"
 
-#: ../src/lib/main.py:620
+#: ../src/lib/main.py:621
 msgid "There is no current puzzle."
 msgstr "Nincs fejtörő."
 
-#: ../src/lib/main.py:625
+#: ../src/lib/main.py:626
 msgid "Calculated difficulty: "
 msgstr "Számított nehézség: "
 
-#: ../src/lib/main.py:630
+#: ../src/lib/main.py:631
 msgid "Very Hard"
 msgstr "Nagyon nehéz"
 
-#: ../src/lib/main.py:635
+#: ../src/lib/main.py:636
 msgid "Number of moves instantly fillable by elimination: "
 msgstr "Eliminációval azonnal kitölthető lépések száma: "
 
-#: ../src/lib/main.py:638
+#: ../src/lib/main.py:639
 msgid "Number of moves instantly fillable by filling: "
 msgstr "Kitöltéssel azonnal kitölthető lépések száma: "
 
-#: ../src/lib/main.py:641
+#: ../src/lib/main.py:642
 msgid "Amount of trial-and-error required to solve: "
 msgstr "A megoldáshoz szükséges próbálgatás mennyisége: "
 
-#: ../src/lib/main.py:644 ../src/lib/main.py:645
+#: ../src/lib/main.py:645 ../src/lib/main.py:646
 msgid "Puzzle Statistics"
 msgstr "Fejtörő-statisztika"
 
-#: ../src/lib/main.py:669
+#: ../src/lib/main.py:670
 msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby at gnome dot hu>\n"
@@ -456,36 +537,36 @@ msgstr ""
 "Varga Szabolcs <shirokuma at shirokuma dot hu>"
 
 #. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:679
+#: ../src/lib/main.py:680
 #, python-format
 msgid "Unable to display help: %s"
 msgstr "Nem lehet megjeleníteni a súgót: %s"
 
-#: ../src/lib/main.py:735
+#: ../src/lib/main.py:736
 msgid "Untracked"
 msgstr "Követetlen"
 
-#: ../src/lib/main.py:744
+#: ../src/lib/main.py:745
 msgid "_Remove"
 msgstr "_Eltávolítás"
 
-#: ../src/lib/main.py:745
+#: ../src/lib/main.py:746
 msgid "Delete selected tracker."
 msgstr "A kijelölt követő törlése."
 
-#: ../src/lib/main.py:751
+#: ../src/lib/main.py:752
 msgid "Hide current tracker entries."
 msgstr "Jelenlegi követőbejegyzések elrejtése."
 
-#: ../src/lib/main.py:756
+#: ../src/lib/main.py:757
 msgid "A_pply"
 msgstr "_Alkalmazás"
 
-#: ../src/lib/main.py:757
+#: ../src/lib/main.py:758
 msgid "Apply all tracked values and remove the tracker."
 msgstr "Minden követett érték alkalmazása, és a követő törlése."
 
-#: ../src/lib/main.py:795
+#: ../src/lib/main.py:796
 #, python-format
 msgid "Tracker %s"
 msgstr "%s követő"
@@ -494,49 +575,52 @@ msgstr "%s követő"
 msgid "_Clear"
 msgstr "_Törlés"
 
-#: ../src/lib/saver.py:155
+#: ../src/lib/saver.py:151
 msgid "No Space"
 msgstr "Nincs hely"
 
-#: ../src/lib/saver.py:156
+#: ../src/lib/saver.py:152
 msgid "No space left on disk"
 msgstr "Nincs hely a lemezen"
 
-#: ../src/lib/saver.py:158 ../src/lib/saver.py:165
+#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
 #, python-format
 msgid "Unable to create data folder %(path)s."
 msgstr "Nem lehet az adatmappát (%(path)s) létrehozni."
 
-#: ../src/lib/saver.py:159
+#: ../src/lib/saver.py:155
 msgid "There is no disk space left!"
 msgstr "Nincs több hely a lemezen!"
 
-#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
 msgid "Error creating directory"
 msgstr "Hiba a könyvtár létrehozásakor"
 
-#: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
-#: ../src/lib/saver.py:233
+#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
+#: ../src/lib/saver.py:229
 #, python-format
 msgid "Error %(errno)s: %(error)s"
 msgstr "Hiba %(errno)s: %(error)s"
 
-#: ../src/lib/saver.py:186 ../src/lib/saver.py:187
+#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
 msgid "Unable to save game."
 msgstr "A játék nem menthető."
 
-#: ../src/lib/saver.py:189 ../src/lib/saver.py:214 ../src/lib/saver.py:232
+#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
 #, python-format
 msgid "Unable to save file %(filename)s."
 msgstr "A fájl (%(filename)s) nem menthető."
 
-#: ../src/lib/saver.py:211 ../src/lib/saver.py:212
+#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
 msgid "Unable to mark game as finished."
 msgstr "Nem lehet befejezettként megjelölni a játékot."
 
-#: ../src/lib/saver.py:229 ../src/lib/saver.py:230
+#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
 msgid "Sudoku unable to mark game as finished."
 msgstr "A Sudoku nem tudja befejezettként megjelölni a játékot."
+
+#~ msgid "GNOME Games web site"
+#~ msgstr "A GNOME játékok weboldala"
 
 #~ msgid "Chess"
 #~ msgstr "Sakk"
@@ -689,9 +773,6 @@ msgstr "A Sudoku nem tudja befejezettként megjelölni a játékot."
 
 #~ msgid "Piece Style:"
 #~ msgstr "Figurastílus:"
-
-#~ msgid "Show _History"
-#~ msgstr "_Előzmények megjelenítése"
 
 #~ msgid "_Move Hints"
 #~ msgstr "_Lépéstippek"
@@ -1220,12 +1301,6 @@ msgstr "A Sudoku nem tudja befejezettként megjelölni a játékot."
 #~ msgid "Game preview from last saved session."
 #~ msgstr "Az utolsó mentett menet játék előképe."
 
-#~ msgid "Width of the window in pixels"
-#~ msgstr "Az ablak szélessége képpontokban"
-
-#~ msgid "Height of the window in pixels"
-#~ msgstr "Az ablak magassága képpontokban"
-
 #~ msgid "true if the window is maximized"
 #~ msgstr "Az ablak teljes méretű-e"
 
@@ -1664,9 +1739,6 @@ msgstr "A Sudoku nem tudja befejezettként megjelölni a játékot."
 
 #~ msgid "Size of game tiles."
 #~ msgstr "Játékkockák mérete."
-
-#~ msgid "Color to use for worm"
-#~ msgstr "A kukachoz használandó szín"
 
 #~ msgid "Color to use for worm."
 #~ msgstr "A kukachoz használandó szín."
@@ -2115,9 +2187,6 @@ msgstr "A Sudoku nem tudja befejezettként megjelölni a játékot."
 #~ msgid "_Toolbar"
 #~ msgstr "Eszköz_tár"
 
-#~ msgid "Show or hide the toolbar"
-#~ msgstr "Eszköztár megjelenítése vagy elrejtése"
-
 #~ msgid ""
 #~ "Based on classic BSD Robots.\n"
 #~ "\n"
@@ -2343,9 +2412,6 @@ msgstr "A Sudoku nem tudja befejezettként megjelölni a játékot."
 #~ msgid "Number of rows in a custom game"
 #~ msgstr "Sorok száma egyéni játékban"
 
-#~ msgid "The number of mines in a custom game"
-#~ msgstr "Aknák száma egyéni játékban"
-
 #~ msgid "Board size"
 #~ msgstr "A tábla mérete"
 
@@ -2428,9 +2494,6 @@ msgstr "A Sudoku nem tudja befejezettként megjelölni a játékot."
 
 #~ msgid "_Use \"I'm not sure\" flags"
 #~ msgstr "„Nem vagyok benne biztos” _zászlók használata"
-
-#~ msgid "_Warn if too many flags have been placed"
-#~ msgstr "_Figyelmeztetés a túl sok zászlóról"
 
 #~ msgid "Tetravex"
 #~ msgstr "Tetravex"
