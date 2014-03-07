@@ -5,14 +5,14 @@
 # Peteris Krisjanis <peteris.krisjanis@os.lv>, 2002.
 # Raivis Dejus <orvils@gmail.com>, 2006, 2007.
 # Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2010, 2011.
-# Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011, 2012, 2013.
+# Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011, 2012, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-18 14:52+0000\n"
-"PO-Revision-Date: 2013-09-12 10:24+0300\n"
+"POT-Creation-Date: 2014-03-07 08:33+0000\n"
+"PO-Revision-Date: 2014-03-07 22:02+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
@@ -25,17 +25,91 @@ msgstr ""
 "X-Poedit-Language: Latvian\n"
 "X-Poedit-Country: LATVIA\n"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+msgid "GNOME Sudoku"
+msgstr "GNOME Sudoku"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:2
+msgid ""
+"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
+"make playing Sudoku fun. Games are automatically saved when you quit, and "
+"you can always come back to any game that you've played."
+msgstr ""
+"GNOME sudoku ir vienkārša, neuzbāzīga saskarne, kas visām iespējām, kas "
+"padara sudoku jautru. Izejot spēles tiek automātiski saglabātas, lai vienmēr "
+"varētu atgriezties pie iesāktajām spēlēm."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites. You can also see detailed information about how the computer "
+"solved the puzzle."
+msgstr ""
+"Katrai spēlei ir sava sarežģītība, līdzīgi kā to dara avīzēs vai tīmekļa "
+"vietnēs. Vari arī redzēt sīkāku informāciju par to, kā dators atrisināja šo "
+"mīklu."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"Ja vēlies spēlēt uz papīra, vari spēles izdrukāt. Vari izvēlēties, cik "
+"daudzas spēles izdrukāt uz vienas lappuses un kādas sarežģītības spēles "
+"drukāt. Tā rezultātā GNOME sudoku var kalpot kā atjaunojama sudoku grāmata."
+
+#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:2
+#: ../data/gnome-sudoku.desktop.in.h:2
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "Pārbaudi savas loģikas iemaņas šajā skaitļu režģa mīklā"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:3
+#: ../data/gnome-sudoku.desktop.in.h:3
 msgid "game;board;tiles;japanese;"
 msgstr "spēle;galdiņš;kauliņi;japāņu;"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
+msgid "The number of seconds between automatic saves"
+msgstr "Intervāls sekundēs starp automātiskajām saglabāšanām"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
+msgid "Print games that have been played"
+msgstr "Drukāt spēles, kas jau ir izspēlētas"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
+msgid "Mark printed games as played"
+msgstr "Atzīmēt izdrukātās spēles kā izspēlētas"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
+msgid "Width of application window in pixels"
+msgstr "Lietotnes loga platums pikseļos"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
+msgid "Height of application window in pixels"
+msgstr "Lietotnes loga augstums pikseļos"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
+msgid "Show hint highlights"
+msgstr "Rādīt padomu izcēlumus"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
+msgid "Color of the grid border"
+msgstr "Režģa malu krāsa"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
+msgid "Show the application toolbar"
+msgstr "Rādīt lietotnes rīkjoslu"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
+msgid "Show hints"
+msgstr "Rādīt padomus"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
+msgid "Number of puzzles to print on a page"
+msgstr "Drukājamo mīklu skaits uz lapas"
 
 #: ../data/print_games.ui.h:1
 msgid "Print Sudokus"
@@ -105,7 +179,7 @@ msgstr "Izņemt izvēlēto marķieri"
 msgid "Make the tracked changes permanent"
 msgstr "Atzīmēt marķētās vērtības kā pastāvīgas"
 
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:750
+#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
 msgid "H_ide"
 msgstr "S_lēpt"
 
@@ -113,16 +187,7 @@ msgstr "S_lēpt"
 msgid "Hide the tracked values"
 msgstr "Slēpt marķētās vērtības"
 
-#: ../src/lib/defaults.py:47
-msgid "GNOME Sudoku"
-msgstr "GNOME Sudoku"
-
 #: ../src/lib/defaults.py:50
-#| msgid ""
-#| "GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a "
-#| "Japanese logic puzzle.\n"
-#| "\n"
-#| "GNOME Sudoku is a part of GNOME Games."
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -133,20 +198,20 @@ msgstr ""
 "GNOME Sudoku ir daļa no GNOME spēlēm."
 
 #: ../src/lib/defaults.py:53
-msgid "GNOME Games web site"
-msgstr "GNOME Games tīmekļa vietne"
+msgid "Website"
+msgstr "Tīmekļa vietne"
 
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
+#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
 #: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Viegls"
 
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
+#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
 #: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Vidējs"
 
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
+#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
 #: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Grūts"
@@ -241,115 +306,115 @@ msgstr "Vai tiešām vēlaties to darīt?"
 msgid "Don't ask me this again."
 msgstr "Turpmāk to vairs nejautāt."
 
-#: ../src/lib/main.py:195
+#: ../src/lib/main.py:196
 msgid "_Game"
 msgstr "_Spēle"
 
-#: ../src/lib/main.py:196
+#: ../src/lib/main.py:197
 msgid "New game"
 msgstr "Jauna spēle"
 
-#: ../src/lib/main.py:197
+#: ../src/lib/main.py:198
 msgid "_Reset"
 msgstr "_Atstatīt"
 
-#: ../src/lib/main.py:199
+#: ../src/lib/main.py:200
 msgid "_Undo"
 msgstr "_Atsaukt"
 
-#: ../src/lib/main.py:200
+#: ../src/lib/main.py:201
 msgid "Undo last action"
 msgstr "Atsaukt pēdējo gājienu"
 
-#: ../src/lib/main.py:201
+#: ../src/lib/main.py:202
 msgid "_Redo"
 msgstr "Atkā_rtot"
 
-#: ../src/lib/main.py:202
+#: ../src/lib/main.py:203
 msgid "Redo last action"
 msgstr "Atkārtot pēdējo gājienu"
 
-#: ../src/lib/main.py:203
+#: ../src/lib/main.py:204
 msgid "Puzzle _Statistics..."
 msgstr "Mīklas _statistika..."
 
-#: ../src/lib/main.py:205
+#: ../src/lib/main.py:206
 msgid "_Print..."
 msgstr "_Drukāt..."
 
-#: ../src/lib/main.py:206
+#: ../src/lib/main.py:207
 msgid "Print _Multiple Sudokus..."
 msgstr "Drukāt _vairākus sudoku"
 
-#: ../src/lib/main.py:209
+#: ../src/lib/main.py:210
 msgid "_Settings"
 msgstr "Ie_statījumi"
 
-#: ../src/lib/main.py:211
+#: ../src/lib/main.py:212
 msgid "_Tools"
 msgstr "_Rīki"
 
-#: ../src/lib/main.py:212
+#: ../src/lib/main.py:213
 msgid "_Hint"
 msgstr "_Padoms"
 
-#: ../src/lib/main.py:213
+#: ../src/lib/main.py:214
 msgid "Show a square that is easy to fill."
 msgstr "Rādīt laukumu, kuru var viegli aizpildīt."
 
-#: ../src/lib/main.py:214
+#: ../src/lib/main.py:215
 msgid "Clear _Top Notes"
 msgstr "A_ttīrīt augšējās piezīmes"
 
-#: ../src/lib/main.py:216
+#: ../src/lib/main.py:217
 msgid "Clear _Bottom Notes"
 msgstr "Attīrīt _apakšējās piezīmes"
 
-#: ../src/lib/main.py:218
+#: ../src/lib/main.py:219
 msgid "_Help"
 msgstr "_Palīdzība"
 
-#: ../src/lib/main.py:219
+#: ../src/lib/main.py:220
 msgid "_Contents"
 msgstr "_Saturs"
 
-#: ../src/lib/main.py:225
+#: ../src/lib/main.py:226
 msgid "Show _Possible Numbers"
 msgstr "Rādīt ies_pējamos skaitļus"
 
-#: ../src/lib/main.py:227
+#: ../src/lib/main.py:228
 msgid "Always show possible numbers in a square"
 msgstr "Vienmēr laukumos rādīt iespējamos skaitļus"
 
-#: ../src/lib/main.py:231
+#: ../src/lib/main.py:232
 msgid "Warn About _Unfillable Squares"
 msgstr "Brīdināt par neaizpildāmajiem la_ukiem"
 
-#: ../src/lib/main.py:233
+#: ../src/lib/main.py:234
 msgid "Warn about squares made unfillable by a move"
 msgstr "Brīdināt par laukumiem, kas gājiena rezultātā kļūst neaizpildāmi"
 
-#: ../src/lib/main.py:235
+#: ../src/lib/main.py:236
 msgid "_Track Additions"
 msgstr "Seko_t līdzi papildinājumiem"
 
-#: ../src/lib/main.py:237
+#: ../src/lib/main.py:238
 msgid "Mark new additions in a separate color so you can keep track of them."
 msgstr "Atzīmēt papildinājumus citā krāsā, lai tiem varētu izsekot."
 
-#: ../src/lib/main.py:239
+#: ../src/lib/main.py:240
 msgid "Show _Toolbar"
 msgstr "Rādī_t rīkjoslu"
 
-#: ../src/lib/main.py:240
+#: ../src/lib/main.py:241
 msgid "_Highlighter"
 msgstr "_Izgaismotājs"
 
-#: ../src/lib/main.py:241
+#: ../src/lib/main.py:242
 msgid "Highlight the current row, column and box"
 msgstr "Izgaismot pašreizējo rindu, kolonu un šūnu"
 
-#: ../src/lib/main.py:366
+#: ../src/lib/main.py:367
 #, python-format
 msgid "You completed the puzzle in %d second"
 msgid_plural "You completed the puzzle in %d seconds"
@@ -357,7 +422,7 @@ msgstr[0] "Tu pabeidzi mīklu %d sekundē"
 msgstr[1] "Tu pabeidzi mīklu %d sekundēs"
 msgstr[2] "Tu pabeidzi mīklu %d sekundēs"
 
-#: ../src/lib/main.py:371 ../src/lib/main.py:379
+#: ../src/lib/main.py:372 ../src/lib/main.py:380
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -365,7 +430,7 @@ msgstr[0] "%d minūtē"
 msgstr[1] "%d minūtēs"
 msgstr[2] "%d minūtēs"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
+#: ../src/lib/main.py:373 ../src/lib/main.py:381
 #, python-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -373,12 +438,12 @@ msgstr[0] "%d sekundē"
 msgstr[1] "%d sekundēs"
 msgstr[2] "%d sekundēs"
 
-#: ../src/lib/main.py:373
+#: ../src/lib/main.py:374
 #, python-format
 msgid "You completed the puzzle in %(minute)s and %(second)s"
 msgstr "Tu pabeidzi mīklu %(minute)s un %(second)s"
 
-#: ../src/lib/main.py:378
+#: ../src/lib/main.py:379
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -386,12 +451,12 @@ msgstr[0] "%d stundā"
 msgstr[1] "%d stundās"
 msgstr[2] "%d stundās"
 
-#: ../src/lib/main.py:381
+#: ../src/lib/main.py:382
 #, python-format
 msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
 msgstr "Tu pabeidzi mīklu %(hour)s, %(minute)s un %(second)s"
 
-#: ../src/lib/main.py:383
+#: ../src/lib/main.py:384
 #, python-format
 msgid "You got %(n)s hint."
 msgid_plural "You got %(n)s hints."
@@ -399,7 +464,7 @@ msgstr[0] "Tu saņēmi %(n)s padomu."
 msgstr[1] "Tu saņēmi %(n)s padomus."
 msgstr[2] "Tu saņēmi %(n)s padomu."
 
-#: ../src/lib/main.py:386
+#: ../src/lib/main.py:387
 #, python-format
 msgid "You had %(n)s impossibility pointed out."
 msgid_plural "You had %(n)s impossibilities pointed out."
@@ -407,59 +472,59 @@ msgstr[0] "Tev norādīja %(n)s neiespējamību."
 msgstr[1] "Tev norādīja %(n)s neiespējamības."
 msgstr[2] "Tev norādīja %(n)s neiespējamību."
 
-#: ../src/lib/main.py:391
+#: ../src/lib/main.py:392
 msgid "You win!"
 msgstr "Tu uzvarēji!"
 
-#: ../src/lib/main.py:401
+#: ../src/lib/main.py:402
 msgid "Save this game before starting new one?"
 msgstr "Saglabāt šo spēli, pirms sākt jaunu?"
 
-#: ../src/lib/main.py:402
+#: ../src/lib/main.py:403
 msgid "_Save game for later"
 msgstr "_Saglabāt spēli vēlākam laikam"
 
-#: ../src/lib/main.py:403
+#: ../src/lib/main.py:404
 msgid "_Abandon game"
 msgstr "P_amest spēli"
 
-#: ../src/lib/main.py:421
+#: ../src/lib/main.py:422
 msgid "Save game before closing?"
 msgstr "Pirms aizvēršanas saglabāt spēli?"
 
-#: ../src/lib/main.py:619
+#: ../src/lib/main.py:620
 msgid "Puzzle Information"
 msgstr "Informācija par mīklu"
 
-#: ../src/lib/main.py:620
+#: ../src/lib/main.py:621
 msgid "There is no current puzzle."
 msgstr "Šobrīd nevienas mīklas nav."
 
-#: ../src/lib/main.py:625
+#: ../src/lib/main.py:626
 msgid "Calculated difficulty: "
 msgstr "Aprēķinātā sarežģītība: "
 
-#: ../src/lib/main.py:630
+#: ../src/lib/main.py:631
 msgid "Very Hard"
 msgstr "Ļoti grūts"
 
-#: ../src/lib/main.py:635
+#: ../src/lib/main.py:636
 msgid "Number of moves instantly fillable by elimination: "
 msgstr "Gājienu skaits, ko var automātiski aizpildīt ar izslēgšanu: "
 
-#: ../src/lib/main.py:638
+#: ../src/lib/main.py:639
 msgid "Number of moves instantly fillable by filling: "
 msgstr "Gājienu skaits, ko var automātiski aizpildīt ar aizpildīšanu: "
 
-#: ../src/lib/main.py:641
+#: ../src/lib/main.py:642
 msgid "Amount of trial-and-error required to solve: "
 msgstr "Aizpildīšanai atvēlēto kļūdu skaits: "
 
-#: ../src/lib/main.py:644 ../src/lib/main.py:645
+#: ../src/lib/main.py:645 ../src/lib/main.py:646
 msgid "Puzzle Statistics"
 msgstr "Mīklas statistika"
 
-#: ../src/lib/main.py:669
+#: ../src/lib/main.py:670
 msgid "translator-credits"
 msgstr ""
 "Raivis Dejus <orvils@gmail.com>\n"
@@ -467,87 +532,90 @@ msgstr ""
 "Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>"
 
 #. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:679
+#: ../src/lib/main.py:680
 #, python-format
 msgid "Unable to display help: %s"
 msgstr "Nevar parādīt palīdzību — %s"
 
-#: ../src/lib/main.py:735
+#: ../src/lib/main.py:736
 msgid "Untracked"
 msgstr "Atmarķēts"
 
-#: ../src/lib/main.py:744
+#: ../src/lib/main.py:745
 msgid "_Remove"
 msgstr "_Izņemt"
 
-#: ../src/lib/main.py:745
+#: ../src/lib/main.py:746
 msgid "Delete selected tracker."
 msgstr "Dzēst izvēlēto marķieri."
 
-#: ../src/lib/main.py:751
+#: ../src/lib/main.py:752
 msgid "Hide current tracker entries."
 msgstr "Slēpt pašreizējā marķiera ierakstus."
 
-#: ../src/lib/main.py:756
+#: ../src/lib/main.py:757
 msgid "A_pply"
 msgstr "_Pielietot"
 
-#: ../src/lib/main.py:757
+#: ../src/lib/main.py:758
 msgid "Apply all tracked values and remove the tracker."
 msgstr "Pielietot visas marķētās vērtības un izņemt marķieri."
 
-#: ../src/lib/main.py:795
+#: ../src/lib/main.py:796
 #, python-format
 msgid "Tracker %s"
 msgstr "%s marķieris"
 
-#: ../src/lib/number_box.py:68
+#: ../src/lib/number_box.py:82
 msgid "_Clear"
 msgstr "_Attīrīt"
 
-#: ../src/lib/saver.py:155
+#: ../src/lib/saver.py:151
 msgid "No Space"
 msgstr "Nav vietas"
 
-#: ../src/lib/saver.py:156
+#: ../src/lib/saver.py:152
 msgid "No space left on disk"
 msgstr "Uz diska nav brīvas vietas"
 
-#: ../src/lib/saver.py:158 ../src/lib/saver.py:165
+#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
 #, python-format
 msgid "Unable to create data folder %(path)s."
 msgstr "Nevar izveidot datu mapi %(path)s."
 
-#: ../src/lib/saver.py:159
+#: ../src/lib/saver.py:155
 msgid "There is no disk space left!"
 msgstr "Uz diska nav palikusi brīva vieta!"
 
-#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
 msgid "Error creating directory"
 msgstr "Kļūda, izveidojot direktoriju"
 
-#: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
-#: ../src/lib/saver.py:233
+#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
+#: ../src/lib/saver.py:229
 #, python-format
 msgid "Error %(errno)s: %(error)s"
 msgstr "Kļūda %(errno)s — %(error)s"
 
-#: ../src/lib/saver.py:186 ../src/lib/saver.py:187
+#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
 msgid "Unable to save game."
 msgstr "Nevar saglabāt spēli."
 
-#: ../src/lib/saver.py:189 ../src/lib/saver.py:214 ../src/lib/saver.py:232
+#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
 #, python-format
 msgid "Unable to save file %(filename)s."
 msgstr "Nevar saglabāt datni %(filename)s."
 
-#: ../src/lib/saver.py:211 ../src/lib/saver.py:212
+#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
 msgid "Unable to mark game as finished."
 msgstr "Nevar atzīmēt spēli ka pabeigtu."
 
-#: ../src/lib/saver.py:229 ../src/lib/saver.py:230
+#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
 msgid "Sudoku unable to mark game as finished."
 msgstr "Sudoku nevar atzīmēt spēli ka pabeigtu."
+
+#~ msgid "GNOME Games web site"
+#~ msgstr "GNOME Games tīmekļa vietne"
 
 #~ msgid "Chess"
 #~ msgstr "Šahs"
@@ -3457,36 +3525,6 @@ msgstr "Sudoku nevar atzīmēt spēli ka pabeigtu."
 
 #~ msgid "_Use random block colors"
 #~ msgstr "Liet_ot patvaļīgas bloku krāsas"
-
-#~ msgid "Color of the grid border"
-#~ msgstr "Režģa malu krāsa"
-
-#~ msgid "Height of application window in pixels"
-#~ msgstr "Lietotnes loga augstums pikseļos"
-
-#~ msgid "Mark printed games as played"
-#~ msgstr "Atzīmēt izdrukātās spēles kā izspēlētas"
-
-#~ msgid "Number of puzzles to print on a page"
-#~ msgstr "Drukājamo mīklu skaits uz lapas"
-
-#~ msgid "Print games that have been played"
-#~ msgstr "Drukāt spēles, kas jau ir izspēlētas"
-
-#~ msgid "Show hint highlights"
-#~ msgstr "Rādīt padomu izcēlumus"
-
-#~ msgid "Show hints"
-#~ msgstr "Rādīt padomus"
-
-#~ msgid "Show the application toolbar"
-#~ msgstr "Rādīt lietotnes rīkjoslu"
-
-#~ msgid "The number of seconds between automatic saves"
-#~ msgstr "Intervāls sekundēs starp automātiskajām saglabāšanām"
-
-#~ msgid "Width of application window in pixels"
-#~ msgstr "Lietotnes loga platums pikseļos"
 
 #~ msgid "Click a square, any square"
 #~ msgstr "Uzklikšķini uz lauciņa, jebkura lauciņa"
