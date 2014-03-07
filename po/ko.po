@@ -8,7 +8,7 @@
 #
 # Updated for gnome-sudoku:
 #
-# Changwoo Ryu <cwryu@debian.org>, 2013.
+# Changwoo Ryu <cwryu@debian.org>, 2013-2014.
 #
 #
 # 새로 번역하신 분은 아래 "translator-credits"에 추가하세요.
@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-18 14:52+0000\n"
-"PO-Revision-Date: 2013-09-14 21:23+0900\n"
+"POT-Creation-Date: 2014-03-07 08:33+0000\n"
+"PO-Revision-Date: 2014-03-08 04:55+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: Korean\n"
@@ -31,17 +31,82 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+msgid "GNOME Sudoku"
+msgstr "그놈 스도쿠"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:2
+msgid ""
+"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
+"make playing Sudoku fun. Games are automatically saved when you quit, and "
+"you can always come back to any game that you've played."
+msgstr "그놈 스도쿠는 인터페이스가 간단하고 튀지 않고, 스도쿠 게임을 재밌게 할 수 있는 기능이 들어 있습니다. 끝날 때마다 게임을 자동으로 저장하므로, 플레이했던 게임으로 돌아올 수 있습니다."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites. You can also see detailed information about how the computer "
+"solved the puzzle."
+msgstr "게임마다 신문과 웹사이트에 쓰여 있는 난이도와 비슷하게 난이도가 설정되어 있습니다. 컴퓨터가 퍼즐을 푸는 방법을 볼 수도 있습니다."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr "종이에 게임을 푸는 게 더 좋다면 게임을 인쇄할 수도 있습니다. 페이지마다 인쇄할 게임 수나 인쇄할 난이도를 지정할 수 있습니다. 즉 그놈 스도쿠는 개속 개정되는 스도쿠 책과 같습니다."
+
+#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
 msgid "Sudoku"
 msgstr "스도쿠"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:2
+#: ../data/gnome-sudoku.desktop.in.h:2
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "이 숫자 퍼즐에서 논리력을 테스트해 보세요"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:3
+#: ../data/gnome-sudoku.desktop.in.h:3
 msgid "game;board;tiles;japanese;"
 msgstr "game;게임;board;보드;tiles;타일;japanese;일본;"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
+msgid "The number of seconds between automatic saves"
+msgstr "자동 저장 시간 간격, 초 단위"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
+msgid "Print games that have been played"
+msgstr "플레이했던 게임 인쇄"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
+msgid "Mark printed games as played"
+msgstr "인쇄한 게임을 재생한 것으로 표시"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
+msgid "Width of application window in pixels"
+msgstr "프로그램 창의 너비, 픽셀 단위"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
+msgid "Height of application window in pixels"
+msgstr "프로그램 창의 높이, 픽셀 단위"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
+msgid "Show hint highlights"
+msgstr "힌트 강조 보이기"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
+msgid "Color of the grid border"
+msgstr "격자 테두리의 색"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
+msgid "Show the application toolbar"
+msgstr "프로그램 도구 모음 보이기"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
+msgid "Show hints"
+msgstr "힌트 보기"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
+msgid "Number of puzzles to print on a page"
+msgstr "한 페이지에 인쇄할 퍼즐 수"
 
 #: ../data/print_games.ui.h:1
 msgid "Print Sudokus"
@@ -112,17 +177,13 @@ msgstr "선택한 트래커를 제거합니다"
 msgid "Make the tracked changes permanent"
 msgstr "추적한 내용을 적용합니다"
 
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:750
+#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
 msgid "H_ide"
 msgstr "숨기기(_I)"
 
 #: ../data/tracker.ui.h:5
 msgid "Hide the tracked values"
 msgstr "추적한 값을 숨깁니다"
-
-#: ../src/lib/defaults.py:47
-msgid "GNOME Sudoku"
-msgstr "그놈 스도쿠"
 
 #: ../src/lib/defaults.py:50
 msgid ""
@@ -135,20 +196,20 @@ msgstr ""
 "그놈 스도쿠는 그놈 게임의 일부입니다."
 
 #: ../src/lib/defaults.py:53
-msgid "GNOME Games web site"
-msgstr "그놈 게임 웹사이트"
+msgid "Website"
+msgstr "웹사이트"
 
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
+#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
 #: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "쉬움"
 
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
+#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
 #: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "중간"
 
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
+#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
 #: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "어려움"
@@ -233,295 +294,295 @@ msgstr "정말로 이렇게 하시겠습니까?"
 msgid "Don't ask me this again."
 msgstr "다시 물어보지 않기."
 
-#: ../src/lib/main.py:195
+#: ../src/lib/main.py:196
 msgid "_Game"
 msgstr "게임(_G)"
 
-#: ../src/lib/main.py:196
+#: ../src/lib/main.py:197
 msgid "New game"
 msgstr "새 게임"
 
-#: ../src/lib/main.py:197
+#: ../src/lib/main.py:198
 msgid "_Reset"
 msgstr "리셋(_R)"
 
-#: ../src/lib/main.py:199
+#: ../src/lib/main.py:200
 msgid "_Undo"
 msgstr "실행 취소(_U)"
 
-#: ../src/lib/main.py:200
+#: ../src/lib/main.py:201
 msgid "Undo last action"
 msgstr "마지막 동작을 취소합니다"
 
-#: ../src/lib/main.py:201
+#: ../src/lib/main.py:202
 msgid "_Redo"
 msgstr "다시 실행(_R)"
 
-#: ../src/lib/main.py:202
+#: ../src/lib/main.py:203
 msgid "Redo last action"
 msgstr "마지막 동작을 다시 실행합니다"
 
-#: ../src/lib/main.py:203
+#: ../src/lib/main.py:204
 msgid "Puzzle _Statistics..."
 msgstr "퍼즐 통계(_S)..."
 
-#: ../src/lib/main.py:205
+#: ../src/lib/main.py:206
 msgid "_Print..."
 msgstr "인쇄(_P)..."
 
-#: ../src/lib/main.py:206
+#: ../src/lib/main.py:207
 msgid "Print _Multiple Sudokus..."
 msgstr "스도쿠 여러개 인쇄(_M)..."
 
-#: ../src/lib/main.py:209
+#: ../src/lib/main.py:210
 msgid "_Settings"
 msgstr "설정(_S)"
 
-#: ../src/lib/main.py:211
+#: ../src/lib/main.py:212
 msgid "_Tools"
 msgstr "도구(_T)"
 
-#: ../src/lib/main.py:212
+#: ../src/lib/main.py:213
 msgid "_Hint"
 msgstr "힌트(_H)"
 
-#: ../src/lib/main.py:213
+#: ../src/lib/main.py:214
 msgid "Show a square that is easy to fill."
 msgstr "채우기 쉬운 칸을 표시합니다."
 
-#: ../src/lib/main.py:214
+#: ../src/lib/main.py:215
 msgid "Clear _Top Notes"
 msgstr "위 메모 지우기(_T)"
 
-#: ../src/lib/main.py:216
+#: ../src/lib/main.py:217
 msgid "Clear _Bottom Notes"
 msgstr "아래 메모 지우기(_B)"
 
-#: ../src/lib/main.py:218
+#: ../src/lib/main.py:219
 msgid "_Help"
 msgstr "도움말(_H)"
 
-#: ../src/lib/main.py:219
+#: ../src/lib/main.py:220
 msgid "_Contents"
 msgstr "차례(_C)"
 
-#: ../src/lib/main.py:225
+#: ../src/lib/main.py:226
 msgid "Show _Possible Numbers"
 msgstr "가능한 숫자를 표시(_P)"
 
-#: ../src/lib/main.py:227
+#: ../src/lib/main.py:228
 msgid "Always show possible numbers in a square"
 msgstr "항상 해당 칸에 가능한 숫자를 표시합니다"
 
-#: ../src/lib/main.py:231
+#: ../src/lib/main.py:232
 msgid "Warn About _Unfillable Squares"
 msgstr "채울 수 없는 칸 경고(_U)"
 
-#: ../src/lib/main.py:233
+#: ../src/lib/main.py:234
 msgid "Warn about squares made unfillable by a move"
 msgstr "채울 수 없게 되는 칸에 대해 경고합니다"
 
-#: ../src/lib/main.py:235
+#: ../src/lib/main.py:236
 msgid "_Track Additions"
 msgstr "새로 쓴 숫자 추적(_T)"
 
-#: ../src/lib/main.py:237
+#: ../src/lib/main.py:238
 msgid "Mark new additions in a separate color so you can keep track of them."
 msgstr "새로 쓴 숫자는 다른 색으로 표시해서 추적할 수 있게 합니다."
 
-#: ../src/lib/main.py:239
+#: ../src/lib/main.py:240
 msgid "Show _Toolbar"
 msgstr "도구 모음 표시(_T)"
 
-#: ../src/lib/main.py:240
+#: ../src/lib/main.py:241
 msgid "_Highlighter"
 msgstr "강조(_H)"
 
-#: ../src/lib/main.py:241
+#: ../src/lib/main.py:242
 msgid "Highlight the current row, column and box"
 msgstr "현재 열, 행, 상자를 강조합니다"
 
-#: ../src/lib/main.py:366
+#: ../src/lib/main.py:367
 #, python-format
 msgid "You completed the puzzle in %d second"
 msgid_plural "You completed the puzzle in %d seconds"
 msgstr[0] "퍼즐을 %d초 만에 마쳤습니다"
 
-#: ../src/lib/main.py:371 ../src/lib/main.py:379
+#: ../src/lib/main.py:372 ../src/lib/main.py:380
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d분"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
+#: ../src/lib/main.py:373 ../src/lib/main.py:381
 #, python-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d초"
 
-#: ../src/lib/main.py:373
+#: ../src/lib/main.py:374
 #, python-format
 msgid "You completed the puzzle in %(minute)s and %(second)s"
 msgstr "퍼즐을 %(minute)s %(second)s 만에 마쳤습니다"
 
-#: ../src/lib/main.py:378
+#: ../src/lib/main.py:379
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d시간"
 
-#: ../src/lib/main.py:381
+#: ../src/lib/main.py:382
 #, python-format
 msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
 msgstr "퍼즐을 %(hour)s %(minute)s %(second)s 만에 마쳤습니다"
 
-#: ../src/lib/main.py:383
+#: ../src/lib/main.py:384
 #, python-format
 msgid "You got %(n)s hint."
 msgid_plural "You got %(n)s hints."
 msgstr[0] "힌트 %(n)s번 사용."
 
-#: ../src/lib/main.py:386
+#: ../src/lib/main.py:387
 #, python-format
 msgid "You had %(n)s impossibility pointed out."
 msgid_plural "You had %(n)s impossibilities pointed out."
 msgstr[0] "불가능 힌트 %(n)s번 사용."
 
-#: ../src/lib/main.py:391
+#: ../src/lib/main.py:392
 msgid "You win!"
 msgstr "당신이 이겼습니다!"
 
-#: ../src/lib/main.py:401
+#: ../src/lib/main.py:402
 msgid "Save this game before starting new one?"
 msgstr "새로 시작하기 전에 이 게임을 저장하시겠습니까?"
 
-#: ../src/lib/main.py:402
+#: ../src/lib/main.py:403
 msgid "_Save game for later"
 msgstr "다음을 위해 게임 저장(_S)"
 
-#: ../src/lib/main.py:403
+#: ../src/lib/main.py:404
 msgid "_Abandon game"
 msgstr "게임 버리기(_A)"
 
-#: ../src/lib/main.py:421
+#: ../src/lib/main.py:422
 msgid "Save game before closing?"
 msgstr "닫기 전에 게임을 저장하시겠습니까?"
 
-#: ../src/lib/main.py:619
+#: ../src/lib/main.py:620
 msgid "Puzzle Information"
 msgstr "퍼즐 정보"
 
-#: ../src/lib/main.py:620
+#: ../src/lib/main.py:621
 msgid "There is no current puzzle."
 msgstr "현재 퍼즐이 없습니다."
 
-#: ../src/lib/main.py:625
+#: ../src/lib/main.py:626
 msgid "Calculated difficulty: "
 msgstr "난이도 계산: "
 
-#: ../src/lib/main.py:630
+#: ../src/lib/main.py:631
 msgid "Very Hard"
 msgstr "매우 어려움"
 
-#: ../src/lib/main.py:635
+#: ../src/lib/main.py:636
 msgid "Number of moves instantly fillable by elimination: "
 msgstr "제외하면 즉시 채울 수 있는 움직임 횟수: "
 
-#: ../src/lib/main.py:638
+#: ../src/lib/main.py:639
 msgid "Number of moves instantly fillable by filling: "
 msgstr "채워 넣으면 즉시 채울 수 있는 움직임 횟수: "
 
-#: ../src/lib/main.py:641
+#: ../src/lib/main.py:642
 msgid "Amount of trial-and-error required to solve: "
 msgstr "풀려면 필요한 시행착오 횟수: "
 
-#: ../src/lib/main.py:644 ../src/lib/main.py:645
+#: ../src/lib/main.py:645 ../src/lib/main.py:646
 msgid "Puzzle Statistics"
 msgstr "퍼즐 통계"
 
-#: ../src/lib/main.py:669
+#: ../src/lib/main.py:670
 msgid "translator-credits"
 msgstr "류창우 <cwryu@debian.org>"
 
 #. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:679
+#: ../src/lib/main.py:680
 #, python-format
 msgid "Unable to display help: %s"
 msgstr "도움말을 표시할 수 없습니다: %s"
 
-#: ../src/lib/main.py:735
+#: ../src/lib/main.py:736
 msgid "Untracked"
 msgstr "추적 안 됨"
 
-#: ../src/lib/main.py:744
+#: ../src/lib/main.py:745
 msgid "_Remove"
 msgstr "제거(_R)"
 
-#: ../src/lib/main.py:745
+#: ../src/lib/main.py:746
 msgid "Delete selected tracker."
 msgstr "선택한 트래커를 삭제합니다."
 
-#: ../src/lib/main.py:751
+#: ../src/lib/main.py:752
 msgid "Hide current tracker entries."
 msgstr "현재 트래커 항목을 감춥니다."
 
-#: ../src/lib/main.py:756
+#: ../src/lib/main.py:757
 msgid "A_pply"
 msgstr "적용(_P)"
 
-#: ../src/lib/main.py:757
+#: ../src/lib/main.py:758
 msgid "Apply all tracked values and remove the tracker."
 msgstr "모든 트래커 값을 적용하고 트래커를 지웁니다."
 
-#: ../src/lib/main.py:795
+#: ../src/lib/main.py:796
 #, python-format
 msgid "Tracker %s"
 msgstr "트래커 %s"
 
-#: ../src/lib/number_box.py:68
+#: ../src/lib/number_box.py:82
 msgid "_Clear"
 msgstr "지우기(_C)"
 
-#: ../src/lib/saver.py:155
+#: ../src/lib/saver.py:151
 msgid "No Space"
 msgstr "공간 부족"
 
-#: ../src/lib/saver.py:156
+#: ../src/lib/saver.py:152
 msgid "No space left on disk"
 msgstr "디스크에 공간이 부족합니다"
 
-#: ../src/lib/saver.py:158 ../src/lib/saver.py:165
+#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
 #, python-format
 msgid "Unable to create data folder %(path)s."
 msgstr "%(path)s 데이터 폴더를 만들 수 없습니다."
 
-#: ../src/lib/saver.py:159
+#: ../src/lib/saver.py:155
 msgid "There is no disk space left!"
 msgstr "디스크 공간이 부족합니다!"
 
-#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
 msgid "Error creating directory"
 msgstr "디렉터리를 만드는데 오류"
 
-#: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
-#: ../src/lib/saver.py:233
+#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
+#: ../src/lib/saver.py:229
 #, python-format
 msgid "Error %(errno)s: %(error)s"
 msgstr "오류 %(errno)s: %(error)s"
 
-#: ../src/lib/saver.py:186 ../src/lib/saver.py:187
+#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
 msgid "Unable to save game."
 msgstr "게임을 저장할 수 없습니다."
 
-#: ../src/lib/saver.py:189 ../src/lib/saver.py:214 ../src/lib/saver.py:232
+#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
 #, python-format
 msgid "Unable to save file %(filename)s."
 msgstr "%(filename)s 파일을 저장할 수 없습니다."
 
-#: ../src/lib/saver.py:211 ../src/lib/saver.py:212
+#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
 msgid "Unable to mark game as finished."
 msgstr "게임을 마쳤다고 표시할 수 없습니다."
 
-#: ../src/lib/saver.py:229 ../src/lib/saver.py:230
+#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
 msgid "Sudoku unable to mark game as finished."
 msgstr "스도쿠에서 게임을 마쳤다고 표시할 수 없습니다."
