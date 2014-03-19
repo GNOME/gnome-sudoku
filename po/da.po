@@ -1,5 +1,5 @@
 # Danish translation of gnome-games.
-# Copyright (C) 1998-2012 Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-games package.
 # Anders Wegge Jakobsen <wegge@wegge.dk>, 1998.
 # Kenneth Christiansen <kenneth@ripen.dk>, 1998-2001
@@ -7,7 +7,7 @@
 # Ole Laursen <olau@hardworking.dk>, 2001, 02, 03, 04.
 # Martin Willemoes Hansen <mwh@sysrq.dk>, 2004, 05.
 # flemming christensen <fc@stromata.dk>, 2011.
-# Ask Hjorth Larsen <asklarsen@gmail.com>, 2007, 08, 09, 10, 11, 12.
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2007-2014.
 #
 # RETMIG: en eller anden med forstand på kabaler skal have oversat
 # navnene på spillene. Der er en kommentar til hver af dem der
@@ -34,8 +34,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-17 18:41+0200\n"
-"PO-Revision-Date: 2013-09-16 23:58+0200\n"
+"POT-Creation-Date: 2014-03-19 22:52+0100\n"
+"PO-Revision-Date: 2014-03-18 22:58+0100\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -44,17 +44,92 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+msgid "GNOME Sudoku"
+msgstr "GNOME Sudoku"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:2
+msgid ""
+"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
+"make playing Sudoku fun. Games are automatically saved when you quit, and "
+"you can always come back to any game that you've played."
+msgstr ""
+"GNOME Sudoku har en simpel, uforstyrrende grænseflade med alle de "
+"funktioner, der gør Sudokuspillet sjovt. Spillene gemmes automatisk når du "
+"afslutter, og du kan altid vende tilbage til et spil, du har spillet "
+"tidligere."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites. You can also see detailed information about how the computer "
+"solved the puzzle."
+msgstr ""
+"Hvert spil tildeles en sværhedsgrad, der svarer til dem givet af aviser og "
+"på websteder. Du kan finde yderligere oplysninger om hvordan computeren "
+"løste spillet."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"Hvis du kan lide at spille på papir, kan du udskrive spil. Du kan vælge hvor "
+"mange spil, du vil udskrive per side, og hvilken sværhedsgrad de skal være: "
+"Dermed kan GNOME Sudoku fungere som din evige Sudokubog."
+
+#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:2
+#: ../data/gnome-sudoku.desktop.in.h:2
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "Afprøv dine logiske evner i dette talgitter-spil"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:3
+#: ../data/gnome-sudoku.desktop.in.h:3
 msgid "game;board;tiles;japanese;"
 msgstr "spil;bræt;brikker;felter;japansk;"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
+msgid "The number of seconds between automatic saves"
+msgstr "Antallet af sekunder mellem automatiske gemninger"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
+msgid "Print games that have been played"
+msgstr "Udskriv spil, der allerede er spillet"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
+msgid "Mark printed games as played"
+msgstr "Markér udskrevne spil som værende spillet"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
+msgid "Width of application window in pixels"
+msgstr "Bredden af programvinduet i billedpunkter"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
+msgid "Height of application window in pixels"
+msgstr "Højden af programvinduet i billedpunkter"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
+msgid "Show hint highlights"
+msgstr "Markér fif"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
+msgid "Color of the grid border"
+msgstr "Farve på skærmens kant"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
+msgid "Show the application toolbar"
+msgstr "Vis programmets værktøjslinje"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
+msgid "Show hints"
+msgstr "Vis fif"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
+msgid "Number of puzzles to print on a page"
+msgstr "Antal opgaver, der udskrives per side"
 
 #: ../data/print_games.ui.h:1
 msgid "Print Sudokus"
@@ -126,17 +201,13 @@ msgstr "Fjern den valgte sporing"
 msgid "Make the tracked changes permanent"
 msgstr "Gør de sporede ændringer permanente"
 
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:750
+#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
 msgid "H_ide"
 msgstr "_Skjul"
 
 #: ../data/tracker.ui.h:5
 msgid "Hide the tracked values"
 msgstr "Skjul værdier der spores"
-
-#: ../src/lib/defaults.py:47
-msgid "GNOME Sudoku"
-msgstr "GNOME Sudoku"
 
 #: ../src/lib/defaults.py:50
 msgid ""
@@ -149,20 +220,20 @@ msgstr ""
 "GNOME Sudoku er en del af GNOME Games."
 
 #: ../src/lib/defaults.py:53
-msgid "GNOME Games web site"
-msgstr "Hjemmeside for GNOME Games"
+msgid "Website"
+msgstr "Websted"
 
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
+#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
 #: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Let"
 
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
+#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
 #: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Mellem"
 
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
+#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
 #: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Svær"
@@ -253,220 +324,220 @@ msgstr "Ønsker du virkelig at gøre dette?"
 msgid "Don't ask me this again."
 msgstr "Spørg mig ikke om dette igen."
 
-#: ../src/lib/main.py:195
+#: ../src/lib/main.py:196
 msgid "_Game"
 msgstr "_Spil"
 
-#: ../src/lib/main.py:196
+#: ../src/lib/main.py:197
 msgid "New game"
 msgstr "Nyt spil"
 
-#: ../src/lib/main.py:197
+#: ../src/lib/main.py:198
 msgid "_Reset"
 msgstr "_Nulstil"
 
-#: ../src/lib/main.py:199
+#: ../src/lib/main.py:200
 msgid "_Undo"
 msgstr "_Fortryd"
 
-#: ../src/lib/main.py:200
+#: ../src/lib/main.py:201
 msgid "Undo last action"
 msgstr "Fortryd sidste handling"
 
-#: ../src/lib/main.py:201
+#: ../src/lib/main.py:202
 msgid "_Redo"
 msgstr "_Omgør"
 
-#: ../src/lib/main.py:202
+#: ../src/lib/main.py:203
 msgid "Redo last action"
 msgstr "Gør sidste handling om"
 
-#: ../src/lib/main.py:203
+#: ../src/lib/main.py:204
 msgid "Puzzle _Statistics..."
 msgstr "Opgave_statistik..."
 
-#: ../src/lib/main.py:205
+#: ../src/lib/main.py:206
 msgid "_Print..."
 msgstr "_Udskriv..."
 
-#: ../src/lib/main.py:206
+#: ../src/lib/main.py:207
 msgid "Print _Multiple Sudokus..."
 msgstr "Udskriv _flere sudokuer..."
 
-#: ../src/lib/main.py:209
+#: ../src/lib/main.py:210
 msgid "_Settings"
 msgstr "_Opsætning"
 
-#: ../src/lib/main.py:211
+#: ../src/lib/main.py:212
 msgid "_Tools"
 msgstr "Vær_ktøjer"
 
-#: ../src/lib/main.py:212
+#: ../src/lib/main.py:213
 msgid "_Hint"
 msgstr "F_if"
 
-#: ../src/lib/main.py:213
+#: ../src/lib/main.py:214
 msgid "Show a square that is easy to fill."
 msgstr "Vis et felt, som er nemt at fylde ud."
 
-#: ../src/lib/main.py:214
+#: ../src/lib/main.py:215
 msgid "Clear _Top Notes"
 msgstr "Ryd _topnoter"
 
-#: ../src/lib/main.py:216
+#: ../src/lib/main.py:217
 msgid "Clear _Bottom Notes"
 msgstr "Ryd _bundnoter"
 
-#: ../src/lib/main.py:218
+#: ../src/lib/main.py:219
 msgid "_Help"
 msgstr "_Hjælp"
 
-#: ../src/lib/main.py:219
+#: ../src/lib/main.py:220
 msgid "_Contents"
 msgstr "_Indhold"
 
-#: ../src/lib/main.py:225
+#: ../src/lib/main.py:226
 msgid "Show _Possible Numbers"
 msgstr "Vis _mulige tal"
 
-#: ../src/lib/main.py:227
+#: ../src/lib/main.py:228
 msgid "Always show possible numbers in a square"
 msgstr "Vis altid mulige numre i et felt"
 
-#: ../src/lib/main.py:231
+#: ../src/lib/main.py:232
 msgid "Warn About _Unfillable Squares"
 msgstr "Advar om _uudfyldelige felter"
 
-#: ../src/lib/main.py:233
+#: ../src/lib/main.py:234
 msgid "Warn about squares made unfillable by a move"
 msgstr "Advar om felter der bliver gjort uudfyldelige ved et træk"
 
-#: ../src/lib/main.py:235
+#: ../src/lib/main.py:236
 msgid "_Track Additions"
 msgstr "_Spor tilføjelser"
 
-#: ../src/lib/main.py:237
+#: ../src/lib/main.py:238
 msgid "Mark new additions in a separate color so you can keep track of them."
 msgstr "Markér nye tilføjelser med separat farve, så du kan holde styr på dem."
 
-#: ../src/lib/main.py:239
+#: ../src/lib/main.py:240
 msgid "Show _Toolbar"
 msgstr "Vis _Værktøjslinie"
 
-#: ../src/lib/main.py:240
+#: ../src/lib/main.py:241
 msgid "_Highlighter"
 msgstr "_Markør"
 
-#: ../src/lib/main.py:241
+#: ../src/lib/main.py:242
 msgid "Highlight the current row, column and box"
 msgstr "Markér den aktuelle række, kolonne og kasse"
 
-#: ../src/lib/main.py:366
+#: ../src/lib/main.py:367
 #, python-format
 msgid "You completed the puzzle in %d second"
 msgid_plural "You completed the puzzle in %d seconds"
 msgstr[0] "Du gennemførte spillet på %d sekund"
 msgstr[1] "Du gennemførte spillet på %d sekunder"
 
-#: ../src/lib/main.py:371 ../src/lib/main.py:379
+#: ../src/lib/main.py:372 ../src/lib/main.py:380
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d minut"
 msgstr[1] "%d minutter"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
+#: ../src/lib/main.py:373 ../src/lib/main.py:381
 #, python-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d sekund"
 msgstr[1] "%d sekunder"
 
-#: ../src/lib/main.py:373
+#: ../src/lib/main.py:374
 #, python-format
 msgid "You completed the puzzle in %(minute)s and %(second)s"
 msgstr "Du gennemførte spillet på %(minute)s og %(second)s"
 
-#: ../src/lib/main.py:378
+#: ../src/lib/main.py:379
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d time"
 msgstr[1] "%d timer"
 
-#: ../src/lib/main.py:381
+#: ../src/lib/main.py:382
 #, python-format
 msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
 msgstr "Du gennemførte spillet på %(hour)s, %(minute)s og %(second)s"
 
-#: ../src/lib/main.py:383
+#: ../src/lib/main.py:384
 #, python-format
 msgid "You got %(n)s hint."
 msgid_plural "You got %(n)s hints."
 msgstr[0] "Du fik %(n)s fif."
 msgstr[1] "Du fik %(n)s fif."
 
-#: ../src/lib/main.py:386
+#: ../src/lib/main.py:387
 #, python-format
 msgid "You had %(n)s impossibility pointed out."
 msgid_plural "You had %(n)s impossibilities pointed out."
 msgstr[0] "Du fik %(n)s umulighed påpeget."
 msgstr[1] "Du fik %(n)s umuligheder påpeget."
 
-#: ../src/lib/main.py:391
+#: ../src/lib/main.py:392
 msgid "You win!"
 msgstr "Du vandt!"
 
-#: ../src/lib/main.py:401
+#: ../src/lib/main.py:402
 msgid "Save this game before starting new one?"
 msgstr "Gem dette spil før der startes et nyt?"
 
-#: ../src/lib/main.py:402
+#: ../src/lib/main.py:403
 msgid "_Save game for later"
 msgstr "_Gem spillet til senere"
 
-#: ../src/lib/main.py:403
+#: ../src/lib/main.py:404
 msgid "_Abandon game"
 msgstr "_Forlad spillet"
 
-#: ../src/lib/main.py:421
+#: ../src/lib/main.py:422
 msgid "Save game before closing?"
 msgstr "Gem spil før der afsluttes?"
 
-#: ../src/lib/main.py:619
+#: ../src/lib/main.py:620
 msgid "Puzzle Information"
 msgstr "Spilinformation"
 
-#: ../src/lib/main.py:620
+#: ../src/lib/main.py:621
 msgid "There is no current puzzle."
 msgstr "Der er ikke noget aktivt spil."
 
-#: ../src/lib/main.py:625
+#: ../src/lib/main.py:626
 msgid "Calculated difficulty: "
 msgstr "Beregnet sværhedsgrad: "
 
-#: ../src/lib/main.py:630
+#: ../src/lib/main.py:631
 msgid "Very Hard"
 msgstr "Meget svær"
 
 # Evt. udelukkelse
-#: ../src/lib/main.py:635
+#: ../src/lib/main.py:636
 msgid "Number of moves instantly fillable by elimination: "
 msgstr "Antal træk der umiddelbart kan udfyldes ved udelukkelse: "
 
-#: ../src/lib/main.py:638
+#: ../src/lib/main.py:639
 msgid "Number of moves instantly fillable by filling: "
 msgstr "Antal træk der straks kan udfyldes ved fyldning: "
 
-#: ../src/lib/main.py:641
+#: ../src/lib/main.py:642
 msgid "Amount of trial-and-error required to solve: "
 msgstr "Mængden af gæt der kræves til løsning: "
 
-#: ../src/lib/main.py:644 ../src/lib/main.py:645
+#: ../src/lib/main.py:645 ../src/lib/main.py:646
 msgid "Puzzle Statistics"
 msgstr "Opgavestatistik"
 
-#: ../src/lib/main.py:669
+#: ../src/lib/main.py:670
 msgid "translator-credits"
 msgstr ""
 "Anders Wegge Jakobsen\n"
@@ -480,36 +551,36 @@ msgstr ""
 "Mere info: http://www.dansk-gruppen.dk"
 
 #. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:679
+#: ../src/lib/main.py:680
 #, python-format
 msgid "Unable to display help: %s"
 msgstr "Kunne ikke vise hjælp: %s"
 
-#: ../src/lib/main.py:735
+#: ../src/lib/main.py:736
 msgid "Untracked"
 msgstr "Spores ikke"
 
-#: ../src/lib/main.py:744
+#: ../src/lib/main.py:745
 msgid "_Remove"
 msgstr "_Fjern"
 
-#: ../src/lib/main.py:745
+#: ../src/lib/main.py:746
 msgid "Delete selected tracker."
 msgstr "Slet den valgte sporing."
 
-#: ../src/lib/main.py:751
+#: ../src/lib/main.py:752
 msgid "Hide current tracker entries."
 msgstr "Skjul aktuelle sporingsposter."
 
-#: ../src/lib/main.py:756
+#: ../src/lib/main.py:757
 msgid "A_pply"
 msgstr "_Anvend"
 
-#: ../src/lib/main.py:757
+#: ../src/lib/main.py:758
 msgid "Apply all tracked values and remove the tracker."
 msgstr "Ryd alle sporede værdier og fjern sporingen."
 
-#: ../src/lib/main.py:795
+#: ../src/lib/main.py:796
 #, python-format
 msgid "Tracker %s"
 msgstr "Spor %s"
@@ -518,49 +589,52 @@ msgstr "Spor %s"
 msgid "_Clear"
 msgstr "_Ryd"
 
-#: ../src/lib/saver.py:155
+#: ../src/lib/saver.py:151
 msgid "No Space"
 msgstr "Ingen plads"
 
-#: ../src/lib/saver.py:156
+#: ../src/lib/saver.py:152
 msgid "No space left on disk"
 msgstr "Ingen diskplads tilbage"
 
-#: ../src/lib/saver.py:158 ../src/lib/saver.py:165
+#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
 #, python-format
 msgid "Unable to create data folder %(path)s."
 msgstr "Kan ikke oprette datamappen %(path)s."
 
-#: ../src/lib/saver.py:159
+#: ../src/lib/saver.py:155
 msgid "There is no disk space left!"
 msgstr "Der er ingen resterende disklads!"
 
-#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
 msgid "Error creating directory"
 msgstr "Fejl ved oprettelse af katalog"
 
-#: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
-#: ../src/lib/saver.py:233
+#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
+#: ../src/lib/saver.py:229
 #, python-format
 msgid "Error %(errno)s: %(error)s"
 msgstr "Fejl %(errno)s: %(error)s"
 
-#: ../src/lib/saver.py:186 ../src/lib/saver.py:187
+#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
 msgid "Unable to save game."
 msgstr "Kan ikke gemme spillet."
 
-#: ../src/lib/saver.py:189 ../src/lib/saver.py:214 ../src/lib/saver.py:232
+#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
 #, python-format
 msgid "Unable to save file %(filename)s."
 msgstr "Kan ikke gemme filen %(filename)s."
 
-#: ../src/lib/saver.py:211 ../src/lib/saver.py:212
+#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
 msgid "Unable to mark game as finished."
 msgstr "Kan ikke markere spillet som afsluttet."
 
-#: ../src/lib/saver.py:229 ../src/lib/saver.py:230
+#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
 msgid "Sudoku unable to mark game as finished."
 msgstr "Sudoku kan ikke markere spillet som afsluttet."
+
+#~ msgid "GNOME Games web site"
+#~ msgstr "Hjemmeside for GNOME Games"
 
 #~ msgid "Chess"
 #~ msgstr "Skak"
@@ -3500,36 +3574,6 @@ msgstr "Sudoku kan ikke markere spillet som afsluttet."
 
 #~ msgid "_Use random block colors"
 #~ msgstr "_Benyt tilfældige blokfarver"
-
-#~ msgid "Color of the grid border"
-#~ msgstr "Farve på skærmens kant"
-
-#~ msgid "Height of application window in pixels"
-#~ msgstr "Højden af programvinduet i billedpunkter"
-
-#~ msgid "Mark printed games as played"
-#~ msgstr "Markér udskrevne spil som værende spillet"
-
-#~ msgid "Number of puzzles to print on a page"
-#~ msgstr "Antal opgaver, der udskrives per side"
-
-#~ msgid "Print games that have been played"
-#~ msgstr "Udskriv spil, der allerede er spillet"
-
-#~ msgid "Show hint highlights"
-#~ msgstr "Markér fif"
-
-#~ msgid "Show hints"
-#~ msgstr "Vis fif"
-
-#~ msgid "Show the application toolbar"
-#~ msgstr "Vis programmets værktøjslinje"
-
-#~ msgid "The number of seconds between automatic saves"
-#~ msgstr "Antallet af sekunder mellem automatiske gemninger"
-
-#~ msgid "Width of application window in pixels"
-#~ msgstr "Bredden af programvinduet i billedpunkter"
 
 #~ msgid "Click a square, any square"
 #~ msgstr "Klik på en firkant, enhver firkant"
@@ -8155,17 +8199,6 @@ msgstr "Sudoku kan ikke markere spillet som afsluttet."
 #~ msgstr ""
 #~ "GGZ-spilzonehjælp kræver indstilling af en browser.\n"
 #~ "Konfigurationsvinduet vil blive åbnet nu."
-
-#~ msgid ""
-#~ "Inline game help is not implemented yet. Help\n"
-#~ "is on our website. If\n"
-#~ "you would like to help head over to\n"
-#~ "http://www.ggzgamingzone.org/"
-#~ msgstr ""
-#~ "Integreret spilhjælp er ikke implementeret endnu.\n"
-#~ "Hjælp findes på vores hjemmeside. Hvis du vil\n"
-#~ "hjælpe så kig forbi\n"
-#~ "http://www.ggzgamingzone.org/"
 
 #~ msgid "Client Version:14 %s"
 #~ msgstr "Klientversion:^C14 %s"
