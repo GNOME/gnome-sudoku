@@ -1,19 +1,19 @@
 # Serbian translation of gnome-games
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2012.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2014.
 # This file is distributed under the same license as the gnome-games package.
 # Maintainer: Душан Марјановић <madafaka@bsd.org.yu>
 # Reviewed on 2005-08-03 by: Игор Несторовић <igor@prevod.org>
 # Translated by: Милош Поповић <gpopac@gmail.com>
 # Translated on 2010-08-25 by: Бранко Кокановић <branko.kokanovic@gmail.com>
 # Милош Поповић <gpopac@gmai, 2010.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011, 2012, 2013.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011—2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Гномове игре\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-18 14:52+0000\n"
-"PO-Revision-Date: 2013-09-05 10:43+0200\n"
+"POT-Creation-Date: 2014-03-22 08:40+0000\n"
+"PO-Revision-Date: 2014-03-22 10:25+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -24,17 +24,92 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+msgid "GNOME Sudoku"
+msgstr "Гномов судоку"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:2
+msgid ""
+"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
+"make playing Sudoku fun. Games are automatically saved when you quit, and "
+"you can always come back to any game that you've played."
+msgstr ""
+"Гномов судоку има једноставно, ненападно сучеље са свим функцијама које чине "
+"забавним играње судокуа. Игре се самостално чувају када изађете, и увек "
+"можете да наставите било коју игру коју сте раније играли."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites. You can also see detailed information about how the computer "
+"solved the puzzle."
+msgstr ""
+"Свакој игри је додељена тежина слично онима које дају новине и веб сајтови. "
+"Можете такође видети опширне податке о томе како је рачунар решио слагалицу."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"Ако волите да играте на папиру, можете да отштампате игре. Можете изабрати "
+"колико игра ћете штампати на једној страници и коју тежину игре желите да "
+"играте. као резултат, Гномов судоку може деловати као обновљива књижица "
+"судокуа."
+
+#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
 msgid "Sudoku"
 msgstr "Гном Судоку"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:2
+#: ../data/gnome-sudoku.desktop.in.h:2
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "Опробајте ваше логичке способности у овој слагалици мреже бројева"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:3
+#: ../data/gnome-sudoku.desktop.in.h:3
 msgid "game;board;tiles;japanese;"
 msgstr "игра;табла;плочице;јапански;судоку;"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
+msgid "The number of seconds between automatic saves"
+msgstr "Број секунди између самосталних чувања"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
+msgid "Print games that have been played"
+msgstr "Штампа игре које су одигране"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
+msgid "Mark printed games as played"
+msgstr "Означава штампане игре као одигране"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
+msgid "Width of application window in pixels"
+msgstr "Ширина прозора програма у тачкицама"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
+msgid "Height of application window in pixels"
+msgstr "Висина прозора програма у тачкицама"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
+msgid "Show hint highlights"
+msgstr "Приказује истицања потеза"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
+msgid "Color of the grid border"
+msgstr "Боја ивице мреже"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
+msgid "Show the application toolbar"
+msgstr "Показује траку лата програма"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
+msgid "Show hints"
+msgstr "Приказује савете"
+
+#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
+#| msgid "_Number of sudoku to print: "
+msgid "Number of puzzles to print on a page"
+msgstr "Број судока за штампање по страници"
 
 #: ../data/print_games.ui.h:1
 msgid "Print Sudokus"
@@ -105,7 +180,7 @@ msgstr "Уклања изабрани локатор"
 msgid "Make the tracked changes permanent"
 msgstr "Ставља да су праћене измене за стално"
 
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:750
+#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
 msgid "H_ide"
 msgstr "Сакр_иј"
 
@@ -113,16 +188,7 @@ msgstr "Сакр_иј"
 msgid "Hide the tracked values"
 msgstr "Сакрива праћене вредности"
 
-#: ../src/lib/defaults.py:47
-msgid "GNOME Sudoku"
-msgstr "Гном судоку"
-
 #: ../src/lib/defaults.py:50
-#| msgid ""
-#| "GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a "
-#| "Japanese logic puzzle.\n"
-#| "\n"
-#| "GNOME Sudoku is a part of GNOME Games."
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -133,20 +199,20 @@ msgstr ""
 "Гном судоку је део Гномових игара."
 
 #: ../src/lib/defaults.py:53
-msgid "GNOME Games web site"
-msgstr "Веб сајт Гномових игара"
+msgid "Website"
+msgstr "Веб страница"
 
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
+#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
 #: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Лако"
 
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
+#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
 #: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Средње"
 
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
+#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
 #: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Тешко"
@@ -246,115 +312,115 @@ msgstr "Да ли заиста желите да урадите ово?"
 msgid "Don't ask me this again."
 msgstr "Не питај ме поново."
 
-#: ../src/lib/main.py:195
+#: ../src/lib/main.py:196
 msgid "_Game"
 msgstr "_Игра"
 
-#: ../src/lib/main.py:196
+#: ../src/lib/main.py:197
 msgid "New game"
 msgstr "Нова игра"
 
-#: ../src/lib/main.py:197
+#: ../src/lib/main.py:198
 msgid "_Reset"
 msgstr "_Поново покрени"
 
-#: ../src/lib/main.py:199
+#: ../src/lib/main.py:200
 msgid "_Undo"
 msgstr "_Опозови"
 
-#: ../src/lib/main.py:200
+#: ../src/lib/main.py:201
 msgid "Undo last action"
 msgstr "Опозови последњи потез"
 
-#: ../src/lib/main.py:201
+#: ../src/lib/main.py:202
 msgid "_Redo"
 msgstr "_Понови"
 
-#: ../src/lib/main.py:202
+#: ../src/lib/main.py:203
 msgid "Redo last action"
 msgstr "Понови последњи потез"
 
-#: ../src/lib/main.py:203
+#: ../src/lib/main.py:204
 msgid "Puzzle _Statistics..."
 msgstr "Статистике _слагалице..."
 
-#: ../src/lib/main.py:205
+#: ../src/lib/main.py:206
 msgid "_Print..."
 msgstr "_Штампај..."
 
-#: ../src/lib/main.py:206
+#: ../src/lib/main.py:207
 msgid "Print _Multiple Sudokus..."
 msgstr "Одштампај _више судока..."
 
-#: ../src/lib/main.py:209
+#: ../src/lib/main.py:210
 msgid "_Settings"
 msgstr "_Подешавања"
 
-#: ../src/lib/main.py:211
+#: ../src/lib/main.py:212
 msgid "_Tools"
 msgstr "_Алати"
 
-#: ../src/lib/main.py:212
+#: ../src/lib/main.py:213
 msgid "_Hint"
 msgstr "_Савет"
 
-#: ../src/lib/main.py:213
+#: ../src/lib/main.py:214
 msgid "Show a square that is easy to fill."
 msgstr "Приказује квадрат који је лак за попуњавање."
 
-#: ../src/lib/main.py:214
+#: ../src/lib/main.py:215
 msgid "Clear _Top Notes"
 msgstr "Очисти _горње белешке"
 
-#: ../src/lib/main.py:216
+#: ../src/lib/main.py:217
 msgid "Clear _Bottom Notes"
 msgstr "Очисти _доње белешке"
 
-#: ../src/lib/main.py:218
+#: ../src/lib/main.py:219
 msgid "_Help"
 msgstr "По_моћ"
 
-#: ../src/lib/main.py:219
+#: ../src/lib/main.py:220
 msgid "_Contents"
 msgstr "_Садржај"
 
-#: ../src/lib/main.py:225
+#: ../src/lib/main.py:226
 msgid "Show _Possible Numbers"
 msgstr "Прикажи _могуће бројеве"
 
-#: ../src/lib/main.py:227
+#: ../src/lib/main.py:228
 msgid "Always show possible numbers in a square"
 msgstr "Увек прикажи могуће бројеве у квадрату"
 
-#: ../src/lib/main.py:231
+#: ../src/lib/main.py:232
 msgid "Warn About _Unfillable Squares"
 msgstr "Упозори на _непопуњиве квадрате"
 
-#: ../src/lib/main.py:233
+#: ../src/lib/main.py:234
 msgid "Warn about squares made unfillable by a move"
 msgstr "Упозори на квадрате који постају непопуњиви померањем"
 
-#: ../src/lib/main.py:235
+#: ../src/lib/main.py:236
 msgid "_Track Additions"
 msgstr "_Прати додавања"
 
-#: ../src/lib/main.py:237
+#: ../src/lib/main.py:238
 msgid "Mark new additions in a separate color so you can keep track of them."
 msgstr "Означи ново додавање различитом бојом како би их лакше пратио."
 
-#: ../src/lib/main.py:239
+#: ../src/lib/main.py:240
 msgid "Show _Toolbar"
 msgstr "Прикажи траку _алата"
 
-#: ../src/lib/main.py:240
+#: ../src/lib/main.py:241
 msgid "_Highlighter"
 msgstr "_Истицање"
 
-#: ../src/lib/main.py:241
+#: ../src/lib/main.py:242
 msgid "Highlight the current row, column and box"
 msgstr "Истакни тренутни ред, колону и кутију"
 
-#: ../src/lib/main.py:366
+#: ../src/lib/main.py:367
 #, python-format
 msgid "You completed the puzzle in %d second"
 msgid_plural "You completed the puzzle in %d seconds"
@@ -363,7 +429,7 @@ msgstr[1] "Склопили сте слагалицу за %d секунде"
 msgstr[2] "Склопили сте слагалицу за %d секунди"
 msgstr[3] "Склопили сте слагалицу за %d секунду"
 
-#: ../src/lib/main.py:371 ../src/lib/main.py:379
+#: ../src/lib/main.py:372 ../src/lib/main.py:380
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -372,7 +438,7 @@ msgstr[1] "%d минута"
 msgstr[2] "%d минута"
 msgstr[3] "%d минут"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
+#: ../src/lib/main.py:373 ../src/lib/main.py:381
 #, python-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -381,12 +447,12 @@ msgstr[1] "%d секунде"
 msgstr[2] "%d секунди"
 msgstr[3] "%d секунда"
 
-#: ../src/lib/main.py:373
+#: ../src/lib/main.py:374
 #, python-format
 msgid "You completed the puzzle in %(minute)s and %(second)s"
 msgstr "Склопили сте слагалицу за %(minute)s и %(second)s"
 
-#: ../src/lib/main.py:378
+#: ../src/lib/main.py:379
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -395,12 +461,12 @@ msgstr[1] "%d сата"
 msgstr[2] "%d сати"
 msgstr[3] "%d сат"
 
-#: ../src/lib/main.py:381
+#: ../src/lib/main.py:382
 #, python-format
 msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
 msgstr "Склопили сте слагалицу за %(hour)s, %(minute)s и %(second)s"
 
-#: ../src/lib/main.py:383
+#: ../src/lib/main.py:384
 #, python-format
 msgid "You got %(n)s hint."
 msgid_plural "You got %(n)s hints."
@@ -410,7 +476,7 @@ msgstr[2] "Имали сте %(n)s савета."
 msgstr[3] "Имали сте један савет."
 
 # Не знам на шта се односи
-#: ../src/lib/main.py:386
+#: ../src/lib/main.py:387
 #, python-format
 msgid "You had %(n)s impossibility pointed out."
 msgid_plural "You had %(n)s impossibilities pointed out."
@@ -419,59 +485,59 @@ msgstr[1] "Имате %(n)s истакнуте немогућности."
 msgstr[2] "Имате %(n)s истакнутих немогућности."
 msgstr[3] "Имате једну истакнуту немогућност."
 
-#: ../src/lib/main.py:391
+#: ../src/lib/main.py:392
 msgid "You win!"
 msgstr "Победили сте!"
 
-#: ../src/lib/main.py:401
+#: ../src/lib/main.py:402
 msgid "Save this game before starting new one?"
 msgstr "Да сачувам ову игру пре почетка нове?"
 
-#: ../src/lib/main.py:402
+#: ../src/lib/main.py:403
 msgid "_Save game for later"
 msgstr "_Сачувај игру за касније"
 
-#: ../src/lib/main.py:403
+#: ../src/lib/main.py:404
 msgid "_Abandon game"
 msgstr "_Напусти игру"
 
-#: ../src/lib/main.py:421
+#: ../src/lib/main.py:422
 msgid "Save game before closing?"
 msgstr "Да сачувам пре изласка?"
 
-#: ../src/lib/main.py:619
+#: ../src/lib/main.py:620
 msgid "Puzzle Information"
 msgstr "Подаци о слагалици"
 
-#: ../src/lib/main.py:620
+#: ../src/lib/main.py:621
 msgid "There is no current puzzle."
 msgstr "Тренутно нема слагалица."
 
-#: ../src/lib/main.py:625
+#: ../src/lib/main.py:626
 msgid "Calculated difficulty: "
 msgstr "Прорачуната тежина: "
 
-#: ../src/lib/main.py:630
+#: ../src/lib/main.py:631
 msgid "Very Hard"
 msgstr "Веома тешко"
 
-#: ../src/lib/main.py:635
+#: ../src/lib/main.py:636
 msgid "Number of moves instantly fillable by elimination: "
 msgstr "Број одмах попуњених потеза елиминацијом: "
 
-#: ../src/lib/main.py:638
+#: ../src/lib/main.py:639
 msgid "Number of moves instantly fillable by filling: "
 msgstr "Број одмах попуњених потеза попуњавањем: "
 
-#: ../src/lib/main.py:641
+#: ../src/lib/main.py:642
 msgid "Amount of trial-and-error required to solve: "
 msgstr "Количина покушаја-и-грешака потребних за решавање: "
 
-#: ../src/lib/main.py:644 ../src/lib/main.py:645
+#: ../src/lib/main.py:645 ../src/lib/main.py:646
 msgid "Puzzle Statistics"
 msgstr "Статистике за слагалицу"
 
-#: ../src/lib/main.py:669
+#: ../src/lib/main.py:670
 msgid "translator-credits"
 msgstr ""
 "Душан Марјановић <madafaka@root.co.yu>\n"
@@ -482,84 +548,87 @@ msgstr ""
 "http://prevod.org — превод на српски језик"
 
 #. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:679
+#: ../src/lib/main.py:680
 #, python-format
 msgid "Unable to display help: %s"
 msgstr "Не могу да прикажем помоћ: %s"
 
-#: ../src/lib/main.py:735
+#: ../src/lib/main.py:736
 msgid "Untracked"
 msgstr "Непраћено"
 
-#: ../src/lib/main.py:744
+#: ../src/lib/main.py:745
 msgid "_Remove"
 msgstr "_Уклони"
 
-#: ../src/lib/main.py:745
+#: ../src/lib/main.py:746
 msgid "Delete selected tracker."
 msgstr "Уклони означени локатор."
 
-#: ../src/lib/main.py:751
+#: ../src/lib/main.py:752
 msgid "Hide current tracker entries."
 msgstr "Сакриј тренутне уносе локатора."
 
-#: ../src/lib/main.py:756
+#: ../src/lib/main.py:757
 msgid "A_pply"
 msgstr "_Примени"
 
-#: ../src/lib/main.py:757
+#: ../src/lib/main.py:758
 msgid "Apply all tracked values and remove the tracker."
 msgstr "Примењује све праћене вредности и уклања локатор."
 
-#: ../src/lib/main.py:795
+#: ../src/lib/main.py:796
 #, python-format
 msgid "Tracker %s"
 msgstr "Локатор %s"
 
-#: ../src/lib/number_box.py:68
+#: ../src/lib/number_box.py:82
 msgid "_Clear"
 msgstr "_Очисти"
 
-#: ../src/lib/saver.py:155
+#: ../src/lib/saver.py:151
 msgid "No Space"
 msgstr "Нема места"
 
-#: ../src/lib/saver.py:156
+#: ../src/lib/saver.py:152
 msgid "No space left on disk"
 msgstr "Није преостало више места на диску"
 
-#: ../src/lib/saver.py:158 ../src/lib/saver.py:165
+#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
 #, python-format
 msgid "Unable to create data folder %(path)s."
 msgstr "Не могу да направим фасциклу са подацима %(path)s."
 
-#: ../src/lib/saver.py:159
+#: ../src/lib/saver.py:155
 msgid "There is no disk space left!"
 msgstr "Нема више места на диску!"
 
-#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
+#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
 msgid "Error creating directory"
 msgstr "Грешка стварања директоријума"
 
-#: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
-#: ../src/lib/saver.py:233
+#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
+#: ../src/lib/saver.py:229
 #, python-format
 msgid "Error %(errno)s: %(error)s"
 msgstr "Грешка %(errno)s: %(error)s"
 
-#: ../src/lib/saver.py:186 ../src/lib/saver.py:187
+#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
 msgid "Unable to save game."
 msgstr "Не могу да сачувам игру."
 
-#: ../src/lib/saver.py:189 ../src/lib/saver.py:214 ../src/lib/saver.py:232
+#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
 #, python-format
 msgid "Unable to save file %(filename)s."
 msgstr "Не могу да сачувам датотеку %(filename)s."
 
-#: ../src/lib/saver.py:211 ../src/lib/saver.py:212
+#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
 msgid "Unable to mark game as finished."
 msgstr "Не могу да означим игру завршеном."
 
-#: ../src/lib/saver.py:229 ../src/lib/saver.py:230
+#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
 msgid "Sudoku unable to mark game as finished."
 msgstr "Судоку не може да заврши игру."
+
+#~ msgid "GNOME Games web site"
+#~ msgstr "Веб сајт Гномових игара"
