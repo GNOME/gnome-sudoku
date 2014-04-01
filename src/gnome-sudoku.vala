@@ -37,17 +37,17 @@ public class Sudoku : Gtk.Application
 
     private const GLib.ActionEntry action_entries[] =
     {
-        {"new-game", new_game_cb                                                                },
-        {"reset", reset_cb                                                                      },
-        {"undo", undo_cb                                                                        },
-        {"redo", redo_cb                                                                        },
-        {"print", print_cb                                                                      },
-        {"print-multiple", print_multiple_cb                                                    },
-        {"possible-numbers",   possible_numbers_cb,   null, "false", possible_numbers_changed   },
-        {"unfillable-squares", unfillable_squares_cb, null, "false", unfillable_squares_changed },
-        {"help", help_cb                                                                        },
-        {"about", about_cb                                                                      },
-        {"quit", quit_cb                                                                        }
+        {"new-game", new_game_cb                                    },
+        {"reset", reset_cb                                          },
+        {"undo", undo_cb                                            },
+        {"redo", redo_cb                                            },
+        {"print", print_cb                                          },
+        {"print-multiple", print_multiple_cb                        },
+        {"possible-numbers",   possible_numbers_cb,   null, "false" },
+        {"unfillable-squares", unfillable_squares_cb, null, "false" },
+        {"help", help_cb                                            },
+        {"about", about_cb                                          },
+        {"quit", quit_cb                                            }
     };
 
     public Sudoku ()
@@ -464,24 +464,16 @@ public class Sudoku : Gtk.Application
         printer.run_dialog ();
     }
 
-    public void possible_numbers_cb ()
+    public void possible_numbers_cb (SimpleAction action)
     {
         view.show_possibilities = !view.show_possibilities;
+        action.set_state (new Variant.boolean (view.show_possibilities));
     }
 
-    private void possible_numbers_changed (SimpleAction action, Variant state)
-    {
-        view.show_possibilities = (bool) state;
-    }
-
-    public void unfillable_squares_cb ()
+    public void unfillable_squares_cb (SimpleAction action)
     {
         view.show_warnings = !view.show_warnings;
-    }
-
-    private void unfillable_squares_changed (SimpleAction action, Variant state)
-    {
-        view.show_warnings = (bool) state;
+        action.set_state (new Variant.boolean (view.show_warnings));
     }
 
     public void quit_cb ()
