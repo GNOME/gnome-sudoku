@@ -1,4 +1,5 @@
-/*
+/* -*- Mode: vala; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+ *
  * Copyright (C) 2012 Robert Ancell <robert.ancell@gmail.com>
  *
  * This program is free software; you can redistribute it and/or

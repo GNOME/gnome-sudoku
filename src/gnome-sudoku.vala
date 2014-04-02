@@ -1,3 +1,5 @@
+/* -*- Mode: vala; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
+
 using Gtk;
 using Gee;
 using Gdk;
