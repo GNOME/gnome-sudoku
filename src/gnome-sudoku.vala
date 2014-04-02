@@ -8,7 +8,6 @@ public class Sudoku : Gtk.Application
     private Builder builder;
 
     private ApplicationWindow window;
-    private CheckMenuItem fullscreen_menu;
 
     // The current game and view, if they exist
     private SudokuGame game;
@@ -76,14 +75,9 @@ public class Sudoku : Gtk.Application
         }
         window = (ApplicationWindow) builder.get_object ("sudoku_app");
 
-        if (settings.get_boolean ("fullscreen"))
-            window.fullscreen ();
-
         add_window (window);
 
         set_app_menu (builder.get_object ("sudoku-menu") as MenuModel);
-
-        fullscreen_menu = (CheckMenuItem) builder.get_object ("toggle_fullscreen_imagemenuitem");
 
         start_box = (Box) builder.get_object ("start_box");
         game_box = (Box) builder.get_object ("game_box");
@@ -479,18 +473,6 @@ public class Sudoku : Gtk.Application
     public void quit_cb ()
     {
         window.destroy ();
-    }
-
-    public bool sudoku_app_window_state_event_cb (Widget widget, Gdk.EventWindowState event)
-    {
-        if ((event.changed_mask & Gdk.WindowState.FULLSCREEN) != 0)
-        {
-            bool is_fullscreen = (event.new_window_state & Gdk.WindowState.FULLSCREEN) != 0;
-            settings.set_boolean ("fullscreen", is_fullscreen);
-            fullscreen_menu.active = is_fullscreen;
-        }
-
-        return false;
     }
 
     public void toggle_hints_cb (Widget widget)
