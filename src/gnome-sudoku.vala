@@ -475,36 +475,6 @@ public class Sudoku : Gtk.Application
         window.destroy ();
     }
 
-    public void toggle_hints_cb (Widget widget)
-    {
-        view.show_hints = !view.show_hints;
-    }
-
-    public void toggle_warnings_cb (Widget widget)
-    {
-        view.show_warnings = !view.show_warnings;
-    }
-
-    public void hint_cb (Widget widget)
-    {
-        view.hint ();
-    }
-
-    public void clear_top_notes_cb (Widget widget)
-    {
-        view.clear_top_notes ();
-    }
-
-    public void clear_bottom_notes_cb (Widget widget)
-    {
-        view.clear_bottom_notes ();
-    }
-
-    public void toggle_tracker_cb (Widget widget)
-    {
-        stdout.printf ("TODO: Toggle tracker\n");
-    }
-
     public void help_cb ()
     {
         try
