@@ -243,6 +243,7 @@ public class SudokuPrinter : GLib.Object {
 public class GamePrinter: GLib.Object {
 
     private SudokuStore store;
+    private SudokuSaver saver;
     private ApplicationWindow window;
     private GLib.Settings settings;
     private Gtk.Dialog dialog;
@@ -250,9 +251,10 @@ public class GamePrinter: GLib.Object {
     private SpinButton sudokusToPrintSpinButton;
     private SpinButton sudokusPerPageSpinButton;
 
-    public GamePrinter (SudokuStore store, ref  ApplicationWindow window)
+    public GamePrinter (SudokuStore store, SudokuSaver saver, ref ApplicationWindow window)
     {
         this.store = store;
+        this.saver = saver;
         this.window = window;
         this.settings = new GLib.Settings ("org.gnome.gnome-sudoku");
         this.options_map = new HashMap<string, CheckButton> ();
@@ -339,7 +341,7 @@ public class GamePrinter: GLib.Object {
             levels += DifficultyCatagory.VERY_HARD;
 
         var boards = new ArrayList<SudokuBoard> ();
-        boards = store.get_assorted_boards (nsudokus, levels);
+        boards = store.get_assorted_boards (nsudokus, levels, !options_map.get ("includeOldGamesToggle").get_active ());
 
         SudokuBoard[] sorted_boards = {};
 
@@ -351,9 +353,10 @@ public class GamePrinter: GLib.Object {
 
         if (result == PrintOperationResult.APPLY)
         {
-            // In future when 'markAsPlayedToggle' is made sensitive,
-            // copy the 'Tracker' portion of code from printing.py here.
             dialog.hide ();
+            if (options_map.get ("markAsPlayedToggle").get_active ())
+                foreach (SudokuBoard i in sorted_boards)
+                    saver.add_game_to_finished (new SudokuGame (i));
         }
     }
 

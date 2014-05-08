@@ -273,7 +273,7 @@ public class Sudoku : Gtk.Application
                 }
             }
 
-            saver.add_game_to_finished (game);
+            saver.add_game_to_finished (game, true);
 
             var dialog = new MessageDialog(null, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, "Well done, you completed the puzzle in %f seconds", time);
 
@@ -487,7 +487,7 @@ public class Sudoku : Gtk.Application
 
     public void print_multiple_cb ()
     {
-        var printer = new GamePrinter (sudoku_store, ref window);
+        var printer = new GamePrinter (sudoku_store, saver, ref window);
         printer.run_dialog ();
     }
 

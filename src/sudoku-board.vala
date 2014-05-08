@@ -513,6 +513,15 @@ public class SudokuBoard
         }
         return possibilities;
     }
+
+    public bool is_finished ()
+    {
+        var board_string = this.to_string (true) + ".save";
+        var finishgame_file = Path.build_path (Path.DIR_SEPARATOR_S, SudokuSaver.finishgame_dir, board_string);
+        var file = File.new_for_path (finishgame_file);
+
+        return file.query_exists ();
+    }
 }
 
 public enum House {

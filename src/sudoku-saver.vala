@@ -4,8 +4,8 @@ using Gee;
 
 public class SudokuSaver
 {
-    private string savegame_file;
-    private string finishgame_dir;
+    public static string savegame_file { get; private set; default = ""; }
+    public static string finishgame_dir { get; private set; default = ""; }
 
     public SudokuSaver() {
         try {
@@ -43,22 +43,24 @@ public class SudokuSaver
         create_file_for_game (game, savegame_file);
     }
 
-    public void add_game_to_finished (SudokuGame game)
+    public void add_game_to_finished (SudokuGame game, bool delete_savegame = false)
     {
         var file_name = game.board.to_string (true) + ".save";
         var file_path = Path.build_path (Path.DIR_SEPARATOR_S, finishgame_dir, file_name);
         create_file_for_game (game, file_path);
 
-        // Delete savegame file
-        var file = File.new_for_path (savegame_file);
-        if (file.query_exists ())
-            file.delete ();
+        if (delete_savegame)
+        {
+            // Delete savegame file
+            var file = File.new_for_path (savegame_file);
+            if (file.query_exists ())
+                file.delete ();
+        }
     }
 
     private void create_file_for_game (SudokuGame game, string file_name)
     {
         var json_str = serialize_game_to_json (game);
-        var file = File.new_for_path (file_name);
 
         try {
             FileUtils.set_contents (file_name, json_str);

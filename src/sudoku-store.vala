@@ -109,7 +109,7 @@ public class SudokuStore
             assert_not_reached();
     }
 
-    public ArrayList<SudokuBoard> get_assorted_boards(int n, owned DifficultyCatagory[] levels)
+    public ArrayList<SudokuBoard> get_assorted_boards(int n, owned DifficultyCatagory[] levels, bool exclude_finished = false)
     {
         var boards = new ArrayList<SudokuBoard> ();
         int i = 0;
@@ -119,8 +119,11 @@ public class SudokuStore
 
         while (i < n)
         {
-            // In future, modify this while loop to accomodate 'exclude' and 'new' parameters
-            boards.add (get_random_board ((DifficultyCatagory) levels[i++ % levels.length]));
+            var board = get_random_board ((DifficultyCatagory) levels[i % levels.length]);
+            if (exclude_finished && board.is_finished ())
+                continue;
+            boards.add (board);
+            i++;
         }
 
         CompareDataFunc<SudokuBoard> CompareDifficultyRatings = (a, b) => {
