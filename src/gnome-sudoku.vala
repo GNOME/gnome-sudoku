@@ -463,13 +463,13 @@ public class Sudoku : Gtk.Application
     public void possible_numbers_cb (SimpleAction action)
     {
         view.show_possibilities = !view.show_possibilities;
-        action.set_state (new Variant.boolean (view.show_possibilities));
+        action.set_state (view.show_possibilities);
     }
 
     public void unfillable_squares_cb (SimpleAction action)
     {
         view.show_warnings = !view.show_warnings;
-        action.set_state (new Variant.boolean (view.show_warnings));
+        action.set_state (view.show_warnings);
     }
 
     public void quit_cb ()
