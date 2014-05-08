@@ -21,6 +21,7 @@ gnome_sudoku_CFLAGS = \
 	-DPKGDATADIR=\"@datadir@/gnome-sudoku\" \
 	-DLOCALEDIR=\"@localedir@\" \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
+	-w \
 	$(GNOME_SUDOKU_CFLAGS)
 
 gnome_sudoku_LDADD = \
