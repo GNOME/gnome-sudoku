@@ -12,6 +12,8 @@ public class SudokuBoard
     private bool[,] possible_in_col;            /* if specific value is possible in specific col */
     private bool[,,] possible_in_block;         /* if specific value is possible in specific block */
 
+    public double previous_played_time { set; get; default = 0; }
+
     /* Number of rows in one block */
     private int _block_rows;
     public int block_rows
@@ -469,6 +471,22 @@ public class SudokuBoard
                 stdout.printf (",");
         }
         stdout.printf (" ]");
+    }
+
+    public string to_string (bool get_original_state = false)
+    {
+        var board_string = "";
+        for (var i = 0; i < _rows; i++)
+        {
+            for (var j = 0; j < _cols; j++)
+            {
+                if (is_fixed[i, j])
+                    board_string += cells[i, j].to_string ();
+                else
+                    board_string += get_original_state ? "0" : cells[i, j].to_string ();
+            }
+        }
+        return board_string;
     }
 
     public int[,] get_cells()

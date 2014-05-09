@@ -155,4 +155,9 @@ public class SudokuGame
             add_to_stack (ref to, -1, -1, num);
         }
     }
+
+    public double get_total_time_played ()
+    {
+        return board.previous_played_time + timer.elapsed ();
+    }
 }

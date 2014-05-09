@@ -28,8 +28,11 @@ public class Sudoku : Gtk.Application
     private SudokuView medium_preview;
     private SudokuView hard_preview;
     private SudokuView very_hard_preview;
+    private SudokuView savegame_preview;
 
     private SudokuStore sudoku_store;
+
+    private SudokuSaver saver;
 
     // Help Stuff
     private Box naked_single_items;
@@ -108,12 +111,14 @@ public class Sudoku : Gtk.Application
         });
 
         sudoku_store = new SudokuStore ();
+        saver = new SudokuSaver ();
         //SudokuGenerator gen = new SudokuGenerator();
 
         var easy_grid = (Box) builder.get_object ("easy_grid");
         var medium_grid = (Box) builder.get_object ("medium_grid");
         var hard_grid = (Box) builder.get_object ("hard_grid");
         var very_hard_grid = (Box) builder.get_object ("very_hard_grid");
+        var savegame_grid = (Box) builder.get_object ("savegame_grid");
 
         var easy_board = sudoku_store.get_random_easy_board ();
         //gen.make_symmetric_puzzle(Random.int_range(0, 4));
@@ -171,11 +176,35 @@ public class Sudoku : Gtk.Application
             return false;
         });
 
+        // FIXME: Remove the preview and directly start the game instead
+        var savegame = saver.get_savedgame ();
+        if (savegame == null)
+            savegame = new SudokuGame (sudoku_store.get_random_easy_board ());
+        //gen.make_symmetric_puzzle(Random.int_range(0, 4));
+        // gen.generate (DifficultyRating.medium_range);
+        savegame_preview = new SudokuView (savegame, true);
+        savegame_preview.show ();
+        savegame_grid.pack_start (savegame_preview);
+
+        savegame_grid.button_press_event.connect ((event) => {
+            if (event.button == 1)
+                start_game (savegame.board);
+
+            return false;
+        });
+
         show_start ();
 
         builder.connect_signals (this);
 
         window.show ();
+
+        window.delete_event.connect ((event) => {
+            if (game_box.visible)
+                saver.save_game (game);
+
+            return false;
+        });
     }
 
     private void start_game (SudokuBoard board)
@@ -234,7 +263,7 @@ public class Sudoku : Gtk.Application
         game.board.completed.connect (() => {
             view.dance ();
 
-            var time = game.timer.elapsed ();
+            var time = game.get_total_time_played ();
 
             for (var i = 0; i < game.board.rows; i++)
             {
@@ -243,6 +272,8 @@ public class Sudoku : Gtk.Application
                     view.can_focus = false;
                 }
             }
+
+            saver.add_game_to_finished (game);
 
             var dialog = new MessageDialog(null, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, "Well done, you completed the puzzle in %f seconds", time);
 
@@ -474,6 +505,8 @@ public class Sudoku : Gtk.Application
 
     public void quit_cb ()
     {
+        if (game_box.visible)
+            saver.save_game (game);
         window.destroy ();
     }
 

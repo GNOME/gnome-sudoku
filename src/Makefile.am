@@ -15,6 +15,7 @@ gnome_sudoku_SOURCES = \
 	sudoku-view.vala \
 	number-picker.vala \
 	sudoku-printer.vala \
+	sudoku-saver.vala \
 	$(BUILT_SOURCES)
 
 gnome_sudoku_CFLAGS = \
@@ -32,7 +33,8 @@ gnome_sudoku_VALAFLAGS = \
 	--pkg posix \
 	--pkg gio-2.0 \
 	--pkg gtk+-3.0 \
-	--pkg gee-0.8
+	--pkg gee-0.8 \
+	--pkg json-glib-1.0
 
 gnome-sudoku-resources.c: gnome-sudoku.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies gnome-sudoku.gresource.xml)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $<
