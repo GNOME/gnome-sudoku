@@ -15,20 +15,13 @@ public class Sudoku : Gtk.Application
     private SudokuGame game;
     private SudokuView view;
 
-    // The start box (contains the new game previews)
-    private Box start_box;
+    private HeaderBar header_bar;
     private Box game_box; // Holds the grid and controls boxes
     private Box grid_box; // Holds the view
     private Box help_box;
 
     private Box controls_box; // Holds the controls (including the number picker)
     private NumberPicker number_picker;
-
-    private SudokuView easy_preview;
-    private SudokuView medium_preview;
-    private SudokuView hard_preview;
-    private SudokuView very_hard_preview;
-    private SudokuView savegame_preview;
 
     private SudokuStore sudoku_store;
 
@@ -84,7 +77,7 @@ public class Sudoku : Gtk.Application
 
         set_app_menu (builder.get_object ("sudoku-menu") as MenuModel);
 
-        start_box = (Box) builder.get_object ("start_box");
+        header_bar = (HeaderBar) builder.get_object ("headerbar");
         game_box = (Box) builder.get_object ("game_box");
         grid_box = (Box) builder.get_object ("grid_box");
         help_box = (Box) builder.get_object ("help_box");
@@ -114,93 +107,19 @@ public class Sudoku : Gtk.Application
         saver = new SudokuSaver ();
         //SudokuGenerator gen = new SudokuGenerator();
 
-        var easy_grid = (Box) builder.get_object ("easy_grid");
-        var medium_grid = (Box) builder.get_object ("medium_grid");
-        var hard_grid = (Box) builder.get_object ("hard_grid");
-        var very_hard_grid = (Box) builder.get_object ("very_hard_grid");
-        var savegame_grid = (Box) builder.get_object ("savegame_grid");
-
-        var easy_board = sudoku_store.get_random_easy_board ();
-        //gen.make_symmetric_puzzle(Random.int_range(0, 4));
-        //gen.generate (DifficultyRating.easy_range);
-        easy_preview = new SudokuView (new SudokuGame (easy_board), true);
-        easy_preview.show ();
-        easy_grid.pack_start (easy_preview);
-
-        easy_grid.button_press_event.connect ((event) => {
-            if (event.button == 1)
-                start_game (easy_board);
-
-            return false;
-        });
-
-        var medium_board = sudoku_store.get_random_medium_board ();
-        //gen.make_symmetric_puzzle(Random.int_range(0, 4));
-        // gen.generate (DifficultyRating.medium_range);
-        medium_preview = new SudokuView (new SudokuGame (medium_board), true);
-        medium_preview.show ();
-        medium_grid.pack_start (medium_preview);
-
-        medium_grid.button_press_event.connect ((event) => {
-            if (event.button == 1)
-                start_game (medium_board);
-
-            return false;
-        });
-
-        var hard_board = sudoku_store.get_random_hard_board ();
-        //gen.make_symmetric_puzzle(Random.int_range(0, 4));
-        //gen.generate (DifficultyRating.hard_range);
-        hard_preview = new SudokuView (new SudokuGame (hard_board), true);
-        hard_preview.show ();
-        hard_grid.pack_start (hard_preview);
-
-        hard_grid.button_press_event.connect ((event) => {
-            if (event.button == 1)
-                start_game (hard_board);
-
-            return false;
-        });
-
-        var very_hard_board = sudoku_store.get_random_very_hard_board ();
-        //gen.make_symmetric_puzzle(Random.int_range(0, 4));
-        //gen.generate (DifficultyRating.very_hard_range);
-        very_hard_preview = new SudokuView (new SudokuGame (very_hard_board), true);
-        very_hard_preview.show ();
-        very_hard_grid.pack_start (very_hard_preview);
-
-        very_hard_grid.button_press_event.connect ((event) => {
-            if (event.button == 1)
-                start_game (very_hard_board);
-
-            return false;
-        });
-
-        // FIXME: Remove the preview and directly start the game instead
         var savegame = saver.get_savedgame ();
-        if (savegame == null)
-            savegame = new SudokuGame (sudoku_store.get_random_easy_board ());
-        //gen.make_symmetric_puzzle(Random.int_range(0, 4));
-        // gen.generate (DifficultyRating.medium_range);
-        savegame_preview = new SudokuView (savegame, true);
-        savegame_preview.show ();
-        savegame_grid.pack_start (savegame_preview);
-
-        savegame_grid.button_press_event.connect ((event) => {
-            if (event.button == 1)
-                start_game (savegame.board);
-
-            return false;
-        });
-
-        show_start ();
-
-        builder.connect_signals (this);
+        if (savegame != null)
+            start_game (savegame.board);
+        else
+        {
+            var random_difficulty = (DifficultyCatagory) Random.int_range (0, 4);
+            start_game (sudoku_store.get_random_board (random_difficulty));
+        }
 
         window.show ();
 
         window.delete_event.connect ((event) => {
-            if (game_box.visible)
+            if (!game.board.complete)
                 saver.save_game (game);
 
             return false;
@@ -214,6 +133,7 @@ public class Sudoku : Gtk.Application
         var rater = new SudokuRater(ref completed_board);
         var rating = rater.get_difficulty ();
         rating.pretty_print ();
+        header_bar.title = "Sudoku - %s".printf (rating.get_catagory ().to_string ());
 
         var show_possibilities = false;
         var show_warnings = false;
@@ -225,9 +145,6 @@ public class Sudoku : Gtk.Application
             grid_box.remove (view);
             controls_box.remove (number_picker);
         }
-
-        game_box.visible = true;
-        start_box.visible = false;
 
         game = new SudokuGame (board);
 
@@ -275,7 +192,7 @@ public class Sudoku : Gtk.Application
 
             saver.add_game_to_finished (game, true);
 
-            var dialog = new MessageDialog(null, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, "Well done, you completed the puzzle in %f seconds", time);
+            var dialog = new MessageDialog(window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, "Well done, you completed the puzzle in %f seconds", time);
 
             dialog.add_button ("Same difficulty again", 0);
             dialog.add_button ("New difficulty", 1);
@@ -287,7 +204,12 @@ public class Sudoku : Gtk.Application
                         start_game (sudoku_store.get_random_board (rating.get_catagory ()));
                         break;
                     case 1:
-                        show_start ();
+                        DifficultyCatagory[] new_range = {};
+                        for (var i = 0; i < 4; i++)
+                            if (i != (int) rating.get_catagory ())
+                                new_range += (DifficultyCatagory) i;
+
+                        start_game (sudoku_store.get_random_board (new_range[Random.int_range (0, 3)]));
                         break;
                 }
                 dialog.destroy ();
@@ -449,16 +371,10 @@ public class Sudoku : Gtk.Application
         }
     }
 
-    private void show_start ()
-    {
-        game_box.visible = false;
-        help_box.visible = false;
-        start_box.visible = true;
-    }
-
     public void new_game_cb ()
     {
-        show_start ();
+        var random_difficulty = (DifficultyCatagory) Random.int_range (0, 4);
+        start_game (sudoku_store.get_random_board (random_difficulty));
     }
 
     public void reset_cb ()
@@ -478,11 +394,8 @@ public class Sudoku : Gtk.Application
 
     public void print_cb ()
     {
-        if (game_box.visible)
-        {
-            var printer = new SudokuPrinter ({game.board.clone ()}, ref window);
-            printer.print_sudoku ();
-        }
+        var printer = new SudokuPrinter ({game.board.clone ()}, ref window);
+        printer.print_sudoku ();
     }
 
     public void print_multiple_cb ()
@@ -505,8 +418,7 @@ public class Sudoku : Gtk.Application
 
     public void quit_cb ()
     {
-        if (game_box.visible)
-            saver.save_game (game);
+        saver.save_game (game);
         window.destroy ();
     }
 
