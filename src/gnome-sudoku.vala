@@ -133,7 +133,7 @@ public class Sudoku : Gtk.Application
         var rater = new SudokuRater(ref completed_board);
         var rating = rater.get_difficulty ();
         rating.pretty_print ();
-        header_bar.title = "Sudoku - %s".printf (rating.get_catagory ().to_string ());
+        header_bar.set_subtitle ("%s".printf (rating.get_catagory ().to_string ()));
 
         var show_possibilities = false;
         var show_warnings = false;
