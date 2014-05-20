@@ -5,8 +5,6 @@ Undo/redo are clickable, even before starting a game
 
 The first number of a game is not updated on the screen before the selector is moved to a different place.
 
-The "Back" back seems to function like undo. Is that the case?
-
 The ingame Help: (I like it!)
   Should maybe have different name. Help is the common word for opening the help manual.
   Left align the text
@@ -36,9 +34,6 @@ Known Bugs -
   (http://i.imgur.com/FDLukf2.png)
   Will be resolved when the Popup window is replaced by popover
 
-- 'Back' button below number-pad and 'Undo' option in the Panel menu (don't know what to call it),
-  are redundant and have the same callback - 'undo_cb'.
-
 mcatanzaro: This number pad was from an earlier design; I think we can remove
             it completely.
 
@@ -53,10 +48,6 @@ mcatanzaro: This number pad was from an earlier design; I think we can remove
   Ask aday about this.
 
 - No icon is displayed in panel for vala-port
-
-- When 'Show possible numbers' is checked, the numbers are not displayed in an organized manner at the bottom.
-  (http://i.imgur.com/MYiloXw.png)
-  Instead, they are displayed at random positions in the cells (looks random, maybe there is a bug in display offsets)
 
 - Message Dialogs haven't been ported. Port gtk_goodies/dialog_extras.py
 

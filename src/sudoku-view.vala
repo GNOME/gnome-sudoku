@@ -496,30 +496,6 @@ private class SudokuCellView : Gtk.DrawingArea
             }
         }
     }
-
-    public void hint ()
-    {
-        show_hint ();
-        Timeout.add (200, remove_hint);
-        Timeout.add (400, show_hint);
-        Timeout.add (600, remove_hint);
-        Timeout.add (800, show_hint);
-        Timeout.add (1000, remove_hint);
-    }
-
-    private bool show_hint ()
-    {
-        background_color = { 1.0, 0.0, 0.0, 0.0 };
-        queue_draw ();
-        return false;
-    }
-
-    private bool remove_hint ()
-    {
-        background_color = { 1.0, 1.0, 1.0, 0.0 };
-        queue_draw ();
-        return false;
-    }
 }
 
 public class SudokuView : Gtk.AspectFrame
@@ -651,7 +627,6 @@ public class SudokuView : Gtk.AspectFrame
                                     if (_show_warnings && cells[i,j].value == 0 && game.board.count_possibilities (cells[i,j].row, cells[i,j].col) == 0) {
                                         if (!cells[i,j].warn_about_unfillable_squares) {
                                             cells[i,j].warn_about_unfillable_squares = true;
-                                            cells[i,j].hint ();
                                         }
                                     }
                                     else
@@ -663,6 +638,7 @@ public class SudokuView : Gtk.AspectFrame
                             previous_board_broken_state = game.board.broken;
                         }
                         cell_value_changed_event(cell_row, cell_col);
+                        queue_draw ();
                     });
                 }
 
@@ -692,13 +668,6 @@ public class SudokuView : Gtk.AspectFrame
         set { _show_highlights = value; }
     }
 
-    private bool _show_hints = false;
-    public bool show_hints
-    {
-        get { return _show_hints; }
-        set { _show_hints = value; }
-    }
-
     private bool _show_warnings = false;
     public bool show_warnings
     {
@@ -712,7 +681,6 @@ public class SudokuView : Gtk.AspectFrame
                     if (_show_warnings && cells[i,j].value == 0 && game.board.count_possibilities (cells[i,j].row, cells[i,j].col) == 0)
                     {
                         cells[i,j].warn_about_unfillable_squares = true;
-                        cells[i,j].hint ();
                     }
                     else
                     {
@@ -741,13 +709,6 @@ public class SudokuView : Gtk.AspectFrame
         {
             cells[y, x].notify_property("value");
         }
-    }
-
-    public void hint ()
-    {
-        int row=0, col=0;
-        game.hint (ref row, ref col);
-        cells [row, col].hint ();
     }
 
     public bool dance () {

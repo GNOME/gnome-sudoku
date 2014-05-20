@@ -69,48 +69,6 @@ public class SudokuGame
         add_to_stack (ref undostack, -1, -1, count);
     }
 
-    public void hint (ref int row, ref int col)
-    {
-        var total_pos = new int [board.rows, board.cols];
-        var min = board.max_val + 1;
-        var count = 0;
-        for (var l1 = 0; l1 < board.rows; l1++)
-        {
-            for (var l2 = 0; l2 < board.cols; l2++)
-            {
-                total_pos [l1, l2] = board.count_possibilities (l1, l2);
-                if (total_pos [l1, l2] < min && total_pos [l1, l2] > 0)
-                {
-                    min = total_pos [l1, l2];
-                    count = 0;
-                }
-                if (total_pos [l1, l2] == min)
-                {
-                    count++;
-                }
-            }
-        }
-        if (count == 0)
-            return;
-        count = Random.int_range (1, count + 1);
-        for (var l1 = 0; l1 < board.rows; l1++)
-        {
-            for (var l2 = 0; l2 < board.cols; l2++)
-            {
-                if (total_pos[l1, l2] == min)
-                {
-                    count--;
-                    if (count == 0)
-                    {
-                        row = l1;
-                        col = l2;
-                        return;
-                    }
-                }
-            }
-        }
-    }
-
     public void cell_changed_cb (int row, int col, int old_val, int new_val)
     {
         cell_changed (row, col, old_val, new_val);
