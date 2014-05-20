@@ -50,6 +50,7 @@ public class Sudoku : Gtk.Application
     {
         base.startup ();
         add_action_entries (action_entries, this);
+        Gtk.Window.set_default_icon_name ("gnome-sudoku");
     }
 
     protected override void activate () {
