@@ -38,7 +38,7 @@ else:
     BASE_DIR        = os.path.join(root_dir, '../data')
     PUZZLE_DIR      = BASE_DIR
 
-DOMAIN = 'gnome-games'
+DOMAIN = 'gnome-sudoku'
 locale.bind_textdomain_codeset(DOMAIN, "UTF-8") # See Bug 608425
 gettext.bindtextdomain(DOMAIN, LOCALEDIR)
 gettext.textdomain(DOMAIN)
