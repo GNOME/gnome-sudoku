@@ -9,7 +9,7 @@ private class SudokuCellView : Gtk.DrawingArea
 
     private double size_ratio = 2;
 
-    private Gtk.Window? popup = null;
+    private Gtk.Popover? popover = null;
 
     private SudokuGame game;
 
@@ -201,17 +201,14 @@ private class SudokuCellView : Gtk.DrawingArea
 
     private void show_number_picker ()
     {
-        if (popup != null)
+        if (popover != null)
             return;
         if (is_fixed)
             return;
         number_pick = true;
-        popup = new Gtk.Window (Gtk.WindowType.POPUP);
-        popup.decorated = false;
-        popup.resizable = false;
-        popup.skip_taskbar_hint = true;
-        popup.skip_pager_hint = true;
-        popup.set_type_hint (Gdk.WindowTypeHint.DIALOG);
+        popover = new Gtk.Popover(this);
+        popover.set_modal (false);
+        popover.set_position (PositionType.BOTTOM);
 
         var number_picker = new NumberPicker(ref game.board, value != 0);
         number_picker.number_picked.connect ((o, number) => {
@@ -220,56 +217,36 @@ private class SudokuCellView : Gtk.DrawingArea
             {
                 notify_property("value");
             }
-            hide_popup ();
+            hide_popover ();
         });
-        popup.add (number_picker);
 
-        int x, y, width, height;
-        get_window ().get_origin (out x, out y);
-        popup.show ();
-        popup.get_size (out width, out height);
-        popup.focus_out_event.connect (() => { hide_popup (); return true; });
-        var screen = popup.get_screen ();
-        var popup_x = x - (width - get_allocated_width ()) / 2;
-        var popup_y = y - (height - get_allocated_height ()) / 2;
-        if (popup_x < 0)
-            popup_x = 0;
-        else if (popup_x + width > screen.get_width ())
-            popup_x = screen.get_width () - width;
-        if (popup_y < 0)
-            popup_y = 0;
-        else if (popup_y + height > screen.get_height ())
-            popup_y = screen.get_height () - height;
-        popup.move (popup_x, popup_y);
+        popover.add (number_picker);
+
+        popover.show ();
+        popover.focus_out_event.connect (() => { hide_popover (); return true; });
     }
 
-    private void hide_popup ()
+    private void hide_popover ()
     {
         number_pick = false;
-        if (popup == null)
+        if (popover == null)
             return;
-        popup.destroy ();
-        popup = null;
+        popover.destroy ();
+        popover = null;
     }
 
     private bool editing_notes { get; set; default = false; }
 
     private void show_note_editor (int top)
     {
-        if (popup != null)
+        if (popover != null)
             return;
         if (is_fixed)
             return;
 
         editing_notes = true;
-        // TODO: This probably should be changed to Gtk.WindowType.POPUP
-        popup = new Gtk.Window (Gtk.WindowType.TOPLEVEL);
-        popup.decorated = false;
-        popup.resizable = false;
-        popup.skip_taskbar_hint = true;
-        popup.skip_pager_hint = true;
-        popup.set_type_hint (Gdk.WindowTypeHint.DIALOG);
-        popup.set_size_request (get_allocated_width (), -1);
+        // FIXME this popover is terrible
+        popover = new Gtk.Popover (this);
 
         var entry = new Gtk.Entry ();
         entry.has_frame = false;
@@ -277,7 +254,7 @@ private class SudokuCellView : Gtk.DrawingArea
             entry.set_text (top_notes);
         else
             entry.set_text (bottom_notes);
-        popup.add (entry);
+        popover.add (entry);
 
         entry.focus_out_event.connect (() => {
             hide_note_editor (entry, top);
@@ -285,13 +262,6 @@ private class SudokuCellView : Gtk.DrawingArea
         });
 
         entry.activate.connect (() => { hide_note_editor (entry, top); });
-
-        int x, y, height;
-
-        get_window ().get_origin (out x, out y);
-        popup.show_all ();
-        popup.get_size (null, out height);
-        popup.move (x, y + top * (get_allocated_height () - height));
     }
 
     private void hide_note_editor (Gtk.Entry entry, int top)
@@ -301,14 +271,14 @@ private class SudokuCellView : Gtk.DrawingArea
             top_notes = entry.get_text ();
         else
             bottom_notes = entry.get_text ();
-        hide_popup ();
+        hide_popover ();
     }
 
     private bool focus_out_cb (Gtk.Widget widget, Gdk.EventFocus event)
     {
         if (editing_notes || number_pick) return false;
-        if (popup != null)
-            hide_popup ();
+        if (popover != null)
+            hide_popover ();
         return false;
     }
 
