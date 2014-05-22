@@ -9,7 +9,7 @@ private class SudokuCellView : Gtk.DrawingArea
 
     private double size_ratio = 2;
 
-    private Gtk.Popover? popover = null;
+    private Gtk.Popover popover;
 
     private SudokuGame game;
 
@@ -130,9 +130,24 @@ private class SudokuCellView : Gtk.DrawingArea
         this._row = row;
         this._col = col;
 
+        var number_picker = new NumberPicker(ref game.board, value != 0);
+        number_picker.number_picked.connect ((o, number) => {
+            value = number;
+            if (number == 0)
+            {
+                notify_property("value");
+            }
+            popover.hide ();
+        });
+
+        popover = new Popover (this);
+        popover.add (number_picker);
+        popover.modal = false;
+        popover.position = PositionType.BOTTOM;
+        popover.focus_out_event.connect (() => { popover.hide (); return true; });
+
         // background_color is set in the SudokuView, as it manages the color of the cells
 
-        set_can_focus(true);
         can_focus = true;
 
         style.font_desc.set_size (Pango.SCALE * 13);
@@ -197,56 +212,18 @@ private class SudokuCellView : Gtk.DrawingArea
         return false;
     }
 
-    private bool number_pick { get; set; default = false; }
-
     private void show_number_picker ()
     {
-        if (popover != null)
-            return;
-        if (is_fixed)
-            return;
-        number_pick = true;
-        popover = new Gtk.Popover(this);
-        popover.set_modal (false);
-        popover.set_position (PositionType.BOTTOM);
-
-        var number_picker = new NumberPicker(ref game.board, value != 0);
-        number_picker.number_picked.connect ((o, number) => {
-            value = number;
-            if (number == 0)
-            {
-                notify_property("value");
-            }
-            hide_popover ();
-        });
-
-        popover.add (number_picker);
-
-        popover.show ();
-        popover.focus_out_event.connect (() => { hide_popover (); return true; });
+        if (!is_fixed)
+            popover.show ();
     }
-
-    private void hide_popover ()
-    {
-        number_pick = false;
-        if (popover == null)
-            return;
-        popover.destroy ();
-        popover = null;
-    }
-
-    private bool editing_notes { get; set; default = false; }
 
     private void show_note_editor (int top)
     {
-        if (popover != null)
-            return;
         if (is_fixed)
             return;
 
-        editing_notes = true;
-        // FIXME this popover is terrible
-        popover = new Gtk.Popover (this);
+/*  TODO - reimplement as earmarks
 
         var entry = new Gtk.Entry ();
         entry.has_frame = false;
@@ -262,23 +239,21 @@ private class SudokuCellView : Gtk.DrawingArea
         });
 
         entry.activate.connect (() => { hide_note_editor (entry, top); });
+*/
     }
 
     private void hide_note_editor (Gtk.Entry entry, int top)
     {
-        editing_notes = false;
         if (top == 0)
             top_notes = entry.get_text ();
         else
             bottom_notes = entry.get_text ();
-        hide_popover ();
+        // TODO - need to hide a thing
     }
 
     private bool focus_out_cb (Gtk.Widget widget, Gdk.EventFocus event)
     {
-        if (editing_notes || number_pick) return false;
-        if (popover != null)
-            hide_popover ();
+        popover.hide ();
         return false;
     }
 
