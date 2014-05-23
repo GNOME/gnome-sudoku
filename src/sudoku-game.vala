@@ -19,6 +19,16 @@ public class SudokuGame
     private SList<UndoItem?> undostack;
     private SList<UndoItem?> redostack;
 
+    public bool is_undostack_null ()
+    {
+        return undostack == null;
+    }
+
+    public bool is_redostack_null ()
+    {
+        return redostack == null;
+    }
+
     public SudokuGame (SudokuBoard board)
     {
         this.board = board;

@@ -18,13 +18,15 @@ public class Sudoku : Gtk.Application
     private HeaderBar header_bar;
     private Box game_box; // Holds the grid and controls boxes
     private Box grid_box; // Holds the view
-
     private Box controls_box; // Holds the controls (including the number picker)
     private NumberPicker number_picker;
 
     private SudokuStore sudoku_store;
 
     private SudokuSaver saver;
+
+    private SimpleAction undo_action;
+    private SimpleAction redo_action;
 
     private const GLib.ActionEntry action_entries[] =
     {
@@ -77,6 +79,9 @@ public class Sudoku : Gtk.Application
         grid_box = (Box) builder.get_object ("grid_box");
         controls_box = (Box) builder.get_object ("number_picker_box");
 
+        undo_action = (SimpleAction) lookup_action ("undo");
+        redo_action = (SimpleAction) lookup_action ("redo");
+
         sudoku_store = new SudokuStore ();
         saver = new SudokuSaver ();
         //SudokuGenerator gen = new SudokuGenerator();
@@ -108,6 +113,8 @@ public class Sudoku : Gtk.Application
         var rating = rater.get_difficulty ();
         rating.pretty_print ();
         header_bar.set_subtitle ("%s".printf (rating.get_catagory ().to_string ()));
+        undo_action.set_enabled (false);
+        redo_action.set_enabled (false);
 
         var show_possibilities = false;
         var show_warnings = false;
@@ -142,6 +149,11 @@ public class Sudoku : Gtk.Application
 
         number_picker.number_picked.connect ((number) => {
             view.set_cell_value (view.selected_x, view.selected_y, number);
+        });
+
+        game.cell_changed.connect (() => {
+            undo_action.set_enabled (!game.is_undostack_null ());
+            redo_action.set_enabled (!game.is_redostack_null ());
         });
 
         game.board.completed.connect (() => {
@@ -200,11 +212,15 @@ public class Sudoku : Gtk.Application
     public void undo_cb ()
     {
         game.undo ();
+        undo_action.set_enabled (!game.is_undostack_null ());
+        view.queue_draw ();
     }
 
     public void redo_cb ()
     {
         game.redo ();
+        redo_action.set_enabled (!game.is_redostack_null ());
+        view.queue_draw ();
     }
 
     public void print_cb ()
