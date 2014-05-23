@@ -77,11 +77,6 @@ public class Sudoku : Gtk.Application
         grid_box = (Box) builder.get_object ("grid_box");
         controls_box = (Box) builder.get_object ("number_picker_box");
 
-        var undo_button = (Button) builder.get_object ("undo_button");
-        undo_button.clicked.connect (() => {
-            undo_cb();
-        });
-
         sudoku_store = new SudokuStore ();
         saver = new SudokuSaver ();
         //SudokuGenerator gen = new SudokuGenerator();
