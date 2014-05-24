@@ -6,7 +6,9 @@ private class NumberPicker : Gtk.Grid
 
     public signal void number_picked (int number);
 
-    public NumberPicker (ref SudokuBoard board, bool show_clear = true) {
+    private Gtk.Button clear_button;
+
+    public NumberPicker (ref SudokuBoard board) {
         this.board = board;
 
         for (var col = 0; col < board.block_cols; col++)
@@ -35,24 +37,27 @@ private class NumberPicker : Gtk.Grid
             }
         }
 
-        if (show_clear)
-        {
-            var button = new Gtk.Button ();
-            button.focus_on_click = false;
-            this.attach (button, 0, 4, 3, 1);
+        clear_button = new Gtk.Button ();
+        clear_button.focus_on_click = false;
+        this.attach (clear_button, 0, 4, 3, 1);
 
-            var label = new Gtk.Label ("<big>Clear</big>");
-            label.use_markup = true;
-            button.add (label);
-            label.show ();
+        var label = new Gtk.Label ("<big>Clear</big>");
+        label.use_markup = true;
+        clear_button.add (label);
+        label.show ();
 
-            button.clicked.connect (() => {
-                number_picked(0);
-            });
-
-            button.show ();
-        }
+        clear_button.clicked.connect (() => {
+            number_picked(0);
+        });
 
         this.show ();
+    }
+
+    public void set_clear_button_visibility (bool visible)
+    {
+        if (visible)
+            clear_button.show ();
+        else
+            clear_button.hide ();
     }
 }

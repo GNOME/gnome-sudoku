@@ -124,13 +124,15 @@ private class SudokuCellView : Gtk.DrawingArea
         }
     }
 
+    private NumberPicker number_picker;
+
     public SudokuCellView (int row, int col, ref SudokuGame game, bool small = false)
     {
         this.game = game;
         this._row = row;
         this._col = col;
 
-        var number_picker = new NumberPicker(ref game.board, value != 0);
+        number_picker = new NumberPicker(ref game.board);
         number_picker.number_picked.connect ((o, number) => {
             value = number;
             if (number == 0)
@@ -215,7 +217,10 @@ private class SudokuCellView : Gtk.DrawingArea
     private void show_number_picker ()
     {
         if (!is_fixed)
+        {
+            number_picker.set_clear_button_visibility (value != 0);
             popover.show ();
+        }
     }
 
     private void show_note_editor (int top)
