@@ -22,11 +22,12 @@ public class Sudoku : Gtk.Application
     private NumberPicker number_picker;
 
     private SudokuStore sudoku_store;
-
     private SudokuSaver saver;
 
     private SimpleAction undo_action;
     private SimpleAction redo_action;
+
+    private bool show_possibilities;
 
     private const GLib.ActionEntry action_entries[] =
     {
@@ -36,16 +37,16 @@ public class Sudoku : Gtk.Application
         {"redo", redo_cb                                            },
         {"print", print_cb                                          },
         {"print-multiple", print_multiple_cb                        },
-        {"possible-numbers",   possible_numbers_cb,   null, "false" },
         {"unfillable-squares", unfillable_squares_cb, null, "false" },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
         {"quit", quit_cb                                            }
     };
 
-    public Sudoku ()
+    public Sudoku (bool show_possibilities = false)
     {
         Object (application_id: "org.gnome.gnome-sudoku", flags: ApplicationFlags.FLAGS_NONE);
+        this.show_possibilities = show_possibilities;
     }
 
     protected override void startup()
@@ -116,7 +117,6 @@ public class Sudoku : Gtk.Application
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);
 
-        var show_possibilities = false;
         var show_warnings = false;
 
         if (view != null) {
@@ -233,12 +233,6 @@ public class Sudoku : Gtk.Application
     {
         var printer = new GamePrinter (sudoku_store, saver, ref window);
         printer.run_dialog ();
-    }
-
-    public void possible_numbers_cb (SimpleAction action)
-    {
-        view.show_possibilities = !view.show_possibilities;
-        action.set_state (view.show_possibilities);
     }
 
     public void unfillable_squares_cb (SimpleAction action)

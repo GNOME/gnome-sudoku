@@ -17,12 +17,18 @@
  */
 
 private static bool show_version;
+private static bool show_possibilities;
 
 private static const OptionEntry[] options =
 {
     { "version", 'v', 0, OptionArg.NONE, ref show_version,
     /* Help string for command line --version flag */
     N_("Show release version"), null},
+
+    { "show-possible-values", 's', 0, OptionArg.NONE, ref show_possibilities,
+    /* Help string for command line --show-possible flag */
+    N_("Show the possible values for each cell"), null},
+
     { null }
 };
 
@@ -79,7 +85,7 @@ public static int main (string[] args)
         return Posix.EXIT_SUCCESS;
     }
 
-    var app = new Sudoku ();
+    var app = new Sudoku (show_possibilities);
 
     return app.run ();
 }
