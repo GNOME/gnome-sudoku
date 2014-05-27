@@ -90,7 +90,12 @@ public class SudokuSaver
         {
             for (var j = 0; j < board.cols; j++)
             {
-                if (board_cells[i, j] == 0)
+                int[] earmarks = {};
+                for (var k = 0; k < board.max_val; k++)
+                    if (board.earmarks[i, j, k])
+                        earmarks += k;
+
+                if (board_cells[i, j] == 0 && earmarks.length == 0)
                     continue;
 
                 builder.begin_object ();
@@ -104,8 +109,13 @@ public class SudokuSaver
                 builder.add_int_value (board_cells[i, j]);
                 builder.set_member_name ("fixed");
                 builder.add_boolean_value (board.is_fixed[i, j]);
-                builder.set_member_name ("notes");
-                builder.add_string_value ("");
+                builder.set_member_name ("earmarks");
+                builder.begin_array ();
+
+                foreach (int k in earmarks)
+                    builder.add_int_value (k);
+
+                builder.end_array ();
 
                 builder.end_object ();
             }
@@ -135,7 +145,7 @@ public class SudokuSaver
         Json.Node node = parser.get_root ();
         Json.Reader reader = new Json.Reader (node);
         reader.read_member ("cells");
-        assert (reader.is_array ());
+        return_val_if_fail (reader.is_array (), null);
 
         for (var i = 0; i < reader.count_elements (); i++)
         {
@@ -165,9 +175,21 @@ public class SudokuSaver
             var is_fixed = reader.get_boolean_value ();
             reader.end_member ();
 
-            reader.end_element ();
+            if (val != 0)
+                board.insert (row, col, val, is_fixed);
 
-            board.insert (row, col, val, is_fixed);
+            reader.read_member ("earmarks");
+            return_val_if_fail (reader.is_array (), null);
+            for (var k = 0; k < reader.count_elements (); k++)
+            {
+                reader.read_element (k);
+                return_val_if_fail (reader.is_value (), null);
+                board.earmarks[row, col, (int) reader.get_int_value ()] = true;
+                reader.end_element ();
+            }
+            reader.end_member ();
+
+            reader.end_element ();
         }
         reader.end_member ();
 

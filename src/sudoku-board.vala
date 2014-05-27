@@ -12,6 +12,8 @@ public class SudokuBoard
     private bool[,] possible_in_col;            /* if specific value is possible in specific col */
     private bool[,,] possible_in_block;         /* if specific value is possible in specific block */
 
+    public bool[,,] earmarks;                  /* Earmarks set by the user */
+
     public double previous_played_time { set; get; default = 0; }
 
     /* Number of rows in one block */
@@ -110,6 +112,7 @@ public class SudokuBoard
         possible_in_row = new bool[_rows, _cols];
         possible_in_col = new bool[_cols, _rows];
         possible_in_block = new bool[_block_rows, _block_cols, _block_rows * _block_cols];
+        earmarks = new bool[_rows, _cols, max_val];
 
         for (var l1 = 0; l1 < _rows; l1++)
         {

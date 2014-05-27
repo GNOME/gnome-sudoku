@@ -10,6 +10,7 @@ private class SudokuCellView : Gtk.DrawingArea
     private double size_ratio = 2;
 
     private Gtk.Popover popover;
+    private Gtk.Popover earmark_popover;
 
     private SudokuGame game;
 
@@ -70,9 +71,6 @@ private class SudokuCellView : Gtk.DrawingArea
         }
     }
 
-    public string top_notes { set; get; default = ""; }
-    public string bottom_notes { set; get; default = ""; }
-
     private bool _show_possibilities;
     public bool show_possibilities
     {
@@ -125,6 +123,7 @@ private class SudokuCellView : Gtk.DrawingArea
     }
 
     private NumberPicker number_picker;
+    private NumberPicker earmark_picker;
 
     public SudokuCellView (int row, int col, ref SudokuGame game, bool small = false)
     {
@@ -147,6 +146,18 @@ private class SudokuCellView : Gtk.DrawingArea
         popover.modal = false;
         popover.position = PositionType.BOTTOM;
         popover.focus_out_event.connect (() => { popover.hide (); return true; });
+
+        earmark_picker = new NumberPicker(ref game.board, true);
+        earmark_picker.earmark_state_changed.connect ((number, state) => {
+            this.game.board.earmarks[row, col, number-1] = state;
+            queue_draw ();
+        });
+
+        earmark_popover = new Popover (this);
+        earmark_popover.add (earmark_picker);
+        earmark_popover.modal = false;
+        earmark_popover.position = PositionType.BOTTOM;
+        earmark_popover.focus_out_event.connect (() => { earmark_popover.hide (); return true; });
 
         // background_color is set in the SudokuView, as it manages the color of the cells
 
@@ -192,24 +203,11 @@ private class SudokuCellView : Gtk.DrawingArea
             return false;
         }
 
-        if (event.y / get_allocated_height () < 0.25)
-        {
-            show_note_editor (0);
-        }
+        var event_height = event.y / get_allocated_height ();
+        if (!_show_possibilities && (event_height < 0.25 || event_height > 0.75))
+            show_earmark_picker ();
         else
-        {
-            if (event.y / get_allocated_height () > 0.75)
-            {
-                if (!_show_possibilities)
-                {
-                    show_note_editor (1);
-                }
-            }
-            else
-            {
-                show_number_picker ();
-            }
-        }
+            show_number_picker ();
 
         return false;
     }
@@ -219,46 +217,25 @@ private class SudokuCellView : Gtk.DrawingArea
         if (!is_fixed)
         {
             number_picker.set_clear_button_visibility (value != 0);
+            earmark_popover.hide ();
             popover.show ();
         }
     }
 
-    private void show_note_editor (int top)
+    private void show_earmark_picker ()
     {
-        if (is_fixed)
-            return;
-
-/*  TODO - reimplement as earmarks
-
-        var entry = new Gtk.Entry ();
-        entry.has_frame = false;
-        if (top == 0)
-            entry.set_text (top_notes);
-        else
-            entry.set_text (bottom_notes);
-        popover.add (entry);
-
-        entry.focus_out_event.connect (() => {
-            hide_note_editor (entry, top);
-            return true;
-        });
-
-        entry.activate.connect (() => { hide_note_editor (entry, top); });
-*/
-    }
-
-    private void hide_note_editor (Gtk.Entry entry, int top)
-    {
-        if (top == 0)
-            top_notes = entry.get_text ();
-        else
-            bottom_notes = entry.get_text ();
-        // TODO - need to hide a thing
+        if (!is_fixed)
+        {
+            earmark_picker.set_earmarks (_row, _col);
+            popover.hide ();
+            earmark_popover.show ();
+        }
     }
 
     private bool focus_out_cb (Gtk.Widget widget, Gdk.EventFocus event)
     {
         popover.hide ();
+        earmark_popover.hide ();
         return false;
     }
 
@@ -365,44 +342,29 @@ private class SudokuCellView : Gtk.DrawingArea
             Pango.cairo_show_layout (c, layout);
             c.restore ();
         }
-        else if (_show_possibilities)
-        {
-            double possibility_size = get_allocated_height () / (size_ratio * 2);
-            c.set_font_size (possibility_size);
-            c.set_source_rgb (0.0, 0.0, 0.0);
 
-            bool[] possibilities = game.board.get_possibilities_as_bool_array(row, col);
+        double earmark_size = get_allocated_height () / (size_ratio * 2);
+        c.set_font_size (earmark_size);
+        c.set_source_rgb (0.0, 0.0, 0.0);
 
-            int height = get_allocated_height () / game.board.block_cols;
-            int width = get_allocated_height () / game.board.block_rows;
+        int height = get_allocated_height () / game.board.block_cols;
+        int width = get_allocated_height () / game.board.block_rows;
 
-            int num = 0;
-            for (int row = 0; row < game.board.block_rows; row++)
+        int num = 0;
+        for (int row = 0; row < game.board.block_rows; row++)
+            for (int col = 0; col < game.board.block_cols; col++)
             {
-                for (int col = 0; col < game.board.block_cols; col++)
-                {
-                    num++;
+                num++;
 
-                    if (possibilities[num - 1])
-                    {
-                        c.move_to (col * width, (row * height) + possibility_size);
-                        c.show_text ("%d".printf(num));
-                    }
+                if (game.board.earmarks[_row, _col, num-1] || (_show_possibilities && game.board.is_possible (_row, _col, num)))
+                {
+                    c.move_to (col * width, (row * height) + earmark_size);
+                    c.show_text ("%d".printf(num));
                 }
             }
-        }
 
         if (is_fixed)
             return false;
-
-        // Draw the notes
-        double note_size = get_allocated_height () / (size_ratio * 2);
-        c.set_font_size (note_size);
-
-        c.move_to (0, note_size);
-
-        c.set_source_rgb (0.0, 0.0, 0.0);
-        c.show_text (top_notes);
 
         c.move_to (0, (get_allocated_height () - 3));
         if (_warn_about_unfillable_squares)
@@ -413,14 +375,6 @@ private class SudokuCellView : Gtk.DrawingArea
         else
         {
             c.set_source_rgb (0.0, 0.0, 0.0);
-            //if (_show_possibilities)
-            //{
-            //    c.show_text (get_possibility_string (game.board.get_possibilities(_row, _col)));
-            //}
-            //else
-            //{
-                c.show_text (bottom_notes);
-            //}
         }
 
         return false;
@@ -702,22 +656,6 @@ public class SudokuView : Gtk.AspectFrame
     private RGBA get_next_color (RGBA color)
     {
         return dance_colors[Random.int_range(0, dance_colors.length)];
-    }
-
-    public void clear_top_notes ()
-    {
-        for (var i = 0; i < game.board.rows; i++)
-            for (var j = 0; j < game.board.cols; j++)
-                cells[i,j].top_notes = "";
-        queue_draw ();
-    }
-
-    public void clear_bottom_notes ()
-    {
-        for (var i = 0; i < game.board.rows; i++)
-            for (var j = 0; j < game.board.cols; j++)
-                cells[i,j].bottom_notes = "";
-        queue_draw ();
     }
 
     public void cell_grab_focus(int row, int col)
