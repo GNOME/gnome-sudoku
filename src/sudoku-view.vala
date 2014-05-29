@@ -203,14 +203,14 @@ private class SudokuCellView : Gtk.DrawingArea
             return false;
         }
 
-        if (event.button == 1)            // Primary-Click
+        if (event.button == 1)            // Left-Click
         {
             if (!_show_possibilities && (event.state & ModifierType.CONTROL_MASK) > 0)
                 show_earmark_picker ();
             else
                 show_number_picker ();
         }
-        else if (!_show_possibilities && event.button == 3)         // Secondary-Click
+        else if (!_show_possibilities && event.button == 3)         // Right-Click
             show_earmark_picker ();
 
         return false;
