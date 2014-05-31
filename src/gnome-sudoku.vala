@@ -28,7 +28,7 @@ public class Sudoku : Gtk.Application
     private SimpleAction undo_action;
     private SimpleAction redo_action;
 
-    private bool show_possibilities;
+    private bool show_possibilities = false;
 
     private const GLib.ActionEntry action_entries[] =
     {
@@ -43,10 +43,40 @@ public class Sudoku : Gtk.Application
         {"quit", quit_cb                                            }
     };
 
-    public Sudoku (bool show_possibilities = false)
+    private static const OptionEntry[] option_entries =
+    {
+        { "version", 'v', 0, OptionArg.NONE, null,
+        /* Help string for command line --version flag */
+        N_("Show release version"), null},
+
+        { "show-possible-values", 's', 0, OptionArg.NONE, null,
+        /* Help string for command line --show-possible flag */
+        N_("Show the possible values for each cell"), null},
+
+        { null }
+    };
+
+    public Sudoku ()
     {
         Object (application_id: "org.gnome.sudoku", flags: ApplicationFlags.FLAGS_NONE);
-        this.show_possibilities = show_possibilities;
+        add_main_option_entries (option_entries);
+    }
+
+    protected override int handle_local_options (GLib.VariantDict options)
+    {
+        if (options.contains ("version"))
+        {
+            /* Not translated so can be easily parsed */
+            stderr.printf ("gnome-sudoku %s\n", VERSION);
+            return Posix.EXIT_SUCCESS;
+        }
+        else if (options.contains ("show-possible-values"))
+        {
+            show_possibilities = true;
+        }
+
+        /* Activate */
+        return -1;
     }
 
     protected override void startup ()
@@ -127,12 +157,7 @@ public class Sudoku : Gtk.Application
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);
 
-        var show_warnings = false;
-
         if (view != null) {
-            show_possibilities = view.show_possibilities;
-            show_warnings = view.show_warnings;
-
             grid_box.remove (view);
             controls_box.remove (number_picker);
         }

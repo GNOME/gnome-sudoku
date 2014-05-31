@@ -6,7 +6,7 @@ AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE([enable])
 GNOME_MAINTAINER_MODE_DEFINES
 
-AM_PROG_VALAC([0.22.0])
+AM_PROG_VALAC([0.24.0])
 AM_PROG_CC_C_O
 
 GLIB_GSETTINGS
@@ -15,10 +15,12 @@ dnl ###########################################################################
 dnl Dependencies
 dnl ###########################################################################
 
+GLIB_REQUIRED=2.40.0
 GTK_REQUIRED=3.13.0
 
 PKG_CHECK_MODULES(GNOME_SUDOKU, [
-  gio-2.0
+  glib-2.0 >= $GLIB_REQUIRED
+  gio-2.0 >= $GLIB_REQUIRED
   gtk+-3.0 >= $GTK_REQUIRED
   gee-0.8
   json-glib-1.0
