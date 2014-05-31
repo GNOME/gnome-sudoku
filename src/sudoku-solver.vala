@@ -878,15 +878,17 @@ public class DifficultyRating {
         return sum;
     }
 
-    public void pretty_print () {
-        stdout.printf ("Number of moves instantly fillable by elimination: %f\n", instant_elimination_fillable);
-        stdout.printf ("Percentage of moves instantly fillable by elimination: %f\n", proportion_instant_elimination_fillable * 100);
-        stdout.printf ("Number of moves instantly fillable by filling: %f\n", instant_fill_fillable);
-        stdout.printf ("Percentage of moves instantly fillable by filling: %f\n", proportion_instant_fill_fillable * 100);
-        stdout.printf ("Number of guesses made: %d\n", guesses.size);
-        stdout.printf ("Number of backtraces: %d\n", backtraces);
-        stdout.printf ("Ease by filling: %f\n", fillable_ease);
-        stdout.printf ("Ease by elimination: %f\n", elimination_ease);
-        stdout.printf ("Calculated difficulty: %f\n", rating);
+    public string to_string () {
+        string result = "";
+        result += "Number of moves instantly fillable by elimination: %f\n".printf (instant_elimination_fillable);
+        result += "Percentage of moves instantly fillable by elimination: %f\n".printf (proportion_instant_elimination_fillable * 100);
+        result += "Number of moves instantly fillable by filling: %f\n".printf (instant_fill_fillable);
+        result += "Percentage of moves instantly fillable by filling: %f\n".printf (proportion_instant_fill_fillable * 100);
+        result += "Number of guesses made: %d\n".printf (guesses.size);
+        result += "Number of backtraces: %d\n".printf (backtraces);
+        result += "Ease by filling: %f\n".printf (fillable_ease);
+        result += "Ease by elimination: %f\n".printf (elimination_ease);
+        result += "Calculated difficulty: %f".printf (rating);
+        return result;
     }
 }

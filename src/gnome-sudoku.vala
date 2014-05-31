@@ -153,7 +153,7 @@ public class Sudoku : Gtk.Application
 
         var rater = new SudokuRater(ref completed_board);
         var rating = rater.get_difficulty ();
-        rating.pretty_print ();
+        debug ("\n%s", rating.to_string ());
         header_bar.set_subtitle (rating.get_catagory ().to_string ());
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);
