@@ -45,7 +45,7 @@ public class Sudoku : Gtk.Application
 
     public Sudoku (bool show_possibilities = false)
     {
-        Object (application_id: "org.gnome.gnome-sudoku", flags: ApplicationFlags.FLAGS_NONE);
+        Object (application_id: "org.gnome.sudoku", flags: ApplicationFlags.FLAGS_NONE);
         this.show_possibilities = show_possibilities;
     }
 
