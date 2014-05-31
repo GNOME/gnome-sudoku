@@ -34,32 +34,6 @@ private static const OptionEntry[] options =
 
 public static int main (string[] args)
 {
-    //SudokuGenerator.gen_stats ();
-    //SudokuRater.gen_python_test ();
-
-    //SudokuGenerator gen = new SudokuGenerator ();
-    //SudokuBoard board = gen.make_symmetric_puzzle(GLib.Random.int_range(0, 4));
-    //board.get_string ();
-    //stdout.printf("\n");
-
-    //SudokuBoard test_board = board.clone ();
-    //SudokuSolver test_solver = new SudokuSolver (ref test_board);
-
-    /*if (test_solver.quick_has_unique_solution ())
-        stdout.printf("Unique solution\n");
-    else
-        stdout.printf("No unique solution\n");
-
-
-    SudokuSolver solver = new SudokuSolver (ref board);
-    foreach (SudokuBoard solved_board in solver)
-    {
-        solved_board.get_string ();
-        stdout.printf("\n");
-    }*/
-
-    //return 0;
-
     Gtk.init (ref args);
 
     var c = new OptionContext (/* Arguments and description for --help text */
