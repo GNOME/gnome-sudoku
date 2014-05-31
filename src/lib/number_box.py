@@ -695,7 +695,7 @@ class NumberBox (Gtk.DrawingArea):
         pass
 
     def set_value (self, v):
-        if 0 < v <= self.upper:
+        if v != None and 0 < v <= self.upper:
             self.set_text(str(v))
         else:
             self.set_text('')
