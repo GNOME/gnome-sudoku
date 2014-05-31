@@ -7,6 +7,7 @@ using Gdk;
 public class Sudoku : Gtk.Application
 {
     private GLib.Settings settings;
+
     private Builder builder;
 
     private ApplicationWindow window;
@@ -37,7 +38,6 @@ public class Sudoku : Gtk.Application
         {"redo", redo_cb                                            },
         {"print", print_cb                                          },
         {"print-multiple", print_multiple_cb                        },
-        {"unfillable-squares", unfillable_squares_cb, null, "false" },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
         {"quit", quit_cb                                            }
@@ -53,6 +53,13 @@ public class Sudoku : Gtk.Application
     {
         base.startup ();
         add_action_entries (action_entries, this);
+
+        settings = new GLib.Settings ("org.gnome.sudoku");
+        var action = settings.create_action ("unfillable-squares-warning");
+        action.notify["state"].connect (() =>
+            view.show_warnings = settings.get_boolean ("unfillable-squares-warning"));
+        add_action (action);
+
         Gtk.Window.set_default_icon_name ("gnome-sudoku");
     }
 
@@ -61,8 +68,6 @@ public class Sudoku : Gtk.Application
         Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
         Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         Intl.textdomain (GETTEXT_PACKAGE);
-
-        settings = new GLib.Settings ("org.gnome.sudoku");
 
         builder = new Builder ();
         try
@@ -139,7 +144,7 @@ public class Sudoku : Gtk.Application
         view = new SudokuView (game);
 
         view.show_possibilities = show_possibilities;
-        view.show_warnings = show_warnings;
+        view.show_warnings = settings.get_boolean ("unfillable-squares-warning");
 
         view.show ();
         grid_box.pack_start (view);
@@ -238,12 +243,6 @@ public class Sudoku : Gtk.Application
     {
         var printer = new GamePrinter (sudoku_store, saver, ref window);
         printer.run_dialog ();
-    }
-
-    private void unfillable_squares_cb (SimpleAction action)
-    {
-        view.show_warnings = !view.show_warnings;
-        action.set_state (view.show_warnings);
     }
 
     private void quit_cb ()
