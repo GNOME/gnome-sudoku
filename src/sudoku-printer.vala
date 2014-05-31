@@ -17,17 +17,20 @@ public class SudokuPrinter : GLib.Object {
 
     public PrintOperationResult print_sudoku ()
     {
-        PrintOperationResult result = print_op.run (Gtk.PrintOperationAction.PRINT_DIALOG, window);
-        if (result == Gtk.PrintOperationResult.ERROR)
+        try
         {
-            Gtk.MessageDialog error_dialog = new Gtk.MessageDialog (window, Gtk.DialogFlags.DESTROY_WITH_PARENT, Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE, "Error printing file\n");
-            error_dialog.response.connect ((w) => {
-                error_dialog.destroy ();
-            });
-            error_dialog.show ();
+            var result = print_op.run (Gtk.PrintOperationAction.PRINT_DIALOG, window);
+            return result;
+        }
+        catch (GLib.Error e)
+        {
+            new Gtk.MessageDialog (window, Gtk.DialogFlags.MODAL,
+                                   Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE,
+                                   /* Error message if printing fails */
+                                   "%s\n%s".printf (_("Error printing file:"), e.message)).run ();
         }
 
-        return result;
+        return Gtk.PrintOperationResult.ERROR;
     }
 
     public SudokuPrinter (SudokuBoard[] boards, ref ApplicationWindow window, int sudokus_per_page = 1)
