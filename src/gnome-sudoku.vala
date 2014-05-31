@@ -57,6 +57,11 @@ public class Sudoku : Gtk.Application
     }
 
     protected override void activate () {
+        Intl.setlocale (LocaleCategory.ALL, "");
+        Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+        Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+        Intl.textdomain (GETTEXT_PACKAGE);
+
         settings = new GLib.Settings ("org.gnome.gnome-sudoku");
 
         builder = new Builder ();
