@@ -49,7 +49,7 @@ public class Sudoku : Gtk.Application
         this.show_possibilities = show_possibilities;
     }
 
-    protected override void startup()
+    protected override void startup ()
     {
         base.startup ();
         add_action_entries (action_entries, this);
@@ -203,56 +203,56 @@ public class Sudoku : Gtk.Application
         });
     }
 
-    public void new_game_cb ()
+    private void new_game_cb ()
     {
         var random_difficulty = (DifficultyCatagory) Random.int_range (0, 4);
         start_game (sudoku_store.get_random_board (random_difficulty));
     }
 
-    public void reset_cb ()
+    private void reset_cb ()
     {
         game.reset ();
     }
 
-    public void undo_cb ()
+    private void undo_cb ()
     {
         game.undo ();
         undo_action.set_enabled (!game.is_undostack_null ());
         view.queue_draw ();
     }
 
-    public void redo_cb ()
+    private void redo_cb ()
     {
         game.redo ();
         redo_action.set_enabled (!game.is_redostack_null ());
         view.queue_draw ();
     }
 
-    public void print_cb ()
+    private void print_cb ()
     {
         var printer = new SudokuPrinter ({game.board.clone ()}, ref window);
         printer.print_sudoku ();
     }
 
-    public void print_multiple_cb ()
+    private void print_multiple_cb ()
     {
         var printer = new GamePrinter (sudoku_store, saver, ref window);
         printer.run_dialog ();
     }
 
-    public void unfillable_squares_cb (SimpleAction action)
+    private void unfillable_squares_cb (SimpleAction action)
     {
         view.show_warnings = !view.show_warnings;
         action.set_state (view.show_warnings);
     }
 
-    public void quit_cb ()
+    private void quit_cb ()
     {
         saver.save_game (game);
         window.destroy ();
     }
 
-    public void help_cb ()
+    private void help_cb ()
     {
         try
         {
@@ -270,7 +270,7 @@ public class Sudoku : Gtk.Application
                                        "John Stowers <john.stowers@gmail.com>",
                                        null };
 
-    public void about_cb ()
+    private void about_cb ()
     {
         show_about_dialog (window,
                                "program-name", _("Sudoku"),
