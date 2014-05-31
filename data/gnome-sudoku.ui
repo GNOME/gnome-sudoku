@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.10 -->
+  <object class="GtkApplicationWindow" id="sudoku_app">
+        <property name="title" translatable="yes">Sudoku</property>
+        <child type="titlebar">
+            <object class="GtkHeaderBar" id="headerbar">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="show_close_button">True</property>
+                <property name="title" translatable="yes">Sudoku</property>
+                <child>
+                    <object class="GtkButton" id="undo_button">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="valign">center</property>
+                        <property name="tooltip-text" translatable="yes">Undo your last action</property>
+                        <property name="can_focus">True</property>
+                        <property name="focus_on_click">False</property>
+                        <property name="action-name">app.undo</property>
+                        <style>
+                            <class name="image-button"/>
+                        </style>
+                        <child>
+                            <object class="GtkImage" id="undo_image">
+                                <property name="icon_name">edit-undo-symbolic</property>
+                                <property name="visible">True</property>
+                                <property name="icon_size">1</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton" id="redo_button">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="valign">center</property>
+                        <property name="tooltip-text" translatable="yes">Redo your last action</property>
+                        <property name="can_focus">True</property>
+                        <property name="focus_on_click">False</property>
+                        <property name="action-name">app.redo</property>
+                        <style>
+                            <class name="image-button"/>
+                        </style>
+                        <child>
+                            <object class="GtkImage" id="redo_image">
+                                <property name="icon_name">edit-redo-symbolic</property>
+                                <property name="visible">True</property>
+                                <property name="icon_size">1</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+        <child>
+            <object class="GtkBox" id="main_box">
+                <property name="visible">True</property>
+                <child>
+                    <object class="GtkBox" id="game_box">
+                        <property name="visible">True</property>
+                        <property name="spacing">2</property>
+                        <property name="margin">20</property>
+                        <child>
+                            <object class="GtkBox" id="controls_box">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                    <object class="GtkBox" id="number_picker_box">
+                                        <property name="visible">True</property>
+                                        <child>
+                                            <placeholder/>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>  <!-- End of controls_box -->
+                            <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                            </packing>
+                        </child>
+                        <child>
+                            <object class="GtkBox" id="grid_box">
+                                <property name="visible">True</property>
+                                <property name="margin-right">20</property>
+                                <child>
+                                    <placeholder/>
+                                </child>
+                            </object>
+                            <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                            </packing>
+                        </child>
+                    </object> <!-- End of game_box -->
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>

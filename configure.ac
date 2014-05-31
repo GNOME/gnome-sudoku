@@ -6,22 +6,32 @@ AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE([enable])
 GNOME_MAINTAINER_MODE_DEFINES
 
-GLIB_GSETTINGS
+AM_PROG_VALAC([0.22.0])
+AM_PROG_CC_C_O
 
-AM_PATH_PYTHON([3.2],,AC_MSG_ERROR([Python not found]))
+GLIB_GSETTINGS
 
 dnl ###########################################################################
 dnl Dependencies
 dnl ###########################################################################
 
-PYGOBJECT_REQUIRED=3.11
+GTK_REQUIRED=3.13.0
 
-PKG_CHECK_MODULES(PYGOBJECT, [
-    pygobject-3.0 >= $PYGOBJECT_REQUIRED
+PKG_CHECK_MODULES(GNOME_SUDOKU, [
+  gio-2.0
+  gtk+-3.0 >= $GTK_REQUIRED
+  gee-0.8
+  json-glib-1.0
 ])
 
 AC_PATH_PROG([APPDATA_VALIDATE], [appdata-validate], [/bin/true])
 AC_PATH_PROG([DESKTOP_FILE_VALIDATE], [desktop-file-validate], [/bin/true])
+
+dnl ###########################################################################
+dnl GResources
+dnl ###########################################################################
+
+AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
 
 dnl ###########################################################################
 dnl Internationalization
@@ -49,8 +59,6 @@ data/icons/hicolor/Makefile
 data/icons/HighContrast/Makefile
 help/Makefile
 src/Makefile
-src/lib/Makefile
-src/lib/defs.py
-src/lib/gtk_goodies/Makefile
+src/gnome-sudoku.gresource.xml
 ])
 AC_OUTPUT
