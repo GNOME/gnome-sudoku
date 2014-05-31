@@ -82,6 +82,12 @@ public class Sudoku : Gtk.Application
     protected override void startup ()
     {
         base.startup ();
+
+        Intl.setlocale (LocaleCategory.ALL, "");
+        Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+        Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+        Intl.textdomain (GETTEXT_PACKAGE);
+
         add_action_entries (action_entries, this);
 
         settings = new GLib.Settings ("org.gnome.sudoku");
@@ -94,11 +100,6 @@ public class Sudoku : Gtk.Application
     }
 
     protected override void activate () {
-        Intl.setlocale (LocaleCategory.ALL, "");
-        Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-        Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-        Intl.textdomain (GETTEXT_PACKAGE);
-
         builder = new Builder ();
         try
         {
