@@ -34,8 +34,6 @@ private static const OptionEntry[] options =
 
 public static int main (string[] args)
 {
-    Gtk.init (ref args);
-
     var c = new OptionContext (/* Arguments and description for --help text */
                                    _("[FILE] - Play Sudoku"));
     c.add_main_entries (options, GETTEXT_PACKAGE);
