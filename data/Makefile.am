@@ -1,6 +1,6 @@
 SUBDIRS = icons
 
-gsettings_SCHEMAS = org.gnome.gnome-sudoku.gschema.xml
+gsettings_SCHEMAS = org.gnome.sudoku.gschema.xml
 @GSETTINGS_RULES@
 
 desktopdir = $(datadir)/applications

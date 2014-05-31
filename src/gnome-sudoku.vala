@@ -62,7 +62,7 @@ public class Sudoku : Gtk.Application
         Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         Intl.textdomain (GETTEXT_PACKAGE);
 
-        settings = new GLib.Settings ("org.gnome.gnome-sudoku");
+        settings = new GLib.Settings ("org.gnome.sudoku");
 
         builder = new Builder ();
         try
