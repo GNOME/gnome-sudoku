@@ -310,4 +310,9 @@ public class Sudoku : Gtk.Application
                                "website", "https://wiki.gnome.org/Apps/Sudoku/"
                                );
     }
+
+    public static int main (string[] args)
+    {
+        return new Sudoku ().run (args);
+    }
 }

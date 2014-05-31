@@ -4,7 +4,6 @@ BUILT_SOURCES = gnome-sudoku-resources.c
 
 gnome_sudoku_SOURCES = \
 	config.vapi \
-	main.vala \
 	gnome-sudoku.vala \
 	sudoku-board.vala \
 	sudoku-game.vala \
