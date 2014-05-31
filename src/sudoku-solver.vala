@@ -880,15 +880,24 @@ public class DifficultyRating {
 
     public string to_string () {
         string result = "";
-        result += "Number of moves instantly fillable by elimination: %f\n".printf (instant_elimination_fillable);
-        result += "Percentage of moves instantly fillable by elimination: %f\n".printf (proportion_instant_elimination_fillable * 100);
-        result += "Number of moves instantly fillable by filling: %f\n".printf (instant_fill_fillable);
-        result += "Percentage of moves instantly fillable by filling: %f\n".printf (proportion_instant_fill_fillable * 100);
-        result += "Number of guesses made: %d\n".printf (guesses.size);
-        result += "Number of backtraces: %d\n".printf (backtraces);
-        result += "Ease by filling: %f\n".printf (fillable_ease);
-        result += "Ease by elimination: %f\n".printf (elimination_ease);
-        result += "Calculated difficulty: %f".printf (rating);
+        /* Debug output when starting a new game */
+        result += "%s %f\n".printf (_("Number of moves instantly fillable by elimination:"), instant_elimination_fillable);
+        /* Debug output when starting a new game */
+        result += "%s %f\n".printf (_("Percentage of moves instantly fillable by elimination:"), proportion_instant_elimination_fillable * 100);
+        /* Debug output when starting a new game */
+        result += "%s %f\n".printf (_("Number of moves instantly fillable by filling:"), instant_fill_fillable);
+        /* Debug output when starting a new game */
+        result += "%s %f\n".printf (_("Percentage of moves instantly fillable by filling:"), proportion_instant_fill_fillable * 100);
+        /* Debug output when starting a new game */
+        result += "%s %d\n".printf (_("Number of guesses made:"), guesses.size);
+        /* Debug output when starting a new game */
+        result += "%s %d\n".printf (_("Number of backtraces:"), backtraces);
+        /* Debug output when starting a new game */
+        result += "%s %f\n".printf (_("Ease by filling:"), fillable_ease);
+        /* Debug output when starting a new game */
+        result += "%s %f\n".printf (_("Ease by elimination:"), elimination_ease);
+        /* Debug output when starting a new game */
+        result += "%s %f".printf (_("Calculated difficulty:"), rating);
         return result;
     }
 }
