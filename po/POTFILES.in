@@ -3,25 +3,10 @@
 [encoding: UTF-8]
 data/gnome-sudoku.appdata.xml.in
 data/gnome-sudoku.desktop.in
+[type: gettext/glade]data/gnome-sudoku-menu.ui
+[type: gettext/glade]data/gnome-sudoku.ui
 data/org.gnome.gnome-sudoku.gschema.xml
-[type: gettext/glade]data/print_games.ui
-[type: gettext/glade]data/select_game.ui
-[type: gettext/glade]data/tracker.ui
-src/lib/colors.py
-src/lib/defaults.py
-src/lib/dialog_swallower.py
-src/lib/game_selector.py
-src/lib/gnome_sudoku.py
-src/lib/gtk_goodies/dialog_extras.py
-src/lib/gtk_goodies/__init__.py
-src/lib/gtk_goodies/Undo.py
-src/lib/__init__.py
-src/lib/main.py
-src/lib/number_box.py
-src/lib/pausable.py
-src/lib/printing.py
-src/lib/saver.py
-src/lib/simple_debug.py
-src/lib/sudoku_maker.py
-src/lib/sudoku.py
-src/lib/timer.py
+[type: gettext/glade]data/print-games.ui
+src/gnome-sudoku.vala
+src/main.vala
+src/sudoku-solver.vala
