@@ -10,15 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-01 14:09+0300\n"
-"PO-Revision-Date: 2014-06-01 14:27+0300\n"
+"POT-Creation-Date: 2014-06-01 17:00+0300\n"
+"PO-Revision-Date: 2014-06-01 17:01+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n>2||n==0) ? 1 : 2;\n"
 "X-Generator: Gtranslator 2.91.6\n"
 "X-Launchpad-Export-Date: 2008-01-13 04:36+0000\n"
 
@@ -213,6 +213,19 @@ msgstr "Show release version"
 #: ../src/gnome-sudoku.vala:54
 msgid "Show the possible values for each cell"
 msgstr "Show the possible values for each cell"
+
+#: ../src/gnome-sudoku.vala:210
+#, c-format
+msgid "Well done, you completed the puzzle in %f seconds"
+msgstr "כל הכבוד, השלמת את הלוח ב־%f שניות"
+
+#: ../src/gnome-sudoku.vala:212
+msgid "Same difficulty again"
+msgstr "שוב אותה רמת קושי"
+
+#: ../src/gnome-sudoku.vala:213
+msgid "New difficulty"
+msgstr "רמת קושי חדשה"
 
 #: ../src/gnome-sudoku.vala:304
 msgid ""
@@ -458,11 +471,6 @@ msgstr "רמת קושי מחושבת: "
 #~ msgid "Highlight the current row, column and box"
 #~ msgstr "_סימון השורה, הטור והתיבה הנוכחיים בצבעים"
 
-#~ msgid "You completed the puzzle in %d second"
-#~ msgid_plural "You completed the puzzle in %d seconds"
-#~ msgstr[0] "השלמת את הלוח תוך שנייה %d "
-#~ msgstr[1] "השלמת את הלוח תוך %d שניות"
-
 #~ msgid "%d minute"
 #~ msgid_plural "%d minutes"
 #~ msgstr[0] "דקה %d"
@@ -700,9 +708,6 @@ msgstr "רמת קושי מחושבת: "
 
 #~ msgid "Opposing Player:"
 #~ msgstr "המתמודד מולך:"
-
-#~ msgid "Difficulty:"
-#~ msgstr "רמת קושי:"
 
 #~ msgid "Game Duration:"
 #~ msgstr "משך המשחק:"
