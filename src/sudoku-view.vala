@@ -564,7 +564,14 @@ public class SudokuView : Gtk.AspectFrame
 
                 if (col != 0 && (col % game.board.block_cols) == 0)
                 {
-                    cell.set_margin_left ((int) grid.border_width);
+                    if (get_direction () == Gtk.TextDirection.RTL)
+                    {
+                        cell.set_margin_right ((int) grid.border_width);
+                    }
+                    else
+                    {
+                        cell.set_margin_left ((int) grid.border_width);
+                    }
                 }
                 if (row != 0 && (row % game.board.block_rows) == 0)
                 {
