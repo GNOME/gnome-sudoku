@@ -54,7 +54,16 @@ public class SudokuSaver
             // Delete savegame file
             var file = File.new_for_path (savegame_file);
             if (file.query_exists ())
-                file.delete ();
+            {
+                try
+                {
+                    file.delete ();
+                }
+                catch (GLib.Error e)
+                {
+                    warning ("Failed to delete %s: %s", file.get_uri (), e.message);
+                }
+            }
         }
     }
 

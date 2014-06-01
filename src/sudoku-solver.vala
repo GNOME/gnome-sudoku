@@ -434,7 +434,6 @@ public class SudokuSolver
         trailDetails.add ("+");
 
         breadcrumbs.add (guess_obj);
-        ArrayList<Cell?> fills = auto_fill ();
 
         bool contains_empty = false;
 
@@ -553,10 +552,7 @@ class SudokuRater : SudokuSolver {
         add_me_queue = fake_additions;
         fake_additions = new ArrayList<Cell?> ();
 
-        try {
-            fill_deterministically();
-        } catch (SudokuError e) {
-        }
+        fill_deterministically();
 
         elimination_fillables[tier] = new HashSet<Cell?> ((HashDataFunc<Coord>) Cell.hash, (EqualDataFunc<Coord>) Cell.equal);
         foreach (Cell cell in fake_additions) {
@@ -594,27 +590,6 @@ class SudokuRater : SudokuSolver {
                                                    backtraces,
                                                    numbers_added);
         return rating;
-    }
-
-    public static void gen_python_test () {
-        stdout.printf("import sudoku\n\n");
-
-        for (int repeat = 0; repeat < 20; repeat++)
-        {
-            SudokuGenerator gen = new SudokuGenerator();
-            gen.clues = Random.int_range(17, 60);
-
-            SudokuBoard board = gen.make_symmetric_puzzle (Random.int_range(0, 4));
-
-            stdout.printf("diff = sudoku.SudokuRater(");
-            board.get_string ();
-            stdout.printf(").difficulty()\n");
-
-            SudokuRater rater = new SudokuRater(ref board);
-            DifficultyRating diff = rater.get_difficulty ();
-
-            stdout.printf("print diff.value, %f\n\n", diff.rating);
-        }
     }
 }
 

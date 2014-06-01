@@ -284,21 +284,12 @@ public class GamePrinter: GLib.Object {
             {"print-medium", "mediumCheckButton"},
             {"print-hard", "hardCheckButton"},
             {"print-very-hard", "very_hardCheckButton"}};
-        CheckButton check_button;
-        string setting0, setting1;
 
         for (var i=0; i<6; i++)
         {
-            setting0 = settings_to_widgets[i,0];
-            setting1 = settings_to_widgets[i,1];
-            try
-            {
-                check_button = builder.get_object (setting1) as CheckButton;
-            }
-            catch (GLib.Error e)
-            {
-                GLib.warning ("Widget %s does not exist: %s", setting1, e.message);
-            }
+            var setting0 = settings_to_widgets[i,0];
+            var setting1 = settings_to_widgets[i,1];
+            var check_button = builder.get_object (setting1) as CheckButton;
             wrap_toggle (setting0, check_button);
             options_map.set (setting1, check_button);
         }

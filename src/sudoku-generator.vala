@@ -359,7 +359,7 @@ public class SudokuGenerator
 
             for (int i = 0; i < solver.breadcrumbs.size; i++)
             {
-                Guess guess = solver.breadcrumbs[i];
+                //Guess guess = solver.breadcrumbs[i];
                 //stdout.printf("crumb (%d, %d) %d\n", guess.col, guess.row, guess.val);
             }
 

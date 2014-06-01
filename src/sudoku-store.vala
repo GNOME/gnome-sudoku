@@ -126,15 +126,13 @@ public class SudokuStore
             i++;
         }
 
-        CompareDataFunc<SudokuBoard> CompareDifficultyRatings = (a, b) => {
+        boards.sort ((a, b) => {
             if (a.difficulty_rating > b.difficulty_rating)
                 return 1;
             if (a.difficulty_rating == b.difficulty_rating)
                 return 0;
             return -1;
-        };
-
-        boards.sort (CompareDifficultyRatings);
+        });
         return boards;
     }
 }

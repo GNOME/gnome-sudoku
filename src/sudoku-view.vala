@@ -380,15 +380,6 @@ private class SudokuCellView : Gtk.DrawingArea
         return false;
     }
 
-    private static string get_possibility_string (int[] possibilities) {
-        var builder = new StringBuilder ();
-        foreach (int a in possibilities) {
-            builder.append (@"$a ");
-        }
-        builder.truncate ((possibilities.length * 2) - 1);
-        return builder.str;
-    }
-
     public void cell_changed_cb (int row, int col, int old_val, int new_val)
     {
         if (row == this.row && col == this.col)
@@ -464,7 +455,7 @@ public class SudokuView : Gtk.AspectFrame
 
         /* Use an EventBox to be able to set background */
         box = new Gtk.EventBox ();
-        box.modify_bg (Gtk.StateType.NORMAL, box.style.black);
+        box.override_background_color (Gtk.StateFlags.NORMAL, {0.0, 0.0, 0.0, 1.0});
         add (box);
         box.show ();
 
@@ -651,11 +642,6 @@ public class SudokuView : Gtk.AspectFrame
     {
         dance_step = -1;
         reset_cell_background_colors ();
-    }
-
-    private RGBA get_next_color (RGBA color)
-    {
-        return dance_colors[Random.int_range(0, dance_colors.length)];
     }
 
     public void cell_grab_focus(int row, int col)
