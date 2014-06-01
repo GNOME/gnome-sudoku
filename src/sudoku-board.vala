@@ -525,6 +525,16 @@ public class SudokuBoard
 
         return file.query_exists ();
     }
+
+    public string get_earmarks_string (int row, int col)
+    {
+        string s = "";
+        for (var i = 1; i <= max_val; i++)
+            if (earmarks[row, col, i-1])
+                s += i.to_string ();
+
+        return s;
+    }
 }
 
 public enum House {

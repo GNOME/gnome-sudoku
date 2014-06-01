@@ -194,7 +194,7 @@ private class SudokuCellView : Gtk.DrawingArea
 
     public override bool button_press_event (Gdk.EventButton event)
     {
-        if (event.button != 1)
+        if (event.button != 1 && event.button != 3)
             return false;
 
         if (!is_focus)
@@ -203,11 +203,15 @@ private class SudokuCellView : Gtk.DrawingArea
             return false;
         }
 
-        var event_height = event.y / get_allocated_height ();
-        if (!_show_possibilities && (event_height < 0.25 || event_height > 0.75))
+        if (event.button == 1)            // Primary-Click
+        {
+            if (!_show_possibilities && (event.state & ModifierType.CONTROL_MASK) > 0)
+                show_earmark_picker ();
+            else
+                show_number_picker ();
+        }
+        else if (!_show_possibilities && event.button == 3)         // Secondary-Click
             show_earmark_picker ();
-        else
-            show_number_picker ();
 
         return false;
     }
@@ -343,25 +347,43 @@ private class SudokuCellView : Gtk.DrawingArea
             c.restore ();
         }
 
-        double earmark_size = get_allocated_height () / (size_ratio * 2);
-        c.set_font_size (earmark_size);
-        c.set_source_rgb (0.0, 0.0, 0.0);
+        if (!_show_possibilities)
+        {
+            // Draw the earmarks
+            double earmark_size = get_allocated_height () / (size_ratio * 2);
+            c.set_font_size (earmark_size);
 
-        int height = get_allocated_height () / game.board.block_cols;
-        int width = get_allocated_height () / game.board.block_rows;
+            c.move_to (0, earmark_size);
 
-        int num = 0;
-        for (int row = 0; row < game.board.block_rows; row++)
-            for (int col = 0; col < game.board.block_cols; col++)
+            c.set_source_rgb (0.0, 0.0, 0.0);
+            c.show_text (game.board.get_earmarks_string (_row, _col));
+        }
+        else if (value == 0)
+        {
+            double possibility_size = get_allocated_height () / (size_ratio * 2);
+            c.set_font_size (possibility_size);
+            c.set_source_rgb (0.0, 0.0, 0.0);
+
+            bool[] possibilities = game.board.get_possibilities_as_bool_array(row, col);
+
+            int height = get_allocated_height () / game.board.block_cols;
+            int width = get_allocated_height () / game.board.block_rows;
+
+            int num = 0;
+            for (int row = 0; row < game.board.block_rows; row++)
             {
-                num++;
-
-                if (game.board.earmarks[_row, _col, num-1] || (_show_possibilities && game.board.is_possible (_row, _col, num)))
+                for (int col = 0; col < game.board.block_cols; col++)
                 {
-                    c.move_to (col * width, (row * height) + earmark_size);
-                    c.show_text ("%d".printf(num));
+                    num++;
+
+                    if (possibilities[num - 1])
+                    {
+                        c.move_to (col * width, (row * height) + possibility_size);
+                        c.show_text ("%d".printf(num));
+                    }
                 }
             }
+        }
 
         if (is_fixed)
             return false;

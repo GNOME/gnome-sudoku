@@ -11,8 +11,12 @@ private class NumberPicker : Gtk.Grid
 
     private Button clear_button;
 
+    private static const int EARMARKS_MAX_ALLOWED = 5;
+    private int earmarks_active;
+
     public NumberPicker (ref SudokuBoard board, bool earmark = false) {
         this.board = board;
+        earmarks_active = 0;
 
         for (var col = 0; col < board.block_cols; col++)
         {
@@ -37,7 +41,13 @@ private class NumberPicker : Gtk.Grid
                 {
                     var toggle_button = (ToggleButton) button;
                     toggle_button.toggled.connect (() => {
-                        earmark_state_changed (n, toggle_button.get_active ());
+                        var toggle_active = toggle_button.get_active ();
+                        earmark_state_changed (n, toggle_active);
+                        earmarks_active = toggle_active ? earmarks_active + 1 : earmarks_active - 1;
+                        if (earmarks_active >= EARMARKS_MAX_ALLOWED)
+                            set_toggle_sensitive (false);
+                        else if (earmarks_active == (EARMARKS_MAX_ALLOWED - 1))
+                            set_toggle_sensitive (true);
                     });
                 }
 
@@ -82,6 +92,20 @@ private class NumberPicker : Gtk.Grid
             {
                 var button = (ToggleButton) this.get_child_at (i % board.block_cols, i / board.block_rows);
                 button.set_active (board.earmarks[row, col, i]);
+            }
+    }
+
+    private void set_toggle_sensitive (bool state)
+    {
+        if (state)
+            for (var i = 0; i < board.max_val; i++)
+                this.get_child_at (i % board.block_cols, i / board.block_rows).sensitive = true;
+        else
+            for (var i = 0; i < board.max_val; i++)
+            {
+                var button = (ToggleButton) this.get_child_at (i % board.block_cols, i / board.block_rows);
+                if (!button.active)
+                    button.sensitive = false;
             }
     }
 }
