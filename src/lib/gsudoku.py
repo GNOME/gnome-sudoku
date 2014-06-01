@@ -237,6 +237,8 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
             self.hints += 1
 
     def show_hint_for_entry (self, entry, interactive = False):
+        if self.grid == None:
+            return
         if interactive:
             set_method = entry.set_note_text_interactive
         else:
