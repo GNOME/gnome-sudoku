@@ -10,7 +10,6 @@ gnome_sudoku_SOURCES = \
 	sudoku-generator.vala \
 	sudoku-store.vala \
 	sudoku-solver.vala \
-	logical-sudoku-solver.vala \
 	sudoku-view.vala \
 	number-picker.vala \
 	sudoku-printer.vala \
