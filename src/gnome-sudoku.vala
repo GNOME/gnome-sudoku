@@ -207,10 +207,10 @@ public class Sudoku : Gtk.Application
 
             saver.add_game_to_finished (game, true);
 
-            var dialog = new MessageDialog(window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, "Well done, you completed the puzzle in %f seconds", time);
+            var dialog = new MessageDialog(window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, _("Well done, you completed the puzzle in %f seconds"), time);
 
-            dialog.add_button ("Same difficulty again", 0);
-            dialog.add_button ("New difficulty", 1);
+            dialog.add_button (_("Same difficulty again"), 0);
+            dialog.add_button (_("New difficulty"), 1);
 
             dialog.response.connect ((response_id) => {
                 switch (response_id)
