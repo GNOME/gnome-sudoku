@@ -193,8 +193,6 @@ public class Sudoku : Gtk.Application
         });
 
         game.board.completed.connect (() => {
-            view.dance ();
-
             var time = game.get_total_time_played ();
 
             for (var i = 0; i < game.board.rows; i++)

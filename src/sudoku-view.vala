@@ -429,21 +429,6 @@ public class SudokuView : Gtk.AspectFrame
     private Gtk.EventBox box;
     private Gtk.Grid grid;
 
-    private int dance_step;
-
-    private const RGBA[] dance_colors = { {0.8,                0.0,                0.0,                0.0},
-                                        {0.9372549019607843, 0.1607843137254902, 0.1607843137254902, 0.0},
-                                        {0.9607843137254902, 0.4745098039215686, 0.0,                0.0},
-                                        {0.9882352941176471, 0.6862745098039216, 0.2431372549019607, 0.0},
-                                        {0.9882352941176471, 0.9137254901960784, 0.3098039215686274, 0.0},
-                                        {0.5411764705882353, 0.8862745098039215, 0.2039215686274509, 0.0},
-                                        {0.4509803921568627, 0.8235294117647058, 0.0862745098039215, 0.0},
-                                        {0.4470588235294118, 0.6235294117647059, 0.8117647058823529, 0.0},
-                                        {0.2039215686274509, 0.3960784313725497, 0.6431372549019608, 0.0},
-                                        {0.6784313725490196, 0.4980392156862745, 0.6588235294117647, 0.0},
-                                        {0.4588235294117647, 0.3137254901960784, 0.4823529411764706, 0.0}
-                                      };
-
     public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
     public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
 
@@ -633,44 +618,6 @@ public class SudokuView : Gtk.AspectFrame
         {
             cells[y, x].notify_property("value");
         }
-    }
-
-    public bool dance () {
-        if (dance_step < 90)
-        {
-            for (var j = 0; j < game.board.cols; j++)
-            {
-                RGBA color = dance_colors[dance_step % dance_colors.length];
-                dance_step++;
-                for (var i = 0; i < game.board.rows; i++)
-                    cells[i,j].background_color = color;
-            }
-        }
-        else
-        {
-            for (var i = 0; i < game.board.rows; i++)
-            {
-                RGBA color = dance_colors[dance_step % dance_colors.length];
-                dance_step++;
-                for (var j = 0; j < game.board.cols; j++)
-                    cells[i,j].background_color = color;
-            }
-        }
-
-        if (dance_step > 180)
-            dance_step = 0;
-
-        if (dance_step >= 0)
-            Timeout.add (200, dance);
-        queue_draw ();
-
-        return false;
-    }
-
-    public void stop_dance ()
-    {
-        dance_step = -1;
-        reset_cell_background_colors ();
     }
 
     public void cell_grab_focus(int row, int col)
