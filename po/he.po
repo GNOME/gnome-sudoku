@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-01 17:00+0300\n"
-"PO-Revision-Date: 2014-06-01 17:01+0300\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
+"POT-Creation-Date: 2014-06-03 14:52+0300\n"
+"PO-Revision-Date: 2014-06-03 14:52+0300\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgid ""
 msgstr ""
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:301
+#: ../src/gnome-sudoku.vala:315
 msgid "Sudoku"
 msgstr "סודוקו"
 
@@ -60,35 +60,27 @@ msgstr "בחינת ההיגיון שלך באמצעות משחק לוח מספר
 msgid "magic;square;"
 msgstr "קסם;ריבוע;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1
-msgid "_New Game"
-msgstr "_משחק חדש"
-
-#: ../data/gnome-sudoku-menu.ui.h:2
-msgid "_Reset"
-msgstr "_איפוס"
-
-#: ../data/gnome-sudoku-menu.ui.h:3 ../data/print-games.ui.h:2
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
 msgid "_Print"
 msgstr "ה_דפסה"
 
-#: ../data/gnome-sudoku-menu.ui.h:4
+#: ../data/gnome-sudoku-menu.ui.h:2
 msgid "_Print Multiple Puzzles…"
 msgstr "הדפסת מס_פר לוחות סודוקו…"
 
-#: ../data/gnome-sudoku-menu.ui.h:5
+#: ../data/gnome-sudoku-menu.ui.h:3
 msgid "_Warn About Unfillable Squares"
 msgstr "אזהרה על משבצות ש_לא ניתנות למילוי"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:4
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: ../data/gnome-sudoku-menu.ui.h:7
+#: ../data/gnome-sudoku-menu.ui.h:5
 msgid "_About"
 msgstr "על _אודות"
 
-#: ../data/gnome-sudoku-menu.ui.h:8
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Quit"
 msgstr "י_ציאה"
 
@@ -205,29 +197,49 @@ msgid "_Include games you've already played in list of games to print"
 msgstr "_לכלול משחקים בהם כבר שיחקת ברשימת המשחקים להדפסה"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:50
+#: ../src/gnome-sudoku.vala:49
 msgid "Show release version"
 msgstr "Show release version"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:54
+#: ../src/gnome-sudoku.vala:53
 msgid "Show the possible values for each cell"
 msgstr "Show the possible values for each cell"
 
-#: ../src/gnome-sudoku.vala:210
+#: ../src/gnome-sudoku.vala:124
+msgid "_New Puzzle"
+msgstr "לוח _חדש"
+
+#: ../src/gnome-sudoku.vala:130
+msgid "Start a new puzzle"
+msgstr "התחלת לוח חדש"
+
+#: ../src/gnome-sudoku.vala:135
+msgid "_Clear Board"
+msgstr "_ניקוי הלוח"
+
+#: ../src/gnome-sudoku.vala:141
+msgid "Reset the board to its original state"
+msgstr "איפוס הלוח למצבו המקורי"
+
+#: ../src/gnome-sudoku.vala:216
 #, c-format
 msgid "Well done, you completed the puzzle in %f seconds"
 msgstr "כל הכבוד, השלמת את הלוח ב־%f שניות"
 
-#: ../src/gnome-sudoku.vala:212
+#: ../src/gnome-sudoku.vala:218
 msgid "Same difficulty again"
 msgstr "שוב אותה רמת קושי"
 
-#: ../src/gnome-sudoku.vala:213
+#: ../src/gnome-sudoku.vala:219
 msgid "New difficulty"
 msgstr "רמת קושי חדשה"
 
-#: ../src/gnome-sudoku.vala:304
+#: ../src/gnome-sudoku.vala:251
+msgid "Reset the board to its original state?"
+msgstr ""
+
+#: ../src/gnome-sudoku.vala:318
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -237,7 +249,7 @@ msgstr ""
 "\n"
 "סודוקו GNOME הוא חלק ממשחקי GNOME."
 
-#: ../src/gnome-sudoku.vala:309
+#: ../src/gnome-sudoku.vala:323
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -258,24 +270,20 @@ msgid "Error printing file:"
 msgstr "שגיאה בהדפסת קובץ:"
 
 #: ../src/sudoku-solver.vala:742
-msgid "Easy"
-msgstr "קל"
+msgid "Easy Difficulty"
+msgstr "רמה קלה"
 
 #: ../src/sudoku-solver.vala:744
-msgid "Medium"
-msgstr "בינוני"
+msgid "Medium Difficulty"
+msgstr "רמה בינונית"
 
 #: ../src/sudoku-solver.vala:746
-msgid "Hard"
-msgstr "קשה"
+msgid "Hard Difficulty"
+msgstr "רמה קשה"
 
 #: ../src/sudoku-solver.vala:748
-msgid "Very Hard"
-msgstr "קשה מאד"
-
-#: ../src/sudoku-solver.vala:750
-msgid "Undefined"
-msgstr "לא מוגדר"
+msgid "Very Hard Difficulty"
+msgstr "רמה קשה מאוד"
 
 #. Debug output when starting a new game
 #: ../src/sudoku-solver.vala:859
@@ -321,6 +329,27 @@ msgstr "קל לפי שלילה:"
 #: ../src/sudoku-solver.vala:875
 msgid "Calculated difficulty:"
 msgstr "רמת קושי מחושבת: "
+
+#~ msgid "_New Game"
+#~ msgstr "_משחק חדש"
+
+#~ msgid "_Reset"
+#~ msgstr "_איפוס"
+
+#~ msgid "Easy"
+#~ msgstr "קל"
+
+#~ msgid "Medium"
+#~ msgstr "בינוני"
+
+#~ msgid "Hard"
+#~ msgstr "קשה"
+
+#~ msgid "Very Hard"
+#~ msgstr "קשה מאד"
+
+#~ msgid "Undefined"
+#~ msgstr "לא מוגדר"
 
 #~ msgid "game;board;tiles;japanese;"
 #~ msgstr "משחק;לוח;משבצות;יפני;מספרים;סידור;"
@@ -553,9 +582,6 @@ msgstr "רמת קושי מחושבת: "
 #~ msgid "Tracker %s"
 #~ msgstr "מעקב %s"
 
-#~ msgid "_Clear"
-#~ msgstr "_ניקוי"
-
 #~ msgid "No Space"
 #~ msgstr "אין מקום"
 
@@ -597,9 +623,6 @@ msgstr "רמת קושי מחושבת: "
 
 #~ msgid "Claim _Draw"
 #~ msgstr "תביעה ל_תיקו"
-
-#~ msgid "Start a new game"
-#~ msgstr "התחלת משחק חדש"
 
 #~ msgid "New Game"
 #~ msgstr "משחק חדש"
@@ -2238,10 +2261,6 @@ msgstr "רמת קושי מחושבת: "
 #~ msgid "Confounding Cross"
 #~ msgstr "צלב מעורבב"
 
-#~ msgctxt "mahjongg map name"
-#~ msgid "Difficult"
-#~ msgstr "קשה"
-
 #~ msgid "Paused"
 #~ msgstr "הושהה"
 
@@ -2634,9 +2653,6 @@ msgstr "רמת קושי מחושבת: "
 
 #~ msgid "_Restart Puzzle"
 #~ msgstr "התחלת התצרף _מחדש"
-
-#~ msgid "Next Puzzle"
-#~ msgstr "התצרף הבא"
 
 #~ msgid "Previous Puzzle"
 #~ msgstr "התצרף הקודם"
