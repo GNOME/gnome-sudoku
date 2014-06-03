@@ -747,7 +747,7 @@ public enum DifficultyCatagory {
             case VERY_HARD:
                 return _("Very Hard Difficulty");
             default:
-                return _("Undefined");
+                assert_not_reached ();
         }
     }
 }
