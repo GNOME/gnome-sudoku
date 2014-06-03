@@ -429,7 +429,7 @@ public class SudokuView : Gtk.AspectFrame
     private Gtk.EventBox box;
     private Gtk.Grid grid;
 
-    public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
+    public const RGBA fixed_cell_color = {0.93, 0.93, 0.93, 0};
     public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
 
     private int _selected_x = 0;
