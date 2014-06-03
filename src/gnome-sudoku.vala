@@ -19,8 +19,7 @@ public class Sudoku : Gtk.Application
     private HeaderBar header_bar;
     private Box game_box; // Holds the grid and controls boxes
     private Box grid_box; // Holds the view
-    private Box controls_box; // Holds the controls (including the number picker)
-    private NumberPicker number_picker;
+    private Box controls_box; // Holds the controls
 
     private SudokuStore sudoku_store;
     private SudokuSaver saver;
@@ -119,7 +118,29 @@ public class Sudoku : Gtk.Application
         header_bar = (HeaderBar) builder.get_object ("headerbar");
         game_box = (Box) builder.get_object ("game_box");
         grid_box = (Box) builder.get_object ("grid_box");
-        controls_box = (Box) builder.get_object ("number_picker_box");
+        controls_box = (Box) builder.get_object ("controls_box");
+
+        var new_button = new Gtk.Button ();
+        var new_label = new Gtk.Label.with_mnemonic ("_New Puzzle");
+        new_label.margin = 10;
+        new_button.add (new_label);
+        new_button.valign = Gtk.Align.CENTER;
+        new_button.halign = Gtk.Align.CENTER;
+        new_button.action_name = "app.new-game";
+        new_button.tooltip_text = _("Start a new puzzle");
+        new_button.show_all ();
+        controls_box.pack_end (new_button, false, false, 0);
+
+        var restart_button = new Gtk.Button ();
+        var restart_label = new Gtk.Label.with_mnemonic ("_Clear Board");
+        restart_label.margin = 10;
+        restart_button.add (restart_label);
+        restart_button.valign = Gtk.Align.CENTER;
+        restart_button.halign = Gtk.Align.CENTER;
+        restart_button.action_name = "app.reset";
+        restart_button.tooltip_text = _("Reset the board to its original state");
+        restart_button.show_all ();
+        controls_box.pack_end (restart_button, false, false, 0);
 
         undo_action = (SimpleAction) lookup_action ("undo");
         redo_action = (SimpleAction) lookup_action ("redo");
@@ -160,7 +181,6 @@ public class Sudoku : Gtk.Application
 
         if (view != null) {
             grid_box.remove (view);
-            controls_box.remove (number_picker);
         }
 
         game = new SudokuGame (board);
@@ -174,18 +194,6 @@ public class Sudoku : Gtk.Application
 
         view.show ();
         grid_box.pack_start (view);
-
-        number_picker = new NumberPicker(ref game.board);
-        controls_box.pack_start (number_picker);
-
-        view.cell_focus_in_event.connect ((row, col) => {
-            // Only enable the NumberPicker for unfixed cells
-            number_picker.sensitive = !game.board.is_fixed[row, col];
-        });
-
-        number_picker.number_picked.connect ((number) => {
-            view.set_cell_value (view.selected_x, view.selected_y, number);
-        });
 
         game.cell_changed.connect (() => {
             undo_action.set_enabled (!game.is_undostack_null ());
@@ -240,7 +248,15 @@ public class Sudoku : Gtk.Application
 
     private void reset_cb ()
     {
-        game.reset ();
+        var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.QUESTION, ButtonsType.OK_CANCEL, _("Reset the board to its original state?"));
+
+        dialog.response.connect ((response_id) => {
+            if (response_id == ResponseType.OK)
+                game.reset ();
+            dialog.destroy ();
+        });
+
+        dialog.show ();
     }
 
     private void undo_cb ()

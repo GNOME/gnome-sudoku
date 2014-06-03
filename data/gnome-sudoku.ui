@@ -66,14 +66,7 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="orientation">vertical</property>
-                                <child>
-                                    <object class="GtkBox" id="number_picker_box">
-                                        <property name="visible">True</property>
-                                        <child>
-                                            <placeholder/>
-                                        </child>
-                                    </object>
-                                </child>
+                                <property name="spacing">10</property>
                             </object>  <!-- End of controls_box -->
                             <packing>
                                 <property name="expand">False</property>
