@@ -51,15 +51,158 @@
                         </child>
                     </object>
                 </child>
+                <child>
+                    <object class="GtkButton" id="back_button">
+                        <property name="visible">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">_Back</property>
+                        <property name="tooltip-text" translatable="yes">Go back to the current game</property>
+                        <property name="use_underline">True</property>
+                        <property name="action-name">app.back</property>
+                        <style>
+                            <class name="text-button"/>
+                        </style>
+                    </object>
+                </child>
             </object>
         </child>
         <child>
             <object class="GtkBox" id="main_box">
                 <property name="visible">True</property>
+                <property name="halign">center</property>
+                <child>
+                    <object class="GtkBox" id="start_box">
+                        <property name="orientation">vertical</property>
+                        <property name="visible">False</property>
+                        <property name="halign">center</property>
+                        <child>
+                            <object class="GtkBox" id="new_game_box">
+                                 <property name="visible">True</property>
+                                 <property name="orientation">vertical</property>
+                                 <child>
+                                    <object class="GtkBox" id="easy_medium_box">
+                                        <property name="visible">True</property>
+                                        <child>
+                                            <object class="GtkBox" id="easy_grid">
+                                                <property name="visible">True</property>
+                                                <property name="orientation">vertical</property>
+                                                <child>
+                                                    <object class="GtkLabel" id="easy_label">
+                                                        <property name="visible">True</property>
+                                                        <property name="can_focus">False</property>
+                                                        <property name="label" translatable="yes">Easy</property>
+                                                        <attributes>
+                                                            <attribute name="weight" value="bold"/>
+                                                        </attributes>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                            <packing>
+                                                <property name="expand">True</property>
+                                                <property name="fill">True</property>
+                                                <property name="padding">20</property>
+                                            </packing>
+                                        </child>
+                                        <child>
+                                            <object class="GtkBox" id="medium_grid">
+                                                <property name="visible">True</property>
+                                                <property name="orientation">vertical</property>
+                                                <child>
+                                                    <placeholder/>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="medium_label">
+                                                        <property name="visible">True</property>
+                                                        <property name="can_focus">False</property>
+                                                        <property name="label" translatable="yes">Medium</property>
+                                                        <attributes>
+                                                            <attribute name="weight" value="bold"/>
+                                                        </attributes>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                            <packing>
+                                                <property name="expand">True</property>
+                                                <property name="fill">True</property>
+                                                <property name="padding">20</property>
+                                            </packing>
+                                        </child>
+                                    </object>
+                                    <packing>
+                                        <property name="pack_type">start</property>
+                                    </packing>
+                                </child>
+                                <child>
+                                    <object class="GtkBox" id="hard_veryhard_box">
+                                         <property name="visible">True</property>
+                                         <child>
+                                            <object class="GtkBox" id="hard_grid">
+                                                <property name="visible">True</property>
+                                                <property name="orientation">vertical</property>
+                                                <child>
+                                                    <placeholder/>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="hard_label">
+                                                        <property name="visible">True</property>
+                                                        <property name="can_focus">False</property>
+                                                        <property name="label" translatable="yes">Hard</property>
+                                                        <attributes>
+                                                            <attribute name="weight" value="bold"/>
+                                                        </attributes>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                            <packing>
+                                                <property name="expand">True</property>
+                                                <property name="fill">True</property>
+                                                <property name="padding">20</property>
+                                            </packing>
+                                        </child>
+                                        <child>
+                                            <object class="GtkBox" id="very_hard_grid">
+                                                <property name="visible">True</property>
+                                                <property name="orientation">vertical</property>
+                                                <child>
+                                                    <placeholder/>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="very_hard_label">
+                                                        <property name="visible">True</property>
+                                                        <property name="can_focus">False</property>
+                                                        <property name="label" translatable="yes">Very Hard</property>
+                                                        <attributes>
+                                                            <attribute name="weight" value="bold"/>
+                                                        </attributes>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                            <packing>
+                                                <property name="expand">True</property>
+                                                <property name="fill">True</property>
+                                                <property name="padding">20</property>
+                                            </packing>
+                                         </child>
+                                     </object>
+                                    <packing>
+                                        <property name="pack_type">end</property>
+                                    </packing>
+                                 </child>
+                            </object> <!-- End of new game box -->
+                            <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                                <property name="padding">20</property>
+                            </packing>
+                        </child>
+                    </object> <!-- End of new_start_box -->
+                </child>
                 <child>
                     <object class="GtkBox" id="game_box">
                         <property name="visible">True</property>
-                        <property name="spacing">2</property>
+                        <property name="spacing">20</property>
                         <property name="margin">20</property>
                         <child>
                             <object class="GtkBox" id="controls_box">
@@ -76,7 +219,6 @@
                         <child>
                             <object class="GtkBox" id="grid_box">
                                 <property name="visible">True</property>
-                                <property name="margin-right">20</property>
                                 <child>
                                     <placeholder/>
                                 </child>

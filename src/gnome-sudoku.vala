@@ -20,6 +20,21 @@ public class Sudoku : Gtk.Application
     private Box game_box; // Holds the grid and controls boxes
     private Box grid_box; // Holds the view
     private Box controls_box; // Holds the controls
+    private Box start_box; // Holds the new game screen
+
+    private Button undo_button;
+    private Button redo_button;
+    private Button back_button;
+
+    private Box easy_grid;
+    private Box medium_grid;
+    private Box hard_grid;
+    private Box very_hard_grid;
+
+    private SudokuView easy_preview;
+    private SudokuView medium_preview;
+    private SudokuView hard_preview;
+    private SudokuView very_hard_preview;
 
     private SudokuStore sudoku_store;
     private SudokuSaver saver;
@@ -27,12 +42,15 @@ public class Sudoku : Gtk.Application
     private SimpleAction undo_action;
     private SimpleAction redo_action;
 
+    private string header_bar_subtitle;
+
     private bool show_possibilities = false;
 
     private const GLib.ActionEntry action_entries[] =
     {
         {"new-game", new_game_cb                                    },
         {"reset", reset_cb                                          },
+        {"back", back_cb                                            },
         {"undo", undo_cb                                            },
         {"redo", redo_cb                                            },
         {"print", print_cb                                          },
@@ -119,6 +137,11 @@ public class Sudoku : Gtk.Application
         game_box = (Box) builder.get_object ("game_box");
         grid_box = (Box) builder.get_object ("grid_box");
         controls_box = (Box) builder.get_object ("controls_box");
+        start_box = (Box) builder.get_object ("start_box");
+
+        undo_button = (Button) builder.get_object ("undo_button");
+        redo_button = (Button) builder.get_object ("redo_button");
+        back_button = (Button) builder.get_object ("back_button");
 
         var new_button = new Gtk.Button ();
         var new_label = new Gtk.Label.with_mnemonic (_("_New Puzzle"));
@@ -149,6 +172,39 @@ public class Sudoku : Gtk.Application
         saver = new SudokuSaver ();
         //SudokuGenerator gen = new SudokuGenerator();
 
+        easy_grid = (Box) builder.get_object ("easy_grid");
+        medium_grid = (Box) builder.get_object ("medium_grid");
+        hard_grid = (Box) builder.get_object ("hard_grid");
+        very_hard_grid = (Box) builder.get_object ("very_hard_grid");
+
+        easy_grid.button_press_event.connect ((event) => {
+            if (event.button == 1)
+                start_game (easy_preview.game.board);
+
+            return false;
+        });
+
+        medium_grid.button_press_event.connect ((event) => {
+            if (event.button == 1)
+                start_game (medium_preview.game.board);
+
+            return false;
+        });
+
+        hard_grid.button_press_event.connect ((event) => {
+            if (event.button == 1)
+                start_game (hard_preview.game.board);
+
+            return false;
+        });
+
+        very_hard_grid.button_press_event.connect ((event) => {
+            if (event.button == 1)
+                start_game (very_hard_preview.game.board);
+
+            return false;
+        });
+
         var savegame = saver.get_savedgame ();
         if (savegame != null)
             start_game (savegame.board);
@@ -175,13 +231,15 @@ public class Sudoku : Gtk.Application
         var rater = new SudokuRater(ref completed_board);
         var rating = rater.get_difficulty ();
         debug ("\n%s", rating.to_string ());
-        header_bar.set_subtitle (rating.get_catagory ().to_string ());
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);
 
         if (view != null) {
             grid_box.remove (view);
         }
+
+        header_bar_subtitle = rating.get_catagory ().to_string ();
+        back_cb ();
 
         game = new SudokuGame (board);
 
@@ -242,8 +300,41 @@ public class Sudoku : Gtk.Application
 
     private void new_game_cb ()
     {
-        var random_difficulty = (DifficultyCatagory) Random.int_range (0, 4);
-        start_game (sudoku_store.get_random_board (random_difficulty));
+        start_box.visible = true;
+        back_button.visible = true;
+        game_box.visible = false;
+        undo_button.visible = false;
+        redo_button.visible = false;
+        header_bar_subtitle = header_bar.get_subtitle ();
+        header_bar.set_subtitle (null);
+
+        if (easy_preview != null)
+            easy_preview.destroy ();
+        var easy_board = sudoku_store.get_random_easy_board ();
+        easy_preview = new SudokuView (new SudokuGame (easy_board), true);
+        easy_preview.show ();
+        easy_grid.pack_start (easy_preview);
+
+        if (medium_preview != null)
+            medium_preview.destroy ();
+        var medium_board = sudoku_store.get_random_medium_board ();
+        medium_preview = new SudokuView (new SudokuGame (medium_board), true);
+        medium_preview.show ();
+        medium_grid.pack_start (medium_preview);
+
+        if (hard_preview != null)
+            hard_preview.destroy ();
+        var hard_board = sudoku_store.get_random_hard_board ();
+        hard_preview = new SudokuView (new SudokuGame (hard_board), true);
+        hard_preview.show ();
+        hard_grid.pack_start (hard_preview);
+
+        if (very_hard_preview != null)
+            very_hard_preview.destroy ();
+        var very_hard_board = sudoku_store.get_random_very_hard_board ();
+        very_hard_preview = new SudokuView (new SudokuGame (very_hard_board), true);
+        very_hard_preview.show ();
+        very_hard_grid.pack_start (very_hard_preview);
     }
 
     private void reset_cb ()
@@ -257,6 +348,16 @@ public class Sudoku : Gtk.Application
         });
 
         dialog.show ();
+    }
+
+    private void back_cb ()
+    {
+        start_box.visible = false;
+        back_button.visible = false;
+        game_box.visible = true;
+        undo_button.visible = true;
+        redo_button.visible = true;
+        header_bar.set_subtitle (header_bar_subtitle);
     }
 
     private void undo_cb ()

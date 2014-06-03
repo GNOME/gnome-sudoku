@@ -131,6 +131,15 @@ private class SudokuCellView : Gtk.DrawingArea
         this._row = row;
         this._col = col;
 
+        style.font_desc.set_size (Pango.SCALE * 13);
+        this.value = game.board [_row, _col];
+
+        if (small)
+        {
+            size_ratio = 0.83;
+            return;
+        }
+
         number_picker = new NumberPicker(ref game.board);
         number_picker.number_picked.connect ((o, number) => {
             value = number;
@@ -162,14 +171,6 @@ private class SudokuCellView : Gtk.DrawingArea
         // background_color is set in the SudokuView, as it manages the color of the cells
 
         can_focus = true;
-
-        style.font_desc.set_size (Pango.SCALE * 13);
-        this.value = game.board [_row, _col];
-
-        if (small)
-        {
-            size_ratio = 1;
-        }
 
         events = EventMask.EXPOSURE_MASK | EventMask.BUTTON_PRESS_MASK | EventMask.KEY_PRESS_MASK;
         focus_out_event.connect (focus_out_cb);
@@ -417,7 +418,7 @@ private class SudokuCellView : Gtk.DrawingArea
 
 public class SudokuView : Gtk.AspectFrame
 {
-    private SudokuGame game;
+    public SudokuGame game;
     private SudokuCellView[,] cells;
 
     public signal void cell_focus_in_event (int row, int col);
