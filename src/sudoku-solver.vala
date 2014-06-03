@@ -739,13 +739,13 @@ public enum DifficultyCatagory {
         switch (this)
         {
             case EASY:
-                return _("Easy");
+                return _("Easy Difficulty");
             case MEDIUM:
-                return _("Medium");
+                return _("Medium Difficulty");
             case HARD:
-                return _("Hard");
+                return _("Hard Difficulty");
             case VERY_HARD:
-                return _("Very Hard");
+                return _("Very Hard Difficulty");
             default:
                 return _("Undefined");
         }
