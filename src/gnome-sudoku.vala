@@ -121,7 +121,7 @@ public class Sudoku : Gtk.Application
         controls_box = (Box) builder.get_object ("controls_box");
 
         var new_button = new Gtk.Button ();
-        var new_label = new Gtk.Label.with_mnemonic ("_New Puzzle");
+        var new_label = new Gtk.Label.with_mnemonic (_("_New Puzzle"));
         new_label.margin = 10;
         new_button.add (new_label);
         new_button.valign = Gtk.Align.CENTER;
@@ -132,7 +132,7 @@ public class Sudoku : Gtk.Application
         controls_box.pack_end (new_button, false, false, 0);
 
         var restart_button = new Gtk.Button ();
-        var restart_label = new Gtk.Label.with_mnemonic ("_Clear Board");
+        var restart_label = new Gtk.Label.with_mnemonic (_("_Clear Board"));
         restart_label.margin = 10;
         restart_button.add (restart_label);
         restart_button.valign = Gtk.Align.CENTER;
