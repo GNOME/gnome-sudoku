@@ -41,6 +41,7 @@ public class Sudoku : Gtk.Application
 
     private SimpleAction undo_action;
     private SimpleAction redo_action;
+    private SimpleAction print_action;
 
     private string header_bar_subtitle;
 
@@ -167,6 +168,7 @@ public class Sudoku : Gtk.Application
 
         undo_action = (SimpleAction) lookup_action ("undo");
         redo_action = (SimpleAction) lookup_action ("redo");
+        print_action = (SimpleAction) lookup_action ("print");
 
         sudoku_store = new SudokuStore ();
         saver = new SudokuSaver ();
@@ -307,6 +309,7 @@ public class Sudoku : Gtk.Application
         redo_button.visible = false;
         header_bar_subtitle = header_bar.get_subtitle ();
         header_bar.set_subtitle (null);
+        print_action.set_enabled (false);
 
         if (easy_preview != null)
             easy_preview.destroy ();
@@ -358,6 +361,7 @@ public class Sudoku : Gtk.Application
         undo_button.visible = true;
         redo_button.visible = true;
         header_bar.set_subtitle (header_bar_subtitle);
+        print_action.set_enabled (true);
     }
 
     private void undo_cb ()
