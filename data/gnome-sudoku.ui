@@ -56,13 +56,19 @@
                         <property name="visible">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">_Back</property>
                         <property name="tooltip-text" translatable="yes">Go back to the current game</property>
                         <property name="use_underline">True</property>
                         <property name="action-name">app.back</property>
                         <style>
-                            <class name="text-button"/>
+                            <class name="image-button"/>
                         </style>
+                        <child>
+                            <object class="GtkImage" id="back_image">
+                                <property name="icon_name">go-previous-symbolic</property>
+                                <property name="visible">True</property>
+                                <property name="icon_size">1</property>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>
