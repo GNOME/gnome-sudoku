@@ -114,6 +114,12 @@ public class Sudoku : Gtk.Application
             view.show_warnings = settings.get_boolean ("unfillable-squares-warning"));
         add_action (action);
 
+        add_accelerator ("<Primary>z", "app.undo", null);
+        add_accelerator ("<Primary><Shift>z", "app.redo", null);
+        add_accelerator ("<Primary>p", "app.print", null);
+        add_accelerator ("<Primary>q", "app.quit", null);
+        add_accelerator ("F1", "app.help", null);
+
         Gtk.Window.set_default_icon_name ("gnome-sudoku");
     }
 
@@ -366,6 +372,8 @@ public class Sudoku : Gtk.Application
 
     private void undo_cb ()
     {
+        if (!game_box.visible)
+            return;
         game.undo ();
         undo_action.set_enabled (!game.is_undostack_null ());
         view.queue_draw ();
@@ -373,6 +381,8 @@ public class Sudoku : Gtk.Application
 
     private void redo_cb ()
     {
+        if (!game_box.visible)
+            return;
         game.redo ();
         redo_action.set_enabled (!game.is_redostack_null ());
         view.queue_draw ();
@@ -380,6 +390,8 @@ public class Sudoku : Gtk.Application
 
     private void print_cb ()
     {
+        if (!game_box.visible)
+            return;
         var printer = new SudokuPrinter ({game.board.clone ()}, ref window);
         printer.print_sudoku ();
     }
