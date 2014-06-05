@@ -44,10 +44,10 @@ private class NumberPicker : Gtk.Grid
                         var toggle_active = toggle_button.get_active ();
                         earmark_state_changed (n, toggle_active);
                         earmarks_active = toggle_active ? earmarks_active + 1 : earmarks_active - 1;
-                        if (earmarks_active >= EARMARKS_MAX_ALLOWED)
-                            set_toggle_sensitive (false);
-                        else if (earmarks_active == (EARMARKS_MAX_ALLOWED - 1))
+                        if (earmarks_active < EARMARKS_MAX_ALLOWED)
                             set_toggle_sensitive (true);
+                        else
+                            set_toggle_sensitive (false);
                     });
                 }
 
@@ -88,11 +88,16 @@ private class NumberPicker : Gtk.Grid
     public void set_earmarks (int row, int col)
     {
         for (var i = 0; i < board.max_val; i++)
-            if (board.earmarks[row, col, i])
-            {
-                var button = (ToggleButton) this.get_child_at (i % board.block_cols, i / board.block_rows);
-                button.set_active (board.earmarks[row, col, i]);
-            }
+            set_earmark (row, col, i, board.earmarks[row, col, i]);
+    }
+
+    public bool set_earmark (int row, int col, int index, bool state)
+    {
+        if (state && earmarks_active >= EARMARKS_MAX_ALLOWED)
+            return false;
+        var button = (ToggleButton) this.get_child_at (index % board.block_cols, index / board.block_rows);
+        button.set_active (state);
+        return true;
     }
 
     private void set_toggle_sensitive (bool state)

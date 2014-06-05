@@ -161,6 +161,7 @@ private class SudokuCellView : Gtk.DrawingArea
             this.game.board.earmarks[row, col, number-1] = state;
             queue_draw ();
         });
+        earmark_picker.set_earmarks (row, col);
 
         earmark_popover = new Popover (this);
         earmark_popover.add (earmark_picker);
@@ -231,7 +232,6 @@ private class SudokuCellView : Gtk.DrawingArea
     {
         if (!is_fixed)
         {
-            earmark_picker.set_earmarks (_row, _col);
             popover.hide ();
             earmark_popover.show ();
         }
@@ -280,7 +280,17 @@ private class SudokuCellView : Gtk.DrawingArea
             k_no = key_map_keypad (k_name);
         if (k_no >= 1 && k_no <= 9)
         {
-            value = k_no;
+            if ((event.state & ModifierType.CONTROL_MASK) > 0 && !is_fixed)
+            {
+                var new_state = !game.board.earmarks[_row, _col, k_no-1];
+                if (earmark_picker.set_earmark (_row, _col, k_no-1, new_state))
+                {
+                    game.board.earmarks[_row, _col, k_no-1] = new_state;
+                    queue_draw ();
+                }
+            }
+            else
+                value = k_no;
             return true;
         }
         if (k_no == 0 || k_name == "BackSpace" || k_name == "Delete")
