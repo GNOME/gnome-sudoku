@@ -150,6 +150,17 @@ public class Sudoku : Gtk.Application
         redo_button = (Button) builder.get_object ("redo_button");
         back_button = (Button) builder.get_object ("back_button");
 
+        var clear_button = new Gtk.Button ();
+        var clear_label = new Gtk.Label.with_mnemonic (_("_Clear Board"));
+        clear_label.margin = 10;
+        clear_button.add (clear_label);
+        clear_button.valign = Gtk.Align.CENTER;
+        clear_button.halign = Gtk.Align.CENTER;
+        clear_button.action_name = "app.reset";
+        clear_button.tooltip_text = _("Reset the board to its original state");
+        clear_button.show_all ();
+        controls_box.pack_end (clear_button, false, false, 0);
+
         var new_button = new Gtk.Button ();
         var new_label = new Gtk.Label.with_mnemonic (_("_New Puzzle"));
         new_label.margin = 10;
@@ -160,17 +171,6 @@ public class Sudoku : Gtk.Application
         new_button.tooltip_text = _("Start a new puzzle");
         new_button.show_all ();
         controls_box.pack_end (new_button, false, false, 0);
-
-        var restart_button = new Gtk.Button ();
-        var restart_label = new Gtk.Label.with_mnemonic (_("_Clear Board"));
-        restart_label.margin = 10;
-        restart_button.add (restart_label);
-        restart_button.valign = Gtk.Align.CENTER;
-        restart_button.halign = Gtk.Align.CENTER;
-        restart_button.action_name = "app.reset";
-        restart_button.tooltip_text = _("Reset the board to its original state");
-        restart_button.show_all ();
-        controls_box.pack_end (restart_button, false, false, 0);
 
         undo_action = (SimpleAction) lookup_action ("undo");
         redo_action = (SimpleAction) lookup_action ("redo");
