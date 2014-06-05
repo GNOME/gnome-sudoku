@@ -22,8 +22,7 @@ public class Sudoku : Gtk.Application
     private Box controls_box; // Holds the controls
     private Box start_box; // Holds the new game screen
 
-    private Button undo_button;
-    private Button redo_button;
+    private Box undo_redo_box;
     private Button back_button;
 
     private Box easy_grid;
@@ -145,9 +144,8 @@ public class Sudoku : Gtk.Application
         grid_box = (Box) builder.get_object ("grid_box");
         controls_box = (Box) builder.get_object ("controls_box");
         start_box = (Box) builder.get_object ("start_box");
+        undo_redo_box = (Box) builder.get_object ("undo_redo_box");
 
-        undo_button = (Button) builder.get_object ("undo_button");
-        redo_button = (Button) builder.get_object ("redo_button");
         back_button = (Button) builder.get_object ("back_button");
 
         var clear_button = new Gtk.Button ();
@@ -311,8 +309,7 @@ public class Sudoku : Gtk.Application
         start_box.visible = true;
         back_button.visible = true;
         game_box.visible = false;
-        undo_button.visible = false;
-        redo_button.visible = false;
+        undo_redo_box.visible = false;
         header_bar_subtitle = header_bar.get_subtitle ();
         header_bar.set_subtitle (null);
         print_action.set_enabled (false);
@@ -364,8 +361,7 @@ public class Sudoku : Gtk.Application
         start_box.visible = false;
         back_button.visible = false;
         game_box.visible = true;
-        undo_button.visible = true;
-        redo_button.visible = true;
+        undo_redo_box.visible = true;
         header_bar.set_subtitle (header_bar_subtitle);
         print_action.set_enabled (true);
     }

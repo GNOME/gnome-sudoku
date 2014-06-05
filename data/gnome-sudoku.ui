@@ -10,43 +10,53 @@
                 <property name="show_close_button">True</property>
                 <property name="title" translatable="yes">Sudoku</property>
                 <child>
-                    <object class="GtkButton" id="undo_button">
+                    <object class="GtkBox" id="undo_redo_box">
                         <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="valign">center</property>
-                        <property name="tooltip-text" translatable="yes">Undo your last action</property>
-                        <property name="can_focus">True</property>
-                        <property name="focus_on_click">False</property>
-                        <property name="action-name">app.undo</property>
+                        <property name="homogeneous">True</property>
                         <style>
-                            <class name="image-button"/>
+                          <class name="raised"/>
+                          <class name="linked"/>
                         </style>
                         <child>
-                            <object class="GtkImage" id="undo_image">
-                                <property name="icon_name">edit-undo-symbolic</property>
+                            <object class="GtkButton" id="undo_button">
                                 <property name="visible">True</property>
-                                <property name="icon_size">1</property>
+                                <property name="sensitive">False</property>
+                                <property name="valign">center</property>
+                                <property name="tooltip-text" translatable="yes">Undo your last action</property>
+                                <property name="can_focus">True</property>
+                                <property name="focus_on_click">False</property>
+                                <property name="action-name">app.undo</property>
+                                <style>
+                                    <class name="image-button"/>
+                                </style>
+                                <child>
+                                    <object class="GtkImage" id="undo_image">
+                                        <property name="icon_name">edit-undo-symbolic</property>
+                                        <property name="visible">True</property>
+                                        <property name="icon_size">1</property>
+                                    </object>
+                                </child>
                             </object>
                         </child>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkButton" id="redo_button">
-                        <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="valign">center</property>
-                        <property name="tooltip-text" translatable="yes">Redo your last action</property>
-                        <property name="can_focus">True</property>
-                        <property name="focus_on_click">False</property>
-                        <property name="action-name">app.redo</property>
-                        <style>
-                            <class name="image-button"/>
-                        </style>
                         <child>
-                            <object class="GtkImage" id="redo_image">
-                                <property name="icon_name">edit-redo-symbolic</property>
+                            <object class="GtkButton" id="redo_button">
                                 <property name="visible">True</property>
-                                <property name="icon_size">1</property>
+                                <property name="sensitive">False</property>
+                                <property name="valign">center</property>
+                                <property name="tooltip-text" translatable="yes">Redo your last action</property>
+                                <property name="can_focus">True</property>
+                                <property name="focus_on_click">False</property>
+                                <property name="action-name">app.redo</property>
+                                <style>
+                                    <class name="image-button"/>
+                                </style>
+                                <child>
+                                    <object class="GtkImage" id="redo_image">
+                                        <property name="icon_name">edit-redo-symbolic</property>
+                                        <property name="visible">True</property>
+                                        <property name="icon_size">1</property>
+                                    </object>
+                                </child>
                             </object>
                         </child>
                     </object>
