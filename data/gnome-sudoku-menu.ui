@@ -3,14 +3,19 @@
   <!-- interface-requires gtk+ 3.4 -->
     <menu id="sudoku-menu">
       <section>
-        <item>
+        <submenu>
           <attribute name="label" translatable="yes">_Print</attribute>
-          <attribute name="action">app.print</attribute>
-        </item>
-        <item>
-          <attribute name="label" translatable="yes">_Print Multiple Puzzles…</attribute>
-          <attribute name="action">app.print-multiple</attribute>
-        </item>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">Print _Current Puzzle…</attribute>
+              <attribute name="action">app.print</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">Print _Multiple Puzzles…</attribute>
+              <attribute name="action">app.print-multiple</attribute>
+            </item>
+          </section>
+        </submenu>
       </section>
       <section>
         <item>
