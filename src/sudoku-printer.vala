@@ -259,7 +259,7 @@ public class GamePrinter: GLib.Object {
         this.store = store;
         this.saver = saver;
         this.window = window;
-        this.settings = new GLib.Settings ("org.gnome.gnome-sudoku");
+        this.settings = new GLib.Settings ("org.gnome.sudoku");
         this.options_map = new HashMap<string, CheckButton> ();
 
         Gtk.Builder builder = new Builder ();
