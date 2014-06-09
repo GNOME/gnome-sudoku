@@ -1,4 +1,10 @@
 <schemalist>
+  <enum id="org.gnome.sudoku.print-multiple-sudoku-difficulty">
+    <value nick="easy" value="0" />
+    <value nick="medium" value="1" />
+    <value nick="hard" value="2"  />
+    <value nick="very_hard" value="3"  />
+  </enum>
   <schema id="org.gnome.sudoku" path="/org/gnome/sudoku/">
     <key name="auto-save-interval" type="i">
       <default>60</default>
@@ -33,18 +39,6 @@
     <key name="generate-target-very-hard" type="b">
       <default>true</default>
     </key>
-    <key name="print-easy" type="b">
-      <default>true</default>
-    </key>
-    <key name="print-medium" type="b">
-      <default>true</default>
-    </key>
-    <key name="print-hard" type="b">
-      <default>true</default>
-    </key>
-    <key name="print-very-hard" type="b">
-      <default>true</default>
-    </key>
     <key name="minimum-number-of-new-puzzles" type="i">
       <default>90</default>
     </key>
@@ -60,6 +54,9 @@
       <default>675</default>
       <summary>Height of application window in pixels</summary>
       <description>Height of application window in pixels</description>
+    </key>
+    <key name="print-multiple-sudoku-difficulty" enum="org.gnome.sudoku.print-multiple-sudoku-difficulty">
+      <default>"easy"</default>
     </key>
     <key name="print-multiple-sudokus-to-print" type="i">
       <default>4</default>

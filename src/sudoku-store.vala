@@ -109,21 +109,19 @@ public class SudokuStore
             assert_not_reached();
     }
 
-    public ArrayList<SudokuBoard> get_assorted_boards(int n, owned DifficultyCatagory[] levels, bool exclude_finished = false)
+    // Get boards sorted ascending based on difficulty rating
+    // i.e. - the first board returned will be the easiest, and boards will become increasingly harder
+    public SudokuBoard[] get_boards_sorted (int number_of_boards, DifficultyCatagory level, bool exclude_finished = false)
     {
         var boards = new ArrayList<SudokuBoard> ();
-        int i = 0;
+        SudokuBoard[] sorted_boards = {};
 
-        if (levels.length == 0)
-            levels = {DifficultyCatagory.EASY, DifficultyCatagory.MEDIUM, DifficultyCatagory.HARD, DifficultyCatagory.VERY_HARD};
-
-        while (i < n)
+        while (boards.size < number_of_boards)
         {
-            var board = get_random_board ((DifficultyCatagory) levels[i % levels.length]);
+            var board = get_random_board (level);
             if (exclude_finished && board.is_finished ())
                 continue;
             boards.add (board);
-            i++;
         }
 
         boards.sort ((a, b) => {
@@ -133,6 +131,10 @@ public class SudokuStore
                 return 0;
             return -1;
         });
-        return boards;
+
+        foreach (SudokuBoard board in boards)
+            sorted_boards += board;
+
+        return sorted_boards;
     }
 }

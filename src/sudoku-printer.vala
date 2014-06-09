@@ -11,7 +11,7 @@ public class SudokuPrinter : GLib.Object {
 
     private int margin;
     private int n_sudokus;
-    private int sudokus_per_page;
+    private const int SUDOKUS_PER_PAGE = 2;
 
     private PrintOperation print_op;
 
@@ -33,13 +33,12 @@ public class SudokuPrinter : GLib.Object {
         return Gtk.PrintOperationResult.ERROR;
     }
 
-    public SudokuPrinter (SudokuBoard[] boards, ref ApplicationWindow window, int sudokus_per_page = 1)
+    public SudokuPrinter (SudokuBoard[] boards, ref ApplicationWindow window)
     {
         this.boards = boards;
         this.window = window;
         this.margin = 25;
         this.n_sudokus = boards.length;
-        this.sudokus_per_page = sudokus_per_page;
 
         this.print_op = new Gtk.PrintOperation ();
         print_op.begin_print.connect (begin_print_cb);
@@ -48,8 +47,11 @@ public class SudokuPrinter : GLib.Object {
 
     private void begin_print_cb (Gtk.PrintOperation operation, Gtk.PrintContext context)
     {
-        int remainder = (n_sudokus % sudokus_per_page) == 0 ? 0 : 1;
-        operation.set_n_pages ((n_sudokus / sudokus_per_page) + remainder);
+        int pages = n_sudokus / SUDOKUS_PER_PAGE;
+        while (pages * SUDOKUS_PER_PAGE < n_sudokus)
+            pages += 1;
+
+        operation.set_n_pages (pages);
     }
 
     private void draw_page_cb (Gtk.PrintOperation operation, Gtk.PrintContext context, int page_nr)
@@ -62,8 +64,8 @@ public class SudokuPrinter : GLib.Object {
         var best_fit = best_values[0];
         var best_square_size = best_values[1];
 
-        var start = page_nr * sudokus_per_page;
-        var end = (start + sudokus_per_page) > boards.length ? boards.length : (start + sudokus_per_page);
+        var start = page_nr * SUDOKUS_PER_PAGE;
+        var end = int.min ((start + SUDOKUS_PER_PAGE), boards.length);
         SudokuBoard[] sudokus_on_page = boards[start : end];
 
         double left = margin;
@@ -104,7 +106,7 @@ public class SudokuPrinter : GLib.Object {
 
     private double[] fit_squares_in_rectangle (double width, double height, int margin)
     {
-        var n = sudokus_per_page;
+        var n = SUDOKUS_PER_PAGE;
         var best_square_size = 0.0;
         double[] best_fit = {0,0};
         var square_size = 0.0;
@@ -250,9 +252,14 @@ public class GamePrinter: GLib.Object {
     private ApplicationWindow window;
     private GLib.Settings settings;
     private Gtk.Dialog dialog;
-    private HashMap<string, CheckButton> options_map;
-    private SpinButton sudokusToPrintSpinButton;
-    private SpinButton sudokusPerPageSpinButton;
+    private SpinButton nsudokus_button;
+
+    private RadioButton easy_button;
+    private RadioButton medium_button;
+    private RadioButton hard_button;
+    private RadioButton very_hard_button;
+
+    private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
 
     public GamePrinter (SudokuStore store, SudokuSaver saver, ref ApplicationWindow window)
     {
@@ -260,7 +267,6 @@ public class GamePrinter: GLib.Object {
         this.saver = saver;
         this.window = window;
         this.settings = new GLib.Settings ("org.gnome.sudoku");
-        this.options_map = new HashMap<string, CheckButton> ();
 
         Gtk.Builder builder = new Builder ();
         try
@@ -277,34 +283,33 @@ public class GamePrinter: GLib.Object {
         dialog.set_default_response (Gtk.ResponseType.OK);
         dialog.response.connect (response_cb);
 
-        string[,] settings_to_widgets = {
-            {"mark-printed-as-played", "markAsPlayedToggle"},
-            {"print-already-played-games", "includeOldGamesToggle"},
-            {"print-easy", "easyCheckButton"},
-            {"print-medium", "mediumCheckButton"},
-            {"print-hard", "hardCheckButton"},
-            {"print-very-hard", "very_hardCheckButton"}};
+        SList<RadioButton> radio_group = new SList<RadioButton> ();
 
-        for (var i=0; i<6; i++)
-        {
-            var setting0 = settings_to_widgets[i,0];
-            var setting1 = settings_to_widgets[i,1];
-            var check_button = builder.get_object (setting1) as CheckButton;
-            wrap_toggle (setting0, check_button);
-            options_map.set (setting1, check_button);
-        }
+        easy_button = builder.get_object ("easyRadioButton") as RadioButton;
+        easy_button.set_group (radio_group);
 
-        sudokusToPrintSpinButton = builder.get_object ("sudokusToPrintSpinButton") as SpinButton;
-        sudokusPerPageSpinButton = builder.get_object ("sudokusPerPageSpinButton") as SpinButton;
+        medium_button = builder.get_object ("mediumRadioButton") as RadioButton;
+        medium_button.join_group (easy_button);
 
-        wrap_adjustment ("print-multiple-sudokus-to-print", sudokusToPrintSpinButton.get_adjustment ());
-        wrap_adjustment ("sudokus-per-page", sudokusPerPageSpinButton.get_adjustment ());
-    }
+        hard_button = builder.get_object ("hardRadioButton") as RadioButton;
+        hard_button.join_group (easy_button);
 
-    private void wrap_toggle (string key_name, CheckButton action)
-    {
-        action.set_active (settings.get_boolean (key_name));
-        action.toggled.connect (() => settings.set_boolean (key_name, action.get_active ()));
+        very_hard_button = builder.get_object ("very_hardRadioButton") as RadioButton;
+        very_hard_button.join_group (easy_button);
+
+        var saved_difficulty = (DifficultyCatagory) settings.get_enum (DIFFICULTY_KEY_NAME);
+
+        if (saved_difficulty == DifficultyCatagory.EASY)
+            easy_button.set_active (true);
+        else if (saved_difficulty == DifficultyCatagory.MEDIUM)
+            medium_button.set_active (true);
+        else if (saved_difficulty == DifficultyCatagory.HARD)
+            hard_button.set_active (true);
+        else if (saved_difficulty == DifficultyCatagory.VERY_HARD)
+            very_hard_button.set_active (true);
+
+        nsudokus_button = builder.get_object ("sudokusToPrintSpinButton") as SpinButton;
+        wrap_adjustment ("print-multiple-sudokus-to-print", nsudokus_button.get_adjustment ());
     }
 
     private void wrap_adjustment (string key_name, Adjustment action)
@@ -321,36 +326,31 @@ public class GamePrinter: GLib.Object {
             return;
         }
 
-        var nsudokus = (int) sudokusToPrintSpinButton.get_adjustment ().get_value ();
-        var sudokus_per_page = (int) sudokusPerPageSpinButton.get_adjustment ().get_value ();
-        DifficultyCatagory[] levels = {};
+        var nsudokus = (int) nsudokus_button.get_adjustment ().get_value ();
+        DifficultyCatagory level;
 
-        if (options_map.get ("easyCheckButton").get_active () == true)
-            levels += DifficultyCatagory.EASY;
-        if (options_map.get ("mediumCheckButton").get_active () == true)
-            levels += DifficultyCatagory.MEDIUM;
-        if (options_map.get ("hardCheckButton").get_active () == true)
-            levels += DifficultyCatagory.HARD;
-        if (options_map.get ("very_hardCheckButton").get_active () == true)
-            levels += DifficultyCatagory.VERY_HARD;
+        if (easy_button.get_active ())
+            level = DifficultyCatagory.EASY;
+        else if (medium_button.get_active ())
+            level = DifficultyCatagory.MEDIUM;
+        else if (hard_button.get_active ())
+            level = DifficultyCatagory.HARD;
+        else if (very_hard_button.get_active ())
+            level = DifficultyCatagory.VERY_HARD;
+        else
+            assert_not_reached ();
 
-        var boards = new ArrayList<SudokuBoard> ();
-        boards = store.get_assorted_boards (nsudokus, levels, !options_map.get ("includeOldGamesToggle").get_active ());
+        settings.set_enum (DIFFICULTY_KEY_NAME, level);
 
-        SudokuBoard[] sorted_boards = {};
+        var boards = store.get_boards_sorted (nsudokus, level, true);
+        SudokuPrinter printer = new SudokuPrinter (boards, ref window);
 
-        foreach (SudokuBoard i in boards)
-            sorted_boards += i;
-
-        SudokuPrinter printer = new SudokuPrinter (sorted_boards, ref window, sudokus_per_page);
         PrintOperationResult result = printer.print_sudoku ();
-
         if (result == PrintOperationResult.APPLY)
         {
             dialog.hide ();
-            if (options_map.get ("markAsPlayedToggle").get_active ())
-                foreach (SudokuBoard i in sorted_boards)
-                    saver.add_game_to_finished (new SudokuGame (i));
+            foreach (SudokuBoard board in boards)
+                saver.add_game_to_finished (new SudokuGame (board));
         }
     }
 

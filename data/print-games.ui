@@ -9,18 +9,14 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkAdjustment" id="adjustment2">
-    <property name="lower">1</property>
-    <property name="upper">9</property>
-    <property name="value">1</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
-  </object>
   <object class="GtkDialog" id="dialog">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="use-header-bar">1</property>
     <property name="type_hint">dialog</property>
+    <property name="height_request">300</property>
+    <property name="width_request">450</property>
+    <property name="expand">False</property>
     <child internal-child="headerbar">
       <object class="GtkHeaderBar" id="the_headerbar">
         <property name="title" translatable="yes">Print Multiple Puzzles</property>
@@ -69,142 +65,83 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="border_width">12</property>
-            <property name="spacing">6</property>
+            <property name="spacing">20</property>
+            <property name="margin">7</property>
             <child>
-              <object class="GtkLabel" id="label1">
+              <object class="GtkBox" id="print_box">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">Print Games</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                  <attribute name="scale" value="1.2"/>
-                </attributes>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkAlignment" id="alignment2">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="left_padding">24</property>
+                <property name="spacing">10</property>
                 <child>
-                  <object class="GtkTable" id="table1">
+                  <object class="GtkBox" id="number_label_box">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="n_rows">2</property>
-                    <property name="n_columns">2</property>
+                    <property name="width_request">150</property>
                     <child>
-                      <object class="GtkLabel" id="label3">
+                      <object class="GtkLabel" id="number_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="xalign">0</property>
-                        <property name="label" translatable="yes">_Number of puzzles to print: </property>
+                        <property name="label" translatable="yes">_Number of puzzles</property>
                         <property name="use_underline">True</property>
                         <property name="mnemonic_widget">sudokusToPrintSpinButton</property>
+                        <property name="valign">center</property>
+                        <property name="halign">end</property>
                       </object>
                       <packing>
-                        <property name="x_options">GTK_FILL</property>
-                        <property name="y_options"/>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="label2">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="xalign">0</property>
-                        <property name="label" translatable="yes">_Puzzles per page: </property>
-                        <property name="use_underline">True</property>
-                        <property name="mnemonic_widget">sudokusPerPageSpinButton</property>
-                      </object>
-                      <packing>
-                        <property name="top_attach">1</property>
-                        <property name="bottom_attach">2</property>
-                        <property name="x_options">GTK_FILL</property>
-                        <property name="y_options"/>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton" id="sudokusToPrintSpinButton">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="primary_icon_activatable">False</property>
-                        <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
-                        <property name="adjustment">adjustment1</property>
-                        <property name="climb_rate">1</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="right_attach">2</property>
-                        <property name="y_options"/>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton" id="sudokusPerPageSpinButton">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="primary_icon_activatable">False</property>
-                        <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
-                        <property name="adjustment">adjustment2</property>
-                        <property name="climb_rate">1</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="right_attach">2</property>
-                        <property name="top_attach">1</property>
-                        <property name="bottom_attach">2</property>
-                        <property name="y_options"/>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
                       </packing>
                     </child>
                   </object>
                 </child>
+                <child>
+                  <object class="GtkSpinButton" id="sudokusToPrintSpinButton">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="primary_icon_activatable">False</property>
+                    <property name="secondary_icon_activatable">False</property>
+                    <property name="primary_icon_sensitive">True</property>
+                    <property name="secondary_icon_sensitive">True</property>
+                    <property name="adjustment">adjustment1</property>
+                    <property name="climb_rate">1</property>
+                    <property name="valign">center</property>
+                  </object>
+                </child>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label4">
+              <object class="GtkBox" id="difficulty_box">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">Levels of difficulty to print</property>
-                <property name="wrap">True</property>
-                <attributes>
-                  <attribute name="style" value="italic"/>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkAlignment" id="alignment1">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="left_padding">24</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkBox" id="difficulty_label_box">
+                    <property name="visible">True</property>
+                    <property name="width_request">150</property>
+                    <child>
+                      <object class="GtkLabel" id="difficulty_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="valign">start</property>
+                        <property name="label" translatable="yes">Difficulty</property>
+                        <property name="halign">end</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
                 <child>
                   <object class="GtkVBox" id="vbox2">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="homogeneous">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">start</property>
                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                     <child>
-                      <object class="GtkCheckButton" id="easyCheckButton">
+                      <object class="GtkRadioButton" id="easyRadioButton">
                         <property name="label" translatable="yes">_Easy</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -220,7 +157,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="mediumCheckButton">
+                      <object class="GtkRadioButton" id="mediumRadioButton">
                         <property name="label" translatable="yes">_Medium</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -236,7 +173,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="hardCheckButton">
+                      <object class="GtkRadioButton" id="hardRadioButton">
                         <property name="label" translatable="yes">_Hard</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -252,7 +189,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="very_hardCheckButton">
+                      <object class="GtkRadioButton" id="very_hardRadioButton">
                         <property name="label" translatable="yes">_Very Hard</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -270,81 +207,6 @@
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label6">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">Details</property>
-                <property name="wrap">True</property>
-                <attributes>
-                  <attribute name="style" value="italic"/>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">4</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkAlignment" id="alignment3">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="left_padding">24</property>
-                <child>
-                  <object class="GtkVBox" id="vbox3">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <child>
-                      <object class="GtkCheckButton" id="markAsPlayedToggle">
-                        <property name="label" translatable="yes">_Mark games as played once you've printed them.</property>
-                        <property name="visible">True</property>
-                        <property name="sensitive">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="draw_indicator">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">False</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkCheckButton" id="includeOldGamesToggle">
-                        <property name="label" translatable="yes">_Include games you've already played in list of games to print</property>
-                        <property name="visible">True</property>
-                        <property name="sensitive">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="draw_indicator">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">False</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">5</property>
-              </packing>
             </child>
           </object>
           <packing>
