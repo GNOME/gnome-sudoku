@@ -728,7 +728,7 @@ public class ParallelDict {
     }
 }
 
-public enum DifficultyCatagory {
+public enum DifficultyCategory {
     EASY,
     MEDIUM,
     HARD,
@@ -830,16 +830,16 @@ public class DifficultyRating {
         return rating >= range[0] && rating < range[1];
     }
 
-    public DifficultyCatagory get_catagory ()
+    public DifficultyCategory get_category ()
     {
         if (in_range(EASY_RANGE))
-            return DifficultyCatagory.EASY;
+            return DifficultyCategory.EASY;
         else if (in_range(MEDIUM_RANGE))
-            return DifficultyCatagory.MEDIUM;
+            return DifficultyCategory.MEDIUM;
         else if (in_range(HARD_RANGE))
-            return DifficultyCatagory.HARD;
+            return DifficultyCategory.HARD;
         else if (in_range(VERY_HARD_RANGE))
-            return DifficultyCatagory.VERY_HARD;
+            return DifficultyCategory.VERY_HARD;
         else
             assert_not_reached();
     }

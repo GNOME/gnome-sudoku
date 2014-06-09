@@ -216,7 +216,7 @@ public class Sudoku : Gtk.Application
             start_game (savegame.board);
         else
         {
-            var random_difficulty = (DifficultyCatagory) Random.int_range (0, 4);
+            var random_difficulty = (DifficultyCategory) Random.int_range (0, 4);
             start_game (sudoku_store.get_random_board (random_difficulty));
         }
 
@@ -244,7 +244,7 @@ public class Sudoku : Gtk.Application
             grid_box.remove (view);
         }
 
-        header_bar_subtitle = rating.get_catagory ().to_string ();
+        header_bar_subtitle = rating.get_category ().to_string ();
         back_cb ();
 
         game = new SudokuGame (board);
@@ -286,13 +286,13 @@ public class Sudoku : Gtk.Application
                 switch (response_id)
                 {
                     case 0:
-                        start_game (sudoku_store.get_random_board (rating.get_catagory ()));
+                        start_game (sudoku_store.get_random_board (rating.get_category ()));
                         break;
                     case 1:
-                        DifficultyCatagory[] new_range = {};
+                        DifficultyCategory[] new_range = {};
                         for (var i = 0; i < 4; i++)
-                            if (i != (int) rating.get_catagory ())
-                                new_range += (DifficultyCatagory) i;
+                            if (i != (int) rating.get_category ())
+                                new_range += (DifficultyCategory) i;
 
                         start_game (sudoku_store.get_random_board (new_range[Random.int_range (0, 3)]));
                         break;

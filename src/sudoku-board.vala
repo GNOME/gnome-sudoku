@@ -74,18 +74,18 @@ public class SudokuBoard
         return (difficulty_rating >= range[0] && difficulty_rating < range[1]);
     }
 
-    public DifficultyCatagory get_difficulty_catagory ()
+    public DifficultyCategory get_difficulty_category ()
     {
         if (in_range(DifficultyRating.EASY_RANGE))
-            return DifficultyCatagory.EASY;
+            return DifficultyCategory.EASY;
         else if (in_range(DifficultyRating.MEDIUM_RANGE))
-            return DifficultyCatagory.MEDIUM;
+            return DifficultyCategory.MEDIUM;
         else if (in_range(DifficultyRating.HARD_RANGE))
-            return DifficultyCatagory.HARD;
+            return DifficultyCategory.HARD;
         else if (in_range(DifficultyRating.VERY_HARD_RANGE))
-            return DifficultyCatagory.VERY_HARD;
+            return DifficultyCategory.VERY_HARD;
         else
-            return DifficultyCatagory.EASY;
+            return DifficultyCategory.EASY;
     }
 
     public signal void completed ();

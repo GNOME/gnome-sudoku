@@ -76,7 +76,7 @@ public class SudokuPrinter : GLib.Object {
         foreach (SudokuBoard sudoku in sudokus_on_page)
         {
             if (n_sudokus > 1)
-                label = sudoku.get_difficulty_catagory ().to_string () + " (" + sudoku.difficulty_rating.to_string ()[0:4] + ")";
+                label = sudoku.get_difficulty_category ().to_string () + " (" + sudoku.difficulty_rating.to_string ()[0:4] + ")";
             else
                 label = "";
             cr.set_font_size (12);
@@ -297,15 +297,15 @@ public class GamePrinter: GLib.Object {
         very_hard_button = builder.get_object ("very_hardRadioButton") as RadioButton;
         very_hard_button.join_group (easy_button);
 
-        var saved_difficulty = (DifficultyCatagory) settings.get_enum (DIFFICULTY_KEY_NAME);
+        var saved_difficulty = (DifficultyCategory) settings.get_enum (DIFFICULTY_KEY_NAME);
 
-        if (saved_difficulty == DifficultyCatagory.EASY)
+        if (saved_difficulty == DifficultyCategory.EASY)
             easy_button.set_active (true);
-        else if (saved_difficulty == DifficultyCatagory.MEDIUM)
+        else if (saved_difficulty == DifficultyCategory.MEDIUM)
             medium_button.set_active (true);
-        else if (saved_difficulty == DifficultyCatagory.HARD)
+        else if (saved_difficulty == DifficultyCategory.HARD)
             hard_button.set_active (true);
-        else if (saved_difficulty == DifficultyCatagory.VERY_HARD)
+        else if (saved_difficulty == DifficultyCategory.VERY_HARD)
             very_hard_button.set_active (true);
 
         nsudokus_button = builder.get_object ("sudokusToPrintSpinButton") as SpinButton;
@@ -327,16 +327,16 @@ public class GamePrinter: GLib.Object {
         }
 
         var nsudokus = (int) nsudokus_button.get_adjustment ().get_value ();
-        DifficultyCatagory level;
+        DifficultyCategory level;
 
         if (easy_button.get_active ())
-            level = DifficultyCatagory.EASY;
+            level = DifficultyCategory.EASY;
         else if (medium_button.get_active ())
-            level = DifficultyCatagory.MEDIUM;
+            level = DifficultyCategory.MEDIUM;
         else if (hard_button.get_active ())
-            level = DifficultyCatagory.HARD;
+            level = DifficultyCategory.HARD;
         else if (very_hard_button.get_active ())
-            level = DifficultyCatagory.VERY_HARD;
+            level = DifficultyCategory.VERY_HARD;
         else
             assert_not_reached ();
 

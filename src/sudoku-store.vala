@@ -95,15 +95,15 @@ public class SudokuStore
         return very_hard_boards[Random.int_range(0, very_hard_boards.size)];
     }
 
-    public SudokuBoard get_random_board(DifficultyCatagory catagory)
+    public SudokuBoard get_random_board(DifficultyCategory category)
     {
-        if (catagory == DifficultyCatagory.EASY)
+        if (category == DifficultyCategory.EASY)
             return get_random_easy_board();
-        else if (catagory == DifficultyCatagory.MEDIUM)
+        else if (category == DifficultyCategory.MEDIUM)
             return get_random_medium_board();
-        else if (catagory == DifficultyCatagory.HARD)
+        else if (category == DifficultyCategory.HARD)
             return get_random_hard_board();
-        else if (catagory == DifficultyCatagory.VERY_HARD)
+        else if (category == DifficultyCategory.VERY_HARD)
             return get_random_very_hard_board();
         else
             assert_not_reached();
@@ -111,7 +111,7 @@ public class SudokuStore
 
     // Get boards sorted ascending based on difficulty rating
     // i.e. - the first board returned will be the easiest, and boards will become increasingly harder
-    public SudokuBoard[] get_boards_sorted (int number_of_boards, DifficultyCatagory level, bool exclude_finished = false)
+    public SudokuBoard[] get_boards_sorted (int number_of_boards, DifficultyCategory level, bool exclude_finished = false)
     {
         var boards = new ArrayList<SudokuBoard> ();
         SudokuBoard[] sorted_boards = {};
