@@ -266,6 +266,7 @@ public class Sudoku : Gtk.Application
 
         game.board.completed.connect (() => {
             var time = game.get_total_time_played ();
+            var time_str = SudokuGame.seconds_to_hms_string (time);
 
             for (var i = 0; i < game.board.rows; i++)
             {
@@ -277,7 +278,7 @@ public class Sudoku : Gtk.Application
 
             saver.add_game_to_finished (game, true);
 
-            var dialog = new MessageDialog(window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, _("Well done, you completed the puzzle in %f seconds"), time);
+            var dialog = new MessageDialog(window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, _("Well done, you completed the puzzle in %s"), time_str);
 
             dialog.add_button (_("Same difficulty again"), 0);
             dialog.add_button (_("New difficulty"), 1);
