@@ -148,6 +148,8 @@ public class Sudoku : Gtk.Application
 
         back_button = (Button) builder.get_object ("back_button");
 
+        var control_sizegroup = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
+
         var clear_button = new Gtk.Button ();
         var clear_label = new Gtk.Label.with_mnemonic (_("_Clear Board"));
         clear_label.margin = 10;
@@ -158,6 +160,7 @@ public class Sudoku : Gtk.Application
         clear_button.tooltip_text = _("Reset the board to its original state");
         clear_button.show_all ();
         controls_box.pack_end (clear_button, false, false, 0);
+        control_sizegroup.add_widget (clear_button);
 
         var new_button = new Gtk.Button ();
         var new_label = new Gtk.Label.with_mnemonic (_("_New Puzzle"));
@@ -169,6 +172,7 @@ public class Sudoku : Gtk.Application
         new_button.tooltip_text = _("Start a new puzzle");
         new_button.show_all ();
         controls_box.pack_end (new_button, false, false, 0);
+        control_sizegroup.add_widget (new_button);
 
         undo_action = (SimpleAction) lookup_action ("undo");
         redo_action = (SimpleAction) lookup_action ("redo");
