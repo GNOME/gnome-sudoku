@@ -25,16 +25,6 @@ public class Sudoku : Gtk.Application
     private Box undo_redo_box;
     private Button back_button;
 
-    private Box easy_grid;
-    private Box medium_grid;
-    private Box hard_grid;
-    private Box very_hard_grid;
-
-    private SudokuView easy_preview;
-    private SudokuView medium_preview;
-    private SudokuView hard_preview;
-    private SudokuView very_hard_preview;
-
     private SudokuStore sudoku_store;
     private SudokuSaver saver;
 
@@ -49,6 +39,7 @@ public class Sudoku : Gtk.Application
     private const GLib.ActionEntry action_entries[] =
     {
         {"new-game", new_game_cb                                    },
+        {"start-game", start_game_cb, "i"                           },
         {"reset", reset_cb                                          },
         {"back", back_cb                                            },
         {"undo", undo_cb                                            },
@@ -182,39 +173,6 @@ public class Sudoku : Gtk.Application
         saver = new SudokuSaver ();
         //SudokuGenerator gen = new SudokuGenerator();
 
-        easy_grid = (Box) builder.get_object ("easy_grid");
-        medium_grid = (Box) builder.get_object ("medium_grid");
-        hard_grid = (Box) builder.get_object ("hard_grid");
-        very_hard_grid = (Box) builder.get_object ("very_hard_grid");
-
-        easy_grid.button_press_event.connect ((event) => {
-            if (event.button == 1)
-                start_game (easy_preview.game.board);
-
-            return false;
-        });
-
-        medium_grid.button_press_event.connect ((event) => {
-            if (event.button == 1)
-                start_game (medium_preview.game.board);
-
-            return false;
-        });
-
-        hard_grid.button_press_event.connect ((event) => {
-            if (event.button == 1)
-                start_game (hard_preview.game.board);
-
-            return false;
-        });
-
-        very_hard_grid.button_press_event.connect ((event) => {
-            if (event.button == 1)
-                start_game (very_hard_preview.game.board);
-
-            return false;
-        });
-
         var savegame = saver.get_savedgame ();
         if (savegame != null)
             start_game (savegame.board);
@@ -318,34 +276,16 @@ public class Sudoku : Gtk.Application
         header_bar_subtitle = header_bar.get_subtitle ();
         header_bar.set_subtitle (null);
         print_action.set_enabled (false);
+    }
 
-        if (easy_preview != null)
-            easy_preview.destroy ();
-        var easy_board = sudoku_store.get_random_easy_board ();
-        easy_preview = new SudokuView (new SudokuGame (easy_board), true);
-        easy_preview.show ();
-        easy_grid.pack_start (easy_preview);
-
-        if (medium_preview != null)
-            medium_preview.destroy ();
-        var medium_board = sudoku_store.get_random_medium_board ();
-        medium_preview = new SudokuView (new SudokuGame (medium_board), true);
-        medium_preview.show ();
-        medium_grid.pack_start (medium_preview);
-
-        if (hard_preview != null)
-            hard_preview.destroy ();
-        var hard_board = sudoku_store.get_random_hard_board ();
-        hard_preview = new SudokuView (new SudokuGame (hard_board), true);
-        hard_preview.show ();
-        hard_grid.pack_start (hard_preview);
-
-        if (very_hard_preview != null)
-            very_hard_preview.destroy ();
-        var very_hard_board = sudoku_store.get_random_very_hard_board ();
-        very_hard_preview = new SudokuView (new SudokuGame (very_hard_board), true);
-        very_hard_preview.show ();
-        very_hard_grid.pack_start (very_hard_preview);
+    private void start_game_cb (SimpleAction action, Variant? difficulty)
+    {
+        // Since we cannot have enums in .ui file, the 'action-target' property
+        // of new game buttons in data/gnome-sudoku.ui
+        // has been set to integers corresponding to the enums.
+        // Following line converts those ints to their DifficultyCategory
+        var selected_difficulty = (DifficultyCategory) difficulty.get_int32 ();
+        start_game (sudoku_store.get_random_board (selected_difficulty));
     }
 
     private void reset_cb ()
