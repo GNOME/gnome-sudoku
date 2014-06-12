@@ -68,7 +68,7 @@ public class SudokuPrinter : GLib.Object {
         var end = int.min ((start + SUDOKUS_PER_PAGE), boards.length);
         SudokuBoard[] sudokus_on_page = boards[start : end];
 
-        double left = margin;
+        double left = (width - best_square_size) / 2;
         double top = margin;
         int[] pos = {1, 1};
         var label = "";
@@ -76,7 +76,7 @@ public class SudokuPrinter : GLib.Object {
         foreach (SudokuBoard sudoku in sudokus_on_page)
         {
             if (n_sudokus > 1)
-                label = sudoku.get_difficulty_category ().to_string () + " (" + sudoku.difficulty_rating.to_string ()[0:4] + ")";
+                label = sudoku.get_difficulty_category ().to_string ();
             else
                 label = "";
             cr.set_font_size (12);
@@ -84,20 +84,16 @@ public class SudokuPrinter : GLib.Object {
             cr.set_source_rgb (0, 0, 0);
             Cairo.TextExtents extents;
             cr.text_extents (label, out extents);
-            cr.move_to (left, top - extents.height / 2);
+            cr.move_to ((width - extents.width) / 2, top - extents.height / 2);
             cr.show_text (label);
 
             draw_sudoku (cr, sudoku, best_square_size, left, top);
 
             if (pos[0] < best_fit)
-            {
-                left = left + best_square_size + margin;
                 pos[0] += 1;
-            }
             else
             {
-                top = top + best_square_size + margin;
-                left = margin;
+                top = top + best_square_size + (2 * margin);
                 pos[0] = 1;
                 pos[1] += 1;
             }
