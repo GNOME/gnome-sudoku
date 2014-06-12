@@ -66,17 +66,16 @@ public class SudokuGame
     public void reset ()
     {
         timer.reset();
-        var count = board.filled;
+        undostack = null;
+        redostack = null;
         for (var l1 = 0; l1 < board.rows; l1++)
         {
             for (var l2 = 0; l2 < board.cols; l2++)
             {
                 if (!board.is_fixed[l1, l2])
-                    remove (l1, l2);
+                    board.remove (l1, l2);
             }
         }
-        count -= board.filled;
-        add_to_stack (ref undostack, -1, -1, count);
     }
 
     public void cell_changed_cb (int row, int col, int old_val, int new_val)
