@@ -60,9 +60,7 @@ public class SudokuPrinter : GLib.Object {
         var width = context.get_width ();
         var height = context.get_height ();
 
-        var best_values = fit_squares_in_rectangle (width, height, margin);
-        var best_fit = best_values[0];
-        var best_square_size = best_values[1];
+        var best_square_size = fit_squares_in_rectangle (width, height, margin);
 
         var start = page_nr * SUDOKUS_PER_PAGE;
         var end = int.min ((start + SUDOKUS_PER_PAGE), boards.length);
@@ -70,15 +68,10 @@ public class SudokuPrinter : GLib.Object {
 
         double left = (width - best_square_size) / 2;
         double top = margin;
-        int[] pos = {1, 1};
-        var label = "";
 
         foreach (SudokuBoard sudoku in sudokus_on_page)
         {
-            if (n_sudokus > 1)
-                label = sudoku.get_difficulty_category ().to_string ();
-            else
-                label = "";
+            var label = sudoku.get_difficulty_category ().to_string ();
             cr.set_font_size (12);
             cr.select_font_face ("Sans", Cairo.FontSlant.NORMAL, Cairo.FontWeight.BOLD);
             cr.set_source_rgb (0, 0, 0);
@@ -89,48 +82,30 @@ public class SudokuPrinter : GLib.Object {
 
             draw_sudoku (cr, sudoku, best_square_size, left, top);
 
-            if (pos[0] < best_fit)
-                pos[0] += 1;
-            else
-            {
-                top = top + best_square_size + (2 * margin);
-                pos[0] = 1;
-                pos[1] += 1;
-            }
+            top += best_square_size + (2 * margin);
         }
     }
 
-    private double[] fit_squares_in_rectangle (double width, double height, int margin)
+    private double fit_squares_in_rectangle (double width, double height, int margin)
     {
         var n = SUDOKUS_PER_PAGE;
         var best_square_size = 0.0;
-        double[] best_fit = {0,0};
         var square_size = 0.0;
 
         for (var n_across = 1; n_across <= n; n_across++)
         {
-            double n_down = n / n_across + ((n % n_across) & 1);
+            double n_down = n / n_across;
             double across_size = width - ((n_across + 1) * margin);
             across_size = across_size / n_across;
             double down_size = height - ((n_down + 1) * margin);
             down_size = down_size / n_down;
 
-            if (across_size < down_size)
-            {
-                square_size = across_size;
-            }
-            else
-            {
-                square_size = down_size;
-            }
+            square_size = double.min (across_size, down_size);
             if (square_size > best_square_size)
-            {
                 best_square_size = square_size;
-                best_fit = {n_across, best_square_size};
-            }
         }
 
-        return best_fit;
+        return best_square_size;
     }
 
     private void draw_sudoku (Cairo.Context cr, SudokuBoard sudoku_board, double size, double offset_x, double offset_y)
