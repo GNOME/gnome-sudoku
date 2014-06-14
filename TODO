@@ -1,8 +1,6 @@
 about dialog: update copyright person/year
 about dialog: artwork has "placeholder"
 
-Undo/redo are clickable, even before starting a game
-
 The first number of a game is not updated on the screen before the selector is moved to a different place.
 
 The ingame Help: (I like it!)
@@ -28,27 +26,5 @@ mcatanzaro: We're removing Fullscreen from most other games because it usually
             looks pretty bad. Games maximized with the header bar usually fit
             nicely against the top bar of the shell, which is probably
             sufficient. I'm also not sure if highlighter is really desirable.
-
-Known Bugs -
-- Once the number pad is brought up, it does not get hidden unless a button on it is clicked
-  (http://i.imgur.com/FDLukf2.png)
-  Will be resolved when the Popup window is replaced by popover
-
-mcatanzaro: This number pad was from an earlier design; I think we can remove
-            it completely.
-
-- The preview window does not resize to it's original size (the size at startup) after 'New Game' is clicked.
-
-- Sudoku master has total 19 menu options (8 in 'Game', 5 in 'Settings', 4 in 'Tools', 2 in 'Help')
-  Current vala-port design and mockups have only one panel menu and it cannot accomodate all the 19 options
-  Ask aday about this.
-
-- Mockups have alloted a separate place for notes.
-  This is totally different than the current design (top, bottom notes for each cell).
-  Ask aday about this.
-
-- No icon is displayed in panel for vala-port
-
-- Message Dialogs haven't been ported. Port gtk_goodies/dialog_extras.py
 
 - Are translations working? I think translations are probably not working, don't we need to bindtextdomain etc?
