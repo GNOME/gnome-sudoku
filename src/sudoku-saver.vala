@@ -207,6 +207,11 @@ public class SudokuSaver : Object
         board.previous_played_time = reader.get_double_value ();
         reader.end_member ();
 
+        reader.read_member ("difficulty_rating");
+        return_val_if_fail (reader.is_value (), null);
+        board.difficulty_rating = reader.get_double_value ();
+        reader.end_member ();
+
         return new SudokuGame (board);
     }
 }

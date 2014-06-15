@@ -67,7 +67,7 @@ public class SudokuBoard : Object
         get { return _filled == _cols * _rows && !broken; }
     }
 
-    public double difficulty_rating { get; private set; }
+    public double difficulty_rating;
 
     private bool in_range (float[] range)
     {
