@@ -1,30 +1,7 @@
 about dialog: update copyright person/year
 about dialog: artwork has "placeholder"
 
-The first number of a game is not updated on the screen before the selector is moved to a different place.
-
-The ingame Help: (I like it!)
-  Should maybe have different name. Help is the common word for opening the help manual.
-  Left align the text
-  Perhaps start with a general description of the method, instead of repeating the same sentence for each line.
-
-mcatanzaro: Too confusing in general:
- * 9 is the only possibility in 2, 0.  What is 2, 0? It's only obvious that
-   they're coordinates to a technical user, and even then, are we counting from
-   the top-left (computer programmer style) or the bottom left (which is what
-   most other people will try)
- * Just saying "naked subset" three times in a row is confusing. You have to
-   mouse over the text to see anything, and even then there's no explanation of
-   what it is.
-
 Currently we only read sudokus from data files:
   We need to complete the port of SudokuGenerator class to be able to generate sudokus as desired.
 
-Port fullscreen mode feature, highlighter feature
-
-mcatanzaro: We're removing Fullscreen from most other games because it usually
-            looks pretty bad. Games maximized with the header bar usually fit
-            nicely against the top bar of the shell, which is probably
-            sufficient. I'm also not sure if highlighter is really desirable.
-
-- Are translations working? I think translations are probably not working, don't we need to bindtextdomain etc?
+Replace highlighter: lightly shade the current row/column
