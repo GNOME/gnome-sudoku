@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-01-12 17:47+0000\n"
-"PO-Revision-Date: 2014-01-12 20:36+0200\n"
+"POT-Creation-Date: 2014-06-22 07:33+0000\n"
+"PO-Revision-Date: 2014-06-22 17:38+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -27,17 +27,21 @@ msgstr ""
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
+#| msgid ""
+#| "GNOME Sudoku has a simple, unobstrusive interface with all the features "
+#| "that make playing Sudoku fun. Games are automatically saved when you "
+#| "quit, and you can always come back to any game that you've played."
 msgid ""
-"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
+"GNOME Sudoku has a simple, unobtrusive interface with all the features that "
 "make playing Sudoku fun. Games are automatically saved when you quit, and "
 "you can always come back to any game that you've played."
 msgstr ""
-"GNOME sudoku yra paprasta, netrukdanti sąsaja su visomis savybėmis, kurių "
+"GNOME Sudoku yra paprasta, netrukdanti sąsaja su visomis savybėmis, kurių "
 "reikia smagiam Sudoku. Žaidimai yra automatiškai įrašomi išeinant, tad "
 "galite bet kada sugrįžti prie jau žaisto žaidimo."
 
@@ -62,7 +66,8 @@ msgstr ""
 "žaidimus norite spausdinti: taip GNOME sudoku gali būti jums atsinaujinančia "
 "sudoku knyga."
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:437
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -71,127 +76,172 @@ msgid "Test your logic skills in this number grid puzzle"
 msgstr "Išmėgink savo loginį mąstymą šioje skaičių dėlionėje"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "žaidimas;lenta;kokliai;japonų;"
+msgid "magic;square;"
+msgstr "magiškas;kvadratas;"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
-msgid "The number of seconds between automatic saves"
-msgstr "Sekundžių skaičius tarp automatinių įrašymų"
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+#| msgid "_Print..."
+msgid "_Print"
+msgstr "S_pausdinti"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
-msgid "Print games that have been played"
-msgstr "Spausdinti žaidimus, kuriuos žaidėte"
+#: ../data/gnome-sudoku-menu.ui.h:2
+#| msgid "There is no current puzzle."
+msgid "Print _Current Puzzle…"
+msgstr "Spausdinti dabartinį galvosūkį…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
-msgid "Mark printed games as played"
-msgstr "Žymėti atspausdintus žaidimus žaistais"
+#: ../data/gnome-sudoku-menu.ui.h:3
+#| msgid "Print _Multiple Sudokus..."
+msgid "Print _Multiple Puzzles…"
+msgstr "Spausdinti _keletą galvosūkių…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
-msgid "Width of application window in pixels"
-msgstr "Programos lango plotis pikseliais"
+#: ../data/gnome-sudoku-menu.ui.h:4
+#| msgid "Warn About _Unfillable Squares"
+msgid "_Warn About Unfillable Squares"
+msgstr "Perspėti apie ne_užpildomus kvadratus"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
-msgid "Height of application window in pixels"
-msgstr "Programos lango aukštis pikseliais"
+#: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Help"
+msgstr "_Žinynas"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
+#: ../data/gnome-sudoku-menu.ui.h:6
+msgid "_About"
+msgstr "_Apie"
+
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_Quit"
+msgstr "Išeiti"
+
+#: ../data/gnome-sudoku.ui.h:2
+#| msgid "Undo last action"
+msgid "Undo your last action"
+msgstr "Atšaukti paskutinį veiksmą"
+
+#: ../data/gnome-sudoku.ui.h:3
+#| msgid "Redo last action"
+msgid "Redo your last action"
+msgstr "Pakartoti paskutinį veiksmą"
+
+#: ../data/gnome-sudoku.ui.h:4
+msgid "Go back to the current game"
+msgstr "Grįžti prie dabartinio žaidimo"
+
+#: ../data/gnome-sudoku.ui.h:5
+msgid "Easy"
+msgstr "Lengva"
+
+#: ../data/gnome-sudoku.ui.h:6
+msgid "Medium"
+msgstr "Vidutiniškai"
+
+#: ../data/gnome-sudoku.ui.h:7
+msgid "Hard"
+msgstr "Sunku"
+
+#: ../data/gnome-sudoku.ui.h:8
+msgid "Very Hard"
+msgstr "Labai sunku"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Show hint highlights"
 msgstr "Rodyti patarimų paryškinimus"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
-msgid "Color of the grid border"
-msgstr "Tinklelio rėmelio spalva"
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+#| msgid "Warn About _Unfillable Squares"
+msgid "Warn about unfillable squares"
+msgstr "Perspėti apie ne_užpildomus kvadratus"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
-msgid "Show the application toolbar"
-msgstr "Rodyti programos įrankinę"
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number"
+msgstr ""
+"Rodo didelį raudoną X kvadrate, jei jo neįmanoma užpildyti jokių skaičiumi"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
-msgid "Show hints"
-msgstr "Rodyti patarimus"
+#: ../data/print-games.ui.h:1
+#| msgid "Print _Multiple Sudokus..."
+msgid "Print Multiple Puzzles"
+msgstr "Spausdinti _keletą galvosūkių"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
-#| msgid "_Number of sudoku to print: "
-msgid "Number of puzzles to print on a page"
-msgstr "Spausdinamų galvosūkių skaičius puslapyje"
+#: ../data/print-games.ui.h:3
+msgid "_Cancel"
+msgstr "_Atsisakyti"
 
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "Spausdinti Sudoku"
+#: ../data/print-games.ui.h:4
+#| msgid "Number of puzzles to print on a page"
+msgid "_Number of puzzles"
+msgstr "Spausdinamų _galvosūkių skaičius"
 
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "Spausdinti žaidimus"
+#: ../data/print-games.ui.h:5
+msgid "Difficulty"
+msgstr "Sudėtingumas"
 
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "_Spausdintinų Sudoku skaičius: "
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "_Sudoku skaičius puslapyje: "
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "Sudėtingumo lygiai spausdinimui"
-
-#: ../data/print_games.ui.h:6
+#: ../data/print-games.ui.h:6
 msgid "_Easy"
 msgstr "_Lengva"
 
-#: ../data/print_games.ui.h:7
+#: ../data/print-games.ui.h:7
 msgid "_Medium"
 msgstr "_Vidutinis"
 
-#: ../data/print_games.ui.h:8
+#: ../data/print-games.ui.h:8
 msgid "_Hard"
 msgstr "_Sunku"
 
-#: ../data/print_games.ui.h:9
+#: ../data/print-games.ui.h:9
 msgid "_Very Hard"
 msgstr "_Labai sunku"
 
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "Išsamiau"
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:67
+msgid "Show release version"
+msgstr "Rodyti leidimo versiją"
 
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "_Atspausdinus žaidimus juos pažymėti kaip žaistus."
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:71
+msgid "Show the possible values for each cell"
+msgstr "Rodyti galimas kiekvieno langelio vertes"
 
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr "Į_traukti jau žaistus žaidimus į spausdintinų žaidimų sąrašą"
+#: ../src/gnome-sudoku.vala:154
+#| msgid "_Clear"
+msgid "_Clear Board"
+msgstr "Iš_valyti lentą"
 
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "_Naujas žaidimas"
+#: ../src/gnome-sudoku.vala:160
+msgid "Reset the board to its original state"
+msgstr "Atstatyti lentos pradinę būseną"
 
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "Iš_saugoti žaidimai"
+#: ../src/gnome-sudoku.vala:166
+#| msgid "_New Game"
+msgid "_New Puzzle"
+msgstr "_Naujas galvosūkis"
 
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "Pridėti naują seklį"
+#: ../src/gnome-sudoku.vala:172
+#| msgid "Hard puzzle"
+msgid "Start a new puzzle"
+msgstr "Pradėti naują galvosūkį"
 
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "Pašalinti pasirinktą sekiklį"
+#: ../src/gnome-sudoku.vala:285
+#, c-format
+#| msgid "You completed the puzzle in %d second"
+#| msgid_plural "You completed the puzzle in %d seconds"
+msgid "Well done, you completed the puzzle in %s"
+msgstr "Šaunu, išsprendėte galvosūkį per %s"
 
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "Padaryti sekamus pakeitimus nuolatiniais"
+#: ../src/gnome-sudoku.vala:287
+#| msgid "Calculated difficulty: "
+msgid "Same difficulty again"
+msgstr "Dar kartą tą patį sudėtingumą"
 
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
-msgid "H_ide"
-msgstr "S_lėpti"
+#: ../src/gnome-sudoku.vala:288
+#| msgid "Calculated difficulty: "
+msgid "New difficulty"
+msgstr "Naujas sudėtingumas"
 
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "Slėpti sekamas reikšmes"
+#: ../src/gnome-sudoku.vala:353
+msgid "Reset the board to its original state?"
+msgstr "Atstatyti lentos pradinę būseną?"
 
-#: ../src/lib/defaults.py:50
+#: ../src/gnome-sudoku.vala:440
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -201,336 +251,7 @@ msgstr ""
 "\n"
 "GNOME Sudoku yra GNOME Games dalis."
 
-#: ../src/lib/defaults.py:53
-msgid "Website"
-msgstr "Tinklapis"
-
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "Lengva"
-
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "Vidutiniškai"
-
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "Sunku"
-
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "Labai sunku"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "Paskutinį kartą žaista prieš %(n)s sekundę"
-msgstr[1] "Paskutinį kartą žaista prieš %(n)s sekundes"
-msgstr[2] "Paskutinį kartą žaista prieš %(n)s sekundžių"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "Paskutinį kartą žaista prieš %(n)s minutę"
-msgstr[1] "Paskutinį kartą žaista prieš %(n)s minutes"
-msgstr[2] "Paskutinį kartą žaista prieš %(n)s minučių"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "Paskutinį kartą žaista %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "Paskutinį kartą žaista vakar %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "Paskutinį kartą žaista %A %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "Paskutinį kartą žaista %B %e %Y"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "Lengvas galvosūkis"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "Vidutinis galvosūkis"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "Sunkus galvosūkis"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "Labai sunkus galvosūkis"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "Žaista %d valandą"
-msgstr[1] "Žaista %d valandas"
-msgstr[2] "Žaista %d valandų"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "Žaista %d minutę"
-msgstr[1] "Žaista %d minutes"
-msgstr[2] "Žaista %d minučių"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "Žaista %d sekundę"
-msgstr[1] "Žaista %d sekundes"
-msgstr[2] "Žaista %d sekundžių"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "Ar tikrai norite tai padaryti?"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "Daugiau manęs to nebeklausti."
-
-#: ../src/lib/main.py:196
-msgid "_Game"
-msgstr "Ž_aidimas"
-
-#: ../src/lib/main.py:197
-msgid "New game"
-msgstr "Naujas žaidimas"
-
-#: ../src/lib/main.py:198
-msgid "_Reset"
-msgstr "_Atstatyti"
-
-#: ../src/lib/main.py:200
-msgid "_Undo"
-msgstr "_Atšaukti"
-
-#: ../src/lib/main.py:201
-msgid "Undo last action"
-msgstr "Atšaukti paskutinį ėjimą"
-
-#: ../src/lib/main.py:202
-msgid "_Redo"
-msgstr "_Pakartoti"
-
-#: ../src/lib/main.py:203
-msgid "Redo last action"
-msgstr "Pakartoti paskutinį ėjimą"
-
-#: ../src/lib/main.py:204
-msgid "Puzzle _Statistics..."
-msgstr "Galvosūkio _statistika..."
-
-#: ../src/lib/main.py:206
-msgid "_Print..."
-msgstr "S_pausdinti..."
-
-#: ../src/lib/main.py:207
-msgid "Print _Multiple Sudokus..."
-msgstr "Spausdinti _keletą Sudoku..."
-
-#: ../src/lib/main.py:210
-msgid "_Settings"
-msgstr "_Nustatymai"
-
-#: ../src/lib/main.py:212
-msgid "_Tools"
-msgstr "Įra_nkiai"
-
-#: ../src/lib/main.py:213
-msgid "_Hint"
-msgstr "_Užuomina"
-
-#: ../src/lib/main.py:214
-msgid "Show a square that is easy to fill."
-msgstr "Parodyti kvadratą, kurį lengva užpildyti."
-
-#: ../src/lib/main.py:215
-msgid "Clear _Top Notes"
-msgstr "Išvalyti _viršutines pastabas"
-
-#: ../src/lib/main.py:217
-msgid "Clear _Bottom Notes"
-msgstr "Išvalyti _apatines pastabas"
-
-#: ../src/lib/main.py:219
-msgid "_Help"
-msgstr "_Žinynas"
-
-#: ../src/lib/main.py:220
-msgid "_Contents"
-msgstr "_Turinys"
-
-#: ../src/lib/main.py:226
-msgid "Show _Possible Numbers"
-msgstr "Rodyti _galimus skaičius"
-
-#: ../src/lib/main.py:228
-msgid "Always show possible numbers in a square"
-msgstr "Visada rodyti kvadratuose tinkančius skaičius"
-
-#: ../src/lib/main.py:232
-msgid "Warn About _Unfillable Squares"
-msgstr "Perspėti apie ne_užpildomus kvadratus"
-
-#: ../src/lib/main.py:234
-msgid "Warn about squares made unfillable by a move"
-msgstr ""
-"Perspėti apie kvadratus, kurių po paskutiniojo ėjimo nebeįmanoma užpildyti"
-
-#: ../src/lib/main.py:236
-msgid "_Track Additions"
-msgstr "_Sekti pridėjimus"
-
-#: ../src/lib/main.py:238
-msgid "Mark new additions in a separate color so you can keep track of them."
-msgstr ""
-"Pažymėti naujus pridėjimus atskira spalva, kad juos būtų lengviau sekti."
-
-#: ../src/lib/main.py:240
-msgid "Show _Toolbar"
-msgstr "Rodyti įran_kių juostą"
-
-#: ../src/lib/main.py:241
-msgid "_Highlighter"
-msgstr "_Išryškinimas"
-
-#: ../src/lib/main.py:242
-msgid "Highlight the current row, column and box"
-msgstr "Išryškinti esamą eilutę, stulpelį ir dėžutę"
-
-#: ../src/lib/main.py:367
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "Išsprendėte galvosūkį per %d sekundę."
-msgstr[1] "Išsprendėte galvosūkį per %d sekundes."
-msgstr[2] "Išsprendėte galvosūkį per %d sekundžių."
-
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minutė"
-msgstr[1] "%d minutės"
-msgstr[2] "%d minučių"
-
-#: ../src/lib/main.py:373 ../src/lib/main.py:381
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d sekundė"
-msgstr[1] "%d sekundės"
-msgstr[2] "%d sekundžių"
-
-#: ../src/lib/main.py:374
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "Išsprendėte galvosūkį per %(minute)s and %(second)s"
-
-#: ../src/lib/main.py:379
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d valanda"
-msgstr[1] "%d valandos"
-msgstr[2] "%d valandų"
-
-#: ../src/lib/main.py:382
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "Išsprendėte galvosūkį per %(hour)s, %(minute)s ir %(second)s"
-
-#: ../src/lib/main.py:384
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "Gavote %(n)s patarimą."
-msgstr[1] "Gavote %(n)s patarimus."
-msgstr[2] "Gavote %(n)s patarimų."
-
-#: ../src/lib/main.py:387
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "Parodyta %(n)s prieštaringa situacija"
-msgstr[1] "Parodytos %(n)s prieštaringos situacijos"
-msgstr[2] "Parodyta %(n)s prieštaringų situacijų"
-
-#: ../src/lib/main.py:392
-msgid "You win!"
-msgstr "Jūs laimėjote!"
-
-#: ../src/lib/main.py:402
-msgid "Save this game before starting new one?"
-msgstr "Įrašyti šį žaidimą prieš pradedant naują?"
-
-#: ../src/lib/main.py:403
-msgid "_Save game for later"
-msgstr "_Įrašyti žaidimą vėlesniam laikui"
-
-#: ../src/lib/main.py:404
-msgid "_Abandon game"
-msgstr "_Palikti žaidimą"
-
-#: ../src/lib/main.py:422
-msgid "Save game before closing?"
-msgstr "Įrašyti žaidimą prieš užveriant?"
-
-#: ../src/lib/main.py:620
-msgid "Puzzle Information"
-msgstr "Galvosūkio informacija"
-
-#: ../src/lib/main.py:621
-msgid "There is no current puzzle."
-msgstr "Nėra esamo galvosūkio."
-
-#: ../src/lib/main.py:626
-msgid "Calculated difficulty: "
-msgstr "Apskaičiuotas sudėtingumas: "
-
-#: ../src/lib/main.py:631
-msgid "Very Hard"
-msgstr "Labai sunku"
-
-#: ../src/lib/main.py:636
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "Ėjimų, užpildomų atmetimo būdu, skaičius: "
-
-#: ../src/lib/main.py:639
-msgid "Number of moves instantly fillable by filling: "
-msgstr "Ėjimų, užpildomų užpildymo būdu, skaičius: "
-
-#: ../src/lib/main.py:642
-msgid "Amount of trial-and-error required to solve: "
-msgstr "Bandymų ir klaidų skaičius, reikalingas sprendimui: "
-
-#: ../src/lib/main.py:645 ../src/lib/main.py:646
-msgid "Puzzle Statistics"
-msgstr "Galvosūkio statistika"
-
-#: ../src/lib/main.py:670
+#: ../src/gnome-sudoku.vala:445
 msgid "translator-credits"
 msgstr ""
 "Paskutinieji vertėjai:\n"
@@ -541,85 +262,114 @@ msgstr ""
 "Tomas Kuliavas <tokul@users.sf.net>,\n"
 "Gediminas Paulauskas <menesis@chatsubo.lt>"
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:680
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "Nepavyko įkelti žinyno: %s"
+#: ../src/sudoku-game.vala:133
+#| msgid "%d second"
+#| msgid_plural "%d seconds"
+msgid "second"
+msgstr "sekundė"
 
-#: ../src/lib/main.py:736
-msgid "Untracked"
-msgstr "Nesekamas"
+#: ../src/sudoku-game.vala:134
+#| msgid "%d second"
+#| msgid_plural "%d seconds"
+msgid "seconds"
+msgstr "sekundės"
 
-#: ../src/lib/main.py:745
-msgid "_Remove"
-msgstr "_Šalinti"
+#: ../src/sudoku-game.vala:135
+#| msgid "%d minute"
+#| msgid_plural "%d minutes"
+msgid "minute"
+msgstr "minutės"
 
-#: ../src/lib/main.py:746
-msgid "Delete selected tracker."
-msgstr "Pašalinti pažymėtą sekiklį."
+#: ../src/sudoku-game.vala:136
+#| msgid "%d minute"
+#| msgid_plural "%d minutes"
+msgid "minutes"
+msgstr "minutės"
 
-#: ../src/lib/main.py:752
-msgid "Hide current tracker entries."
-msgstr "Slėpti dabartinius sekiklio įrašus."
+#: ../src/sudoku-game.vala:137
+#| msgid "%d hour"
+#| msgid_plural "%d hours"
+msgid "hour"
+msgstr "valanda"
 
-#: ../src/lib/main.py:757
-msgid "A_pply"
-msgstr "_Pritaikyti"
+#: ../src/sudoku-game.vala:138
+#| msgid "%d hour"
+#| msgid_plural "%d hours"
+msgid "hours"
+msgstr "valandos"
 
-#: ../src/lib/main.py:758
-msgid "Apply all tracked values and remove the tracker."
-msgstr "Pritaikyti visas sekamas reikšmes ir pašalinti sekiklį."
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:30
+#| msgid "Error creating directory"
+msgid "Error printing file:"
+msgstr "Klaida spausdinant failą:"
 
-#: ../src/lib/main.py:796
-#, python-format
-msgid "Tracker %s"
-msgstr "Sekiklis %s"
+#: ../src/sudoku-solver.vala:742
+msgid "Easy Difficulty"
+msgstr "Paprastas sudėtingumas"
 
-#: ../src/lib/number_box.py:82
-msgid "_Clear"
-msgstr "Iš_valyti"
+#: ../src/sudoku-solver.vala:744
+#| msgid "Calculated difficulty: "
+msgid "Medium Difficulty"
+msgstr "Vidutinis sudėtingumas"
 
-#: ../src/lib/saver.py:151
-msgid "No Space"
-msgstr "Nėra vietos"
+#: ../src/sudoku-solver.vala:746
+#| msgid "Calculated difficulty: "
+msgid "Hard Difficulty"
+msgstr "Sunkus sudėtingumas"
 
-#: ../src/lib/saver.py:152
-msgid "No space left on disk"
-msgstr "Diske neliko laisvos vietos"
+#: ../src/sudoku-solver.vala:748
+#| msgid "Very Hard"
+msgid "Very Hard Difficulty"
+msgstr "Labai sunkus sudėtingumas"
 
-#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "Nepavyko sukurti duomenų aplanko %(path)s."
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:859
+#| msgid "Number of moves instantly fillable by elimination: "
+msgid "Number of moves instantly fillable by elimination:"
+msgstr "Ėjimų, užpildomų atmetimo būdu, skaičius:"
 
-#: ../src/lib/saver.py:155
-msgid "There is no disk space left!"
-msgstr "Neliko vietos diske!"
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:861
+#| msgid "Number of moves instantly fillable by elimination: "
+msgid "Percentage of moves instantly fillable by elimination:"
+msgstr "Ėjimų, užpildomų atmetimo būdu, procentas:"
 
-#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
-msgid "Error creating directory"
-msgstr "Klaida kuriant aplanką"
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:863
+#| msgid "Number of moves instantly fillable by filling: "
+msgid "Number of moves instantly fillable by filling:"
+msgstr "Iš karto užpildomų ėjimų skaičius: "
 
-#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
-#: ../src/lib/saver.py:229
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "Klaida %(errno)s: %(error)s"
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:865
+#| msgid "Number of moves instantly fillable by filling: "
+msgid "Percentage of moves instantly fillable by filling:"
+msgstr "Iš karto užpildomų ėjimų procentas:"
 
-#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
-msgid "Unable to save game."
-msgstr "Žaidimo nepavyko išsaugoti."
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:867
+msgid "Number of guesses made:"
+msgstr "Atliktų spėjimų skaičius:"
 
-#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "Nepavyko įrašyti failo %(filename)s."
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:869
+msgid "Number of backtraces:"
+msgstr "Grįžimų skaičius:"
 
-#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
-msgid "Unable to mark game as finished."
-msgstr "Žaidimo nepavyko pažymėti kaip baigto."
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:871
+msgid "Ease by filling:"
+msgstr "Supaprastinti pildymui:"
 
-#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
-msgid "Sudoku unable to mark game as finished."
-msgstr "Sudoku nepavyko pažymėti žaidimo kaip baigto."
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:873
+msgid "Ease by elimination:"
+msgstr "Supaprastinti atmetimui:"
+
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:875
+#| msgid "Calculated difficulty: "
+msgid "Calculated difficulty:"
+msgstr "Apskaičiuotas sudėtingumas:"
+
