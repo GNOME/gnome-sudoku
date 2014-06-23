@@ -24,7 +24,9 @@ puzzle_DATA = \
 	very_hard
 
 dist_noinst_DATA = \
-	gnome-sudoku.ui
+	gnome-sudoku.ui \
+	gnome-sudoku-menu.ui \
+	print-games.ui
 
 man_MANS = gnome-sudoku.6
 
@@ -33,7 +35,6 @@ EXTRA_DIST = \
 	$(desktop_in_files) \
 	$(appdata_in_files)	\
 	$(puzzle_DATA)	\
-	$(ui_DATA)	\
 	$(gsettings_SCHEMAS) \
 	$(man_MANS)
 

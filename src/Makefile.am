@@ -38,9 +38,7 @@ gnome-sudoku-resources.c: gnome-sudoku.gresource.xml $(shell $(GLIB_COMPILE_RESO
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $<
 
 CLEANFILES = \
-	$(patsubst %.vala,%.c,$(filter %.vala, $(SOURCES))) \
-	*_vala.stamp
-
-DISTCLEANFILES = gnome-sudoku.gresource.xml
+	gnome-sudoku.gresource.xml \
+	gnome-sudoku-resources.c
 
 -include $(top_srcdir)/git.mk
