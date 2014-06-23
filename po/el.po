@@ -36,10 +36,10 @@ msgstr ""
 "Project-Id-Version: gnome-games.HEAD.el\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-01-12 17:47+0000\n"
-"PO-Revision-Date: 2014-01-13 09:36+0300\n"
+"POT-Creation-Date: 2014-06-22 19:32+0000\n"
+"PO-Revision-Date: 2014-06-21 17:36+0300\n"
 "Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
-"Language-Team: team@gnome.gr\n"
+"Language-Team: www.gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,20 +48,20 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "Σουντόκου GNOME"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
 msgid ""
-"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
+"GNOME Sudoku has a simple, unobtrusive interface with all the features that "
 "make playing Sudoku fun. Games are automatically saved when you quit, and "
 "you can always come back to any game that you've played."
 msgstr ""
 "Το Σουντόκου GNOME έχει μια απλή διεπαφή με όλα τα χαρακτηριστικά που κάνουν "
-"το Σουντόκου διασκεδαστικό. Τα παιχνίδια αποθηκεύονται αυτόματα κατά τον "
-"τερματισμό σας και πάντα μπορείτε να επιστρέψετε στο παιχνίδι που έχετε "
-"αφήσει στη μέση."
+"το Σουντόκου διασκεδαστικό. Τα παιχνίδια αποθηκεύονται αυτόματα κατά την "
+"έξοδό σας και πάντα μπορείτε να επιστρέψετε σε οποιοδήποτε παιχνίδι έχετε "
+"παίξει."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
@@ -84,7 +84,8 @@ msgstr ""
 "επίπεδο δυσκολίας θέλετε να έχουν: ως αποτέλεσμα, το Σουντόκου GNOME μπορεί "
 "να αποτελέσει ένα ανανεώσιμο βιβλίο Σουντόκου για εσάς."
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:437
 msgid "Sudoku"
 msgstr "Σουντόκου"
 
@@ -93,458 +94,167 @@ msgid "Test your logic skills in this number grid puzzle"
 msgstr "Δοκιμάστε τη λογική σας σε αυτό το παιχνίδι με αριθμούς"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "παιχνίδι;πίνακας;παραθέσεις;ιαπωνικό;"
+msgid "magic;square;"
+msgstr "μαγικό;τετράγωνο;"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
-msgid "The number of seconds between automatic saves"
-msgstr "Δευτερόλεπτα που μεσολαβούν μεταξύ δύο αυτόματων αποθηκεύσεων"
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+msgid "_Print"
+msgstr "Ε_κτύπωση"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
-msgid "Print games that have been played"
-msgstr "Εκτύπωση παιχνιδιών που έχουν παιχτεί"
+#: ../data/gnome-sudoku-menu.ui.h:2
+msgid "Print _Current Puzzle…"
+msgstr "Εκτύπωση του _τρέχοντος γρίφου…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
-msgid "Mark printed games as played"
-msgstr "Σημείωση παιχνιδιών που εκτυπώθηκαν ως παιγμένων"
+#: ../data/gnome-sudoku-menu.ui.h:3
+msgid "Print _Multiple Puzzles…"
+msgstr "Εκτύπωση _πολλαπλών γρίφων…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
-msgid "Width of application window in pixels"
-msgstr "Το πλάτος του παραθύρου της εφαρμογής σε pixels"
+#: ../data/gnome-sudoku-menu.ui.h:4
+msgid "_Warn About Unfillable Squares"
+msgstr "Π_ροειδοποίηση για ασυμπλήρωτα τετράγωνα"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
-msgid "Height of application window in pixels"
-msgstr "Το ύψος του κυρίως παραθύρου σε pixels."
+#: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Help"
+msgstr "_Βοήθεια"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
+#: ../data/gnome-sudoku-menu.ui.h:6
+msgid "_About"
+msgstr "_Περί"
+
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_Quit"
+msgstr "Έ_ξοδος"
+
+#: ../data/gnome-sudoku.ui.h:2
+msgid "Undo your last action"
+msgstr "Αναίρεση της τελευταίας σας κίνησης"
+
+#: ../data/gnome-sudoku.ui.h:3
+msgid "Redo your last action"
+msgstr "Ακύρωση αναίρεσης της τελευταίας σας κίνησης"
+
+#: ../data/gnome-sudoku.ui.h:4
+msgid "Go back to the current game"
+msgstr "Επιστροφή στο τρέχον παιχνίδι"
+
+#: ../data/gnome-sudoku.ui.h:5
+msgid "Easy"
+msgstr "Εύκολο"
+
+#: ../data/gnome-sudoku.ui.h:6
+msgid "Medium"
+msgstr "Μεσαίο"
+
+#: ../data/gnome-sudoku.ui.h:7
+msgid "Hard"
+msgstr "Δύσκολο"
+
+#: ../data/gnome-sudoku.ui.h:8
+msgid "Very Hard"
+msgstr "Πολύ δύσκολο"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Show hint highlights"
 msgstr "Εμφάνιση κυριότερων υποδείξεων"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
-msgid "Color of the grid border"
-msgstr "Χρώμα του περιγράμματος"
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+msgid "Warn about unfillable squares"
+msgstr "Προειδοποίηση για ασυμπλήρωτα τετράγωνα"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
-msgid "Show the application toolbar"
-msgstr "Εμφάνιση της εργαλειοθήκης της εφαρμογής"
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number"
+msgstr ""
+"Εμφανίζει ένα μεγάλο κόκκινο Χ σε ένα τετράγωνο αν δεν μπορεί πιθανόν να "
+"συμπληρωθεί από οποιοδήποτε αριθμό"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
-msgid "Show hints"
-msgstr "Εμφάνιση υποδείξεων"
+#: ../data/print-games.ui.h:1
+msgid "Print Multiple Puzzles"
+msgstr "Εκτύπωση πολλαπλών γρίφων"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
-msgid "Number of puzzles to print on a page"
-msgstr "Εμφάνιση αριθμού γρίφων ανά σελίδα"
+#: ../data/print-games.ui.h:3
+msgid "_Cancel"
+msgstr "A_κύρωση"
 
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "Εκτύπωση σουντόκου"
+#: ../data/print-games.ui.h:4
+msgid "_Number of puzzles"
+msgstr "_Αριθμός γρίφων"
 
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "Εκτύπωση παιχνιδιών"
+#: ../data/print-games.ui.h:5
+msgid "Difficulty"
+msgstr "Βαθμός δυσκολίας"
 
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "Αρι_θμός σουντόκου προς εκτύπωση: "
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "Σ_ουντόκου ανά σελίδα: "
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "Επίπεδα δυσκολίας για εκτύπωση"
-
-#: ../data/print_games.ui.h:6
+#: ../data/print-games.ui.h:6
 msgid "_Easy"
 msgstr "Εύκο_λο"
 
-#: ../data/print_games.ui.h:7
+#: ../data/print-games.ui.h:7
 msgid "_Medium"
 msgstr "_Μεσαίο"
 
-#: ../data/print_games.ui.h:8
+#: ../data/print-games.ui.h:8
 msgid "_Hard"
 msgstr "_Δύσκολο"
 
-#: ../data/print_games.ui.h:9
+#: ../data/print-games.ui.h:9
 msgid "_Very Hard"
 msgstr "_Πολύ δύσκολο"
 
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "Λεπτομέρειες"
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:67
+msgid "Show release version"
+msgstr "Προβολή της έκδοσης"
 
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "_Σήμανση παιχνιδιών ως ολοκληρωμένων μετά την εκτύπωσή τους."
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:71
+msgid "Show the possible values for each cell"
+msgstr "Εμφάνιση των πιθανών τιμών για κάθε κελί"
 
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr ""
-"_Να περιλαμβάνονται παιχνίδια που έχετε ήδη παίξει στη λίστα παιχνιδιών προς "
-"εκτύπωση"
+#: ../src/gnome-sudoku.vala:154
+msgid "_Clear Board"
+msgstr "Κα_θαρισμός παιχνιδιού"
 
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "_Νέο παιχνίδι"
+#: ../src/gnome-sudoku.vala:160
+msgid "Reset the board to its original state"
+msgstr "Επαναφορά του γρίφου στην αρχική του κατάσταση"
 
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "Απο_θηκευμένα παιχνίδια"
+#: ../src/gnome-sudoku.vala:166
+msgid "_New Puzzle"
+msgstr "_Νέος γρίφος"
 
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "Προσθήκη νέου καταγραφέα"
+#: ../src/gnome-sudoku.vala:172
+msgid "Start a new puzzle"
+msgstr "Εκκίνηση νέου παιχνιδιού"
 
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "Αφαίρεση του επιλεγμένου καταγραφέα"
+#: ../src/gnome-sudoku.vala:285
+#, c-format
+msgid "Well done, you completed the puzzle in %s"
+msgstr "Έγινε με επιτυχία, ολοκληρώσατε τον γρίφο σε %s"
 
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "Οι καταγραφόμενες αλλαγές να γίνουν μόνιμες"
+#: ../src/gnome-sudoku.vala:287
+msgid "Same difficulty again"
+msgstr "Ίδιος βαθμός δυσκολίας πάλι"
 
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
-msgid "H_ide"
-msgstr "Απόκρυ_ψη"
+#: ../src/gnome-sudoku.vala:288
+msgid "New difficulty"
+msgstr "Νέος βαθμός δυσκολίας"
 
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "Απόκρυψη των καταγραφόμενων τιμών"
+#: ../src/gnome-sudoku.vala:353
+msgid "Reset the board to its original state?"
+msgstr "Να επαναφερθεί το παιχνίδι στην αρχική του κατάσταση;"
 
-#: ../src/lib/defaults.py:50
+#: ../src/gnome-sudoku.vala:440
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"Το δημοφιλέστερο Ιαπωνικό παιχνίδι γρίφων λογικής.\n"
+"Ο δημοφιλής ιαπωνικός γρίφος λογικής.\n"
 "\n"
 "Το Σουντόκου GNOME είναι μέρος των παιχνιδιών του GNOME."
 
-#: ../src/lib/defaults.py:53
-msgid "Website"
-msgstr "Ιστότοπος"
-
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "Εύκολο"
-
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "Μεσαίο"
-
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "Δύσκολο"
-
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "Πολύ δύσκολο"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "Τελευταία φορά που παίξατε, %(n)s δευτερόλεπτο"
-msgstr[1] "Τελευταία φορά που παίξατε, %(n)s δευτερόλεπτα"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "Τελευταία φορά που παίξατε, %(n)s λεπτό"
-msgstr[1] "Τελευταία φορά που παίξατε, %(n)s λεπτά"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "Τελευταία φορά που παίξατε ήταν %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "Τελευταία φορά που παίξατε ήταν εχθές στης %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "Τελευταία φορά παίξατε ήταν %A στης %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "Τελευταία φορά που παίξατε ήταν %B %e %Y"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "Εύκολο πρόβλημα"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "Μεσαίο πρόβλημα"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "Δύσκολο πρόβλημα"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "Πολύ δύσκολο πρόβλημα"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "Παίξατε για %d ώρα"
-msgstr[1] "Παίξατε για %d ώρες"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "Παίξατε για %d λεπτό"
-msgstr[1] "Παίξατε για %d λεπτά"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "Παίξατε για %d δευτερόλεπτο"
-msgstr[1] "Παίξατε για %d δευτερόλεπτα"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "Είστε σίγουρος ότι θέλετε να προχωρήσετε;"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "Να μην ερωτηθώ ξανά."
-
-#: ../src/lib/main.py:196
-msgid "_Game"
-msgstr "_Παιχνίδι"
-
-#: ../src/lib/main.py:197
-msgid "New game"
-msgstr "Νέο παιχνίδι"
-
-#: ../src/lib/main.py:198
-msgid "_Reset"
-msgstr "_Επαναφορά"
-
-#: ../src/lib/main.py:200
-msgid "_Undo"
-msgstr "Α_ναίρεση"
-
-#: ../src/lib/main.py:201
-msgid "Undo last action"
-msgstr "Αναίρεση της τελευταίας κίνησης"
-
-#: ../src/lib/main.py:202
-msgid "_Redo"
-msgstr "_Επανάληψη"
-
-#: ../src/lib/main.py:203
-msgid "Redo last action"
-msgstr "Ακύρωση αναίρεσης της τελευταίας κίνησης"
-
-#: ../src/lib/main.py:204
-msgid "Puzzle _Statistics..."
-msgstr "_Στατιστικά προβλήματος..."
-
-#: ../src/lib/main.py:206
-msgid "_Print..."
-msgstr "Ε_κτύπωση..."
-
-#: ../src/lib/main.py:207
-msgid "Print _Multiple Sudokus..."
-msgstr "Εκτύπωση _πολλαπλών Σουντόκου..."
-
-#: ../src/lib/main.py:210
-msgid "_Settings"
-msgstr "_Ρυθμίσεις"
-
-#: ../src/lib/main.py:212
-msgid "_Tools"
-msgstr "Εργ_αλεία"
-
-#: ../src/lib/main.py:213
-msgid "_Hint"
-msgstr "_Υπόδειξη"
-
-#: ../src/lib/main.py:214
-msgid "Show a square that is easy to fill."
-msgstr "Εμφάνιση τετραγώνου που είναι εύκολο να γεμίσει."
-
-#: ../src/lib/main.py:215
-msgid "Clear _Top Notes"
-msgstr "Εκκαθάριση άνω _σημειώσεων"
-
-#: ../src/lib/main.py:217
-msgid "Clear _Bottom Notes"
-msgstr "Εκκαθάριση κά_τω σημειώσεων"
-
-#: ../src/lib/main.py:219
-msgid "_Help"
-msgstr "_Βοήθεια"
-
-#: ../src/lib/main.py:220
-msgid "_Contents"
-msgstr "_Περιεχόμενα"
-
-#: ../src/lib/main.py:226
-msgid "Show _Possible Numbers"
-msgstr "Εμφάνιση _πιθανών αριθμών"
-
-#: ../src/lib/main.py:228
-msgid "Always show possible numbers in a square"
-msgstr "Να προβάλλονται πάντα όλοι οι δυνατοί αριθμοί για κάθε τετραγωνίδιο."
-
-#: ../src/lib/main.py:232
-msgid "Warn About _Unfillable Squares"
-msgstr "Π_ροειδοποίηση αν υπάρχουν ασυμπλήρωτα τετράγωνα"
-
-#: ../src/lib/main.py:234
-msgid "Warn about squares made unfillable by a move"
-msgstr ""
-"Να εμφανίζεται προειδοποίηση αν μία κίνηση καταστήσει κάποια τετραγωνίδια "
-"ασυμπλήρωτα"
-
-#: ../src/lib/main.py:236
-msgid "_Track Additions"
-msgstr "Κατα_γραφή προσθηκών"
-
-#: ../src/lib/main.py:238
-msgid "Mark new additions in a separate color so you can keep track of them."
-msgstr ""
-"Επισήμανση νέων προσθηκών με διαφορετικό χρώμα, για να μπορείτε να τις "
-"παρακολουθείτε."
-
-#: ../src/lib/main.py:240
-msgid "Show _Toolbar"
-msgstr "Προβολή _εργαλειοθήκης"
-
-#: ../src/lib/main.py:241
-msgid "_Highlighter"
-msgstr "Επ_ισήμανση"
-
-#: ../src/lib/main.py:242
-msgid "Highlight the current row, column and box"
-msgstr "Επισήμανση της τρέχουσας γραμμής, στήλης και πλαισίου"
-
-#: ../src/lib/main.py:367
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "Ολοκληρώσατε το παζλ σε %d δευτερόλεπτο"
-msgstr[1] "Ολοκληρώσατε το παζλ σε %d δευτερόλεπτα"
-
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d λεπτό"
-msgstr[1] "%d λεπτά"
-
-#: ../src/lib/main.py:373 ../src/lib/main.py:381
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d δευτερόλεπτo"
-msgstr[1] "%d δευτερόλεπτα"
-
-#: ../src/lib/main.py:374
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "Ολοκληρώσατε το πρόβλημα σε %(minute)s και %(second)s"
-
-#: ../src/lib/main.py:379
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d ώρα"
-msgstr[1] "%d ώρες"
-
-#: ../src/lib/main.py:382
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "Ολοκληρώσατε το πρόβλημα σε %(hour)s, %(minute)s και %(second)s"
-
-#: ../src/lib/main.py:384
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "Λάβατε %(n)s υπόδειξη."
-msgstr[1] "Λάβατε %(n)s υποδείξεις."
-
-#: ../src/lib/main.py:387
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "Λάβατε %(n)s προειδοποίηση για ασυμπλήρωτα τετραγωνίδια."
-msgstr[1] "Λάβατε %(n)s προειδοποιήσεις για ασυμπλήρωτα τετραγωνίδια."
-
-#: ../src/lib/main.py:392
-msgid "You win!"
-msgstr "Κέρδισες!"
-
-#: ../src/lib/main.py:402
-msgid "Save this game before starting new one?"
-msgstr "Αποθήκευση αυτού του παιχνιδιού πριν να ξεκινήσει καινούργιο;"
-
-#: ../src/lib/main.py:403
-msgid "_Save game for later"
-msgstr "Απο_θήκευση παιχνιδιού για αργότερα"
-
-#: ../src/lib/main.py:404
-msgid "_Abandon game"
-msgstr "Ε_γκατάλειψη παιχνιδιού"
-
-#: ../src/lib/main.py:422
-msgid "Save game before closing?"
-msgstr "Αποθήκευση παιχνιδιού πριν το κλείσιμο;"
-
-#: ../src/lib/main.py:620
-msgid "Puzzle Information"
-msgstr "Πληροφορίες προβλήματος"
-
-#: ../src/lib/main.py:621
-msgid "There is no current puzzle."
-msgstr "Δεν υπάρχει τρέχον πρόβλημα."
-
-#: ../src/lib/main.py:626
-msgid "Calculated difficulty: "
-msgstr "Εκτίμηση δυσκολίας: "
-
-#: ../src/lib/main.py:631
-msgid "Very Hard"
-msgstr "Πολύ δύσκολο"
-
-#: ../src/lib/main.py:636
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "Συμπληρωμένα τετραγωνίδια με εις άτοπον απαγωγή: "
-
-#: ../src/lib/main.py:639
-msgid "Number of moves instantly fillable by filling: "
-msgstr "Συμπληρωμένα τετραγωνίδια με γέμισμα: "
-
-#: ../src/lib/main.py:642
-msgid "Amount of trial-and-error required to solve: "
-msgstr "Απαιτούμενες δοκιμές για επίλυση: "
-
-#: ../src/lib/main.py:645 ../src/lib/main.py:646
-msgid "Puzzle Statistics"
-msgstr "Στατιστικά Γρίφων"
-
-#: ../src/lib/main.py:670
+#: ../src/gnome-sudoku.vala:445
 msgid "translator-credits"
 msgstr ""
 "Δημήτρης Σπίγγος <dmtrs32@gmail.com>\n"
@@ -554,88 +264,408 @@ msgstr ""
 "Τζένη Πετούμενου <epetoumenou@gmail.com>\n"
 "Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>"
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:680
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "Αδυναμία προβολής βοήθειας: %s"
+#: ../src/sudoku-game.vala:133
+msgid "second"
+msgstr "δευτερόλεπτο"
 
-#: ../src/lib/main.py:736
-msgid "Untracked"
-msgstr "Μη καταγραφόμενες"
+#: ../src/sudoku-game.vala:134
+msgid "seconds"
+msgstr "δευτερόλεπτα"
 
-#: ../src/lib/main.py:745
-msgid "_Remove"
-msgstr "Α_φαίρεση"
+#: ../src/sudoku-game.vala:135
+msgid "minute"
+msgstr "λεπτό"
 
-#: ../src/lib/main.py:746
-msgid "Delete selected tracker."
-msgstr "Διαγραφή επιλεγμένου καταγραφέα."
+#: ../src/sudoku-game.vala:136
+msgid "minutes"
+msgstr "λεπτά"
 
-#: ../src/lib/main.py:752
-msgid "Hide current tracker entries."
-msgstr "Απόκρυψη τρεχουσών καταχωρήσεων καταγραφής."
+#: ../src/sudoku-game.vala:137
+msgid "hour"
+msgstr "ώρα"
 
-#: ../src/lib/main.py:757
-msgid "A_pply"
-msgstr "Ε_φαρμογή"
+#: ../src/sudoku-game.vala:138
+msgid "hours"
+msgstr "ώρες"
 
-#: ../src/lib/main.py:758
-msgid "Apply all tracked values and remove the tracker."
-msgstr "Εφαρμογή όλων των καταγραφέντων τιμών και αφαίρεση της καταγραφής."
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:30
+msgid "Error printing file:"
+msgstr "Σφάλμα κατά την εκτύπωση του αρχείου:"
 
-#: ../src/lib/main.py:796
-#, python-format
-msgid "Tracker %s"
-msgstr "Μνήμη %s"
+#: ../src/sudoku-solver.vala:742
+msgid "Easy Difficulty"
+msgstr "Μικρής δυσκολίας"
 
-#: ../src/lib/number_box.py:82
-msgid "_Clear"
-msgstr "Εκκα_θάριση"
+#: ../src/sudoku-solver.vala:744
+msgid "Medium Difficulty"
+msgstr "Μέτριας δυσκολίας"
 
-#: ../src/lib/saver.py:151
-msgid "No Space"
-msgstr "Δεν υπάρχει χώρος"
+#: ../src/sudoku-solver.vala:746
+msgid "Hard Difficulty"
+msgstr "Υψηλής δυσκολίας"
 
-#: ../src/lib/saver.py:152
-msgid "No space left on disk"
-msgstr "Δεν έχει μείνει χώρος στο δίσκο"
+#: ../src/sudoku-solver.vala:748
+msgid "Very Hard Difficulty"
+msgstr "Πολύ υψηλής δυσκολίας"
 
-#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "Αδυναμία δημιουργίας του φακέλου δεδομένων %(path)s."
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:859
+msgid "Number of moves instantly fillable by elimination:"
+msgstr "Αριθμός κινήσεων που συμπληρώνονται άμεσα με αποκλεισμό:"
 
-#: ../src/lib/saver.py:155
-msgid "There is no disk space left!"
-msgstr "Δεν υπάρχει διαθέσιμος χώρος στο δίσκο!"
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:861
+msgid "Percentage of moves instantly fillable by elimination:"
+msgstr "Ποσοστό κινήσεων που συμπληρώνονται άμεσα με αποκλεισμό:"
 
-#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
-msgid "Error creating directory"
-msgstr "Σφάλμα δημιουργίας καταλόγου"
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:863
+msgid "Number of moves instantly fillable by filling:"
+msgstr "Αριθμός κινήσεων που ολοκληρώνονται άμεσα με συμπλήρωση:"
 
-#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
-#: ../src/lib/saver.py:229
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "Σφάλμα %(errno)s: %(error)s"
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:865
+msgid "Percentage of moves instantly fillable by filling:"
+msgstr "Ποσοστό κινήσεων που ολοκληρώνονται άμεσα με συμπλήρωση:"
 
-#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
-msgid "Unable to save game."
-msgstr "Αδυναμία αποθήκευσης του παιχνιδιού."
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:867
+msgid "Number of guesses made:"
+msgstr "Αριθμός προβλέψεων που έγιναν:"
 
-#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "Αδυναμία αποθήκευσης αρχείου %(filename)s."
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:869
+msgid "Number of backtraces:"
+msgstr "Αριθμός οπισθοανιχνεύσεων:"
 
-#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
-msgid "Unable to mark game as finished."
-msgstr "Αδυναμία σημείωσης παιχνιδιού ως ολοκληρωμένο."
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:871
+msgid "Ease by filling:"
+msgstr "Διευκόλυνση με συμπλήρωση:"
 
-#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
-msgid "Sudoku unable to mark game as finished."
-msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει το παιχνίδι ως ολοκληρωμένο."
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:873
+msgid "Ease by elimination:"
+msgstr "Διευκόλυνση με αποκλεισμό:"
+
+#. Debug output when starting a new game
+#: ../src/sudoku-solver.vala:875
+msgid "Calculated difficulty:"
+msgstr "Υπολογιζόμενη δυσκολία:"
+
+#~ msgid "game;board;tiles;japanese;"
+#~ msgstr "παιχνίδι;πίνακας;παραθέσεις;ιαπωνικό;"
+
+#~ msgid "The number of seconds between automatic saves"
+#~ msgstr "Δευτερόλεπτα που μεσολαβούν μεταξύ δύο αυτόματων αποθηκεύσεων"
+
+#~ msgid "Print games that have been played"
+#~ msgstr "Εκτύπωση παιχνιδιών που έχουν παιχτεί"
+
+#~ msgid "Mark printed games as played"
+#~ msgstr "Σημείωση παιχνιδιών που εκτυπώθηκαν ως παιγμένων"
+
+#~ msgid "Width of application window in pixels"
+#~ msgstr "Το πλάτος του παραθύρου της εφαρμογής σε pixels"
+
+#~ msgid "Height of application window in pixels"
+#~ msgstr "Το ύψος του κυρίως παραθύρου σε pixels."
+
+#~ msgid "Color of the grid border"
+#~ msgstr "Χρώμα του περιγράμματος"
+
+#~ msgid "Show the application toolbar"
+#~ msgstr "Εμφάνιση της εργαλειοθήκης της εφαρμογής"
+
+#~ msgid "Show hints"
+#~ msgstr "Εμφάνιση υποδείξεων"
+
+#~ msgid "Number of puzzles to print on a page"
+#~ msgstr "Εμφάνιση αριθμού γρίφων ανά σελίδα"
+
+#~ msgid "Print Sudokus"
+#~ msgstr "Εκτύπωση σουντόκου"
+
+#~ msgid "Print Games"
+#~ msgstr "Εκτύπωση παιχνιδιών"
+
+#~ msgid "_Number of sudoku to print: "
+#~ msgstr "Αρι_θμός σουντόκου προς εκτύπωση: "
+
+#~ msgid "_Sudokus per page: "
+#~ msgstr "Σ_ουντόκου ανά σελίδα: "
+
+#~ msgid "Levels of difficulty to print"
+#~ msgstr "Επίπεδα δυσκολίας για εκτύπωση"
+
+#~ msgid "Details"
+#~ msgstr "Λεπτομέρειες"
+
+#~ msgid "_Mark games as played once you've printed them."
+#~ msgstr "_Σήμανση παιχνιδιών ως ολοκληρωμένων μετά την εκτύπωσή τους."
+
+#~ msgid "_Include games you've already played in list of games to print"
+#~ msgstr ""
+#~ "_Να περιλαμβάνονται παιχνίδια που έχετε ήδη παίξει στη λίστα παιχνιδιών "
+#~ "προς εκτύπωση"
+
+#~ msgid "_New Game"
+#~ msgstr "_Νέο παιχνίδι"
+
+#~ msgid "_Saved Games"
+#~ msgstr "Απο_θηκευμένα παιχνίδια"
+
+#~ msgid "Add a new tracker"
+#~ msgstr "Προσθήκη νέου καταγραφέα"
+
+#~ msgid "Remove the selected tracker"
+#~ msgstr "Αφαίρεση του επιλεγμένου καταγραφέα"
+
+#~ msgid "Make the tracked changes permanent"
+#~ msgstr "Οι καταγραφόμενες αλλαγές να γίνουν μόνιμες"
+
+#~ msgid "H_ide"
+#~ msgstr "Απόκρυ_ψη"
+
+#~ msgid "Hide the tracked values"
+#~ msgstr "Απόκρυψη των καταγραφόμενων τιμών"
+
+#~ msgid "Website"
+#~ msgstr "Ιστότοπος"
+
+#~ msgid "Very hard"
+#~ msgstr "Πολύ δύσκολο"
+
+#~ msgid "Last played %(n)s second ago"
+#~ msgid_plural "Last played %(n)s seconds ago"
+#~ msgstr[0] "Τελευταία φορά που παίξατε, %(n)s δευτερόλεπτο"
+#~ msgstr[1] "Τελευταία φορά που παίξατε, %(n)s δευτερόλεπτα"
+
+#~ msgid "Last played %(n)s minute ago"
+#~ msgid_plural "Last played %(n)s minutes ago"
+#~ msgstr[0] "Τελευταία φορά που παίξατε, %(n)s λεπτό"
+#~ msgstr[1] "Τελευταία φορά που παίξατε, %(n)s λεπτά"
+
+#~ msgid "Last played at %I:%M %p"
+#~ msgstr "Τελευταία φορά που παίξατε ήταν %I:%M %p"
+
+#~ msgid "Last played yesterday at %I:%M %p"
+#~ msgstr "Τελευταία φορά που παίξατε ήταν εχθές στης %I:%M %p"
+
+#~ msgid "Last played on %A at %I:%M %p"
+#~ msgstr "Τελευταία φορά παίξατε ήταν %A στης %I:%M %p"
+
+#~ msgid "Last played on %B %e %Y"
+#~ msgstr "Τελευταία φορά που παίξατε ήταν %B %e %Y"
+
+#~ msgid "Easy puzzle"
+#~ msgstr "Εύκολο πρόβλημα"
+
+#~ msgid "Medium puzzle"
+#~ msgstr "Μεσαίο πρόβλημα"
+
+#~ msgid "Hard puzzle"
+#~ msgstr "Δύσκολο πρόβλημα"
+
+#~ msgid "Very hard puzzle"
+#~ msgstr "Πολύ δύσκολο πρόβλημα"
+
+#~ msgid "Played for %d hour"
+#~ msgid_plural "Played for %d hours"
+#~ msgstr[0] "Παίξατε για %d ώρα"
+#~ msgstr[1] "Παίξατε για %d ώρες"
+
+#~ msgid "Played for %d minute"
+#~ msgid_plural "Played for %d minutes"
+#~ msgstr[0] "Παίξατε για %d λεπτό"
+#~ msgstr[1] "Παίξατε για %d λεπτά"
+
+#~ msgid "Played for %d second"
+#~ msgid_plural "Played for %d seconds"
+#~ msgstr[0] "Παίξατε για %d δευτερόλεπτο"
+#~ msgstr[1] "Παίξατε για %d δευτερόλεπτα"
+
+#~ msgid "Do you really want to do this?"
+#~ msgstr "Είστε σίγουρος ότι θέλετε να προχωρήσετε;"
+
+#~ msgid "Don't ask me this again."
+#~ msgstr "Να μην ερωτηθώ ξανά."
+
+#~ msgid "_Game"
+#~ msgstr "_Παιχνίδι"
+
+#~ msgid "New game"
+#~ msgstr "Νέο παιχνίδι"
+
+#~ msgid "_Reset"
+#~ msgstr "_Επαναφορά"
+
+#~ msgid "_Undo"
+#~ msgstr "Α_ναίρεση"
+
+#~ msgid "_Redo"
+#~ msgstr "_Επανάληψη"
+
+#~ msgid "Puzzle _Statistics..."
+#~ msgstr "_Στατιστικά προβλήματος..."
+
+#~ msgid "_Settings"
+#~ msgstr "_Ρυθμίσεις"
+
+#~ msgid "_Tools"
+#~ msgstr "Εργ_αλεία"
+
+#~ msgid "_Hint"
+#~ msgstr "_Υπόδειξη"
+
+#~ msgid "Show a square that is easy to fill."
+#~ msgstr "Εμφάνιση τετραγώνου που είναι εύκολο να γεμίσει."
+
+#~ msgid "Clear _Top Notes"
+#~ msgstr "Εκκαθάριση άνω _σημειώσεων"
+
+#~ msgid "Clear _Bottom Notes"
+#~ msgstr "Εκκαθάριση κά_τω σημειώσεων"
+
+#~ msgid "_Contents"
+#~ msgstr "_Περιεχόμενα"
+
+#~ msgid "Show _Possible Numbers"
+#~ msgstr "Εμφάνιση _πιθανών αριθμών"
+
+#~ msgid "Always show possible numbers in a square"
+#~ msgstr ""
+#~ "Να προβάλλονται πάντα όλοι οι δυνατοί αριθμοί για κάθε τετραγωνίδιο."
+
+#~ msgid "Warn about squares made unfillable by a move"
+#~ msgstr ""
+#~ "Να εμφανίζεται προειδοποίηση αν μία κίνηση καταστήσει κάποια τετραγωνίδια "
+#~ "ασυμπλήρωτα"
+
+#~ msgid "_Track Additions"
+#~ msgstr "Κατα_γραφή προσθηκών"
+
+#~ msgid ""
+#~ "Mark new additions in a separate color so you can keep track of them."
+#~ msgstr ""
+#~ "Επισήμανση νέων προσθηκών με διαφορετικό χρώμα, για να μπορείτε να τις "
+#~ "παρακολουθείτε."
+
+#~ msgid "Show _Toolbar"
+#~ msgstr "Προβολή _εργαλειοθήκης"
+
+#~ msgid "_Highlighter"
+#~ msgstr "Επ_ισήμανση"
+
+#~ msgid "Highlight the current row, column and box"
+#~ msgstr "Επισήμανση της τρέχουσας γραμμής, στήλης και πλαισίου"
+
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d λεπτό"
+#~ msgstr[1] "%d λεπτά"
+
+#~ msgid "%d second"
+#~ msgid_plural "%d seconds"
+#~ msgstr[0] "%d δευτερόλεπτo"
+#~ msgstr[1] "%d δευτερόλεπτα"
+
+#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
+#~ msgstr "Ολοκληρώσατε το πρόβλημα σε %(minute)s και %(second)s"
+
+#~ msgid "%d hour"
+#~ msgid_plural "%d hours"
+#~ msgstr[0] "%d ώρα"
+#~ msgstr[1] "%d ώρες"
+
+#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
+#~ msgstr "Ολοκληρώσατε το πρόβλημα σε %(hour)s, %(minute)s και %(second)s"
+
+#~ msgid "You got %(n)s hint."
+#~ msgid_plural "You got %(n)s hints."
+#~ msgstr[0] "Λάβατε %(n)s υπόδειξη."
+#~ msgstr[1] "Λάβατε %(n)s υποδείξεις."
+
+#~ msgid "You had %(n)s impossibility pointed out."
+#~ msgid_plural "You had %(n)s impossibilities pointed out."
+#~ msgstr[0] "Λάβατε %(n)s προειδοποίηση για ασυμπλήρωτα τετραγωνίδια."
+#~ msgstr[1] "Λάβατε %(n)s προειδοποιήσεις για ασυμπλήρωτα τετραγωνίδια."
+
+#~ msgid "You win!"
+#~ msgstr "Κέρδισες!"
+
+#~ msgid "Save this game before starting new one?"
+#~ msgstr "Αποθήκευση αυτού του παιχνιδιού πριν να ξεκινήσει καινούργιο;"
+
+#~ msgid "_Save game for later"
+#~ msgstr "Απο_θήκευση παιχνιδιού για αργότερα"
+
+#~ msgid "_Abandon game"
+#~ msgstr "Ε_γκατάλειψη παιχνιδιού"
+
+#~ msgid "Save game before closing?"
+#~ msgstr "Αποθήκευση παιχνιδιού πριν το κλείσιμο;"
+
+#~ msgid "Puzzle Information"
+#~ msgstr "Πληροφορίες προβλήματος"
+
+#~ msgid "Amount of trial-and-error required to solve: "
+#~ msgstr "Απαιτούμενες δοκιμές για επίλυση: "
+
+#~ msgid "Puzzle Statistics"
+#~ msgstr "Στατιστικά Γρίφων"
+
+#~ msgid "Unable to display help: %s"
+#~ msgstr "Αδυναμία προβολής βοήθειας: %s"
+
+#~ msgid "Untracked"
+#~ msgstr "Μη καταγραφόμενες"
+
+#~ msgid "_Remove"
+#~ msgstr "Α_φαίρεση"
+
+#~ msgid "Delete selected tracker."
+#~ msgstr "Διαγραφή επιλεγμένου καταγραφέα."
+
+#~ msgid "Hide current tracker entries."
+#~ msgstr "Απόκρυψη τρεχουσών καταχωρήσεων καταγραφής."
+
+#~ msgid "A_pply"
+#~ msgstr "Ε_φαρμογή"
+
+#~ msgid "Apply all tracked values and remove the tracker."
+#~ msgstr "Εφαρμογή όλων των καταγραφέντων τιμών και αφαίρεση της καταγραφής."
+
+#~ msgid "Tracker %s"
+#~ msgstr "Μνήμη %s"
+
+#~ msgid "No Space"
+#~ msgstr "Δεν υπάρχει χώρος"
+
+#~ msgid "No space left on disk"
+#~ msgstr "Δεν έχει μείνει χώρος στο δίσκο"
+
+#~ msgid "Unable to create data folder %(path)s."
+#~ msgstr "Αδυναμία δημιουργίας του φακέλου δεδομένων %(path)s."
+
+#~ msgid "There is no disk space left!"
+#~ msgstr "Δεν υπάρχει διαθέσιμος χώρος στο δίσκο!"
+
+#~ msgid "Error %(errno)s: %(error)s"
+#~ msgstr "Σφάλμα %(errno)s: %(error)s"
+
+#~ msgid "Unable to save game."
+#~ msgstr "Αδυναμία αποθήκευσης του παιχνιδιού."
+
+#~ msgid "Unable to save file %(filename)s."
+#~ msgstr "Αδυναμία αποθήκευσης αρχείου %(filename)s."
+
+#~ msgid "Unable to mark game as finished."
+#~ msgstr "Αδυναμία σημείωσης παιχνιδιού ως ολοκληρωμένο."
+
+#~ msgid "Sudoku unable to mark game as finished."
+#~ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει το παιχνίδι ως ολοκληρωμένο."
 
 #~ msgid "GNOME Games web site"
 #~ msgstr "Ιστοσελίδα των παιχνιδιών του GNOME"
@@ -654,9 +684,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 
 #~ msgid "Claim _Draw"
 #~ msgstr "Αίτηση για ι_σοπαλία"
-
-#~ msgid "Start a new game"
-#~ msgstr "Εκκίνηση νέου παιχνιδιού"
 
 #~ msgid "New Game"
 #~ msgstr "Νέο Παιχνίδι"
@@ -771,9 +798,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 
 #~ msgid "Opposing Player:"
 #~ msgstr "Αντίπαλος παίχτης:"
-
-#~ msgid "Difficulty:"
-#~ msgstr "Δυσκολία:"
 
 #~ msgid "Game Duration:"
 #~ msgstr "Διάρκεια παιχνιδιού:"
@@ -1181,21 +1205,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 #~ msgid "Save this game before starting a new one?"
 #~ msgstr "Αποθήκευση αυτού του παιχνιδιού πριν να ξεκινήσει καινούργιο;"
 
-#~ msgid "second"
-#~ msgid_plural "seconds"
-#~ msgstr[0] "δευτερόλεπτο"
-#~ msgstr[1] "δευτερόλεπτα"
-
-#~ msgid "minute"
-#~ msgid_plural "minutes"
-#~ msgstr[0] "λεπτό"
-#~ msgstr[1] "λεπτά"
-
-#~ msgid "hour"
-#~ msgid_plural "hours"
-#~ msgstr[0] "ώρα"
-#~ msgstr[1] "ώρες"
-
 #~ msgid ""
 #~ "The 2D/3D chess game for GNOME. \n"
 #~ "\n"
@@ -1222,9 +1231,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 
 #~ msgid "Failed to open game: %s"
 #~ msgstr "Αδυναμία φόρτωσης παιχνιδιού: %s"
-
-#~ msgid "Show release version"
-#~ msgstr "Προβολή της έκδοσης"
 
 #~ msgid "[FILE] - Play Chess"
 #~ msgstr "[FILE] - Παίξτε σκάκι"
@@ -1359,9 +1365,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 
 #~ msgid "View help for this game"
 #~ msgstr "Προβολή βοήθειας για αυτό το παιχνίδι"
-
-#~ msgid "End the current game"
-#~ msgstr "Τερματισμός του τρέχοντος παιχνιδιού"
 
 #~ msgid "Toggle fullscreen mode"
 #~ msgstr "Εναλλαγή λειτουργίας πλήρους οθόνης"
@@ -2354,12 +2357,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 #~ msgid "_Preferences"
 #~ msgstr "Π_ροτιμήσεις"
 
-#~ msgid "_About"
-#~ msgstr "_Περί"
-
-#~ msgid "_Quit"
-#~ msgstr "Έ_ξοδος"
-
 #~ msgid "Hint"
 #~ msgstr "Υπόδειξη"
 
@@ -2482,9 +2479,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 
 #~ msgid "_Vertical:"
 #~ msgstr "_Κατακόρυφη:"
-
-#~ msgid "_Number of mines:"
-#~ msgstr "_Αριθμός ναρκών:"
 
 #~ msgid "_Play Game"
 #~ msgstr "Έναρ_ξη παιχνιδιού"
@@ -2715,9 +2709,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 #~ msgid "_Restart Puzzle"
 #~ msgstr "_Επανεκκίνηση παζλ"
 
-#~ msgid "Next Puzzle"
-#~ msgstr "Επόμενο παζλ"
-
 #~ msgid "Previous Puzzle"
 #~ msgstr "Προηγούμενο παζλ"
 
@@ -2903,9 +2894,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 
 #~ msgid "Human Players"
 #~ msgstr "Άνθρωποι παίκτες"
-
-#~ msgid "_Number of players:"
-#~ msgstr "_Αριθμός παικτών:"
 
 #~ msgid "Computer Opponents"
 #~ msgstr "Παίκτες υπολογιστή"
@@ -3283,9 +3271,6 @@ msgstr "Το Σουντόκου δεν μπόρεσε να σημειώσει τ
 
 #~ msgid "Swell Foop"
 #~ msgstr "Swell Foop"
-
-#~ msgid "_Number of colors:"
-#~ msgstr "Αριθ_μός χρωμάτων:"
 
 #~ msgid "Setup"
 #~ msgstr "Διαμόρφωση"
