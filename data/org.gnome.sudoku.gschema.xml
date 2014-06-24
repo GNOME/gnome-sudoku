@@ -8,14 +8,14 @@
   <schema id="org.gnome.sudoku" path="/org/gnome/sudoku/">
     <key name="print-multiple-sudoku-difficulty" enum="org.gnome.sudoku.print-multiple-sudoku-difficulty">
       <default>"easy"</default>
+      <summary>Difficulty level of sudokus to be printed</summary>
+      <description>Set the difficulty level of the sudokus you want to print. Possible values are - "easy", "medium", "hard", "very_hard"</description>
     </key>
     <key name="print-multiple-sudokus-to-print" type="i">
       <default>4</default>
-    </key>
-    <key name="highlight" type="b">
-      <default>false</default>
-      <summary>Show hint highlights</summary>
-      <description>Show hint highlights</description>
+      <range min="1" max="100" />
+      <summary>Number of Sudokus to print</summary>
+      <description>Set the number of sudokus you want to print</description>
     </key>
     <key name="unfillable-squares-warning" type="b">
       <default>false</default>
