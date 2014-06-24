@@ -2,7 +2,7 @@
 
 using Gee;
 
-public class SudokuStore
+public class SudokuStore : Object
 {
     private ArrayList<SudokuBoard> easy_boards = new ArrayList<SudokuBoard> ();
     private ArrayList<SudokuBoard> medium_boards = new ArrayList<SudokuBoard> ();

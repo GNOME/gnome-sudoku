@@ -1,6 +1,6 @@
 /* -*- Mode: vala; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
-public class SudokuGenerator
+public class SudokuGenerator : Object
 {
     public int clues = 40;
 

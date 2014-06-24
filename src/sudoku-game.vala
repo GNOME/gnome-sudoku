@@ -2,7 +2,7 @@
 
 using Gee;
 
-public class SudokuGame
+public class SudokuGame : Object
 {
     public SudokuBoard board;
     public GLib.Timer timer;

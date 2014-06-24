@@ -2,7 +2,7 @@
 
 using Gee;
 
-public class SudokuSaver
+public class SudokuSaver : Object
 {
     public static string savegame_file { get; private set; default = ""; }
     public static string finishgame_dir { get; private set; default = ""; }

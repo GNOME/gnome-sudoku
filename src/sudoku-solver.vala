@@ -8,7 +8,7 @@ protected errordomain SudokuError {
     ALREADY_SET_ERROR
 }
 
-public class SudokuSolver
+public class SudokuSolver : Object
 {
     protected SudokuBoard board;
 
@@ -137,7 +137,7 @@ public class SudokuSolver
             return false;
     }
 
-    public class Iterator {
+    public class Iterator : Object {
         private SudokuSolver solver;
         private SudokuBoard solution;
 
@@ -593,7 +593,7 @@ class SudokuRater : SudokuSolver {
     }
 }
 
-public class Guess {
+public class Guess : Object {
     private int _row;
     public int row
     {
@@ -682,7 +682,7 @@ public class BreadcrumbTrail : GuessList {
     }
 }
 
-public class ParallelDict {
+public class ParallelDict : Object {
     private HashMap<Coord?, HashSet<Coord?>> map = new HashMap<Coord?, HashSet<Coord?>> ();
 
     public void set (Coord k, HashSet<Coord?> v)
@@ -752,7 +752,7 @@ public enum DifficultyCategory {
     }
 }
 
-public class DifficultyRating {
+public class DifficultyRating : Object {
 
     public const float[] VERY_HARD_RANGE = { 0.75f, 10 };
     public const float[] HARD_RANGE = { 0.6f, 0.75f };

@@ -2,7 +2,7 @@
 
 using Gee;
 
-public class SudokuBoard
+public class SudokuBoard : Object
 {
     /* Implemented in such a way that it can be extended for other sizes ( like 2x3 sudoku or 4x4 sudoku ) instead of normal 3x3 sudoku. */
 
