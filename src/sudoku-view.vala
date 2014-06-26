@@ -399,11 +399,15 @@ private class SudokuCellView : Gtk.DrawingArea
         if (is_fixed)
             return false;
 
-        c.move_to (0, (get_allocated_height () - 3));
         if (_warn_about_unfillable_squares)
         {
+            string warning = "X";
+            Cairo.TextExtents extents;
+            c.set_font_size (get_allocated_height () / 2);
+            c.text_extents (warning, out extents);
+            c.move_to ((get_allocated_width () - extents.width) / 2 - 1, (get_allocated_height () + extents.height) / 2 + 1);
             c.set_source_rgb (1.0, 0.0, 0.0);
-            c.show_text ("None");
+            c.show_text (warning);
         }
         else
         {
