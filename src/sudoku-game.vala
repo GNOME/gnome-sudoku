@@ -73,7 +73,10 @@ public class SudokuGame : Object
             for (var l2 = 0; l2 < board.cols; l2++)
             {
                 if (!board.is_fixed[l1, l2])
+                {
                     board.remove (l1, l2);
+                    cell_changed (l1, l2, board.get (l1, l2), 0);
+                }
             }
         }
     }
