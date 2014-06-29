@@ -9,7 +9,12 @@ GNOME_MAINTAINER_MODE_DEFINES
 AM_PROG_VALAC([0.24.0])
 AM_PROG_CC_C_O
 
+LT_PREREQ([2.4])
+LT_INIT
+
 GLIB_GSETTINGS
+
+AC_CONFIG_MACRO_DIR([m4])
 
 dnl ###########################################################################
 dnl Dependencies
@@ -23,11 +28,19 @@ PKG_CHECK_MODULES(GNOME_SUDOKU, [
   gio-2.0 >= $GLIB_REQUIRED
   gtk+-3.0 >= $GTK_REQUIRED
   gee-0.8
+])
+
+PKG_CHECK_MODULES(LIBSUDOKU, [
+  glib-2.0 >= $GLIB_REQUIRED
+  gio-2.0 >= $GLIB_REQUIRED
+  gee-0.8
   json-glib-1.0
 ])
 
 AC_PATH_PROG([APPDATA_VALIDATE], [appdata-validate], [/bin/true])
 AC_PATH_PROG([DESKTOP_FILE_VALIDATE], [desktop-file-validate], [/bin/true])
+
+AC_CHECK_LIB([m],[floor])
 
 dnl ###########################################################################
 dnl GResources
@@ -59,6 +72,7 @@ data/Makefile
 data/icons/Makefile
 data/icons/hicolor/Makefile
 data/icons/HighContrast/Makefile
+lib/Makefile
 help/Makefile
 src/Makefile
 src/gnome-sudoku.gresource.xml

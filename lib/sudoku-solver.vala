@@ -486,7 +486,7 @@ public class SudokuSolver : Object
     }
 }
 
-class SudokuRater : SudokuSolver {
+public class SudokuRater : SudokuSolver {
 
     private bool guessing;
     private bool fake_add;
