@@ -139,7 +139,7 @@ class MessageDialog (Gtk.MessageDialog, ModalDialog):
         ModalDialog.__init__(self, title=title, default=default, okay=okay, cancel=cancel, label=label, sublabel=sublabel, parent=parent, expander=expander)
 
     def setup_dialog (self, *args, **kwargs):
-        kwargs['type']=self.message_type
+        kwargs['message-type']=self.message_type
         if 'title' in kwargs:
             del kwargs['title']
         GObject.GObject.__init__(self, *args, **kwargs)
