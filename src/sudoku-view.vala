@@ -422,10 +422,7 @@ private class SudokuCellView : Gtk.DrawingArea
         if (row == this.row && col == this.col)
         {
             this.value = new_val;
-            if (new_val == 0)
-            {
-                notify_property("value");
-            }
+            notify_property("value");
         }
     }
 }
