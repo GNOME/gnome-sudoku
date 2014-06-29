@@ -369,6 +369,7 @@ public class Sudoku : Gtk.Application
     private const string[] authors = { "Robert Ancell <robert.ancell@gmail.com>",
                                        "Christopher Baines <cbaines8@gmail.com>",
                                        "Thomas M. Hinkle <Thomas_Hinkle@alumni.brown.edu>",
+                                       "Parin Porecha <parinporecha@gmail.com>",
                                        "John Stowers <john.stowers@gmail.com>",
                                        null };
 
@@ -379,7 +380,7 @@ public class Sudoku : Gtk.Application
                                "logo-icon-name", "gnome-sudoku",
                                "version", VERSION,
                                "comments", _("The popular Japanese logic puzzle\n\nGNOME Sudoku is a part of GNOME Games."),
-                               "copyright", "Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell",
+                               "copyright", "Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha",
                                "license-type", License.GPL_2_0,
                                "authors", authors,
                                "artists", null,
