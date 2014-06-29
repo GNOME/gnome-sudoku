@@ -79,6 +79,7 @@ public class SudokuGame : Object
                 }
             }
         }
+        board.earmarks = new bool[board.rows, board.cols, board.max_val];
     }
 
     public void cell_changed_cb (int row, int col, int old_val, int new_val)
