@@ -478,7 +478,7 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
         are stored in InteractiveGrid.conflicts
         '''
         # Return if there are no conflicts for this cell
-        if not self.grid.conflicts.has_key((x, y)):
+        if not self.grid or not self.grid.conflicts.has_key((x, y)):
             return
         # Highlight the current cell
         self.__entries__[(x, y)].set_error_highlight(True)
@@ -568,7 +568,7 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
         If any conflicts were cleared on the last remove() then they are
         stored in grid.cleared_conflicts
         '''
-        if not self.grid.cleared_conflicts:
+        if not self.grid or not self.grid.cleared_conflicts:
             return
         for coord in self.grid.cleared_conflicts:
             linked_entry = self.__entries__[coord]
@@ -709,7 +709,8 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
         if track:
             for coord in track.keys():
                 self.__entries__[coord].set_value(0, tracker_info.NO_TRACKER)
-                self.grid.remove(*coord)
+                if self.grid:
+                    self.grid.remove(*coord)
                 self.remove_error_highlight()
                 self.mark_impossible_implications(*coord)
         if hide:
@@ -731,7 +732,8 @@ class SudokuGameDisplay (SudokuNumberGrid, GObject.GObject):
             self.__entries__[(x, y)].set_value(value, self.tinfo.showing_tracker)
             self.__entries__[(x, y)].recolor(self.tinfo.showing_tracker)
             # Add it to the underlying grid
-            self.grid.add(x, y, value, True)
+            if self.grid:
+                self.grid.add(x, y, value, True)
             # Highlight any conflicts that the new value creates
             self.highlight_conflicts(x, y)
             # Draw our entry
