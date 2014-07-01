@@ -441,8 +441,9 @@ public class SudokuView : Gtk.AspectFrame
     private Gtk.EventBox box;
     private Gtk.Grid grid;
 
-    public const RGBA fixed_cell_color = {0.93, 0.93, 0.93, 0};
+    public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
     public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
+    public const RGBA highlight_color = {0.93, 0.93, 0.93, 0};
 
     private int _selected_x = 0;
     public int selected_x
@@ -528,6 +529,17 @@ public class SudokuView : Gtk.AspectFrame
                         this.selected_x = cell_col;
                         this.selected_y = cell_row;
                         cell_focus_in_event(cell_row, cell_col);
+
+                        reset_cell_background_colors ();
+                        set_row_background_color (cell_row, highlight_color);
+                        set_col_background_color (cell_col, highlight_color);
+
+                        var block_row = cell.row / game.board.block_rows;
+                        var block_col = cell.col / game.board.block_cols;
+                        set_block_background_color (block_row, block_col, highlight_color);
+
+                        queue_draw ();
+
                         return false;
                     });
 
