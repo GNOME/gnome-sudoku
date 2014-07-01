@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games-master-po-gl-54590\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-20 22:57+0100\n"
-"PO-Revision-Date: 2014-01-20 22:58+0200\n"
+"POT-Creation-Date: 2014-07-01 18:25+0200\n"
+"PO-Revision-Date: 2014-07-01 18:59+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -27,29 +27,29 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
 msgid ""
-"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
-"make playing Sudoku fun. Games are automatically saved when you quit, and "
-"you can always come back to any game that you've played."
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface makes playing Sudoku fun "
+"for players of any skill level."
 msgstr ""
-"GNOME Sudoku ten unha interface simple e non intrusiva con todas as "
-"características que fan xogar ao Sudoku divertido. Os xogos gárdanse "
-"automaticamente ao sair e pode retomar calquera xogo que estivera xogando."
+"Xogue ao popular xogo de lóxica xaponés. GNOME Sudoku é de obrigada "
+"instalación para os amantes do Sudoku, cunha interface simple e non "
+"intrusiva que fai que xogar a Sudoku sexa divertido para xogadores de "
+"calquera nivel."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
-"websites. You can also see detailed information about how the computer "
-"solved the puzzle."
+"websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
 "Cada xogo ten unha dificultade asignada similar ás dos diarios en papel e "
-"sitios web. Tamén pode ver información detallada sobre como o computador "
-"soluciona o quebracabezas."
+"sitios web, polo que a súa partida será tan doada ou difícil como quere que "
+"sexa."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
@@ -61,7 +61,8 @@ msgstr ""
 "que xogos quere imprimir por páxina e de que dificultade: como resultado, "
 "GNOME Sudoku pode actuar como un libro de Sudokus actualizábel."
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:378
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -70,126 +71,242 @@ msgid "Test your logic skills in this number grid puzzle"
 msgstr "Probe as súas habilidades de lóxica neste quebracabezas numérico"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "xogo;taboleiro;cela;xaponés;"
+msgid "magic;square;"
+msgstr "máxico;cadrado;"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
-msgid "The number of seconds between automatic saves"
-msgstr "O número de segundos entre os gardados automáticos"
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+msgid "_Print"
+msgstr "_Imprimir"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
-msgid "Print games that have been played"
-msgstr "Imprimir xogos que foran xogados"
+#: ../data/gnome-sudoku-menu.ui.h:2
+msgid "Print _Current Puzzle…"
+msgstr "Imprimir quebracabezas _actual…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
-msgid "Mark printed games as played"
-msgstr "Marcar os xogos impresos como xogados"
+#: ../data/gnome-sudoku-menu.ui.h:3
+msgid "Print _Multiple Puzzles…"
+msgstr "Imprimir _varios quebracabezas…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
-msgid "Width of application window in pixels"
-msgstr "A largura da xanela principal en píxeles"
+#: ../data/gnome-sudoku-menu.ui.h:4
+msgid "_Warn About Unfillable Squares"
+msgstr "_Avisar sobre os cadrados que non é posíbel _encher"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
-msgid "Height of application window in pixels"
-msgstr "A altura da xanela principal en píxeles"
+#: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Help"
+msgstr "_Axuda"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
-msgid "Show hint highlights"
-msgstr "Mostrar suxestións resaltadas"
+#: ../data/gnome-sudoku-menu.ui.h:6
+msgid "_About"
+msgstr "So_bre"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
-msgid "Color of the grid border"
-msgstr "Cor do borde da grella"
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_Quit"
+msgstr "_Saír"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
-msgid "Show the application toolbar"
-msgstr "Mostrar a barra de ferramentas do aplicativo"
+#: ../data/gnome-sudoku.ui.h:2
+msgid "Undo your last action"
+msgstr "Desfacer a última acción"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
-msgid "Show hints"
-msgstr "Mostrar suxestións"
+#: ../data/gnome-sudoku.ui.h:3
+msgid "Redo your last action"
+msgstr "Refacer a última acción"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
-msgid "Number of puzzles to print on a page"
-msgstr "Número de crebacabezas para imprimir nunha páxina"
+#: ../data/gnome-sudoku.ui.h:4
+msgid "Go back to the current game"
+msgstr "Volver ao xogo actual"
 
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "Imprimir Sudokus"
-
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "Imprimir xogos"
-
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "_Número do sudoku para imprimir: "
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "_Sudokus por páxina: "
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "Niveis de dificultade para imprimir"
-
-#: ../data/print_games.ui.h:6
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
 msgid "_Easy"
 msgstr "_Fácil"
 
-#: ../data/print_games.ui.h:7
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
 msgid "_Medium"
 msgstr "_Medio"
 
-#: ../data/print_games.ui.h:8
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
 msgid "_Hard"
 msgstr "_Difícil"
 
-#: ../data/print_games.ui.h:9
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
 msgid "_Very Hard"
 msgstr "Moi di_fícil"
 
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "Detalles"
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
+msgid "Difficulty level of sudokus to be printed"
+msgstr "Nivel de dificultad dos sudokus a imprimir"
 
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "_Marcar os xogos como xogados despois de imprimilos."
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+msgid ""
+"Set the difficulty level of the sudokus you want to print. Possible values "
+"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+msgstr ""
+"Estabeleza o nivel de dificultade dos sudokus que quere imprimir. Os valores "
+"posíbeis son - «easy», «medium», «hard», «very_hard»."
 
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr "_Incluír os xogos aos que xa xogou na lista de xogos para imprimir"
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+msgid "Number of Sudokus to print"
+msgstr "Número de sudoku a imprimir"
 
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "Xogo _novo"
+#: ../data/org.gnome.sudoku.gschema.xml.h:4
+msgid "Set the number of sudokus you want to print"
+msgstr "Estabeleza o número do sudoku que quere imprimir "
 
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "Xogos _gardados"
+#: ../data/org.gnome.sudoku.gschema.xml.h:5
+msgid "Warn about unfillable squares"
+msgstr "Avisar sobre os cadrados que non é posíbel encher"
 
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "Engadir un novo seguimento"
+#: ../data/org.gnome.sudoku.gschema.xml.h:6
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number"
+msgstr ""
+"Mostra un gran X vermello nun cadrado se non é posíbel encher calquera "
+"número"
 
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "Retirar o seguimento seleccionado."
+#: ../data/print-games.ui.h:1
+msgid "Print Multiple Puzzles"
+msgstr "Imprimir varios sudokus"
 
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "Facer permanentes os cambios nos seguimentos"
+#: ../data/print-games.ui.h:3
+msgid "_Cancel"
+msgstr "_Cancelar"
 
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
-msgid "H_ide"
-msgstr "O_cultar"
+#: ../data/print-games.ui.h:4
+msgid "_Number of puzzles"
+msgstr "_Número de quebraca"
 
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "Agochar os valores en seguimento"
+#: ../data/print-games.ui.h:5
+msgid "Difficulty"
+msgstr "Dificultade"
 
-#: ../src/lib/defaults.py:50
+#: ../lib/sudoku-game.vala:137
+msgid "second"
+msgstr "segundo"
+
+#: ../lib/sudoku-game.vala:138
+msgid "seconds"
+msgstr "segundos"
+
+#: ../lib/sudoku-game.vala:139
+msgid "minute"
+msgstr "minuto"
+
+#: ../lib/sudoku-game.vala:140
+msgid "minutes"
+msgstr "minutos"
+
+#: ../lib/sudoku-game.vala:141
+msgid "hour"
+msgstr "hora"
+
+#: ../lib/sudoku-game.vala:142
+msgid "hours"
+msgstr "horas"
+
+#: ../lib/sudoku-solver.vala:742
+msgid "Easy Difficulty"
+msgstr "Dificultade fácil"
+
+#: ../lib/sudoku-solver.vala:744
+msgid "Medium Difficulty"
+msgstr "Dificultade media"
+
+#: ../lib/sudoku-solver.vala:746
+msgid "Hard Difficulty"
+msgstr "Dificultade difícil"
+
+#: ../lib/sudoku-solver.vala:748
+msgid "Very Hard Difficulty"
+msgstr "Dificultade moi difícil"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:859
+msgid "Number of moves instantly fillable by elimination:"
+msgstr "Número de movementos recheados instantaneamente por eliminación:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:861
+msgid "Percentage of moves instantly fillable by elimination:"
+msgstr "Porcentaxe de movementos recheados instantaneamente por eliminación:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:863
+msgid "Number of moves instantly fillable by filling:"
+msgstr "Número de movementos recheados instantaneamente por recheo:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:865
+msgid "Percentage of moves instantly fillable by filling:"
+msgstr "Porcentaxe de movementos recheados instantaneamente por recheo:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:867
+msgid "Number of guesses made:"
+msgstr "Número de adivinacións feitas:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:869
+msgid "Number of backtraces:"
+msgstr "Número de trazas:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:871
+msgid "Ease by filling:"
+msgstr "Facilitar por recheo:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:873
+msgid "Ease by elimination:"
+msgstr "Facilitar por eliminación:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:875
+msgid "Calculated difficulty:"
+msgstr "Dificultade calculada:"
+
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:58
+msgid "Show release version"
+msgstr "Mostrar o número de versión"
+
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:62
+msgid "Show the possible values for each cell"
+msgstr "Mostrar os valores posíbeis para cada cela"
+
+#: ../src/gnome-sudoku.vala:145
+msgid "_Clear Board"
+msgstr "_Limpar taboleiro"
+
+#: ../src/gnome-sudoku.vala:151
+msgid "Reset the board to its original state"
+msgstr "Reiniciar o taboleiro ao seu estado orixinal"
+
+#: ../src/gnome-sudoku.vala:157
+msgid "_New Puzzle"
+msgstr "_Novo quebracabezas"
+
+#: ../src/gnome-sudoku.vala:163
+msgid "Start a new puzzle"
+msgstr "Comezar un xogo quebracabezas"
+
+#: ../src/gnome-sudoku.vala:244
+#, c-format
+msgid "Well done, you completed the puzzle in %s"
+msgstr "Ben feito, completaches o quebracabezas en %s"
+
+#: ../src/gnome-sudoku.vala:246
+msgid "Same difficulty again"
+msgstr "Mesma dificultade de novo"
+
+#: ../src/gnome-sudoku.vala:247
+msgid "New difficulty"
+msgstr "Nova dificultade"
+
+#: ../src/gnome-sudoku.vala:294
+msgid "Reset the board to its original state?"
+msgstr "Reiniciar o taboleiro ao seu estado orixinal?"
+
+#: ../src/gnome-sudoku.vala:381
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -199,335 +316,15 @@ msgstr ""
 "\n"
 "O GNOME Sudoku forma parte do GNOME Games."
 
-#: ../src/lib/defaults.py:53
-msgid "Website"
-msgstr "Sitio web"
-
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "Fácil"
-
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "Medio"
-
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "Difícil"
-
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "Moi difícil"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "Xogado por última vez hai %(n)s segundo"
-msgstr[1] "Xogado por última vez hai %(n)s segundos"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "Xogado por última vez hai %(n)s minuto"
-msgstr[1] "Xogado por última vez hai %(n)s minutos"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "Xogado por última vez ás %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "Xogado por última vez onte ás %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "Xogado por última vez o %A ás %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "Xogado por última vez o %e do %B do %Y"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "Quebracabezas fácil"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "Quebracabezas medio"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "Quebracabezas difícil"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "Quebracabezas moi difícil"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "Xogado durante %d hora"
-msgstr[1] "Xogado durante %d horas"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "Xogado durante %d minuto"
-msgstr[1] "Xogado durante %d minutos"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "Xogado durante %d segundo"
-msgstr[1] "Xogado durante %d segundos"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "Está seguro de que quere facer isto?"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "Non preguntar isto de novo."
-
-#: ../src/lib/main.py:196
-msgid "_Game"
-msgstr "_Xogo"
-
-#: ../src/lib/main.py:197
-msgid "New game"
-msgstr "Nova partida"
-
-#: ../src/lib/main.py:198
-msgid "_Reset"
-msgstr "_Restabelecer"
-
-#: ../src/lib/main.py:200
-msgid "_Undo"
-msgstr "_Desfacer"
-
-#: ../src/lib/main.py:201
-msgid "Undo last action"
-msgstr "Desfacer o último movemento"
-
-#: ../src/lib/main.py:202
-msgid "_Redo"
-msgstr "_Refacer"
-
-#: ../src/lib/main.py:203
-msgid "Redo last action"
-msgstr "Refacer o último movemento"
-
-#: ../src/lib/main.py:204
-msgid "Puzzle _Statistics..."
-msgstr "E_statísticas do quebracabezas…"
-
-#: ../src/lib/main.py:206
-msgid "_Print..."
-msgstr "Im_primir…"
-
-#: ../src/lib/main.py:207
-msgid "Print _Multiple Sudokus..."
-msgstr "Imprimir _múltiples sudokus…"
-
-#: ../src/lib/main.py:210
-msgid "_Settings"
-msgstr "_Configuracións"
-
-#: ../src/lib/main.py:212
-msgid "_Tools"
-msgstr "_Ferramentas"
-
-#: ../src/lib/main.py:213
-msgid "_Hint"
-msgstr "S_uxestión"
-
-#: ../src/lib/main.py:214
-msgid "Show a square that is easy to fill."
-msgstr "Mostrar un cadrado fácil de rechear."
-
-#: ../src/lib/main.py:215
-msgid "Clear _Top Notes"
-msgstr "Limpar as _notas superiores"
-
-#: ../src/lib/main.py:217
-msgid "Clear _Bottom Notes"
-msgstr "Limpar as _notas inferiores"
-
-#: ../src/lib/main.py:219
-msgid "_Help"
-msgstr "_Axuda"
-
-#: ../src/lib/main.py:220
-msgid "_Contents"
-msgstr "_Contidos"
-
-#: ../src/lib/main.py:226
-msgid "Show _Possible Numbers"
-msgstr "Mostrar os nú_meros posíbeis"
-
-#: ../src/lib/main.py:228
-msgid "Always show possible numbers in a square"
-msgstr "Mostrar sempre os números posíbeis nun cadrado"
-
-#: ../src/lib/main.py:232
-msgid "Warn About _Unfillable Squares"
-msgstr "Advertir sobre os cadrados que non é posíbel _encher"
-
-#: ../src/lib/main.py:234
-msgid "Warn about squares made unfillable by a move"
-msgstr ""
-"Avisar sobre os cadrados convertidos que non é posíbel encher por un "
-"movemento"
-
-#: ../src/lib/main.py:236
-msgid "_Track Additions"
-msgstr "Seg_uir as adicións"
-
-#: ../src/lib/main.py:238
-msgid "Mark new additions in a separate color so you can keep track of them."
-msgstr ""
-"Marcar as novas adicións nunha cor diferente para poder facer un seguimento "
-"delas."
-
-#: ../src/lib/main.py:240
-msgid "Show _Toolbar"
-msgstr "Mostrar _barra de ferramentas"
-
-#: ../src/lib/main.py:241
-msgid "_Highlighter"
-msgstr "_Realzador"
-
-#: ../src/lib/main.py:242
-msgid "Highlight the current row, column and box"
-msgstr "Realzar a fila, columna e caixa actuais"
-
-#: ../src/lib/main.py:367
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "Completou o quebracabezas en %d segundo"
-msgstr[1] "Completou o quebracabezas en %d segundos."
-
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minuto"
-msgstr[1] "%d minutos"
-
-#: ../src/lib/main.py:373 ../src/lib/main.py:381
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d segundo"
-msgstr[1] "%d segundos"
-
-#: ../src/lib/main.py:374
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "Completou o quebracabezas en %(minute)s e %(second)s"
-
-#: ../src/lib/main.py:379
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d hora"
-msgstr[1] "%d horas"
-
-#: ../src/lib/main.py:382
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "Completou o quebracabezas en %(hour)s, %(minute)s e %(second)s"
-
-#: ../src/lib/main.py:384
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "Ten %(n)s suxestión."
-msgstr[1] "Ten %(n)s suxestións."
-
-#: ../src/lib/main.py:387
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "Indicóuselle %(n)s imposibilidade."
-msgstr[1] "Indicáronselle %(n)s imposibilidades."
-
-#: ../src/lib/main.py:392
-msgid "You win!"
-msgstr "Gañou!"
-
-#: ../src/lib/main.py:402
-msgid "Save this game before starting new one?"
-msgstr "Quere gardar esta partida antes de comezar unha nova?"
-
-#: ../src/lib/main.py:403
-msgid "_Save game for later"
-msgstr "_Gardar a partida para despois"
-
-#: ../src/lib/main.py:404
-msgid "_Abandon game"
-msgstr "_Abandonar a partida"
-
-#: ../src/lib/main.py:422
-msgid "Save game before closing?"
-msgstr "Gardar a partida antes de saír?"
-
-#: ../src/lib/main.py:620
-msgid "Puzzle Information"
-msgstr "Información do quebracabezas"
-
-#: ../src/lib/main.py:621
-msgid "There is no current puzzle."
-msgstr "Non hai ningún quebracabezas actualmente."
-
-#: ../src/lib/main.py:626
-msgid "Calculated difficulty: "
-msgstr "Dificultade calculada: "
-
-#: ../src/lib/main.py:631
-msgid "Very Hard"
-msgstr "Moi difícil"
-
-#: ../src/lib/main.py:636
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "Número de movementos que se poden encher no instante por eliminación: "
-
-#: ../src/lib/main.py:639
-msgid "Number of moves instantly fillable by filling: "
-msgstr "Número de movementos que se poden encher no instante por dedución: "
-
-#: ../src/lib/main.py:642
-msgid "Amount of trial-and-error required to solve: "
-msgstr "Número de intentos e erros requiridos para resolver: "
-
-#: ../src/lib/main.py:645 ../src/lib/main.py:646
-msgid "Puzzle Statistics"
-msgstr "Estatísticas do quebracabezas"
-
-#: ../src/lib/main.py:670
+#: ../src/gnome-sudoku.vala:386
 msgid "translator-credits"
 msgstr ""
+"Fran Diéguez <frandieguez@ubuntu.com>, 2009-2014.\n"
 "Leandro Regueiro <leandro.regueiro@gmail.com>, 2012.\n"
-"Fran Diéguez <frandieguez@ubuntu.com>, 2009, 2010, 2011, 2012;\n"
 "Antón Méixome <meixome@mancomun.org>, 2009.\n"
 "Suso Baleato <suso.baleato@xunta.es>, 2009.\n"
-"Mancomún - Centro de Referencia e Servizos de Software Libre <g11n@mancomun."
-"org>, 2009.\n"
+"Mancomún - Centro de Referencia e Servizos de Software Libre "
+"<g11n@mancomun.org>, 2009.\n"
 "Ignacio Casal Quinteiro <icq@svn.gnome.org>, 2008.\n"
 "Ignacio Casal Quinteiro <nacho.resa@gmail.com>, 2005, 2006.\n"
 "Jesús Bravo Álvarez <jba@pobox.com>, 2000.\n"
@@ -535,88 +332,344 @@ msgstr ""
 "Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas\n"
 "colaborar connosco, podes atopar máis información en http://www.trasno.net"
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:680
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "Non é posíbel mostrar a axuda: %s"
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:30
+msgid "Error printing file:"
+msgstr "Produciuse un erro ao imprimir o ficheiro:"
 
-#: ../src/lib/main.py:736
-msgid "Untracked"
-msgstr "Sen seguimento"
+#~ msgid ""
+#~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
+#~ "that make playing Sudoku fun. Games are automatically saved when you "
+#~ "quit, and you can always come back to any game that you've played."
+#~ msgstr ""
+#~ "GNOME Sudoku ten unha interface simple e non intrusiva con todas as "
+#~ "características que fan xogar ao Sudoku divertido. Os xogos gárdanse "
+#~ "automaticamente ao sair e pode retomar calquera xogo que estivera xogando."
 
-#: ../src/lib/main.py:745
-msgid "_Remove"
-msgstr "_Retirar"
+#~ msgid "game;board;tiles;japanese;"
+#~ msgstr "xogo;taboleiro;cela;xaponés;"
 
-#: ../src/lib/main.py:746
-msgid "Delete selected tracker."
-msgstr "Eliminar o seguimento seleccionado."
+#~ msgid "The number of seconds between automatic saves"
+#~ msgstr "O número de segundos entre os gardados automáticos"
 
-#: ../src/lib/main.py:752
-msgid "Hide current tracker entries."
-msgstr "Agochar as entradas do seguimento actuais."
+#~ msgid "Print games that have been played"
+#~ msgstr "Imprimir xogos que foran xogados"
 
-#: ../src/lib/main.py:757
-msgid "A_pply"
-msgstr "A_plicar"
+#~ msgid "Mark printed games as played"
+#~ msgstr "Marcar os xogos impresos como xogados"
 
-#: ../src/lib/main.py:758
-msgid "Apply all tracked values and remove the tracker."
-msgstr "Aplicar todos os valores rexistrados e retirar o seguimento."
+#~ msgid "Width of application window in pixels"
+#~ msgstr "A largura da xanela principal en píxeles"
 
-#: ../src/lib/main.py:796
-#, python-format
-msgid "Tracker %s"
-msgstr "Seguimento %s"
+#~ msgid "Height of application window in pixels"
+#~ msgstr "A altura da xanela principal en píxeles"
 
-#: ../src/lib/number_box.py:82
-msgid "_Clear"
-msgstr "_Limpar"
+#~ msgid "Show hint highlights"
+#~ msgstr "Mostrar suxestións resaltadas"
 
-#: ../src/lib/saver.py:151
-msgid "No Space"
-msgstr "Non hai espazo"
+#~ msgid "Color of the grid border"
+#~ msgstr "Cor do borde da grella"
 
-#: ../src/lib/saver.py:152
-msgid "No space left on disk"
-msgstr "Non queda espazo no disco"
+#~ msgid "Show the application toolbar"
+#~ msgstr "Mostrar a barra de ferramentas do aplicativo"
 
-#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "Non é posíbel crear o cartafol de datos %(path)s."
+#~ msgid "Show hints"
+#~ msgstr "Mostrar suxestións"
 
-#: ../src/lib/saver.py:155
-msgid "There is no disk space left!"
-msgstr "Non queda espazo no disco!"
+#~ msgid "Number of puzzles to print on a page"
+#~ msgstr "Número de crebacabezas para imprimir nunha páxina"
 
-#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
-msgid "Error creating directory"
-msgstr "Produciuse un erro ao crear o cartafol"
+#~ msgid "Print Sudokus"
+#~ msgstr "Imprimir Sudokus"
 
-#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
-#: ../src/lib/saver.py:229
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "Erro %(errno)s: %(error)s"
+#~ msgid "Print Games"
+#~ msgstr "Imprimir xogos"
 
-#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
-msgid "Unable to save game."
-msgstr "Non foi posíbel gardar a partida."
+#~ msgid "_Sudokus per page: "
+#~ msgstr "_Sudokus por páxina: "
 
-#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "Non é posíbel gardar o ficheiro %(filename)s."
+#~ msgid "Levels of difficulty to print"
+#~ msgstr "Niveis de dificultade para imprimir"
 
-#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
-msgid "Unable to mark game as finished."
-msgstr "Non foi posíbel marcar a partida como rematada."
+#~ msgid "Details"
+#~ msgstr "Detalles"
 
-#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
-msgid "Sudoku unable to mark game as finished."
-msgstr "O Sudoku non puido marcar a partida como rematada."
+#~ msgid "_Mark games as played once you've printed them."
+#~ msgstr "_Marcar os xogos como xogados despois de imprimilos."
+
+#~ msgid "_Include games you've already played in list of games to print"
+#~ msgstr "_Incluír os xogos aos que xa xogou na lista de xogos para imprimir"
+
+#~ msgid "_New Game"
+#~ msgstr "Xogo _novo"
+
+#~ msgid "_Saved Games"
+#~ msgstr "Xogos _gardados"
+
+#~ msgid "Add a new tracker"
+#~ msgstr "Engadir un novo seguimento"
+
+#~ msgid "Remove the selected tracker"
+#~ msgstr "Retirar o seguimento seleccionado."
+
+#~ msgid "Make the tracked changes permanent"
+#~ msgstr "Facer permanentes os cambios nos seguimentos"
+
+#~ msgid "H_ide"
+#~ msgstr "O_cultar"
+
+#~ msgid "Hide the tracked values"
+#~ msgstr "Agochar os valores en seguimento"
+
+#~ msgid "Website"
+#~ msgstr "Sitio web"
+
+#~ msgid "Easy"
+#~ msgstr "Fácil"
+
+#~ msgid "Medium"
+#~ msgstr "Medio"
+
+#~ msgid "Hard"
+#~ msgstr "Difícil"
+
+#~ msgid "Very hard"
+#~ msgstr "Moi difícil"
+
+#~ msgid "Last played %(n)s second ago"
+#~ msgid_plural "Last played %(n)s seconds ago"
+#~ msgstr[0] "Xogado por última vez hai %(n)s segundo"
+#~ msgstr[1] "Xogado por última vez hai %(n)s segundos"
+
+#~ msgid "Last played %(n)s minute ago"
+#~ msgid_plural "Last played %(n)s minutes ago"
+#~ msgstr[0] "Xogado por última vez hai %(n)s minuto"
+#~ msgstr[1] "Xogado por última vez hai %(n)s minutos"
+
+#~ msgid "Last played at %I:%M %p"
+#~ msgstr "Xogado por última vez ás %H:%M"
+
+#~ msgid "Last played yesterday at %I:%M %p"
+#~ msgstr "Xogado por última vez onte ás %H:%M"
+
+#~ msgid "Last played on %A at %I:%M %p"
+#~ msgstr "Xogado por última vez o %A ás %H:%M"
+
+#~ msgid "Last played on %B %e %Y"
+#~ msgstr "Xogado por última vez o %e do %B do %Y"
+
+#~ msgid "Easy puzzle"
+#~ msgstr "Quebracabezas fácil"
+
+#~ msgid "Medium puzzle"
+#~ msgstr "Quebracabezas medio"
+
+#~ msgid "Hard puzzle"
+#~ msgstr "Quebracabezas difícil"
+
+#~ msgid "Very hard puzzle"
+#~ msgstr "Quebracabezas moi difícil"
+
+#~ msgid "Played for %d hour"
+#~ msgid_plural "Played for %d hours"
+#~ msgstr[0] "Xogado durante %d hora"
+#~ msgstr[1] "Xogado durante %d horas"
+
+#~ msgid "Played for %d minute"
+#~ msgid_plural "Played for %d minutes"
+#~ msgstr[0] "Xogado durante %d minuto"
+#~ msgstr[1] "Xogado durante %d minutos"
+
+#~ msgid "Played for %d second"
+#~ msgid_plural "Played for %d seconds"
+#~ msgstr[0] "Xogado durante %d segundo"
+#~ msgstr[1] "Xogado durante %d segundos"
+
+#~ msgid "Do you really want to do this?"
+#~ msgstr "Está seguro de que quere facer isto?"
+
+#~ msgid "Don't ask me this again."
+#~ msgstr "Non preguntar isto de novo."
+
+#~ msgid "_Game"
+#~ msgstr "_Xogo"
+
+#~ msgid "New game"
+#~ msgstr "Nova partida"
+
+#~ msgid "_Reset"
+#~ msgstr "_Restabelecer"
+
+#~ msgid "_Undo"
+#~ msgstr "_Desfacer"
+
+#~ msgid "_Redo"
+#~ msgstr "_Refacer"
+
+#~ msgid "Puzzle _Statistics..."
+#~ msgstr "E_statísticas do quebracabezas…"
+
+#~ msgid "_Settings"
+#~ msgstr "_Configuracións"
+
+#~ msgid "_Tools"
+#~ msgstr "_Ferramentas"
+
+#~ msgid "_Hint"
+#~ msgstr "S_uxestión"
+
+#~ msgid "Show a square that is easy to fill."
+#~ msgstr "Mostrar un cadrado fácil de rechear."
+
+#~ msgid "Clear _Top Notes"
+#~ msgstr "Limpar as _notas superiores"
+
+#~ msgid "Clear _Bottom Notes"
+#~ msgstr "Limpar as _notas inferiores"
+
+#~ msgid "_Contents"
+#~ msgstr "_Contidos"
+
+#~ msgid "Show _Possible Numbers"
+#~ msgstr "Mostrar os nú_meros posíbeis"
+
+#~ msgid "Always show possible numbers in a square"
+#~ msgstr "Mostrar sempre os números posíbeis nun cadrado"
+
+#~ msgid "Warn about squares made unfillable by a move"
+#~ msgstr ""
+#~ "Avisar sobre os cadrados convertidos que non é posíbel encher por un "
+#~ "movemento"
+
+#~ msgid "_Track Additions"
+#~ msgstr "Seg_uir as adicións"
+
+#~ msgid ""
+#~ "Mark new additions in a separate color so you can keep track of them."
+#~ msgstr ""
+#~ "Marcar as novas adicións nunha cor diferente para poder facer un "
+#~ "seguimento delas."
+
+#~ msgid "Show _Toolbar"
+#~ msgstr "Mostrar _barra de ferramentas"
+
+#~ msgid "_Highlighter"
+#~ msgstr "_Realzador"
+
+#~ msgid "Highlight the current row, column and box"
+#~ msgstr "Realzar a fila, columna e caixa actuais"
+
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d minuto"
+#~ msgstr[1] "%d minutos"
+
+#~ msgid "%d second"
+#~ msgid_plural "%d seconds"
+#~ msgstr[0] "%d segundo"
+#~ msgstr[1] "%d segundos"
+
+#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
+#~ msgstr "Completou o quebracabezas en %(minute)s e %(second)s"
+
+#~ msgid "%d hour"
+#~ msgid_plural "%d hours"
+#~ msgstr[0] "%d hora"
+#~ msgstr[1] "%d horas"
+
+#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
+#~ msgstr "Completou o quebracabezas en %(hour)s, %(minute)s e %(second)s"
+
+#~ msgid "You got %(n)s hint."
+#~ msgid_plural "You got %(n)s hints."
+#~ msgstr[0] "Ten %(n)s suxestión."
+#~ msgstr[1] "Ten %(n)s suxestións."
+
+#~ msgid "You had %(n)s impossibility pointed out."
+#~ msgid_plural "You had %(n)s impossibilities pointed out."
+#~ msgstr[0] "Indicóuselle %(n)s imposibilidade."
+#~ msgstr[1] "Indicáronselle %(n)s imposibilidades."
+
+#~ msgid "You win!"
+#~ msgstr "Gañou!"
+
+#~ msgid "Save this game before starting new one?"
+#~ msgstr "Quere gardar esta partida antes de comezar unha nova?"
+
+#~ msgid "_Save game for later"
+#~ msgstr "_Gardar a partida para despois"
+
+#~ msgid "_Abandon game"
+#~ msgstr "_Abandonar a partida"
+
+#~ msgid "Save game before closing?"
+#~ msgstr "Gardar a partida antes de saír?"
+
+#~ msgid "Puzzle Information"
+#~ msgstr "Información do quebracabezas"
+
+#~ msgid "There is no current puzzle."
+#~ msgstr "Non hai ningún quebracabezas actualmente."
+
+#~ msgid "Very Hard"
+#~ msgstr "Moi difícil"
+
+#~ msgid "Amount of trial-and-error required to solve: "
+#~ msgstr "Número de intentos e erros requiridos para resolver: "
+
+#~ msgid "Puzzle Statistics"
+#~ msgstr "Estatísticas do quebracabezas"
+
+#~ msgid "Unable to display help: %s"
+#~ msgstr "Non é posíbel mostrar a axuda: %s"
+
+#~ msgid "Untracked"
+#~ msgstr "Sen seguimento"
+
+#~ msgid "_Remove"
+#~ msgstr "_Retirar"
+
+#~ msgid "Delete selected tracker."
+#~ msgstr "Eliminar o seguimento seleccionado."
+
+#~ msgid "Hide current tracker entries."
+#~ msgstr "Agochar as entradas do seguimento actuais."
+
+#~ msgid "A_pply"
+#~ msgstr "A_plicar"
+
+#~ msgid "Apply all tracked values and remove the tracker."
+#~ msgstr "Aplicar todos os valores rexistrados e retirar o seguimento."
+
+#~ msgid "Tracker %s"
+#~ msgstr "Seguimento %s"
+
+#~ msgid "No Space"
+#~ msgstr "Non hai espazo"
+
+#~ msgid "No space left on disk"
+#~ msgstr "Non queda espazo no disco"
+
+#~ msgid "Unable to create data folder %(path)s."
+#~ msgstr "Non é posíbel crear o cartafol de datos %(path)s."
+
+#~ msgid "There is no disk space left!"
+#~ msgstr "Non queda espazo no disco!"
+
+#~ msgid "Error %(errno)s: %(error)s"
+#~ msgstr "Erro %(errno)s: %(error)s"
+
+#~ msgid "Unable to save game."
+#~ msgstr "Non foi posíbel gardar a partida."
+
+#~ msgid "Unable to save file %(filename)s."
+#~ msgstr "Non é posíbel gardar o ficheiro %(filename)s."
+
+#~ msgid "Unable to mark game as finished."
+#~ msgstr "Non foi posíbel marcar a partida como rematada."
+
+#~ msgid "Sudoku unable to mark game as finished."
+#~ msgstr "O Sudoku non puido marcar a partida como rematada."
 
 #~ msgid "GNOME Games web site"
 #~ msgstr "Sitio web do GNOME Games"
@@ -635,9 +688,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 
 #~ msgid "Claim _Draw"
 #~ msgstr "Pedir o _empate"
-
-#~ msgid "Start a new game"
-#~ msgstr "Comezar un xogo novo"
 
 #~ msgid "New Game"
 #~ msgstr "Xogo novo"
@@ -748,9 +798,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 
 #~ msgid "Opposing Player:"
 #~ msgstr "Opoñente:"
-
-#~ msgid "Difficulty:"
-#~ msgstr "Dificultade:"
 
 #~ msgid "Game Duration:"
 #~ msgstr "Duración do xogo:"
@@ -1159,21 +1206,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 #~ msgid "Save this game before starting a new one?"
 #~ msgstr "Quere gardar esta partida antes de comezar unha nova?"
 
-#~ msgid "second"
-#~ msgid_plural "seconds"
-#~ msgstr[0] "segundo"
-#~ msgstr[1] "segundos"
-
-#~ msgid "minute"
-#~ msgid_plural "minutes"
-#~ msgstr[0] "minuto"
-#~ msgstr[1] "minutos"
-
-#~ msgid "hour"
-#~ msgid_plural "hours"
-#~ msgstr[0] "hora"
-#~ msgstr[1] "horas"
-
 #~ msgid ""
 #~ "The 2D/3D chess game for GNOME. \n"
 #~ "\n"
@@ -1200,9 +1232,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 
 #~ msgid "Failed to open game: %s"
 #~ msgstr "Produciuse un erro ao cargar a partida: %s"
-
-#~ msgid "Show release version"
-#~ msgstr "Mostrar o número de versión"
 
 #~ msgid "[FILE] - Play Chess"
 #~ msgstr "[FILE]: xogar ao Xadrez"
@@ -2315,12 +2344,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 #~ msgid "_Preferences"
 #~ msgstr "_Preferencias"
 
-#~ msgid "_About"
-#~ msgstr "So_bre"
-
-#~ msgid "_Quit"
-#~ msgstr "_Saír"
-
 #~ msgid "Hint"
 #~ msgstr "Suxestión"
 
@@ -2457,9 +2480,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 
 #~ msgid "_Vertical:"
 #~ msgstr "_Vertical:"
-
-#~ msgid "_Number of mines:"
-#~ msgstr "_Número de minas:"
 
 #~ msgid "_Play Game"
 #~ msgstr "_Xogar partida"
@@ -2712,9 +2732,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 #~ msgid "_Restart Puzzle"
 #~ msgstr "_Reiniciar o quebracabezas"
 
-#~ msgid "Next Puzzle"
-#~ msgstr "Quebracabezas seguinte"
-
 #~ msgid "Previous Puzzle"
 #~ msgstr "Quebracabezas anterior"
 
@@ -2901,9 +2918,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 
 #~ msgid "Human Players"
 #~ msgstr "Xogadores humanos"
-
-#~ msgid "_Number of players:"
-#~ msgstr "_Número de xogadores:"
 
 #~ msgid "Computer Opponents"
 #~ msgstr "Opoñentes electrónicos"
@@ -3287,9 +3301,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 #~ msgid "Swell Foop"
 #~ msgstr "Swell Foop"
 
-#~ msgid "_Number of colors:"
-#~ msgstr "_Número de cores:"
-
 #~ msgid "Setup"
 #~ msgstr "Configuración"
 
@@ -3436,9 +3447,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 
 #~ msgid "boo"
 #~ msgstr "uuu!"
-
-#~ msgid "Restart the current game"
-#~ msgstr "Reiniciar o xogo actual"
 
 #~ msgid "Dark's move"
 #~ msgstr "Movemento das negras"
@@ -5380,9 +5388,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 #~ msgid "Could not show link"
 #~ msgstr "Non foi posíbel mostrar a ligazón"
 
-#~ msgid "_Cancel"
-#~ msgstr "_Cancelar"
-
 #~ msgid "_Close"
 #~ msgstr "Pecha_r"
 
@@ -5903,9 +5908,6 @@ msgstr "O Sudoku non puido marcar a partida como rematada."
 
 #~ msgid "Show statistics about current puzzle"
 #~ msgstr "Mostrar as estatísticas do quebracabezas actual"
-
-#~ msgid "Print current game"
-#~ msgstr "Imprimir a partida actual"
 
 #~ msgid "Print more than one sudoku at a time."
 #~ msgstr "Imprimir máis dun sudoku á vez."
