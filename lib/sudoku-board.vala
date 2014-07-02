@@ -194,6 +194,7 @@ public class SudokuBoard : Object
         board.possible_in_block = possible_in_block;
         board._filled = _filled;
         board.broken_coords.add_all (broken_coords);
+        board.earmarks = earmarks;
 
         return board;
     }
