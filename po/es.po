@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-games.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-06-29 21:47+0000\n"
-"PO-Revision-Date: 2014-06-30 12:49+0200\n"
+"POT-Creation-Date: 2014-07-03 07:34+0000\n"
+"PO-Revision-Date: 2014-07-03 12:56+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -30,24 +30,27 @@ msgstr "GNOME Sudoku"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
 msgid ""
-"GNOME Sudoku has a simple, unobtrusive interface with all the features that "
-"make playing Sudoku fun. Games are automatically saved when you quit, and "
-"you can always come back to any game that you've played."
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface makes playing Sudoku fun "
+"for players of any skill level."
 msgstr ""
-"GNOME Sudoku tiene una interfaz sencilla y discreta con todas las "
-"características que hacen divertido jugar a Sudoku. Los juegos de guardan "
-"automáticamente cuando sale y siempre puede volver a cualquier juego al que "
-"ya haya jugado."
+"Juegue al popular juego de lógica japonés. GNOME Sudoku es un juego "
+"imprescindible para los amantes del sudoku, con una interfaz sencilla y no "
+"intrusiva que hace que sea divertido jugar a sudoku para los jugadores de "
+"todos los niveles."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
+#| msgid ""
+#| "Each game is assigned a difficulty similar to those given by newspapers "
+#| "and websites. You can also see detailed information about how the "
+#| "computer solved the puzzle."
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
-"websites. You can also see detailed information about how the computer "
-"solved the puzzle."
+"websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
 "Cada juego tiene un nivel de dificultad similar a los que aparecen en los "
-"periódicos y en las páginas web. También puede ver información detallada "
-"sobre cómo ha resuelto el equipo la partida."
+"periódicos y en las páginas web, por lo que su partida será tan fácil o "
+"difícil como quiera."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
@@ -131,7 +134,6 @@ msgid "_Very Hard"
 msgstr "_Muy difícil"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
-#| msgid "_Number of sudoku to print: "
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Nivel de dificultad de los sudokus que imprimir"
 
@@ -144,12 +146,10 @@ msgstr ""
 "valores posibles son «easy», «medium», «hard» y «very_hard»"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:3
-#| msgid "_Number of sudoku to print: "
 msgid "Number of Sudokus to print"
 msgstr "Número de sudokus que imprimir"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:4
-#| msgid "_Number of sudoku to print: "
 msgid "Set the number of sudokus you want to print"
 msgstr "Establecer el número de sudokus que quiere imprimir"
 
@@ -180,6 +180,92 @@ msgstr "_Número de puzles"
 #: ../data/print-games.ui.h:5
 msgid "Difficulty"
 msgstr "Dificultad"
+
+#: ../lib/sudoku-game.vala:137
+msgid "second"
+msgstr "segundo"
+
+#: ../lib/sudoku-game.vala:138
+msgid "seconds"
+msgstr "segundos"
+
+#: ../lib/sudoku-game.vala:139
+msgid "minute"
+msgstr "minuto"
+
+#: ../lib/sudoku-game.vala:140
+msgid "minutes"
+msgstr "minutos"
+
+#: ../lib/sudoku-game.vala:141
+msgid "hour"
+msgstr "hora"
+
+#: ../lib/sudoku-game.vala:142
+msgid "hours"
+msgstr "horas"
+
+#: ../lib/sudoku-solver.vala:742
+msgid "Easy Difficulty"
+msgstr "Dificultad fácil:"
+
+#: ../lib/sudoku-solver.vala:744
+msgid "Medium Difficulty"
+msgstr "Dificultad media:"
+
+#: ../lib/sudoku-solver.vala:746
+msgid "Hard Difficulty"
+msgstr "Dificultad alta:"
+
+#: ../lib/sudoku-solver.vala:748
+msgid "Very Hard Difficulty"
+msgstr "Dificultad muy alta:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:859
+msgid "Number of moves instantly fillable by elimination:"
+msgstr "Número de movimientos rellenados instantáneamente por eliminación: "
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:861
+msgid "Percentage of moves instantly fillable by elimination:"
+msgstr ""
+"Porcentaje de movimientos rellenados instantáneamente por eliminación: "
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:863
+msgid "Number of moves instantly fillable by filling:"
+msgstr "Número de movimientos rellenados instantáneamente por relleno: "
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:865
+msgid "Percentage of moves instantly fillable by filling:"
+msgstr "Porcentaje de movimientos rellenados instantáneamente por relleno: "
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:867
+msgid "Number of guesses made:"
+msgstr "Número de adivinanzas hechas:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:869
+msgid "Number of backtraces:"
+msgstr "Número de trazas:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:871
+msgid "Ease by filling:"
+msgstr "Facilitar por relleno:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:873
+msgid "Ease by elimination:"
+msgstr "Facilitar por eliminación:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:875
+msgid "Calculated difficulty:"
+msgstr "Dificultad calculada:"
 
 #. Help string for command line --version flag
 #: ../src/gnome-sudoku.vala:58
@@ -243,96 +329,20 @@ msgstr ""
 "Germán Poo Caamaño <gpoo@ubiobio.cl>\n"
 "Pablo Saratxaga <pablo@mandrakesoft.com>"
 
-#: ../src/sudoku-game.vala:137
-msgid "second"
-msgstr "segundo"
-
-#: ../src/sudoku-game.vala:138
-msgid "seconds"
-msgstr "segundos"
-
-#: ../src/sudoku-game.vala:139
-msgid "minute"
-msgstr "minuto"
-
-#: ../src/sudoku-game.vala:140
-msgid "minutes"
-msgstr "minutos"
-
-#: ../src/sudoku-game.vala:141
-msgid "hour"
-msgstr "hora"
-
-#: ../src/sudoku-game.vala:142
-msgid "hours"
-msgstr "horas"
-
 #. Error message if printing fails
 #: ../src/sudoku-printer.vala:30
 msgid "Error printing file:"
 msgstr "Error al imprimir el archivo:"
 
-#: ../src/sudoku-solver.vala:742
-msgid "Easy Difficulty"
-msgstr "Dificultad fácil:"
-
-#: ../src/sudoku-solver.vala:744
-msgid "Medium Difficulty"
-msgstr "Dificultad media:"
-
-#: ../src/sudoku-solver.vala:746
-msgid "Hard Difficulty"
-msgstr "Dificultad alta:"
-
-#: ../src/sudoku-solver.vala:748
-msgid "Very Hard Difficulty"
-msgstr "Dificultad muy alta:"
-
-#. Debug output when starting a new game
-#: ../src/sudoku-solver.vala:859
-msgid "Number of moves instantly fillable by elimination:"
-msgstr "Número de movimientos rellenados instantáneamente por eliminación: "
-
-#. Debug output when starting a new game
-#: ../src/sudoku-solver.vala:861
-msgid "Percentage of moves instantly fillable by elimination:"
-msgstr ""
-"Porcentaje de movimientos rellenados instantáneamente por eliminación: "
-
-#. Debug output when starting a new game
-#: ../src/sudoku-solver.vala:863
-msgid "Number of moves instantly fillable by filling:"
-msgstr "Número de movimientos rellenados instantáneamente por relleno: "
-
-#. Debug output when starting a new game
-#: ../src/sudoku-solver.vala:865
-msgid "Percentage of moves instantly fillable by filling:"
-msgstr "Porcentaje de movimientos rellenados instantáneamente por relleno: "
-
-#. Debug output when starting a new game
-#: ../src/sudoku-solver.vala:867
-msgid "Number of guesses made:"
-msgstr "Número de adivinanzas hechas:"
-
-#. Debug output when starting a new game
-#: ../src/sudoku-solver.vala:869
-msgid "Number of backtraces:"
-msgstr "Número de trazas:"
-
-#. Debug output when starting a new game
-#: ../src/sudoku-solver.vala:871
-msgid "Ease by filling:"
-msgstr "Facilitar por relleno:"
-
-#. Debug output when starting a new game
-#: ../src/sudoku-solver.vala:873
-msgid "Ease by elimination:"
-msgstr "Facilitar por eliminación:"
-
-#. Debug output when starting a new game
-#: ../src/sudoku-solver.vala:875
-msgid "Calculated difficulty:"
-msgstr "Dificultad calculada:"
+#~ msgid ""
+#~ "GNOME Sudoku has a simple, unobtrusive interface with all the features "
+#~ "that make playing Sudoku fun. Games are automatically saved when you "
+#~ "quit, and you can always come back to any game that you've played."
+#~ msgstr ""
+#~ "GNOME Sudoku tiene una interfaz sencilla y discreta con todas las "
+#~ "características que hacen divertido jugar a Sudoku. Los juegos de guardan "
+#~ "automáticamente cuando sale y siempre puede volver a cualquier juego al "
+#~ "que ya haya jugado."
 
 #~ msgid "Easy"
 #~ msgstr "Fácil"
