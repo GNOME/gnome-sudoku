@@ -14,8 +14,8 @@ gnome_sudoku_SOURCES = \
 gnome_sudoku_CFLAGS = -w
 
 gnome_sudoku_CPPFLAGS = \
-	-DPKGDATADIR=\"@datadir@/gnome-sudoku\" \
-	-DLOCALEDIR=\"@localedir@\" \
+	-DPKGDATADIR=\"$(datadir)/gnome-sudoku\" \
+	-DLOCALEDIR=\"$(localedir)\" \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	-I$(top_srcdir)/lib \
 	$(GNOME_SUDOKU_CFLAGS)

@@ -10,8 +10,8 @@ libsudoku_la_SOURCES = \
 libsudoku_la_CFLAGS = -w
 
 libsudoku_la_CPPFLAGS = \
-	-DPKGDATADIR=\"@datadir@/gnome-sudoku\" \
-	-DLOCALEDIR=\"@localedir@\" \
+	-DPKGDATADIR=\"$(datadir)/gnome-sudoku\" \
+	-DLOCALEDIR=\"$(localedir)\" \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	$(LIBSUDOKU_CFLAGS)
 
