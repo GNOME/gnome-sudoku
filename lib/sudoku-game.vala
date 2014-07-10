@@ -16,25 +16,25 @@ public class SudokuGame : Object
 
     public signal void cell_changed (int row, int col, int old_val, int new_val);
 
-    private SList<UndoItem?> undostack;
-    private SList<UndoItem?> redostack;
+    private ArrayList<UndoItem?> undostack;
+    private ArrayList<UndoItem?> redostack;
 
     public bool is_undostack_null ()
     {
-        return undostack == null;
+        return undostack.size == 0;
     }
 
     public bool is_redostack_null ()
     {
-        return redostack == null;
+        return redostack.size == 0;
     }
 
     public SudokuGame (SudokuBoard board)
     {
         this.board = board;
         timer = new Timer();
-        undostack = null;
-        redostack = null;
+        undostack = new ArrayList<UndoItem?> ();
+        redostack = new ArrayList<UndoItem?> ();
     }
 
     public void insert (int row, int col, int val)
@@ -66,8 +66,8 @@ public class SudokuGame : Object
     public void reset ()
     {
         timer.reset();
-        undostack = null;
-        redostack = null;
+        undostack.clear ();
+        redostack.clear ();
         for (var l1 = 0; l1 < board.rows; l1++)
         {
             for (var l2 = 0; l2 < board.cols; l2++)
@@ -90,41 +90,27 @@ public class SudokuGame : Object
     public void update_undo (int row, int col, int old_val, int new_val)
     {
         add_to_stack (ref undostack, row, col, old_val);
-        redostack = null;
+        redostack.clear ();
     }
 
-    private void add_to_stack (ref SList<UndoItem?> stack, int r, int c, int v)
+    private void add_to_stack (ref ArrayList<UndoItem?> stack, int r, int c, int v)
     {
         UndoItem step = { r, c, v };
-        stack.prepend (step);
+        stack.add (step);
     }
 
-    private void apply_stack (ref SList<UndoItem?> from, ref SList<UndoItem?> to)
+    private void apply_stack (ref ArrayList<UndoItem?> from, ref ArrayList<UndoItem?> to)
     {
-        if (from == null)
+        if (from.size == 0)
             return;
 
-        /* Undoing change of single cell */
-        if (from.data.row >= 0 && from.data.col >= 0)
-        {
-            int old_val = board [from.data.row, from.data.col];
-            add_to_stack (ref to, from.data.row, from.data.col, old_val);
-            board.remove (from.data.row, from.data.col);
-            if (from.data.val != 0) {
-                board.insert (from.data.row, from.data.col, from.data.val);
-            }
-            cell_changed (from.data.row, from.data.col, old_val, from.data.val);
-            from.remove (from.data);
-        }
-        /* Undoing reset action */
-        else
-        {
-            var num = from.data.val;
-            from.remove (from.data);
-            for (var l = 0; l < num; l++)
-                apply_stack (ref from, ref to);
-            add_to_stack (ref to, -1, -1, num);
-        }
+        var top = from.remove_at (from.size - 1);
+        int old_val = board [top.row, top.col];
+        add_to_stack (ref to, top.row, top.col, old_val);
+        board.remove (top.row, top.col);
+        if (top.val != 0)
+            board.insert (top.row, top.col, top.val);
+        cell_changed (top.row, top.col, old_val, top.val);
     }
 
     public double get_total_time_played ()
