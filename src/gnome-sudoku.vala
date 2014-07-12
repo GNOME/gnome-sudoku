@@ -99,9 +99,9 @@ public class Sudoku : Gtk.Application
         add_action_entries (action_entries, this);
 
         settings = new GLib.Settings ("org.gnome.sudoku");
-        var action = settings.create_action ("unfillable-squares-warning");
+        var action = settings.create_action ("show-warnings");
         action.notify["state"].connect (() =>
-            view.show_warnings = settings.get_boolean ("unfillable-squares-warning"));
+            view.show_warnings = settings.get_boolean ("show-warnings"));
         add_action (action);
 
         add_accelerator ("<Primary>z", "app.undo", null);
@@ -217,7 +217,7 @@ public class Sudoku : Gtk.Application
         view = new SudokuView (game);
 
         view.show_possibilities = show_possibilities;
-        view.show_warnings = settings.get_boolean ("unfillable-squares-warning");
+        view.show_warnings = settings.get_boolean ("show-warnings");
 
         view.show ();
         grid_box.pack_start (view);

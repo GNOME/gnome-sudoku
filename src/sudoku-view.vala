@@ -81,12 +81,12 @@ private class SudokuCellView : Gtk.DrawingArea
         }
     }
 
-    private bool _warn_about_unfillable_squares = false;
-    public bool warn_about_unfillable_squares
+    private bool _show_warnings = true;
+    public bool show_warnings
     {
-        get { return _warn_about_unfillable_squares; }
+        get { return _show_warnings; }
         set {
-            _warn_about_unfillable_squares = value;
+            _show_warnings = value;
             queue_draw ();
         }
     }
@@ -329,7 +329,7 @@ private class SudokuCellView : Gtk.DrawingArea
 
         int glyph_width, glyph_height;
         layout.get_pixel_size (out glyph_width, out glyph_height);
-        if (game.board.broken_coords.contains(Coord(row, col)))
+        if (_show_warnings && game.board.broken_coords.contains(Coord(row, col)))
         {
             c.set_source_rgb (1.0, 0.0, 0.0);
         }
@@ -399,7 +399,7 @@ private class SudokuCellView : Gtk.DrawingArea
         if (is_fixed)
             return false;
 
-        if (_warn_about_unfillable_squares)
+        if (_show_warnings && (value == 0 && game.board.count_possibilities (_row, _col) == 0))
         {
             string warning = "X";
             Cairo.TextExtents extents;
@@ -546,25 +546,10 @@ public class SudokuView : Gtk.AspectFrame
                     cell.notify["value"].connect((s, p)=> {
                         /* The board needs redrawing if it was/is broken, or if the possibilities are being displayed */
                         if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken_state) {
-                            for (var i = 0; i < game.board.rows; i++)
-                            {
-                                for (var j = 0; j < game.board.cols; j++)
-                                {
-                                    if (_show_warnings && cells[i,j].value == 0 && game.board.count_possibilities (cells[i,j].row, cells[i,j].col) == 0) {
-                                        if (!cells[i,j].warn_about_unfillable_squares) {
-                                            cells[i,j].warn_about_unfillable_squares = true;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        cells[i,j].warn_about_unfillable_squares = false;
-                                    }
-                                }
-                            }
+                            this.queue_draw ();
                             previous_board_broken_state = game.board.broken;
                         }
                         cell_value_changed_event(cell_row, cell_col);
-                        queue_draw ();
                     });
                 }
 
@@ -608,19 +593,8 @@ public class SudokuView : Gtk.AspectFrame
         set {
             _show_warnings = value;
             for (var i = 0; i < game.board.rows; i++)
-            {
                 for (var j = 0; j < game.board.cols; j++)
-                {
-                    if (_show_warnings && cells[i,j].value == 0 && game.board.count_possibilities (cells[i,j].row, cells[i,j].col) == 0)
-                    {
-                        cells[i,j].warn_about_unfillable_squares = true;
-                    }
-                    else
-                    {
-                        cells[i,j].warn_about_unfillable_squares = false;
-                    }
-                }
-            }
+                    cells[i,j].show_warnings = _show_warnings;
          }
     }
 
