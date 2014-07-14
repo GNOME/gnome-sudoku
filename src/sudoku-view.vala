@@ -14,6 +14,9 @@ private class SudokuCellView : Gtk.DrawingArea
 
     private SudokuGame game;
 
+    private const RGBA selected_bg_color = {0.7, 0.8, 0.9};
+    private const RGBA selected_stroke_color = SudokuView.selected_stroke_color;
+
     private int _row;
     public int row
     {
@@ -311,18 +314,11 @@ private class SudokuCellView : Gtk.DrawingArea
 
     public override bool draw (Cairo.Context c)
     {
-        StyleContext styleContext = get_style_context ();
-
         // Draw the background
         if (_selected)
-        {
-            RGBA color = styleContext.get_background_color (StateFlags.SELECTED);
-            c.set_source_rgb (color.red, color.green, color.blue);
-        }
+            c.set_source_rgb (selected_bg_color.red, selected_bg_color.green, selected_bg_color.blue);
         else
-        {
             c.set_source_rgb (_background_color.red, _background_color.green, _background_color.blue);
-        }
 
         c.rectangle (0, 0, get_allocated_width (), get_allocated_height ());
         c.fill ();
@@ -335,8 +331,7 @@ private class SudokuCellView : Gtk.DrawingArea
         }
         else if (_selected)
         {
-            RGBA color = styleContext.get_color (StateFlags.SELECTED);
-            c.set_source_rgb (color.red, color.green, color.blue);
+            c.set_source_rgb (0.2, 0.2, 0.2);
         }
         else
         {
@@ -444,6 +439,7 @@ public class SudokuView : Gtk.AspectFrame
     public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
     public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
     public const RGBA highlight_color = {0.93, 0.93, 0.93, 0};
+    public const RGBA selected_stroke_color = {0.0, 0.2, 0.4};
 
     private int _selected_x = 0;
     public int selected_x
@@ -475,7 +471,7 @@ public class SudokuView : Gtk.AspectFrame
 
         /* Use an EventBox to be able to set background */
         box = new Gtk.EventBox ();
-        box.override_background_color (Gtk.StateFlags.NORMAL, {0.0, 0.0, 0.0, 1.0});
+        box.override_background_color (Gtk.StateFlags.NORMAL, {0.7, 0.7, 0.7, 1.0});
         add (box);
         box.show ();
 
@@ -496,9 +492,8 @@ public class SudokuView : Gtk.AspectFrame
         grid = new Gtk.Grid ();
         grid.row_spacing = 1;
         grid.column_spacing = 1;
-        grid.border_width = 3;
-        grid.column_homogeneous = false;
-        grid.row_homogeneous = false;
+        grid.column_homogeneous = true;
+        grid.row_homogeneous = true;
 
         cells = new SudokuCellView[game.board.rows, game.board.cols];
         for (var row = 0; row < game.board.rows; row++)
@@ -555,28 +550,41 @@ public class SudokuView : Gtk.AspectFrame
 
                 cells[row, col] = cell;
                 cell.show ();
-
-                if (col != 0 && (col % game.board.block_cols) == 0)
-                {
-                    if (get_direction () == Gtk.TextDirection.RTL)
-                    {
-                        cell.set_margin_right ((int) grid.border_width);
-                    }
-                    else
-                    {
-                        cell.set_margin_left ((int) grid.border_width);
-                    }
-                }
-                if (row != 0 && (row % game.board.block_rows) == 0)
-                {
-                    cell.set_margin_top ((int) grid.border_width);
-                }
                 grid.attach (cell, col, row, 1, 1);
 
             }
         }
         box.add (grid);
         grid.show ();
+
+        grid.draw.connect (draw_block_lines);
+    }
+
+    private bool draw_block_lines (Cairo.Context c)
+    {
+        var width = (double) grid.get_allocated_width ();
+        var height = (double) grid.get_allocated_height ();
+        c.set_line_width (1);
+        c.set_source_rgb (0.2, 0.2, 0.2);
+
+        c.move_to (width / 3, 0);
+        c.line_to (width / 3, height);
+        c.move_to (2 * width / 3, 0);
+        c.line_to (2 * width / 3, height);
+
+        c.move_to (0, height / 3);
+        c.line_to (width, height / 3);
+        c.move_to (0, 2 * height / 3);
+        c.line_to (width, 2 * height / 3);
+        c.stroke ();
+
+        var cell_width = width / game.board.rows;
+        var cell_height = height / game.board.cols;
+        c.set_source_rgb (selected_stroke_color.red, selected_stroke_color.green, selected_stroke_color.blue);
+        c.rectangle (selected_x * cell_width, selected_y * cell_height, cell_width, cell_height);
+        c.stroke ();
+
+        return false;
     }
 
     private bool _show_highlights = false;
