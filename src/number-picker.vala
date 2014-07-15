@@ -30,6 +30,9 @@ private class NumberPicker : Gtk.Grid
 
                 var label = new Label ("<big>%d</big>".printf (n));
                 label.use_markup = true;
+                label.margin = 4;
+                label.margin_start = 8;
+                label.margin_end = 8;
                 button.add (label);
                 label.show ();
 
@@ -74,6 +77,11 @@ private class NumberPicker : Gtk.Grid
             });
         }
 
+        this.valign = Align.CENTER;
+        this.halign = Align.CENTER;
+        this.margin = 2;
+        this.row_spacing = 3;
+        this.column_spacing = 3;
         this.show ();
     }
 

@@ -203,8 +203,11 @@ private class SudokuCellView : Gtk.DrawingArea
             return false;
 
         if (!is_focus)
-        {
             grab_focus ();
+
+        if (popover.visible || earmark_popover.visible)
+        {
+            hide_both_popovers ();
             return false;
         }
 
@@ -240,10 +243,15 @@ private class SudokuCellView : Gtk.DrawingArea
         }
     }
 
-    private bool focus_out_cb (Gtk.Widget widget, Gdk.EventFocus event)
+    private void hide_both_popovers ()
     {
         popover.hide ();
         earmark_popover.hide ();
+    }
+
+    private bool focus_out_cb (Gtk.Widget widget, Gdk.EventFocus event)
+    {
+        hide_both_popovers ();
         return false;
     }
 
@@ -306,6 +314,12 @@ private class SudokuCellView : Gtk.DrawingArea
         if (k_name == "space" || k_name == "Return" || k_name == "KP_Enter")
         {
             show_number_picker ();
+            return true;
+        }
+
+        if (k_name == "Escape")
+        {
+            hide_both_popovers ();
             return true;
         }
 
