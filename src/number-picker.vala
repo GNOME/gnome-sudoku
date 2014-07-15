@@ -67,7 +67,7 @@ private class NumberPicker : Gtk.Grid
             clear_button.focus_on_click = false;
             this.attach (clear_button, 0, 4, 3, 1);
 
-            var label = new Label ("<big>Clear</big>");
+            var label = new Label ("<big>%s</big>".printf (_("Clear")));
             label.use_markup = true;
             clear_button.add (label);
             label.show ();
