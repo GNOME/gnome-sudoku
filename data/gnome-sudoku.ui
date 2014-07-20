@@ -84,17 +84,18 @@
             </object>
         </child>
         <child>
-            <object class="GtkBox" id="main_box">
+            <object class="GtkStack" id="main_stack">
                 <property name="visible">True</property>
-                <property name="halign">center</property>
                 <child>
                     <object class="GtkBox" id="start_box">
                         <property name="orientation">vertical</property>
-                        <property name="visible">False</property>
+                        <property name="visible">True</property>
                         <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="homogeneous">True</property>
                         <property name="margin">80</property>
                         <property name="width-request">350</property>
+                        <property name="height-request">350</property>
                         <child>
                             <object class="GtkButton" id="easy_button">
                                 <property name="visible">True</property>
@@ -151,11 +152,15 @@
                                 <property name="position">3</property>
                             </packing>
                         </child>
-                    </object> <!-- End of new_start_box -->
+                    </object> <!-- End of start_box -->
+                    <packing>
+                        <property name="name">start_box</property>
+                    </packing>
                 </child>
                 <child>
                     <object class="GtkBox" id="game_box">
                         <property name="visible">True</property>
+                        <property name="halign">fill</property>
                         <property name="spacing">20</property>
                         <property name="margin">20</property>
                         <child>
@@ -184,6 +189,9 @@
                             </packing>
                         </child>
                     </object> <!-- End of game_box -->
+                    <packing>
+                        <property name="name">game_box</property>
+                    </packing>
                 </child>
             </object>
         </child>
