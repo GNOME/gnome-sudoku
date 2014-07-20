@@ -164,11 +164,48 @@
                         <property name="spacing">20</property>
                         <property name="margin">20</property>
                         <child>
-                            <object class="GtkBox" id="controls_box">
+                            <object class="GtkButtonBox" id="controls_box">
                                 <property name="visible">True</property>
+                                <property name="valign">end</property>
                                 <property name="can_focus">False</property>
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">10</property>
+                                <child>
+                                    <object class="GtkButton" id="clear_button">
+                                        <property name="visible">True</property>
+                                        <property name="use_underline">True</property>
+                                        <property name="label" translatable="yes">_Clear Board</property>
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="action-name">app.reset</property>
+                                        <property name="tooltip-text" translatable="yes">Reset the board to its original state</property>
+                                        <property name="width-request">120</property>
+                                        <property name="height-request">60</property>
+                                    </object>
+                                    <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">0</property>
+                                    </packing>
+                                </child>
+                                <child>
+                                    <object class="GtkButton" id="new_button">
+                                        <property name="visible">True</property>
+                                        <property name="use_underline">True</property>
+                                        <property name="label" translatable="yes">_New Puzzle</property>
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="action-name">app.new-game</property>
+                                        <property name="tooltip-text" translatable="yes">Start a new puzzle</property>
+                                        <property name="width-request">120</property>
+                                        <property name="height-request">60</property>
+                                    </object>
+                                    <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">1</property>
+                                    </packing>
+                                </child>
                             </object>  <!-- End of controls_box -->
                             <packing>
                                 <property name="expand">False</property>
@@ -177,6 +214,8 @@
                         </child>
                         <child>
                             <object class="GtkBox" id="grid_box">
+                                <property name="width-request">475</property>
+                                <property name="height-request">475</property>
                                 <property name="visible">True</property>
                                 <child>
                                     <placeholder/>
