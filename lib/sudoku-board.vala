@@ -62,9 +62,17 @@ public class SudokuBoard : Object
         get { return _filled; }
     }
 
+    /* the number of fixed squares on the board */
+    public int fixed { get; private set; }
+
     public bool complete
     {
         get { return _filled == _cols * _rows && !broken; }
+    }
+
+    public bool is_empty ()
+    {
+        return _filled == fixed;
     }
 
     public double difficulty_rating;
@@ -193,6 +201,7 @@ public class SudokuBoard : Object
         board.possible_in_col = possible_in_col;
         board.possible_in_block = possible_in_block;
         board._filled = _filled;
+        board.fixed = fixed;
         board.broken_coords.add_all (broken_coords);
         board.earmarks = earmarks;
 
@@ -291,6 +300,8 @@ public class SudokuBoard : Object
         cells[row, col] = val;
         this.is_fixed[row, col] = is_fixed;
         _filled++;
+        if (is_fixed)
+            fixed++;
 
         if (!possible_in_row[row, val - 1]) // If val was not possible in this row
         {

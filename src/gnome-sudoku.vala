@@ -28,6 +28,7 @@ public class Sudoku : Gtk.Application
 
     private SimpleAction undo_action;
     private SimpleAction redo_action;
+    private SimpleAction clear_action;
     private SimpleAction print_action;
 
     private string header_bar_subtitle;
@@ -136,6 +137,7 @@ public class Sudoku : Gtk.Application
 
         undo_action = (SimpleAction) lookup_action ("undo");
         redo_action = (SimpleAction) lookup_action ("redo");
+        clear_action = (SimpleAction) lookup_action ("reset");
         print_action = (SimpleAction) lookup_action ("print");
 
         sudoku_store = new SudokuStore ();
@@ -171,6 +173,7 @@ public class Sudoku : Gtk.Application
         debug ("\n%s", rating.to_string ());
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);
+        clear_action.set_enabled (!board.is_empty ());
 
         if (view != null) {
             grid_box.remove (view);
@@ -194,6 +197,7 @@ public class Sudoku : Gtk.Application
         game.cell_changed.connect (() => {
             undo_action.set_enabled (!game.is_undostack_null ());
             redo_action.set_enabled (!game.is_redostack_null ());
+            clear_action.set_enabled (!game.board.is_empty ());
         });
 
         game.board.completed.connect (() => {
