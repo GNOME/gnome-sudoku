@@ -17,32 +17,16 @@ public class SudokuBoard : Object
     public double previous_played_time { set; get; default = 0; }
 
     /* Number of rows in one block */
-    private int _block_rows;
-    public int block_rows
-    {
-        get { return _block_rows; }
-    }
+    public int block_rows { get; private set; }
 
     /* Number of columns in one block */
-    private int _block_cols;
-    public int block_cols
-    {
-        get { return _block_cols; }
-    }
+    public int block_cols { get; private set; }
 
     /* Number of rows in board */
-    private int _rows;
-    public int rows
-    {
-        get { return _rows; }
-    }
+    public int rows { get; private set; }
 
     /* Number of columns in board */
-    private int _cols;
-    public int cols
-    {
-        get { return _cols; }
-    }
+    public int cols { get; private set; }
 
     /* Maximum possible val on board. 9 for 3x3 sudoku*/
     public int max_val
@@ -56,23 +40,19 @@ public class SudokuBoard : Object
     }
 
     /* the number of filled squares on the board */
-    private int _filled;
-    public int filled
-    {
-        get { return _filled; }
-    }
+    public int filled { get; private set; }
 
     /* the number of fixed squares on the board */
     public int fixed { get; private set; }
 
     public bool complete
     {
-        get { return _filled == _cols * _rows && !broken; }
+        get { return filled == cols * rows && !broken; }
     }
 
     public bool is_empty ()
     {
-        return _filled == fixed;
+        return filled == fixed;
     }
 
     public double difficulty_rating;
@@ -112,19 +92,19 @@ public class SudokuBoard : Object
 
     public SudokuBoard (int block_rows = 3, int block_cols = 3)
     {
-        _rows = _cols = block_rows * block_cols;
-        _block_rows = block_rows;
-        _block_cols = block_cols;
-        cells = new int[_rows, _cols];
-        is_fixed = new bool[_rows, _cols];
-        possible_in_row = new bool[_rows, _cols];
-        possible_in_col = new bool[_cols, _rows];
-        possible_in_block = new bool[_block_rows, _block_cols, _block_rows * _block_cols];
-        earmarks = new bool[_rows, _cols, max_val];
+        rows = cols = block_rows * block_cols;
+        this.block_rows = block_rows;
+        this.block_cols = block_cols;
+        cells = new int[rows, cols];
+        is_fixed = new bool[rows, cols];
+        possible_in_row = new bool[rows, cols];
+        possible_in_col = new bool[cols, rows];
+        possible_in_block = new bool[block_rows, block_cols, block_rows * block_cols];
+        earmarks = new bool[rows, cols, max_val];
 
-        for (var l1 = 0; l1 < _rows; l1++)
+        for (var l1 = 0; l1 < rows; l1++)
         {
-            for (var l2 = 0; l2 < _cols; l2++)
+            for (var l2 = 0; l2 < cols; l2++)
             {
                 cells[l1, l2] = 0;
                 is_fixed[l1, l2] = false;
@@ -132,9 +112,9 @@ public class SudokuBoard : Object
                 possible_in_col[l2, l1] = true;
             }
         }
-        for (var l1 = 0; l1 < _block_rows; l1++)
+        for (var l1 = 0; l1 < block_rows; l1++)
         {
-            for (var l2 = 0; l2 < _block_cols; l2++)
+            for (var l2 = 0; l2 < block_cols; l2++)
             {
                 for (var l3 = 0; l3 < max_val; l3++)
                     possible_in_block[l1, l2, l3] = true;
@@ -144,10 +124,10 @@ public class SudokuBoard : Object
         broken_coords = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
 
         coords_for_col = new ArrayList<ArrayList<Coord?>> ();
-        for (int col = 0; col < _cols; col++)
+        for (int col = 0; col < cols; col++)
         {
             coords_for_col.add (new ArrayList<Coord?> ((EqualDataFunc<Coord>) Coord.equal));
-            for (int row = 0; row < _rows; row++)
+            for (int row = 0; row < rows; row++)
             {
                 coords_for_col.get (col).add (Coord(row, col));
             }
@@ -156,10 +136,10 @@ public class SudokuBoard : Object
         coords_for_col = coords_for_col.read_only_view;
 
         coords_for_row = new ArrayList<ArrayList<Coord?>> ();
-        for (int row = 0; row < _rows; row++)
+        for (int row = 0; row < rows; row++)
         {
             coords_for_row.add (new ArrayList<Coord?> ((EqualDataFunc<Coord>) Coord.equal));
-            for (int col = 0; col < _cols; col++)
+            for (int col = 0; col < cols; col++)
             {
                 coords_for_row.get (row).add (Coord(row, col));
             }
@@ -168,23 +148,23 @@ public class SudokuBoard : Object
         coords_for_row = coords_for_row.read_only_view;
 
         coords_for_block = new HashMap<Coord?, ArrayList<Coord?>> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
-        for (int col = 0; col < _block_cols; col++)
+        for (int col = 0; col < block_cols; col++)
         {
-            for (int row = 0; row < _block_rows; row++)
+            for (int row = 0; row < block_rows; row++)
             {
                 coords_for_block.set (Coord(row, col), new ArrayList<Coord?> ((EqualDataFunc<Coord>) Coord.equal));
             }
         }
-        for (int col = 0; col < _cols; col++)
+        for (int col = 0; col < cols; col++)
         {
-            for (int row = 0; row < _rows; row++)
+            for (int row = 0; row < rows; row++)
             {
-                coords_for_block.get(Coord(row / _block_rows, col / _block_cols)).add(Coord(row, col));
+                coords_for_block.get(Coord(row / block_rows, col / block_cols)).add(Coord(row, col));
             }
         }
-        for (int col = 0; col < _block_cols; col++)
+        for (int col = 0; col < block_cols; col++)
         {
-            for (int row = 0; row < _block_rows; row++)
+            for (int row = 0; row < block_rows; row++)
             {
                 coords_for_block[Coord(row, col)] = coords_for_block[Coord(row, col)].read_only_view;
             }
@@ -194,13 +174,13 @@ public class SudokuBoard : Object
 
     public SudokuBoard clone ()
     {
-        SudokuBoard board = new SudokuBoard (_block_rows , _block_cols);
+        SudokuBoard board = new SudokuBoard (block_rows , block_cols);
         board.cells = cells;
         board.is_fixed = is_fixed;
         board.possible_in_row = possible_in_row;
         board.possible_in_col = possible_in_col;
         board.possible_in_block = possible_in_block;
-        board._filled = _filled;
+        board.filled = filled;
         board.fixed = fixed;
         board.broken_coords.add_all (broken_coords);
         board.earmarks = earmarks;
@@ -212,7 +192,7 @@ public class SudokuBoard : Object
     {
         //stdout.printf("Processing %s\n", s);
 
-        int number_of_cells = _cols * _rows;
+        int number_of_cells = cols * rows;
 
         string[] cells = s.split (delimiter, number_of_cells);
 
@@ -232,7 +212,7 @@ public class SudokuBoard : Object
 
                 assert (val >= 1 && val <= max_val);
 
-                insert (i / _cols, i % _cols, val, true);
+                insert (i / cols, i % cols, val, true);
             }
         }
     }
@@ -240,7 +220,7 @@ public class SudokuBoard : Object
     public bool is_possible (int row, int col, int val)
     {
         val--;
-        return (possible_in_row[row, val] && possible_in_col[col, val] && possible_in_block [row / _block_cols, col / _block_rows, val]);
+        return (possible_in_row[row, val] && possible_in_col[col, val] && possible_in_block [row / block_cols, col / block_rows, val]);
     }
 
     public int count_possibilities (int row, int col)
@@ -280,7 +260,7 @@ public class SudokuBoard : Object
 
     public Coord get_block_for(int row, int col)
     {
-        return Coord(row / _block_rows, col / _block_cols);
+        return Coord(row / block_rows, col / block_cols);
     }
 
     public void insert (int row, int col, int val, bool is_fixed = false)
@@ -299,7 +279,7 @@ public class SudokuBoard : Object
 
         cells[row, col] = val;
         this.is_fixed[row, col] = is_fixed;
-        _filled++;
+        filled++;
         if (is_fixed)
             fixed++;
 
@@ -313,16 +293,16 @@ public class SudokuBoard : Object
             mark_breakages_for(coords_for_col[col], val); // Mark the breakages
         }
 
-        if (!possible_in_block[row / _block_cols, col / _block_rows, val - 1]) // If val was not possible in this block
+        if (!possible_in_block[row / block_cols, col / block_rows, val - 1]) // If val was not possible in this block
         {
-            mark_breakages_for(coords_for_block[Coord(row / _block_cols, col / _block_rows)], val); // Mark the breakages
+            mark_breakages_for(coords_for_block[Coord(row / block_cols, col / block_rows)], val); // Mark the breakages
         }
 
         // Then just mark it as not possible
         val--;
         possible_in_row[row, val] = false;
         possible_in_col[col, val] = false;
-        possible_in_block[row / _block_cols, col / _block_rows, val] = false;
+        possible_in_block[row / block_cols, col / block_rows, val] = false;
 
         if (complete)
             completed();
@@ -367,18 +347,18 @@ public class SudokuBoard : Object
             // Remove all the related breakages in the related sets of cells
             remove_breakages_for(coords_for_row[row], previous_val);
             remove_breakages_for(coords_for_col[col], previous_val);
-            remove_breakages_for(coords_for_block[Coord(row / _block_rows, col / _block_cols)], previous_val);
+            remove_breakages_for(coords_for_block[Coord(row / block_rows, col / block_cols)], previous_val);
             broken_coords.remove(Coord(row, col));
 
             // Re-mark all the breakages,
             mark_breakages_for(coords_for_row[row], previous_val);
             mark_breakages_for(coords_for_col[col], previous_val);
-            mark_breakages_for(coords_for_block[Coord(row / _block_rows, col / _block_cols)], previous_val);
+            mark_breakages_for(coords_for_block[Coord(row / block_rows, col / block_cols)], previous_val);
 
             // and update the possibilities accordingly
             possible_in_row[row, previous_val - 1] = get_occurances(coords_for_row[row], previous_val).size == 0;
             possible_in_col[col, previous_val - 1] = get_occurances(coords_for_col[col], previous_val).size == 0;
-            possible_in_block[row / _block_cols, col / _block_rows, previous_val - 1] = get_occurances(coords_for_block[Coord(row / _block_rows, col / _block_cols)], previous_val).size == 0;
+            possible_in_block[row / block_cols, col / block_rows, previous_val - 1] = get_occurances(coords_for_block[Coord(row / block_rows, col / block_cols)], previous_val).size == 0;
         }
         else // Not previously broken, so just mark as a possible value
         {
@@ -386,10 +366,10 @@ public class SudokuBoard : Object
 
             possible_in_row[row, previous_val] = true;
             possible_in_col[col, previous_val] = true;
-            possible_in_block[row / _block_cols, col / _block_rows, previous_val] = true;
+            possible_in_block[row / block_cols, col / block_rows, previous_val] = true;
         }
 
-        _filled--;
+        filled--;
     }
 
     public Set<Coord?> get_occurances(Gee.List<Coord?> coords, int val)
@@ -441,9 +421,9 @@ public class SudokuBoard : Object
 
     public void to_initial_state ()
     {
-        for (var l1 = 0; l1 < _rows; l1++)
+        for (var l1 = 0; l1 < rows; l1++)
         {
-            for (var l2 = 0; l2 < _cols; l2++)
+            for (var l2 = 0; l2 < cols; l2++)
             {
                 if (!is_fixed[l1, l2])
                     remove (l1, l2);
@@ -491,9 +471,9 @@ public class SudokuBoard : Object
     public string to_string (bool get_original_state = false)
     {
         var board_string = "";
-        for (var i = 0; i < _rows; i++)
+        for (var i = 0; i < rows; i++)
         {
-            for (var j = 0; j < _cols; j++)
+            for (var j = 0; j < cols; j++)
             {
                 if (is_fixed[i, j])
                     board_string += cells[i, j].to_string ();
@@ -511,9 +491,9 @@ public class SudokuBoard : Object
 
     public HashMap<Coord?, ArrayList<int>> calculate_open_squares () {
         var possibilities = new HashMap<Coord?, ArrayList<int>> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
-        for (var l1 = 0; l1 < _rows; l1++)
+        for (var l1 = 0; l1 < rows; l1++)
         {
-            for (var l2 = 0; l2 < _cols; l2++)
+            for (var l2 = 0; l2 < cols; l2++)
             {
                 if (cells[l1, l2] == 0)
                 {
