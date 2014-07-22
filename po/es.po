@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-games.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-07-03 07:34+0000\n"
-"PO-Revision-Date: 2014-07-03 12:56+0200\n"
+"POT-Creation-Date: 2014-07-22 07:38+0000\n"
+"PO-Revision-Date: 2014-07-22 11:25+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -40,10 +40,6 @@ msgstr ""
 "todos los niveles."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
-#| msgid ""
-#| "Each game is assigned a difficulty similar to those given by newspapers "
-#| "and websites. You can also see detailed information about how the "
-#| "computer solved the puzzle."
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -64,7 +60,7 @@ msgstr ""
 "usted mismo."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:378
+#: ../src/gnome-sudoku.vala:346
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -90,8 +86,9 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Imprimir _múltiples puzles…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-msgid "_Warn About Unfillable Squares"
-msgstr "Advertir acerca de cuadros no _rellenables"
+#| msgid "Warnings"
+msgid "_Show Warnings"
+msgstr "_Mostrar advertencias"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
 msgid "_Help"
@@ -133,6 +130,22 @@ msgstr "_Difícil"
 msgid "_Very Hard"
 msgstr "_Muy difícil"
 
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Clear Board"
+msgstr "_Limpiar tablero"
+
+#: ../data/gnome-sudoku.ui.h:10
+msgid "Reset the board to its original state"
+msgstr "Restablecer el tablero a su estado original"
+
+#: ../data/gnome-sudoku.ui.h:11
+msgid "_New Puzzle"
+msgstr "_Nuevo puzle"
+
+#: ../data/gnome-sudoku.ui.h:12
+msgid "Start a new puzzle"
+msgstr "Iniciar un puzle nuevo"
+
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Nivel de dificultad de los sudokus que imprimir"
@@ -154,16 +167,20 @@ msgid "Set the number of sudokus you want to print"
 msgstr "Establecer el número de sudokus que quiere imprimir"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:5
-msgid "Warn about unfillable squares"
-msgstr "Advertir acerca de cuadros no rellenables"
+#| msgid "Warn about unfillable squares"
+msgid "Warn about unfillable squares and duplicate numbers"
+msgstr "Advertir acerca de cuadros no rellenables y números duplicados"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:6
+#| msgid ""
+#| "Displays a big red X in a square if it cannot possibly be filled by any "
+#| "number"
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
-"number"
+"number and duplicate numbers are highlighted in red"
 msgstr ""
 "Muestra una X roja grande en un cuadrado si no se puede rellenar con ningún "
-"número"
+"número, y los números duplicados se resaltan en rojo"
 
 #: ../data/print-games.ui.h:1
 msgid "Print Multiple Puzzles"
@@ -181,27 +198,27 @@ msgstr "_Número de puzles"
 msgid "Difficulty"
 msgstr "Dificultad"
 
-#: ../lib/sudoku-game.vala:137
+#: ../lib/sudoku-game.vala:123
 msgid "second"
 msgstr "segundo"
 
-#: ../lib/sudoku-game.vala:138
+#: ../lib/sudoku-game.vala:124
 msgid "seconds"
 msgstr "segundos"
 
-#: ../lib/sudoku-game.vala:139
+#: ../lib/sudoku-game.vala:125
 msgid "minute"
 msgstr "minuto"
 
-#: ../lib/sudoku-game.vala:140
+#: ../lib/sudoku-game.vala:126
 msgid "minutes"
 msgstr "minutos"
 
-#: ../lib/sudoku-game.vala:141
+#: ../lib/sudoku-game.vala:127
 msgid "hour"
 msgstr "hora"
 
-#: ../lib/sudoku-game.vala:142
+#: ../lib/sudoku-game.vala:128
 msgid "hours"
 msgstr "horas"
 
@@ -268,49 +285,33 @@ msgid "Calculated difficulty:"
 msgstr "Dificultad calculada:"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:58
+#: ../src/gnome-sudoku.vala:56
 msgid "Show release version"
 msgstr "Mostrar el número de versión"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:62
+#: ../src/gnome-sudoku.vala:60
 msgid "Show the possible values for each cell"
 msgstr "Mostrar los valores posibles de cada casilla"
 
-#: ../src/gnome-sudoku.vala:145
-msgid "_Clear Board"
-msgstr "_Limpiar tablero"
-
-#: ../src/gnome-sudoku.vala:151
-msgid "Reset the board to its original state"
-msgstr "Restablecer el tablero a su estado original"
-
-#: ../src/gnome-sudoku.vala:157
-msgid "_New Puzzle"
-msgstr "_Nuevo puzle"
-
-#: ../src/gnome-sudoku.vala:163
-msgid "Start a new puzzle"
-msgstr "Iniciar un puzle nuevo"
-
-#: ../src/gnome-sudoku.vala:244
+#: ../src/gnome-sudoku.vala:213
 #, c-format
 msgid "Well done, you completed the puzzle in %s"
 msgstr "Bien hecho, ha completado el puzle en %s"
 
-#: ../src/gnome-sudoku.vala:246
+#: ../src/gnome-sudoku.vala:215
 msgid "Same difficulty again"
 msgstr "Misma dificultad otra vez"
 
-#: ../src/gnome-sudoku.vala:247
+#: ../src/gnome-sudoku.vala:216
 msgid "New difficulty"
 msgstr "Nueva dificultad:"
 
-#: ../src/gnome-sudoku.vala:294
+#: ../src/gnome-sudoku.vala:262
 msgid "Reset the board to its original state?"
 msgstr "¿Restablecer el tablero a su estado original?"
 
-#: ../src/gnome-sudoku.vala:381
+#: ../src/gnome-sudoku.vala:349
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -320,7 +321,7 @@ msgstr ""
 "\n"
 "GNOME Sudoku es parte de los juegos de GNOME."
 
-#: ../src/gnome-sudoku.vala:386
+#: ../src/gnome-sudoku.vala:354
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>, 2008-2012\n"
@@ -329,10 +330,18 @@ msgstr ""
 "Germán Poo Caamaño <gpoo@ubiobio.cl>\n"
 "Pablo Saratxaga <pablo@mandrakesoft.com>"
 
+#: ../src/number-picker.vala:70
+#| msgid "_Clear"
+msgid "Clear"
+msgstr "Limpiar"
+
 #. Error message if printing fails
 #: ../src/sudoku-printer.vala:30
 msgid "Error printing file:"
 msgstr "Error al imprimir el archivo:"
+
+#~ msgid "_Warn About Unfillable Squares"
+#~ msgstr "Advertir acerca de cuadros no _rellenables"
 
 #~ msgid ""
 #~ "GNOME Sudoku has a simple, unobtrusive interface with all the features "
@@ -640,9 +649,6 @@ msgstr "Error al imprimir el archivo:"
 
 #~ msgid "Tracker %s"
 #~ msgstr "Seguimiento %s"
-
-#~ msgid "_Clear"
-#~ msgstr "_Limpiar"
 
 #~ msgid "No Space"
 #~ msgstr "Sin espacio"
@@ -3787,9 +3793,6 @@ msgstr "Error al imprimir el archivo:"
 
 #~ msgid "Maybe they're all mines ..."
 #~ msgstr "Quizás son todas minas…"
-
-#~ msgid "Warnings"
-#~ msgstr "Advertencias"
 
 #~ msgid "_Use \"Too many flags\" warning"
 #~ msgstr "_Usar la advertencia «Demasiadas banderas»"
