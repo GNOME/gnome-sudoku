@@ -5,10 +5,10 @@
 # Torstein Adolf Winterseth <kvikende@fsfe.org>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-sudoku 3.11.x\n"
+"Project-Id-Version: gnome-sudoku 3.13.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-19 23:41+0100\n"
-"PO-Revision-Date: 2014-02-19 23:44+0100\n"
+"POT-Creation-Date: 2014-07-23 14:12+0200\n"
+"PO-Revision-Date: 2014-07-23 14:17+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -17,22 +17,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
 msgid ""
-"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
-"make playing Sudoku fun. Games are automatically saved when you quit, and "
-"you can always come back to any game that you've played."
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface makes playing Sudoku fun "
+"for players of any skill level."
 msgstr ""
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
-"websites. You can also see detailed information about how the computer "
-"solved the puzzle."
+"websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
@@ -42,7 +41,8 @@ msgid ""
 "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
 msgstr ""
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:350
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -51,127 +51,243 @@ msgid "Test your logic skills in this number grid puzzle"
 msgstr "Test dine logiske ferdigheter i dette nummerpuslespillet"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "spill;brett;fliser;japansk;"
+msgid "magic;square;"
+msgstr "magisk;rute;"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
-msgid "The number of seconds between automatic saves"
-msgstr "Antall sekunder mellom automatisk lagring"
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+msgid "_Print"
+msgstr "S_kriv ut"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
-msgid "Print games that have been played"
-msgstr "Skriv ut spill som har vært spilt"
+#: ../data/gnome-sudoku-menu.ui.h:2
+msgid "Print _Current Puzzle…"
+msgstr "Skriv ut a_ktivt puslespill …"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
-msgid "Mark printed games as played"
-msgstr "Merk spill som er skrevet ut som spilt"
+#: ../data/gnome-sudoku-menu.ui.h:3
+msgid "Print _Multiple Puzzles…"
+msgstr "Skriv ut _flere puslespill …"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
-msgid "Width of application window in pixels"
-msgstr "Bredde på programvinduet i piksler"
+#: ../data/gnome-sudoku-menu.ui.h:4
+msgid "_Show Warnings"
+msgstr "Vi_s advarsler"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
-msgid "Height of application window in pixels"
-msgstr "Høyde på programvinduet i piksler"
+#: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Help"
+msgstr "_Hjelp"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
-msgid "Show hint highlights"
-msgstr "Vis utheving av hint"
+#: ../data/gnome-sudoku-menu.ui.h:6
+msgid "_About"
+msgstr "_Om"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
-msgid "Color of the grid border"
-msgstr "Farge på kanten av rutenettet"
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_Quit"
+msgstr "A_vslutt"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
-msgid "Show the application toolbar"
-msgstr "Vis verktøylinjen for programmet"
+#: ../data/gnome-sudoku.ui.h:2
+msgid "Undo your last action"
+msgstr "Angre siste handling"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
-msgid "Show hints"
-msgstr "Vis hint"
+#: ../data/gnome-sudoku.ui.h:3
+msgid "Redo your last action"
+msgstr "Gjenta siste handling"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
-msgid "Number of puzzles to print on a page"
-msgstr "Antall puslespill som skal skrives ut på en side"
+#: ../data/gnome-sudoku.ui.h:4
+msgid "Go back to the current game"
+msgstr "Gå tilbake til aktivt spill"
 
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "Skriv ut Sudokuer"
-
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "Skriv ut spill"
-
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "A_ntall sudoku som skal skrives ut: "
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "_Sudoku per side: "
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "Vanskelighetsgrader som skal skrives ut"
-
-#: ../data/print_games.ui.h:6
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
 msgid "_Easy"
 msgstr "L_ett"
 
-#: ../data/print_games.ui.h:7
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
 msgid "_Medium"
 msgstr "_Middels"
 
-#: ../data/print_games.ui.h:8
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
 msgid "_Hard"
 msgstr "_Vanskelig"
 
-#: ../data/print_games.ui.h:9
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
 msgid "_Very Hard"
 msgstr "Meget _vanskelig"
 
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "Detaljer"
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Clear Board"
+msgstr "_Tøm brettet"
 
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "_Merk spillene som spilt med gang du har skrevet dem ut."
-
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
+#: ../data/gnome-sudoku.ui.h:10
+msgid "Reset the board to its original state"
 msgstr ""
-"_Inkluder spill du allerede har spilt i listen over spill som skal skrives ut"
 
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
+#: ../data/gnome-sudoku.ui.h:11
+msgid "_New Puzzle"
 msgstr "_Nytt spill"
 
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "_Lagrede spill"
+#: ../data/gnome-sudoku.ui.h:12
+msgid "Start a new puzzle"
+msgstr "Start et nytt puslespill"
 
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "Legg til en ny sporer"
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
+msgid "Difficulty level of sudokus to be printed"
+msgstr "Vanskelighetsnivå for sudoku som skal skrives ut"
 
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "Slett valgt sporer"
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+msgid ""
+"Set the difficulty level of the sudokus you want to print. Possible values "
+"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+msgstr ""
 
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "Gjør sporede endringer permanent"
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+msgid "Number of Sudokus to print"
+msgstr "Antall sudoku som skal skrives ut"
 
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
-msgid "H_ide"
-msgstr "Sk_jul"
+#: ../data/org.gnome.sudoku.gschema.xml.h:4
+msgid "Set the number of sudokus you want to print"
+msgstr "Sett antall sudoku som skal skrives ut"
 
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "Skjul sporingsoppføringer"
+#: ../data/org.gnome.sudoku.gschema.xml.h:5
+#, fuzzy
+msgid "Warn about unfillable squares and duplicate numbers"
+msgstr "Varsle om ruter som ikke kan fylles _ut"
 
-#: ../src/lib/defaults.py:50
+#: ../data/org.gnome.sudoku.gschema.xml.h:6
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number and duplicate numbers are highlighted in red"
+msgstr ""
+
+#: ../data/print-games.ui.h:1
+msgid "Print Multiple Puzzles"
+msgstr "Skriv ut flere Sudoku"
+
+#: ../data/print-games.ui.h:3
+msgid "_Cancel"
+msgstr "A_vbryt"
+
+#: ../data/print-games.ui.h:4
+msgid "_Number of puzzles"
+msgstr "A_ntall puslespill"
+
+#: ../data/print-games.ui.h:5
+msgid "Difficulty"
+msgstr "Vanskelighet"
+
+#: ../lib/sudoku-game.vala:123
+msgid "second"
+msgstr "sekund"
+
+#: ../lib/sudoku-game.vala:124
+msgid "seconds"
+msgstr "sekunder"
+
+#: ../lib/sudoku-game.vala:125
+msgid "minute"
+msgstr "minutt"
+
+#: ../lib/sudoku-game.vala:126
+msgid "minutes"
+msgstr "minutter"
+
+#: ../lib/sudoku-game.vala:127
+msgid "hour"
+msgstr "time"
+
+#: ../lib/sudoku-game.vala:128
+msgid "hours"
+msgstr "timer"
+
+#: ../lib/sudoku-solver.vala:742
+msgid "Easy Difficulty"
+msgstr "Lav vanskelighetsgrad"
+
+#: ../lib/sudoku-solver.vala:744
+msgid "Medium Difficulty"
+msgstr "Middels vanskelighetsgrad"
+
+#: ../lib/sudoku-solver.vala:746
+msgid "Hard Difficulty"
+msgstr "Høy vanskelighetsgrad"
+
+#: ../lib/sudoku-solver.vala:748
+msgid "Very Hard Difficulty"
+msgstr "Meget høy vanskelighetsgrad"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:859
+msgid "Number of moves instantly fillable by elimination:"
+msgstr "Antall trekk som kan utføres med en gang på bakgrunn av eliminering: "
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:861
+#, fuzzy
+msgid "Percentage of moves instantly fillable by elimination:"
+msgstr "Antall trekk som kan utføres med en gang på bakgrunn av eliminering: "
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:863
+#, fuzzy
+msgid "Number of moves instantly fillable by filling:"
+msgstr "Antall trekk som kan utføres med en gang ved utfylling: "
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:865
+#, fuzzy
+msgid "Percentage of moves instantly fillable by filling:"
+msgstr "Antall trekk som kan utføres med en gang ved utfylling: "
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:867
+msgid "Number of guesses made:"
+msgstr "Antall gjetninger som er gjort:"
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:869
+#, fuzzy
+msgid "Number of backtraces:"
+msgstr "Antall "
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:871
+msgid "Ease by filling:"
+msgstr ""
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:873
+msgid "Ease by elimination:"
+msgstr ""
+
+#. Debug output when starting a new game
+#: ../lib/sudoku-solver.vala:875
+msgid "Calculated difficulty:"
+msgstr "Beregnet vanskelighetsgrad:"
+
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:57
+msgid "Show release version"
+msgstr "Vis versjon"
+
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:61
+msgid "Show the possible values for each cell"
+msgstr "Vis mulige verdier for hver celle"
+
+#: ../src/gnome-sudoku.vala:217
+#, c-format
+msgid "Well done, you completed the puzzle in %s"
+msgstr "Bra gjort, du fullførte puslespillet på %d"
+
+#: ../src/gnome-sudoku.vala:219
+msgid "Same difficulty again"
+msgstr "Samme vanskelighetsgrad igjen"
+
+#: ../src/gnome-sudoku.vala:220
+msgid "New difficulty"
+msgstr "Ny vanskelighetsgrad"
+
+#: ../src/gnome-sudoku.vala:266
+msgid "Reset the board to its original state?"
+msgstr "Nullstill brettet til opprinnelig tilstand?"
+
+#: ../src/gnome-sudoku.vala:353
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -181,408 +297,18 @@ msgstr ""
 "\n"
 "GNOME Sudoku er en del av GNOME Spill."
 
-#: ../src/lib/defaults.py:53
-msgid "Website"
-msgstr "Nettsted"
-
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "Lett"
-
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "Middels"
-
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "Vanskelig"
-
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "Meget vanskelig"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "Sist spilt %(n)s sekund siden"
-msgstr[1] "Sist spilt %(n) sekunder siden"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "Sist spilt %(n)s minutt siden"
-msgstr[1] "Sist spilt %(n)s minutter siden"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "Sist spilt %H.%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "Sist spilt i går kl %H.%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "Sist spilt på %A kl %H.%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "Sist spilt %B %e %Y"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "Lett puslespill"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "Middels vanskelig puslespill"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "Vanskelig puslespill"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "Meget vanskelig puslespill"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "Spilt i %d time"
-msgstr[1] "Spilt i %d timer"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "Spilt i %d minutt"
-msgstr[1] "Spilt i %d minutter"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "Spilt i %d sekund"
-msgstr[1] "Spilt i %d sekunder"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "Er du sikker på at du vil gjøre dette?"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "Ikke spør om dette igjen."
-
-#: ../src/lib/main.py:196
-msgid "_Game"
-msgstr "_Spill"
-
-#: ../src/lib/main.py:197
-msgid "New game"
-msgstr "Nytt spill"
-
-#: ../src/lib/main.py:198
-msgid "_Reset"
-msgstr "_Nullstill"
-
-#: ../src/lib/main.py:200
-msgid "_Undo"
-msgstr "_Angre"
-
-#: ../src/lib/main.py:201
-msgid "Undo last action"
-msgstr "Angre forrige handling"
-
-#: ../src/lib/main.py:202
-msgid "_Redo"
-msgstr "Gjenopp_rett"
-
-#: ../src/lib/main.py:203
-msgid "Redo last action"
-msgstr "Gjenta forrige handling"
-
-#: ../src/lib/main.py:204
-msgid "Puzzle _Statistics..."
-msgstr "_Statistikk for puslespill …"
-
-#: ../src/lib/main.py:206
-msgid "_Print..."
-msgstr "S_kriv ut …"
-
-#: ../src/lib/main.py:207
-msgid "Print _Multiple Sudokus..."
-msgstr "Skriv ut _flere Sudoku …"
-
-#: ../src/lib/main.py:210
-msgid "_Settings"
-msgstr "_Innstillinger"
-
-#: ../src/lib/main.py:212
-msgid "_Tools"
-msgstr "Verk_tøy"
-
-#: ../src/lib/main.py:213
-msgid "_Hint"
-msgstr "_Hint"
-
-#: ../src/lib/main.py:214
-msgid "Show a square that is easy to fill."
-msgstr "Vis en firkant som er lett å fylle."
-
-#: ../src/lib/main.py:215
-msgid "Clear _Top Notes"
-msgstr "Tøm øverste _notater"
-
-#: ../src/lib/main.py:217
-msgid "Clear _Bottom Notes"
-msgstr "Tøm _nederste notater"
-
-#: ../src/lib/main.py:219
-msgid "_Help"
-msgstr "_Hjelp"
-
-#: ../src/lib/main.py:220
-msgid "_Contents"
-msgstr "_Innhold"
-
-#: ../src/lib/main.py:226
-msgid "Show _Possible Numbers"
-msgstr "Vis _mulige tall"
-
-#: ../src/lib/main.py:228
-msgid "Always show possible numbers in a square"
-msgstr "Alltid vis mulige tall i en rute"
-
-#: ../src/lib/main.py:232
-msgid "Warn About _Unfillable Squares"
-msgstr "Varsle om ruter som ikke kan fylles _ut"
-
-#: ../src/lib/main.py:234
-msgid "Warn about squares made unfillable by a move"
-msgstr "Varsle om ruter som ikke kan fylles ut etter et trekk"
-
-#: ../src/lib/main.py:236
-msgid "_Track Additions"
-msgstr "_Spor tillegg"
-
-#: ../src/lib/main.py:238
-msgid "Mark new additions in a separate color so you can keep track of them."
-msgstr "Merk nye tillegg i en egen farge slik at du kan holde orden på dem."
-
-#: ../src/lib/main.py:240
-msgid "Show _Toolbar"
-msgstr "Vis verk_tøylinje"
-
-#: ../src/lib/main.py:241
-msgid "_Highlighter"
-msgstr "_Uthever"
-
-#: ../src/lib/main.py:242
-msgid "Highlight the current row, column and box"
-msgstr "Uthev aktiv rad, kolonne og boks"
-
-#: ../src/lib/main.py:367
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "Du fullførte puslespillet på %d sekund"
-msgstr[1] "Du fullførte puslespillet på %d sekunder"
-
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minutt"
-msgstr[1] "%d minutter"
-
-#: ../src/lib/main.py:373 ../src/lib/main.py:381
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d sekund"
-msgstr[1] "%d sekunder"
-
-#: ../src/lib/main.py:374
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "Du fullførte puslespillet på %(minute)s og %(second)s"
-
-#: ../src/lib/main.py:379
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d time"
-msgstr[1] "%d timer"
-
-#: ../src/lib/main.py:382
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "Du fullførte puslespillet på %(hour)s, %(minute)s og %(second)s"
-
-#: ../src/lib/main.py:384
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "Du fikk %(n)s hint."
-msgstr[1] "Du fikk %(n)s hint."
-
-#: ../src/lib/main.py:387
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "Du fikk %(n)s umulig trekk utpekt."
-msgstr[1] "Du fikk %(n)s umulige trekk utpekt"
-
-#: ../src/lib/main.py:392
-msgid "You win!"
-msgstr "Du vinner!"
-
-#: ../src/lib/main.py:402
-msgid "Save this game before starting new one?"
-msgstr "Lagre dette spillet før et nytt startes?"
-
-#: ../src/lib/main.py:403
-msgid "_Save game for later"
-msgstr "_Lagre spill for senere"
-
-#: ../src/lib/main.py:404
-msgid "_Abandon game"
-msgstr "_Avbryt spill"
-
-#: ../src/lib/main.py:422
-msgid "Save game before closing?"
-msgstr "Lagre spill før lukking?"
-
-#: ../src/lib/main.py:620
-msgid "Puzzle Information"
-msgstr "Informasjon om puslespill"
-
-#: ../src/lib/main.py:621
-msgid "There is no current puzzle."
-msgstr "Ingen aktive puslespill."
-
-#: ../src/lib/main.py:626
-msgid "Calculated difficulty: "
-msgstr "Kalkulert vanskelighetsgrad:"
-
-#: ../src/lib/main.py:631
-msgid "Very Hard"
-msgstr "Meget vanskelig"
-
-#: ../src/lib/main.py:636
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "Antall trekk som kan utføres med en gang på bakgrunn av eliminering: "
-
-#: ../src/lib/main.py:639
-msgid "Number of moves instantly fillable by filling: "
-msgstr "Antall trekk som kan utføres med en gang ved utfylling: "
-
-#: ../src/lib/main.py:642
-msgid "Amount of trial-and-error required to solve: "
-msgstr "Mengde prøving og feiling som kreves for å løse: "
-
-#: ../src/lib/main.py:645 ../src/lib/main.py:646
-msgid "Puzzle Statistics"
-msgstr "Statistikk for puslespill"
-
-#: ../src/lib/main.py:670
+#: ../src/gnome-sudoku.vala:358
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
 "Espen Stefansen <espens@svn.gnome.org>\n"
 "Torstein Adolf Winterseth <kvikende@fsfe.org>"
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:680
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "Kan ikke vise hjelp: %s"
+#: ../src/number-picker.vala:70
+msgid "Clear"
+msgstr "Tøm"
 
-#: ../src/lib/main.py:736
-msgid "Untracked"
-msgstr "Ikke sporet"
-
-#: ../src/lib/main.py:745
-msgid "_Remove"
-msgstr "Fje_rn"
-
-#: ../src/lib/main.py:746
-msgid "Delete selected tracker."
-msgstr "Slett valgt sporer."
-
-#: ../src/lib/main.py:752
-msgid "Hide current tracker entries."
-msgstr "Skjul sporingsoppføringer."
-
-#: ../src/lib/main.py:757
-msgid "A_pply"
-msgstr "_Bruk"
-
-#: ../src/lib/main.py:758
-msgid "Apply all tracked values and remove the tracker."
-msgstr "Bruk alle sporede verdier og slett valgt sporer."
-
-#: ../src/lib/main.py:796
-#, python-format
-msgid "Tracker %s"
-msgstr "Sporer %s"
-
-#: ../src/lib/number_box.py:82
-msgid "_Clear"
-msgstr "_Tøm"
-
-#: ../src/lib/saver.py:151
-msgid "No Space"
-msgstr "Ingen plass"
-
-#: ../src/lib/saver.py:152
-msgid "No space left on disk"
-msgstr "Ikke mer plass på disken"
-
-#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "Kan ikke opprette datamappe %(path)s."
-
-#: ../src/lib/saver.py:155
-msgid "There is no disk space left!"
-msgstr "Det er ikke mer plass på disken!"
-
-#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
-msgid "Error creating directory"
-msgstr "Feil ved oppretting av katalog"
-
-#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
-#: ../src/lib/saver.py:229
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "Feil %(errno)s: %(error)s"
-
-#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
-msgid "Unable to save game."
-msgstr "Kan ikke lagre spillet."
-
-#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "Kan ikke lagre fil %(filename)s."
-
-#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
-msgid "Unable to mark game as finished."
-msgstr "Kan ikke merke spillet som fullført."
-
-#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
-msgid "Sudoku unable to mark game as finished."
-msgstr "Sudoku kunne ikke merke spillet som fullført."
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:30
+msgid "Error printing file:"
+msgstr "Feil utskrift av fil:"
