@@ -11,6 +11,9 @@ gnome_sudoku_SOURCES = \
 	sudoku-printer.vala \
 	$(BUILT_SOURCES)
 
+# Force linking with a C++ linker.
+nodist_EXTRA_gnome_sudoku_SOURCES = dummy.cxx
+
 gnome_sudoku_CFLAGS = -w
 
 gnome_sudoku_CPPFLAGS = \
