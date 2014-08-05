@@ -6,6 +6,9 @@ AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE([enable])
 GNOME_MAINTAINER_MODE_DEFINES
 
+AC_PROG_CC
+AC_PROG_CXX
+
 AM_PROG_VALAC([0.24.0])
 AM_PROG_CC_C_O
 
@@ -43,10 +46,6 @@ AC_PATH_PROG([APPDATA_VALIDATE], [appdata-validate], [/bin/true])
 AC_PATH_PROG([DESKTOP_FILE_VALIDATE], [desktop-file-validate], [/bin/true])
 
 AC_CHECK_LIB([m],[floor])
-
-# Checks for programs.
-AC_PROG_CXX
-AC_PROG_CC
 
 dnl ###########################################################################
 dnl GResources
