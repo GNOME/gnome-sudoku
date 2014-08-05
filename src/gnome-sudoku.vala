@@ -164,12 +164,7 @@ public class Sudoku : Gtk.Application
 
     private void start_game (SudokuBoard board)
     {
-        var completed_board = board.clone ();
-
-        var rater = new SudokuRater(ref completed_board);
-        var rating = rater.get_difficulty ();
         var difficulty_category = board.get_difficulty_category ();
-        debug ("\n%s", rating.to_string ());
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);
         clear_action.set_enabled (!board.is_empty ());

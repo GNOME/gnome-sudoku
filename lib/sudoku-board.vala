@@ -12,6 +12,13 @@ public class SudokuBoard : Object
     private bool[,] possible_in_col;            /* if specific value is possible in specific col */
     private bool[,,] possible_in_block;         /* if specific value is possible in specific block */
 
+    private const float[] VERY_HARD_RANGE = { 0.75f, 10 };
+    private const float[] HARD_RANGE = { 0.6f, 0.75f };
+    private const float[] MEDIUM_RANGE = { 0.45f, 0.6f };
+    private const float[] EASY_RANGE = { -10, 0.45f };
+
+    public double difficulty_rating;
+
     public bool[,,] earmarks;                  /* Earmarks set by the user */
 
     public double previous_played_time { set; get; default = 0; }
@@ -55,8 +62,6 @@ public class SudokuBoard : Object
         return filled == fixed;
     }
 
-    public double difficulty_rating;
-
     private bool in_range (float[] range)
     {
         return (difficulty_rating >= range[0] && difficulty_rating < range[1]);
@@ -64,13 +69,13 @@ public class SudokuBoard : Object
 
     public DifficultyCategory get_difficulty_category ()
     {
-        if (in_range(DifficultyRating.EASY_RANGE))
+        if (in_range(EASY_RANGE))
             return DifficultyCategory.EASY;
-        else if (in_range(DifficultyRating.MEDIUM_RANGE))
+        else if (in_range(MEDIUM_RANGE))
             return DifficultyCategory.MEDIUM;
-        else if (in_range(DifficultyRating.HARD_RANGE))
+        else if (in_range(HARD_RANGE))
             return DifficultyCategory.HARD;
-        else if (in_range(DifficultyRating.VERY_HARD_RANGE))
+        else if (in_range(VERY_HARD_RANGE))
             return DifficultyCategory.VERY_HARD;
         else
             return DifficultyCategory.EASY;
@@ -572,5 +577,29 @@ public struct Cell
 
     public static bool equal (Cell a, Cell b) {
         return (Coord.equal(a.coord, b.coord) && (a.val == b.val));
+    }
+}
+
+public enum DifficultyCategory {
+    EASY,
+    MEDIUM,
+    HARD,
+    VERY_HARD;
+
+    public string to_string ()
+    {
+        switch (this)
+        {
+            case EASY:
+                return _("Easy Difficulty");
+            case MEDIUM:
+                return _("Medium Difficulty");
+            case HARD:
+                return _("Hard Difficulty");
+            case VERY_HARD:
+                return _("Very Hard Difficulty");
+            default:
+                assert_not_reached ();
+        }
     }
 }
