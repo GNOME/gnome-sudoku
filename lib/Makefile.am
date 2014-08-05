@@ -3,7 +3,6 @@ noinst_LTLIBRARIES = libsudoku.la
 libsudoku_la_SOURCES = \
 	sudoku-board.vala \
 	sudoku-game.vala \
-	sudoku-generator.vala \
 	sudoku-saver.vala \
 	sudoku-solver.vala
 

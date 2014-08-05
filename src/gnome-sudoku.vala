@@ -142,7 +142,6 @@ public class Sudoku : Gtk.Application
 
         sudoku_store = new SudokuStore ();
         saver = new SudokuSaver ();
-        //SudokuGenerator gen = new SudokuGenerator();
 
         var savegame = saver.get_savedgame ();
         if (savegame != null)
