@@ -164,6 +164,7 @@ public class Sudoku : Gtk.Application
 
     private void start_game (SudokuBoard board)
     {
+        generate_puzzle ();
         var difficulty_category = board.get_difficulty_category ();
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);

@@ -22,6 +22,7 @@ dnl ###########################################################################
 
 GLIB_REQUIRED=2.40.0
 GTK_REQUIRED=3.13.0
+QQWING_REQUIRED=1.1.2
 
 PKG_CHECK_MODULES(GNOME_SUDOKU, [
   glib-2.0 >= $GLIB_REQUIRED
@@ -33,6 +34,7 @@ PKG_CHECK_MODULES(GNOME_SUDOKU, [
 PKG_CHECK_MODULES(LIBSUDOKU, [
   glib-2.0 >= $GLIB_REQUIRED
   gio-2.0 >= $GLIB_REQUIRED
+  qqwing >= $QQWING_REQUIRED
   gee-0.8
   json-glib-1.0
 ])
@@ -41,6 +43,10 @@ AC_PATH_PROG([APPDATA_VALIDATE], [appdata-validate], [/bin/true])
 AC_PATH_PROG([DESKTOP_FILE_VALIDATE], [desktop-file-validate], [/bin/true])
 
 AC_CHECK_LIB([m],[floor])
+
+# Checks for programs.
+AC_PROG_CXX
+AC_PROG_CC
 
 dnl ###########################################################################
 dnl GResources
