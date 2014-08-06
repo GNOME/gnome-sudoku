@@ -12,6 +12,7 @@
 #include "qqwing-wrapper.h"
 
 #include <algorithm>
+#include <cstring>
 #include <iostream>
 
 #include <glib.h>
@@ -74,4 +75,16 @@ void qqwing_print_stats(int* puzzle)
     cout << "Number of Guesses: " << board.getGuessCount() << endl;
     cout << "Number of Backtracks: " << board.getBacktrackCount() << endl;
     cout << "Difficulty: " << board.getDifficultyAsString() << endl;
+}
+
+/*
+ * Returns the version of qqwing in use.
+ * Free with g_free() or free()
+ */
+char* qqwing_get_version()
+{
+    string version = getVersion();
+    char* copy = static_cast<char*>(g_malloc(version.length() + 1)); // +1 for the trailing nullptr
+    strcpy(copy, version.c_str());
+    return copy;
 }

@@ -33,4 +33,9 @@ public class SudokuGenerator : Object
 
         QQwing.print_stats (puzzle);
     }
+
+    public static string qqwing_version ()
+    {
+        return QQwing.get_version ();
+    }
 }

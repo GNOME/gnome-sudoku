@@ -18,6 +18,7 @@ G_BEGIN_DECLS
 
 int *qqwing_generate_puzzle(int difficulty);
 void qqwing_print_stats(int *puzzle);
+char *qqwing_get_version(void);
 
 G_END_DECLS
 

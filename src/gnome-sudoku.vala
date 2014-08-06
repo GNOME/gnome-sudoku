@@ -341,7 +341,8 @@ public class Sudoku : Gtk.Application
                                "program-name", _("Sudoku"),
                                "logo-icon-name", "gnome-sudoku",
                                "version", VERSION,
-                               "comments", _("The popular Japanese logic puzzle\n\nGNOME Sudoku is a part of GNOME Games."),
+                               /* Appears on the About dialog. %s is the version of the QQwing puzzle generator in use. */
+                               "comments", _("The popular Japanese logic puzzle\n\nPuzzles by QQwing %s".printf (SudokuGenerator.qqwing_version ())),
                                "copyright", "Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha",
                                "license-type", License.GPL_2_0,
                                "authors", authors,
