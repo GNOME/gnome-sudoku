@@ -2,10 +2,10 @@
 
 public class SudokuGenerator : Object
 {
-    public SudokuGenerator () {
+    private SudokuGenerator () {
     }
 
-    public SudokuBoard generate_board (DifficultyCategory category)
+    public static SudokuBoard generate_board (DifficultyCategory category)
     {
         var board = new SudokuBoard ();
         int[] puzzle = QQwing.generate_puzzle ((int) category);
@@ -22,7 +22,7 @@ public class SudokuGenerator : Object
         return board;
     }
 
-    public void print_stats (SudokuBoard board)
+    public static void print_stats (SudokuBoard board)
     {
         var cells = board.get_cells ();
         var puzzle = new int[board.rows * board.cols];

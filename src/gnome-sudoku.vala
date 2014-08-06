@@ -24,7 +24,6 @@ public class Sudoku : Gtk.Application
     private Button back_button;
 
     private SudokuStore sudoku_store;
-    private SudokuGenerator generator;
     private SudokuSaver saver;
 
     private SimpleAction undo_action;
@@ -142,7 +141,6 @@ public class Sudoku : Gtk.Application
         print_action = (SimpleAction) lookup_action ("print");
 
         sudoku_store = new SudokuStore ();
-        generator = new SudokuGenerator ();
         saver = new SudokuSaver ();
 
         var savegame = saver.get_savedgame ();
@@ -151,7 +149,7 @@ public class Sudoku : Gtk.Application
         else
         {
             var random_difficulty = (DifficultyCategory) Random.int_range (0, 4);
-            start_game (generator.generate_board (random_difficulty));
+            start_game (SudokuGenerator.generate_board (random_difficulty));
         }
 
         window.show ();
@@ -218,7 +216,7 @@ public class Sudoku : Gtk.Application
                 switch (response_id)
                 {
                     case 0:
-                        start_game (generator.generate_board (board.difficulty_category));
+                        start_game (SudokuGenerator.generate_board (board.difficulty_category));
                         break;
                     case 1:
                         // FIXME - This looks hack-ish
@@ -227,7 +225,7 @@ public class Sudoku : Gtk.Application
                             if (i != (int) board.difficulty_category)
                                 new_range += (DifficultyCategory) i;
 
-                        start_game (generator.generate_board (new_range[Random.int_range (0, 3)]));
+                        start_game (SudokuGenerator.generate_board (new_range[Random.int_range (0, 3)]));
                         break;
                 }
                 dialog.destroy ();
@@ -254,7 +252,7 @@ public class Sudoku : Gtk.Application
         // has been set to integers corresponding to the enums.
         // Following line converts those ints to their DifficultyCategory
         var selected_difficulty = (DifficultyCategory) difficulty.get_int32 ();
-        start_game (generator.generate_board (selected_difficulty));
+        start_game (SudokuGenerator.generate_board (selected_difficulty));
     }
 
     private void reset_cb ()
