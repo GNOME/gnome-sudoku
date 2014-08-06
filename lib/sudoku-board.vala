@@ -170,34 +170,6 @@ public class SudokuBoard : Object
         return board;
     }
 
-    public void set_from_string (string s, string delimiter = "", string empty_value = "0", string rating_delimiter = "\t")
-    {
-        //stdout.printf("Processing %s\n", s);
-
-        int number_of_cells = cols * rows;
-
-        string[] cells = s.split (delimiter, number_of_cells);
-
-        string[] rating = cells[cells.length -1].split (rating_delimiter, 2);
-        cells[cells.length - 1] = rating[0];
-
-        for (int i = 0; i < number_of_cells; i++)
-        {
-            string cell = cells[i];
-            //stdout.printf("Cell %d: %s\n", i, cell);
-
-            if (cell != empty_value)
-            {
-                int val = int.parse(cell);
-                //stdout.printf("Cell val: %d\n", val);
-
-                assert (val >= 1 && val <= max_val);
-
-                insert (i / cols, i % cols, val, true);
-            }
-        }
-    }
-
     public bool is_possible (int row, int col, int val)
     {
         val--;

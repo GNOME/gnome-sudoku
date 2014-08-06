@@ -5,7 +5,6 @@ BUILT_SOURCES = gnome-sudoku-resources.c
 gnome_sudoku_SOURCES = \
 	config.vapi \
 	gnome-sudoku.vala \
-	sudoku-store.vala \
 	sudoku-view.vala \
 	number-picker.vala \
 	sudoku-printer.vala \

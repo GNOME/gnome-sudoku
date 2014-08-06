@@ -16,13 +16,6 @@ appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 pixmapdir = $(datadir)/gnome-sudoku/images/
 pixmap_DATA = footprints.png
 
-puzzledir = $(datadir)/gnome-sudoku/puzzles/
-puzzle_DATA = \
-	easy \
-	medium \
-	hard \
-	very_hard
-
 dist_noinst_DATA = \
 	gnome-sudoku.ui \
 	gnome-sudoku-menu.ui \
@@ -34,7 +27,6 @@ EXTRA_DIST = \
 	$(pixmap_DATA)	\
 	$(desktop_in_files) \
 	$(appdata_in_files)	\
-	$(puzzle_DATA)	\
 	$(gsettings_SCHEMAS) \
 	$(man_MANS)
 
