@@ -3,11 +3,11 @@ noinst_LTLIBRARIES = libsudoku.la
 libsudoku_la_SOURCES = \
 	sudoku-board.vala \
 	sudoku-game.vala \
-	sudoku-saver.vala	\
-	sudoku-generator.vala	\
-	QQwing-client.vapi	\
-	QQwing-wrapper.cpp	\
-	QQwing-wrapper.h
+	sudoku-saver.vala \
+	sudoku-generator.vala \
+	qqwing.vapi \
+	qqwing-wrapper.cpp \
+	qqwing-wrapper.h
 
 libsudoku_la_CFLAGS = -w
 
