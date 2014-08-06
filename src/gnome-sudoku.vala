@@ -24,6 +24,7 @@ public class Sudoku : Gtk.Application
     private Button back_button;
 
     private SudokuStore sudoku_store;
+    private SudokuGenerator generator;
     private SudokuSaver saver;
 
     private SimpleAction undo_action;
@@ -141,6 +142,7 @@ public class Sudoku : Gtk.Application
         print_action = (SimpleAction) lookup_action ("print");
 
         sudoku_store = new SudokuStore ();
+        generator = new SudokuGenerator ();
         saver = new SudokuSaver ();
 
         var savegame = saver.get_savedgame ();
@@ -164,7 +166,23 @@ public class Sudoku : Gtk.Application
 
     private void start_game (SudokuBoard board)
     {
-        generate_puzzle ();
+        var gen_board = generator.generate (board.get_difficulty_category ());
+        var gen_cells = gen_board.get_cells ();
+
+        for (var i = 0; i < board.rows; i++)
+        {
+            for (var j = 0; j < board.cols; j++)
+            {
+                if (gen_cells[i, j] == 0)
+                    stdout.printf (". ");
+                else
+                    stdout.printf ("%d ", gen_cells[i, j]);
+            }
+            stdout.printf ("\n");
+        }
+
+        generator.print_stats (gen_board);
+
         var difficulty_category = board.get_difficulty_category ();
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);
