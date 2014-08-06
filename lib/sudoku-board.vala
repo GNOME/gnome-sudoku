@@ -12,16 +12,11 @@ public class SudokuBoard : Object
     private bool[,] possible_in_col;            /* if specific value is possible in specific col */
     private bool[,,] possible_in_block;         /* if specific value is possible in specific block */
 
-    private const float[] VERY_HARD_RANGE = { 0.75f, 10 };
-    private const float[] HARD_RANGE = { 0.6f, 0.75f };
-    private const float[] MEDIUM_RANGE = { 0.45f, 0.6f };
-    private const float[] EASY_RANGE = { -10, 0.45f };
-
-    public double difficulty_rating;
-
     public bool[,,] earmarks;                  /* Earmarks set by the user */
 
     public double previous_played_time { set; get; default = 0; }
+
+    public DifficultyCategory difficulty_category { set; get; default = DifficultyCategory.UNKNOWN; }
 
     /* Number of rows in one block */
     public int block_rows { get; private set; }
@@ -60,25 +55,6 @@ public class SudokuBoard : Object
     public bool is_empty ()
     {
         return filled == fixed;
-    }
-
-    private bool in_range (float[] range)
-    {
-        return (difficulty_rating >= range[0] && difficulty_rating < range[1]);
-    }
-
-    public DifficultyCategory get_difficulty_category ()
-    {
-        if (in_range(EASY_RANGE))
-            return DifficultyCategory.EASY;
-        else if (in_range(MEDIUM_RANGE))
-            return DifficultyCategory.MEDIUM;
-        else if (in_range(HARD_RANGE))
-            return DifficultyCategory.HARD;
-        else if (in_range(VERY_HARD_RANGE))
-            return DifficultyCategory.VERY_HARD;
-        else
-            return DifficultyCategory.EASY;
     }
 
     public signal void completed ();
@@ -189,6 +165,7 @@ public class SudokuBoard : Object
         board.fixed = fixed;
         board.broken_coords.add_all (broken_coords);
         board.earmarks = earmarks;
+        board.difficulty_category = difficulty_category;
 
         return board;
     }
@@ -203,7 +180,6 @@ public class SudokuBoard : Object
 
         string[] rating = cells[cells.length -1].split (rating_delimiter, 2);
         cells[cells.length - 1] = rating[0];
-        difficulty_rating = double.parse (rating[1]);
 
         for (int i = 0; i < number_of_cells; i++)
         {
@@ -581,23 +557,45 @@ public struct Cell
 }
 
 public enum DifficultyCategory {
+    UNKNOWN,
+    SIMPLE,
     EASY,
-    MEDIUM,
-    HARD,
-    VERY_HARD;
+    INTERMEDIATE,
+    EXPERT;
 
     public string to_string ()
     {
         switch (this)
         {
+            case UNKNOWN:
+                return _("Unknown Difficulty");
+            case SIMPLE:
+                return _("Simple Difficulty");
             case EASY:
                 return _("Easy Difficulty");
-            case MEDIUM:
-                return _("Medium Difficulty");
-            case HARD:
-                return _("Hard Difficulty");
-            case VERY_HARD:
-                return _("Very Hard Difficulty");
+            case INTERMEDIATE:
+                return _("Intermediate Difficulty");
+            case EXPERT:
+                return _("Expert Difficulty");
+            default:
+                assert_not_reached ();
+        }
+    }
+
+    public static DifficultyCategory from_string (string input)
+    {
+        switch (input)
+        {
+            case "Unknown Difficulty":
+                return UNKNOWN;
+            case "Simple Difficulty":
+                return SIMPLE;
+            case "Easy Difficulty":
+                return EASY;
+            case "Intermediate Difficulty":
+                return INTERMEDIATE;
+            case "Expert Difficulty":
+                return EXPERT;
             default:
                 assert_not_reached ();
         }

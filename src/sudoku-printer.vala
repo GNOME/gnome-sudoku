@@ -71,7 +71,7 @@ public class SudokuPrinter : GLib.Object {
 
         foreach (SudokuBoard sudoku in sudokus_on_page)
         {
-            var label = sudoku.get_difficulty_category ().to_string ();
+            var label = sudoku.difficulty_category.to_string ();
             cr.set_font_size (12);
             cr.select_font_face ("Sans", Cairo.FontSlant.NORMAL, Cairo.FontWeight.BOLD);
             cr.set_source_rgb (0, 0, 0);
@@ -270,13 +270,13 @@ public class GamePrinter: GLib.Object {
 
         var saved_difficulty = (DifficultyCategory) settings.get_enum (DIFFICULTY_KEY_NAME);
 
-        if (saved_difficulty == DifficultyCategory.EASY)
+        if (saved_difficulty == DifficultyCategory.SIMPLE)
             easy_button.set_active (true);
-        else if (saved_difficulty == DifficultyCategory.MEDIUM)
+        else if (saved_difficulty == DifficultyCategory.EASY)
             medium_button.set_active (true);
-        else if (saved_difficulty == DifficultyCategory.HARD)
+        else if (saved_difficulty == DifficultyCategory.INTERMEDIATE)
             hard_button.set_active (true);
-        else if (saved_difficulty == DifficultyCategory.VERY_HARD)
+        else if (saved_difficulty == DifficultyCategory.EXPERT)
             very_hard_button.set_active (true);
 
         nsudokus_button = builder.get_object ("sudokusToPrintSpinButton") as SpinButton;
@@ -301,13 +301,13 @@ public class GamePrinter: GLib.Object {
         DifficultyCategory level;
 
         if (easy_button.get_active ())
-            level = DifficultyCategory.EASY;
+            level = DifficultyCategory.SIMPLE;
         else if (medium_button.get_active ())
-            level = DifficultyCategory.MEDIUM;
+            level = DifficultyCategory.EASY;
         else if (hard_button.get_active ())
-            level = DifficultyCategory.HARD;
+            level = DifficultyCategory.INTERMEDIATE;
         else if (very_hard_button.get_active ())
-            level = DifficultyCategory.VERY_HARD;
+            level = DifficultyCategory.EXPERT;
         else
             assert_not_reached ();
 

@@ -5,10 +5,10 @@ public class SudokuGenerator : Object
     public SudokuGenerator () {
     }
 
-    public SudokuBoard generate (DifficultyCategory category)
+    public SudokuBoard generate_board (DifficultyCategory category)
     {
         var board = new SudokuBoard ();
-        int[] puzzle = QQwing.generate_puzzle ((int) category + 1);
+        int[] puzzle = QQwing.generate_puzzle ((int) category);
 
         for (var row = 0; row < board.rows; row++)
             for (var col = 0; col < board.cols; col++)
@@ -17,7 +17,7 @@ public class SudokuGenerator : Object
                 if (val != 0)
                     board.insert (row, col, val, true);
             }
-        board.difficulty_rating = 0;
+        board.difficulty_category = category;
 
         return board;
     }

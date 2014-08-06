@@ -4,10 +4,10 @@ using Gee;
 
 public class SudokuStore : Object
 {
+    private ArrayList<SudokuBoard> simple_boards = new ArrayList<SudokuBoard> ();
     private ArrayList<SudokuBoard> easy_boards = new ArrayList<SudokuBoard> ();
-    private ArrayList<SudokuBoard> medium_boards = new ArrayList<SudokuBoard> ();
-    private ArrayList<SudokuBoard> hard_boards = new ArrayList<SudokuBoard> ();
-    private ArrayList<SudokuBoard> very_hard_boards = new ArrayList<SudokuBoard> ();
+    private ArrayList<SudokuBoard> intermediate_boards = new ArrayList<SudokuBoard> ();
+    private ArrayList<SudokuBoard> expert_boards = new ArrayList<SudokuBoard> ();
 
     public SudokuStore () {
         try {
@@ -22,7 +22,7 @@ public class SudokuStore : Object
                     SudokuBoard board = new SudokuBoard();
                     board.set_from_string(line, " ");
 
-                    easy_boards.add(board);
+                    simple_boards.add(board);
                 }
             }
 
@@ -37,7 +37,7 @@ public class SudokuStore : Object
                     SudokuBoard board = new SudokuBoard();
                     board.set_from_string(line, " ");
 
-                    medium_boards.add(board);
+                    easy_boards.add(board);
                 }
             }
 
@@ -52,7 +52,7 @@ public class SudokuStore : Object
                     SudokuBoard board = new SudokuBoard();
                     board.set_from_string(line, " ");
 
-                    hard_boards.add(board);
+                    intermediate_boards.add(board);
                 }
             }
 
@@ -67,7 +67,7 @@ public class SudokuStore : Object
                     SudokuBoard board = new SudokuBoard();
                     board.set_from_string(line, " ");
 
-                    very_hard_boards.add(board);
+                    expert_boards.add(board);
                 }
             }
         } catch (Error e) {
@@ -75,36 +75,36 @@ public class SudokuStore : Object
         }
     }
 
+    public SudokuBoard get_random_simple_board()
+    {
+        return simple_boards[Random.int_range(0, simple_boards.size)];
+    }
+
     public SudokuBoard get_random_easy_board()
     {
         return easy_boards[Random.int_range(0, easy_boards.size)];
     }
 
-    public SudokuBoard get_random_medium_board()
+    public SudokuBoard get_random_intermediate_board()
     {
-        return medium_boards[Random.int_range(0, medium_boards.size)];
+        return intermediate_boards[Random.int_range(0, intermediate_boards.size)];
     }
 
-    public SudokuBoard get_random_hard_board()
+    public SudokuBoard get_random_expert_board()
     {
-        return hard_boards[Random.int_range(0, hard_boards.size)];
-    }
-
-    public SudokuBoard get_random_very_hard_board()
-    {
-        return very_hard_boards[Random.int_range(0, very_hard_boards.size)];
+        return expert_boards[Random.int_range(0, expert_boards.size)];
     }
 
     public SudokuBoard get_random_board(DifficultyCategory category)
     {
-        if (category == DifficultyCategory.EASY)
+        if (category == DifficultyCategory.SIMPLE)
+            return get_random_simple_board();
+        else if (category == DifficultyCategory.EASY)
             return get_random_easy_board();
-        else if (category == DifficultyCategory.MEDIUM)
-            return get_random_medium_board();
-        else if (category == DifficultyCategory.HARD)
-            return get_random_hard_board();
-        else if (category == DifficultyCategory.VERY_HARD)
-            return get_random_very_hard_board();
+        else if (category == DifficultyCategory.INTERMEDIATE)
+            return get_random_intermediate_board();
+        else if (category == DifficultyCategory.EXPERT)
+            return get_random_expert_board();
         else
             assert_not_reached();
     }
@@ -114,7 +114,7 @@ public class SudokuStore : Object
     public SudokuBoard[] get_boards_sorted (int number_of_boards, DifficultyCategory level, bool exclude_finished = false)
     {
         var boards = new ArrayList<SudokuBoard> ();
-        SudokuBoard[] sorted_boards = {};
+        SudokuBoard[] boards_array = {};
 
         while (boards.size < number_of_boards)
         {
@@ -124,17 +124,9 @@ public class SudokuStore : Object
             boards.add (board);
         }
 
-        boards.sort ((a, b) => {
-            if (a.difficulty_rating > b.difficulty_rating)
-                return 1;
-            if (a.difficulty_rating == b.difficulty_rating)
-                return 0;
-            return -1;
-        });
-
         foreach (SudokuBoard board in boards)
-            sorted_boards += board;
+            boards_array += board;
 
-        return sorted_boards;
+        return boards_array;
     }
 }

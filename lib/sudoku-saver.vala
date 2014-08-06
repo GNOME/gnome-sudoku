@@ -85,10 +85,8 @@ public class SudokuSaver : Object
         Json.Builder builder = new Json.Builder ();
 
         builder.begin_object ();
-        builder.set_member_name ("difficulty_rating");
-        builder.add_double_value (board.difficulty_rating);
         builder.set_member_name ("difficulty_category");
-        builder.add_string_value (board.get_difficulty_category ().to_string ());
+        builder.add_string_value (board.difficulty_category.to_string ());
         builder.set_member_name ("time_elapsed");
         builder.add_double_value (game.get_total_time_played ());
 
@@ -207,9 +205,9 @@ public class SudokuSaver : Object
         board.previous_played_time = reader.get_double_value ();
         reader.end_member ();
 
-        reader.read_member ("difficulty_rating");
+        reader.read_member ("difficulty_category");
         return_val_if_fail (reader.is_value (), null);
-        board.difficulty_rating = reader.get_double_value ();
+        board.difficulty_category = DifficultyCategory.from_string (reader.get_string_value ());
         reader.end_member ();
 
         return new SudokuGame (board);

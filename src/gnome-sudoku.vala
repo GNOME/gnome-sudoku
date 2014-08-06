@@ -151,7 +151,7 @@ public class Sudoku : Gtk.Application
         else
         {
             var random_difficulty = (DifficultyCategory) Random.int_range (0, 4);
-            start_game (sudoku_store.get_random_board (random_difficulty));
+            start_game (generator.generate_board (random_difficulty));
         }
 
         window.show ();
@@ -166,13 +166,6 @@ public class Sudoku : Gtk.Application
 
     private void start_game (SudokuBoard board)
     {
-        var gen_board = generator.generate (board.get_difficulty_category ());
-        var gen_cells = gen_board.get_cells ();
-
-        gen_board.print ();
-        generator.print_stats (gen_board);
-
-        var difficulty_category = board.get_difficulty_category ();
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);
         clear_action.set_enabled (!board.is_empty ());
@@ -181,7 +174,7 @@ public class Sudoku : Gtk.Application
             grid_box.remove (view);
         }
 
-        header_bar_subtitle = difficulty_category.to_string ();
+        header_bar_subtitle = board.difficulty_category.to_string ();
         back_cb ();
 
         game = new SudokuGame (board);
@@ -225,15 +218,16 @@ public class Sudoku : Gtk.Application
                 switch (response_id)
                 {
                     case 0:
-                        start_game (sudoku_store.get_random_board (difficulty_category));
+                        start_game (generator.generate_board (board.difficulty_category));
                         break;
                     case 1:
+                        // FIXME - This looks hack-ish
                         DifficultyCategory[] new_range = {};
-                        for (var i = 0; i < 4; i++)
-                            if (i != (int) difficulty_category)
+                        for (var i = 1; i < 5; i++)
+                            if (i != (int) board.difficulty_category)
                                 new_range += (DifficultyCategory) i;
 
-                        start_game (sudoku_store.get_random_board (new_range[Random.int_range (0, 3)]));
+                        start_game (generator.generate_board (new_range[Random.int_range (0, 3)]));
                         break;
                 }
                 dialog.destroy ();
@@ -260,7 +254,7 @@ public class Sudoku : Gtk.Application
         // has been set to integers corresponding to the enums.
         // Following line converts those ints to their DifficultyCategory
         var selected_difficulty = (DifficultyCategory) difficulty.get_int32 ();
-        start_game (sudoku_store.get_random_board (selected_difficulty));
+        start_game (generator.generate_board (selected_difficulty));
     }
 
     private void reset_cb ()
