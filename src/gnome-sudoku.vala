@@ -169,18 +169,7 @@ public class Sudoku : Gtk.Application
         var gen_board = generator.generate (board.get_difficulty_category ());
         var gen_cells = gen_board.get_cells ();
 
-        for (var i = 0; i < board.rows; i++)
-        {
-            for (var j = 0; j < board.cols; j++)
-            {
-                if (gen_cells[i, j] == 0)
-                    stdout.printf (". ");
-                else
-                    stdout.printf ("%d ", gen_cells[i, j]);
-            }
-            stdout.printf ("\n");
-        }
-
+        gen_board.print ();
         generator.print_stats (gen_board);
 
         var difficulty_category = board.get_difficulty_category ();
