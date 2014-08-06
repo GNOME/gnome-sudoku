@@ -23,7 +23,6 @@ public class Sudoku : Gtk.Application
     private Box undo_redo_box;
     private Button back_button;
 
-    private SudokuStore sudoku_store;
     private SudokuSaver saver;
 
     private SimpleAction undo_action;
@@ -140,9 +139,7 @@ public class Sudoku : Gtk.Application
         clear_action = (SimpleAction) lookup_action ("reset");
         print_action = (SimpleAction) lookup_action ("print");
 
-        sudoku_store = new SudokuStore ();
         saver = new SudokuSaver ();
-
         var savegame = saver.get_savedgame ();
         if (savegame != null)
             start_game (savegame.board);
@@ -309,7 +306,7 @@ public class Sudoku : Gtk.Application
 
     private void print_multiple_cb ()
     {
-        var printer = new GamePrinter (sudoku_store, saver, ref window);
+        var printer = new GamePrinter (saver, ref window);
         printer.run_dialog ();
     }
 

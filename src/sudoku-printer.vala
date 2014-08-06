@@ -216,25 +216,23 @@ public class SudokuPrinter : GLib.Object {
     }
 }
 
-public class GamePrinter: GLib.Object {
-
-    private SudokuStore store;
+public class GamePrinter: GLib.Object
+{
     private SudokuSaver saver;
     private ApplicationWindow window;
     private GLib.Settings settings;
     private Gtk.Dialog dialog;
     private SpinButton nsudokus_button;
 
+    private RadioButton simple_button;
     private RadioButton easy_button;
-    private RadioButton medium_button;
-    private RadioButton hard_button;
-    private RadioButton very_hard_button;
+    private RadioButton intermediate_button;
+    private RadioButton expert_button;
 
     private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
 
-    public GamePrinter (SudokuStore store, SudokuSaver saver, ref ApplicationWindow window)
+    public GamePrinter (SudokuSaver saver, ref ApplicationWindow window)
     {
-        this.store = store;
         this.saver = saver;
         this.window = window;
         this.settings = new GLib.Settings ("org.gnome.sudoku");
@@ -256,28 +254,28 @@ public class GamePrinter: GLib.Object {
 
         SList<RadioButton> radio_group = new SList<RadioButton> ();
 
+        simple_button = builder.get_object ("simpleRadioButton") as RadioButton;
+        simple_button.set_group (radio_group);
+
         easy_button = builder.get_object ("easyRadioButton") as RadioButton;
-        easy_button.set_group (radio_group);
+        easy_button.join_group (simple_button);
 
-        medium_button = builder.get_object ("mediumRadioButton") as RadioButton;
-        medium_button.join_group (easy_button);
+        intermediate_button = builder.get_object ("intermediateRadioButton") as RadioButton;
+        intermediate_button.join_group (simple_button);
 
-        hard_button = builder.get_object ("hardRadioButton") as RadioButton;
-        hard_button.join_group (easy_button);
-
-        very_hard_button = builder.get_object ("very_hardRadioButton") as RadioButton;
-        very_hard_button.join_group (easy_button);
+        expert_button = builder.get_object ("expertRadioButton") as RadioButton;
+        expert_button.join_group (simple_button);
 
         var saved_difficulty = (DifficultyCategory) settings.get_enum (DIFFICULTY_KEY_NAME);
 
         if (saved_difficulty == DifficultyCategory.SIMPLE)
-            easy_button.set_active (true);
+            simple_button.set_active (true);
         else if (saved_difficulty == DifficultyCategory.EASY)
-            medium_button.set_active (true);
+            easy_button.set_active (true);
         else if (saved_difficulty == DifficultyCategory.INTERMEDIATE)
-            hard_button.set_active (true);
+            intermediate_button.set_active (true);
         else if (saved_difficulty == DifficultyCategory.EXPERT)
-            very_hard_button.set_active (true);
+            expert_button.set_active (true);
 
         nsudokus_button = builder.get_object ("sudokusToPrintSpinButton") as SpinButton;
         wrap_adjustment ("print-multiple-sudokus-to-print", nsudokus_button.get_adjustment ());
@@ -299,21 +297,24 @@ public class GamePrinter: GLib.Object {
 
         var nsudokus = (int) nsudokus_button.get_adjustment ().get_value ();
         DifficultyCategory level;
+        var boards = new SudokuBoard[nsudokus];
 
-        if (easy_button.get_active ())
+        if (simple_button.get_active ())
             level = DifficultyCategory.SIMPLE;
-        else if (medium_button.get_active ())
+        else if (easy_button.get_active ())
             level = DifficultyCategory.EASY;
-        else if (hard_button.get_active ())
+        else if (intermediate_button.get_active ())
             level = DifficultyCategory.INTERMEDIATE;
-        else if (very_hard_button.get_active ())
+        else if (expert_button.get_active ())
             level = DifficultyCategory.EXPERT;
         else
             assert_not_reached ();
 
         settings.set_enum (DIFFICULTY_KEY_NAME, level);
 
-        var boards = store.get_boards_sorted (nsudokus, level, true);
+        for (var i = 0; i < nsudokus; i++)
+            boards[i] = SudokuGenerator.generate_board (level);
+
         SudokuPrinter printer = new SudokuPrinter (boards, ref window);
 
         PrintOperationResult result = printer.print_sudoku ();
