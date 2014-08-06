@@ -6,7 +6,8 @@ libsudoku_la_SOURCES = \
 	sudoku-saver.vala	\
 	sudoku-generator.vala	\
 	QQwing-client.vapi	\
-	QQwing-wrapper.cpp
+	QQwing-wrapper.cpp	\
+	QQwing-wrapper.h
 
 libsudoku_la_CFLAGS = -w
 
