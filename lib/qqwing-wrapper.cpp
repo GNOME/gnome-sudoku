@@ -22,6 +22,7 @@ using namespace std;
 
 /*
  * Generate a symmetric puzzle of specified difficulty.
+ * The result must be freed with g_free() or free().
  */
 int* qqwing_generate_puzzle(int difficulty)
 {
@@ -46,7 +47,8 @@ int* qqwing_generate_puzzle(int difficulty)
         g_error("Could not generate puzzle of specified difficulty. I tried so hard. Please report at bugzilla.gnome.org.");
 
     const int* original = board.getPuzzle();
-    int* copy = new int[BOARD_SIZE];
+    // Will be deleted by Vala using g_free(), so the new operator is not safe.
+    int* copy = g_new(int, BOARD_SIZE);
     std::copy(original, &original[BOARD_SIZE], copy);
     return copy;
 }
