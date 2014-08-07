@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-games.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-07-22 07:38+0000\n"
-"PO-Revision-Date: 2014-07-22 11:25+0200\n"
+"POT-Creation-Date: 2014-08-07 07:32+0000\n"
+"PO-Revision-Date: 2014-08-07 12:43+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -29,10 +29,14 @@ msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
+#| msgid ""
+#| "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+#| "Sudoku lovers, with a simple, unobtrusive interface makes playing Sudoku "
+#| "fun for players of any skill level."
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
-"Sudoku lovers, with a simple, unobtrusive interface makes playing Sudoku fun "
-"for players of any skill level."
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
 msgstr ""
 "Juegue al popular juego de lógica japonés. GNOME Sudoku es un juego "
 "imprescindible para los amantes del sudoku, con una interfaz sencilla y no "
@@ -60,7 +64,7 @@ msgstr ""
 "usted mismo."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:346
+#: ../src/gnome-sudoku.vala:344
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -86,7 +90,6 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Imprimir _múltiples puzles…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-#| msgid "Warnings"
 msgid "_Show Warnings"
 msgstr "_Mostrar advertencias"
 
@@ -167,14 +170,10 @@ msgid "Set the number of sudokus you want to print"
 msgstr "Establecer el número de sudokus que quiere imprimir"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:5
-#| msgid "Warn about unfillable squares"
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Advertir acerca de cuadros no rellenables y números duplicados"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:6
-#| msgid ""
-#| "Displays a big red X in a square if it cannot possibly be filled by any "
-#| "number"
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -222,96 +221,34 @@ msgstr "hora"
 msgid "hours"
 msgstr "horas"
 
-#: ../lib/sudoku-solver.vala:742
-msgid "Easy Difficulty"
-msgstr "Dificultad fácil:"
-
-#: ../lib/sudoku-solver.vala:744
-msgid "Medium Difficulty"
-msgstr "Dificultad media:"
-
-#: ../lib/sudoku-solver.vala:746
-msgid "Hard Difficulty"
-msgstr "Dificultad alta:"
-
-#: ../lib/sudoku-solver.vala:748
-msgid "Very Hard Difficulty"
-msgstr "Dificultad muy alta:"
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:859
-msgid "Number of moves instantly fillable by elimination:"
-msgstr "Número de movimientos rellenados instantáneamente por eliminación: "
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:861
-msgid "Percentage of moves instantly fillable by elimination:"
-msgstr ""
-"Porcentaje de movimientos rellenados instantáneamente por eliminación: "
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:863
-msgid "Number of moves instantly fillable by filling:"
-msgstr "Número de movimientos rellenados instantáneamente por relleno: "
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:865
-msgid "Percentage of moves instantly fillable by filling:"
-msgstr "Porcentaje de movimientos rellenados instantáneamente por relleno: "
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:867
-msgid "Number of guesses made:"
-msgstr "Número de adivinanzas hechas:"
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:869
-msgid "Number of backtraces:"
-msgstr "Número de trazas:"
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:871
-msgid "Ease by filling:"
-msgstr "Facilitar por relleno:"
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:873
-msgid "Ease by elimination:"
-msgstr "Facilitar por eliminación:"
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:875
-msgid "Calculated difficulty:"
-msgstr "Dificultad calculada:"
-
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:56
+#: ../src/gnome-sudoku.vala:57
 msgid "Show release version"
 msgstr "Mostrar el número de versión"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:60
+#: ../src/gnome-sudoku.vala:61
 msgid "Show the possible values for each cell"
 msgstr "Mostrar los valores posibles de cada casilla"
 
-#: ../src/gnome-sudoku.vala:213
+#: ../src/gnome-sudoku.vala:211
 #, c-format
 msgid "Well done, you completed the puzzle in %s"
 msgstr "Bien hecho, ha completado el puzle en %s"
 
-#: ../src/gnome-sudoku.vala:215
+#: ../src/gnome-sudoku.vala:213
 msgid "Same difficulty again"
 msgstr "Misma dificultad otra vez"
 
-#: ../src/gnome-sudoku.vala:216
+#: ../src/gnome-sudoku.vala:214
 msgid "New difficulty"
 msgstr "Nueva dificultad:"
 
-#: ../src/gnome-sudoku.vala:262
+#: ../src/gnome-sudoku.vala:260
 msgid "Reset the board to its original state?"
 msgstr "¿Restablecer el tablero a su estado original?"
 
-#: ../src/gnome-sudoku.vala:349
+#: ../src/gnome-sudoku.vala:347
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -321,7 +258,7 @@ msgstr ""
 "\n"
 "GNOME Sudoku es parte de los juegos de GNOME."
 
-#: ../src/gnome-sudoku.vala:354
+#: ../src/gnome-sudoku.vala:352
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>, 2008-2012\n"
@@ -331,7 +268,6 @@ msgstr ""
 "Pablo Saratxaga <pablo@mandrakesoft.com>"
 
 #: ../src/number-picker.vala:70
-#| msgid "_Clear"
 msgid "Clear"
 msgstr "Limpiar"
 
@@ -339,6 +275,46 @@ msgstr "Limpiar"
 #: ../src/sudoku-printer.vala:30
 msgid "Error printing file:"
 msgstr "Error al imprimir el archivo:"
+
+#~ msgid "Easy Difficulty"
+#~ msgstr "Dificultad fácil:"
+
+#~ msgid "Medium Difficulty"
+#~ msgstr "Dificultad media:"
+
+#~ msgid "Hard Difficulty"
+#~ msgstr "Dificultad alta:"
+
+#~ msgid "Very Hard Difficulty"
+#~ msgstr "Dificultad muy alta:"
+
+#~ msgid "Number of moves instantly fillable by elimination:"
+#~ msgstr "Número de movimientos rellenados instantáneamente por eliminación: "
+
+#~ msgid "Percentage of moves instantly fillable by elimination:"
+#~ msgstr ""
+#~ "Porcentaje de movimientos rellenados instantáneamente por eliminación: "
+
+#~ msgid "Number of moves instantly fillable by filling:"
+#~ msgstr "Número de movimientos rellenados instantáneamente por relleno: "
+
+#~ msgid "Percentage of moves instantly fillable by filling:"
+#~ msgstr "Porcentaje de movimientos rellenados instantáneamente por relleno: "
+
+#~ msgid "Number of guesses made:"
+#~ msgstr "Número de adivinanzas hechas:"
+
+#~ msgid "Number of backtraces:"
+#~ msgstr "Número de trazas:"
+
+#~ msgid "Ease by filling:"
+#~ msgstr "Facilitar por relleno:"
+
+#~ msgid "Ease by elimination:"
+#~ msgstr "Facilitar por eliminación:"
+
+#~ msgid "Calculated difficulty:"
+#~ msgstr "Dificultad calculada:"
 
 #~ msgid "_Warn About Unfillable Squares"
 #~ msgstr "Advertir acerca de cuadros no _rellenables"
