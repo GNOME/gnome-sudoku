@@ -12,7 +12,6 @@
 #include "qqwing-wrapper.h"
 
 #include <algorithm>
-#include <cstring>
 #include <iostream>
 
 #include <glib.h>
