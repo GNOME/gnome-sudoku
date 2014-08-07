@@ -83,8 +83,5 @@ void qqwing_print_stats(int* puzzle)
  */
 char* qqwing_get_version()
 {
-    string version = getVersion();
-    char* copy = static_cast<char*>(g_malloc(version.length() + 1)); // +1 for the trailing nullptr
-    strcpy(copy, version.c_str());
-    return copy;
+    return g_strdup(getVersion().c_str());
 }
