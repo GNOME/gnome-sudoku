@@ -121,7 +121,7 @@ private class SudokuCellView : Gtk.DrawingArea
     private NumberPicker number_picker;
     private NumberPicker earmark_picker;
 
-    public SudokuCellView (int row, int col, ref SudokuGame game, bool small = false)
+    public SudokuCellView (int row, int col, ref SudokuGame game)
     {
         this.game = game;
         this._row = row;
@@ -129,12 +129,6 @@ private class SudokuCellView : Gtk.DrawingArea
 
         style.font_desc.set_size (Pango.SCALE * 13);
         this.value = game.board [_row, _col];
-
-        if (small)
-        {
-            size_ratio = 0.83;
-            return;
-        }
 
         number_picker = new NumberPicker (ref game.board);
         number_picker.number_picked.connect ((o, number) => {
@@ -449,7 +443,7 @@ public class SudokuView : Gtk.AspectFrame
         }
     }
 
-    public SudokuView (SudokuGame game, bool preview = false)
+    public SudokuView (SudokuGame game)
     {
         shadow_type = Gtk.ShadowType.NONE;
         obey_child = false;
@@ -460,10 +454,10 @@ public class SudokuView : Gtk.AspectFrame
         add (box);
         box.show ();
 
-        set_game (game, preview);
+        set_game (game);
     }
 
-    public void set_game (SudokuGame game, bool preview = false)
+    public void set_game (SudokuGame game)
     {
         if (grid != null)
             box.remove (grid);
@@ -481,46 +475,43 @@ public class SudokuView : Gtk.AspectFrame
         {
             for (var col = 0; col < game.board.cols; col++)
             {
-                var cell = new SudokuCellView (row, col, ref this.game, preview);
+                var cell = new SudokuCellView (row, col, ref this.game);
                 var cell_row = row;
                 var cell_col = col;
 
                 cell.background_color = cell.is_fixed ? fixed_cell_color : free_cell_color;
 
-                if (!preview)
-                {
-                    cell.focus_out_event.connect (() => {
-                        cell_focus_out_event (cell_row, cell_col);
-                        return false;
-                    });
+                cell.focus_out_event.connect (() => {
+                    cell_focus_out_event (cell_row, cell_col);
+                    return false;
+                });
 
-                    cell.focus_in_event.connect (() => {
-                        this.selected_x = cell_col;
-                        this.selected_y = cell_row;
-                        cell_focus_in_event (cell_row, cell_col);
+                cell.focus_in_event.connect (() => {
+                    this.selected_x = cell_col;
+                    this.selected_y = cell_row;
+                    cell_focus_in_event (cell_row, cell_col);
 
-                        reset_cell_background_colors ();
-                        set_row_background_color (cell_row, highlight_color);
-                        set_col_background_color (cell_col, highlight_color);
+                    reset_cell_background_colors ();
+                    set_row_background_color (cell_row, highlight_color);
+                    set_col_background_color (cell_col, highlight_color);
 
-                        var block_row = cell.row / game.board.block_rows;
-                        var block_col = cell.col / game.board.block_cols;
-                        set_block_background_color (block_row, block_col, highlight_color);
+                    var block_row = cell.row / game.board.block_rows;
+                    var block_col = cell.col / game.board.block_cols;
+                    set_block_background_color (block_row, block_col, highlight_color);
 
-                        queue_draw ();
+                    queue_draw ();
 
-                        return false;
-                    });
+                    return false;
+                });
 
-                    cell.notify["value"].connect ((s, p)=> {
-                        /* The board needs redrawing if it was/is broken, or if the possibilities are being displayed */
-                        if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken_state) {
-                            this.queue_draw ();
-                            previous_board_broken_state = game.board.broken;
-                        }
-                        cell_value_changed_event (cell_row, cell_col);
-                    });
-                }
+                cell.notify["value"].connect ((s, p)=> {
+                    /* The board needs redrawing if it was/is broken, or if the possibilities are being displayed */
+                    if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken_state) {
+                        this.queue_draw ();
+                        previous_board_broken_state = game.board.broken;
+                    }
+                    cell_value_changed_event (cell_row, cell_col);
+                });
 
                 cells[row, col] = cell;
                 cell.show ();
