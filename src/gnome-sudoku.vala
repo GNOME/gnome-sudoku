@@ -18,7 +18,7 @@ public class Sudoku : Gtk.Application
 
     private HeaderBar header_bar;
     private Stack main_stack;
-    private Box grid_box; // Holds the view
+    private Box game_box; // Holds the view
 
     private Box undo_redo_box;
     private Button back_button;
@@ -113,6 +113,21 @@ public class Sudoku : Gtk.Application
 
     protected override void activate () {
         builder = new Builder ();
+
+        var css_provider = new Gtk.CssProvider ();
+        try
+        {
+            /* Pixel-perfect compatibility with games that have a Button without ButtonBox. */
+            var data = """GtkButtonBox { -GtkButtonBox-child-internal-pad-x:0; }
+                          GtkBox#start_box { margin:0 80px 0 80px; }""";
+            css_provider.load_from_data (data, data.length);
+        }
+        catch (GLib.Error e)
+        {
+            warning ("Error loading css styles: %s", e.message);
+        }
+        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
         try
         {
             builder.add_from_resource ("/org/gnome/gnome-sudoku/ui/gnome-sudoku.ui");
@@ -130,7 +145,7 @@ public class Sudoku : Gtk.Application
 
         header_bar = (HeaderBar) builder.get_object ("headerbar");
         main_stack = (Stack) builder.get_object ("main_stack");
-        grid_box = (Box) builder.get_object ("grid_box");
+        game_box = (Box) builder.get_object ("game_box");
         undo_redo_box = (Box) builder.get_object ("undo_redo_box");
         back_button = (Button) builder.get_object ("back_button");
 
@@ -166,7 +181,7 @@ public class Sudoku : Gtk.Application
         clear_action.set_enabled (!board.is_empty ());
 
         if (view != null) {
-            grid_box.remove (view);
+            game_box.remove (view);
         }
 
         header_bar_subtitle = board.difficulty_category.to_string ();
@@ -177,12 +192,13 @@ public class Sudoku : Gtk.Application
         game.timer.start ();
 
         view = new SudokuView (game);
+        view.set_size_request (480, 480);
 
         view.show_possibilities = show_possibilities;
         view.show_warnings = settings.get_boolean ("show-warnings");
 
         view.show ();
-        grid_box.pack_start (view);
+        game_box.pack_start (view);
 
         game.cell_changed.connect (() => {
             undo_action.set_enabled (!game.is_undostack_null ());
@@ -271,7 +287,7 @@ public class Sudoku : Gtk.Application
 
     private void back_cb ()
     {
-        main_stack.set_visible_child_name ("game_box");
+        main_stack.set_visible_child_name ("frame");
         back_button.visible = false;
         undo_redo_box.visible = true;
         header_bar.set_subtitle (header_bar_subtitle);
@@ -280,7 +296,7 @@ public class Sudoku : Gtk.Application
 
     private void undo_cb ()
     {
-        if (main_stack.get_visible_child_name () != "game_box")
+        if (main_stack.get_visible_child_name () != "frame")
             return;
         game.undo ();
         undo_action.set_enabled (!game.is_undostack_null ());
@@ -289,7 +305,7 @@ public class Sudoku : Gtk.Application
 
     private void redo_cb ()
     {
-        if (main_stack.get_visible_child_name () != "game_box")
+        if (main_stack.get_visible_child_name () != "frame")
             return;
         game.redo ();
         redo_action.set_enabled (!game.is_redostack_null ());
@@ -298,7 +314,7 @@ public class Sudoku : Gtk.Application
 
     private void print_cb ()
     {
-        if (main_stack.get_visible_child_name () != "game_box")
+        if (main_stack.get_visible_child_name () != "frame")
             return;
         var printer = new SudokuPrinter ({game.board.clone ()}, ref window);
         printer.print_sudoku ();
