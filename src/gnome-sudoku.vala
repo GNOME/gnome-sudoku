@@ -7,6 +7,10 @@ using Gdk;
 public class Sudoku : Gtk.Application
 {
     private GLib.Settings settings;
+    private bool is_fullscreen;
+    private bool is_maximized;
+    private int window_width;
+    private int window_height;
 
     private Builder builder;
 
@@ -138,6 +142,11 @@ public class Sudoku : Gtk.Application
             GLib.warning ("Could not load UI: %s", e.message);
         }
         window = (ApplicationWindow) builder.get_object ("sudoku_app");
+        window.configure_event.connect (window_configure_event_cb);
+        window.window_state_event.connect (window_state_event_cb);
+        window.set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
+        if (settings.get_boolean ("window-is-maximized"))
+            window.maximize ();
 
         add_window (window);
 
@@ -172,6 +181,36 @@ public class Sudoku : Gtk.Application
 
             return false;
         });
+    }
+
+    protected override void shutdown ()
+    {
+        base.shutdown ();
+
+        /* Save window state */
+        settings.set_int ("window-width", window_width);
+        settings.set_int ("window-height", window_height);
+        settings.set_boolean ("window-is-maximized", is_maximized);
+    }
+
+    private bool window_configure_event_cb (Gdk.EventConfigure event)
+    {
+        if (!is_maximized && !is_fullscreen)
+        {
+            window_width = event.width;
+            window_height = event.height;
+        }
+
+        return false;
+    }
+
+    private bool window_state_event_cb (Gdk.EventWindowState event)
+    {
+        if ((event.changed_mask & Gdk.WindowState.MAXIMIZED) != 0)
+            is_maximized = (event.new_window_state & Gdk.WindowState.MAXIMIZED) != 0;
+        if ((event.changed_mask & Gdk.WindowState.FULLSCREEN) != 0)
+            is_fullscreen = (event.new_window_state & Gdk.WindowState.FULLSCREEN) != 0;
+        return false;
     }
 
     private void start_game (SudokuBoard board)
