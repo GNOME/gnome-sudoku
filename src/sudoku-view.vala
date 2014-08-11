@@ -33,10 +33,7 @@ private class SudokuCellView : Gtk.DrawingArea
 
     public int value
     {
-        get
-        {
-            return game.board [_row, _col];
-        }
+        get { return game.board [_row, _col]; }
         set
         {
             if (is_fixed)
@@ -68,17 +65,15 @@ private class SudokuCellView : Gtk.DrawingArea
 
     public bool is_fixed
     {
-        get
-        {
-            return game.board.is_fixed[_row, _col];
-        }
+        get { return game.board.is_fixed[_row, _col]; }
     }
 
     private bool _show_possibilities;
     public bool show_possibilities
     {
         get { return _show_possibilities; }
-        set {
+        set
+        {
             _show_possibilities = value;
             queue_draw ();
         }
@@ -88,7 +83,8 @@ private class SudokuCellView : Gtk.DrawingArea
     public bool show_warnings
     {
         get { return _show_warnings; }
-        set {
+        set
+        {
             _show_warnings = value;
             queue_draw ();
         }
@@ -119,10 +115,7 @@ private class SudokuCellView : Gtk.DrawingArea
     public RGBA background_color
     {
         get { return _background_color; }
-        set
-        {
-            _background_color = value;
-        }
+        set { _background_color = value; }
     }
 
     private NumberPicker number_picker;
@@ -143,13 +136,12 @@ private class SudokuCellView : Gtk.DrawingArea
             return;
         }
 
-        number_picker = new NumberPicker(ref game.board);
+        number_picker = new NumberPicker (ref game.board);
         number_picker.number_picked.connect ((o, number) => {
             value = number;
             if (number == 0)
-            {
-                notify_property("value");
-            }
+                notify_property ("value");
+
             popover.hide ();
         });
 
@@ -159,7 +151,7 @@ private class SudokuCellView : Gtk.DrawingArea
         popover.position = PositionType.BOTTOM;
         popover.focus_out_event.connect (() => { popover.hide (); return true; });
 
-        earmark_picker = new NumberPicker(ref game.board, true);
+        earmark_picker = new NumberPicker (ref game.board, true);
         earmark_picker.earmark_state_changed.connect ((number, state) => {
             this.game.board.earmarks[row, col, number-1] = state;
             queue_draw ();
@@ -179,22 +171,6 @@ private class SudokuCellView : Gtk.DrawingArea
         events = EventMask.EXPOSURE_MASK | EventMask.BUTTON_PRESS_MASK | EventMask.KEY_PRESS_MASK;
         focus_out_event.connect (focus_out_cb);
         game.cell_changed.connect (cell_changed_cb);
-    }
-
-    public override void get_preferred_width (out int minimal_width, out int natural_width)
-    {
-        int width, height, side;
-        layout.get_size (out width, out height);
-        side = width > height ? width : height;
-        minimal_width = natural_width = (int) (size_ratio * side) / Pango.SCALE;
-    }
-
-    public override void get_preferred_height (out int minimal_height, out int natural_height)
-    {
-        int width, height, side;
-        layout.get_size (out width, out height);
-        side = width > height ? width : height;
-        minimal_height = natural_height = (int) (size_ratio * side) / Pango.SCALE;
     }
 
     public override bool button_press_event (Gdk.EventButton event)
@@ -226,21 +202,21 @@ private class SudokuCellView : Gtk.DrawingArea
 
     private void show_number_picker ()
     {
-        if (!is_fixed)
-        {
-            number_picker.set_clear_button_visibility (value != 0);
-            earmark_popover.hide ();
-            popover.show ();
-        }
+        if (is_fixed)
+            return;
+
+        number_picker.set_clear_button_visibility (value != 0);
+        earmark_popover.hide ();
+        popover.show ();
     }
 
     private void show_earmark_picker ()
     {
-        if (!is_fixed)
-        {
-            popover.hide ();
-            earmark_popover.show ();
-        }
+        if (is_fixed)
+            return;
+
+        popover.hide ();
+        earmark_popover.show ();
     }
 
     private void hide_both_popovers ()
@@ -307,7 +283,7 @@ private class SudokuCellView : Gtk.DrawingArea
         if (k_no == 0 || k_name == "BackSpace" || k_name == "Delete")
         {
             value = 0;
-            notify_property("value");
+            notify_property ("value");
             return true;
         }
 
@@ -339,18 +315,12 @@ private class SudokuCellView : Gtk.DrawingArea
 
         int glyph_width, glyph_height;
         layout.get_pixel_size (out glyph_width, out glyph_height);
-        if (_show_warnings && game.board.broken_coords.contains(Coord(row, col)))
-        {
+        if (_show_warnings && game.board.broken_coords.contains (Coord (row, col)))
             c.set_source_rgb (1.0, 0.0, 0.0);
-        }
         else if (_selected)
-        {
             c.set_source_rgb (0.2, 0.2, 0.2);
-        }
         else
-        {
             c.set_source_rgb (0.0, 0.0, 0.0);
-        }
 
         if (value != 0)
         {
@@ -384,7 +354,7 @@ private class SudokuCellView : Gtk.DrawingArea
             c.set_font_size (possibility_size);
             c.set_source_rgb (0.0, 0.0, 0.0);
 
-            bool[] possibilities = game.board.get_possibilities_as_bool_array(row, col);
+            bool[] possibilities = game.board.get_possibilities_as_bool_array (row, col);
 
             int height = get_allocated_height () / game.board.block_cols;
             int width = get_allocated_height () / game.board.block_rows;
@@ -399,7 +369,7 @@ private class SudokuCellView : Gtk.DrawingArea
                     if (possibilities[num - 1])
                     {
                         c.move_to (col * width, (row * height) + possibility_size);
-                        c.show_text ("%d".printf(num));
+                        c.show_text ("%d".printf (num));
                     }
                 }
             }
@@ -431,7 +401,7 @@ private class SudokuCellView : Gtk.DrawingArea
         if (row == this.row && col == this.col)
         {
             this.value = new_val;
-            notify_property("value");
+            notify_property ("value");
         }
     }
 }
@@ -482,6 +452,7 @@ public class SudokuView : Gtk.AspectFrame
     public SudokuView (SudokuGame game, bool preview = false)
     {
         shadow_type = Gtk.ShadowType.NONE;
+        obey_child = false;
 
         /* Use an EventBox to be able to set background */
         box = new Gtk.EventBox ();
@@ -489,17 +460,13 @@ public class SudokuView : Gtk.AspectFrame
         add (box);
         box.show ();
 
-        this.obey_child = false;
-
         set_game (game, preview);
     }
 
     public void set_game (SudokuGame game, bool preview = false)
     {
         if (grid != null)
-        {
             box.remove (grid);
-        }
 
         this.game = game;
 
@@ -518,26 +485,19 @@ public class SudokuView : Gtk.AspectFrame
                 var cell_row = row;
                 var cell_col = col;
 
-                if (cell.is_fixed)
-                {
-                    cell.background_color = fixed_cell_color;
-                }
-                else
-                {
-                    cell.background_color = free_cell_color;
-                }
+                cell.background_color = cell.is_fixed ? fixed_cell_color : free_cell_color;
 
                 if (!preview)
                 {
                     cell.focus_out_event.connect (() => {
-                        cell_focus_out_event(cell_row, cell_col);
+                        cell_focus_out_event (cell_row, cell_col);
                         return false;
                     });
 
                     cell.focus_in_event.connect (() => {
                         this.selected_x = cell_col;
                         this.selected_y = cell_row;
-                        cell_focus_in_event(cell_row, cell_col);
+                        cell_focus_in_event (cell_row, cell_col);
 
                         reset_cell_background_colors ();
                         set_row_background_color (cell_row, highlight_color);
@@ -552,13 +512,13 @@ public class SudokuView : Gtk.AspectFrame
                         return false;
                     });
 
-                    cell.notify["value"].connect((s, p)=> {
+                    cell.notify["value"].connect ((s, p)=> {
                         /* The board needs redrawing if it was/is broken, or if the possibilities are being displayed */
                         if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken_state) {
                             this.queue_draw ();
                             previous_board_broken_state = game.board.broken;
                         }
-                        cell_value_changed_event(cell_row, cell_col);
+                        cell_value_changed_event (cell_row, cell_col);
                     });
                 }
 
@@ -632,67 +592,45 @@ public class SudokuView : Gtk.AspectFrame
         }
     }
 
-    public void set_cell_value (int x, int y, int value) {
+    public void set_cell_value (int x, int y, int value)
+    {
         cells[y, x].value = value;
         if (value == 0)
-        {
-            cells[y, x].notify_property("value");
-        }
+            cells[y, x].notify_property ("value");
     }
 
-    public void cell_grab_focus(int row, int col)
+    public void cell_grab_focus (int row, int col)
     {
         cells[row, col].grab_focus ();
     }
 
-    public void set_cell_background_color (int row, int col, RGBA color) {
+    public void set_cell_background_color (int row, int col, RGBA color)
+    {
         cells[row, col].background_color = color;
     }
 
-    public void set_row_background_color (int row, RGBA color, RGBA fixed_color = fixed_cell_color) {
-        for (var col = 0; col < game.board.cols; col++) {
-            if (cells[row, col].is_fixed) {
-                cells[row, col].background_color = fixed_color;
-            } else {
-                cells[row, col].background_color = color;
-            }
-        }
+    public void set_row_background_color (int row, RGBA color, RGBA fixed_color = fixed_cell_color)
+    {
+        for (var col = 0; col < game.board.cols; col++)
+            cells[row, col].background_color = cells[row, col].is_fixed ? fixed_color : color;
     }
 
-    public void set_col_background_color (int col, RGBA color, RGBA fixed_color = fixed_cell_color) {
-        for (var row = 0; row < game.board.rows; row++) {
-            if (cells[row, col].is_fixed) {
-                cells[row, col].background_color = fixed_color;
-            } else {
-                cells[row, col].background_color = color;
-            }
-        }
+    public void set_col_background_color (int col, RGBA color, RGBA fixed_color = fixed_cell_color)
+    {
+        for (var row = 0; row < game.board.rows; row++)
+            cells[row, col].background_color = cells[row, col].is_fixed ? fixed_color : color;
     }
 
-    public void set_block_background_color (int block_row, int block_col, RGBA color, RGBA fixed_color = fixed_cell_color) {
-        foreach (Coord? coord in game.board.coords_for_block.get(Coord(block_row, block_col))) {
-            if (cells[coord.row, coord.col].is_fixed) {
-                cells[coord.row, coord.col].background_color = fixed_color;
-            } else {
-                cells[coord.row, coord.col].background_color = color;
-            }
-        }
+    public void set_block_background_color (int block_row, int block_col, RGBA color, RGBA fixed_color = fixed_cell_color)
+    {
+        foreach (Coord? coord in game.board.coords_for_block.get (Coord (block_row, block_col)))
+            cells[coord.row, coord.col].background_color = cells[coord.row, coord.col].is_fixed ? fixed_color : color;
     }
 
-    public void reset_cell_background_colors () {
+    public void reset_cell_background_colors ()
+    {
         for (var j = 0; j < game.board.cols; j++)
-        {
             for (var i = 0; i < game.board.rows; i++)
-            {
-                if (cells[i,j].is_fixed)
-                {
-                    cells[i,j].background_color = fixed_cell_color;
-                }
-                else
-                {
-                    cells[i,j].background_color = free_cell_color;
-                }
-            }
-        }
+                cells[i,j].background_color = cells[i,j].is_fixed ? fixed_cell_color : free_cell_color;
     }
 }

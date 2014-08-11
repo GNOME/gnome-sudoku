@@ -80,10 +80,8 @@ public class Sudoku : Gtk.Application
             stderr.printf ("gnome-sudoku %s\n", VERSION);
             return Posix.EXIT_SUCCESS;
         }
-        else if (options.contains ("show-possible-values"))
-        {
+        if (options.contains ("show-possible-values"))
             show_possibilities = true;
-        }
 
         /* Activate */
         return -1;
@@ -219,9 +217,8 @@ public class Sudoku : Gtk.Application
         redo_action.set_enabled (false);
         clear_action.set_enabled (!board.is_empty ());
 
-        if (view != null) {
+        if (view != null)
             game_box.remove (view);
-        }
 
         header_bar_subtitle = board.difficulty_category.to_string ();
         back_cb ();
@@ -250,16 +247,12 @@ public class Sudoku : Gtk.Application
             var time_str = SudokuGame.seconds_to_hms_string (time);
 
             for (var i = 0; i < game.board.rows; i++)
-            {
                 for (var j = 0; j < game.board.cols; j++)
-                {
                     view.can_focus = false;
-                }
-            }
 
             saver.add_game_to_finished (game, true);
 
-            var dialog = new MessageDialog(window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, _("Well done, you completed the puzzle in %s"), time_str);
+            var dialog = new MessageDialog (window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, _("Well done, you completed the puzzle in %s"), time_str);
 
             dialog.add_button (_("Same difficulty again"), 0);
             dialog.add_button (_("New difficulty"), 1);
