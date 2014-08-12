@@ -14,7 +14,6 @@ private class SudokuCellView : Gtk.DrawingArea
 
     private SudokuGame game;
 
-    private const RGBA selected_bg_color = {0.7, 0.8, 0.9};
     private const RGBA selected_stroke_color = SudokuView.selected_stroke_color;
 
     private int _row;
@@ -298,15 +297,6 @@ private class SudokuCellView : Gtk.DrawingArea
 
     public override bool draw (Cairo.Context c)
     {
-        // Draw the background
-        if (_selected)
-            c.set_source_rgb (selected_bg_color.red, selected_bg_color.green, selected_bg_color.blue);
-        else
-            c.set_source_rgb (_background_color.red, _background_color.green, _background_color.blue);
-
-        c.rectangle (0, 0, get_allocated_width (), get_allocated_height ());
-        c.fill ();
-
         int glyph_width, glyph_height;
         layout.get_pixel_size (out glyph_width, out glyph_height);
         if (_show_warnings && game.board.broken_coords.contains (Coord (row, col)))
@@ -411,13 +401,15 @@ public class SudokuView : Gtk.AspectFrame
 
     private bool previous_board_broken_state = false;
 
-    private Gtk.EventBox box;
+    private Gtk.Overlay overlay;
+    private Gtk.DrawingArea drawing;
     private Gtk.Grid grid;
 
     public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
     public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
     public const RGBA highlight_color = {0.93, 0.93, 0.93, 0};
     public const RGBA selected_stroke_color = {0.0, 0.2, 0.4};
+    public const RGBA selected_bg_color = {0.7, 0.8, 0.9};
 
     private int _selected_x = 0;
     public int selected_x
@@ -445,22 +437,18 @@ public class SudokuView : Gtk.AspectFrame
 
     public SudokuView (SudokuGame game)
     {
-        shadow_type = Gtk.ShadowType.NONE;
+        shadow_type = Gtk.ShadowType.OUT;
         obey_child = false;
+        ratio = 1;
 
-        /* Use an EventBox to be able to set background */
-        box = new Gtk.EventBox ();
-        box.override_background_color (Gtk.StateFlags.NORMAL, {0.7, 0.7, 0.7, 1.0});
-        add (box);
-        box.show ();
+        overlay = new Gtk.Overlay ();
+        add (overlay);
 
-        set_game (game);
-    }
+        drawing = new Gtk.DrawingArea ();
+        drawing.draw.connect (draw_board);
 
-    public void set_game (SudokuGame game)
-    {
         if (grid != null)
-            box.remove (grid);
+            overlay.remove (grid);
 
         this.game = game;
 
@@ -514,39 +502,68 @@ public class SudokuView : Gtk.AspectFrame
                 });
 
                 cells[row, col] = cell;
-                cell.show ();
                 grid.attach (cell, col, row, 1, 1);
-
             }
         }
-        box.add (grid);
-        grid.show ();
 
-        grid.draw.connect (draw_block_lines);
+        overlay.add (drawing);
+        overlay.add_overlay (grid);
+        drawing.show ();
+        grid.show_all ();
+        overlay.show ();
     }
 
-    private bool draw_block_lines (Cairo.Context c)
+    private bool draw_board (Cairo.Context c)
     {
         var width = (double) grid.get_allocated_width ();
         var height = (double) grid.get_allocated_height ();
-        c.set_line_width (1);
-        c.set_source_rgb (0.2, 0.2, 0.2);
 
-        c.move_to (width / 3, 0);
-        c.line_to (width / 3, height);
-        c.move_to (2 * width / 3, 0);
-        c.line_to (2 * width / 3, height);
+        c.set_line_width (0.74);
 
-        c.move_to (0, height / 3);
-        c.line_to (width, height / 3);
-        c.move_to (0, 2 * height / 3);
-        c.line_to (width, 2 * height / 3);
+        var col_width = width / game.board.cols;
+        var row_height = height / game.board.rows;
+        for (var i = 0; i < game.board.rows; i++)
+        {
+            for (var j = 0; j < game.board.cols; j++)
+            {
+                var cell = cells[i, j];
+                if (cell.selected)
+                    c.set_source_rgb (selected_bg_color.red, selected_bg_color.green, selected_bg_color.blue);
+                else
+                    c.set_source_rgb (cell.background_color.red, cell.background_color.green, cell.background_color.blue);
+
+                c.rectangle (j * col_width, i * row_height, (j + 1) * col_width, (i + 1) * row_height);
+                c.fill ();
+            }
+        }
+
+        c.set_source_rgb (0.6, 0.6, 0.6);
+        for (var i = 1; i < game.board.rows; i++)
+        {
+            for (var j = 1; j < game.board.cols; j++)
+            {
+                c.move_to (j * col_width, 0);
+                c.line_to (j * col_width, height);
+                c.move_to (0, i * row_height);
+                c.line_to (width, i * row_height);
+            }
+        }
         c.stroke ();
 
-        var cell_width = width / game.board.rows;
-        var cell_height = height / game.board.cols;
-        c.set_source_rgb (selected_stroke_color.red, selected_stroke_color.green, selected_stroke_color.blue);
-        c.rectangle (selected_x * cell_width, selected_y * cell_height, cell_width, cell_height);
+        c.set_source_rgb (0.0, 0.0, 0.0);
+        /* think of the approximations... */
+        var block_col_width = col_width * (game.board.cols / game.board.block_cols);
+        var block_row_height = row_height * (game.board.rows / game.board.block_rows);
+        for (var i = 0; i <= game.board.block_rows; i++)
+        {
+            c.move_to (i * block_col_width, 0);
+            c.line_to (i * block_col_width, height);
+        }
+        for (var i = 0; i <= game.board.block_cols; i++)
+        {
+            c.move_to (0, i * block_row_height);
+            c.line_to (width, i * block_row_height);
+        }
         c.stroke ();
 
         return false;
