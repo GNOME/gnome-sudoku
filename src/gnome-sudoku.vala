@@ -7,7 +7,6 @@ using Gdk;
 public class Sudoku : Gtk.Application
 {
     private GLib.Settings settings;
-    private bool is_fullscreen;
     private bool is_maximized;
     private int window_width;
     private int window_height;
@@ -193,7 +192,7 @@ public class Sudoku : Gtk.Application
 
     private bool window_configure_event_cb (Gdk.EventConfigure event)
     {
-        if (!is_maximized && !is_fullscreen)
+        if (!is_maximized)
         {
             window_width = event.width;
             window_height = event.height;
@@ -206,8 +205,6 @@ public class Sudoku : Gtk.Application
     {
         if ((event.changed_mask & Gdk.WindowState.MAXIMIZED) != 0)
             is_maximized = (event.new_window_state & Gdk.WindowState.MAXIMIZED) != 0;
-        if ((event.changed_mask & Gdk.WindowState.FULLSCREEN) != 0)
-            is_fullscreen = (event.new_window_state & Gdk.WindowState.FULLSCREEN) != 0;
         return false;
     }
 
