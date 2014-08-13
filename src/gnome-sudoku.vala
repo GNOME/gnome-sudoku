@@ -165,15 +165,12 @@ public class Sudoku : Gtk.Application
         if (savegame != null)
             start_game (savegame.board);
         else
-        {
-            var random_difficulty = (DifficultyCategory) Random.int_range (0, 4);
-            start_game (SudokuGenerator.generate_board (random_difficulty));
-        }
+            show_new_game_screen ();
 
         window.show ();
 
         window.delete_event.connect ((event) => {
-            if (!game.board.complete)
+            if (game != null && !game.board.is_empty () && !game.board.complete)
                 saver.save_game (game);
 
             return false;
@@ -277,7 +274,7 @@ public class Sudoku : Gtk.Application
         });
     }
 
-    private void new_game_cb ()
+    private void show_new_game_screen ()
     {
         main_stack.set_visible_child_name ("start_box");
         back_button.visible = true;
@@ -285,6 +282,11 @@ public class Sudoku : Gtk.Application
         header_bar_subtitle = header_bar.get_subtitle ();
         header_bar.set_subtitle (null);
         print_action.set_enabled (false);
+    }
+
+    private void new_game_cb ()
+    {
+        show_new_game_screen ();
     }
 
     private void start_game_cb (SimpleAction action, Variant? difficulty)
