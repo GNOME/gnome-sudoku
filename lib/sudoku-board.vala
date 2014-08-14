@@ -568,6 +568,14 @@ public enum DifficultyCategory {
                 return INTERMEDIATE;
             case "Expert Difficulty":
                 return EXPERT;
+
+            // Backward compatibility
+            case "Medium Difficulty":
+                return EASY;
+            case "Hard Difficulty":
+                return INTERMEDIATE;
+            case "Very Hard Difficulty":
+                return EXPERT;
             default:
                 assert_not_reached ();
         }
