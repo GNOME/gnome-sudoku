@@ -118,35 +118,18 @@ public class SudokuGame : Object
         return board.previous_played_time + timer.elapsed ();
     }
 
-    public static string seconds_to_hms_string (double time_in_seconds)
+    public static string seconds_to_minutes_string (double time_in_seconds)
     {
-        var SECOND = _("second");
-        var SECONDS = _("seconds");
         var MINUTE = _("minute");
         var MINUTES = _("minutes");
-        var HOUR = _("hour");
-        var HOURS = _("hours");
 
-        string[] time_array = {};
-        var seconds = (int) time_in_seconds;
-        var hours = seconds / 3600;
-        var hour_string = (hours == 1) ? HOUR : HOURS;
+        var minutes = (int) time_in_seconds / 60;
+        if (minutes == 0)
+            minutes = 1;
 
-        seconds = seconds % 3600;
-
-        var minutes = seconds / 60;
         var minute_string = (minutes == 1) ? MINUTE : MINUTES;
+        var time_string = "%d %s".printf (minutes, minute_string);
 
-        seconds = seconds % 60;
-        var second_string = (seconds == 1) ? SECOND : SECONDS;
-
-        if (hours != 0)
-            time_array += "%d %s".printf (hours, hour_string);
-        if (minutes != 0)
-            time_array += "%d %s".printf (minutes, minute_string);
-        if (seconds != 0)
-            time_array += "%d %s".printf (seconds, second_string);
-
-        return string.joinv (", ", time_array);
+        return time_string;
     }
 }

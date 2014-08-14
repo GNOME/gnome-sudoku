@@ -241,7 +241,7 @@ public class Sudoku : Gtk.Application
 
         game.board.completed.connect (() => {
             var time = game.get_total_time_played ();
-            var time_str = SudokuGame.seconds_to_hms_string (time);
+            var time_str = SudokuGame.seconds_to_minutes_string (time);
 
             for (var i = 0; i < game.board.rows; i++)
                 for (var j = 0; j < game.board.cols; j++)
