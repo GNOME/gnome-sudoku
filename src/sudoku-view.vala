@@ -493,12 +493,12 @@ public class SudokuView : Gtk.AspectFrame
                 });
 
                 cell.notify["value"].connect ((s, p)=> {
-                    /* The board needs redrawing if it was/is broken, or if the possibilities are being displayed */
-                    if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken_state) {
-                        this.queue_draw ();
+                    if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken_state)
                         previous_board_broken_state = game.board.broken;
-                    }
                     cell_value_changed_event (cell_row, cell_col);
+
+                    // Redraw the board
+                    this.queue_draw ();
                 });
 
                 cells[row, col] = cell;
