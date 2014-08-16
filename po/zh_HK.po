@@ -9,35 +9,39 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games 3.3.91\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-01-25 12:16+0000\n"
-"PO-Revision-Date: 2014-02-01 07:23+0800\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-17 06:33+0800\n"
+"PO-Revision-Date: 2014-08-17 06:33+0800\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: Chinese (Hong Kong) <community@linuxhall.org>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.5.3\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "GNOME 數獨"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
 msgid ""
-"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
-"make playing Sudoku fun. Games are automatically saved when you quit, and "
-"you can always come back to any game that you've played."
-msgstr "GNOME 數獨是一個簡單、無礙的介面，具有一切讓玩數獨更有趣的功能。游戲會在你離開時自動儲存，並且在你回來時讓你回到先前玩的游戲。"
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
+msgstr ""
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
+#, fuzzy
+#| msgid ""
+#| "Each game is assigned a difficulty similar to those given by newspapers "
+#| "and websites. You can also see detailed information about how the "
+#| "computer solved the puzzle."
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
-"websites. You can also see detailed information about how the computer "
-"solved the puzzle."
-msgstr "每個游戲都有指定難度，就像報紙和網站上的一樣。你也可以查閱關於電腦如何破解題目的詳細資訊。"
+"websites, so your game will be as easy or as difficult as you want it to be."
+msgstr "每個遊戲都有指定難度，就像報紙和網站上的一樣；你可按喜好自行選擇。"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
@@ -46,7 +50,8 @@ msgid ""
 "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
 msgstr "如果你喜歡在紙上玩數獨，你可以將遊戲印出來。你可以選擇每張紙要列印多少遊戲以及遊戲的難度：也就是說，GNOME 數獨可以變成一本可更新的數獨本。"
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:386
 msgid "Sudoku"
 msgstr "數獨"
 
@@ -55,445 +60,185 @@ msgid "Test your logic skills in this number grid puzzle"
 msgstr "透過這個數字格子題目來測試你的邏輯能力"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "game;board;tiles;japanese;遊戲;桌面遊戲;拼貼;日本;"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
-msgid "The number of seconds between automatic saves"
-msgstr "自動儲存間隔秒數"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
-msgid "Print games that have been played"
-msgstr "列印已經玩過的遊戲"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
-msgid "Mark printed games as played"
-msgstr "將列印出的遊戲標記為已玩過"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
-#| msgid "Width of the window in pixels"
-msgid "Width of application window in pixels"
-msgstr "應用程式視窗的闊度 (像素)"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
-#| msgid "Height of the window in pixels"
-msgid "Height of application window in pixels"
-msgstr "應用程式視窗的高度 (像素)"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
-msgid "Show hint highlights"
-msgstr "顯示高亮度提示"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
-msgid "Color of the grid border"
-msgstr "格線邊框顏色"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
-msgid "Show the application toolbar"
-msgstr "顯示應用程式工具列"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
-#| msgid "Show _History"
-msgid "Show hints"
-msgstr "顯示提示"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
-#| msgid "_Number of sudoku to print: "
-msgid "Number of puzzles to print on a page"
-msgstr "每頁要列印的數獨遊戲數量"
-
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "列印數獨遊戲"
-
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "列印遊戲"
-
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "要列印的數獨遊戲數量(_N):"
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "每頁的數獨題目數目(_S):"
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "要列印的遊戲難度等級"
-
-#: ../data/print_games.ui.h:6
-msgid "_Easy"
-msgstr "容易(_E)"
-
-#: ../data/print_games.ui.h:7
-msgid "_Medium"
-msgstr "中(_M)"
-
-#: ../data/print_games.ui.h:8
-msgid "_Hard"
-msgstr "困難(_H)"
-
-#: ../data/print_games.ui.h:9
-msgid "_Very Hard"
-msgstr "極難(_V)"
-
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "詳細資料"
-
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "列印題目後將題目標記為已經玩過(_M)"
-
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr "列印題目時包括你玩過的題目(_I)"
-
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "開新局(_N)"
-
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "已儲存的遊戲(_S)"
-
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "加入新的追蹤器"
-
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "移除已選的追蹤器"
-
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "標記永遠保存追蹤到的變化"
-
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
-msgid "H_ide"
-msgstr "隱藏(_I)"
-
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "隱藏追蹤的數值"
-
-#: ../src/lib/defaults.py:50
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"GNOME Sudoku is a part of GNOME Games."
+msgid "magic;square;"
 msgstr ""
-"熱門的日本邏輯謎題。\n"
-"\n"
-"GNOME Sudoku 是 GNOME Games 的一部分。"
 
-#: ../src/lib/defaults.py:53
-msgid "Website"
-msgstr "網站"
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+msgid "_Print"
+msgstr "打印(_P)"
 
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "容易"
+#: ../data/gnome-sudoku-menu.ui.h:2
+msgid "Print _Current Puzzle…"
+msgstr "列印目前的題目(_C)…"
 
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "普通"
+#: ../data/gnome-sudoku-menu.ui.h:3
+msgid "Print _Multiple Puzzles…"
+msgstr "列印多份題目(_M)…"
 
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "困難"
+#: ../data/gnome-sudoku-menu.ui.h:4
+msgid "_Show Warnings"
+msgstr "顯示警告(_S)"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "極難"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "上次在 %(n)s 秒前玩"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "上次在 %(n)s 分前玩"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "上次在 %p %I:%M 玩"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "上次在昨天 %p %I:%M 玩"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "上次在%A%p %I:%M 玩"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "上次在%Y年%b%e日玩"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "簡單題目"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "中等題目"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "困難題目"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "極難題目"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "玩了 %d 小時"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "玩了 %d 分鐘"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "玩了 %d 秒鐘"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "你是否確定要這樣做？"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "不要再問我。"
-
-#: ../src/lib/main.py:196
-msgid "_Game"
-msgstr "遊戲(_G)"
-
-#: ../src/lib/main.py:197
-msgid "New game"
-msgstr "開新局"
-
-#: ../src/lib/main.py:198
-msgid "_Reset"
-msgstr "重設(_R)"
-
-#: ../src/lib/main.py:200
-msgid "_Undo"
-msgstr "回手(_U)"
-
-#: ../src/lib/main.py:201
-msgid "Undo last action"
-msgstr "還原上一步"
-
-#: ../src/lib/main.py:202
-msgid "_Redo"
-msgstr "取消復原(_R)"
-
-#: ../src/lib/main.py:203
-msgid "Redo last action"
-msgstr "重新進行剛還原的一步"
-
-#: ../src/lib/main.py:204
-msgid "Puzzle _Statistics..."
-msgstr "題目統計(_S)…"
-
-#: ../src/lib/main.py:206
-msgid "_Print..."
-msgstr "打印(_P)…"
-
-#: ../src/lib/main.py:207
-msgid "Print _Multiple Sudokus..."
-msgstr "列印多份數獨遊戲(_M)…"
-
-#: ../src/lib/main.py:210
-msgid "_Settings"
-msgstr "設定值(_S)"
-
-#: ../src/lib/main.py:212
-msgid "_Tools"
-msgstr "工具(_T)"
-
-#: ../src/lib/main.py:213
-msgid "_Hint"
-msgstr "提示(_H)"
-
-#: ../src/lib/main.py:214
-msgid "Show a square that is easy to fill."
-msgstr "顯示一個容易填寫的方格。"
-
-#: ../src/lib/main.py:215
-msgid "Clear _Top Notes"
-msgstr "清除頂端註記(_T)"
-
-#: ../src/lib/main.py:217
-msgid "Clear _Bottom Notes"
-msgstr "清除底部註記(_B)"
-
-#: ../src/lib/main.py:219
+#: ../data/gnome-sudoku-menu.ui.h:5
 msgid "_Help"
 msgstr "求助(_H)"
 
-#: ../src/lib/main.py:220
-msgid "_Contents"
-msgstr "內容(_C)"
+#: ../data/gnome-sudoku-menu.ui.h:6
+msgid "_About"
+msgstr "關於(_A)"
 
-#: ../src/lib/main.py:226
-msgid "Show _Possible Numbers"
-msgstr "顯示可能的數字"
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_Quit"
+msgstr "結束(_Q)"
 
-#: ../src/lib/main.py:228
-msgid "Always show possible numbers in a square"
-msgstr "永遠在方格中顯示所有可能出現的數字"
+#: ../data/gnome-sudoku.ui.h:2
+msgid "Undo your last action"
+msgstr "還原你的上一步"
 
-#: ../src/lib/main.py:232
-msgid "Warn About _Unfillable Squares"
-msgstr "警告有無法填上內容的方格(_U)"
+#: ../data/gnome-sudoku.ui.h:3
+msgid "Redo your last action"
+msgstr "重新進行你剛還原的一步"
 
-#: ../src/lib/main.py:234
-msgid "Warn about squares made unfillable by a move"
-msgstr "當填上某個方格會令遊戲無法完成時發出警告"
+#: ../data/gnome-sudoku.ui.h:4
+msgid "Go back to the current game"
+msgstr "返回目前的遊戲"
 
-#: ../src/lib/main.py:236
-msgid "_Track Additions"
-msgstr "增加追蹤"
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+msgid "_Simple"
+msgstr "簡易（_S）"
 
-#: ../src/lib/main.py:238
-msgid "Mark new additions in a separate color so you can keep track of them."
-msgstr "以個別的顏色標記新填入的數字以便追蹤它們。"
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+msgid "_Easy"
+msgstr "容易(_E)"
 
-#: ../src/lib/main.py:240
-msgid "Show _Toolbar"
-msgstr "顯示工具列(_T)"
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+msgid "_Intermediate"
+msgstr "中級(_I)"
 
-#: ../src/lib/main.py:241
-msgid "_Highlighter"
-msgstr "高亮度顯示(_H)"
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+msgid "_Expert"
+msgstr "超難(_E)"
 
-#: ../src/lib/main.py:242
-msgid "Highlight the current row, column and box"
-msgstr "加強顯示目前方格所在的列、行與外框"
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Clear Board"
+msgstr "清除圖板(_C)"
 
-#: ../src/lib/main.py:367
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "你在 %d 秒內完成了這個題目"
+#: ../data/gnome-sudoku.ui.h:10
+msgid "Reset the board to its original state"
+msgstr "將圖板回復到原來狀態"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d 分"
+#: ../data/gnome-sudoku.ui.h:11
+msgid "_New Puzzle"
+msgstr "開新局(_N)"
 
-#: ../src/lib/main.py:373 ../src/lib/main.py:381
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d 秒"
+#: ../data/gnome-sudoku.ui.h:12
+msgid "Start a new puzzle"
+msgstr "開始另一局"
 
-#: ../src/lib/main.py:374
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "你在 %(minute)s %(second)s 內完成了這個題目"
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
+msgid "Difficulty level of sudokus to be printed"
+msgstr "要列印的數獨遊戲難度"
 
-#: ../src/lib/main.py:379
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d 時"
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+msgid ""
+"Set the difficulty level of the sudokus you want to print. Possible values "
+"are - \"simple\", \"easy\", \"intermediate\", \"expert\""
+msgstr "設定要列印的數獨遊戲難度。可以選擇：「簡易」、「容易」、「中級」和「超難」"
 
-#: ../src/lib/main.py:382
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "你在 %(hour)s %(minute)s %(second)s 內完成了這個題目"
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+msgid "Number of Sudokus to print"
+msgstr "要列印的數獨遊戲數量"
 
-#: ../src/lib/main.py:384
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "你得到 %(n)s 次提示。"
+#: ../data/org.gnome.sudoku.gschema.xml.h:4
+msgid "Set the number of sudokus you want to print"
+msgstr "設定要列印的數獨遊戲數量"
 
-#: ../src/lib/main.py:387
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "已為你指出 %(n)s 種不可能性。"
+#: ../data/org.gnome.sudoku.gschema.xml.h:5
+msgid "Warn about unfillable squares and duplicate numbers"
+msgstr "警告有無法填上內容的方格和重覆的數字"
 
-#: ../src/lib/main.py:392
-msgid "You win!"
-msgstr "你贏了！"
+#: ../data/org.gnome.sudoku.gschema.xml.h:6
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number and duplicate numbers are highlighted in red"
+msgstr "當有方格無法填上時，顯示紅色大交叉；以及用紅色顯示重覆的數字"
 
-#: ../src/lib/main.py:402
-msgid "Save this game before starting new one?"
-msgstr "在開始新的遊戲前儲存這個遊戲？"
+#: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Width of the window in pixels"
+msgstr "視窗的闊度 (像素)。"
 
-#: ../src/lib/main.py:403
-msgid "_Save game for later"
-msgstr "儲存遊戲以後再玩(_S)"
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
+msgid "Height of the window in pixels"
+msgstr "視窗的高度 (像素)。"
 
-#: ../src/lib/main.py:404
-msgid "_Abandon game"
-msgstr "放棄遊戲(_A)"
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
+msgid "true if the window is maximized"
+msgstr "如果視窗為最大化則設定為‘TRUE’"
 
-#: ../src/lib/main.py:422
-msgid "Save game before closing?"
-msgstr "是否在關閉前儲存遊戲？"
+#: ../data/print-games.ui.h:1
+msgid "Print Multiple Puzzles"
+msgstr "列印多份題目"
 
-#: ../src/lib/main.py:620
-msgid "Puzzle Information"
-msgstr "題目資訊"
+#: ../data/print-games.ui.h:3
+msgid "_Cancel"
+msgstr "取消(_C)"
 
-#: ../src/lib/main.py:621
-msgid "There is no current puzzle."
-msgstr "目前沒有題目。"
+#: ../data/print-games.ui.h:4
+msgid "_Number of puzzles"
+msgstr "題目數量(_N)"
 
-#: ../src/lib/main.py:626
-msgid "Calculated difficulty: "
-msgstr "經計算後的難度："
+#: ../data/print-games.ui.h:5
+msgid "Difficulty"
+msgstr "難度"
 
-#: ../src/lib/main.py:631
-msgid "Very Hard"
-msgstr "極難"
+#: ../lib/sudoku-game.vala:123
+msgid "minute"
+msgstr "分鐘"
 
-#: ../src/lib/main.py:636
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "可以用消去法即時填上的方格："
+#: ../lib/sudoku-game.vala:124
+msgid "minutes"
+msgstr "分鐘"
 
-#: ../src/lib/main.py:639
-msgid "Number of moves instantly fillable by filling: "
-msgstr "可以即時填上的方格："
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:59
+msgid "Show release version"
+msgstr "顯示推出版本"
 
-#: ../src/lib/main.py:642
-msgid "Amount of trial-and-error required to solve: "
-msgstr "需要使用試錯法的次數："
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:63
+msgid "Show the possible values for each cell"
+msgstr "顯示每個方格可能的值"
 
-#: ../src/lib/main.py:645 ../src/lib/main.py:646
-msgid "Puzzle Statistics"
-msgstr "題目統計"
+#: ../src/gnome-sudoku.vala:252
+#, c-format
+msgid "Well done, you completed the puzzle in %s"
+msgstr "恭喜你，你以 %s的時間內完成了這個題目"
 
-#: ../src/lib/main.py:670
+#: ../src/gnome-sudoku.vala:254
+msgid "Same difficulty again"
+msgstr "相同難度再來一次"
+
+#: ../src/gnome-sudoku.vala:255
+msgid "New difficulty"
+msgstr "新難度"
+
+#: ../src/gnome-sudoku.vala:302
+msgid "Reset the board to its original state?"
+msgstr "是否將圖板回復到原來狀態？"
+
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: ../src/gnome-sudoku.vala:390
+#, c-format
+msgid ""
+"The popular Japanese logic puzzle\n"
+"\n"
+"Puzzles generated by QQwing %s"
+msgstr ""
+"廣受歡迎的日本邏輯解謎遊戲。\n"
+"\n"
+"題目由 QQwing %s 創製"
+
+#: ../src/gnome-sudoku.vala:395
 msgid "translator-credits"
 msgstr ""
 "如對翻譯有任何意見，請送一封電子郵件給\n"
@@ -501,90 +246,352 @@ msgstr ""
 "zh-l10n@lists.linux.org.tw\n"
 "\n"
 "Abel Cheung <abel@oaka.org>, 2001-07\n"
-"Fernando <bv1al@journalist.com.tw>, 1999"
+"Fernando <bv1al@journalist.com.tw>, 1999Walter Cheuk <wwycheuk@gmail.com>, 2014."
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:680
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "無法顯示說明文件：%s"
+#: ../src/number-picker.vala:70
+msgid "Clear"
+msgstr "清除"
 
-#: ../src/lib/main.py:736
-msgid "Untracked"
-msgstr "未追蹤"
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:30
+msgid "Error printing file:"
+msgstr "列印檔案時發生錯誤："
 
-#: ../src/lib/main.py:745
-msgid "_Remove"
-msgstr "移除(_R)"
+#~ msgid "second"
+#~ msgstr "秒"
 
-#: ../src/lib/main.py:746
-msgid "Delete selected tracker."
-msgstr "刪除選取的追蹤器。"
+#~ msgid "seconds"
+#~ msgstr "秒"
 
-#: ../src/lib/main.py:752
-msgid "Hide current tracker entries."
-msgstr "隱藏目前的追蹤器項目。"
+#~ msgid "hour"
+#~ msgstr "小時"
 
-#: ../src/lib/main.py:757
-msgid "A_pply"
-msgstr "套用(_P)"
+#~ msgid "hours"
+#~ msgstr "小時"
 
-#: ../src/lib/main.py:758
-msgid "Apply all tracked values and remove the tracker."
-msgstr "套用所有追蹤的填法並移除追蹤器。"
+#~ msgid ""
+#~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
+#~ "that make playing Sudoku fun. Games are automatically saved when you "
+#~ "quit, and you can always come back to any game that you've played."
+#~ msgstr ""
+#~ "GNOME 數獨是一個簡單、無礙的介面，具有一切讓玩數獨更有趣的功能。游戲會在您"
+#~ "離開時自動儲存，並且在您回來時讓您回到先前玩的游戲。"
 
-#: ../src/lib/main.py:796
-#, python-format
-msgid "Tracker %s"
-msgstr "追蹤器 %s"
+#~ msgid "game;board;tiles;japanese;"
+#~ msgstr "game;board;tiles;japanese;遊戲;桌面遊戲;拼貼;日本;"
 
-#: ../src/lib/number_box.py:82
-msgid "_Clear"
-msgstr "清除(_C)"
+#~ msgid "The number of seconds between automatic saves"
+#~ msgstr "自動儲存間隔秒數"
 
-#: ../src/lib/saver.py:151
-msgid "No Space"
-msgstr "沒有空間"
+#~ msgid "Print games that have been played"
+#~ msgstr "列印已經玩過的遊戲"
 
-#: ../src/lib/saver.py:152
-msgid "No space left on disk"
-msgstr "磁碟上沒有剩餘空間"
+#~ msgid "Mark printed games as played"
+#~ msgstr "將列印出的遊戲標記為已玩過"
 
-#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "無法建立資料用的資料夾 %(path)s。"
+#~| msgid "Width of the window in pixels"
+#~ msgid "Width of application window in pixels"
+#~ msgstr "應用程式視窗的寬度 (像素)"
 
-#: ../src/lib/saver.py:155
-msgid "There is no disk space left!"
-msgstr "已經沒有剩餘的磁碟空間！"
+#~| msgid "Height of the window in pixels"
+#~ msgid "Height of application window in pixels"
+#~ msgstr "應用程式視窗的高度 (像素)"
 
-#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
-msgid "Error creating directory"
-msgstr "建立目錄時發生錯誤"
+#~ msgid "Show hint highlights"
+#~ msgstr "顯示高亮度提示"
 
-#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
-#: ../src/lib/saver.py:229
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "%(errno)s 錯誤：%(error)s"
+#~ msgid "Color of the grid border"
+#~ msgstr "格線邊框顏色"
 
-#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
-msgid "Unable to save game."
-msgstr "無法儲存遊戲。"
+#~ msgid "Show the application toolbar"
+#~ msgstr "顯示應用程式工具列"
 
-#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "無法儲存檔案 %(filename)s。"
+#~ msgid "Print Sudokus"
+#~ msgstr "列印數獨遊戲"
 
-#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
-msgid "Unable to mark game as finished."
-msgstr "無法將遊戲標記為已結束。"
+#~ msgid "Print Games"
+#~ msgstr "列印遊戲"
 
-#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
-msgid "Sudoku unable to mark game as finished."
-msgstr "數獨(Sudoku)無法將遊戲標記為已結束。"
+#~ msgid "_Sudokus per page: "
+#~ msgstr "每頁的數獨題目數目(_S):"
+
+#~ msgid "Levels of difficulty to print"
+#~ msgstr "要列印的遊戲難度等級"
+
+#~ msgid "_Medium"
+#~ msgstr "中(_M)"
+
+#~ msgid "_Hard"
+#~ msgstr "困難(_H)"
+
+#~ msgid "_Very Hard"
+#~ msgstr "極難(_V)"
+
+#~ msgid "Details"
+#~ msgstr "詳細資料"
+
+#~ msgid "_Mark games as played once you've printed them."
+#~ msgstr "列印題目後將題目標記為已經玩過(_M)"
+
+#~ msgid "_Include games you've already played in list of games to print"
+#~ msgstr "列印題目時包括您玩過的題目(_I)"
+
+#~ msgid "_Saved Games"
+#~ msgstr "已儲存的遊戲(_S)"
+
+#~ msgid "Add a new tracker"
+#~ msgstr "加入新的追蹤器"
+
+#~ msgid "Remove the selected tracker"
+#~ msgstr "移除已選的追蹤器"
+
+#~ msgid "Make the tracked changes permanent"
+#~ msgstr "標記永遠保存追蹤到的變化"
+
+#~ msgid "H_ide"
+#~ msgstr "隱藏(_I)"
+
+#~ msgid "Hide the tracked values"
+#~ msgstr "隱藏追蹤的數值"
+
+#~ msgid "Website"
+#~ msgstr "網站"
+
+#~ msgid "Easy"
+#~ msgstr "容易"
+
+#~ msgid "Medium"
+#~ msgstr "普通"
+
+#~ msgid "Hard"
+#~ msgstr "困難"
+
+#~ msgid "Very hard"
+#~ msgstr "極難"
+
+#~ msgid "Last played %(n)s second ago"
+#~ msgid_plural "Last played %(n)s seconds ago"
+#~ msgstr[0] "上次在 %(n)s 秒前玩"
+
+#~ msgid "Last played %(n)s minute ago"
+#~ msgid_plural "Last played %(n)s minutes ago"
+#~ msgstr[0] "上次在 %(n)s 分前玩"
+
+#~ msgid "Last played at %I:%M %p"
+#~ msgstr "上次在 %p %I:%M 玩"
+
+#~ msgid "Last played yesterday at %I:%M %p"
+#~ msgstr "上次在昨天 %p %I:%M 玩"
+
+#~ msgid "Last played on %A at %I:%M %p"
+#~ msgstr "上次在%A%p %I:%M 玩"
+
+#~ msgid "Last played on %B %e %Y"
+#~ msgstr "上次在%Y年%b%e日玩"
+
+#~ msgid "Easy puzzle"
+#~ msgstr "簡單題目"
+
+#~ msgid "Medium puzzle"
+#~ msgstr "中等題目"
+
+#~ msgid "Hard puzzle"
+#~ msgstr "困難題目"
+
+#~ msgid "Very hard puzzle"
+#~ msgstr "極難題目"
+
+#~ msgid "Played for %d hour"
+#~ msgid_plural "Played for %d hours"
+#~ msgstr[0] "玩了 %d 小時"
+
+#~ msgid "Played for %d minute"
+#~ msgid_plural "Played for %d minutes"
+#~ msgstr[0] "玩了 %d 分鐘"
+
+#~ msgid "Played for %d second"
+#~ msgid_plural "Played for %d seconds"
+#~ msgstr[0] "玩了 %d 秒鐘"
+
+#~ msgid "Do you really want to do this?"
+#~ msgstr "您是否確定要這樣做？"
+
+#~ msgid "Don't ask me this again."
+#~ msgstr "不要再問我。"
+
+#~ msgid "_Game"
+#~ msgstr "遊戲(_G)"
+
+#~ msgid "New game"
+#~ msgstr "開新局"
+
+#~ msgid "_Reset"
+#~ msgstr "重設(_R)"
+
+#~ msgid "_Undo"
+#~ msgstr "回手(_U)"
+
+#~ msgid "_Redo"
+#~ msgstr "取消復原(_R)"
+
+#~ msgid "Puzzle _Statistics..."
+#~ msgstr "題目統計(_S)…"
+
+#~ msgid "_Settings"
+#~ msgstr "設定值(_S)"
+
+#~ msgid "_Tools"
+#~ msgstr "工具(_T)"
+
+#~ msgid "_Hint"
+#~ msgstr "提示(_H)"
+
+#~ msgid "Show a square that is easy to fill."
+#~ msgstr "顯示一個容易填寫的方格。"
+
+#~ msgid "Clear _Top Notes"
+#~ msgstr "清除頂端註記(_T)"
+
+#~ msgid "Clear _Bottom Notes"
+#~ msgstr "清除底部註記(_B)"
+
+#~ msgid "_Contents"
+#~ msgstr "內容(_C)"
+
+#~ msgid "Show _Possible Numbers"
+#~ msgstr "顯示可能的數字"
+
+#~ msgid "Always show possible numbers in a square"
+#~ msgstr "永遠在方格中顯示所有可能出現的數字"
+
+#~ msgid "Warn about squares made unfillable by a move"
+#~ msgstr "當填上某個方格會令遊戲無法完成時發出警告"
+
+#~ msgid "_Track Additions"
+#~ msgstr "增加追蹤"
+
+#~ msgid ""
+#~ "Mark new additions in a separate color so you can keep track of them."
+#~ msgstr "以個別的顏色標記新填入的數字以便追蹤它們。"
+
+#~ msgid "Show _Toolbar"
+#~ msgstr "顯示工具列(_T)"
+
+#~ msgid "_Highlighter"
+#~ msgstr "高亮度顯示(_H)"
+
+#~ msgid "Highlight the current row, column and box"
+#~ msgstr "加強顯示目前方格所在的列、行與外框"
+
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d 分"
+
+#~ msgid "%d second"
+#~ msgid_plural "%d seconds"
+#~ msgstr[0] "%d 秒"
+
+#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
+#~ msgstr "您在 %(minute)s %(second)s 內完成了這個題目"
+
+#~ msgid "%d hour"
+#~ msgid_plural "%d hours"
+#~ msgstr[0] "%d 時"
+
+#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
+#~ msgstr "您在 %(hour)s %(minute)s %(second)s 內完成了這個題目"
+
+#~ msgid "You got %(n)s hint."
+#~ msgid_plural "You got %(n)s hints."
+#~ msgstr[0] "您得到 %(n)s 次提示。"
+
+#~ msgid "You had %(n)s impossibility pointed out."
+#~ msgid_plural "You had %(n)s impossibilities pointed out."
+#~ msgstr[0] "已為您指出 %(n)s 種不可能性。"
+
+#~ msgid "You win!"
+#~ msgstr "您贏了！"
+
+#~ msgid "Save this game before starting new one?"
+#~ msgstr "在開始新的遊戲前儲存這個遊戲？"
+
+#~ msgid "_Save game for later"
+#~ msgstr "儲存遊戲以後再玩(_S)"
+
+#~ msgid "_Abandon game"
+#~ msgstr "放棄遊戲(_A)"
+
+#~ msgid "Save game before closing?"
+#~ msgstr "是否在關閉前儲存遊戲？"
+
+#~ msgid "Puzzle Information"
+#~ msgstr "題目資訊"
+
+#~ msgid "Very Hard"
+#~ msgstr "極難"
+
+#~ msgid "Number of moves instantly fillable by elimination: "
+#~ msgstr "可以用消去法即時填上的方格："
+
+#~ msgid "Number of moves instantly fillable by filling: "
+#~ msgstr "可以即時填上的方格："
+
+#~ msgid "Amount of trial-and-error required to solve: "
+#~ msgstr "需要使用試錯法的次數："
+
+#~ msgid "Puzzle Statistics"
+#~ msgstr "題目統計"
+
+#~ msgid "Unable to display help: %s"
+#~ msgstr "無法顯示說明文件：%s"
+
+#~ msgid "Untracked"
+#~ msgstr "未追蹤"
+
+#~ msgid "_Remove"
+#~ msgstr "移除(_R)"
+
+#~ msgid "Delete selected tracker."
+#~ msgstr "刪除選取的追蹤器。"
+
+#~ msgid "Hide current tracker entries."
+#~ msgstr "隱藏目前的追蹤器項目。"
+
+#~ msgid "A_pply"
+#~ msgstr "套用(_P)"
+
+#~ msgid "Apply all tracked values and remove the tracker."
+#~ msgstr "套用所有追蹤的填法並移除追蹤器。"
+
+#~ msgid "Tracker %s"
+#~ msgstr "追蹤器 %s"
+
+#~ msgid "No Space"
+#~ msgstr "沒有空間"
+
+#~ msgid "No space left on disk"
+#~ msgstr "磁碟上沒有剩餘空間"
+
+#~ msgid "Unable to create data folder %(path)s."
+#~ msgstr "無法建立資料用的資料夾 %(path)s。"
+
+#~ msgid "There is no disk space left!"
+#~ msgstr "已經沒有剩餘的磁碟空間！"
+
+#~ msgid "Error %(errno)s: %(error)s"
+#~ msgstr "%(errno)s 錯誤：%(error)s"
+
+#~ msgid "Unable to save game."
+#~ msgstr "無法儲存遊戲。"
+
+#~ msgid "Unable to save file %(filename)s."
+#~ msgstr "無法儲存檔案 %(filename)s。"
+
+#~ msgid "Unable to mark game as finished."
+#~ msgstr "無法將遊戲標記為已結束。"
+
+#~ msgid "Sudoku unable to mark game as finished."
+#~ msgstr "數獨(Sudoku)無法將遊戲標記為已結束。"
 
 #~ msgid "GNOME Games web site"
 #~ msgstr "GNOME Games 網站"
@@ -603,9 +610,6 @@ msgstr "數獨(Sudoku)無法將遊戲標記為已結束。"
 
 #~ msgid "Claim _Draw"
 #~ msgstr "宣告平手(_D)"
-
-#~ msgid "Start a new game"
-#~ msgstr "開始另一局"
 
 #~ msgid "New Game"
 #~ msgstr "開新局"
@@ -631,14 +635,8 @@ msgstr "數獨(Sudoku)無法將遊戲標記為已結束。"
 #~ msgid "The width of the window"
 #~ msgstr "視窗寬度"
 
-#~ msgid "The width of the main window in pixels."
-#~ msgstr "主視窗的寬度 (像素)。"
-
 #~ msgid "The height of the window"
 #~ msgstr "視窗高度"
-
-#~ msgid "The height of the main window in pixels."
-#~ msgstr "主視窗的高度 (像素)。"
 
 #~ msgid "A flag to enable maximized mode"
 #~ msgstr "決定是否啟用最大化模式的旗標"
@@ -713,9 +711,6 @@ msgstr "數獨(Sudoku)無法將遊戲標記為已結束。"
 
 #~ msgid "Opposing Player:"
 #~ msgstr "對手玩家"
-
-#~ msgid "Difficulty:"
-#~ msgstr "難度："
 
 #~ msgid "Game Duration:"
 #~ msgstr "遊戲時間："
@@ -794,9 +789,6 @@ msgstr "數獨(Sudoku)無法將遊戲標記為已結束。"
 
 #~ msgid "Custom"
 #~ msgstr "自訂"
-
-#~ msgid "Simple"
-#~ msgstr "簡易"
 
 #~ msgid "Fancy"
 #~ msgstr "精緻"
@@ -1118,18 +1110,6 @@ msgstr "數獨(Sudoku)無法將遊戲標記為已結束。"
 #~ msgid "Save this game before starting a new one?"
 #~ msgstr "在開始新的遊戲前儲存這個遊戲？"
 
-#~ msgid "second"
-#~ msgid_plural "seconds"
-#~ msgstr[0] "秒"
-
-#~ msgid "minute"
-#~ msgid_plural "minutes"
-#~ msgstr[0] "分鐘"
-
-#~ msgid "hour"
-#~ msgid_plural "hours"
-#~ msgstr[0] "小時"
-
 #~ msgid ""
 #~ "The 2D/3D chess game for GNOME. \n"
 #~ "\n"
@@ -1156,9 +1136,6 @@ msgstr "數獨(Sudoku)無法將遊戲標記為已結束。"
 
 #~ msgid "Failed to open game: %s"
 #~ msgstr "無法開啟遊戲：%s"
-
-#~ msgid "Show release version"
-#~ msgstr "顯示釋出版本"
 
 #~ msgid "[FILE] - Play Chess"
 #~ msgstr "[FILE] - 開始下棋"
@@ -1260,17 +1237,11 @@ msgstr "數獨(Sudoku)無法將遊戲標記為已結束。"
 #~ msgid "Game preview from last saved session."
 #~ msgstr "上次未完成的遊戲的棋盤預覽"
 
-#~ msgid "true if the window is maximized"
-#~ msgstr "如果視窗為最大化則設定為‘TRUE’"
-
 #~ msgid "true if the window is fullscren"
 #~ msgstr "如果視窗為全螢幕則設定為‘TRUE’"
 
 #~ msgid "View help for this game"
 #~ msgstr "顯示有關本遊戲的說明文件"
-
-#~ msgid "End the current game"
-#~ msgstr "終止目前這局遊戲"
 
 #~ msgid "Toggle fullscreen mode"
 #~ msgstr "切換全螢幕模式"
