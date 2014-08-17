@@ -120,14 +120,11 @@ public class SudokuGame : Object
 
     public static string seconds_to_minutes_string (double time_in_seconds)
     {
-        var MINUTE = _("minute");
-        var MINUTES = _("minutes");
-
         var minutes = (int) time_in_seconds / 60;
         if (minutes == 0)
             minutes = 1;
 
-        var minute_string = (minutes == 1) ? MINUTE : MINUTES;
+        var minute_string = ngettext (_("minute"), _("minutes"), minutes);
         var time_string = "%d %s".printf (minutes, minute_string);
 
         return time_string;
