@@ -316,7 +316,6 @@ private class SudokuCellView : Gtk.DrawingArea
             c.move_to ((get_allocated_width () - glyph_width * scale) / 2, (get_allocated_height () - glyph_height * scale) / 2);
             c.save ();
             c.scale (scale, scale);
-            Pango.cairo_update_layout (c, layout);
             Pango.cairo_show_layout (c, layout);
             c.restore ();
         }
