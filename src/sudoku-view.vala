@@ -14,8 +14,6 @@ private class SudokuCellView : Gtk.DrawingArea
 
     private SudokuGame game;
 
-    private const RGBA selected_stroke_color = SudokuView.selected_stroke_color;
-
     private int row;
     private int col;
 
@@ -367,7 +365,6 @@ public class SudokuView : Gtk.AspectFrame
     public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
     public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
     public const RGBA highlight_color = {0.93, 0.93, 0.93, 0};
-    public const RGBA selected_stroke_color = {0.0, 0.2, 0.4};
     public const RGBA selected_bg_color = {0.7, 0.8, 0.9};
 
     private int _selected_x = 0;
