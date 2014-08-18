@@ -102,9 +102,9 @@
                             <object class="GtkButton" id="easy_button">
                                 <property name="visible">True</property>
                                 <property name="use_underline">True</property>
-                                <property name="label" translatable="yes">_Simple</property>
+                                <property name="label" translatable="yes">_Easy</property>
                                 <property name="action-name">app.start-game</property>
-                                <property name="action-target">1</property>  <!-- 1 corresponds to enum DifficultyCategory.SIMPLE -->
+                                <property name="action-target">1</property>  <!-- 1 corresponds to enum DifficultyCategory.EASY -->
                             </object>
                             <packing>
                                 <property name="expand">True</property>
@@ -116,9 +116,9 @@
                             <object class="GtkButton" id="medium_button">
                                 <property name="visible">True</property>
                                 <property name="use_underline">True</property>
-                                <property name="label" translatable="yes">_Easy</property>
+                                <property name="label" translatable="yes">_Medium</property>
                                 <property name="action-name">app.start-game</property>
-                                <property name="action-target">2</property>  <!-- 2 corresponds to enum DifficultyCategory.EASY -->
+                                <property name="action-target">2</property>  <!-- 2 corresponds to enum DifficultyCategory.MEDIUM -->
                             </object>
                             <packing>
                                 <property name="expand">True</property>
@@ -130,9 +130,9 @@
                             <object class="GtkButton" id="hard_button">
                                 <property name="visible">True</property>
                                 <property name="use_underline">True</property>
-                                <property name="label" translatable="yes">_Intermediate</property>
+                                <property name="label" translatable="yes">_Hard</property>
                                 <property name="action-name">app.start-game</property>
-                                <property name="action-target">3</property>  <!-- 3 corresponds to enum DifficultyCategory.INTERMEDIATE -->
+                                <property name="action-target">3</property>  <!-- 3 corresponds to enum DifficultyCategory.HARD -->
                             </object>
                             <packing>
                                 <property name="expand">True</property>
@@ -144,9 +144,9 @@
                             <object class="GtkButton" id="very_hard_button">
                                 <property name="visible">True</property>
                                 <property name="use_underline">True</property>
-                                <property name="label" translatable="yes">_Expert</property>
+                                <property name="label" translatable="yes">_Very Hard</property>
                                 <property name="action-name">app.start-game</property>
-                                <property name="action-target">4</property>  <!-- 4 corresponds to enum DifficultyCategory.EXPERT -->
+                                <property name="action-target">4</property>  <!-- 4 corresponds to enum DifficultyCategory.VERY_HARD -->
                             </object>
                             <packing>
                                 <property name="expand">True</property>

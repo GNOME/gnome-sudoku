@@ -530,10 +530,10 @@ public struct Cell
 
 public enum DifficultyCategory {
     UNKNOWN,
-    SIMPLE,
     EASY,
-    INTERMEDIATE,
-    EXPERT;
+    MEDIUM,
+    HARD,
+    VERY_HARD;
 
     public string to_string ()
     {
@@ -541,14 +541,14 @@ public enum DifficultyCategory {
         {
             case UNKNOWN:
                 return _("Unknown Difficulty");
-            case SIMPLE:
-                return _("Simple Difficulty");
             case EASY:
                 return _("Easy Difficulty");
-            case INTERMEDIATE:
-                return _("Intermediate Difficulty");
-            case EXPERT:
-                return _("Expert Difficulty");
+            case MEDIUM:
+                return _("Medium Difficulty");
+            case HARD:
+                return _("Hard Difficulty");
+            case VERY_HARD:
+                return _("Very Hard Difficulty");
             default:
                 assert_not_reached ();
         }
@@ -560,24 +560,17 @@ public enum DifficultyCategory {
         {
             case "Unknown Difficulty":
                 return UNKNOWN;
-            case "Simple Difficulty":
-                return SIMPLE;
             case "Easy Difficulty":
                 return EASY;
-            case "Intermediate Difficulty":
-                return INTERMEDIATE;
-            case "Expert Difficulty":
-                return EXPERT;
-
-            // Backward compatibility
             case "Medium Difficulty":
-                return EASY;
+                return MEDIUM;
             case "Hard Difficulty":
-                return INTERMEDIATE;
+                return HARD;
             case "Very Hard Difficulty":
-                return EXPERT;
+                return VERY_HARD;
             default:
-                assert_not_reached ();
+                warning ("Could not parse difficulty level. Falling back to Easy difficulty");
+                return EASY;
         }
     }
 }

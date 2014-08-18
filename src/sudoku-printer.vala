@@ -224,10 +224,10 @@ public class GamePrinter: GLib.Object
     private Gtk.Dialog dialog;
     private SpinButton nsudokus_button;
 
-    private RadioButton simple_button;
     private RadioButton easy_button;
-    private RadioButton intermediate_button;
-    private RadioButton expert_button;
+    private RadioButton medium_button;
+    private RadioButton hard_button;
+    private RadioButton very_hard_button;
 
     private Spinner spinner;
 
@@ -256,28 +256,28 @@ public class GamePrinter: GLib.Object
 
         SList<RadioButton> radio_group = new SList<RadioButton> ();
 
-        simple_button = builder.get_object ("simpleRadioButton") as RadioButton;
-        simple_button.set_group (radio_group);
-
         easy_button = builder.get_object ("easyRadioButton") as RadioButton;
-        easy_button.join_group (simple_button);
+        easy_button.set_group (radio_group);
 
-        intermediate_button = builder.get_object ("intermediateRadioButton") as RadioButton;
-        intermediate_button.join_group (simple_button);
+        medium_button = builder.get_object ("mediumRadioButton") as RadioButton;
+        medium_button.join_group (easy_button);
 
-        expert_button = builder.get_object ("expertRadioButton") as RadioButton;
-        expert_button.join_group (simple_button);
+        hard_button = builder.get_object ("hardRadioButton") as RadioButton;
+        hard_button.join_group (easy_button);
+
+        very_hard_button = builder.get_object ("very_hardRadioButton") as RadioButton;
+        very_hard_button.join_group (easy_button);
 
         var saved_difficulty = (DifficultyCategory) settings.get_enum (DIFFICULTY_KEY_NAME);
 
-        if (saved_difficulty == DifficultyCategory.SIMPLE)
-            simple_button.set_active (true);
-        else if (saved_difficulty == DifficultyCategory.EASY)
+        if (saved_difficulty == DifficultyCategory.EASY)
             easy_button.set_active (true);
-        else if (saved_difficulty == DifficultyCategory.INTERMEDIATE)
-            intermediate_button.set_active (true);
-        else if (saved_difficulty == DifficultyCategory.EXPERT)
-            expert_button.set_active (true);
+        else if (saved_difficulty == DifficultyCategory.MEDIUM)
+            medium_button.set_active (true);
+        else if (saved_difficulty == DifficultyCategory.HARD)
+            hard_button.set_active (true);
+        else if (saved_difficulty == DifficultyCategory.VERY_HARD)
+            very_hard_button.set_active (true);
 
         nsudokus_button = builder.get_object ("sudokusToPrintSpinButton") as SpinButton;
         wrap_adjustment ("print-multiple-sudokus-to-print", nsudokus_button.get_adjustment ());
@@ -302,14 +302,14 @@ public class GamePrinter: GLib.Object
         var nsudokus = (int) nsudokus_button.get_adjustment ().get_value ();
         DifficultyCategory level;
 
-        if (simple_button.get_active ())
-            level = DifficultyCategory.SIMPLE;
-        else if (easy_button.get_active ())
+        if (easy_button.get_active ())
             level = DifficultyCategory.EASY;
-        else if (intermediate_button.get_active ())
-            level = DifficultyCategory.INTERMEDIATE;
-        else if (expert_button.get_active ())
-            level = DifficultyCategory.EXPERT;
+        else if (medium_button.get_active ())
+            level = DifficultyCategory.MEDIUM;
+        else if (hard_button.get_active ())
+            level = DifficultyCategory.HARD;
+        else if (very_hard_button.get_active ())
+            level = DifficultyCategory.VERY_HARD;
         else
             assert_not_reached ();
 

@@ -1,15 +1,15 @@
 <schemalist>
   <enum id="org.gnome.sudoku.print-multiple-sudoku-difficulty">
-    <value nick="simple" value="1" />
-    <value nick="easy" value="2" />
-    <value nick="intermediate" value="3"  />
-    <value nick="expert" value="4"  />
+    <value nick="easy" value="1" />
+    <value nick="medium" value="2" />
+    <value nick="hard" value="3"  />
+    <value nick="very_hard" value="4"  />
   </enum>
   <schema id="org.gnome.sudoku" path="/org/gnome/sudoku/" gettext-domain="gnome-sudoku">
     <key name="print-multiple-sudoku-difficulty" enum="org.gnome.sudoku.print-multiple-sudoku-difficulty">
       <default>"easy"</default>
       <summary>Difficulty level of sudokus to be printed</summary>
-      <description>Set the difficulty level of the sudokus you want to print. Possible values are - "simple", "easy", "intermediate", "expert"</description>
+      <description>Set the difficulty level of the sudokus you want to print. Possible values are - "easy", "medium", "hard", "very_hard"</description>
     </key>
     <key name="print-multiple-sudokus-to-print" type="i">
       <default>4</default>
