@@ -435,13 +435,17 @@ public class SudokuView : Gtk.AspectFrame
                     this.selected_y = cell_row;
                     cell_focus_in_event (cell_row, cell_col);
 
-                    reset_cell_background_colors ();
-                    set_row_background_color (cell_row, highlight_color);
-                    set_col_background_color (cell_col, highlight_color);
+                    for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
+                    {
+                        var color = (col_tmp == cell_col) ? highlight_color : free_cell_color;
+                        for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
+                            cells[row_tmp,col_tmp].background_color = cells[row_tmp,col_tmp].is_fixed ? fixed_cell_color : color;
+                    }
+                    for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
+                        cells[cell_row, col_tmp].background_color = cells[cell_row, col_tmp].is_fixed ? fixed_cell_color : highlight_color;
 
-                    var block_row = cell_row / game.board.block_rows;
-                    var block_col = cell_col / game.board.block_cols;
-                    set_block_background_color (block_row, block_col, highlight_color);
+                    foreach (Coord? coord in game.board.coords_for_block.get (Coord (cell_row / game.board.block_rows, cell_col / game.board.block_cols)))
+                        cells[coord.row, coord.col].background_color = cells[coord.row, coord.col].is_fixed ? fixed_cell_color : highlight_color;
 
                     queue_draw ();
 
@@ -543,47 +547,5 @@ public class SudokuView : Gtk.AspectFrame
                 for (var j = 0; j < game.board.cols; j++)
                     cells[i,j].show_possibilities = value;
         }
-    }
-
-    public void set_cell_value (int x, int y, int value)
-    {
-        cells[y, x].value = value;
-        if (value == 0)
-            cells[y, x].notify_property ("value");
-    }
-
-    public void cell_grab_focus (int row, int col)
-    {
-        cells[row, col].grab_focus ();
-    }
-
-    public void set_cell_background_color (int row, int col, RGBA color)
-    {
-        cells[row, col].background_color = color;
-    }
-
-    public void set_row_background_color (int row, RGBA color, RGBA fixed_color = fixed_cell_color)
-    {
-        for (var col = 0; col < game.board.cols; col++)
-            cells[row, col].background_color = cells[row, col].is_fixed ? fixed_color : color;
-    }
-
-    public void set_col_background_color (int col, RGBA color, RGBA fixed_color = fixed_cell_color)
-    {
-        for (var row = 0; row < game.board.rows; row++)
-            cells[row, col].background_color = cells[row, col].is_fixed ? fixed_color : color;
-    }
-
-    public void set_block_background_color (int block_row, int block_col, RGBA color, RGBA fixed_color = fixed_cell_color)
-    {
-        foreach (Coord? coord in game.board.coords_for_block.get (Coord (block_row, block_col)))
-            cells[coord.row, coord.col].background_color = cells[coord.row, coord.col].is_fixed ? fixed_color : color;
-    }
-
-    public void reset_cell_background_colors ()
-    {
-        for (var j = 0; j < game.board.cols; j++)
-            for (var i = 0; i < game.board.rows; i++)
-                cells[i,j].background_color = cells[i,j].is_fixed ? fixed_cell_color : free_cell_color;
     }
 }
