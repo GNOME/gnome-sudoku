@@ -371,10 +371,6 @@ private class SudokuCellView : Gtk.DrawingArea
             c.set_source_rgb (1.0, 0.0, 0.0);
             c.show_text (warning);
         }
-        else
-        {
-            c.set_source_rgb (0.0, 0.0, 0.0);
-        }
 
         return false;
     }
