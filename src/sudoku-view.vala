@@ -16,28 +16,17 @@ private class SudokuCellView : Gtk.DrawingArea
 
     private const RGBA selected_stroke_color = SudokuView.selected_stroke_color;
 
-    private int _row;
-    public int row
-    {
-        get { return _row; }
-        set { _row = value; }
-    }
-
-    private int _col;
-    public int col
-    {
-        get { return _col; }
-        set { _col = value; }
-    }
+    private int row;
+    private int col;
 
     public int value
     {
-        get { return game.board [_row, _col]; }
+        get { return game.board [row, col]; }
         set
         {
             if (is_fixed)
             {
-                string text = "%d".printf (game.board [_row, _col]);
+                string text = "%d".printf (game.board [row, col]);
                 layout = create_pango_layout (text);
                 layout.set_font_description (style.font_desc);
                 return;
@@ -47,24 +36,24 @@ private class SudokuCellView : Gtk.DrawingArea
                 string text = "";
                 layout = create_pango_layout (text);
                 layout.set_font_description (style.font_desc);
-                if (game.board [_row, _col] != 0)
-                    game.remove (_row, _col);
+                if (game.board [row, col] != 0)
+                    game.remove (row, col);
                 return;
             }
-            if (value == game.board [_row, _col])
+            if (value == game.board [row, col])
             {
                 string text = "%d".printf (value);
                 layout = create_pango_layout (text);
                 layout.set_font_description (style.font_desc);
                 return;
             }
-            game.insert (_row, _col, value);
+            game.insert (row, col, value);
         }
     }
 
     public bool is_fixed
     {
-        get { return game.board.is_fixed[_row, _col]; }
+        get { return game.board.is_fixed[row, col]; }
     }
 
     private bool _show_possibilities;
@@ -89,33 +78,8 @@ private class SudokuCellView : Gtk.DrawingArea
         }
     }
 
-    private bool _selected;
-    public bool selected
-    {
-        get { return _selected; }
-        set { _selected = value; }
-    }
-
-    private bool _highlight;
-    public bool highlight
-    {
-        get { return _highlight; }
-        set { _highlight = value; }
-    }
-
-    private bool _invalid;
-    public bool invalid
-    {
-        get { return _invalid; }
-        set { _invalid = value; }
-    }
-
-    private RGBA _background_color;
-    public RGBA background_color
-    {
-        get { return _background_color; }
-        set { _background_color = value; }
-    }
+    public bool selected { get; set; }
+    public RGBA background_color { get; set; }
 
     private NumberPicker number_picker;
     private NumberPicker earmark_picker;
@@ -123,11 +87,11 @@ private class SudokuCellView : Gtk.DrawingArea
     public SudokuCellView (int row, int col, ref SudokuGame game)
     {
         this.game = game;
-        this._row = row;
-        this._col = col;
+        this.row = row;
+        this.col = col;
 
         style.font_desc.set_size (Pango.SCALE * 13);
-        this.value = game.board [_row, _col];
+        value = game.board [row, col];
 
         number_picker = new NumberPicker (ref game.board);
         number_picker.number_picked.connect ((o, number) => {
@@ -262,10 +226,10 @@ private class SudokuCellView : Gtk.DrawingArea
         {
             if ((event.state & ModifierType.CONTROL_MASK) > 0 && !is_fixed)
             {
-                var new_state = !game.board.earmarks[_row, _col, k_no-1];
-                if (earmark_picker.set_earmark (_row, _col, k_no-1, new_state))
+                var new_state = !game.board.earmarks[row, col, k_no-1];
+                if (earmark_picker.set_earmark (row, col, k_no-1, new_state))
                 {
-                    game.board.earmarks[_row, _col, k_no-1] = new_state;
+                    game.board.earmarks[row, col, k_no-1] = new_state;
                     queue_draw ();
                 }
             }
@@ -329,7 +293,7 @@ private class SudokuCellView : Gtk.DrawingArea
             c.move_to (0, earmark_size);
 
             c.set_source_rgb (0.0, 0.0, 0.0);
-            c.show_text (game.board.get_earmarks_string (_row, _col));
+            c.show_text (game.board.get_earmarks_string (row, col));
         }
         else if (value == 0)
         {
@@ -343,15 +307,15 @@ private class SudokuCellView : Gtk.DrawingArea
             int width = get_allocated_height () / game.board.block_rows;
 
             int num = 0;
-            for (int row = 0; row < game.board.block_rows; row++)
+            for (int row_tmp = 0; row_tmp < game.board.block_rows; row_tmp++)
             {
-                for (int col = 0; col < game.board.block_cols; col++)
+                for (int col_tmp = 0; col_tmp < game.board.block_cols; col_tmp++)
                 {
                     num++;
 
                     if (possibilities[num - 1])
                     {
-                        c.move_to (col * width, (row * height) + possibility_size);
+                        c.move_to (col_tmp * width, (row_tmp * height) + possibility_size);
                         c.show_text ("%d".printf (num));
                     }
                 }
@@ -361,7 +325,7 @@ private class SudokuCellView : Gtk.DrawingArea
         if (is_fixed)
             return false;
 
-        if (_show_warnings && (value == 0 && game.board.count_possibilities (_row, _col) == 0))
+        if (_show_warnings && (value == 0 && game.board.count_possibilities (row, col) == 0))
         {
             string warning = "X";
             Cairo.TextExtents extents;
@@ -478,8 +442,8 @@ public class SudokuView : Gtk.AspectFrame
                     set_row_background_color (cell_row, highlight_color);
                     set_col_background_color (cell_col, highlight_color);
 
-                    var block_row = cell.row / game.board.block_rows;
-                    var block_col = cell.col / game.board.block_cols;
+                    var block_row = cell_row / game.board.block_rows;
+                    var block_col = cell_col / game.board.block_cols;
                     set_block_background_color (block_row, block_col, highlight_color);
 
                     queue_draw ();
@@ -558,13 +522,6 @@ public class SudokuView : Gtk.AspectFrame
         c.stroke ();
 
         return false;
-    }
-
-    private bool _show_highlights = false;
-    public bool show_highlights
-    {
-        get { return _show_highlights; }
-        set { _show_highlights = value; }
     }
 
     private bool _show_warnings = false;
