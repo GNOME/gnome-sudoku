@@ -277,7 +277,7 @@ public class Sudoku : Gtk.Application
     private void show_new_game_screen ()
     {
         main_stack.set_visible_child_name ("start_box");
-        back_button.visible = true;
+        back_button.visible = game != null;
         undo_redo_box.visible = false;
         header_bar_subtitle = header_bar.get_subtitle ();
         header_bar.set_subtitle (null);
