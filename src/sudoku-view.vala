@@ -436,7 +436,7 @@ public class SudokuView : Gtk.AspectFrame
 
     public SudokuView (SudokuGame game)
     {
-        shadow_type = Gtk.ShadowType.OUT;
+        shadow_type = Gtk.ShadowType.NONE;
         obey_child = false;
         ratio = 1;
 
@@ -514,14 +514,14 @@ public class SudokuView : Gtk.AspectFrame
 
     private bool draw_board (Cairo.Context c)
     {
-        var width = (double) grid.get_allocated_width ();
-        var height = (double) grid.get_allocated_height ();
+        /* TODO note: cols, rows, block_cols ^ 2, block_rows ^ 2 are the same... */
 
-        c.set_line_width (0.74);
+        /* we assume the AspectFrame does his job */
+        int board_side = grid.get_allocated_width ();
+        /* not exactly the tile side: includes the width of a border line (1) */
+        double tile_side = ((double) (board_side - 1)) / game.board.cols;
 
-        var col_width = width / game.board.cols;
-        var row_height = height / game.board.rows;
-        for (var i = 0; i < game.board.rows; i++)
+        for (var i = 0; i < game.board.cols; i++)
         {
             for (var j = 0; j < game.board.cols; j++)
             {
@@ -531,37 +531,33 @@ public class SudokuView : Gtk.AspectFrame
                 else
                     c.set_source_rgb (cell.background_color.red, cell.background_color.green, cell.background_color.blue);
 
-                c.rectangle (j * col_width, i * row_height, (j + 1) * col_width, (i + 1) * row_height);
+                c.rectangle ((int) (j * tile_side) + 1, (int) (i * tile_side) + 1, (int) ((j + 1) * tile_side), (int) ((i + 1) * tile_side));
                 c.fill ();
             }
         }
 
+        c.set_line_width (1);
         c.set_source_rgb (0.6, 0.6, 0.6);
         for (var i = 1; i < game.board.rows; i++)
         {
-            for (var j = 1; j < game.board.cols; j++)
-            {
-                c.move_to (j * col_width, 0);
-                c.line_to (j * col_width, height);
-                c.move_to (0, i * row_height);
-                c.line_to (width, i * row_height);
-            }
+            if (i % game.board.block_rows == 0)
+                continue;
+
+            /* we could use board_side - 1 */
+            c.move_to (((int) (i * tile_side)) + 0.5, 1);
+            c.line_to (((int) (i * tile_side)) + 0.5, board_side);
+            c.move_to (1, ((int) (i * tile_side)) + 0.5);
+            c.line_to (board_side, ((int) (i * tile_side)) + 0.5);
         }
         c.stroke ();
 
         c.set_source_rgb (0.0, 0.0, 0.0);
-        /* think of the approximations... */
-        var block_col_width = col_width * (game.board.cols / game.board.block_cols);
-        var block_row_height = row_height * (game.board.rows / game.board.block_rows);
-        for (var i = 0; i <= game.board.block_rows; i++)
+        for (var i = 0; i <= game.board.rows; i += game.board.block_rows)
         {
-            c.move_to (i * block_col_width, 0);
-            c.line_to (i * block_col_width, height);
-        }
-        for (var i = 0; i <= game.board.block_cols; i++)
-        {
-            c.move_to (0, i * block_row_height);
-            c.line_to (width, i * block_row_height);
+            c.move_to (((int) (i * tile_side)) + 0.5, 0);
+            c.line_to (((int) (i * tile_side)) + 0.5, board_side);
+            c.move_to (0, ((int) (i * tile_side)) + 0.5);
+            c.line_to (board_side, ((int) (i * tile_side)) + 0.5);
         }
         c.stroke ();
 
