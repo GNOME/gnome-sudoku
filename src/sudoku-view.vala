@@ -352,10 +352,6 @@ public class SudokuView : Gtk.AspectFrame
     public SudokuGame game;
     private SudokuCellView[,] cells;
 
-    public signal void cell_focus_in_event (int row, int col);
-    public signal void cell_focus_out_event (int row, int col);
-    public signal void cell_value_changed_event (int row, int col);
-
     private bool previous_board_broken_state = false;
 
     private Gtk.Overlay overlay;
@@ -425,15 +421,9 @@ public class SudokuView : Gtk.AspectFrame
 
                 cell.background_color = cell.is_fixed ? fixed_cell_color : free_cell_color;
 
-                cell.focus_out_event.connect (() => {
-                    cell_focus_out_event (cell_row, cell_col);
-                    return false;
-                });
-
                 cell.focus_in_event.connect (() => {
                     this.selected_x = cell_col;
                     this.selected_y = cell_row;
-                    cell_focus_in_event (cell_row, cell_col);
 
                     for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
                     {
@@ -455,7 +445,6 @@ public class SudokuView : Gtk.AspectFrame
                 cell.notify["value"].connect ((s, p)=> {
                     if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken_state)
                         previous_board_broken_state = game.board.broken;
-                    cell_value_changed_event (cell_row, cell_col);
 
                     // Redraw the board
                     this.queue_draw ();
