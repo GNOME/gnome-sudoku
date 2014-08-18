@@ -54,6 +54,15 @@
             <property name="pack_type">start</property>
           </packing>
         </child>
+        <child>
+            <object class="GtkSpinner" id="spinner">
+                <property name="valign">center</property>
+                <property name="visible">False</property>
+            </object>
+            <packing>
+                <property name="pack_type">end</property>
+            </packing>
+        </child>
       </object>
     </child>
     <child internal-child="vbox">

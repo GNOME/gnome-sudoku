@@ -42,6 +42,8 @@ PKG_CHECK_MODULES(LIBSUDOKU, [
   json-glib-1.0
 ])
 
+AC_SUBST([GLIB_REQUIRED])
+
 AC_PATH_PROG([APPDATA_VALIDATE], [appdata-validate], [/bin/true])
 AC_PATH_PROG([DESKTOP_FILE_VALIDATE], [desktop-file-validate], [/bin/true])
 

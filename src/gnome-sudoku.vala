@@ -296,7 +296,15 @@ public class Sudoku : Gtk.Application
         // has been set to integers corresponding to the enums.
         // Following line converts those ints to their DifficultyCategory
         var selected_difficulty = (DifficultyCategory) difficulty.get_int32 ();
-        start_game (SudokuGenerator.generate_board (selected_difficulty));
+
+        SudokuGenerator.generate_boards_async.begin (1, selected_difficulty, (obj, res) => {
+            try {
+                var gen_boards = SudokuGenerator.generate_boards_async.end (res);
+                start_game (gen_boards[0]);
+            } catch (ThreadError e) {
+                error ("Thread error: %s", e.message);
+            }
+        });
     }
 
     private void reset_cb ()

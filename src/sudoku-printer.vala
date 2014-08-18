@@ -229,6 +229,8 @@ public class GamePrinter: GLib.Object
     private RadioButton intermediate_button;
     private RadioButton expert_button;
 
+    private Spinner spinner;
+
     private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
 
     public GamePrinter (SudokuSaver saver, ref ApplicationWindow window)
@@ -279,6 +281,8 @@ public class GamePrinter: GLib.Object
 
         nsudokus_button = builder.get_object ("sudokusToPrintSpinButton") as SpinButton;
         wrap_adjustment ("print-multiple-sudokus-to-print", nsudokus_button.get_adjustment ());
+
+        spinner = builder.get_object ("spinner") as Spinner;
     }
 
     private void wrap_adjustment (string key_name, Adjustment action)
@@ -297,7 +301,6 @@ public class GamePrinter: GLib.Object
 
         var nsudokus = (int) nsudokus_button.get_adjustment ().get_value ();
         DifficultyCategory level;
-        var boards = new SudokuBoard[nsudokus];
 
         if (simple_button.get_active ())
             level = DifficultyCategory.SIMPLE;
@@ -312,18 +315,32 @@ public class GamePrinter: GLib.Object
 
         settings.set_enum (DIFFICULTY_KEY_NAME, level);
 
-        for (var i = 0; i < nsudokus; i++)
-            boards[i] = SudokuGenerator.generate_board (level);
+        spinner.visible = true;
+        spinner.active = true;
+        spinner.show ();
+        spinner.start ();
+        dialog.sensitive = false;
 
-        SudokuPrinter printer = new SudokuPrinter (boards, ref window);
+        SudokuGenerator.generate_boards_async.begin(nsudokus, level, (obj, res) => {
+            try {
+                var boards = SudokuGenerator.generate_boards_async.end(res);
 
-        PrintOperationResult result = printer.print_sudoku ();
-        if (result == PrintOperationResult.APPLY)
-        {
-            dialog.hide ();
-            foreach (SudokuBoard board in boards)
-                saver.add_game_to_finished (new SudokuGame (board));
-        }
+                spinner.stop ();
+                spinner.hide ();
+                dialog.sensitive = true;
+
+                SudokuPrinter printer = new SudokuPrinter (boards, ref window);
+                PrintOperationResult result = printer.print_sudoku ();
+                if (result == PrintOperationResult.APPLY)
+                {
+                    dialog.hide ();
+                    foreach (SudokuBoard board in boards)
+                        saver.add_game_to_finished (new SudokuGame (board));
+                }
+            } catch (ThreadError e) {
+                error ("Thread error: %s\n", e.message);
+            }
+        });
     }
 
     public void run_dialog ()
