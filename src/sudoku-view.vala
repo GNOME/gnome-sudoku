@@ -358,33 +358,20 @@ public class SudokuView : Gtk.AspectFrame
     private Gtk.DrawingArea drawing;
     private Gtk.Grid grid;
 
-    public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
-    public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
-    public const RGBA highlight_color = {0.93, 0.93, 0.93, 0};
-    public const RGBA selected_bg_color = {0.7, 0.8, 0.9};
+    private const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
+    private const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
+    private const RGBA highlight_color = {0.93, 0.93, 0.93, 0};
+    private const RGBA selected_bg_color = {0.7, 0.8, 0.9};
 
-    private int _selected_x = 0;
-    public int selected_x
+    private int selected_row = 0;
+    private int selected_col = 0;
+    private void set_selected (int cell_row, int cell_col)
     {
-        get { return _selected_x; }
-        set {
-            cells[selected_y, selected_x].selected = false;
-            cells[selected_y, selected_x].queue_draw ();
-             _selected_x = value;
-            cells[selected_y, selected_x].selected = true;
-        }
-    }
-
-    private int _selected_y = 0;
-    public int selected_y
-    {
-        get { return _selected_y; }
-        set {
-            cells[selected_y, selected_x].selected = false;
-            cells[selected_y, selected_x].queue_draw ();
-             _selected_y = value;
-            cells[selected_y, selected_x].selected = true;
-        }
+        cells[selected_row, selected_col].selected = false;
+        cells[selected_row, selected_col].queue_draw ();
+        selected_row = cell_row;
+        selected_col = cell_col;
+        cells[selected_row, selected_col].selected = true;
     }
 
     public SudokuView (SudokuGame game)
@@ -422,8 +409,7 @@ public class SudokuView : Gtk.AspectFrame
                 cell.background_color = cell.is_fixed ? fixed_cell_color : free_cell_color;
 
                 cell.focus_in_event.connect (() => {
-                    this.selected_x = cell_col;
-                    this.selected_y = cell_row;
+                    this.set_selected (cell_row, cell_col);
 
                     for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
                     {
@@ -436,6 +422,8 @@ public class SudokuView : Gtk.AspectFrame
 
                     foreach (Coord? coord in game.board.coords_for_block.get (Coord (cell_row / game.board.block_rows, cell_col / game.board.block_cols)))
                         cells[coord.row, coord.col].background_color = cells[coord.row, coord.col].is_fixed ? fixed_cell_color : highlight_color;
+
+                    cells[cell_row, cell_col].background_color = selected_bg_color;
 
                     queue_draw ();
 
@@ -476,10 +464,7 @@ public class SudokuView : Gtk.AspectFrame
             for (var j = 0; j < game.board.cols; j++)
             {
                 var cell = cells[i, j];
-                if (cell.selected)
-                    c.set_source_rgb (selected_bg_color.red, selected_bg_color.green, selected_bg_color.blue);
-                else
-                    c.set_source_rgb (cell.background_color.red, cell.background_color.green, cell.background_color.blue);
+                c.set_source_rgb (cell.background_color.red, cell.background_color.green, cell.background_color.blue);
 
                 c.rectangle ((int) (j * tile_side) + 1, (int) (i * tile_side) + 1, (int) ((j + 1) * tile_side), (int) ((i + 1) * tile_side));
                 c.fill ();
