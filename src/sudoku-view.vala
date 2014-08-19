@@ -91,6 +91,14 @@ private class SudokuCellView : Gtk.DrawingArea
         style.font_desc.set_size (Pango.SCALE * 13);
         value = game.board [row, col];
 
+        // background_color is set in the SudokuView, as it manages the color of the cells
+
+        can_focus = true;
+        events = EventMask.EXPOSURE_MASK | EventMask.BUTTON_PRESS_MASK | EventMask.KEY_PRESS_MASK;
+
+        if (is_fixed)
+            return;
+
         number_picker = new NumberPicker (ref game.board);
         number_picker.number_picked.connect ((o, number) => {
             value = number;
@@ -119,11 +127,6 @@ private class SudokuCellView : Gtk.DrawingArea
         earmark_popover.position = PositionType.BOTTOM;
         earmark_popover.focus_out_event.connect (() => { earmark_popover.hide (); return true; });
 
-        // background_color is set in the SudokuView, as it manages the color of the cells
-
-        can_focus = true;
-
-        events = EventMask.EXPOSURE_MASK | EventMask.BUTTON_PRESS_MASK | EventMask.KEY_PRESS_MASK;
         focus_out_event.connect (focus_out_cb);
         game.cell_changed.connect (cell_changed_cb);
     }
@@ -135,6 +138,8 @@ private class SudokuCellView : Gtk.DrawingArea
 
         if (!is_focus)
             grab_focus ();
+        if (is_fixed)
+            return false;
 
         if (popover.visible || earmark_popover.visible)
         {
@@ -282,6 +287,9 @@ private class SudokuCellView : Gtk.DrawingArea
             c.restore ();
         }
 
+        if (is_fixed)
+            return false;
+
         if (!_show_possibilities)
         {
             // Draw the earmarks
@@ -319,9 +327,6 @@ private class SudokuCellView : Gtk.DrawingArea
                 }
             }
         }
-
-        if (is_fixed)
-            return false;
 
         if (_show_warnings && (value == 0 && game.board.count_possibilities (row, col) == 0))
         {
