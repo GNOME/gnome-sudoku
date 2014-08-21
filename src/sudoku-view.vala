@@ -464,6 +464,12 @@ public class SudokuView : Gtk.AspectFrame
         /* not exactly the tile side: includes the width of a border line (1) */
         double tile_side = ((double) (board_side - 1)) / game.board.cols;
 
+        if (Gtk.Widget.get_default_direction() == Gtk.TextDirection.RTL)
+        {
+            c.translate (board_side, 0);
+            c.scale (-1, 1);
+        }
+
         for (var i = 0; i < game.board.cols; i++)
         {
             for (var j = 0; j < game.board.cols; j++)
