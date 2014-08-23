@@ -66,16 +66,18 @@
       </object>
     </child>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <child>
-          <object class="GtkVBox" id="vbox1">
+          <object class="GtkBox" id="vbox1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="border_width">12</property>
             <property name="spacing">20</property>
             <property name="margin">7</property>
+            <property name="orientation">vertical</property>
             <child>
               <object class="GtkBox" id="print_box">
                 <property name="visible">True</property>
@@ -143,8 +145,9 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkVBox" id="vbox2">
+                  <object class="GtkBox" id="vbox2">
                     <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
                     <property name="homogeneous">True</property>
                     <property name="halign">center</property>
                     <property name="valign">start</property>
