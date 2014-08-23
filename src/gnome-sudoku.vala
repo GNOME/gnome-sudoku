@@ -32,6 +32,7 @@ public class Sudoku : Gtk.Application
     private SimpleAction redo_action;
     private SimpleAction clear_action;
     private SimpleAction print_action;
+    private SimpleAction print_multiple_action;
 
     private string header_bar_subtitle;
 
@@ -159,6 +160,7 @@ public class Sudoku : Gtk.Application
         redo_action = (SimpleAction) lookup_action ("redo");
         clear_action = (SimpleAction) lookup_action ("reset");
         print_action = (SimpleAction) lookup_action ("print");
+        print_multiple_action = (SimpleAction) lookup_action ("print-multiple");
 
         saver = new SudokuSaver ();
         var savegame = saver.get_savedgame ();
@@ -359,8 +361,12 @@ public class Sudoku : Gtk.Application
     {
         if (main_stack.get_visible_child_name () != "frame")
             return;
+        print_action.set_enabled (false);
+        print_multiple_action.set_enabled (false);
         var printer = new SudokuPrinter ({game.board.clone ()}, ref window);
         printer.print_sudoku ();
+        print_action.set_enabled (true);
+        print_multiple_action.set_enabled (true);
     }
 
     private void print_multiple_cb ()
