@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku 3.13.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-23 14:12+0200\n"
-"PO-Revision-Date: 2014-07-23 14:17+0200\n"
+"POT-Creation-Date: 2014-08-23 12:15+0200\n"
+"PO-Revision-Date: 2014-08-23 12:16+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -24,8 +24,8 @@ msgstr "GNOME Sudoku"
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
-"Sudoku lovers, with a simple, unobtrusive interface makes playing Sudoku fun "
-"for players of any skill level."
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
 msgstr ""
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
@@ -42,7 +42,7 @@ msgid ""
 msgstr ""
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:350
+#: ../src/gnome-sudoku.vala:399
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -116,7 +116,7 @@ msgstr "_Tøm brettet"
 
 #: ../data/gnome-sudoku.ui.h:10
 msgid "Reset the board to its original state"
-msgstr ""
+msgstr "Sett brette tilbake til opprinnelig tilstand"
 
 #: ../data/gnome-sudoku.ui.h:11
 msgid "_New Puzzle"
@@ -145,14 +145,25 @@ msgid "Set the number of sudokus you want to print"
 msgstr "Sett antall sudoku som skal skrives ut"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:5
-#, fuzzy
 msgid "Warn about unfillable squares and duplicate numbers"
-msgstr "Varsle om ruter som ikke kan fylles _ut"
+msgstr "Varsle om ruter som ikke kan fylles ut og duplpiserte tall"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:6
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
+msgstr ""
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Width of the window in pixels"
+msgstr ""
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
+msgid "Height of the window in pixels"
+msgstr ""
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
+msgid "true if the window is maximized"
 msgstr ""
 
 #: ../data/print-games.ui.h:1
@@ -171,133 +182,74 @@ msgstr "A_ntall puslespill"
 msgid "Difficulty"
 msgstr "Vanskelighet"
 
-#: ../lib/sudoku-game.vala:123
-msgid "second"
-msgstr "sekund"
-
-#: ../lib/sudoku-game.vala:124
-msgid "seconds"
-msgstr "sekunder"
-
-#: ../lib/sudoku-game.vala:125
+#: ../lib/sudoku-game.vala:127
 msgid "minute"
 msgstr "minutt"
 
-#: ../lib/sudoku-game.vala:126
+#: ../lib/sudoku-game.vala:127
 msgid "minutes"
 msgstr "minutter"
 
-#: ../lib/sudoku-game.vala:127
-msgid "hour"
-msgstr "time"
+#: ../lib/sudoku-board.vala:543
+msgid "Unknown Difficulty"
+msgstr "Ukjent vanskelighet"
 
-#: ../lib/sudoku-game.vala:128
-msgid "hours"
-msgstr "timer"
-
-#: ../lib/sudoku-solver.vala:742
+#: ../lib/sudoku-board.vala:545
 msgid "Easy Difficulty"
 msgstr "Lav vanskelighetsgrad"
 
-#: ../lib/sudoku-solver.vala:744
+#: ../lib/sudoku-board.vala:547
 msgid "Medium Difficulty"
 msgstr "Middels vanskelighetsgrad"
 
-#: ../lib/sudoku-solver.vala:746
+#: ../lib/sudoku-board.vala:549
 msgid "Hard Difficulty"
 msgstr "Høy vanskelighetsgrad"
 
-#: ../lib/sudoku-solver.vala:748
+#: ../lib/sudoku-board.vala:551
 msgid "Very Hard Difficulty"
 msgstr "Meget høy vanskelighetsgrad"
 
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:859
-msgid "Number of moves instantly fillable by elimination:"
-msgstr "Antall trekk som kan utføres med en gang på bakgrunn av eliminering: "
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:861
-#, fuzzy
-msgid "Percentage of moves instantly fillable by elimination:"
-msgstr "Antall trekk som kan utføres med en gang på bakgrunn av eliminering: "
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:863
-#, fuzzy
-msgid "Number of moves instantly fillable by filling:"
-msgstr "Antall trekk som kan utføres med en gang ved utfylling: "
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:865
-#, fuzzy
-msgid "Percentage of moves instantly fillable by filling:"
-msgstr "Antall trekk som kan utføres med en gang ved utfylling: "
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:867
-msgid "Number of guesses made:"
-msgstr "Antall gjetninger som er gjort:"
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:869
-#, fuzzy
-msgid "Number of backtraces:"
-msgstr "Antall "
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:871
-msgid "Ease by filling:"
-msgstr ""
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:873
-msgid "Ease by elimination:"
-msgstr ""
-
-#. Debug output when starting a new game
-#: ../lib/sudoku-solver.vala:875
-msgid "Calculated difficulty:"
-msgstr "Beregnet vanskelighetsgrad:"
-
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:57
+#: ../src/gnome-sudoku.vala:59
 msgid "Show release version"
 msgstr "Vis versjon"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:61
+#: ../src/gnome-sudoku.vala:63
 msgid "Show the possible values for each cell"
 msgstr "Vis mulige verdier for hver celle"
 
-#: ../src/gnome-sudoku.vala:217
+#: ../src/gnome-sudoku.vala:249
 #, c-format
 msgid "Well done, you completed the puzzle in %s"
 msgstr "Bra gjort, du fullførte puslespillet på %s"
 
-#: ../src/gnome-sudoku.vala:219
+#: ../src/gnome-sudoku.vala:251
 msgid "Same difficulty again"
 msgstr "Samme vanskelighetsgrad igjen"
 
-#: ../src/gnome-sudoku.vala:220
+#: ../src/gnome-sudoku.vala:252
 msgid "New difficulty"
 msgstr "Ny vanskelighetsgrad"
 
-#: ../src/gnome-sudoku.vala:266
+#: ../src/gnome-sudoku.vala:315
 msgid "Reset the board to its original state?"
 msgstr "Nullstill brettet til opprinnelig tilstand?"
 
-#: ../src/gnome-sudoku.vala:353
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: ../src/gnome-sudoku.vala:403
+#, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
-"GNOME Sudoku is a part of GNOME Games."
+"Puzzles generated by QQwing %s"
 msgstr ""
 "Populært Japansk puslespill.\n"
 "\n"
-"GNOME Sudoku er en del av GNOME Spill."
+"Puslespill lages av QQwing %s"
 
-#: ../src/gnome-sudoku.vala:358
+#: ../src/gnome-sudoku.vala:408
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
