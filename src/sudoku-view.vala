@@ -162,9 +162,6 @@ private class SudokuCellView : Gtk.DrawingArea
 
     private void show_number_picker ()
     {
-        if (is_fixed)
-            return;
-
         number_picker.set_clear_button_visibility (value != 0);
         earmark_popover.hide ();
         popover.show ();
@@ -172,9 +169,6 @@ private class SudokuCellView : Gtk.DrawingArea
 
     private void show_earmark_picker ()
     {
-        if (is_fixed)
-            return;
-
         popover.hide ();
         earmark_popover.show ();
     }
@@ -220,6 +214,8 @@ private class SudokuCellView : Gtk.DrawingArea
 
     public override bool key_press_event (Gdk.EventKey event)
     {
+        if (is_fixed)
+            return false;
         string k_name = Gdk.keyval_name (event.keyval);
         int k_no = int.parse (k_name);
         /* If k_no is 0, there might be some error in parsing, crosscheck with keypad values. */
@@ -227,7 +223,7 @@ private class SudokuCellView : Gtk.DrawingArea
             k_no = key_map_keypad (k_name);
         if (k_no >= 1 && k_no <= 9)
         {
-            if ((event.state & ModifierType.CONTROL_MASK) > 0 && !is_fixed)
+            if ((event.state & ModifierType.CONTROL_MASK) > 0)
             {
                 var new_state = !game.board.earmarks[row, col, k_no-1];
                 if (earmark_picker.set_earmark (row, col, k_no-1, new_state))
