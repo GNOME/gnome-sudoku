@@ -1,7 +1,6 @@
 /* -*- Mode: vala; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 using Gtk;
-using Gee;
 using Gdk;
 
 public class SudokuPrinter : GLib.Object {
@@ -254,19 +253,10 @@ public class GamePrinter: GLib.Object
         dialog.set_default_response (Gtk.ResponseType.OK);
         dialog.response.connect (response_cb);
 
-        SList<RadioButton> radio_group = new SList<RadioButton> ();
-
         easy_button = builder.get_object ("easyRadioButton") as RadioButton;
-        easy_button.set_group (radio_group);
-
         medium_button = builder.get_object ("mediumRadioButton") as RadioButton;
-        medium_button.join_group (easy_button);
-
         hard_button = builder.get_object ("hardRadioButton") as RadioButton;
-        hard_button.join_group (easy_button);
-
         very_hard_button = builder.get_object ("very_hardRadioButton") as RadioButton;
-        very_hard_button.join_group (easy_button);
 
         var saved_difficulty = (DifficultyCategory) settings.get_enum (DIFFICULTY_KEY_NAME);
 
