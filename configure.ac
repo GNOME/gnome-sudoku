@@ -25,7 +25,7 @@ dnl ###########################################################################
 
 GLIB_REQUIRED=2.40.0
 GTK_REQUIRED=3.13.0
-QQWING_REQUIRED=1.1.3
+QQWING_REQUIRED=1.2.0
 
 PKG_CHECK_MODULES(GNOME_SUDOKU, [
   glib-2.0 >= $GLIB_REQUIRED
