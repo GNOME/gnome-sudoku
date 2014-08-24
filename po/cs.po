@@ -23,8 +23,8 @@ msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-08-23 19:39+0000\n"
-"PO-Revision-Date: 2014-08-24 09:32+0200\n"
+"POT-Creation-Date: 2014-08-24 08:12+0000\n"
+"PO-Revision-Date: 2014-08-24 10:14+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -216,18 +216,11 @@ msgid "Difficulty"
 msgstr "Obtížnost"
 
 #: ../lib/sudoku-game.vala:127
-#, fuzzy
-#| msgid "%d minute"
-#| msgid_plural "%d minutes"
 msgid "minute"
-msgstr "%d minutu"
-
-#: ../lib/sudoku-game.vala:127
-#, fuzzy
-#| msgid "%d minute"
-#| msgid_plural "%d minutes"
-msgid "minutes"
-msgstr "%d minutu"
+msgid_plural "minutes"
+msgstr[0] "minutu"
+msgstr[1] "minuty"
+msgstr[2] "minut"
 
 #: ../lib/sudoku-board.vala:543
 msgid "Unknown Difficulty"
@@ -262,7 +255,7 @@ msgstr "U každého políčka zobrazovat možné hodnoty"
 #: ../src/gnome-sudoku.vala:249
 #, c-format
 msgid "Well done, you completed the puzzle in %s"
-msgstr "Úspěšně hotovo, dokončili jste hlavolam za %s"
+msgstr "Úspěšně hotovo, hlavolam jste dokončili za %s"
 
 #: ../src/gnome-sudoku.vala:251
 msgid "Same difficulty again"
