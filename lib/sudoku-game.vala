@@ -124,7 +124,7 @@ public class SudokuGame : Object
         if (minutes == 0)
             minutes = 1;
 
-        var minute_string = ngettext (_("minute"), _("minutes"), minutes);
+        var minute_string = ngettext ("minute", "minutes", minutes);
         var time_string = "%d %s".printf (minutes, minute_string);
 
         return time_string;
