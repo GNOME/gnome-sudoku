@@ -237,16 +237,17 @@ public class Sudoku : Gtk.Application
         });
 
         game.board.completed.connect (() => {
-            var time = game.get_total_time_played ();
-            var time_str = SudokuGame.seconds_to_minutes_string (time);
-
             for (var i = 0; i < game.board.rows; i++)
                 for (var j = 0; j < game.board.cols; j++)
                     view.can_focus = false;
 
             saver.add_game_to_finished (game, true);
 
-            var dialog = new MessageDialog (window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, _("Well done, you completed the puzzle in %s"), time_str);
+            /* Text in dialog that displays when the game is over. */
+            var time_str = ngettext ("Well done, you completed the puzzle in %d minute",
+                                     "Well done, you completed the puzzle in %d minutes",
+                                     int.max (1, (int) game.get_total_time_played () / 60));
+            var dialog = new MessageDialog (window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, time_str);
 
             dialog.add_button (_("Same difficulty again"), 0);
             dialog.add_button (_("New difficulty"), 1);

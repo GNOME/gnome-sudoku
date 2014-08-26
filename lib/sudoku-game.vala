@@ -117,16 +117,4 @@ public class SudokuGame : Object
     {
         return board.previous_played_time + timer.elapsed ();
     }
-
-    public static string seconds_to_minutes_string (double time_in_seconds)
-    {
-        var minutes = (int) time_in_seconds / 60;
-        if (minutes == 0)
-            minutes = 1;
-
-        var minute_string = ngettext ("minute", "minutes", minutes);
-        var time_string = "%d %s".printf (minutes, minute_string);
-
-        return time_string;
-    }
 }
