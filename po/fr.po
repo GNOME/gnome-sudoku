@@ -7,16 +7,17 @@
 # Didier Vidal <didier-devel@melix.net>, 2007.
 # Pierre Lemaire <pierre.lemaire@kamick.org>, 2008.
 # Laurent Coudeur <laurentc@iol.ie>, 2009.
-# Bruno Brouard <annoa.b@gmail.com>, 2012
+# Bruno Brouard <annoa.b@gmail.com>, 2012.
+# Alexandre Franke <alexandre.franke@gmail.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-15 08:32+0000\n"
-"PO-Revision-Date: 2014-03-15 14:58+0100\n"
-"Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
+"POT-Creation-Date: 2014-08-28 21:28+0000\n"
+"PO-Revision-Date: 2014-08-29 01:29+0200\n"
+"Last-Translator: Alexandre Franke <alexandre.franke@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -24,30 +25,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
 msgid ""
-"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
-"make playing Sudoku fun. Games are automatically saved when you quit, and "
-"you can always come back to any game that you've played."
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
 msgstr ""
-"GNOME Sudoku présente une interface simple et discrète contenant toutes les "
-"fonctions qui font l'attrait du Sudoku. Les parties sont automatiquement "
-"enregistrées au moment de quitter et vous pouvez toujours retrouver les "
-"parties commencées."
+"Jouez au jeu de logique populaire japonais. GNOME Sudoku est un "
+"indispensable pour les amoureux du sudoku, avec une interface simple qui "
+"rend le jeu plaisant pour les joueurs de tous niveaux."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
-"websites. You can also see detailed information about how the computer "
-"solved the puzzle."
+"websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
 "Un niveau de difficulté est attribué à chaque grille sur le même principe "
-"utilisé par les journaux ou les sites Web. Vous pouvez également consulter des "
-"informations détaillées sur la façon dont l'ordinateur a résolu la grille."
+"utilisé par les journaux ou les sites Web, pour que vous puissiez ajuster la "
+"difficulté selon votre envie."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
@@ -60,7 +59,8 @@ msgstr ""
 "niveau de difficulté. Par conséquent, GNOME Sudoku peut jouer le rôle d'un "
 "livre de Sudoku sans fin."
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:400
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -70,455 +70,205 @@ msgstr ""
 "Tester vos aptitudes en logique avec ce casse-tête de nombres en grille"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "jeu;plateau;tuiles;japonais;"
+msgid "magic;square;"
+msgstr "magique;carré;"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
-msgid "The number of seconds between automatic saves"
-msgstr "Le nombre de secondes entre les enregistrements automatiques"
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+msgid "_Print"
+msgstr "_Imprimer"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
-msgid "Print games that have been played"
-msgstr "Imprimer les grilles qui ont été jouées"
+#: ../data/gnome-sudoku-menu.ui.h:2
+msgid "Print _Current Puzzle…"
+msgstr "Imprimer la grille en _cours…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
-msgid "Mark printed games as played"
-msgstr "Marquer les grilles imprimées comme déjà jouées"
+#: ../data/gnome-sudoku-menu.ui.h:3
+msgid "Print _Multiple Puzzles…"
+msgstr "Imprimer _plusieurs sudokus…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
-msgid "Width of application window in pixels"
-msgstr "Largeur de la fenêtre d'application en pixels"
+#: ../data/gnome-sudoku-menu.ui.h:4
+msgid "_Show Warnings"
+msgstr "Afficher les a_vertissements"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
-msgid "Height of application window in pixels"
-msgstr "Hauteur de la fenêtre d'application en pixels"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
-msgid "Show hint highlights"
-msgstr "Afficher les astuces par surlignage"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
-msgid "Color of the grid border"
-msgstr "Couleur de la bordure de grille"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
-msgid "Show the application toolbar"
-msgstr "Afficher la barre d'outils de l'application"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
-msgid "Show hints"
-msgstr "Afficher les astuces"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
-msgid "Number of puzzles to print on a page"
-msgstr "Nombre de grilles à imprimer par page"
-
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "Imprimer les Sudokus"
-
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "Imprimer des grilles"
-
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "_Nombre de sudokus à imprimer : "
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "_Sudokus par page : "
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "Niveaux de difficulté à imprimer"
-
-#: ../data/print_games.ui.h:6
-msgid "_Easy"
-msgstr "_Facile"
-
-#: ../data/print_games.ui.h:7
-msgid "_Medium"
-msgstr "_Moyenne"
-
-#: ../data/print_games.ui.h:8
-msgid "_Hard"
-msgstr "_Difficile"
-
-#: ../data/print_games.ui.h:9
-msgid "_Very Hard"
-msgstr "_Très difficile"
-
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "Détails"
-
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "_Marquer les grilles comme résolues après impression."
-
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr ""
-"_Inclure des grilles déjà résolues dans la liste des grilles à imprimer"
-
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "_Nouvelle partie"
-
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "Parties enregi_strées"
-
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "Ajoute un nouveau marqueur"
-
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "Supprime le marqueur sélectionné"
-
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "Rend permanentes les modifications marquées"
-
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
-msgid "H_ide"
-msgstr "_Masquer"
-
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "Masque les valeurs marquées"
-
-#: ../src/lib/defaults.py:50
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"GNOME Sudoku is a part of GNOME Games."
-msgstr ""
-"Le jeu de logique japonais populaire.\n"
-"\n"
-"GNOME Sudoku fait partie des jeux GNOME."
-
-#: ../src/lib/defaults.py:53
-msgid "Website"
-msgstr "Site Web"
-
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "Facile"
-
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "Moyenne"
-
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "Difficile"
-
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "Très difficile"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "Dernière partie jouée il y a %(n)s seconde"
-msgstr[1] "Dernière partie jouée il y a %(n)s secondes"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "Dernière partie jouée il y a %(n)s minute"
-msgstr[1] "Dernière partie jouée il y a %(n)s minutes"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "Dernière partie jouée à %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "Dernière partie jouée hier à %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "Dernière partie jouée %A à %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "Dernière partie jouée le %e %B %Y"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "Grille facile"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "Grille moyenne"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "Grille difficile"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "Grille très difficile"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "Jouée durant %d heure"
-msgstr[1] "Jouée durant %d heures"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "Jouée durant %d minute"
-msgstr[1] "Jouée durant %d minutes"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "Jouée durant %d seconde"
-msgstr[1] "Jouée durant %d secondes"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "Voulez-vous vraiment faire cela ?"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "Ne plus poser la question."
-
-#: ../src/lib/main.py:196
-msgid "_Game"
-msgstr "_Jeu"
-
-#: ../src/lib/main.py:197
-msgid "New game"
-msgstr "Nouvelle grille"
-
-#: ../src/lib/main.py:198
-msgid "_Reset"
-msgstr "_Réinitialiser"
-
-#: ../src/lib/main.py:200
-msgid "_Undo"
-msgstr "_Annuler"
-
-#: ../src/lib/main.py:201
-msgid "Undo last action"
-msgstr "Annule la dernière action"
-
-#: ../src/lib/main.py:202
-msgid "_Redo"
-msgstr "_Rétablir"
-
-#: ../src/lib/main.py:203
-msgid "Redo last action"
-msgstr "Rétablit la dernière action"
-
-#: ../src/lib/main.py:204
-msgid "Puzzle _Statistics..."
-msgstr "_Statistiques de la grille..."
-
-#: ../src/lib/main.py:206
-msgid "_Print..."
-msgstr "_Imprimer..."
-
-#: ../src/lib/main.py:207
-msgid "Print _Multiple Sudokus..."
-msgstr "Imprimer _plusieurs sudokus..."
-
-#: ../src/lib/main.py:210
-msgid "_Settings"
-msgstr "_Paramètres"
-
-#: ../src/lib/main.py:212
-msgid "_Tools"
-msgstr "_Outils"
-
-#: ../src/lib/main.py:213
-msgid "_Hint"
-msgstr "_Astuce"
-
-#: ../src/lib/main.py:214
-msgid "Show a square that is easy to fill."
-msgstr "Montrer une case facile à remplir."
-
-#: ../src/lib/main.py:215
-msgid "Clear _Top Notes"
-msgstr "Effacer les no_tes du haut"
-
-#: ../src/lib/main.py:217
-msgid "Clear _Bottom Notes"
-msgstr "Effacer les notes du _bas"
-
-#: ../src/lib/main.py:219
+#: ../data/gnome-sudoku-menu.ui.h:5
 msgid "_Help"
 msgstr "Aid_e"
 
-#: ../src/lib/main.py:220
-msgid "_Contents"
-msgstr "_Sommaire"
+#: ../data/gnome-sudoku-menu.ui.h:6
+msgid "_About"
+msgstr "À _propos"
 
-#: ../src/lib/main.py:226
-msgid "Show _Possible Numbers"
-msgstr "Afficher les nombres _possibles"
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_Quit"
+msgstr "_Quitter"
 
-#: ../src/lib/main.py:228
-msgid "Always show possible numbers in a square"
-msgstr "Montre toujours les nombres possibles dans une case"
+#: ../data/gnome-sudoku.ui.h:2
+msgid "Undo your last action"
+msgstr "Annule votre dernière action"
 
-#: ../src/lib/main.py:232
-msgid "Warn About _Unfillable Squares"
-msgstr "Signaler les cases _non remplissables"
+#: ../data/gnome-sudoku.ui.h:3
+msgid "Redo your last action"
+msgstr "Rétablit votre dernière action"
 
-#: ../src/lib/main.py:234
-msgid "Warn about squares made unfillable by a move"
-msgstr "Signale les cases qu'un coup rend non remplissables"
+#: ../data/gnome-sudoku.ui.h:4
+msgid "Go back to the current game"
+msgstr "Retourner à la partie en cours"
 
-#: ../src/lib/main.py:236
-msgid "_Track Additions"
-msgstr "Activer le _suivi des coups"
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+msgid "_Easy"
+msgstr "_Facile"
 
-#: ../src/lib/main.py:238
-msgid "Mark new additions in a separate color so you can keep track of them."
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+msgid "_Medium"
+msgstr "_Moyenne"
+
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+msgid "_Hard"
+msgstr "_Difficile"
+
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+msgid "_Very Hard"
+msgstr "_Très difficile"
+
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Clear Board"
+msgstr "_Effacer le tableau"
+
+#: ../data/gnome-sudoku.ui.h:10
+msgid "Reset the board to its original state"
+msgstr "Réinitialise le tableau à son état d'origine"
+
+#: ../data/gnome-sudoku.ui.h:11
+msgid "_New Puzzle"
+msgstr "_Nouvelle grille"
+
+#: ../data/gnome-sudoku.ui.h:12
+msgid "Start a new puzzle"
+msgstr "Démarrer une nouvelle grille"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
+msgid "Difficulty level of sudokus to be printed"
+msgstr "Niveau de difficulté des sudokus à imprimer"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+msgid ""
+"Set the difficulty level of the sudokus you want to print. Possible values "
+"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"Marque les nouveaux coups avec une couleur différente afin de pouvoir les "
-"suivre."
+"Ajuste le niveau de difficulté du sudoku à imprimer. Les valeurs possibles "
+"sont \"easy\" (faible), \"medium\" (moyenne), \"hard\" (élevée), \"very_hard"
+"\" (très élevée)"
 
-#: ../src/lib/main.py:240
-msgid "Show _Toolbar"
-msgstr "Afficher la _barre d'outils"
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+msgid "Number of Sudokus to print"
+msgstr "Nombre de sudokus à imprimer"
 
-#: ../src/lib/main.py:241
-msgid "_Highlighter"
-msgstr "_Surligneur"
+#: ../data/org.gnome.sudoku.gschema.xml.h:4
+msgid "Set the number of sudokus you want to print"
+msgstr "Indiquer le nombre de sudokus à imprimer"
 
-#: ../src/lib/main.py:242
-msgid "Highlight the current row, column and box"
-msgstr "Surligne la rangée, colonne et boîte actuelles"
+#: ../data/org.gnome.sudoku.gschema.xml.h:5
+msgid "Warn about unfillable squares and duplicate numbers"
+msgstr "Signaler les cases non remplissables et les doublons"
 
-#: ../src/lib/main.py:367
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "Vous avez fini la grille en %d seconde"
-msgstr[1] "Vous avez fini la grille en %d secondes"
+#: ../data/org.gnome.sudoku.gschema.xml.h:6
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number and duplicate numbers are highlighted in red"
+msgstr ""
+"Affiche un grand X rouge dans une case s'il n'est pas possible de la remplir "
+"avec quelque nombre que ce soit et met en surbrillance en rouge les doublons"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minute"
-msgstr[1] "%d minutes"
+#: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Width of the window in pixels"
+msgstr "Largeur de la fenêtre en pixels"
 
-#: ../src/lib/main.py:373 ../src/lib/main.py:381
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d seconde"
-msgstr[1] "%d secondes"
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
+msgid "Height of the window in pixels"
+msgstr "Hauteur de la fenêtre en pixels"
 
-#: ../src/lib/main.py:374
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "Vous avez fini la grille en %(minute)s et %(second)s"
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
+msgid "true if the window is maximized"
+msgstr "true (vrai) si la fenêtre est maximisée"
 
-#: ../src/lib/main.py:379
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d heure"
-msgstr[1] "%d heures"
+#: ../data/print-games.ui.h:1
+msgid "Print Multiple Puzzles"
+msgstr "Imprimer plusieurs sudokus"
 
-#: ../src/lib/main.py:382
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "Vous avez fini la grille en %(hour)s, %(minute)s et %(second)s"
+#: ../data/print-games.ui.h:3
+msgid "_Cancel"
+msgstr "_Annuler"
 
-#: ../src/lib/main.py:384
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "Vous avez reçu %(n)s astuce."
-msgstr[1] "Vous avez reçu %(n)s astuces."
+#: ../data/print-games.ui.h:4
+msgid "_Number of puzzles"
+msgstr "_Nombre de grilles"
 
-#: ../src/lib/main.py:387
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "%(n)s impossibilité vous a été montrée."
-msgstr[1] "%(n)s impossibilités vous ont été montrées."
+#: ../data/print-games.ui.h:5
+msgid "Difficulty"
+msgstr "Difficulté"
 
-#: ../src/lib/main.py:392
-msgid "You win!"
-msgstr "Vous avez gagné !"
+#: ../lib/sudoku-board.vala:543
+msgid "Unknown Difficulty"
+msgstr "Difficulté inconnue"
 
-#: ../src/lib/main.py:402
-msgid "Save this game before starting new one?"
-msgstr "Enregistrer cette partie avant d'en commencer une nouvelle ?"
+#: ../lib/sudoku-board.vala:545
+msgid "Easy Difficulty"
+msgstr "Difficulté faible"
 
-#: ../src/lib/main.py:403
-msgid "_Save game for later"
-msgstr "_Enregistrer la partie pour plus tard"
+#: ../lib/sudoku-board.vala:547
+msgid "Medium Difficulty"
+msgstr "Difficulté moyenne"
 
-#: ../src/lib/main.py:404
-msgid "_Abandon game"
-msgstr "_Abandonner la partie"
+#: ../lib/sudoku-board.vala:549
+msgid "Hard Difficulty"
+msgstr "Difficulté élevée"
 
-#: ../src/lib/main.py:422
-msgid "Save game before closing?"
-msgstr "Enregistrer le jeu avant de fermer ?"
+#: ../lib/sudoku-board.vala:551
+msgid "Very Hard Difficulty"
+msgstr "Difficulté très élevée"
 
-#: ../src/lib/main.py:620
-msgid "Puzzle Information"
-msgstr "Informations sur la grille"
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:59
+msgid "Show release version"
+msgstr "Affiche le numéro de version"
 
-#: ../src/lib/main.py:621
-msgid "There is no current puzzle."
-msgstr "Pas de grille en cours."
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:63
+msgid "Show the possible values for each cell"
+msgstr "Affiche les valeurs possibles pour chaque cellule"
 
-#: ../src/lib/main.py:626
-msgid "Calculated difficulty: "
-msgstr "Niveau de difficulté calculé : "
+#. Text in dialog that displays when the game is over.
+#: ../src/gnome-sudoku.vala:247
+#, c-format
+msgid "Well done, you completed the puzzle in %d minute"
+msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgstr[0] "Vous avez fini la grille en %d minute"
+msgstr[1] "Vous avez fini la grille en %d minutes"
 
-#: ../src/lib/main.py:631
-msgid "Very Hard"
-msgstr "Très difficile"
+#: ../src/gnome-sudoku.vala:252
+msgid "Same difficulty again"
+msgstr "Même difficulté à nouveau"
 
-#: ../src/lib/main.py:636
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "Nombre de coups possibles immédiatement par élimination : "
+#: ../src/gnome-sudoku.vala:253
+msgid "New difficulty"
+msgstr "Nouvelle difficulté"
 
-#: ../src/lib/main.py:639
-msgid "Number of moves instantly fillable by filling: "
-msgstr "Nombre de coups possibles immédiatement par déduction : "
+#: ../src/gnome-sudoku.vala:316
+msgid "Reset the board to its original state?"
+msgstr "Réinitialiser le tableau à son état de départ ?"
 
-#: ../src/lib/main.py:642
-msgid "Amount of trial-and-error required to solve: "
-msgstr "Quantité d'essais-erreurs nécessaires à la résolution : "
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: ../src/gnome-sudoku.vala:404
+#, c-format
+msgid ""
+"The popular Japanese logic puzzle\n"
+"\n"
+"Puzzles generated by QQwing %s"
+msgstr ""
+"Le jeu de logique japonais populaire.\n"
+"\n"
+"Grilles générées par QQwing %s"
 
-#: ../src/lib/main.py:645 ../src/lib/main.py:646
-msgid "Puzzle Statistics"
-msgstr "Statistiques de la grille"
-
-#: ../src/lib/main.py:670
+#: ../src/gnome-sudoku.vala:409
 msgid "translator-credits"
 msgstr ""
 "Christophe Merlet <redfox@redfoxcenter.org>\n"
@@ -531,87 +281,330 @@ msgstr ""
 "Claude Paroz <claude@2xlibre.net>\n"
 "Stéphane Raimbault <stephane.raimbault@gmail.com>\n"
 "Didier Vidal <didier-devel@melix.net>\n"
-"Pierre Lemaire <pierre.lemaire@kamick.org>"
+"Pierre Lemaire <pierre.lemaire@kamick.org>\n"
+"Alexandre Franke <alexandre.franke@gmail.com>"
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:680
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "Impossible d'afficher l'aide : %s"
+#: ../src/number-picker.vala:70
+msgid "Clear"
+msgstr "Effacer"
 
-#: ../src/lib/main.py:736
-msgid "Untracked"
-msgstr "Non suivi"
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:30
+msgid "Error printing file:"
+msgstr "Erreur à l'impression du fichier :"
 
-#: ../src/lib/main.py:745
-msgid "_Remove"
-msgstr "_Enlever"
+#~ msgid "minute"
+#~ msgid_plural "minutes"
+#~ msgstr[0] "minute"
+#~ msgstr[1] "minutes"
 
-#: ../src/lib/main.py:746
-msgid "Delete selected tracker."
-msgstr "Supprime le marqueur sélectionné."
+#~ msgid ""
+#~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
+#~ "that make playing Sudoku fun. Games are automatically saved when you "
+#~ "quit, and you can always come back to any game that you've played."
+#~ msgstr ""
+#~ "GNOME Sudoku présente une interface simple et discrète contenant toutes "
+#~ "les fonctions qui font l'attrait du Sudoku. Les parties sont "
+#~ "automatiquement enregistrées au moment de quitter et vous pouvez toujours "
+#~ "retrouver les parties commencées."
 
-#: ../src/lib/main.py:752
-msgid "Hide current tracker entries."
-msgstr "Masque les marqueurs actuellement visibles."
+#~ msgid "game;board;tiles;japanese;"
+#~ msgstr "jeu;plateau;tuiles;japonais;"
 
-#: ../src/lib/main.py:757
-msgid "A_pply"
-msgstr "A_ppliquer"
+#~ msgid "The number of seconds between automatic saves"
+#~ msgstr "Le nombre de secondes entre les enregistrements automatiques"
 
-#: ../src/lib/main.py:758
-msgid "Apply all tracked values and remove the tracker."
-msgstr "Applique tous les coups suivis et supprime le marqueur."
+#~ msgid "Print games that have been played"
+#~ msgstr "Imprimer les grilles qui ont été jouées"
 
-#: ../src/lib/main.py:796
-#, python-format
-msgid "Tracker %s"
-msgstr "Marqueur %s"
+#~ msgid "Mark printed games as played"
+#~ msgstr "Marquer les grilles imprimées comme déjà jouées"
 
-#: ../src/lib/number_box.py:82
-msgid "_Clear"
-msgstr "_Effacer"
+#~ msgid "Show hint highlights"
+#~ msgstr "Afficher les astuces par surlignage"
 
-#: ../src/lib/saver.py:151
-msgid "No Space"
-msgstr "Espace manquant"
+#~ msgid "Color of the grid border"
+#~ msgstr "Couleur de la bordure de grille"
 
-#: ../src/lib/saver.py:152
-msgid "No space left on disk"
-msgstr "L'espace disque est saturé"
+#~ msgid "Show the application toolbar"
+#~ msgstr "Afficher la barre d'outils de l'application"
 
-#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "Impossible de créer le dossier de données %(path)s."
+#~ msgid "Print Sudokus"
+#~ msgstr "Imprimer les Sudokus"
 
-#: ../src/lib/saver.py:155
-msgid "There is no disk space left!"
-msgstr "Il n'y a plus d'espace disque disponible."
+#~ msgid "Print Games"
+#~ msgstr "Imprimer des grilles"
 
-#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
-msgid "Error creating directory"
-msgstr "Erreur à la création du répertoire"
+#~ msgid "_Sudokus per page: "
+#~ msgstr "_Sudokus par page : "
 
-#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
-#: ../src/lib/saver.py:229
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "Erreur %(errno)s : %(error)s"
+#~ msgid "Levels of difficulty to print"
+#~ msgstr "Niveaux de difficulté à imprimer"
 
-#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
-msgid "Unable to save game."
-msgstr "Impossible d'enregistrer la partie."
+#~ msgid "Details"
+#~ msgstr "Détails"
 
-#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "Impossible d'enregistrer le fichier %(filename)s."
+#~ msgid "_Mark games as played once you've printed them."
+#~ msgstr "_Marquer les grilles comme résolues après impression."
 
-#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
-msgid "Unable to mark game as finished."
-msgstr "Impossible de marquer la grille comme résolue."
+#~ msgid "_Include games you've already played in list of games to print"
+#~ msgstr ""
+#~ "_Inclure des grilles déjà résolues dans la liste des grilles à imprimer"
 
-#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
-msgid "Sudoku unable to mark game as finished."
-msgstr "Sudoku n'a pas pu marquer la grille comme résolue."
+#~ msgid "_Saved Games"
+#~ msgstr "Parties enregi_strées"
+
+#~ msgid "Add a new tracker"
+#~ msgstr "Ajoute un nouveau marqueur"
+
+#~ msgid "Remove the selected tracker"
+#~ msgstr "Supprime le marqueur sélectionné"
+
+#~ msgid "Make the tracked changes permanent"
+#~ msgstr "Rend permanentes les modifications marquées"
+
+#~ msgid "H_ide"
+#~ msgstr "_Masquer"
+
+#~ msgid "Hide the tracked values"
+#~ msgstr "Masque les valeurs marquées"
+
+#~ msgid "Website"
+#~ msgstr "Site Web"
+
+#~ msgid "Easy"
+#~ msgstr "Facile"
+
+#~ msgid "Medium"
+#~ msgstr "Moyenne"
+
+#~ msgid "Hard"
+#~ msgstr "Difficile"
+
+#~ msgid "Very hard"
+#~ msgstr "Très difficile"
+
+#~ msgid "Last played %(n)s second ago"
+#~ msgid_plural "Last played %(n)s seconds ago"
+#~ msgstr[0] "Dernière partie jouée il y a %(n)s seconde"
+#~ msgstr[1] "Dernière partie jouée il y a %(n)s secondes"
+
+#~ msgid "Last played %(n)s minute ago"
+#~ msgid_plural "Last played %(n)s minutes ago"
+#~ msgstr[0] "Dernière partie jouée il y a %(n)s minute"
+#~ msgstr[1] "Dernière partie jouée il y a %(n)s minutes"
+
+#~ msgid "Last played at %I:%M %p"
+#~ msgstr "Dernière partie jouée à %H:%M"
+
+#~ msgid "Last played yesterday at %I:%M %p"
+#~ msgstr "Dernière partie jouée hier à %H:%M"
+
+#~ msgid "Last played on %A at %I:%M %p"
+#~ msgstr "Dernière partie jouée %A à %H:%M"
+
+#~ msgid "Last played on %B %e %Y"
+#~ msgstr "Dernière partie jouée le %e %B %Y"
+
+#~ msgid "Easy puzzle"
+#~ msgstr "Grille facile"
+
+#~ msgid "Medium puzzle"
+#~ msgstr "Grille moyenne"
+
+#~ msgid "Very hard puzzle"
+#~ msgstr "Grille très difficile"
+
+#~ msgid "Played for %d hour"
+#~ msgid_plural "Played for %d hours"
+#~ msgstr[0] "Jouée durant %d heure"
+#~ msgstr[1] "Jouée durant %d heures"
+
+#~ msgid "Played for %d minute"
+#~ msgid_plural "Played for %d minutes"
+#~ msgstr[0] "Jouée durant %d minute"
+#~ msgstr[1] "Jouée durant %d minutes"
+
+#~ msgid "Played for %d second"
+#~ msgid_plural "Played for %d seconds"
+#~ msgstr[0] "Jouée durant %d seconde"
+#~ msgstr[1] "Jouée durant %d secondes"
+
+#~ msgid "Do you really want to do this?"
+#~ msgstr "Voulez-vous vraiment faire cela ?"
+
+#~ msgid "Don't ask me this again."
+#~ msgstr "Ne plus poser la question."
+
+#~ msgid "_Game"
+#~ msgstr "_Jeu"
+
+#~ msgid "New game"
+#~ msgstr "Nouvelle grille"
+
+#~ msgid "_Reset"
+#~ msgstr "_Réinitialiser"
+
+#~ msgid "_Undo"
+#~ msgstr "_Annuler"
+
+#~ msgid "_Redo"
+#~ msgstr "_Rétablir"
+
+#~ msgid "Puzzle _Statistics..."
+#~ msgstr "_Statistiques de la grille..."
+
+#~ msgid "_Settings"
+#~ msgstr "_Paramètres"
+
+#~ msgid "_Tools"
+#~ msgstr "_Outils"
+
+#~ msgid "_Hint"
+#~ msgstr "_Astuce"
+
+#~ msgid "Show a square that is easy to fill."
+#~ msgstr "Montrer une case facile à remplir."
+
+#~ msgid "Clear _Top Notes"
+#~ msgstr "Effacer les no_tes du haut"
+
+#~ msgid "Clear _Bottom Notes"
+#~ msgstr "Effacer les notes du _bas"
+
+#~ msgid "_Contents"
+#~ msgstr "_Sommaire"
+
+#~ msgid "Show _Possible Numbers"
+#~ msgstr "Afficher les nombres _possibles"
+
+#~ msgid "Always show possible numbers in a square"
+#~ msgstr "Montre toujours les nombres possibles dans une case"
+
+#~ msgid "Warn about squares made unfillable by a move"
+#~ msgstr "Signale les cases qu'un coup rend non remplissables"
+
+#~ msgid "_Track Additions"
+#~ msgstr "Activer le _suivi des coups"
+
+#~ msgid ""
+#~ "Mark new additions in a separate color so you can keep track of them."
+#~ msgstr ""
+#~ "Marque les nouveaux coups avec une couleur différente afin de pouvoir les "
+#~ "suivre."
+
+#~ msgid "Show _Toolbar"
+#~ msgstr "Afficher la _barre d'outils"
+
+#~ msgid "_Highlighter"
+#~ msgstr "_Surligneur"
+
+#~ msgid "Highlight the current row, column and box"
+#~ msgstr "Surligne la rangée, colonne et boîte actuelles"
+
+#~ msgid "%d second"
+#~ msgid_plural "%d seconds"
+#~ msgstr[0] "%d seconde"
+#~ msgstr[1] "%d secondes"
+
+#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
+#~ msgstr "Vous avez fini la grille en %(minute)s et %(second)s"
+
+#~ msgid "%d hour"
+#~ msgid_plural "%d hours"
+#~ msgstr[0] "%d heure"
+#~ msgstr[1] "%d heures"
+
+#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
+#~ msgstr "Vous avez fini la grille en %(hour)s, %(minute)s et %(second)s"
+
+#~ msgid "You got %(n)s hint."
+#~ msgid_plural "You got %(n)s hints."
+#~ msgstr[0] "Vous avez reçu %(n)s astuce."
+#~ msgstr[1] "Vous avez reçu %(n)s astuces."
+
+#~ msgid "You had %(n)s impossibility pointed out."
+#~ msgid_plural "You had %(n)s impossibilities pointed out."
+#~ msgstr[0] "%(n)s impossibilité vous a été montrée."
+#~ msgstr[1] "%(n)s impossibilités vous ont été montrées."
+
+#~ msgid "You win!"
+#~ msgstr "Vous avez gagné !"
+
+#~ msgid "Save this game before starting new one?"
+#~ msgstr "Enregistrer cette partie avant d'en commencer une nouvelle ?"
+
+#~ msgid "_Save game for later"
+#~ msgstr "_Enregistrer la partie pour plus tard"
+
+#~ msgid "_Abandon game"
+#~ msgstr "_Abandonner la partie"
+
+#~ msgid "Save game before closing?"
+#~ msgstr "Enregistrer le jeu avant de fermer ?"
+
+#~ msgid "Puzzle Information"
+#~ msgstr "Informations sur la grille"
+
+#~ msgid "Number of moves instantly fillable by elimination: "
+#~ msgstr "Nombre de coups possibles immédiatement par élimination : "
+
+#~ msgid "Number of moves instantly fillable by filling: "
+#~ msgstr "Nombre de coups possibles immédiatement par déduction : "
+
+#~ msgid "Amount of trial-and-error required to solve: "
+#~ msgstr "Quantité d'essais-erreurs nécessaires à la résolution : "
+
+#~ msgid "Puzzle Statistics"
+#~ msgstr "Statistiques de la grille"
+
+#~ msgid "Unable to display help: %s"
+#~ msgstr "Impossible d'afficher l'aide : %s"
+
+#~ msgid "Untracked"
+#~ msgstr "Non suivi"
+
+#~ msgid "_Remove"
+#~ msgstr "_Enlever"
+
+#~ msgid "Delete selected tracker."
+#~ msgstr "Supprime le marqueur sélectionné."
+
+#~ msgid "Hide current tracker entries."
+#~ msgstr "Masque les marqueurs actuellement visibles."
+
+#~ msgid "A_pply"
+#~ msgstr "A_ppliquer"
+
+#~ msgid "Apply all tracked values and remove the tracker."
+#~ msgstr "Applique tous les coups suivis et supprime le marqueur."
+
+#~ msgid "Tracker %s"
+#~ msgstr "Marqueur %s"
+
+#~ msgid "No Space"
+#~ msgstr "Espace manquant"
+
+#~ msgid "No space left on disk"
+#~ msgstr "L'espace disque est saturé"
+
+#~ msgid "Unable to create data folder %(path)s."
+#~ msgstr "Impossible de créer le dossier de données %(path)s."
+
+#~ msgid "There is no disk space left!"
+#~ msgstr "Il n'y a plus d'espace disque disponible."
+
+#~ msgid "Error %(errno)s: %(error)s"
+#~ msgstr "Erreur %(errno)s : %(error)s"
+
+#~ msgid "Unable to save game."
+#~ msgstr "Impossible d'enregistrer la partie."
+
+#~ msgid "Unable to save file %(filename)s."
+#~ msgstr "Impossible d'enregistrer le fichier %(filename)s."
+
+#~ msgid "Unable to mark game as finished."
+#~ msgstr "Impossible de marquer la grille comme résolue."
+
+#~ msgid "Sudoku unable to mark game as finished."
+#~ msgstr "Sudoku n'a pas pu marquer la grille comme résolue."
