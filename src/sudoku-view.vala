@@ -457,53 +457,59 @@ public class SudokuView : Gtk.AspectFrame
 
     private bool draw_board (Cairo.Context c)
     {
-        /* TODO note: cols, rows, block_cols ^ 2, block_rows ^ 2 are the same... */
-
-        /* we assume the AspectFrame does his job */
-        int board_side = grid.get_allocated_width ();
-        /* not exactly the tile side: includes the width of a border line (1) */
-        double tile_side = ((double) (board_side - 1)) / game.board.cols;
+        int board_length = grid.get_allocated_width ();
+        /* not exactly the tile's edge length: includes the width of a border line (1) */
+        double tile_length = ((double) (board_length - 1)) / game.board.cols;
 
         if (Gtk.Widget.get_default_direction() == Gtk.TextDirection.RTL)
         {
-            c.translate (board_side, 0);
+            c.translate (board_length, 0);
             c.scale (-1, 1);
         }
 
+        /* TODO game.board.cols == game.board.rows... */
         for (var i = 0; i < game.board.cols; i++)
         {
             for (var j = 0; j < game.board.cols; j++)
             {
-                var cell = cells[i, j];
-                c.set_source_rgb (cell.background_color.red, cell.background_color.green, cell.background_color.blue);
+                var background_color = cells[i, j].background_color;
+                c.set_source_rgb (background_color.red, background_color.green, background_color.blue);
 
-                c.rectangle ((int) (j * tile_side) + 1, (int) (i * tile_side) + 1, (int) ((j + 1) * tile_side), (int) ((i + 1) * tile_side));
+                c.rectangle ((int) (j * tile_length) + 0.5, (int) (i * tile_length) + 0.5, (int) ((j + 1) * tile_length) + 0.5, (int) ((i + 1) * tile_length) + 0.5);
                 c.fill ();
             }
         }
 
         c.set_line_width (1);
         c.set_source_rgb (0.6, 0.6, 0.6);
-        for (var i = 1; i < game.board.rows; i++)
+        for (var i = 1; i < game.board.cols; i++)
+        {
+            if (i % game.board.block_cols == 0)
+                continue;
+            /* we could use board_length - 1 */
+            c.move_to (((int) (i * tile_length)) + 0.5, 1);
+            c.line_to (((int) (i * tile_length)) + 0.5, board_length);
+        }
+        for (var i = 1; i < game.board.cols; i++)
         {
             if (i % game.board.block_rows == 0)
                 continue;
 
-            /* we could use board_side - 1 */
-            c.move_to (((int) (i * tile_side)) + 0.5, 1);
-            c.line_to (((int) (i * tile_side)) + 0.5, board_side);
-            c.move_to (1, ((int) (i * tile_side)) + 0.5);
-            c.line_to (board_side, ((int) (i * tile_side)) + 0.5);
+            c.move_to (1, ((int) (i * tile_length)) + 0.5);
+            c.line_to (board_length, ((int) (i * tile_length)) + 0.5);
         }
         c.stroke ();
 
         c.set_source_rgb (0.0, 0.0, 0.0);
-        for (var i = 0; i <= game.board.rows; i += game.board.block_rows)
+        for (var i = 0; i <= game.board.cols; i += game.board.block_cols)
         {
-            c.move_to (((int) (i * tile_side)) + 0.5, 0);
-            c.line_to (((int) (i * tile_side)) + 0.5, board_side);
-            c.move_to (0, ((int) (i * tile_side)) + 0.5);
-            c.line_to (board_side, ((int) (i * tile_side)) + 0.5);
+            c.move_to (((int) (i * tile_length)) + 0.5, 0);
+            c.line_to (((int) (i * tile_length)) + 0.5, board_length);
+        }
+        for (var i = 0; i <= game.board.cols; i += game.board.block_rows)
+        {
+            c.move_to (0, ((int) (i * tile_length)) + 0.5);
+            c.line_to (board_length, ((int) (i * tile_length)) + 0.5);
         }
         c.stroke ();
 
