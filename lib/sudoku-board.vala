@@ -554,6 +554,25 @@ public enum DifficultyCategory {
         }
     }
 
+    public string to_untranslated_string ()
+    {
+        switch (this)
+        {
+            case UNKNOWN:
+                return "Unknown Difficulty";
+            case EASY:
+                return "Easy Difficulty";
+            case MEDIUM:
+                return "Medium Difficulty";
+            case HARD:
+                return "Hard Difficulty";
+            case VERY_HARD:
+                return "Very Hard Difficulty";
+            default:
+                assert_not_reached ();
+        }
+    }
+
     public static DifficultyCategory from_string (string input)
     {
         switch (input)

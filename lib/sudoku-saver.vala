@@ -86,7 +86,7 @@ public class SudokuSaver : Object
 
         builder.begin_object ();
         builder.set_member_name ("difficulty_category");
-        builder.add_string_value (board.difficulty_category.to_string ());
+        builder.add_string_value (board.difficulty_category.to_untranslated_string ());
         builder.set_member_name ("time_elapsed");
         builder.add_double_value (game.get_total_time_played ());
 
