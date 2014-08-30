@@ -106,6 +106,8 @@ public class Sudoku : Gtk.Application
 
         add_accelerator ("<Primary>z", "app.undo", null);
         add_accelerator ("<Primary><Shift>z", "app.redo", null);
+        add_accelerator ("<Primary>r", "app.reset", null);
+        add_accelerator ("<Primary>n", "app.new-game", null);
         add_accelerator ("<Primary>p", "app.print", null);
         add_accelerator ("<Primary>q", "app.quit", null);
         add_accelerator ("F1", "app.help", null);
@@ -211,15 +213,14 @@ public class Sudoku : Gtk.Application
     {
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);
-        clear_action.set_enabled (!board.is_empty ());
 
         if (view != null)
             game_box.remove (view);
 
         header_bar_subtitle = board.difficulty_category.to_string ();
-        back_cb ();
 
         game = new SudokuGame (board);
+        back_cb ();
 
         game.timer.start ();
 
@@ -280,6 +281,7 @@ public class Sudoku : Gtk.Application
     private void show_new_game_screen ()
     {
         main_stack.set_visible_child_name ("start_box");
+        clear_action.set_enabled (false);
         back_button.visible = game != null;
         undo_redo_box.visible = false;
         header_bar_subtitle = header_bar.get_subtitle ();
@@ -333,6 +335,7 @@ public class Sudoku : Gtk.Application
     private void back_cb ()
     {
         main_stack.set_visible_child_name ("frame");
+        clear_action.set_enabled (!game.board.is_empty ());
         back_button.visible = false;
         undo_redo_box.visible = true;
         header_bar.set_subtitle (header_bar_subtitle);
