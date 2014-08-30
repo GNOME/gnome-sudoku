@@ -36,16 +36,16 @@ msgstr ""
 "Project-Id-Version: gnome-games.HEAD.el\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-08-27 07:39+0000\n"
-"PO-Revision-Date: 2014-08-27 16:49+0200\n"
-"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
+"POT-Creation-Date: 2014-08-30 07:39+0000\n"
+"PO-Revision-Date: 2014-08-30 13:48+0200\n"
+"Last-Translator: Maria Mavridou <mavridou@gmail.com>\n"
 "Language-Team: www.gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:1
@@ -84,7 +84,7 @@ msgstr ""
 "να αποτελέσει ένα ανανεώσιμο βιβλίο Σουντόκου για εσάς."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:399
+#: ../src/gnome-sudoku.vala:406
 msgid "Sudoku"
 msgstr "Σουντόκου"
 
@@ -173,9 +173,6 @@ msgid "Difficulty level of sudokus to be printed"
 msgstr "Το επίπεδο δυσκολίας των σουντόκου προς εκτύπωση"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:2
-#| msgid ""
-#| "Set the difficulty level of the sudokus you want to print. Possible "
-#| "values are - \"simple\", \"easy\", \"intermediate\", \"expert\""
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are - \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -232,15 +229,7 @@ msgstr "_Αριθμός γρίφων"
 msgid "Difficulty"
 msgstr "Βαθμός δυσκολίας"
 
-#: ../lib/sudoku-game.vala:127
-#| msgid "minute"
-msgid "minute"
-msgid_plural "minutes"
-msgstr[0] "λεπτό"
-msgstr[1] "λεπτά"
-
 #: ../lib/sudoku-board.vala:543
-#| msgid "Difficulty"
 msgid "Unknown Difficulty"
 msgstr "Άγνωστη δυσκολία"
 
@@ -261,34 +250,38 @@ msgid "Very Hard Difficulty"
 msgstr "Πολύ υψηλής δυσκολίας"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:59
+#: ../src/gnome-sudoku.vala:60
 msgid "Show release version"
 msgstr "Προβολή της έκδοσης"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:63
+#: ../src/gnome-sudoku.vala:64
 msgid "Show the possible values for each cell"
 msgstr "Εμφάνιση των πιθανών τιμών για κάθε κελί"
 
+#. Text in dialog that displays when the game is over.
 #: ../src/gnome-sudoku.vala:249
 #, c-format
-msgid "Well done, you completed the puzzle in %s"
-msgstr "Μπράβο, ολοκληρώσατε τον γρίφο σε %s"
+#| msgid "Well done, you completed the puzzle in %s"
+msgid "Well done, you completed the puzzle in %d minute"
+msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgstr[0] "Μπράβο, ολοκληρώσατε τον γρίφο σε %d λεπτό"
+msgstr[1] "Μπράβο, ολοκληρώσατε τον γρίφο σε %d λεπτά"
 
-#: ../src/gnome-sudoku.vala:251
+#: ../src/gnome-sudoku.vala:254
 msgid "Same difficulty again"
 msgstr "Ίδιος βαθμός δυσκολίας πάλι"
 
-#: ../src/gnome-sudoku.vala:252
+#: ../src/gnome-sudoku.vala:255
 msgid "New difficulty"
 msgstr "Νέος βαθμός δυσκολίας"
 
-#: ../src/gnome-sudoku.vala:315
+#: ../src/gnome-sudoku.vala:318
 msgid "Reset the board to its original state?"
 msgstr "Επαναφορά του πίνακα στην αρχική του κατάσταση;"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:403
+#: ../src/gnome-sudoku.vala:410
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -299,7 +292,7 @@ msgstr ""
 "\n"
 "Οι γρίφοι δημιουργούνται από το QQwing %s"
 
-#: ../src/gnome-sudoku.vala:408
+#: ../src/gnome-sudoku.vala:415
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -319,9 +312,15 @@ msgid "Clear"
 msgstr "Εκκαθάριση"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:30
+#: ../src/sudoku-printer.vala:29
 msgid "Error printing file:"
 msgstr "Σφάλμα κατά την εκτύπωση του αρχείου:"
+
+#~| msgid "minute"
+#~ msgid "minute"
+#~ msgid_plural "minutes"
+#~ msgstr[0] "λεπτό"
+#~ msgstr[1] "λεπτά"
 
 #~ msgid "_Simple"
 #~ msgstr "_Απλό"
