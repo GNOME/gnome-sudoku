@@ -529,6 +529,23 @@ public class SudokuView : Gtk.AspectFrame
         }
         c.stroke ();
 
+        if (game.paused)
+        {
+            c.set_source_rgba (0, 0, 0, 0.75);
+            c.paint ();
+
+            c.select_font_face ("Sans", Cairo.FontSlant.NORMAL, Cairo.FontWeight.BOLD);
+            c.set_font_size (get_allocated_width () * 0.125);
+
+            /* Text on overlay when game is paused */
+            var text = _("Paused");
+            Cairo.TextExtents extents;
+            c.text_extents (text, out extents);
+            c.move_to (board_length/2.0 - extents.width/2.0, board_length/2.0 + extents.height/2.0);
+            c.set_source_rgb (1, 1, 1);
+            c.show_text (text);
+        }
+
         return false;
     }
 
