@@ -8,6 +8,10 @@ public class Sudoku : Gtk.Application
     private bool is_maximized;
     private int window_width;
     private int window_height;
+    private Gtk.Button play_pause_button;
+    private Gtk.Label play_pause_label;
+    private Gtk.Label clock_label;
+    private Gtk.Image clock_image;
 
     private ApplicationWindow window;
 
@@ -29,6 +33,8 @@ public class Sudoku : Gtk.Application
     private SimpleAction clear_action;
     private SimpleAction print_action;
     private SimpleAction print_multiple_action;
+    private SimpleAction pause_action;
+    private SimpleAction new_game_action;
 
     private string header_bar_subtitle;
 
@@ -43,6 +49,7 @@ public class Sudoku : Gtk.Application
         {"undo", undo_cb                                            },
         {"redo", redo_cb                                            },
         {"print", print_cb                                          },
+        {"pause", toggle_pause_cb                                   },
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
@@ -140,12 +147,18 @@ public class Sudoku : Gtk.Application
         game_box = (Box) builder.get_object ("game_box");
         undo_redo_box = (Box) builder.get_object ("undo_redo_box");
         back_button = (Button) builder.get_object ("back_button");
+        clock_label = (Gtk.Label) builder.get_object ("clock_label");
+        clock_image = (Gtk.Image) builder.get_object ("clock_image");
+        play_pause_button = (Gtk.Button) builder.get_object ("play_pause_button");
+        play_pause_label = (Gtk.Label) builder.get_object ("play_pause_label");
 
         undo_action = (SimpleAction) lookup_action ("undo");
         redo_action = (SimpleAction) lookup_action ("redo");
+        new_game_action = (SimpleAction) lookup_action ("new-game");
         clear_action = (SimpleAction) lookup_action ("reset");
         print_action = (SimpleAction) lookup_action ("print");
         print_multiple_action = (SimpleAction) lookup_action ("print-multiple");
+        pause_action = (SimpleAction) lookup_action ("pause");
 
         saver = new SudokuSaver ();
         var savegame = saver.get_savedgame ();
@@ -208,6 +221,58 @@ public class Sudoku : Gtk.Application
         return false;
     }
 
+    private void paused_changed_cb ()
+    {
+        if (game.paused)
+        {
+            display_unpause_button ();
+            clear_action.set_enabled (false);
+            undo_action.set_enabled (false);
+            redo_action.set_enabled (false);
+            new_game_action.set_enabled (false);
+        }
+        else if (game.get_total_time_played () > 0)
+        {
+            display_pause_button ();
+            clear_action.set_enabled (!game.board.is_empty ());
+            undo_action.set_enabled (!game.is_undostack_null ());
+            redo_action.set_enabled (!game.is_redostack_null ());
+            new_game_action.set_enabled (true);
+        }
+    }
+
+    private void toggle_pause_cb ()
+    {
+       if (game.paused)
+           game.continue_clock ();
+       else
+           game.stop_clock ();
+    }
+
+    private void tick_cb ()
+    {
+        var elapsed_time = (int) game.get_total_time_played ();
+        var hours = elapsed_time / 3600;
+        var minutes = (elapsed_time - hours * 3600) / 60;
+        var seconds = elapsed_time - hours * 3600 - minutes * 60;
+        if (hours > 0)
+            clock_label.set_text ("%02d∶\xE2\x80\x8E%02d∶\xE2\x80\x8E%02d".printf (hours, minutes, seconds));
+        else
+            clock_label.set_text ("%02d∶\xE2\x80\x8E%02d".printf (minutes, seconds));
+    }
+
+    private void display_pause_button ()
+    {
+        play_pause_button.show ();
+        play_pause_label.label = _("_Pause");
+    }
+
+    private void display_unpause_button ()
+    {
+        play_pause_button.show ();
+        play_pause_label.label = _("_Resume");
+    }
+
     private void start_game (SudokuBoard board)
     {
         undo_action.set_enabled (false);
@@ -221,7 +286,10 @@ public class Sudoku : Gtk.Application
         game = new SudokuGame (board);
         back_cb ();
 
-        game.timer.start ();
+        game.tick.connect (tick_cb);
+        game.paused_changed.connect (paused_changed_cb);
+
+        game.start_clock ();
 
         view = new SudokuView (game);
         view.set_size_request (480, 480);
@@ -276,6 +344,10 @@ public class Sudoku : Gtk.Application
         header_bar_subtitle = header_bar.get_subtitle ();
         header_bar.set_subtitle (null);
         print_action.set_enabled (false);
+        clock_label.hide ();
+        clock_image.hide ();
+        if (game != null)
+            game.stop_clock ();
     }
 
     private void new_game_cb ()
@@ -330,6 +402,10 @@ public class Sudoku : Gtk.Application
         undo_redo_box.visible = true;
         header_bar.set_subtitle (header_bar_subtitle);
         print_action.set_enabled (true);
+        clock_label.show ();
+        clock_image.show ();
+        if (game != null)
+            game.continue_clock ();
     }
 
     private void undo_cb ()

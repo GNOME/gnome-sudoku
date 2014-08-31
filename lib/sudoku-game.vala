@@ -6,6 +6,21 @@ public class SudokuGame : Object
 {
     public SudokuBoard board;
     public GLib.Timer timer;
+    private uint clock_timeout;
+
+    public signal void tick ();
+    public signal void paused_changed ();
+
+    private bool _paused = false;
+    public bool paused
+    {
+        private set
+        {
+            _paused = value;
+            paused_changed ();
+        }
+        get { return _paused; }
+    }
 
     private struct UndoItem
     {
@@ -35,6 +50,7 @@ public class SudokuGame : Object
         timer = new Timer();
         undostack = new ArrayList<UndoItem?> ();
         redostack = new ArrayList<UndoItem?> ();
+        board.completed.connect (() => stop_clock ());
     }
 
     public void insert (int row, int col, int val)
@@ -65,7 +81,8 @@ public class SudokuGame : Object
 
     public void reset ()
     {
-        timer.reset();
+        board.previous_played_time = 0;
+        timer.start ();
         undostack.clear ();
         redostack.clear ();
         for (var l1 = 0; l1 < board.rows; l1++)
@@ -116,5 +133,48 @@ public class SudokuGame : Object
     public double get_total_time_played ()
     {
         return board.previous_played_time + timer.elapsed ();
+    }
+
+    private bool timeout_cb ()
+    {
+        /* Notify on the next tick */
+        var elapsed = get_total_time_played ();
+        var next = (int) (elapsed + 1.0);
+        var wait = next - elapsed;
+        clock_timeout = Timeout.add_seconds ((int) (wait), timeout_cb);
+
+        tick ();
+
+        return false;
+    }
+
+    public void start_clock ()
+    {
+        if (timer == null)
+            timer = new Timer ();
+        timer.start ();
+        timeout_cb ();
+    }
+
+    public void stop_clock ()
+    {
+        if (timer == null)
+            return;
+        if (clock_timeout != 0)
+            Source.remove (clock_timeout);
+        paused = true;
+        clock_timeout = 0;
+        timer.stop ();
+        tick ();
+    }
+
+    public void continue_clock ()
+    {
+        if (timer == null)
+            timer = new Timer ();
+        else
+            timer.continue ();
+        paused = false;
+        timeout_cb ();
     }
 }
