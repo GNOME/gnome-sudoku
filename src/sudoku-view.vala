@@ -142,7 +142,7 @@ private class SudokuCellView : Gtk.DrawingArea
 
         if (!is_focus)
             grab_focus ();
-        if (is_fixed)
+        if (is_fixed || game.paused)
             return false;
 
         if (popover.visible || earmark_popover.visible)
@@ -218,7 +218,7 @@ private class SudokuCellView : Gtk.DrawingArea
 
     public override bool key_press_event (Gdk.EventKey event)
     {
-        if (is_fixed)
+        if (is_fixed || game.paused)
             return false;
         string k_name = Gdk.keyval_name (event.keyval);
         int k_no = int.parse (k_name);
@@ -275,6 +275,9 @@ private class SudokuCellView : Gtk.DrawingArea
             c.set_source_rgb (0.2, 0.2, 0.2);
         else
             c.set_source_rgb (0.0, 0.0, 0.0);
+
+        if (game.paused)
+            return false;
 
         if (value != 0)
         {
@@ -424,6 +427,9 @@ public class SudokuView : Gtk.AspectFrame
                 cell.background_color = cell.is_fixed ? fixed_cell_color : free_cell_color;
 
                 cell.focus_in_event.connect (() => {
+                    if (game.paused)
+                        return false;
+
                     this.set_selected (cell_row, cell_col);
 
                     for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
