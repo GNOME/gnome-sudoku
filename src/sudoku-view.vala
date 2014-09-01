@@ -346,6 +346,13 @@ private class SudokuCellView : Gtk.DrawingArea
             notify_property ("value");
         }
     }
+
+    public void clear ()
+    {
+        if (earmark_picker != null)
+            for (var i = 0; i < game.board.max_val; i++)
+                earmark_picker.set_earmark (row, col, i, false);
+    }
 }
 
 public class SudokuView : Gtk.AspectFrame
@@ -510,6 +517,13 @@ public class SudokuView : Gtk.AspectFrame
         c.stroke ();
 
         return false;
+    }
+
+    public void clear ()
+    {
+        for (var i = 0; i < game.board.rows; i++)
+            for (var j = 0; j < game.board.cols; j++)
+                cells[i,j].clear ();
     }
 
     private bool _show_warnings = false;

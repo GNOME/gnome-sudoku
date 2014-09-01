@@ -322,6 +322,7 @@ public class Sudoku : Gtk.Application
         dialog.response.connect ((response_id) => {
             if (response_id == ResponseType.OK)
             {
+                view.clear ();
                 game.reset ();
                 undo_action.set_enabled (false);
                 redo_action.set_enabled (false);
