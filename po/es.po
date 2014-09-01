@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-games.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-08-26 07:40+0000\n"
-"PO-Revision-Date: 2014-08-26 17:38+0200\n"
+"POT-Creation-Date: 2014-09-01 07:40+0000\n"
+"PO-Revision-Date: 2014-09-01 17:47+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -60,7 +60,7 @@ msgstr ""
 "usted mismo."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:399
+#: ../src/gnome-sudoku.vala:406
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -205,13 +205,6 @@ msgstr "_Número de puzles"
 msgid "Difficulty"
 msgstr "Dificultad"
 
-#: ../lib/sudoku-game.vala:127
-#| msgid "minute"
-msgid "minute"
-msgid_plural "minutes"
-msgstr[0] "minuto"
-msgstr[1] "minutos"
-
 #: ../lib/sudoku-board.vala:543
 msgid "Unknown Difficulty"
 msgstr "Dificultad desconocida"
@@ -233,34 +226,38 @@ msgid "Very Hard Difficulty"
 msgstr "Dificultad muy alta:"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:59
+#: ../src/gnome-sudoku.vala:60
 msgid "Show release version"
 msgstr "Mostrar el número de versión"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:63
+#: ../src/gnome-sudoku.vala:64
 msgid "Show the possible values for each cell"
 msgstr "Mostrar los valores posibles de cada casilla"
 
+#. Text in dialog that displays when the game is over.
 #: ../src/gnome-sudoku.vala:249
 #, c-format
-msgid "Well done, you completed the puzzle in %s"
-msgstr "Bien hecho, ha completado el puzle en %s"
+#| msgid "Well done, you completed the puzzle in %s"
+msgid "Well done, you completed the puzzle in %d minute"
+msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgstr[0] "Bien hecho, ha completado el puzle en %d minuto"
+msgstr[1] "Bien hecho, ha completado el puzle en %d minutos"
 
-#: ../src/gnome-sudoku.vala:251
+#: ../src/gnome-sudoku.vala:254
 msgid "Same difficulty again"
 msgstr "Misma dificultad otra vez"
 
-#: ../src/gnome-sudoku.vala:252
+#: ../src/gnome-sudoku.vala:255
 msgid "New difficulty"
 msgstr "Nueva dificultad:"
 
-#: ../src/gnome-sudoku.vala:315
+#: ../src/gnome-sudoku.vala:318
 msgid "Reset the board to its original state?"
 msgstr "¿Restablecer el tablero a su estado original?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:403
+#: ../src/gnome-sudoku.vala:410
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -271,7 +268,7 @@ msgstr ""
 "\n"
 "Puzles generados por QQwing %s"
 
-#: ../src/gnome-sudoku.vala:408
+#: ../src/gnome-sudoku.vala:415
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>, 2008-2012\n"
@@ -285,9 +282,15 @@ msgid "Clear"
 msgstr "Limpiar"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:30
+#: ../src/sudoku-printer.vala:29
 msgid "Error printing file:"
 msgstr "Error al imprimir el archivo:"
+
+#~| msgid "minute"
+#~ msgid "minute"
+#~ msgid_plural "minutes"
+#~ msgstr[0] "minuto"
+#~ msgstr[1] "minutos"
 
 #~ msgid "minutes"
 #~ msgstr "minutos"
