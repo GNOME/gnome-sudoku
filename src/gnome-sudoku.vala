@@ -46,7 +46,7 @@ public class Sudoku : Gtk.Application
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
-        {"quit", quit_cb                                            }
+        {"quit", quit                                               }
     };
 
     private static const OptionEntry[] option_entries =
@@ -153,13 +153,6 @@ public class Sudoku : Gtk.Application
             start_game (savegame.board);
         else
             show_new_game_screen ();
-
-        window.delete_event.connect ((event) => {
-            if (game != null && !game.board.is_empty () && !game.board.complete)
-                saver.save_game (game);
-
-            return false;
-        });
     }
 
     protected override void activate ()
@@ -169,6 +162,9 @@ public class Sudoku : Gtk.Application
 
     protected override void shutdown ()
     {
+        if (game != null && !game.board.is_empty () && !game.board.complete)
+            saver.save_game (game);
+
         base.shutdown ();
 
         /* Save window state */
@@ -363,12 +359,6 @@ public class Sudoku : Gtk.Application
     {
         var printer = new GamePrinter (saver, ref window);
         printer.run_dialog ();
-    }
-
-    private void quit_cb ()
-    {
-        saver.save_game (game);
-        window.destroy ();
     }
 
     private void help_cb ()
