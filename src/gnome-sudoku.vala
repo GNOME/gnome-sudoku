@@ -1,8 +1,6 @@
 /* -*- Mode: vala; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 using Gtk;
-using Gee;
-using Gdk;
 
 public class Sudoku : Gtk.Application
 {
@@ -110,9 +108,9 @@ public class Sudoku : Gtk.Application
         set_accels_for_action ("app.redo", {"<Primary><Shift>z"});
         set_accels_for_action ("app.help", {"F1"});
 
-        Gtk.Window.set_default_icon_name ("gnome-sudoku");
+        Window.set_default_icon_name ("gnome-sudoku");
 
-        var css_provider = new Gtk.CssProvider ();
+        var css_provider = new CssProvider ();
         try
         {
             /* Pixel-perfect compatibility with games that have a Button without ButtonBox. */
@@ -124,7 +122,7 @@ public class Sudoku : Gtk.Application
         {
             warning ("Error loading css styles: %s", e.message);
         }
-        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), css_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         var builder = new Builder.from_resource ("/org/gnome/sudoku/ui/gnome-sudoku.ui");
 
