@@ -102,13 +102,13 @@ public class Sudoku : Gtk.Application
             view.show_warnings = settings.get_boolean ("show-warnings"));
         add_action (action);
 
-        add_accelerator ("<Primary>z", "app.undo", null);
-        add_accelerator ("<Primary><Shift>z", "app.redo", null);
-        add_accelerator ("<Primary>r", "app.reset", null);
-        add_accelerator ("<Primary>n", "app.new-game", null);
-        add_accelerator ("<Primary>p", "app.print", null);
-        add_accelerator ("<Primary>q", "app.quit", null);
-        add_accelerator ("F1", "app.help", null);
+        set_accels_for_action ("app.new-game", {"<Primary>n"});
+        set_accels_for_action ("app.print", {"<Primary>p"});
+        set_accels_for_action ("app.quit", {"<Primary>q"});
+        set_accels_for_action ("app.reset", {"<Primary>r"});
+        set_accels_for_action ("app.undo", {"<Primary>z"});
+        set_accels_for_action ("app.redo", {"<Primary><Shift>z"});
+        set_accels_for_action ("app.help", {"F1"});
 
         Gtk.Window.set_default_icon_name ("gnome-sudoku");
     }
