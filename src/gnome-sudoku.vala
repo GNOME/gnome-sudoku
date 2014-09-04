@@ -66,6 +66,11 @@ public class Sudoku : Gtk.Application
 
     public Sudoku ()
     {
+        Intl.setlocale (LocaleCategory.ALL, "");
+        Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+        Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+        Intl.textdomain (GETTEXT_PACKAGE);
+
         Object (application_id: "org.gnome.sudoku", flags: ApplicationFlags.FLAGS_NONE);
         add_main_option_entries (option_entries);
     }
@@ -89,11 +94,6 @@ public class Sudoku : Gtk.Application
     {
         base.startup ();
 
-        Intl.setlocale (LocaleCategory.ALL, "");
-        Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-        Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-        Intl.textdomain (GETTEXT_PACKAGE);
-
         add_action_entries (action_entries, this);
 
         settings = new GLib.Settings ("org.gnome.sudoku");
@@ -111,9 +111,7 @@ public class Sudoku : Gtk.Application
         set_accels_for_action ("app.help", {"F1"});
 
         Gtk.Window.set_default_icon_name ("gnome-sudoku");
-    }
 
-    protected override void activate () {
         var css_provider = new Gtk.CssProvider ();
         try
         {
@@ -158,14 +156,17 @@ public class Sudoku : Gtk.Application
         else
             show_new_game_screen ();
 
-        window.show ();
-
         window.delete_event.connect ((event) => {
             if (game != null && !game.board.is_empty () && !game.board.complete)
                 saver.save_game (game);
 
             return false;
         });
+    }
+
+    protected override void activate ()
+    {
+        window.present ();
     }
 
     protected override void shutdown ()
