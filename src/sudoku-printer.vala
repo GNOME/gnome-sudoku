@@ -238,15 +238,7 @@ public class GamePrinter: GLib.Object
         this.window = window;
         this.settings = new GLib.Settings ("org.gnome.sudoku");
 
-        Gtk.Builder builder = new Builder ();
-        try
-        {
-            builder.add_from_resource ("/org/gnome/gnome-sudoku/ui/print-games.ui");
-        }
-        catch (GLib.Error e)
-        {
-            GLib.warning ("Could not load UI: %s", e.message);
-        }
+        Gtk.Builder builder = new Builder.from_resource ("/org/gnome/sudoku/ui/print-games.ui");
         builder.connect_signals (null);
         this.dialog = builder.get_object ("dialog") as Dialog;
         dialog.set_transient_for (window);

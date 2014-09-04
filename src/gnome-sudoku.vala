@@ -11,8 +11,6 @@ public class Sudoku : Gtk.Application
     private int window_width;
     private int window_height;
 
-    private Builder builder;
-
     private ApplicationWindow window;
 
     // The current game and view, if they exist
@@ -116,8 +114,6 @@ public class Sudoku : Gtk.Application
     }
 
     protected override void activate () {
-        builder = new Builder ();
-
         var css_provider = new Gtk.CssProvider ();
         try
         {
@@ -132,15 +128,8 @@ public class Sudoku : Gtk.Application
         }
         Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        try
-        {
-            builder.add_from_resource ("/org/gnome/gnome-sudoku/ui/gnome-sudoku.ui");
-            builder.add_from_resource ("/org/gnome/gnome-sudoku/ui/gnome-sudoku-menu.ui");
-        }
-        catch (GLib.Error e)
-        {
-            GLib.warning ("Could not load UI: %s", e.message);
-        }
+        var builder = new Builder.from_resource ("/org/gnome/sudoku/ui/gnome-sudoku.ui");
+
         window = (ApplicationWindow) builder.get_object ("sudoku_app");
         window.configure_event.connect (window_configure_event_cb);
         window.window_state_event.connect (window_state_event_cb);
@@ -149,8 +138,6 @@ public class Sudoku : Gtk.Application
             window.maximize ();
 
         add_window (window);
-
-        set_app_menu (builder.get_object ("sudoku-menu") as MenuModel);
 
         header_bar = (HeaderBar) builder.get_object ("headerbar");
         main_stack = (Stack) builder.get_object ("main_stack");
