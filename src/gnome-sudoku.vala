@@ -361,7 +361,7 @@ public class Sudoku : Gtk.Application
             return;
         print_action.set_enabled (false);
         print_multiple_action.set_enabled (false);
-        var printer = new SudokuPrinter ({game.board.clone ()}, ref window);
+        var printer = new SudokuPrinter ({game.board.clone ()}, (Window) window);
         printer.print_sudoku ();
         print_action.set_enabled (true);
         print_multiple_action.set_enabled (true);
@@ -369,8 +369,14 @@ public class Sudoku : Gtk.Application
 
     private void print_multiple_cb ()
     {
+        print_action.set_enabled (false);
+        print_multiple_action.set_enabled (false);
         var printer = new GamePrinter (saver, ref window);
         printer.run_dialog ();
+        printer.game_printer_closed.connect ((p) => {
+            this.print_action.set_enabled (main_stack.get_visible_child_name () == "frame");
+            this.print_multiple_action.set_enabled (true);
+        });
     }
 
     private void help_cb ()

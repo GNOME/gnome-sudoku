@@ -6,7 +6,7 @@ using Gdk;
 public class SudokuPrinter : GLib.Object {
 
     private SudokuBoard[] boards;
-    private ApplicationWindow window;
+    private Gtk.Window window;
 
     private int margin;
     private int n_sudokus;
@@ -32,7 +32,7 @@ public class SudokuPrinter : GLib.Object {
         return Gtk.PrintOperationResult.ERROR;
     }
 
-    public SudokuPrinter (SudokuBoard[] boards, ref ApplicationWindow window)
+    public SudokuPrinter (SudokuBoard[] boards, Gtk.Window window)
     {
         this.boards = boards;
         this.window = window;
@@ -233,6 +233,8 @@ public class GamePrinter: GLib.Object
 
     private Spinner spinner;
 
+    public signal void game_printer_closed ();
+
     private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
 
     public GamePrinter (SudokuSaver saver, ref ApplicationWindow window)
@@ -281,6 +283,7 @@ public class GamePrinter: GLib.Object
         if (response != Gtk.ResponseType.ACCEPT && response != Gtk.ResponseType.OK)
         {
             dialog.hide ();
+            game_printer_closed ();
             return;
         }
 
@@ -314,11 +317,12 @@ public class GamePrinter: GLib.Object
                 spinner.hide ();
                 dialog.sensitive = true;
 
-                SudokuPrinter printer = new SudokuPrinter (boards, ref window);
+                SudokuPrinter printer = new SudokuPrinter (boards, (Gtk.Window) dialog);
                 PrintOperationResult result = printer.print_sudoku ();
                 if (result == PrintOperationResult.APPLY)
                 {
                     dialog.hide ();
+                    game_printer_closed ();
                     foreach (SudokuBoard board in boards)
                         saver.add_game_to_finished (new SudokuGame (board));
                 }
