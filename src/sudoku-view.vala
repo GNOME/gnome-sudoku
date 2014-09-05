@@ -116,7 +116,11 @@ private class SudokuCellView : Gtk.DrawingArea
 
         earmark_picker = new NumberPicker (ref game.board, true);
         earmark_picker.earmark_state_changed.connect ((number, state) => {
-            this.game.board.earmarks[row, col, number-1] = state;
+            if (state)
+                this.game.board.enable_earmark(row, col, number);
+            else
+                this.game.board.disable_earmark(row, col, number);
+            this.game.cell_changed(row, col, value, value);
             queue_draw ();
         });
         earmark_picker.set_earmarks (row, col);
@@ -225,10 +229,13 @@ private class SudokuCellView : Gtk.DrawingArea
         {
             if ((event.state & ModifierType.CONTROL_MASK) > 0)
             {
-                var new_state = !game.board.earmarks[row, col, k_no-1];
+                var new_state = !game.board.is_earmark_enabled(row, col, k_no);
                 if (earmark_picker.set_earmark (row, col, k_no-1, new_state))
                 {
-                    game.board.earmarks[row, col, k_no-1] = new_state;
+                    if (new_state)
+                        game.board.enable_earmark(row, col, k_no);
+                    else
+                        game.board.disable_earmark(row, col, k_no);
                     queue_draw ();
                 }
             }

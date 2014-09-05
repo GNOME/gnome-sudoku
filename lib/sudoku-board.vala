@@ -12,7 +12,8 @@ public class SudokuBoard : Object
     private bool[,] possible_in_col;            /* if specific value is possible in specific col */
     private bool[,,] possible_in_block;         /* if specific value is possible in specific block */
 
-    public bool[,,] earmarks;                  /* Earmarks set by the user */
+    private bool[,,] earmarks;                  /* Earmarks set by the user */
+    private int n_earmarks;                     /* The number of earmarks on the board */
 
     public double previous_played_time { set; get; default = 0; }
 
@@ -54,7 +55,7 @@ public class SudokuBoard : Object
 
     public bool is_empty ()
     {
-        return filled == fixed;
+        return filled == fixed && n_earmarks == 0;
     }
 
     public signal void completed ();
@@ -163,11 +164,37 @@ public class SudokuBoard : Object
         board.possible_in_block = possible_in_block;
         board.filled = filled;
         board.fixed = fixed;
+        board.n_earmarks = n_earmarks;
         board.broken_coords.add_all (broken_coords);
         board.earmarks = earmarks;
         board.difficulty_category = difficulty_category;
 
         return board;
+    }
+
+    public void enable_earmark (int row, int column, int digit)
+        ensures (n_earmarks > 0)
+    {
+        if (!earmarks[row, column, digit-1])
+        {
+            earmarks[row, column, digit-1] = true;
+            n_earmarks++;
+        }
+    }
+
+    public void disable_earmark (int row, int column, int digit)
+        ensures (n_earmarks >= 0)
+    {
+        if (earmarks[row, column, digit-1])
+        {
+            earmarks[row, column, digit-1] = false;
+            n_earmarks--;
+        }
+    }
+
+    public bool is_earmark_enabled (int row, int column, int digit)
+    {
+        return earmarks[row, column, digit-1];
     }
 
     public bool is_possible (int row, int col, int val)

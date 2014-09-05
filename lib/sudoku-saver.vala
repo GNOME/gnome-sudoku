@@ -98,8 +98,8 @@ public class SudokuSaver : Object
             for (var j = 0; j < board.cols; j++)
             {
                 int[] earmarks = {};
-                for (var k = 0; k < board.max_val; k++)
-                    if (board.earmarks[i, j, k])
+                for (var k = 1; k <= board.max_val; k++)
+                    if (board.is_earmark_enabled(i, j, k))
                         earmarks += k;
 
                 if (board_cells[i, j] == 0 && earmarks.length == 0)
@@ -191,7 +191,7 @@ public class SudokuSaver : Object
             {
                 reader.read_element (k);
                 return_val_if_fail (reader.is_value (), null);
-                board.earmarks[row, col, (int) reader.get_int_value ()] = true;
+                board.enable_earmark (row, col, (int) reader.get_int_value ());
                 reader.end_element ();
             }
             reader.end_member ();
