@@ -185,18 +185,21 @@ public class SudokuPrinter : GLib.Object {
         Cairo.TextExtents extents;
         var sudoku = sudoku_board.get_cells ();
 
+        var invert = Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL;
+
         for (var x = 0; x < SUDOKU_SIZE; x++)
         {
+            var real_x = invert ? SUDOKU_SIZE - x - 1 : x;
             for (var y = 0; y < SUDOKU_SIZE; y++)
             {
                 cr.move_to (pos[x] + offset_x, pos[y] + offset_y);
                 letter = "";
 
-                if (sudoku[y,x] != 0)
+                if (sudoku[y,real_x] != 0)
                 {
-                    letter = (sudoku[y,x]).to_string ();
+                    letter = (sudoku[y,real_x]).to_string ();
 
-                    if (sudoku_board.is_fixed[y,x])
+                    if (sudoku_board.is_fixed[y,real_x])
                     {
                         cr.select_font_face ("Sans", Cairo.FontSlant.NORMAL, FONT_WEIGHT);
                         cr.set_source_rgb (0, 0, 0);
