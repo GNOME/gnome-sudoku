@@ -79,6 +79,7 @@ public class SudokuGame : Object
                 }
             }
         }
+        board.broken_coords.clear ();
     }
 
     public void cell_changed_cb (int row, int col, int old_val, int new_val)
