@@ -162,15 +162,32 @@ public class Sudoku : Gtk.Application
 
     protected override void shutdown ()
     {
-        if (game != null && !game.board.is_empty () && !game.board.complete)
-            saver.save_game (game);
+        if (game != null)
+        {
+            if (!game.board.is_empty () && !game.board.complete)
+                saver.save_game (game);
 
-        base.shutdown ();
+            if (game.board.is_empty () && saver.get_savedgame () != null)
+            {
+                var file = File.new_for_path (SudokuSaver.savegame_file);
+
+                try
+                {
+                    file.delete ();
+                }
+                catch (Error e)
+                {
+                    warning ("Failed to delete saved game: %s", e.message);
+                }
+            }
+        }
 
         /* Save window state */
         settings.set_int ("window-width", window_width);
         settings.set_int ("window-height", window_height);
         settings.set_boolean ("window-is-maximized", is_maximized);
+
+        base.shutdown ();
     }
 
     private bool window_configure_event_cb (Gdk.EventConfigure event)
