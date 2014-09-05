@@ -8,10 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-22 20:40+0000\n"
-"PO-Revision-Date: 2014-03-23 14:10+0700\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-sudoku&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-09-04 07:40+0000\n"
+"PO-Revision-Date: 2014-09-05 11:45+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -22,43 +21,24 @@ msgstr ""
 "X-Rosetta-Export-Date: 2007-04-23 05:58:10+0000\n"
 "X-Generator: Poedit 1.5.7\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
-msgid ""
-"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
-"make playing Sudoku fun. Games are automatically saved when you quit, and "
-"you can always come back to any game that you've played."
-msgstr ""
-"GNOME Sudoku memiliki antar muka sederhana dan polos dengan semua fitur yang "
-"menjadikan bermain Sudoku menyenangkan. Permainan disimpan secara otomatis "
-"ketika Anda keluar, dan Anda selalu bisa kembali ke sebarang permainan yang "
-"telah Anda mainkan."
+msgid "Play the popular Japanese logic game. GNOME Sudoku is a must-install for Sudoku lovers, with a simple, unobtrusive interface that makes playing Sudoku fun for players of any skill level."
+msgstr "Memainkan permainan logika Jepang yang populer. GNOME Sudoku mesti dipasang bagi para pecinta Sudoku, dengan antar muka yang sederhana, tak mencolok, yang membuat bermain Sudoku menarik bagi pemain dengan tingkat ketrampilan apapun."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites. You can also see detailed information about how the computer "
-"solved the puzzle."
-msgstr ""
-"Setiap permainan diberi tingkat kesulitan mirip dengan yang diberikan oleh "
-"surat kabar dan situs web. Anda juga bisa melihat informasi terrinci tentang "
-"bagaimana komputer memecahkan teka-teki tersebut."
+msgid "Each game is assigned a difficulty similar to those given by newspapers and websites, so your game will be as easy or as difficult as you want it to be."
+msgstr "Setiap permainan diberi tingkat kesulitan mirip dengan yang diberikan oleh surat kabar dan situs web, sehingga permainan Anda bisa semudah atau sesulit yang Anda inginkan."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"Bila Anda suka bermain pada kertas, Anda dapat mencetak permainan. Anda "
-"dapat memilih berapa banyak permainan yang ingin Anda cetak per halaman dan "
-"pada tingkat kesulitan apa: sebagai hasilnya, GNOME Sudoku bisa berlaku "
-"sebagai buku Sudoku yang dapat diperbarui bagi Anda."
+msgid "If you like to play on paper, you can print games out. You can choose how many games you want to print per page and what difficulty of games you want to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr "Bila Anda suka bermain pada kertas, Anda dapat mencetak permainan. Anda dapat memilih berapa banyak permainan yang ingin Anda cetak per halaman dan pada tingkat kesulitan apa: sebagai hasilnya, GNOME Sudoku bisa berlaku sebagai buku Sudoku yang dapat diperbarui bagi Anda."
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:406
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -67,443 +47,195 @@ msgid "Test your logic skills in this number grid puzzle"
 msgstr "Uji kemampuan logika anda dalam teka-teki ini"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "permainan;papan;ubin;jepang;"
+msgid "magic;square;"
+msgstr "sulap;kotak;"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
-msgid "The number of seconds between automatic saves"
-msgstr "Cacah detik antara penyimpanan otomatis"
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+msgid "_Print"
+msgstr "_Cetak"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
-msgid "Print games that have been played"
-msgstr "Cetak permainan yang telah dimainkan"
+#: ../data/gnome-sudoku-menu.ui.h:2
+msgid "Print _Current Puzzle…"
+msgstr "_Cetak Teka-teki Ini…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
-msgid "Mark printed games as played"
-msgstr "Tandai permainan yang dicetak sebagai telah dimainkan"
+#: ../data/gnome-sudoku-menu.ui.h:3
+msgid "Print _Multiple Puzzles…"
+msgstr "Cetak _Beberapa Teka-teki…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
-msgid "Width of application window in pixels"
-msgstr "Lebar jendela aplikasi dalam piksel"
+#: ../data/gnome-sudoku-menu.ui.h:4
+msgid "_Show Warnings"
+msgstr "Tampilkan _Peringatan"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
-msgid "Height of application window in pixels"
-msgstr "Tinggi jendela aplikasi dalam piksel"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
-msgid "Show hint highlights"
-msgstr "Tampilkan sorotan petunjuk"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
-msgid "Color of the grid border"
-msgstr "Warnai tepi kisi"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
-msgid "Show the application toolbar"
-msgstr "Tampilkan bilah alat aplikasi"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
-msgid "Show hints"
-msgstr "Tampilkan petunjuk"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
-msgid "Number of puzzles to print on a page"
-msgstr "Cacah teka-teki yang dicetak pada suatu halaman"
-
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "Cetak Sudoku"
-
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "Cetak Permainan"
-
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "Jumlah sudoku u_ntuk dicetak: "
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "_Sudoku per halaman: "
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "tingkat kesulitan untuk diprint"
-
-#: ../data/print_games.ui.h:6
-msgid "_Easy"
-msgstr "_Mudah"
-
-#: ../data/print_games.ui.h:7
-msgid "_Medium"
-msgstr "_Sedang"
-
-#: ../data/print_games.ui.h:8
-msgid "_Hard"
-msgstr "_Sulit"
-
-#: ../data/print_games.ui.h:9
-msgid "_Very Hard"
-msgstr "S_angat sulit"
-
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "Rincian"
-
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "Tandai per_mainan setelah anda mencetak permainannya."
-
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr ""
-"Masukkan perma_inan yang telah anda mainkan ke daftar permainan untuk dicetak"
-
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "Mai_nkan Permainan Baru"
-
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "Permainan Ter_simpan"
-
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "Tambah sebuah pelacak"
-
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "Buang pelacak yang dipilih"
-
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "Buat perubahan terlacak menjadi permanen"
-
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
-msgid "H_ide"
-msgstr "Sembuny_ikan"
-
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "Sembunyikan nilai pelacak"
-
-#: ../src/lib/defaults.py:50
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"GNOME Sudoku is a part of GNOME Games."
-msgstr ""
-"Teka-teki logika Jepang yang populer\n"
-"\n"
-"GNOME Sudoku adalah bagian dari Permainan GNOME."
-
-#: ../src/lib/defaults.py:53
-msgid "Website"
-msgstr "Situs web"
-
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "Mudah"
-
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "Sedang"
-
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "Sulit"
-
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "Sangat sulit"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "Terakhir dimainkan %(n)s detik lalu"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "Terakhir dimainkan %(n)s menit lalu"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "Terakhir dimainkan pada %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "Terakhir diaminkan kemarin pada %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "Terakhir dimainkan %A pada %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "Terakhir dimainkan pada %B %e %Y"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "Teka-teki mudah"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "Teka-teki sedang"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "Teka-teki sulit"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "Teka-teki sangat sulit"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "Dimainkan %d jam"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "Dimainkan %d menit"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "Dimainkan %d detik"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "Apakah ingin melakukan ini?"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "Jangan tanya saya lagi."
-
-#: ../src/lib/main.py:196
-msgid "_Game"
-msgstr "_Permainan"
-
-#: ../src/lib/main.py:197
-msgid "New game"
-msgstr "Permainan Baru"
-
-#: ../src/lib/main.py:198
-msgid "_Reset"
-msgstr "_Reset"
-
-#: ../src/lib/main.py:200
-msgid "_Undo"
-msgstr "_Batalkan"
-
-#: ../src/lib/main.py:201
-msgid "Undo last action"
-msgstr "Batalkan langkah terakhir"
-
-#: ../src/lib/main.py:202
-msgid "_Redo"
-msgstr "Jadi _Lagi"
-
-#: ../src/lib/main.py:203
-msgid "Redo last action"
-msgstr "Ulangi langkah terakhir"
-
-#: ../src/lib/main.py:204
-msgid "Puzzle _Statistics..."
-msgstr "_Statistik Teka-teki…"
-
-#: ../src/lib/main.py:206
-msgid "_Print..."
-msgstr "_Cetak…"
-
-#: ../src/lib/main.py:207
-msgid "Print _Multiple Sudokus..."
-msgstr "Cetak _Beberapa Sudoku…"
-
-#: ../src/lib/main.py:210
-msgid "_Settings"
-msgstr "_Pengaturan"
-
-#: ../src/lib/main.py:212
-msgid "_Tools"
-msgstr "Ala_t"
-
-#: ../src/lib/main.py:213
-msgid "_Hint"
-msgstr "_Petunjuk"
-
-#: ../src/lib/main.py:214
-msgid "Show a square that is easy to fill."
-msgstr "Tunjukkan petak yang mudah diisi."
-
-#: ../src/lib/main.py:215
-msgid "Clear _Top Notes"
-msgstr "Kosongkan Baris A_tas"
-
-#: ../src/lib/main.py:217
-msgid "Clear _Bottom Notes"
-msgstr "Kosongkan Baris _Bawah"
-
-#: ../src/lib/main.py:219
+#: ../data/gnome-sudoku-menu.ui.h:5
 msgid "_Help"
 msgstr "_Bantuan"
 
-#: ../src/lib/main.py:220
-msgid "_Contents"
-msgstr "Daftar _Isi"
+#: ../data/gnome-sudoku-menu.ui.h:6
+msgid "_About"
+msgstr "Tent_ang"
 
-#: ../src/lib/main.py:226
-msgid "Show _Possible Numbers"
-msgstr "Tunjukkan Angka Yang _Mungkin"
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_Quit"
+msgstr "_Keluar"
 
-#: ../src/lib/main.py:228
-msgid "Always show possible numbers in a square"
-msgstr "Selalu tunjukkan kemungkinan angka dalam kotak"
+#: ../data/gnome-sudoku.ui.h:2
+msgid "Undo your last action"
+msgstr "Tak jadikan aksi terakhir"
 
-#: ../src/lib/main.py:232
-msgid "Warn About _Unfillable Squares"
-msgstr "_Peringatkan Tentang Kotak Yang Tidak Dapat Diisi"
+#: ../data/gnome-sudoku.ui.h:3
+msgid "Redo your last action"
+msgstr "Ulangi langkah terakhir"
 
-#: ../src/lib/main.py:234
-msgid "Warn about squares made unfillable by a move"
-msgstr "Peringatkan tentan kotak yang dibuat tidak dapat diisi oleh langkah"
+#: ../data/gnome-sudoku.ui.h:4
+msgid "Go back to the current game"
+msgstr "Kembali ke permainan saat ini"
 
-#: ../src/lib/main.py:236
-msgid "_Track Additions"
-msgstr "_Lacak Penambahan"
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+msgid "_Easy"
+msgstr "_Mudah"
 
-#: ../src/lib/main.py:238
-msgid "Mark new additions in a separate color so you can keep track of them."
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+msgid "_Medium"
+msgstr "_Sedang"
+
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+msgid "_Hard"
+msgstr "_Sulit"
+
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+msgid "_Very Hard"
+msgstr "S_angat sulit"
+
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Clear Board"
+msgstr "_Kosongkan Papan"
+
+#: ../data/gnome-sudoku.ui.h:10
+msgid "Reset the board to its original state"
+msgstr "Reset papan ke keadaan aslinya"
+
+#: ../data/gnome-sudoku.ui.h:11
+msgid "_New Puzzle"
+msgstr "Teka-teki _Baru"
+
+#: ../data/gnome-sudoku.ui.h:12
+msgid "Start a new puzzle"
+msgstr "Mulai teka-teki baru"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
+msgid "Difficulty level of sudokus to be printed"
+msgstr "Tingkat kesulitan sudoku yang akan dicetak"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+msgid "Set the difficulty level of the sudokus you want to print. Possible values are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+msgstr "Atur tingkat kesulitan sudoku yang ingin Anda cetak. Nilai yang mungkin adalah - \"easy\", \"medium\", \"hard\", \"very_hard\""
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+msgid "Number of Sudokus to print"
+msgstr "Cacak Sudoku yang akan dicetak"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:4
+msgid "Set the number of sudokus you want to print"
+msgstr "Atur cacah sudoku yang ingin Anda cetak"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:5
+msgid "Warn about unfillable squares and duplicate numbers"
+msgstr "Peringatkan tentang kotak yang tak dapat diisi dan angka duplikat"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:6
+msgid "Displays a big red X in a square if it cannot possibly be filled by any number and duplicate numbers are highlighted in red"
+msgstr "Tampilkan sebuah X besar merah pada suatu kotak bila itu tak mungkin diisi oleh sebarang bilangan dan bilangan yang duplikat disorot merah"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Width of the window in pixels"
+msgstr "Lebar jendela dalam piksel"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
+msgid "Height of the window in pixels"
+msgstr "Tinggi jendela dalam piksel"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
+msgid "true if the window is maximized"
+msgstr "true bila jendela dimaksimalkan"
+
+#: ../data/print-games.ui.h:1
+msgid "Print Multiple Puzzles"
+msgstr "Cetak Beberapa Teka-teki"
+
+#: ../data/print-games.ui.h:3
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: ../data/print-games.ui.h:4
+msgid "_Number of puzzles"
+msgstr "_Cacah teka-teki"
+
+#: ../data/print-games.ui.h:5
+msgid "Difficulty"
+msgstr "Kesulitan"
+
+#: ../lib/sudoku-board.vala:543
+msgid "Unknown Difficulty"
+msgstr "Kesulitan Tak Diketahui"
+
+#: ../lib/sudoku-board.vala:545
+msgid "Easy Difficulty"
+msgstr "Kesulitan Rendah"
+
+#: ../lib/sudoku-board.vala:547
+msgid "Medium Difficulty"
+msgstr "Kesulitan Sedang"
+
+#: ../lib/sudoku-board.vala:549
+msgid "Hard Difficulty"
+msgstr "Kesulitan Tinggi"
+
+#: ../lib/sudoku-board.vala:551
+msgid "Very Hard Difficulty"
+msgstr "Kesulitan Sangat Tinggi"
+
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:60
+msgid "Show release version"
+msgstr "Tampilkan versi rilis"
+
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:64
+msgid "Show the possible values for each cell"
+msgstr "Tampilkan nilai-nilai yang mungkin bagi setiap sel"
+
+#. Text in dialog that displays when the game is over.
+#: ../src/gnome-sudoku.vala:249
+#, c-format
+msgid "Well done, you completed the puzzle in %d minute"
+msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgstr[0] "Selamat, Anda menyelesaikan teka-teki dalam %d menit"
+
+#: ../src/gnome-sudoku.vala:254
+msgid "Same difficulty again"
+msgstr "Kesulitan yang sama lagi"
+
+#: ../src/gnome-sudoku.vala:255
+msgid "New difficulty"
+msgstr "Kesulitan baru"
+
+#: ../src/gnome-sudoku.vala:318
+msgid "Reset the board to its original state?"
+msgstr "Reset papan ke keadaan aslinya?"
+
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: ../src/gnome-sudoku.vala:410
+#, c-format
+msgid ""
+"The popular Japanese logic puzzle\n"
+"\n"
+"Puzzles generated by QQwing %s"
 msgstr ""
-"Tandai penambahan baru dengan warna berbeda sehingga anda dapat melacaknya."
+"Teka-teki logika Jepang yang populer\n"
+"\n"
+"Teka-teki dihasilkan oleh QQwing %s"
 
-#: ../src/lib/main.py:240
-msgid "Show _Toolbar"
-msgstr "_Tampilkan Kotak Peralatan"
-
-#: ../src/lib/main.py:241
-msgid "_Highlighter"
-msgstr "_Penyorot"
-
-#: ../src/lib/main.py:242
-msgid "Highlight the current row, column and box"
-msgstr "Sorot baris, kolom dan kotak saat ini"
-
-#: ../src/lib/main.py:367
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "Anda menyelesaikan teka-teki dalam %d detik"
-
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d menit"
-
-#: ../src/lib/main.py:373 ../src/lib/main.py:381
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d detik"
-
-#: ../src/lib/main.py:374
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "Anda menyelesaikan teka-teki dalam %(minute)s dan %(second)s"
-
-#: ../src/lib/main.py:379
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d jam"
-
-#: ../src/lib/main.py:382
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "Anda menyelesaikan teka-teki dalam %(hour)s, %(minute)s dan %(second)s"
-
-#: ../src/lib/main.py:384
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "Anda memakai %(n)s petunjuk"
-
-#: ../src/lib/main.py:387
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "Anda memakai %(n)s ketidakmungkinan yang ditunjukkan."
-
-#: ../src/lib/main.py:392
-msgid "You win!"
-msgstr "Anda menang!"
-
-#: ../src/lib/main.py:402
-msgid "Save this game before starting new one?"
-msgstr "Simpan permainan ini sebelum memulai yang baru?"
-
-#: ../src/lib/main.py:403
-msgid "_Save game for later"
-msgstr "_Simpan permainan untuk dimainkan lain waktu"
-
-#: ../src/lib/main.py:404
-msgid "_Abandon game"
-msgstr "Tingg_alkan permainan"
-
-#: ../src/lib/main.py:422
-msgid "Save game before closing?"
-msgstr "Simpan permainan ini sebelum menutup?"
-
-#: ../src/lib/main.py:620
-msgid "Puzzle Information"
-msgstr "Informasi Teka-teki"
-
-#: ../src/lib/main.py:621
-msgid "There is no current puzzle."
-msgstr "Tidak ada teka-teki sekarang."
-
-#: ../src/lib/main.py:626
-msgid "Calculated difficulty: "
-msgstr "Hitung kesulitan: "
-
-#: ../src/lib/main.py:631
-msgid "Very Hard"
-msgstr "Sangat Sulit"
-
-#: ../src/lib/main.py:636
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "Jumlah langkah yang dapat diisi secara langsung dengan eliminasi: "
-
-#: ../src/lib/main.py:639
-msgid "Number of moves instantly fillable by filling: "
-msgstr "Jumlah langkah yang dapat diisi secara langsung dengan pengisian: "
-
-#: ../src/lib/main.py:642
-msgid "Amount of trial-and-error required to solve: "
-msgstr "Jumlah pencobaan dan galat yang dibutuhkan untuk menyelesaikan: "
-
-#: ../src/lib/main.py:645 ../src/lib/main.py:646
-msgid "Puzzle Statistics"
-msgstr "Statistik Teka-teki"
-
-#: ../src/lib/main.py:670
+#: ../src/gnome-sudoku.vala:415
 msgid "translator-credits"
 msgstr ""
 "Mohammad DAMT <mdamt@bisnisweb.com>\n"
@@ -512,85 +244,12 @@ msgstr ""
 "Vincent Sebastian The <vincent.s.the@gmail.com>, 2011, 2012.\n"
 "Dirgita <dirgitadevina@yahoo.co.id>, 2012."
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:680
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "Tidak bisa menampilkan bantuan: %s"
+#: ../src/number-picker.vala:70
+msgid "Clear"
+msgstr "Bersih"
 
-#: ../src/lib/main.py:736
-msgid "Untracked"
-msgstr "Tidak dilacak"
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:29
+msgid "Error printing file:"
+msgstr "Galat saat mencetak berkas:"
 
-#: ../src/lib/main.py:745
-msgid "_Remove"
-msgstr "_Hapus"
-
-#: ../src/lib/main.py:746
-msgid "Delete selected tracker."
-msgstr "Hapus pelacak yang dipilih."
-
-#: ../src/lib/main.py:752
-msgid "Hide current tracker entries."
-msgstr "Sembunyikan entri pelacak saat ini."
-
-#: ../src/lib/main.py:757
-msgid "A_pply"
-msgstr "Tera_pkan"
-
-#: ../src/lib/main.py:758
-msgid "Apply all tracked values and remove the tracker."
-msgstr "Terapkan semua nilai yang dilacak dan hapuskan pelacak."
-
-#: ../src/lib/main.py:796
-#, python-format
-msgid "Tracker %s"
-msgstr "Pelacak %s"
-
-#: ../src/lib/number_box.py:82
-msgid "_Clear"
-msgstr "_Kosongkan"
-
-#: ../src/lib/saver.py:151
-msgid "No Space"
-msgstr "Tidak ada Ruang"
-
-#: ../src/lib/saver.py:152
-msgid "No space left on disk"
-msgstr "Tidak ada ruang tersisa dalam disk!"
-
-#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "Tidak dapat membuat folder data %(path)s."
-
-#: ../src/lib/saver.py:155
-msgid "There is no disk space left!"
-msgstr "Tidak ada ruang tersisa dalam disk!"
-
-#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
-msgid "Error creating directory"
-msgstr "Galat saat membuat direktori"
-
-#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
-#: ../src/lib/saver.py:229
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "Error %(errno)s: %(error)s"
-
-#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
-msgid "Unable to save game."
-msgstr "Tidak bisa menyimpan permainan."
-
-#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "Tidak dapat menyimpan berkas %(filename)s."
-
-#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
-msgid "Unable to mark game as finished."
-msgstr "Tidak bisa menandakan permainan sebagai terselesaikan."
-
-#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
-msgid "Sudoku unable to mark game as finished."
-msgstr "Sudoku tidak dapat menandakan permainan sebagai terselesaikan."
