@@ -262,13 +262,7 @@ public class Sudoku : Gtk.Application
                         start_game (SudokuGenerator.generate_board (board.difficulty_category));
                         break;
                     case 1:
-                        // FIXME - This looks hack-ish
-                        DifficultyCategory[] new_range = {};
-                        for (var i = 1; i < 5; i++)
-                            if (i != (int) board.difficulty_category)
-                                new_range += (DifficultyCategory) i;
-
-                        start_game (SudokuGenerator.generate_board (new_range[Random.int_range (0, 3)]));
+                        show_new_game_screen ();
                         break;
                 }
                 dialog.destroy ();
