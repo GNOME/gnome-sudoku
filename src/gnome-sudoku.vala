@@ -294,24 +294,19 @@ public class Sudoku : Gtk.Application
 
             /* Text in dialog that displays when the game is over. */
             var minutes = int.max (1, (int) game.get_total_time_played () / 60);
-            var time_str = ngettext ("Well done, you completed the puzzle in %d minute",
-                                     "Well done, you completed the puzzle in %d minutes",
+            var time_str = ngettext ("Well done, you completed the puzzle in %d minute!",
+                                     "Well done, you completed the puzzle in %d minutes!",
                                      minutes).printf (minutes);
             var dialog = new MessageDialog (window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, time_str);
 
-            dialog.add_button (_("Same difficulty again"), 0);
-            dialog.add_button (_("New difficulty"), 1);
+            dialog.add_button (_("Play _Again"), Gtk.ResponseType.ACCEPT);
+            dialog.add_button (_("_Quit"), Gtk.ResponseType.REJECT);
 
             dialog.response.connect ((response_id) => {
-                switch (response_id)
-                {
-                    case 0:
-                        start_game (SudokuGenerator.generate_board (board.difficulty_category));
-                        break;
-                    case 1:
-                        show_new_game_screen ();
-                        break;
-                }
+                if (response_id == Gtk.ResponseType.ACCEPT)
+                    show_new_game_screen ();
+                else if (response_id == Gtk.ResponseType.REJECT)
+                    quit ();
                 dialog.destroy ();
             });
 
