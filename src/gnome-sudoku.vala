@@ -246,9 +246,10 @@ public class Sudoku : Gtk.Application
             saver.add_game_to_finished (game, true);
 
             /* Text in dialog that displays when the game is over. */
+            var minutes = int.max (1, (int) game.get_total_time_played () / 60);
             var time_str = ngettext ("Well done, you completed the puzzle in %d minute",
                                      "Well done, you completed the puzzle in %d minutes",
-                                     int.max (1, (int) game.get_total_time_played () / 60));
+                                     minutes).printf (minutes);
             var dialog = new MessageDialog (window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, time_str);
 
             dialog.add_button (_("Same difficulty again"), 0);
