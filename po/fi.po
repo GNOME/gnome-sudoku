@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-16 20:32+0000\n"
-"PO-Revision-Date: 2014-03-16 23:12+0200\n"
+"POT-Creation-Date: 2014-09-11 07:39+0000\n"
+"PO-Revision-Date: 2014-09-11 11:27+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
@@ -28,23 +28,27 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.6\n"
 "X-POT-Import-Date: 2012-03-05 14:46:29+0000\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "Sudoku"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
 msgid ""
-"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
-"make playing Sudoku fun. Games are automatically saved when you quit, and "
-"you can always come back to any game that you've played."
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
 msgstr ""
+"Pelaa suosittua japanilaista logiikkapeliä. Gnomen Sudoku on lähes "
+"pakollinen asennus kaikille Sudoku-harrastajille. Selkeä käyttöliittymä "
+"tekee pelaamisesta hauskaa, oli pelaajan taitotaso mikä hyvänsä."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
-"websites. You can also see detailed information about how the computer "
-"solved the puzzle."
+"websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
+"Jokainen peli on niin haastava, kuin asetat vaikeustasoksi. Haasta siis "
+"itsesi!"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
@@ -52,8 +56,12 @@ msgid ""
 "many games you want to print per page and what difficulty of games you want "
 "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
 msgstr ""
+"Jos tykkäät pelata mieluummin paperia ja kynää käyttäen, voit myös tulostaa "
+"sudokuja. Voit valita sivulle tulostettavien sudokujen määrän ja "
+"vaikeustason."
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:398
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -62,465 +70,238 @@ msgid "Test your logic skills in this number grid puzzle"
 msgstr "Testaa logiikkakykyjäsi numeroruudukkopelissä"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "game;board;tiles;japanese;peli;lautapeli;japanilainen;"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
-#, fuzzy
-#| msgid "The number of mines in a custom game"
-msgid "The number of seconds between automatic saves"
-msgstr "Omassa pelissä määritelty miinojen lukumäärä"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
-#| msgid "_Warn if too many flags have been placed"
-msgid "Print games that have been played"
-msgstr "Tulosta pelatut pelit"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
-msgid "Mark printed games as played"
-msgstr "Merkitse tulostetut pelit pelatuiksi"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
-#| msgid "Width of the window in pixels"
-msgid "Width of application window in pixels"
-msgstr "Sovelluksen ikkunan leveys kuvapisteinä"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
-#| msgid "Height of the window in pixels"
-msgid "Height of application window in pixels"
-msgstr "Sovelluksen ikkunan korkeus kuvapisteinä"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
-msgid "Show hint highlights"
-msgstr ""
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
-#, fuzzy
-#| msgid "Color to use for worm"
-msgid "Color of the grid border"
-msgstr "Käytettävä madon väri"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
-#| msgid "Show or hide the toolbar"
-msgid "Show the application toolbar"
-msgstr "Näytä sovelluksen työkalupalkki"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
-#| msgid "Show a hint"
-msgid "Show hints"
-msgstr "Näytä vihjeet"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
-#| msgid "_Number of sudoku to print: "
-msgid "Number of puzzles to print on a page"
-msgstr "Sivulle tulostettavien sudokujen _lukumäärä"
-
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "Tulosta sudokut"
-
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "Tulosta pelejä"
-
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "Tulostettavien sudokujen _lukumäärä: "
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "_Sudokuja sivua kohti: "
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "Tulostettavat vaikeustasot"
-
-#: ../data/print_games.ui.h:6
-msgid "_Easy"
-msgstr "H_elppo"
-
-#: ../data/print_games.ui.h:7
-msgid "_Medium"
-msgstr "_Keskitaso"
-
-#: ../data/print_games.ui.h:8
-msgid "_Hard"
-msgstr "V_aikea"
-
-#: ../data/print_games.ui.h:9
-msgid "_Very Hard"
-msgstr "_Hyvin vaikea"
-
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "Tiedot"
-
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "_Merkitse pelit pelatuksi, kun olet tulostanut ne."
-
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr "L_iitä jo pelatut pelit tulostettavien pelien listaan"
-
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "_Uusi peli"
-
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "_Tallennetut pelit"
-
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "Lisää uusi seuraaja"
-
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "Poista valittu seuraaja"
-
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "Tee seuratuista muutoksista pysyviä"
-
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
-msgid "H_ide"
-msgstr "_Piilota"
-
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "Piilota seuratut arvot"
-
-#: ../src/lib/defaults.py:50
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"GNOME Sudoku is a part of GNOME Games."
-msgstr ""
-"Suosittu japanilainen logiikkapeli\n"
-"\n"
-"Gnomen Sudoku on osa Gnomen pelejä."
-
-#: ../src/lib/defaults.py:53
-msgid "Website"
-msgstr "Verkkosivusto"
-
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "Helppo"
-
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "Melko vaikea"
-
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "Vaikea"
-
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "Erittäin vaikea"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "Viimeksi pelattu %(n)s sekunti sitten"
-msgstr[1] "Viimeksi pelattu %(n)s sekuntia sitten"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "Viimeksi pelattu %(n)s minuutti sitten"
-msgstr[1] "Viimeksi pelattu %(n)s minuuttia sitten"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "Viimeksi pelattu %H.%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "Viimeksi pelattu eilen %H.%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "Viimeksi pelattu %e.%m. %H.%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "Viimeksi pelattu %e.%m. %Y"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "Helppo pulma"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "Tavallinen pulma"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "Vaikea pulma"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "Erittäin vaikea pulma"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "Pelattu %d tunti"
-msgstr[1] "Pelattu %d tuntia"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "Pelattu %d minuutti"
-msgstr[1] "Pelattu %d minuuttia"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "Pelattu %d sekunti"
-msgstr[1] "Pelattu %d sekuntia"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "Haluatko varmasti tehdä tämän?"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "Älä kysy uudestaan."
-
-#: ../src/lib/main.py:196
-msgid "_Game"
-msgstr "_Peli"
-
-#: ../src/lib/main.py:197
-msgid "New game"
-msgstr "Uusi peli"
-
-#: ../src/lib/main.py:198
-msgid "_Reset"
-msgstr "_Alusta"
-
-#: ../src/lib/main.py:200
-msgid "_Undo"
-msgstr "_Peru"
-
-#: ../src/lib/main.py:201
-msgid "Undo last action"
-msgstr "Peru edellinen siirto"
-
-#: ../src/lib/main.py:202
-msgid "_Redo"
-msgstr "_Tee uudestaan"
-
-#: ../src/lib/main.py:203
-msgid "Redo last action"
-msgstr "Tee edellinen toiminto uudestaan"
-
-#: ../src/lib/main.py:204
-msgid "Puzzle _Statistics..."
-msgstr "Pul_man tilastot..."
-
-#: ../src/lib/main.py:206
-msgid "_Print..."
-msgstr "T_ulosta…"
-
-#: ../src/lib/main.py:207
-msgid "Print _Multiple Sudokus..."
-msgstr "Tulosta _useita sudokuja..."
-
-#: ../src/lib/main.py:210
-msgid "_Settings"
-msgstr "_Asetukset"
-
-#: ../src/lib/main.py:212
-msgid "_Tools"
-msgstr "_Työkalut"
-
-#: ../src/lib/main.py:213
-msgid "_Hint"
-msgstr "_Vinkki"
-
-#: ../src/lib/main.py:214
-msgid "Show a square that is easy to fill."
-msgstr "Näytä neliö, joka on helppo täyttää."
-
-#: ../src/lib/main.py:215
-msgid "Clear _Top Notes"
-msgstr "Tyhjennä merkinnät _ylhäältä"
-
-#: ../src/lib/main.py:217
-msgid "Clear _Bottom Notes"
-msgstr "Tyhjennä _merkinnät alhaalta"
-
-#: ../src/lib/main.py:219
+msgid "magic;square;"
+msgstr "magic;square;numeroruudukko;"
+
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+#| msgid "_Print..."
+msgid "_Print"
+msgstr "T_ulosta"
+
+#: ../data/gnome-sudoku-menu.ui.h:2
+#| msgid "There is no current puzzle."
+msgid "Print _Current Puzzle…"
+msgstr "Tu_losta nykyinen sudoku"
+
+#: ../data/gnome-sudoku-menu.ui.h:3
+#| msgid "Print _Multiple Sudokus..."
+msgid "Print _Multiple Puzzles…"
+msgstr "Tulosta _useita sudokuja…"
+
+#: ../data/gnome-sudoku-menu.ui.h:4
+#| msgid "Show hints"
+msgid "_Show Warnings"
+msgstr "Nä_ytä varoitukset"
+
+#: ../data/gnome-sudoku-menu.ui.h:5
 msgid "_Help"
 msgstr "O_hje"
 
-#: ../src/lib/main.py:220
-msgid "_Contents"
-msgstr "_Sisältö"
+#: ../data/gnome-sudoku-menu.ui.h:6
+msgid "_About"
+msgstr "_Tietoja"
 
-#: ../src/lib/main.py:226
-msgid "Show _Possible Numbers"
-msgstr "_Näytä mahdolliset numerot"
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_Quit"
+msgstr "_Lopeta"
 
-#: ../src/lib/main.py:228
-msgid "Always show possible numbers in a square"
-msgstr "Näytä ruudun mahdolliset numerot aina"
+#: ../data/gnome-sudoku.ui.h:2
+#| msgid "Undo last action"
+msgid "Undo your last action"
+msgstr "Kumoa viimeisin toiminto"
 
-#: ../src/lib/main.py:232
-msgid "Warn About _Unfillable Squares"
-msgstr "Varoista ruuduista, _joita ei voi täyttää"
+#: ../data/gnome-sudoku.ui.h:3
+#| msgid "Redo last action"
+msgid "Redo your last action"
+msgstr "Tee edellinen toiminto uudestaan"
 
-#: ../src/lib/main.py:234
-msgid "Warn about squares made unfillable by a move"
-msgstr "Varoita ruuduista, joita ei voi täyttää siirron jälkeen"
+#: ../data/gnome-sudoku.ui.h:4
+#| msgid "Restart the current game"
+msgid "Go back to the current game"
+msgstr "Siirry takaisin nykyiseen peliin"
 
-#: ../src/lib/main.py:236
-msgid "_Track Additions"
-msgstr "_Kirjaa lisäykset"
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+msgid "_Easy"
+msgstr "H_elppo"
 
-#: ../src/lib/main.py:238
-msgid "Mark new additions in a separate color so you can keep track of them."
-msgstr "Merkitse uudet lisäykset eri värillä, jotta voit pitää niistä kirjaa."
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+msgid "_Medium"
+msgstr "_Keskitaso"
 
-#: ../src/lib/main.py:240
-msgid "Show _Toolbar"
-msgstr "Näytä _työkalupalkki"
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+msgid "_Hard"
+msgstr "V_aikea"
 
-#: ../src/lib/main.py:241
-msgid "_Highlighter"
-msgstr "_Korosta"
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+msgid "_Very Hard"
+msgstr "_Hyvin vaikea"
 
-#: ../src/lib/main.py:242
-msgid "Highlight the current row, column and box"
-msgstr "Korosta nykyinen rivi, sarake ja laatikko"
+#: ../data/gnome-sudoku.ui.h:9
+#| msgid "_Clear"
+msgid "_Clear Board"
+msgstr "_Tyhjennä lauta"
 
-#: ../src/lib/main.py:367
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "Pulman ratkaisuun kului %d sekunti"
-msgstr[1] "Pulman ratkaisuun kului %d sekuntia"
+#: ../data/gnome-sudoku.ui.h:10
+msgid "Reset the board to its original state"
+msgstr "Palauta lauta alkuperäistilaan"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minuutti"
-msgstr[1] "%d minuuttia"
+#: ../data/gnome-sudoku.ui.h:11
+#| msgid "Next Puzzle"
+msgid "_New Puzzle"
+msgstr "_Uusi pulma"
 
-#: ../src/lib/main.py:373 ../src/lib/main.py:381
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d sekunti"
-msgstr[1] "%d sekuntia"
+#: ../data/gnome-sudoku.ui.h:12
+#| msgid "Start a new game"
+msgid "Start a new puzzle"
+msgstr "Aloita uusi peli"
 
-#: ../src/lib/main.py:374
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "Pulman ratkaisuun kului %(minute)s ja %(second)s"
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
+#| msgid "_Number of sudoku to print: "
+msgid "Difficulty level of sudokus to be printed"
+msgstr "Tulostettavien sudokujen vaikeustaso"
 
-#: ../src/lib/main.py:379
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d tunti"
-msgstr[1] "%d tuntia"
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+msgid ""
+"Set the difficulty level of the sudokus you want to print. Possible values "
+"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+msgstr ""
+"Aseta tulostettavien sudokujen vaikeustaso. Mahdolliset arvot ovat \"easy\", "
+"\"medium\", \"hard\" ja \"very_hard\""
 
-#: ../src/lib/main.py:382
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "Pulman ratkaisuun kului %(hour)s, %(minute)s ja %(second)s"
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+#| msgid "_Number of sudoku to print: "
+msgid "Number of Sudokus to print"
+msgstr "Tulostettavien sudokujen lukumäärä"
 
-#: ../src/lib/main.py:384
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "Käytössäsi on %(n)s vihje."
-msgstr[1] "Käytössäsi on %(n)s vihjettä."
+#: ../data/org.gnome.sudoku.gschema.xml.h:4
+#| msgid "_Number of sudoku to print: "
+msgid "Set the number of sudokus you want to print"
+msgstr "Aseta tulostettavien sudokujen lukumäärä"
 
-#: ../src/lib/main.py:387
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "Sinulle osoitettiin %(n)s mahdoton ratkaisu."
-msgstr[1] "Sinulle osoitettiin %(n)s mahdotonta ratkaisua."
+#: ../data/org.gnome.sudoku.gschema.xml.h:5
+#| msgid "Warn About _Unfillable Squares"
+msgid "Warn about unfillable squares and duplicate numbers"
+msgstr "Varoista ruuduista, joita ei voi täyttää ja tuplanumeroista"
 
-#: ../src/lib/main.py:392
-msgid "You win!"
-msgstr "Sinä voitit!"
+#: ../data/org.gnome.sudoku.gschema.xml.h:6
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number and duplicate numbers are highlighted in red"
+msgstr ""
+"Näyttää ison punaisen X-merkin ruuduissa, joita ei voi täyttää millään "
+"numeroilla. Tuplanumerot merkitään punaisella värillä"
 
-#: ../src/lib/main.py:402
-msgid "Save this game before starting new one?"
-msgstr "Tallennetaanko tämä peli ennen uuden aloittamista?"
+#: ../data/org.gnome.sudoku.gschema.xml.h:7
+#| msgid "The width of the main window in pixels."
+msgid "Width of the window in pixels"
+msgstr "Ikkunan leveys kuvapisteinä"
 
-#: ../src/lib/main.py:403
-msgid "_Save game for later"
-msgstr "_Tallenna peli"
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#| msgid "The height of the main window in pixels."
+msgid "Height of the window in pixels"
+msgstr "Ikkunan korkeus kuvapisteinä"
 
-#: ../src/lib/main.py:404
-msgid "_Abandon game"
-msgstr "_Hylkää peli"
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
+msgid "true if the window is maximized"
+msgstr "tosi jos ikkuna on suurennettu"
 
-#: ../src/lib/main.py:422
-msgid "Save game before closing?"
-msgstr "Tallenna peli ennen sulkemista?"
+#: ../data/print-games.ui.h:1
+#| msgid "Print _Multiple Sudokus..."
+msgid "Print Multiple Puzzles"
+msgstr "Tulosta useita sudokuja"
 
-#: ../src/lib/main.py:620
-msgid "Puzzle Information"
-msgstr "Tietoja pulmasta"
+#: ../data/print-games.ui.h:3
+msgid "_Cancel"
+msgstr "_Peru"
 
-#: ../src/lib/main.py:621
-msgid "There is no current puzzle."
-msgstr "Pulmaa ei ole valittu."
+#: ../data/print-games.ui.h:4
+#| msgid "_Number of players:"
+msgid "_Number of puzzles"
+msgstr "P_ulmien määrä"
 
-#: ../src/lib/main.py:626
-msgid "Calculated difficulty: "
-msgstr "Laskettu vaikeustaso: "
+#: ../data/print-games.ui.h:5
+#| msgid "Difficulty:"
+msgid "Difficulty"
+msgstr "Vaikeustaso"
 
-#: ../src/lib/main.py:631
-msgid "Very Hard"
-msgstr "Erittäin vaikea"
+#: ../lib/sudoku-board.vala:570
+#| msgid "Difficulty:"
+msgid "Unknown Difficulty"
+msgstr "Tuntematon vaikeustaso"
 
-#: ../src/lib/main.py:636
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "Poistamalla heti täytettävissä olevien siirtojen määrä: "
+#: ../lib/sudoku-board.vala:572
+#| msgid "Difficulty:"
+msgid "Easy Difficulty"
+msgstr "Helppo vaikeustaso"
 
-#: ../src/lib/main.py:639
-msgid "Number of moves instantly fillable by filling: "
-msgstr "Täyttämällä heti täytettävissä olevien siirtojen määrä: "
+#: ../lib/sudoku-board.vala:574
+#| msgid "Difficulty:"
+msgid "Medium Difficulty"
+msgstr "Keskinkertainen vaikeustaso"
 
-#: ../src/lib/main.py:642
-msgid "Amount of trial-and-error required to solve: "
-msgstr "Ratkaisuun vaadittavien yritysten lukumäärä: "
+#: ../lib/sudoku-board.vala:576
+#| msgid "Difficulty:"
+msgid "Hard Difficulty"
+msgstr "Vaikea vaikeustaso"
 
-#: ../src/lib/main.py:645 ../src/lib/main.py:646
-msgid "Puzzle Statistics"
-msgstr "Pulmatilastot"
+#: ../lib/sudoku-board.vala:578
+#| msgid "Difficulty:"
+msgid "Very Hard Difficulty"
+msgstr "Erittäin vaikea vaikeustaso"
 
-#: ../src/lib/main.py:670
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:56
+msgid "Show release version"
+msgstr "Näytä julkaisuversio"
+
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:60
+msgid "Show the possible values for each cell"
+msgstr "Näytä jokaisen solun mahdolliset arvot"
+
+#: ../src/gnome-sudoku.vala:250
+#, c-format
+#| msgid "You completed the puzzle in %d second"
+#| msgid_plural "You completed the puzzle in %d seconds"
+msgid "Well done, you completed the puzzle in %d minute"
+msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgstr[0] "Onnittelut, ratkaisit pulman %d minuuttissa"
+msgstr[1] "Onnittelut, ratkaisit pulman %d minuuttissa"
+
+#: ../src/gnome-sudoku.vala:255
+#| msgid "Calculated difficulty: "
+msgid "Same difficulty again"
+msgstr "Sama vaikeustaso uudelleen"
+
+#: ../src/gnome-sudoku.vala:256
+#| msgid "Difficulty:"
+msgid "New difficulty"
+msgstr "Uusi vaikeustaso"
+
+#: ../src/gnome-sudoku.vala:314
+msgid "Reset the board to its original state?"
+msgstr "Palautetaanko lauta sen alkuperäistilaan?"
+
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: ../src/gnome-sudoku.vala:402
+#, c-format
+#| msgid ""
+#| "The popular Japanese logic puzzle\n"
+#| "\n"
+#| "GNOME Sudoku is a part of GNOME Games."
+msgid ""
+"The popular Japanese logic puzzle\n"
+"\n"
+"Puzzles generated by QQwing %s"
+msgstr ""
+"Suosittu japanilainen logiikkapeli\n"
+"\n"
+"Pulmat tuottaa QQwing %s"
+
+#: ../src/gnome-sudoku.vala:407
 msgid "translator-credits"
 msgstr ""
-"Jiri Grönroos, 2014\n"
+"Jiri Grönroos, 2012-2014\n"
 "Timo Jyrinki, 2008\n"
 "Ilkka Tuohela, 2006-2009\n"
 "Sami Pesonen, 2002-2005\n"
@@ -538,88 +319,344 @@ msgstr ""
 "  Timo Jyrinki https://launchpad.net/~timo-jyrinki\n"
 "  eGetin https://launchpad.net/~egetin"
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:680
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "Ohjetta ei voi näyttää: %s"
+#: ../src/number-picker.vala:70
+#| msgid "_Clear"
+msgid "Clear"
+msgstr "Tyhjennä"
 
-#: ../src/lib/main.py:736
-msgid "Untracked"
-msgstr "Seuraamaton"
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:29
+#| msgid "Error creating directory"
+msgid "Error printing file:"
+msgstr "Virhe tulostaessa tiedostoa:"
 
-#: ../src/lib/main.py:745
-msgid "_Remove"
-msgstr "_Poista"
+#~ msgid "game;board;tiles;japanese;"
+#~ msgstr "game;board;tiles;japanese;peli;lautapeli;japanilainen;"
 
-#: ../src/lib/main.py:746
-msgid "Delete selected tracker."
-msgstr "Poista valittu seuraaja."
+#, fuzzy
+#~| msgid "The number of mines in a custom game"
+#~ msgid "The number of seconds between automatic saves"
+#~ msgstr "Omassa pelissä määritelty miinojen lukumäärä"
 
-#: ../src/lib/main.py:752
-msgid "Hide current tracker entries."
-msgstr "Piilota nykyisen seuraajan merkinnät."
+#~| msgid "_Warn if too many flags have been placed"
+#~ msgid "Print games that have been played"
+#~ msgstr "Tulosta pelatut pelit"
 
-#: ../src/lib/main.py:757
-msgid "A_pply"
-msgstr "T_oteuta"
+#~ msgid "Mark printed games as played"
+#~ msgstr "Merkitse tulostetut pelit pelatuiksi"
 
-#: ../src/lib/main.py:758
-msgid "Apply all tracked values and remove the tracker."
-msgstr "Toteuta kaikki seuratut arvot ja poista seuraaja."
+#~| msgid "Width of the window in pixels"
+#~ msgid "Width of application window in pixels"
+#~ msgstr "Sovelluksen ikkunan leveys kuvapisteinä"
 
-#: ../src/lib/main.py:796
-#, python-format
-msgid "Tracker %s"
-msgstr "Seuraaja %s"
+#~| msgid "Height of the window in pixels"
+#~ msgid "Height of application window in pixels"
+#~ msgstr "Sovelluksen ikkunan korkeus kuvapisteinä"
 
-#: ../src/lib/number_box.py:82
-msgid "_Clear"
-msgstr "_Tyhjennä"
+#, fuzzy
+#~| msgid "Color to use for worm"
+#~ msgid "Color of the grid border"
+#~ msgstr "Käytettävä madon väri"
 
-#: ../src/lib/saver.py:151
-msgid "No Space"
-msgstr "Ei tilaa"
+#~| msgid "Show or hide the toolbar"
+#~ msgid "Show the application toolbar"
+#~ msgstr "Näytä sovelluksen työkalupalkki"
 
-#: ../src/lib/saver.py:152
-msgid "No space left on disk"
-msgstr "Levyllä ei ole tilaa"
+#~| msgid "_Number of sudoku to print: "
+#~ msgid "Number of puzzles to print on a page"
+#~ msgstr "Sivulle tulostettavien sudokujen _lukumäärä"
 
-#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "Tietokansiota %(path)s ei voitu luoda."
+#~ msgid "Print Sudokus"
+#~ msgstr "Tulosta sudokut"
 
-#: ../src/lib/saver.py:155
-msgid "There is no disk space left!"
-msgstr "Levytila loppui kesken!"
+#~ msgid "Print Games"
+#~ msgstr "Tulosta pelejä"
 
-#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
-msgid "Error creating directory"
-msgstr "Virhe hakemistoa luotaessa"
+#~ msgid "_Sudokus per page: "
+#~ msgstr "_Sudokuja sivua kohti: "
 
-#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
-#: ../src/lib/saver.py:229
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "Virhe %(errno)s: %(error)s"
+#~ msgid "Levels of difficulty to print"
+#~ msgstr "Tulostettavat vaikeustasot"
 
-#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
-msgid "Unable to save game."
-msgstr "Pelin tallennus epäonnistui."
+#~ msgid "Details"
+#~ msgstr "Tiedot"
 
-#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "Peliä ei voi tallentaa %(filename)s."
+#~ msgid "_Mark games as played once you've printed them."
+#~ msgstr "_Merkitse pelit pelatuksi, kun olet tulostanut ne."
 
-#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
-msgid "Unable to mark game as finished."
-msgstr "Peliä ei voi merkitä päättyneeksi."
+#~ msgid "_Include games you've already played in list of games to print"
+#~ msgstr "L_iitä jo pelatut pelit tulostettavien pelien listaan"
 
-#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
-msgid "Sudoku unable to mark game as finished."
-msgstr "Sudoku ei voi merkitä peliä päättyneeksi."
+#~ msgid "_New Game"
+#~ msgstr "_Uusi peli"
+
+#~ msgid "_Saved Games"
+#~ msgstr "_Tallennetut pelit"
+
+#~ msgid "Add a new tracker"
+#~ msgstr "Lisää uusi seuraaja"
+
+#~ msgid "Remove the selected tracker"
+#~ msgstr "Poista valittu seuraaja"
+
+#~ msgid "Make the tracked changes permanent"
+#~ msgstr "Tee seuratuista muutoksista pysyviä"
+
+#~ msgid "H_ide"
+#~ msgstr "_Piilota"
+
+#~ msgid "Hide the tracked values"
+#~ msgstr "Piilota seuratut arvot"
+
+#~ msgid "Website"
+#~ msgstr "Verkkosivusto"
+
+#~ msgid "Easy"
+#~ msgstr "Helppo"
+
+#~ msgid "Medium"
+#~ msgstr "Melko vaikea"
+
+#~ msgid "Hard"
+#~ msgstr "Vaikea"
+
+#~ msgid "Very hard"
+#~ msgstr "Erittäin vaikea"
+
+#~ msgid "Last played %(n)s second ago"
+#~ msgid_plural "Last played %(n)s seconds ago"
+#~ msgstr[0] "Viimeksi pelattu %(n)s sekunti sitten"
+#~ msgstr[1] "Viimeksi pelattu %(n)s sekuntia sitten"
+
+#~ msgid "Last played %(n)s minute ago"
+#~ msgid_plural "Last played %(n)s minutes ago"
+#~ msgstr[0] "Viimeksi pelattu %(n)s minuutti sitten"
+#~ msgstr[1] "Viimeksi pelattu %(n)s minuuttia sitten"
+
+#~ msgid "Last played at %I:%M %p"
+#~ msgstr "Viimeksi pelattu %H.%M"
+
+#~ msgid "Last played yesterday at %I:%M %p"
+#~ msgstr "Viimeksi pelattu eilen %H.%M"
+
+#~ msgid "Last played on %A at %I:%M %p"
+#~ msgstr "Viimeksi pelattu %e.%m. %H.%M"
+
+#~ msgid "Last played on %B %e %Y"
+#~ msgstr "Viimeksi pelattu %e.%m. %Y"
+
+#~ msgid "Easy puzzle"
+#~ msgstr "Helppo pulma"
+
+#~ msgid "Medium puzzle"
+#~ msgstr "Tavallinen pulma"
+
+#~ msgid "Hard puzzle"
+#~ msgstr "Vaikea pulma"
+
+#~ msgid "Very hard puzzle"
+#~ msgstr "Erittäin vaikea pulma"
+
+#~ msgid "Played for %d hour"
+#~ msgid_plural "Played for %d hours"
+#~ msgstr[0] "Pelattu %d tunti"
+#~ msgstr[1] "Pelattu %d tuntia"
+
+#~ msgid "Played for %d minute"
+#~ msgid_plural "Played for %d minutes"
+#~ msgstr[0] "Pelattu %d minuutti"
+#~ msgstr[1] "Pelattu %d minuuttia"
+
+#~ msgid "Played for %d second"
+#~ msgid_plural "Played for %d seconds"
+#~ msgstr[0] "Pelattu %d sekunti"
+#~ msgstr[1] "Pelattu %d sekuntia"
+
+#~ msgid "Do you really want to do this?"
+#~ msgstr "Haluatko varmasti tehdä tämän?"
+
+#~ msgid "Don't ask me this again."
+#~ msgstr "Älä kysy uudestaan."
+
+#~ msgid "_Game"
+#~ msgstr "_Peli"
+
+#~ msgid "New game"
+#~ msgstr "Uusi peli"
+
+#~ msgid "_Reset"
+#~ msgstr "_Alusta"
+
+#~ msgid "_Undo"
+#~ msgstr "_Peru"
+
+#~ msgid "_Redo"
+#~ msgstr "_Tee uudestaan"
+
+#~ msgid "Puzzle _Statistics..."
+#~ msgstr "Pul_man tilastot..."
+
+#~ msgid "_Settings"
+#~ msgstr "_Asetukset"
+
+#~ msgid "_Tools"
+#~ msgstr "_Työkalut"
+
+#~ msgid "_Hint"
+#~ msgstr "_Vinkki"
+
+#~ msgid "Show a square that is easy to fill."
+#~ msgstr "Näytä neliö, joka on helppo täyttää."
+
+#~ msgid "Clear _Top Notes"
+#~ msgstr "Tyhjennä merkinnät _ylhäältä"
+
+#~ msgid "Clear _Bottom Notes"
+#~ msgstr "Tyhjennä _merkinnät alhaalta"
+
+#~ msgid "_Contents"
+#~ msgstr "_Sisältö"
+
+#~ msgid "Show _Possible Numbers"
+#~ msgstr "_Näytä mahdolliset numerot"
+
+#~ msgid "Always show possible numbers in a square"
+#~ msgstr "Näytä ruudun mahdolliset numerot aina"
+
+#~ msgid "Warn about squares made unfillable by a move"
+#~ msgstr "Varoita ruuduista, joita ei voi täyttää siirron jälkeen"
+
+#~ msgid "_Track Additions"
+#~ msgstr "_Kirjaa lisäykset"
+
+#~ msgid ""
+#~ "Mark new additions in a separate color so you can keep track of them."
+#~ msgstr ""
+#~ "Merkitse uudet lisäykset eri värillä, jotta voit pitää niistä kirjaa."
+
+#~ msgid "Show _Toolbar"
+#~ msgstr "Näytä _työkalupalkki"
+
+#~ msgid "_Highlighter"
+#~ msgstr "_Korosta"
+
+#~ msgid "Highlight the current row, column and box"
+#~ msgstr "Korosta nykyinen rivi, sarake ja laatikko"
+
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d minuutti"
+#~ msgstr[1] "%d minuuttia"
+
+#~ msgid "%d second"
+#~ msgid_plural "%d seconds"
+#~ msgstr[0] "%d sekunti"
+#~ msgstr[1] "%d sekuntia"
+
+#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
+#~ msgstr "Pulman ratkaisuun kului %(minute)s ja %(second)s"
+
+#~ msgid "%d hour"
+#~ msgid_plural "%d hours"
+#~ msgstr[0] "%d tunti"
+#~ msgstr[1] "%d tuntia"
+
+#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
+#~ msgstr "Pulman ratkaisuun kului %(hour)s, %(minute)s ja %(second)s"
+
+#~ msgid "You got %(n)s hint."
+#~ msgid_plural "You got %(n)s hints."
+#~ msgstr[0] "Käytössäsi on %(n)s vihje."
+#~ msgstr[1] "Käytössäsi on %(n)s vihjettä."
+
+#~ msgid "You had %(n)s impossibility pointed out."
+#~ msgid_plural "You had %(n)s impossibilities pointed out."
+#~ msgstr[0] "Sinulle osoitettiin %(n)s mahdoton ratkaisu."
+#~ msgstr[1] "Sinulle osoitettiin %(n)s mahdotonta ratkaisua."
+
+#~ msgid "You win!"
+#~ msgstr "Sinä voitit!"
+
+#~ msgid "Save this game before starting new one?"
+#~ msgstr "Tallennetaanko tämä peli ennen uuden aloittamista?"
+
+#~ msgid "_Save game for later"
+#~ msgstr "_Tallenna peli"
+
+#~ msgid "_Abandon game"
+#~ msgstr "_Hylkää peli"
+
+#~ msgid "Save game before closing?"
+#~ msgstr "Tallenna peli ennen sulkemista?"
+
+#~ msgid "Puzzle Information"
+#~ msgstr "Tietoja pulmasta"
+
+#~ msgid "Very Hard"
+#~ msgstr "Erittäin vaikea"
+
+#~ msgid "Number of moves instantly fillable by elimination: "
+#~ msgstr "Poistamalla heti täytettävissä olevien siirtojen määrä: "
+
+#~ msgid "Number of moves instantly fillable by filling: "
+#~ msgstr "Täyttämällä heti täytettävissä olevien siirtojen määrä: "
+
+#~ msgid "Amount of trial-and-error required to solve: "
+#~ msgstr "Ratkaisuun vaadittavien yritysten lukumäärä: "
+
+#~ msgid "Puzzle Statistics"
+#~ msgstr "Pulmatilastot"
+
+#~ msgid "Unable to display help: %s"
+#~ msgstr "Ohjetta ei voi näyttää: %s"
+
+#~ msgid "Untracked"
+#~ msgstr "Seuraamaton"
+
+#~ msgid "_Remove"
+#~ msgstr "_Poista"
+
+#~ msgid "Delete selected tracker."
+#~ msgstr "Poista valittu seuraaja."
+
+#~ msgid "Hide current tracker entries."
+#~ msgstr "Piilota nykyisen seuraajan merkinnät."
+
+#~ msgid "A_pply"
+#~ msgstr "T_oteuta"
+
+#~ msgid "Apply all tracked values and remove the tracker."
+#~ msgstr "Toteuta kaikki seuratut arvot ja poista seuraaja."
+
+#~ msgid "Tracker %s"
+#~ msgstr "Seuraaja %s"
+
+#~ msgid "No Space"
+#~ msgstr "Ei tilaa"
+
+#~ msgid "No space left on disk"
+#~ msgstr "Levyllä ei ole tilaa"
+
+#~ msgid "Unable to create data folder %(path)s."
+#~ msgstr "Tietokansiota %(path)s ei voitu luoda."
+
+#~ msgid "There is no disk space left!"
+#~ msgstr "Levytila loppui kesken!"
+
+#~ msgid "Error %(errno)s: %(error)s"
+#~ msgstr "Virhe %(errno)s: %(error)s"
+
+#~ msgid "Unable to save game."
+#~ msgstr "Pelin tallennus epäonnistui."
+
+#~ msgid "Unable to save file %(filename)s."
+#~ msgstr "Peliä ei voi tallentaa %(filename)s."
+
+#~ msgid "Unable to mark game as finished."
+#~ msgstr "Peliä ei voi merkitä päättyneeksi."
+
+#~ msgid "Sudoku unable to mark game as finished."
+#~ msgstr "Sudoku ei voi merkitä peliä päättyneeksi."
 
 #~ msgid "GNOME Games web site"
 #~ msgstr "GNOMEn pelien www-sivut"
@@ -638,9 +675,6 @@ msgstr "Sudoku ei voi merkitä peliä päättyneeksi."
 
 #~ msgid "Claim _Draw"
 #~ msgstr "Esitä _tasapeliä"
-
-#~ msgid "Start a new game"
-#~ msgstr "Aloita uusi peli"
 
 #~ msgid "New Game"
 #~ msgstr "Uusi peli"
@@ -666,14 +700,8 @@ msgstr "Sudoku ei voi merkitä peliä päättyneeksi."
 #~ msgid "The width of the window"
 #~ msgstr "Ikkunan leveys"
 
-#~ msgid "The width of the main window in pixels."
-#~ msgstr "Pääikkunan leveys kuvapisteinä."
-
 #~ msgid "The height of the window"
 #~ msgstr "Ikkunan korkeus"
-
-#~ msgid "The height of the main window in pixels."
-#~ msgstr "Pääikkunan korkeus kuvapisteinä."
 
 #, fuzzy
 #~ msgid "A flag to enable maximized mode"
@@ -740,9 +768,6 @@ msgstr "Sudoku ei voi merkitä peliä päättyneeksi."
 
 #~ msgid "Opposing Player:"
 #~ msgstr "Vastustaja:"
-
-#~ msgid "Difficulty:"
-#~ msgstr "Vaikeusaste:"
 
 #~ msgid "Game Duration:"
 #~ msgstr "Pelin kesto:"
@@ -1206,9 +1231,6 @@ msgstr "Sudoku ei voi merkitä peliä päättyneeksi."
 
 #~ msgid "Failed to open game: %s"
 #~ msgstr "Pelin avaus epäonnistui: %s"
-
-#~ msgid "Show release version"
-#~ msgstr "Näytä julkaisuversio"
 
 #~ msgid ""
 #~ "Run '%s --help' to see a full list of available command line options."
@@ -2310,12 +2332,6 @@ msgstr "Sudoku ei voi merkitä peliä päättyneeksi."
 #~ msgid "_Preferences"
 #~ msgstr "_Asetukset"
 
-#~ msgid "_About"
-#~ msgstr "_Tietoja"
-
-#~ msgid "_Quit"
-#~ msgstr "_Lopeta"
-
 #~| msgid "_Hint"
 #~ msgid "Hint"
 #~ msgstr "Vinkki"
@@ -2701,9 +2717,6 @@ msgstr "Sudoku ei voi merkitä peliä päättyneeksi."
 #~ msgid "_Restart Puzzle"
 #~ msgstr "_Aloita pulma uudestaan"
 
-#~ msgid "Next Puzzle"
-#~ msgstr "Seuraava pulma"
-
 #~ msgid "Previous Puzzle"
 #~ msgstr "Edellinen pulma"
 
@@ -2880,9 +2893,6 @@ msgstr "Sudoku ei voi merkitä peliä päättyneeksi."
 
 #~ msgid "Human Players"
 #~ msgstr "Ihmispelaajat"
-
-#~ msgid "_Number of players:"
-#~ msgstr "_Pelaajien määrä:"
 
 #~ msgid "Computer Opponents"
 #~ msgstr "Tietokonevastustajat"
@@ -3409,9 +3419,6 @@ msgstr "Sudoku ei voi merkitä peliä päättyneeksi."
 
 #~ msgid "_Select map:"
 #~ msgstr "_Valitse kartta:"
-
-#~ msgid "Restart the current game"
-#~ msgstr "Aloita valittu peli uudestaan"
 
 #~ msgid "Redo the last move"
 #~ msgstr "Tee edellinen siirto uudestaan"
