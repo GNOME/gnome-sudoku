@@ -5,46 +5,50 @@
 # Marcel Telka <marcel@telka.sk>, 2005, 2008.
 # Peter Mráz <etkinator@gmail.com>, 2010, 2011.
 # Ján Kyselica <kyselica.jan@gmail.com>, 2013, 2014.
+# Dušan Kazik <prescott66@gmail.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-08 08:34+0000\n"
-"PO-Revision-Date: 2014-03-23 00:41+0100\n"
-"Last-Translator: Peter Mráz <etkinator@gmail.com>\n"
-"Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
+"POT-Creation-Date: 2014-09-11 19:35+0000\n"
+"PO-Revision-Date: 2014-09-12 09:54+0200\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
+"Language-Team: slovenčina <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Gtranslator 2.91.6\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "Sudoku GNOME"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
 msgid ""
-"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
-"make playing Sudoku fun. Games are automatically saved when you quit, and "
-"you can always come back to any game that you've played."
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
 msgstr ""
-"Hra Sudoku GNOME má jednoduché, nenápadné rozhranie so všetkými funkciami, "
-"ktoré robia hranie zábavným. Hry sú automaticky ukladané pri ukončení "
-"aplikácie a môžete sa vrátiť a hrať rozohranú hru."
+"Hrajte obľúbenú japonskú logickú hru. GNOME Sudoku si musia nainštalovať "
+"milovníci hlavolamu Sudoku, pretože hra má jednoduché a nenásilné rozhranie, "
+"ktoré učiní hranie Sudoku zábavným pre hráčov s akoukoľvek skúsenosťou."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
+#| msgid ""
+#| "Each game is assigned a difficulty similar to those given by newspapers "
+#| "and websites. You can also see detailed information about how the "
+#| "computer solved the puzzle."
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
-"websites. You can also see detailed information about how the computer "
-"solved the puzzle."
+"websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
 "Každá hra je označená obtiažnosťou podobne ako v novinách a na webových "
-"stránkach. Tiež si môžete pozrieť podrobnejšie informácie o tom ako počítač "
-"rieši hlavolam."
+"stránkach, takže vaša hra bude obtiažna podľa toho, akú obtiažnosť si "
+"zvolíte."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
@@ -56,7 +60,8 @@ msgstr ""
 "hier sa má vytlačiť na jednej stránke a náročnosť hier, ktoré chcete tlačiť. "
 "Takže hru Sudoku GNOME môžete použiť ako obnoviteľnú knihu sudoku."
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:398
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -65,557 +70,590 @@ msgid "Test your logic skills in this number grid puzzle"
 msgstr "Otestujte svoje logické myslenie na tejto mriežke s číslami"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "hra;stolová;dlaždice;japonský hlavolam;"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
-msgid "The number of seconds between automatic saves"
-msgstr "Počet sekúnd medzi automatickými uloženiami"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
-msgid "Print games that have been played"
-msgstr "Vytlačiť hry, ktoré sa hrali"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
-msgid "Mark printed games as played"
-msgstr "Označiť vytlačené hry ako už hrané"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
-msgid "Width of application window in pixels"
-msgstr "Šírka okna aplikácie v pixeloch"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
-msgid "Height of application window in pixels"
-msgstr "Výška okna aplikácie v pixeloch"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
-msgid "Show hint highlights"
-msgstr "Zobraziť pomocné zvýrazňovače"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
-msgid "Color of the grid border"
-msgstr "Farba okraja mriežky"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
-msgid "Show the application toolbar"
-msgstr "Zobraziť lištu nástrojov aplikácie"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
-msgid "Show hints"
-msgstr "Zobraziť rady"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
-msgid "Number of puzzles to print on a page"
-msgstr "Počet sudoku, ktoré sa majú tlačiť na jednej strane"
-
-# dialog title
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "Tlač sudoku"
-
-# label nad nastaveniami
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "Tlač hier"
-
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "_Počet sudoku, ktoré sa majú tlačiť: "
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "_Sudoku na stranu: "
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "Úrovne obtiažnosti, ktoré sa majú tlačiť"
-
-#: ../data/print_games.ui.h:6
-msgid "_Easy"
-msgstr "Ľa_hká"
-
-#: ../data/print_games.ui.h:7
-msgid "_Medium"
-msgstr "_Stredná"
-
-#: ../data/print_games.ui.h:8
-msgid "_Hard"
-msgstr "Ť_ažká"
-
-#: ../data/print_games.ui.h:9
-msgid "_Very Hard"
-msgstr "_Veľmi ťažká"
-
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "Podrobnosti"
-
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "_Po vytlačení označiť hry za hrané."
-
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr "_Zahrnúť do zoznamu pre tlač aj hry, ktoré boli hrané"
-
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "_Nová hra"
-
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "_Uložené hry"
-
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "Pridať nové sledovanie"
-
-# PK: preco nie neurcitok?
-# PM: je to tooltip na tlačidle
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "Odstráni označené sledovanie"
-
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "Zapísať sledované hodnoty natrvalo"
-
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
-msgid "H_ide"
-msgstr "_Skryť"
-
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "Skryť sledované hodnoty"
-
-#: ../src/lib/defaults.py:50
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"GNOME Sudoku is a part of GNOME Games."
-msgstr ""
-"Populárny japonský logický hlavolam\n"
-"\n"
-"GNOME Sudoku je súčasťou Hier GNOME."
-
-#: ../src/lib/defaults.py:53
-msgid "Website"
-msgstr "Webová stránka"
-
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "Ľahká"
-
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "Stredná"
-
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "Ťažká"
-
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "Veľmi ťažká"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "Naposledy hrané pred %(n)s sekundami"
-msgstr[1] "Naposledy hrané pred %(n)s sekundou"
-msgstr[2] "Naposledy hrané pred %(n)s sekundami"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "Naposledy hrané pred %(n)s minútami"
-msgstr[1] "Naposledy hrané pred %(n)s minútou"
-msgstr[2] "Naposledy hrané pred %(n)s minútami"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "Naposledy hrané včera o %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "Naposledy hrané včera o %H:%M"
-
-# PK: napr v Sobota?, pouzil by som skratenie => %a
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "Naposledy hrané v %a o %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "Naposledy hrané dňa %e. %B %Y"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "Ľahký hlavolam"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "Stredne ťažký hlavolam"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "Ťažký hlavolam"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "Veľmi ťažký hlavolam"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "Hrané %d hodín"
-msgstr[1] "Hrané %d hodinu"
-msgstr[2] "Hrané %d hodiny"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "Hrané %d minút"
-msgstr[1] "Hrané %d minútu"
-msgstr[2] "Hrané %d minúty"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "Hrané %d sekúnd"
-msgstr[1] "Hrané %d sekundu"
-msgstr[2] "Hrané %d sekundy"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "Naozaj to chcete urobiť?"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "Nabudúce sa už nepýtať."
-
-#: ../src/lib/main.py:196
-msgid "_Game"
-msgstr "_Hra"
-
-#: ../src/lib/main.py:197
-msgid "New game"
-msgstr "Nová hra"
-
-#: ../src/lib/main.py:198
-msgid "_Reset"
-msgstr "_Vynulovať"
-
-#: ../src/lib/main.py:200
-msgid "_Undo"
-msgstr "_Vrátiť späť"
-
-#: ../src/lib/main.py:201
-msgid "Undo last action"
-msgstr "Vráti posledný ťah"
-
-#: ../src/lib/main.py:202
-msgid "_Redo"
-msgstr "_Opakovať vrátené"
-
-#: ../src/lib/main.py:203
-msgid "Redo last action"
-msgstr "Zopakuje vrátenú akciu"
-
-#: ../src/lib/main.py:204
-msgid "Puzzle _Statistics..."
-msgstr "Š_tatistiky o _hlavolame…"
-
-#: ../src/lib/main.py:206
-msgid "_Print..."
-msgstr "_Tlačiť…"
-
-#: ../src/lib/main.py:207
-msgid "Print _Multiple Sudokus..."
-msgstr "Vytlačiť _viacero sudoku…"
-
-#: ../src/lib/main.py:210
-msgid "_Settings"
-msgstr "Nas_tavenia"
-
-#: ../src/lib/main.py:212
-msgid "_Tools"
-msgstr "_Nástroje"
-
-#: ../src/lib/main.py:213
-msgid "_Hint"
-msgstr "_Rada"
-
-#: ../src/lib/main.py:214
-msgid "Show a square that is easy to fill."
-msgstr "Zobrazí štvorce, ktoré sa dajú ľahko vyplniť."
-
-#: ../src/lib/main.py:215
-msgid "Clear _Top Notes"
-msgstr "Zmazať _horné poznámky"
-
-#: ../src/lib/main.py:217
-msgid "Clear _Bottom Notes"
-msgstr "Zmazať _dolné poznámky"
-
-#: ../src/lib/main.py:219
+msgid "magic;square;"
+msgstr "kúzlo;kúzelný;magický;štvorec;štvorček;"
+
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+#| msgid "_Print..."
+msgid "_Print"
+msgstr "_Tlačiť"
+
+#: ../data/gnome-sudoku-menu.ui.h:2
+#| msgid "There is no current puzzle."
+msgid "Print _Current Puzzle…"
+msgstr "Vytlačiť _aktuálny hlavolam…"
+
+#: ../data/gnome-sudoku-menu.ui.h:3
+#| msgid "Print _Multiple Sudokus..."
+msgid "Print _Multiple Puzzles…"
+msgstr "Vytlačiť _viacero hlavolamov…"
+
+#: ../data/gnome-sudoku-menu.ui.h:4
+#| msgid "Show hints"
+msgid "_Show Warnings"
+msgstr "_Zobraziť upozornenia"
+
+#: ../data/gnome-sudoku-menu.ui.h:5
 msgid "_Help"
 msgstr "_Pomocník"
 
-#: ../src/lib/main.py:220
-msgid "_Contents"
-msgstr "Ob_sah"
+#: ../data/gnome-sudoku-menu.ui.h:6
+msgid "_About"
+msgstr "_O programe"
 
-#: ../src/lib/main.py:226
-msgid "Show _Possible Numbers"
-msgstr "Zobraziť _možné čísla"
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_Quit"
+msgstr "_Ukončiť"
 
-#: ../src/lib/main.py:228
-msgid "Always show possible numbers in a square"
-msgstr "Neustále bude zobrazovať možné čísla v štvorcoch"
+# tooltip
+#: ../data/gnome-sudoku.ui.h:2
+#| msgid "Undo last action"
+msgid "Undo your last action"
+msgstr "Vráti poslednú akciu"
 
-#: ../src/lib/main.py:232
-msgid "Warn About _Unfillable Squares"
-msgstr "Upozorniť na _nevyplniteľné štvorce"
+# tooltip
+#: ../data/gnome-sudoku.ui.h:3
+#| msgid "Redo last action"
+msgid "Redo your last action"
+msgstr "Znovu vykoná poslednú akciu"
 
-#: ../src/lib/main.py:234
-msgid "Warn about squares made unfillable by a move"
-msgstr "Upozorní na štvorce, ktoré sa po ťahu stanú nevyplniteľné"
+# tooltip
+#: ../data/gnome-sudoku.ui.h:4
+msgid "Go back to the current game"
+msgstr "Vráti sa späť k aktuálnej hre"
 
-#: ../src/lib/main.py:236
-msgid "_Track Additions"
-msgstr "_Sledovať doplnenia"
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+msgid "_Easy"
+msgstr "Ľa_hká"
 
-#: ../src/lib/main.py:238
-msgid "Mark new additions in a separate color so you can keep track of them."
-msgstr "Označí novodoplnené čísla odlišnou farbou, aby ste ich mohli rozoznať."
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+msgid "_Medium"
+msgstr "_Stredná"
 
-#: ../src/lib/main.py:240
-msgid "Show _Toolbar"
-msgstr "Zobraziť _lištu nástrojov"
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+msgid "_Hard"
+msgstr "Ť_ažká"
 
-#: ../src/lib/main.py:241
-msgid "_Highlighter"
-msgstr "_Zvýrazňovač"
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+msgid "_Very Hard"
+msgstr "_Veľmi ťažká"
 
-#: ../src/lib/main.py:242
-msgid "Highlight the current row, column and box"
-msgstr "Zvýrazňuje aktuálny riadok, stĺpec a štvorec"
+#: ../data/gnome-sudoku.ui.h:9
+#| msgid "_Clear"
+msgid "_Clear Board"
+msgstr "_Zmazať hraciu plochu"
 
-#: ../src/lib/main.py:367
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "Hlavolam ste dokončili za %d sekúnd"
-msgstr[1] "Hlavolam ste dokončili za %d sekundu"
-msgstr[2] "Hlavolam ste dokončili za %d sekundy"
+# tooltip
+#: ../data/gnome-sudoku.ui.h:10
+msgid "Reset the board to its original state"
+msgstr "Obnoví hraciu plochu do pôvodného stavu"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minút"
-msgstr[1] "%d minútu"
-msgstr[2] "%d minúty"
+#: ../data/gnome-sudoku.ui.h:11
+#| msgid "_New Game"
+msgid "_New Puzzle"
+msgstr "_Nový hlavolam"
 
-#: ../src/lib/main.py:373 ../src/lib/main.py:381
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d sekúnd"
-msgstr[1] "%d sekundu"
-msgstr[2] "%d sekundy"
+# tooltip
+#: ../data/gnome-sudoku.ui.h:12
+#| msgid "Hard puzzle"
+msgid "Start a new puzzle"
+msgstr "Začne nový hlavolam"
 
-#: ../src/lib/main.py:374
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "Hlavolam ste dokončili za %(minute)s a %(second)s"
+# summary
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
+#| msgid "_Number of sudoku to print: "
+msgid "Difficulty level of sudokus to be printed"
+msgstr "Úroveň obtiažnosti tlačených hlavolamov sudoku"
 
-#: ../src/lib/main.py:379
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d hodín"
-msgstr[1] "%d hodinu"
-msgstr[2] "%d hodiny"
+# desc
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+msgid ""
+"Set the difficulty level of the sudokus you want to print. Possible values "
+"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+msgstr ""
+"Nastaví úroveň obtiažnosti hlavolamov sudoku, ktoré chcete vytlačiť. Možné "
+"hodnoty sú - „easy“(ľahká), „medium“(stredná), „hard“(ťažká), "
+"„very_hard“(veľmi ťažká)"
 
-#: ../src/lib/main.py:382
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "Hlavolam ste dokončili za %(hour)s, %(minute)s a %(second)s"
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+#| msgid "_Number of sudoku to print: "
+msgid "Number of Sudokus to print"
+msgstr "Počet sudoku, ktoré sa majú tlačiť"
 
-#: ../src/lib/main.py:384
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "Použili ste %(n)s rád."
-msgstr[1] "Použili ste %(n)s radu."
-msgstr[2] "Použili ste %(n)s rady."
+# desc
+#: ../data/org.gnome.sudoku.gschema.xml.h:4
+#| msgid "_Number of sudoku to print: "
+msgid "Set the number of sudokus you want to print"
+msgstr "Nastaví počet hlavolamov sudoku, ktoré chcete vytlačiť"
 
-#: ../src/lib/main.py:387
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "Boli ste %(n)s-krát upozornení na neriešiteľnú situáciu."
-msgstr[1] "Boli ste %(n)s-krát upozornení na neriešiteľnú situáciu."
-msgstr[2] "Boli ste %(n)s-krát upozornení na neriešiteľnú situáciu."
+# summary
+#: ../data/org.gnome.sudoku.gschema.xml.h:5
+#| msgid "Warn About _Unfillable Squares"
+msgid "Warn about unfillable squares and duplicate numbers"
+msgstr "Upozorniť na nevyplniteľné štvorce a zdvojené číslice"
 
-#: ../src/lib/main.py:392
-msgid "You win!"
-msgstr "Vyhrali ste!"
+# desc
+#: ../data/org.gnome.sudoku.gschema.xml.h:6
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number and duplicate numbers are highlighted in red"
+msgstr ""
+"Zobrazí veľké červené X v stvorci, ktorý nebude možné vyplniť žiadnou "
+"číslicou a zdvojené číslice budú označené na červeno."
 
-#: ../src/lib/main.py:402
-msgid "Save this game before starting new one?"
-msgstr "Uložiť túto hru pred spustením novej?"
+#: ../data/org.gnome.sudoku.gschema.xml.h:7
+#| msgid "Width of application window in pixels"
+msgid "Width of the window in pixels"
+msgstr "Šírka okna v pixeloch"
 
-#: ../src/lib/main.py:403
-msgid "_Save game for later"
-msgstr "_Uložiť hru na neskôr"
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#| msgid "Height of application window in pixels"
+msgid "Height of the window in pixels"
+msgstr "Výška okna v pixeloch"
 
-#: ../src/lib/main.py:404
-msgid "_Abandon game"
-msgstr "_Opustiť hru"
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
+msgid "true if the window is maximized"
+msgstr "hodnota true ak je okno maximalizované"
 
-#: ../src/lib/main.py:422
-msgid "Save game before closing?"
-msgstr "Uložiť hru pred ukončením?"
+# dialog title
+#: ../data/print-games.ui.h:1
+#| msgid "Print _Multiple Sudokus..."
+msgid "Print Multiple Puzzles"
+msgstr "Tlač viacerých hlavolamov"
 
-#: ../src/lib/main.py:620
-msgid "Puzzle Information"
-msgstr "Informácie o hlavolame"
+#: ../data/print-games.ui.h:3
+msgid "_Cancel"
+msgstr "_Zrušiť"
 
-#: ../src/lib/main.py:621
-msgid "There is no current puzzle."
-msgstr "Nie je spustený žiadny hlavolam."
+#: ../data/print-games.ui.h:4
+#| msgid "Number of puzzles to print on a page"
+msgid "_Number of puzzles"
+msgstr "Počet _hlavolamov"
 
-#: ../src/lib/main.py:626
-msgid "Calculated difficulty: "
-msgstr "Vypočítaná náročnosť: "
+#: ../data/print-games.ui.h:5
+msgid "Difficulty"
+msgstr "Obtiažnosť"
 
-#: ../src/lib/main.py:631
-msgid "Very Hard"
-msgstr "Veľmi ťažká"
+#: ../lib/sudoku-board.vala:570
+msgid "Unknown Difficulty"
+msgstr "Neznáma obtiažnosť"
 
-#: ../src/lib/main.py:636
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "Počet ťahov ihneď vyplniteľných vylučovacou metódou: "
+#: ../lib/sudoku-board.vala:572
+msgid "Easy Difficulty"
+msgstr "Ľahká obtiažnosť"
 
-#: ../src/lib/main.py:639
-msgid "Number of moves instantly fillable by filling: "
-msgstr "Počet ťahov, ktoré sa objasnia po vyplnení: "
+#: ../lib/sudoku-board.vala:574
+#| msgid "Calculated difficulty: "
+msgid "Medium Difficulty"
+msgstr "Stredná obtiažnosť"
 
-#: ../src/lib/main.py:642
-msgid "Amount of trial-and-error required to solve: "
-msgstr "Počet ťahov, ktoré sa musia riešiť pokusom-omylom: "
+#: ../lib/sudoku-board.vala:576
+#| msgid "Calculated difficulty: "
+msgid "Hard Difficulty"
+msgstr "Ťažká obtiažnosť"
 
-#: ../src/lib/main.py:645 ../src/lib/main.py:646
-msgid "Puzzle Statistics"
-msgstr "Štatistiky o hlavolame"
+#: ../lib/sudoku-board.vala:578
+#| msgid "Very Hard"
+msgid "Very Hard Difficulty"
+msgstr "Veľmi ťažká obtiažnosť"
 
-#: ../src/lib/main.py:670
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:56
+msgid "Show release version"
+msgstr "Zobrazí verziu vydania"
+
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:60
+msgid "Show the possible values for each cell"
+msgstr "Zobrazí vhodné hodnoty pre každú bunku"
+
+#: ../src/gnome-sudoku.vala:250
+#, c-format
+#| msgid "You completed the puzzle in %d second"
+#| msgid_plural "You completed the puzzle in %d seconds"
+msgid "Well done, you completed the puzzle in %d minute"
+msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgstr[0] "Výborne, hlavolam ste dokončili za %d minút"
+msgstr[1] "Výborne, hlavolam ste dokončili za %d minútu"
+msgstr[2] "Výborne, hlavolam ste dokončili za %d minúty"
+
+#: ../src/gnome-sudoku.vala:255
+#| msgid "Calculated difficulty: "
+msgid "Same difficulty again"
+msgstr "Rovnaká obtiažnosť znovu"
+
+#: ../src/gnome-sudoku.vala:256
+#| msgid "Calculated difficulty: "
+msgid "New difficulty"
+msgstr "Nová obtiažnosť"
+
+#: ../src/gnome-sudoku.vala:314
+msgid "Reset the board to its original state?"
+msgstr "Obnoviť hraciu plochu do pôvodného stavu?"
+
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: ../src/gnome-sudoku.vala:402
+#, c-format
+#| msgid ""
+#| "The popular Japanese logic puzzle\n"
+#| "\n"
+#| "GNOME Sudoku is a part of GNOME Games."
+msgid ""
+"The popular Japanese logic puzzle\n"
+"\n"
+"Puzzles generated by QQwing %s"
+msgstr ""
+"Obľúbený japonský logický hlavolam\n"
+"\n"
+"Hlavolamy sú generované pomocou QQwing %s"
+
+#: ../src/gnome-sudoku.vala:407
 msgid "translator-credits"
 msgstr ""
 "Stanislav Višňovský <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Marcel Telka <marcel@telka.sk>\n"
 "Peter Mráz <etkinator@gmail.com>\n"
-"Ján Kyselica <kyselica.jan@gmail.com>"
+"Ján Kyselica <kyselica.jan@gmail.com>\n"
+"Dušan Kazik <prescott66@gmail.com>"
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:680
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "Nepodarilo sa zobraziť pomocníka: %s"
+#: ../src/number-picker.vala:70
+#| msgid "_Clear"
+msgid "Clear"
+msgstr "Zmazať"
 
-#: ../src/lib/main.py:736
-msgid "Untracked"
-msgstr "Nesledované"
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:29
+#| msgid "Error creating directory"
+msgid "Error printing file:"
+msgstr "Chyba pri tlačení súboru:"
 
-#: ../src/lib/main.py:745
-msgid "_Remove"
-msgstr "O_dstrániť"
+#~ msgid ""
+#~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
+#~ "that make playing Sudoku fun. Games are automatically saved when you "
+#~ "quit, and you can always come back to any game that you've played."
+#~ msgstr ""
+#~ "Hra Sudoku GNOME má jednoduché, nenápadné rozhranie so všetkými "
+#~ "funkciami, ktoré robia hranie zábavným. Hry sú automaticky ukladané pri "
+#~ "ukončení aplikácie a môžete sa vrátiť a hrať rozohranú hru."
 
-#: ../src/lib/main.py:746
-msgid "Delete selected tracker."
-msgstr "Odstráni označené sledovanie."
+#~ msgid "game;board;tiles;japanese;"
+#~ msgstr "hra;stolová;dlaždice;japonský hlavolam;"
 
-#: ../src/lib/main.py:752
-msgid "Hide current tracker entries."
-msgstr "Skryje položky aktuálneho sledovania."
+#~ msgid "The number of seconds between automatic saves"
+#~ msgstr "Počet sekúnd medzi automatickými uloženiami"
 
-#: ../src/lib/main.py:757
-msgid "A_pply"
-msgstr "_Použiť"
+#~ msgid "Print games that have been played"
+#~ msgstr "Vytlačiť hry, ktoré sa hrali"
 
-#: ../src/lib/main.py:758
-msgid "Apply all tracked values and remove the tracker."
-msgstr "Použije všetky sledované hodnoty a odstráni sledovanie."
+#~ msgid "Mark printed games as played"
+#~ msgstr "Označiť vytlačené hry ako už hrané"
 
-#: ../src/lib/main.py:796
-#, python-format
-msgid "Tracker %s"
-msgstr "Sledovanie %s"
+#~ msgid "Show hint highlights"
+#~ msgstr "Zobraziť pomocné zvýrazňovače"
 
-#: ../src/lib/number_box.py:82
-msgid "_Clear"
-msgstr "_Zmazať"
+#~ msgid "Color of the grid border"
+#~ msgstr "Farba okraja mriežky"
 
-#: ../src/lib/saver.py:151
-msgid "No Space"
-msgstr "Žiadne miesto"
+#~ msgid "Show the application toolbar"
+#~ msgstr "Zobraziť lištu nástrojov aplikácie"
 
-#: ../src/lib/saver.py:152
-msgid "No space left on disk"
-msgstr "Na disku nezostalo voľné miesto"
+# dialog title
+#~ msgid "Print Sudokus"
+#~ msgstr "Tlač sudoku"
 
-#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "Nie je možné vytvoriť dátový priečinok %(path)s."
+# label nad nastaveniami
+#~ msgid "Print Games"
+#~ msgstr "Tlač hier"
 
-#: ../src/lib/saver.py:155
-msgid "There is no disk space left!"
-msgstr "Na disku nezostalo žiadne voľné miesto!"
+#~ msgid "_Sudokus per page: "
+#~ msgstr "_Sudoku na stranu: "
 
-#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
-msgid "Error creating directory"
-msgstr "Chyba pri vytváraní adresára"
+#~ msgid "Levels of difficulty to print"
+#~ msgstr "Úrovne obtiažnosti, ktoré sa majú tlačiť"
 
-#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
-#: ../src/lib/saver.py:229
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "Chyba %(errno)s: %(error)s"
+#~ msgid "Details"
+#~ msgstr "Podrobnosti"
 
-#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
-msgid "Unable to save game."
-msgstr "Nie je možné uložiť hru."
+#~ msgid "_Mark games as played once you've printed them."
+#~ msgstr "_Po vytlačení označiť hry za hrané."
 
-#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "Nie je možné uložiť súbor %(filename)s."
+#~ msgid "_Include games you've already played in list of games to print"
+#~ msgstr "_Zahrnúť do zoznamu pre tlač aj hry, ktoré boli hrané"
 
-#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
-msgid "Unable to mark game as finished."
-msgstr "Nie je možné označiť hru za dokončenú."
+#~ msgid "_Saved Games"
+#~ msgstr "_Uložené hry"
 
-#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
-msgid "Sudoku unable to mark game as finished."
-msgstr "Sudoku nemôže označiť hru za dokončenú."
+#~ msgid "Add a new tracker"
+#~ msgstr "Pridať nové sledovanie"
+
+# PK: preco nie neurcitok?
+# PM: je to tooltip na tlačidle
+#~ msgid "Remove the selected tracker"
+#~ msgstr "Odstráni označené sledovanie"
+
+#~ msgid "Make the tracked changes permanent"
+#~ msgstr "Zapísať sledované hodnoty natrvalo"
+
+#~ msgid "H_ide"
+#~ msgstr "_Skryť"
+
+#~ msgid "Hide the tracked values"
+#~ msgstr "Skryť sledované hodnoty"
+
+#~ msgid "Website"
+#~ msgstr "Webová stránka"
+
+#~ msgid "Easy"
+#~ msgstr "Ľahká"
+
+#~ msgid "Medium"
+#~ msgstr "Stredná"
+
+#~ msgid "Hard"
+#~ msgstr "Ťažká"
+
+#~ msgid "Very hard"
+#~ msgstr "Veľmi ťažká"
+
+#~ msgid "Last played %(n)s second ago"
+#~ msgid_plural "Last played %(n)s seconds ago"
+#~ msgstr[0] "Naposledy hrané pred %(n)s sekundami"
+#~ msgstr[1] "Naposledy hrané pred %(n)s sekundou"
+#~ msgstr[2] "Naposledy hrané pred %(n)s sekundami"
+
+#~ msgid "Last played %(n)s minute ago"
+#~ msgid_plural "Last played %(n)s minutes ago"
+#~ msgstr[0] "Naposledy hrané pred %(n)s minútami"
+#~ msgstr[1] "Naposledy hrané pred %(n)s minútou"
+#~ msgstr[2] "Naposledy hrané pred %(n)s minútami"
+
+#~ msgid "Last played at %I:%M %p"
+#~ msgstr "Naposledy hrané včera o %H:%M"
+
+#~ msgid "Last played yesterday at %I:%M %p"
+#~ msgstr "Naposledy hrané včera o %H:%M"
+
+# PK: napr v Sobota?, pouzil by som skratenie => %a
+#~ msgid "Last played on %A at %I:%M %p"
+#~ msgstr "Naposledy hrané v %a o %H:%M"
+
+#~ msgid "Last played on %B %e %Y"
+#~ msgstr "Naposledy hrané dňa %e. %B %Y"
+
+#~ msgid "Easy puzzle"
+#~ msgstr "Ľahký hlavolam"
+
+#~ msgid "Medium puzzle"
+#~ msgstr "Stredne ťažký hlavolam"
+
+#~ msgid "Very hard puzzle"
+#~ msgstr "Veľmi ťažký hlavolam"
+
+#~ msgid "Played for %d hour"
+#~ msgid_plural "Played for %d hours"
+#~ msgstr[0] "Hrané %d hodín"
+#~ msgstr[1] "Hrané %d hodinu"
+#~ msgstr[2] "Hrané %d hodiny"
+
+#~ msgid "Played for %d minute"
+#~ msgid_plural "Played for %d minutes"
+#~ msgstr[0] "Hrané %d minút"
+#~ msgstr[1] "Hrané %d minútu"
+#~ msgstr[2] "Hrané %d minúty"
+
+#~ msgid "Played for %d second"
+#~ msgid_plural "Played for %d seconds"
+#~ msgstr[0] "Hrané %d sekúnd"
+#~ msgstr[1] "Hrané %d sekundu"
+#~ msgstr[2] "Hrané %d sekundy"
+
+#~ msgid "Do you really want to do this?"
+#~ msgstr "Naozaj to chcete urobiť?"
+
+#~ msgid "Don't ask me this again."
+#~ msgstr "Nabudúce sa už nepýtať."
+
+#~ msgid "_Game"
+#~ msgstr "_Hra"
+
+#~ msgid "New game"
+#~ msgstr "Nová hra"
+
+#~ msgid "_Reset"
+#~ msgstr "_Vynulovať"
+
+#~ msgid "_Undo"
+#~ msgstr "_Vrátiť späť"
+
+#~ msgid "_Redo"
+#~ msgstr "_Opakovať vrátené"
+
+#~ msgid "Puzzle _Statistics..."
+#~ msgstr "Š_tatistiky o _hlavolame…"
+
+#~ msgid "_Settings"
+#~ msgstr "Nas_tavenia"
+
+#~ msgid "_Tools"
+#~ msgstr "_Nástroje"
+
+#~ msgid "_Hint"
+#~ msgstr "_Rada"
+
+#~ msgid "Show a square that is easy to fill."
+#~ msgstr "Zobrazí štvorce, ktoré sa dajú ľahko vyplniť."
+
+#~ msgid "Clear _Top Notes"
+#~ msgstr "Zmazať _horné poznámky"
+
+#~ msgid "Clear _Bottom Notes"
+#~ msgstr "Zmazať _dolné poznámky"
+
+#~ msgid "_Contents"
+#~ msgstr "Ob_sah"
+
+#~ msgid "Show _Possible Numbers"
+#~ msgstr "Zobraziť _možné čísla"
+
+#~ msgid "Always show possible numbers in a square"
+#~ msgstr "Neustále bude zobrazovať možné čísla v štvorcoch"
+
+#~ msgid "Warn about squares made unfillable by a move"
+#~ msgstr "Upozorní na štvorce, ktoré sa po ťahu stanú nevyplniteľné"
+
+#~ msgid "_Track Additions"
+#~ msgstr "_Sledovať doplnenia"
+
+#~ msgid ""
+#~ "Mark new additions in a separate color so you can keep track of them."
+#~ msgstr ""
+#~ "Označí novodoplnené čísla odlišnou farbou, aby ste ich mohli rozoznať."
+
+#~ msgid "Show _Toolbar"
+#~ msgstr "Zobraziť _lištu nástrojov"
+
+#~ msgid "_Highlighter"
+#~ msgstr "_Zvýrazňovač"
+
+#~ msgid "Highlight the current row, column and box"
+#~ msgstr "Zvýrazňuje aktuálny riadok, stĺpec a štvorec"
+
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d minút"
+#~ msgstr[1] "%d minútu"
+#~ msgstr[2] "%d minúty"
+
+#~ msgid "%d second"
+#~ msgid_plural "%d seconds"
+#~ msgstr[0] "%d sekúnd"
+#~ msgstr[1] "%d sekundu"
+#~ msgstr[2] "%d sekundy"
+
+#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
+#~ msgstr "Hlavolam ste dokončili za %(minute)s a %(second)s"
+
+#~ msgid "%d hour"
+#~ msgid_plural "%d hours"
+#~ msgstr[0] "%d hodín"
+#~ msgstr[1] "%d hodinu"
+#~ msgstr[2] "%d hodiny"
+
+#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
+#~ msgstr "Hlavolam ste dokončili za %(hour)s, %(minute)s a %(second)s"
+
+#~ msgid "You got %(n)s hint."
+#~ msgid_plural "You got %(n)s hints."
+#~ msgstr[0] "Použili ste %(n)s rád."
+#~ msgstr[1] "Použili ste %(n)s radu."
+#~ msgstr[2] "Použili ste %(n)s rady."
+
+#~ msgid "You had %(n)s impossibility pointed out."
+#~ msgid_plural "You had %(n)s impossibilities pointed out."
+#~ msgstr[0] "Boli ste %(n)s-krát upozornení na neriešiteľnú situáciu."
+#~ msgstr[1] "Boli ste %(n)s-krát upozornení na neriešiteľnú situáciu."
+#~ msgstr[2] "Boli ste %(n)s-krát upozornení na neriešiteľnú situáciu."
+
+#~ msgid "You win!"
+#~ msgstr "Vyhrali ste!"
+
+#~ msgid "Save this game before starting new one?"
+#~ msgstr "Uložiť túto hru pred spustením novej?"
+
+#~ msgid "_Save game for later"
+#~ msgstr "_Uložiť hru na neskôr"
+
+#~ msgid "_Abandon game"
+#~ msgstr "_Opustiť hru"
+
+#~ msgid "Save game before closing?"
+#~ msgstr "Uložiť hru pred ukončením?"
+
+#~ msgid "Puzzle Information"
+#~ msgstr "Informácie o hlavolame"
+
+#~ msgid "Number of moves instantly fillable by elimination: "
+#~ msgstr "Počet ťahov ihneď vyplniteľných vylučovacou metódou: "
+
+#~ msgid "Number of moves instantly fillable by filling: "
+#~ msgstr "Počet ťahov, ktoré sa objasnia po vyplnení: "
+
+#~ msgid "Amount of trial-and-error required to solve: "
+#~ msgstr "Počet ťahov, ktoré sa musia riešiť pokusom-omylom: "
+
+#~ msgid "Puzzle Statistics"
+#~ msgstr "Štatistiky o hlavolame"
+
+#~ msgid "Unable to display help: %s"
+#~ msgstr "Nepodarilo sa zobraziť pomocníka: %s"
+
+#~ msgid "Untracked"
+#~ msgstr "Nesledované"
+
+#~ msgid "_Remove"
+#~ msgstr "O_dstrániť"
+
+#~ msgid "Delete selected tracker."
+#~ msgstr "Odstráni označené sledovanie."
+
+#~ msgid "Hide current tracker entries."
+#~ msgstr "Skryje položky aktuálneho sledovania."
+
+#~ msgid "A_pply"
+#~ msgstr "_Použiť"
+
+#~ msgid "Apply all tracked values and remove the tracker."
+#~ msgstr "Použije všetky sledované hodnoty a odstráni sledovanie."
+
+#~ msgid "Tracker %s"
+#~ msgstr "Sledovanie %s"
+
+#~ msgid "No Space"
+#~ msgstr "Žiadne miesto"
+
+#~ msgid "No space left on disk"
+#~ msgstr "Na disku nezostalo voľné miesto"
+
+#~ msgid "Unable to create data folder %(path)s."
+#~ msgstr "Nie je možné vytvoriť dátový priečinok %(path)s."
+
+#~ msgid "There is no disk space left!"
+#~ msgstr "Na disku nezostalo žiadne voľné miesto!"
+
+#~ msgid "Error %(errno)s: %(error)s"
+#~ msgstr "Chyba %(errno)s: %(error)s"
+
+#~ msgid "Unable to save game."
+#~ msgstr "Nie je možné uložiť hru."
+
+#~ msgid "Unable to save file %(filename)s."
+#~ msgstr "Nie je možné uložiť súbor %(filename)s."
+
+#~ msgid "Unable to mark game as finished."
+#~ msgstr "Nie je možné označiť hru za dokončenú."
+
+#~ msgid "Sudoku unable to mark game as finished."
+#~ msgstr "Sudoku nemôže označiť hru za dokončenú."
 
 #~ msgid "GNOME Games web site"
 #~ msgstr "Webové stránky Hier GNOME"
