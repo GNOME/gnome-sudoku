@@ -6,7 +6,7 @@
 # Xavier Conde Rueda <xavi.conde@gmail.com>, 2004.
 # Jesús Corrius <jesus@softcatala.org>, 2005.
 # Josep Puigdemont i Casamajó <josep.puigdemont@gmail.com>, 2007.
-# Gil Forcada <gilforcada@guifi.net>, 2008, 2010, 2011, 2012, 2013.
+# Gil Forcada <gilforcada@guifi.net>, 2008, 2010-2014.
 # Carles Ferrando <carles.ferrando@gmail.com>, 2010.
 # Jordi Serratosa <jordis@softcatala.cat>, 2012.
 #
@@ -15,40 +15,37 @@ msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-05-09 22:23+0000\n"
-"PO-Revision-Date: 2014-05-10 00:24+0200\n"
-"Last-Translator: Joan Montané <jmontane@softcatala.org>\n"
+"POT-Creation-Date: 2014-09-13 19:40+0000\n"
+"PO-Revision-Date: 2014-09-14 13:30+0200\n"
+"Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bits\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2
 msgid ""
-"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
-"make playing Sudoku fun. Games are automatically saved when you quit, and "
-"you can always come back to any game that you've played."
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
 msgstr ""
-"El GNOME Sudoku té una interfície simple, no obtrusiva i amb totes les "
-"característiques que fan divertit jugar al Sudoku. Els jocs es desen "
-"automàticament en sortir, i sempre podeu tornar jugar a qualsevol "
-"trencaclosques que hàgiu jugat."
+"Jugueu al popular joc de lògica japonès. El GNOME Sudoku és un joc imprescindible "
+"pels amants dels sudokus. Amb una interfície simple i clara que permet jugar "
+"divertir-se fent sudokus sigui quin sigui el vostre nivell."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
-"websites. You can also see detailed information about how the computer "
-"solved the puzzle."
+"websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
-"Cada joc té assignada una dificultat similar a la triada als diaris i llocs "
-"web. Podeu trobar més informació sobre com l'ordinador resol el "
-"trencaclosques."
+"Cada joc té assignada una dificultat similar a com ho fan als diaris i "
+"a les pàgines web, d'aquesta manera serà tan fàcil o tan difícil com vulgueu."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
@@ -60,7 +57,8 @@ msgstr ""
 "quants jocs voleu per pàgina i la dificultat. Per tant, el GNOME Sudoku us "
 "pot fer servei com a un llibre de Sudoku que va canviant."
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:398
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -71,459 +69,205 @@ msgstr ""
 "trencaclosques numèrica"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "joc;tauler;fitxes;japonès;"
+msgid "magic;square;"
+msgstr "màgia;quadrat;"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
-msgid "The number of seconds between automatic saves"
-msgstr "El nombre de segons entre desats automàtics"
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+msgid "_Print"
+msgstr "_Imprimeix"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
-msgid "Print games that have been played"
-msgstr "Imprimeix jocs que s'han jugat"
+#: ../data/gnome-sudoku-menu.ui.h:2
+msgid "Print _Current Puzzle…"
+msgstr "Imprimeix el trencaclosques _actual…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
-msgid "Mark printed games as played"
-msgstr "Marca els jocs impresos com a jugats"
+#: ../data/gnome-sudoku-menu.ui.h:3
+msgid "Print _Multiple Puzzles…"
+msgstr "Imprimeix _múltiples trencaclosques…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
-msgid "Width of application window in pixels"
-msgstr "Amplada de la finestra de l'aplicació, en píxels"
+#: ../data/gnome-sudoku-menu.ui.h:4
+msgid "_Show Warnings"
+msgstr "Mostra els _avisos"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
-msgid "Height of application window in pixels"
-msgstr "Alçada de la finestra de l'aplicació, en píxels"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
-msgid "Show hint highlights"
-msgstr "Mostra les pistes ressaltades"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
-msgid "Color of the grid border"
-msgstr "Color de la vora de la graella"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
-msgid "Show the application toolbar"
-msgstr "Mostra la barra d'eines de l'aplicació"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
-msgid "Show hints"
-msgstr "Mostra les pistes"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
-msgid "Number of puzzles to print on a page"
-msgstr "Nombre de sudokus a imprimir en una pàgina"
-
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "Imprimeix els sudokus"
-
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "Imprimeix jocs"
-
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "_Nombre de sudokus a imprimir: "
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "_Sudokus per pàgina: "
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "Nivells de dificultat a imprimir"
-
-#: ../data/print_games.ui.h:6
-msgid "_Easy"
-msgstr "_Senzill"
-
-#: ../data/print_games.ui.h:7
-msgid "_Medium"
-msgstr "_Mitjà"
-
-#: ../data/print_games.ui.h:8
-msgid "_Hard"
-msgstr "_Difícil"
-
-#: ../data/print_games.ui.h:9
-msgid "_Very Hard"
-msgstr "_Molt difícil"
-
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "Detalls"
-
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "_Marca les partides jugades així que s'hagin imprès."
-
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr ""
-"_Inclou partides jugades anteriorment a la llista de partides per imprimir"
-
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "Partida _nova"
-
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "Jocs _desats"
-
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "Afegeix un rastre"
-
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "Suprimeix el rastre seleccionat"
-
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "Fes que els canvis rastrejats siguin permanents"
-
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
-msgid "H_ide"
-msgstr "_Oculta"
-
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "Oculta els valors rastrejats"
-
-#: ../src/lib/defaults.py:50
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"GNOME Sudoku is a part of GNOME Games."
-msgstr ""
-"El popular trencaclosques lògic japonès.\n"
-"\n"
-"El GNOME Sudoku forma part dels jocs del GNOME."
-
-#: ../src/lib/defaults.py:53
-msgid "Website"
-msgstr "Lloc web"
-
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "Fàcil"
-
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "Mitjà"
-
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "Difícil"
-
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "Molt difícil"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "Última partida jugada fa %(n)s segon"
-msgstr[1] "Última partida jugada fa %(n)s segons"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "Última partida jugada fa %(n)s minut"
-msgstr[1] "Última partida jugada fa %(n)s minuts"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "L'última partida jugada ha sigut a les %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "L'última partida jugada va ser ahir a les %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "L'última partida jugada va ser el %A a les %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "L'última partida jugada va ser el %e de %B de %Y"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "Trencaclosques senzill"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "Trencaclosques mitjà"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "Trencaclosques difícil"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "Trencaclosques molt difícil"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "Jugat durant %d hora"
-msgstr[1] "Jugat durant %d hores"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "Jugat durant %d minut"
-msgstr[1] "Jugat durant %d minuts"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "Jugat durant %d segon"
-msgstr[1] "Jugat durant %d segons"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "Esteu segur que ho voleu fer?"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "No m'ho tornis a preguntar."
-
-#: ../src/lib/main.py:196
-msgid "_Game"
-msgstr "P_artida"
-
-#: ../src/lib/main.py:197
-msgid "New game"
-msgstr "Partida nova"
-
-#: ../src/lib/main.py:198
-msgid "_Reset"
-msgstr "_Reinicia"
-
-#: ../src/lib/main.py:200
-msgid "_Undo"
-msgstr "_Desfés"
-
-#: ../src/lib/main.py:201
-msgid "Undo last action"
-msgstr "Desfà el darrer moviment"
-
-#: ../src/lib/main.py:202
-msgid "_Redo"
-msgstr "_Refés"
-
-#: ../src/lib/main.py:203
-msgid "Redo last action"
-msgstr "Refà el darrer moviment"
-
-#: ../src/lib/main.py:204
-msgid "Puzzle _Statistics..."
-msgstr "E_stadístiques del trencaclosques..."
-
-#: ../src/lib/main.py:206
-msgid "_Print..."
-msgstr "_Imprimeix..."
-
-#: ../src/lib/main.py:207
-msgid "Print _Multiple Sudokus..."
-msgstr "Imprimeix _múltiples sudokus..."
-
-#: ../src/lib/main.py:210
-msgid "_Settings"
-msgstr "_Paràmetres"
-
-#: ../src/lib/main.py:212
-msgid "_Tools"
-msgstr "Ei_nes"
-
-#: ../src/lib/main.py:213
-msgid "_Hint"
-msgstr "_Pista"
-
-#: ../src/lib/main.py:214
-msgid "Show a square that is easy to fill."
-msgstr "Mostra un quadre que sigui fàcil d'emplenar."
-
-#: ../src/lib/main.py:215
-msgid "Clear _Top Notes"
-msgstr "Neteja les notes _superiors"
-
-#: ../src/lib/main.py:217
-msgid "Clear _Bottom Notes"
-msgstr "Neteja les notes _inferiors"
-
-#: ../src/lib/main.py:219
+#: ../data/gnome-sudoku-menu.ui.h:5
 msgid "_Help"
 msgstr "A_juda"
 
-#: ../src/lib/main.py:220
-msgid "_Contents"
-msgstr "_Continguts"
+#: ../data/gnome-sudoku-menu.ui.h:6
+msgid "_About"
+msgstr "_Quant a"
 
-#: ../src/lib/main.py:226
-msgid "Show _Possible Numbers"
-msgstr "Mostra els valors _possibles"
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_Quit"
+msgstr "_Surt"
 
-#: ../src/lib/main.py:228
-msgid "Always show possible numbers in a square"
-msgstr "Sempre mostra els nombres possibles d'una casella"
+#: ../data/gnome-sudoku.ui.h:2
+msgid "Undo your last action"
+msgstr "Desfés l'última acció"
 
-#: ../src/lib/main.py:232
-msgid "Warn About _Unfillable Squares"
-msgstr "_Avisa sobre caselles que no es poden emplenar"
+#: ../data/gnome-sudoku.ui.h:3
+msgid "Redo your last action"
+msgstr "Refés l'última acció"
 
-#: ../src/lib/main.py:234
-msgid "Warn about squares made unfillable by a move"
+#: ../data/gnome-sudoku.ui.h:4
+msgid "Go back to the current game"
+msgstr "Torna a la partida actual"
+
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+msgid "_Easy"
+msgstr "_Senzill"
+
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+msgid "_Medium"
+msgstr "_Mitjà"
+
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+msgid "_Hard"
+msgstr "_Difícil"
+
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+msgid "_Very Hard"
+msgstr "_Molt difícil"
+
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Clear Board"
+msgstr "_Neteja el tauler"
+
+#: ../data/gnome-sudoku.ui.h:10
+msgid "Reset the board to its original state"
+msgstr "Reinicia el tauler al seu estat original"
+
+#: ../data/gnome-sudoku.ui.h:11
+msgid "_New Puzzle"
+msgstr "Trencaclosques _nou"
+
+#: ../data/gnome-sudoku.ui.h:12
+msgid "Start a new puzzle"
+msgstr "Comença un trencaclosques nou"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
+msgid "Difficulty level of sudokus to be printed"
+msgstr "Nivell de dificultat del sudokus que s'imprimiran"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+msgid ""
+"Set the difficulty level of the sudokus you want to print. Possible values "
+"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"Avisa si un moviment provoca que hi hagi caselles que no es puguin omplir"
+"Establiu el nivell de dificultat dels sudokus que voleu imprimir. Poden ser "
+"«easy» (fàcil), «medium» (mitjà), «hard» (difícil) i «very_hard» (molt "
+"difícil)"
 
-#: ../src/lib/main.py:236
-msgid "_Track Additions"
-msgstr "_Rastreja les addicions"
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+msgid "Number of Sudokus to print"
+msgstr "Nombre de sudokus a imprimir"
 
-#: ../src/lib/main.py:238
-msgid "Mark new additions in a separate color so you can keep track of them."
+#: ../data/org.gnome.sudoku.gschema.xml.h:4
+msgid "Set the number of sudokus you want to print"
+msgstr "Establiu el nombre de sudokus que voleu imprimir"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:5
+msgid "Warn about unfillable squares and duplicate numbers"
 msgstr ""
-"Marca amb un color diferents les noves addicions, de manera que sigui més "
-"fàcil seguir-les."
+"Avisa sobre caselles que no es poden emplenar i si hi ha nombres duplicats"
 
-#: ../src/lib/main.py:240
-msgid "Show _Toolbar"
-msgstr "Mostra la _barra d'eines"
-
-#: ../src/lib/main.py:241
-msgid "_Highlighter"
-msgstr "_Marcador"
-
-#: ../src/lib/main.py:242
-msgid "Highlight the current row, column and box"
-msgstr "Ressalta la fila, columna i casella actuals"
-
-#: ../src/lib/main.py:367
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "Heu completat el trencaclosques en %d segon"
-msgstr[1] "Heu completat el trencaclosques en %d segons"
-
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minut"
-msgstr[1] "%d minuts"
-
-#: ../src/lib/main.py:373 ../src/lib/main.py:381
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d segon"
-msgstr[1] "%d segons"
-
-#: ../src/lib/main.py:374
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "Heu completat el trencaclosques en %(minute)s i %(second)s"
-
-#: ../src/lib/main.py:379
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d hora"
-msgstr[1] "%d hores"
-
-#: ../src/lib/main.py:382
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "Heu completat el trencaclosques en %(hour)s, %(minute)s i %(second)s"
-
-#: ../src/lib/main.py:384
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "Heu obtingut %(n)s pista."
-msgstr[1] "Heu obtingut %(n)s pistes."
-
-#: ../src/lib/main.py:387
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "Teniu %(n)s casella impossible."
-msgstr[1] "Teniu %(n)s caselles impossibles."
-
-#: ../src/lib/main.py:392
-msgid "You win!"
-msgstr "Heu guanyat!"
-
-#: ../src/lib/main.py:402
-msgid "Save this game before starting new one?"
-msgstr "Voleu desar aquesta partida abans de començar-ne una altra?"
-
-#: ../src/lib/main.py:403
-msgid "_Save game for later"
-msgstr "_Desa la partida per més endavant"
-
-#: ../src/lib/main.py:404
-msgid "_Abandon game"
-msgstr "_Abandona la partida"
-
-#: ../src/lib/main.py:422
-msgid "Save game before closing?"
-msgstr "Voleu desar la partida abans de tancar?"
-
-#: ../src/lib/main.py:620
-msgid "Puzzle Information"
-msgstr "Informació del trencaclosques"
-
-#: ../src/lib/main.py:621
-msgid "There is no current puzzle."
-msgstr "En aquest moment no hi ha cap trencaclosques."
-
-#: ../src/lib/main.py:626
-msgid "Calculated difficulty: "
-msgstr "Dificultat calculada: "
-
-#: ../src/lib/main.py:631
-msgid "Very Hard"
-msgstr "Molt difícil"
-
-#: ../src/lib/main.py:636
-msgid "Number of moves instantly fillable by elimination: "
+#: ../data/org.gnome.sudoku.gschema.xml.h:6
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number and duplicate numbers are highlighted in red"
 msgstr ""
-"Nombre de moviments que es poden emplenar instantàniament per eliminació: "
+"Mostra una X gran vermella en una casella si no es pot emplenar amb cap "
+"nombre, els nombres duplicats es ressalten en vermell"
 
-#: ../src/lib/main.py:639
-msgid "Number of moves instantly fillable by filling: "
+#: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Width of the window in pixels"
+msgstr "Amplada de la finestra, en píxels"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
+msgid "Height of the window in pixels"
+msgstr "Alçada de la finestra, en píxels"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
+msgid "true if the window is maximized"
+msgstr "«true» (cert) si la finestra està maximitzada"
+
+#: ../data/print-games.ui.h:1
+msgid "Print Multiple Puzzles"
+msgstr "Imprimeix múltiples trencaclosques"
+
+#: ../data/print-games.ui.h:3
+msgid "_Cancel"
+msgstr "_Cancel·la"
+
+#: ../data/print-games.ui.h:4
+msgid "_Number of puzzles"
+msgstr "_Nombre de trencaclosques"
+
+#: ../data/print-games.ui.h:5
+msgid "Difficulty"
+msgstr "Dificultat"
+
+#: ../lib/sudoku-board.vala:570
+msgid "Unknown Difficulty"
+msgstr "Dificultat desconeguda"
+
+#: ../lib/sudoku-board.vala:572
+msgid "Easy Difficulty"
+msgstr "Dificultat fàcil"
+
+#: ../lib/sudoku-board.vala:574
+msgid "Medium Difficulty"
+msgstr "Dificultat mitjana"
+
+#: ../lib/sudoku-board.vala:576
+msgid "Hard Difficulty"
+msgstr "Dificultat alta"
+
+#: ../lib/sudoku-board.vala:578
+msgid "Very Hard Difficulty"
+msgstr "Dificultat molt alta"
+
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:56
+msgid "Show release version"
+msgstr "Mostra la versió"
+
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:60
+msgid "Show the possible values for each cell"
+msgstr "Mostra els valors possibles per a cada casella"
+
+#: ../src/gnome-sudoku.vala:250
+#, c-format
+msgid "Well done, you completed the puzzle in %d minute"
+msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgstr[0] "Felicitats! heu completat el trencaclosques en %d minut"
+msgstr[1] "Felicitats! heu completat el trencaclosques en %d minuts"
+
+#: ../src/gnome-sudoku.vala:255
+msgid "Same difficulty again"
+msgstr "La mateixa dificultat"
+
+#: ../src/gnome-sudoku.vala:256
+msgid "New difficulty"
+msgstr "Una altra dificultat"
+
+#: ../src/gnome-sudoku.vala:314
+msgid "Reset the board to its original state?"
+msgstr "Voleu reiniciar el tauler al seu estat original?"
+
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: ../src/gnome-sudoku.vala:402
+#, c-format
+msgid ""
+"The popular Japanese logic puzzle\n"
+"\n"
+"Puzzles generated by QQwing %s"
 msgstr ""
-"Nombre de moviments que es poden emplenar instantàniament mitjançant "
-"emplenat: "
+"El popular trencaclosques lògic japonès\n"
+"\n"
+"Trencaclosques generats amb QQwing %s"
 
-#: ../src/lib/main.py:642
-msgid "Amount of trial-and-error required to solve: "
-msgstr "Nombre de moviments de prova i error requerits per solucionar-lo: "
-
-#: ../src/lib/main.py:645 ../src/lib/main.py:646
-msgid "Puzzle Statistics"
-msgstr "Estadístiques del trencaclosques"
-
-#: ../src/lib/main.py:670
+#: ../src/gnome-sudoku.vala:407
 msgid "translator-credits"
 msgstr ""
 "Jordi Vila <gnome@softcatala.net>\n"
@@ -533,85 +277,11 @@ msgstr ""
 "Josep Puigdemont <josep.puigdemont@gmail.com>\n"
 "David Planella <david.planella@gmail.com>"
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:680
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "No s'ha pogut mostrar l'ajuda: %s"
+#: ../src/number-picker.vala:70
+msgid "Clear"
+msgstr "Neteja"
 
-#: ../src/lib/main.py:736
-msgid "Untracked"
-msgstr "Sense rastre"
-
-#: ../src/lib/main.py:745
-msgid "_Remove"
-msgstr "_Suprimeix"
-
-#: ../src/lib/main.py:746
-msgid "Delete selected tracker."
-msgstr "Suprimeix el rastre seleccionat."
-
-#: ../src/lib/main.py:752
-msgid "Hide current tracker entries."
-msgstr "Oculta les entrades del rastre actual."
-
-#: ../src/lib/main.py:757
-msgid "A_pply"
-msgstr "A_plica"
-
-#: ../src/lib/main.py:758
-msgid "Apply all tracked values and remove the tracker."
-msgstr "Aplica tots els valors rastrejats i suprimeix el rastre."
-
-#: ../src/lib/main.py:796
-#, python-format
-msgid "Tracker %s"
-msgstr "Rastrejador %s"
-
-#: ../src/lib/number_box.py:82
-msgid "_Clear"
-msgstr "_Neteja"
-
-#: ../src/lib/saver.py:151
-msgid "No Space"
-msgstr "No hi ha espai"
-
-#: ../src/lib/saver.py:152
-msgid "No space left on disk"
-msgstr "No hi ha espai al disc"
-
-#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "No s'ha pogut crear la carpeta de dades %(path)s."
-
-#: ../src/lib/saver.py:155
-msgid "There is no disk space left!"
-msgstr "No hi ha espai al disc"
-
-#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
-msgid "Error creating directory"
-msgstr "S'ha produït un error en crear el directori"
-
-#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
-#: ../src/lib/saver.py:229
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "Error %(errno)s: %(error)s"
-
-#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
-msgid "Unable to save game."
-msgstr "No s'ha pogut desar la partida."
-
-#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "No s'ha pogut desar el fitxer %(filename)s."
-
-#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
-msgid "Unable to mark game as finished."
-msgstr "No s'ha pogut marcar la partida com a finalitzada."
-
-#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
-msgid "Sudoku unable to mark game as finished."
-msgstr "El Sudoku no pot marcar la partida com a finalitzada."
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:29
+msgid "Error printing file:"
+msgstr "S'ha produït un error en imprimir el fitxer:"
