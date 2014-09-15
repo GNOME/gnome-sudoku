@@ -95,7 +95,7 @@ public class GeneratorThread : Object
     private int nsudokus;
     private DifficultyCategory level;
     private ArrayList<SudokuBoard> boards_list;
-    private SourceFunc callback;
+    private unowned SourceFunc callback;
 
     public GeneratorThread (int nsudokus, DifficultyCategory level, ref ArrayList<SudokuBoard> boards_list, SourceFunc callback)
     {
@@ -110,7 +110,11 @@ public class GeneratorThread : Object
         for (var i = 0; i < nsudokus; i++)
             boards_list.add (SudokuGenerator.generate_board (level));
 
-        Idle.add((owned) callback);
+        Idle.add(() => {
+            callback ();
+            return Source.REMOVE;
+        });
+
         return null;
     }
 }
