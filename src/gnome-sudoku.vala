@@ -283,8 +283,8 @@ public class Sudoku : Gtk.Application
 
         header_bar_subtitle = board.difficulty_category.to_string ();
 
-        game = new SudokuGame (board);
         back_cb ();
+        game = new SudokuGame (board);
 
         game.tick.connect (tick_cb);
         game.paused_changed.connect (paused_changed_cb);
@@ -397,15 +397,18 @@ public class Sudoku : Gtk.Application
     private void back_cb ()
     {
         main_stack.set_visible_child_name ("frame");
-        clear_action.set_enabled (!game.board.is_empty ());
         back_button.visible = false;
         undo_redo_box.visible = true;
         header_bar.set_subtitle (header_bar_subtitle);
         print_action.set_enabled (true);
         clock_label.show ();
         clock_image.show ();
+
         if (game != null)
+        {
             game.continue_clock ();
+            clear_action.set_enabled (!game.board.is_empty ());
+        }
     }
 
     private void undo_cb ()
