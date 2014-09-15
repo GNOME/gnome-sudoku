@@ -288,7 +288,7 @@ public class SudokuBoard : Object
             completed();
     }
 
-    public void set (int row, int col, int val)
+    public new void set (int row, int col, int val)
     {
         if (val == 0)
         {
@@ -304,7 +304,7 @@ public class SudokuBoard : Object
         }
     }
 
-    public int get (int row, int col)
+    public new int get (int row, int col)
     {
         return cells[row, col];
     }
