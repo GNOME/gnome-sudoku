@@ -49,7 +49,7 @@ public class SudokuGenerator : Object
         var boards = new SudokuBoard[nboards];
         var threads = new ArrayList<Thread<void*>> ();
 
-        var ncpu_usable = int.max (1, get_number_of_processors () - 1);
+        var ncpu_usable = int.max (1, (int) get_num_processors () - 1);
         var nthreads = int.min (ncpu_usable, nboards);
         var base_nsudokus_each = nboards / nthreads;
         var remainder = nboards % nthreads;
@@ -90,22 +90,6 @@ public class SudokuGenerator : Object
     public static string qqwing_version ()
     {
         return QQwing.get_version ();
-    }
-
-    private static int get_number_of_processors ()
-    {
-        int ncpu;
-        string nproc_stdout;
-
-        try {
-            Process.spawn_command_line_sync ("nproc", out nproc_stdout);
-            ncpu = int.parse (nproc_stdout);
-        } catch (SpawnError e) {
-            warning ("Call to nproc failed. Puzzles will be generated in a single thread");
-            ncpu = 1;
-        }
-
-        return ncpu;
     }
 }
 
