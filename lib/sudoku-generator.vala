@@ -26,7 +26,7 @@ public class SudokuGenerator : Object
 
     public async static SudokuBoard[] generate_boards_async (int nboards, DifficultyCategory category) throws ThreadError
     {
-        var boards_list = new ArrayList<SudokuBoard> ();
+        var boards_list = new ConcurrentList<SudokuBoard> ();
         var boards = new SudokuBoard[nboards];
         Thread<void*> threads[16];
 
@@ -40,7 +40,7 @@ public class SudokuGenerator : Object
         {
             if (i > (nthreads - remainder - 1))
                 nsudokus_per_thread = base_nsudokus_each + 1;
-            var gen_thread = new GeneratorThread (nsudokus_per_thread, category, ref boards_list, generate_boards_async.callback);
+            var gen_thread = new GeneratorThread (nsudokus_per_thread, category, boards_list, generate_boards_async.callback);
             threads[i] = new Thread<void*> ("Generator thread", gen_thread.run);
         }
 
@@ -94,10 +94,10 @@ public class GeneratorThread : Object
 {
     private int nsudokus;
     private DifficultyCategory level;
-    private ArrayList<SudokuBoard> boards_list;
+    private Gee.List<SudokuBoard> boards_list;
     private unowned SourceFunc callback;
 
-    public GeneratorThread (int nsudokus, DifficultyCategory level, ref ArrayList<SudokuBoard> boards_list, SourceFunc callback)
+    public GeneratorThread (int nsudokus, DifficultyCategory level, Gee.List<SudokuBoard> boards_list, SourceFunc callback)
     {
         this.nsudokus = nsudokus;
         this.level = level;
