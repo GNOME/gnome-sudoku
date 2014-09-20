@@ -28,7 +28,7 @@ public class SudokuGenerator : Object
     {
         var boards_list = new ConcurrentList<SudokuBoard> ();
         var boards = new SudokuBoard[nboards];
-        Thread<void*> threads[16];
+        var threads = new ArrayList<Thread<void*>> ();
 
         var ncpu_usable = int.max (1, get_number_of_processors () - 1);
         var nthreads = int.min (ncpu_usable, nboards);
@@ -41,14 +41,14 @@ public class SudokuGenerator : Object
             if (i > (nthreads - remainder - 1))
                 nsudokus_per_thread = base_nsudokus_each + 1;
             var gen_thread = new GeneratorThread (nsudokus_per_thread, category, boards_list, generate_boards_async.callback);
-            threads[i] = new Thread<void*> ("Generator thread", gen_thread.run);
+            threads.add (new Thread<void*> ("Generator thread", gen_thread.run));
         }
 
         // Relinquish the CPU, so that the generated threads can run
         for (var i = 0; i < nthreads; i++)
         {
             yield;
-            threads[i].join ();
+            threads.get(i).join ();
         }
 
         for (var i = 0; i < boards_list.size; i++)
