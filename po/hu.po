@@ -9,22 +9,22 @@
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Szabolcs Varga <shirokuma at shirokuma dot hu>, 2005.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
-# Balázs Úr <urbalazs at gmail dot com>, 2013.
+# Balázs Úr <urbalazs at gmail dot com>, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-19 07:36+0000\n"
-"PO-Revision-Date: 2014-09-19 14:02+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"POT-Creation-Date: 2014-09-20 19:41+0000\n"
+"PO-Revision-Date: 2014-09-21 00:08+0200\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.2\n"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
@@ -36,15 +36,11 @@ msgid ""
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
 "Sudoku fun for players of any skill level."
 msgstr ""
-"Játsszon a népszerű ál-japán logikai játékkal. A GNOME Sudoku kötelező minden "
-"Sudoku-rajongónak. Egyszerű felülete a játékot minden tapasztalati szintű "
-"játékos számára élvezetessé teszi."
+"Játsszon a népszerű ál-japán logikai játékkal. A GNOME Sudoku kötelező "
+"minden Sudoku-rajongónak. Egyszerű felülete a játékot minden tapasztalati "
+"szintű játékos számára élvezetessé teszi."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
-#| msgid ""
-#| "Each game is assigned a difficulty similar to those given by newspapers "
-#| "and websites. You can also see detailed information about how the "
-#| "computer solved the puzzle."
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -65,7 +61,7 @@ msgstr ""
 "feladványkötetként használható."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:404
+#: ../src/gnome-sudoku.vala:478
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -78,22 +74,18 @@ msgid "magic;square;"
 msgstr "bűvös;négyzet;"
 
 #: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
-#| msgid "_Print..."
 msgid "_Print"
 msgstr "_Nyomtatás"
 
 #: ../data/gnome-sudoku-menu.ui.h:2
-#| msgid "There is no current puzzle."
 msgid "Print _Current Puzzle…"
 msgstr "Jelenlegi feladvány _nyomtatása…"
 
 #: ../data/gnome-sudoku-menu.ui.h:3
-#| msgid "Print _Multiple Sudokus..."
 msgid "Print _Multiple Puzzles…"
 msgstr "_Több feladvány nyomtatása…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-#| msgid "Show hints"
 msgid "_Show Warnings"
 msgstr "_Figyelmeztetések megjelenítése"
 
@@ -105,22 +97,19 @@ msgstr "_Súgó"
 msgid "_About"
 msgstr "_Névjegy"
 
-#: ../data/gnome-sudoku-menu.ui.h:7
+#: ../data/gnome-sudoku-menu.ui.h:7 ../src/gnome-sudoku.vala:324
 msgid "_Quit"
 msgstr "_Kilépés"
 
 #: ../data/gnome-sudoku.ui.h:2
-#| msgid "Undo last action"
 msgid "Undo your last action"
 msgstr "Utolsó művelet visszavonása"
 
 #: ../data/gnome-sudoku.ui.h:3
-#| msgid "Redo last action"
 msgid "Redo your last action"
 msgstr "Mégis az utolsó műveletet"
 
 #: ../data/gnome-sudoku.ui.h:4
-#| msgid "End the current game"
 msgid "Go back to the current game"
 msgstr "Vissza a jelenlegi játékhoz"
 
@@ -140,27 +129,27 @@ msgstr "Ne_héz"
 msgid "_Very Hard"
 msgstr "Nag_yon nehéz"
 
-#: ../data/gnome-sudoku.ui.h:9
-#| msgid "_Clear"
+#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:267
+msgid "_Pause"
+msgstr "_Szünet"
+
+#: ../data/gnome-sudoku.ui.h:10
 msgid "_Clear Board"
 msgstr "_Tábla törlése"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:11
 msgid "Reset the board to its original state"
 msgstr "A tábla visszaállítása az eredeti állapotába"
 
-#: ../data/gnome-sudoku.ui.h:11
-#| msgid "Next Puzzle"
+#: ../data/gnome-sudoku.ui.h:12
 msgid "_New Puzzle"
 msgstr "Új _feladvány"
 
-#: ../data/gnome-sudoku.ui.h:12
-#| msgid "Start a new game"
+#: ../data/gnome-sudoku.ui.h:13
 msgid "Start a new puzzle"
 msgstr "Új feladvány indítása"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
-#| msgid "_Number of sudoku to print: "
 msgid "Difficulty level of sudokus to be printed"
 msgstr "_Nyomtatandó sudokuk nehézségi szintje"
 
@@ -170,21 +159,18 @@ msgid ""
 "are - \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
 "A nyomtatni kívánt sudokuk nehézségi szintjének beállítása. Lehetséges "
-"értékek: „easy” (egyszerű), „medium” (közepes), „hard” (nehéz), „very_hard” "
-"(nagyon nehéz)"
+"értékek: „easy” (egyszerű), „medium” (közepes), „hard” (nehéz), "
+"„very_hard” (nagyon nehéz)"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:3
-#| msgid "_Number of sudoku to print: "
 msgid "Number of Sudokus to print"
 msgstr "Nyomtatandó sudokuk száma"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:4
-#| msgid "_Number of sudoku to print: "
 msgid "Set the number of sudokus you want to print"
 msgstr "A nyomtatandó sudokuk számának beállítása"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:5
-#| msgid "Warn About _Unfillable Squares"
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Figyelmeztessen a kitölthetetlen négyzetekre és a többszörös számokra"
 
@@ -197,12 +183,10 @@ msgstr ""
 "kitölteni, és a többször szereplő számok pirossal lesznek kiemelve"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
-#| msgid "The width of the main window in pixels."
 msgid "Width of the window in pixels"
 msgstr "Az ablak szélessége képpontokban"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:8
-#| msgid "The height of the main window in pixels."
 msgid "Height of the window in pixels"
 msgstr "Az ablak magassága képpontokban"
 
@@ -211,7 +195,6 @@ msgid "true if the window is maximized"
 msgstr "Az ablak teljes méretű-e"
 
 #: ../data/print-games.ui.h:1
-#| msgid "Print _Multiple Sudokus..."
 msgid "Print Multiple Puzzles"
 msgstr "Több sudoku nyomtatása"
 
@@ -220,80 +203,70 @@ msgid "_Cancel"
 msgstr "Mé_gse"
 
 #: ../data/print-games.ui.h:4
-#| msgid "_Number of players:"
 msgid "_Number of puzzles"
 msgstr "_Feladványok száma"
 
 #: ../data/print-games.ui.h:5
-#| msgid "Difficulty:"
 msgid "Difficulty"
 msgstr "Nehézség"
 
 #: ../lib/sudoku-board.vala:570
-#| msgid "Difficulty:"
 msgid "Unknown Difficulty"
 msgstr "Ismeretlen nehézség"
 
 #: ../lib/sudoku-board.vala:572
-#| msgid "Difficulty:"
 msgid "Easy Difficulty"
 msgstr "Egyszerű nehézség"
 
 #: ../lib/sudoku-board.vala:574
-#| msgid "Difficulty:"
 msgid "Medium Difficulty"
 msgstr "Közepes nehézség"
 
 #: ../lib/sudoku-board.vala:576
-#| msgid "Difficulty:"
 msgid "Hard Difficulty"
 msgstr "Magas nehézség"
 
 #: ../lib/sudoku-board.vala:578
-#| msgid "Difficulty:"
 msgid "Very Hard Difficulty"
 msgstr "Nagyon magas nehézség"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:56
+#: ../src/gnome-sudoku.vala:63
 msgid "Show release version"
 msgstr "Verziószám megjelenítése"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:60
+#: ../src/gnome-sudoku.vala:67
 msgid "Show the possible values for each cell"
 msgstr "Az egyes cellák lehetséges értékeinek megjelenítése"
 
-#: ../src/gnome-sudoku.vala:250
+# aisleriot/dialog.c:112
+#: ../src/gnome-sudoku.vala:273
+#| msgid "_Reset"
+msgid "_Resume"
+msgstr "_Folytatás"
+
+#: ../src/gnome-sudoku.vala:318
 #, c-format
-#| msgid "You completed the puzzle in %d second"
-#| msgid_plural "You completed the puzzle in %d seconds"
-msgid "Well done, you completed the puzzle in %d minute"
-msgid_plural "Well done, you completed the puzzle in %d minutes"
-msgstr[0] "Szép munka, a feladványt %d perc alatt oldotta meg"
-msgstr[1] "Szép munka, a feladványt %d perc alatt oldotta meg"
+#| msgid "Well done, you completed the puzzle in %d minute"
+#| msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "Szép munka, a feladványt %d perc alatt oldotta meg!"
+msgstr[1] "Szép munka, a feladványt %d perc alatt oldotta meg!"
 
-#: ../src/gnome-sudoku.vala:255
-#| msgid "Calculated difficulty: "
-msgid "Same difficulty again"
-msgstr "Azonos nehézség újra"
+#: ../src/gnome-sudoku.vala:323
+#| msgid "Play as:"
+msgid "Play _Again"
+msgstr "Játék új_ra"
 
-#: ../src/gnome-sudoku.vala:256
-#| msgid "Difficulty:"
-msgid "New difficulty"
-msgstr "Új nehézség"
-
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:381
 msgid "Reset the board to its original state?"
 msgstr "A tábla visszaállítása az eredeti állapotába?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:408
+#: ../src/gnome-sudoku.vala:482
 #, c-format
-#| msgid ""
-#| "The popular Japanese logic puzzle\n"
-#| "\n"
-#| "GNOME Sudoku is a part of GNOME Games."
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -303,7 +276,7 @@ msgstr ""
 "\n"
 "A feladványokat a QQwing %s generálja"
 
-#: ../src/gnome-sudoku.vala:413
+#: ../src/gnome-sudoku.vala:487
 msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby at gnome dot hu>\n"
@@ -315,15 +288,21 @@ msgstr ""
 "Varga Szabolcs <shirokuma at shirokuma dot hu>"
 
 #: ../src/number-picker.vala:70
-#| msgid "_Clear"
 msgid "Clear"
 msgstr "Törlés"
 
 #. Error message if printing fails
 #: ../src/sudoku-printer.vala:29
-#| msgid "Error creating directory"
 msgid "Error printing file:"
 msgstr "Hiba a fájl nyomtatása közben:"
+
+#~| msgid "Calculated difficulty: "
+#~ msgid "Same difficulty again"
+#~ msgstr "Azonos nehézség újra"
+
+#~| msgid "Difficulty:"
+#~ msgid "New difficulty"
+#~ msgstr "Új nehézség"
 
 #~ msgid ""
 #~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
@@ -489,10 +468,6 @@ msgstr "Hiba a fájl nyomtatása közben:"
 
 #~ msgid "New game"
 #~ msgstr "Új játék"
-
-# aisleriot/dialog.c:112
-#~ msgid "_Reset"
-#~ msgstr "_Visszaállítás"
 
 #~ msgid "_Undo"
 #~ msgstr "_Visszavonás"
@@ -779,9 +754,6 @@ msgstr "Hiba a fájl nyomtatása közben:"
 
 #~ msgid "Preferences"
 #~ msgstr "Beállítások"
-
-#~ msgid "Play as:"
-#~ msgstr "Játék mint:"
 
 #~ msgid "Opposing Player:"
 #~ msgstr "Ellenfél:"
@@ -1414,9 +1386,6 @@ msgstr "Hiba a fájl nyomtatása közben:"
 
 #~ msgid "Player _List"
 #~ msgstr "_Játékoslista"
-
-#~ msgid "_Pause"
-#~ msgstr "_Szünet"
 
 # aisleriot/dialog.c:112
 #~ msgid "Res_ume"
