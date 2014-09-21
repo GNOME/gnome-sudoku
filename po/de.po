@@ -22,10 +22,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-20 19:41+0000\n"
-"PO-Revision-Date: 2014-09-21 12:53+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-21 12:59+0200\n"
+"PO-Revision-Date: 2014-09-21 12:59+0200\n"
 "Last-Translator: Benjamin Steinwender <b@stbe.at>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de_DE\n"
@@ -71,7 +70,7 @@ msgstr ""
 "Sie sich also ein neues Sudokubuch erstellen."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:478
+#: ../src/gnome-sudoku.vala:404
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -107,7 +106,7 @@ msgstr "_Hilfe"
 msgid "_About"
 msgstr "_Info"
 
-#: ../data/gnome-sudoku-menu.ui.h:7 ../src/gnome-sudoku.vala:324
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_Quit"
 msgstr "_Beenden"
 
@@ -139,23 +138,19 @@ msgstr "_Schwer"
 msgid "_Very Hard"
 msgstr "_Sehr schwer"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:267
-msgid "_Pause"
-msgstr "_Anhalten"
-
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:9
 msgid "_Clear Board"
 msgstr "Spielfeld _leeren"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: ../data/gnome-sudoku.ui.h:10
 msgid "Reset the board to its original state"
 msgstr "Das Spielfeld in den ursprünglichen Zustand zurücksetzen"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: ../data/gnome-sudoku.ui.h:11
 msgid "_New Puzzle"
 msgstr "_Neues Rätsel"
 
-#: ../data/gnome-sudoku.ui.h:13
+#: ../data/gnome-sudoku.ui.h:12
 msgid "Start a new puzzle"
 msgstr "Ein neues Rätsel starten"
 
@@ -241,36 +236,36 @@ msgid "Very Hard Difficulty"
 msgstr "Sehr hoher Schwierigkeitsgrad"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:63
+#: ../src/gnome-sudoku.vala:56
 msgid "Show release version"
 msgstr "Versionsinformation anzeigen"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:67
+#: ../src/gnome-sudoku.vala:60
 msgid "Show the possible values for each cell"
 msgstr "Die möglichen Werte für jede Zelle anzeigen"
 
-#: ../src/gnome-sudoku.vala:273
-msgid "_Resume"
-msgstr "_Weiterspielen"
-
-#: ../src/gnome-sudoku.vala:318
+#: ../src/gnome-sudoku.vala:250
 #, c-format
-msgid "Well done, you completed the puzzle in %d minute!"
-msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "Sehr gut. Sie haben das Rätsel in %d Minute gelöst."
-msgstr[1] "Sehr gut. Sie haben das Rätsel in %d Minuten gelöst."
+msgid "Well done, you completed the puzzle in %d minute"
+msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgstr[0] "Sehr gut. Sie haben das Rätsel in %d Minute gelöst"
+msgstr[1] "Sehr gut. Sie haben das Rätsel in %d Minuten gelöst"
 
-#: ../src/gnome-sudoku.vala:323
-msgid "Play _Again"
-msgstr "_Nochmal Spielen"
+#: ../src/gnome-sudoku.vala:255
+msgid "Same difficulty again"
+msgstr "Erneut derselbe Schwierigkeitsgrad"
 
-#: ../src/gnome-sudoku.vala:381
+#: ../src/gnome-sudoku.vala:256
+msgid "New difficulty"
+msgstr "Neuer Schwierigkeitsgrad"
+
+#: ../src/gnome-sudoku.vala:314
 msgid "Reset the board to its original state?"
 msgstr "Soll das Spielfeld in den ursprünglichen Zustand zurückgesetzt werden?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:482
+#: ../src/gnome-sudoku.vala:408
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -281,7 +276,7 @@ msgstr ""
 "\n"
 "Rätsel wurden von QQwing %s erstellt."
 
-#: ../src/gnome-sudoku.vala:487
+#: ../src/gnome-sudoku.vala:413
 msgid "translator-credits"
 msgstr ""
 "Karl Eichwalder <ke@suse.de>\n"
@@ -309,13 +304,14 @@ msgstr "Leeren"
 msgid "Error printing file:"
 msgstr "Fehler beim Drucken der Datei:"
 
-#~| msgid "Calculated difficulty: "
-#~ msgid "Same difficulty again"
-#~ msgstr "Erneut derselbe Schwierigkeitsgrad"
+#~ msgid "_Pause"
+#~ msgstr "_Anhalten"
 
-#~| msgid "Calculated difficulty: "
-#~ msgid "New difficulty"
-#~ msgstr "Neuer Schwierigkeitsgrad"
+#~ msgid "_Resume"
+#~ msgstr "_Weiterspielen"
+
+#~ msgid "Play _Again"
+#~ msgstr "_Nochmal Spielen"
 
 #~ msgid ""
 #~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
