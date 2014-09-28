@@ -291,10 +291,10 @@ public class Sudoku : Gtk.Application
         if (view != null)
             game_box.remove (view);
 
-        headerbar.title = board.difficulty_category.to_string ();
-
         back_cb ();
         game = new SudokuGame (board);
+
+        headerbar.title = board.difficulty_category.to_string ();
 
         game.tick.connect (tick_cb);
         game.paused_changed.connect (paused_changed_cb);
