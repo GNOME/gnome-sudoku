@@ -19,7 +19,7 @@ public class Sudoku : Gtk.Application
     private SudokuGame game;
     private SudokuView view;
 
-    private HeaderBar header_bar;
+    private HeaderBar headerbar;
     private Stack main_stack;
     private Box game_box; // Holds the view
 
@@ -35,8 +35,6 @@ public class Sudoku : Gtk.Application
     private SimpleAction print_multiple_action;
     private SimpleAction pause_action;
     private SimpleAction new_game_action;
-
-    private string header_bar_subtitle;
 
     private bool show_possibilities = false;
 
@@ -142,7 +140,7 @@ public class Sudoku : Gtk.Application
 
         add_window (window);
 
-        header_bar = (HeaderBar) builder.get_object ("headerbar");
+        headerbar = (HeaderBar) builder.get_object ("headerbar");
         main_stack = (Stack) builder.get_object ("main_stack");
         game_box = (Box) builder.get_object ("game_box");
         undo_redo_box = (Box) builder.get_object ("undo_redo_box");
@@ -159,6 +157,18 @@ public class Sudoku : Gtk.Application
         print_action = (SimpleAction) lookup_action ("print");
         print_multiple_action = (SimpleAction) lookup_action ("print-multiple");
         pause_action = (SimpleAction) lookup_action ("pause");
+
+        var desktop = Environment.get_variable ("XDG_CURRENT_DESKTOP");
+        if (desktop == null || desktop != "Unity")
+        {
+            headerbar.show_close_button = true;
+            window.set_titlebar (headerbar);
+        }
+        else
+        {
+            var vbox = (Box) builder.get_object ("vbox");
+            vbox.pack_start (headerbar, false, false, 0);
+        }
 
         saver = new SudokuSaver ();
         var savegame = saver.get_savedgame ();
@@ -281,7 +291,7 @@ public class Sudoku : Gtk.Application
         if (view != null)
             game_box.remove (view);
 
-        header_bar_subtitle = board.difficulty_category.to_string ();
+        headerbar.title = board.difficulty_category.to_string ();
 
         back_cb ();
         game = new SudokuGame (board);
@@ -341,8 +351,7 @@ public class Sudoku : Gtk.Application
         clear_action.set_enabled (false);
         back_button.visible = game != null;
         undo_redo_box.visible = false;
-        header_bar_subtitle = header_bar.get_subtitle ();
-        header_bar.set_subtitle (null);
+        headerbar.title = _("Select Difficulty");
         print_action.set_enabled (false);
         clock_label.hide ();
         clock_image.hide ();
@@ -399,7 +408,6 @@ public class Sudoku : Gtk.Application
         main_stack.set_visible_child_name ("frame");
         back_button.visible = false;
         undo_redo_box.visible = true;
-        header_bar.set_subtitle (header_bar_subtitle);
         print_action.set_enabled (true);
         clock_label.show ();
         clock_image.show ();
@@ -408,6 +416,7 @@ public class Sudoku : Gtk.Application
         {
             game.continue_clock ();
             clear_action.set_enabled (!game.board.is_empty ());
+            headerbar.title = game.board.difficulty_category.to_string ();
         }
     }
 
