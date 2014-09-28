@@ -4,10 +4,39 @@ using Gee;
 
 public class SudokuGenerator : Object
 {
+    public class GeneratorThread : Object
+    {
+        private int nsudokus;
+        private DifficultyCategory level;
+        private Gee.List<SudokuBoard> boards_list;
+        private unowned SourceFunc callback;
+
+        public GeneratorThread (int nsudokus, DifficultyCategory level, Gee.List<SudokuBoard> boards_list, SourceFunc callback)
+        {
+            this.nsudokus = nsudokus;
+            this.level = level;
+            this.boards_list = boards_list;
+            this.callback = callback;
+        }
+
+        public void* run ()
+        {
+            for (var i = 0; i < nsudokus; i++)
+                boards_list.add (SudokuGenerator.generate_board (level));
+
+            Idle.add(() => {
+                callback ();
+                return Source.REMOVE;
+            });
+
+            return null;
+        }
+    }
+
     private SudokuGenerator () {
     }
 
-    public static SudokuBoard generate_board (DifficultyCategory category)
+    private static SudokuBoard generate_board (DifficultyCategory category)
     {
         var board = new SudokuBoard ();
         int[] puzzle = QQwing.generate_puzzle ((int) category);
@@ -71,34 +100,5 @@ public class SudokuGenerator : Object
     public static string qqwing_version ()
     {
         return QQwing.get_version ();
-    }
-}
-
-public class GeneratorThread : Object
-{
-    private int nsudokus;
-    private DifficultyCategory level;
-    private Gee.List<SudokuBoard> boards_list;
-    private unowned SourceFunc callback;
-
-    public GeneratorThread (int nsudokus, DifficultyCategory level, Gee.List<SudokuBoard> boards_list, SourceFunc callback)
-    {
-        this.nsudokus = nsudokus;
-        this.level = level;
-        this.boards_list = boards_list;
-        this.callback = callback;
-    }
-
-    public void* run ()
-    {
-        for (var i = 0; i < nsudokus; i++)
-            boards_list.add (SudokuGenerator.generate_board (level));
-
-        Idle.add(() => {
-            callback ();
-            return Source.REMOVE;
-        });
-
-        return null;
     }
 }
