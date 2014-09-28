@@ -232,6 +232,7 @@ public class Sudoku : Gtk.Application
             headerbar.subtitle = board.difficulty_category.to_string ();
         else
             headerbar.title = board.difficulty_category.to_string ();
+        headerbar.visible = true;
 
         game = new SudokuGame (board);
         back_cb ();
@@ -298,7 +299,7 @@ public class Sudoku : Gtk.Application
         if (desktop == null || desktop != "Unity")
             headerbar.subtitle = null;
         else
-            headerbar.title = _("Sudoku");
+            headerbar.visible = false;
     }
 
     private void new_game_cb ()
