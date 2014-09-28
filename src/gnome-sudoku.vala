@@ -288,7 +288,7 @@ public class Sudoku : Gtk.Application
         clear_action.set_enabled (false);
         back_button.visible = game != null;
         undo_redo_box.visible = false;
-        headerbar.title = _("Select Difficulty");
+        headerbar.title = _("Sudoku");
         print_action.set_enabled (false);
     }
 
