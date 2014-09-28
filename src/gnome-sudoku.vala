@@ -32,6 +32,8 @@ public class Sudoku : Gtk.Application
 
     private bool show_possibilities = false;
 
+    private string? desktop;
+
     private const GLib.ActionEntry action_entries[] =
     {
         {"new-game", new_game_cb                                    },
@@ -145,7 +147,7 @@ public class Sudoku : Gtk.Application
         print_action = (SimpleAction) lookup_action ("print");
         print_multiple_action = (SimpleAction) lookup_action ("print-multiple");
 
-        var desktop = Environment.get_variable ("XDG_CURRENT_DESKTOP");
+        desktop = Environment.get_variable ("XDG_CURRENT_DESKTOP");
         if (desktop == null || desktop != "Unity")
         {
             headerbar.show_close_button = true;
@@ -226,7 +228,10 @@ public class Sudoku : Gtk.Application
         if (view != null)
             game_box.remove (view);
 
-        headerbar.title = board.difficulty_category.to_string ();
+        if (desktop == null || desktop != "Unity")
+            headerbar.subtitle = board.difficulty_category.to_string ();
+        else
+            headerbar.title = board.difficulty_category.to_string ();
 
         game = new SudokuGame (board);
         back_cb ();
@@ -288,8 +293,12 @@ public class Sudoku : Gtk.Application
         clear_action.set_enabled (false);
         back_button.visible = game != null;
         undo_redo_box.visible = false;
-        headerbar.title = _("Sudoku");
         print_action.set_enabled (false);
+
+        if (desktop == null || desktop != "Unity")
+            headerbar.subtitle = null;
+        else
+            headerbar.title = _("Sudoku");
     }
 
     private void new_game_cb ()
@@ -342,8 +351,12 @@ public class Sudoku : Gtk.Application
         clear_action.set_enabled (!game.board.is_empty ());
         back_button.visible = false;
         undo_redo_box.visible = true;
-        headerbar.title = game.board.difficulty_category.to_string ();
         print_action.set_enabled (true);
+
+        if (desktop == null || desktop != "Unity")
+            headerbar.subtitle = game.board.difficulty_category.to_string ();
+        else
+            headerbar.title = game.board.difficulty_category.to_string ();
     }
 
     private void undo_cb ()
