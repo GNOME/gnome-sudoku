@@ -569,13 +569,13 @@ public enum DifficultyCategory {
             case UNKNOWN:
                 return _("Unknown Difficulty");
             case EASY:
-                return _("Easy Difficulty");
+                return _("Easy Puzzle");
             case MEDIUM:
-                return _("Medium Difficulty");
+                return _("Medium Puzzle");
             case HARD:
-                return _("Hard Difficulty");
+                return _("Hard Puzzle");
             case VERY_HARD:
-                return _("Very Hard Difficulty");
+                return _("Very Hard Puzzle");
             default:
                 assert_not_reached ();
         }
