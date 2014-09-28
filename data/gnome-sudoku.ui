@@ -1,81 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
     <!-- interface-requires gtk+ 3.10 -->
-    <object class="GtkApplicationWindow" id="sudoku_app">
+    <object class="GtkHeaderBar" id="headerbar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="title" translatable="yes">Sudoku</property>
-        <property name="border-width">25</property>
-        <child type="titlebar">
-            <object class="GtkHeaderBar" id="headerbar">
+        <child>
+            <object class="GtkBox" id="undo_redo_box">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="show_close_button">True</property>
-                <property name="title" translatable="yes">Sudoku</property>
+                <property name="homogeneous">True</property>
+                <style>
+                  <class name="raised"/>
+                  <class name="linked"/>
+                </style>
                 <child>
-                    <object class="GtkBox" id="undo_redo_box">
+                    <object class="GtkButton" id="undo_button">
                         <property name="visible">True</property>
-                        <property name="homogeneous">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="valign">center</property>
+                        <property name="tooltip-text" translatable="yes">Undo your last action</property>
+                        <property name="can_focus">True</property>
+                        <property name="focus_on_click">False</property>
+                        <property name="action-name">app.undo</property>
                         <style>
-                          <class name="raised"/>
-                          <class name="linked"/>
+                            <class name="image-button"/>
                         </style>
                         <child>
-                            <object class="GtkButton" id="undo_button">
+                            <object class="GtkImage" id="undo_image">
+                                <property name="icon_name">edit-undo-symbolic</property>
                                 <property name="visible">True</property>
-                                <property name="sensitive">False</property>
-                                <property name="valign">center</property>
-                                <property name="tooltip-text" translatable="yes">Undo your last action</property>
-                                <property name="can_focus">True</property>
-                                <property name="focus_on_click">False</property>
-                                <property name="action-name">app.undo</property>
-                                <style>
-                                    <class name="image-button"/>
-                                </style>
-                                <child>
-                                    <object class="GtkImage" id="undo_image">
-                                        <property name="icon_name">edit-undo-symbolic</property>
-                                        <property name="visible">True</property>
-                                        <property name="icon_size">1</property>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkButton" id="redo_button">
-                                <property name="visible">True</property>
-                                <property name="sensitive">False</property>
-                                <property name="valign">center</property>
-                                <property name="tooltip-text" translatable="yes">Redo your last action</property>
-                                <property name="can_focus">True</property>
-                                <property name="focus_on_click">False</property>
-                                <property name="action-name">app.redo</property>
-                                <style>
-                                    <class name="image-button"/>
-                                </style>
-                                <child>
-                                    <object class="GtkImage" id="redo_image">
-                                        <property name="icon_name">edit-redo-symbolic</property>
-                                        <property name="visible">True</property>
-                                        <property name="icon_size">1</property>
-                                    </object>
-                                </child>
+                                <property name="icon_size">1</property>
                             </object>
                         </child>
                     </object>
                 </child>
                 <child>
-                    <object class="GtkButton" id="back_button">
-                        <property name="visible">False</property>
-                        <property name="halign">center</property>
+                    <object class="GtkButton" id="redo_button">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="valign">center</property>
-                        <property name="tooltip-text" translatable="yes">Go back to the current game</property>
-                        <property name="use_underline">True</property>
-                        <property name="action-name">app.back</property>
+                        <property name="tooltip-text" translatable="yes">Redo your last action</property>
+                        <property name="can_focus">True</property>
+                        <property name="focus_on_click">False</property>
+                        <property name="action-name">app.redo</property>
                         <style>
                             <class name="image-button"/>
                         </style>
                         <child>
-                            <object class="GtkImage" id="back_image">
-                                <property name="icon_name">go-previous-symbolic</property>
+                            <object class="GtkImage" id="redo_image">
+                                <property name="icon_name">edit-redo-symbolic</property>
                                 <property name="visible">True</property>
                                 <property name="icon_size">1</property>
                             </object>
@@ -85,155 +58,189 @@
             </object>
         </child>
         <child>
-            <object class="GtkStack" id="main_stack">
-                <property name="visible">True</property>
-                <property name="homogeneous">True</property>
+            <object class="GtkButton" id="back_button">
+                <property name="visible">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="tooltip-text" translatable="yes">Go back to the current game</property>
+                <property name="use_underline">True</property>
+                <property name="action-name">app.back</property>
+                <style>
+                    <class name="image-button"/>
+                </style>
                 <child>
-                    <object class="GtkBox" id="start_box">
-                        <property name="orientation">vertical</property>
+                    <object class="GtkImage" id="back_image">
+                        <property name="icon_name">go-previous-symbolic</property>
                         <property name="visible">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="homogeneous">True</property>
-                        <property name="margin">0</property>
-                        <property name="width-request">350</property>
-                        <property name="height-request">350</property>
-                        <child>
-                            <object class="GtkButton" id="easy_button">
-                                <property name="visible">True</property>
-                                <property name="use_underline">True</property>
-                                <property name="label" translatable="yes">_Easy</property>
-                                <property name="action-name">app.start-game</property>
-                                <property name="action-target">1</property>  <!-- 1 corresponds to enum DifficultyCategory.EASY -->
-                            </object>
-                            <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                            </packing>
-                        </child>
-                        <child>
-                            <object class="GtkButton" id="medium_button">
-                                <property name="visible">True</property>
-                                <property name="use_underline">True</property>
-                                <property name="label" translatable="yes">_Medium</property>
-                                <property name="action-name">app.start-game</property>
-                                <property name="action-target">2</property>  <!-- 2 corresponds to enum DifficultyCategory.MEDIUM -->
-                            </object>
-                            <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                            </packing>
-                        </child>
-                        <child>
-                            <object class="GtkButton" id="hard_button">
-                                <property name="visible">True</property>
-                                <property name="use_underline">True</property>
-                                <property name="label" translatable="yes">_Hard</property>
-                                <property name="action-name">app.start-game</property>
-                                <property name="action-target">3</property>  <!-- 3 corresponds to enum DifficultyCategory.HARD -->
-                            </object>
-                            <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                            </packing>
-                        </child>
-                        <child>
-                            <object class="GtkButton" id="very_hard_button">
-                                <property name="visible">True</property>
-                                <property name="use_underline">True</property>
-                                <property name="label" translatable="yes">_Very Hard</property>
-                                <property name="action-name">app.start-game</property>
-                                <property name="action-target">4</property>  <!-- 4 corresponds to enum DifficultyCategory.VERY_HARD -->
-                            </object>
-                            <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">3</property>
-                            </packing>
-                        </child>
-                    </object> <!-- End of start_box -->
-                    <packing>
-                        <property name="name">start_box</property>
-                    </packing>
-                </child>
-                <child>
-                    <object class="GtkAspectFrame" id="frame">
-                        <property name="visible">True</property>
-                        <property name="shadow-type">GTK_SHADOW_NONE</property>
-                        <property name="obey-child">false</property>
-                        <property name="ratio">1.4</property>
-                        <property name="xalign">0.5</property>
-                        <property name="yalign">0.5</property>
-                        <child>
-                            <object class="GtkBox" id="game_box">
-                                <property name="visible">True</property>
-                                <property name="spacing">25</property>
-                                <child>
-                                    <placeholder/>
-                                </child>
-                                <child>
-                                    <object class="GtkButtonBox" id="controls_box">
-                                        <property name="visible">True</property>
-                                        <property name="halign">end</property>
-                                        <property name="valign">end</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="spacing">6</property>
-                                        <child>
-                                            <object class="GtkButton" id="clear_button">
-                                                <property name="visible">True</property>
-                                                <property name="use_underline">True</property>
-                                                <property name="label" translatable="yes">_Clear Board</property>
-                                                <property name="halign">fill</property>
-                                                <property name="valign">center</property>
-                                                <property name="action-name">app.reset</property>
-                                                <property name="tooltip-text" translatable="yes">Reset the board to its original state</property>
-                                                <property name="width-request">120</property>
-                                                <property name="height-request">60</property>
-                                            </object>
-                                            <packing>
-                                                <property name="expand">True</property>
-                                                <property name="fill">True</property>
-                                                <property name="position">0</property>
-                                            </packing>
-                                        </child>
-                                        <child>
-                                            <object class="GtkButton" id="new_button">
-                                                <property name="visible">True</property>
-                                                <property name="use_underline">True</property>
-                                                <property name="label" translatable="yes">_New Puzzle</property>
-                                                <property name="halign">fill</property>
-                                                <property name="valign">center</property>
-                                                <property name="action-name">app.new-game</property>
-                                                <property name="tooltip-text" translatable="yes">Start a new puzzle</property>
-                                                <property name="width-request">120</property>
-                                                <property name="height-request">60</property>
-                                            </object>
-                                            <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">False</property>
-                                                <property name="position">1</property>
-                                            </packing>
-                                        </child>
-                                    </object>  <!-- End of controls_box -->
-                                    <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="pack-type">end</property>
-                                        <property name="padding">0</property>
-                                    </packing>
-                                </child>
-                            </object> <!-- End of game_box -->
-                        </child>
+                        <property name="icon_size">1</property>
                     </object>
-                    <packing>
-                        <property name="name">frame</property>
-                    </packing>
                 </child>
             </object>
         </child>
     </object>
+    <object class="GtkApplicationWindow" id="sudoku_app">
+        <property name="title" translatable="yes">Sudoku</property>
+        <child>
+            <object class="GtkBox" id="vbox">
+                <property name="orientation">vertical</property>
+                <property name="visible">True</property>
+                <child>
+                    <object class="GtkStack" id="main_stack">
+                        <property name="visible">True</property>
+                        <property name="homogeneous">True</property>
+                        <property name="margin">25</property>
+                        <property name="expand">True</property>
+                        <child>
+                            <object class="GtkBox" id="start_box">
+                                <property name="orientation">vertical</property>
+                                <property name="visible">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="homogeneous">True</property>
+                                <property name="margin">0</property>
+                                <property name="width-request">350</property>
+                                <property name="height-request">350</property>
+                                <child>
+                                    <object class="GtkButton" id="easy_button">
+                                        <property name="visible">True</property>
+                                        <property name="use_underline">True</property>
+                                        <property name="label" translatable="yes">_Easy</property>
+                                        <property name="action-name">app.start-game</property>
+                                        <property name="action-target">1</property>  <!-- 1 corresponds to enum DifficultyCategory.EASY -->
+                                    </object>
+                                    <packing>
+                                        <property name="expand">True</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                    </packing>
+                                </child>
+                                <child>
+                                    <object class="GtkButton" id="medium_button">
+                                        <property name="visible">True</property>
+                                        <property name="use_underline">True</property>
+                                        <property name="label" translatable="yes">_Medium</property>
+                                        <property name="action-name">app.start-game</property>
+                                        <property name="action-target">2</property>  <!-- 2 corresponds to enum DifficultyCategory.MEDIUM -->
+                                    </object>
+                                    <packing>
+                                        <property name="expand">True</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                    </packing>
+                                </child>
+                                <child>
+                                    <object class="GtkButton" id="hard_button">
+                                        <property name="visible">True</property>
+                                        <property name="use_underline">True</property>
+                                        <property name="label" translatable="yes">_Hard</property>
+                                        <property name="action-name">app.start-game</property>
+                                        <property name="action-target">3</property>  <!-- 3 corresponds to enum DifficultyCategory.HARD -->
+                                    </object>
+                                    <packing>
+                                        <property name="expand">True</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">2</property>
+                                    </packing>
+                                </child>
+                                <child>
+                                    <object class="GtkButton" id="very_hard_button">
+                                        <property name="visible">True</property>
+                                        <property name="use_underline">True</property>
+                                        <property name="label" translatable="yes">_Very Hard</property>
+                                        <property name="action-name">app.start-game</property>
+                                        <property name="action-target">4</property>  <!-- 4 corresponds to enum DifficultyCategory.VERY_HARD -->
+                                    </object>
+                                    <packing>
+                                        <property name="expand">True</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">3</property>
+                                    </packing>
+                                </child>
+                            </object> <!-- End of start_box -->
+                            <packing>
+                                <property name="name">start_box</property>
+                            </packing>
+                        </child>
+                        <child>
+                            <object class="GtkAspectFrame" id="frame">
+                                <property name="visible">True</property>
+                                <property name="shadow-type">GTK_SHADOW_NONE</property>
+                                <property name="obey-child">false</property>
+                                <property name="ratio">1.4</property>
+                                <property name="xalign">0.5</property>
+                                <property name="yalign">0.5</property>
+                                <child>
+                                    <object class="GtkBox" id="game_box">
+                                        <property name="visible">True</property>
+                                        <property name="spacing">25</property>
+                                        <child>
+                                            <placeholder/>
+                                        </child>
+                                        <child>
+                                            <object class="GtkButtonBox" id="controls_box">
+                                                <property name="visible">True</property>
+                                                <property name="halign">end</property>
+                                                <property name="valign">end</property>
+                                                <property name="can_focus">False</property>
+                                                <property name="orientation">vertical</property>
+                                                <property name="spacing">6</property>
+                                                <child>
+                                                    <object class="GtkButton" id="clear_button">
+                                                        <property name="visible">True</property>
+                                                        <property name="use_underline">True</property>
+                                                        <property name="label" translatable="yes">_Clear Board</property>
+                                                        <property name="halign">fill</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="action-name">app.reset</property>
+                                                        <property name="tooltip-text" translatable="yes">Reset the board to its original state</property>
+                                                        <property name="width-request">120</property>
+                                                        <property name="height-request">60</property>
+                                                    </object>
+                                                    <packing>
+                                                        <property name="expand">True</property>
+                                                        <property name="fill">True</property>
+                                                        <property name="position">0</property>
+                                                    </packing>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkButton" id="new_button">
+                                                        <property name="visible">True</property>
+                                                        <property name="use_underline">True</property>
+                                                        <property name="label" translatable="yes">_New Puzzle</property>
+                                                        <property name="halign">fill</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="action-name">app.new-game</property>
+                                                        <property name="tooltip-text" translatable="yes">Start a new puzzle</property>
+                                                        <property name="width-request">120</property>
+                                                        <property name="height-request">60</property>
+                                                    </object>
+                                                    <packing>
+                                                        <property name="expand">False</property>
+                                                        <property name="fill">False</property>
+                                                        <property name="position">1</property>
+                                                    </packing>
+                                                </child>
+                                            </object>  <!-- End of controls_box -->
+                                            <packing>
+                                                <property name="expand">False</property>
+                                                <property name="fill">True</property>
+                                                <property name="pack-type">end</property>
+                                                <property name="padding">0</property>
+                                            </packing>
+                                        </child>
+                                    </object> <!-- End of game_box -->
+                                </child>
+                            </object> <!-- End of frame -->
+                            <packing>
+                                <property name="name">frame</property>
+                            </packing>
+                        </child>
+                    </object> <!-- End of main_stack -->
+                    <packing>
+                        <property name="pack-type">end</property>
+                    </packing>
+                </child>
+            </object> <!-- End of vbox -->
+        </child>
+    </object> <!-- End of sudoku_app -->
 </interface>
