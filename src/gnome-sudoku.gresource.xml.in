@@ -2,7 +2,7 @@
 <gresources>
   <gresource prefix="/org/gnome/sudoku/ui">
     <file alias="gnome-sudoku.ui" preprocess="xml-stripblanks">@top_srcdir@/data/gnome-sudoku.ui</file>
-    <file alias="print-games.ui" preprocess="xml-stripblanks">@top_srcdir@/data/print-games.ui</file>
+    <file preprocess="xml-stripblanks">@top_srcdir@/data/print-dialog.ui</file>
   </gresource>
   <gresource prefix="/org/gnome/sudoku/gtk">
     <file alias="menus.ui" preprocess="xml-stripblanks">@top_srcdir@/data/gnome-sudoku-menu.ui</file>

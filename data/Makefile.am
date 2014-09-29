@@ -19,7 +19,7 @@ pixmap_DATA = footprints.png
 dist_noinst_DATA = \
 	gnome-sudoku.ui \
 	gnome-sudoku-menu.ui \
-	print-games.ui
+	print-dialog.ui
 
 man_MANS = gnome-sudoku.6
 

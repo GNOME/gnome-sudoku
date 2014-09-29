@@ -5,6 +5,7 @@ BUILT_SOURCES = gnome-sudoku-resources.c
 gnome_sudoku_SOURCES = \
 	config.vapi \
 	gnome-sudoku.vala \
+	print-dialog.vala \
 	sudoku-view.vala \
 	number-picker.vala \
 	sudoku-printer.vala \
@@ -31,6 +32,8 @@ gnome_sudoku_VALAFLAGS = \
 	--pkg gio-2.0 \
 	--pkg gtk+-3.0 \
 	--pkg gee-0.8 \
+	--target-glib=$(GLIB_REQUIRED) \
+	--gresources=$(builddir)/gnome-sudoku.gresource.xml \
 	$(top_builddir)/lib/libsudoku.vapi
 
 gnome-sudoku-resources.c: gnome-sudoku.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies gnome-sudoku.gresource.xml)

@@ -413,12 +413,13 @@ public class Sudoku : Gtk.Application
     {
         print_action.set_enabled (false);
         print_multiple_action.set_enabled (false);
-        var printer = new GamePrinter (saver, ref window);
-        printer.run_dialog ();
-        printer.game_printer_closed.connect ((p) => {
+        var print_dialog = new PrintDialog (saver, window);
+        print_dialog.finished.connect (() => {
+            print_dialog.destroy ();
             this.print_action.set_enabled (main_stack.get_visible_child_name () == "frame");
             this.print_multiple_action.set_enabled (true);
         });
+        print_dialog.run ();
     }
 
     private void help_cb ()
