@@ -148,7 +148,7 @@ public class SudokuBoard : Object
         }
         coords_for_row = coords_for_row.read_only_view;
 
-        coords_for_block = new HashMap<Coord?, ArrayList<Coord?>> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
+        coords_for_block = new HashMap<Coord?, Gee.List<Coord?>> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         for (int col = 0; col < block_cols; col++)
         {
             for (int row = 0; row < block_rows; row++)
@@ -488,15 +488,15 @@ public class SudokuBoard : Object
         return cells;
     }
 
-    public HashMap<Coord?, ArrayList<int>> calculate_open_squares () {
-        var possibilities = new HashMap<Coord?, ArrayList<int>> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
+    public HashMap<Coord?, Gee.List<int>> calculate_open_squares () {
+        var possibilities = new HashMap<Coord?, Gee.List<int>> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         for (var l1 = 0; l1 < rows; l1++)
         {
             for (var l2 = 0; l2 < cols; l2++)
             {
                 if (cells[l1, l2] == 0)
                 {
-                    ArrayList<int> possArrayList = new ArrayList<int> ();
+                    Gee.List<int> possArrayList = new ArrayList<int> ();
                     int[] possArray = get_possibilities (l1, l2);
                     foreach (int i in possArray) {
                         possArrayList.add (i);
