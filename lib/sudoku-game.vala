@@ -50,8 +50,8 @@ public class SudokuGame : Object
 
     public signal void cell_changed (int row, int col, int old_val, int new_val);
 
-    private ArrayList<UndoItem?> undostack;
-    private ArrayList<UndoItem?> redostack;
+    private Gee.List<UndoItem?> undostack;
+    private Gee.List<UndoItem?> redostack;
 
     public bool is_undostack_null ()
     {
@@ -90,12 +90,12 @@ public class SudokuGame : Object
 
     public void undo ()
     {
-        apply_stack (ref undostack, ref redostack);
+        apply_stack (undostack, redostack);
     }
 
     public void redo ()
     {
-        apply_stack (ref redostack, ref undostack);
+        apply_stack (redostack, undostack);
     }
 
     public void reset ()
@@ -125,24 +125,24 @@ public class SudokuGame : Object
 
     public void update_undo (int row, int col, int old_val, int new_val)
     {
-        add_to_stack (ref undostack, row, col, old_val);
+        add_to_stack (undostack, row, col, old_val);
         redostack.clear ();
     }
 
-    private void add_to_stack (ref ArrayList<UndoItem?> stack, int r, int c, int v)
+    private void add_to_stack (Gee.List<UndoItem?> stack, int r, int c, int v)
     {
         UndoItem step = { r, c, v };
         stack.add (step);
     }
 
-    private void apply_stack (ref ArrayList<UndoItem?> from, ref ArrayList<UndoItem?> to)
+    private void apply_stack (Gee.List<UndoItem?> from, Gee.List<UndoItem?> to)
     {
         if (from.size == 0)
             return;
 
         var top = from.remove_at (from.size - 1);
         int old_val = board [top.row, top.col];
-        add_to_stack (ref to, top.row, top.col, old_val);
+        add_to_stack (to, top.row, top.col, old_val);
         board.remove (top.row, top.col);
         if (top.val != 0)
             board.insert (top.row, top.col, top.val);
