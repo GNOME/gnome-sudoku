@@ -156,14 +156,8 @@ public class SudokuGame : Object
 
     private bool timeout_cb ()
     {
-        /* Notify on the next tick */
-        var elapsed = get_total_time_played ();
-        var next = (int) (elapsed + 1.0);
-        var wait = next - elapsed;
-        clock_timeout = Timeout.add_seconds ((int) (wait), timeout_cb);
-
+        clock_timeout = Timeout.add_seconds (1, timeout_cb);
         tick ();
-
         return false;
     }
 
