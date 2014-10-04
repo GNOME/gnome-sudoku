@@ -74,7 +74,8 @@ public class SudokuGenerator : Object
 
     public async static SudokuBoard[] generate_boards_async (int nboards, DifficultyCategory category) throws ThreadError
     {
-        var boards_list = new ConcurrentList<SudokuBoard> ();
+// FIXME broken: not threadsafe!
+        var boards_list = new ArrayList<SudokuBoard> ();
         var boards = new SudokuBoard[nboards];
         var threads = new ArrayList<Thread<void*>> ();
 
