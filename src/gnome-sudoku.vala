@@ -273,7 +273,7 @@ public class Sudoku : Gtk.Application
     private void toggle_pause_cb ()
     {
        if (game.paused)
-           game.continue_clock ();
+           game.resume_clock ();
        else
            game.stop_clock ();
     }
@@ -433,7 +433,7 @@ public class Sudoku : Gtk.Application
 
         if (game != null)
         {
-            game.continue_clock ();
+            game.resume_clock ();
             clear_action.set_enabled (!game.board.is_empty ());
             headerbar.title = game.board.difficulty_category.to_string ();
         }

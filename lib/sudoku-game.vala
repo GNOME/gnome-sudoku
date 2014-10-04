@@ -171,23 +171,20 @@ public class SudokuGame : Object
     }
 
     public void stop_clock ()
+        requires (timer != null)
     {
-        if (timer == null)
-            return;
         if (clock_timeout != 0)
             Source.remove (clock_timeout);
-        paused = true;
         clock_timeout = 0;
+        paused = true;
         timer.stop ();
         tick ();
     }
 
-    public void continue_clock ()
+    public void resume_clock ()
+        requires (timer != null && clock_timeout == 0)
     {
-        if (timer == null)
-            timer = new Timer ();
-        else
-            timer.continue ();
+        timer.continue ();
         paused = false;
         timeout_cb ();
     }
