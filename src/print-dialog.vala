@@ -35,7 +35,7 @@ public class PrintDialog : Gtk.Dialog
     private Gtk.RadioButton hard_radio_button;
     [GtkChild]
     private Gtk.RadioButton very_hard_radio_button;
-    [GtkChild]
+
     private Gtk.Spinner spinner;
 
     private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
@@ -46,12 +46,16 @@ public class PrintDialog : Gtk.Dialog
 
     public PrintDialog (SudokuSaver saver, Gtk.Window window)
     {
-        Object(use_header_bar: 1);
+        Object (use_header_bar: Gtk.Settings.get_default ().gtk_dialogs_use_header ? 1 : 0);
 
         this.saver = saver;
         settings = new GLib.Settings ("org.gnome.sudoku");
 
         set_transient_for (window);
+
+        spinner = new Gtk.Spinner ();
+        if (use_header_bar == 1)
+            ((Gtk.HeaderBar) get_header_bar ()).pack_end (spinner);
 
         var saved_difficulty = (DifficultyCategory) settings.get_enum (DIFFICULTY_KEY_NAME);
         if (saved_difficulty == DifficultyCategory.EASY)
@@ -66,6 +70,13 @@ public class PrintDialog : Gtk.Dialog
             assert_not_reached ();
 
         wrap_adjustment ("print-multiple-sudokus-to-print", n_sudokus_button.get_adjustment ());
+    }
+
+    ~PrintDialog ()
+    {
+        // The spinner still has a floating reference if it wasn't added to the header bar.
+        if (use_header_bar != 1)
+            spinner.destroy();
     }
 
     private void wrap_adjustment (string key_name, Gtk.Adjustment action)
