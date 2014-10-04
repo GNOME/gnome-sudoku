@@ -590,7 +590,7 @@ public enum DifficultyCategory {
             case EASY:
                 return _("Easy Puzzle");
             case MEDIUM:
-                return _("Medium Puzzle");
+                return _("Medium Difficulty");
             case HARD:
                 return _("Hard Puzzle");
             case VERY_HARD:
