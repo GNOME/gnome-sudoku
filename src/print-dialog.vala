@@ -86,8 +86,13 @@ public class PrintDialog : Gtk.Dialog
         action.value_changed.connect (() => settings.set_int (key_name, (int) action.get_value ()));
     }
 
+// FIXME why is response emitted twice when the user presses Print?
+private bool once = false;
     public override void response (int response)
     {
+if (once) return;
+once = true;
+
         if (response != Gtk.ResponseType.OK)
         {
             finished ();
