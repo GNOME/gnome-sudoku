@@ -54,6 +54,7 @@ public class PrintDialog : Gtk.Dialog
         set_transient_for (window);
 
         spinner = new Gtk.Spinner ();
+        spinner.valign = Gtk.Align.CENTER;
         if (use_header_bar == 1)
             ((Gtk.HeaderBar) get_header_bar ()).pack_end (spinner);
 
