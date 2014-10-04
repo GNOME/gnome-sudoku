@@ -157,6 +157,7 @@ public class SudokuGame : Object
     private bool timeout_cb ()
     {
         clock_timeout = Timeout.add_seconds (1, timeout_cb);
+        Source.set_name_by_id (clock_timeout, "[gnome-sudoku] timeout_cb");
         tick ();
         return false;
     }
