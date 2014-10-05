@@ -24,7 +24,7 @@ using Gdk;
 
 public class SudokuPrinter : GLib.Object {
 
-    private SudokuBoard[] boards;
+    private Gee.List<SudokuBoard> boards;
     private Gtk.Window window;
 
     private int margin;
@@ -51,12 +51,12 @@ public class SudokuPrinter : GLib.Object {
         return Gtk.PrintOperationResult.ERROR;
     }
 
-    public SudokuPrinter (SudokuBoard[] boards, Gtk.Window window)
+    public SudokuPrinter (Gee.List<SudokuBoard> boards, Gtk.Window window)
     {
         this.boards = boards;
         this.window = window;
         this.margin = 25;
-        this.n_sudokus = boards.length;
+        this.n_sudokus = boards.size;
 
         this.print_op = new Gtk.PrintOperation ();
         print_op.begin_print.connect (begin_print_cb);
@@ -81,8 +81,8 @@ public class SudokuPrinter : GLib.Object {
         var best_square_size = fit_squares_in_rectangle (width, height, margin);
 
         var start = page_nr * SUDOKUS_PER_PAGE;
-        var end = int.min ((start + SUDOKUS_PER_PAGE), boards.length);
-        SudokuBoard[] sudokus_on_page = boards[start : end];
+        var end = int.min ((start + SUDOKUS_PER_PAGE), boards.size);
+        Gee.List<SudokuBoard> sudokus_on_page = boards.slice (start, end);
 
         double left = (width - best_square_size) / 2;
         double top = margin;
