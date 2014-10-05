@@ -468,8 +468,12 @@ public class Sudoku : Gtk.Application
             return;
         print_action.set_enabled (false);
         print_multiple_action.set_enabled (false);
-        var printer = new SudokuPrinter ({game.board.clone ()}, (Window) window);
+
+        var list = new Gee.ArrayList<SudokuBoard> ();
+        list.add (game.board.clone ());
+        var printer = new SudokuPrinter (list, (Window) window);
         printer.print_sudoku ();
+
         print_action.set_enabled (true);
         print_multiple_action.set_enabled (true);
     }
