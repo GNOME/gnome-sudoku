@@ -129,7 +129,7 @@ once = true;
                 spinner.hide ();
                 sensitive = true;
 
-                var printer = new SudokuPrinter (new Gee.ArrayList<SudokuBoard>.wrap (boards), this);
+                var printer = new SudokuPrinter (boards, this);
                 if (printer.print_sudoku () == Gtk.PrintOperationResult.APPLY)
                 {
                     foreach (SudokuBoard board in boards)
