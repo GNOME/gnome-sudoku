@@ -23,6 +23,42 @@ using Gee;
 
 public class SudokuGenerator : Object
 {
+    private class Worker : Object
+    {
+        private int nsudokus;
+        private DifficultyCategory level;
+        // FIXME Require Gee.ConcurrentList and remove the mutex
+        private Gee.List<SudokuBoard> boards_list;
+        private static Mutex mutex;
+        private unowned SourceFunc callback;
+
+        public Worker (int nsudokus, DifficultyCategory level, Gee.List<SudokuBoard> boards_list, SourceFunc callback)
+        {
+            this.nsudokus = nsudokus;
+            this.level = level;
+            this.boards_list = boards_list;
+            this.callback = callback;
+        }
+
+        public void run ()
+        {
+            // Generating a board takes a relatively long time.
+            var board = SudokuGenerator.generate_board (level);
+            mutex.lock ();
+            boards_list.add (board);
+            if (boards_list.size == nsudokus)
+            {
+                // We've added the final board to the list.
+                // Finish the call to generate_boards_async.
+                Idle.add (() => {
+                    callback ();
+                    return Source.REMOVE;
+                });
+            }
+            mutex.unlock ();
+        }
+    }
+
     private SudokuGenerator () {
     }
 
@@ -43,36 +79,19 @@ public class SudokuGenerator : Object
         return board;
     }
 
-    public async static SudokuBoard[] generate_boards_async (int nboards, DifficultyCategory category) throws ThreadError
+    public async static Gee.List<SudokuBoard> generate_boards_async (int nboards, DifficultyCategory category) throws ThreadError
     {
-// FIXME broken: not threadsafe!
-        var boards_list = new ArrayList<SudokuBoard> ();
-        var boards = new SudokuBoard[nboards];
-        var threads = new ArrayList<Thread<void*>> ();
+        var boards = new ArrayList<SudokuBoard> ();
+        var pool = new ThreadPool<Worker>.with_owned_data ((worker) => {
+            worker.run ();
+        }, (int) get_num_processors (), false);
 
-        var ncpu_usable = int.max (1, (int) get_num_processors () - 1);
-        var nthreads = int.min (ncpu_usable, nboards);
-        var base_nsudokus_each = nboards / nthreads;
-        var remainder = nboards % nthreads;
-        var nsudokus_per_thread = base_nsudokus_each;
-
-        for (var i = 0; i < nthreads; i++)
+        for (var i = 0; i < nboards; i++)
         {
-            if (i > (nthreads - remainder - 1))
-                nsudokus_per_thread = base_nsudokus_each + 1;
-            var gen_thread = new GeneratorThread (nsudokus_per_thread, category, boards_list, generate_boards_async.callback);
-            threads.add (new Thread<void*> ("Generator thread", gen_thread.run));
+            pool.add (new Worker (nboards, category, boards, generate_boards_async.callback));
         }
 
-        // Relinquish the CPU, so that the generated threads can run
-        for (var i = 0; i < nthreads; i++)
-        {
-            yield;
-            threads.get(i).join ();
-        }
-
-        for (var i = 0; i < boards_list.size; i++)
-            boards[i] = boards_list[i];
+        yield;
         return boards;
     }
 
@@ -91,34 +110,5 @@ public class SudokuGenerator : Object
     public static string qqwing_version ()
     {
         return QQwing.get_version ();
-    }
-}
-
-public class GeneratorThread : Object
-{
-    private int nsudokus;
-    private DifficultyCategory level;
-    private Gee.List<SudokuBoard> boards_list;
-    private unowned SourceFunc callback;
-
-    public GeneratorThread (int nsudokus, DifficultyCategory level, Gee.List<SudokuBoard> boards_list, SourceFunc callback)
-    {
-        this.nsudokus = nsudokus;
-        this.level = level;
-        this.boards_list = boards_list;
-        this.callback = callback;
-    }
-
-    public void* run ()
-    {
-        for (var i = 0; i < nsudokus; i++)
-            boards_list.add (SudokuGenerator.generate_board (level));
-
-        Idle.add(() => {
-            callback ();
-            return Source.REMOVE;
-        });
-
-        return null;
     }
 }
