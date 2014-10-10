@@ -77,7 +77,7 @@ public class PrintDialog : Gtk.Dialog
     {
         // The spinner still has a floating reference if it wasn't added to the header bar.
         if (use_header_bar != 1)
-            spinner.destroy();
+            spinner.destroy ();
     }
 
     private void wrap_adjustment (string key_name, Gtk.Adjustment action)
