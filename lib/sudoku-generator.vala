@@ -28,6 +28,7 @@ public class SudokuGenerator : Object
         private int nsudokus;
         private DifficultyCategory level;
         // FIXME Require Gee.ConcurrentList and remove the mutex
+        // https://bugzilla.gnome.org/show_bug.cgi?id=737507
         private Gee.List<SudokuBoard> boards_list;
         private static Mutex mutex;
         private unowned SourceFunc callback;
