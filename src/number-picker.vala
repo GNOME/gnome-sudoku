@@ -92,7 +92,7 @@ private class NumberPicker : Gtk.Grid
             label.show ();
 
             clear_button.clicked.connect (() => {
-                number_picked(0);
+                number_picked (0);
             });
         }
 
@@ -115,7 +115,7 @@ private class NumberPicker : Gtk.Grid
     public void set_earmarks (int row, int col)
     {
         for (var i = 0; i < board.max_val; i++)
-            set_earmark (row, col, i, board.is_earmark_enabled(row, col, i + 1));
+            set_earmark (row, col, i, board.is_earmark_enabled (row, col, i + 1));
     }
 
     public bool set_earmark (int row, int col, int index, bool state)
