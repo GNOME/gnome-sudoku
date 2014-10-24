@@ -143,17 +143,7 @@ public class Sudoku : Gtk.Application
         Window.set_default_icon_name ("gnome-sudoku");
 
         var css_provider = new CssProvider ();
-        try
-        {
-            /* Pixel-perfect compatibility with games that have a Button without ButtonBox. */
-            var data = """GtkButtonBox { -GtkButtonBox-child-internal-pad-x:0; }
-                          GtkBox#start_box { margin:0 80px 0 80px; }""";
-            css_provider.load_from_data (data, data.length);
-        }
-        catch (GLib.Error e)
-        {
-            warning ("Error loading css styles: %s", e.message);
-        }
+        css_provider.load_from_resource ("/org/gnome/sudoku/ui/gnome-sudoku.css");
         StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), css_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         var builder = new Builder.from_resource ("/org/gnome/sudoku/ui/gnome-sudoku.ui");
