@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/org/gnome/sudoku/ui">
-    <file alias="gnome-sudoku.ui" preprocess="xml-stripblanks">@top_srcdir@/data/gnome-sudoku.ui</file>
-    <file preprocess="xml-stripblanks">@top_srcdir@/data/print-dialog.ui</file>
+    <file alias="gnome-sudoku.css">@top_srcdir@/data/gnome-sudoku.css</file>
+    <file preprocess="xml-stripblanks" alias="gnome-sudoku.ui">@top_srcdir@/data/gnome-sudoku.ui</file>
+    <file preprocess="xml-stripblanks">@top_srcdir@/data/print-dialog.ui</file><!-- see print-dialog.vala, no support for aliases for now -->
   </gresource>
   <gresource prefix="/org/gnome/sudoku/gtk">
-    <file alias="menus.ui" preprocess="xml-stripblanks">@top_srcdir@/data/gnome-sudoku-menu.ui</file>
+    <file preprocess="xml-stripblanks" alias="menus.ui">@top_srcdir@/data/gnome-sudoku-menu.ui</file>
   </gresource>
 </gresources>
