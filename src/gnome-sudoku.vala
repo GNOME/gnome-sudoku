@@ -112,6 +112,19 @@ public class Sudoku : Gtk.Application
         return -1;
     }
 
+    private bool is_desktop (string name)
+    {
+        var desktop_name_list = Environment.get_variable ("XDG_CURRENT_DESKTOP");
+        if (desktop_name_list == null)
+            return false;
+
+        foreach (var n in desktop_name_list.split (":"))
+            if (n == name)
+                return true;
+
+        return false;
+    }
+
     protected override void startup ()
     {
         base.startup ();
@@ -167,8 +180,7 @@ public class Sudoku : Gtk.Application
         print_multiple_action = (SimpleAction) lookup_action ("print-multiple");
         pause_action = (SimpleAction) lookup_action ("pause");
 
-        var desktop = Environment.get_variable ("XDG_CURRENT_DESKTOP");
-        if (desktop == null || desktop != "Unity")
+        if (!is_desktop ("Unity"))
         {
             headerbar.show_close_button = true;
             window.set_titlebar (headerbar);
