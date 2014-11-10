@@ -447,15 +447,29 @@ public class SudokuView : Gtk.AspectFrame
 
                     for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
                     {
-                        var color = (col_tmp == cell_col) ? highlight_color : free_cell_color;
+                        var color = (col_tmp == cell_col && _highlighter) ? highlight_color : free_cell_color;
                         for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
                             cells[row_tmp,col_tmp].background_color = cells[row_tmp,col_tmp].is_fixed ? fixed_cell_color : color;
                     }
                     for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
-                        cells[cell_row, col_tmp].background_color = cells[cell_row, col_tmp].is_fixed ? fixed_cell_color : highlight_color;
+                    {
+                        if (cells[cell_row, col_tmp].is_fixed)
+                            cells[cell_row, col_tmp].background_color = fixed_cell_color;
+                        else if (_highlighter)
+                            cells[cell_row, col_tmp].background_color = highlight_color;
+                        else
+                            cells[cell_row, col_tmp].background_color = free_cell_color;
+                    }
 
                     foreach (Coord? coord in game.board.coords_for_block.get (Coord (cell_row / game.board.block_rows, cell_col / game.board.block_cols)))
-                        cells[coord.row, coord.col].background_color = cells[coord.row, coord.col].is_fixed ? fixed_cell_color : highlight_color;
+                    {
+                        if (cells[coord.row, coord.col].is_fixed)
+                            cells[coord.row, coord.col].background_color = fixed_cell_color;
+                        else if (_highlighter)
+                            cells[coord.row, coord.col].background_color = highlight_color;
+                        else
+                            cells[coord.row, coord.col].background_color = free_cell_color;
+                    }
 
                     cells[cell_row, cell_col].background_color = selected_bg_color;
 
@@ -573,6 +587,15 @@ public class SudokuView : Gtk.AspectFrame
             for (var i = 0; i < game.board.rows; i++)
                 for (var j = 0; j < game.board.cols; j++)
                     cells[i,j].show_possibilities = value;
+        }
+    }
+
+    private bool _highlighter = false;
+    public bool highlighter
+    {
+        get { return _highlighter; }
+        set {
+            _highlighter = value;
         }
     }
 }
