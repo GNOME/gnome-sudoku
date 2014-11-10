@@ -137,6 +137,11 @@ public class Sudoku : Gtk.Application
             view.show_warnings = settings.get_boolean ("show-warnings"));
         add_action (action);
 
+        var highlighter_action = settings.create_action ("highlighter");
+        highlighter_action.notify["state"].connect (() =>
+            view.highlighter = settings.get_boolean ("highlighter"));
+        add_action (highlighter_action);
+
         set_accels_for_action ("app.new-game", {"<Primary>n"});
         set_accels_for_action ("app.print", {"<Primary>p"});
         set_accels_for_action ("app.quit", {"<Primary>q"});
@@ -327,6 +332,7 @@ public class Sudoku : Gtk.Application
 
         view.show_possibilities = show_possibilities;
         view.show_warnings = settings.get_boolean ("show-warnings");
+        view.highlighter = settings.get_boolean ("highlighter");
 
         view.show ();
         game_box.pack_start (view);
