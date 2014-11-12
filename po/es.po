@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-games.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-10-06 19:45+0000\n"
-"PO-Revision-Date: 2014-10-20 12:43+0200\n"
+"POT-Creation-Date: 2014-11-12 08:33+0000\n"
+"PO-Revision-Date: 2014-11-12 12:30+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -60,7 +60,7 @@ msgstr ""
 "usted mismo."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:516
+#: ../src/gnome-sudoku.vala:524
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -86,18 +86,24 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Imprimir _múltiples puzles…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-msgid "_Show Warnings"
-msgstr "_Mostrar advertencias"
+#| msgid "_Highlighter"
+msgid "High_lighter"
+msgstr "_Resaltador"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
+#| msgid "_Show Warnings"
+msgid "_Warnings"
+msgstr "_Advertencias"
+
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "Ay_uda"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
 msgstr "_Acerca de"
 
-#: ../data/gnome-sudoku-menu.ui.h:7 ../src/gnome-sudoku.vala:353
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:361
 msgid "_Quit"
 msgstr "_Salir"
 
@@ -129,7 +135,7 @@ msgstr "_Difícil"
 msgid "_Very Hard"
 msgstr "_Muy difícil"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:296
+#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:303
 msgid "_Pause"
 msgstr "_Pausa"
 
@@ -182,14 +188,18 @@ msgstr ""
 "número, y los números duplicados se resaltan en rojo"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Resaltar fila, columna o cuadrado que contenga la casilla seleccionada"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
 msgstr "Anchura de la ventana en píxeles"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
 msgstr "Altura de la ventana en píxeles"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
 msgstr "cierto si la ventana está maximizada"
 
@@ -214,7 +224,6 @@ msgid "Unknown Difficulty"
 msgstr "Dificultad desconocida"
 
 #: ../lib/sudoku-board.vala:591
-#| msgid "Easy puzzle"
 msgid "Easy Puzzle"
 msgstr "Puzle fácil"
 
@@ -223,12 +232,10 @@ msgid "Medium Difficulty"
 msgstr "Dificultad media:"
 
 #: ../lib/sudoku-board.vala:595
-#| msgid "Hard puzzle"
 msgid "Hard Puzzle"
 msgstr "Puzle difícil"
 
 #: ../lib/sudoku-board.vala:597
-#| msgid "Very hard puzzle"
 msgid "Very Hard Puzzle"
 msgstr "Puzle muy difícil"
 
@@ -242,36 +249,31 @@ msgstr "Mostrar el número de versión"
 msgid "Show the possible values for each cell"
 msgstr "Mostrar los valores posibles de cada casilla"
 
-#: ../src/gnome-sudoku.vala:302
-#| msgid "_Reset"
+#: ../src/gnome-sudoku.vala:309
 msgid "_Resume"
 msgstr "_Continuar"
 
-#: ../src/gnome-sudoku.vala:347
+#: ../src/gnome-sudoku.vala:355
 #, c-format
-#| msgid "Well done, you completed the puzzle in %d minute"
-#| msgid_plural "Well done, you completed the puzzle in %d minutes"
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Bien hecho, ha completado el puzle en %d minuto"
 msgstr[1] "Bien hecho, ha completado el puzle en %d minutos"
 
-#: ../src/gnome-sudoku.vala:352
-#| msgid "Playing"
+#: ../src/gnome-sudoku.vala:360
 msgid "Play _Again"
 msgstr "Jugar _otra vez"
 
-#: ../src/gnome-sudoku.vala:373
-#| msgid "Difficulty"
+#: ../src/gnome-sudoku.vala:381
 msgid "Select Difficulty"
 msgstr "Seleccionar la dificultad"
 
-#: ../src/gnome-sudoku.vala:409
+#: ../src/gnome-sudoku.vala:417
 msgid "Reset the board to its original state?"
 msgstr "¿Restablecer el tablero a su estado original?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:520
+#: ../src/gnome-sudoku.vala:528
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -282,7 +284,7 @@ msgstr ""
 "\n"
 "Puzles generados por QQwing %s"
 
-#: ../src/gnome-sudoku.vala:525
+#: ../src/gnome-sudoku.vala:533
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>, 2008-2012\n"
@@ -299,6 +301,11 @@ msgstr "Limpiar"
 #: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Error al imprimir el archivo:"
+
+#. Text on overlay when game is paused
+#: ../src/sudoku-view.vala:574
+msgid "Paused"
+msgstr "Detenido"
 
 #~ msgid "Easy Difficulty"
 #~ msgstr "Dificultad fácil:"
@@ -573,9 +580,6 @@ msgstr "Error al imprimir el archivo:"
 
 #~ msgid "Show _Toolbar"
 #~ msgstr "Mostrar la _barra de herramientas"
-
-#~ msgid "_Highlighter"
-#~ msgstr "_Resaltador"
 
 #~ msgid "Highlight the current row, column and box"
 #~ msgstr "Resaltar la columna, fila y caja actual"
@@ -2343,9 +2347,6 @@ msgstr "Error al imprimir el archivo:"
 #~ msgctxt "mahjongg map name"
 #~ msgid "Difficult"
 #~ msgstr "Dificultad"
-
-#~ msgid "Paused"
-#~ msgstr "Detenido"
 
 #~ msgid "Moves Left:"
 #~ msgstr "Movimientos restantes:"
