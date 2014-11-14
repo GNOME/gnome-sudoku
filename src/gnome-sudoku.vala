@@ -34,9 +34,8 @@ public class Sudoku : Gtk.Application
 
     private ApplicationWindow window;
 
-    // The current game and view, if they exist
-    private SudokuGame game;
-    private SudokuView view;
+    private SudokuGame? game;
+    private SudokuView? view;
 
     private HeaderBar headerbar;
     private Stack main_stack;
