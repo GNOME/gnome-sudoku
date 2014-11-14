@@ -133,13 +133,17 @@ public class Sudoku : Gtk.Application
 
         settings = new GLib.Settings ("org.gnome.sudoku");
         var action = settings.create_action ("show-warnings");
-        action.notify["state"].connect (() =>
-            view.show_warnings = settings.get_boolean ("show-warnings"));
+        action.notify["state"].connect (() => {
+            if (view != null)
+                view.show_warnings = settings.get_boolean ("show-warnings");
+        });
         add_action (action);
 
         var highlighter_action = settings.create_action ("highlighter");
-        highlighter_action.notify["state"].connect (() =>
-            view.highlighter = settings.get_boolean ("highlighter"));
+        highlighter_action.notify["state"].connect (() => {
+            if (view != null)
+                view.highlighter = settings.get_boolean ("highlighter");
+        });
         add_action (highlighter_action);
 
         set_accels_for_action ("app.new-game", {"<Primary>n"});
