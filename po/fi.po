@@ -1,5 +1,5 @@
 # gnome-games Finnish Translation
-# Suomennos: http://www.gnome.fi/
+# Suomennos: https://l10n.gnome.org/teams/fi/
 # Copyright (C) 2002-2009 Free Software Foundation, Inc.
 #
 #
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-11 07:39+0000\n"
+"POT-Creation-Date: 2014-11-07 08:36+0000\n"
 "PO-Revision-Date: 2014-09-11 11:27+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
@@ -61,7 +61,7 @@ msgstr ""
 "vaikeustason."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:398
+#: ../src/gnome-sudoku.vala:463
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -73,23 +73,19 @@ msgstr "Testaa logiikkakykyjäsi numeroruudukkopelissä"
 msgid "magic;square;"
 msgstr "magic;square;numeroruudukko;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
-#| msgid "_Print..."
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
 msgid "_Print"
 msgstr "T_ulosta"
 
 #: ../data/gnome-sudoku-menu.ui.h:2
-#| msgid "There is no current puzzle."
 msgid "Print _Current Puzzle…"
 msgstr "Tu_losta nykyinen sudoku"
 
 #: ../data/gnome-sudoku-menu.ui.h:3
-#| msgid "Print _Multiple Sudokus..."
 msgid "Print _Multiple Puzzles…"
 msgstr "Tulosta _useita sudokuja…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-#| msgid "Show hints"
 msgid "_Show Warnings"
 msgstr "Nä_ytä varoitukset"
 
@@ -106,38 +102,34 @@ msgid "_Quit"
 msgstr "_Lopeta"
 
 #: ../data/gnome-sudoku.ui.h:2
-#| msgid "Undo last action"
 msgid "Undo your last action"
 msgstr "Kumoa viimeisin toiminto"
 
 #: ../data/gnome-sudoku.ui.h:3
-#| msgid "Redo last action"
 msgid "Redo your last action"
 msgstr "Tee edellinen toiminto uudestaan"
 
 #: ../data/gnome-sudoku.ui.h:4
-#| msgid "Restart the current game"
 msgid "Go back to the current game"
 msgstr "Siirry takaisin nykyiseen peliin"
 
-#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
 msgid "_Easy"
 msgstr "H_elppo"
 
-#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
 msgid "_Medium"
 msgstr "_Keskitaso"
 
-#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
 msgid "_Hard"
 msgstr "V_aikea"
 
-#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
 msgid "_Very Hard"
 msgstr "_Hyvin vaikea"
 
 #: ../data/gnome-sudoku.ui.h:9
-#| msgid "_Clear"
 msgid "_Clear Board"
 msgstr "_Tyhjennä lauta"
 
@@ -146,17 +138,14 @@ msgid "Reset the board to its original state"
 msgstr "Palauta lauta alkuperäistilaan"
 
 #: ../data/gnome-sudoku.ui.h:11
-#| msgid "Next Puzzle"
 msgid "_New Puzzle"
 msgstr "_Uusi pulma"
 
 #: ../data/gnome-sudoku.ui.h:12
-#| msgid "Start a new game"
 msgid "Start a new puzzle"
 msgstr "Aloita uusi peli"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
-#| msgid "_Number of sudoku to print: "
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Tulostettavien sudokujen vaikeustaso"
 
@@ -169,17 +158,14 @@ msgstr ""
 "\"medium\", \"hard\" ja \"very_hard\""
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:3
-#| msgid "_Number of sudoku to print: "
 msgid "Number of Sudokus to print"
 msgstr "Tulostettavien sudokujen lukumäärä"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:4
-#| msgid "_Number of sudoku to print: "
 msgid "Set the number of sudokus you want to print"
 msgstr "Aseta tulostettavien sudokujen lukumäärä"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:5
-#| msgid "Warn About _Unfillable Squares"
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Varoista ruuduista, joita ei voi täyttää ja tuplanumeroista"
 
@@ -192,12 +178,10 @@ msgstr ""
 "numeroilla. Tuplanumerot merkitään punaisella värillä"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
-#| msgid "The width of the main window in pixels."
 msgid "Width of the window in pixels"
 msgstr "Ikkunan leveys kuvapisteinä"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:8
-#| msgid "The height of the main window in pixels."
 msgid "Height of the window in pixels"
 msgstr "Ikkunan korkeus kuvapisteinä"
 
@@ -205,90 +189,74 @@ msgstr "Ikkunan korkeus kuvapisteinä"
 msgid "true if the window is maximized"
 msgstr "tosi jos ikkuna on suurennettu"
 
-#: ../data/print-games.ui.h:1
-#| msgid "Print _Multiple Sudokus..."
+#: ../data/print-dialog.ui.h:1
 msgid "Print Multiple Puzzles"
 msgstr "Tulosta useita sudokuja"
 
-#: ../data/print-games.ui.h:3
+#: ../data/print-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Peru"
 
-#: ../data/print-games.ui.h:4
-#| msgid "_Number of players:"
+#: ../data/print-dialog.ui.h:4
 msgid "_Number of puzzles"
 msgstr "P_ulmien määrä"
 
-#: ../data/print-games.ui.h:5
-#| msgid "Difficulty:"
+#: ../data/print-dialog.ui.h:5
 msgid "Difficulty"
 msgstr "Vaikeustaso"
 
-#: ../lib/sudoku-board.vala:570
-#| msgid "Difficulty:"
+#: ../lib/sudoku-board.vala:589
 msgid "Unknown Difficulty"
 msgstr "Tuntematon vaikeustaso"
 
-#: ../lib/sudoku-board.vala:572
-#| msgid "Difficulty:"
+#: ../lib/sudoku-board.vala:591
 msgid "Easy Difficulty"
 msgstr "Helppo vaikeustaso"
 
-#: ../lib/sudoku-board.vala:574
-#| msgid "Difficulty:"
+#: ../lib/sudoku-board.vala:593
 msgid "Medium Difficulty"
 msgstr "Keskinkertainen vaikeustaso"
 
-#: ../lib/sudoku-board.vala:576
-#| msgid "Difficulty:"
+#: ../lib/sudoku-board.vala:595
 msgid "Hard Difficulty"
 msgstr "Vaikea vaikeustaso"
 
-#: ../lib/sudoku-board.vala:578
-#| msgid "Difficulty:"
+#: ../lib/sudoku-board.vala:597
 msgid "Very Hard Difficulty"
 msgstr "Erittäin vaikea vaikeustaso"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:56
+#: ../src/gnome-sudoku.vala:75
 msgid "Show release version"
 msgstr "Näytä julkaisuversio"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:60
+#: ../src/gnome-sudoku.vala:79
 msgid "Show the possible values for each cell"
 msgstr "Näytä jokaisen solun mahdolliset arvot"
 
-#: ../src/gnome-sudoku.vala:250
+#: ../src/gnome-sudoku.vala:297
 #, c-format
-#| msgid "You completed the puzzle in %d second"
-#| msgid_plural "You completed the puzzle in %d seconds"
 msgid "Well done, you completed the puzzle in %d minute"
 msgid_plural "Well done, you completed the puzzle in %d minutes"
 msgstr[0] "Onnittelut, ratkaisit pulman %d minuuttissa"
 msgstr[1] "Onnittelut, ratkaisit pulman %d minuuttissa"
 
-#: ../src/gnome-sudoku.vala:255
-#| msgid "Calculated difficulty: "
+#: ../src/gnome-sudoku.vala:302
 msgid "Same difficulty again"
 msgstr "Sama vaikeustaso uudelleen"
 
-#: ../src/gnome-sudoku.vala:256
-#| msgid "Difficulty:"
+#: ../src/gnome-sudoku.vala:303
 msgid "New difficulty"
 msgstr "Uusi vaikeustaso"
 
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:364
 msgid "Reset the board to its original state?"
 msgstr "Palautetaanko lauta sen alkuperäistilaan?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:402
+#: ../src/gnome-sudoku.vala:467
 #, c-format
-#| msgid ""
-#| "The popular Japanese logic puzzle\n"
-#| "\n"
-#| "GNOME Sudoku is a part of GNOME Games."
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -298,7 +266,7 @@ msgstr ""
 "\n"
 "Pulmat tuottaa QQwing %s"
 
-#: ../src/gnome-sudoku.vala:407
+#: ../src/gnome-sudoku.vala:472
 msgid "translator-credits"
 msgstr ""
 "Jiri Grönroos, 2012-2014\n"
@@ -306,7 +274,7 @@ msgstr ""
 "Ilkka Tuohela, 2006-2009\n"
 "Sami Pesonen, 2002-2005\n"
 "\n"
-"http://www.gnome.fi/\n"
+"https://l10n.gnome.org/teams/fi/\n"
 "\n"
 "Launchpad Contributions:\n"
 "  Heikki Kulhia https://launchpad.net/~hessuk\n"
@@ -319,14 +287,12 @@ msgstr ""
 "  Timo Jyrinki https://launchpad.net/~timo-jyrinki\n"
 "  eGetin https://launchpad.net/~egetin"
 
-#: ../src/number-picker.vala:70
-#| msgid "_Clear"
+#: ../src/number-picker.vala:89
 msgid "Clear"
 msgstr "Tyhjennä"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:29
-#| msgid "Error creating directory"
+#: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Virhe tulostaessa tiedostoa:"
 
