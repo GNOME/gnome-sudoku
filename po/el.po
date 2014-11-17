@@ -36,16 +36,16 @@ msgstr ""
 "Project-Id-Version: gnome-games.HEAD.el\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-08-30 07:39+0000\n"
-"PO-Revision-Date: 2014-08-30 13:48+0200\n"
-"Last-Translator: Maria Mavridou <mavridou@gmail.com>\n"
+"POT-Creation-Date: 2014-11-14 08:33+0000\n"
+"PO-Revision-Date: 2014-11-15 10:59+0300\n"
+"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
 "Language-Team: www.gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:1
@@ -84,7 +84,7 @@ msgstr ""
 "να αποτελέσει ένα ανανεώσιμο βιβλίο Σουντόκου για εσάς."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:406
+#: ../src/gnome-sudoku.vala:524
 msgid "Sudoku"
 msgstr "Σουντόκου"
 
@@ -96,7 +96,7 @@ msgstr "Δοκιμάστε τη λογική σας σε αυτό το παιχ�
 msgid "magic;square;"
 msgstr "μαγικό;τετράγωνο;magic;square;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
 msgid "_Print"
 msgstr "Ε_κτύπωση"
 
@@ -109,18 +109,24 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Εκτύπωση _πολλαπλών γρίφων…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-msgid "_Show Warnings"
-msgstr "Εμφάνι_ση προειδοποιήσεων"
+#| msgid "_Highlighter"
+msgid "High_lighter"
+msgstr "Επ_ισήμανση"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
+#| msgid "_Show Warnings"
+msgid "_Warnings"
+msgstr "Π_ροειδοποιήσεις"
+
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "_Βοήθεια"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
 msgstr "_Περί"
 
-#: ../data/gnome-sudoku-menu.ui.h:7
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:361
 msgid "_Quit"
 msgstr "Έ_ξοδος"
 
@@ -136,35 +142,39 @@ msgstr "Ακύρωση αναίρεσης της τελευταίας σας κ�
 msgid "Go back to the current game"
 msgstr "Επιστροφή στο τρέχον παιχνίδι"
 
-#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
 msgid "_Easy"
 msgstr "Εύκο_λο"
 
-#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
 msgid "_Medium"
 msgstr "_Μεσαίο"
 
-#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
 msgid "_Hard"
 msgstr "_Δύσκολο"
 
-#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
 msgid "_Very Hard"
 msgstr "_Πολύ δύσκολο"
 
-#: ../data/gnome-sudoku.ui.h:9
+#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:303
+msgid "_Pause"
+msgstr "Παύ_ση"
+
+#: ../data/gnome-sudoku.ui.h:10
 msgid "_Clear Board"
 msgstr "Κα_θαρισμός πίνακα"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:11
 msgid "Reset the board to its original state"
 msgstr "Επαναφορά του πίνακα στην αρχική του κατάσταση"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: ../data/gnome-sudoku.ui.h:12
 msgid "_New Puzzle"
 msgstr "_Νέος γρίφος"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: ../data/gnome-sudoku.ui.h:13
 msgid "Start a new puzzle"
 msgstr "Εκκίνηση νέου γρίφου"
 
@@ -202,86 +212,101 @@ msgstr ""
 "με κόκκινο χρώμα"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr ""
+"Επισήμανση γραμμής, στήλης και τετραγώνου που περιέχει το επιλεγμένο κελί"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
 msgstr "Το πλάτος του παραθύρου σε εικονοστοιχεία"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
 msgstr "Το ύψος του παραθύρου σε εικονοστοιχεία"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
 msgstr "αληθές αν το παράθυρο είναι μεγιστοποιημένο"
 
-#: ../data/print-games.ui.h:1
+#: ../data/print-dialog.ui.h:1
 msgid "Print Multiple Puzzles"
 msgstr "Εκτύπωση πολλαπλών γρίφων"
 
-#: ../data/print-games.ui.h:3
+#: ../data/print-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "A_κύρωση"
 
-#: ../data/print-games.ui.h:4
+#: ../data/print-dialog.ui.h:4
 msgid "_Number of puzzles"
 msgstr "_Αριθμός γρίφων"
 
-#: ../data/print-games.ui.h:5
+#: ../data/print-dialog.ui.h:5
 msgid "Difficulty"
 msgstr "Βαθμός δυσκολίας"
 
-#: ../lib/sudoku-board.vala:543
+#: ../lib/sudoku-board.vala:589
 msgid "Unknown Difficulty"
 msgstr "Άγνωστη δυσκολία"
 
-#: ../lib/sudoku-board.vala:545
-msgid "Easy Difficulty"
-msgstr "Μικρής δυσκολίας"
+#: ../lib/sudoku-board.vala:591
+#| msgid "Easy puzzle"
+msgid "Easy Puzzle"
+msgstr "Εύκολο πρόβλημα"
 
-#: ../lib/sudoku-board.vala:547
+#: ../lib/sudoku-board.vala:593
 msgid "Medium Difficulty"
 msgstr "Μέτριας δυσκολίας"
 
-#: ../lib/sudoku-board.vala:549
-msgid "Hard Difficulty"
-msgstr "Υψηλής δυσκολίας"
+#: ../lib/sudoku-board.vala:595
+#| msgid "Hard puzzle"
+msgid "Hard Puzzle"
+msgstr "Δύσκολο πρόβλημα"
 
-#: ../lib/sudoku-board.vala:551
-msgid "Very Hard Difficulty"
-msgstr "Πολύ υψηλής δυσκολίας"
+#: ../lib/sudoku-board.vala:597
+#| msgid "Very hard puzzle"
+msgid "Very Hard Puzzle"
+msgstr "Πολύ δύσκολο πρόβλημα"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:60
+#: ../src/gnome-sudoku.vala:80
 msgid "Show release version"
 msgstr "Προβολή της έκδοσης"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:64
+#: ../src/gnome-sudoku.vala:84
 msgid "Show the possible values for each cell"
 msgstr "Εμφάνιση των πιθανών τιμών για κάθε κελί"
 
-#. Text in dialog that displays when the game is over.
-#: ../src/gnome-sudoku.vala:249
+#: ../src/gnome-sudoku.vala:309
+#| msgid "_Reset"
+msgid "_Resume"
+msgstr "_Συνέχεια"
+
+#: ../src/gnome-sudoku.vala:355
 #, c-format
-#| msgid "Well done, you completed the puzzle in %s"
-msgid "Well done, you completed the puzzle in %d minute"
-msgid_plural "Well done, you completed the puzzle in %d minutes"
-msgstr[0] "Μπράβο, ολοκληρώσατε τον γρίφο σε %d λεπτό"
-msgstr[1] "Μπράβο, ολοκληρώσατε τον γρίφο σε %d λεπτά"
+#| msgid "Well done, you completed the puzzle in %d minute"
+#| msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "Μπράβο, ολοκληρώσατε το πρόβλημα σε %d λεπτό!"
+msgstr[1] "Μπράβο, ολοκληρώσατε το πρόβλημα σε %d λεπτά!"
 
-#: ../src/gnome-sudoku.vala:254
-msgid "Same difficulty again"
-msgstr "Ίδιος βαθμός δυσκολίας πάλι"
+#: ../src/gnome-sudoku.vala:360
+#| msgid "Play as:"
+msgid "Play _Again"
+msgstr "Παίξτε _ξανά"
 
-#: ../src/gnome-sudoku.vala:255
-msgid "New difficulty"
-msgstr "Νέος βαθμός δυσκολίας"
+#: ../src/gnome-sudoku.vala:381
+#| msgid "Difficulty"
+msgid "Select Difficulty"
+msgstr "Επιλέξτε βαθμό δυσκολίας"
 
-#: ../src/gnome-sudoku.vala:318
+#: ../src/gnome-sudoku.vala:417
 msgid "Reset the board to its original state?"
 msgstr "Επαναφορά του πίνακα στην αρχική του κατάσταση;"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:410
+#: ../src/gnome-sudoku.vala:528
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -292,7 +317,7 @@ msgstr ""
 "\n"
 "Οι γρίφοι δημιουργούνται από το QQwing %s"
 
-#: ../src/gnome-sudoku.vala:415
+#: ../src/gnome-sudoku.vala:533
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -307,14 +332,34 @@ msgstr ""
 "Για περισσότερες πληροφορίες, επισκεφθείτε την σελίδα\n"
 "http://gnome.gr/"
 
-#: ../src/number-picker.vala:70
+#: ../src/number-picker.vala:89
 msgid "Clear"
 msgstr "Εκκαθάριση"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:29
+#: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Σφάλμα κατά την εκτύπωση του αρχείου:"
+
+#. Text on overlay when game is paused
+#: ../src/sudoku-view.vala:574
+msgid "Paused"
+msgstr "Σε παύση"
+
+#~ msgid "Easy Difficulty"
+#~ msgstr "Μικρής δυσκολίας"
+
+#~ msgid "Hard Difficulty"
+#~ msgstr "Υψηλής δυσκολίας"
+
+#~ msgid "Very Hard Difficulty"
+#~ msgstr "Πολύ υψηλής δυσκολίας"
+
+#~ msgid "Same difficulty again"
+#~ msgstr "Ίδιος βαθμός δυσκολίας πάλι"
+
+#~ msgid "New difficulty"
+#~ msgstr "Νέος βαθμός δυσκολίας"
 
 #~| msgid "minute"
 #~ msgid "minute"
@@ -500,17 +545,8 @@ msgstr "Σφάλμα κατά την εκτύπωση του αρχείου:"
 #~ msgid "Last played on %B %e %Y"
 #~ msgstr "Τελευταία φορά που παίξατε ήταν %B %e %Y"
 
-#~ msgid "Easy puzzle"
-#~ msgstr "Εύκολο πρόβλημα"
-
 #~ msgid "Medium puzzle"
 #~ msgstr "Μεσαίο πρόβλημα"
-
-#~ msgid "Hard puzzle"
-#~ msgstr "Δύσκολο πρόβλημα"
-
-#~ msgid "Very hard puzzle"
-#~ msgstr "Πολύ δύσκολο πρόβλημα"
 
 #~ msgid "Played for %d hour"
 #~ msgid_plural "Played for %d hours"
@@ -538,9 +574,6 @@ msgstr "Σφάλμα κατά την εκτύπωση του αρχείου:"
 
 #~ msgid "New game"
 #~ msgstr "Νέο παιχνίδι"
-
-#~ msgid "_Reset"
-#~ msgstr "_Επαναφορά"
 
 #~ msgid "_Undo"
 #~ msgstr "Α_ναίρεση"
@@ -595,9 +628,6 @@ msgstr "Σφάλμα κατά την εκτύπωση του αρχείου:"
 
 #~ msgid "Show _Toolbar"
 #~ msgstr "Προβολή _εργαλειοθήκης"
-
-#~ msgid "_Highlighter"
-#~ msgstr "Επ_ισήμανση"
 
 #~ msgid "Highlight the current row, column and box"
 #~ msgstr "Επισήμανση της τρέχουσας γραμμής, στήλης και πλαισίου"
@@ -827,9 +857,6 @@ msgstr "Σφάλμα κατά την εκτύπωση του αρχείου:"
 
 #~ msgid "Preferences"
 #~ msgstr "Προτιμήσεις"
-
-#~ msgid "Play as:"
-#~ msgstr "Παίζετε ως:"
 
 #~ msgid "Opposing Player:"
 #~ msgstr "Αντίπαλος παίχτης:"
