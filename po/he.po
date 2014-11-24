@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-05 00:29+0300\n"
-"PO-Revision-Date: 2014-10-05 00:32+0300\n"
+"POT-Creation-Date: 2014-11-24 20:33+0200\n"
+"PO-Revision-Date: 2014-11-24 20:33+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -55,7 +55,7 @@ msgstr ""
 "סודוקו מתחדש בשבילך."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:512
+#: ../src/gnome-sudoku.vala:527
 msgid "Sudoku"
 msgstr "סודוקו"
 
@@ -80,18 +80,22 @@ msgid "Print _Multiple Puzzles…"
 msgstr "הדפסת מס_פר לוחות…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-msgid "_Show Warnings"
-msgstr "ה_צגת אזהרות"
+msgid "High_lighter"
+msgstr "_סימון"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Warnings"
+msgstr "_אזהרות"
+
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
 msgstr "על _אודות"
 
-#: ../data/gnome-sudoku-menu.ui.h:7 ../src/gnome-sudoku.vala:353
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:364
 msgid "_Quit"
 msgstr "י_ציאה"
 
@@ -123,7 +127,7 @@ msgstr "ק_שה"
 msgid "_Very Hard"
 msgstr "_קשה מאד"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:296
+#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:306
 msgid "_Pause"
 msgstr "ה_שהייה"
 
@@ -176,14 +180,18 @@ msgstr ""
 "number and duplicate numbers are highlighted in red"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Highlight row, column and square that contain the selected cell"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
 msgstr "Width of the window in pixels"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
 msgstr "Height of the window in pixels"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
 msgstr "true if the window is maximized"
 
@@ -224,20 +232,20 @@ msgid "Very Hard Puzzle"
 msgstr "רמה קשה מאוד"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:80
+#: ../src/gnome-sudoku.vala:79
 msgid "Show release version"
 msgstr "Show release version"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:84
+#: ../src/gnome-sudoku.vala:83
 msgid "Show the possible values for each cell"
 msgstr "Show the possible values for each cell"
 
-#: ../src/gnome-sudoku.vala:302
+#: ../src/gnome-sudoku.vala:312
 msgid "_Resume"
 msgstr "_המשך"
 
-#: ../src/gnome-sudoku.vala:347
+#: ../src/gnome-sudoku.vala:358
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -245,20 +253,20 @@ msgstr[0] "כל הכבוד, השלמת את הלוח בדקה אחת!"
 msgstr[1] "כל הכבוד, השלמת את הלוח ב־%d דקות!"
 msgstr[2] "כל הכבוד, השלמת את הלוח בשתי דקות!"
 
-#: ../src/gnome-sudoku.vala:352
+#: ../src/gnome-sudoku.vala:363
 msgid "Play _Again"
 msgstr "לשחק _שוב"
 
-#: ../src/gnome-sudoku.vala:373
+#: ../src/gnome-sudoku.vala:384
 msgid "Select Difficulty"
 msgstr "בחירת רמת קושי"
 
-#: ../src/gnome-sudoku.vala:409
+#: ../src/gnome-sudoku.vala:420
 msgid "Reset the board to its original state?"
 msgstr "איפוס הלוח למצבו המקורי?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:516
+#: ../src/gnome-sudoku.vala:531
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -269,7 +277,7 @@ msgstr ""
 "\n"
 "הלוחות נוצרות על ידי QQwing %s"
 
-#: ../src/gnome-sudoku.vala:521
+#: ../src/gnome-sudoku.vala:536
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -292,6 +300,11 @@ msgstr "ניקוי"
 #: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "שגיאה בהדפסת קובץ:"
+
+#. Text on overlay when game is paused
+#: ../src/sudoku-view.vala:574
+msgid "Paused"
+msgstr "הושהה"
 
 #~ msgid "Easy Difficulty"
 #~ msgstr "רמה קלה"
@@ -558,9 +571,6 @@ msgstr "שגיאה בהדפסת קובץ:"
 
 #~ msgid "Show _Toolbar"
 #~ msgstr "הצגת _סרגל כלים"
-
-#~ msgid "_Highlighter"
-#~ msgstr "_כלי סימון"
 
 #~ msgid "Highlight the current row, column and box"
 #~ msgstr "_סימון השורה, הטור והתיבה הנוכחיים בצבעים"
@@ -2295,9 +2305,6 @@ msgstr "שגיאה בהדפסת קובץ:"
 #~ msgctxt "mahjongg map name"
 #~ msgid "Confounding Cross"
 #~ msgstr "צלב מעורבב"
-
-#~ msgid "Paused"
-#~ msgstr "הושהה"
 
 #~ msgid "Moves Left:"
 #~ msgstr "מהלכים שנותרו:"
