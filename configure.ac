@@ -17,6 +17,8 @@ LT_INIT
 
 GLIB_GSETTINGS
 
+APPSTREAM_XML
+
 AC_CONFIG_MACRO_DIR([m4])
 
 dnl ###########################################################################
@@ -44,7 +46,6 @@ PKG_CHECK_MODULES(LIBSUDOKU, [
 
 AC_SUBST([GLIB_REQUIRED])
 
-AC_PATH_PROG([APPDATA_VALIDATE], [appdata-validate], [/bin/true])
 AC_PATH_PROG([DESKTOP_FILE_VALIDATE], [desktop-file-validate], [/bin/true])
 
 AC_CHECK_LIB([m],[floor])
