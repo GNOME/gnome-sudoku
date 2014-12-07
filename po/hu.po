@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-20 19:41+0000\n"
-"PO-Revision-Date: 2014-09-21 00:08+0200\n"
+"POT-Creation-Date: 2014-12-07 08:38+0000\n"
+"PO-Revision-Date: 2014-12-07 09:57+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
@@ -30,7 +30,11 @@ msgstr ""
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Tesztelje logikai képességeit ezzel a számrács-fejtörővel"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -40,7 +44,7 @@ msgstr ""
 "minden Sudoku-rajongónak. Egyszerű felülete a játékot minden tapasztalati "
 "szintű játékos számára élvezetessé teszi."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -49,7 +53,7 @@ msgstr ""
 "a weboldalak feladványaihoz, így a játék nehézsége vagy egyszerűsége csak "
 "Önön múlik."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -61,19 +65,15 @@ msgstr ""
 "feladványkötetként használható."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:478
+#: ../src/gnome-sudoku.vala:527
 msgid "Sudoku"
 msgstr "Sudoku"
-
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Tesztelje logikai képességeit ezzel a számrács-fejtörővel"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
 msgstr "bűvös;négyzet;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
 msgid "_Print"
 msgstr "_Nyomtatás"
 
@@ -86,18 +86,24 @@ msgid "Print _Multiple Puzzles…"
 msgstr "_Több feladvány nyomtatása…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-msgid "_Show Warnings"
-msgstr "_Figyelmeztetések megjelenítése"
+#| msgid "_Highlighter"
+msgid "High_lighter"
+msgstr "Kie_melő"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
+#| msgid "_Show Warnings"
+msgid "_Warnings"
+msgstr "_Figyelmeztetések"
+
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "_Súgó"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
 msgstr "_Névjegy"
 
-#: ../data/gnome-sudoku-menu.ui.h:7 ../src/gnome-sudoku.vala:324
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:364
 msgid "_Quit"
 msgstr "_Kilépés"
 
@@ -113,23 +119,23 @@ msgstr "Mégis az utolsó műveletet"
 msgid "Go back to the current game"
 msgstr "Vissza a jelenlegi játékhoz"
 
-#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
 msgid "_Easy"
 msgstr "Kö_nnyű"
 
-#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
 msgid "_Medium"
 msgstr "Kö_zepes"
 
-#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
 msgid "_Hard"
 msgstr "Ne_héz"
 
-#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
 msgid "_Very Hard"
 msgstr "Nag_yon nehéz"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:267
+#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:306
 msgid "_Pause"
 msgstr "_Szünet"
 
@@ -183,89 +189,98 @@ msgstr ""
 "kitölteni, és a többször szereplő számok pirossal lesznek kiemelve"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr ""
+"Sor, oszlop és négyzet kiemelése, amelyek tartalmazzák a kijelölt cellát"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
 msgstr "Az ablak szélessége képpontokban"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
 msgstr "Az ablak magassága képpontokban"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
 msgstr "Az ablak teljes méretű-e"
 
-#: ../data/print-games.ui.h:1
+#: ../data/print-dialog.ui.h:1
 msgid "Print Multiple Puzzles"
 msgstr "Több sudoku nyomtatása"
 
-#: ../data/print-games.ui.h:3
+#: ../data/print-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "Mé_gse"
 
-#: ../data/print-games.ui.h:4
+#: ../data/print-dialog.ui.h:4
 msgid "_Number of puzzles"
 msgstr "_Feladványok száma"
 
-#: ../data/print-games.ui.h:5
+#: ../data/print-dialog.ui.h:5
 msgid "Difficulty"
 msgstr "Nehézség"
 
-#: ../lib/sudoku-board.vala:570
+#: ../lib/sudoku-board.vala:589
 msgid "Unknown Difficulty"
 msgstr "Ismeretlen nehézség"
 
-#: ../lib/sudoku-board.vala:572
-msgid "Easy Difficulty"
-msgstr "Egyszerű nehézség"
+#: ../lib/sudoku-board.vala:591
+#| msgid "Easy puzzle"
+msgid "Easy Puzzle"
+msgstr "Egyszerű feladvány"
 
-#: ../lib/sudoku-board.vala:574
+#: ../lib/sudoku-board.vala:593
 msgid "Medium Difficulty"
 msgstr "Közepes nehézség"
 
-#: ../lib/sudoku-board.vala:576
-msgid "Hard Difficulty"
-msgstr "Magas nehézség"
+#: ../lib/sudoku-board.vala:595
+#| msgid "Hard puzzle"
+msgid "Hard Puzzle"
+msgstr "Nehéz feladvány"
 
-#: ../lib/sudoku-board.vala:578
-msgid "Very Hard Difficulty"
-msgstr "Nagyon magas nehézség"
+#: ../lib/sudoku-board.vala:597
+#| msgid "Very hard puzzle"
+msgid "Very Hard Puzzle"
+msgstr "Nagyon nehéz feladvány"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:63
+#: ../src/gnome-sudoku.vala:79
 msgid "Show release version"
 msgstr "Verziószám megjelenítése"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:67
+#: ../src/gnome-sudoku.vala:83
 msgid "Show the possible values for each cell"
 msgstr "Az egyes cellák lehetséges értékeinek megjelenítése"
 
 # aisleriot/dialog.c:112
-#: ../src/gnome-sudoku.vala:273
-#| msgid "_Reset"
+#: ../src/gnome-sudoku.vala:312
 msgid "_Resume"
 msgstr "_Folytatás"
 
-#: ../src/gnome-sudoku.vala:318
+#: ../src/gnome-sudoku.vala:358
 #, c-format
-#| msgid "Well done, you completed the puzzle in %d minute"
-#| msgid_plural "Well done, you completed the puzzle in %d minutes"
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Szép munka, a feladványt %d perc alatt oldotta meg!"
 msgstr[1] "Szép munka, a feladványt %d perc alatt oldotta meg!"
 
-#: ../src/gnome-sudoku.vala:323
-#| msgid "Play as:"
+#: ../src/gnome-sudoku.vala:363
 msgid "Play _Again"
 msgstr "Játék új_ra"
 
-#: ../src/gnome-sudoku.vala:381
+#: ../src/gnome-sudoku.vala:384
+#| msgid "Difficulty"
+msgid "Select Difficulty"
+msgstr "Nehézség kiválasztása"
+
+#: ../src/gnome-sudoku.vala:420
 msgid "Reset the board to its original state?"
 msgstr "A tábla visszaállítása az eredeti állapotába?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:482
+#: ../src/gnome-sudoku.vala:531
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -276,7 +291,7 @@ msgstr ""
 "\n"
 "A feladványokat a QQwing %s generálja"
 
-#: ../src/gnome-sudoku.vala:487
+#: ../src/gnome-sudoku.vala:536
 msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby at gnome dot hu>\n"
@@ -287,14 +302,28 @@ msgstr ""
 "Tímár András <timar at gnome dot hu>\n"
 "Varga Szabolcs <shirokuma at shirokuma dot hu>"
 
-#: ../src/number-picker.vala:70
+#: ../src/number-picker.vala:89
 msgid "Clear"
 msgstr "Törlés"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:29
+#: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Hiba a fájl nyomtatása közben:"
+
+#. Text on overlay when game is paused
+#: ../src/sudoku-view.vala:574
+msgid "Paused"
+msgstr "Szüneteltetve"
+
+#~ msgid "Easy Difficulty"
+#~ msgstr "Egyszerű nehézség"
+
+#~ msgid "Hard Difficulty"
+#~ msgstr "Magas nehézség"
+
+#~ msgid "Very Hard Difficulty"
+#~ msgstr "Nagyon magas nehézség"
 
 #~| msgid "Calculated difficulty: "
 #~ msgid "Same difficulty again"
@@ -430,17 +459,8 @@ msgstr "Hiba a fájl nyomtatása közben:"
 #~ msgid "Last played on %B %e %Y"
 #~ msgstr "Utolsó játék: %Y %B %e"
 
-#~ msgid "Easy puzzle"
-#~ msgstr "Egyszerű feladvány"
-
 #~ msgid "Medium puzzle"
 #~ msgstr "Közepes feladvány"
-
-#~ msgid "Hard puzzle"
-#~ msgstr "Nehéz feladvány"
-
-#~ msgid "Very hard puzzle"
-#~ msgstr "Nagyon nehéz feladvány"
 
 #~ msgid "Played for %d hour"
 #~ msgid_plural "Played for %d hours"
@@ -517,9 +537,6 @@ msgstr "Hiba a fájl nyomtatása közben:"
 
 #~ msgid "Show _Toolbar"
 #~ msgstr "Es_zköztár megjelenítése"
-
-#~ msgid "_Highlighter"
-#~ msgstr "Kie_melő"
 
 #~ msgid "Highlight the current row, column and box"
 #~ msgstr "Kiemeli az aktuális sort, oszlopot és dobozt"
@@ -2271,9 +2288,6 @@ msgstr "Hiba a fájl nyomtatása közben:"
 #~ msgctxt "mahjongg map name"
 #~ msgid "Difficult"
 #~ msgstr "Nehéz"
-
-#~ msgid "Paused"
-#~ msgstr "Szüneteltetve"
 
 #~ msgid "Moves Left:"
 #~ msgstr "Hátralévő lépések:"
