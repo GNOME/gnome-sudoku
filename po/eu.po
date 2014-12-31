@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-23 20:49+0100\n"
-"PO-Revision-Date: 2014-03-23 21:01+0100\n"
+"POT-Creation-Date: 2014-12-31 17:19+0100\n"
+"PO-Revision-Date: 2014-12-06 17:01+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -18,588 +18,608 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1 ../src/lib/defaults.py:47
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudokua"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
-msgid ""
-"GNOME Sudoku has a simple, unobstrusive interface with all the features that "
-"make playing Sudoku fun. Games are automatically saved when you quit, and "
-"you can always come back to any game that you've played."
-msgstr ""
-"GNOME Sudoku interfaze xume eta apal bat da Sudoku-ra jokatzeko. Jokoak "
-"automatikoki gordetzen dira irtetean, eta beti itzul zintezke aurrez "
-"jokatutako "
-"jokora."
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Probatu zure logika-gaitasuna zenbaki-sare honetan"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites. You can also see detailed information about how the computer "
-"solved the puzzle."
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
 msgstr ""
-"Joko bakoitzaren zailtasun-maila  egunkarietan eta webguneetan ematen "
-"dietenaren antzekoa da. Ordenagailuak puzzlea nola ebazten duen buruzko "
-"informazio "
-"xehea ikus dezakezu bata ere."
+"Jokatu Japoniako joko logiko ospetsura. Sudoku-zaleek GNOME Sudoku "
+"instalatuta eduki beharko lukete. Interfaze xumekoa (eta trabarik egiten ez "
+"duena) edozer mailatan trebetasuna duten jokalarientzako prestatuta dago."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites, so your game will be as easy or as difficult as you want it to be."
+msgstr ""
+"Joko bakoitzaren zailtasun-maila  egunkarietan eta webguneetan ematen "
+"dietenaren antzekoa da. Jokoa zuk nahi duzun bezain erraza edo zaila izango "
+"da."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
 "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
 msgstr ""
 "Paperean jokatzea nahi izanez gero, jokoak inprima ditzakezu. Orrialdeko "
-"zenbat joko inprimatzea nahi dituzun aukera dezakezu, baita jokoen "
-"zailtasun-maila ere. Ondorioz, Sudoku liburu berriztagarri gisa erabil "
-"dezakezu GNOME Sudoku."
+"zenbat joko inprimatzea nahi dituzun aukera dezakezu, baita jokoen zailtasun-"
+"maila ere. Ondorioz, Sudoku liburu berriztagarri gisa erabil dezakezu GNOME "
+"Sudoku."
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../src/lib/defaults.py:48
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:527
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Probatu zure logika-gaitasuna zenbaki-sare honetan"
-
 #: ../data/gnome-sudoku.desktop.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "jokoa;taula;fitxak;japoniarra;"
+msgid "magic;square;"
+msgstr "magikoa;karratua;"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:1
-msgid "The number of seconds between automatic saves"
-msgstr "Gordetze automatikoen arteko segundo kopurua"
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
+msgid "_Print"
+msgstr "_Inprimatu"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:2
-msgid "Print games that have been played"
-msgstr "Inprimatu jokatutako jokoak"
+#: ../data/gnome-sudoku-menu.ui.h:2
+msgid "Print _Current Puzzle…"
+msgstr "Inprimatu _uneko puzzle…"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:3
-msgid "Mark printed games as played"
-msgstr "Markatu inprimatutako jokoak jokatuak gisa"
+#: ../data/gnome-sudoku-menu.ui.h:3
+msgid "Print _Multiple Puzzles…"
+msgstr "Inprimatu _hainbat puzzle..."
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:4
-msgid "Width of application window in pixels"
-msgstr "Aplikazioaren leihoaren zabalera (pixeletan)"
+#: ../data/gnome-sudoku-menu.ui.h:4
+msgid "High_lighter"
+msgstr "_Nabarmentzailea"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:5
-msgid "Height of application window in pixels"
-msgstr "Leiho nagusiaren altuera (pixeletan)"
+#: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Warnings"
+msgstr "_Abisuak"
 
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:6
-msgid "Show hint highlights"
-msgstr "Erakutsi nabarmendutako iradokizunak"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:7
-msgid "Color of the grid border"
-msgstr "Saretako ertzaren kolorea"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:8
-msgid "Show the application toolbar"
-msgstr "Aplikazioaren tresna-barra erakusten du"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:9
-msgid "Show hints"
-msgstr "Erakutsi iradokizunak"
-
-#: ../data/org.gnome.gnome-sudoku.gschema.xml.h:10
-msgid "Number of puzzles to print on a page"
-msgstr "Puzzle kopurua orrialde batean inprimatzeko"
-
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "Inprimatu sudokuak"
-
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "Inprimatu jokoak"
-
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "_Inprimatzeko sudokuen kopurua: "
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "_Sudokuak, orrialdeko: "
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "Zailtasunaren mailak inprimatzeko"
-
-#: ../data/print_games.ui.h:6
-msgid "_Easy"
-msgstr "_Erraza"
-
-#: ../data/print_games.ui.h:7
-msgid "_Medium"
-msgstr "_Tartekoa"
-
-#: ../data/print_games.ui.h:8
-msgid "_Hard"
-msgstr "_Zaila"
-
-#: ../data/print_games.ui.h:9
-msgid "_Very Hard"
-msgstr "_Oso zaila"
-
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "Xehetasunak"
-
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "_Markatu jokoak 'jokatuta' gisa inprimatu ondoren."
-
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr "_Sartu jokatu dituzun jokoak inprimatzeko jokoen zerrendan"
-
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "_Joko berria"
-
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "_Gorde jokoak"
-
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "Gehitu aztarnari berria"
-
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "Kendu hautatutako aztarnaria"
-
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "Egin jarraipeneko aldaketak behin-betirako"
-
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
-msgid "H_ide"
-msgstr "E_zkutatu"
-
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "Ezkutatu jarraipeneko balioak"
-
-#: ../src/lib/defaults.py:50
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"GNOME Sudoku is a part of GNOME Games."
-msgstr ""
-"Japoniako logika-puzzlea da.\n"
-"\n"
-"GNOME Games-eko zati da GNOME Sudoku."
-
-#: ../src/lib/defaults.py:53
-msgid "Website"
-msgstr "Webgunea"
-
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "Erraza"
-
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "Tartekoa"
-
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "Zaila"
-
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "Oso zaila"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "Azkenengoz jokatuta: duela segundo %(n)s "
-msgstr[1] "Azkenengoz jokatuta: duela %(n)s segundo"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "Azkenengoz jokatuta: duela minutu %(n)s"
-msgstr[1] "Azkenengoz jokatuta: duela %(n)s minutu"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "Azkenengoz jokatuta: %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "Azkenengoz atzo jokatuta: %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "Azkenengoz jokatuta: %A, %I:%M %p"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "Jokatutako azkena: %Y.eko %B(r)en %e(a)n"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "Puzzle erraza"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "Puzzle arrunta"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "Puzzle zaila"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "Puzzle oso zaila"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "Jokatutako iraupena: ordu %d"
-msgstr[1] "Jokatutako iraupena: %d ordu"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "Jokatutako iraupena: minutu %d"
-msgstr[1] "Jokatutako iraupena: %d minutu"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "Jokatutako iraupena: segundo %d"
-msgstr[1] "Jokatutako iraupena: %d segundo"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "Ziur zaude aurrera jarraitu nahi duzula?"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "Ez galdetu berriro."
-
-#: ../src/lib/main.py:196
-msgid "_Game"
-msgstr "J_okoa"
-
-#: ../src/lib/main.py:197
-msgid "New game"
-msgstr "Joko berria"
-
-#: ../src/lib/main.py:198
-msgid "_Reset"
-msgstr "_Berrezarri"
-
-#: ../src/lib/main.py:200
-msgid "_Undo"
-msgstr "_Desegin"
-
-#: ../src/lib/main.py:201
-msgid "Undo last action"
-msgstr "Azken ekintza desegiten du"
-
-#: ../src/lib/main.py:202
-msgid "_Redo"
-msgstr "_Berregin"
-
-#: ../src/lib/main.py:203
-msgid "Redo last action"
-msgstr "Azken ekintza berregiten du"
-
-#: ../src/lib/main.py:204
-msgid "Puzzle _Statistics..."
-msgstr "Puzzlearen _estatistikak..."
-
-#: ../src/lib/main.py:206
-msgid "_Print..."
-msgstr "_Inprimatu..."
-
-#: ../src/lib/main.py:207
-msgid "Print _Multiple Sudokus..."
-msgstr "Inprimatu _hainbat sudoku..."
-
-#: ../src/lib/main.py:210
-msgid "_Settings"
-msgstr "E_zarpenak"
-
-#: ../src/lib/main.py:212
-msgid "_Tools"
-msgstr "Tresn_ak"
-
-#: ../src/lib/main.py:213
-msgid "_Hint"
-msgstr "_Iradokizuna"
-
-#: ../src/lib/main.py:214
-msgid "Show a square that is easy to fill."
-msgstr "Erakutsi betetzeko erraza den karratua."
-
-#: ../src/lib/main.py:215
-msgid "Clear _Top Notes"
-msgstr "Garbitu _goiko oharrak"
-
-#: ../src/lib/main.py:217
-msgid "Clear _Bottom Notes"
-msgstr "Garbitu _beheko oharrak"
-
-#: ../src/lib/main.py:219
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "La_guntza"
 
-#: ../src/lib/main.py:220
-msgid "_Contents"
-msgstr "_Edukia"
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_About"
+msgstr "Honi _buruz"
 
-#: ../src/lib/main.py:226
-msgid "Show _Possible Numbers"
-msgstr "Erakutsi zenbaki _erabilgarriak"
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:364
+msgid "_Quit"
+msgstr "_Irten"
 
-#: ../src/lib/main.py:228
-msgid "Always show possible numbers in a square"
-msgstr "Erakutsi beti lauki batean jar daitezkeen zenbakiak"
+#: ../data/gnome-sudoku.ui.h:2
+msgid "Undo your last action"
+msgstr "Desegin zure azken ekintza"
 
-#: ../src/lib/main.py:232
-msgid "Warn About _Unfillable Squares"
-msgstr "Ohartarazi lauki ez-betegarriei buruz"
+#: ../data/gnome-sudoku.ui.h:3
+msgid "Redo your last action"
+msgstr "Berregin zure azken ekintza"
 
-#: ../src/lib/main.py:234
-msgid "Warn about squares made unfillable by a move"
-msgstr "Mugimendu batek ez-betegarri bihurtzen dituen laukien berri eman"
+#: ../data/gnome-sudoku.ui.h:4
+msgid "Go back to the current game"
+msgstr "Joan atzera uneko jokoan"
 
-#: ../src/lib/main.py:236
-msgid "_Track Additions"
-msgstr "_Egin gehigarrien jarraipena"
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
+msgid "_Easy"
+msgstr "_Erraza"
 
-#: ../src/lib/main.py:238
-msgid "Mark new additions in a separate color so you can keep track of them."
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
+msgid "_Medium"
+msgstr "_Tartekoa"
+
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
+msgid "_Hard"
+msgstr "_Zaila"
+
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
+msgid "_Very Hard"
+msgstr "_Oso zaila"
+
+#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:306
+msgid "_Pause"
+msgstr "_Pausarazi"
+
+#: ../data/gnome-sudoku.ui.h:10
+msgid "_Clear Board"
+msgstr "_Garbitu taula"
+
+#: ../data/gnome-sudoku.ui.h:11
+msgid "Reset the board to its original state"
+msgstr "Berrezarri taula bere jatorriko egoerara"
+
+#: ../data/gnome-sudoku.ui.h:12
+msgid "_New Puzzle"
+msgstr "Puzzle _berria"
+
+#: ../data/gnome-sudoku.ui.h:13
+msgid "Start a new puzzle"
+msgstr "Hasi puzzle berria"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
+msgid "Difficulty level of sudokus to be printed"
+msgstr "Sudokuen zailtasun maila inprimatzeko"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+msgid ""
+"Set the difficulty level of the sudokus you want to print. Possible values "
+"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"Jarri berriak diren zenbakiak beste kolore batez markatzen ditu, haien "
-"jarraipena egin ahal izateko."
+"Ezarri inprimatzea nahi dituzun sudokuen zailtasun maila. Balio "
+"erabilgarriak: 'easy' (erraza), 'medium' (ertaina), 'hard' (zaila), "
+"'very_hard' (oso zaila)"
 
-#: ../src/lib/main.py:240
-msgid "Show _Toolbar"
-msgstr "Erakutsi _tresna-barra"
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+msgid "Number of Sudokus to print"
+msgstr "Inprimatzeko sudokuen kopurua"
 
-#: ../src/lib/main.py:241
-msgid "_Highlighter"
-msgstr "_Nabarmentzailea"
+#: ../data/org.gnome.sudoku.gschema.xml.h:4
+msgid "Set the number of sudokus you want to print"
+msgstr "Ezarri inprimatze nahi dituzun sudokuen kopurua"
 
-#: ../src/lib/main.py:242
-msgid "Highlight the current row, column and box"
-msgstr "Uneko errenkada, zutabea eta laukia nabarmentzen ditu"
+#: ../data/org.gnome.sudoku.gschema.xml.h:5
+msgid "Warn about unfillable squares and duplicate numbers"
+msgstr "Ohartarazi lauki ez-betegarriei eta bikoiztutako zenbakiei buruz"
 
-#: ../src/lib/main.py:367
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "Puzzlea osatzeko erabilitako denbora: %d"
-msgstr[1] "Puzzlea osatzeko erabilitako denbora: %d"
-
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "minutu %d"
-msgstr[1] "%d minutu"
-
-#: ../src/lib/main.py:373 ../src/lib/main.py:381
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "segundo %d"
-msgstr[1] "%d segundo"
-
-#: ../src/lib/main.py:374
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "Puzzlea osatzeko erabilitako denbora: %(minute)s eta %(second)s"
-
-#: ../src/lib/main.py:379
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "ordu %d"
-msgstr[1] "%d ordu"
-
-#: ../src/lib/main.py:382
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
+#: ../data/org.gnome.sudoku.gschema.xml.h:6
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number and duplicate numbers are highlighted in red"
 msgstr ""
-"Puzzlea osatzeko erabilitako denbora: %(hour)s, %(minute)s eta %(second)s"
+"Bistaratu X gorri handia karratu batean ezin bada edozer zenbakirekin bete "
+"eta bikoiztutako zenbakiak gorriz nabarmentzen dira"
 
-#: ../src/lib/main.py:384
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "Iradokizun %(n)s duzu."
-msgstr[1] "%(n)s iradokizun dituzu."
+#: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Nabarmendu hautatutako gelaxka duen errenkada, zutabea eta karratua"
 
-#: ../src/lib/main.py:387
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "Ezintasun %(n)s adierazi zaizu."
-msgstr[1] "%(n)s ezintasun adierazi zaizkizu."
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
+msgid "Width of the window in pixels"
+msgstr "Leihoaren zabalera (pixeletan)"
 
-#: ../src/lib/main.py:392
-msgid "You win!"
-msgstr "Irabazi egin duzu!"
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
+msgid "Height of the window in pixels"
+msgstr "Leihoaren altuera (pixeletan)"
 
-#: ../src/lib/main.py:402
-msgid "Save this game before starting new one?"
-msgstr "Gorde joko hau berri batekin hasi aurretik?"
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
+msgid "true if the window is maximized"
+msgstr "True (egia) leihoa maximizatuta badago"
 
-#: ../src/lib/main.py:403
-msgid "_Save game for later"
-msgstr "_Gorde jokoa"
+#: ../data/print-dialog.ui.h:1
+msgid "Print Multiple Puzzles"
+msgstr "Inprimatu hainbat puzzle"
 
-#: ../src/lib/main.py:404
-msgid "_Abandon game"
-msgstr "_Bertan behera utzi jokoa"
+#: ../data/print-dialog.ui.h:2
+msgid "_Cancel"
+msgstr "_Utzi"
 
-#: ../src/lib/main.py:422
-msgid "Save game before closing?"
-msgstr "Gorde jokoa itxi aurretik?"
+#: ../data/print-dialog.ui.h:4
+msgid "_Number of puzzles"
+msgstr "Puzzle _kopurua"
 
-#: ../src/lib/main.py:620
-msgid "Puzzle Information"
-msgstr "Jokoari buruzko informazioa"
+#: ../data/print-dialog.ui.h:5
+msgid "Difficulty"
+msgstr "Zailtasuna"
 
-#: ../src/lib/main.py:621
-msgid "There is no current puzzle."
-msgstr "Une honetan ez dago jokorik."
+#: ../lib/sudoku-board.vala:589
+msgid "Unknown Difficulty"
+msgstr "Zailtasun ezezaguna"
 
-#: ../src/lib/main.py:626
-msgid "Calculated difficulty: "
-msgstr "Kalkulatu zailtasuna: "
+#: ../lib/sudoku-board.vala:591
+msgid "Easy Puzzle"
+msgstr "Puzzle erraza"
 
-#: ../src/lib/main.py:631
-msgid "Very Hard"
-msgstr "Oso zaila"
+#: ../lib/sudoku-board.vala:593
+msgid "Medium Difficulty"
+msgstr "Tarteko zailtasuna"
 
-#: ../src/lib/main.py:636
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "Eliminazioz bat-batean bete daitezkeen mugimenduen kopurua: "
+#: ../lib/sudoku-board.vala:595
+msgid "Hard Puzzle"
+msgstr "Puzzle zaila"
 
-#: ../src/lib/main.py:639
-msgid "Number of moves instantly fillable by filling: "
-msgstr "Osatuz bat-batean bete daitezkeen mugimenduen kopurua: "
+#: ../lib/sudoku-board.vala:597
+msgid "Very Hard Puzzle"
+msgstr "Puzzle oso zaila"
 
-#: ../src/lib/main.py:642
-msgid "Amount of trial-and-error required to solve: "
-msgstr "Ebazteko beharrezko saialdi kopurua: "
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:79
+msgid "Show release version"
+msgstr "Erakutsi argitaratze-bertsioa"
 
-#: ../src/lib/main.py:645 ../src/lib/main.py:646
-msgid "Puzzle Statistics"
-msgstr "Jokoaren estatistikak"
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:83
+msgid "Show the possible values for each cell"
+msgstr "Erakutsi gelaxka bakoitzeko balio posibleak"
 
-#: ../src/lib/main.py:670
+#: ../src/gnome-sudoku.vala:312
+msgid "_Resume"
+msgstr "_Berrekin"
+
+#: ../src/gnome-sudoku.vala:358
+#, c-format
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "Ongi eginda! Puzzlea minutu %d-ean osatuta!"
+msgstr[1] "Ongi eginda! Puzzlea %d minututan osatuta!"
+
+#: ../src/gnome-sudoku.vala:363
+msgid "Play _Again"
+msgstr "Jokatu _berriro"
+
+#: ../src/gnome-sudoku.vala:384
+msgid "Select Difficulty"
+msgstr "Hautatu zailtasuna"
+
+#: ../src/gnome-sudoku.vala:420
+msgid "Reset the board to its original state?"
+msgstr "Berrezarri taula bere jatorriko egoerara?"
+
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: ../src/gnome-sudoku.vala:531
+#, c-format
+msgid ""
+"The popular Japanese logic puzzle\n"
+"\n"
+"Puzzles generated by QQwing %s"
+msgstr ""
+"Japoniako logika-puzzlea da.\n"
+"\n"
+"Puzzleak QQwing %s-(e)k sortuta"
+
+#: ../src/gnome-sudoku.vala:536
 msgid "translator-credits"
 msgstr "Hizkuntza Politikarako Sailburuordetza <hizkpol@ej-gv.es>"
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:680
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "Ezin da laguntza bistaratu: %s"
+#: ../src/number-picker.vala:89
+#, c-format
+msgid "Clear"
+msgstr "Garbitu"
 
-#: ../src/lib/main.py:736
-msgid "Untracked"
-msgstr "Jarraipenik gabe"
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:48
+#, c-format
+msgid "Error printing file:"
+msgstr "Errorea fitxategia inprimatzean:"
 
-#: ../src/lib/main.py:745
-msgid "_Remove"
-msgstr "_Kendu"
+#. Text on overlay when game is paused
+#: ../src/sudoku-view.vala:574
+msgid "Paused"
+msgstr "Pausarazita"
 
-#: ../src/lib/main.py:746
-msgid "Delete selected tracker."
-msgstr "Ezabatu hautatutako aztarnaria."
+#~ msgid ""
+#~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
+#~ "that make playing Sudoku fun. Games are automatically saved when you "
+#~ "quit, and you can always come back to any game that you've played."
+#~ msgstr ""
+#~ "GNOME Sudoku interfaze xume eta apal bat da Sudoku-ra jokatzeko. Jokoak "
+#~ "automatikoki gordetzen dira irtetean, eta beti itzul zintezke aurrez "
+#~ "jokatutako jokora."
 
-#: ../src/lib/main.py:752
-msgid "Hide current tracker entries."
-msgstr "Ezkutatu uneko aztarnariaren sarrerak."
+#~ msgid "game;board;tiles;japanese;"
+#~ msgstr "jokoa;taula;fitxak;japoniarra;"
 
-#: ../src/lib/main.py:757
-msgid "A_pply"
-msgstr "A_plikatu"
+#~ msgid "The number of seconds between automatic saves"
+#~ msgstr "Gordetze automatikoen arteko segundo kopurua"
 
-#: ../src/lib/main.py:758
-msgid "Apply all tracked values and remove the tracker."
-msgstr "Aplikatu jarraipenen balio guztiak eta kendu aztarnaria."
+#~ msgid "Print games that have been played"
+#~ msgstr "Inprimatu jokatutako jokoak"
 
-#: ../src/lib/main.py:796
-#, python-format
-msgid "Tracker %s"
-msgstr "%s aztarnaria"
+#~ msgid "Mark printed games as played"
+#~ msgstr "Markatu inprimatutako jokoak jokatuak gisa"
 
-#: ../src/lib/number_box.py:82
-msgid "_Clear"
-msgstr "Ga_rbitu"
+#~ msgid "Width of application window in pixels"
+#~ msgstr "Aplikazioaren leihoaren zabalera (pixeletan)"
 
-#: ../src/lib/saver.py:151
-msgid "No Space"
-msgstr "Lekurik ez"
+#~ msgid "Height of application window in pixels"
+#~ msgstr "Leiho nagusiaren altuera (pixeletan)"
 
-#: ../src/lib/saver.py:152
-msgid "No space left on disk"
-msgstr "Ez dago leku librerik diskoan"
+#~ msgid "Show hint highlights"
+#~ msgstr "Erakutsi nabarmendutako iradokizunak"
 
-#: ../src/lib/saver.py:154 ../src/lib/saver.py:161
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "Ezin da datuen %(path)s karpeta sortu."
+#~ msgid "Color of the grid border"
+#~ msgstr "Saretako ertzaren kolorea"
 
-#: ../src/lib/saver.py:155
-msgid "There is no disk space left!"
-msgstr "Ez dago leku librerik diskoan!"
+#~ msgid "Show the application toolbar"
+#~ msgstr "Aplikazioaren tresna-barra erakusten du"
 
-#: ../src/lib/saver.py:159 ../src/lib/saver.py:160
-msgid "Error creating directory"
-msgstr "Errorea direktorioa sortzean"
+#~ msgid "Show hints"
+#~ msgstr "Erakutsi iradokizunak"
 
-#: ../src/lib/saver.py:162 ../src/lib/saver.py:187 ../src/lib/saver.py:211
-#: ../src/lib/saver.py:229
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "%(errno)s. errorea: %(error)s"
+#~ msgid "Number of puzzles to print on a page"
+#~ msgstr "Puzzle kopurua orrialde batean inprimatzeko"
 
-#: ../src/lib/saver.py:182 ../src/lib/saver.py:183
-msgid "Unable to save game."
-msgstr "Ezin da jokoa gorde."
+#~ msgid "Print Sudokus"
+#~ msgstr "Inprimatu sudokuak"
 
-#: ../src/lib/saver.py:185 ../src/lib/saver.py:210 ../src/lib/saver.py:228
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "Ezin da %(filename)s fitxategia gorde."
+#~ msgid "Print Games"
+#~ msgstr "Inprimatu jokoak"
 
-#: ../src/lib/saver.py:207 ../src/lib/saver.py:208
-msgid "Unable to mark game as finished."
-msgstr "Ezin da jokoa amaituta gisa markatu."
+#~ msgid "_Sudokus per page: "
+#~ msgstr "_Sudokuak, orrialdeko: "
 
-#: ../src/lib/saver.py:225 ../src/lib/saver.py:226
-msgid "Sudoku unable to mark game as finished."
-msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
+#~ msgid "Levels of difficulty to print"
+#~ msgstr "Zailtasunaren mailak inprimatzeko"
+
+#~ msgid "Details"
+#~ msgstr "Xehetasunak"
+
+#~ msgid "_Mark games as played once you've printed them."
+#~ msgstr "_Markatu jokoak 'jokatuta' gisa inprimatu ondoren."
+
+#~ msgid "_Include games you've already played in list of games to print"
+#~ msgstr "_Sartu jokatu dituzun jokoak inprimatzeko jokoen zerrendan"
+
+#~ msgid "_New Game"
+#~ msgstr "_Joko berria"
+
+#~ msgid "_Saved Games"
+#~ msgstr "_Gorde jokoak"
+
+#~ msgid "Add a new tracker"
+#~ msgstr "Gehitu aztarnari berria"
+
+#~ msgid "Remove the selected tracker"
+#~ msgstr "Kendu hautatutako aztarnaria"
+
+#~ msgid "Make the tracked changes permanent"
+#~ msgstr "Egin jarraipeneko aldaketak behin-betirako"
+
+#~ msgid "H_ide"
+#~ msgstr "E_zkutatu"
+
+#~ msgid "Hide the tracked values"
+#~ msgstr "Ezkutatu jarraipeneko balioak"
+
+#~ msgid "Website"
+#~ msgstr "Webgunea"
+
+#~ msgid "Easy"
+#~ msgstr "Erraza"
+
+#~ msgid "Medium"
+#~ msgstr "Tartekoa"
+
+#~ msgid "Hard"
+#~ msgstr "Zaila"
+
+#~ msgid "Very hard"
+#~ msgstr "Oso zaila"
+
+#~ msgid "Last played %(n)s second ago"
+#~ msgid_plural "Last played %(n)s seconds ago"
+#~ msgstr[0] "Azkenengoz jokatuta: duela segundo %(n)s "
+#~ msgstr[1] "Azkenengoz jokatuta: duela %(n)s segundo"
+
+#~ msgid "Last played %(n)s minute ago"
+#~ msgid_plural "Last played %(n)s minutes ago"
+#~ msgstr[0] "Azkenengoz jokatuta: duela minutu %(n)s"
+#~ msgstr[1] "Azkenengoz jokatuta: duela %(n)s minutu"
+
+#~ msgid "Last played at %I:%M %p"
+#~ msgstr "Azkenengoz jokatuta: %I:%M %p"
+
+#~ msgid "Last played yesterday at %I:%M %p"
+#~ msgstr "Azkenengoz atzo jokatuta: %I:%M %p"
+
+#~ msgid "Last played on %A at %I:%M %p"
+#~ msgstr "Azkenengoz jokatuta: %A, %I:%M %p"
+
+#~ msgid "Last played on %B %e %Y"
+#~ msgstr "Jokatutako azkena: %Y.eko %B(r)en %e(a)n"
+
+#~ msgid "Medium puzzle"
+#~ msgstr "Puzzle arrunta"
+
+#~ msgid "Played for %d hour"
+#~ msgid_plural "Played for %d hours"
+#~ msgstr[0] "Jokatutako iraupena: ordu %d"
+#~ msgstr[1] "Jokatutako iraupena: %d ordu"
+
+#~ msgid "Played for %d minute"
+#~ msgid_plural "Played for %d minutes"
+#~ msgstr[0] "Jokatutako iraupena: minutu %d"
+#~ msgstr[1] "Jokatutako iraupena: %d minutu"
+
+#~ msgid "Played for %d second"
+#~ msgid_plural "Played for %d seconds"
+#~ msgstr[0] "Jokatutako iraupena: segundo %d"
+#~ msgstr[1] "Jokatutako iraupena: %d segundo"
+
+#~ msgid "Do you really want to do this?"
+#~ msgstr "Ziur zaude aurrera jarraitu nahi duzula?"
+
+#~ msgid "Don't ask me this again."
+#~ msgstr "Ez galdetu berriro."
+
+#~ msgid "_Game"
+#~ msgstr "J_okoa"
+
+#~ msgid "New game"
+#~ msgstr "Joko berria"
+
+#~ msgid "_Undo"
+#~ msgstr "_Desegin"
+
+#~ msgid "_Redo"
+#~ msgstr "_Berregin"
+
+#~ msgid "Puzzle _Statistics..."
+#~ msgstr "Puzzlearen _estatistikak..."
+
+#~ msgid "_Settings"
+#~ msgstr "E_zarpenak"
+
+#~ msgid "_Tools"
+#~ msgstr "Tresn_ak"
+
+#~ msgid "_Hint"
+#~ msgstr "_Iradokizuna"
+
+#~ msgid "Show a square that is easy to fill."
+#~ msgstr "Erakutsi betetzeko erraza den karratua."
+
+#~ msgid "Clear _Top Notes"
+#~ msgstr "Garbitu _goiko oharrak"
+
+#~ msgid "Clear _Bottom Notes"
+#~ msgstr "Garbitu _beheko oharrak"
+
+#~ msgid "_Contents"
+#~ msgstr "_Edukia"
+
+#~ msgid "Show _Possible Numbers"
+#~ msgstr "Erakutsi zenbaki _erabilgarriak"
+
+#~ msgid "Always show possible numbers in a square"
+#~ msgstr "Erakutsi beti lauki batean jar daitezkeen zenbakiak"
+
+#~ msgid "Warn about squares made unfillable by a move"
+#~ msgstr "Mugimendu batek ez-betegarri bihurtzen dituen laukien berri eman"
+
+#~ msgid "_Track Additions"
+#~ msgstr "_Egin gehigarrien jarraipena"
+
+#~ msgid ""
+#~ "Mark new additions in a separate color so you can keep track of them."
+#~ msgstr ""
+#~ "Jarri berriak diren zenbakiak beste kolore batez markatzen ditu, haien "
+#~ "jarraipena egin ahal izateko."
+
+#~ msgid "Show _Toolbar"
+#~ msgstr "Erakutsi _tresna-barra"
+
+#~ msgid "Highlight the current row, column and box"
+#~ msgstr "Uneko errenkada, zutabea eta laukia nabarmentzen ditu"
+
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "minutu %d"
+#~ msgstr[1] "%d minutu"
+
+#~ msgid "%d second"
+#~ msgid_plural "%d seconds"
+#~ msgstr[0] "segundo %d"
+#~ msgstr[1] "%d segundo"
+
+#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
+#~ msgstr "Puzzlea osatzeko erabilitako denbora: %(minute)s eta %(second)s"
+
+#~ msgid "%d hour"
+#~ msgid_plural "%d hours"
+#~ msgstr[0] "ordu %d"
+#~ msgstr[1] "%d ordu"
+
+#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
+#~ msgstr ""
+#~ "Puzzlea osatzeko erabilitako denbora: %(hour)s, %(minute)s eta %(second)s"
+
+#~ msgid "You got %(n)s hint."
+#~ msgid_plural "You got %(n)s hints."
+#~ msgstr[0] "Iradokizun %(n)s duzu."
+#~ msgstr[1] "%(n)s iradokizun dituzu."
+
+#~ msgid "You had %(n)s impossibility pointed out."
+#~ msgid_plural "You had %(n)s impossibilities pointed out."
+#~ msgstr[0] "Ezintasun %(n)s adierazi zaizu."
+#~ msgstr[1] "%(n)s ezintasun adierazi zaizkizu."
+
+#~ msgid "You win!"
+#~ msgstr "Irabazi egin duzu!"
+
+#~ msgid "Save this game before starting new one?"
+#~ msgstr "Gorde joko hau berri batekin hasi aurretik?"
+
+#~ msgid "_Save game for later"
+#~ msgstr "_Gorde jokoa"
+
+#~ msgid "_Abandon game"
+#~ msgstr "_Bertan behera utzi jokoa"
+
+#~ msgid "Save game before closing?"
+#~ msgstr "Gorde jokoa itxi aurretik?"
+
+#~ msgid "Puzzle Information"
+#~ msgstr "Jokoari buruzko informazioa"
+
+#~ msgid "Calculated difficulty: "
+#~ msgstr "Kalkulatu zailtasuna: "
+
+#~ msgid "Very Hard"
+#~ msgstr "Oso zaila"
+
+#~ msgid "Number of moves instantly fillable by elimination: "
+#~ msgstr "Eliminazioz bat-batean bete daitezkeen mugimenduen kopurua: "
+
+#~ msgid "Number of moves instantly fillable by filling: "
+#~ msgstr "Osatuz bat-batean bete daitezkeen mugimenduen kopurua: "
+
+#~ msgid "Amount of trial-and-error required to solve: "
+#~ msgstr "Ebazteko beharrezko saialdi kopurua: "
+
+#~ msgid "Puzzle Statistics"
+#~ msgstr "Jokoaren estatistikak"
+
+#~ msgid "Unable to display help: %s"
+#~ msgstr "Ezin da laguntza bistaratu: %s"
+
+#~ msgid "Untracked"
+#~ msgstr "Jarraipenik gabe"
+
+#~ msgid "_Remove"
+#~ msgstr "_Kendu"
+
+#~ msgid "Delete selected tracker."
+#~ msgstr "Ezabatu hautatutako aztarnaria."
+
+#~ msgid "Hide current tracker entries."
+#~ msgstr "Ezkutatu uneko aztarnariaren sarrerak."
+
+#~ msgid "A_pply"
+#~ msgstr "A_plikatu"
+
+#~ msgid "Apply all tracked values and remove the tracker."
+#~ msgstr "Aplikatu jarraipenen balio guztiak eta kendu aztarnaria."
+
+#~ msgid "Tracker %s"
+#~ msgstr "%s aztarnaria"
+
+#~ msgid "No Space"
+#~ msgstr "Lekurik ez"
+
+#~ msgid "No space left on disk"
+#~ msgstr "Ez dago leku librerik diskoan"
+
+#~ msgid "Unable to create data folder %(path)s."
+#~ msgstr "Ezin da datuen %(path)s karpeta sortu."
+
+#~ msgid "There is no disk space left!"
+#~ msgstr "Ez dago leku librerik diskoan!"
+
+#~ msgid "Error %(errno)s: %(error)s"
+#~ msgstr "%(errno)s. errorea: %(error)s"
+
+#~ msgid "Unable to save game."
+#~ msgstr "Ezin da jokoa gorde."
+
+#~ msgid "Unable to save file %(filename)s."
+#~ msgstr "Ezin da %(filename)s fitxategia gorde."
+
+#~ msgid "Unable to mark game as finished."
+#~ msgstr "Ezin da jokoa amaituta gisa markatu."
+
+#~ msgid "Sudoku unable to mark game as finished."
+#~ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 
 #~ msgid "GNOME Games web site"
 #~ msgstr "GNOME Games webgunea"
@@ -618,9 +638,6 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 
 #~ msgid "Claim _Draw"
 #~ msgstr "Eskatu _berdinketa"
-
-#~ msgid "Start a new game"
-#~ msgstr "Beste joko bat hasten du"
 
 #~ msgid "New Game"
 #~ msgstr "Joko berria"
@@ -646,14 +663,8 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 #~ msgid "The width of the window"
 #~ msgstr "Leihoaren zabalera"
 
-#~ msgid "The width of the main window in pixels."
-#~ msgstr "Leiho nagusiaren zabalera (pixeletan)"
-
 #~ msgid "The height of the window"
 #~ msgstr "Leihoaren altuera"
-
-#~ msgid "The height of the main window in pixels."
-#~ msgstr "Leiho nagusiaren altuera (pixeletan)"
 
 #~ msgid "A flag to enable maximized mode"
 #~ msgstr "Modu maximizatua gaitzeko bandera"
@@ -726,14 +737,8 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 #~ msgid "Preferences"
 #~ msgstr "Hobespenak"
 
-#~ msgid "Play as:"
-#~ msgstr "Jokatu honela:"
-
 #~ msgid "Opposing Player:"
 #~ msgstr "Jokalari aurkaria:"
-
-#~ msgid "Difficulty:"
-#~ msgstr "Zailtasuna:"
 
 #~ msgid "Game Duration:"
 #~ msgstr "Jokoaren iraupena:"
@@ -1185,9 +1190,6 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 
 #~ msgid "Failed to open game: %s"
 #~ msgstr "Huts egin du jokoa irekitzean: %s"
-
-#~ msgid "Show release version"
-#~ msgstr "Erakutsi argitaratze-bertsioa"
 
 #~ msgid "[FILE] - Play Chess"
 #~ msgstr "[FITXATEGIA] - Jokatu xakean"
@@ -2145,9 +2147,6 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 #~ msgid "Clear hidden mines from a minefield"
 #~ msgstr "Zedarritu mina-eremuko minak"
 
-#~ msgid "_Pause"
-#~ msgstr "_Pausarazi"
-
 #~ msgid "_Fullscreen"
 #~ msgstr "_Pantaila osoa"
 
@@ -2156,12 +2155,6 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 
 #~ msgid "_Preferences"
 #~ msgstr "_Hobespenak"
-
-#~ msgid "_About"
-#~ msgstr "Honi _buruz"
-
-#~ msgid "_Quit"
-#~ msgstr "_Irten"
 
 #~ msgid "Use the unknown flag"
 #~ msgstr "Erabili bandera ezezaguna"
@@ -2282,9 +2275,6 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 
 #~ msgid "Mines Preferences"
 #~ msgstr "Minen hobespenak"
-
-#~ msgid "Paused"
-#~ msgstr "Pausarazita"
 
 #~ msgid "Tetravex"
 #~ msgstr "Tetravex"
@@ -2488,9 +2478,6 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 #~ msgid "_Restart Puzzle"
 #~ msgstr "_Hasi berriro jokoa"
 
-#~ msgid "Next Puzzle"
-#~ msgstr "Hurrengo jokoa"
-
 #~ msgid "Previous Puzzle"
 #~ msgstr "Aurreko jokoa"
 
@@ -2672,9 +2659,6 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 
 #~ msgid "Human Players"
 #~ msgstr "Giza jokalariak"
-
-#~ msgid "_Number of players:"
-#~ msgstr "_Jokalari kopurua:"
 
 #~ msgid "Computer Opponents"
 #~ msgstr "Ordenagailu-aurkariak"
@@ -3103,9 +3087,6 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 #~ msgid "Mahjongg - %s"
 #~ msgstr "Mahjongg - %s"
 
-#~ msgid "Restart the current game"
-#~ msgstr "Uneko jokoa berrabiarazten du"
-
 #~ msgid "Redo the last move"
 #~ msgstr "Azken mugimendua errepikatzen du"
 
@@ -3470,9 +3451,6 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 
 #~ msgid "Maybe they're all mines ..."
 #~ msgstr "Litekeena da denak minak izatea..."
-
-#~ msgid "Warnings"
-#~ msgstr "Abisuak"
 
 #~ msgid "_Use \"Too many flags\" warning"
 #~ msgstr "_Erabili \"Bandera gehiegi\" abisua"
@@ -5253,9 +5231,6 @@ msgstr "Sudoku-k ezin du jokoa amaituta gisa markatu.."
 
 #~ msgid "Could not show link"
 #~ msgstr "Ezin izan da esteka erakutsi"
-
-#~ msgid "_Cancel"
-#~ msgstr "_Utzi"
 
 #~ msgid "_Close"
 #~ msgstr "It_xi"
