@@ -25,6 +25,7 @@ public class Sudoku : Gtk.Application
 {
     private GLib.Settings settings;
     private bool is_maximized;
+    private bool is_tiled;
     private int window_width;
     private int window_height;
     private Gtk.Button play_pause_button;
@@ -244,7 +245,7 @@ public class Sudoku : Gtk.Application
 
     private void size_allocate_cb (Allocation allocation)
     {
-        if (is_maximized)
+        if (is_maximized || is_tiled)
             return;
         window_width = allocation.width;
         window_height = allocation.height;
@@ -254,6 +255,9 @@ public class Sudoku : Gtk.Application
     {
         if ((event.changed_mask & Gdk.WindowState.MAXIMIZED) != 0)
             is_maximized = (event.new_window_state & Gdk.WindowState.MAXIMIZED) != 0;
+        /* We don’t save this state, but track it for saving size allocation */
+        if ((event.changed_mask & Gdk.WindowState.TILED) != 0)
+            is_tiled = (event.new_window_state & Gdk.WindowState.TILED) != 0;
         return false;
     }
 
