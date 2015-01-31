@@ -162,7 +162,7 @@ public class Sudoku : Gtk.Application
         var builder = new Builder.from_resource ("/org/gnome/sudoku/ui/gnome-sudoku.ui");
 
         window = (ApplicationWindow) builder.get_object ("sudoku_app");
-        window.configure_event.connect (window_configure_event_cb);
+        window.size_allocate.connect (size_allocate_cb);
         window.window_state_event.connect (window_state_event_cb);
         window.set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
         if (settings.get_boolean ("window-is-maximized"))
@@ -242,15 +242,12 @@ public class Sudoku : Gtk.Application
         base.shutdown ();
     }
 
-    private bool window_configure_event_cb (Gdk.EventConfigure event)
+    private void size_allocate_cb (Allocation allocation)
     {
-        if (!is_maximized)
-        {
-            window_width = event.width;
-            window_height = event.height;
-        }
-
-        return false;
+        if (is_maximized)
+            return;
+        window_width = allocation.width;
+        window_height = allocation.height;
     }
 
     private bool window_state_event_cb (Gdk.EventWindowState event)
