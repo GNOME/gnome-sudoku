@@ -1,14 +1,14 @@
 # Norwegian bokmål translation of gnome-sudoku.
 # Copyright © 1998-2002 Free Software Foundation, Inc.
-# Kjartan Maraas <kmaraas@gnome.org>, 1998-2014.
+# Kjartan Maraas <kmaraas@gnome.org>, 1998-2015.
 # Terance Edward Sola <terance@lyse.net>, 2005.
 # Torstein Adolf Winterseth <kvikende@fsfe.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku 3.15.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-17 17:11+0100\n"
-"PO-Revision-Date: 2014-11-17 17:13+0100\n"
+"POT-Creation-Date: 2015-02-10 17:51+0100\n"
+"PO-Revision-Date: 2015-02-10 17:52+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -21,20 +21,24 @@ msgstr ""
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Test dine logiske ferdigheter i dette nummerpuslespillet"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
 "Sudoku fun for players of any skill level."
 msgstr ""
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -42,13 +46,9 @@ msgid ""
 msgstr ""
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:527
+#: ../src/gnome-sudoku.vala:528
 msgid "Sudoku"
 msgstr "Sudoku"
-
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Test dine logiske ferdigheter i dette nummerpuslespillet"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
@@ -82,7 +82,7 @@ msgstr "_Hjelp"
 msgid "_About"
 msgstr "_Om"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:364
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:365
 msgid "_Quit"
 msgstr "A_vslutt"
 
@@ -114,7 +114,7 @@ msgstr "_Vanskelig"
 msgid "_Very Hard"
 msgstr "Meget _vanskelig"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:306
+#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:307
 msgid "_Pause"
 msgstr "_Pause"
 
@@ -168,15 +168,15 @@ msgstr ""
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
-msgstr ""
+msgstr "Bredde på vinduet i piksler"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
-msgstr ""
+msgstr "Høyde på vinduet i piksler"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
-msgstr ""
+msgstr "«true» hvis vinduet er maksimert"
 
 #: ../data/print-dialog.ui.h:1
 msgid "Print Multiple Puzzles"
@@ -215,40 +215,40 @@ msgid "Very Hard Puzzle"
 msgstr "Meget vanskelig puslespill"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:79
+#: ../src/gnome-sudoku.vala:80
 msgid "Show release version"
 msgstr "Vis versjon"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:83
+#: ../src/gnome-sudoku.vala:84
 msgid "Show the possible values for each cell"
 msgstr "Vis mulige verdier for hver celle"
 
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:313
 msgid "_Resume"
 msgstr "_Gjenoppta"
 
-#: ../src/gnome-sudoku.vala:358
+#: ../src/gnome-sudoku.vala:359
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Bra gjort, du fullførte puslespillet på %d minutt!"
 msgstr[1] "Bra gjort, du fullførte puslespillet på %d minutter!"
 
-#: ../src/gnome-sudoku.vala:363
+#: ../src/gnome-sudoku.vala:364
 msgid "Play _Again"
 msgstr "Spill _igjen"
 
-#: ../src/gnome-sudoku.vala:384
+#: ../src/gnome-sudoku.vala:385
 msgid "Select Difficulty"
 msgstr "Velg vanskelighet"
 
-#: ../src/gnome-sudoku.vala:420
+#: ../src/gnome-sudoku.vala:421
 msgid "Reset the board to its original state?"
 msgstr "Nullstill brettet til opprinnelig tilstand?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:531
+#: ../src/gnome-sudoku.vala:532
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -259,7 +259,7 @@ msgstr ""
 "\n"
 "Puslespill lages av QQwing %s"
 
-#: ../src/gnome-sudoku.vala:536
+#: ../src/gnome-sudoku.vala:537
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
