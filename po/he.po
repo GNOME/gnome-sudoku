@@ -4,15 +4,15 @@
 # Copyright (C) 2005 THE PACKAGE'S COPYRIGHT HOLDER
 # Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2002,2003
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2010.
-# Yosef Or Boczko <yoseforb@gnome.org>, 2014.
+# Yosef Or Boczko <yoseforb@gnome.org>, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-29 00:53+0300\n"
-"PO-Revision-Date: 2014-08-29 01:35+0300\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
+"POT-Creation-Date: 2015-02-17 01:31+0200\n"
+"PO-Revision-Date: 2015-02-17 01:33+0200\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,11 @@ msgstr ""
 msgid "GNOME Sudoku"
 msgstr "סודוקו GNOME"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "בחינת ההיגיון שלך באמצעות משחק לוח מספרים זה"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -36,7 +40,7 @@ msgstr ""
 "סודוקו. עם ממשק פשוט וצנוע, עושה את משחק הסודוקו מהנה עבור שחקנים בכל רמת "
 "מיומנות."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -44,7 +48,7 @@ msgstr ""
 "רמות הקושי של המשחק תואמות את אלה בעיתונים ובאתרי אינטרנט, כך שהמשחק שלך "
 "יהיה קל או קשה כפי שהיית רוצה."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -55,19 +59,15 @@ msgstr ""
 "סודוקו מתחדש בשבילך."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:400
+#: ../src/gnome-sudoku.vala:459
 msgid "Sudoku"
 msgstr "סודוקו"
-
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "בחינת ההיגיון שלך באמצעות משחק לוח מספרים זה"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
 msgstr "קסם;ריבוע;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
 msgid "_Print"
 msgstr "ה_דפסה"
 
@@ -80,18 +80,22 @@ msgid "Print _Multiple Puzzles…"
 msgstr "הדפסת מס_פר לוחות…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-msgid "_Show Warnings"
-msgstr "ה_צגת אזהרות"
+msgid "High_lighter"
+msgstr "_סימון"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Warnings"
+msgstr "_אזהרות"
+
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
 msgstr "על _אודות"
 
-#: ../data/gnome-sudoku-menu.ui.h:7
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:304
 msgid "_Quit"
 msgstr "י_ציאה"
 
@@ -107,19 +111,19 @@ msgstr "חזרה על פעולה שבוטלה"
 msgid "Go back to the current game"
 msgstr "חזרה למשחק הנוכחי"
 
-#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
 msgid "_Easy"
 msgstr "_קל"
 
-#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
 msgid "_Medium"
 msgstr "_בינוני"
 
-#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
 msgid "_Hard"
 msgstr "ק_שה"
 
-#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
 msgid "_Very Hard"
 msgstr "_קשה מאד"
 
@@ -172,86 +176,85 @@ msgstr ""
 "number and duplicate numbers are highlighted in red"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Highlight row, column and square that contain the selected cell"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
 msgstr "Width of the window in pixels"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
 msgstr "Height of the window in pixels"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
 msgstr "true if the window is maximized"
 
-#: ../data/print-games.ui.h:1
+#: ../data/print-dialog.ui.h:1
 msgid "Print Multiple Puzzles"
 msgstr "הדפסת מספר לוחות סודוקו"
 
-#: ../data/print-games.ui.h:3
+#: ../data/print-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: ../data/print-games.ui.h:4
+#: ../data/print-dialog.ui.h:4
 msgid "_Number of puzzles"
 msgstr "מ_ספר לוחות"
 
-#: ../data/print-games.ui.h:5
+#: ../data/print-dialog.ui.h:5
 msgid "Difficulty"
 msgstr "רמת קושי"
 
-#: ../lib/sudoku-board.vala:543
+#: ../lib/sudoku-board.vala:589
 msgid "Unknown Difficulty"
 msgstr "רמת קושי לא ידועה"
 
-#: ../lib/sudoku-board.vala:545
-msgid "Easy Difficulty"
-msgstr "רמה קלה"
+#: ../lib/sudoku-board.vala:591
+msgid "Easy Puzzle"
+msgstr "לוח קל"
 
-#: ../lib/sudoku-board.vala:547
+#: ../lib/sudoku-board.vala:593
 msgid "Medium Difficulty"
 msgstr "רמה בינונית"
 
-#: ../lib/sudoku-board.vala:549
-msgid "Hard Difficulty"
-msgstr "רמה קשה"
+#: ../lib/sudoku-board.vala:595
+msgid "Hard Puzzle"
+msgstr "לוח קשה"
 
-#: ../lib/sudoku-board.vala:551
-msgid "Very Hard Difficulty"
-msgstr "רמה קשה מאוד"
+#: ../lib/sudoku-board.vala:597
+msgid "Very Hard Puzzle"
+msgstr "לוח קשה מאוד"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:59
+#: ../src/gnome-sudoku.vala:76
 msgid "Show release version"
 msgstr "Show release version"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:63
+#: ../src/gnome-sudoku.vala:80
 msgid "Show the possible values for each cell"
 msgstr "Show the possible values for each cell"
 
-#. Text in dialog that displays when the game is over.
-#: ../src/gnome-sudoku.vala:247
+#: ../src/gnome-sudoku.vala:298
 #, c-format
-msgid "Well done, you completed the puzzle in %d minute"
-msgid_plural "Well done, you completed the puzzle in %d minutes"
-msgstr[0] "כל הכבוד, השלמת את הלוח בדקה אחת"
-msgstr[1] "כל הכבוד, השלמת את הלוח ב־%d דקות"
-msgstr[2] "כל הכבוד, השלמת את הלוח ב־%d דקות"
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "כל הכבוד, השלמת את הלוח בדקה אחת!"
+msgstr[1] "כל הכבוד, השלמת את הלוח ב־%d דקות!"
+msgstr[2] "כל הכבוד, השלמת את הלוח ב־%d דקות!"
 
-#: ../src/gnome-sudoku.vala:252
-msgid "Same difficulty again"
-msgstr "שוב אותה רמת קושי"
+#: ../src/gnome-sudoku.vala:303
+msgid "Play _Again"
+msgstr "לשחק _שוב"
 
-#: ../src/gnome-sudoku.vala:253
-msgid "New difficulty"
-msgstr "רמת קושי חדשה"
-
-#: ../src/gnome-sudoku.vala:316
+#: ../src/gnome-sudoku.vala:360
 msgid "Reset the board to its original state?"
 msgstr "איפוס הלוח למצבו המקורי?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:404
+#: ../src/gnome-sudoku.vala:463
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -262,7 +265,7 @@ msgstr ""
 "\n"
 "הלוחות נוצרות על ידי QQwing %s"
 
-#: ../src/gnome-sudoku.vala:409
+#: ../src/gnome-sudoku.vala:468
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -277,14 +280,29 @@ msgstr ""
 "פרויקט תרגום GNOME לעברית:\n"
 "‏http://gnome-il.berlios.de"
 
-#: ../src/number-picker.vala:70
+#: ../src/number-picker.vala:89
 msgid "Clear"
 msgstr "ניקוי"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:30
+#: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "שגיאה בהדפסת קובץ:"
+
+#~ msgid "Easy Difficulty"
+#~ msgstr "רמה קלה"
+
+#~ msgid "Hard Difficulty"
+#~ msgstr "רמה קשה"
+
+#~ msgid "Very Hard Difficulty"
+#~ msgstr "רמה קשה מאוד"
+
+#~ msgid "Same difficulty again"
+#~ msgstr "שוב אותה רמת קושי"
+
+#~ msgid "New difficulty"
+#~ msgstr "רמת קושי חדשה"
 
 #~ msgid "second"
 #~ msgstr "שנייה"
@@ -461,17 +479,8 @@ msgstr "שגיאה בהדפסת קובץ:"
 #~ msgid "Last played on %B %e %Y"
 #~ msgstr "משחק אחרון ב־%B ב%e %Y"
 
-#~ msgid "Easy puzzle"
-#~ msgstr "לוח קל"
-
 #~ msgid "Medium puzzle"
 #~ msgstr "לוח בינוני"
-
-#~ msgid "Hard puzzle"
-#~ msgstr "לוח קשה"
-
-#~ msgid "Very hard puzzle"
-#~ msgstr "לוח קשה מאוד"
 
 #~ msgid "Played for %d hour"
 #~ msgid_plural "Played for %d hours"
@@ -548,9 +557,6 @@ msgstr "שגיאה בהדפסת קובץ:"
 
 #~ msgid "Show _Toolbar"
 #~ msgstr "הצגת _סרגל כלים"
-
-#~ msgid "_Highlighter"
-#~ msgstr "_כלי סימון"
 
 #~ msgid "Highlight the current row, column and box"
 #~ msgstr "_סימון השורה, הטור והתיבה הנוכחיים בצבעים"
@@ -780,9 +786,6 @@ msgstr "שגיאה בהדפסת קובץ:"
 
 #~ msgid "Preferences"
 #~ msgstr "העדפות"
-
-#~ msgid "Play as:"
-#~ msgstr "לשחק בתור:"
 
 #~ msgid "Opposing Player:"
 #~ msgstr "המתמודד מולך:"
