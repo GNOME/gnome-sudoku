@@ -225,7 +225,7 @@ public class SudokuPrinter : GLib.Object {
                     }
                     else
                     {
-                        cr.select_font_face ("Times", Cairo.FontSlant.ITALIC, FONT_WEIGHT);
+                        cr.select_font_face ("Sans", Cairo.FontSlant.ITALIC, FONT_WEIGHT);
                         cr.set_source_rgb (PENCIL_GREY[0], PENCIL_GREY[1], PENCIL_GREY[2]);
                     }
                     cr.text_extents (letter, out extents);
