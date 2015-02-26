@@ -36,6 +36,7 @@ public class PrintDialog : Gtk.Dialog
     [GtkChild]
     private Gtk.RadioButton very_hard_radio_button;
 
+    private Gtk.Revealer revealer;
     private Gtk.Spinner spinner;
 
     private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
@@ -54,9 +55,11 @@ public class PrintDialog : Gtk.Dialog
         set_transient_for (window);
 
         spinner = new Gtk.Spinner ();
-        spinner.valign = Gtk.Align.CENTER;
+        revealer = new Gtk.Revealer ();
+        revealer.add (spinner);
+        revealer.valign = Gtk.Align.CENTER;
         if (use_header_bar == 1)
-            ((Gtk.HeaderBar) get_header_bar ()).pack_end (spinner);
+            ((Gtk.HeaderBar) get_header_bar ()).pack_end (revealer);
 
         var saved_difficulty = (DifficultyCategory) settings.get_enum (DIFFICULTY_KEY_NAME);
         if (saved_difficulty == DifficultyCategory.EASY)
@@ -75,15 +78,28 @@ public class PrintDialog : Gtk.Dialog
 
     ~PrintDialog ()
     {
-        // The spinner still has a floating reference if it wasn't added to the header bar.
+        /* Both the spinner and the revealer have a floating reference if
+           they weren't added to the header bar. */
         if (use_header_bar != 1)
+        {
             spinner.destroy ();
+            revealer.destroy ();
+        }
     }
 
     private void wrap_adjustment (string key_name, Gtk.Adjustment action)
     {
         action.set_value (settings.get_int (key_name));
         action.value_changed.connect (() => settings.set_int (key_name, (int) action.get_value ()));
+    }
+
+    public bool start_spinner_cb ()
+    {
+        revealer.set_transition_type (Gtk.RevealerTransitionType.SLIDE_LEFT);
+        revealer.show_all ();
+        spinner.start ();
+        revealer.set_reveal_child (true);
+        return Source.REMOVE;
     }
 
     public override void response (int response)
@@ -110,8 +126,7 @@ public class PrintDialog : Gtk.Dialog
 
         settings.set_enum (DIFFICULTY_KEY_NAME, level);
 
-        spinner.show ();
-        spinner.start ();
+        Timeout.add_seconds (3, (SourceFunc) start_spinner_cb);
 
         sensitive = false;
 
@@ -121,7 +136,7 @@ public class PrintDialog : Gtk.Dialog
                 var boards = SudokuGenerator.generate_boards_async.end (res);
 
                 spinner.stop ();
-                spinner.hide ();
+                revealer.hide ();
                 sensitive = true;
 
                 var printer = new SudokuPrinter (boards, this);
