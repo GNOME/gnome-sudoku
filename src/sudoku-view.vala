@@ -123,6 +123,7 @@ private class SudokuCellView : Gtk.DrawingArea
             value = number;
             if (number == 0)
                 notify_property ("value");
+            this.game.board.disable_all_earmarks (row, col);
 
             popover.hide ();
         });
@@ -259,7 +260,10 @@ private class SudokuCellView : Gtk.DrawingArea
                 }
             }
             else
+            {
                 value = k_no;
+                this.game.board.disable_all_earmarks (row, col);
+            }
             return true;
         }
         if (k_no == 0 || k_name == "BackSpace" || k_name == "Delete")

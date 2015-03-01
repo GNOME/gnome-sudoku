@@ -211,6 +211,14 @@ public class SudokuBoard : Object
         }
     }
 
+    public void disable_all_earmarks (int row, int column)
+        ensures (n_earmarks >= 0)
+    {
+        for (var i = 1; i <= max_val; i++)
+            if (earmarks[row, column, i-1])
+                disable_earmark (row, column, i);
+    }
+
     public bool is_earmark_enabled (int row, int column, int digit)
     {
         return earmarks[row, column, digit-1];
