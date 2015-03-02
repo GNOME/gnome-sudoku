@@ -1,19 +1,18 @@
 # Serbian translation of gnome-games
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2014.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2015.
 # This file is distributed under the same license as the gnome-games package.
-# Maintainer: Dušan Marjanović <madafaka@bsd.org.yu>
-# Reviewed on 2005-08-03 by: Igor Nestorović <igor@prevod.org>
-# Translated by: Miloš Popović <gpopac@gmail.com>
-# Translated on 2010-08-25 by: Branko Kokanović <branko.kokanovic@gmail.com>
+# Dušan Marjanović <madafaka@bsd.org.yu>, 2003.
+# Igor Nestorović <igor@prevod.org>, 2005.
+# Branko Kokanović <branko.kokanovic@gmail.com>, 2010.
 # Miloš Popović <gpopac@gmai, 2010.
-# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2011—2014.
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2011—2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: Gnomove igre\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-11 07:39+0000\n"
-"PO-Revision-Date: 2014-09-11 17:30+0200\n"
+"POT-Creation-Date: 2015-03-02 08:48+0000\n"
+"PO-Revision-Date: 2015-03-02 18:44+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -28,7 +27,11 @@ msgstr ""
 msgid "GNOME Sudoku"
 msgstr "Gnomov sudoku"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Oprobajte vaše logičke sposobnosti u ovoj slagalici mreže brojeva"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -38,11 +41,7 @@ msgstr ""
 "ljubitelje Sudokua, sa jednostavnim, nenametljivim sučeljem koje čini igranje "
 "Sudokua zabavnim za igrače svih nivoa."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
-#| msgid ""
-#| "Each game is assigned a difficulty similar to those given by newspapers "
-#| "and websites. You can also see detailed information about how the "
-#| "computer solved the puzzle."
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -50,7 +49,7 @@ msgstr ""
 "Svakoj igri je dodeljena težina slično onima koje daju novine i veb sajtovi, "
 "tako da će vaša igra biti laka ili teška onoliko koliko vi to budete želeli."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -62,57 +61,53 @@ msgstr ""
 "sudokua."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:398
+#: ../src/gnome-sudoku.vala:459
 msgid "Sudoku"
 msgstr "Gnom Sudoku"
-
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Oprobajte vaše logičke sposobnosti u ovoj slagalici mreže brojeva"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
 msgstr "magija;čarolija;kvadrat;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
-#| msgid "_Print..."
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
 msgid "_Print"
 msgstr "_Štampaj"
 
 #: ../data/gnome-sudoku-menu.ui.h:2
-#| msgid "There is no current puzzle."
 msgid "Print _Current Puzzle…"
 msgstr "Štampaj _trenutnu slagalicu…"
 
 #: ../data/gnome-sudoku-menu.ui.h:3
-#| msgid "Print _Multiple Sudokus..."
 msgid "Print _Multiple Puzzles…"
 msgstr "Odštampaj _više slagalica…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-#| msgid "Show hints"
-msgid "_Show Warnings"
-msgstr "Prikaži _upozorenja"
+#| msgid "_Highlighter"
+msgid "High_lighter"
+msgstr "_Isticanje"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
+#| msgid "_Show Warnings"
+msgid "_Warnings"
+msgstr "_Upozorenja"
+
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "Po_moć"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
 msgstr "_O programu"
 
-#: ../data/gnome-sudoku-menu.ui.h:7
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:304
 msgid "_Quit"
 msgstr "_Izađi"
 
 #: ../data/gnome-sudoku.ui.h:2
-#| msgid "Undo last action"
 msgid "Undo your last action"
 msgstr "Opozovite poslednju radnju"
 
 #: ../data/gnome-sudoku.ui.h:3
-#| msgid "Redo last action"
 msgid "Redo your last action"
 msgstr "Povratite poslednju radnju"
 
@@ -120,24 +115,23 @@ msgstr "Povratite poslednju radnju"
 msgid "Go back to the current game"
 msgstr "Vratite se na tekuću igru"
 
-#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
 msgid "_Easy"
 msgstr "_Lako"
 
-#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
 msgid "_Medium"
 msgstr "_Srednja"
 
-#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
 msgid "_Hard"
 msgstr "_Teško"
 
-#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
 msgid "_Very Hard"
 msgstr "_Vrlo teško"
 
 #: ../data/gnome-sudoku.ui.h:9
-#| msgid "_Clear"
 msgid "_Clear Board"
 msgstr "_Očisti tablu"
 
@@ -146,17 +140,14 @@ msgid "Reset the board to its original state"
 msgstr "Vratite stanje table na njeno prvobitno"
 
 #: ../data/gnome-sudoku.ui.h:11
-#| msgid "_New Game"
 msgid "_New Puzzle"
 msgstr "_Nova slagalica"
 
 #: ../data/gnome-sudoku.ui.h:12
-#| msgid "Hard puzzle"
 msgid "Start a new puzzle"
 msgstr "Započnite novu slagalicu"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
-#| msgid "_Number of sudoku to print: "
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Nivo težine sudokua za štampanje"
 
@@ -165,21 +156,18 @@ msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are - \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"Podesite nivo težine sudokua za štampanje. Moguće vrednosti su: „easy“ "
-"(lako), „medium“ (srednje), „hard“ (teško), „very_hard“ (vrlo teško)"
+"Podesite nivo težine sudokua za štampanje. Moguće vrednosti su: "
+"„easy“ (lako), „medium“ (srednje), „hard“ (teško), „very_hard“ (vrlo teško)"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:3
-#| msgid "_Number of sudoku to print: "
 msgid "Number of Sudokus to print"
 msgstr "Broj sudoka za štampu"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:4
-#| msgid "_Number of sudoku to print: "
 msgid "Set the number of sudokus you want to print"
 msgstr "Podesite broj sudokua za štampanje"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:5
-#| msgid "Warn About _Unfillable Squares"
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Upozorava o nepopunjivim kvadratima i udvojenim brojevima"
 
@@ -192,102 +180,92 @@ msgstr ""
 "nijednim brojem a udvojeni brojevi se ističu crvenom bojom"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
-#| msgid "Width of application window in pixels"
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Ističe red, kolonu i kvadrat koji sadrži izabrano polje"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
 msgstr "Širina prozora u tačkicama"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
-#| msgid "Height of application window in pixels"
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
 msgstr "Visina prozora u tačkicama"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
 msgstr "izabrano ako je prozor uvećan"
 
-#: ../data/print-games.ui.h:1
-#| msgid "Print _Multiple Sudokus..."
+#: ../data/print-dialog.ui.h:1
 msgid "Print Multiple Puzzles"
 msgstr "Odštampajte više slagalica"
 
-#: ../data/print-games.ui.h:3
+#: ../data/print-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Otkaži"
 
-#: ../data/print-games.ui.h:4
-#| msgid "Number of puzzles to print on a page"
+#: ../data/print-dialog.ui.h:4
 msgid "_Number of puzzles"
 msgstr "Broj _slagalica"
 
-#: ../data/print-games.ui.h:5
+#: ../data/print-dialog.ui.h:5
 msgid "Difficulty"
 msgstr "Težina"
 
-#: ../lib/sudoku-board.vala:570
+#: ../lib/sudoku-board.vala:597
 msgid "Unknown Difficulty"
 msgstr "Nepoznato"
 
-#: ../lib/sudoku-board.vala:572
-msgid "Easy Difficulty"
+#: ../lib/sudoku-board.vala:599
+#| msgid "Easy puzzle"
+msgid "Easy Puzzle"
 msgstr "Lako"
 
-#: ../lib/sudoku-board.vala:574
-#| msgid "Calculated difficulty: "
+#: ../lib/sudoku-board.vala:601
 msgid "Medium Difficulty"
 msgstr "Srednje"
 
-#: ../lib/sudoku-board.vala:576
-#| msgid "Calculated difficulty: "
-msgid "Hard Difficulty"
+#: ../lib/sudoku-board.vala:603
+#| msgid "Very hard puzzle"
+msgid "Hard Puzzle"
 msgstr "Teško"
 
-#: ../lib/sudoku-board.vala:578
-#| msgid "Very Hard"
-msgid "Very Hard Difficulty"
-msgstr "Vrlo teško"
+#: ../lib/sudoku-board.vala:605
+#| msgid "Very hard puzzle"
+msgid "Very Hard Puzzle"
+msgstr "Veoma teško"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:56
+#: ../src/gnome-sudoku.vala:76
 msgid "Show release version"
 msgstr "Prikazuje izdanje programa"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:60
+#: ../src/gnome-sudoku.vala:80
 msgid "Show the possible values for each cell"
 msgstr "Prikazuje moguće vrednosti za svako polje"
 
-#: ../src/gnome-sudoku.vala:250
+#: ../src/gnome-sudoku.vala:298
 #, c-format
-#| msgid "You completed the puzzle in %d second"
-#| msgid_plural "You completed the puzzle in %d seconds"
-msgid "Well done, you completed the puzzle in %d minute"
-msgid_plural "Well done, you completed the puzzle in %d minutes"
-msgstr[0] "Odlično, sklopili ste slagalicu za %d minut"
-msgstr[1] "Odlično, sklopili ste slagalicu za %d minuta"
-msgstr[2] "Odlično, sklopili ste slagalicu za %d minuta"
+#| msgid "Well done, you completed the puzzle in %d minute"
+#| msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "Odlično, sklopili ste slagalicu za %d minut!"
+msgstr[1] "Odlično, sklopili ste slagalicu za %d minuta!"
+msgstr[2] "Odlično, sklopili ste slagalicu za %d minuta!"
 msgstr[3] "Sklopili ste slagalicu za %d sekundu"
 
-#: ../src/gnome-sudoku.vala:255
-#| msgid "Calculated difficulty: "
-msgid "Same difficulty again"
-msgstr "Opet ista težina"
+#: ../src/gnome-sudoku.vala:303
+msgid "Play _Again"
+msgstr "_Igraj opet"
 
-#: ../src/gnome-sudoku.vala:256
-#| msgid "Calculated difficulty: "
-msgid "New difficulty"
-msgstr "Nova težina"
-
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:360
 msgid "Reset the board to its original state?"
 msgstr "Da vratim stanje table na njeno prvobitno?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:402
+#: ../src/gnome-sudoku.vala:463
 #, c-format
-#| msgid ""
-#| "The popular Japanese logic puzzle\n"
-#| "\n"
-#| "GNOME Sudoku is a part of GNOME Games."
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -297,7 +275,7 @@ msgstr ""
 "\n"
 "Slagalice je stvorio „QQwing %s“"
 
-#: ../src/gnome-sudoku.vala:407
+#: ../src/gnome-sudoku.vala:468
 msgid "translator-credits"
 msgstr ""
 "Dušan Marjanović <madafaka@root.co.yu>\n"
@@ -307,16 +285,33 @@ msgstr ""
 "\n"
 "http://prevod.org — prevod na srpski jezik"
 
-#: ../src/number-picker.vala:70
-#| msgid "_Clear"
+#: ../src/number-picker.vala:89
 msgid "Clear"
 msgstr "Očisti"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:29
-#| msgid "Error creating directory"
+#: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Greška štampanja datoteke:"
+
+#~ msgid "Easy Difficulty"
+#~ msgstr "Lako"
+
+#~| msgid "Calculated difficulty: "
+#~ msgid "Hard Difficulty"
+#~ msgstr "Teško"
+
+#~| msgid "Very Hard"
+#~ msgid "Very Hard Difficulty"
+#~ msgstr "Vrlo teško"
+
+#~| msgid "Calculated difficulty: "
+#~ msgid "Same difficulty again"
+#~ msgstr "Opet ista težina"
+
+#~| msgid "Calculated difficulty: "
+#~ msgid "New difficulty"
+#~ msgstr "Nova težina"
 
 #~ msgid ""
 #~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
@@ -429,14 +424,8 @@ msgstr "Greška štampanja datoteke:"
 #~ msgid "Last played on %B %e %Y"
 #~ msgstr "Poslednja odigrana %B %e %Y"
 
-#~ msgid "Easy puzzle"
-#~ msgstr "Lako"
-
 #~ msgid "Medium puzzle"
 #~ msgstr "Srednje"
-
-#~ msgid "Very hard puzzle"
-#~ msgstr "Veoma teško"
 
 #~ msgid "Played for %d hour"
 #~ msgid_plural "Played for %d hours"
@@ -522,9 +511,6 @@ msgstr "Greška štampanja datoteke:"
 
 #~ msgid "Show _Toolbar"
 #~ msgstr "Prikaži traku _alata"
-
-#~ msgid "_Highlighter"
-#~ msgstr "_Isticanje"
 
 #~ msgid "Highlight the current row, column and box"
 #~ msgstr "Istakni trenutni red, kolonu i kutiju"
