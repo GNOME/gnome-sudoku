@@ -16,15 +16,15 @@
 # Petr Pulc <petrpulc@gmail.com>, 2009.
 # Andre Klapper <ak-47@gmx.net>, 2009.
 # Petr Kovar <pknbe@volny.cz>, 2008, 2012.
-# Marek Černocký <marek@manet.cz>, 2010, 2011, 2012, 2013, 2014.
+# Marek Černocký <marek@manet.cz>, 2010, 2011, 2012, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-sudoku master\n"
+"Project-Id-Version: gnome-sudoku gnome-3.16\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-07 19:38+0000\n"
-"PO-Revision-Date: 2014-09-07 22:55+0200\n"
+"POT-Creation-Date: 2015-03-04 08:48+0000\n"
+"PO-Revision-Date: 2015-03-04 19:46+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -39,7 +39,11 @@ msgstr ""
 msgid "GNOME Sudoku"
 msgstr "Sudoku GNOME"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Otestujte své logické schopnosti v tomto hlavolamu"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -49,7 +53,7 @@ msgstr ""
 "nainstalováno každý milovník sudoku. Má jednoduché rozhraní, které při hře "
 "neruší, a hru si tak mohou užít hráči všech úrovní."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -58,7 +62,7 @@ msgstr ""
 "webových stránkách, takže vaše hry budou tak snadné nebo obtížné, jak je "
 "budete chtít."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -70,19 +74,15 @@ msgstr ""
 "sešitů se Sudoku."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:398
+#: ../src/gnome-sudoku.vala:459
 msgid "Sudoku"
 msgstr "Sudoku"
-
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Otestujte své logické schopnosti v tomto hlavolamu"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
 msgstr "magický;čtverec;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
 msgid "_Print"
 msgstr "_Tisk"
 
@@ -95,18 +95,22 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Vytisknout několik hlavola_mů…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-msgid "_Show Warnings"
-msgstr "_Zobrazovat varování"
+msgid "High_lighter"
+msgstr "Zvý_razňování"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Warnings"
+msgstr "_Varování"
+
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
 msgstr "O _aplikaci"
 
-#: ../data/gnome-sudoku-menu.ui.h:7
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:304
 msgid "_Quit"
 msgstr "U_končit"
 
@@ -122,19 +126,19 @@ msgstr "Provést znovu váš poslední vrácený tah"
 msgid "Go back to the current game"
 msgstr "Vrátit se do současné hry"
 
-#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
 msgid "_Easy"
 msgstr "J_ednoduché"
 
-#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
 msgid "_Medium"
 msgstr "_Střední"
 
-#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
 msgid "_Hard"
 msgstr "Těž_ké"
 
-#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
 msgid "_Very Hard"
 msgstr "_Velmi těžké"
 
@@ -144,7 +148,7 @@ msgstr "Vy_mazat desku"
 
 #: ../data/gnome-sudoku.ui.h:10
 msgid "Reset the board to its original state"
-msgstr "Vrátit hrací desku do jejího původního stavu"
+msgstr "Vrátit herní desku do jejího původního stavu"
 
 #: ../data/gnome-sudoku.ui.h:11
 msgid "_New Puzzle"
@@ -188,85 +192,85 @@ msgstr ""
 "a duplicitní čísla červeně zvýrazňovat."
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Zvýrazňovat řádky, sloupce a pole, které obsahují vybrané políčko"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
 msgstr "Šířka okna v pixelech"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
 msgstr "Výška okna v pixelech"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
 msgstr "Zapnuto, když je okno maximalizováno"
 
-#: ../data/print-games.ui.h:1
+#: ../data/print-dialog.ui.h:1
 msgid "Print Multiple Puzzles"
 msgstr "Tisk několika hlavolamů"
 
-#: ../data/print-games.ui.h:3
+#: ../data/print-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Zrušit"
 
-#: ../data/print-games.ui.h:4
+#: ../data/print-dialog.ui.h:4
 msgid "_Number of puzzles"
 msgstr "_Počet hlavolamů"
 
-#: ../data/print-games.ui.h:5
+#: ../data/print-dialog.ui.h:5
 msgid "Difficulty"
 msgstr "Obtížnost"
 
-#: ../lib/sudoku-board.vala:570
+#: ../lib/sudoku-board.vala:597
 msgid "Unknown Difficulty"
 msgstr "Neznámá obtížnost"
 
-#: ../lib/sudoku-board.vala:572
-msgid "Easy Difficulty"
-msgstr "Nízká obtížnost"
+#: ../lib/sudoku-board.vala:599
+msgid "Easy Puzzle"
+msgstr "Snadný hlavolam"
 
-#: ../lib/sudoku-board.vala:574
+#: ../lib/sudoku-board.vala:601
 msgid "Medium Difficulty"
 msgstr "Střední obtížnost"
 
-#: ../lib/sudoku-board.vala:576
-msgid "Hard Difficulty"
-msgstr "Vysoká obtížnost"
+#: ../lib/sudoku-board.vala:603
+msgid "Hard Puzzle"
+msgstr "Těžký hlavolam"
 
-#: ../lib/sudoku-board.vala:578
-msgid "Very Hard Difficulty"
-msgstr "Velmi vysoká obtížnost"
+#: ../lib/sudoku-board.vala:605
+msgid "Very Hard Puzzle"
+msgstr "Velmi těžký hlavolam"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:56
+#: ../src/gnome-sudoku.vala:76
 msgid "Show release version"
 msgstr "Zobrazit verzi vydání"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:60
+#: ../src/gnome-sudoku.vala:80
 msgid "Show the possible values for each cell"
 msgstr "U každého políčka zobrazovat možné hodnoty"
 
-#: ../src/gnome-sudoku.vala:250
+#: ../src/gnome-sudoku.vala:298
 #, c-format
-msgid "Well done, you completed the puzzle in %d minute"
-msgid_plural "Well done, you completed the puzzle in %d minutes"
-msgstr[0] "Úspěšně hotovo, hlavolam jste vyřešili za %d minutu"
-msgstr[1] "Úspěšně hotovo, hlavolam jste vyřešili za %d minuty"
-msgstr[2] "Úspěšně hotovo, hlavolam jste vyřešili za %d minut"
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "Úspěšně hotovo, hlavolam jste vyřešili za %d minutu!"
+msgstr[1] "Úspěšně hotovo, hlavolam jste vyřešili za %d minuty!"
+msgstr[2] "Úspěšně hotovo, hlavolam jste vyřešili za %d minut!"
 
-#: ../src/gnome-sudoku.vala:255
-msgid "Same difficulty again"
-msgstr "Znovu tutéž obtížnost"
+#: ../src/gnome-sudoku.vala:303
+msgid "Play _Again"
+msgstr "Hrát zn_ovu"
 
-#: ../src/gnome-sudoku.vala:256
-msgid "New difficulty"
-msgstr "Novou obtížnost"
-
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:360
 msgid "Reset the board to its original state?"
-msgstr "Vrátit hrací desku do jejího původního stavu?"
+msgstr "Vrátit herní desku do jejího původního stavu?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:402
+#: ../src/gnome-sudoku.vala:463
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -277,7 +281,7 @@ msgstr ""
 "\n"
 "Hlavolamy generované pomocí QQwing %s"
 
-#: ../src/gnome-sudoku.vala:407
+#: ../src/gnome-sudoku.vala:468
 msgid "translator-credits"
 msgstr ""
 "Jirka Lébl\n"
@@ -294,11 +298,11 @@ msgstr ""
 "Petr Pulc <petrpulc@gmail.com>\n"
 "Marek Černocký <marek@manet.cz>"
 
-#: ../src/number-picker.vala:70
+#: ../src/number-picker.vala:89
 msgid "Clear"
 msgstr "Vymazat"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:29
+#: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Chyba při tisku souboru:"
