@@ -15,14 +15,14 @@
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008.
 # Joanna Mazgaj <jmazgaj@aviary.pl>, 2009-2010.
 # Wojciech Kapusta <wkapusta@aviary.pl>, 2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2014.
-# Aviary.pl <gnomepl@aviary.pl>, 2007-2014.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2015.
+# Aviary.pl <gnomepl@aviary.pl>, 2007-2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-11 20:16+0200\n"
-"PO-Revision-Date: 2014-09-11 20:17+0200\n"
+"POT-Creation-Date: 2015-03-04 23:52+0100\n"
+"PO-Revision-Date: 2015-03-04 23:53+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -38,7 +38,11 @@ msgstr ""
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Łamigłówka liczbowa sprawdzająca logiczne myślenie"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -48,7 +52,7 @@ msgstr ""
 "dla wszystkich miłośników Sudoku, a jej prosty, łatwy w użyciu interfejs "
 "czyni grę przyjemną dla graczy o każdych umiejętnościach."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -56,7 +60,7 @@ msgstr ""
 "Każda plansza ma przydzielony poziom trudności podobny do tych z gazet i "
 "witryn internetowych, więc można wybrać planszę o pasującym poziomie."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -67,19 +71,15 @@ msgstr ""
 "odnawialna książka do Sudoku."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:398
+#: ../src/gnome-sudoku.vala:459
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Łamigłówka liczbowa sprawdzająca logiczne myślenie"
-
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
-msgstr "magia;kwadraty;"
+msgstr "magia;magiczne;kwadraty;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
 msgid "_Print"
 msgstr "Wy_drukuj"
 
@@ -92,18 +92,22 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Wydrukuj _wiele plansz…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-msgid "_Show Warnings"
-msgstr "Wyświetlanie p_odpowiedzi"
+msgid "High_lighter"
+msgstr "Wy_różnianie"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Warnings"
+msgstr "Po_dpowiedzi"
+
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "Pomo_c"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
 msgstr "_O grze"
 
-#: ../data/gnome-sudoku-menu.ui.h:7
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:304
 msgid "_Quit"
 msgstr "Za_kończ"
 
@@ -119,19 +123,19 @@ msgstr "Powtarza ostatni ruch"
 msgid "Go back to the current game"
 msgstr "Wraca do bieżącej gry"
 
-#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
 msgid "_Easy"
 msgstr "Ł_atwa"
 
-#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
 msgid "_Medium"
 msgstr "Ś_rednia"
 
-#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
 msgid "_Hard"
 msgstr "_Trudna"
 
-#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
 msgid "_Very Hard"
 msgstr "_Bardzo trudna"
 
@@ -185,85 +189,86 @@ msgstr ""
 "żadną liczbą, oraz wyróżnia powtórzone liczby na czerwono"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr ""
+"Wyróżnianie rzędu, kolumny i kwadratu, który zawiera zaznaczoną komórkę"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
 msgstr "Szerokość okna w pikselach"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
 msgstr "Wysokość okna w pikselach"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
 msgstr "Wartość \"true\" oznacza, że okno jest zmaksymalizowane"
 
-#: ../data/print-games.ui.h:1
+#: ../data/print-dialog.ui.h:1
 msgid "Print Multiple Puzzles"
 msgstr "Drukowanie wielu plansz"
 
-#: ../data/print-games.ui.h:3
+#: ../data/print-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Anuluj"
 
-#: ../data/print-games.ui.h:4
+#: ../data/print-dialog.ui.h:4
 msgid "_Number of puzzles"
 msgstr "_Liczba plansz"
 
-#: ../data/print-games.ui.h:5
+#: ../data/print-dialog.ui.h:5
 msgid "Difficulty"
 msgstr "Trudność"
 
-#: ../lib/sudoku-board.vala:570
+#: ../lib/sudoku-board.vala:597
 msgid "Unknown Difficulty"
 msgstr "Nieznana trudność"
 
-#: ../lib/sudoku-board.vala:572
-msgid "Easy Difficulty"
-msgstr "Łatwa"
+#: ../lib/sudoku-board.vala:599
+msgid "Easy Puzzle"
+msgstr "Łatwa łamigłówka"
 
-#: ../lib/sudoku-board.vala:574
+#: ../lib/sudoku-board.vala:601
 msgid "Medium Difficulty"
-msgstr "Średnia"
+msgstr "Średnia trudność"
 
-#: ../lib/sudoku-board.vala:576
-msgid "Hard Difficulty"
-msgstr "Trudna"
+#: ../lib/sudoku-board.vala:603
+msgid "Hard Puzzle"
+msgstr "Trudna łamigłówka"
 
-#: ../lib/sudoku-board.vala:578
-msgid "Very Hard Difficulty"
-msgstr "Bardzo trudna"
+#: ../lib/sudoku-board.vala:605
+msgid "Very Hard Puzzle"
+msgstr "Bardzo trudna łamigłówka"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:56
+#: ../src/gnome-sudoku.vala:76
 msgid "Show release version"
 msgstr "Wyświetla wersję wydania"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:60
+#: ../src/gnome-sudoku.vala:80
 msgid "Show the possible values for each cell"
 msgstr "Wyświetla możliwe wartości dla każdego kwadratu"
 
-#: ../src/gnome-sudoku.vala:250
+#: ../src/gnome-sudoku.vala:298
 #, c-format
-msgid "Well done, you completed the puzzle in %d minute"
-msgid_plural "Well done, you completed the puzzle in %d minutes"
-msgstr[0] "Łamigłówkę rozwiązano w %d sekundę"
-msgstr[1] "Łamigłówkę rozwiązano w %d sekundy"
-msgstr[2] "Łamigłówkę rozwiązano w %d sekund"
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "Łamigłówkę rozwiązano w %d minutę!"
+msgstr[1] "Łamigłówkę rozwiązano w %d minuty!"
+msgstr[2] "Łamigłówkę rozwiązano w %d minut!"
 
-#: ../src/gnome-sudoku.vala:255
-msgid "Same difficulty again"
-msgstr "Ta sama trudność"
+#: ../src/gnome-sudoku.vala:303
+msgid "Play _Again"
+msgstr "_Zagraj ponownie"
 
-#: ../src/gnome-sudoku.vala:256
-msgid "New difficulty"
-msgstr "Inna trudność"
-
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:360
 msgid "Reset the board to its original state?"
 msgstr "Przywrócić planszę do jej pierwotnego stanu?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:402
+#: ../src/gnome-sudoku.vala:463
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -274,7 +279,7 @@ msgstr ""
 "\n"
 "Łamigłówki tworzone przez program QQwing %s"
 
-#: ../src/gnome-sudoku.vala:407
+#: ../src/gnome-sudoku.vala:468
 msgid "translator-credits"
 msgstr ""
 "Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 1998-2002\n"
@@ -288,14 +293,14 @@ msgstr ""
 "Tomasz Dominikowski <dominikowski@gmail.com>, 2008\n"
 "Joanna Mazgaj <jmazgaj@aviary.pl>, 2009-2010\n"
 "Wojciech Kapusta <wkapusta@aviary.pl>, 2009\n"
-"Piotr Drąg <piotrdrag@gmail.com>, 2010-2014\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2007-2014"
+"Piotr Drąg <piotrdrag@gmail.com>, 2010-2015\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2007-2015"
 
-#: ../src/number-picker.vala:70
+#: ../src/number-picker.vala:89
 msgid "Clear"
 msgstr "Wyczyść"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:29
+#: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Błąd podczas drukowania pliku:"
