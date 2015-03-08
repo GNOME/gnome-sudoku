@@ -118,39 +118,6 @@ private class SudokuCellView : Gtk.DrawingArea
         if (is_fixed)
             return;
 
-        number_picker = new NumberPicker (ref game.board);
-        number_picker.number_picked.connect ((o, number) => {
-            value = number;
-            if (number == 0)
-                notify_property ("value");
-            this.game.board.disable_all_earmarks (row, col);
-
-            popover.hide ();
-        });
-
-        popover = new Popover (this);
-        popover.add (number_picker);
-        popover.modal = false;
-        popover.position = PositionType.BOTTOM;
-        popover.focus_out_event.connect (() => { popover.hide (); return true; });
-
-        earmark_picker = new NumberPicker (ref game.board, true);
-        earmark_picker.earmark_state_changed.connect ((number, state) => {
-            if (state)
-                this.game.board.enable_earmark (row, col, number);
-            else
-                this.game.board.disable_earmark (row, col, number);
-            this.game.cell_changed (row, col, value, value);
-            queue_draw ();
-        });
-        earmark_picker.set_earmarks (row, col);
-
-        earmark_popover = new Popover (this);
-        earmark_popover.add (earmark_picker);
-        earmark_popover.modal = false;
-        earmark_popover.position = PositionType.BOTTOM;
-        earmark_popover.focus_out_event.connect (() => { earmark_popover.hide (); return true; });
-
         focus_out_event.connect (focus_out_cb);
         game.cell_changed.connect (cell_changed_cb);
     }
@@ -165,7 +132,7 @@ private class SudokuCellView : Gtk.DrawingArea
         if (is_fixed || game.paused)
             return false;
 
-        if (popover.visible || earmark_popover.visible)
+        if (popover != null || earmark_popover != null)
         {
             hide_both_popovers ();
             return false;
@@ -184,23 +151,90 @@ private class SudokuCellView : Gtk.DrawingArea
         return false;
     }
 
+    private void create_earmark_picker ()
+    {
+        earmark_picker = new NumberPicker (ref game.board, true);
+        earmark_picker.earmark_state_changed.connect ((number, state) => {
+            if (state)
+                this.game.board.enable_earmark (row, col, number);
+            else
+                this.game.board.disable_earmark (row, col, number);
+            this.game.cell_changed (row, col, value, value);
+            queue_draw ();
+        });
+        earmark_picker.set_earmarks (row, col);
+    }
+
     private void show_number_picker ()
     {
+        if (earmark_popover != null)
+            earmark_popover.hide ();
+
+        number_picker = new NumberPicker (ref game.board);
+        number_picker.number_picked.connect ((o, number) => {
+            value = number;
+            if (number == 0)
+                notify_property ("value");
+            this.game.board.disable_all_earmarks (row, col);
+
+            popover.hide ();
+        });
         number_picker.set_clear_button_visibility (value != 0);
-        earmark_popover.hide ();
+
+        popover = new Popover (this);
+        popover.add (number_picker);
+        popover.modal = false;
+        popover.position = PositionType.BOTTOM;
+        popover.notify["visible"].connect (()=> {
+            if (!popover.visible)
+                destroy_popover (ref popover);
+        });
+        popover.focus_out_event.connect (() => {
+            popover.hide ();
+            return true;
+        });
+
         popover.show ();
     }
 
     private void show_earmark_picker ()
     {
-        popover.hide ();
+        if (popover != null)
+            popover.hide ();
+
+        create_earmark_picker ();
+
+        earmark_popover = new Popover (this);
+        earmark_popover.add (earmark_picker);
+        earmark_popover.modal = false;
+        earmark_popover.position = PositionType.BOTTOM;
+        earmark_popover.notify["visible"].connect (()=> {
+            if (!earmark_popover.visible)
+                destroy_popover (ref earmark_popover);
+        });
+        earmark_popover.focus_out_event.connect (() => {
+            earmark_popover.hide ();
+            return true;
+        });
+
         earmark_popover.show ();
+    }
+
+    private void destroy_popover (ref Gtk.Popover popover)
+    {
+        if (popover != null)
+        {
+            popover.destroy ();
+            popover = null;
+        }
     }
 
     private void hide_both_popovers ()
     {
-        popover.hide ();
-        earmark_popover.hide ();
+        if (popover != null)
+            popover.hide ();
+        if (earmark_popover != null)
+            earmark_popover.hide ();
     }
 
     private bool focus_out_cb (Gtk.Widget widget, Gdk.EventFocus event)
@@ -250,6 +284,8 @@ private class SudokuCellView : Gtk.DrawingArea
             if ((event.state & ModifierType.CONTROL_MASK) > 0)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, k_no);
+                if (earmark_picker == null)
+                    create_earmark_picker ();
                 if (earmark_picker.set_earmark (row, col, k_no-1, new_state))
                 {
                     if (new_state)
@@ -275,6 +311,11 @@ private class SudokuCellView : Gtk.DrawingArea
 
         if (k_name == "space" || k_name == "Return" || k_name == "KP_Enter")
         {
+            if (popover != null)
+            {
+                popover.hide ();
+                return false;
+            }
             show_number_picker ();
             return true;
         }
@@ -382,9 +423,7 @@ private class SudokuCellView : Gtk.DrawingArea
 
     public void clear ()
     {
-        if (earmark_picker != null)
-            for (var i = 0; i < game.board.max_val; i++)
-                earmark_picker.set_earmark (row, col, i, false);
+        game.board.disable_all_earmarks (row, col);
     }
 }
 
