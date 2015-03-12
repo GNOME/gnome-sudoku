@@ -2,28 +2,28 @@
 # Copyright (C) 2013. Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-sudoku package.
 #
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2014.
-# Balázs Úr <urbalazs@gmail.com>, 2014.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2014, 2015.
+# Balázs Úr <urbalazs at gmail dot com>, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"POT-Creation-Date: 2014-04-01 07:53+0000\n"
-"PO-Revision-Date: 2014-04-01 15:40+0200\n"
-"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
-"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"POT-Creation-Date: 2015-03-01 20:49+0000\n"
+"PO-Revision-Date: 2015-03-12 01:03+0100\n"
+"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
+"Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
 "Kelemen Gábor <kelemeng at gnome dot hu>, 2013.\n"
-"Úr Balázs <urbalazs at gmail dot com>, 2014."
+"Úr Balázs <urbalazs at gmail dot com>, 2014, 2015."
 
 #. (itstool) path: credit/name
 #: C/basics.page:8 C/keyboard-shortcuts.page:9 C/notes.page:13
@@ -34,7 +34,7 @@ msgstr "Chris Beiser"
 #. (itstool) path: credit/years
 #: C/basics.page:10 C/bug-filing.page:12 C/commandline.page:10
 #: C/develop.page:12 C/documentation.page:10 C/highlighting.page:13
-#: C/hints.page:10 C/index.page:13 C/keyboard-shortcuts.page:11
+#: C/hints.page:10 C/index.page:16 C/keyboard-shortcuts.page:11
 #: C/notes.page:10 C/print-blank-puzzles.page:8
 #: C/print-inprogress-game.page:12 C/rules.page:13 C/save-resume.page:12
 #: C/statistics.page:10 C/strategy.page:11 C/toolbar.page:10
@@ -52,11 +52,10 @@ msgstr "Michael Hill"
 #. (itstool) path: license/p
 #: C/basics.page:17 C/bug-filing.page:15 C/commandline.page:17
 #: C/develop.page:15 C/documentation.page:13 C/highlighting.page:16
-#: C/hints.page:13 C/index.page:16 C/keyboard-shortcuts.page:18
-#: C/notes.page:21 C/print-blank-puzzles.page:17
-#: C/print-inprogress-game.page:15 C/rules.page:16 C/save-resume.page:19
-#: C/statistics.page:13 C/strategy.page:18 C/toolbar.page:13
-#: C/trackers.page:18 C/translate.page:19
+#: C/hints.page:13 C/keyboard-shortcuts.page:18 C/notes.page:21
+#: C/print-blank-puzzles.page:17 C/print-inprogress-game.page:15
+#: C/rules.page:16 C/save-resume.page:19 C/statistics.page:13
+#: C/strategy.page:18 C/toolbar.page:13 C/trackers.page:18 C/translate.page:19
 msgid "Creative Commons Share Alike 3.0"
 msgstr "Creative Commons Share Alike 3.0"
 
@@ -133,7 +132,7 @@ msgstr ""
 #. (itstool) path: credit/name
 #: C/bug-filing.page:10 C/commandline.page:8 C/develop.page:10
 #: C/documentation.page:8 C/highlighting.page:11 C/hints.page:8
-#: C/index.page:11 C/keyboard-shortcuts.page:14 C/print-blank-puzzles.page:9
+#: C/index.page:14 C/keyboard-shortcuts.page:14 C/print-blank-puzzles.page:9
 #: C/print-inprogress-game.page:10 C/statistics.page:8 C/strategy.page:14
 #: C/trackers.page:9 C/translate.page:10
 msgid "Tiffany Antopolski"
@@ -498,59 +497,68 @@ msgctxt "text"
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#. (itstool) path: media/span
+#. (itstool) path: credit/name
 #: C/index.page:19
-#| msgctxt "link"
-#| msgid "GNOME Sudoku"
-msgid "GNOME Sudoku logo"
-msgstr "GNOME Sudoku logó"
+msgid "Ekaterina Gerasimova"
+msgstr "Ekaterina Gerasimova"
+
+#. (itstool) path: credit/years
+#: C/index.page:21
+msgid "2015"
+msgstr "2015"
+
+#. (itstool) path: info/desc
+#: C/index.page:26
+msgid ""
+"Learn to play GNOME Sudoku, a logic-based puzzle game in which a grid must "
+"be filled with the correct numbers."
+msgstr ""
+"Tanuljon meg játszani a GNOME Sudokuval, ezzel a logikai fejtörő játékkal, "
+"amelyben egy rácsot kell kitölteni a helyes számokkal."
 
 #. (itstool) path: page/title
-#: C/index.page:19
-#| msgctxt "link"
-#| msgid "GNOME Sudoku"
+#: C/index.page:31
 msgid "<_:media-1/> GNOME Sudoku"
 msgstr "<_:media-1/> GNOME Sudoku"
 
 #. (itstool) path: page/p
-#: C/index.page:21
+#: C/index.page:36
 msgid ""
-"Gnome Sudoku is based on the popular number-based logic puzzle in which one "
-"must fill a 9 X 9 square with the correct digits. The unique puzzles can be "
-"played on screen or <link xref=\"index#print\">printed</link> to take along. "
-"All games persist across sessions and you can <link xref=\"save-resume#resume"
-"\">resume</link> any old game at any time, as well as replay any game you've "
-"already won."
+"GNOME Sudoku is a logic-based number-placement puzzle in which a 9×9 square "
+"must be filled with the correct digits. The unique puzzles can be played on "
+"screen or <link xref=\"index#print\">printed</link>. If you do not have time "
+"to finish a game, you can <link xref=\"save-resume#resume\">resume</link> it "
+"any time, as well as replay any game you've already won."
 msgstr ""
-"A GNOME Sudoku a népszerű számalapú logikai játékra épül, amelyben egy 9x9-"
-"es négyzetet kell a megfelelő számjegyekkel feltölteni. Az egyes játékok "
+"A GNOME Sudoku egy logikai számelhelyezős fejtörő, amelyben egy 9×9-es "
+"négyzetet kell a megfelelő számjegyekkel feltölteni. Az egyes játékok "
 "játszhatók a képernyőn vagy <link xref=\"index#print\">kinyomtatva</link> "
-"papíron. Minden játék megmarad a munkamenetek közt, és <link xref=\"save-"
-"resume#resume\">folytathatja</link> bármikor bármelyik régi játékot, vagy "
-"újrajátszhatja a már megnyerteket."
+"papíron. Ha nincs ideje befejezni egy játékot, akkor <link xref=\"save-"
+"resume#resume\">folytathatja</link> bármikor, vagy újrajátszhatja a már "
+"megnyerteket."
 
 #. (itstool) path: section/title
-#: C/index.page:25
+#: C/index.page:44
 msgid "Game Play"
 msgstr "Játékmenet"
 
 #. (itstool) path: section/title
-#: C/index.page:29
+#: C/index.page:48
 msgid "Useful tips"
 msgstr "Hasznos tippek"
 
 #. (itstool) path: section/title
-#: C/index.page:33
+#: C/index.page:52
 msgid "Printing"
 msgstr "Nyomtatás"
 
 #. (itstool) path: section/title
-#: C/index.page:37
+#: C/index.page:56
 msgid "Advanced"
 msgstr "Speciális"
 
 #. (itstool) path: section/title
-#: C/index.page:41
+#: C/index.page:60
 msgid "Get Involved"
 msgstr "Közreműködés"
 
@@ -1558,6 +1566,11 @@ msgstr ""
 "is. A magyar csapat <link href=\"http://l10n.gnome.org/languages/hu/"
 "\">kezdőoldalán</link> megtalálja a magyar levelezőlista címét és a "
 "fordítások megkezdéséhez szükséges információkat."
+
+#~| msgctxt "link"
+#~| msgid "GNOME Sudoku"
+#~ msgid "GNOME Sudoku logo"
+#~ msgstr "GNOME Sudoku logó"
 
 #~ msgctxt "_"
 #~ msgid ""
