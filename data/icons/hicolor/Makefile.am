@@ -10,7 +10,9 @@ icon22_DATA = 22x22/gnome-sudoku.png
 icon24_DATA = 24x24/gnome-sudoku.png
 icon32_DATA = 32x32/gnome-sudoku.png
 icon48_DATA = 48x48/gnome-sudoku.png
-iconscalable_DATA = scalable/gnome-sudoku.svg
+iconscalable_DATA = \
+	scalable/gnome-sudoku.svg \
+	scalable/gnome-sudoku-symbolic.svg
 
 EXTRA_DIST = $(icon16_DATA) $(icon22_DATA) $(icon24_DATA) $(icon32_DATA) $(icon48_DATA) $(iconscalable_DATA)
 
