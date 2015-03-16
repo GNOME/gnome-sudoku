@@ -1,19 +1,19 @@
 # Italian translation for gnome-sudoku
-# Copyright (C) 2002-2008, 2009, 2010, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+# Copyright (C) 2002-2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-sudoku package.
 # Fabrizio Stefani <f.stef@it.gnome.org>, 1999-2002;
 # Alessio Frusciante <algol@firenze.linux.it>. 2003.
 # Francesco Marletta <francesco.marletta@tiscali.it>. 2002-2006.
 # Gruppo traduzione Italiano di Ubuntu <gruppo-traduzione@ubuntu-it.org>, 2007-2008
-# Milo Casagrande <milo@milo.name>, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
+# Milo Casagrande <milo@milo.name>, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-10-10 01:51+0000\n"
-"PO-Revision-Date: 2014-10-14 09:18+0100\n"
+"POT-Creation-Date: 2015-03-16 20:39+0000\n"
+"PO-Revision-Date: 2015-03-16 21:45+0100\n"
 "Last-Translator: Milo Casagrande <milo@milo.name>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -21,13 +21,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.7.5\n"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr ""
+"Metti alla prova le tue capacità logiche in questo puzzle a griglia numerica"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -38,7 +43,7 @@ msgstr ""
 "giocare a Sudoku sarà un'esperienza piacevole per i giocatori di tutti i "
 "livelli."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -47,7 +52,7 @@ msgstr ""
 "e siti web in modo tale che la partita sia facile o difficile come più ti "
 "aggrada."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -58,14 +63,9 @@ msgstr ""
 "difficoltà: GNOME Sudoko è anche un libro di rompicapi sempre nuovo."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:451
+#: ../src/gnome-sudoku.vala:459
 msgid "Sudoku"
 msgstr "Sudoku"
-
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr ""
-"Metti alla prova le tue capacità logiche in questo puzzle a griglia numerica"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
@@ -84,18 +84,22 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Stampa puzzle _multipli…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-msgid "_Show Warnings"
-msgstr "_Mostra avvisi"
+msgid "High_lighter"
+msgstr "_Evidenziatore"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Warnings"
+msgstr "A_vvisi"
+
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "A_iuto"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
 msgstr "I_nformazioni"
 
-#: ../data/gnome-sudoku-menu.ui.h:7
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:304
 msgid "_Quit"
 msgstr "_Chiudi"
 
@@ -176,14 +180,18 @@ msgstr ""
 "numero e i numeri duplicati sono evidenziati in rosso"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Evidenzia riga, colonna e riquadro che contengono la cella selezionata"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
 msgstr "Larghezza della finestra in pixel"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
 msgstr "Altezza della finestra in pixel"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
 msgstr "VERO se la finestra è massimizzata"
 
@@ -203,57 +211,53 @@ msgstr "_Numero di puzzle"
 msgid "Difficulty"
 msgstr "Difficoltà"
 
-#: ../lib/sudoku-board.vala:589
+#: ../lib/sudoku-board.vala:597
 msgid "Unknown Difficulty"
 msgstr "Difficoltà sconosciuta"
 
-#: ../lib/sudoku-board.vala:591
-msgid "Easy Difficulty"
+#: ../lib/sudoku-board.vala:599
+msgid "Easy Puzzle"
 msgstr "Facile"
 
-#: ../lib/sudoku-board.vala:593
+#: ../lib/sudoku-board.vala:601
 msgid "Medium Difficulty"
 msgstr "Media"
 
-#: ../lib/sudoku-board.vala:595
-msgid "Hard Difficulty"
+#: ../lib/sudoku-board.vala:603
+msgid "Hard Puzzle"
 msgstr "Difficile"
 
-#: ../lib/sudoku-board.vala:597
-msgid "Very Hard Difficulty"
+#: ../lib/sudoku-board.vala:605
+msgid "Very Hard Puzzle"
 msgstr "Molto difficile"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:75
+#: ../src/gnome-sudoku.vala:76
 msgid "Show release version"
 msgstr "Mostra il numero di versione"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:79
+#: ../src/gnome-sudoku.vala:80
 msgid "Show the possible values for each cell"
 msgstr "Mostra i possibili valori per ogni cella"
 
-#: ../src/gnome-sudoku.vala:285
+#: ../src/gnome-sudoku.vala:298
 #, c-format
-msgid "Well done, you completed the puzzle in %d minute"
-msgid_plural "Well done, you completed the puzzle in %d minutes"
-msgstr[0] "Hai completato il puzzle in %d secondo"
-msgstr[1] "Hai completato il puzzle in %d secondi"
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "Hai completato il puzzle in %d minuto"
+msgstr[1] "Hai completato il puzzle in %d minuti"
 
-#: ../src/gnome-sudoku.vala:290
-msgid "Same difficulty again"
-msgstr "Stessa difficoltà di prima"
+#: ../src/gnome-sudoku.vala:303
+msgid "Play _Again"
+msgstr "Ri_gioca"
 
-#: ../src/gnome-sudoku.vala:291
-msgid "New difficulty"
-msgstr "Nuova difficoltà"
-
-#: ../src/gnome-sudoku.vala:352
+#: ../src/gnome-sudoku.vala:360
 msgid "Reset the board to its original state?"
 msgstr "Reimpostare la partita al suo stato originale?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:455
+#: ../src/gnome-sudoku.vala:463
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -264,7 +268,7 @@ msgstr ""
 "\n"
 "Puzzle generati da QQwing %s"
 
-#: ../src/gnome-sudoku.vala:460
+#: ../src/gnome-sudoku.vala:468
 msgid "translator-credits"
 msgstr ""
 "Milo Casagrande <milo@milo.name>\n"
@@ -280,332 +284,3 @@ msgstr "Pulisci"
 #: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Errore nello stampare il file:"
-
-#~ msgid ""
-#~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
-#~ "that make playing Sudoku fun. Games are automatically saved when you "
-#~ "quit, and you can always come back to any game that you've played."
-#~ msgstr ""
-#~ "GNOME Sudoku è dotato di un'interfaccia grafica semplice, ma dotata di "
-#~ "tutte le funzionalità che rendono il gioco del Sudoko divertente. Le "
-#~ "partite sono salvate automaticamente all'uscita ed è sempre possibile "
-#~ "rigiocare una vecchia partita."
-
-#~ msgid "game;board;tiles;japanese;"
-#~ msgstr "gioco;giochi;board;tavola;giapponese;numeri;griglia;"
-
-#~ msgid "The number of seconds between automatic saves"
-#~ msgstr "Il numero di secondi tra i salvataggi automatici"
-
-#~ msgid "Print games that have been played"
-#~ msgstr "Stampa le partite giocate"
-
-#~ msgid "Mark printed games as played"
-#~ msgstr "Segna le partite stampate come giocate"
-
-#~ msgid "Show hint highlights"
-#~ msgstr "Mostra evidenziazioni suggerimenti"
-
-#~ msgid "Color of the grid border"
-#~ msgstr "Colore del bordo della griglia"
-
-#~ msgid "Show the application toolbar"
-#~ msgstr "Mostra la barra degli strumenti"
-
-#~ msgid "Print Sudokus"
-#~ msgstr "Stampa i Sudoku"
-
-#~ msgid "Print Games"
-#~ msgstr "Stampa giochi"
-
-#~ msgid "_Sudokus per page: "
-#~ msgstr "_Sudoku per pagina: "
-
-#~ msgid "Levels of difficulty to print"
-#~ msgstr "Livelli di difficoltà da stampare"
-
-#~ msgid "Details"
-#~ msgstr "Dettagli"
-
-# (ndt) opzione (il punto non ci dovrebbe essere nemmeno in originale)
-#~ msgid "_Mark games as played once you've printed them."
-#~ msgstr "_Impostare le partite come giocate dopo la stampa"
-
-#~ msgid "_Include games you've already played in list of games to print"
-#~ msgstr ""
-#~ "_Includere le partite già giocate nell'elenco delle partite da stampare."
-
-#~ msgid "_Saved Games"
-#~ msgstr "Partite _salvate"
-
-# (ndt) suggerimento
-#~ msgid "Add a new tracker"
-#~ msgstr "Aggiunge un nuovo registratore di mosse"
-
-# (ndt) suggerimento
-#~ msgid "Remove the selected tracker"
-#~ msgstr "Rimuove il registratore di mosse selezionato"
-
-# (ndt) sugerimento
-#~ msgid "Make the tracked changes permanent"
-#~ msgstr "Rende le modifiche registrate permanenti"
-
-# (ndt) pulsante
-#~ msgid "H_ide"
-#~ msgstr "Nascon_di"
-
-# (ndt) suggerimento
-#~ msgid "Hide the tracked values"
-#~ msgstr "Nasconde i valori registrati"
-
-#~ msgid "Website"
-#~ msgstr "Sito web"
-
-#~ msgid "Easy"
-#~ msgstr "Facile"
-
-#~ msgid "Medium"
-#~ msgstr "Medio"
-
-#~ msgid "Hard"
-#~ msgstr "Difficile"
-
-#~ msgid "Very hard"
-#~ msgstr "Molto difficile"
-
-#~ msgid "Last played %(n)s second ago"
-#~ msgid_plural "Last played %(n)s seconds ago"
-#~ msgstr[0] "Ultima partita %(n)s secondo fa"
-#~ msgstr[1] "Ultima partita %(n)s secondi fa"
-
-#~ msgid "Last played %(n)s minute ago"
-#~ msgid_plural "Last played %(n)s minutes ago"
-#~ msgstr[0] "Ultima partita %(n)s minuto fa"
-#~ msgstr[1] "Ultima partita %(n)s minuti fa"
-
-#~ msgid "Last played at %I:%M %p"
-#~ msgstr "Ultima partita alle %k.%M"
-
-#~ msgid "Last played yesterday at %I:%M %p"
-#~ msgstr "Ultima partita ieri alle %k.%M"
-
-#~ msgid "Last played on %A at %I:%M %p"
-#~ msgstr "Ultima partita %A alle %k.%M"
-
-#~ msgid "Last played on %B %e %Y"
-#~ msgstr "Ultima partita nel giorno %e %B %Y"
-
-#~ msgid "Easy puzzle"
-#~ msgstr "Facile"
-
-#~ msgid "Medium puzzle"
-#~ msgstr "Medio"
-
-#~ msgid "Very hard puzzle"
-#~ msgstr "Molto difficile"
-
-#~ msgid "Played for %d hour"
-#~ msgid_plural "Played for %d hours"
-#~ msgstr[0] "Giocato per %d ora"
-#~ msgstr[1] "Giocato per %d ore"
-
-#~ msgid "Played for %d minute"
-#~ msgid_plural "Played for %d minutes"
-#~ msgstr[0] "Giocato per %d minuto"
-#~ msgstr[1] "Giocato per %d minuti"
-
-#~ msgid "Played for %d second"
-#~ msgid_plural "Played for %d seconds"
-#~ msgstr[0] "Giocato per %d secondo"
-#~ msgstr[1] "Giocato per %d secondi"
-
-#~ msgid "Do you really want to do this?"
-#~ msgstr "Vuoi veramente fare questo?"
-
-#~ msgid "Don't ask me this again."
-#~ msgstr "Non chiedermelo più."
-
-#~ msgid "_Game"
-#~ msgstr "_Gioco"
-
-#~ msgid "New game"
-#~ msgstr "Nuova partita"
-
-#~ msgid "_Reset"
-#~ msgstr "A_zzera"
-
-#~ msgid "_Undo"
-#~ msgstr "_Annulla"
-
-#~ msgid "_Redo"
-#~ msgstr "_Ripeti"
-
-#~ msgid "Puzzle _Statistics..."
-#~ msgstr "_Statistiche dello schema..."
-
-#~ msgid "_Settings"
-#~ msgstr "_Impostazioni"
-
-#~ msgid "_Tools"
-#~ msgstr "_Strumenti"
-
-#~ msgid "_Hint"
-#~ msgstr "_Indizio"
-
-# (ndt) pare suggerimento
-#~ msgid "Show a square that is easy to fill."
-#~ msgstr "Mostra una casella facile"
-
-#~ msgid "Clear _Top Notes"
-#~ msgstr "Pulisci note _superiori"
-
-#~ msgid "Clear _Bottom Notes"
-#~ msgstr "Pulisci _note inferiori"
-
-#~ msgid "_Contents"
-#~ msgstr "_Sommario"
-
-# (ndt) voce di menù
-#~ msgid "Show _Possible Numbers"
-#~ msgstr "Mostra numeri _possibili"
-
-#~ msgid "Always show possible numbers in a square"
-#~ msgstr "Mostra sempre i numeri possibili in un riquadro"
-
-#~ msgid "Warn about squares made unfillable by a move"
-#~ msgstr "Avvisa quando un riquadro è reso immodificabile da una mossa"
-
-# (ndt) pulsante
-#~ msgid "_Track Additions"
-#~ msgstr "_Registra aggiunte"
-
-#~ msgid ""
-#~ "Mark new additions in a separate color so you can keep track of them."
-#~ msgstr "Segna le aggiunte con un colore differente per tenerne traccia."
-
-#~ msgid "Show _Toolbar"
-#~ msgstr "Mostra la barra degli s_trumenti"
-
-#~ msgid "_Highlighter"
-#~ msgstr "_Evidenziatore"
-
-#~ msgid "Highlight the current row, column and box"
-#~ msgstr "Evidenzia la riga, colonna e il riquadro correnti"
-
-#~ msgid "%d minute"
-#~ msgid_plural "%d minutes"
-#~ msgstr[0] "%d minuto"
-#~ msgstr[1] "%d minuti"
-
-#~ msgid "%d second"
-#~ msgid_plural "%d seconds"
-#~ msgstr[0] "%d secondo"
-#~ msgstr[1] "%d secondi"
-
-#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
-#~ msgstr "Hai completato lo schema in %(minute)s e %(second)s"
-
-#~ msgid "%d hour"
-#~ msgid_plural "%d hours"
-#~ msgstr[0] "%d ora"
-#~ msgstr[1] "%d ore"
-
-#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-#~ msgstr "Hai completato lo schema in %(hour)s, %(minute)s e %(second)s"
-
-#~ msgid "You got %(n)s hint."
-#~ msgid_plural "You got %(n)s hints."
-#~ msgstr[0] "Hai ricevuto %(n)s indizio."
-#~ msgstr[1] "Hai ricevuto %(n)s indizi."
-
-#~ msgid "You had %(n)s impossibility pointed out."
-#~ msgid_plural "You had %(n)s impossibilities pointed out."
-#~ msgstr[0] "Hai avuto %(n)s impossibilità segnalata."
-#~ msgstr[1] "Hai avuto %(n)s impossibilità segnalate."
-
-#~ msgid "You win!"
-#~ msgstr "Hai vinto!"
-
-#~ msgid "Save this game before starting new one?"
-#~ msgstr "Salvare il gioco prima di iniziarne uno nuovo?"
-
-#~ msgid "_Save game for later"
-#~ msgstr "_Salva la partita per completarla"
-
-#~ msgid "_Abandon game"
-#~ msgstr "_Abbandona la partita"
-
-#~ msgid "Save game before closing?"
-#~ msgstr "Salvare il gioco prima di chiudere?"
-
-#~ msgid "Puzzle Information"
-#~ msgstr "Informazioni schema"
-
-#~ msgid "Number of moves instantly fillable by elimination: "
-#~ msgstr "Numero di mosse riempibili per eliminazione: "
-
-#~ msgid "Number of moves instantly fillable by filling: "
-#~ msgstr "Numero di mosse riempibili per inserimento: "
-
-#~ msgid "Amount of trial-and-error required to solve: "
-#~ msgstr "Quantità massima di prova-e-sbaglia ammessi: "
-
-#~ msgid "Puzzle Statistics"
-#~ msgstr "Statistiche dello schema"
-
-#~ msgid "Unable to display help: %s"
-#~ msgstr "Impossibile mostrare l'aiuto: %s"
-
-#~ msgid "Untracked"
-#~ msgstr "Non registrata"
-
-#~ msgid "_Remove"
-#~ msgstr "_Rimuovi"
-
-# (ndt) suggerimento
-#~ msgid "Delete selected tracker."
-#~ msgstr "Elimina il registratore di mosse selezionato"
-
-# (ndt) dovrebbe essere suggerimento
-#~ msgid "Hide current tracker entries."
-#~ msgstr "Nasconde le mosse del registratore corrente"
-
-#~ msgid "A_pply"
-#~ msgstr "A_pplica"
-
-# (ndt) suggerimento
-#~ msgid "Apply all tracked values and remove the tracker."
-#~ msgstr "Applica tutte le mosse registrate e rimuove il registratore"
-
-#~ msgid "Tracker %s"
-#~ msgstr "Registratore %s"
-
-#~ msgid "No Space"
-#~ msgstr "Spazio esaurito"
-
-#~ msgid "No space left on disk"
-#~ msgstr "Spazio sul disco esaurito"
-
-#~ msgid "Unable to create data folder %(path)s."
-#~ msgstr "Impossibile creare la cartella dei dati %(path)s."
-
-#~ msgid "There is no disk space left!"
-#~ msgstr "Non c'è più spazio sul disco!"
-
-#~ msgid "Error %(errno)s: %(error)s"
-#~ msgstr "Errore %(errno)s: %(error)s"
-
-#~ msgid "Unable to save game."
-#~ msgstr "Impossibile salvare la partita."
-
-#~ msgid "Unable to save file %(filename)s."
-#~ msgstr "Impossibile salvare il file %(filename)s."
-
-#~ msgid "Unable to mark game as finished."
-#~ msgstr "Impossibile impostare la partita come completata."
-
-#~ msgid "Sudoku unable to mark game as finished."
-#~ msgstr "Sudoku non può impostare la partita come completata."
-
-#~ msgid "GNOME Games web site"
-#~ msgstr "Sito web di GNOME Games"
