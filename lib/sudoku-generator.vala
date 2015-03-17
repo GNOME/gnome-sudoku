@@ -80,7 +80,7 @@ public class SudokuGenerator : Object
         return board;
     }
 
-    public async static Gee.List<SudokuBoard> generate_boards_async (int nboards, DifficultyCategory category) throws ThreadError
+    public async static Gee.List<SudokuBoard> generate_boards_async (int nboards, DifficultyCategory category, Cancellable? cancellable) throws ThreadError, IOError
     {
         var boards = new ArrayList<SudokuBoard> ();
         var pool = new ThreadPool<Worker>.with_owned_data ((worker) => {
@@ -93,6 +93,7 @@ public class SudokuGenerator : Object
         }
 
         yield;
+        cancellable.set_error_if_cancelled ();
         return boards;
     }
 

@@ -26,6 +26,10 @@ public class PrintDialog : Gtk.Dialog
     private Settings settings;
 
     [GtkChild]
+    private Gtk.Button print_button;
+    [GtkChild]
+    private Gtk.Box print_box;
+    [GtkChild]
     private Gtk.SpinButton n_sudokus_button;
     [GtkChild]
     private Gtk.RadioButton easy_radio_button;
@@ -39,11 +43,13 @@ public class PrintDialog : Gtk.Dialog
     private Gtk.Revealer revealer;
     private Gtk.Spinner spinner;
 
-    private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
+    private Cancellable cancellable;
 
     /* After emitting our response, we continue to asynchronously generate puzzles
        in the background. This signal indicates when we are really finished. */
     public signal void finished ();
+
+    private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
 
     public PrintDialog (SudokuSaver saver, Gtk.Window window)
     {
@@ -51,6 +57,12 @@ public class PrintDialog : Gtk.Dialog
 
         this.saver = saver;
         settings = new GLib.Settings ("org.gnome.sudoku");
+
+        this.response.connect ((response_id) => {
+            if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT) {
+                cancellable.cancel ();
+            }
+        });
 
         set_transient_for (window);
 
@@ -128,16 +140,17 @@ public class PrintDialog : Gtk.Dialog
 
         Timeout.add_seconds (3, (SourceFunc) start_spinner_cb);
 
-        sensitive = false;
+        print_button.sensitive = false;
+        print_box.sensitive = false;
 
-        SudokuGenerator.generate_boards_async.begin (nsudokus, level, (obj, res) => {
+        cancellable = new Cancellable ();
+        SudokuGenerator.generate_boards_async.begin (nsudokus, level, cancellable, (obj, res) => {
             try
             {
                 var boards = SudokuGenerator.generate_boards_async.end (res);
 
                 spinner.stop ();
                 revealer.hide ();
-                sensitive = true;
 
                 var printer = new SudokuPrinter (boards, this);
                 if (printer.print_sudoku () == Gtk.PrintOperationResult.APPLY)
@@ -149,6 +162,13 @@ public class PrintDialog : Gtk.Dialog
             catch (ThreadError e)
             {
                 error ("Thread error: %s\n", e.message);
+            }
+            catch (IOError e)
+            {
+                if (!(e is IOError.CANCELLED))
+                {
+                    warning ("Error: %s\n", e.message);
+                }
             }
 
             finished ();

@@ -405,13 +405,13 @@ public class Sudoku : Gtk.Application
 
         back_button.sensitive = false;
 
-        SudokuGenerator.generate_boards_async.begin (1, selected_difficulty, (obj, res) => {
+        SudokuGenerator.generate_boards_async.begin (1, selected_difficulty, null, (obj, res) => {
             try {
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);
                 back_button.sensitive = true;
                 start_game (gen_boards[0]);
-            } catch (ThreadError e) {
-                error ("Thread error: %s", e.message);
+            } catch (Error e) {
+                error ("Error: %s", e.message);
             }
         });
     }
