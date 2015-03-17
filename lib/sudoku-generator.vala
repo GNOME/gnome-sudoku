@@ -93,6 +93,11 @@ public class SudokuGenerator : Object
         }
 
         yield;
+
+        // FIXME We just check if the Cancellable was canceled after generating
+        // all the boards. This code is good, but we should also use
+        // Cancellable.connect to stop generation as early if cancelled. But see
+        // https://bugzilla.gnome.org/show_bug.cgi?id=746262
         cancellable.set_error_if_cancelled ();
         return boards;
     }
