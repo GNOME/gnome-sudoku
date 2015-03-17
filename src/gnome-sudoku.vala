@@ -495,8 +495,7 @@ public class Sudoku : Gtk.Application
         print_action.set_enabled (false);
         print_multiple_action.set_enabled (false);
         var print_dialog = new PrintDialog (saver, window);
-        print_dialog.finished.connect (() => {
-            print_dialog.destroy ();
+        print_dialog.destroy.connect (() => {
             this.print_action.set_enabled (main_stack.get_visible_child_name () == "frame");
             this.print_multiple_action.set_enabled (true);
         });

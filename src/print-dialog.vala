@@ -45,10 +45,6 @@ public class PrintDialog : Gtk.Dialog
 
     private Cancellable cancellable;
 
-    /* After emitting our response, we continue to asynchronously generate puzzles
-       in the background. This signal indicates when we are really finished. */
-    public signal void finished ();
-
     private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
 
     public PrintDialog (SudokuSaver saver, Gtk.Window window)
@@ -118,7 +114,7 @@ public class PrintDialog : Gtk.Dialog
     {
         if (response != Gtk.ResponseType.OK)
         {
-            finished ();
+            destroy ();
             return;
         }
 
@@ -171,7 +167,7 @@ public class PrintDialog : Gtk.Dialog
                 }
             }
 
-            finished ();
+            destroy ();
         });
     }
 }
