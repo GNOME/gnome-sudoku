@@ -87,6 +87,11 @@ public class SudokuGenerator : Object
             worker.run ();
         }, (int) get_num_processors (), false);
 
+        cancellable.connect(() => {
+            ThreadPool.free((owned) pool, true, false);
+            generate_boards_async.callback();
+        });
+
         for (var i = 0; i < nboards; i++)
         {
             pool.add (new Worker (nboards, category, boards, generate_boards_async.callback));
