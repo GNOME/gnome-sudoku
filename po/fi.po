@@ -8,15 +8,15 @@
 # Sami Pesonen <sampeson@iki.fi>, 2002-2005.
 # Ilkka Tuohela <hile@iki.fi>, 2005-2009.
 # Timo Jyrinki <timo.jyrinki@iki.fi>, 2008.
-# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2012, 2013, 2014.
+# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2012, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-11-07 08:36+0000\n"
-"PO-Revision-Date: 2014-09-11 11:27+0300\n"
+"POT-Creation-Date: 2015-03-14 08:47+0000\n"
+"PO-Revision-Date: 2015-03-14 12:34+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
@@ -32,7 +32,11 @@ msgstr ""
 msgid "GNOME Sudoku"
 msgstr "Sudoku"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Testaa logiikkakykyjäsi numeroruudukkopelissä"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -42,7 +46,7 @@ msgstr ""
 "pakollinen asennus kaikille Sudoku-harrastajille. Selkeä käyttöliittymä "
 "tekee pelaamisesta hauskaa, oli pelaajan taitotaso mikä hyvänsä."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -50,7 +54,7 @@ msgstr ""
 "Jokainen peli on niin haastava, kuin asetat vaikeustasoksi. Haasta siis "
 "itsesi!"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -61,13 +65,9 @@ msgstr ""
 "vaikeustason."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:463
+#: ../src/gnome-sudoku.vala:459
 msgid "Sudoku"
 msgstr "Sudoku"
-
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Testaa logiikkakykyjäsi numeroruudukkopelissä"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
@@ -86,18 +86,24 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Tulosta _useita sudokuja…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-msgid "_Show Warnings"
-msgstr "Nä_ytä varoitukset"
+#| msgid "_Highlighter"
+msgid "High_lighter"
+msgstr "_Korostus"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
+#| msgid "_Show Warnings"
+msgid "_Warnings"
+msgstr "_Varoitukset"
+
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "O_hje"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
 msgstr "_Tietoja"
 
-#: ../data/gnome-sudoku-menu.ui.h:7
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:304
 msgid "_Quit"
 msgstr "_Lopeta"
 
@@ -178,14 +184,18 @@ msgstr ""
 "numeroilla. Tuplanumerot merkitään punaisella värillä"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Korosta valitun solun sisältävä rivi, sarake ja neliö"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
 msgstr "Ikkunan leveys kuvapisteinä"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
 msgstr "Ikkunan korkeus kuvapisteinä"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
 msgstr "tosi jos ikkuna on suurennettu"
 
@@ -205,57 +215,59 @@ msgstr "P_ulmien määrä"
 msgid "Difficulty"
 msgstr "Vaikeustaso"
 
-#: ../lib/sudoku-board.vala:589
+#: ../lib/sudoku-board.vala:597
 msgid "Unknown Difficulty"
 msgstr "Tuntematon vaikeustaso"
 
-#: ../lib/sudoku-board.vala:591
-msgid "Easy Difficulty"
-msgstr "Helppo vaikeustaso"
+#: ../lib/sudoku-board.vala:599
+#| msgid "Easy puzzle"
+msgid "Easy Puzzle"
+msgstr "Helppo pulma"
 
-#: ../lib/sudoku-board.vala:593
+#: ../lib/sudoku-board.vala:601
 msgid "Medium Difficulty"
 msgstr "Keskinkertainen vaikeustaso"
 
-#: ../lib/sudoku-board.vala:595
-msgid "Hard Difficulty"
-msgstr "Vaikea vaikeustaso"
+#: ../lib/sudoku-board.vala:603
+#| msgid "Hard puzzle"
+msgid "Hard Puzzle"
+msgstr "Vaikea pulma"
 
-#: ../lib/sudoku-board.vala:597
-msgid "Very Hard Difficulty"
-msgstr "Erittäin vaikea vaikeustaso"
+#: ../lib/sudoku-board.vala:605
+#| msgid "Very hard puzzle"
+msgid "Very Hard Puzzle"
+msgstr "Erittäin vaikea pulma"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:75
+#: ../src/gnome-sudoku.vala:76
 msgid "Show release version"
 msgstr "Näytä julkaisuversio"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:79
+#: ../src/gnome-sudoku.vala:80
 msgid "Show the possible values for each cell"
 msgstr "Näytä jokaisen solun mahdolliset arvot"
 
-#: ../src/gnome-sudoku.vala:297
+#: ../src/gnome-sudoku.vala:298
 #, c-format
-msgid "Well done, you completed the puzzle in %d minute"
-msgid_plural "Well done, you completed the puzzle in %d minutes"
-msgstr[0] "Onnittelut, ratkaisit pulman %d minuuttissa"
-msgstr[1] "Onnittelut, ratkaisit pulman %d minuuttissa"
-
-#: ../src/gnome-sudoku.vala:302
-msgid "Same difficulty again"
-msgstr "Sama vaikeustaso uudelleen"
+#| msgid "Well done, you completed the puzzle in %d minute"
+#| msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "Onnittelut, ratkaisit pulman %d minuuttissa!"
+msgstr[1] "Onnittelut, ratkaisit pulman %d minuuttissa!"
 
 #: ../src/gnome-sudoku.vala:303
-msgid "New difficulty"
-msgstr "Uusi vaikeustaso"
+#| msgid "Play as:"
+msgid "Play _Again"
+msgstr "_Pelaa uudelleen"
 
-#: ../src/gnome-sudoku.vala:364
+#: ../src/gnome-sudoku.vala:360
 msgid "Reset the board to its original state?"
 msgstr "Palautetaanko lauta sen alkuperäistilaan?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:467
+#: ../src/gnome-sudoku.vala:463
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -266,10 +278,10 @@ msgstr ""
 "\n"
 "Pulmat tuottaa QQwing %s"
 
-#: ../src/gnome-sudoku.vala:472
+#: ../src/gnome-sudoku.vala:468
 msgid "translator-credits"
 msgstr ""
-"Jiri Grönroos, 2012-2014\n"
+"Jiri Grönroos, 2012-2015\n"
 "Timo Jyrinki, 2008\n"
 "Ilkka Tuohela, 2006-2009\n"
 "Sami Pesonen, 2002-2005\n"
@@ -295,6 +307,21 @@ msgstr "Tyhjennä"
 #: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Virhe tulostaessa tiedostoa:"
+
+#~ msgid "Easy Difficulty"
+#~ msgstr "Helppo vaikeustaso"
+
+#~ msgid "Hard Difficulty"
+#~ msgstr "Vaikea vaikeustaso"
+
+#~ msgid "Very Hard Difficulty"
+#~ msgstr "Erittäin vaikea vaikeustaso"
+
+#~ msgid "Same difficulty again"
+#~ msgstr "Sama vaikeustaso uudelleen"
+
+#~ msgid "New difficulty"
+#~ msgstr "Uusi vaikeustaso"
 
 #~ msgid "game;board;tiles;japanese;"
 #~ msgstr "game;board;tiles;japanese;peli;lautapeli;japanilainen;"
@@ -411,17 +438,8 @@ msgstr "Virhe tulostaessa tiedostoa:"
 #~ msgid "Last played on %B %e %Y"
 #~ msgstr "Viimeksi pelattu %e.%m. %Y"
 
-#~ msgid "Easy puzzle"
-#~ msgstr "Helppo pulma"
-
 #~ msgid "Medium puzzle"
 #~ msgstr "Tavallinen pulma"
-
-#~ msgid "Hard puzzle"
-#~ msgstr "Vaikea pulma"
-
-#~ msgid "Very hard puzzle"
-#~ msgstr "Erittäin vaikea pulma"
 
 #~ msgid "Played for %d hour"
 #~ msgid_plural "Played for %d hours"
@@ -502,9 +520,6 @@ msgstr "Virhe tulostaessa tiedostoa:"
 
 #~ msgid "Show _Toolbar"
 #~ msgstr "Näytä _työkalupalkki"
-
-#~ msgid "_Highlighter"
-#~ msgstr "_Korosta"
 
 #~ msgid "Highlight the current row, column and box"
 #~ msgstr "Korosta nykyinen rivi, sarake ja laatikko"
@@ -728,9 +743,6 @@ msgstr "Virhe tulostaessa tiedostoa:"
 
 #~ msgid "Preferences"
 #~ msgstr "Asetukset"
-
-#~ msgid "Play as:"
-#~ msgstr "Pelattava puoli:"
 
 #~ msgid "Opposing Player:"
 #~ msgstr "Vastustaja:"
