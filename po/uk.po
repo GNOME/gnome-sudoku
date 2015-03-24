@@ -4,29 +4,33 @@
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2004-2010
 # Wanderlust <wanderlust@ukr.net>, 2009.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
+# Daniel Korostil <ted.korostiled@gmail.com>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-15 21:43+0000\n"
-"PO-Revision-Date: 2014-09-28 10:02+0300\n"
-"Last-Translator: Назарій Ріттер <nazariy.ritter@gmail.com>\n"
-"Language-Team: translation@linux.org.ua\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-24 17:54+0200\n"
+"PO-Revision-Date: 2015-03-25 01:00+0300\n"
+"Last-Translator: Daniel Korostil <ted.korostiled@gmail.com>\n"
+"Language-Team: linux.org.ua\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
 msgstr "Судоку GNOME"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Перевірте логічні здібності у цій числовій головоломці"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -37,123 +41,116 @@ msgstr ""
 "інтерфейсом, що дає змогу відчути задоволення від гри гравцям будь-якого "
 "рівня."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
 "Кожна гра має рівень складності подібний до тих, які в газетах або на "
-"сайтах. Тому ваша гра буде такою легкою або такою складною, як ви "
-"того захочете."
+"сайтах. Тому ваша гра буде такою легкою або такою складною, як ви того "
+"захочете."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
 "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
 msgstr ""
 "Якщо ви полюбляєте грати на папері, ви можете роздрукувати ігри. Можете "
-"вибрати скільки ігор ви забажаєте роздрукувати на одній сторінці та їхній рівень "
-"складності: як наслідок: «Судоку GNOME» може поновлюваною книгу з "
+"вибрати скільки ігор ви забажаєте роздрукувати на одній сторінці та їхній "
+"рівень складності: як наслідок: «Судоку GNOME» може поновлюваною книгу з "
 "судоку."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:404
+#: ../src/gnome-sudoku.vala:527
 msgid "Sudoku"
 msgstr "Судоку"
-
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Перевірте логічні здібності у цій числовій головоломці"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
 msgstr "магія;площа;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-games.ui.h:2
-#| msgid "_Print..."
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
 msgid "_Print"
 msgstr "На_друкувати…"
 
 #: ../data/gnome-sudoku-menu.ui.h:2
-#| msgid "Print current game"
 msgid "Print _Current Puzzle…"
 msgstr "Надрукувати _поточну головоломку…"
 
 #: ../data/gnome-sudoku-menu.ui.h:3
-#| msgid "Print _Multiple Sudokus..."
 msgid "Print _Multiple Puzzles…"
 msgstr "Друкувати де_кілька головоломок…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-#| msgid "Warnings"
-msgid "_Show Warnings"
-msgstr "Показувати поперед_ження"
+msgid "High_lighter"
+msgstr "_Підсвічування"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Warnings"
+msgstr "П_опередження"
+
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "_Довідка"
 
-#: ../data/gnome-sudoku-menu.ui.h:6
+#: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
 msgstr "П_ро програму"
 
-#: ../data/gnome-sudoku-menu.ui.h:7
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:365
 msgid "_Quit"
 msgstr "Ви_йти"
 
 #: ../data/gnome-sudoku.ui.h:2
-#| msgid "Undo last action"
 msgid "Undo your last action"
 msgstr "Повернути останній хід"
 
 #: ../data/gnome-sudoku.ui.h:3
-#| msgid "Redo last action"
 msgid "Redo your last action"
 msgstr "Повторити останній хід"
 
 #: ../data/gnome-sudoku.ui.h:4
-#| msgid "Restart the current game"
 msgid "Go back to the current game"
 msgstr "Повернутися до поточної гри"
 
-#: ../data/gnome-sudoku.ui.h:5 ../data/print-games.ui.h:6
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
 msgid "_Easy"
 msgstr "_Легко"
 
-#: ../data/gnome-sudoku.ui.h:6 ../data/print-games.ui.h:7
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
 msgid "_Medium"
 msgstr "По_мірно"
 
-#: ../data/gnome-sudoku.ui.h:7 ../data/print-games.ui.h:8
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
 msgid "_Hard"
 msgstr "Скл_адно"
 
-#: ../data/gnome-sudoku.ui.h:8 ../data/print-games.ui.h:9
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
 msgid "_Very Hard"
 msgstr "Д_уже складно"
 
-#: ../data/gnome-sudoku.ui.h:9
-#| msgid "_Clear Tracker"
+#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:307
+msgid "_Pause"
+msgstr "_Пауза"
+
+#: ../data/gnome-sudoku.ui.h:10
 msgid "_Clear Board"
 msgstr "_Очистити дошку"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:11
 msgid "Reset the board to its original state"
 msgstr "Скинути дошку до її початкового стану"
 
-#: ../data/gnome-sudoku.ui.h:11
-#| msgid "Next Puzzle"
+#: ../data/gnome-sudoku.ui.h:12
 msgid "_New Puzzle"
 msgstr "_Нова головоломка"
 
-#: ../data/gnome-sudoku.ui.h:12
-#| msgid "Start a new game"
+#: ../data/gnome-sudoku.ui.h:13
 msgid "Start a new puzzle"
 msgstr "Розпочати нову головоломку"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
-#| msgid "_Number of sudoku to print: "
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Рівень складності судоку на друкування"
 
@@ -166,17 +163,14 @@ msgstr ""
 "– «easy», «medium», «hard», «very_hard»"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:3
-#| msgid "_Number of sudoku to print: "
 msgid "Number of Sudokus to print"
 msgstr "Кількість судоку на друкування"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:4
-#| msgid "_Number of sudoku to print: "
 msgid "Set the number of sudokus you want to print"
 msgstr "Встановіть кількість судоку, котру бажаєте надрукувати"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:5
-#| msgid "Warn About _Unfillable Squares"
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Попереджувати про незаповнені клітинки та однакові числа"
 
@@ -189,99 +183,93 @@ msgstr ""
 "числа та підсвічувати червоним числа, що повторюються"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
-#| msgid "The width of the main window in pixels."
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Підсвітити рядки, стовпці та квадрати, які містять вибранку клітинку"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
 msgstr "Ширина вікна, у точках"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
-#| msgid "The height of the main window in pixels."
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
 msgstr "Висота вікна, в точках"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
 msgstr "встановлено, якщо вікно розгорнуто"
 
-#: ../data/print-games.ui.h:1
-#| msgid "Print _Multiple Sudokus..."
+#: ../data/print-dialog.ui.h:1
 msgid "Print Multiple Puzzles"
 msgstr "Надрукувати декілька головоломок"
 
-#: ../data/print-games.ui.h:3
+#: ../data/print-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: ../data/print-games.ui.h:4
-#| msgid "_Number of players:"
+#: ../data/print-dialog.ui.h:4
 msgid "_Number of puzzles"
 msgstr "Кіл_ькість головоломок"
 
-#: ../data/print-games.ui.h:5
-#| msgid "Difficulty:"
+#: ../data/print-dialog.ui.h:5
 msgid "Difficulty"
 msgstr "Складність"
 
-#: ../lib/sudoku-board.vala:570
-#| msgid "Difficulty:"
+#: ../lib/sudoku-board.vala:597
 msgid "Unknown Difficulty"
 msgstr "Невідома складність"
 
-#: ../lib/sudoku-board.vala:572
-#| msgid "Difficulty:"
-msgid "Easy Difficulty"
-msgstr "Легка складність"
+#: ../lib/sudoku-board.vala:599
+msgid "Easy Puzzle"
+msgstr "Проста головоломка"
 
-#: ../lib/sudoku-board.vala:574
-#| msgid "Difficulty:"
+#: ../lib/sudoku-board.vala:601
 msgid "Medium Difficulty"
 msgstr "Помірна складність"
 
-#: ../lib/sudoku-board.vala:576
-#| msgid "Difficulty:"
-msgid "Hard Difficulty"
-msgstr "Складна складність"
+#: ../lib/sudoku-board.vala:603
+msgid "Hard Puzzle"
+msgstr "Складна головоломка"
 
-#: ../lib/sudoku-board.vala:578
-#| msgid "Difficulty:"
-msgid "Very Hard Difficulty"
-msgstr "Дуже складна складність"
+#: ../lib/sudoku-board.vala:605
+msgid "Very Hard Puzzle"
+msgstr "Дуже важка головоломка"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:56
+#: ../src/gnome-sudoku.vala:80
 msgid "Show release version"
 msgstr "Показати версію випуску"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:60
+#: ../src/gnome-sudoku.vala:84
 msgid "Show the possible values for each cell"
 msgstr "Показувати можливі значення для кожної клітинки"
 
-#: ../src/gnome-sudoku.vala:250
+#: ../src/gnome-sudoku.vala:313
+msgid "_Resume"
+msgstr "_Відновити"
+
+#: ../src/gnome-sudoku.vala:359
 #, c-format
-#| msgid "You completed the puzzle in %d second"
-#| msgid_plural "You completed the puzzle in %d seconds"
-msgid "Well done, you completed the puzzle in %d minute"
-msgid_plural "Well done, you completed the puzzle in %d minutes"
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Чудово! Ви склали головоломку за %d хвилину"
 msgstr[1] "Чудово! Ви склали головоломку за %d хвилини"
 msgstr[2] "Чудово! Ви склали головоломку за %d хвилин"
 
-#: ../src/gnome-sudoku.vala:255
-#| msgid "Calculated difficulty: "
-msgid "Same difficulty again"
-msgstr "Та сама складність"
+#: ../src/gnome-sudoku.vala:364
+msgid "Play _Again"
+msgstr "Зіграти _ще раз"
 
-#: ../src/gnome-sudoku.vala:256
-#| msgid "Difficulty:"
-msgid "New difficulty"
-msgstr "Нова складність"
+#: ../src/gnome-sudoku.vala:385
+msgid "Select Difficulty"
+msgstr "Виберіть складність"
 
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:421
 msgid "Reset the board to its original state?"
 msgstr "Скинути дошку до її початкового стану?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:408
+#: ../src/gnome-sudoku.vala:531
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -292,7 +280,7 @@ msgstr ""
 "\n"
 "Головоломки породжує — QQwing %s"
 
-#: ../src/gnome-sudoku.vala:413
+#: ../src/gnome-sudoku.vala:536
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота\n"
@@ -301,15 +289,39 @@ msgstr ""
 "Daniel Korostil <ted.korostiled@gmail.com>\n"
 "Назарій Ріттер <nazariy.ritter@gmail.com>, 2014"
 
-#: ../src/number-picker.vala:70
-#| msgid "_Clear"
+#: ../src/number-picker.vala:89
 msgid "Clear"
 msgstr "Очистити"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:29
+#: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Помилка друкування файла:"
+
+#. Text on overlay when game is paused
+#: ../src/sudoku-view.vala:617
+msgid "Paused"
+msgstr "Призупинено"
+
+#~| msgid "Difficulty:"
+#~ msgid "Easy Difficulty"
+#~ msgstr "Легка складність"
+
+#~| msgid "Difficulty:"
+#~ msgid "Hard Difficulty"
+#~ msgstr "Складна складність"
+
+#~| msgid "Difficulty:"
+#~ msgid "Very Hard Difficulty"
+#~ msgstr "Дуже складна складність"
+
+#~| msgid "Calculated difficulty: "
+#~ msgid "Same difficulty again"
+#~ msgstr "Та сама складність"
+
+#~| msgid "Difficulty:"
+#~ msgid "New difficulty"
+#~ msgstr "Нова складність"
 
 #~ msgid "Chess"
 #~ msgstr "Шахи"
@@ -429,9 +441,6 @@ msgstr "Помилка друкування файла:"
 
 #~ msgid "Preferences"
 #~ msgstr "Параметри"
-
-#~ msgid "Play as:"
-#~ msgstr "Грати за:"
 
 #~ msgid "Opposing Player:"
 #~ msgstr "Опонент:"
@@ -1926,17 +1935,8 @@ msgstr "Помилка друкування файла:"
 #~ msgid "Last played on %B %e %Y"
 #~ msgstr "Востаннє гали в %B %e %Y"
 
-#~ msgid "Easy puzzle"
-#~ msgstr "Проста головоломка"
-
 #~ msgid "Medium puzzle"
 #~ msgstr "Середня головоломка"
-
-#~ msgid "Hard puzzle"
-#~ msgstr "Складна головоломка"
-
-#~ msgid "Very hard puzzle"
-#~ msgstr "Дуже важка головоломка"
 
 #~ msgid "Played for %d hour"
 #~ msgid_plural "Played for %d hours"
@@ -1964,9 +1964,6 @@ msgstr "Помилка друкування файла:"
 
 #~ msgid "New game"
 #~ msgstr "Нова гра"
-
-#~ msgid "_Reset"
-#~ msgstr "_Скинути"
 
 #~ msgid "_Undo"
 #~ msgstr "В_ернути"
@@ -2007,9 +2004,6 @@ msgstr "Помилка друкування файла:"
 #~ msgid ""
 #~ "Mark new additions in a separate color so you can keep track of them."
 #~ msgstr "Відмічати додавання іншим кольором, допускаючи стеження за ними."
-
-#~ msgid "_Highlighter"
-#~ msgstr "_Підсвітити"
 
 #~ msgid "Highlight the current row, column and box"
 #~ msgstr "Виділяти кольором поточний стовпчик, строку и квадрат"
@@ -2133,9 +2127,6 @@ msgstr "Помилка друкування файла:"
 
 #~ msgid "Clear hidden mines from a minefield"
 #~ msgstr "Очистити мінне поле від прихованих мін"
-
-#~ msgid "_Pause"
-#~ msgstr "_Пауза"
 
 #~ msgid "_Fullscreen"
 #~ msgstr "_На весь екран"
@@ -2276,9 +2267,6 @@ msgstr "Помилка друкування файла:"
 
 #~ msgid "Mines Preferences"
 #~ msgstr "Властивості гри \"Міни\""
-
-#~ msgid "Paused"
-#~ msgstr "Призупинено"
 
 #~ msgid "Tetravex"
 #~ msgstr "Тетравекс"
