@@ -9,7 +9,7 @@ GNOME_MAINTAINER_MODE_DEFINES
 AC_PROG_CC
 AC_PROG_CXX
 
-AM_PROG_VALAC([0.25.1])
+AM_PROG_VALAC([0.27.1])
 AM_PROG_CC_C_O
 
 LT_PREREQ([2.4])
@@ -26,7 +26,7 @@ dnl Dependencies
 dnl ###########################################################################
 
 GLIB_REQUIRED=2.40.0
-GTK_REQUIRED=3.13.4
+GTK_REQUIRED=3.15.0
 QQWING_REQUIRED=1.2.0
 
 PKG_CHECK_MODULES(GNOME_SUDOKU, [
