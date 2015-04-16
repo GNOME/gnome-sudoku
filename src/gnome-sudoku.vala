@@ -28,6 +28,7 @@ public class Sudoku : Gtk.Application
     private bool is_tiled;
     private int window_width;
     private int window_height;
+    private Gtk.Button play_custom_game_button;
     private Gtk.Button play_pause_button;
     private Gtk.Label play_pause_label;
     private Gtk.Label clock_label;
@@ -53,19 +54,23 @@ public class Sudoku : Gtk.Application
     private SimpleAction print_action;
     private SimpleAction print_multiple_action;
     private SimpleAction pause_action;
+    private SimpleAction play_custom_game_action;
     private SimpleAction new_game_action;
 
     private bool show_possibilities = false;
+    private GameMode current_game_mode = GameMode.PLAY;
 
     private const GLib.ActionEntry action_entries[] =
     {
         {"new-game", new_game_cb                                    },
         {"start-game", start_game_cb, "i"                           },
+        {"create-game", create_game_cb                              },
         {"reset", reset_cb                                          },
         {"back", back_cb                                            },
         {"undo", undo_cb                                            },
         {"redo", redo_cb                                            },
         {"print", print_cb                                          },
+        {"play-custom-game", play_custom_game_cb                    },
         {"pause", toggle_pause_cb                                   },
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
@@ -134,7 +139,7 @@ public class Sudoku : Gtk.Application
         settings = new GLib.Settings ("org.gnome.sudoku");
         var action = settings.create_action ("show-warnings");
         action.notify["state"].connect (() => {
-            if (view != null)
+            if (view != null && current_game_mode == GameMode.PLAY)
                 view.show_warnings = settings.get_boolean ("show-warnings");
         });
         add_action (action);
@@ -178,6 +183,7 @@ public class Sudoku : Gtk.Application
         back_button = (Button) builder.get_object ("back_button");
         clock_label = (Gtk.Label) builder.get_object ("clock_label");
         clock_image = (Gtk.Image) builder.get_object ("clock_image");
+        play_custom_game_button = (Gtk.Button) builder.get_object ("play_custom_game_button");
         play_pause_button = (Gtk.Button) builder.get_object ("play_pause_button");
         play_pause_label = (Gtk.Label) builder.get_object ("play_pause_label");
 
@@ -188,6 +194,7 @@ public class Sudoku : Gtk.Application
         print_action = (SimpleAction) lookup_action ("print");
         print_multiple_action = (SimpleAction) lookup_action ("print-multiple");
         pause_action = (SimpleAction) lookup_action ("pause");
+        play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
 
         if (!is_desktop ("Unity"))
         {
@@ -202,8 +209,11 @@ public class Sudoku : Gtk.Application
 
         saver = new SudokuSaver ();
         var savegame = saver.get_savedgame ();
-        if (savegame != null)
+        if (savegame != null) {
+            if (savegame.board.difficulty_category == DifficultyCategory.CUSTOM)
+                current_game_mode = savegame.board.filled == savegame.board.fixed ? GameMode.CREATE : GameMode.PLAY;
             start_game (savegame.board);
+        }
         else
             show_new_game_screen ();
     }
@@ -217,10 +227,10 @@ public class Sudoku : Gtk.Application
     {
         if (game != null)
         {
-            if (!game.board.is_empty () && !game.board.complete)
+            if (!game.is_empty () && !game.board.complete)
                 saver.save_game (game);
 
-            if (game.board.is_empty () && saver.get_savedgame () != null)
+            if (game.is_empty () && saver.get_savedgame () != null)
             {
                 var file = File.new_for_path (SudokuSaver.savegame_file);
 
@@ -274,11 +284,18 @@ public class Sudoku : Gtk.Application
         else if (game.get_total_time_played () > 0)
         {
             display_pause_button ();
-            clear_action.set_enabled (!game.board.is_empty ());
+            clear_action.set_enabled (!game.is_empty ());
             undo_action.set_enabled (!game.is_undostack_null ());
             redo_action.set_enabled (!game.is_redostack_null ());
             new_game_action.set_enabled (true);
         }
+    }
+
+    private void play_custom_game_cb ()
+    {
+        current_game_mode = GameMode.PLAY;
+        game.stop_clock ();
+        start_game (game.board);
     }
 
     private void toggle_pause_cb ()
@@ -315,27 +332,31 @@ public class Sudoku : Gtk.Application
 
     private void start_game (SudokuBoard board)
     {
-        undo_action.set_enabled (false);
-        redo_action.set_enabled (false);
-
         if (view != null)
             game_box.remove (view);
 
         show_game_view ();
         game = new SudokuGame (board);
+        game.mode = current_game_mode;
 
-        headerbar.title = board.difficulty_category.to_string ();
+        undo_action.set_enabled (false);
+        redo_action.set_enabled (false);
+        set_headerbar_title ();
+        clear_action.set_enabled (!game.is_empty ());
+        play_custom_game_action.set_enabled (!game.is_empty ());
 
         game.tick.connect (tick_cb);
         game.paused_changed.connect (paused_changed_cb);
-
         game.start_clock ();
 
         view = new SudokuView (game);
         view.set_size_request (480, 480);
 
         view.show_possibilities = show_possibilities;
-        view.show_warnings = settings.get_boolean ("show-warnings");
+        if (current_game_mode == GameMode.CREATE)
+            view.show_warnings = true;
+        else
+            view.show_warnings = settings.get_boolean ("show-warnings");
         view.highlighter = settings.get_boolean ("highlighter");
 
         view.show ();
@@ -344,10 +365,17 @@ public class Sudoku : Gtk.Application
         game.cell_changed.connect (() => {
             undo_action.set_enabled (!game.is_undostack_null ());
             redo_action.set_enabled (!game.is_redostack_null ());
-            clear_action.set_enabled (!game.board.is_empty ());
+            clear_action.set_enabled (!game.is_empty ());
+            play_custom_game_action.set_enabled (!game.is_empty () && !game.board.is_fully_filled ());
         });
 
+        if (current_game_mode == GameMode.CREATE)
+            return;
+
         game.board.completed.connect (() => {
+            play_custom_game_button.visible = false;
+            game.stop_clock ();
+
             for (var i = 0; i < game.board.rows; i++)
                 for (var j = 0; j < game.board.cols; j++)
                     view.can_focus = false;
@@ -379,7 +407,6 @@ public class Sudoku : Gtk.Application
     private void show_new_game_screen ()
     {
         main_stack.set_visible_child_name ("start_box");
-        clear_action.set_enabled (false);
         back_button.visible = game != null;
         undo_redo_box.visible = false;
         headerbar.title = _("Select Difficulty");
@@ -395,6 +422,19 @@ public class Sudoku : Gtk.Application
         show_new_game_screen ();
     }
 
+    private void create_game_cb ()
+    {
+        current_game_mode = GameMode.CREATE;
+        SudokuGenerator.generate_boards_async.begin (1, DifficultyCategory.CUSTOM, null, (obj, res) => {
+            try {
+                var gen_boards = SudokuGenerator.generate_boards_async.end (res);
+                start_game (gen_boards[0]);
+            } catch (Error e) {
+                error ("Error: %s", e.message);
+            }
+        });
+    }
+
     private void start_game_cb (SimpleAction action, Variant? difficulty)
     {
         // Since we cannot have enums in .ui file, the 'action-target' property
@@ -404,6 +444,7 @@ public class Sudoku : Gtk.Application
         var selected_difficulty = (DifficultyCategory) difficulty.get_int32 ();
 
         back_button.sensitive = false;
+        current_game_mode = GameMode.PLAY;
 
         SudokuGenerator.generate_boards_async.begin (1, selected_difficulty, null, (obj, res) => {
             try {
@@ -423,8 +464,8 @@ public class Sudoku : Gtk.Application
         dialog.response.connect ((response_id) => {
             if (response_id == ResponseType.OK)
             {
-                view.clear ();
                 game.reset ();
+                view.clear ();
                 undo_action.set_enabled (false);
                 redo_action.set_enabled (false);
             }
@@ -444,16 +485,32 @@ public class Sudoku : Gtk.Application
         clock_image.show ();
 
         if (game != null)
-        {
             game.resume_clock ();
-            clear_action.set_enabled (!game.board.is_empty ());
-            headerbar.title = game.board.difficulty_category.to_string ();
+
+        if (current_game_mode == GameMode.PLAY) {
+            play_custom_game_button.visible = false;
+            play_pause_button.visible = true;
         }
+        else {
+            clock_label.hide ();
+            clock_image.hide ();
+            play_custom_game_button.visible = true;
+            play_pause_button.visible = false;
+        }
+    }
+
+    private void set_headerbar_title ()
+    {
+        if (current_game_mode == GameMode.PLAY)
+            headerbar.title = game.board.difficulty_category.to_string ();
+        else
+            headerbar.title = _("Create Puzzle");
     }
 
     private void back_cb ()
     {
         show_game_view ();
+        set_headerbar_title ();
     }
 
     private void undo_cb ()

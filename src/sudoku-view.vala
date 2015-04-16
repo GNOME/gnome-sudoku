@@ -46,7 +46,8 @@ private class SudokuCellView : Gtk.DrawingArea
                 string text = "%d".printf (game.board [row, col]);
                 layout = create_pango_layout (text);
                 layout.set_font_description (style.font_desc);
-                return;
+                if (game.mode == GameMode.PLAY)
+                    return;
             }
             if (value == 0)
             {
@@ -55,7 +56,8 @@ private class SudokuCellView : Gtk.DrawingArea
                 layout.set_font_description (style.font_desc);
                 if (game.board [row, col] != 0)
                     game.remove (row, col);
-                return;
+                if (game.mode == GameMode.PLAY)
+                    return;
             }
             if (value == game.board [row, col])
             {
@@ -115,7 +117,7 @@ private class SudokuCellView : Gtk.DrawingArea
         can_focus = true;
         events = EventMask.EXPOSURE_MASK | EventMask.BUTTON_PRESS_MASK | EventMask.KEY_PRESS_MASK;
 
-        if (is_fixed)
+        if (is_fixed && game.mode == GameMode.PLAY)
             return;
 
         focus_out_event.connect (focus_out_cb);
@@ -129,7 +131,7 @@ private class SudokuCellView : Gtk.DrawingArea
 
         if (!is_focus)
             grab_focus ();
-        if (is_fixed || game.paused)
+        if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
             return false;
 
         if (popover != null || earmark_popover != null)
@@ -140,12 +142,12 @@ private class SudokuCellView : Gtk.DrawingArea
 
         if (event.button == 1)            // Left-Click
         {
-            if (!_show_possibilities && (event.state & ModifierType.CONTROL_MASK) > 0)
+            if (!_show_possibilities && (event.state & ModifierType.CONTROL_MASK) > 0 && game.mode == GameMode.PLAY)
                 show_earmark_picker ();
             else
                 show_number_picker ();
         }
-        else if (!_show_possibilities && event.button == 3)         // Right-Click
+        else if (!_show_possibilities && event.button == 3 && game.mode == GameMode.PLAY)         // Right-Click
             show_earmark_picker ();
 
         return false;
@@ -272,7 +274,7 @@ private class SudokuCellView : Gtk.DrawingArea
 
     public override bool key_press_event (Gdk.EventKey event)
     {
-        if (is_fixed || game.paused)
+        if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
             return false;
         string k_name = Gdk.keyval_name (event.keyval);
         int k_no = int.parse (k_name);
@@ -281,7 +283,7 @@ private class SudokuCellView : Gtk.DrawingArea
             k_no = key_map_keypad (k_name);
         if (k_no >= 1 && k_no <= 9)
         {
-            if ((event.state & ModifierType.CONTROL_MASK) > 0)
+            if ((event.state & ModifierType.CONTROL_MASK) > 0 && game.mode == GameMode.PLAY)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, k_no);
                 if (earmark_picker == null)
@@ -357,7 +359,7 @@ private class SudokuCellView : Gtk.DrawingArea
             c.restore ();
         }
 
-        if (is_fixed)
+        if (is_fixed && game.mode == GameMode.PLAY)
             return false;
 
         if (!_show_possibilities)
@@ -417,6 +419,14 @@ private class SudokuCellView : Gtk.DrawingArea
         if (row == this.row && col == this.col)
         {
             this.value = new_val;
+
+            if (game.mode == GameMode.CREATE) {
+                if (_selected)
+                    background_color = selected_bg_color;
+                else
+                    background_color = is_fixed ? fixed_cell_color : free_cell_color;
+            }
+
             notify_property ("value");
         }
     }
@@ -426,6 +436,11 @@ private class SudokuCellView : Gtk.DrawingArea
         game.board.disable_all_earmarks (row, col);
     }
 }
+
+public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
+public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
+public const RGBA highlight_color = {0.93, 0.93, 0.93, 0};
+public const RGBA selected_bg_color = {0.7, 0.8, 0.9};
 
 public class SudokuView : Gtk.AspectFrame
 {
@@ -437,11 +452,6 @@ public class SudokuView : Gtk.AspectFrame
     private Gtk.Overlay overlay;
     private Gtk.DrawingArea drawing;
     private Gtk.Grid grid;
-
-    private const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
-    private const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
-    private const RGBA highlight_color = {0.93, 0.93, 0.93, 0};
-    private const RGBA selected_bg_color = {0.7, 0.8, 0.9};
 
     private int selected_row = 0;
     private int selected_col = 0;

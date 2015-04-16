@@ -24,6 +24,7 @@ using Gee;
 public class SudokuGame : Object
 {
     public SudokuBoard board;
+    public GameMode mode;
     public GLib.Timer timer;
     private uint clock_timeout;
 
@@ -66,17 +67,24 @@ public class SudokuGame : Object
     public SudokuGame (SudokuBoard board)
     {
         this.board = board;
+        this.mode = GameMode.PLAY;
         timer = new Timer();
         undostack = new ArrayList<UndoItem?> ();
         redostack = new ArrayList<UndoItem?> ();
-        board.completed.connect (() => stop_clock ());
     }
 
     public void insert (int row, int col, int val)
     {
         var old_val = board[row, col];
         update_undo (row, col, old_val, val);
-        board.insert (row, col, val);
+
+        if (mode == GameMode.CREATE) {
+            board.insert (row, col, val, true);
+            board.is_fixed[row, col] = true;
+        }
+        else
+            board.insert (row, col, val);
+
         cell_changed (row, col, old_val, val);
     }
 
@@ -84,8 +92,23 @@ public class SudokuGame : Object
     {
         int old_val = board[row, col];
         update_undo (row, col, old_val, 0);
-        board.remove (row, col);
+
+        if (mode == GameMode.CREATE) {
+            board.remove (row, col, true);
+            board.is_fixed[row, col] = false;
+        }
+        else
+            board.remove (row, col);
+
         cell_changed (row, col, old_val, 0);
+    }
+
+    public bool is_empty ()
+    {
+        if (mode == GameMode.CREATE)
+            return board.filled == 0;
+        else
+            return board.is_empty ();
     }
 
     public void undo ()
@@ -108,11 +131,12 @@ public class SudokuGame : Object
         {
             for (var l2 = 0; l2 < board.cols; l2++)
             {
-                if (!board.is_fixed[l1, l2])
-                {
-                    board.remove (l1, l2);
-                    cell_changed (l1, l2, board.get (l1, l2), 0);
-                }
+                if (mode == GameMode.PLAY && board.is_fixed[l1, l2])
+                    continue;
+
+                board.remove (l1, l2, board.is_fixed[l1, l2]);
+                board.is_fixed[l1, l2] = false;
+                cell_changed (l1, l2, board.get (l1, l2), 0);
             }
         }
         board.broken_coords.clear ();
@@ -143,9 +167,23 @@ public class SudokuGame : Object
         var top = from.remove_at (from.size - 1);
         int old_val = board [top.row, top.col];
         add_to_stack (to, top.row, top.col, old_val);
-        board.remove (top.row, top.col);
-        if (top.val != 0)
-            board.insert (top.row, top.col, top.val);
+
+        if (mode == GameMode.CREATE) {
+            board.remove (top.row, top.col, board.is_fixed[top.row, top.col]);
+            board.is_fixed[top.row, top.col] = false;
+        }
+        else
+            board.remove (top.row, top.col);
+
+        if (top.val != 0) {
+            if (mode == GameMode.CREATE) {
+                board.insert (top.row, top.col, top.val, board.is_fixed[top.row, top.col]);
+                board.is_fixed[top.row, top.col] = true;
+            }
+            else
+                board.insert (top.row, top.col, top.val);
+        }
+
         cell_changed (top.row, top.col, old_val, top.val);
     }
 
@@ -188,4 +226,9 @@ public class SudokuGame : Object
         paused = false;
         timeout_cb ();
     }
+}
+
+public enum GameMode {
+    PLAY,
+    CREATE;
 }

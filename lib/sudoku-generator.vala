@@ -66,7 +66,9 @@ public class SudokuGenerator : Object
     private static SudokuBoard generate_board (DifficultyCategory category)
     {
         var board = new SudokuBoard ();
-        int[] puzzle = QQwing.generate_puzzle ((int) category);
+        int[] puzzle = new int[board.rows * board.cols];
+        if (category != DifficultyCategory.CUSTOM)
+            puzzle = QQwing.generate_puzzle ((int) category);
 
         for (var row = 0; row < board.rows; row++)
             for (var col = 0; col < board.cols; col++)

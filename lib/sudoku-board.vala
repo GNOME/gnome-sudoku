@@ -67,6 +67,11 @@ public class SudokuBoard : Object
     /* the number of fixed squares on the board */
     public int fixed { get; private set; }
 
+    public int size
+    {
+        get { return rows * cols; }
+    }
+
     public bool complete
     {
         get { return filled == cols * rows && !broken; }
@@ -75,6 +80,11 @@ public class SudokuBoard : Object
     public bool is_empty ()
     {
         return filled == fixed && n_earmarks == 0;
+    }
+
+    public bool is_fully_filled ()
+    {
+        return filled == cols * rows;
     }
 
     public signal void completed ();
@@ -377,6 +387,9 @@ public class SudokuBoard : Object
         }
 
         filled--;
+
+        if (is_fixed)
+            fixed--;
     }
 
     public Set<Coord?> get_occurances(Gee.List<Coord?> coords, int val)
@@ -587,7 +600,8 @@ public enum DifficultyCategory {
     EASY,
     MEDIUM,
     HARD,
-    VERY_HARD;
+    VERY_HARD,
+    CUSTOM;
 
     public string to_string ()
     {
@@ -603,6 +617,8 @@ public enum DifficultyCategory {
                 return _("Hard Difficulty");
             case VERY_HARD:
                 return _("Very Hard Difficulty");
+            case CUSTOM:
+                return _("Custom Puzzle");
             default:
                 assert_not_reached ();
         }
@@ -622,6 +638,8 @@ public enum DifficultyCategory {
                 return "Hard Difficulty";
             case VERY_HARD:
                 return "Very Hard Difficulty";
+            case CUSTOM:
+                return "Custom Puzzle";
             default:
                 assert_not_reached ();
         }
@@ -641,6 +659,8 @@ public enum DifficultyCategory {
                 return HARD;
             case "Very Hard Difficulty":
                 return VERY_HARD;
+            case "Custom Puzzle":
+                return CUSTOM;
             default:
                 warning ("Could not parse difficulty level. Falling back to Easy difficulty");
                 return EASY;
