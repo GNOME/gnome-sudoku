@@ -64,6 +64,20 @@ int* qqwing_generate_puzzle(int difficulty)
 }
 
 /*
+ * Count the number of solutions of a puzzle
+ * but return 2 if there are multiple.
+ * Returns 0 if the puzzle is not valid.
+ */
+int qqwing_count_solutions_limited(int* puzzle)
+{
+    SudokuBoard board;
+    if (!board.setPuzzle(puzzle))
+        return 0;
+
+    return board.countSolutionsLimited();
+}
+
+/*
  * Print the stats gathered while solving the puzzle given as input.
  */
 void qqwing_print_stats(int* puzzle)

@@ -293,9 +293,38 @@ public class Sudoku : Gtk.Application
 
     private void play_custom_game_cb ()
     {
-        current_game_mode = GameMode.PLAY;
-        game.stop_clock ();
-        start_game (game.board);
+        int solutions = game.board.count_solutions_limited ();
+        if (solutions == 1)
+        {
+            start_custom_game (game.board);
+        }
+        else if (solutions == 0)
+        {
+            // Error dialog shown when starting a custom game that is not valid.
+            var error_str = "%s\n%s".printf(_("The puzzle you have entered is not a valid Sudoku."), _("Please enter a valid puzzle."));
+            var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.ERROR, ButtonsType.OK, error_str);
+
+            dialog.run ();
+            dialog.destroy ();
+        }
+        else
+        {
+            // Warning dialog shown when starting a custom game that has multiple solutions.
+            var warning_str = "%s\n%s".printf(_("The puzzle you have entered has multiple solutions."), _("Valid Sudoku puzzles have exactly one solution."));
+            var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.WARNING, ButtonsType.NONE, warning_str);
+            dialog.add_button (_("_Back"), Gtk.ResponseType.REJECT);
+            dialog.add_button (_("Play _Anyway"), Gtk.ResponseType.ACCEPT);
+
+            dialog.response.connect ((response_id) => {
+                if (response_id == Gtk.ResponseType.ACCEPT)
+                {
+                    start_custom_game (game.board);
+                }
+                dialog.destroy ();
+            });
+
+            dialog.show ();
+        }
     }
 
     private void toggle_pause_cb ()
@@ -328,6 +357,13 @@ public class Sudoku : Gtk.Application
     {
         play_pause_button.show ();
         play_pause_label.label = _("_Resume");
+    }
+
+    private void start_custom_game (SudokuBoard board)
+    {
+        current_game_mode = GameMode.PLAY;
+        game.stop_clock ();
+        start_game (board);
     }
 
     private void start_game (SudokuBoard board)

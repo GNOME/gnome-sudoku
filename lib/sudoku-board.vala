@@ -392,6 +392,11 @@ public class SudokuBoard : Object
             fixed--;
     }
 
+    public int count_solutions_limited ()
+    {
+        return QQwing.count_solutions_limited ((int[]) cells);
+    }
+
     public Set<Coord?> get_occurances(Gee.List<Coord?> coords, int val)
     {
         Set<Coord?> occurances = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
