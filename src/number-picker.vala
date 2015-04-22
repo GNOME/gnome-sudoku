@@ -33,7 +33,8 @@ private class NumberPicker : Gtk.Grid
     private static const int EARMARKS_MAX_ALLOWED = 5;
     private int earmarks_active;
 
-    public NumberPicker (ref SudokuBoard board, bool earmark = false) {
+    public NumberPicker (ref SudokuBoard board, bool earmark = false)
+    {
         this.board = board;
         earmarks_active = 0;
 

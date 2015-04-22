@@ -60,7 +60,8 @@ public class SudokuGenerator : Object
         }
     }
 
-    private SudokuGenerator () {
+    private SudokuGenerator ()
+    {
     }
 
     private static SudokuBoard generate_board (DifficultyCategory category)
@@ -89,7 +90,8 @@ public class SudokuGenerator : Object
             worker.run ();
         }, (int) get_num_processors (), false);
 
-        if (cancellable != null) {
+        if (cancellable != null)
+        {
             cancellable.connect(() => {
                 ThreadPool.free((owned) pool, true, false);
                 generate_boards_async.callback();
@@ -97,9 +99,7 @@ public class SudokuGenerator : Object
         }
 
         for (var i = 0; i < nboards; i++)
-        {
             pool.add (new Worker (nboards, category, boards, generate_boards_async.callback));
-        }
 
         yield;
 

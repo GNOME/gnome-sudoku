@@ -124,13 +124,9 @@ public class SudokuBoard : Object
             }
         }
         for (var l1 = 0; l1 < block_rows; l1++)
-        {
             for (var l2 = 0; l2 < block_cols; l2++)
-            {
                 for (var l3 = 0; l3 < max_val; l3++)
                     possible_in_block[l1, l2, l3] = true;
-            }
-        }
 
         broken_coords = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
 
@@ -139,9 +135,8 @@ public class SudokuBoard : Object
         {
             coords_for_col.add (new ArrayList<Coord?> ((EqualDataFunc<Coord>) Coord.equal));
             for (int row = 0; row < rows; row++)
-            {
                 coords_for_col.get (col).add (Coord(row, col));
-            }
+
             coords_for_col[col] = coords_for_col[col].read_only_view;
         }
         coords_for_col = coords_for_col.read_only_view;
@@ -151,35 +146,25 @@ public class SudokuBoard : Object
         {
             coords_for_row.add (new ArrayList<Coord?> ((EqualDataFunc<Coord>) Coord.equal));
             for (int col = 0; col < cols; col++)
-            {
                 coords_for_row.get (row).add (Coord(row, col));
-            }
+
             coords_for_row[row] = coords_for_row[row].read_only_view;
         }
         coords_for_row = coords_for_row.read_only_view;
 
         coords_for_block = new HashMap<Coord?, Gee.List<Coord?>> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         for (int col = 0; col < block_cols; col++)
-        {
             for (int row = 0; row < block_rows; row++)
-            {
                 coords_for_block.set (Coord(row, col), new ArrayList<Coord?> ((EqualDataFunc<Coord>) Coord.equal));
-            }
-        }
+
         for (int col = 0; col < cols; col++)
-        {
             for (int row = 0; row < rows; row++)
-            {
                 coords_for_block.get(Coord(row / block_rows, col / block_cols)).add(Coord(row, col));
-            }
-        }
+
         for (int col = 0; col < block_cols; col++)
-        {
             for (int row = 0; row < block_rows; row++)
-            {
                 coords_for_block[Coord(row, col)] = coords_for_block[Coord(row, col)].read_only_view;
-            }
-        }
+
         coords_for_block = coords_for_block.read_only_view;
     }
 
@@ -255,7 +240,8 @@ public class SudokuBoard : Object
 
         for (var l = 1; l <= max_val; l++)
         {
-            if (is_possible (row, col, l)) {
+            if (is_possible (row, col, l))
+            {
                 possibilities[count] = l;
                 count++;
             }
@@ -268,9 +254,7 @@ public class SudokuBoard : Object
         var possibilities = new bool[max_val];
 
         for (var l = 1; l <= max_val; l++)
-        {
             possibilities[l - 1] = is_possible (row, col, l);
-        }
 
         return possibilities;
     }
@@ -301,19 +285,13 @@ public class SudokuBoard : Object
             fixed++;
 
         if (!possible_in_row[row, val - 1]) // If val was not possible in this row
-        {
             mark_breakages_for(coords_for_row[row], val); // Mark the breakages
-        }
 
         if (!possible_in_col[col, val - 1]) // If val was not possible in this col
-        {
             mark_breakages_for(coords_for_col[col], val); // Mark the breakages
-        }
 
         if (!possible_in_block[row / block_cols, col / block_rows, val - 1]) // If val was not possible in this block
-        {
             mark_breakages_for(coords_for_block[Coord(row / block_cols, col / block_rows)], val); // Mark the breakages
-        }
 
         // Then just mark it as not possible
         val--;
@@ -328,17 +306,11 @@ public class SudokuBoard : Object
     public new void set (int row, int col, int val)
     {
         if (val == 0)
-        {
             remove (row, col);
-        }
         else if (val > 0 && val <= max_val)
-        {
             insert (row, col, val);
-        }
         else
-        {
             assert_not_reached();
-        }
     }
 
     public new int get (int row, int col)
@@ -401,11 +373,9 @@ public class SudokuBoard : Object
     {
         Set<Coord?> occurances = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         foreach (Coord coord in coords)
-        {
-            if (cells[coord.row, coord.col] == val) {
+            if (cells[coord.row, coord.col] == val)
                 occurances.add (coord);
-            }
-        }
+
         return occurances;
     }
 
@@ -427,11 +397,8 @@ public class SudokuBoard : Object
     private void remove_breakages_for(Gee.List<Coord?> coords, int val)
     {
         foreach (Coord coord in coords)
-        {
-            if (cells[coord.row, coord.col] == val && broken_coords.contains(coord)) {
+            if (cells[coord.row, coord.col] == val && broken_coords.contains(coord))
                 broken_coords.remove(coord);
-            }
-        }
     }
 
     /* returns if val is possible in coords */
@@ -439,30 +406,23 @@ public class SudokuBoard : Object
     {
         Set<Coord?> occurances = get_occurances(coords, val);
         if (occurances.size != 1)
-        {
             broken_coords.add_all(occurances);
-        }
     }
 
     public void to_initial_state ()
     {
         for (var l1 = 0; l1 < rows; l1++)
-        {
             for (var l2 = 0; l2 < cols; l2++)
-            {
                 if (!is_fixed[l1, l2])
                     remove (l1, l2);
-            }
-        }
     }
 
-    public void print (int indent = 0) {
+    public void print (int indent = 0)
+    {
         for (var l1 = 0; l1 < 9; l1++)
         {
             for (int i = 0; i < indent; i++)
-            {
                 stdout.printf(" ");
-            }
             for (var l2 = 0; l2 < 9; l2++)
             {
                 if (cells[l1,l2] != 0)
@@ -475,7 +435,8 @@ public class SudokuBoard : Object
         stdout.flush ();
     }
 
-    public void get_string () {
+    public void get_string ()
+    {
         stdout.printf ("[ ");
         for (var l1 = 0; l1 < 9; l1++)
         {
@@ -514,7 +475,8 @@ public class SudokuBoard : Object
         return cells;
     }
 
-    public HashMap<Coord?, Gee.List<int>> calculate_open_squares () {
+    public HashMap<Coord?, Gee.List<int>> calculate_open_squares ()
+    {
         var possibilities = new HashMap<Coord?, Gee.List<int>> ((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         for (var l1 = 0; l1 < rows; l1++)
         {
@@ -524,9 +486,8 @@ public class SudokuBoard : Object
                 {
                     Gee.List<int> possArrayList = new ArrayList<int> ();
                     int[] possArray = get_possibilities (l1, l2);
-                    foreach (int i in possArray) {
+                    foreach (int i in possArray)
                         possArrayList.add (i);
-                    }
                     possibilities[Coord(l1, l2)] = possArrayList;
                 }
             }
@@ -554,7 +515,8 @@ public class SudokuBoard : Object
     }
 }
 
-public enum House {
+public enum House
+{
     ROW,
     COLUMN,
     BLOCK
@@ -571,11 +533,13 @@ public struct Coord
         this.col = col;
     }
 
-    public static int hash (Coord coord) {
+    public static int hash (Coord coord)
+    {
         return (coord.row * 33) ^ coord.col;
     }
 
-    public static bool equal (Coord a, Coord b) {
+    public static bool equal (Coord a, Coord b)
+    {
         return ((a.row == b.row) && (a.col == b.col));
     }
 }
@@ -591,16 +555,19 @@ public struct Cell
         this.val = val;
     }
 
-    public static int hash (Cell cell) {
+    public static int hash (Cell cell)
+    {
         return (Coord.hash(cell.coord) * 33) ^ cell.val;
     }
 
-    public static bool equal (Cell a, Cell b) {
+    public static bool equal (Cell a, Cell b)
+    {
         return (Coord.equal(a.coord, b.coord) && (a.val == b.val));
     }
 }
 
-public enum DifficultyCategory {
+public enum DifficultyCategory
+{
     UNKNOWN,
     EASY,
     MEDIUM,

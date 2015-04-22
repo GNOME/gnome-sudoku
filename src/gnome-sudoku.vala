@@ -209,7 +209,8 @@ public class Sudoku : Gtk.Application
 
         saver = new SudokuSaver ();
         var savegame = saver.get_savedgame ();
-        if (savegame != null) {
+        if (savegame != null)
+        {
             if (savegame.board.difficulty_category == DifficultyCategory.CUSTOM)
                 current_game_mode = savegame.board.filled == savegame.board.fixed ? GameMode.CREATE : GameMode.PLAY;
             start_game (savegame.board);
@@ -295,9 +296,7 @@ public class Sudoku : Gtk.Application
     {
         int solutions = game.board.count_solutions_limited ();
         if (solutions == 1)
-        {
             start_custom_game (game.board);
-        }
         else if (solutions == 0)
         {
             // Error dialog shown when starting a custom game that is not valid.
@@ -317,9 +316,8 @@ public class Sudoku : Gtk.Application
 
             dialog.response.connect ((response_id) => {
                 if (response_id == Gtk.ResponseType.ACCEPT)
-                {
                     start_custom_game (game.board);
-                }
+
                 dialog.destroy ();
             });
 
@@ -462,10 +460,13 @@ public class Sudoku : Gtk.Application
     {
         current_game_mode = GameMode.CREATE;
         SudokuGenerator.generate_boards_async.begin (1, DifficultyCategory.CUSTOM, null, (obj, res) => {
-            try {
+            try
+            {
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);
                 start_game (gen_boards[0]);
-            } catch (Error e) {
+            }
+            catch (Error e)
+            {
                 error ("Error: %s", e.message);
             }
         });
@@ -483,11 +484,14 @@ public class Sudoku : Gtk.Application
         current_game_mode = GameMode.PLAY;
 
         SudokuGenerator.generate_boards_async.begin (1, selected_difficulty, null, (obj, res) => {
-            try {
+            try
+            {
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);
                 back_button.sensitive = true;
                 start_game (gen_boards[0]);
-            } catch (Error e) {
+            }
+            catch (Error e)
+            {
                 error ("Error: %s", e.message);
             }
         });
@@ -523,11 +527,13 @@ public class Sudoku : Gtk.Application
         if (game != null)
             game.resume_clock ();
 
-        if (current_game_mode == GameMode.PLAY) {
+        if (current_game_mode == GameMode.PLAY)
+        {
             play_custom_game_button.visible = false;
             play_pause_button.visible = true;
         }
-        else {
+        else
+        {
             clock_label.hide ();
             clock_image.hide ();
             play_custom_game_button.visible = true;

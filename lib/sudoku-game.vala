@@ -78,7 +78,8 @@ public class SudokuGame : Object
         var old_val = board[row, col];
         update_undo (row, col, old_val, val);
 
-        if (mode == GameMode.CREATE) {
+        if (mode == GameMode.CREATE)
+        {
             board.insert (row, col, val, true);
             board.is_fixed[row, col] = true;
         }
@@ -93,7 +94,8 @@ public class SudokuGame : Object
         int old_val = board[row, col];
         update_undo (row, col, old_val, 0);
 
-        if (mode == GameMode.CREATE) {
+        if (mode == GameMode.CREATE)
+        {
             board.remove (row, col, true);
             board.is_fixed[row, col] = false;
         }
@@ -168,15 +170,18 @@ public class SudokuGame : Object
         int old_val = board [top.row, top.col];
         add_to_stack (to, top.row, top.col, old_val);
 
-        if (mode == GameMode.CREATE) {
+        if (mode == GameMode.CREATE)
+        {
             board.remove (top.row, top.col, board.is_fixed[top.row, top.col]);
             board.is_fixed[top.row, top.col] = false;
         }
         else
             board.remove (top.row, top.col);
 
-        if (top.val != 0) {
-            if (mode == GameMode.CREATE) {
+        if (top.val != 0)
+        {
+            if (mode == GameMode.CREATE)
+            {
                 board.insert (top.row, top.col, top.val, board.is_fixed[top.row, top.col]);
                 board.is_fixed[top.row, top.col] = true;
             }
@@ -228,7 +233,8 @@ public class SudokuGame : Object
     }
 }
 
-public enum GameMode {
+public enum GameMode
+{
     PLAY,
     CREATE;
 }

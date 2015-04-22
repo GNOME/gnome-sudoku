@@ -55,9 +55,8 @@ public class PrintDialog : Gtk.Dialog
         settings = new GLib.Settings ("org.gnome.sudoku");
 
         this.response.connect ((response_id) => {
-            if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT) {
+            if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT)
                 cancellable.cancel ();
-            }
         });
 
         set_transient_for (window);
@@ -162,9 +161,7 @@ public class PrintDialog : Gtk.Dialog
             catch (IOError e)
             {
                 if (!(e is IOError.CANCELLED))
-                {
                     warning ("Error: %s\n", e.message);
-                }
             }
 
             destroy ();

@@ -26,24 +26,25 @@ public class SudokuSaver : Object
     public static string savegame_file { get; private set; default = ""; }
     public static string finishgame_dir { get; private set; default = ""; }
 
-    public SudokuSaver() {
-        try {
+    public SudokuSaver()
+    {
+        try
+        {
 
             var config_dir = Environment.get_user_data_dir ();
             var sudoku_data_dir = Path.build_path (Path.DIR_SEPARATOR_S, config_dir, "gnome-sudoku");
             savegame_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "savefile");
             finishgame_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "finished");
+            var file = File.new_for_path (sudoku_data_dir);
+            if (!file.query_exists ())
+                file.make_directory ();
 
-            {
-                var file = File.new_for_path (sudoku_data_dir);
-                if (!file.query_exists ())
-                    file.make_directory ();
-
-                file = File.new_for_path (finishgame_dir);
-                if (!file.query_exists ())
-                    file.make_directory ();
-            }
-        }  catch (Error e) {
+            file = File.new_for_path (finishgame_dir);
+            if (!file.query_exists ())
+                file.make_directory ();
+        }
+        catch (Error e)
+        {
             warning ("%s", e.message);
         }
     }
@@ -90,9 +91,12 @@ public class SudokuSaver : Object
     {
         var json_str = serialize_game_to_json (game);
 
-        try {
+        try
+        {
             FileUtils.set_contents (file_name, json_str);
-        } catch (Error e) {
+        }
+        catch (Error e)
+        {
             warning ("%s", e.message);
         }
     }
@@ -165,9 +169,12 @@ public class SudokuSaver : Object
     private SudokuGame? parse_json_to_game (string file_path)
     {
         Json.Parser parser = new Json.Parser ();
-        try {
+        try
+        {
             parser.load_from_file (file_path);
-        } catch (Error e) {
+        }
+        catch (Error e)
+        {
             return null;
         }
 

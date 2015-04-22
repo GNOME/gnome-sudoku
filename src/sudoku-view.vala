@@ -420,7 +420,8 @@ private class SudokuCellView : Gtk.DrawingArea
         {
             this.value = new_val;
 
-            if (game.mode == GameMode.CREATE) {
+            if (game.mode == GameMode.CREATE)
+            {
                 if (_selected)
                     background_color = selected_bg_color;
                 else
