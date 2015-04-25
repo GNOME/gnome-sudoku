@@ -16,15 +16,15 @@
 # Petr Pulc <petrpulc@gmail.com>, 2009.
 # Andre Klapper <ak-47@gmx.net>, 2009.
 # Petr Kovar <pknbe@volny.cz>, 2008, 2012.
-# Marek Černocký <marek@manet.cz>, 2010, 2011, 2012, 2013, 2014.
+# Marek Černocký <marek@manet.cz>, 2010, 2011, 2012, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-11-26 08:38+0000\n"
-"PO-Revision-Date: 2014-11-26 10:29+0100\n"
+"POT-Creation-Date: 2015-04-24 20:07+0000\n"
+"PO-Revision-Date: 2015-04-25 09:51+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -74,7 +74,7 @@ msgstr ""
 "sešitů se Sudoku."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:527
+#: ../src/gnome-sudoku.vala:626
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -110,7 +110,7 @@ msgstr "_Nápověda"
 msgid "_About"
 msgstr "O _aplikaci"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:364
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
 msgid "_Quit"
 msgstr "U_končit"
 
@@ -142,25 +142,37 @@ msgstr "Těž_ké"
 msgid "_Very Hard"
 msgstr "_Velmi těžké"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:306
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Create your own puzzle"
+msgstr "_Vytvořit svůj vlastní hlavolam"
+
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
 msgid "_Pause"
 msgstr "_Pozastavit"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:11
 msgid "_Clear Board"
 msgstr "Vy_mazat desku"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: ../data/gnome-sudoku.ui.h:12
 msgid "Reset the board to its original state"
 msgstr "Vrátit herní desku do jejího původního stavu"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: ../data/gnome-sudoku.ui.h:13
 msgid "_New Puzzle"
 msgstr "_Nový hlavolam"
 
-#: ../data/gnome-sudoku.ui.h:13
+#: ../data/gnome-sudoku.ui.h:14
 msgid "Start a new puzzle"
 msgstr "Začít nový hlavolam"
+
+#: ../data/gnome-sudoku.ui.h:15
+msgid "_Start Playing"
+msgstr "_Začít hrát"
+
+#: ../data/gnome-sudoku.ui.h:16
+msgid "Start playing the custom puzzle you have created"
+msgstr "Začít hrát vlastní hlavolam, který jste si vytvořili"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
@@ -227,41 +239,72 @@ msgstr "_Počet hlavolamů"
 msgid "Difficulty"
 msgstr "Obtížnost"
 
-#: ../lib/sudoku-board.vala:589
+#: ../lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "Neznámá obtížnost"
 
-#: ../lib/sudoku-board.vala:591
-msgid "Easy Puzzle"
-msgstr "Snadný hlavolam"
+#: ../lib/sudoku-board.vala:585
+msgid "Easy Difficulty"
+msgstr "Nízká obtížnost"
 
-#: ../lib/sudoku-board.vala:593
+#: ../lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "Střední obtížnost"
 
-#: ../lib/sudoku-board.vala:595
-msgid "Hard Puzzle"
-msgstr "Náročný hlavolam"
+#: ../lib/sudoku-board.vala:589
+msgid "Hard Difficulty"
+msgstr "Vysoká obtížnost"
 
-#: ../lib/sudoku-board.vala:597
-msgid "Very Hard Puzzle"
-msgstr "Velmi náročný hlavolam"
+#: ../lib/sudoku-board.vala:591
+msgid "Very Hard Difficulty"
+msgstr "Velmi vysoká obtížnost"
+
+#: ../lib/sudoku-board.vala:593
+msgid "Custom Puzzle"
+msgstr "Vlastní hlavolam"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:79
+#: ../src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "Zobrazit verzi vydání"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:83
+#: ../src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "U každého políčka zobrazovat možné hodnoty"
 
+#. Error dialog shown when starting a custom game that is not valid.
+#: ../src/gnome-sudoku.vala:303
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "Hlavolam, který jste zadali, není platné Sudoku."
+
+#: ../src/gnome-sudoku.vala:303
+msgid "Please enter a valid puzzle."
+msgstr "Zadejte prosím platný hlavolam."
+
+#. Warning dialog shown when starting a custom game that has multiple solutions.
 #: ../src/gnome-sudoku.vala:312
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "Hlavolam, který jste zadali, má více řešení."
+
+#: ../src/gnome-sudoku.vala:312
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "Platné Sudoku má právě jedno řešení."
+
+#: ../src/gnome-sudoku.vala:314
+msgid "_Back"
+msgstr "_Zpět"
+
+#: ../src/gnome-sudoku.vala:315
+#| msgid "Play _Again"
+msgid "Play _Anyway"
+msgstr "_Přesto hrát"
+
+#: ../src/gnome-sudoku.vala:357
 msgid "_Resume"
 msgstr "Pok_račovat"
 
-#: ../src/gnome-sudoku.vala:358
+#: ../src/gnome-sudoku.vala:421
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -269,20 +312,25 @@ msgstr[0] "Úspěšně hotovo, hlavolam jste vyřešili za %d minutu!"
 msgstr[1] "Úspěšně hotovo, hlavolam jste vyřešili za %d minuty!"
 msgstr[2] "Úspěšně hotovo, hlavolam jste vyřešili za %d minut!"
 
-#: ../src/gnome-sudoku.vala:363
+#: ../src/gnome-sudoku.vala:426
 msgid "Play _Again"
 msgstr "Hrát znov_u"
 
-#: ../src/gnome-sudoku.vala:384
+#: ../src/gnome-sudoku.vala:446
 msgid "Select Difficulty"
 msgstr "Výběr obtížnosti"
 
-#: ../src/gnome-sudoku.vala:420
+#: ../src/gnome-sudoku.vala:502
 msgid "Reset the board to its original state?"
 msgstr "Vrátit herní desku do jejího původního stavu?"
 
+#: ../src/gnome-sudoku.vala:549
+#| msgid "_New Puzzle"
+msgid "Create Puzzle"
+msgstr "Vytváření hlavolamu"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:531
+#: ../src/gnome-sudoku.vala:630
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -293,7 +341,7 @@ msgstr ""
 "\n"
 "Hlavolamy generované pomocí QQwing %s"
 
-#: ../src/gnome-sudoku.vala:536
+#: ../src/gnome-sudoku.vala:635
 msgid "translator-credits"
 msgstr ""
 "Jirka Lébl\n"
@@ -310,7 +358,7 @@ msgstr ""
 "Petr Pulc <petrpulc@gmail.com>\n"
 "Marek Černocký <marek@manet.cz>"
 
-#: ../src/number-picker.vala:89
+#: ../src/number-picker.vala:90
 msgid "Clear"
 msgstr "Vymazat"
 
@@ -320,6 +368,6 @@ msgid "Error printing file:"
 msgstr "Chyba při tisku souboru:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:574
+#: ../src/sudoku-view.vala:628
 msgid "Paused"
 msgstr "Pozastaveno"
