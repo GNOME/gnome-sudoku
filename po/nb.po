@@ -5,10 +5,10 @@
 # Torstein Adolf Winterseth <kvikende@fsfe.org>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-sudoku 3.15.x\n"
+"Project-Id-Version: gnome-sudoku 3.17.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-10 17:51+0100\n"
-"PO-Revision-Date: 2015-02-10 17:52+0100\n"
+"POT-Creation-Date: 2015-05-14 16:32+0200\n"
+"PO-Revision-Date: 2015-05-14 16:36+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -46,7 +46,7 @@ msgid ""
 msgstr ""
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:528
+#: ../src/gnome-sudoku.vala:626
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -82,7 +82,7 @@ msgstr "_Hjelp"
 msgid "_About"
 msgstr "_Om"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:365
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
 msgid "_Quit"
 msgstr "A_vslutt"
 
@@ -114,25 +114,37 @@ msgstr "_Vanskelig"
 msgid "_Very Hard"
 msgstr "Meget _vanskelig"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:307
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Create your own puzzle"
+msgstr "_Lag ditt eget puslespill"
+
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
 msgid "_Pause"
 msgstr "_Pause"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:11
 msgid "_Clear Board"
 msgstr "_Tøm brettet"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: ../data/gnome-sudoku.ui.h:12
 msgid "Reset the board to its original state"
 msgstr "Sett brette tilbake til opprinnelig tilstand"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: ../data/gnome-sudoku.ui.h:13
 msgid "_New Puzzle"
 msgstr "_Nytt spill"
 
-#: ../data/gnome-sudoku.ui.h:13
+#: ../data/gnome-sudoku.ui.h:14
 msgid "Start a new puzzle"
 msgstr "Start et nytt puslespill"
+
+#: ../data/gnome-sudoku.ui.h:15
+msgid "_Start Playing"
+msgstr "_Start spillet"
+
+#: ../data/gnome-sudoku.ui.h:16
+msgid "Start playing the custom puzzle you have created"
+msgstr "Begynn å løse det egendefinerte puslespillet du har laget"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
@@ -192,63 +204,97 @@ msgstr "A_ntall puslespill"
 
 #: ../data/print-dialog.ui.h:5
 msgid "Difficulty"
-msgstr "Vanskelighet"
+msgstr "Vanskelighetsgrad"
 
-#: ../lib/sudoku-board.vala:589
+#: ../lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
-msgstr "Ukjent vanskelighet"
+msgstr "Ukjent vanskelighetsgrad"
 
-#: ../lib/sudoku-board.vala:591
-msgid "Easy Puzzle"
-msgstr "Lett puslespill"
+#: ../lib/sudoku-board.vala:585
+msgid "Easy Difficulty"
+msgstr "Lett vanskelighetsgrad"
 
-#: ../lib/sudoku-board.vala:593
+#: ../lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "Middels vanskelighetsgrad"
 
-#: ../lib/sudoku-board.vala:595
-msgid "Hard Puzzle"
-msgstr "Vanskelig puslespill"
+#: ../lib/sudoku-board.vala:589
+msgid "Hard Difficulty"
+msgstr "Vanskelig vanskelighetsgrad"
 
-#: ../lib/sudoku-board.vala:597
-msgid "Very Hard Puzzle"
-msgstr "Meget vanskelig puslespill"
+#: ../lib/sudoku-board.vala:591
+msgid "Very Hard Difficulty"
+msgstr "Meget vanskelig vanskelighetsgrad"
+
+#: ../lib/sudoku-board.vala:593
+msgid "Custom Puzzle"
+msgstr "Egendefinert puslespill"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:80
+#: ../src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "Vis versjon"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:84
+#: ../src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "Vis mulige verdier for hver celle"
 
-#: ../src/gnome-sudoku.vala:313
+#. Error dialog shown when starting a custom game that is not valid.
+#: ../src/gnome-sudoku.vala:303
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "Puslespillet du har laget er ikke et gyldig Sudoku-spill."
+
+#: ../src/gnome-sudoku.vala:303
+msgid "Please enter a valid puzzle."
+msgstr "Vennligst oppgi et gyldig puslespill."
+
+#. Warning dialog shown when starting a custom game that has multiple solutions.
+#: ../src/gnome-sudoku.vala:312
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "Puslespillet du har laget har flere løsninger."
+
+#: ../src/gnome-sudoku.vala:312
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "Gyldige Sudoku-puslespill har kun en løsning."
+
+#: ../src/gnome-sudoku.vala:314
+msgid "_Back"
+msgstr "Til_bake"
+
+#: ../src/gnome-sudoku.vala:315
+msgid "Play _Anyway"
+msgstr "Spill _likevel"
+
+#: ../src/gnome-sudoku.vala:357
 msgid "_Resume"
 msgstr "_Gjenoppta"
 
-#: ../src/gnome-sudoku.vala:359
+#: ../src/gnome-sudoku.vala:421
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Bra gjort, du fullførte puslespillet på %d minutt!"
 msgstr[1] "Bra gjort, du fullførte puslespillet på %d minutter!"
 
-#: ../src/gnome-sudoku.vala:364
+#: ../src/gnome-sudoku.vala:426
 msgid "Play _Again"
 msgstr "Spill _igjen"
 
-#: ../src/gnome-sudoku.vala:385
+#: ../src/gnome-sudoku.vala:446
 msgid "Select Difficulty"
 msgstr "Velg vanskelighet"
 
-#: ../src/gnome-sudoku.vala:421
+#: ../src/gnome-sudoku.vala:502
 msgid "Reset the board to its original state?"
 msgstr "Nullstill brettet til opprinnelig tilstand?"
 
+#: ../src/gnome-sudoku.vala:549
+msgid "Create Puzzle"
+msgstr "Lag puslespill"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:532
+#: ../src/gnome-sudoku.vala:630
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -259,14 +305,14 @@ msgstr ""
 "\n"
 "Puslespill lages av QQwing %s"
 
-#: ../src/gnome-sudoku.vala:537
+#: ../src/gnome-sudoku.vala:635
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
 "Espen Stefansen <espens@svn.gnome.org>\n"
 "Torstein Adolf Winterseth <kvikende@fsfe.org>"
 
-#: ../src/number-picker.vala:89
+#: ../src/number-picker.vala:90
 msgid "Clear"
 msgstr "Tøm"
 
@@ -276,6 +322,6 @@ msgid "Error printing file:"
 msgstr "Feil utskrift av fil:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:574
+#: ../src/sudoku-view.vala:628
 msgid "Paused"
 msgstr "Pause"
