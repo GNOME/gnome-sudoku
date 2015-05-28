@@ -5,15 +5,15 @@
 # Lucas Vieites <lucas@codexion.com>, 2007, 2008.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009, 2010, 2011.
 # Chris Leonard <cjl@laptop.org>, 2012.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
 #
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-11-12 08:33+0000\n"
-"PO-Revision-Date: 2014-11-12 12:30+0100\n"
+"POT-Creation-Date: 2015-05-27 20:08+0000\n"
+"PO-Revision-Date: 2015-05-28 \n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -28,7 +28,12 @@ msgstr ""
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr ""
+"Ponga a prueba sus habilidades de lógica en este puzle de rejilla numérica"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -39,7 +44,7 @@ msgstr ""
 "intrusiva que hace que sea divertido jugar a sudoku para los jugadores de "
 "todos los niveles."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -48,7 +53,7 @@ msgstr ""
 "periódicos y en las páginas web, por lo que su partida será tan fácil o "
 "difícil como quiera."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -60,14 +65,9 @@ msgstr ""
 "usted mismo."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:524
+#: ../src/gnome-sudoku.vala:626
 msgid "Sudoku"
 msgstr "Sudoku"
-
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr ""
-"Ponga a prueba sus habilidades de lógica en este puzle de rejilla numérica"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
@@ -86,12 +86,10 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Imprimir _múltiples puzles…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-#| msgid "_Highlighter"
 msgid "High_lighter"
 msgstr "_Resaltador"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
-#| msgid "_Show Warnings"
 msgid "_Warnings"
 msgstr "_Advertencias"
 
@@ -103,7 +101,7 @@ msgstr "Ay_uda"
 msgid "_About"
 msgstr "_Acerca de"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:361
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
 msgid "_Quit"
 msgstr "_Salir"
 
@@ -135,25 +133,39 @@ msgstr "_Difícil"
 msgid "_Very Hard"
 msgstr "_Muy difícil"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:303
+#: ../data/gnome-sudoku.ui.h:9
+#| msgid "_Generate new puzzles"
+msgid "_Create your own puzzle"
+msgstr "_Crear su propio puzle"
+
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
 msgid "_Pause"
 msgstr "_Pausa"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:11
 msgid "_Clear Board"
 msgstr "_Limpiar tablero"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: ../data/gnome-sudoku.ui.h:12
 msgid "Reset the board to its original state"
 msgstr "Restablecer el tablero a su estado original"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: ../data/gnome-sudoku.ui.h:13
 msgid "_New Puzzle"
 msgstr "_Nuevo puzle"
 
-#: ../data/gnome-sudoku.ui.h:13
+#: ../data/gnome-sudoku.ui.h:14
 msgid "Start a new puzzle"
 msgstr "Iniciar un puzle nuevo"
+
+#: ../data/gnome-sudoku.ui.h:15
+#| msgid "Starting %s"
+msgid "_Start Playing"
+msgstr "_Empezar a jugar"
+
+#: ../data/gnome-sudoku.ui.h:16
+msgid "Start playing the custom puzzle you have created"
+msgstr "Empezar a jugar el puzle personalizado que ha creado"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
@@ -219,61 +231,100 @@ msgstr "_Número de puzles"
 msgid "Difficulty"
 msgstr "Dificultad"
 
-#: ../lib/sudoku-board.vala:589
+#: ../lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "Dificultad desconocida"
 
-#: ../lib/sudoku-board.vala:591
-msgid "Easy Puzzle"
-msgstr "Puzle fácil"
+#: ../lib/sudoku-board.vala:585
+msgid "Easy Difficulty"
+msgstr "Dificultad fácil:"
 
-#: ../lib/sudoku-board.vala:593
+#: ../lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "Dificultad media:"
 
-#: ../lib/sudoku-board.vala:595
-msgid "Hard Puzzle"
-msgstr "Puzle difícil"
+#: ../lib/sudoku-board.vala:589
+msgid "Hard Difficulty"
+msgstr "Dificultad alta:"
 
-#: ../lib/sudoku-board.vala:597
-msgid "Very Hard Puzzle"
-msgstr "Puzle muy difícil"
+#: ../lib/sudoku-board.vala:591
+msgid "Very Hard Difficulty"
+msgstr "Dificultad muy alta:"
+
+#: ../lib/sudoku-board.vala:593
+#| msgid "Custom Size"
+msgid "Custom Puzzle"
+msgstr "Puzle personalizado"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:80
+#: ../src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "Mostrar el número de versión"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:84
+#: ../src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "Mostrar los valores posibles de cada casilla"
 
-#: ../src/gnome-sudoku.vala:309
+#. Error dialog shown when starting a custom game that is not valid.
+#: ../src/gnome-sudoku.vala:303
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "El puzle que ha introducido no es un sudoku válido."
+
+#: ../src/gnome-sudoku.vala:303
+#| msgid "Please enter a file name"
+msgid "Please enter a valid puzzle."
+msgstr "Introduzca un puzle válido."
+
+#. Warning dialog shown when starting a custom game that has multiple solutions.
+#: ../src/gnome-sudoku.vala:312
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "El puzle que ha introducido tiene varias soluciones."
+
+#: ../src/gnome-sudoku.vala:312
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "Los sudokus válidos sólo tienen una solución."
+
+#: ../src/gnome-sudoku.vala:314
+#| msgid "Backbone"
+msgid "_Back"
+msgstr "_Atrás"
+
+#: ../src/gnome-sudoku.vala:315
+#| msgid "Play _Again"
+msgid "Play _Anyway"
+msgstr "Jugar de _todos modos"
+
+#: ../src/gnome-sudoku.vala:357
 msgid "_Resume"
 msgstr "_Continuar"
 
-#: ../src/gnome-sudoku.vala:355
+#: ../src/gnome-sudoku.vala:421
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Bien hecho, ha completado el puzle en %d minuto"
 msgstr[1] "Bien hecho, ha completado el puzle en %d minutos"
 
-#: ../src/gnome-sudoku.vala:360
+#: ../src/gnome-sudoku.vala:426
 msgid "Play _Again"
 msgstr "Jugar _otra vez"
 
-#: ../src/gnome-sudoku.vala:381
+#: ../src/gnome-sudoku.vala:446
 msgid "Select Difficulty"
 msgstr "Seleccionar la dificultad"
 
-#: ../src/gnome-sudoku.vala:417
+#: ../src/gnome-sudoku.vala:502
 msgid "Reset the board to its original state?"
 msgstr "¿Restablecer el tablero a su estado original?"
 
+#: ../src/gnome-sudoku.vala:549
+#| msgid "Pennant Puzzle"
+msgid "Create Puzzle"
+msgstr "Crear puzle"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:528
+#: ../src/gnome-sudoku.vala:630
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -284,7 +335,7 @@ msgstr ""
 "\n"
 "Puzles generados por QQwing %s"
 
-#: ../src/gnome-sudoku.vala:533
+#: ../src/gnome-sudoku.vala:635
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>, 2008-2012\n"
@@ -293,7 +344,7 @@ msgstr ""
 "Germán Poo Caamaño <gpoo@ubiobio.cl>\n"
 "Pablo Saratxaga <pablo@mandrakesoft.com>"
 
-#: ../src/number-picker.vala:89
+#: ../src/number-picker.vala:90
 msgid "Clear"
 msgstr "Limpiar"
 
@@ -303,18 +354,18 @@ msgid "Error printing file:"
 msgstr "Error al imprimir el archivo:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:574
+#: ../src/sudoku-view.vala:628
 msgid "Paused"
 msgstr "Detenido"
 
-#~ msgid "Easy Difficulty"
-#~ msgstr "Dificultad fácil:"
+#~ msgid "Easy Puzzle"
+#~ msgstr "Puzle fácil"
 
-#~ msgid "Hard Difficulty"
-#~ msgstr "Dificultad alta:"
+#~ msgid "Hard Puzzle"
+#~ msgstr "Puzle difícil"
 
-#~ msgid "Very Hard Difficulty"
-#~ msgstr "Dificultad muy alta:"
+#~ msgid "Very Hard Puzzle"
+#~ msgstr "Puzle muy difícil"
 
 #~ msgid "Same difficulty again"
 #~ msgstr "Misma dificultad otra vez"
@@ -2442,8 +2493,7 @@ msgstr "Detenido"
 #~ msgstr "Usar la bandera de «desconocido»"
 
 #~ msgid "Set to true to be able to mark squares as unknown."
-#~ msgstr ""
-#~ "Ponga el valor a «true» para poder marcar cuadros como desconocidos."
+#~ msgstr "Ponga el valor a «true» para poder marcar cuadros como desconocidos."
 
 #~ msgid "Warning about too many flags"
 #~ msgstr "Advertir acerca de demasiadas banderas"
@@ -2703,9 +2753,6 @@ msgstr "Detenido"
 
 #~ msgid "Rome"
 #~ msgstr "Roma"
-
-#~ msgid "Pennant Puzzle"
-#~ msgstr "Puzle Pennant"
 
 #~ msgid "Ithaca"
 #~ msgstr "Ítaca"
@@ -3402,9 +3449,6 @@ msgstr "Detenido"
 #~ msgid "Graphics Theme"
 #~ msgstr "Tema gráfico"
 
-#~ msgid "Custom Size"
-#~ msgstr "Tamaño personalizado"
-
 #~ msgid "Flags"
 #~ msgstr "Banderas"
 
@@ -3667,9 +3711,6 @@ msgstr "Detenido"
 
 #~ msgid "Unrecognized desktop file Version '%s'"
 #~ msgstr "No se reconoce la versión «%s» del archivo desktop"
-
-#~ msgid "Starting %s"
-#~ msgstr "Iniciando %s"
 
 #~ msgid "Application does not accept documents on command line"
 #~ msgstr "La aplicación no acepta documentos en la línea de comandos"
@@ -4140,9 +4181,6 @@ msgstr "Detenido"
 
 #~ msgid "Chessboard"
 #~ msgstr "Tablero de ajedrez"
-
-#~ msgid "Backbone"
-#~ msgstr "Dorsal"
 
 #~ msgid "Yukon"
 #~ msgstr "Yukon"
@@ -5487,8 +5525,8 @@ msgstr "Detenido"
 #~ "'lan' (long algebraic notation) or 'san' (standard algebraic notation)"
 #~ msgstr ""
 #~ "El formato en el que mostrar jugadas, puede ser «humano» (legible por "
-#~ "personas), «lan» (notación algebraica larga - «long algebraic notation») "
-#~ "o «san» (notación algebraica estándar - «standard algebraic notation»)"
+#~ "personas), «lan» (notación algebraica larga - «long algebraic notation») o "
+#~ "«san» (notación algebraica estándar - «standard algebraic notation»)"
 
 #~ msgid "The piece style to use. Can be one of: 'simple' or 'fancy'"
 #~ msgstr "El estilo de pieza que usar. Puede ser «simple» o «fantasía»."
@@ -5500,9 +5538,9 @@ msgstr "Detenido"
 #~ "g. handhelds)"
 #~ msgstr ""
 #~ "El lado del tablero que está en primero plano, "
-#~ "«white» (blanco),«black» (negro), «current» (el jugador actual), "
-#~ "«human» (el lado del jugador humano actual) o «facetoface» (apropiado "
-#~ "para jugadores a cada lado de la pantalla, ej. dispositivos portátiles)"
+#~ "«white» (blanco),«black» (negro), «current» (el jugador actual), «human» (el "
+#~ "lado del jugador humano actual) o «facetoface» (apropiado para jugadores a "
+#~ "cada lado de la pantalla, ej. dispositivos portátiles)"
 
 #~ msgid "Logs"
 #~ msgstr "Registros"
@@ -5653,9 +5691,6 @@ msgstr "Detenido"
 
 #~ msgid "Please select a file to load"
 #~ msgstr "Seleccione un archivo para cargar"
-
-#~ msgid "Please enter a file name"
-#~ msgstr "Introduzca un nombre de archivo"
 
 #~ msgid "Chess - *%(game_name)s"
 #~ msgstr "Ajedrez - *%(game_name)s"
@@ -6057,9 +6092,6 @@ msgstr "Detenido"
 #~ msgstr ""
 #~ "Rellenar automáticamente todos los cuadrados para los que sólo hay un "
 #~ "valor válido."
-
-#~ msgid "_Generate new puzzles"
-#~ msgstr "_Generar puzles nuevos"
 
 #~ msgid "Generate new puzzles."
 #~ msgstr "Genera puzles nuevos."
