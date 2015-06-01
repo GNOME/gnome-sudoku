@@ -29,15 +29,15 @@
 # Simos Xenitellis <simos.lists@googlemail.com>, 2010.
 # Michael Kotsarinis <mk73628@hotmail.com>, 2010.
 # George Stefanakis <george.stefanakis@gmail.com>, 2011.
-# Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013, 2014.
+# Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013, 2014, 2015.
 # Efstathios Iosifidis <iosifidis@opensuse.org>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.el\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-11-14 08:33+0000\n"
-"PO-Revision-Date: 2014-11-15 10:59+0300\n"
+"POT-Creation-Date: 2015-05-28 20:04+0000\n"
+"PO-Revision-Date: 2015-05-30 11:07+0300\n"
 "Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
 "Language-Team: www.gnome.gr\n"
 "Language: el\n"
@@ -52,7 +52,11 @@ msgstr ""
 msgid "GNOME Sudoku"
 msgstr "Σουντόκου GNOME"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Δοκιμάστε τη λογική σας σε αυτό το παιχνίδι με αριθμούς"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -63,7 +67,7 @@ msgstr ""
 "διεπαφή που κάνει το παιχνίδι διασκέδαση για παίκτες οποιουδήποτε επιπέδου "
 "ικανότητας."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -72,7 +76,7 @@ msgstr ""
 "σε εφημερίδες και ιστότοπους, έτσι ώστε το παιχνίδι σας να είναι τόσο εύκολο "
 "ή τόσο δύσκολο όσο θέλετε να είναι."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -84,13 +88,9 @@ msgstr ""
 "να αποτελέσει ένα ανανεώσιμο βιβλίο Σουντόκου για εσάς."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:524
+#: ../src/gnome-sudoku.vala:626
 msgid "Sudoku"
 msgstr "Σουντόκου"
-
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Δοκιμάστε τη λογική σας σε αυτό το παιχνίδι με αριθμούς"
 
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
@@ -109,12 +109,10 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Εκτύπωση _πολλαπλών γρίφων…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-#| msgid "_Highlighter"
 msgid "High_lighter"
 msgstr "Επ_ισήμανση"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
-#| msgid "_Show Warnings"
 msgid "_Warnings"
 msgstr "Π_ροειδοποιήσεις"
 
@@ -126,7 +124,7 @@ msgstr "_Βοήθεια"
 msgid "_About"
 msgstr "_Περί"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:361
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
 msgid "_Quit"
 msgstr "Έ_ξοδος"
 
@@ -158,25 +156,37 @@ msgstr "_Δύσκολο"
 msgid "_Very Hard"
 msgstr "_Πολύ δύσκολο"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:303
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Create your own puzzle"
+msgstr "_Δημιουργήστε τον δικό σας γρίφο"
+
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
 msgid "_Pause"
 msgstr "Παύ_ση"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:11
 msgid "_Clear Board"
 msgstr "Κα_θαρισμός πίνακα"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: ../data/gnome-sudoku.ui.h:12
 msgid "Reset the board to its original state"
 msgstr "Επαναφορά του πίνακα στην αρχική του κατάσταση"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: ../data/gnome-sudoku.ui.h:13
 msgid "_New Puzzle"
 msgstr "_Νέος γρίφος"
 
-#: ../data/gnome-sudoku.ui.h:13
+#: ../data/gnome-sudoku.ui.h:14
 msgid "Start a new puzzle"
 msgstr "Εκκίνηση νέου γρίφου"
+
+#: ../data/gnome-sudoku.ui.h:15
+msgid "_Start Playing"
+msgstr "Έ_ναρξη παιχνιδιού"
+
+#: ../data/gnome-sudoku.ui.h:16
+msgid "Start playing the custom puzzle you have created"
+msgstr "Έναρξη παιχνιδιού του προσαρμοσμένου γρίφου που έχετε δημιουργήσει"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
@@ -244,69 +254,98 @@ msgstr "_Αριθμός γρίφων"
 msgid "Difficulty"
 msgstr "Βαθμός δυσκολίας"
 
-#: ../lib/sudoku-board.vala:589
+#: ../lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "Άγνωστη δυσκολία"
 
-#: ../lib/sudoku-board.vala:591
-#| msgid "Easy puzzle"
-msgid "Easy Puzzle"
-msgstr "Εύκολο πρόβλημα"
+#: ../lib/sudoku-board.vala:585
+msgid "Easy Difficulty"
+msgstr "Μικρής δυσκολίας"
 
-#: ../lib/sudoku-board.vala:593
+#: ../lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "Μέτριας δυσκολίας"
 
-#: ../lib/sudoku-board.vala:595
-#| msgid "Hard puzzle"
-msgid "Hard Puzzle"
-msgstr "Δύσκολο πρόβλημα"
+#: ../lib/sudoku-board.vala:589
+msgid "Hard Difficulty"
+msgstr "Υψηλής δυσκολίας"
 
-#: ../lib/sudoku-board.vala:597
-#| msgid "Very hard puzzle"
-msgid "Very Hard Puzzle"
-msgstr "Πολύ δύσκολο πρόβλημα"
+#: ../lib/sudoku-board.vala:591
+msgid "Very Hard Difficulty"
+msgstr "Πολύ υψηλής δυσκολίας"
+
+#: ../lib/sudoku-board.vala:593
+#| msgid "Easy Puzzle"
+msgid "Custom Puzzle"
+msgstr "Προσαρμοσμένος γρίφος"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:80
+#: ../src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "Προβολή της έκδοσης"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:84
+#: ../src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "Εμφάνιση των πιθανών τιμών για κάθε κελί"
 
-#: ../src/gnome-sudoku.vala:309
-#| msgid "_Reset"
+#. Error dialog shown when starting a custom game that is not valid.
+#: ../src/gnome-sudoku.vala:303
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "Ο γρίφος που έχετε εισάγει δεν είναι ένα έγκυρο Σουντόκου."
+
+#: ../src/gnome-sudoku.vala:303
+msgid "Please enter a valid puzzle."
+msgstr "Παρακαλούμε, εισάγετε έναν έγκυρο γρίφο."
+
+#. Warning dialog shown when starting a custom game that has multiple solutions.
+#: ../src/gnome-sudoku.vala:312
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "Ο γρίφος που έχετε εισάγει έχει πολλαπλές λύσεις."
+
+#: ../src/gnome-sudoku.vala:312
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "Οι έγκυροι γρίφοι Σουντόκου έχουν ακριβώς μία λύση."
+
+#: ../src/gnome-sudoku.vala:314
+msgid "_Back"
+msgstr "_Πίσω"
+
+#: ../src/gnome-sudoku.vala:315
+#| msgid "Play _Again"
+msgid "Play _Anyway"
+msgstr "Να παιχθεί σε κά_θε περίπτωση"
+
+#: ../src/gnome-sudoku.vala:357
 msgid "_Resume"
 msgstr "_Συνέχεια"
 
-#: ../src/gnome-sudoku.vala:355
+#: ../src/gnome-sudoku.vala:421
 #, c-format
-#| msgid "Well done, you completed the puzzle in %d minute"
-#| msgid_plural "Well done, you completed the puzzle in %d minutes"
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Μπράβο, ολοκληρώσατε το πρόβλημα σε %d λεπτό!"
 msgstr[1] "Μπράβο, ολοκληρώσατε το πρόβλημα σε %d λεπτά!"
 
-#: ../src/gnome-sudoku.vala:360
-#| msgid "Play as:"
+#: ../src/gnome-sudoku.vala:426
 msgid "Play _Again"
 msgstr "Παίξτε _ξανά"
 
-#: ../src/gnome-sudoku.vala:381
-#| msgid "Difficulty"
+#: ../src/gnome-sudoku.vala:446
 msgid "Select Difficulty"
 msgstr "Επιλέξτε βαθμό δυσκολίας"
 
-#: ../src/gnome-sudoku.vala:417
+#: ../src/gnome-sudoku.vala:502
 msgid "Reset the board to its original state?"
 msgstr "Επαναφορά του πίνακα στην αρχική του κατάσταση;"
 
+#: ../src/gnome-sudoku.vala:549
+#| msgid "_New Puzzle"
+msgid "Create Puzzle"
+msgstr "Δημιουργία γρίφου"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:528
+#: ../src/gnome-sudoku.vala:630
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -317,7 +356,7 @@ msgstr ""
 "\n"
 "Οι γρίφοι δημιουργούνται από το QQwing %s"
 
-#: ../src/gnome-sudoku.vala:533
+#: ../src/gnome-sudoku.vala:635
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -332,7 +371,7 @@ msgstr ""
 "Για περισσότερες πληροφορίες, επισκεφθείτε την σελίδα\n"
 "http://gnome.gr/"
 
-#: ../src/number-picker.vala:89
+#: ../src/number-picker.vala:90
 msgid "Clear"
 msgstr "Εκκαθάριση"
 
@@ -342,18 +381,17 @@ msgid "Error printing file:"
 msgstr "Σφάλμα κατά την εκτύπωση του αρχείου:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:574
+#: ../src/sudoku-view.vala:628
 msgid "Paused"
 msgstr "Σε παύση"
 
-#~ msgid "Easy Difficulty"
-#~ msgstr "Μικρής δυσκολίας"
+#~| msgid "Hard puzzle"
+#~ msgid "Hard Puzzle"
+#~ msgstr "Δύσκολο πρόβλημα"
 
-#~ msgid "Hard Difficulty"
-#~ msgstr "Υψηλής δυσκολίας"
-
-#~ msgid "Very Hard Difficulty"
-#~ msgstr "Πολύ υψηλής δυσκολίας"
+#~| msgid "Very hard puzzle"
+#~ msgid "Very Hard Puzzle"
+#~ msgstr "Πολύ δύσκολο πρόβλημα"
 
 #~ msgid "Same difficulty again"
 #~ msgstr "Ίδιος βαθμός δυσκολίας πάλι"
