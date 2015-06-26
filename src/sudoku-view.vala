@@ -301,6 +301,7 @@ private class SudokuCellView : Gtk.DrawingArea
             {
                 value = k_no;
                 this.game.board.disable_all_earmarks (row, col);
+                hide_both_popovers ();
             }
             return true;
         }
