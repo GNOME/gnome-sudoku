@@ -1,19 +1,19 @@
 # Chris Triantafillis <christriant1995@gmail.com>, 2011.
 # Simos Xenitellis <simos@gnome.org>, 2011.
-# Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013.
+# Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-devel-docs master\n"
-"POT-Creation-Date: 2014-04-24 07:27+0000\n"
-"PO-Revision-Date: 2014-04-24 13:36+0200\n"
-"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
-"Language-Team: team@lists.gnome.gr\n"
+"POT-Creation-Date: 2015-06-26 08:10+0000\n"
+"PO-Revision-Date: 2015-06-27 12:39+0300\n"
+"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
+"Language-Team: www.gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -21,7 +21,7 @@ msgctxt "_"
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
-" Δημήτρης Σπίγγος <dmtrs32@gmail.com>, 2013\n"
+" Δημήτρης Σπίγγος <dmtrs32@gmail.com>, 2013, 2015\n"
 " Χρήστος Τριανταφύλλης <christriant1995@gmail.com>, 2011\n"
 " Θάνος Τρυφωνίδης <tomtryf@gmail.com>, 2012\n"
 "Για περισσότερα δείτε: http://gnome.gr"
@@ -35,7 +35,7 @@ msgstr "Chris Beiser"
 #. (itstool) path: credit/years
 #: C/basics.page:10 C/bug-filing.page:12 C/commandline.page:10
 #: C/develop.page:12 C/documentation.page:10 C/highlighting.page:13
-#: C/hints.page:10 C/index.page:13 C/keyboard-shortcuts.page:11
+#: C/hints.page:10 C/index.page:16 C/keyboard-shortcuts.page:11
 #: C/notes.page:10 C/print-blank-puzzles.page:8
 #: C/print-inprogress-game.page:12 C/rules.page:13 C/save-resume.page:12
 #: C/statistics.page:10 C/strategy.page:11 C/toolbar.page:10
@@ -53,11 +53,10 @@ msgstr "Michael Hill"
 #. (itstool) path: license/p
 #: C/basics.page:17 C/bug-filing.page:15 C/commandline.page:17
 #: C/develop.page:15 C/documentation.page:13 C/highlighting.page:16
-#: C/hints.page:13 C/index.page:16 C/keyboard-shortcuts.page:18
-#: C/notes.page:21 C/print-blank-puzzles.page:17
-#: C/print-inprogress-game.page:15 C/rules.page:16 C/save-resume.page:19
-#: C/statistics.page:13 C/strategy.page:18 C/toolbar.page:13
-#: C/trackers.page:18 C/translate.page:19
+#: C/hints.page:13 C/keyboard-shortcuts.page:18 C/notes.page:21
+#: C/print-blank-puzzles.page:17 C/print-inprogress-game.page:15
+#: C/rules.page:16 C/save-resume.page:19 C/statistics.page:13
+#: C/strategy.page:18 C/toolbar.page:13 C/trackers.page:18 C/translate.page:19
 msgid "Creative Commons Share Alike 3.0"
 msgstr "Creative Commons Share Alike 3.0"
 
@@ -137,7 +136,7 @@ msgstr ""
 #. (itstool) path: credit/name
 #: C/bug-filing.page:10 C/commandline.page:8 C/develop.page:10
 #: C/documentation.page:8 C/highlighting.page:11 C/hints.page:8
-#: C/index.page:11 C/keyboard-shortcuts.page:14 C/print-blank-puzzles.page:9
+#: C/index.page:14 C/keyboard-shortcuts.page:14 C/print-blank-puzzles.page:9
 #: C/print-inprogress-game.page:10 C/statistics.page:8 C/strategy.page:14
 #: C/trackers.page:9 C/translate.page:10
 msgid "Tiffany Antopolski"
@@ -253,11 +252,14 @@ msgstr "Εκτύπωση πληροφοριών αποσφαλμάτωσης"
 
 #. (itstool) path: section/p
 #: C/commandline.page:27
+#| msgid ""
+#| "This command may be useful when your are filing a bug and need to post "
+#| "debug information: <cmd>gnome-sudoku -v</cmd>"
 msgid ""
-"This command may be useful when your are filing a bug and need to post debug "
+"This command may be useful when you are filing a bug and need to post debug "
 "information: <cmd>gnome-sudoku -v</cmd>"
 msgstr ""
-"Αυτή η εντολή μπορεί να είναι χρήσιμη όταν αναφέρετε ένα σφάλμα και "
+"Αυτή η εντολή μπορεί να είναι χρήσιμη όταν στέλνετε ένα σφάλμα και "
 "χρειάζεστε να δώσετε πληροφορίες αποσφαλμάτωσης: <cmd>gnome-sudoku -v</cmd>"
 
 #. (itstool) path: section/title
@@ -267,19 +269,25 @@ msgstr "Πληροφορίες προφίλ"
 
 #. (itstool) path: section/p
 #: C/commandline.page:32
+#| msgid ""
+#| "This command is useful if you are filing a bug about slow performance. It "
+#| "will show the perfomance of different functions that run, and possibly "
+#| "reveal which specific function(s) may be responsible for poor "
+#| "performance. This information attached to a bug could make it easier to "
+#| "fix the problem, but this command is used mostly by programmers."
 msgid ""
 "This command is useful if you are filing a bug about slow performance. It "
-"will show the perfomance of different functions that run, and possibly "
+"will show the performance of different functions that run, and possibly "
 "reveal which specific function(s) may be responsible for poor performance. "
 "This information attached to a bug could make it easier to fix the problem, "
 "but this command is used mostly by programmers."
 msgstr ""
-"Αυτή η εντολή είναι χρήσιμη αν υποβάλλεται μια αναφορά σφάλματος για αργή "
-"απόδοση. Θα σας δείξει την απόδοση των διαφόρων συναρτήσεων που τρέχουν, και "
-"ενδεχομένως να αποκαλύψει ποια συνάρτηση(εις) μπορεί να είναι υπεύθυνη για "
-"την κακή απόδοση. Οι πληροφορίες επισυνάπτονται στο σφάλμα και μπορούν να "
-"διευκολύνουν την επίλυση του προβλήματος, αλλά αυτή η εντολή χρησιμοποιείται "
-"κυρίως από τους προγραμματιστές."
+"Αυτή η εντολή είναι χρήσιμη αν στέλνετε μια αναφορά σφάλματος για αργή "
+"απόδοση. Θα σας δείξει την απόδοση των διαφόρων συναρτήσεων που τρέχουν και "
+"ενδεχομένως να αποκαλύψει ποια συγκεκριμένη συνάρτηση(εις) μπορεί να είναι "
+"υπεύθυνη για την κακή απόδοση. Αυτές οι πληροφορίες επισυνάπτονται στο "
+"σφάλμα και μπορούν να διευκολύνουν την επίλυση του προβλήματος, αλλά αυτή η "
+"εντολή χρησιμοποιείται κυρίως από τους προγραμματιστές."
 
 #. (itstool) path: section/p
 #: C/commandline.page:33
@@ -504,60 +512,76 @@ msgctxt "text"
 msgid "GNOME Sudoku"
 msgstr "Σουντόκου"
 
-#. (itstool) path: media/span
+#. (itstool) path: credit/name
 #: C/index.page:19
-#| msgctxt "link"
-#| msgid "GNOME Sudoku"
-msgid "GNOME Sudoku logo"
-msgstr "Σουντόκου λογότυπο"
+msgid "Ekaterina Gerasimova"
+msgstr "Ekaterina Gerasimova"
+
+#. (itstool) path: credit/years
+#: C/index.page:21
+msgid "2015"
+msgstr "2015"
+
+#. (itstool) path: info/desc
+#: C/index.page:26
+msgid ""
+"Learn to play GNOME Sudoku, a logic-based puzzle game in which a grid must "
+"be filled with the correct numbers."
+msgstr ""
+"Μάθετε να παίζετε GNOME Σουντόκου, ένα παιχνίδι γρίφου με βάση τη λογική στο "
+"οποίο ένα πλέγμα πρέπει να συμπληρωθεί με τους σωστούς αριθμούς."
 
 #. (itstool) path: page/title
-#: C/index.page:19
-#| msgctxt "link"
-#| msgid "GNOME Sudoku"
+#: C/index.page:31
 msgid "<_:media-1/> GNOME Sudoku"
 msgstr "<_:media-1/> Σουντόκου"
 
 #. (itstool) path: page/p
-#: C/index.page:21
+#: C/index.page:36
+#| msgid ""
+#| "Gnome Sudoku is based on the popular number-based logic puzzle in which "
+#| "one must fill a 9 X 9 square with the correct digits. The unique puzzles "
+#| "can be played on screen or <link xref=\"index#print\">printed</link> to "
+#| "take along. All games persist across sessions and you can <link xref="
+#| "\"save-resume#resume\">resume</link> any old game at any time, as well as "
+#| "replay any game you've already won."
 msgid ""
-"Gnome Sudoku is based on the popular number-based logic puzzle in which one "
-"must fill a 9 X 9 square with the correct digits. The unique puzzles can be "
-"played on screen or <link xref=\"index#print\">printed</link> to take along. "
-"All games persist across sessions and you can <link xref=\"save-resume#resume"
-"\">resume</link> any old game at any time, as well as replay any game you've "
-"already won."
+"GNOME Sudoku is a logic-based number-placement puzzle in which a 9×9 square "
+"must be filled with the correct digits. The unique puzzles can be played on "
+"screen or <link xref=\"index#print\">printed</link>. If you do not have time "
+"to finish a game, you can <link xref=\"save-resume#resume\">resume</link> it "
+"any time, as well as replay any game you've already won."
 msgstr ""
-"Το Σουντόκου του Gnome βασίζεται στο δημοφιλές παιχνίδι αριθμών στο οποίο "
-"κάποιος πρέπει να γεμίσει ένα τετράγωνο 9 X 9 με τα σωστά νούμερα. Τα "
-"μοναδικά παζλ μπορούν να παιχτούν στην οθόνη ή <link xref=\"index#print"
-"\">εκτυπωμένα</link> για να τα πάρετε μαζί σας. Όλα τα παιχνίδια παραμένουν "
-"σε συνεδρίες έτσι ώστε να μπορείτε να <link xref=\"save-resume#resume"
-"\">συνεχίσετε</link> ένα παλιό παιχνίδι οποιαδήποτε στιγμή, όπως επίσης και "
-"να επαναλαμβάνετε ένα παιχνίδι που ήδη έχετε κερδίσει."
+"Το Σουντόκου του Gnome είναι ένας γρίφος τοποθέτησης αριθμών με βάση τη "
+"λογική στο οποίο κάποιος πρέπει να γεμίσει ένα τετράγωνο 9 X 9 με τους "
+"σωστούς αριθμούς. Οι μοναδικοί γρίφοι μπορούν να παιχτούν στην οθόνη ή να "
+"<link xref=\"index#print\">εκτυπωθούν</link>. Εάν δεν έχετε τον χρόνο για να "
+"τελειώσετε ένα παιχνίδι, μπορείτε να το <link xref=\"save-"
+"resume#resume\">συνεχίσετε</link> οποτεδήποτε, καθώς και να ξαναπαίξετε "
+"οποιοδήποτε παιχνίδι έχετε ήδη κερδίσει."
 
 #. (itstool) path: section/title
-#: C/index.page:25
+#: C/index.page:44
 msgid "Game Play"
 msgstr "Παιχνίδι"
 
 #. (itstool) path: section/title
-#: C/index.page:29
+#: C/index.page:48
 msgid "Useful tips"
 msgstr "Χρήσιμες συμβουλές"
 
 #. (itstool) path: section/title
-#: C/index.page:33
+#: C/index.page:52
 msgid "Printing"
 msgstr "Εκτύπωση"
 
 #. (itstool) path: section/title
-#: C/index.page:37
+#: C/index.page:56
 msgid "Advanced"
 msgstr "Για προχωρημένους"
 
 #. (itstool) path: section/title
-#: C/index.page:41
+#: C/index.page:60
 msgid "Get Involved"
 msgstr "Συμμετοχή"
 
@@ -1577,6 +1601,11 @@ msgstr ""
 "Εναλλακτικά, μπορείτε να επικοινωνήσετε με την ομάδα διεθνοποίησης "
 "χρησιμοποιώντας τη <link href=\"http://mail.gnome.org/mailman/listinfo/gnome-"
 "i18n\">λίστα αλληλογραφίας</link> τους."
+
+#~| msgctxt "link"
+#~| msgid "GNOME Sudoku"
+#~ msgid "GNOME Sudoku logo"
+#~ msgstr "Σουντόκου λογότυπο"
 
 #~ msgctxt "_"
 #~ msgid ""
