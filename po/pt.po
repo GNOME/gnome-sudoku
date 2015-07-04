@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: 3.12\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-06-07 20:10+0000\n"
-"PO-Revision-Date: 2015-06-26 09:50+0100\n"
+"POT-Creation-Date: 2015-07-03 20:09+0000\n"
+"PO-Revision-Date: 2015-07-04 08:32+0100\n"
 "Last-Translator: Pedro Albuquerque <palbuquerque73@openmailbox.com>\n"
 "Language-Team: Português <palbuquerque73@openmailbox.com>\n"
 "Language: pt\n"
@@ -41,7 +41,6 @@ msgstr ""
 "jogo divertido para jogadores de qualquer nível."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
-#, fuzzy
 #| msgid ""
 #| "Each game is assigned a difficulty similar to those given by newspapers "
 #| "and websites. You can also see detailed information about how the "
@@ -51,8 +50,7 @@ msgid ""
 "websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
 "A cada jogo é atribuida uma dificuldade equivalente às dadas em jornais e "
-"websites. Pode também consultar informações detalhadas sobre como o "
-"computador resolve o quebra-cabeças."
+"websites, pelo que o seu jogo será tão fácil ou tão difícil quanto o queira."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
@@ -74,26 +72,22 @@ msgid "magic;square;"
 msgstr "magia;quadrado;"
 
 #: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
-#| msgid "_Print..."
 msgid "_Print"
 msgstr "_Imprimir"
 
 #: ../data/gnome-sudoku-menu.ui.h:2
-#, fuzzy
 #| msgid "There is no current puzzle."
 msgid "Print _Current Puzzle…"
-msgstr "Não existe nenhum puzzle atual."
+msgstr "Imprimir o _Jogo atual."
 
 #: ../data/gnome-sudoku-menu.ui.h:3
-#| msgid "Print _Multiple Sudokus..."
 msgid "Print _Multiple Puzzles…"
 msgstr "Imprimir _Múltiplos sudokus..."
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-#, fuzzy
 #| msgid "_Highlighter"
 msgid "High_lighter"
-msgstr "_Realce"
+msgstr "Rea_Lce"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
 msgid "_Warnings"
@@ -112,13 +106,11 @@ msgid "_Quit"
 msgstr "_Sair"
 
 #: ../data/gnome-sudoku.ui.h:2
-#, fuzzy
 #| msgid "Undo last action"
 msgid "Undo your last action"
 msgstr "Desfazer a última ação"
 
 #: ../data/gnome-sudoku.ui.h:3
-#, fuzzy
 #| msgid "Redo last action"
 msgid "Redo your last action"
 msgstr "Refazer a última ação"
@@ -152,7 +144,6 @@ msgid "_Pause"
 msgstr "_Pausa"
 
 #: ../data/gnome-sudoku.ui.h:11
-#| msgid "_Clear"
 msgid "_Clear Board"
 msgstr "_Limpar tabuleiro"
 
@@ -161,12 +152,10 @@ msgid "Reset the board to its original state"
 msgstr "Repor o tabuleiro no seu estado original"
 
 #: ../data/gnome-sudoku.ui.h:13
-#| msgid "_New Game"
 msgid "_New Puzzle"
 msgstr "_Novo jogo"
 
 #: ../data/gnome-sudoku.ui.h:14
-#| msgid "Hard puzzle"
 msgid "Start a new puzzle"
 msgstr "Iniciar um novo jogo"
 
@@ -179,7 +168,6 @@ msgid "Start playing the custom puzzle you have created"
 msgstr "Começar a jogar o jogo personalizado que criou"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
-#| msgid "_Number of sudoku to print: "
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Nível de dificuldade dos sudokus a imprimir"
 
@@ -192,17 +180,14 @@ msgstr ""
 "possíveis são \"Fácil\", \"Média\", \"Alta\" e \"Muito alta\"."
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:3
-#| msgid "_Number of sudoku to print: "
 msgid "Number of Sudokus to print"
 msgstr "Número de sudokus a imprimir"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:4
-#| msgid "_Number of sudoku to print: "
 msgid "Set the number of sudokus you want to print"
 msgstr "Defina o número de sudokus que quer imprimir"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:5
-#| msgid "Warn About _Unfillable Squares"
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Avisar sobre espaços impossíveis de preencher e números duplicados"
 
@@ -219,12 +204,10 @@ msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Realçar linha, coluna e espaço que contêm a célula selecionada"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:8
-#| msgid "Width of application window in pixels"
 msgid "Width of the window in pixels"
 msgstr "A largura em pixels da janela"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:9
-#| msgid "Height of application window in pixels"
 msgid "Height of the window in pixels"
 msgstr "Altura em pixels da janela"
 
@@ -233,7 +216,6 @@ msgid "true if the window is maximized"
 msgstr "verdadeiro se a janela estiver maximizada"
 
 #: ../data/print-dialog.ui.h:1
-#| msgid "Print _Multiple Sudokus..."
 msgid "Print Multiple Puzzles"
 msgstr "Imprimir múltiplos sudokus"
 
@@ -242,7 +224,6 @@ msgid "_Cancel"
 msgstr "_Cancelar"
 
 #: ../data/print-dialog.ui.h:4
-#| msgid "Number of puzzles to print on a page"
 msgid "_Number of puzzles"
 msgstr "Número de jogos"
 
@@ -259,22 +240,18 @@ msgid "Easy Difficulty"
 msgstr "Dificuldade fácil"
 
 #: ../lib/sudoku-board.vala:587
-#| msgid "Calculated difficulty: "
 msgid "Medium Difficulty"
 msgstr "Dificuldade média"
 
 #: ../lib/sudoku-board.vala:589
-#| msgid "Calculated difficulty: "
 msgid "Hard Difficulty"
 msgstr "Dificuldade alta"
 
 #: ../lib/sudoku-board.vala:591
-#| msgid "Very Hard"
 msgid "Very Hard Difficulty"
 msgstr "Dificuldade muito alta"
 
 #: ../lib/sudoku-board.vala:593
-#| msgid "Medium puzzle"
 msgid "Custom Puzzle"
 msgstr "Jogo personalizado"
 
@@ -315,14 +292,11 @@ msgid "Play _Anyway"
 msgstr "Ainda assim _Jogar"
 
 #: ../src/gnome-sudoku.vala:357
-#| msgid "_Reset"
 msgid "_Resume"
 msgstr "_Retomar"
 
 #: ../src/gnome-sudoku.vala:421
 #, c-format
-#| msgid "You completed the puzzle in %d second"
-#| msgid_plural "You completed the puzzle in %d seconds"
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Bem jogado, terminou o puzzle em %d minuto."
@@ -333,7 +307,6 @@ msgid "Play _Again"
 msgstr "Jogar _Novamente"
 
 #: ../src/gnome-sudoku.vala:446
-#| msgid "Calculated difficulty: "
 msgid "Select Difficulty"
 msgstr "Selecione a dificuldade"
 
@@ -348,10 +321,6 @@ msgstr "Criar jogo"
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
 #: ../src/gnome-sudoku.vala:630
 #, c-format
-#| msgid ""
-#| "The popular Japanese logic puzzle\n"
-#| "\n"
-#| "GNOME Sudoku is a part of GNOME Games."
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -368,18 +337,16 @@ msgstr ""
 "Pedro Albuquerque <palbuquerque73@gmail.com>"
 
 #: ../src/number-picker.vala:90
-#| msgid "_Clear"
 msgid "Clear"
 msgstr "Limpar"
 
 #. Error message if printing fails
 #: ../src/sudoku-printer.vala:48
-#| msgid "Error creating directory"
 msgid "Error printing file:"
 msgstr "Erro ao imprimir o ficheiro:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:628
+#: ../src/sudoku-view.vala:629
 msgid "Paused"
 msgstr "Pausado"
 
