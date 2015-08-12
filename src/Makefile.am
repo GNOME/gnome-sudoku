@@ -21,6 +21,7 @@ gnome_sudoku_CPPFLAGS = \
 	-DLOCALEDIR=\"$(localedir)\" \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	-I$(top_srcdir)/lib \
+	-I$(top_builddir)/lib \
 	$(GNOME_SUDOKU_CFLAGS)
 
 gnome_sudoku_LDADD = \
@@ -33,14 +34,13 @@ gnome_sudoku_VALAFLAGS = \
 	--pkg gtk+-3.0 \
 	--pkg gee-0.8 \
 	--target-glib=$(GLIB_REQUIRED) \
-	--gresources=$(builddir)/gnome-sudoku.gresource.xml \
-	$(top_builddir)/lib/libsudoku.vapi
+	--gresources=$(abs_top_srcdir)/data/gnome-sudoku.gresource.xml \
+	$(abs_top_srcdir)/lib/libsudoku.vapi
 
-gnome-sudoku-resources.c: gnome-sudoku.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies gnome-sudoku.gresource.xml)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $<
+gnome-sudoku-resources.c: $(top_srcdir)/data/gnome-sudoku.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(top_srcdir)/data --generate-dependencies $(top_srcdir)/data/gnome-sudoku.gresource.xml)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(top_srcdir)/data --generate-source $<
 
 CLEANFILES = \
-	gnome-sudoku.gresource.xml \
 	gnome-sudoku-resources.c
 
 -include $(top_srcdir)/git.mk

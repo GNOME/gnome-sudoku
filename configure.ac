@@ -82,6 +82,5 @@ data/icons/hicolor/Makefile
 lib/Makefile
 help/Makefile
 src/Makefile
-src/gnome-sudoku.gresource.xml
 ])
 AC_OUTPUT

@@ -17,6 +17,7 @@ pixmapdir = $(datadir)/gnome-sudoku/images/
 pixmap_DATA = footprints.png
 
 dist_noinst_DATA = \
+	gnome-sudoku.gresource.xml \
 	gnome-sudoku.ui \
 	gnome-sudoku-menu.ui \
 	print-dialog.ui \
