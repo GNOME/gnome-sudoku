@@ -2,21 +2,22 @@
 # Copyright (C) 1998-2015 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-sudoku package.
 #
-# Claude Paroz <claude@2xlibre.net>, 2007-2015.
 # Stéphane Raimbault <stephane.raimbault@gmail.com>, 2007-2008.
 # Didier Vidal <didier-devel@melix.net>, 2007.
 # Pierre Lemaire <pierre.lemaire@kamick.org>, 2008.
 # Laurent Coudeur <laurentc@iol.ie>, 2009.
 # Bruno Brouard <annoa.b@gmail.com>, 2012.
 # Alexandre Franke <alexandre.franke@gmail.com>, 2014.
+# Claude Paroz <claude@2xlibre.net>, 2007-2015.
+# Victor Levasseur <victorlevasseur52@gmail.com>, 2015
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-02-22 08:42+0000\n"
-"PO-Revision-Date: 2015-02-22 16:42+0100\n"
+"POT-Creation-Date: 2015-06-26 13:43+0000\n"
+"PO-Revision-Date: 2015-09-04 13:44+0200\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -65,7 +66,7 @@ msgstr ""
 "livre de Sudoku sans fin."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:459
+#: ../src/gnome-sudoku.vala:626
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -101,7 +102,7 @@ msgstr "Aid_e"
 msgid "_About"
 msgstr "À _propos"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:304
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
 msgid "_Quit"
 msgstr "_Quitter"
 
@@ -134,20 +135,36 @@ msgid "_Very Hard"
 msgstr "_Très difficile"
 
 #: ../data/gnome-sudoku.ui.h:9
+msgid "_Create your own puzzle"
+msgstr "_Créer sa propre grille"
+
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+msgid "_Pause"
+msgstr "_Pause"
+
+#: ../data/gnome-sudoku.ui.h:11
 msgid "_Clear Board"
 msgstr "_Effacer la grille"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:12
 msgid "Reset the board to its original state"
 msgstr "Réinitialise la grille à son état d'origine"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: ../data/gnome-sudoku.ui.h:13
 msgid "_New Puzzle"
 msgstr "_Nouvelle grille"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: ../data/gnome-sudoku.ui.h:14
 msgid "Start a new puzzle"
 msgstr "Démarrer une nouvelle grille"
+
+#: ../data/gnome-sudoku.ui.h:15
+msgid "_Start Playing"
+msgstr "_Commencer à jouer"
+
+#: ../data/gnome-sudoku.ui.h:16
+msgid "Start playing the custom puzzle you have created"
+msgstr "Commencer à jouer la grille que vous avez créée"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
@@ -185,7 +202,8 @@ msgstr ""
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr ""
-"Mettre en surbrillance la ligne, la colonne et la case contenant la cellule sélectionnée"
+"Mettre en surbrillance la ligne, la colonne et la case contenant la cellule "
+"sélectionnée"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
@@ -215,53 +233,95 @@ msgstr "_Nombre de grilles"
 msgid "Difficulty"
 msgstr "Difficulté"
 
-#: ../lib/sudoku-board.vala:589
+#: ../lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "Difficulté inconnue"
 
-#: ../lib/sudoku-board.vala:591
-msgid "Easy Puzzle"
-msgstr "Grille simple"
+#: ../lib/sudoku-board.vala:585
+msgid "Easy Difficulty"
+msgstr "Difficulté faible"
 
-#: ../lib/sudoku-board.vala:593
+#: ../lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "Difficulté moyenne"
 
-#: ../lib/sudoku-board.vala:595
-msgid "Hard Puzzle"
-msgstr "Grille difficile"
+#: ../lib/sudoku-board.vala:589
+msgid "Hard Difficulty"
+msgstr "Difficulté élevée"
 
-#: ../lib/sudoku-board.vala:597
-msgid "Very Hard Puzzle"
-msgstr "Grille très difficile"
+#: ../lib/sudoku-board.vala:591
+msgid "Very Hard Difficulty"
+msgstr "Difficulté très élevée"
+
+#: ../lib/sudoku-board.vala:593
+msgid "Custom Puzzle"
+msgstr "Grille personnalisée"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:76
+#: ../src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "Affiche le numéro de version"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:80
+#: ../src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "Affiche les valeurs possibles pour chaque cellule"
 
-#: ../src/gnome-sudoku.vala:298
+#. Error dialog shown when starting a custom game that is not valid.
+#: ../src/gnome-sudoku.vala:303
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "La grille que vous avez saisie n'est pas un sudoku valable."
+
+#: ../src/gnome-sudoku.vala:303
+msgid "Please enter a valid puzzle."
+msgstr "Saisissez une grille valable."
+
+#. Warning dialog shown when starting a custom game that has multiple solutions.
+#: ../src/gnome-sudoku.vala:312
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "La grille que vous avez saisie possède plusieurs solutions."
+
+#: ../src/gnome-sudoku.vala:312
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "Les grilles valables ont exactement une solution."
+
+#: ../src/gnome-sudoku.vala:314
+msgid "_Back"
+msgstr "_Précédent"
+
+#: ../src/gnome-sudoku.vala:315
+msgid "Play _Anyway"
+msgstr "_Jouer quand même"
+
+#: ../src/gnome-sudoku.vala:357
+msgid "_Resume"
+msgstr "_Reprendre"
+
+#: ../src/gnome-sudoku.vala:421
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Bravo, vous avez fini la grille en %d minute."
 msgstr[1] "Bravo, vous avez fini la grille en %d minutes."
 
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:426
 msgid "Play _Again"
 msgstr "_Rejouer"
 
-#: ../src/gnome-sudoku.vala:360
+#: ../src/gnome-sudoku.vala:446
+msgid "Select Difficulty"
+msgstr "Sélectionner la difficulté"
+
+#: ../src/gnome-sudoku.vala:502
 msgid "Reset the board to its original state?"
 msgstr "Réinitialiser la grille à son état de départ ?"
 
+#: ../src/gnome-sudoku.vala:549
+msgid "Create Puzzle"
+msgstr "Créer une grille"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:463
+#: ../src/gnome-sudoku.vala:630
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -272,7 +332,7 @@ msgstr ""
 "\n"
 "Grilles générées par QQwing %s"
 
-#: ../src/gnome-sudoku.vala:468
+#: ../src/gnome-sudoku.vala:635
 msgid "translator-credits"
 msgstr ""
 "Christophe Merlet <redfox@redfoxcenter.org>\n"
@@ -288,7 +348,7 @@ msgstr ""
 "Pierre Lemaire <pierre.lemaire@kamick.org>\n"
 "Alexandre Franke <alexandre.franke@gmail.com>"
 
-#: ../src/number-picker.vala:89
+#: ../src/number-picker.vala:90
 msgid "Clear"
 msgstr "Effacer"
 
@@ -296,3 +356,14 @@ msgstr "Effacer"
 #: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Erreur à l'impression du fichier :"
+
+#. Text on overlay when game is paused
+#: ../src/sudoku-view.vala:629
+msgid "Paused"
+msgstr "En pause"
+
+#~ msgid "Hard Puzzle"
+#~ msgstr "Grille difficile"
+
+#~ msgid "Very Hard Puzzle"
+#~ msgstr "Grille très difficile"
