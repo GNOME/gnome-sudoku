@@ -423,8 +423,8 @@ public class Sudoku : Gtk.Application
                                      minutes).printf (minutes);
             var dialog = new MessageDialog (window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, time_str);
 
-            dialog.add_button (_("Play _Again"), Gtk.ResponseType.ACCEPT);
             dialog.add_button (_("_Quit"), Gtk.ResponseType.REJECT);
+            dialog.add_button (_("Play _Again"), Gtk.ResponseType.ACCEPT);
 
             dialog.response.connect ((response_id) => {
                 if (response_id == Gtk.ResponseType.ACCEPT)
