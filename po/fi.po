@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-03-14 08:47+0000\n"
-"PO-Revision-Date: 2015-03-14 12:34+0200\n"
+"POT-Creation-Date: 2015-09-05 08:17+0000\n"
+"PO-Revision-Date: 2015-09-05 15:28+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
@@ -65,7 +65,7 @@ msgstr ""
 "vaikeustason."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:459
+#: ../src/gnome-sudoku.vala:626
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -86,12 +86,10 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Tulosta _useita sudokuja…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-#| msgid "_Highlighter"
 msgid "High_lighter"
 msgstr "_Korostus"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
-#| msgid "_Show Warnings"
 msgid "_Warnings"
 msgstr "_Varoitukset"
 
@@ -103,7 +101,7 @@ msgstr "O_hje"
 msgid "_About"
 msgstr "_Tietoja"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:304
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
 msgid "_Quit"
 msgstr "_Lopeta"
 
@@ -136,20 +134,37 @@ msgid "_Very Hard"
 msgstr "_Hyvin vaikea"
 
 #: ../data/gnome-sudoku.ui.h:9
+msgid "_Create your own puzzle"
+msgstr "_Luo oma pulma"
+
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+msgid "_Pause"
+msgstr "_Keskeytä"
+
+#: ../data/gnome-sudoku.ui.h:11
 msgid "_Clear Board"
 msgstr "_Tyhjennä lauta"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:12
 msgid "Reset the board to its original state"
 msgstr "Palauta lauta alkuperäistilaan"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: ../data/gnome-sudoku.ui.h:13
 msgid "_New Puzzle"
 msgstr "_Uusi pulma"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: ../data/gnome-sudoku.ui.h:14
 msgid "Start a new puzzle"
 msgstr "Aloita uusi peli"
+
+#: ../data/gnome-sudoku.ui.h:15
+#| msgid "_Starting level:"
+msgid "_Start Playing"
+msgstr "_Aloita pelaaminen"
+
+#: ../data/gnome-sudoku.ui.h:16
+msgid "Start playing the custom puzzle you have created"
+msgstr "Aloita luomasi pulman pelaaminen"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
@@ -215,59 +230,100 @@ msgstr "P_ulmien määrä"
 msgid "Difficulty"
 msgstr "Vaikeustaso"
 
-#: ../lib/sudoku-board.vala:597
+#: ../lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "Tuntematon vaikeustaso"
 
-#: ../lib/sudoku-board.vala:599
-#| msgid "Easy puzzle"
-msgid "Easy Puzzle"
-msgstr "Helppo pulma"
+#: ../lib/sudoku-board.vala:585
+msgid "Easy Difficulty"
+msgstr "Helppo vaikeustaso"
 
-#: ../lib/sudoku-board.vala:601
+#: ../lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "Keskinkertainen vaikeustaso"
 
-#: ../lib/sudoku-board.vala:603
-#| msgid "Hard puzzle"
-msgid "Hard Puzzle"
-msgstr "Vaikea pulma"
+#: ../lib/sudoku-board.vala:589
+msgid "Hard Difficulty"
+msgstr "Vaikea vaikeustaso"
 
-#: ../lib/sudoku-board.vala:605
-#| msgid "Very hard puzzle"
-msgid "Very Hard Puzzle"
-msgstr "Erittäin vaikea pulma"
+#: ../lib/sudoku-board.vala:591
+msgid "Very Hard Difficulty"
+msgstr "Erittäin vaikea vaikeustaso"
+
+#: ../lib/sudoku-board.vala:593
+#| msgid "Custom Size"
+msgid "Custom Puzzle"
+msgstr "Oma pulma"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:76
+#: ../src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "Näytä julkaisuversio"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:80
+#: ../src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "Näytä jokaisen solun mahdolliset arvot"
 
-#: ../src/gnome-sudoku.vala:298
+#. Error dialog shown when starting a custom game that is not valid.
+#: ../src/gnome-sudoku.vala:303
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "Antamasi pulma ei ole kelvollinen sudoku."
+
+#: ../src/gnome-sudoku.vala:303
+msgid "Please enter a valid puzzle."
+msgstr "Anna kelvollinen pulma."
+
+#. Warning dialog shown when starting a custom game that has multiple solutions.
+#: ../src/gnome-sudoku.vala:312
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "Antamallasi pulmalla on lukuisia ratkaisuja."
+
+#: ../src/gnome-sudoku.vala:312
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "Kelvolliset sudokupulmat omaavat vain yhden ratkaisun."
+
+#: ../src/gnome-sudoku.vala:314
+msgid "_Back"
+msgstr "_Takaisin"
+
+#: ../src/gnome-sudoku.vala:315
+#| msgid "Play _Again"
+msgid "Play _Anyway"
+msgstr "Pelaa _silti"
+
+#: ../src/gnome-sudoku.vala:357
+#| msgid "_Reset"
+msgid "_Resume"
+msgstr "_Jatka"
+
+#: ../src/gnome-sudoku.vala:421
 #, c-format
-#| msgid "Well done, you completed the puzzle in %d minute"
-#| msgid_plural "Well done, you completed the puzzle in %d minutes"
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Onnittelut, ratkaisit pulman %d minuuttissa!"
 msgstr[1] "Onnittelut, ratkaisit pulman %d minuuttissa!"
 
-#: ../src/gnome-sudoku.vala:303
-#| msgid "Play as:"
+#: ../src/gnome-sudoku.vala:426
 msgid "Play _Again"
 msgstr "_Pelaa uudelleen"
 
-#: ../src/gnome-sudoku.vala:360
+#: ../src/gnome-sudoku.vala:446
+#| msgid "Difficulty"
+msgid "Select Difficulty"
+msgstr "Valitse vaikeustaso"
+
+#: ../src/gnome-sudoku.vala:502
 msgid "Reset the board to its original state?"
 msgstr "Palautetaanko lauta sen alkuperäistilaan?"
 
+#: ../src/gnome-sudoku.vala:549
+#| msgid "Pennant Puzzle"
+msgid "Create Puzzle"
+msgstr "Luo pulma"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:463
+#: ../src/gnome-sudoku.vala:630
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -278,7 +334,7 @@ msgstr ""
 "\n"
 "Pulmat tuottaa QQwing %s"
 
-#: ../src/gnome-sudoku.vala:468
+#: ../src/gnome-sudoku.vala:635
 msgid "translator-credits"
 msgstr ""
 "Jiri Grönroos, 2012-2015\n"
@@ -299,7 +355,7 @@ msgstr ""
 "  Timo Jyrinki https://launchpad.net/~timo-jyrinki\n"
 "  eGetin https://launchpad.net/~egetin"
 
-#: ../src/number-picker.vala:89
+#: ../src/number-picker.vala:90
 msgid "Clear"
 msgstr "Tyhjennä"
 
@@ -308,14 +364,22 @@ msgstr "Tyhjennä"
 msgid "Error printing file:"
 msgstr "Virhe tulostaessa tiedostoa:"
 
-#~ msgid "Easy Difficulty"
-#~ msgstr "Helppo vaikeustaso"
+#. Text on overlay when game is paused
+#: ../src/sudoku-view.vala:629
+msgid "Paused"
+msgstr "Keskeytetty"
 
-#~ msgid "Hard Difficulty"
-#~ msgstr "Vaikea vaikeustaso"
+#~| msgid "Easy puzzle"
+#~ msgid "Easy Puzzle"
+#~ msgstr "Helppo pulma"
 
-#~ msgid "Very Hard Difficulty"
-#~ msgstr "Erittäin vaikea vaikeustaso"
+#~| msgid "Hard puzzle"
+#~ msgid "Hard Puzzle"
+#~ msgstr "Vaikea pulma"
+
+#~| msgid "Very hard puzzle"
+#~ msgid "Very Hard Puzzle"
+#~ msgstr "Erittäin vaikea pulma"
 
 #~ msgid "Same difficulty again"
 #~ msgstr "Sama vaikeustaso uudelleen"
@@ -467,9 +531,6 @@ msgstr "Virhe tulostaessa tiedostoa:"
 
 #~ msgid "New game"
 #~ msgstr "Uusi peli"
-
-#~ msgid "_Reset"
-#~ msgstr "_Alusta"
 
 #~ msgid "_Undo"
 #~ msgstr "_Peru"
@@ -1389,9 +1450,6 @@ msgstr "Virhe tulostaessa tiedostoa:"
 #~ msgid "Player _List"
 #~ msgstr "_Pelaajalista"
 
-#~ msgid "_Pause"
-#~ msgstr "_Keskeytä"
-
 #~ msgid "Res_ume"
 #~ msgstr "_Jatka"
 
@@ -1895,9 +1953,6 @@ msgstr "Virhe tulostaessa tiedostoa:"
 #~ msgid "_Enable fake bonuses"
 #~ msgstr "_Huijausbonukset päälle"
 
-#~ msgid "_Starting level:"
-#~ msgstr "_Aloitustaso:"
-
 #~ msgid "Number of _human players:"
 #~ msgstr "_Ihmispelaajien määrä:"
 
@@ -2297,9 +2352,6 @@ msgstr "Virhe tulostaessa tiedostoa:"
 #~ msgid "Difficult"
 #~ msgstr "Vaikea"
 
-#~ msgid "Paused"
-#~ msgstr "Keskeytetty"
-
 #~ msgid "Moves Left:"
 #~ msgstr "Siirtoja jäljellä:"
 
@@ -2649,9 +2701,6 @@ msgstr "Virhe tulostaessa tiedostoa:"
 
 #~ msgid "Rome"
 #~ msgstr "Rooma"
-
-#~ msgid "Pennant Puzzle"
-#~ msgstr "Viiripulma"
 
 #~ msgid "Ithaca"
 #~ msgstr "Ithaca"
@@ -3367,9 +3416,6 @@ msgstr "Virhe tulostaessa tiedostoa:"
 
 #~ msgid "Time: "
 #~ msgstr "Aika: "
-
-#~ msgid "Custom Size"
-#~ msgstr "Oma koko"
 
 #~ msgid "Cancel current game?"
 #~ msgstr "Perutaanko nykyinen peli?"
