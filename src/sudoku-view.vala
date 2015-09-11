@@ -113,7 +113,7 @@ private class SudokuCellView : Gtk.DrawingArea
         // background_color is set in the SudokuView, as it manages the color of the cells
 
         can_focus = true;
-        events = EventMask.EXPOSURE_MASK | EventMask.BUTTON_PRESS_MASK | EventMask.KEY_PRESS_MASK;
+        events = EventMask.EXPOSURE_MASK | EventMask.BUTTON_PRESS_MASK | EventMask.BUTTON_RELEASE_MASK | EventMask.KEY_PRESS_MASK;
 
         if (is_fixed)
             return;
