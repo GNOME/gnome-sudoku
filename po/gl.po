@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games-master-po-gl-54590\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-14 15:59+0200\n"
-"PO-Revision-Date: 2015-09-14 16:01+0200\n"
+"POT-Creation-Date: 2015-09-14 16:38+0200\n"
+"PO-Revision-Date: 2015-09-14 16:40+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -66,7 +66,7 @@ msgstr ""
 "GNOME Sudoku pode actuar como un libro de Sudokus actualizábel."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:528
+#: ../src/gnome-sudoku.vala:626
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -102,7 +102,7 @@ msgstr "_Axuda"
 msgid "_About"
 msgstr "So_bre"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:365
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:426
 msgid "_Quit"
 msgstr "_Saír"
 
@@ -134,25 +134,37 @@ msgstr "_Difícil"
 msgid "_Very Hard"
 msgstr "Moi di_fícil"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:307
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Create your own puzzle"
+msgstr "_Crear o seu propio quebracabezas"
+
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
 msgid "_Pause"
 msgstr "_Pausa"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:11
 msgid "_Clear Board"
 msgstr "_Limpar taboleiro"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: ../data/gnome-sudoku.ui.h:12
 msgid "Reset the board to its original state"
 msgstr "Reiniciar o taboleiro ao seu estado orixinal"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: ../data/gnome-sudoku.ui.h:13
 msgid "_New Puzzle"
 msgstr "_Novo quebracabezas"
 
-#: ../data/gnome-sudoku.ui.h:13
+#: ../data/gnome-sudoku.ui.h:14
 msgid "Start a new puzzle"
 msgstr "Comezar un xogo quebracabezas"
+
+#: ../data/gnome-sudoku.ui.h:15
+msgid "_Start Playing"
+msgstr "_Comezar a xogar"
+
+#: ../data/gnome-sudoku.ui.h:16
+msgid "Start playing the custom puzzle you have created"
+msgstr "Comezar a xogar un quebracabezas personalizado que vostede creou"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
@@ -218,61 +230,95 @@ msgstr "_Número de quebraca"
 msgid "Difficulty"
 msgstr "Dificultade"
 
-#: ../lib/sudoku-board.vala:597
+#: ../lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "Dificultade non coñecida"
 
-#: ../lib/sudoku-board.vala:599
-msgid "Easy Puzzle"
-msgstr "Quebracabezas fácil"
+#: ../lib/sudoku-board.vala:585
+msgid "Easy Difficulty"
+msgstr "Dificultade fácil"
 
-#: ../lib/sudoku-board.vala:601
+#: ../lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "Dificultade media"
 
-#: ../lib/sudoku-board.vala:603
-msgid "Hard Puzzle"
-msgstr "Quebracabezas difícil"
+#: ../lib/sudoku-board.vala:589
+msgid "Hard Difficulty"
+msgstr "Dificultade difícil"
 
-#: ../lib/sudoku-board.vala:605
-msgid "Very Hard Puzzle"
-msgstr "Quebracabezas moi difícil"
+#: ../lib/sudoku-board.vala:591
+msgid "Very Hard Difficulty"
+msgstr "Dificultade moi difícil"
+
+#: ../lib/sudoku-board.vala:593
+msgid "Custom Puzzle"
+msgstr "Quebracabezas personalizado"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:80
+#: ../src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "Mostrar o número de versión"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:84
+#: ../src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "Mostrar os valores posíbeis para cada cela"
 
-#: ../src/gnome-sudoku.vala:313
+#. Error dialog shown when starting a custom game that is not valid.
+#: ../src/gnome-sudoku.vala:303
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "O quebracabezas que inseriu non é un Sudoku válido."
+
+#: ../src/gnome-sudoku.vala:303
+msgid "Please enter a valid puzzle."
+msgstr "Escriba un quebracabezas válido."
+
+#. Warning dialog shown when starting a custom game that has multiple solutions.
+#: ../src/gnome-sudoku.vala:312
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "O quebracabezas que inseriu ten varias solucións."
+
+#: ../src/gnome-sudoku.vala:312
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "Os quebracabezas Sudoku válidos teñen só unha solución."
+
+#: ../src/gnome-sudoku.vala:314
+msgid "_Back"
+msgstr "_Atrás"
+
+#: ../src/gnome-sudoku.vala:315
+msgid "Play _Anyway"
+msgstr "_Xogar igualmente"
+
+#: ../src/gnome-sudoku.vala:357
 msgid "_Resume"
 msgstr "C_ontinuar"
 
-#: ../src/gnome-sudoku.vala:359
+#: ../src/gnome-sudoku.vala:421
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Ben feito, completaches o quebracabezas en %d minuto!"
 msgstr[1] "Ben feito, completaches o quebracabezas en %d minutos!"
 
-#: ../src/gnome-sudoku.vala:364
+#: ../src/gnome-sudoku.vala:427
 msgid "Play _Again"
 msgstr "_Xogar de novo"
 
-#: ../src/gnome-sudoku.vala:385
+#: ../src/gnome-sudoku.vala:446
 msgid "Select Difficulty"
 msgstr "Seleccionar dificultade"
 
-#: ../src/gnome-sudoku.vala:421
+#: ../src/gnome-sudoku.vala:502
 msgid "Reset the board to its original state?"
 msgstr "Reiniciar o taboleiro ao seu estado orixinal?"
 
+#: ../src/gnome-sudoku.vala:549
+msgid "Create Puzzle"
+msgstr "Crear quebracabezas"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:532
+#: ../src/gnome-sudoku.vala:630
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -283,15 +329,15 @@ msgstr ""
 "\n"
 "Quebracabezas xerados por QQwing %s"
 
-#: ../src/gnome-sudoku.vala:537
+#: ../src/gnome-sudoku.vala:635
 msgid "translator-credits"
 msgstr ""
 "Fran Diéguez <frandieguez@gnome.org>, 2009-2015.\n"
 "Leandro Regueiro <leandro.regueiro@gmail.com>, 2012.\n"
 "Antón Méixome <meixome@mancomun.org>, 2009.\n"
 "Suso Baleato <suso.baleato@xunta.es>, 2009.\n"
-"Mancomún - Centro de Referencia e Servizos de Software Libre "
-"<g11n@mancomun.org>, 2009.\n"
+"Mancomún - Centro de Referencia e Servizos de Software Libre <g11n@mancomun."
+"org>, 2009.\n"
 "Ignacio Casal Quinteiro <icq@svn.gnome.org>, 2008.\n"
 "Ignacio Casal Quinteiro <nacho.resa@gmail.com>, 2005, 2006.\n"
 "Jesús Bravo Álvarez <jba@pobox.com>, 2000.\n"
@@ -299,7 +345,7 @@ msgstr ""
 "Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas\n"
 "colaborar connosco, podes atopar máis información en http://www.trasno.net"
 
-#: ../src/number-picker.vala:89
+#: ../src/number-picker.vala:90
 msgid "Clear"
 msgstr "Limpar"
 
@@ -309,18 +355,18 @@ msgid "Error printing file:"
 msgstr "Produciuse un erro ao imprimir o ficheiro:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:578
+#: ../src/sudoku-view.vala:629
 msgid "Paused"
 msgstr "Detido"
 
-#~ msgid "Easy Difficulty"
-#~ msgstr "Dificultade fácil"
+#~ msgid "Easy Puzzle"
+#~ msgstr "Quebracabezas fácil"
 
-#~ msgid "Hard Difficulty"
-#~ msgstr "Dificultade difícil"
+#~ msgid "Hard Puzzle"
+#~ msgstr "Quebracabezas difícil"
 
-#~ msgid "Very Hard Difficulty"
-#~ msgstr "Dificultade moi difícil"
+#~ msgid "Very Hard Puzzle"
+#~ msgstr "Quebracabezas moi difícil"
 
 #~ msgid "Same difficulty again"
 #~ msgstr "Mesma dificultade de novo"
@@ -2694,9 +2740,6 @@ msgstr "Detido"
 #~ msgid "Rome"
 #~ msgstr "Roma"
 
-#~ msgid "Pennant Puzzle"
-#~ msgstr "Quebracabezas Pennant"
-
 #~ msgid "Ithaca"
 #~ msgstr "Ítaca"
 
@@ -3380,9 +3423,6 @@ msgstr "Detido"
 #~ msgid "Graphics Theme"
 #~ msgstr "Tema gráfico"
 
-#~ msgid "Custom Size"
-#~ msgstr "Personalizar tamaño"
-
 #~ msgid "Flags"
 #~ msgstr "Bandeiras"
 
@@ -3714,9 +3754,6 @@ msgstr "Detido"
 
 #~ msgid "Unrecognized desktop file Version '%s'"
 #~ msgstr "A versión «%s» do ficheiro .desktop non se recoñece"
-
-#~ msgid "Starting %s"
-#~ msgstr "Iniciando %s"
 
 #~ msgid "Application does not accept documents on command line"
 #~ msgstr "O aplicativo non acepta documentos na liña de ordes"
@@ -4122,9 +4159,6 @@ msgstr "Detido"
 
 #~ msgid "Chessboard"
 #~ msgstr "Taboleiro de xadrez"
-
-#~ msgid "Backbone"
-#~ msgstr "Backbone"
 
 #~ msgid "Yukon"
 #~ msgstr "Yukon"
@@ -5634,9 +5668,6 @@ msgstr "Detido"
 
 #~ msgid "Please select a file to load"
 #~ msgstr "Seleccione un ficheiro para cargar"
-
-#~ msgid "Please enter a file name"
-#~ msgstr "Introduza un nome de ficheiro"
 
 #~ msgid "Chess - *%(game_name)s"
 #~ msgstr "Xadrez - *%(game_name)s"
