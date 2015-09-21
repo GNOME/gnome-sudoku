@@ -11,21 +11,24 @@
 # Hakan Bekdas <hakanbekdas@yahoo.com>, 2006.
 # Baris Cicek <baris@teamforce.name.tr>, 2004, 2005, 2008, 2009.
 # Osman Karagöz <osmank3@gmail.com>, 2014.
-# Muhammet Kara <muhammetk@gmail.com>, 2011, 2014.
 # Gökhan Gurbetoğlu <ggurbet@gmail.com>, 2014.
+# Muhammet Kara <muhammetk@gmail.com>, 2011, 2014, 2015.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-02-13 08:53+0000\n"
-"PO-Revision-Date: 2014-12-25 16:09+0000\n"
-"Last-Translator: Gökhan Gurbetoğlu <ggurbet@gmail.com>\n"
-"Language-Team: Turkish <gnome-turk@gnome.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"sudoku&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-09-20 20:26+0000\n"
+"PO-Revision-Date: 2015-09-21 07:55+0300\n"
+"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
+"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
@@ -40,23 +43,33 @@ msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
 "Sudoku fun for players of any skill level."
-msgstr "Popüler Japon mantık oyununu oynayın. GNOME Sudoku, Sudoku'yu her beceri düzeyindeki oyuncu için eğlenceli hale getiren basit ve mütevazi arayüzüyle, Sudoku severlerin mutlaka kurması gereken bir uygulamadır."
+msgstr ""
+"Popüler Japon mantık oyununu oynayın. GNOME Sudoku, Sudoku'yu her beceri "
+"düzeyindeki oyuncu için eğlenceli hale getiren basit ve mütevazi arayüzüyle, "
+"Sudoku severlerin mutlaka kurması gereken bir uygulamadır."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
-msgstr "Her oyun gazetelerde ve web sitelerinde verildiği gibi zorluk seviyelerine göre atanmıştır, böylece oyununuz istediğiniz kadar kolay veya istediğiniz kadar zor olacaktır."
+msgstr ""
+"Her oyun gazetelerde ve web sitelerinde verildiği gibi zorluk seviyelerine "
+"göre atanmıştır, böylece oyununuz istediğiniz kadar kolay veya istediğiniz "
+"kadar zor olacaktır."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
 "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr "Eğer kağıtta oynamayı sevenlerdenseniz, oyunları yazdırabilirsiniz. Sayfa başına kaç tane ve hangi zorlukta oyun yazdırmak istediğinizi seçebilirsiniz: sonuç olarak, GNOME Sudoku sizin için yenilenebilir bir Sudoku kitabı işlevi görebilir."
+msgstr ""
+"Eğer kağıtta oynamayı sevenlerdenseniz, oyunları yazdırabilirsiniz. Sayfa "
+"başına kaç tane ve hangi zorlukta oyun yazdırmak istediğinizi "
+"seçebilirsiniz: sonuç olarak, GNOME Sudoku sizin için yenilenebilir bir "
+"Sudoku kitabı işlevi görebilir."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:528
+#: ../src/gnome-sudoku.vala:626
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -92,7 +105,7 @@ msgstr "_Yardım"
 msgid "_About"
 msgstr "H_akkında"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:365
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:426
 msgid "_Quit"
 msgstr "_Çıkış"
 
@@ -124,25 +137,37 @@ msgstr "_Zor"
 msgid "_Very Hard"
 msgstr "Çok Zo_r"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:307
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Create your own puzzle"
+msgstr "Kendi bulmacanızı _oluşturun"
+
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
 msgid "_Pause"
 msgstr "_Duraklat"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:11
 msgid "_Clear Board"
 msgstr "Tahtayı _Temizle"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: ../data/gnome-sudoku.ui.h:12
 msgid "Reset the board to its original state"
 msgstr "Tahtayı ilk durumuna sıfırla"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: ../data/gnome-sudoku.ui.h:13
 msgid "_New Puzzle"
 msgstr "Ye_ni Bulmaca"
 
-#: ../data/gnome-sudoku.ui.h:13
+#: ../data/gnome-sudoku.ui.h:14
 msgid "Start a new puzzle"
 msgstr "Yeni bir bulmaca başlat"
+
+#: ../data/gnome-sudoku.ui.h:15
+msgid "_Start Playing"
+msgstr "Oynamaya _Başla"
+
+#: ../data/gnome-sudoku.ui.h:16
+msgid "Start playing the custom puzzle you have created"
+msgstr "Oluşturduğunuz özel bulmacayı oynamaya başlayın"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
@@ -152,7 +177,9 @@ msgstr "Yazdırılacak olan sudoku zorluk seviyesi "
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are - \"easy\", \"medium\", \"hard\", \"very_hard\""
-msgstr "Yazdırmak istediğiniz sudoku zorluk seviyesini ayarlayın. Olası değerler - \"kolay\", \"orta\", \"zor\", \"çok_zor\""
+msgstr ""
+"Yazdırmak istediğiniz sudoku zorluk seviyesini ayarlayın. Olası değerler - "
+"\"kolay\", \"orta\", \"zor\", \"çok_zor\""
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:3
 msgid "Number of Sudokus to print"
@@ -170,7 +197,9 @@ msgstr "Doldurulamayan kareler ve tekrarlı sayılar hakkında uyar"
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
-msgstr "Eğer bir karenin herhangi bir sayıyla doldurulması imkansızsa içinde büyük kırmızı bir X görülür ve tekrarlı sayılar kırmızıyla vurgulanır"
+msgstr ""
+"Eğer bir karenin herhangi bir sayıyla doldurulması imkansızsa içinde büyük "
+"kırmızı bir X görülür ve tekrarlı sayılar kırmızıyla vurgulanır"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
 msgid "Highlight row, column and square that contain the selected cell"
@@ -204,73 +233,118 @@ msgstr "_Bulmaca sayısı"
 msgid "Difficulty"
 msgstr "Zorluk"
 
-#: ../lib/sudoku-board.vala:589
+#: ../lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "Bilinmeyen Zorluk"
 
-#: ../lib/sudoku-board.vala:591
-msgid "Easy Puzzle"
-msgstr "Kolay Bulmaca"
+#: ../lib/sudoku-board.vala:585
+#| msgid "Difficulty"
+msgid "Easy Difficulty"
+msgstr "Düşük Zorluk"
 
-#: ../lib/sudoku-board.vala:593
+#: ../lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "Orta Zorluk"
 
-#: ../lib/sudoku-board.vala:595
-msgid "Hard Puzzle"
-msgstr "Zor Bulmaca"
+#: ../lib/sudoku-board.vala:589
+#| msgid "Difficulty"
+msgid "Hard Difficulty"
+msgstr "Yüksek Zorluk"
 
-#: ../lib/sudoku-board.vala:597
-msgid "Very Hard Puzzle"
-msgstr "Çok Zor Bulmaca"
+#: ../lib/sudoku-board.vala:591
+#| msgid "Medium Difficulty"
+msgid "Very Hard Difficulty"
+msgstr "Çok Yüksek Zorluk"
+
+#: ../lib/sudoku-board.vala:593
+#| msgid "Easy Puzzle"
+msgid "Custom Puzzle"
+msgstr "Özel Bulmaca"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:80
+#: ../src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "Yayım sürümünü göster"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:84
+#: ../src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "Her hücre için olası değerleri göster"
 
-#: ../src/gnome-sudoku.vala:313
+#. Error dialog shown when starting a custom game that is not valid.
+#: ../src/gnome-sudoku.vala:303
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "Girmiş olduğunuz bulmaca, geçerli bir Sudoku değildir."
+
+#: ../src/gnome-sudoku.vala:303
+msgid "Please enter a valid puzzle."
+msgstr "Lütfen geçerli bir bulmaca girin."
+
+#. Warning dialog shown when starting a custom game that has multiple solutions.
+#: ../src/gnome-sudoku.vala:312
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "Girmiş olduğunuz bulmacanın birden çok çözümü var."
+
+#: ../src/gnome-sudoku.vala:312
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "Geçerli Sudoku bulmacalarının tek bir çözümü olur."
+
+#: ../src/gnome-sudoku.vala:314
+msgid "_Back"
+msgstr "_Geri"
+
+#: ../src/gnome-sudoku.vala:315
+#| msgid "Play _Again"
+msgid "Play _Anyway"
+msgstr "_Yine De Oyna"
+
+#: ../src/gnome-sudoku.vala:357
 msgid "_Resume"
 msgstr "_Devam Et"
 
-#: ../src/gnome-sudoku.vala:359
+#: ../src/gnome-sudoku.vala:421
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Aferin, bulmacayı %d dakika içinde tamamladın!"
 
-#: ../src/gnome-sudoku.vala:364
+#: ../src/gnome-sudoku.vala:427
 msgid "Play _Again"
 msgstr "_Tekrar Oyna"
 
-#: ../src/gnome-sudoku.vala:385
+#: ../src/gnome-sudoku.vala:446
 msgid "Select Difficulty"
 msgstr "Zorluk Seç"
 
-#: ../src/gnome-sudoku.vala:421
+#: ../src/gnome-sudoku.vala:502
 msgid "Reset the board to its original state?"
 msgstr "Tahta ilk durumuna sıfırlansın mı?"
 
-#. Appears on the About dialog. %s is the version of the QQwing puzzle
-#. generator in use.
-#: ../src/gnome-sudoku.vala:532
+#: ../src/gnome-sudoku.vala:549
+#| msgid "_New Puzzle"
+msgid "Create Puzzle"
+msgstr "Bulmaca Oluştur"
+
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: ../src/gnome-sudoku.vala:630
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
 "Puzzles generated by QQwing %s"
-msgstr "Popüler Japon mantık oyunu\n\nBulmacalar QQwing %s tarafından oluşturulur"
+msgstr ""
+"Popüler Japon mantık oyunu\n"
+"\n"
+"Bulmacalar QQwing %s tarafından oluşturulur"
 
-#: ../src/gnome-sudoku.vala:537
+#: ../src/gnome-sudoku.vala:635
 msgid "translator-credits"
-msgstr "Barış Çiçek <baris@teamforce.name.tr> \nMuhammet Kara <muhammet.k@gmail.com> \nOsman Karagöz <osmank3@gmail.com>"
+msgstr ""
+"Barış Çiçek <baris@teamforce.name.tr> \n"
+"Muhammet Kara <muhammetk@gmail.com> \n"
+"Osman Karagöz <osmank3@gmail.com>"
 
-#: ../src/number-picker.vala:89
+#: ../src/number-picker.vala:90
 msgid "Clear"
 msgstr "Temizle"
 
@@ -280,6 +354,12 @@ msgid "Error printing file:"
 msgstr "Dosya yazdırılırken hata:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:574
+#: ../src/sudoku-view.vala:629
 msgid "Paused"
 msgstr "Duraklatıldı"
+
+#~ msgid "Hard Puzzle"
+#~ msgstr "Zor Bulmaca"
+
+#~ msgid "Very Hard Puzzle"
+#~ msgstr "Çok Zor Bulmaca"
