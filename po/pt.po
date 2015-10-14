@@ -2,14 +2,16 @@
 # Copyright © 1998, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013 gnome-games
 # Distributed under the same licence as the gnome-games package
 # Nuno Ferreira <nmrf@rnl.ist.utl.pt>, 1998.
-# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013.
-# 
+# Pedro Albuquerque <palbuquerque73@gmail.com>, 2015.
+# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2015.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: 3.10\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-23 02:08+0100\n"
-"PO-Revision-Date: 2013-09-23 02:10+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"sudoku&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-09-28 20:50+0000\n"
+"PO-Revision-Date: 2015-10-14 07:05+0100\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "Language: pt\n"
@@ -17,6 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.6\n"
 
 #: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
 msgid "Sudoku"
@@ -24,7 +27,7 @@ msgstr "Sudoku"
 
 #: ../data/gnome-sudoku.desktop.in.in.h:2
 msgid "Test your logic skills in this number grid puzzle"
-msgstr "Teste as suas capacidades lógicas neste puzzle numérico"
+msgstr "Teste as suas capacidades lógicas neste jogo numérico"
 
 #: ../data/gnome-sudoku.desktop.in.in.h:3
 msgid "game;board;tiles;japanese;"
@@ -36,7 +39,7 @@ msgstr "Imprimir Sudokus"
 
 #: ../data/print_games.ui.h:2
 msgid "Print Games"
-msgstr "Imprimir Jogos"
+msgstr "Imprimir jogos"
 
 #: ../data/print_games.ui.h:3
 msgid "_Number of sudoku to print: "
@@ -64,7 +67,7 @@ msgstr "_Difícil"
 
 #: ../data/print_games.ui.h:9
 msgid "_Very Hard"
-msgstr "_Muito Difícil"
+msgstr "_Muito difícil"
 
 #: ../data/print_games.ui.h:10
 msgid "Details"
@@ -80,7 +83,7 @@ msgstr "_Incluir jogos que já jogou na lista de jogos a imprimir"
 
 #: ../data/select_game.ui.h:1
 msgid "_New Game"
-msgstr "_Novo Jogo"
+msgstr "_Novo jogo"
 
 #: ../data/select_game.ui.h:2
 msgid "_Saved Games"
@@ -98,13 +101,13 @@ msgstr "Remover o registo selecionado"
 msgid "Make the tracked changes permanent"
 msgstr "Tornar as alterações registadas permanentes"
 
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:750
+#: ../data/tracker.ui.h:4 ../src/lib/main.py:751
 msgid "H_ide"
-msgstr "_Esconder"
+msgstr "_Ocultar"
 
 #: ../data/tracker.ui.h:5
 msgid "Hide the tracked values"
-msgstr "Esconder os valores registados"
+msgstr "Ocultar os valores registados"
 
 #: ../src/lib/defaults.py:47
 msgid "GNOME Sudoku"
@@ -116,25 +119,25 @@ msgid ""
 "\n"
 "GNOME Sudoku is a part of GNOME Games."
 msgstr ""
-"O popular puzzle lógico Japonês\n"
+"O popular jogo lógico Japonês\n"
 "\n"
-"Sudoku GNOME faz parte dos Jogos GNOME."
+"O Sudoku GNOME faz parte dos Jogos GNOME."
 
 #: ../src/lib/defaults.py:53
 msgid "GNOME Games web site"
 msgstr "Página dos jogos GNOME"
 
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
+#: ../src/lib/game_selector.py:121 ../src/lib/main.py:628
 #: ../src/lib/printing.py:186
 msgid "Easy"
 msgstr "Fácil"
 
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
+#: ../src/lib/game_selector.py:122 ../src/lib/main.py:629
 #: ../src/lib/printing.py:187
 msgid "Medium"
 msgstr "Médio"
 
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
+#: ../src/lib/game_selector.py:123 ../src/lib/main.py:630
 #: ../src/lib/printing.py:188
 msgid "Hard"
 msgstr "Difícil"
@@ -224,256 +227,258 @@ msgstr "Deseja mesmo fazê-lo?"
 msgid "Don't ask me this again."
 msgstr "Não perguntar novamente."
 
-#: ../src/lib/main.py:195
+#: ../src/lib/main.py:196
 msgid "_Game"
 msgstr "_Jogo"
 
-#: ../src/lib/main.py:196
+#: ../src/lib/main.py:197
 msgid "New game"
 msgstr "Novo jogo"
 
-#: ../src/lib/main.py:197
+#: ../src/lib/main.py:198
 msgid "_Reset"
 msgstr "_Reiniciar"
 
-#: ../src/lib/main.py:199
+#: ../src/lib/main.py:200
 msgid "_Undo"
 msgstr "_Desfazer"
 
-#: ../src/lib/main.py:200
+#: ../src/lib/main.py:201
 msgid "Undo last action"
 msgstr "Desfazer a última ação"
 
-#: ../src/lib/main.py:201
+#: ../src/lib/main.py:202
 msgid "_Redo"
 msgstr "_Refazer"
 
-#: ../src/lib/main.py:202
+#: ../src/lib/main.py:203
 msgid "Redo last action"
 msgstr "Refazer a última ação"
 
-#: ../src/lib/main.py:203
+#: ../src/lib/main.py:204
 msgid "Puzzle _Statistics..."
-msgstr "_Estatísticas do Puzzle..."
+msgstr "_Estatísticas do jogo..."
 
-#: ../src/lib/main.py:205
+#: ../src/lib/main.py:206
 msgid "_Print..."
 msgstr "_Imprimir..."
 
-#: ../src/lib/main.py:206
+#: ../src/lib/main.py:207
 msgid "Print _Multiple Sudokus..."
 msgstr "Imprimir _Múltiplos Sudokus..."
 
-#: ../src/lib/main.py:209
+#: ../src/lib/main.py:210
 msgid "_Settings"
 msgstr "_Definições"
 
-#: ../src/lib/main.py:211
+#: ../src/lib/main.py:212
 msgid "_Tools"
 msgstr "_Ferramentas"
 
-#: ../src/lib/main.py:212
+#: ../src/lib/main.py:213
 msgid "_Hint"
 msgstr "_Dica"
 
-#: ../src/lib/main.py:213
-msgid "Show a square that is easy to fill."
-msgstr "Apresentar uma quadrícula simples de preencher."
-
 #: ../src/lib/main.py:214
+msgid "Show a square that is easy to fill."
+msgstr "Mostrar uma quadrícula simples de preencher."
+
+#: ../src/lib/main.py:215
 msgid "Clear _Top Notes"
-msgstr "Limpar as Notas de _Topo"
+msgstr "Limpar as notas de _Topo"
 
-#: ../src/lib/main.py:216
+#: ../src/lib/main.py:217
 msgid "Clear _Bottom Notes"
-msgstr "Limpar as Notas em _Rodapé"
-
-#: ../src/lib/main.py:218
-msgid "_Help"
-msgstr "_Ajuda"
+msgstr "Limpar as notas em _Rodapé"
 
 #: ../src/lib/main.py:219
+msgid "_Help"
+msgstr "A_Juda"
+
+#: ../src/lib/main.py:220
 msgid "_Contents"
 msgstr "_Conteúdo"
 
-#: ../src/lib/main.py:225
+#: ../src/lib/main.py:226
 msgid "Show _Possible Numbers"
-msgstr "Apresentar Números _Possíveis"
+msgstr "Mostrar números _Possíveis"
 
-#: ../src/lib/main.py:227
+#: ../src/lib/main.py:228
 msgid "Always show possible numbers in a square"
-msgstr "Apresentar sempre os números possíveis numa quadrícula"
+msgstr "Mostrar sempre os números possíveis numa quadrícula"
 
-#: ../src/lib/main.py:231
+#: ../src/lib/main.py:232
 msgid "Warn About _Unfillable Squares"
-msgstr "Avisar Sobre Quadrículas _Impossíveis de Preencher"
+msgstr "Avisar sobre quadrículas _Impossíveis de preencher"
 
-#: ../src/lib/main.py:233
+#: ../src/lib/main.py:234
 msgid "Warn about squares made unfillable by a move"
 msgstr ""
 "Avisar sobre quadrículas que se tornaram impossíveis de preencher devido a "
 "uma jogada"
 
-#: ../src/lib/main.py:235
+#: ../src/lib/main.py:236
 msgid "_Track Additions"
 msgstr "Adições ao _Registo"
 
-#: ../src/lib/main.py:237
+#: ../src/lib/main.py:238
 msgid "Mark new additions in a separate color so you can keep track of them."
 msgstr "Marcar novas adições numa cor diferente para que as possa identificar."
 
-#: ../src/lib/main.py:239
-msgid "Show _Toolbar"
-msgstr "Apresentar a Barra de Ferramen_tas"
-
 #: ../src/lib/main.py:240
+msgid "Show _Toolbar"
+msgstr "Mostrar a Barra de Ferramen_tas"
+
+#: ../src/lib/main.py:241
 msgid "_Highlighter"
 msgstr "_Realce"
 
-#: ../src/lib/main.py:241
+#: ../src/lib/main.py:242
 msgid "Highlight the current row, column and box"
 msgstr "Realçar a linha, coluna e caixa atuais"
 
-#: ../src/lib/main.py:366
+#: ../src/lib/main.py:367
 #, python-format
 msgid "You completed the puzzle in %d second"
 msgid_plural "You completed the puzzle in %d seconds"
 msgstr[0] "Terminou o puzzle em %d segundo."
 msgstr[1] "Terminou o puzzle em %d segundos."
 
-#: ../src/lib/main.py:371 ../src/lib/main.py:379
+#: ../src/lib/main.py:372 ../src/lib/main.py:380
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d minuto"
 msgstr[1] "%d minutos"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
+#: ../src/lib/main.py:373 ../src/lib/main.py:381
 #, python-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d segundo"
 msgstr[1] "%d segundos"
 
-#: ../src/lib/main.py:373
+#: ../src/lib/main.py:374
 #, python-format
 msgid "You completed the puzzle in %(minute)s and %(second)s"
 msgstr "Terminou o puzzle em %(minute)s e %(second)s"
 
-#: ../src/lib/main.py:378
+#: ../src/lib/main.py:379
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d hora"
 msgstr[1] "%d horas"
 
-#: ../src/lib/main.py:381
+#: ../src/lib/main.py:382
 #, python-format
 msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
 msgstr "Terminou o puzzle em %(hour)s, %(minute)s e %(second)s"
 
-#: ../src/lib/main.py:383
+#: ../src/lib/main.py:384
 #, python-format
 msgid "You got %(n)s hint."
 msgid_plural "You got %(n)s hints."
 msgstr[0] "Possui %(n)s dica."
 msgstr[1] "Possui %(n)s dicas."
 
-#: ../src/lib/main.py:386
+#: ../src/lib/main.py:387
 #, python-format
 msgid "You had %(n)s impossibility pointed out."
 msgid_plural "You had %(n)s impossibilities pointed out."
 msgstr[0] "Tinha %(n)s impossibilidade apontada."
 msgstr[1] "Tinha %(n)s impossibilidades apontadas."
 
-#: ../src/lib/main.py:391
+#: ../src/lib/main.py:392
 msgid "You win!"
 msgstr "É o vencedor!"
 
-#: ../src/lib/main.py:401
+#: ../src/lib/main.py:402
 msgid "Save this game before starting new one?"
 msgstr "Gravar este jogo antes de iniciar um novo?"
 
-#: ../src/lib/main.py:402
+#: ../src/lib/main.py:403
 msgid "_Save game for later"
 msgstr "_Gravar o jogo para mais tarde"
 
-#: ../src/lib/main.py:403
+#: ../src/lib/main.py:404
 msgid "_Abandon game"
 msgstr "_Abandonar o jogo"
 
-#: ../src/lib/main.py:421
+#: ../src/lib/main.py:422
 msgid "Save game before closing?"
 msgstr "Gravar antes de fechar?"
 
-#: ../src/lib/main.py:619
-msgid "Puzzle Information"
-msgstr "Informação do Puzzle"
-
 #: ../src/lib/main.py:620
-msgid "There is no current puzzle."
-msgstr "Não existe nenhum puzzle atual."
+msgid "Puzzle Information"
+msgstr "Informação do jogo"
 
-#: ../src/lib/main.py:625
+#: ../src/lib/main.py:621
+msgid "There is no current puzzle."
+msgstr "Não existe nenhum jogo atual."
+
+#: ../src/lib/main.py:626
 msgid "Calculated difficulty: "
 msgstr "Dificuldade calculada: "
 
-#: ../src/lib/main.py:630
+#: ../src/lib/main.py:631
 msgid "Very Hard"
-msgstr "Muito Difícil"
+msgstr "Muito difícil"
 
-#: ../src/lib/main.py:635
+#: ../src/lib/main.py:636
 msgid "Number of moves instantly fillable by elimination: "
 msgstr "Número de quadrículas instantaneamente preenchíveis por eliminação: "
 
-#: ../src/lib/main.py:638
+#: ../src/lib/main.py:639
 msgid "Number of moves instantly fillable by filling: "
 msgstr ""
 "Número de quadrículas instantaneamente preenchíveis por preenchimento: "
 
-#: ../src/lib/main.py:641
+#: ../src/lib/main.py:642
 msgid "Amount of trial-and-error required to solve: "
 msgstr "Quantidade de tentativa-e-erro necessária para resolver: "
 
-#: ../src/lib/main.py:644 ../src/lib/main.py:645
+#: ../src/lib/main.py:645 ../src/lib/main.py:646
 msgid "Puzzle Statistics"
-msgstr "Estatísticas do Puzzle"
+msgstr "Estatísticas do jogo"
 
-#: ../src/lib/main.py:669
+#: ../src/lib/main.py:670
 msgid "translator-credits"
-msgstr "Duarte Loreto <happyguy_pt@hotmail.com>"
+msgstr ""
+"Duarte Loreto <happyguy_pt@hotmail.com>\n"
+"Pedro Albuquerque <palbuquerque73@gmail.com>"
 
 #. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:679
+#: ../src/lib/main.py:680
 #, python-format
 msgid "Unable to display help: %s"
-msgstr "Incapaz de apresentar a ajuda: %s"
+msgstr "Impossível mostrar a ajuda: %s"
 
-#: ../src/lib/main.py:735
+#: ../src/lib/main.py:736
 msgid "Untracked"
-msgstr "Sem Registo"
+msgstr "Sem registo"
 
-#: ../src/lib/main.py:744
+#: ../src/lib/main.py:745
 msgid "_Remove"
 msgstr "_Remover"
 
-#: ../src/lib/main.py:745
+#: ../src/lib/main.py:746
 msgid "Delete selected tracker."
-msgstr "Apagar o registo selecionado."
+msgstr "Eliminar o registo selecionado."
 
-#: ../src/lib/main.py:751
+#: ../src/lib/main.py:752
 msgid "Hide current tracker entries."
-msgstr "Esconder as entradas no registo atual."
+msgstr "Ocultar as entradas no registo atual."
 
-#: ../src/lib/main.py:756
+#: ../src/lib/main.py:757
 msgid "A_pply"
 msgstr "A_plicar"
 
-#: ../src/lib/main.py:757
+#: ../src/lib/main.py:758
 msgid "Apply all tracked values and remove the tracker."
 msgstr "Aplicar todas as jogadas registadas e remover o registo."
 
-#: ../src/lib/main.py:795
+#: ../src/lib/main.py:796
 #, python-format
 msgid "Tracker %s"
 msgstr "Registo %s"
@@ -484,7 +489,7 @@ msgstr "_Limpar"
 
 #: ../src/lib/saver.py:155
 msgid "No Space"
-msgstr "Espaço Inexistente"
+msgstr "Espaço inexistente"
 
 #: ../src/lib/saver.py:156
 msgid "No space left on disk"
@@ -493,7 +498,7 @@ msgstr "Não existe espaço livre no disco"
 #: ../src/lib/saver.py:158 ../src/lib/saver.py:165
 #, python-format
 msgid "Unable to create data folder %(path)s."
-msgstr "Incapaz de criar a pasta de dados %(path)s."
+msgstr "Impossível criar a pasta de dados %(path)s."
 
 #: ../src/lib/saver.py:159
 msgid "There is no disk space left!"
@@ -511,20 +516,20 @@ msgstr "Erro %(errno)s: %(error)s"
 
 #: ../src/lib/saver.py:186 ../src/lib/saver.py:187
 msgid "Unable to save game."
-msgstr "Incapaz de gravar o jogo."
+msgstr "Impossível gravar o jogo."
 
 #: ../src/lib/saver.py:189 ../src/lib/saver.py:214 ../src/lib/saver.py:232
 #, python-format
 msgid "Unable to save file %(filename)s."
-msgstr "Incapaz de gravar o ficheiro %(filename)s."
+msgstr "Impossível gravar o ficheiro %(filename)s."
 
 #: ../src/lib/saver.py:211 ../src/lib/saver.py:212
 msgid "Unable to mark game as finished."
-msgstr "Incapaz de marcar o jogo como terminado."
+msgstr "Impossível marcar o jogo como terminado."
 
 #: ../src/lib/saver.py:229 ../src/lib/saver.py:230
 msgid "Sudoku unable to mark game as finished."
-msgstr "Sudoku incapaz de marcar o jogo como terminado."
+msgstr "O Sudoku não pôde marcar o jogo como terminado."
 
 #~ msgid "Chess"
 #~ msgstr "Xadrez"
@@ -7488,15 +7493,15 @@ msgstr "Sudoku incapaz de marcar o jogo como terminado."
 #~ "%(move)s White %(piece)s at %1$s takes the black %(victim_piece)s at %2$s "
 #~ "(%(result)s)"
 #~ msgstr ""
-#~ "%(move)s %(piece)s Branco em %1$s toma o %(victim_piece)s Preto em %(end)"
-#~ "s (%(result)s)"
+#~ "%(move)s %(piece)s Branco em %1$s toma o %(victim_piece)s Preto em "
+#~ "%(end)s (%(result)s)"
 
 #~ msgid ""
 #~ "%(move)s Black %(piece)s at %1$s takes the white %(victim_piece)s at %2$s "
 #~ "(%(result)s)"
 #~ msgstr ""
-#~ "%(move)s %(piece)s Preto em %1$s toma o %(victim_piece)s Branco em %(end)"
-#~ "s (%(result)s)"
+#~ "%(move)s %(piece)s Preto em %1$s toma o %(victim_piece)s Branco em "
+#~ "%(end)s (%(result)s)"
 
 #~ msgid "%(move)s White %(piece)s moves from %1$s to %2$s (%(result)s)"
 #~ msgstr "%(move)s %(piece)s Branco é movido de %1$s para %2$s (%(result)s)"
