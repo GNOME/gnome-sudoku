@@ -604,6 +604,7 @@ public class SudokuView : Gtk.AspectFrame
         }
         c.stroke ();
 
+        c.set_line_width (2);
         c.set_source_rgb (0.0, 0.0, 0.0);
         for (var i = 0; i <= game.board.cols; i += game.board.block_cols)
         {
