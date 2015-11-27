@@ -4,14 +4,14 @@
 # Nuno Ferreira <nmrf@rnl.ist.utl.pt>, 1998.
 # Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013.
 # Tiago S. <almosthumane@portugalmail.pt>, 2014.
-# Pedro Albuquerque <palbuquerque73@openmailbox.com>, 2015.
+# Pedro Albuquerque <palbuquerque73@gmail.com>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 3.12\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-03 20:09+0000\n"
+"POT-Creation-Date: 2015-11-02 22:18+0000\n"
 "PO-Revision-Date: 2015-07-04 08:32+0100\n"
 "Last-Translator: Pedro Albuquerque <palbuquerque73@openmailbox.com>\n"
 "Language-Team: Português <palbuquerque73@openmailbox.com>\n"
@@ -41,16 +41,13 @@ msgstr ""
 "jogo divertido para jogadores de qualquer nível."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
-#| msgid ""
-#| "Each game is assigned a difficulty similar to those given by newspapers "
-#| "and websites. You can also see detailed information about how the "
-#| "computer solved the puzzle."
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
-"A cada jogo é atribuida uma dificuldade equivalente às dadas em jornais e "
-"websites, pelo que o seu jogo será tão fácil ou tão difícil quanto o queira."
+"A cada jogo é atribuída uma dificuldade equivalente às dadas em jornais e "
+"páginas web, pelo que o seu jogo será tão fácil ou tão difícil quanto o "
+"queira."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
@@ -76,16 +73,14 @@ msgid "_Print"
 msgstr "_Imprimir"
 
 #: ../data/gnome-sudoku-menu.ui.h:2
-#| msgid "There is no current puzzle."
 msgid "Print _Current Puzzle…"
-msgstr "Imprimir o _Jogo atual."
+msgstr "Imprimir o _Jogo atual…"
 
 #: ../data/gnome-sudoku-menu.ui.h:3
 msgid "Print _Multiple Puzzles…"
-msgstr "Imprimir _Múltiplos sudokus..."
+msgstr "Imprimir _Múltiplos jogos..."
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-#| msgid "_Highlighter"
 msgid "High_lighter"
 msgstr "Rea_Lce"
 
@@ -101,17 +96,15 @@ msgstr "A_Juda"
 msgid "_About"
 msgstr "_Sobre"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:426
 msgid "_Quit"
 msgstr "_Sair"
 
 #: ../data/gnome-sudoku.ui.h:2
-#| msgid "Undo last action"
 msgid "Undo your last action"
 msgstr "Desfazer a última ação"
 
 #: ../data/gnome-sudoku.ui.h:3
-#| msgid "Redo last action"
 msgid "Redo your last action"
 msgstr "Refazer a última ação"
 
@@ -169,23 +162,23 @@ msgstr "Começar a jogar o jogo personalizado que criou"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
-msgstr "Nível de dificuldade dos sudokus a imprimir"
+msgstr "Nível de dificuldade dos jogos a imprimir"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:2
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are - \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"Defina o nível de dificuldade dos sudokus que quer imprimir. Valores "
-"possíveis são \"Fácil\", \"Média\", \"Alta\" e \"Muito alta\"."
+"Defina o nível de dificuldade dos jogos que quer imprimir. Valores possíveis "
+"são \"Fácil\", \"Média\", \"Alta\" e \"Muito alta\"."
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:3
 msgid "Number of Sudokus to print"
-msgstr "Número de sudokus a imprimir"
+msgstr "Número de jogos a imprimir"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:4
 msgid "Set the number of sudokus you want to print"
-msgstr "Defina o número de sudokus que quer imprimir"
+msgstr "Defina o número de jogos que quer imprimir"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:5
 msgid "Warn about unfillable squares and duplicate numbers"
@@ -205,7 +198,7 @@ msgstr "Realçar linha, coluna e espaço que contêm a célula selecionada"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
-msgstr "A largura em pixels da janela"
+msgstr "Largura em pixels da janela"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
@@ -217,7 +210,7 @@ msgstr "verdadeiro se a janela estiver maximizada"
 
 #: ../data/print-dialog.ui.h:1
 msgid "Print Multiple Puzzles"
-msgstr "Imprimir múltiplos sudokus"
+msgstr "Imprimir múltiplos jogos"
 
 #: ../data/print-dialog.ui.h:2
 msgid "_Cancel"
@@ -225,7 +218,7 @@ msgstr "_Cancelar"
 
 #: ../data/print-dialog.ui.h:4
 msgid "_Number of puzzles"
-msgstr "Número de jogos"
+msgstr "_Número de jogos"
 
 #: ../data/print-dialog.ui.h:5
 msgid "Difficulty"
@@ -302,7 +295,7 @@ msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Bem jogado, terminou o puzzle em %d minuto."
 msgstr[1] "Bem jogado, terminou o puzzle em %d minutos."
 
-#: ../src/gnome-sudoku.vala:426
+#: ../src/gnome-sudoku.vala:427
 msgid "Play _Again"
 msgstr "Jogar _Novamente"
 
@@ -332,8 +325,7 @@ msgstr ""
 
 #: ../src/gnome-sudoku.vala:635
 msgid "translator-credits"
-msgstr ""
-"Duarte Loreto <happyguy_pt@hotmail.com>\n"
+msgstr "Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Pedro Albuquerque <palbuquerque73@gmail.com>"
 
 #: ../src/number-picker.vala:90
@@ -346,7 +338,7 @@ msgid "Error printing file:"
 msgstr "Erro ao imprimir o ficheiro:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:629
+#: ../src/sudoku-view.vala:630
 msgid "Paused"
 msgstr "Pausado"
 
