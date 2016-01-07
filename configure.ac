@@ -1,10 +1,11 @@
 AC_PREREQ([2.63])
 AC_INIT([GNOME Sudoku], [3.19.2], [https://bugzilla.gnome.org/],
         [gnome-sudoku], [https://wiki.gnome.org/Apps/Sudoku])
+AC_CONFIG_MACRO_DIR([m4])
+
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
 AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE([enable])
-GNOME_MAINTAINER_MODE_DEFINES
 
 AC_PROG_CC
 AC_PROG_CXX

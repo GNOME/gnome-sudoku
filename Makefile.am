@@ -8,4 +8,7 @@ MAINTAINERCLEANFILES = \
 	$(GITIGNORE_MAINTAINERCLEANFILES_M4_LIBTOOL) \
 	m4/
 
+# We currently have no custom macros
+GITIGNOREFILES = m4
+
 -include $(top_srcdir)/git.mk
