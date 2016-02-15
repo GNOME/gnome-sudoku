@@ -39,6 +39,6 @@ CLEANFILES = \
 check-local: $(desktop_DATA)
 	$(DESKTOP_FILE_VALIDATE) $(desktop_DATA)
 
-DISTCHECK_CONFIGURE_FLAGS = --enable-appdata-check
+AM_DISTCHECK_CONFIGURE_FLAGS = --enable-appdata-check
 
 -include $(top_srcdir)/git.mk
