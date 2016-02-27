@@ -27,7 +27,7 @@ dnl Dependencies
 dnl ###########################################################################
 
 GLIB_REQUIRED=2.40.0
-GTK_REQUIRED=3.15.0
+GTK_REQUIRED=3.19.0
 QQWING_REQUIRED=1.3.4
 
 PKG_CHECK_MODULES(GNOME_SUDOKU, [
