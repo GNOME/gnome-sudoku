@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the gnome-sudoku package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 # Cédric Valmary (Tot en òc) <cvalmary@yahoo.fr>, 2015.
+# Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-01-21 21:23+0000\n"
-"PO-Revision-Date: 2015-05-20 20:08+0200\n"
-"Last-Translator: Cédric Valmary (Tot en òc) <cvalmary@yahoo.fr>\n"
-"Language-Team: Tot en òc (totenoc.eu)\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"sudoku&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-05-21 20:02+0000\n"
+"PO-Revision-Date: 2016-03-02 20:53+0200\n"
+"Last-Translator: Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>\n"
+"Language-Team: Tot En Òc\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,81 +24,95 @@ msgstr ""
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
-msgstr "Sudoku de GNOME"
+msgstr "GNOME Sudoku"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+msgid "Test your logic skills in this number grid puzzle"
+msgstr ""
+"Testar vòstras aptituds en logica amb aqueste copacap de nombres en grasilha"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
 "Sudoku fun for players of any skill level."
 msgstr ""
+"Jogatz al jòc de logica popular japonés. GNOME Sudoku es un indispensable "
+"pels afogats del sudoku, amb una interfàcia simpla que rend lo jòc plasent "
+"pels jogaires de totes nivèls."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
+"Un nivèl de dificultat es atribuit a cada grasilha sus lo meteis principi "
+"utilizat pels jornals o los sites Web, per que poscatz ajustar la dificultat "
+"segon vòstra enveja."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
 "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
 msgstr ""
+"Se vos agrada mai de jogar sus papièr, podètz imprimir las grasilhas. Es "
+"possible de causir lo nombre de grasilhas per pagina imprimida e tanben lor "
+"nivèl de dificultat. Per consequéncia, GNOME Sudoku pòt jogar lo ròtle d'un "
+"libre de Sudoku sens fin."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:463
+#: ../src/gnome-sudoku.vala:626
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: ../data/gnome-sudoku.desktop.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr ""
-"Testar vòstras aptituds en logica amb aquel copacap de nombres en grasilha"
-
 #: ../data/gnome-sudoku.desktop.in.h:3
 msgid "magic;square;"
-msgstr ""
+msgstr "magic;carrat;"
 
 #: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
 msgid "_Print"
-msgstr ""
+msgstr "_Imprimir"
 
 #: ../data/gnome-sudoku-menu.ui.h:2
 msgid "Print _Current Puzzle…"
-msgstr ""
+msgstr "Imprimir la grasilha en _cors…"
 
 #: ../data/gnome-sudoku-menu.ui.h:3
 msgid "Print _Multiple Puzzles…"
-msgstr ""
+msgstr "Imprimir _mantun sudoku…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-msgid "_Show Warnings"
-msgstr ""
+msgid "High_lighter"
+msgstr "Sus_linhador"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
-msgid "_Help"
-msgstr "_Ajuda"
+msgid "_Warnings"
+msgstr "A_vertiments"
 
 #: ../data/gnome-sudoku-menu.ui.h:6
-msgid "_About"
-msgstr "_A prepaus"
+msgid "_Help"
+msgstr "A_juda"
 
 #: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_About"
+msgstr "A _prepaus"
+
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:426
 msgid "_Quit"
 msgstr "_Quitar"
 
 #: ../data/gnome-sudoku.ui.h:2
 msgid "Undo your last action"
-msgstr ""
+msgstr "Anulla vòstra darrièra accion"
 
 #: ../data/gnome-sudoku.ui.h:3
 msgid "Redo your last action"
-msgstr ""
+msgstr "Restablís vòstra darrièra accion"
 
 #: ../data/gnome-sudoku.ui.h:4
 msgid "Go back to the current game"
-msgstr ""
+msgstr "Tornar a la partida en cors"
 
 #: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
 msgid "_Easy"
@@ -108,507 +124,230 @@ msgstr "_Mejan"
 
 #: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
 msgid "_Hard"
-msgstr "_Malaisit"
+msgstr "_Dificil"
 
 #: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
 msgid "_Very Hard"
-msgstr "_Fòrça dificil"
+msgstr "_Fòrt dificil"
 
 #: ../data/gnome-sudoku.ui.h:9
-msgid "_Clear Board"
-msgstr ""
+msgid "_Create your own puzzle"
+msgstr "_Crear sa pròpria grasilha"
 
-#: ../data/gnome-sudoku.ui.h:10
-msgid "Reset the board to its original state"
-msgstr ""
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+msgid "_Pause"
+msgstr "_Pausa"
 
 #: ../data/gnome-sudoku.ui.h:11
-msgid "_New Puzzle"
-msgstr ""
+msgid "_Clear Board"
+msgstr "_Escafar la grasilha"
 
 #: ../data/gnome-sudoku.ui.h:12
+msgid "Reset the board to its original state"
+msgstr "Reïnicializa la grasilha a son estat d'origina"
+
+#: ../data/gnome-sudoku.ui.h:13
+msgid "_New Puzzle"
+msgstr "_Novèla grasilha"
+
+#: ../data/gnome-sudoku.ui.h:14
 msgid "Start a new puzzle"
-msgstr ""
+msgstr "Aviar una novèla grasilha"
+
+#: ../data/gnome-sudoku.ui.h:15
+msgid "_Start Playing"
+msgstr "_Començar de jogar"
+
+#: ../data/gnome-sudoku.ui.h:16
+msgid "Start playing the custom puzzle you have created"
+msgstr "Començar de jogar la grasilha qu'avètz creada"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
-msgstr ""
+msgstr "Nivèl de dificultat dels sudokus d'imprimir"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:2
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are - \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
+"Ajusta lo nivèl de dificultat del sudoku d'imprimir. Las valors possiblas "
+"son \"easy\" (feble), \"medium\" (mejan), \"hard\" (elevat), \"very_hard\" ("
+"fòrça elevat)"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:3
 msgid "Number of Sudokus to print"
-msgstr ""
+msgstr "Nombre de sudokus d'imprimir"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:4
 msgid "Set the number of sudokus you want to print"
-msgstr ""
+msgstr "Indicar lo nombre de sudokus d'imprimir"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:5
 msgid "Warn about unfillable squares and duplicate numbers"
-msgstr ""
+msgstr "Senhalar las casas pas emplenablas e los doblons"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:6
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
 msgstr ""
+"Aficha un grand X roge dins una casa se es pas possible de l'emplenar amb "
+"quin nombre que siá e met en susbrilhança en roge los doblons"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
-msgid "Width of the window in pixels"
+msgid "Highlight row, column and square that contain the selected cell"
 msgstr ""
+"Metre en susbrilhança la linha, la colomna e la casa que conten la cellula "
+"seleccionada"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:8
-msgid "Height of the window in pixels"
-msgstr ""
+msgid "Width of the window in pixels"
+msgstr "Largor de la fenèstra en pixèls"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:9
+msgid "Height of the window in pixels"
+msgstr "Nautor de la fenèstra en pixèls"
+
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
-msgstr ""
+msgstr "true (verai) se la fenèstra es maximizada"
 
 #: ../data/print-dialog.ui.h:1
 msgid "Print Multiple Puzzles"
-msgstr ""
+msgstr "Imprimir mantun sudoku"
 
 #: ../data/print-dialog.ui.h:2
 msgid "_Cancel"
-msgstr "A_nullar"
+msgstr "_Anullar"
 
 #: ../data/print-dialog.ui.h:4
 msgid "_Number of puzzles"
-msgstr ""
+msgstr "_Nombre de grasilhas"
 
 #: ../data/print-dialog.ui.h:5
 msgid "Difficulty"
 msgstr "Dificultat"
 
-#: ../lib/sudoku-board.vala:589
+#: ../lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "Dificultat desconeguda"
 
-#: ../lib/sudoku-board.vala:591
+#: ../lib/sudoku-board.vala:585
 msgid "Easy Difficulty"
-msgstr ""
+msgstr "Dificultat febla"
+
+#: ../lib/sudoku-board.vala:587
+msgid "Medium Difficulty"
+msgstr "Dificultat mejana"
+
+#: ../lib/sudoku-board.vala:589
+msgid "Hard Difficulty"
+msgstr "Dificultat elevada"
+
+#: ../lib/sudoku-board.vala:591
+msgid "Very Hard Difficulty"
+msgstr "Dificultat fòrça elevada"
 
 #: ../lib/sudoku-board.vala:593
-msgid "Medium Difficulty"
-msgstr ""
-
-#: ../lib/sudoku-board.vala:595
-msgid "Hard Difficulty"
-msgstr ""
-
-#: ../lib/sudoku-board.vala:597
-msgid "Very Hard Difficulty"
-msgstr ""
+msgid "Custom Puzzle"
+msgstr "Grasilha personalizada"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:75
+#: ../src/gnome-sudoku.vala:85
 msgid "Show release version"
-msgstr ""
+msgstr "Aficha lo numèro de version"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:79
+#: ../src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
-msgstr ""
+msgstr "Aficha las valors possiblas per cada cellula"
 
-#: ../src/gnome-sudoku.vala:297
-#, c-format
-msgid "Well done, you completed the puzzle in %d minute"
-msgid_plural "Well done, you completed the puzzle in %d minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../src/gnome-sudoku.vala:302
-msgid "Same difficulty again"
-msgstr ""
+#. Error dialog shown when starting a custom game that is not valid.
+#: ../src/gnome-sudoku.vala:303
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "La grasilha qu'avètz picada es pas un sudoku valable."
 
 #: ../src/gnome-sudoku.vala:303
-msgid "New difficulty"
-msgstr ""
+msgid "Please enter a valid puzzle."
+msgstr "Picatz una grasilha valabla."
 
-#: ../src/gnome-sudoku.vala:364
+#. Warning dialog shown when starting a custom game that has multiple solutions.
+#: ../src/gnome-sudoku.vala:312
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "La grasilha qu'avètz picada possedís mantuna solution."
+
+#: ../src/gnome-sudoku.vala:312
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "Las grasilhas valablas an exactement una solucion."
+
+#: ../src/gnome-sudoku.vala:314
+msgid "_Back"
+msgstr "_Precedent"
+
+#: ../src/gnome-sudoku.vala:315
+msgid "Play _Anyway"
+msgstr "_Jogar malgrat tot"
+
+#: ../src/gnome-sudoku.vala:357
+msgid "_Resume"
+msgstr "_Reprene"
+
+#: ../src/gnome-sudoku.vala:421
+#, c-format
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "Òsca, avètz acabat la grasilha en %d minuta !"
+msgstr[1] "Òsca, avètz acabat la grasilha en %d minutas !"
+
+#: ../src/gnome-sudoku.vala:427
+msgid "Play _Again"
+msgstr "_Rejogar"
+
+#: ../src/gnome-sudoku.vala:446
+msgid "Select Difficulty"
+msgstr "Seleccionar la dificultat"
+
+#: ../src/gnome-sudoku.vala:502
 msgid "Reset the board to its original state?"
-msgstr ""
+msgstr "Reïnicializar la grasilha a son estat de despart ?"
+
+#: ../src/gnome-sudoku.vala:549
+msgid "Create Puzzle"
+msgstr "Crear una grasilha"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:467
+#: ../src/gnome-sudoku.vala:630
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
 "Puzzles generated by QQwing %s"
 msgstr ""
+"Lo jòc de logica japonés popular.\n"
+"\n"
+"Grasilhas generadas per QQwing %s"
 
-#: ../src/gnome-sudoku.vala:472
+#: ../src/gnome-sudoku.vala:635
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Cédric VALMARY (Tot en òc) https://launchpad.net/~cvalmary"
+msgstr "Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>"
 
-#: ../src/number-picker.vala:89
+#: ../src/number-picker.vala:90
 msgid "Clear"
-msgstr ""
+msgstr "Escafar"
 
 #. Error message if printing fails
 #: ../src/sudoku-printer.vala:48
 msgid "Error printing file:"
-msgstr ""
+msgstr "Error a l'impression del fichièr :"
 
-#~ msgid "Print Sudokus"
-#~ msgstr "Imprimir los Sudokus"
+#. Text on overlay when game is paused
+#: ../src/sudoku-view.vala:630
+msgid "Paused"
+msgstr "En pausa"
 
-#~ msgid "Print Games"
-#~ msgstr "Imprimir de partidas"
+#~ msgid "Hard Puzzle"
+#~ msgstr "Grasilha difficile"
 
-#~ msgid "Levels of difficulty to print"
-#~ msgstr "Nivèls de dificultat d'imprimir"
-
-#~ msgid "_Number of sudoku to print: "
-#~ msgstr "_Nombre de sudokus d'imprimir : "
-
-#~ msgid "_Sudokus per page: "
-#~ msgstr "_Sudokus per pagina : "
-
-#~ msgid "_Saved Games"
-#~ msgstr "Partidas enregi_stradas"
-
-#~ msgid "Add a new tracker"
-#~ msgstr "Apond un marcador novèl"
-
-#~ msgid "_New Game"
-#~ msgstr "Partida _novèla"
-
-#~ msgid "Details"
-#~ msgstr "Detalhs"
-
-#~ msgid "Medium"
-#~ msgstr "Mejan"
-
-#~ msgid "Easy"
-#~ msgstr "Aisit"
-
-#~ msgid "Very hard"
-#~ msgstr "Fòrça dificil"
-
-#~ msgid "H_ide"
-#~ msgstr "A_magar"
-
-#~ msgid "Hide the tracked values"
-#~ msgstr "Amaga las valors marcadas"
-
-#~ msgid "Hard"
-#~ msgstr "Dificil"
-
-#~ msgid "Last played yesterday at %I:%M %p"
-#~ msgstr "Darrièra partida jogada ièr a %H:%M"
-
-#~ msgid "Last played at %I:%M %p"
-#~ msgstr "Darrièra partida jogada a %H:%M"
-
-#~ msgid "Last played on %B %e %Y"
-#~ msgstr "Darrièra partida jogada lo %e %B %Y"
-
-#~ msgid "Hard puzzle"
-#~ msgstr "Grasilha dificila"
-
-#~ msgid "Very hard puzzle"
-#~ msgstr "Grasilha fòrça dificila"
-
-#~ msgid "Last played on %A at %I:%M %p"
-#~ msgstr "Darrièra partida jogada %A a %H:%M"
-
-#~ msgid "Easy puzzle"
-#~ msgstr "Grasilha aisida"
-
-#~ msgid "Medium puzzle"
-#~ msgstr "Grasilha mejana"
-
-#~ msgid "_Undo"
-#~ msgstr "_Anullar"
-
-#~ msgid "_Redo"
-#~ msgstr "_Tornar far"
-
-#~ msgid "Undo last action"
-#~ msgstr "Anullar la darrièra accion"
-
-#~ msgid "_Reset"
-#~ msgstr "_Reïnicializar"
-
-#~ msgid "New game"
-#~ msgstr "Partida novèla"
-
-#~ msgid "_Game"
-#~ msgstr "_Partida"
-
-#~ msgid "Don't ask me this again."
-#~ msgstr "Me pausar pas pus la question"
-
-#~ msgid "Clear _Bottom Notes"
-#~ msgstr "Escafar las nòtas d'a_val"
-
-#~ msgid "Redo last action"
-#~ msgstr "Restablís la darrièra accion"
-
-#~ msgid "Puzzle _Statistics..."
-#~ msgstr "E_statisticas de la grasilha..."
-
-#~ msgid "_Print..."
-#~ msgstr "Im_primir..."
-
-#~ msgid "_Tools"
-#~ msgstr "_Aisinas"
-
-#~ msgid "Clear _Top Notes"
-#~ msgstr "Escafar las nò_tas d'amont"
-
-#~ msgid "_Hint"
-#~ msgstr "_Astúcia"
-
-#~ msgid "_Settings"
-#~ msgstr "_Paramètres"
-
-#~ msgid "_Highlighter"
-#~ msgstr "_Suslinhador"
-
-#~ msgid "_Contents"
-#~ msgstr "_Ensenhador"
-
-#~ msgid "Show _Toolbar"
-#~ msgstr "Afichar la _barra d'aisinas"
-
-#~ msgid "Show _Possible Numbers"
-#~ msgstr "Afichar los nombres _possibles"
-
-#~ msgid "You win!"
-#~ msgstr "Avètz ganhat !"
-
-#, python-format
-#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
-#~ msgstr "Avètz acabada la grasilha en %(minute)s e %(second)s"
-
-#, python-format
-#~ msgid "%d second"
-#~ msgid_plural "%d seconds"
-#~ msgstr[0] "%d segonda"
-#~ msgstr[1] "%d segondas"
-
-#, python-format
-#~ msgid "%d hour"
-#~ msgid_plural "%d hours"
-#~ msgstr[0] "%d ora"
-#~ msgstr[1] "%d oras"
-
-#, python-format
-#~ msgid "%d minute"
-#~ msgid_plural "%d minutes"
-#~ msgstr[0] "%d minuta"
-#~ msgstr[1] "%d minutas"
-
-#, python-format
-#~ msgid "You got %(n)s hint."
-#~ msgid_plural "You got %(n)s hints."
-#~ msgstr[0] "Avètz recebut %(n)s astúcia."
-#~ msgstr[1] "Avètz recebut %(n)s astúcias."
-
-#~ msgid "_Save game for later"
-#~ msgstr "_Enregistrar la partida per pus tard"
-
-#~ msgid "Save this game before starting new one?"
-#~ msgstr "Enregistrar aquesta partida abans de ne començar una novèla ?"
-
-#~ msgid "Save game before closing?"
-#~ msgstr "Enregistrar lo jòc abans de tampar ?"
-
-#~ msgid "_Abandon game"
-#~ msgstr "_Abandonar la partida"
-
-#~ msgid "Puzzle Information"
-#~ msgstr "Informacions sus la grasilha"
-
-#~ msgid "There is no current puzzle."
-#~ msgstr "Pas de grasilha en cors."
-
-#~ msgid "Very Hard"
-#~ msgstr "Fòrça dificil"
-
-#~ msgid "Calculated difficulty: "
-#~ msgstr "Nivèl de dificultat calculat : "
-
-#~ msgid "Untracked"
-#~ msgstr "Pas marcat"
-
-#, python-format
-#~ msgid "Unable to display help: %s"
-#~ msgstr "Impossible d'afichar l'ajuda : %s"
-
-#~ msgid "Puzzle Statistics"
-#~ msgstr "Estatisticas de la grasilha"
-
-#~ msgid "_Remove"
-#~ msgstr "_Suprimir"
-
-#~ msgid "A_pply"
-#~ msgstr "A_plicar"
-
-#, python-format
-#~ msgid "Tracker %s"
-#~ msgstr "Marcador %s"
-
-#, python-format
-#~ msgid "Unable to save file %(filename)s."
-#~ msgstr "Impossible d'enregistrar lo fichièr %(filename)s."
-
-#~ msgid "_Clear"
-#~ msgstr "_Escafar"
-
-#~ msgid "There is no disk space left!"
-#~ msgstr "I a pas pus d'espaci de disc disponible."
-
-#, python-format
-#~ msgid "Error %(errno)s: %(error)s"
-#~ msgstr "Error %(errno)s: %(error)s"
-
-#~ msgid "No Space"
-#~ msgstr "Espaci mancant"
-
-#~ msgid "No space left on disk"
-#~ msgstr "L'espaci de disc es saturat"
-
-#, python-format
-#~ msgid "Unable to create data folder %(path)s."
-#~ msgstr "Impossible de crear lo dorsièr de donadas %(path)s."
-
-#~ msgid "Unable to save game."
-#~ msgstr "Impossible d'enregistrar la partida."
-
-#~ msgid "_Include games you've already played in list of games to print"
-#~ msgstr ""
-#~ "_Inclure de grasilhas ja resolgudas dins la lista de las grasilhas d'imprimir"
-
-#, python-format
-#~ msgid "Last played %(n)s minute ago"
-#~ msgid_plural "Last played %(n)s minutes ago"
-#~ msgstr[0] "Darrièra partida jogada i a %(n)s minuta"
-#~ msgstr[1] "Darrièra partida jogada i a %(n)s minutas"
-
-#, python-format
-#~ msgid "Last played %(n)s second ago"
-#~ msgid_plural "Last played %(n)s seconds ago"
-#~ msgstr[0] "Darrièra partida jogada i a %(n)s segonda"
-#~ msgstr[1] "Darrièra partida jogada i a %(n)s segondas"
-
-#~ msgid "Make the tracked changes permanent"
-#~ msgstr "Rend permanentas las modificacions marcadas"
-
-#~ msgid "Remove the selected tracker"
-#~ msgstr "Suprimís lo marcador seleccionat"
-
-#~ msgid "game;board;tiles;japanese;"
-#~ msgstr "jòc;platèu;tèules;japonés;"
-
-#~ msgid "_Mark games as played once you've printed them."
-#~ msgstr "_Marcar las grasilhas coma resolgudas aprèp impression."
-
-#, python-format
-#~ msgid "Played for %d hour"
-#~ msgid_plural "Played for %d hours"
-#~ msgstr[0] "Jogada pendent %d ora"
-#~ msgstr[1] "Jogada pendent %d oras"
-
-#, python-format
-#~ msgid "Played for %d minute"
-#~ msgid_plural "Played for %d minutes"
-#~ msgstr[0] "Jogada pendent %d minuta"
-#~ msgstr[1] "Jogada pendent %d minutas"
-
-#~ msgid "Always show possible numbers in a square"
-#~ msgstr "Far totjorn veire los nombres possibles dins una casa"
-
-#~ msgid "_Track Additions"
-#~ msgstr "Activar lo _seguiment dels còps"
-
-#~ msgid "Show a square that is easy to fill."
-#~ msgstr "Far veire una casa de bon emplenar."
-
-#~ msgid "Warn about squares made unfillable by a move"
-#~ msgstr "Senhala las casas qu'un còp rend pas emplenablas"
-
-#~ msgid "Mark new additions in a separate color so you can keep track of them."
-#~ msgstr ""
-#~ "Marca los novèls còps amb una color diferenta per tal de los poder seguir."
-
-#~ msgid "Highlight the current row, column and box"
-#~ msgstr "Suslinha la rengada, colomna e bóstia actualas"
-
-#, python-format
-#~ msgid "Played for %d second"
-#~ msgid_plural "Played for %d seconds"
-#~ msgstr[0] "Jogada pendent %d segonda"
-#~ msgstr[1] "Jogada pendent %d segondas"
-
-#~ msgid "Do you really want to do this?"
-#~ msgstr "Sètz segur que volètz far aquò ?"
-
-#~ msgid "Warn About _Unfillable Squares"
-#~ msgstr "Senhalar las casas _pas emplenablas"
-
-#, python-format
-#~ msgid "You had %(n)s impossibility pointed out."
-#~ msgid_plural "You had %(n)s impossibilities pointed out."
-#~ msgstr[0] "%(n)s impossibilitat vos es estada mostrada."
-#~ msgstr[1] "%(n)s impossibilitat vos son estadas mostradas."
-
-#~ msgid "Hide current tracker entries."
-#~ msgstr "Amaga los marcadors actualament visibles."
-
-#~ msgid "Number of moves instantly fillable by elimination: "
-#~ msgstr "Nombre de còps possibles immediatament per eliminacion : "
-
-#~ msgid "Unable to mark game as finished."
-#~ msgstr "Impossible de marcar la grasilha coma resolguda."
-
-#~ msgid "Delete selected tracker."
-#~ msgstr "Suprimís lo marcador seleccionat."
-
-#~ msgid "Apply all tracked values and remove the tracker."
-#~ msgstr "Aplica totes los còps seguits e suprimís lo marcador."
-
-#~ msgid "Number of moves instantly fillable by filling: "
-#~ msgstr "Nombre de còps possibles immediatament per deduccion : "
-
-#, python-format
-#~ msgid "You completed the puzzle in %d second"
-#~ msgid_plural "You completed the puzzle in %d seconds"
-#~ msgstr[0] "Avètz acabat la grasilha en %d segonda"
-#~ msgstr[1] "Avètz acabat la grasilha en %d segondas"
-
-#, python-format
-#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-#~ msgstr "Avètz acabat la grasilha en  %(hour)s, %(minute)s e %(second)s"
-
-#~ msgid "Sudoku unable to mark game as finished."
-#~ msgstr "Sudoku a pas pogut marcar la grasilha coma resolguda."
-
-#~ msgid "Print _Multiple Sudokus..."
-#~ msgstr "Imprimir _mantun sudoku..."
-
-#~ msgid "Amount of trial-and-error required to solve: "
-#~ msgstr "Quantitat d'ensages-errors necessaris a la resolucion : "
-
-#~ msgid "Error creating directory"
-#~ msgstr "Error al moment de la creacion del dorsièr"
-
-#~ msgid ""
-#~ "The popular Japanese logic puzzle\n"
-#~ "\n"
-#~ "GNOME Sudoku is a part of GNOME Games."
-#~ msgstr ""
-#~ "Lo puzzle japonés popular\n"
-#~ "\n"
-#~ "GNOME Sudoku fa partida de GNOME Games."
+#~ msgid "Very Hard Puzzle"
+#~ msgstr "Grasilha très difficile"
