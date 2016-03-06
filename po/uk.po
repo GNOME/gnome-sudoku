@@ -4,13 +4,13 @@
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2004-2010
 # Wanderlust <wanderlust@ukr.net>, 2009.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
-# Daniel Korostil <ted.korostiled@gmail.com>, 2015.
+# Daniel Korostil <ted.korostiled@gmail.com>, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-24 17:54+0200\n"
-"PO-Revision-Date: 2015-03-25 01:00+0300\n"
+"POT-Creation-Date: 2016-03-06 20:55+0200\n"
+"PO-Revision-Date: 2016-03-06 20:59+0300\n"
 "Last-Translator: Daniel Korostil <ted.korostiled@gmail.com>\n"
 "Language-Team: linux.org.ua\n"
 "Language: uk\n"
@@ -62,7 +62,7 @@ msgstr ""
 "судоку."
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:527
+#: ../src/gnome-sudoku.vala:626
 msgid "Sudoku"
 msgstr "Судоку"
 
@@ -98,7 +98,7 @@ msgstr "_Довідка"
 msgid "_About"
 msgstr "П_ро програму"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:365
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:426
 msgid "_Quit"
 msgstr "Ви_йти"
 
@@ -130,25 +130,37 @@ msgstr "Скл_адно"
 msgid "_Very Hard"
 msgstr "Д_уже складно"
 
-#: ../data/gnome-sudoku.ui.h:9 ../src/gnome-sudoku.vala:307
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Create your own puzzle"
+msgstr "_Створити власну головоломки"
+
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
 msgid "_Pause"
 msgstr "_Пауза"
 
-#: ../data/gnome-sudoku.ui.h:10
+#: ../data/gnome-sudoku.ui.h:11
 msgid "_Clear Board"
 msgstr "_Очистити дошку"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: ../data/gnome-sudoku.ui.h:12
 msgid "Reset the board to its original state"
 msgstr "Скинути дошку до її початкового стану"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: ../data/gnome-sudoku.ui.h:13
 msgid "_New Puzzle"
 msgstr "_Нова головоломка"
 
-#: ../data/gnome-sudoku.ui.h:13
+#: ../data/gnome-sudoku.ui.h:14
 msgid "Start a new puzzle"
 msgstr "Розпочати нову головоломку"
+
+#: ../data/gnome-sudoku.ui.h:15
+msgid "_Start Playing"
+msgstr "_Розпочати гру"
+
+#: ../data/gnome-sudoku.ui.h:16
+msgid "Start playing the custom puzzle you have created"
+msgstr "Розпочату гру з власною головоломкою, яку ви ж створили"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
@@ -214,41 +226,71 @@ msgstr "Кіл_ькість головоломок"
 msgid "Difficulty"
 msgstr "Складність"
 
-#: ../lib/sudoku-board.vala:597
+#: ../lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "Невідома складність"
 
-#: ../lib/sudoku-board.vala:599
-msgid "Easy Puzzle"
-msgstr "Проста головоломка"
+#: ../lib/sudoku-board.vala:585
+msgid "Easy Difficulty"
+msgstr "Легка складність"
 
-#: ../lib/sudoku-board.vala:601
+#: ../lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "Помірна складність"
 
-#: ../lib/sudoku-board.vala:603
-msgid "Hard Puzzle"
-msgstr "Складна головоломка"
+#: ../lib/sudoku-board.vala:589
+msgid "Hard Difficulty"
+msgstr "Складна складність"
 
-#: ../lib/sudoku-board.vala:605
-msgid "Very Hard Puzzle"
-msgstr "Дуже важка головоломка"
+#: ../lib/sudoku-board.vala:591
+msgid "Very Hard Difficulty"
+msgstr "Дуже складна складність"
+
+#: ../lib/sudoku-board.vala:593
+msgid "Custom Puzzle"
+msgstr "Власна головоломка"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:80
+#: ../src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "Показати версію випуску"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:84
+#: ../src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "Показувати можливі значення для кожної клітинки"
 
-#: ../src/gnome-sudoku.vala:313
+#. Error dialog shown when starting a custom game that is not valid.
+#: ../src/gnome-sudoku.vala:303
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "Головоломку, яку ви ввели, — не сумісна з судоку."
+
+#: ../src/gnome-sudoku.vala:303
+msgid "Please enter a valid puzzle."
+msgstr "Введіть правильну головоломку."
+
+#. Warning dialog shown when starting a custom game that has multiple solutions.
+#: ../src/gnome-sudoku.vala:312
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "Головоломка, яку ви ввели, має кілька розв'язків."
+
+#: ../src/gnome-sudoku.vala:312
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "Правильний судоку може мати тільки один розв'язок."
+
+#: ../src/gnome-sudoku.vala:314
+msgid "_Back"
+msgstr "_Назад"
+
+#: ../src/gnome-sudoku.vala:315
+msgid "Play _Anyway"
+msgstr "О_днаково зіграти"
+
+#: ../src/gnome-sudoku.vala:357
 msgid "_Resume"
 msgstr "_Відновити"
 
-#: ../src/gnome-sudoku.vala:359
+#: ../src/gnome-sudoku.vala:421
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -256,20 +298,24 @@ msgstr[0] "Чудово! Ви склали головоломку за %d хви
 msgstr[1] "Чудово! Ви склали головоломку за %d хвилини"
 msgstr[2] "Чудово! Ви склали головоломку за %d хвилин"
 
-#: ../src/gnome-sudoku.vala:364
+#: ../src/gnome-sudoku.vala:427
 msgid "Play _Again"
 msgstr "Зіграти _ще раз"
 
-#: ../src/gnome-sudoku.vala:385
+#: ../src/gnome-sudoku.vala:446
 msgid "Select Difficulty"
 msgstr "Виберіть складність"
 
-#: ../src/gnome-sudoku.vala:421
+#: ../src/gnome-sudoku.vala:502
 msgid "Reset the board to its original state?"
 msgstr "Скинути дошку до її початкового стану?"
 
+#: ../src/gnome-sudoku.vala:549
+msgid "Create Puzzle"
+msgstr "Створити головоломку"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:531
+#: ../src/gnome-sudoku.vala:630
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -280,7 +326,7 @@ msgstr ""
 "\n"
 "Головоломки породжує — QQwing %s"
 
-#: ../src/gnome-sudoku.vala:536
+#: ../src/gnome-sudoku.vala:635
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота\n"
@@ -289,7 +335,7 @@ msgstr ""
 "Daniel Korostil <ted.korostiled@gmail.com>\n"
 "Назарій Ріттер <nazariy.ritter@gmail.com>, 2014"
 
-#: ../src/number-picker.vala:89
+#: ../src/number-picker.vala:90
 msgid "Clear"
 msgstr "Очистити"
 
@@ -299,21 +345,18 @@ msgid "Error printing file:"
 msgstr "Помилка друкування файла:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:617
+#: ../src/sudoku-view.vala:630
 msgid "Paused"
 msgstr "Призупинено"
 
-#~| msgid "Difficulty:"
-#~ msgid "Easy Difficulty"
-#~ msgstr "Легка складність"
+#~ msgid "Easy Puzzle"
+#~ msgstr "Проста головоломка"
 
-#~| msgid "Difficulty:"
-#~ msgid "Hard Difficulty"
-#~ msgstr "Складна складність"
+#~ msgid "Hard Puzzle"
+#~ msgstr "Складна головоломка"
 
-#~| msgid "Difficulty:"
-#~ msgid "Very Hard Difficulty"
-#~ msgstr "Дуже складна складність"
+#~ msgid "Very Hard Puzzle"
+#~ msgstr "Дуже важка головоломка"
 
 #~| msgid "Calculated difficulty: "
 #~ msgid "Same difficulty again"
@@ -2188,9 +2231,6 @@ msgstr "Призупинено"
 #~ msgid "Field Size"
 #~ msgstr "Розмір поля"
 
-#~ msgid "Custom Size"
-#~ msgstr "Нетиповий розмір"
-
 #~ msgid "H_orizontal:"
 #~ msgstr "_Горизонталь:"
 
@@ -2419,9 +2459,6 @@ msgstr "Призупинено"
 
 #~ msgid "Rome"
 #~ msgstr "Рим"
-
-#~ msgid "Pennant Puzzle"
-#~ msgstr "Загадка Вимпел"
 
 #~ msgid "Ithaca"
 #~ msgstr "Ітака"
@@ -3653,9 +3690,6 @@ msgstr "Призупинено"
 #~ msgid "Unrecognized desktop file Version '%s'"
 #~ msgstr "Невідомий файл робочого столу версія '%s'"
 
-#~ msgid "Starting %s"
-#~ msgstr "Запускаю '%s'"
-
 #~ msgid "Application does not accept documents on command line"
 #~ msgstr "Програма не може приймати документи з командного рядка"
 
@@ -4026,9 +4060,6 @@ msgstr "Призупинено"
 
 #~ msgid "Chessboard"
 #~ msgstr "Шахова дошка"
-
-#~ msgid "Backbone"
-#~ msgstr "Хребет"
 
 #~ msgid "Yukon"
 #~ msgstr "Юкон"
@@ -5512,9 +5543,6 @@ msgstr "Призупинено"
 #~ msgid "Please select a file to load"
 #~ msgstr "Введіть назву файлу, який слід завантажити"
 
-#~ msgid "Please enter a file name"
-#~ msgstr "Введіть назву файлу"
-
 #~ msgid "Chess - *%(game_name)s"
 #~ msgstr "Шахи - *%(game_name)s"
 
@@ -5876,9 +5904,6 @@ msgstr "Призупинено"
 #~ msgstr ""
 #~ "Автоматично заповнювати всі квадрати, для яких є хоча б одне придатне "
 #~ "значення."
-
-#~ msgid "_Generate new puzzles"
-#~ msgstr "Створити _нові головоломки"
 
 #~ msgid "Generate new puzzles."
 #~ msgstr "Створити нові головоломки."
