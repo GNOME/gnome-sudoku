@@ -49,7 +49,7 @@ public class PrintDialog : Gtk.Dialog
 
     public PrintDialog (SudokuSaver saver, Gtk.Window window)
     {
-        Object (use_header_bar: Gtk.Settings.get_default ().gtk_dialogs_use_header ? 1 : 0);
+        Object (use_header_bar: 1);
 
         this.saver = saver;
         settings = new GLib.Settings ("org.gnome.sudoku");
@@ -65,8 +65,7 @@ public class PrintDialog : Gtk.Dialog
         revealer = new Gtk.Revealer ();
         revealer.add (spinner);
         revealer.valign = Gtk.Align.CENTER;
-        if (use_header_bar == 1)
-            ((Gtk.HeaderBar) get_header_bar ()).pack_end (revealer);
+        ((Gtk.HeaderBar) get_header_bar ()).pack_end (revealer);
 
         var saved_difficulty = (DifficultyCategory) settings.get_enum (DIFFICULTY_KEY_NAME);
         if (saved_difficulty == DifficultyCategory.EASY)
@@ -81,17 +80,6 @@ public class PrintDialog : Gtk.Dialog
             assert_not_reached ();
 
         wrap_adjustment ("print-multiple-sudokus-to-print", n_sudokus_button.get_adjustment ());
-    }
-
-    ~PrintDialog ()
-    {
-        /* Both the spinner and the revealer have a floating reference if
-           they weren't added to the header bar. */
-        if (use_header_bar != 1)
-        {
-            spinner.destroy ();
-            revealer.destroy ();
-        }
     }
 
     private void wrap_adjustment (string key_name, Gtk.Adjustment action)
