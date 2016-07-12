@@ -39,7 +39,7 @@ int* qqwing_generate_puzzle(int difficulty)
     const int MAX_ITERATIONS = 1000;
     const int BOARD_SIZE = 81;
     qqwing::SudokuBoard board;
-    std::once_flag flag;
+    static std::once_flag flag;
 
     std::call_once(flag, [] {
         srand(time(nullptr));
