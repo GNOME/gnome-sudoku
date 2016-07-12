@@ -1,5 +1,5 @@
 AC_PREREQ([2.63])
-AC_INIT([GNOME Sudoku], [3.20.2], [https://bugzilla.gnome.org/],
+AC_INIT([GNOME Sudoku], [3.20.3], [https://bugzilla.gnome.org/],
         [gnome-sudoku], [https://wiki.gnome.org/Apps/Sudoku])
 AC_CONFIG_MACRO_DIR([m4])
 
