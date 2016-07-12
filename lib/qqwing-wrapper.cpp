@@ -41,6 +41,17 @@ int* qqwing_generate_puzzle(int difficulty)
     const int BOARD_SIZE = 81;
     SudokuBoard board;
 
+    // Seed RNG exactly once.
+    static GMutex mutex;
+    static bool seeded = false;
+    g_mutex_lock(&mutex);
+    if (!seeded)
+    {
+        srand(time(nullptr));
+        seeded = true;
+    }
+    g_mutex_unlock(&mutex);
+
     board.setRecordHistory(true);
     board.setLogHistory(false);
     board.setPrintStyle(SudokuBoard::ONE_LINE);
