@@ -78,7 +78,7 @@ public class Sudoku : Gtk.Application
         {"quit", quit                                               }
     };
 
-    private static const OptionEntry[] option_entries =
+    private const OptionEntry[] option_entries =
     {
         { "version", 'v', 0, OptionArg.NONE, null,
         /* Help string for command line --version flag */
