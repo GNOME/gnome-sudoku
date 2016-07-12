@@ -27,9 +27,6 @@
 #include <glib.h>
 #include <qqwing.hpp>
 
-using namespace qqwing;
-using namespace std;
-
 /*
  * Generate a symmetric puzzle of specified difficulty.
  * The result must be freed with g_free() or free().
@@ -39,17 +36,17 @@ int* qqwing_generate_puzzle(int difficulty)
     int i = 0;
     const int MAX_ITERATIONS = 1000;
     const int BOARD_SIZE = 81;
-    SudokuBoard board;
+    qqwing::SudokuBoard board;
 
     board.setRecordHistory(true);
     board.setLogHistory(false);
-    board.setPrintStyle(SudokuBoard::ONE_LINE);
+    board.setPrintStyle(qqwing::SudokuBoard::ONE_LINE);
 
     for (i = 0; i < MAX_ITERATIONS; i++)
     {
-        bool havePuzzle = board.generatePuzzleSymmetry(SudokuBoard::RANDOM);
+        bool havePuzzle = board.generatePuzzleSymmetry(qqwing::SudokuBoard::RANDOM);
         board.solve();
-        if (havePuzzle && static_cast<SudokuBoard::Difficulty>(difficulty) == board.getDifficulty())
+        if (havePuzzle && static_cast<qqwing::SudokuBoard::Difficulty>(difficulty) == board.getDifficulty())
             break;
     }
 
@@ -70,7 +67,7 @@ int* qqwing_generate_puzzle(int difficulty)
  */
 int qqwing_count_solutions_limited(int* puzzle)
 {
-    SudokuBoard board;
+    qqwing::SudokuBoard board;
     if (!board.setPuzzle(puzzle))
         return 0;
 
@@ -82,22 +79,22 @@ int qqwing_count_solutions_limited(int* puzzle)
  */
 void qqwing_print_stats(int* puzzle)
 {
-    SudokuBoard board;
+    qqwing::SudokuBoard board;
     board.setRecordHistory(true);
     board.setLogHistory(false);
     board.setPuzzle(puzzle);
     board.solve();
 
-    cout << "Number of Givens: " << board.getGivenCount() << endl;
-    cout << "Number of Singles: " << board.getSingleCount() << endl;
-    cout << "Number of Hidden Singles: " << board.getHiddenSingleCount() << endl;
-    cout << "Number of Naked Pairs: " << board.getNakedPairCount() << endl;
-    cout << "Number of Hidden Pairs: " << board.getHiddenPairCount() << endl;
-    cout << "Number of Pointing Pairs/Triples: " << board.getPointingPairTripleCount() << endl;
-    cout << "Number of Box/Line Intersections: " << board.getBoxLineReductionCount() << endl;
-    cout << "Number of Guesses: " << board.getGuessCount() << endl;
-    cout << "Number of Backtracks: " << board.getBacktrackCount() << endl;
-    cout << "Difficulty: " << board.getDifficultyAsString() << endl;
+    std::cout << "Number of Givens: " << board.getGivenCount() << std::endl;
+    std::cout << "Number of Singles: " << board.getSingleCount() << std::endl;
+    std::cout << "Number of Hidden Singles: " << board.getHiddenSingleCount() << std::endl;
+    std::cout << "Number of Naked Pairs: " << board.getNakedPairCount() << std::endl;
+    std::cout << "Number of Hidden Pairs: " << board.getHiddenPairCount() << std::endl;
+    std::cout << "Number of Pointing Pairs/Triples: " << board.getPointingPairTripleCount() << std::endl;
+    std::cout << "Number of Box/Line Intersections: " << board.getBoxLineReductionCount() << std::endl;
+    std::cout << "Number of Guesses: " << board.getGuessCount() << std::endl;
+    std::cout << "Number of Backtracks: " << board.getBacktrackCount() << std::endl;
+    std::cout << "Difficulty: " << board.getDifficultyAsString() << std::endl;
 }
 
 /*
@@ -106,5 +103,5 @@ void qqwing_print_stats(int* puzzle)
  */
 char* qqwing_get_version()
 {
-    return g_strdup(getVersion().c_str());
+    return g_strdup(qqwing::getVersion().c_str());
 }
