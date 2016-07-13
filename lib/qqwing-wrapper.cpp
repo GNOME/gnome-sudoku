@@ -47,7 +47,7 @@ int* qqwing_generate_puzzle(int difficulty)
     g_mutex_lock(&mutex);
     if (!seeded)
     {
-        srand(time(nullptr));
+        srand(time(NULL));
         seeded = true;
     }
     g_mutex_unlock(&mutex);
