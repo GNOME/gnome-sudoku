@@ -21,7 +21,7 @@
 
 using Gee;
 
-public class SudokuGenerator : Object
+namespace SudokuGenerator
 {
     private class Worker : Object
     {
@@ -60,11 +60,7 @@ public class SudokuGenerator : Object
         }
     }
 
-    private SudokuGenerator ()
-    {
-    }
-
-    private static SudokuBoard generate_board (DifficultyCategory category)
+    private SudokuBoard generate_board (DifficultyCategory category)
     {
         var board = new SudokuBoard ();
         int[] puzzle = new int[board.rows * board.cols];
@@ -83,7 +79,8 @@ public class SudokuGenerator : Object
         return board;
     }
 
-    public async static Gee.List<SudokuBoard> generate_boards_async (int nboards, DifficultyCategory category, Cancellable? cancellable) throws ThreadError, IOError
+    public async Gee.List<SudokuBoard> generate_boards_async (
+        int nboards, DifficultyCategory category, Cancellable? cancellable) throws ThreadError, IOError
     {
         var boards = new ArrayList<SudokuBoard> ();
         var pool = new ThreadPool<Worker>.with_owned_data ((worker) => {
@@ -107,7 +104,7 @@ public class SudokuGenerator : Object
         return boards;
     }
 
-    public static void print_stats (SudokuBoard board)
+    public void print_stats (SudokuBoard board)
     {
         var cells = board.get_cells ();
         var puzzle = new int[board.rows * board.cols];
@@ -119,7 +116,7 @@ public class SudokuGenerator : Object
         QQwing.print_stats (puzzle);
     }
 
-    public static string qqwing_version ()
+    public string qqwing_version ()
     {
         return QQwing.get_version ();
     }
