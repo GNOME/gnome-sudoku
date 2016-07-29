@@ -31,7 +31,7 @@
 
 /*
  * Generate a symmetric puzzle of specified difficulty.
- * The result must be freed with g_free() or free().
+ * The result must be freed with g_free().
  */
 int* qqwing_generate_puzzle(int difficulty)
 {
@@ -105,8 +105,7 @@ void qqwing_print_stats(int* puzzle)
 }
 
 /*
- * Returns the version of qqwing in use.
- * Free with g_free() or free()
+ * Returns the version of qqwing in use. Free with g_free().
  */
 char* qqwing_get_version()
 {
