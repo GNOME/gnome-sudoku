@@ -268,6 +268,8 @@ public class Sudoku : Gtk.Application
             redo_action.set_enabled (!game.is_redostack_null ());
             new_game_action.set_enabled (true);
         }
+
+        view.queue_draw ();
     }
 
     private void play_custom_game_cb ()
