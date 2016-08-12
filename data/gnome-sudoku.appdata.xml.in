@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2013 Michael Catanzaro and contributors -->
-<application>
-  <id type="desktop">gnome-sudoku.desktop</id>
+<component type="desktop">
+  <id>gnome-sudoku.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0+ and CC-BY-SA-3.0</project_license>
+  <project_license>GPL-3.0+</project_license>
   <_name>GNOME Sudoku</_name>
   <_summary>Test your logic skills in this number grid puzzle</_summary>
   <description>
@@ -25,10 +25,17 @@
     </_p>
   </description>
   <screenshots>
-    <screenshot type="default" width="748" height="577">https://people.gnome.org/~mcatanzaro/gnome-sudoku.png</screenshot>
+    <screenshot height="577" width="748" type="default">
+      <image>https://people.gnome.org/~mcatanzaro/gnome-sudoku.png</image>
+      <_caption>A GNOME sudoku game preview</_caption>
+    </screenshot>
   </screenshots>
   <url type="homepage">https://wiki.gnome.org/Apps/Sudoku</url>
-  <updatecontact>mcatanzaro_at_gnome.org</updatecontact>
+  <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-sudoku</url>
+  <url type="donation">http://www.gnome.org/friends/</url>
+  <url type="help">https://help.gnome.org/users/gnome-sudoku/stable/</url>
+  <url type="translate">https://wiki.gnome.org/TranslationProject</url>
+  <update_contact>mcatanzaro_at_gnome.org</update_contact>
   <project_group>GNOME</project_group>
   <kudos>
     <kudo>AppMenu</kudo>
@@ -37,4 +44,5 @@
     <kudo>UserDocs</kudo>
   </kudos>
   <translation type="gettext">gnome-sudoku</translation>
-</application>
+  <_developer_name>The GNOME Project</_developer_name>
+</component>
