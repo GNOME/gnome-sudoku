@@ -8,24 +8,24 @@
 # Sami Pesonen <sampeson@iki.fi>, 2002-2005.
 # Ilkka Tuohela <hile@iki.fi>, 2005-2009.
 # Timo Jyrinki <timo.jyrinki@iki.fi>, 2008.
-# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2012, 2013, 2014, 2015.
+# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2012, 2013, 2014, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-05 08:17+0000\n"
-"PO-Revision-Date: 2015-09-05 15:28+0300\n"
+"POT-Creation-Date: 2016-08-13 19:53+0000\n"
+"PO-Revision-Date: 2016-08-14 15:40+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
-"Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
+"Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2010-09-13 15:09+0000\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "X-POT-Import-Date: 2012-03-05 14:46:29+0000\n"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:1
@@ -64,8 +64,17 @@ msgstr ""
 "sudokuja. Voit valita sivulle tulostettavien sudokujen määrän ja "
 "vaikeustason."
 
+#: ../data/gnome-sudoku.appdata.xml.in.h:6
+#| msgid "Game preview"
+msgid "A GNOME sudoku game preview"
+msgstr "Gnome Sudoku -pelin esikatselu"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:7
+msgid "The GNOME Project"
+msgstr "Gnome-projekti"
+
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:626
+#: ../src/gnome-sudoku.vala:604
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -101,7 +110,7 @@ msgstr "O_hje"
 msgid "_About"
 msgstr "_Tietoja"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:404
 msgid "_Quit"
 msgstr "_Lopeta"
 
@@ -137,7 +146,7 @@ msgstr "_Hyvin vaikea"
 msgid "_Create your own puzzle"
 msgstr "_Luo oma pulma"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:329
 msgid "_Pause"
 msgstr "_Keskeytä"
 
@@ -158,7 +167,6 @@ msgid "Start a new puzzle"
 msgstr "Aloita uusi peli"
 
 #: ../data/gnome-sudoku.ui.h:15
-#| msgid "_Starting level:"
 msgid "_Start Playing"
 msgstr "_Aloita pelaaminen"
 
@@ -251,7 +259,6 @@ msgid "Very Hard Difficulty"
 msgstr "Erittäin vaikea vaikeustaso"
 
 #: ../lib/sudoku-board.vala:593
-#| msgid "Custom Size"
 msgid "Custom Puzzle"
 msgstr "Oma pulma"
 
@@ -266,64 +273,60 @@ msgid "Show the possible values for each cell"
 msgstr "Näytä jokaisen solun mahdolliset arvot"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:281
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Antamasi pulma ei ole kelvollinen sudoku."
 
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:281
 msgid "Please enter a valid puzzle."
 msgstr "Anna kelvollinen pulma."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:290
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Antamallasi pulmalla on lukuisia ratkaisuja."
 
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:290
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Kelvolliset sudokupulmat omaavat vain yhden ratkaisun."
 
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:292
 msgid "_Back"
 msgstr "_Takaisin"
 
-#: ../src/gnome-sudoku.vala:315
-#| msgid "Play _Again"
+#: ../src/gnome-sudoku.vala:293
 msgid "Play _Anyway"
 msgstr "Pelaa _silti"
 
-#: ../src/gnome-sudoku.vala:357
-#| msgid "_Reset"
+#: ../src/gnome-sudoku.vala:335
 msgid "_Resume"
 msgstr "_Jatka"
 
-#: ../src/gnome-sudoku.vala:421
+#: ../src/gnome-sudoku.vala:399
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Onnittelut, ratkaisit pulman %d minuuttissa!"
 msgstr[1] "Onnittelut, ratkaisit pulman %d minuuttissa!"
 
-#: ../src/gnome-sudoku.vala:426
+#: ../src/gnome-sudoku.vala:405
 msgid "Play _Again"
 msgstr "_Pelaa uudelleen"
 
-#: ../src/gnome-sudoku.vala:446
-#| msgid "Difficulty"
+#: ../src/gnome-sudoku.vala:424
 msgid "Select Difficulty"
 msgstr "Valitse vaikeustaso"
 
-#: ../src/gnome-sudoku.vala:502
+#: ../src/gnome-sudoku.vala:480
 msgid "Reset the board to its original state?"
 msgstr "Palautetaanko lauta sen alkuperäistilaan?"
 
-#: ../src/gnome-sudoku.vala:549
-#| msgid "Pennant Puzzle"
+#: ../src/gnome-sudoku.vala:527
 msgid "Create Puzzle"
 msgstr "Luo pulma"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:630
+#: ../src/gnome-sudoku.vala:608
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -334,10 +337,10 @@ msgstr ""
 "\n"
 "Pulmat tuottaa QQwing %s"
 
-#: ../src/gnome-sudoku.vala:635
+#: ../src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
-"Jiri Grönroos, 2012-2015\n"
+"Jiri Grönroos, 2012-2016\n"
 "Timo Jyrinki, 2008\n"
 "Ilkka Tuohela, 2006-2009\n"
 "Sami Pesonen, 2002-2005\n"
@@ -365,7 +368,7 @@ msgid "Error printing file:"
 msgstr "Virhe tulostaessa tiedostoa:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:629
+#: ../src/sudoku-view.vala:630
 msgid "Paused"
 msgstr "Keskeytetty"
 
@@ -1362,9 +1365,6 @@ msgstr "Keskeytetty"
 
 #~ msgid "Game field from last saved session."
 #~ msgstr "Pelikenttä edellisestä tallennetusta kerrasta."
-
-#~ msgid "Game preview"
-#~ msgstr "Pelin esikatselu"
 
 #~ msgid "Game preview from last saved session."
 #~ msgstr "Pelin esikatselu edellisestä tallennetusta kerrasta."
