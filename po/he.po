@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-19 12:15+0300\n"
-"PO-Revision-Date: 2015-07-19 12:17+0300\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
+"POT-Creation-Date: 2016-08-14 16:55+0300\n"
+"PO-Revision-Date: 2016-08-14 16:56+0300\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -58,8 +58,16 @@ msgstr ""
 "בכל דף ומה רמת הקושי של המשחק שברצונך להדפיס: מכך GNOME סודוקו יכול לשמש ספר "
 "סודוקו מתחדש בשבילך."
 
+#: ../data/gnome-sudoku.appdata.xml.in.h:6
+msgid "A GNOME sudoku game preview"
+msgstr "תצוגה של משחק GNOME סודוקו"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:7
+msgid "The GNOME Project"
+msgstr "מיזם GNOME"
+
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:626
+#: ../src/gnome-sudoku.vala:604
 msgid "Sudoku"
 msgstr "סודוקו"
 
@@ -95,7 +103,7 @@ msgstr "ע_זרה"
 msgid "_About"
 msgstr "על _אודות"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:404
 msgid "_Quit"
 msgstr "י_ציאה"
 
@@ -131,7 +139,7 @@ msgstr "_קשה מאד"
 msgid "_Create your own puzzle"
 msgstr "י_צירת לוח משלך"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:329
 msgid "_Pause"
 msgstr "ה_שהייה"
 
@@ -258,36 +266,36 @@ msgid "Show the possible values for each cell"
 msgstr "Show the possible values for each cell"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:281
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "הלוח שהזנת אינו סודוקו תקף."
 
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:281
 msgid "Please enter a valid puzzle."
 msgstr "נא להכניס לוח תקף."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:290
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "ללוח שהזנת יש מספר פתרונות אפשריים."
 
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:290
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "לסודוקו תקף יש בדיוק פתרון אפשרי אחד."
 
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:292
 msgid "_Back"
 msgstr "_חזרה"
 
-#: ../src/gnome-sudoku.vala:315
+#: ../src/gnome-sudoku.vala:293
 msgid "Play _Anyway"
 msgstr "לשחק _בכל מקרה"
 
-#: ../src/gnome-sudoku.vala:357
+#: ../src/gnome-sudoku.vala:335
 msgid "_Resume"
 msgstr "_המשך"
 
-#: ../src/gnome-sudoku.vala:421
+#: ../src/gnome-sudoku.vala:399
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -295,24 +303,24 @@ msgstr[0] "כל הכבוד, השלמת את הלוח בדקה אחת!"
 msgstr[1] "כל הכבוד, השלמת את הלוח ב־%d דקות!"
 msgstr[2] "כל הכבוד, השלמת את הלוח בשתי דקות!"
 
-#: ../src/gnome-sudoku.vala:426
+#: ../src/gnome-sudoku.vala:405
 msgid "Play _Again"
 msgstr "לשחק _שוב"
 
-#: ../src/gnome-sudoku.vala:446
+#: ../src/gnome-sudoku.vala:424
 msgid "Select Difficulty"
 msgstr "בחירת רמת קושי"
 
-#: ../src/gnome-sudoku.vala:502
+#: ../src/gnome-sudoku.vala:480
 msgid "Reset the board to its original state?"
 msgstr "איפוס הלוח למצבו המקורי?"
 
-#: ../src/gnome-sudoku.vala:549
+#: ../src/gnome-sudoku.vala:527
 msgid "Create Puzzle"
 msgstr "יצירת לוח"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:630
+#: ../src/gnome-sudoku.vala:608
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -323,7 +331,7 @@ msgstr ""
 "\n"
 "הלוחות נוצרות על ידי QQwing %s"
 
-#: ../src/gnome-sudoku.vala:635
+#: ../src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -348,7 +356,7 @@ msgid "Error printing file:"
 msgstr "שגיאה בהדפסת קובץ:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:629
+#: ../src/sudoku-view.vala:630
 msgid "Paused"
 msgstr "הושהה"
 
@@ -1372,9 +1380,6 @@ msgstr "הושהה"
 
 #~ msgid "Game field from last saved session."
 #~ msgstr "Game field from last saved session."
-
-#~ msgid "Game preview"
-#~ msgstr "Game preview"
 
 #~ msgid "Game preview from last saved session."
 #~ msgstr "Game preview from last saved session."
