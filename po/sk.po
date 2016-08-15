@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-05-19 08:14+0000\n"
-"PO-Revision-Date: 2015-05-19 12:09+0100\n"
+"POT-Creation-Date: 2016-08-13 19:53+0000\n"
+"PO-Revision-Date: 2016-08-15 10:03+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: slovenčina <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -21,11 +21,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
-msgstr "Sudoku GNOME"
+msgstr "Sudoku prostredia GNOME"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
 msgid "Test your logic skills in this number grid puzzle"
@@ -33,34 +33,43 @@ msgstr "Otestujte svoje logické myslenie na tejto mriežke s číslami"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
-"Play the popular Japanese logic game. GNOME Sudoku is a must-install for Sudoku "
-"lovers, with a simple, unobtrusive interface that makes playing Sudoku fun for "
-"players of any skill level."
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
 msgstr ""
-"Hrajte obľúbenú japonskú logickú hru. GNOME Sudoku si musia nainštalovať milovníci "
-"hlavolamu Sudoku, pretože hra má jednoduché a nenásilné rozhranie, ktoré učiní "
-"hranie Sudoku zábavným pre hráčov s akoukoľvek skúsenosťou."
+"Hrajte obľúbenú japonskú logickú hru. GNOME Sudoku si musia nainštalovať "
+"milovníci hlavolamu Sudoku, pretože hra má jednoduché a nenásilné rozhranie, "
+"ktoré učiní hranie Sudoku zábavným pre hráčov s akoukoľvek skúsenosťou."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
-"Každá hra je označená obtiažnosťou podobne ako v novinách a na webových stránkach, "
-"takže vaša hra bude obtiažna podľa toho, akú obtiažnosť si zvolíte."
+"Každá hra je označená obtiažnosťou podobne ako v novinách a na webových "
+"stránkach, takže vaša hra bude obtiažna podľa toho, akú obtiažnosť si "
+"zvolíte."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
-"If you like to play on paper, you can print games out. You can choose how many "
-"games you want to print per page and what difficulty of games you want to print: as "
-"a result, GNOME Sudoku can act a renewable Sudoku book for you."
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
 msgstr ""
-"Ak radi hráte na papieri, môžete si hry vytlačiť. Môžete si vybrať koľko hier sa má "
-"vytlačiť na jednej stránke a náročnosť hier, ktoré chcete tlačiť. Takže hru Sudoku "
-"GNOME môžete použiť ako obnoviteľnú knihu sudoku."
+"Ak radi hráte na papieri, môžete si hry vytlačiť. Môžete si vybrať koľko "
+"hier sa má vytlačiť na jednej stránke a náročnosť hier, ktoré chcete tlačiť. "
+"Takže hru Sudoku GNOME môžete použiť ako obnoviteľnú knihu sudoku."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:6
+msgid "A GNOME sudoku game preview"
+msgstr "Náhľad hry Sudoku prostredia GNOME"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:7
+msgid "The GNOME Project"
+msgstr "Projekt GNOME"
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:626
+#: ../src/gnome-sudoku.vala:604
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -96,7 +105,7 @@ msgstr "_Pomocník"
 msgid "_About"
 msgstr "_O programe"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:404
 msgid "_Quit"
 msgstr "_Ukončiť"
 
@@ -135,7 +144,7 @@ msgstr "_Veľmi ťažká"
 msgid "_Create your own puzzle"
 msgstr "_vytvoriť váš vlastný hlavolam"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:329
 msgid "_Pause"
 msgstr "_Pozastaviť"
 
@@ -174,11 +183,12 @@ msgstr "Úroveň obtiažnosti tlačených hlavolamov sudoku"
 # desc
 #: ../data/org.gnome.sudoku.gschema.xml.h:2
 msgid ""
-"Set the difficulty level of the sudokus you want to print. Possible values are - "
-"\"easy\", \"medium\", \"hard\", \"very_hard\""
+"Set the difficulty level of the sudokus you want to print. Possible values "
+"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"Nastaví úroveň obtiažnosti hlavolamov sudoku, ktoré chcete vytlačiť. Možné hodnoty "
-"sú - „easy“(ľahká), „medium“(stredná), „hard“(ťažká), „very_hard“(veľmi ťažká)"
+"Nastaví úroveň obtiažnosti hlavolamov sudoku, ktoré chcete vytlačiť. Možné "
+"hodnoty sú - „easy“(ľahká), „medium“(stredná), „hard“(ťažká), "
+"„very_hard“(veľmi ťažká)"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:3
 msgid "Number of Sudokus to print"
@@ -197,11 +207,11 @@ msgstr "Upozorniť na nevyplniteľné štvorce a zdvojené číslice"
 # desc
 #: ../data/org.gnome.sudoku.gschema.xml.h:6
 msgid ""
-"Displays a big red X in a square if it cannot possibly be filled by any number and "
-"duplicate numbers are highlighted in red"
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number and duplicate numbers are highlighted in red"
 msgstr ""
-"Zobrazí veľké červené X v stvorci, ktorý nebude možné vyplniť žiadnou číslicou a "
-"zdvojené číslice budú označené na červeno."
+"Zobrazí veľké červené X v stvorci, ktorý nebude možné vyplniť žiadnou "
+"číslicou a zdvojené číslice budú označené na červeno."
 
 # summary
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
@@ -272,36 +282,36 @@ msgid "Show the possible values for each cell"
 msgstr "Zobrazí vhodné hodnoty pre každú bunku"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:281
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Hlavolam, ktorý ste zadali, nie je platnou hrou Sudoku."
 
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:281
 msgid "Please enter a valid puzzle."
 msgstr "Prosím, zadajte platný hlavolam."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:290
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Hlavolam, ktorý ste zadali, má viacero riešení."
 
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:290
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Platné hlavolamy Sudoku majú iba jedno riešenie."
 
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:292
 msgid "_Back"
 msgstr "_Späť"
 
-#: ../src/gnome-sudoku.vala:315
+#: ../src/gnome-sudoku.vala:293
 msgid "Play _Anyway"
 msgstr "Hrať _aj napriek tomu"
 
-#: ../src/gnome-sudoku.vala:357
+#: ../src/gnome-sudoku.vala:335
 msgid "_Resume"
 msgstr "_Pokračovať"
 
-#: ../src/gnome-sudoku.vala:421
+#: ../src/gnome-sudoku.vala:399
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -309,24 +319,24 @@ msgstr[0] "Výborne, hlavolam ste dokončili za %d minút!"
 msgstr[1] "Výborne, hlavolam ste dokončili za %d minútu!"
 msgstr[2] "Výborne, hlavolam ste dokončili za %d minúty!"
 
-#: ../src/gnome-sudoku.vala:426
+#: ../src/gnome-sudoku.vala:405
 msgid "Play _Again"
 msgstr "Hrať _znovu"
 
-#: ../src/gnome-sudoku.vala:446
+#: ../src/gnome-sudoku.vala:424
 msgid "Select Difficulty"
 msgstr "Výber obtiažnosti"
 
-#: ../src/gnome-sudoku.vala:502
+#: ../src/gnome-sudoku.vala:480
 msgid "Reset the board to its original state?"
 msgstr "Obnoviť hraciu plochu do pôvodného stavu?"
 
-#: ../src/gnome-sudoku.vala:549
+#: ../src/gnome-sudoku.vala:527
 msgid "Create Puzzle"
 msgstr "Vytvorenie hlavolamu"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:630
+#: ../src/gnome-sudoku.vala:608
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -337,7 +347,7 @@ msgstr ""
 "\n"
 "Hlavolamy sú generované pomocou QQwing %s"
 
-#: ../src/gnome-sudoku.vala:635
+#: ../src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
 "Stanislav Višňovský <visnovsky@nenya.ms.mff.cuni.cz>\n"
@@ -356,7 +366,7 @@ msgid "Error printing file:"
 msgstr "Chyba pri tlačení súboru:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:628
+#: ../src/sudoku-view.vala:630
 msgid "Paused"
 msgstr "Pozastavená"
 
@@ -369,13 +379,13 @@ msgstr "Pozastavená"
 #~ msgstr "Nová obtiažnosť"
 
 #~ msgid ""
-#~ "GNOME Sudoku has a simple, unobstrusive interface with all the features that "
-#~ "make playing Sudoku fun. Games are automatically saved when you quit, and you "
-#~ "can always come back to any game that you've played."
+#~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
+#~ "that make playing Sudoku fun. Games are automatically saved when you "
+#~ "quit, and you can always come back to any game that you've played."
 #~ msgstr ""
-#~ "Hra Sudoku GNOME má jednoduché, nenápadné rozhranie so všetkými funkciami, ktoré "
-#~ "robia hranie zábavným. Hry sú automaticky ukladané pri ukončení aplikácie a "
-#~ "môžete sa vrátiť a hrať rozohranú hru."
+#~ "Hra Sudoku GNOME má jednoduché, nenápadné rozhranie so všetkými "
+#~ "funkciami, ktoré robia hranie zábavným. Hry sú automaticky ukladané pri "
+#~ "ukončení aplikácie a môžete sa vrátiť a hrať rozohranú hru."
 
 #~ msgid "game;board;tiles;japanese;"
 #~ msgstr "hra;stolová;dlaždice;japonský hlavolam;"
@@ -559,8 +569,10 @@ msgstr "Pozastavená"
 #~ msgid "_Track Additions"
 #~ msgstr "_Sledovať doplnenia"
 
-#~ msgid "Mark new additions in a separate color so you can keep track of them."
-#~ msgstr "Označí novodoplnené čísla odlišnou farbou, aby ste ich mohli rozoznať."
+#~ msgid ""
+#~ "Mark new additions in a separate color so you can keep track of them."
+#~ msgstr ""
+#~ "Označí novodoplnené čísla odlišnou farbou, aby ste ich mohli rozoznať."
 
 #~ msgid "Show _Toolbar"
 #~ msgstr "Zobraziť _lištu nástrojov"
