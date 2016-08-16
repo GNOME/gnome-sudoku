@@ -1,9 +1,6 @@
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Aviary.pl
-# Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
-# pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
-# gnomepl@aviary.pl
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Polish translation for gnome-sudoku.
+# Copyright © 1998-2016 the gnome-sudoku authors.
+# This file is distributed under the same license as the gnome-sudoku package.
 # Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 1998-2002.
 # Marcin Gorycki <mgo@olicom.dk>, 1999.
 # Tomasz Kłoczko <kloczek@rudy.mif.pg.gda.pl>, 2000.
@@ -15,24 +12,23 @@
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008.
 # Joanna Mazgaj <jmazgaj@aviary.pl>, 2009-2010.
 # Wojciech Kapusta <wkapusta@aviary.pl>, 2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2015.
-# Aviary.pl <gnomepl@aviary.pl>, 2007-2015.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2016.
+# Aviary.pl <community-poland@mozilla.org>, 2007-2016.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-25 14:23+0200\n"
-"PO-Revision-Date: 2015-08-25 14:24+0200\n"
+"POT-Creation-Date: 2016-08-16 10:21+0200\n"
+"PO-Revision-Date: 2016-08-16 10:22+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish <gnomepl@aviary.pl>\n"
+"Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: Poland\n"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
@@ -49,16 +45,16 @@ msgid ""
 "Sudoku fun for players of any skill level."
 msgstr ""
 "Popularne japońskie łamigłówki logiczne. Gra GNOME Sudoku jest przeznaczona "
-"dla wszystkich miłośników Sudoku, a jej prosty, łatwy w użyciu interfejs "
-"czyni grę przyjemną dla graczy o każdych umiejętnościach."
+"dla wszystkich miłośników Sudoku, a jej prosty, łatwy w użyciu interfejs "
+"czyni grę przyjemną dla graczy o każdych umiejętnościach."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
-"Każda plansza ma przydzielony poziom trudności podobny do tych z gazet i "
-"witryn internetowych, więc można wybrać planszę o pasującym poziomie."
+"Każda plansza ma przydzielony poziom trudności podobny do tych z gazet "
+"i witryn internetowych, więc można wybrać planszę o pasującym poziomie."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
@@ -67,11 +63,19 @@ msgid ""
 "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
 msgstr ""
 "Można także drukować plansze, aby grać na papierze. Można wybrać liczbę "
-"plansz na stronę i ich poziom. Gra GNOME Sudoku może więc być używana jako "
+"plansz na stronę i ich poziom. Gra GNOME Sudoku może więc być używana jako "
 "odnawialna książka do Sudoku."
 
+#: ../data/gnome-sudoku.appdata.xml.in.h:6
+msgid "A GNOME sudoku game preview"
+msgstr "Podgląd gry GNOME Sudoku"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:7
+msgid "The GNOME Project"
+msgstr "Projekt GNOME"
+
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:626
+#: ../src/gnome-sudoku.vala:604
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -105,9 +109,9 @@ msgstr "Pomo_c"
 
 #: ../data/gnome-sudoku-menu.ui.h:7
 msgid "_About"
-msgstr "_O grze"
+msgstr "_O grze"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:404
 msgid "_Quit"
 msgstr "Za_kończ"
 
@@ -143,7 +147,7 @@ msgstr "_Bardzo trudna"
 msgid "_Create your own puzzle"
 msgstr "_Utwórz własną łamigłówkę"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:329
 msgid "_Pause"
 msgstr "W_strzymaj"
 
@@ -169,7 +173,7 @@ msgstr "_Rozpocznij grę"
 
 #: ../data/gnome-sudoku.ui.h:16
 msgid "Start playing the custom puzzle you have created"
-msgstr "Rozpoczyna grę w utworzoną łamigłówkę"
+msgstr "Rozpoczyna grę w utworzoną łamigłówkę"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:1
 msgid "Difficulty level of sudokus to be printed"
@@ -194,28 +198,28 @@ msgstr "Ustawia liczbę plansz Sudoku do wydrukowania"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:5
 msgid "Warn about unfillable squares and duplicate numbers"
-msgstr "Ostrzeganie o niewypełnialnych kwadratach i powtórzonych liczbach"
+msgstr "Ostrzeganie o niewypełnialnych kwadratach i powtórzonych liczbach"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:6
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
 msgstr ""
-"Wyświetla wielki, czerwony znak X w kwadracie, którego nie można wypełnić "
+"Wyświetla wielki, czerwony znak X w kwadracie, którego nie można wypełnić "
 "żadną liczbą, oraz wyróżnia powtórzone liczby na czerwono"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:7
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr ""
-"Wyróżnianie rzędu, kolumny i kwadratu, który zawiera zaznaczoną komórkę"
+"Wyróżnianie rzędu, kolumny i kwadratu, który zawiera zaznaczoną komórkę"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:8
 msgid "Width of the window in pixels"
-msgstr "Szerokość okna w pikselach"
+msgstr "Szerokość okna w pikselach"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:9
 msgid "Height of the window in pixels"
-msgstr "Wysokość okna w pikselach"
+msgstr "Wysokość okna w pikselach"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:10
 msgid "true if the window is maximized"
@@ -272,61 +276,61 @@ msgid "Show the possible values for each cell"
 msgstr "Wyświetla możliwe wartości dla każdego kwadratu"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:281
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Podana łamigłówka jest nieprawidłowa."
 
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:281
 msgid "Please enter a valid puzzle."
 msgstr "Proszę podać prawidłową łamigłówkę."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:290
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Podana łamigłówka ma kilka rozwiązań."
 
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:290
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Prawidłowe łamigłówki Sudoku mają dokładnie jedno rozwiązanie."
 
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:292
 msgid "_Back"
 msgstr "_Wstecz"
 
-#: ../src/gnome-sudoku.vala:315
+#: ../src/gnome-sudoku.vala:293
 msgid "Play _Anyway"
 msgstr "_Zagraj mimo to"
 
-#: ../src/gnome-sudoku.vala:357
+#: ../src/gnome-sudoku.vala:335
 msgid "_Resume"
 msgstr "W_znów"
 
-#: ../src/gnome-sudoku.vala:421
+#: ../src/gnome-sudoku.vala:399
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "Łamigłówkę rozwiązano w %d minutę!"
-msgstr[1] "Łamigłówkę rozwiązano w %d minuty!"
-msgstr[2] "Łamigłówkę rozwiązano w %d minut!"
+msgstr[0] "Łamigłówkę rozwiązano w %d minutę!"
+msgstr[1] "Łamigłówkę rozwiązano w %d minuty!"
+msgstr[2] "Łamigłówkę rozwiązano w %d minut!"
 
-#: ../src/gnome-sudoku.vala:426
+#: ../src/gnome-sudoku.vala:405
 msgid "Play _Again"
 msgstr "_Zagraj ponownie"
 
-#: ../src/gnome-sudoku.vala:446
+#: ../src/gnome-sudoku.vala:424
 msgid "Select Difficulty"
 msgstr "Wybór trudności"
 
-#: ../src/gnome-sudoku.vala:502
+#: ../src/gnome-sudoku.vala:480
 msgid "Reset the board to its original state?"
 msgstr "Przywrócić planszę do jej pierwotnego stanu?"
 
-#: ../src/gnome-sudoku.vala:549
+#: ../src/gnome-sudoku.vala:527
 msgid "Create Puzzle"
 msgstr "Tworzenie łamigłówki"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:630
+#: ../src/gnome-sudoku.vala:608
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -337,7 +341,7 @@ msgstr ""
 "\n"
 "Łamigłówki tworzone przez program QQwing %s"
 
-#: ../src/gnome-sudoku.vala:635
+#: ../src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
 "Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 1998-2002\n"
@@ -351,8 +355,8 @@ msgstr ""
 "Tomasz Dominikowski <dominikowski@gmail.com>, 2008\n"
 "Joanna Mazgaj <jmazgaj@aviary.pl>, 2009-2010\n"
 "Wojciech Kapusta <wkapusta@aviary.pl>, 2009\n"
-"Piotr Drąg <piotrdrag@gmail.com>, 2010-2015\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2007-2015"
+"Piotr Drąg <piotrdrag@gmail.com>, 2010-2016\n"
+"Aviary.pl <community-poland@mozilla.org>, 2007-2016"
 
 #: ../src/number-picker.vala:90
 msgid "Clear"
@@ -364,6 +368,6 @@ msgid "Error printing file:"
 msgstr "Błąd podczas drukowania pliku:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:629
+#: ../src/sudoku-view.vala:630
 msgid "Paused"
 msgstr "Wstrzymano"
