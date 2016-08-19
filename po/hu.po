@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-13 19:53+0000\n"
-"PO-Revision-Date: 2016-08-19 23:30+0200\n"
+"POT-Creation-Date: 2016-08-19 21:31+0000\n"
+"PO-Revision-Date: 2016-08-19 23:34+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
@@ -65,16 +65,15 @@ msgstr ""
 "feladványkötetként használható."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:6
-#| msgid "Game preview"
 msgid "A GNOME sudoku game preview"
-msgstr "Egy GNOME sudoku játék előnézet"
+msgstr "Egy GNOME sudoku játékelőnézet"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:7
 msgid "The GNOME Project"
 msgstr "A GNOME projekt"
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:604
+#: ../src/gnome-sudoku.vala:606
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -110,7 +109,7 @@ msgstr "_Súgó"
 msgid "_About"
 msgstr "_Névjegy"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:404
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:406
 msgid "_Quit"
 msgstr "_Kilépés"
 
@@ -146,7 +145,7 @@ msgstr "Nag_yon nehéz"
 msgid "_Create your own puzzle"
 msgstr "_Saját feladvány létrehozása"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:329
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:331
 msgid "_Pause"
 msgstr "_Szünet"
 
@@ -275,61 +274,61 @@ msgid "Show the possible values for each cell"
 msgstr "Az egyes cellák lehetséges értékeinek megjelenítése"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:281
+#: ../src/gnome-sudoku.vala:283
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "A megadott feladvány nem érvényes Sudoku."
 
-#: ../src/gnome-sudoku.vala:281
+#: ../src/gnome-sudoku.vala:283
 msgid "Please enter a valid puzzle."
 msgstr "Érvényes feladványt adjon meg."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:290
+#: ../src/gnome-sudoku.vala:292
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "A megadott feladványnak több megoldása van."
 
-#: ../src/gnome-sudoku.vala:290
+#: ../src/gnome-sudoku.vala:292
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Az érvényes Sudoku feladványoknak pontosan egy megoldása van."
 
-#: ../src/gnome-sudoku.vala:292
+#: ../src/gnome-sudoku.vala:294
 msgid "_Back"
 msgstr "_Vissza"
 
-#: ../src/gnome-sudoku.vala:293
+#: ../src/gnome-sudoku.vala:295
 msgid "Play _Anyway"
 msgstr "Játszás _mindenképp"
 
 # aisleriot/dialog.c:112
-#: ../src/gnome-sudoku.vala:335
+#: ../src/gnome-sudoku.vala:337
 msgid "_Resume"
 msgstr "_Folytatás"
 
-#: ../src/gnome-sudoku.vala:399
+#: ../src/gnome-sudoku.vala:401
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Szép munka, a feladványt %d perc alatt oldotta meg!"
 msgstr[1] "Szép munka, a feladványt %d perc alatt oldotta meg!"
 
-#: ../src/gnome-sudoku.vala:405
+#: ../src/gnome-sudoku.vala:407
 msgid "Play _Again"
 msgstr "Játék új_ra"
 
-#: ../src/gnome-sudoku.vala:424
+#: ../src/gnome-sudoku.vala:426
 msgid "Select Difficulty"
 msgstr "Nehézség kiválasztása"
 
-#: ../src/gnome-sudoku.vala:480
+#: ../src/gnome-sudoku.vala:482
 msgid "Reset the board to its original state?"
 msgstr "A tábla visszaállítása az eredeti állapotába?"
 
-#: ../src/gnome-sudoku.vala:527
+#: ../src/gnome-sudoku.vala:529
 msgid "Create Puzzle"
 msgstr "Feladvány létrehozása"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:608
+#: ../src/gnome-sudoku.vala:610
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -340,7 +339,7 @@ msgstr ""
 "\n"
 "A feladványokat a QQwing %s generálja"
 
-#: ../src/gnome-sudoku.vala:613
+#: ../src/gnome-sudoku.vala:615
 msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby at gnome dot hu>\n"
