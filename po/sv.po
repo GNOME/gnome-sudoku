@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-02 08:16+0000\n"
-"PO-Revision-Date: 2015-07-02 14:11+0100\n"
+"POT-Creation-Date: 2016-08-13 19:53+0000\n"
+"PO-Revision-Date: 2016-08-20 23:37+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:1
 msgid "GNOME Sudoku"
@@ -33,13 +33,13 @@ msgstr "Testa dina logiska färdigheter i det här sifferpusslet"
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
-"Play the popular Japanese logic game. GNOME Sudoku is a must-install for Sudoku "
-"lovers, with a simple, unobtrusive interface that makes playing Sudoku fun for "
-"players of any skill level."
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
 msgstr ""
 "Spela det populära japanska logikspelet. GNOME Sudoku är ett måste för "
-"sudokuälskare, med ett enkelt gränssnitt som gör det roligt att spela sudoku för "
-"spelare på alla skicklighetsnivåer."
+"sudokuälskare, med ett enkelt gränssnitt som gör det roligt att spela sudoku "
+"för spelare på alla skicklighetsnivåer."
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:4
 msgid ""
@@ -51,16 +51,25 @@ msgstr ""
 
 #: ../data/gnome-sudoku.appdata.xml.in.h:5
 msgid ""
-"If you like to play on paper, you can print games out. You can choose how many "
-"games you want to print per page and what difficulty of games you want to print: "
-"as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
 msgstr ""
-"Om du vill spela på papper kan du skriva ut spel. Du kan välja hur många spel du "
-"vill skriva ut per sida och vilken svårighetsgrad du vill skriva ut. Som en "
-"följd av detta kan du använda GNOME Sudoku som en förnyelsebar sudoku-bok."
+"Om du vill spela på papper kan du skriva ut spel. Du kan välja hur många "
+"spel du vill skriva ut per sida och vilken svårighetsgrad du vill skriva ut. "
+"Som en följd av detta kan du använda GNOME Sudoku som en förnyelsebar sudoku-"
+"bok."
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:6
+msgid "A GNOME sudoku game preview"
+msgstr "En förhandsvisning av GNOME Sudoku"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:7
+msgid "The GNOME Project"
+msgstr "GNOME-projektet"
 
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:626
+#: ../src/gnome-sudoku.vala:604
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -96,7 +105,7 @@ msgstr "_Hjälp"
 msgid "_About"
 msgstr "_Om"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:404
 msgid "_Quit"
 msgstr "A_vsluta"
 
@@ -132,7 +141,7 @@ msgstr "M_ycket svår"
 msgid "_Create your own puzzle"
 msgstr "S_kapa ditt eget pussel"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:329
 msgid "_Pause"
 msgstr "Pa_us"
 
@@ -166,11 +175,11 @@ msgstr "Svårighetsnivå på sudokun att skriva ut"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:2
 msgid ""
-"Set the difficulty level of the sudokus you want to print. Possible values are - "
-"\"easy\", \"medium\", \"hard\", \"very_hard\""
+"Set the difficulty level of the sudokus you want to print. Possible values "
+"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"Ange svårighetsgraden på de sudokun du vill skriva ut. Möjliga värden är - \"easy"
-"\" (enkel), \"medium\", \"hard\" (svår), \"very_hard\" (mycket svår)"
+"Ange svårighetsgraden på de sudokun du vill skriva ut. Möjliga värden är - "
+"\"easy\" (enkel), \"medium\", \"hard\" (svår), \"very_hard\" (mycket svår)"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:3
 msgid "Number of Sudokus to print"
@@ -186,8 +195,8 @@ msgstr "Varna för rutor som ej går att fylla och dubblerade nummer"
 
 #: ../data/org.gnome.sudoku.gschema.xml.h:6
 msgid ""
-"Displays a big red X in a square if it cannot possibly be filled by any number "
-"and duplicate numbers are highlighted in red"
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number and duplicate numbers are highlighted in red"
 msgstr ""
 "Visar ett stort rött X i en ruta om den inte kan fyllas med något nummer och "
 "dubblerade nummer markeras i rött"
@@ -259,60 +268,60 @@ msgid "Show the possible values for each cell"
 msgstr "Visa möjliga värden för varje ruta"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:281
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Pusslet som du har angivit är inte ett giltigt Sudoku."
 
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:281
 msgid "Please enter a valid puzzle."
 msgstr "Ange ett giltigt pussel."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:290
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Pusslet som du har angivit har flera lösningar."
 
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:290
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Giltiga Sudokupussel har exakt en lösning."
 
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:292
 msgid "_Back"
 msgstr "_Bakåt"
 
-#: ../src/gnome-sudoku.vala:315
+#: ../src/gnome-sudoku.vala:293
 msgid "Play _Anyway"
 msgstr "Spela i _alla fall"
 
-#: ../src/gnome-sudoku.vala:357
+#: ../src/gnome-sudoku.vala:335
 msgid "_Resume"
 msgstr "_Fortsätt"
 
-#: ../src/gnome-sudoku.vala:421
+#: ../src/gnome-sudoku.vala:399
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Bra gjort, du lade pusslet på %d minut!"
 msgstr[1] "Bra gjort, du lade pusslet på %d minuter!"
 
-#: ../src/gnome-sudoku.vala:426
+#: ../src/gnome-sudoku.vala:405
 msgid "Play _Again"
 msgstr "S_pela igen"
 
-#: ../src/gnome-sudoku.vala:446
+#: ../src/gnome-sudoku.vala:424
 msgid "Select Difficulty"
 msgstr "Välj svårighetsgrad"
 
-#: ../src/gnome-sudoku.vala:502
+#: ../src/gnome-sudoku.vala:480
 msgid "Reset the board to its original state?"
 msgstr "Återställ brädet till dess ursprungliga tillstånd?"
 
-#: ../src/gnome-sudoku.vala:549
+#: ../src/gnome-sudoku.vala:527
 msgid "Create Puzzle"
 msgstr "Skapa pussel"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:630
+#: ../src/gnome-sudoku.vala:608
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -323,7 +332,7 @@ msgstr ""
 "\n"
 "Pussel genererade av QQwing %s"
 
-#: ../src/gnome-sudoku.vala:635
+#: ../src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -346,7 +355,7 @@ msgid "Error printing file:"
 msgstr "Fel vid utskrift av fil:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:629
+#: ../src/sudoku-view.vala:630
 msgid "Paused"
 msgstr "Pausad"
 
