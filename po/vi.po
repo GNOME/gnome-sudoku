@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-05-30 19:57+0000\n"
-"PO-Revision-Date: 2016-06-15 09:15+0700\n"
+"POT-Creation-Date: 2016-09-06 18:25+0000\n"
+"PO-Revision-Date: 2016-09-08 08:28+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
 "Language: vi\n"
@@ -60,9 +60,17 @@ msgstr ""
 "GNOME Sudoku có thể thực hiện như là một quyển sách Sudoku có thể đổi mới "
 "dành cho bạn."
 
+#: ../data/gnome-sudoku.appdata.xml.in.h:6
+msgid "A GNOME sudoku game preview"
+msgstr "Xem thử về trò chơi sudoku GNOME"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:7
+msgid "The GNOME Project"
+msgstr "Dự án GNOME"
+
 # Name: don't translate/Tên: đừng dịch
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:604
+#: ../src/gnome-sudoku.vala:606
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -98,7 +106,7 @@ msgstr "Trợ _giúp"
 msgid "_About"
 msgstr "_Giới thiệu"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:404
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:406
 msgid "_Quit"
 msgstr "T_hoát"
 
@@ -134,7 +142,7 @@ msgstr "_Rất khó"
 msgid "_Create your own puzzle"
 msgstr "Tạ_o bàn riêng của bạn"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:329
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:331
 msgid "_Pause"
 msgstr "Tạm _dừng"
 
@@ -261,59 +269,59 @@ msgid "Show the possible values for each cell"
 msgstr "Hiện các giá trị có thể cho từng ô"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:281
+#: ../src/gnome-sudoku.vala:283
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Câu đố bạn nhập vào không phải là Sudoku hợp lệ."
 
-#: ../src/gnome-sudoku.vala:281
+#: ../src/gnome-sudoku.vala:283
 msgid "Please enter a valid puzzle."
 msgstr "Hãy nhập vào một câu đố hợp lệ"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:290
+#: ../src/gnome-sudoku.vala:292
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Câu đố bạn đã nhập vào có nhiều cách giải."
 
-#: ../src/gnome-sudoku.vala:290
+#: ../src/gnome-sudoku.vala:292
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Một câu đố Sudoku hợp lệ chỉ có một phương án giải duy nhất."
 
-#: ../src/gnome-sudoku.vala:292
+#: ../src/gnome-sudoku.vala:294
 msgid "_Back"
 msgstr "Lù_i"
 
-#: ../src/gnome-sudoku.vala:293
+#: ../src/gnome-sudoku.vala:295
 msgid "Play _Anyway"
 msgstr "_Vẫn chơi"
 
-#: ../src/gnome-sudoku.vala:335
+#: ../src/gnome-sudoku.vala:337
 msgid "_Resume"
 msgstr "_Phục hồi lại"
 
-#: ../src/gnome-sudoku.vala:399
+#: ../src/gnome-sudoku.vala:401
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Hay quá, bạn đã giải câu đố trong vòng %d phút!"
 
-#: ../src/gnome-sudoku.vala:405
+#: ../src/gnome-sudoku.vala:407
 msgid "Play _Again"
 msgstr "Chơi _lại"
 
-#: ../src/gnome-sudoku.vala:424
+#: ../src/gnome-sudoku.vala:426
 msgid "Select Difficulty"
 msgstr "Chọn độ khó"
 
-#: ../src/gnome-sudoku.vala:480
+#: ../src/gnome-sudoku.vala:482
 msgid "Reset the board to its original state?"
 msgstr "Đặt bàn thành trạng thái ban đầu của nó?"
 
-#: ../src/gnome-sudoku.vala:527
+#: ../src/gnome-sudoku.vala:529
 msgid "Create Puzzle"
 msgstr "Tạo câu đố"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:608
+#: ../src/gnome-sudoku.vala:610
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -324,7 +332,7 @@ msgstr ""
 "\n"
 "Puzzles được tạo bởi QQwing %s"
 
-#: ../src/gnome-sudoku.vala:613
+#: ../src/gnome-sudoku.vala:615
 msgid "translator-credits"
 msgstr "Nhóm Việt hóa GNOME <gnome-vi-list@gnome.org>"
 
