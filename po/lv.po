@@ -11,16 +11,16 @@ msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-su"
 "doku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-04 10:26+0000\n"
-"PO-Revision-Date: 2016-02-06 18:54+0200\n"
+"POT-Creation-Date: 2016-08-19 21:31+0000\n"
+"PO-Revision-Date: 2016-09-08 19:08+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 :"
+" 2);\n"
 "X-Generator: Lokalize 2.0\n"
 "X-Poedit-Language: Latvian\n"
 "X-Poedit-Country: LATVIA\n"
@@ -61,8 +61,16 @@ msgstr ""
 "daudzas spēles izdrukāt uz vienas lappuses un kādas sarežģītības spēles "
 "drukāt. Tā rezultātā GNOME sudoku var kalpot kā atjaunojama sudoku grāmata."
 
+#: ../data/gnome-sudoku.appdata.xml.in.h:6
+msgid "A GNOME sudoku game preview"
+msgstr "GNOME sudoku spēles priekšskatījums"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:7
+msgid "The GNOME Project"
+msgstr "GNOME projekts"
+
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:626
+#: ../src/gnome-sudoku.vala:606
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -83,12 +91,10 @@ msgid "Print _Multiple Puzzles…"
 msgstr "Drukāt _vairākas mīklas…"
 
 #: ../data/gnome-sudoku-menu.ui.h:4
-#| msgid "_Highlighter"
 msgid "High_lighter"
 msgstr "_Izgaismotājs"
 
 #: ../data/gnome-sudoku-menu.ui.h:5
-#| msgid "_Show Warnings"
 msgid "_Warnings"
 msgstr "_Brīdinājumi"
 
@@ -100,7 +106,7 @@ msgstr "_Palīdzība"
 msgid "_About"
 msgstr "P_ar"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:426
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:406
 msgid "_Quit"
 msgstr "_Iziet"
 
@@ -136,7 +142,7 @@ msgstr "Ļ_oti grūti"
 msgid "_Create your own puzzle"
 msgstr "_Izveido pats savu mīklu"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:331
 msgid "_Pause"
 msgstr "_Pauzēt"
 
@@ -157,7 +163,6 @@ msgid "Start a new puzzle"
 msgstr "Sākt jaunu mīklu"
 
 #: ../data/gnome-sudoku.ui.h:15
-#| msgid "Starting %s"
 msgid "_Start Playing"
 msgstr "_Sākt spēlēt"
 
@@ -251,7 +256,6 @@ msgid "Very Hard Difficulty"
 msgstr "Ļoti liela grūtība"
 
 #: ../lib/sudoku-board.vala:593
-#| msgid "Custom Size"
 msgid "Custom Puzzle"
 msgstr "Pielāgota mīkla"
 
@@ -266,69 +270,61 @@ msgid "Show the possible values for each cell"
 msgstr "Katrai šūnai rādīt iespējamās vērtības"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:283
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Jūsu ievadītā mīkla nav derīga Sudoku mīkla."
 
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:283
 msgid "Please enter a valid puzzle."
 msgstr "Lūdzu, ievadiet derīgu mīklu."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:292
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Jūsu ievadītajai mīklai ir vairāki risinājumi."
 
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:292
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Derīgai Sudoku mīklai ir tieši viens risinājums."
 
-#: ../src/gnome-sudoku.vala:314
-#| msgid "Backbone"
+#: ../src/gnome-sudoku.vala:294
 msgid "_Back"
 msgstr "_Atpakaļ"
 
-#: ../src/gnome-sudoku.vala:315
-#| msgid "Play as:"
+#: ../src/gnome-sudoku.vala:295
 msgid "Play _Anyway"
 msgstr "Tomēr _spēlēt"
 
-#: ../src/gnome-sudoku.vala:357
-#| msgid "_Reset"
+#: ../src/gnome-sudoku.vala:337
 msgid "_Resume"
 msgstr "Tu_rpināt"
 
-#: ../src/gnome-sudoku.vala:421
+#: ../src/gnome-sudoku.vala:401
 #, c-format
-#| msgid "Well done, you completed the puzzle in %d minute"
-#| msgid_plural "Well done, you completed the puzzle in %d minutes"
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Apsveicu, tu pabeidzi mīklu %d minūtē!"
 msgstr[1] "Apsveicu, tu pabeidzi mīklu %d minūtēs!"
 msgstr[2] "Apsveicu, tu pabeidzi mīklu %d minūtēs!"
 
-#: ../src/gnome-sudoku.vala:427
-#| msgid "Play as:"
+#: ../src/gnome-sudoku.vala:407
 msgid "Play _Again"
 msgstr "S_pēlēt vēlreiz"
 
-#: ../src/gnome-sudoku.vala:446
-#| msgid "Difficulty"
+#: ../src/gnome-sudoku.vala:426
 msgid "Select Difficulty"
 msgstr "Spēles grūtība"
 
-#: ../src/gnome-sudoku.vala:502
+#: ../src/gnome-sudoku.vala:482
 msgid "Reset the board to its original state?"
 msgstr "Atstatīt galdiņu uz tā sākotnējo stāvokli?"
 
-#: ../src/gnome-sudoku.vala:549
-#| msgid "Pennant Puzzle"
+#: ../src/gnome-sudoku.vala:529
 msgid "Create Puzzle"
 msgstr "Izveidot mīklu"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:630
+#: ../src/gnome-sudoku.vala:610
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -339,7 +335,7 @@ msgstr ""
 "\n"
 "Mīklas ģenerē QQwing %s"
 
-#: ../src/gnome-sudoku.vala:635
+#: ../src/gnome-sudoku.vala:615
 msgid "translator-credits"
 msgstr ""
 "Raivis Dejus <orvils@gmail.com>\n"
@@ -359,3 +355,4 @@ msgstr "Kļūda, drukājot datni:"
 #: ../src/sudoku-view.vala:630
 msgid "Paused"
 msgstr "Apturēts"
+
