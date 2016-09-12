@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-20 19:54+0200\n"
-"PO-Revision-Date: 2015-09-20 19:40+0200\n"
+"POT-Creation-Date: 2016-09-12 02:11+0200\n"
+"PO-Revision-Date: 2016-09-08 02:53+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -65,8 +65,16 @@ msgstr ""
 "mange spil, du vil udskrive per side, og hvilken sværhedsgrad de skal være: "
 "Dermed kan GNOME Sudoku fungere som din evige Sudokubog."
 
+#: ../data/gnome-sudoku.appdata.xml.in.h:6
+msgid "A GNOME sudoku game preview"
+msgstr "Smugkig på et spil GNOME sudoku"
+
+#: ../data/gnome-sudoku.appdata.xml.in.h:7
+msgid "The GNOME Project"
+msgstr "GNOME-projektet"
+
 #: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:626
+#: ../src/gnome-sudoku.vala:606
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -102,7 +110,7 @@ msgstr "_Hjælp"
 msgid "_About"
 msgstr "_Om"
 
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:426
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:406
 msgid "_Quit"
 msgstr "_Afslut"
 
@@ -138,7 +146,7 @@ msgstr "_Meget svær"
 msgid "_Create your own puzzle"
 msgstr "_Skab dit eget spil"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:331
 msgid "_Pause"
 msgstr "_Pause"
 
@@ -266,60 +274,60 @@ msgid "Show the possible values for each cell"
 msgstr "Vis de mulige værdier for hver celle"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:283
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Det spil du har indtastet er ikke en gyldig Sudoku."
 
-#: ../src/gnome-sudoku.vala:303
+#: ../src/gnome-sudoku.vala:283
 msgid "Please enter a valid puzzle."
 msgstr "Indtast venligst et gyldigt spil."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:292
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Det spil du har indtastet har flere løsninger."
 
-#: ../src/gnome-sudoku.vala:312
+#: ../src/gnome-sudoku.vala:292
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Gyldige Sudoku-spil har kun én løsning."
 
-#: ../src/gnome-sudoku.vala:314
+#: ../src/gnome-sudoku.vala:294
 msgid "_Back"
 msgstr "_Tilbage"
 
-#: ../src/gnome-sudoku.vala:315
+#: ../src/gnome-sudoku.vala:295
 msgid "Play _Anyway"
 msgstr "Spil _alligevel"
 
-#: ../src/gnome-sudoku.vala:357
+#: ../src/gnome-sudoku.vala:337
 msgid "_Resume"
 msgstr "_Fortsæt"
 
-#: ../src/gnome-sudoku.vala:421
+#: ../src/gnome-sudoku.vala:401
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Godt gået! Du gennemførte spillet på %d minut!"
 msgstr[1] "Godt gået! Du gennemførte spillet på %d minutter!"
 
-#: ../src/gnome-sudoku.vala:427
+#: ../src/gnome-sudoku.vala:407
 msgid "Play _Again"
 msgstr "Spil _igen"
 
-#: ../src/gnome-sudoku.vala:446
+#: ../src/gnome-sudoku.vala:426
 msgid "Select Difficulty"
 msgstr "Vælg sværhedsgrad"
 
-#: ../src/gnome-sudoku.vala:502
+#: ../src/gnome-sudoku.vala:482
 msgid "Reset the board to its original state?"
 msgstr "Nulstil brættet til dets oprindelige tilstand?"
 
-#: ../src/gnome-sudoku.vala:549
+#: ../src/gnome-sudoku.vala:529
 msgid "Create Puzzle"
 msgstr "Opret spil"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:630
+#: ../src/gnome-sudoku.vala:610
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -330,7 +338,7 @@ msgstr ""
 "\n"
 "Spillene genereres af QQwing %s"
 
-#: ../src/gnome-sudoku.vala:635
+#: ../src/gnome-sudoku.vala:615
 msgid "translator-credits"
 msgstr ""
 "Anders Wegge Jakobsen\n"
@@ -354,6 +362,6 @@ msgid "Error printing file:"
 msgstr "Fejl ved udskrivning af fil:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:629
+#: ../src/sudoku-view.vala:630
 msgid "Paused"
 msgstr "Pause"
