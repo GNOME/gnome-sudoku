@@ -6,15 +6,15 @@
 # Meelad Zakaria <meelad@farsiweb.info>, 2005.
 # Farzaneh Sarafraz <farzaneh@farsiweb.info>, 2006.
 # Danial Behzadi <dani.behzi@gmail.com>, 2012.
-# Arash Mousavi <mousavi.arash@gmail.com>, 2012, 2013.
+# Arash Mousavi <mousavi.arash@gmail.com>, 2012, 2013, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-28 23:15+0000\n"
-"PO-Revision-Date: 2013-03-23 12:01+0330\n"
+"POT-Creation-Date: 2016-08-19 21:31+0000\n"
+"PO-Revision-Date: 2016-09-15 12:19+0430\n"
 "Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -23,512 +23,639 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.9\n"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
-msgid "Sudoku"
-msgstr "سودوکو"
+#: ../data/gnome-sudoku.appdata.xml.in.h:1
+msgid "GNOME Sudoku"
+msgstr "گنوم سودوکو"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:2
+#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "مهارت‌های منطقی خود را در این پازل شبکه‌ای بیازمایید"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "بازی;تخته;مهره;ژاپنی;"
-
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "چاپ سودوکوها"
-
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "چاپ بازی‌ها"
-
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "_تعداد سودوکوها برای چاپ:"
-
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "_سودوکوها در صفحه:"
-
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "مراحل سختی برای چاپ"
-
-#: ../data/print_games.ui.h:6
-msgid "_Easy"
-msgstr "_آسان"
-
-#: ../data/print_games.ui.h:7
-msgid "_Medium"
-msgstr "_متوسط"
-
-#: ../data/print_games.ui.h:8
-msgid "_Hard"
-msgstr "_سخت"
-
-#: ../data/print_games.ui.h:9
-msgid "_Very Hard"
-msgstr "_خیلی سخت"
-
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "جزئیات"
-
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "_وقتی بازی‌ای را چاپ می‌کنید به عنوان بازی کرده علامت زده شود."
-
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr "_بازی‌هایی را انجام داده‌اید در لیست بازی‌های برای چاپ قرار داده شود"
-
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "بازی _جدید"
-
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "بازی‌های _دخیره شده"
-
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "افزودن ردیاب جدید"
-
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "حذف ردیاب انتخاب شده"
-
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "تقییرات ردیاب‌ها را بی‌درنگ کن"
-
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:750
-msgid "H_ide"
-msgstr "_مخفی کردن"
-
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "مخفی کردن ارزش‌های ردیابی شده"
-
-#: ../src/lib/defaults.py:47
-msgid "GNOME Sudoku"
-msgstr "سودوکوی گنوم"
-
-#: ../src/lib/defaults.py:50
+#: ../data/gnome-sudoku.appdata.xml.in.h:3
 msgid ""
-"GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
-"logic puzzle.\n"
-"\n"
-"GNOME Sudoku is a part of GNOME Games."
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for Sudoku "
+"lovers, with a simple, unobtrusive interface that makes playing Sudoku fun for "
+"players of any skill level."
 msgstr ""
-"سودوکوی گنوم یک سازنده و بازیکن ساده‌ی سودوکو است. سودوکو یک پازل منطقی ژاپنی "
-"است.\n"
-"\n"
-"سودوکوی گنوم جزیی از بازی‌های گنوم است."
+"این بازی منطقیِ ژاپنیِ پر طرفدار را بازی کنید. گنوم سودوکو برنامه‌ایست برای سودوکو "
+"دوستان که نباید از دست بدهند، با یک رابط کاربری ساده و محبوب که بازی سودوکو را "
+"برای هر بازیکنی با هر مهارتی جذاب می‌کند."
 
-#: ../src/lib/defaults.py:53
-msgid "GNOME Games web site"
-msgstr "وب‌سایت بازی‌های گنوم"
+#: ../data/gnome-sudoku.appdata.xml.in.h:4
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites, so your game will be as easy or as difficult as you want it to be."
+msgstr ""
+"هر بازی، سختی مشخصی دارد مشابه چیزی که روزنامه‌ها و پایگاه‌های وب ارائه می‌کنند، "
+"بنابراین بازی شما یا ساده است یا به اندازه‌ای که میخواهید سخت است."
 
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:185
-msgid "Easy"
-msgstr "آسان"
+#: ../data/gnome-sudoku.appdata.xml.in.h:5
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how many "
+"games you want to print per page and what difficulty of games you want to print: "
+"as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"اگر دوست دارید روی کاغذ بازی کنید، شما می‌توانید بازی‌ها را چاپ کنید. می‌توانید "
+"انتخاب کنید که چه تعداد بازی می‌خواهید در صفحه چاپ کنید و با چه سختی‌ای: در نتیجه، "
+"گنوم سودوکو می‌تواند مانند یک کتاب سودوکو تجدیدپذیر برای شما عمل کند."
 
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:186
-msgid "Medium"
-msgstr "متوسط"
+#: ../data/gnome-sudoku.appdata.xml.in.h:6
+msgid "A GNOME sudoku game preview"
+msgstr "پیش‌نمایش بازی سودوکو گنوم"
 
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:187
-msgid "Hard"
-msgstr "سخت"
+#: ../data/gnome-sudoku.appdata.xml.in.h:7
+msgid "The GNOME Project"
+msgstr "پروژه گنوم"
 
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:188
-msgid "Very hard"
-msgstr "خیلی سخت"
+#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
+#: ../src/gnome-sudoku.vala:606
+msgid "Sudoku"
+msgstr "سودوکو"
 
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "آخرین بار %(n)s ثانیه پیش بازی شده"
-msgstr[1] "آخرین بار %(n)s ثانیه پیش بازی شده"
+#: ../data/gnome-sudoku.desktop.in.h:3
+msgid "magic;square;"
+msgstr "magic;square;جادو;خانه;سودوکو;"
 
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "آخرین بار %(n)s دقیقه پیش بازی شده"
-msgstr[1] "آخرین بار %(n)s دقیقه پیش بازی شده"
+#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
+msgid "_Print"
+msgstr "_چاپ"
 
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "آخرین بار در %OI:%OM %p بازی شده"
+#: ../data/gnome-sudoku-menu.ui.h:2
+msgid "Print _Current Puzzle…"
+msgstr "چاپ پازل _فعلی…"
 
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "آخرین بار دیروز در %OI:%OM %p بازی شده"
+#: ../data/gnome-sudoku-menu.ui.h:3
+msgid "Print _Multiple Puzzles…"
+msgstr "چاپ چند _پازل…"
 
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "آخرین بار در %OA در %OI:%OM %p بازی شده"
+#: ../data/gnome-sudoku-menu.ui.h:4
+msgid "High_lighter"
+msgstr "بر_جسته‌ساز"
 
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "آخرین بار در %B %e %Y بازی شده"
+#: ../data/gnome-sudoku-menu.ui.h:5
+msgid "_Warnings"
+msgstr "_هشدارها"
 
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "پازل ساده"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "پازل متوسط"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "پازل سخت"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "پازل خیلی سخت"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "%d ساعت بازی شده"
-msgstr[1] "%d ساعت بازی شده"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "%d دقیقه بازی شده"
-msgstr[1] "%d دقیقه بازی شده"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "%d ثانیه بازی شده"
-msgstr[1] "%d ثانیه بازی شده"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "آیا واقعاً می‌خواهید این کار را انجام دهید؟"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "این را دوباره از من نپرس."
-
-#: ../src/lib/main.py:195
-msgid "_Game"
-msgstr "_بازی"
-
-#: ../src/lib/main.py:196
-msgid "New game"
-msgstr "بازی جدید"
-
-#: ../src/lib/main.py:197
-msgid "_Reset"
-msgstr "_راه‌اندازی مجدد"
-
-#: ../src/lib/main.py:199
-msgid "_Undo"
-msgstr "_برگردان"
-
-#: ../src/lib/main.py:200
-msgid "Undo last action"
-msgstr "برگرداندن آخرین عمل"
-
-#: ../src/lib/main.py:201
-msgid "_Redo"
-msgstr "ا_ز نو"
-
-#: ../src/lib/main.py:202
-msgid "Redo last action"
-msgstr "انجام دوباره آخرین عمل"
-
-#: ../src/lib/main.py:203
-msgid "Puzzle _Statistics..."
-msgstr "آمار _پازل…"
-
-#: ../src/lib/main.py:205
-msgid "_Print..."
-msgstr "_چاپ…"
-
-#: ../src/lib/main.py:206
-msgid "Print _Multiple Sudokus..."
-msgstr "چاپ چند _سودوکو… "
-
-#: ../src/lib/main.py:209
-msgid "_Settings"
-msgstr "_تنظیمات"
-
-#: ../src/lib/main.py:211
-msgid "_Tools"
-msgstr "اب_زارها"
-
-#: ../src/lib/main.py:212
-msgid "_Hint"
-msgstr "_راهنمایی"
-
-#: ../src/lib/main.py:213
-msgid "Show a square that is easy to fill."
-msgstr "نشان دادن مربعی که پر کردنش آسان است."
-
-#: ../src/lib/main.py:214
-msgid "Clear _Top Notes"
-msgstr "پاک کردن _یادداشت‌های رویی"
-
-#: ../src/lib/main.py:216
-msgid "Clear _Bottom Notes"
-msgstr "پاک کردن _یادداشت‌های زیری"
-
-#: ../src/lib/main.py:218
+#: ../data/gnome-sudoku-menu.ui.h:6
 msgid "_Help"
 msgstr "_راهنما"
 
-#: ../src/lib/main.py:219
-msgid "_Contents"
-msgstr "م_حتویات"
+#: ../data/gnome-sudoku-menu.ui.h:7
+msgid "_About"
+msgstr "_درباره"
 
-#: ../src/lib/main.py:225
-msgid "Show _Possible Numbers"
-msgstr "نمایش ارقام _ممکن"
+#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:406
+msgid "_Quit"
+msgstr "_خروج"
 
-#: ../src/lib/main.py:227
-msgid "Always show possible numbers in a square"
-msgstr "همیشه ارقام ممکن را در مربع‌ها نشان بده"
+#: ../data/gnome-sudoku.ui.h:2
+msgid "Undo your last action"
+msgstr "برگردان آخرین حرکت"
 
-#: ../src/lib/main.py:231
-msgid "Warn About _Unfillable Squares"
-msgstr "هشدار درباره‌ی مربع‌های غیرقابل _پرکردن"
+#: ../data/gnome-sudoku.ui.h:3
+msgid "Redo your last action"
+msgstr "انجام دوباره آخرین حرکت"
 
-#: ../src/lib/main.py:233
-msgid "Warn about squares made unfillable by a move"
-msgstr "هشدار درباره‌ی مربع‌هایی که توسط حرکتی غیرقابل پرکردن می‌شوند"
+#: ../data/gnome-sudoku.ui.h:4
+msgid "Go back to the current game"
+msgstr "بازگشت به بازی فعلی"
 
-#: ../src/lib/main.py:235
-msgid "_Track Additions"
-msgstr "ردگیری ا_ضافات"
+#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
+msgid "_Easy"
+msgstr "_آسان"
 
-#: ../src/lib/main.py:237
-msgid "Mark new additions in a separate color so you can keep track of them."
-msgstr "علامت‌گذاری اضافات جدید به رنگ دیگری که بتوانید رد آن‌ها را داشته باشید."
+#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
+msgid "_Medium"
+msgstr "_متوسط"
 
-#: ../src/lib/main.py:239
-msgid "Show _Toolbar"
-msgstr "نمایش _نوارابزار"
+#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
+msgid "_Hard"
+msgstr "_سخت"
 
-#: ../src/lib/main.py:240
-msgid "_Highlighter"
-msgstr "بر_جسته‌ساز"
+#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
+msgid "_Very Hard"
+msgstr "_خیلی سخت"
 
-#: ../src/lib/main.py:241
-msgid "Highlight the current row, column and box"
-msgstr "برجسته کردن ردیف، ستون و جعبه‌ی فعلی"
+#: ../data/gnome-sudoku.ui.h:9
+msgid "_Create your own puzzle"
+msgstr "_پازل خودتان را بسازید"
 
-#: ../src/lib/main.py:366
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "شما پازل را در %d ثانیه کامل کردید"
-msgstr[1] "شما پازل را در %d ثانیه کامل کردید"
+#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:331
+msgid "_Pause"
+msgstr "_مکث"
 
-#: ../src/lib/main.py:371 ../src/lib/main.py:379
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d دقیقه"
-msgstr[1] "%d دقیقه"
+#: ../data/gnome-sudoku.ui.h:11
+msgid "_Clear Board"
+msgstr "پاک کردن تخته"
 
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d ثانیه"
-msgstr[1] "%d ثانیه"
+#: ../data/gnome-sudoku.ui.h:12
+msgid "Reset the board to its original state"
+msgstr "بازنشاندن مجدد تخته به وضعیت اولیه"
 
-#: ../src/lib/main.py:373
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "شما پازل را در %(minute)s و %(second)s کامل کردید"
+#: ../data/gnome-sudoku.ui.h:13
+msgid "_New Puzzle"
+msgstr "پازل _جدید"
 
-#: ../src/lib/main.py:378
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d ساعت"
-msgstr[1] "%d ساعت"
+#: ../data/gnome-sudoku.ui.h:14
+msgid "Start a new puzzle"
+msgstr "شروع یک پازل جدید"
 
-#: ../src/lib/main.py:381
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "شما پازل را در %(hour)s، %(minute)s و %(second)s کامل کردید"
+#: ../data/gnome-sudoku.ui.h:15
+msgid "_Start Playing"
+msgstr "_شروع بازی"
 
-#: ../src/lib/main.py:383
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "شما %(n)s راهنمایی گرفتید."
-msgstr[1] "شما %(n)s راهنمایی گرفتید."
+#: ../data/gnome-sudoku.ui.h:16
+msgid "Start playing the custom puzzle you have created"
+msgstr "شروع به بازی کردن پازل سفارشی‌ای که ساخته‌اید"
 
-#: ../src/lib/main.py:386
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "شما %(n)s اشاره‌ی غیرممکن داشتید."
-msgstr[1] "شما %(n)s اشاره‌ی غیرممکن داشتید."
+#: ../data/org.gnome.sudoku.gschema.xml.h:1
+msgid "Difficulty level of sudokus to be printed"
+msgstr "سطح سختی سودوکوها برای چاپ"
 
-#: ../src/lib/main.py:391
-msgid "You win!"
-msgstr "شما بردید!"
+#: ../data/org.gnome.sudoku.gschema.xml.h:2
+msgid ""
+"Set the difficulty level of the sudokus you want to print. Possible values are - "
+"\"easy\", \"medium\", \"hard\", \"very_hard\""
+msgstr ""
+"تنظیم سختی سودوکوای که می‌خواهید چاپ شود. مقادیر ممکن عبارتند از «easy»، "
+"«medium»، «hard» و «very_hard»"
 
-#: ../src/lib/main.py:401
-msgid "Save this game before starting new one?"
-msgstr "پیش از شروع بازی جدید، این بازی ذخیره شود؟"
+#: ../data/org.gnome.sudoku.gschema.xml.h:3
+msgid "Number of Sudokus to print"
+msgstr "تعداد سودوکوها برای چاپ"
 
-#: ../src/lib/main.py:402
-msgid "_Save game for later"
-msgstr "_ذخیره‌ی بازی برای بعد"
+#: ../data/org.gnome.sudoku.gschema.xml.h:4
+msgid "Set the number of sudokus you want to print"
+msgstr "تنظیم تعداد سودوکوهایی که میخواهید چاپ کنید"
 
-#: ../src/lib/main.py:403
-msgid "_Abandon game"
-msgstr "_ترک کردن بازی"
+#: ../data/org.gnome.sudoku.gschema.xml.h:5
+msgid "Warn about unfillable squares and duplicate numbers"
+msgstr "هشدار درباره‌ی خانه‌های غیرقابل پرکردن و اعداد تکراری"
 
-#: ../src/lib/main.py:421
-msgid "Save game before closing?"
-msgstr "پیش از بستن، بازی ذخیره شود؟"
+#: ../data/org.gnome.sudoku.gschema.xml.h:6
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any number "
+"and duplicate numbers are highlighted in red"
+msgstr ""
+"نمایش یک X قرمز بزرگ در خانه اگر نتوان آن را با هیچ عددی پر کرد و عددهای تکراری "
+"به رنگ قرمز برجسته شوند"
 
-#: ../src/lib/main.py:619
-msgid "Puzzle Information"
-msgstr "اطلاعات پازل"
+#: ../data/org.gnome.sudoku.gschema.xml.h:7
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "برجسته کردن ردیف، ستون و جایگاهی که خانهٔ انتخاب شده در آن است"
 
-#: ../src/lib/main.py:620
-msgid "There is no current puzzle."
-msgstr "پازل جاری‌ای وجود ندارد."
+#: ../data/org.gnome.sudoku.gschema.xml.h:8
+msgid "Width of the window in pixels"
+msgstr "عرض پنجره به پیکسل"
 
-#: ../src/lib/main.py:625
-msgid "Calculated difficulty: "
-msgstr "سختی محاسبه‌شده:"
+#: ../data/org.gnome.sudoku.gschema.xml.h:9
+msgid "Height of the window in pixels"
+msgstr "ارتفاع پنجره به پیکسل"
 
-#: ../src/lib/main.py:630
-msgid "Very Hard"
+#: ../data/org.gnome.sudoku.gschema.xml.h:10
+msgid "true if the window is maximized"
+msgstr "درست اگر پنجره بیشینه باشد"
+
+#: ../data/print-dialog.ui.h:1
+msgid "Print Multiple Puzzles"
+msgstr "چاپ چند سودوکو"
+
+#: ../data/print-dialog.ui.h:2
+msgid "_Cancel"
+msgstr "_لغو"
+
+#: ../data/print-dialog.ui.h:4
+msgid "_Number of puzzles"
+msgstr "_تعداد پازل‌ها"
+
+#: ../data/print-dialog.ui.h:5
+msgid "Difficulty"
+msgstr "سختی"
+
+#: ../lib/sudoku-board.vala:583
+msgid "Unknown Difficulty"
+msgstr "سختی ناشناس"
+
+#: ../lib/sudoku-board.vala:585
+msgid "Easy Difficulty"
+msgstr "ساده"
+
+#: ../lib/sudoku-board.vala:587
+msgid "Medium Difficulty"
+msgstr "معمولی"
+
+#: ../lib/sudoku-board.vala:589
+msgid "Hard Difficulty"
+msgstr "سخت"
+
+#: ../lib/sudoku-board.vala:591
+msgid "Very Hard Difficulty"
 msgstr "خیلی سخت"
 
-#: ../src/lib/main.py:635
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "تعداد حرکاتی که با حذف کردن درجا قابل پر کردن هستند:"
+#: ../lib/sudoku-board.vala:593
+msgid "Custom Puzzle"
+msgstr "پازل سفارشی"
 
-#: ../src/lib/main.py:638
-msgid "Number of moves instantly fillable by filling: "
-msgstr "تعداد حرکاتی که با پر کردن درجا قابل پر کردن هستند:"
+#. Help string for command line --version flag
+#: ../src/gnome-sudoku.vala:85
+msgid "Show release version"
+msgstr "نمایش نسخه‌ی انتشار"
 
-#: ../src/lib/main.py:641
-msgid "Amount of trial-and-error required to solve: "
-msgstr "مقدار آزمون و خطای مورد نیاز برای حل کردن:"
+#. Help string for command line --show-possible flag
+#: ../src/gnome-sudoku.vala:89
+msgid "Show the possible values for each cell"
+msgstr "نمایش مقادیر ممکن برای هر خانه"
 
-#: ../src/lib/main.py:644 ../src/lib/main.py:645
-msgid "Puzzle Statistics"
-msgstr "آمار پازل"
+#. Error dialog shown when starting a custom game that is not valid.
+#: ../src/gnome-sudoku.vala:283
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "پازلی که وارد کرده‌اید یک پازل معتبر نیست."
 
-#: ../src/lib/main.py:669
+#: ../src/gnome-sudoku.vala:283
+msgid "Please enter a valid puzzle."
+msgstr "لطفا یک پازل معتبر وارد کنید."
+
+#. Warning dialog shown when starting a custom game that has multiple solutions.
+#: ../src/gnome-sudoku.vala:292
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "پازلی که وارد کرده‌اید بیش از یک راه‌حل دارد."
+
+#: ../src/gnome-sudoku.vala:292
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "پازل‌های سودوکو معتبر دقیقا تنها یک راه حل دارند."
+
+#: ../src/gnome-sudoku.vala:294
+msgid "_Back"
+msgstr "_بازگشت"
+
+#: ../src/gnome-sudoku.vala:295
+msgid "Play _Anyway"
+msgstr "_به هر حال بازی شود"
+
+#: ../src/gnome-sudoku.vala:337
+msgid "_Resume"
+msgstr "ا_ز سر گیری"
+
+#: ../src/gnome-sudoku.vala:401
+#, c-format
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "آفرین، شما پازل را در %Id دقیقه کامل کردید!"
+msgstr[1] "آفرین، شما پازل را در %Id دقیقه کامل کردید!"
+
+#: ../src/gnome-sudoku.vala:407
+msgid "Play _Again"
+msgstr "بازی _دوباره"
+
+#: ../src/gnome-sudoku.vala:426
+msgid "Select Difficulty"
+msgstr "انتخاب سختی"
+
+#: ../src/gnome-sudoku.vala:482
+msgid "Reset the board to its original state?"
+msgstr "بازنشاندن مجدد تخته به وضعیت اولیه؟"
+
+#: ../src/gnome-sudoku.vala:529
+msgid "Create Puzzle"
+msgstr "ساخت پازل"
+
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: ../src/gnome-sudoku.vala:610
+#, c-format
+msgid ""
+"The popular Japanese logic puzzle\n"
+"\n"
+"Puzzles generated by QQwing %s"
+msgstr ""
+"پازل منطقی ژاپنی معروف\n"
+"\n"
+"پازل‌ها توسط QQwing منتشر شده‌اند %s"
+
+#: ../src/gnome-sudoku.vala:615
 msgid "translator-credits"
 msgstr ""
-"دانیال بهزادی <dani.behzi@gmail.com>\n"
-"آرش موسوی <mousavi.arash@gmail.com>"
+"آرش موسوی <mousavi.arash@gmail.com>\n"
+"دانیال بهزادی <dani.behzi@gmail.com>"
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:679
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "نمایش راهنما ممکن نیست: %s"
+#: ../src/number-picker.vala:90
+msgid "Clear"
+msgstr "پاک کردن"
 
-#: ../src/lib/main.py:735
-msgid "Untracked"
-msgstr "ردیابی نشده"
+#. Error message if printing fails
+#: ../src/sudoku-printer.vala:48
+msgid "Error printing file:"
+msgstr "خطا در هنگام چاپ پرونده:"
 
-#: ../src/lib/main.py:744
-msgid "_Remove"
-msgstr "_حذف"
+#. Text on overlay when game is paused
+#: ../src/sudoku-view.vala:630
+msgid "Paused"
+msgstr "مکث شده"
 
-#: ../src/lib/main.py:745
-msgid "Delete selected tracker."
-msgstr "از بین بردن ردیاب انتخاب شده."
+#~ msgid "game;board;tiles;japanese;"
+#~ msgstr "بازی;تخته;مهره;ژاپنی;"
 
-#: ../src/lib/main.py:751
-msgid "Hide current tracker entries."
-msgstr "پنهان کردن نوشته‌های ردیاب جاری."
+#~ msgid "Print Sudokus"
+#~ msgstr "چاپ سودوکوها"
 
-#: ../src/lib/main.py:756
-msgid "A_pply"
-msgstr "ا_عمال"
+#~ msgid "Print Games"
+#~ msgstr "چاپ بازی‌ها"
 
-#: ../src/lib/main.py:757
-msgid "Apply all tracked values and remove the tracker."
-msgstr "اعمال تمام مقادیر ردیابی شده و برداشتن ردیاب."
+#~ msgid "_Sudokus per page: "
+#~ msgstr "_سودوکوها در صفحه:"
 
-#: ../src/lib/main.py:795
-#, python-format
-msgid "Tracker %s"
-msgstr "ردیاب %s"
+#~ msgid "Levels of difficulty to print"
+#~ msgstr "مراحل سختی برای چاپ"
 
-#: ../src/lib/number_box.py:68
-msgid "_Clear"
-msgstr "_پاک کردن"
+#~ msgid "Details"
+#~ msgstr "جزئیات"
 
-#: ../src/lib/saver.py:155
-msgid "No Space"
-msgstr "بدون فضا"
+#~ msgid "_Mark games as played once you've printed them."
+#~ msgstr "_وقتی بازی‌ای را چاپ می‌کنید به عنوان بازی کرده علامت زده شود."
 
-#: ../src/lib/saver.py:156
-msgid "No space left on disk"
-msgstr "فضایی روی دیسک باقی نمانده"
+#~ msgid "_Include games you've already played in list of games to print"
+#~ msgstr "_بازی‌هایی را انجام داده‌اید در لیست بازی‌های برای چاپ قرار داده شود"
 
-#: ../src/lib/saver.py:158 ../src/lib/saver.py:165
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "ناتوانی در ساخت پوشه‌ی داده %(path)s."
+#~ msgid "_New Game"
+#~ msgstr "بازی _جدید"
 
-#: ../src/lib/saver.py:159
-msgid "There is no disk space left!"
-msgstr "فضایی روی دیسک باقی نمانده است!"
+#~ msgid "_Saved Games"
+#~ msgstr "بازی‌های _دخیره شده"
 
-#: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
-#: ../src/lib/saver.py:233
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "خطای  %(errno)s: %(error)s"
+#~ msgid "Add a new tracker"
+#~ msgstr "افزودن ردیاب جدید"
 
-#: ../src/lib/saver.py:186 ../src/lib/saver.py:187
-msgid "Unable to save game."
-msgstr "ناتوان در ذخیره‌ی بازی."
+#~ msgid "Remove the selected tracker"
+#~ msgstr "حذف ردیاب انتخاب شده"
 
-#: ../src/lib/saver.py:189 ../src/lib/saver.py:214 ../src/lib/saver.py:232
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "ناتوان در ذخیره‌ی پرونده‌ی %(filename)s."
+#~ msgid "Make the tracked changes permanent"
+#~ msgstr "تقییرات ردیاب‌ها را بی‌درنگ کن"
 
-#: ../src/lib/saver.py:211 ../src/lib/saver.py:212
-msgid "Unable to mark game as finished."
-msgstr "نمی‌توان بازی را به عنوان پایان یافته علامت‌گذاری کرد."
+#~ msgid "H_ide"
+#~ msgstr "_مخفی کردن"
 
-#: ../src/lib/saver.py:229 ../src/lib/saver.py:230
-msgid "Sudoku unable to mark game as finished."
-msgstr "سودوکو در علامت گذاری بازی به عنوان پایان یافته ناتوان است."
+#~ msgid "Hide the tracked values"
+#~ msgstr "مخفی کردن ارزش‌های ردیابی شده"
+
+#~ msgid ""
+#~ "GNOME Sudoku is a simple Sudoku generator and player. Sudoku is a Japanese "
+#~ "logic puzzle.\n"
+#~ "\n"
+#~ "GNOME Sudoku is a part of GNOME Games."
+#~ msgstr ""
+#~ "سودوکوی گنوم یک سازنده و بازیکن ساده‌ی سودوکو است. سودوکو یک پازل منطقی ژاپنی "
+#~ "است.\n"
+#~ "\n"
+#~ "سودوکوی گنوم جزیی از بازی‌های گنوم است."
+
+#~ msgid "GNOME Games web site"
+#~ msgstr "وب‌سایت بازی‌های گنوم"
+
+#~ msgid "Easy"
+#~ msgstr "آسان"
+
+#~ msgid "Medium"
+#~ msgstr "متوسط"
+
+#~ msgid "Hard"
+#~ msgstr "سخت"
+
+#~ msgid "Very hard"
+#~ msgstr "خیلی سخت"
+
+#~ msgid "Last played %(n)s second ago"
+#~ msgid_plural "Last played %(n)s seconds ago"
+#~ msgstr[0] "آخرین بار %(n)s ثانیه پیش بازی شده"
+#~ msgstr[1] "آخرین بار %(n)s ثانیه پیش بازی شده"
+
+#~ msgid "Last played %(n)s minute ago"
+#~ msgid_plural "Last played %(n)s minutes ago"
+#~ msgstr[0] "آخرین بار %(n)s دقیقه پیش بازی شده"
+#~ msgstr[1] "آخرین بار %(n)s دقیقه پیش بازی شده"
+
+#~ msgid "Last played at %I:%M %p"
+#~ msgstr "آخرین بار در %OI:%OM %p بازی شده"
+
+#~ msgid "Last played yesterday at %I:%M %p"
+#~ msgstr "آخرین بار دیروز در %OI:%OM %p بازی شده"
+
+#~ msgid "Last played on %A at %I:%M %p"
+#~ msgstr "آخرین بار در %OA در %OI:%OM %p بازی شده"
+
+#~ msgid "Last played on %B %e %Y"
+#~ msgstr "آخرین بار در %B %e %Y بازی شده"
+
+#~ msgid "Easy puzzle"
+#~ msgstr "پازل ساده"
+
+#~ msgid "Medium puzzle"
+#~ msgstr "پازل متوسط"
+
+#~ msgid "Hard puzzle"
+#~ msgstr "پازل سخت"
+
+#~ msgid "Very hard puzzle"
+#~ msgstr "پازل خیلی سخت"
+
+#~ msgid "Played for %d hour"
+#~ msgid_plural "Played for %d hours"
+#~ msgstr[0] "%d ساعت بازی شده"
+#~ msgstr[1] "%d ساعت بازی شده"
+
+#~ msgid "Played for %d minute"
+#~ msgid_plural "Played for %d minutes"
+#~ msgstr[0] "%d دقیقه بازی شده"
+#~ msgstr[1] "%d دقیقه بازی شده"
+
+#~ msgid "Played for %d second"
+#~ msgid_plural "Played for %d seconds"
+#~ msgstr[0] "%d ثانیه بازی شده"
+#~ msgstr[1] "%d ثانیه بازی شده"
+
+#~ msgid "Do you really want to do this?"
+#~ msgstr "آیا واقعاً می‌خواهید این کار را انجام دهید؟"
+
+#~ msgid "Don't ask me this again."
+#~ msgstr "این را دوباره از من نپرس."
+
+#~ msgid "_Game"
+#~ msgstr "_بازی"
+
+#~ msgid "New game"
+#~ msgstr "بازی جدید"
+
+#~ msgid "_Undo"
+#~ msgstr "_برگردان"
+
+#~ msgid "_Redo"
+#~ msgstr "ا_ز نو"
+
+#~ msgid "Puzzle _Statistics..."
+#~ msgstr "آمار _پازل…"
+
+#~ msgid "_Settings"
+#~ msgstr "_تنظیمات"
+
+#~ msgid "_Tools"
+#~ msgstr "اب_زارها"
+
+#~ msgid "_Hint"
+#~ msgstr "_راهنمایی"
+
+#~ msgid "Show a square that is easy to fill."
+#~ msgstr "نشان دادن مربعی که پر کردنش آسان است."
+
+#~ msgid "Clear _Top Notes"
+#~ msgstr "پاک کردن _یادداشت‌های رویی"
+
+#~ msgid "Clear _Bottom Notes"
+#~ msgstr "پاک کردن _یادداشت‌های زیری"
+
+#~ msgid "_Contents"
+#~ msgstr "م_حتویات"
+
+#~ msgid "Show _Possible Numbers"
+#~ msgstr "نمایش ارقام _ممکن"
+
+#~ msgid "Always show possible numbers in a square"
+#~ msgstr "همیشه ارقام ممکن را در مربع‌ها نشان بده"
+
+#~ msgid "Warn about squares made unfillable by a move"
+#~ msgstr "هشدار درباره‌ی مربع‌هایی که توسط حرکتی غیرقابل پرکردن می‌شوند"
+
+#~ msgid "_Track Additions"
+#~ msgstr "ردگیری ا_ضافات"
+
+#~ msgid "Mark new additions in a separate color so you can keep track of them."
+#~ msgstr "علامت‌گذاری اضافات جدید به رنگ دیگری که بتوانید رد آن‌ها را داشته باشید."
+
+#~ msgid "Show _Toolbar"
+#~ msgstr "نمایش _نوارابزار"
+
+#~ msgid "Highlight the current row, column and box"
+#~ msgstr "برجسته کردن ردیف، ستون و جعبه‌ی فعلی"
+
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d دقیقه"
+#~ msgstr[1] "%d دقیقه"
+
+#~ msgid "%d second"
+#~ msgid_plural "%d seconds"
+#~ msgstr[0] "%d ثانیه"
+#~ msgstr[1] "%d ثانیه"
+
+#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
+#~ msgstr "شما پازل را در %(minute)s و %(second)s کامل کردید"
+
+#~ msgid "%d hour"
+#~ msgid_plural "%d hours"
+#~ msgstr[0] "%d ساعت"
+#~ msgstr[1] "%d ساعت"
+
+#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
+#~ msgstr "شما پازل را در %(hour)s، %(minute)s و %(second)s کامل کردید"
+
+#~ msgid "You got %(n)s hint."
+#~ msgid_plural "You got %(n)s hints."
+#~ msgstr[0] "شما %(n)s راهنمایی گرفتید."
+#~ msgstr[1] "شما %(n)s راهنمایی گرفتید."
+
+#~ msgid "You had %(n)s impossibility pointed out."
+#~ msgid_plural "You had %(n)s impossibilities pointed out."
+#~ msgstr[0] "شما %(n)s اشاره‌ی غیرممکن داشتید."
+#~ msgstr[1] "شما %(n)s اشاره‌ی غیرممکن داشتید."
+
+#~ msgid "You win!"
+#~ msgstr "شما بردید!"
+
+#~ msgid "Save this game before starting new one?"
+#~ msgstr "پیش از شروع بازی جدید، این بازی ذخیره شود؟"
+
+#~ msgid "_Save game for later"
+#~ msgstr "_ذخیره‌ی بازی برای بعد"
+
+#~ msgid "_Abandon game"
+#~ msgstr "_ترک کردن بازی"
+
+#~ msgid "Save game before closing?"
+#~ msgstr "پیش از بستن، بازی ذخیره شود؟"
+
+#~ msgid "Puzzle Information"
+#~ msgstr "اطلاعات پازل"
+
+#~ msgid "There is no current puzzle."
+#~ msgstr "پازل جاری‌ای وجود ندارد."
+
+#~ msgid "Calculated difficulty: "
+#~ msgstr "سختی محاسبه‌شده:"
+
+#~ msgid "Very Hard"
+#~ msgstr "خیلی سخت"
+
+#~ msgid "Number of moves instantly fillable by elimination: "
+#~ msgstr "تعداد حرکاتی که با حذف کردن درجا قابل پر کردن هستند:"
+
+#~ msgid "Number of moves instantly fillable by filling: "
+#~ msgstr "تعداد حرکاتی که با پر کردن درجا قابل پر کردن هستند:"
+
+#~ msgid "Amount of trial-and-error required to solve: "
+#~ msgstr "مقدار آزمون و خطای مورد نیاز برای حل کردن:"
+
+#~ msgid "Puzzle Statistics"
+#~ msgstr "آمار پازل"
+
+#~ msgid "Unable to display help: %s"
+#~ msgstr "نمایش راهنما ممکن نیست: %s"
+
+#~ msgid "Untracked"
+#~ msgstr "ردیابی نشده"
+
+#~ msgid "_Remove"
+#~ msgstr "_حذف"
+
+#~ msgid "Delete selected tracker."
+#~ msgstr "از بین بردن ردیاب انتخاب شده."
+
+#~ msgid "Hide current tracker entries."
+#~ msgstr "پنهان کردن نوشته‌های ردیاب جاری."
+
+#~ msgid "A_pply"
+#~ msgstr "ا_عمال"
+
+#~ msgid "Apply all tracked values and remove the tracker."
+#~ msgstr "اعمال تمام مقادیر ردیابی شده و برداشتن ردیاب."
+
+#~ msgid "Tracker %s"
+#~ msgstr "ردیاب %s"
+
+#~ msgid "No Space"
+#~ msgstr "بدون فضا"
+
+#~ msgid "No space left on disk"
+#~ msgstr "فضایی روی دیسک باقی نمانده"
+
+#~ msgid "Unable to create data folder %(path)s."
+#~ msgstr "ناتوانی در ساخت پوشه‌ی داده %(path)s."
+
+#~ msgid "There is no disk space left!"
+#~ msgstr "فضایی روی دیسک باقی نمانده است!"
+
+#~ msgid "Error %(errno)s: %(error)s"
+#~ msgstr "خطای  %(errno)s: %(error)s"
+
+#~ msgid "Unable to save game."
+#~ msgstr "ناتوان در ذخیره‌ی بازی."
+
+#~ msgid "Unable to save file %(filename)s."
+#~ msgstr "ناتوان در ذخیره‌ی پرونده‌ی %(filename)s."
+
+#~ msgid "Unable to mark game as finished."
+#~ msgstr "نمی‌توان بازی را به عنوان پایان یافته علامت‌گذاری کرد."
+
+#~ msgid "Sudoku unable to mark game as finished."
+#~ msgstr "سودوکو در علامت گذاری بازی به عنوان پایان یافته ناتوان است."
 
 #~ msgid "Chess"
 #~ msgstr "شطرنج"
@@ -544,9 +671,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 
 #~ msgid "Claim _Draw"
 #~ msgstr "درخواست _قرعه‌کشی"
-
-#~ msgid "Start a new game"
-#~ msgstr "شروع بازی جدید"
 
 #~ msgid "New Game"
 #~ msgstr "بازی جدید"
@@ -590,11 +714,9 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "The piece to promote pawns to"
 #~ msgstr "ارتقای سربازان به مهره"
 
-#~ msgid ""
-#~ "The piece to promote to when a human player moves a pawn to the far rank"
+#~ msgid "The piece to promote to when a human player moves a pawn to the far rank"
 #~ msgstr ""
-#~ "مهره‌ای که سربازان بازیکن انسان هنگام رسیدن به ردیف آخر بدان ارتقا پیدا "
-#~ "می‌کند"
+#~ "مهره‌ای که سربازان بازیکن انسان هنگام رسیدن به ردیف آخر بدان ارتقا پیدا می‌کند"
 
 #~ msgid "A flag to enable 3D mode"
 #~ msgstr "پرچمی برای فعال کردن حالت سه‌بعدی"
@@ -650,9 +772,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 
 #~ msgid "Preferences"
 #~ msgstr "ترجیحات"
-
-#~ msgid "Play as:"
-#~ msgstr "بازی به عنوان:"
 
 #~ msgid "Opposing Player:"
 #~ msgstr "بازیکن رقیب:"
@@ -1042,8 +1161,7 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "Opponent has run out of time"
 #~ msgstr "زمان رقیب تمام شد"
 
-#~ msgid ""
-#~ "The same board state has occurred three times (three fold repetition)"
+#~ msgid "The same board state has occurred three times (three fold repetition)"
 #~ msgstr "وضعیت مشابه صفحه سه بار اتفاق افتاد"
 
 #~ msgid "Neither player can cause checkmate (insufficient material)"
@@ -1106,16 +1224,11 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "Failed to open game: %s"
 #~ msgstr "باز کردن بازی شکست خورد: %s"
 
-#~ msgid "Show release version"
-#~ msgstr "نمایش نسخه‌ی انتشار"
-
 #~ msgid "[FILE] - Play Chess"
 #~ msgstr "[FILE] - بازی شطرنج"
 
-#~ msgid ""
-#~ "Run '%s --help' to see a full list of available command line options."
-#~ msgstr ""
-#~ "برای دیدن لیست کامل انتخاب‌های خط فرمان موجود «%s --help» را اجرا کنید."
+#~ msgid "Run '%s --help' to see a full list of available command line options."
+#~ msgstr "برای دیدن لیست کامل انتخاب‌های خط فرمان موجود «%s --help» را اجرا کنید."
 
 #~ msgid "Five or More"
 #~ msgstr "پنج یا بیش‌تر"
@@ -1169,10 +1282,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "اندازه زمین بازی"
 
 #~ msgid ""
-#~ "Playing field size. 1=Small, 2=Medium, 3=Large. Any other value is "
-#~ "invalid."
-#~ msgstr ""
-#~ "اندازه‌ی زمین بازی. ۱=کوچک، ۲=متوسط، ۳=بزرگ. هر مقدار دیگری نامعتبر است."
+#~ "Playing field size. 1=Small, 2=Medium, 3=Large. Any other value is invalid."
+#~ msgstr "اندازه‌ی زمین بازی. ۱=کوچک، ۲=متوسط، ۳=بزرگ. هر مقدار دیگری نامعتبر است."
 
 #~ msgid "Ball style"
 #~ msgstr "طرح توپ"
@@ -1204,22 +1315,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "Game field from last saved session."
 #~ msgstr "زمین بازی آخرین نشست ذخیره شده."
 
-#~ msgid "Game preview"
-#~ msgstr "پیش‌نمایش بازی"
-
 #~ msgid "Game preview from last saved session."
 #~ msgstr "پیش‌نمایش بازی آخرین نشست ذخیره شده."
-
-#~| msgid "The width of the main window in pixels."
-#~ msgid "Width of the window in pixels"
-#~ msgstr "عرض پنجره به پیکسل"
-
-#~| msgid "The height of the main window in pixels."
-#~ msgid "Height of the window in pixels"
-#~ msgstr "ارتفاع پنجره به پیکسل"
-
-#~ msgid "true if the window is maximized"
-#~ msgstr "درست اگر پنجره بیشینه باشد"
 
 #~ msgid "true if the window is fullscren"
 #~ msgstr "درست اگر پنجره تمام‌صفحه باشد"
@@ -1305,9 +1402,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "Player _List"
 #~ msgstr "_لیست بازیکن"
 
-#~ msgid "_Pause"
-#~ msgstr "_مکث"
-
 #~ msgid "Res_ume"
 #~ msgstr "_از سر گیری"
 
@@ -1318,42 +1412,40 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "_تمام کردن بازی"
 
 #~ msgid ""
-#~ "%s is free software; you can redistribute it and/or modify it under the "
-#~ "terms of the GNU General Public License as published by the Free Software "
-#~ "Foundation; either version %d of the License, or (at your option) any "
-#~ "later version."
+#~ "%s is free software; you can redistribute it and/or modify it under the terms "
+#~ "of the GNU General Public License as published by the Free Software "
+#~ "Foundation; either version %d of the License, or (at your option) any later "
+#~ "version."
 #~ msgstr ""
-#~ "%s نرم‌افزار آزاد است؛ شما می‌تونید این را بازتوزیع کنید و/یا این را تحت "
-#~ "شرایط اجازه‌نامه‌ی عمومی همگانی گنو که توسط بنیاد نرم‌افزار آزادمنتشر شده "
-#~ "تغییر دهید؛ چه نسخه‌ی %d اجازه‌نامه، و چه (با نظر خودتان) هر نسخه‌ی متأخرتری."
+#~ "%s نرم‌افزار آزاد است؛ شما می‌تونید این را بازتوزیع کنید و/یا این را تحت شرایط "
+#~ "اجازه‌نامه‌ی عمومی همگانی گنو که توسط بنیاد نرم‌افزار آزادمنتشر شده تغییر دهید؛ "
+#~ "چه نسخه‌ی %d اجازه‌نامه، و چه (با نظر خودتان) هر نسخه‌ی متأخرتری."
 
 #~ msgid ""
 #~ "%s is distributed in the hope that it will be useful, but WITHOUT ANY "
-#~ "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-#~ "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
-#~ "details."
+#~ "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR "
+#~ "A PARTICULAR PURPOSE.  See the GNU General Public License for more details."
 #~ msgstr ""
-#~ "%s منتشر شده به این امید که مفید باشد، ولی بدون هیچ ضمانتی؛ حتا بدون "
-#~ "ضمانت ضمنی تجاری یا تناسب برای یک منظور خاص. برای جزئیات بیش‌تر اجازه‌نامه "
-#~ "عمومی همگانی گنو را ببینید."
+#~ "%s منتشر شده به این امید که مفید باشد، ولی بدون هیچ ضمانتی؛ حتا بدون ضمانت "
+#~ "ضمنی تجاری یا تناسب برای یک منظور خاص. برای جزئیات بیش‌تر اجازه‌نامه عمومی "
+#~ "همگانی گنو را ببینید."
 
 #~ msgid ""
-#~ "You should have received a copy of the GNU General Public License along "
-#~ "with %s; if not, write to the Free Software Foundation, Inc., 51 Franklin "
-#~ "Street, Fifth Floor, Boston, MA  02110-1301  USA"
+#~ "You should have received a copy of the GNU General Public License along with "
+#~ "%s; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, "
+#~ "Fifth Floor, Boston, MA  02110-1301  USA"
 #~ msgstr ""
 #~ "شما باید به همراه %s رونوشتی از اجازه‌نامه‌ی عمومی همگانی گنو را دریافت "
 #~ "می‌کردید، اگر این‌گونه نیست، به بنیاد نرم‌افزار آزاد به آدرس Free Software "
-#~ "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  "
-#~ "02110-1301  USA نامه بفرستید "
+#~ "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  "
+#~ "USA نامه بفرستید "
 
 #~ msgid ""
-#~ "You should have received a copy of the GNU General Public License along "
-#~ "with this program.  If not, see <http://www.gnu.org/licenses/>."
+#~ "You should have received a copy of the GNU General Public License along with "
+#~ "this program.  If not, see <http://www.gnu.org/licenses/>."
 #~ msgstr ""
-#~ "شما باید به همراه این برنامه رونوشتی از اجازه‌نامه‌ی عمومی همگانی گنو را "
-#~ "دریافت می‌کردید، اگر این‌گونه نیست، <http://www.gnu.org/licenses/> را "
-#~ "ببینید."
+#~ "شما باید به همراه این برنامه رونوشتی از اجازه‌نامه‌ی عمومی همگانی گنو را دریافت "
+#~ "می‌کردید، اگر این‌گونه نیست، <http://www.gnu.org/licenses/> را ببینید."
 
 #~ msgctxt "board size"
 #~ msgid "Small"
@@ -1875,32 +1967,30 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "استفاده از حرکت‌های امن"
 
 #~ msgid ""
-#~ "Use safe moves. The safe moves option will help you to avoid being killed "
-#~ "due to a mistake. If you try to make a move that would lead to your death "
-#~ "when there is a safe move available you will not be allowed to proceed."
+#~ "Use safe moves. The safe moves option will help you to avoid being killed due "
+#~ "to a mistake. If you try to make a move that would lead to your death when "
+#~ "there is a safe move available you will not be allowed to proceed."
 #~ msgstr ""
-#~ "استفاده از حرکت‌های امن. گزینه‌ی حرکت‌های امن به شما کمک خواهد کرد از کشته "
-#~ "شدن به خاطر اشتباه جلوگیری کنید. اگر زمانی که جابه‌جایی امنی وجود دارد سعی "
-#~ "کنید جابه‌جایی‌ای انجام دهید که به مرگ شما منجر شود، اجازه‌ی ادامه دادن به "
-#~ "شما داده نخواهد شد."
+#~ "استفاده از حرکت‌های امن. گزینه‌ی حرکت‌های امن به شما کمک خواهد کرد از کشته شدن "
+#~ "به خاطر اشتباه جلوگیری کنید. اگر زمانی که جابه‌جایی امنی وجود دارد سعی کنید "
+#~ "جابه‌جایی‌ای انجام دهید که به مرگ شما منجر شود، اجازه‌ی ادامه دادن به شما داده "
+#~ "نخواهد شد."
 
 #~ msgid "Use super safe moves"
 #~ msgstr "استفاده از حرکت‌های کاملاً امن"
 
 #~ msgid ""
-#~ "Use super safe moves. The player is alerted when there is no safe move "
-#~ "and the only option is to teleport out."
+#~ "Use super safe moves. The player is alerted when there is no safe move and "
+#~ "the only option is to teleport out."
 #~ msgstr ""
-#~ "استفاده از حرکت‌های کاملاً امن. زمانی که هیچ جابه‌جایی امنی وجود ندارد و "
-#~ "تنها گزینه دوربری به بیرون است به بازیکن اخطار داده می‌شود."
+#~ "استفاده از حرکت‌های کاملاً امن. زمانی که هیچ جابه‌جایی امنی وجود ندارد و تنها "
+#~ "گزینه دوربری به بیرون است به بازیکن اخطار داده می‌شود."
 
 #~ msgid "Enable game sounds"
 #~ msgstr "به کار انداختن صداهای بازی"
 
-#~ msgid ""
-#~ "Enable game sounds. Play sounds for various events throughout the game."
-#~ msgstr ""
-#~ "به کار انداختن صداهای بازی. پخش صدا برای رویدادهای مختلف در طول بازی"
+#~ msgid "Enable game sounds. Play sounds for various events throughout the game."
+#~ msgstr "به کار انداختن صداهای بازی. پخش صدا برای رویدادهای مختلف در طول بازی"
 
 #~ msgid "Key to move NW"
 #~ msgstr "کلید جابه‌جایی به شمال غربی"
@@ -2069,8 +2159,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ "The program Robots was unable to find any valid game configuration files. "
 #~ "Please check that the program is installed correctly."
 #~ msgstr ""
-#~ "برنامه‌ روبات‌ها نتوانست پرونده‌ی پیکربندی معتبریبرای بازی  پیدا کند. لطفاً "
-#~ "بررسی کنید که برنامه درست نصب شده باشد."
+#~ "برنامه‌ روبات‌ها نتوانست پرونده‌ی پیکربندی معتبریبرای بازی  پیدا کند. لطفاً بررسی "
+#~ "کنید که برنامه درست نصب شده باشد."
 
 #~ msgid "Some graphics files are missing or corrupt."
 #~ msgstr "بعضی از پرونده‌های گرافیکی گم‌شده‌اند یا مخدوشند."
@@ -2079,8 +2169,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ "The program Robots was unable to load all the necessary graphics files. "
 #~ "Please check that the program is installed correctly."
 #~ msgstr ""
-#~ "برنامه‌ روبات‌ها نتوانست همه‌ی پرونده‌های گرافیکی لازم را بارکند. لطفاً بررسی "
-#~ "کنید که برنامه درست نصب شده باشد."
+#~ "برنامه‌ روبات‌ها نتوانست همه‌ی پرونده‌های گرافیکی لازم را بارکند. لطفاً بررسی کنید "
+#~ "که برنامه درست نصب شده باشد."
 
 #~ msgid "Could not find '%s' pixmap file\n"
 #~ msgstr "پرونده‌ی pixmap «%s» پیدا نشد\n"
@@ -2204,9 +2294,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "Difficult"
 #~ msgstr "سخت"
 
-#~ msgid "Paused"
-#~ msgstr "مکث شده"
-
 #~ msgid "Moves Left:"
 #~ msgstr "حرکت‌های باقی‌مانده:"
 
@@ -2216,12 +2303,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 
 #~ msgid "_Preferences"
 #~ msgstr "_ترجیحات"
-
-#~ msgid "_About"
-#~ msgstr "_درباره"
-
-#~ msgid "_Quit"
-#~ msgstr "_خروج"
 
 #~| msgid "_Hint"
 #~ msgid "Hint"
@@ -2255,13 +2336,12 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "دیگر نمی‌شود حرکتی کرد."
 
 #~ msgid ""
-#~ "Each puzzle has at least one solution.  You can undo your moves and try "
-#~ "and find the solution for a time penalty, restart this game or start an "
-#~ "new one."
+#~ "Each puzzle has at least one solution.  You can undo your moves and try and "
+#~ "find the solution for a time penalty, restart this game or start an new one."
 #~ msgstr ""
 #~ "هر پازل حداقل یک راه‌حل دارد. شما می‌توانید حرکاتتان را برگردانی کنید و سعی "
-#~ "کنید راه‌حل را بیابید. برای یک خطای زمانی، این بازی را راه‌انداری مجدد کرده "
-#~ "یا یک بازی جدید را آغاز کنید."
+#~ "کنید راه‌حل را بیابید. برای یک خطای زمانی، این بازی را راه‌انداری مجدد کرده یا "
+#~ "یک بازی جدید را آغاز کنید."
 
 #~ msgid "_New game"
 #~ msgstr "_بازی جدید"
@@ -2318,18 +2398,18 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 
 #~ msgid "Set to true to enable warning icons when too many flags are placed."
 #~ msgstr ""
-#~ "برای فعال کردن اخطار هنگامی که پرچم‌های خیلی زیادی قرار داده شده است روی "
-#~ "درست تنظیم شود."
+#~ "برای فعال کردن اخطار هنگامی که پرچم‌های خیلی زیادی قرار داده شده است روی درست "
+#~ "تنظیم شود."
 
 #~ msgid "Enable automatic placing of flags"
 #~ msgstr "قعال سازی جا گذاری خودکار پرچم‌ها"
 
 #~ msgid ""
-#~ "Set to true to have gnomine automatically flag squares as mined when "
-#~ "enough squares are revealed"
+#~ "Set to true to have gnomine automatically flag squares as mined when enough "
+#~ "squares are revealed"
 #~ msgstr ""
-#~ "برای پرچم‌گذاری خودکار مربع‌ها به عنوان مین هنگامی که به اندازه‌ی کافی مربع "
-#~ "فاش شد روی درست تنظیم شود"
+#~ "برای پرچم‌گذاری خودکار مربع‌ها به عنوان مین هنگامی که به اندازه‌ی کافی مربع فاش "
+#~ "شد روی درست تنظیم شود"
 
 #~ msgid "Number of columns in a custom game"
 #~ msgstr "تعداد ستون‌ها در یک بازی سفارشی"
@@ -2409,13 +2489,13 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "گرافیک‌ها:"
 
 #~ msgid ""
-#~ "The popular logic puzzle minesweeper. Clear mines from a board using "
-#~ "hints from squares you have already uncovered.\n"
+#~ "The popular logic puzzle minesweeper. Clear mines from a board using hints "
+#~ "from squares you have already uncovered.\n"
 #~ "\n"
 #~ "Mines is a part of GNOME Games."
 #~ msgstr ""
-#~ "پازل منطقی محبوب مین‌یاب. مین‌ها را به وسیله‌ی راهنمایی‌هایی از مربع‌هایی که "
-#~ "پیش‌تر کشف کردید، پاک‌سازی کنید.\n"
+#~ "پازل منطقی محبوب مین‌یاب. مین‌ها را به وسیله‌ی راهنمایی‌هایی از مربع‌هایی که پیش‌تر "
+#~ "کشف کردید، پاک‌سازی کنید.\n"
 #~ "\n"
 #~ "مین‌ها جزیی از بازی‌ها گنوم است."
 
@@ -2471,8 +2551,7 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "The size of the playing grid"
 #~ msgstr "اندازه‌ی شبکه‌ی بازی"
 
-#~ msgid ""
-#~ "The value of this key is used to decide the size of the playing grid."
+#~ msgid "The value of this key is used to decide the size of the playing grid."
 #~ msgstr "مقدار این کلید برای تعیین اندازه‌ی شبکه‌ی بازی به کار می‌رود."
 
 #~ msgid "2×2"
@@ -2497,13 +2576,13 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "امتیازات تِتراوِکس"
 
 #~ msgid ""
-#~ "GNOME Tetravex is a simple puzzle where pieces must be positioned so that "
-#~ "the same numbers are touching each other.\n"
+#~ "GNOME Tetravex is a simple puzzle where pieces must be positioned so that the "
+#~ "same numbers are touching each other.\n"
 #~ "\n"
 #~ "Tetravex is a part of GNOME Games."
 #~ msgstr ""
-#~ "تتراوکس گنوم یک پازل ساده است که در آن قطعات باید به گونه‌ای قرار بگیرند "
-#~ "که اعداد یکسان هم‌دیگر را لمس کنند.\n"
+#~ "تتراوکس گنوم یک پازل ساده است که در آن قطعات باید به گونه‌ای قرار بگیرند که "
+#~ "اعداد یکسان هم‌دیگر را لمس کنند.\n"
 #~ "\n"
 #~ "تتراوکس جزیی از بازی‌های گنوم است."
 
@@ -2618,9 +2697,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "_Restart Puzzle"
 #~ msgstr "_راه‌اندازی مجدد جورچین"
 
-#~ msgid "Next Puzzle"
-#~ msgstr "جورچین بعدی"
-
 #~ msgid "Previous Puzzle"
 #~ msgstr "جورچین قبلی"
 
@@ -2687,21 +2763,20 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "تأخیر بین تاس ریختن‌ها"
 
 #~ msgid ""
-#~ "Choose whether or not to insert a delay between the computer's dice rolls "
-#~ "so the player can follow what it is doing."
+#~ "Choose whether or not to insert a delay between the computer's dice rolls so "
+#~ "the player can follow what it is doing."
 #~ msgstr ""
-#~ "انتخاب این که تأخیری بین تاس ریختن‌های کامپیوتر باشد یا نه تا بازیکن "
-#~ "بتواند کار آن را دنبال کند."
+#~ "انتخاب این که تأخیری بین تاس ریختن‌های کامپیوتر باشد یا نه تا بازیکن بتواند "
+#~ "کار آن را دنبال کند."
 
 #~ msgid "Display the computer's thoughts"
 #~ msgstr "نشان دادن افکار کامپیوتر"
 
 #~ msgid ""
-#~ "If set to true, a dump of the AI's working will be done to standard "
-#~ "output."
+#~ "If set to true, a dump of the AI's working will be done to standard output."
 #~ msgstr ""
-#~ "اگر به درست تنظیم شده باشد، رونوشتی از کار هوش مصنوعی در خروجی استاندارد "
-#~ "قرار می‌گیرد."
+#~ "اگر به درست تنظیم شده باشد، رونوشتی از کار هوش مصنوعی در خروجی استاندارد قرار "
+#~ "می‌گیرد."
 
 #~ msgid "Already used! Where do you want to put that?"
 #~ msgstr "قبلاً استفاده شده! کجا می‌خواهید قرار بگیرد؟"
@@ -2771,8 +2846,7 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "‏%s! -- شما جلویید."
 
 #~ msgid "Select dice to roll or choose a score slot."
-#~ msgstr ""
-#~ "تاس را برای دوباره ریختن انتخاب کنید، یا خانه‌ی امتیاز را انتخاب کنید."
+#~ msgstr "تاس را برای دوباره ریختن انتخاب کنید، یا خانه‌ی امتیاز را انتخاب کنید."
 
 #~ msgid "Roll"
 #~ msgstr "ریختن"
@@ -2806,9 +2880,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 
 #~ msgid "Human Players"
 #~ msgstr "حریف‌های انسان"
-
-#~ msgid "_Number of players:"
-#~ msgstr "_تعداد بازیکن‌ها:"
 
 #~ msgid "Computer Opponents"
 #~ msgstr "حریف‌های کامپیوتری"
@@ -3017,8 +3088,7 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "The theme used for rendering the blocks"
 #~ msgstr "تم مورد استفاده برای ترسیم بلوک‌ها"
 
-#~ msgid ""
-#~ "The name of the theme used for rendering the blocks and the background."
+#~ msgid "The name of the theme used for rendering the blocks and the background."
 #~ msgstr "نام تم مورد استفاده برای ترسیم بلوک‌ها و پس‌زمینه"
 
 #~ msgid "Level to start with"
@@ -3063,11 +3133,11 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "فشردگی سطر‌های پر شده"
 
 #~ msgid ""
-#~ "The density of blocks in rows filled at the start of the game. The value "
-#~ "is between 0 (for no blocks) and 10 (for a completely filled row)."
+#~ "The density of blocks in rows filled at the start of the game. The value is "
+#~ "between 0 (for no blocks) and 10 (for a completely filled row)."
 #~ msgstr ""
-#~ "فشردگی بلوک‌ها در سطرهای پرشده در ابتدای بازی. مقدار بین ۰ (برای بدون "
-#~ "بلوک) و ۱۰ (برای سطرهای کاملاً پر شده) است."
+#~ "فشردگی بلوک‌ها در سطرهای پرشده در ابتدای بازی. مقدار بین ۰ (برای بدون بلوک) و "
+#~ "۱۰ (برای سطرهای کاملاً پر شده) است."
 
 #~ msgid "Whether to play sounds"
 #~ msgstr "این که صداها پخش شوند یا نه"
@@ -3238,13 +3308,13 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "امتیازات سوئل‌فوپ"
 
 #~ msgid ""
-#~ "I want to play that game! You know, they all light-up and you click on "
-#~ "them and they vanish!\n"
+#~ "I want to play that game! You know, they all light-up and you click on them "
+#~ "and they vanish!\n"
 #~ "\n"
 #~ "Swell Foop is a part of GNOME Games."
 #~ msgstr ""
-#~ "من می‌خوام آن بازی را انجام دهم! می‌دانی، آن‌ها همه روشن می‌شوند و تو رویشان "
-#~ "کلیک می‌کنی و آن‌ها ناپدید می‌شوند!\n"
+#~ "من می‌خوام آن بازی را انجام دهم! می‌دانی، آن‌ها همه روشن می‌شوند و تو رویشان کلیک "
+#~ "می‌کنی و آن‌ها ناپدید می‌شوند!\n"
 #~ "\n"
 #~ "سوئل‌فوپ جزیی از بازی‌های گنوم است."
 
@@ -3293,9 +3363,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "Time: "
 #~ msgstr "زمان: "
 
-#~ msgid "Custom Size"
-#~ msgstr "اندازه‌ی سفارشی"
-
 #~ msgid "Show a hint"
 #~ msgstr "نشان دادن یک راهنمایی"
 
@@ -3326,9 +3393,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "_Select map:"
 #~ msgstr "_انتخاب نقشه:"
 
-#~ msgid "Restart the current game"
-#~ msgstr "شروع مجدد بازی جاری"
-
 #~ msgid "Redo the last move"
 #~ msgstr "برگرداندن آخرین حرکت"
 
@@ -3347,8 +3411,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ "Unplayed games do not need to be represented."
 #~ msgstr ""
 #~ "فهرستی از رشته‌ها که به شکل پنج‌تایی هستند: نام، بردها، ‌مجموع بازی‌های انجام "
-#~ "شده، بهترین زمان (به ثانیه) و بدترین زمان (آن هم به ثانیه). باز‌‌ی‌های بازی "
-#~ "نشده نمایش داده نمی‌شوند."
+#~ "شده، بهترین زمان (به ثانیه) و بدترین زمان (آن هم به ثانیه). باز‌‌ی‌های بازی نشده "
+#~ "نمایش داده نمی‌شوند."
 
 #, fuzzy
 #~ msgid "Recently Played Games"
@@ -3361,8 +3425,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ "Select whether to drag the cards or to click on the source then the "
 #~ "destination."
 #~ msgstr ""
-#~ "انتخاب این که کارت‌ها کشیده شوند یا این که اول روی مبداء و بعد روی مقصد "
-#~ "کلیک شود"
+#~ "انتخاب این که کارت‌ها کشیده شوند یا این که اول روی مبداء و بعد روی مقصد کلیک "
+#~ "شود"
 
 #~ msgid "Statistics of games played"
 #~ msgstr "آمار بازی‌های انجام شده"
@@ -3424,14 +3488,13 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 
 #~ msgid ""
 #~ "This game uses a deprecated hint method (case 3).\n"
-#~ "Please file a bug at http://bugzilla.gnome.org including this message "
-#~ "and\n"
+#~ "Please file a bug at http://bugzilla.gnome.org including this message and\n"
 #~ "the name of the game you where playing (look in the title bar if you \n"
 #~ "aren't sure)."
 #~ msgstr ""
 #~ "این بازی از روش راهنمایی منسوخ شده‌ای استفاده می‌کند (حالت ۳).\n"
-#~ "لطفاً یک اشکال در http://bugzilla.gnome.org ثبت کنید که شامل این پیغام و "
-#~ "نام بازی‌ای \n"
+#~ "لطفاً یک اشکال در http://bugzilla.gnome.org ثبت کنید که شامل این پیغام و نام "
+#~ "بازی‌ای \n"
 #~ "که در حال انجامش بودید باشد. (اگر مطمئن نیستید به نوار عنوان نگاه کنید)."
 
 #~ msgid "You are searching for a %s."
@@ -3461,8 +3524,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ "card engine that allows many different\n"
 #~ "games to be played."
 #~ msgstr ""
-#~ "اِیل‌رایِت یک موتور قانونی برای کارت بازی یک نفره ارائه می‌کند که انجام "
-#~ "بازی‌های متفاوتی را ممکن می‌سازد."
+#~ "اِیل‌رایِت یک موتور قانونی برای کارت بازی یک نفره ارائه می‌کند که انجام بازی‌های "
+#~ "متفاوتی را ممکن می‌سازد."
 
 #~ msgid "_Control"
 #~ msgstr "_کنترل"
@@ -3734,8 +3797,7 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid ""
 #~ "Aim to place the suits in the order which fits the current layout most "
 #~ "naturally."
-#~ msgstr ""
-#~ "سعی کنیدخال‌ها را به طبیعی‌ترین ترتیب هماهنگ با چیدمان فعلی قرار دهید."
+#~ msgstr "سعی کنیدخال‌ها را به طبیعی‌ترین ترتیب هماهنگ با چیدمان فعلی قرار دهید."
 
 #~ msgid "Deal new cards from the deck"
 #~ msgstr "گرفتن کارت‌های جدید از دسته‌ی ورق"
@@ -4082,9 +4144,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "Auld Lang Syne"
 #~ msgstr "اولد لَنگ سین"
 
-#~ msgid "Backbone"
-#~ msgstr "بَک بُن"
-
 #~ msgid "Bakers Dozen"
 #~ msgstr "دوجین بِیکر"
 
@@ -4303,8 +4362,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "نمایش احتمالات"
 
 #~ msgid ""
-#~ "Display the probabilities of each dealer hand outcome and the expected "
-#~ "value of your hand."
+#~ "Display the probabilities of each dealer hand outcome and the expected value "
+#~ "of your hand."
 #~ msgstr "نمایش احتمالات هر دست داده شده و مقدار مورد انتظار از دست شما."
 
 #~ msgid "The amount of money in your bank"
@@ -4369,12 +4428,10 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "دوست دارید بیمه شوید؟"
 
 #~ msgid "Set your wager and click in the white outline to deal a new hand."
-#~ msgstr ""
-#~ "شرط‌تان را تعیین کنید و برای گرفتن یک دست جدید روی خطوط سفید کلیک کنید."
+#~ msgstr "شرط‌تان را تعیین کنید و برای گرفتن یک دست جدید روی خطوط سفید کلیک کنید."
 
 #~ msgid "Set your wager or click on the cards to deal a new hand."
-#~ msgstr ""
-#~ "شرط‌تان را تعیین کنید با برای گرفتن یک دست جدید روی کارت‌ها کلید کنید."
+#~ msgstr "شرط‌تان را تعیین کنید با برای گرفتن یک دست جدید روی کارت‌ها کلید کنید."
 
 #~ msgid "Blackjack Preferences"
 #~ msgstr "ترجیحات بازی بلک‌جک"
@@ -4419,8 +4476,7 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "دوبار کلیک برای کاهش شرط به %I.2f"
 
 #~ msgid "Click to deal another card; drag card to split pair"
-#~ msgstr ""
-#~ "برای گرفتن یک کارت دیگر کلیک کنید؛برای جدا کردن جفت یک کارت را بکشید"
+#~ msgstr "برای گرفتن یک کارت دیگر کلیک کنید؛برای جدا کردن جفت یک کارت را بکشید"
 
 #~ msgid "Click to deal another card"
 #~ msgstr "کلیک برای گرفتن یک کارت دیگر"
@@ -4441,8 +4497,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "بهترین گزینه ایستادن است"
 
 #~ msgid ""
-#~ "To stand means to stop adding cards to your hand.  Do this by clicking on "
-#~ "the dealer's cards or by selecting the option from the Control menu."
+#~ "To stand means to stop adding cards to your hand.  Do this by clicking on the "
+#~ "dealer's cards or by selecting the option from the Control menu."
 #~ msgstr ""
 #~ "ایستادن به معنای توقف اضافه کردن کارت‌ها به دست‌تان است. برای این کار رو "
 #~ "کارت‌های توزیع‌کننده کلیک کنید با گزینه را از منوی کنترل انتخاب کنید."
@@ -4451,11 +4507,11 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "بهترین گزینه تسلیم است"
 
 #~ msgid ""
-#~ "To surrender means to give up half your wager and not complete the hand.  "
-#~ "Do this by selecting the option from the Control menu."
+#~ "To surrender means to give up half your wager and not complete the hand.  Do "
+#~ "this by selecting the option from the Control menu."
 #~ msgstr ""
-#~ "تسلیم به معنای دادن نصف شرط‌تان و کامل نکردن دست است. برای این کار گزینه‌اش "
-#~ "را از منوی کنترل انتخاب کنید."
+#~ "تسلیم به معنای دادن نصف شرط‌تان و کامل نکردن دست است. برای این کار گزینه‌اش را "
+#~ "از منوی کنترل انتخاب کنید."
 
 #, fuzzy
 #~ msgid "Blackjack is a casino-style card game."
@@ -4524,10 +4580,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #, fuzzy
 #~ msgid "Reconnecting"
 #~ msgstr "_اتصال"
-
-#, fuzzy
-#~ msgid "Playing"
-#~ msgstr "ساده"
 
 #, fuzzy
 #~ msgid "Server:"
@@ -5005,8 +5057,7 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ "Height of the GNibbles window, used to restore the window size between "
 #~ "sessions."
 #~ msgstr ""
-#~ "ارتفاع پنجره‌ی جی‌نیبلر، برای بازیابی اندازه‌ی پنجره بین نشست‌ها استفاده می "
-#~ "شود."
+#~ "ارتفاع پنجره‌ی جی‌نیبلر، برای بازیابی اندازه‌ی پنجره بین نشست‌ها استفاده می شود."
 
 #~ msgid "Width of the GNibbles window"
 #~ msgstr "عرض پنجره‌ی جی‌نیبلز"
@@ -5050,64 +5101,59 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 
 #~ msgid ""
 #~ "The name of the key used to hold still. The name is a standard X key name."
-#~ msgstr ""
-#~ "نام کلید مورد استفاده برای ثابت ماندن. نام یک نام کلید X استاندارد است."
+#~ msgstr "نام کلید مورد استفاده برای ثابت ماندن. نام یک نام کلید X استاندارد است."
 
 #~ msgid ""
 #~ "The name of the key used to move east. The name is a standard X key name."
 #~ msgstr ""
-#~ "نام کلید مورد استفاده برای جابه‌جایی به شرق. نام یک نام کلید X استاندارد "
-#~ "است."
+#~ "نام کلید مورد استفاده برای جابه‌جایی به شرق. نام یک نام کلید X استاندارد است."
 
 #~ msgid ""
 #~ "The name of the key used to move north-east. The name is a standard X key "
 #~ "name."
 #~ msgstr ""
-#~ "نام کلید مورد استفاده برای جابه‌جایی به شمال شرقی. نام یک نام کلید X "
-#~ "استاندارد است."
+#~ "نام کلید مورد استفاده برای جابه‌جایی به شمال شرقی. نام یک نام کلید X استاندارد "
+#~ "است."
 
 #~ msgid ""
 #~ "The name of the key used to move north-west. The name is a standard X key "
 #~ "name."
 #~ msgstr ""
-#~ "نام کلید مورد استفاده برای جابه‌جایی به شمال غربی. نام یک نام کلید X "
-#~ "استاندارد است."
+#~ "نام کلید مورد استفاده برای جابه‌جایی به شمال غربی. نام یک نام کلید X استاندارد "
+#~ "است."
 
 #~ msgid ""
 #~ "The name of the key used to move north. The name is a standard X key name."
 #~ msgstr ""
-#~ "نام کلید مورد استفاده برای جابه‌جایی به شمال. نام یک نام کلید X استاندارد "
-#~ "است."
+#~ "نام کلید مورد استفاده برای جابه‌جایی به شمال. نام یک نام کلید X استاندارد است."
 
 #~ msgid ""
 #~ "The name of the key used to move south-east. The name is a standard X key "
 #~ "name."
 #~ msgstr ""
-#~ "نام کلید مورد استفاده برای جابه‌جایی به جنوب شرقی. نام یک نام کلید X "
-#~ "استاندارد است."
+#~ "نام کلید مورد استفاده برای جابه‌جایی به جنوب شرقی. نام یک نام کلید X استاندارد "
+#~ "است."
 
 #~ msgid ""
 #~ "The name of the key used to move south-west. The name is a standard X key "
 #~ "name."
 #~ msgstr ""
-#~ "نام کلید مورد استفاده برای جابه‌جایی به جنوب غربی. نام یک نام کلید X "
-#~ "استاندارد است."
+#~ "نام کلید مورد استفاده برای جابه‌جایی به جنوب غربی. نام یک نام کلید X استاندارد "
+#~ "است."
 
 #~ msgid ""
 #~ "The name of the key used to move south. The name is a standard X key name."
 #~ msgstr ""
-#~ "نام کلید مورد استفاده برای جابه‌جایی به جنوب. نام یک نام کلید X استاندارد "
-#~ "است."
+#~ "نام کلید مورد استفاده برای جابه‌جایی به جنوب. نام یک نام کلید X استاندارد است."
 
 #~ msgid ""
 #~ "The name of the key used to move west. The name is a standard X key name."
 #~ msgstr ""
-#~ "نام کلید مورد استفاده برای جابه‌جایی به غرب. نام یک نام کلید X استاندارد "
-#~ "است."
+#~ "نام کلید مورد استفاده برای جابه‌جایی به غرب. نام یک نام کلید X استاندارد است."
 
 #~ msgid ""
-#~ "The name of the key used to teleport randomly. The name is a standard X "
-#~ "key name."
+#~ "The name of the key used to teleport randomly. The name is a standard X key "
+#~ "name."
 #~ msgstr ""
 #~ "نام کلید مورد استفاده برای دوربری تصادفی. نام یک نام کلید X استاندارد است."
 
@@ -5164,8 +5210,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "رنگ پس‌زمینه، در قالبی که gdk_color_parse می‌فهمد."
 
 #~ msgid ""
-#~ "This selects whether or not to draw the background image over the "
-#~ "background color."
+#~ "This selects whether or not to draw the background image over the background "
+#~ "color."
 #~ msgstr "این انتخاب می‌کند که تصویر پس‌زمینه روی رنگ پس‌زمینه ترسیم شود یا نه."
 
 #, fuzzy
@@ -5215,10 +5261,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "بازیکن"
 
 #, fuzzy
-#~ msgid "Ma_ximum Difficulty"
-#~ msgstr "سخت"
-
-#, fuzzy
 #~ msgid "_Game List"
 #~ msgstr "عنوان بازی"
 
@@ -5240,10 +5282,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 
 #, fuzzy
 #~ msgid "Difficulty value: "
-#~ msgstr "سخت"
-
-#, fuzzy
-#~ msgid "Difficulty"
 #~ msgstr "سخت"
 
 #, fuzzy
@@ -5294,10 +5332,6 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #, fuzzy
 #~ msgid "Full Screen"
 #~ msgstr "تمام _صفحه"
-
-#, fuzzy
-#~ msgid "Print current game"
-#~ msgstr "تمام کردن بازی فعلی"
 
 #, fuzzy
 #~ msgid "_Enter custom game"
@@ -5464,15 +5498,13 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ "Select whether to drag the tiles or to click on the source then the "
 #~ "destination."
 #~ msgstr ""
-#~ "انتخاب این که کارت‌ها کشیده شوند یا این که اول روی مبداء و بعد روی مقصد "
-#~ "کلیک شود"
+#~ "انتخاب این که کارت‌ها کشیده شوند یا این که اول روی مبداء و بعد روی مقصد کلیک "
+#~ "شود"
 
-#~ msgid ""
-#~ "The height of the playing window in pixels. At minimum it should be 240."
+#~ msgid "The height of the playing window in pixels. At minimum it should be 240."
 #~ msgstr "ارتفاع پنجره‌ی بازی برحسب نقطه. حداقل باید ۲۴۰ باشد."
 
-#~ msgid ""
-#~ "The width of the playing window in pixels. At minimum it should be 320."
+#~ msgid "The width of the playing window in pixels. At minimum it should be 320."
 #~ msgstr "عرض پنجره‌ی بازی بر حسب نقطه. حداقل باید ۳۲۰ باشد."
 
 #~ msgid "Block 10"
@@ -5509,15 +5541,15 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "جورچین‌های بلوک لغزنده"
 
 #~ msgid ""
-#~ "The requested height of the main window in pixels. If this isn't big "
-#~ "enough it will be ignored."
+#~ "The requested height of the main window in pixels. If this isn't big enough "
+#~ "it will be ignored."
 #~ msgstr ""
-#~ "ارتفاع پنجره‌ی درخواست شده بر حسب نقطه. اگر به اندازه‌ی کافی بزرگ نباشد در "
-#~ "نظر گرفته نخواهد شد."
+#~ "ارتفاع پنجره‌ی درخواست شده بر حسب نقطه. اگر به اندازه‌ی کافی بزرگ نباشد در نظر "
+#~ "گرفته نخواهد شد."
 
 #~ msgid ""
-#~ "The requested width of the main window in pixels. If this isn't big "
-#~ "enough it will be ignored."
+#~ "The requested width of the main window in pixels. If this isn't big enough it "
+#~ "will be ignored."
 #~ msgstr ""
 #~ "عرض پنجره‌ی درخواست شده بر حسب نقطه. اگر به اندازه‌ی کافی بزرگ نباشد در نظر "
 #~ "گرفته نخواهد شد."
@@ -5625,8 +5657,7 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid ""
 #~ "Please check your GConf configuration, specifically that the schemas have "
 #~ "been installed correctly."
-#~ msgstr ""
-#~ "لطفاً پیکربندی GConf بررسی کنید، خصوصاً این که شِماها درست نصب شده باشند. "
+#~ msgstr "لطفاً پیکربندی GConf بررسی کنید، خصوصاً این که شِماها درست نصب شده باشند. "
 
 #~ msgid "X Padding"
 #~ msgstr "لایی‌گذاری X"
@@ -5664,8 +5695,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "لقب بازیکن."
 
 #~ msgid ""
-#~ "This string identifies the default game to connect to or create "
-#~ "(depending on mode)."
+#~ "This string identifies the default game to connect to or create (depending on "
+#~ "mode)."
 #~ msgstr ""
 #~ "این رشته بازی پیش‌فرض برای اتصال یا ایجاد (بسته به حالت) را شناسایی می‌کند."
 
@@ -5719,8 +5750,7 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid ""
 #~ "Do you want to finish the current game or start playing with the new map "
 #~ "immediately?"
-#~ msgstr ""
-#~ "می‌خواهید بازی فعلی را تمام کنید یا بلافاصله نقشه‌ی جدید را بازی کنید؟"
+#~ msgstr "می‌خواهید بازی فعلی را تمام کنید یا بلافاصله نقشه‌ی جدید را بازی کنید؟"
 
 #~ msgid "_Finish"
 #~ msgstr "_پایان"
@@ -5741,18 +5771,18 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "حذف جفت کاشی‌های جور شده"
 
 #~ msgid ""
-#~ "The requested height of the main window in pixels. Note that the widgets "
-#~ "the window contains are at least 200 pixels high."
+#~ "The requested height of the main window in pixels. Note that the widgets the "
+#~ "window contains are at least 200 pixels high."
 #~ msgstr ""
-#~ "ارتفاع درخواست شده‌ی پنجره‌ی اصلی بر حسب نقطه. توجه داشته باشید که ویجت‌های "
-#~ "داخل این پنجره حداقل ۲۰۰ نقطه ارتفاع دارند."
+#~ "ارتفاع درخواست شده‌ی پنجره‌ی اصلی بر حسب نقطه. توجه داشته باشید که ویجت‌های داخل "
+#~ "این پنجره حداقل ۲۰۰ نقطه ارتفاع دارند."
 
 #~ msgid ""
-#~ "The requested width of the main window in pixels. Note that the widgets "
-#~ "the window contains are at least 320 pixels wide."
+#~ "The requested width of the main window in pixels. Note that the widgets the "
+#~ "window contains are at least 320 pixels wide."
 #~ msgstr ""
-#~ "عرض درخواست شده‌ی پنجره‌ی اصلی بر حسب نقطه. توجه داشته باشید که ویجت‌های "
-#~ "داخل این پنجره حداقل ۳۲۰ نقطه عرض دارند."
+#~ "عرض درخواست شده‌ی پنجره‌ی اصلی بر حسب نقطه. توجه داشته باشید که ویجت‌های داخل "
+#~ "این پنجره حداقل ۳۲۰ نقطه عرض دارند."
 
 #~ msgid "mahjongg|Easy"
 #~ msgstr "ماهجونگ|آسان"
@@ -5776,11 +5806,11 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "ارتفاع صفحه‌ی سفارشی"
 
 #~ msgid ""
-#~ "Setting this to FALSE means the pieces fall slowly, but gracefully. A "
-#~ "setting of TRUE causes the pieces to fall quickly and jerkily."
+#~ "Setting this to FALSE means the pieces fall slowly, but gracefully. A setting "
+#~ "of TRUE causes the pieces to fall quickly and jerkily."
 #~ msgstr ""
-#~ "تنظیم این روی نادرست به معنای آهسته اما با وقار افتادن قطعه‌هاست. تنظیم "
-#~ "درست باعث می‌شود قطعه‌ها به تندی و شلنگ‌اندازان بیافتند."
+#~ "تنظیم این روی نادرست به معنای آهسته اما با وقار افتادن قطعه‌هاست. تنظیم درست "
+#~ "باعث می‌شود قطعه‌ها به تندی و شلنگ‌اندازان بیافتند."
 
 #~ msgid "The board size"
 #~ msgstr "اندازه‌ی صفحه"
@@ -5789,10 +5819,8 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "ارتفاع صفحه‌ی سفارشی، ۳ &gt; ارتفاع &gt;."
 
 #~ msgid ""
-#~ "The size of the board to use. 1 = Custom, 2 = Small, 3 = Medium, 4 = "
-#~ "Large."
-#~ msgstr ""
-#~ "اندازه‌ی صفحه‌ی مورد استفاده. ۱ = سفارشی، ۲ = کوچک، ۳ = متوسط، ۴ = بزرگ."
+#~ "The size of the board to use. 1 = Custom, 2 = Small, 3 = Medium, 4 = Large."
+#~ msgstr "اندازه‌ی صفحه‌ی مورد استفاده. ۱ = سفارشی، ۲ = کوچک، ۳ = متوسط، ۴ = بزرگ."
 
 #~ msgid "The window height"
 #~ msgstr "ارتفاع پنجره"
@@ -5895,11 +5923,11 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "این که از حرکت‌های سریع استفاده شود یا نه."
 
 #~ msgid ""
-#~ "Zero corresponds to no animations, one is partial animations, two is "
-#~ "complete animations."
+#~ "Zero corresponds to no animations, one is partial animations, two is complete "
+#~ "animations."
 #~ msgstr ""
-#~ "صفر متناظر است با بدون پویانمایی، یک پویانمایی جرئی است، دو پویانمایی "
-#~ "کامل است."
+#~ "صفر متناظر است با بدون پویانمایی، یک پویانمایی جرئی است، دو پویانمایی کامل "
+#~ "است."
 
 #~ msgid "Ataxx Preferences"
 #~ msgstr "ترجیحات اتکس"
@@ -6026,11 +6054,11 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgstr "این که نتایج نهایی چرخانده شود یا نه"
 
 #~ msgid ""
-#~ "Put all the white pieces at the bottom and all the black pieces on the "
-#~ "top of the board when a game is over"
+#~ "Put all the white pieces at the bottom and all the black pieces on the top of "
+#~ "the board when a game is over"
 #~ msgstr ""
-#~ "قرار دادن تمام قطعه‌های سفید در پایید و تمام قطعه‌های سیاه در بالای صفحه "
-#~ "وقتی بازی تمام می‌شود."
+#~ "قرار دادن تمام قطعه‌های سفید در پایید و تمام قطعه‌های سیاه در بالای صفحه وقتی "
+#~ "بازی تمام می‌شود."
 
 #~ msgid "Collect all diamonds and find exit"
 #~ msgstr "همه‌ی الماس‌ها را جمع کنید و خروج را پیدا کنید"
@@ -6139,8 +6167,7 @@ msgstr "سودوکو در علامت گذاری بازی به عنوان پای�
 #~ msgid "Please make sure that GNOME Stones is correctly installed."
 #~ msgstr "لطفاً مطمئن شوید که سنگ‌های گنوم درست نصب شده است."
 
-#~ msgid ""
-#~ "You may be able to select a different game from the preferences dialog."
+#~ msgid "You may be able to select a different game from the preferences dialog."
 #~ msgstr "شاید بتوانید بازی دیگری از محاوره‌ی ترجیحات انتخاب کنید."
 
 #~ msgid "GNOME Stones Preferences"
