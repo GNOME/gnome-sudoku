@@ -9,10 +9,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games 3.3.91\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-25 13:42+0800\n"
-"PO-Revision-Date: 2015-08-25 13:42+0800\n"
+"POT-Creation-Date: 2017-02-26 07:53+0000\n"
+"PO-Revision-Date: 2017-02-28 13:52+0800\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: Chinese (traditional)\n"
 "Language: zh_TW\n"
@@ -20,17 +20,45 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.11\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1
+#: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
+msgid "_Print"
+msgstr "列印(_P)"
+
+#: data/gnome-sudoku-menu.ui:10
+msgid "Print _Current Puzzle…"
+msgstr "列印目前的題目(_C)…"
+
+#: data/gnome-sudoku-menu.ui:14
+msgid "Print _Multiple Puzzles…"
+msgstr "列印多份題目(_M)…"
+
+#: data/gnome-sudoku-menu.ui:22
+msgid "High_lighter"
+msgstr "高亮度突顯(_L)"
+
+#: data/gnome-sudoku-menu.ui:26
+msgid "_Warnings"
+msgstr "警告(_W)"
+
+#: data/gnome-sudoku-menu.ui:39
+msgid "_About"
+msgstr "關於(_A)"
+
+#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:406
+msgid "_Quit"
+msgstr "結束(_Q)"
+
+#: data/gnome-sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
 msgstr "GNOME 數獨"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "透過這個數字格子題目來測試您的邏輯能力"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: data/gnome-sudoku.appdata.xml.in:10
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -39,7 +67,7 @@ msgstr ""
 "來玩最受歡迎的日本邏輯遊戲。GNOME Sudoku 是數獨愛好者必裝的，用簡單而含蓄的介"
 "面，讓任何技能水準的數獨玩家能快樂的玩數獨。"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: data/gnome-sudoku.appdata.xml.in:15
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -47,7 +75,7 @@ msgstr ""
 "每個遊戲都有指定難度，就像報紙和網站上的一樣，您可按喜好自行選擇簡單或困難的"
 "遊戲。"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:5
+#: data/gnome-sudoku.appdata.xml.in:20
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -56,256 +84,234 @@ msgstr ""
 "如果您喜歡在紙上玩數獨，您可以將遊戲印出來。您可以選擇每張紙要列印多少遊戲以"
 "及遊戲的難度：也就是說，GNOME 數獨可以變成一本可更新的數獨本。"
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:626
+#: data/gnome-sudoku.appdata.xml.in:30
+msgid "A GNOME sudoku game preview"
+msgstr "GNOME 數獨遊戲預覽"
+
+#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:606
 msgid "Sudoku"
 msgstr "數獨"
 
-#: ../data/gnome-sudoku.desktop.in.h:3
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/gnome-sudoku.desktop.in:6
 msgid "magic;square;"
 msgstr "magic;square;魔術;方塊;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
-msgid "_Print"
-msgstr "列印(_P)"
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gnome-sudoku.desktop.in:9
+msgid "gnome-sudoku"
+msgstr "GNOME 數獨"
 
-#: ../data/gnome-sudoku-menu.ui.h:2
-msgid "Print _Current Puzzle…"
-msgstr "列印目前的題目(_C)…"
-
-#: ../data/gnome-sudoku-menu.ui.h:3
-msgid "Print _Multiple Puzzles…"
-msgstr "列印多份題目(_M)…"
-
-#: ../data/gnome-sudoku-menu.ui.h:4
-msgid "High_lighter"
-msgstr "高亮度突顯(_L)"
-
-#: ../data/gnome-sudoku-menu.ui.h:5
-msgid "_Warnings"
-msgstr "警告(_W)"
-
-#: ../data/gnome-sudoku-menu.ui.h:6
-msgid "_Help"
-msgstr "求助(_H)"
-
-#: ../data/gnome-sudoku-menu.ui.h:7
-msgid "_About"
-msgstr "關於(_A)"
-
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:427
-msgid "_Quit"
-msgstr "結束(_Q)"
-
-#: ../data/gnome-sudoku.ui.h:2
+#: data/gnome-sudoku.ui:22
 msgid "Undo your last action"
 msgstr "還原您的上一步"
 
-#: ../data/gnome-sudoku.ui.h:3
+#: data/gnome-sudoku.ui:43
 msgid "Redo your last action"
 msgstr "重新進行您剛還原的一步"
 
-#: ../data/gnome-sudoku.ui.h:4
+#: data/gnome-sudoku.ui:91
 msgid "Go back to the current game"
 msgstr "返回目前的遊戲"
 
-#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
+#: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
 msgid "_Easy"
 msgstr "容易(_E)"
 
-#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
+#: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
 msgid "_Medium"
 msgstr "中(_M)"
 
-#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
+#: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
 msgid "_Hard"
 msgstr "困難(_H)"
 
-#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
+#: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
 msgid "_Very Hard"
 msgstr "極難(_V)"
 
-#: ../data/gnome-sudoku.ui.h:9
+#: data/gnome-sudoku.ui:189
 msgid "_Create your own puzzle"
 msgstr "建立您自己的題目(_C)"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:331
 msgid "_Pause"
 msgstr "暫停(_P)"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: data/gnome-sudoku.ui:251
 msgid "_Clear Board"
 msgstr "清除圖板(_C)"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: data/gnome-sudoku.ui:255
 msgid "Reset the board to its original state"
 msgstr "將圖板回復到原來狀態"
 
-#: ../data/gnome-sudoku.ui.h:13
+#: data/gnome-sudoku.ui:269
 msgid "_New Puzzle"
 msgstr "開新局(_N)"
 
-#: ../data/gnome-sudoku.ui.h:14
+#: data/gnome-sudoku.ui:273
 msgid "Start a new puzzle"
 msgstr "開始另一局"
 
-#: ../data/gnome-sudoku.ui.h:15
+#: data/gnome-sudoku.ui:287
 msgid "_Start Playing"
 msgstr "開始玩(_S)"
 
-#: ../data/gnome-sudoku.ui.h:16
+#: data/gnome-sudoku.ui:291
 msgid "Start playing the custom puzzle you have created"
 msgstr "開始玩由您建立的自訂題目"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:1
+#: data/org.gnome.sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
 msgstr "要列印的數獨遊戲難度"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:2
+#: data/org.gnome.sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are - \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
 "設定要列印的數獨遊戲難度。可以選擇：「容易」、「中等」、「困難」和「超難」"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:3
+#: data/org.gnome.sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
 msgstr "要列印的數獨遊戲數量"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:4
+#: data/org.gnome.sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
 msgstr "設定要列印的數獨遊戲數量"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:5
+#: data/org.gnome.sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "警告有無法填上內容的方格和重覆的數字"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:6
+#: data/org.gnome.sudoku.gschema.xml:23
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
 msgstr "當有方格無法填上時，顯示紅色大交叉；以及用紅色顯示重覆的數字"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:7
+#: data/org.gnome.sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "突顯包含已選取方格的列、欄與方塊"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: data/org.gnome.sudoku.gschema.xml:31
 msgid "Width of the window in pixels"
 msgstr "視窗的寬度 (像素)。"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: data/org.gnome.sudoku.gschema.xml:35
 msgid "Height of the window in pixels"
 msgstr "視窗的高度 (像素)。"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:10
+#: data/org.gnome.sudoku.gschema.xml:39
 msgid "true if the window is maximized"
 msgstr "如果視窗為最大化則設定為‘TRUE’"
 
-#: ../data/print-dialog.ui.h:1
+#: data/print-dialog.ui:12
 msgid "Print Multiple Puzzles"
 msgstr "列印多份題目"
 
-#: ../data/print-dialog.ui.h:2
+#: data/print-dialog.ui:21
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: ../data/print-dialog.ui.h:4
+#: data/print-dialog.ui:67
 msgid "_Number of puzzles"
 msgstr "題目數量(_N)"
 
-#: ../data/print-dialog.ui.h:5
+#: data/print-dialog.ui:110
 msgid "Difficulty"
 msgstr "難度"
 
-#: ../lib/sudoku-board.vala:583
+#: lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "不明的難度"
 
-#: ../lib/sudoku-board.vala:585
+#: lib/sudoku-board.vala:585
 msgid "Easy Difficulty"
 msgstr "難度：容易"
 
-#: ../lib/sudoku-board.vala:587
+#: lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "難度：中等"
 
-#: ../lib/sudoku-board.vala:589
+#: lib/sudoku-board.vala:589
 msgid "Hard Difficulty"
 msgstr "難度：困難"
 
-#: ../lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:591
 msgid "Very Hard Difficulty"
 msgstr "難度：超難"
 
-#: ../lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:593
 msgid "Custom Puzzle"
 msgstr "自訂題目"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:85
+#: src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "顯示釋出版本"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:89
+#: src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "顯示每個方格可能的值"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:303
+#: src/gnome-sudoku.vala:283
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "您輸入的題目不是一個有效的數獨。"
 
-#: ../src/gnome-sudoku.vala:303
+#: src/gnome-sudoku.vala:283
 msgid "Please enter a valid puzzle."
 msgstr "請輸入有效的題目。"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:312
+#: src/gnome-sudoku.vala:292
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "您輸入的題目具有多個解答。"
 
-#: ../src/gnome-sudoku.vala:312
+#: src/gnome-sudoku.vala:292
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "有效的數獨題目只能有單一解。"
 
-#: ../src/gnome-sudoku.vala:314
+#: src/gnome-sudoku.vala:294
 msgid "_Back"
 msgstr "_Back"
 
-#: ../src/gnome-sudoku.vala:315
+#: src/gnome-sudoku.vala:295
 msgid "Play _Anyway"
 msgstr "直接玩(_A)"
 
-#: ../src/gnome-sudoku.vala:357
+#: src/gnome-sudoku.vala:337
 msgid "_Resume"
 msgstr "繼續(_R)"
 
-#: ../src/gnome-sudoku.vala:421
+#: src/gnome-sudoku.vala:401
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "恭喜您，您以 %d 分鐘完成了這個題目！"
 
-#: ../src/gnome-sudoku.vala:426
+#: src/gnome-sudoku.vala:407
 msgid "Play _Again"
 msgstr "再玩一次(_A)"
 
-#: ../src/gnome-sudoku.vala:446
+#: src/gnome-sudoku.vala:426
 msgid "Select Difficulty"
 msgstr "選擇難度"
 
-#: ../src/gnome-sudoku.vala:502
+#: src/gnome-sudoku.vala:482
 msgid "Reset the board to its original state?"
 msgstr "是否將圖板回復到原來狀態？"
 
-#: ../src/gnome-sudoku.vala:549
+#: src/gnome-sudoku.vala:529
 msgid "Create Puzzle"
 msgstr "建立題目"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:630
+#: src/gnome-sudoku.vala:610
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -316,7 +322,7 @@ msgstr ""
 "\n"
 "題目由 QQwing %s 創製"
 
-#: ../src/gnome-sudoku.vala:635
+#: src/gnome-sudoku.vala:615
 msgid "translator-credits"
 msgstr ""
 "如對翻譯有任何意見，請送一封電子郵件給\n"
@@ -327,19 +333,22 @@ msgstr ""
 "Fernando <bv1al@journalist.com.tw>, 1999Walter Cheuk <wwycheuk@gmail.com>, "
 "2014."
 
-#: ../src/number-picker.vala:90
+#: src/number-picker.vala:90
 msgid "Clear"
 msgstr "清除"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:48
+#: src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "列印檔案時發生錯誤："
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:629
+#: src/sudoku-view.vala:630
 msgid "Paused"
 msgstr "已暫停"
+
+#~ msgid "_Help"
+#~ msgstr "求助(_H)"
 
 #~ msgid "_Simple"
 #~ msgstr "簡易（_S）"
@@ -1311,9 +1320,6 @@ msgstr "已暫停"
 
 #~ msgid "Game field from last saved session."
 #~ msgstr "遊戲上次儲存時的狀態。"
-
-#~ msgid "Game preview"
-#~ msgstr "遊戲預覽"
 
 #~ msgid "Game preview from last saved session."
 #~ msgstr "上次未完成的遊戲的棋盤預覽"
