@@ -66,6 +66,7 @@ private class SudokuCellView : Gtk.DrawingArea
                 layout.set_font_description (style.font_desc);
                 return;
             }
+            assert (layout != null);
             game.insert (row, col, value);
         }
     }
