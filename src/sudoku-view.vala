@@ -175,8 +175,6 @@ private class SudokuCellView : Gtk.DrawingArea
         number_picker = new NumberPicker (ref game.board);
         number_picker.number_picked.connect ((o, number) => {
             value = number;
-            if (number == 0)
-                notify_property ("value");
             this.game.board.disable_all_earmarks (row, col);
 
             popover.hide ();
@@ -308,7 +306,6 @@ private class SudokuCellView : Gtk.DrawingArea
         if (k_no == 0 || k_name == "BackSpace" || k_name == "Delete")
         {
             value = 0;
-            notify_property ("value");
             return true;
         }
 
@@ -428,8 +425,6 @@ private class SudokuCellView : Gtk.DrawingArea
                 else
                     background_color = is_fixed ? fixed_cell_color : free_cell_color;
             }
-
-            notify_property ("value");
         }
     }
 
