@@ -21,8 +21,7 @@ dist_noinst_DATA = \
 	gnome-sudoku.gresource.xml \
 	gnome-sudoku.ui \
 	gnome-sudoku-menu.ui \
-	print-dialog.ui \
-	gnome-sudoku.css
+	print-dialog.ui
 
 gsettings_SCHEMAS = org.gnome.sudoku.gschema.xml
 @GSETTINGS_RULES@
