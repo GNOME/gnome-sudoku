@@ -14,7 +14,7 @@
 # Philipp Kerling <k.philipp@gmail.com>, 2007-2008.
 # Björn Deiseroth <service@dual-creators.de>, 2007.
 # Andre Klapper <ak-47@gmx.net>, 2008-2009.
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2010-2013, 2016.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2010-2013, 2016-2017.
 # Tobias Endrigkeit <tobiasendrigkeit@googlemail.com>, 2012.
 # Christian Kirbach <christian.kirbach@gmail.com>, 2009-2012, 2014.
 # Benjamin Steinwender <b@stbe.at>, 2014.
@@ -23,10 +23,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-06 15:33+0000\n"
-"PO-Revision-Date: 2016-11-07 15:39+0100\n"
+"POT-Creation-Date: 2017-07-15 23:36+0000\n"
+"PO-Revision-Date: 2017-07-28 21:47+0200\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -34,7 +34,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
 msgid "_Print"
@@ -60,7 +60,7 @@ msgstr "_Warnungen"
 msgid "_About"
 msgstr "_Info"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:406
+#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "_Beenden"
 
@@ -107,8 +107,12 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Eine Vorschau auf GNOME Sudoku"
 
+#: data/gnome-sudoku.appdata.xml.in:47
+msgid "The GNOME Project"
+msgstr "Das GNOME-Projekt"
+
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:606
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -154,7 +158,7 @@ msgstr "_Sehr schwer"
 msgid "_Create your own puzzle"
 msgstr "_Eigenes Rätsel erstellen"
 
-#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:331
+#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
 msgid "_Pause"
 msgstr "_Anhalten"
 
@@ -189,7 +193,7 @@ msgstr "Schwierigkeitsgrad der zu druckenden Sudokus"
 #: data/org.gnome.sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
-"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
 "Den Schwierigkeitsgrad der zu druckenden Sudokus festlegen. Mögliche Werte "
 "sind: »easy« (Leicht), »medium« (Mittel), »hard« (Schwer) und "
@@ -282,60 +286,60 @@ msgid "Show the possible values for each cell"
 msgstr "Die möglichen Werte für jede Zelle anzeigen"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Das von Ihnen eingegebene Rätsel ist ungültig."
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "Please enter a valid puzzle."
 msgstr "Bitte geben Sie ein gültiges Rätsel ein."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Das von Ihnen eingegebene Rätsel hat mehrere Lösungen."
 
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Gültige Sudoku-Rätsel haben genau eine Lösung."
 
-#: src/gnome-sudoku.vala:294
+#: src/gnome-sudoku.vala:290
 msgid "_Back"
 msgstr "_Zurück"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:291
 msgid "Play _Anyway"
 msgstr "_Trotzdem Spielen"
 
-#: src/gnome-sudoku.vala:337
+#: src/gnome-sudoku.vala:333
 msgid "_Resume"
 msgstr "_Weiterspielen"
 
-#: src/gnome-sudoku.vala:401
+#: src/gnome-sudoku.vala:397
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Sehr gut. Sie haben das Rätsel in %d Minute gelöst."
 msgstr[1] "Sehr gut. Sie haben das Rätsel in %d Minuten gelöst."
 
-#: src/gnome-sudoku.vala:407
+#: src/gnome-sudoku.vala:403
 msgid "Play _Again"
 msgstr "_Nochmal Spielen"
 
-#: src/gnome-sudoku.vala:426
+#: src/gnome-sudoku.vala:422
 msgid "Select Difficulty"
 msgstr "Schwierigkeitsgrad auswählen"
 
-#: src/gnome-sudoku.vala:482
+#: src/gnome-sudoku.vala:478
 msgid "Reset the board to its original state?"
 msgstr "Soll das Spielfeld in den ursprünglichen Zustand zurückgesetzt werden?"
 
-#: src/gnome-sudoku.vala:529
+#: src/gnome-sudoku.vala:525
 msgid "Create Puzzle"
 msgstr "Rätsel _erstellen"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:610
+#: src/gnome-sudoku.vala:606
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -346,7 +350,7 @@ msgstr ""
 "\n"
 "Rätsel wurden von QQwing %s erstellt."
 
-#: src/gnome-sudoku.vala:615
+#: src/gnome-sudoku.vala:611
 msgid "translator-credits"
 msgstr ""
 "Karl Eichwalder <ke@suse.de>\n"
@@ -376,212 +380,6 @@ msgid "Error printing file:"
 msgstr "Fehler beim Drucken der Datei:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:630
+#: src/sudoku-view.vala:631
 msgid "Paused"
 msgstr "Angehalten"
-
-#~ msgid "The GNOME Project"
-#~ msgstr "Das GNOME-Projekt"
-
-#~ msgid "_Help"
-#~ msgstr "_Hilfe"
-
-#~| msgid "Calculated difficulty: "
-#~ msgid "Same difficulty again"
-#~ msgstr "Erneut derselbe Schwierigkeitsgrad"
-
-#~| msgid "Calculated difficulty: "
-#~ msgid "New difficulty"
-#~ msgstr "Neuer Schwierigkeitsgrad"
-
-#~ msgid ""
-#~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
-#~ "that make playing Sudoku fun. Games are automatically saved when you "
-#~ "quit, and you can always come back to any game that you've played."
-#~ msgstr ""
-#~ "Sudoku hat eine einfache, dezente Bedienung mit allen Funktionen, die aus "
-#~ "Sudoku ein spaßiges Spiel machen. Spiele werden beim Beenden automatisch "
-#~ "gespeichert und können später jederzeit fortgesetzt werden."
-
-#~ msgid "game;board;tiles;japanese;"
-#~ msgstr "Spiel;Brettspiel;Felder;japanisch;"
-
-#~ msgid "The number of seconds between automatic saves"
-#~ msgstr ""
-#~ "Intervallzeit zwischen automatischem speichern des Spiels in Sekunden"
-
-#~ msgid "Print games that have been played"
-#~ msgstr "Spiele drucken, die bereits gespielt worden sind"
-
-#~ msgid "Mark printed games as played"
-#~ msgstr "Ausgedruckte Spiele als gespielt markieren"
-
-#~ msgid "Show hint highlights"
-#~ msgstr "Zeige Hinweishervorhebungen"
-
-#~ msgid "Color of the grid border"
-#~ msgstr "Farbe der Gittergrenzen"
-
-#~ msgid "Show the application toolbar"
-#~ msgstr "Werkzeugleiste der Anwendung anzeigen"
-
-#~ msgid "Print Sudokus"
-#~ msgstr "Sudokus drucken"
-
-#~ msgid "Print Games"
-#~ msgstr "Spiele drucken"
-
-#~ msgid "_Sudokus per page: "
-#~ msgstr "Sudokus pro _Seite: "
-
-#~ msgid "Levels of difficulty to print"
-#~ msgstr "Auszudruckende Schwierigkeitsstufen"
-
-#~ msgid "Details"
-#~ msgstr "Details"
-
-#~ msgid "_Mark games as played once you've printed them."
-#~ msgstr "Ge_druckte Spiele als gespielt markieren"
-
-#~ msgid "_Include games you've already played in list of games to print"
-#~ msgstr "Bereits ge_spielte Spiele in die auszudruckenden Spiele übernehmen"
-
-#~ msgid "_Saved Games"
-#~ msgstr "Ge_speicherte Spiele"
-
-#~ msgid "Add a new tracker"
-#~ msgstr "Aufzeichnung hinzufügen"
-
-#~ msgid "Remove the selected tracker"
-#~ msgstr "Ausgewählte Aufzeichnung löschen"
-
-#~ msgid "Make the tracked changes permanent"
-#~ msgstr "Die aufgezeichneten Änderungen dauerhaft machen"
-
-#~ msgid "H_ide"
-#~ msgstr "_Verbergen"
-
-#~ msgid "Hide the tracked values"
-#~ msgstr "Aufgezeichete Eintragungen verbergen"
-
-#~ msgid "Website"
-#~ msgstr "Internet-Seite"
-
-#~ msgid "Easy"
-#~ msgstr "Leicht"
-
-#~ msgid "Medium"
-#~ msgstr "Mittel"
-
-#~ msgid "Hard"
-#~ msgstr "Schwer"
-
-#~ msgid "Very hard"
-#~ msgstr "Sehr schwer"
-
-#~ msgid "Last played %(n)s second ago"
-#~ msgid_plural "Last played %(n)s seconds ago"
-#~ msgstr[0] "Zuletzt gespielt vor %(n)s Sekunde"
-#~ msgstr[1] "Zuletzt gespielt vor %(n)s Sekunden"
-
-#~ msgid "Last played %(n)s minute ago"
-#~ msgid_plural "Last played %(n)s minutes ago"
-#~ msgstr[0] "Zuletzt gespielt vor %(n)s Minute"
-#~ msgstr[1] "Zuletzt gespielt vor %(n)s Minuten"
-
-#~ msgid "Last played at %I:%M %p"
-#~ msgstr "Zuletzt um %H:%M gespielt"
-
-#~ msgid "Last played yesterday at %I:%M %p"
-#~ msgstr "Zuletzt gespielt gestern um %H:%M"
-
-#~ msgid "Last played on %A at %I:%M %p"
-#~ msgstr "Zuletzt gespielt am %A um %H:%M"
-
-#~ msgid "Last played on %B %e %Y"
-#~ msgstr "Zuletzt gespielt am %e. %B %Y"
-
-#~ msgid "Easy puzzle"
-#~ msgstr "Leichtes Rätsel"
-
-#~ msgid "Very hard puzzle"
-#~ msgstr "Sehr schweres Rätsel"
-
-#~ msgid "Played for %d hour"
-#~ msgid_plural "Played for %d hours"
-#~ msgstr[0] "Gespielt für %d Stunde"
-#~ msgstr[1] "Gespielt für %d Stunden"
-
-#~ msgid "Played for %d minute"
-#~ msgid_plural "Played for %d minutes"
-#~ msgstr[0] "Gespielt für %d Minute"
-#~ msgstr[1] "Gespielt für %d Minuten"
-
-#~ msgid "Played for %d second"
-#~ msgid_plural "Played for %d seconds"
-#~ msgstr[0] "Gespielt für %d Sekunde"
-#~ msgstr[1] "Gespielt für %d Sekunden"
-
-#~ msgid "Do you really want to do this?"
-#~ msgstr "Wollen Sie das wirklich tun?"
-
-#~ msgid "Don't ask me this again."
-#~ msgstr "Nicht noch einmal nachfragen."
-
-#~ msgid "_Game"
-#~ msgstr "_Spiel"
-
-#~ msgid "New game"
-#~ msgstr "Neues Spiel"
-
-#~ msgid "_Undo"
-#~ msgstr "_Rückgängig"
-
-#~ msgid "_Redo"
-#~ msgstr "_Wiederholen"
-
-#~ msgid "Puzzle _Statistics..."
-#~ msgstr "Rätsel_statistiken …"
-
-#~ msgid "_Settings"
-#~ msgstr "_Einstellungen"
-
-#~ msgid "_Tools"
-#~ msgstr "_Werkzeuge"
-
-#~ msgid "_Hint"
-#~ msgstr "_Tipp"
-
-#~ msgid "Show a square that is easy to fill."
-#~ msgstr "Ein Feld anzeigen, das leicht auszufüllen ist."
-
-#~ msgid "Clear _Top Notes"
-#~ msgstr "_Obere Notizen löschen"
-
-#~ msgid "Clear _Bottom Notes"
-#~ msgstr "_Untere Notizen löschen"
-
-#~ msgid "_Contents"
-#~ msgstr "I_nhalt"
-
-#~ msgid "Show _Possible Numbers"
-#~ msgstr "M_ögliche Ziffern anzeigen"
-
-#~ msgid "Always show possible numbers in a square"
-#~ msgstr "Immer die für ein Kästchen möglichen Ziffern anzeigen"
-
-#~ msgid "Warn about squares made unfillable by a move"
-#~ msgstr ""
-#~ "Warnen, wenn ein Kästchen durch einen Zug unausfüllbar gemacht wurde"
-
-#~ msgid "_Track Additions"
-#~ msgstr "Änderungen _markieren"
-
-#~ msgid ""
-#~ "Mark new additions in a separate color so you can keep track of them."
-#~ msgstr ""
-#~ "Änderungen in einer anderen Farbe markieren, um die Übersichtlichkeit zu "
-#~ "erhöhen."
-
-#~ msgid "Show _Toolbar"
-#~ msgstr "_Werkzeugleiste anzeigen"
