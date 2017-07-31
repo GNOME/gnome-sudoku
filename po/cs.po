@@ -21,9 +21,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-06 15:33+0000\n"
+"POT-Creation-Date: 2017-07-15 23:36+0000\n"
 "PO-Revision-Date: 2016-11-08 08:19+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
@@ -59,7 +59,7 @@ msgstr "_Varování"
 msgid "_About"
 msgstr "O _aplikaci"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:406
+#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "U_končit"
 
@@ -105,8 +105,12 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Ukázka hry Sudoku GNOME"
 
+#: data/gnome-sudoku.appdata.xml.in:47
+msgid "The GNOME Project"
+msgstr "Projekt GNOME"
+
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:606
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -152,7 +156,7 @@ msgstr "_Velmi těžké"
 msgid "_Create your own puzzle"
 msgstr "_Vytvořit svůj vlastní hlavolam"
 
-#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:331
+#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
 msgid "_Pause"
 msgstr "_Pozastavit"
 
@@ -187,10 +191,10 @@ msgstr "Úroveň obtížnosti tisknutých sudoku"
 #: data/org.gnome.sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
-"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
 "Nastavit úroveň obtížnosti pro sudoku, která se budou tisknout. Možné "
-"hodnoty jsou „easy“ (snadné), „medium“ (střední), „hard“ (těžké), "
+"hodnoty jsou: „easy“ (snadné), „medium“ (střední), „hard“ (těžké), "
 "„very_hard“ (velmi těžké)."
 
 #: data/org.gnome.sudoku.gschema.xml:17
@@ -280,36 +284,36 @@ msgid "Show the possible values for each cell"
 msgstr "U každého políčka zobrazovat možné hodnoty"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Hlavolam, který jste zadali, není platné Sudoku."
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "Please enter a valid puzzle."
 msgstr "Zadejte prosím platný hlavolam."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Hlavolam, který jste zadali, má více řešení."
 
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Platné Sudoku má právě jedno řešení."
 
-#: src/gnome-sudoku.vala:294
+#: src/gnome-sudoku.vala:290
 msgid "_Back"
 msgstr "_Zpět"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:291
 msgid "Play _Anyway"
 msgstr "_Přesto hrát"
 
-#: src/gnome-sudoku.vala:337
+#: src/gnome-sudoku.vala:333
 msgid "_Resume"
 msgstr "Pok_račovat"
 
-#: src/gnome-sudoku.vala:401
+#: src/gnome-sudoku.vala:397
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -317,24 +321,24 @@ msgstr[0] "Úspěšně hotovo, hlavolam jste vyřešili za %d minutu!"
 msgstr[1] "Úspěšně hotovo, hlavolam jste vyřešili za %d minuty!"
 msgstr[2] "Úspěšně hotovo, hlavolam jste vyřešili za %d minut!"
 
-#: src/gnome-sudoku.vala:407
+#: src/gnome-sudoku.vala:403
 msgid "Play _Again"
 msgstr "Hrát znov_u"
 
-#: src/gnome-sudoku.vala:426
+#: src/gnome-sudoku.vala:422
 msgid "Select Difficulty"
 msgstr "Výběr obtížnosti"
 
-#: src/gnome-sudoku.vala:482
+#: src/gnome-sudoku.vala:478
 msgid "Reset the board to its original state?"
 msgstr "Vrátit herní desku do jejího původního stavu?"
 
-#: src/gnome-sudoku.vala:529
+#: src/gnome-sudoku.vala:525
 msgid "Create Puzzle"
 msgstr "Vytváření hlavolamu"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:610
+#: src/gnome-sudoku.vala:606
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -345,7 +349,7 @@ msgstr ""
 "\n"
 "Hlavolamy generované pomocí QQwing %s"
 
-#: src/gnome-sudoku.vala:615
+#: src/gnome-sudoku.vala:611
 msgid "translator-credits"
 msgstr ""
 "Jirka Lébl\n"
@@ -372,12 +376,7 @@ msgid "Error printing file:"
 msgstr "Chyba při tisku souboru:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:630
+#: src/sudoku-view.vala:631
 msgid "Paused"
 msgstr "Pozastaveno"
 
-#~ msgid "The GNOME Project"
-#~ msgstr "Projekt GNOME"
-
-#~ msgid "_Help"
-#~ msgstr "_Nápověda"
