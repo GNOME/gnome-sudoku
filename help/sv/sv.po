@@ -1,9 +1,11 @@
 # Erik Sköldås <erik.skoldas@tele2.se>, 2015.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome sudoku doc\n"
-"POT-Creation-Date: 2016-05-07 05:38+0000\n"
-"PO-Revision-Date: 2016-06-14 22:13+0200\n"
+"POT-Creation-Date: 2017-07-31 12:14+0000\n"
+"PO-Revision-Date: 2017-08-01 01:55+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -11,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 2.0.2\n"
 "X-Project-Style: gnome\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -195,11 +197,11 @@ msgstr ""
 msgid ""
 "If you are requesting a new feature, choose <gui>enhancement</gui> in the "
 "<gui>Severity</gui> menu. Fill in the Summary and Description sections and "
-"click <gui>Commit</gui>."
+"click <gui>Submit Bug</gui>."
 msgstr ""
 "Om du önskar en ny funktion, välj <gui>enhancement</gui> i <gui>Severity</"
-"gui>-menyn. Fyll i sammanfattningen och beskrivningen och klicka "
-"<gui>Commit</gui>."
+"gui>-menyn. Fyll i sammanfattningen och beskrivningen och klicka <gui>Submit "
+"Bug</gui>."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:42
@@ -384,20 +386,6 @@ msgstr ""
 msgid "<app>Sudoku</app> with highlighting."
 msgstr "<app>Sudoku</app> med färgmarkering."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/hints.page:58
-msgctxt "_"
-msgid ""
-"external ref='figures/possible-numbers.png' "
-"md5='69bee04ef4e72e58978939dac2a20b33'"
-msgstr ""
-"external ref='figures/possible-numbers.png' "
-"md5='69bee04ef4e72e58978939dac2a20b33'"
-
 #. (itstool) path: page/title
 #: C/hints.page:17
 msgid "Hints"
@@ -471,6 +459,20 @@ msgid ""
 msgstr ""
 "Dessa funktioner kan göra det enkla pusslet för lätt, så du bör använda dem "
 "sparsamt."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/hints.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/possible-numbers.png' "
+"md5='69bee04ef4e72e58978939dac2a20b33'"
+msgstr ""
+"external ref='figures/possible-numbers.png' "
+"md5='69bee04ef4e72e58978939dac2a20b33'"
 
 #. (itstool) path: info/title
 #: C/index.page:7
@@ -1024,18 +1026,6 @@ msgstr ""
 "Layout av en rad, en kolumn och en 3x3-kvadrat med färgmarkerings-"
 "alternativet."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/save-resume.page:40
-msgctxt "_"
-msgid ""
-"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
-msgstr ""
-"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
-
 #. (itstool) path: page/title
 #: C/save-resume.page:23
 msgid "Save and resume"
@@ -1087,19 +1077,17 @@ msgstr ""
 msgid "Resuming previous games."
 msgstr "Återuppta tidigare spel."
 
-#. (itstool) path: media
+#. (itstool) path: figure/media
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/statistics.page:22
+#: C/save-resume.page:40
 msgctxt "_"
 msgid ""
-"external ref='figures/stats-very-hard.png' "
-"md5='13bff6de1e513a499dece168d4e69af5'"
+"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
 msgstr ""
-"external ref='figures/stats-very-hard.png' "
-"md5='13bff6de1e513a499dece168d4e69af5'"
+"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
 
 #. (itstool) path: page/title
 #: C/statistics.page:17
@@ -1119,6 +1107,20 @@ msgstr ""
 #: C/statistics.page:20
 msgid "Very hard puzzle statistics box example"
 msgstr "Exempel på statistik av mycket svårt pussel"
+
+#. (itstool) path: figure/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/statistics.page:22
+msgctxt "_"
+msgid ""
+"external ref='figures/stats-very-hard.png' "
+"md5='13bff6de1e513a499dece168d4e69af5'"
+msgstr ""
+"external ref='figures/stats-very-hard.png' "
+"md5='13bff6de1e513a499dece168d4e69af5'"
 
 #. (itstool) path: page/p
 #: C/statistics.page:26
@@ -1366,18 +1368,6 @@ msgstr ""
 "Gör om, <link xref=\"hints\">Tips</link>, och <link xref=\"trackers\">Spåra "
 "tillägg</link>."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/trackers.page:58
-msgctxt "_"
-msgid ""
-"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
-msgstr ""
-"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
-
 #. (itstool) path: page/title
 #: C/trackers.page:22
 msgid "Track trial-and-error solutions"
@@ -1477,6 +1467,18 @@ msgstr ""
 #: C/trackers.page:56
 msgid "Video Demonstration"
 msgstr "Video demonstration"
+
+#. (itstool) path: section/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trackers.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
+msgstr ""
+"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
 
 #. (itstool) path: page/title
 #: C/translate.page:23
