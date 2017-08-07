@@ -1,13 +1,13 @@
 # Czech translation of gnome-sudoku help.
 # Copyright (C) 2009 the author(s) of gnome-games.
 # This file is distributed under the same license as the gnome-sudoku help.
-# Marek Černocký <marek@manet.cz>, 2009, 2010, 2013, 2015.
+# Marek Černocký <marek@manet.cz>, 2009, 2010, 2013, 2015, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
-"POT-Creation-Date: 2015-04-24 20:07+0000\n"
-"PO-Revision-Date: 2015-04-24 22:10+0200\n"
+"POT-Creation-Date: 2017-07-31 12:14+0000\n"
+"PO-Revision-Date: 2017-08-07 13:01+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -23,22 +23,20 @@ msgstr ""
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "Marek Černocký <marek@manet.cz>, 2009, 2013"
+msgstr "Marek Černocký <marek@manet.cz>"
 
 #. (itstool) path: credit/name
-#: C/basics.page:8 C/keyboard-shortcuts.page:9 C/notes.page:13
-#: C/toolbar.page:8
+#: C/basics.page:8 C/keyboard-shortcuts.page:9 C/notes.page:13 C/toolbar.page:8
 msgid "Chris Beiser"
 msgstr "Chris Beiser"
 
 #. (itstool) path: credit/years
 #: C/basics.page:10 C/bug-filing.page:12 C/commandline.page:10
 #: C/develop.page:12 C/documentation.page:10 C/highlighting.page:13
-#: C/hints.page:10 C/index.page:16 C/keyboard-shortcuts.page:11
-#: C/notes.page:10 C/print-blank-puzzles.page:8
-#: C/print-inprogress-game.page:12 C/rules.page:13 C/save-resume.page:12
-#: C/statistics.page:10 C/strategy.page:11 C/toolbar.page:10
-#: C/trackers.page:11 C/translate.page:12
+#: C/hints.page:10 C/index.page:16 C/keyboard-shortcuts.page:11 C/notes.page:10
+#: C/print-blank-puzzles.page:8 C/print-inprogress-game.page:12 C/rules.page:13
+#: C/save-resume.page:12 C/statistics.page:10 C/strategy.page:11
+#: C/toolbar.page:10 C/trackers.page:11 C/translate.page:12
 msgid "2011"
 msgstr "2011"
 
@@ -126,8 +124,8 @@ msgstr ""
 
 #. (itstool) path: credit/name
 #: C/bug-filing.page:10 C/commandline.page:8 C/develop.page:10
-#: C/documentation.page:8 C/highlighting.page:11 C/hints.page:8
-#: C/index.page:14 C/keyboard-shortcuts.page:14 C/print-blank-puzzles.page:9
+#: C/documentation.page:8 C/highlighting.page:11 C/hints.page:8 C/index.page:14
+#: C/keyboard-shortcuts.page:14 C/print-blank-puzzles.page:9
 #: C/print-inprogress-game.page:10 C/statistics.page:8 C/strategy.page:14
 #: C/trackers.page:9 C/translate.page:10
 msgid "Tiffany Antopolski"
@@ -195,11 +193,11 @@ msgstr ""
 msgid ""
 "If you are requesting a new feature, choose <gui>enhancement</gui> in the "
 "<gui>Severity</gui> menu. Fill in the Summary and Description sections and "
-"click <gui>Commit</gui>."
+"click <gui>Submit Bug</gui>."
 msgstr ""
 "V případě, že žádáte o novou funkčnost, zvolte v nabídce <gui>Severity</gui> "
 "položku <gui>enhancement</gui>. Vyplňte pole Summary a Description a "
-"klikněte na <gui>Commit</gui>."
+"klikněte na <gui>Submit Bug</gui>."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:42
@@ -382,20 +380,6 @@ msgstr ""
 msgid "<app>Sudoku</app> with highlighting."
 msgstr "<application>Sudoku</application> se zvýrazňováním."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/hints.page:58
-msgctxt "_"
-msgid ""
-"external ref='figures/possible-numbers.png' "
-"md5='69bee04ef4e72e58978939dac2a20b33'"
-msgstr ""
-"external ref='figures/possible-numbers.png' "
-"md5='69bee04ef4e72e58978939dac2a20b33'"
-
 #. (itstool) path: page/title
 #: C/hints.page:17
 msgid "Hints"
@@ -473,6 +457,20 @@ msgid ""
 msgstr ""
 "Tyto funkce mohou udělat z jednoduchých sudoku hlavolamy až primitivní, "
 "takže je používejte jen zřídka."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/hints.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/possible-numbers.png' "
+"md5='69bee04ef4e72e58978939dac2a20b33'"
+msgstr ""
+"external ref='figures/possible-numbers.png' "
+"md5='69bee04ef4e72e58978939dac2a20b33'"
 
 #. (itstool) path: info/title
 #: C/index.page:7
@@ -1025,18 +1023,6 @@ msgid "Outline of a row, a column and a 3x3 box using highlighting option."
 msgstr ""
 "Obrys políčka při zapnuté volbě zvýrazňování řádku, sloupce a bloku 3 × 3."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/save-resume.page:40
-msgctxt "_"
-msgid ""
-"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
-msgstr ""
-"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
-
 #. (itstool) path: page/title
 #: C/save-resume.page:23
 msgid "Save and resume"
@@ -1088,19 +1074,17 @@ msgstr ""
 msgid "Resuming previous games."
 msgstr "Návrat k předchozím hrám"
 
-#. (itstool) path: media
+#. (itstool) path: figure/media
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/statistics.page:22
+#: C/save-resume.page:40
 msgctxt "_"
 msgid ""
-"external ref='figures/stats-very-hard.png' "
-"md5='13bff6de1e513a499dece168d4e69af5'"
+"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
 msgstr ""
-"external ref='figures/stats-very-hard.png' "
-"md5='13bff6de1e513a499dece168d4e69af5'"
+"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
 
 #. (itstool) path: page/title
 #: C/statistics.page:17
@@ -1120,6 +1104,20 @@ msgstr ""
 #: C/statistics.page:20
 msgid "Very hard puzzle statistics box example"
 msgstr "Příklad statistik u velmi těžkého hlavolamu"
+
+#. (itstool) path: figure/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/statistics.page:22
+msgctxt "_"
+msgid ""
+"external ref='figures/stats-very-hard.png' "
+"md5='13bff6de1e513a499dece168d4e69af5'"
+msgstr ""
+"external ref='figures/stats-very-hard.png' "
+"md5='13bff6de1e513a499dece168d4e69af5'"
 
 #. (itstool) path: page/p
 #: C/statistics.page:26
@@ -1365,18 +1363,6 @@ msgstr ""
 "xref=\"hints\">Rada</link> a <link xref=\"trackers\">Sledovat vyplněná "
 "čísla</link>."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/trackers.page:58
-msgctxt "_"
-msgid ""
-"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
-msgstr ""
-"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
-
 #. (itstool) path: page/title
 #: C/trackers.page:22
 msgid "Track trial-and-error solutions"
@@ -1479,6 +1465,18 @@ msgstr ""
 #: C/trackers.page:56
 msgid "Video Demonstration"
 msgstr "Videoukázka"
+
+#. (itstool) path: section/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trackers.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
+msgstr ""
+"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
 
 #. (itstool) path: page/title
 #: C/translate.page:23
