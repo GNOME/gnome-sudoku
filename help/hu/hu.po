@@ -2,15 +2,15 @@
 # Copyright (C) 2013. Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-sudoku package.
 #
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2014, 2015.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2014, 2015, 2017.
 # Balázs Úr <urbalazs at gmail dot com>, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"POT-Creation-Date: 2015-08-18 08:13+0000\n"
-"PO-Revision-Date: 2015-08-19 08:19+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
-"Language-Team: Hungarian <openscope at gmail dot com>\n"
+"POT-Creation-Date: 2017-07-31 12:14+0000\n"
+"PO-Revision-Date: 2017-08-18 10:38+0200\n"
+"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
+"Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,19 +26,17 @@ msgstr ""
 "Úr Balázs <urbalazs at gmail dot com>, 2014, 2015."
 
 #. (itstool) path: credit/name
-#: C/basics.page:8 C/keyboard-shortcuts.page:9 C/notes.page:13
-#: C/toolbar.page:8
+#: C/basics.page:8 C/keyboard-shortcuts.page:9 C/notes.page:13 C/toolbar.page:8
 msgid "Chris Beiser"
 msgstr "Chris Beiser"
 
 #. (itstool) path: credit/years
 #: C/basics.page:10 C/bug-filing.page:12 C/commandline.page:10
 #: C/develop.page:12 C/documentation.page:10 C/highlighting.page:13
-#: C/hints.page:10 C/index.page:16 C/keyboard-shortcuts.page:11
-#: C/notes.page:10 C/print-blank-puzzles.page:8
-#: C/print-inprogress-game.page:12 C/rules.page:13 C/save-resume.page:12
-#: C/statistics.page:10 C/strategy.page:11 C/toolbar.page:10
-#: C/trackers.page:11 C/translate.page:12
+#: C/hints.page:10 C/index.page:16 C/keyboard-shortcuts.page:11 C/notes.page:10
+#: C/print-blank-puzzles.page:8 C/print-inprogress-game.page:12 C/rules.page:13
+#: C/save-resume.page:12 C/statistics.page:10 C/strategy.page:11
+#: C/toolbar.page:10 C/trackers.page:11 C/translate.page:12
 msgid "2011"
 msgstr "2011"
 
@@ -131,8 +129,8 @@ msgstr ""
 
 #. (itstool) path: credit/name
 #: C/bug-filing.page:10 C/commandline.page:8 C/develop.page:10
-#: C/documentation.page:8 C/highlighting.page:11 C/hints.page:8
-#: C/index.page:14 C/keyboard-shortcuts.page:14 C/print-blank-puzzles.page:9
+#: C/documentation.page:8 C/highlighting.page:11 C/hints.page:8 C/index.page:14
+#: C/keyboard-shortcuts.page:14 C/print-blank-puzzles.page:9
 #: C/print-inprogress-game.page:10 C/statistics.page:8 C/strategy.page:14
 #: C/trackers.page:9 C/translate.page:10
 msgid "Tiffany Antopolski"
@@ -200,14 +198,18 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:38
+#| msgid ""
+#| "If you are requesting a new feature, choose <gui>enhancement</gui> in the "
+#| "<gui>Severity</gui> menu. Fill in the Summary and Description sections "
+#| "and click <gui>Commit</gui>."
 msgid ""
 "If you are requesting a new feature, choose <gui>enhancement</gui> in the "
 "<gui>Severity</gui> menu. Fill in the Summary and Description sections and "
-"click <gui>Commit</gui>."
+"click <gui>Submit Bug</gui>."
 msgstr ""
 "Ha új szolgáltatást kér, válassza az <gui>enhancement</gui> lehetőséget a "
 "<gui>Severity</gui> menüben. Töltse ki a Summary és Description szakaszokat, "
-"és kattintson a <gui>Commit</gui> gombra."
+"és kattintson a <gui>Submit Bug</gui> gombra."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:42
@@ -246,9 +248,6 @@ msgstr "Hibakeresési információk kiírása"
 
 #. (itstool) path: section/p
 #: C/commandline.page:27
-#| msgid ""
-#| "This command may be useful when your are filing a bug and need to post "
-#| "debug information: <cmd>gnome-sudoku -v</cmd>"
 msgid ""
 "This command may be useful when you are filing a bug and need to post debug "
 "information: <cmd>gnome-sudoku -v</cmd>"
@@ -263,12 +262,6 @@ msgstr "Profilozási információk"
 
 #. (itstool) path: section/p
 #: C/commandline.page:32
-#| msgid ""
-#| "This command is useful if you are filing a bug about slow performance. It "
-#| "will show the perfomance of different functions that run, and possibly "
-#| "reveal which specific function(s) may be responsible for poor "
-#| "performance. This information attached to a bug could make it easier to "
-#| "fix the problem, but this command is used mostly by programmers."
 msgid ""
 "This command is useful if you are filing a bug about slow performance. It "
 "will show the performance of different functions that run, and possibly "
@@ -401,20 +394,6 @@ msgstr ""
 msgid "<app>Sudoku</app> with highlighting."
 msgstr "<app>Sudoku</app> kiemeléssel."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/hints.page:58
-msgctxt "_"
-msgid ""
-"external ref='figures/possible-numbers.png' "
-"md5='69bee04ef4e72e58978939dac2a20b33'"
-msgstr ""
-"external ref='figures/possible-numbers.png' "
-"md5='69bee04ef4e72e58978939dac2a20b33'"
-
 #. (itstool) path: page/title
 #: C/hints.page:17
 msgid "Hints"
@@ -493,6 +472,20 @@ msgid ""
 msgstr ""
 "Ezek a funkciók a könnyű feladványokat túl könnyűvé tehetik, ezért ezt a "
 "módot csak ritkán használja."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/hints.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/possible-numbers.png' "
+"md5='69bee04ef4e72e58978939dac2a20b33'"
+msgstr ""
+"external ref='figures/possible-numbers.png' "
+"md5='69bee04ef4e72e58978939dac2a20b33'"
 
 #. (itstool) path: info/title
 #: C/index.page:7
@@ -1052,18 +1045,6 @@ msgstr "Minden feladványnak csak egy megoldása van."
 msgid "Outline of a row, a column and a 3x3 box using highlighting option."
 msgstr "Egy sor, oszlop és 3x3-as doboz körvonala a kiemelő használatával."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/save-resume.page:40
-msgctxt "_"
-msgid ""
-"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
-msgstr ""
-"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
-
 #. (itstool) path: page/title
 #: C/save-resume.page:23
 msgid "Save and resume"
@@ -1116,19 +1097,17 @@ msgstr ""
 msgid "Resuming previous games."
 msgstr "Előző játékok folytatása."
 
-#. (itstool) path: media
+#. (itstool) path: figure/media
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/statistics.page:22
+#: C/save-resume.page:40
 msgctxt "_"
 msgid ""
-"external ref='figures/stats-very-hard.png' "
-"md5='13bff6de1e513a499dece168d4e69af5'"
+"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
 msgstr ""
-"external ref='figures/stats-very-hard.png' "
-"md5='13bff6de1e513a499dece168d4e69af5'"
+"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
 
 #. (itstool) path: page/title
 #: C/statistics.page:17
@@ -1148,6 +1127,20 @@ msgstr ""
 #: C/statistics.page:20
 msgid "Very hard puzzle statistics box example"
 msgstr "Nagyon nehéz feladvány statisztikaablaka"
+
+#. (itstool) path: figure/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/statistics.page:22
+msgctxt "_"
+msgid ""
+"external ref='figures/stats-very-hard.png' "
+"md5='13bff6de1e513a499dece168d4e69af5'"
+msgstr ""
+"external ref='figures/stats-very-hard.png' "
+"md5='13bff6de1e513a499dece168d4e69af5'"
 
 #. (itstool) path: page/p
 #: C/statistics.page:26
@@ -1399,18 +1392,6 @@ msgstr ""
 "rá. A gombok balról jobbra: Új játék, Visszavonás, Mégis, <link xref=\"hints"
 "\">Javaslat</link> és <link xref=\"trackers\">Módosítások követése</link>."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/trackers.page:58
-msgctxt "_"
-msgid ""
-"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
-msgstr ""
-"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
-
 #. (itstool) path: page/title
 #: C/trackers.page:22
 msgid "Track trial-and-error solutions"
@@ -1512,6 +1493,18 @@ msgstr ""
 #: C/trackers.page:56
 msgid "Video Demonstration"
 msgstr "Videobemutató"
+
+#. (itstool) path: section/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trackers.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
+msgstr ""
+"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
 
 #. (itstool) path: page/title
 #: C/translate.page:23
