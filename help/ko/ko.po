@@ -1,0 +1,1502 @@
+# Korean translation for gnome-sudoku.
+# Copyright (C) 2017 gnome-sudoku's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-sudoku package.
+# Minseok Jeon <cheon7886@naver.comm>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-sudoku master\n"
+"POT-Creation-Date: 2017-08-01 20:29+0000\n"
+"PO-Revision-Date: 2017-08-28 00:54+0900\n"
+"Last-Translator: Minseok Jeon <cheon7886@naver.com>\n"
+"Language-Team: Korean <gnome-kr@googlegroups.com>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.0.3\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Minseok Jeon <cheon7886@naver.com>"
+
+#. (itstool) path: credit/name
+#: C/basics.page:8 C/keyboard-shortcuts.page:9 C/notes.page:13 C/toolbar.page:8
+msgid "Chris Beiser"
+msgstr "Chris Beiser"
+
+#. (itstool) path: credit/years
+#: C/basics.page:10 C/bug-filing.page:12 C/commandline.page:10
+#: C/develop.page:12 C/documentation.page:10 C/highlighting.page:13
+#: C/hints.page:10 C/index.page:16 C/keyboard-shortcuts.page:11 C/notes.page:10
+#: C/print-blank-puzzles.page:8 C/print-inprogress-game.page:12 C/rules.page:13
+#: C/save-resume.page:12 C/statistics.page:10 C/strategy.page:11
+#: C/toolbar.page:10 C/trackers.page:11 C/translate.page:12
+msgid "2011"
+msgstr "2011"
+
+#. (itstool) path: credit/name
+#: C/basics.page:13 C/commandline.page:13 C/notes.page:17
+#: C/print-blank-puzzles.page:13 C/save-resume.page:15 C/trackers.page:14
+#: C/translate.page:15
+msgid "Michael Hill"
+msgstr "Michael Hill"
+
+#. (itstool) path: license/p
+#: C/basics.page:17 C/bug-filing.page:15 C/commandline.page:17
+#: C/develop.page:15 C/documentation.page:13 C/highlighting.page:16
+#: C/hints.page:13 C/keyboard-shortcuts.page:18 C/notes.page:21
+#: C/print-blank-puzzles.page:17 C/print-inprogress-game.page:15
+#: C/rules.page:16 C/save-resume.page:19 C/statistics.page:13
+#: C/strategy.page:18 C/toolbar.page:13 C/trackers.page:18 C/translate.page:19
+msgid "Creative Commons Share Alike 3.0"
+msgstr "크리에이티브 커먼즈 동일조건변경허락 3.0"
+
+#. (itstool) path: page/title
+#: C/basics.page:21
+msgid "Basics"
+msgstr "기본 사항"
+
+#. (itstool) path: page/p
+#: C/basics.page:22
+msgid ""
+"Sudoku can be played using the keyboard, the mouse, or any combination of "
+"the two."
+msgstr "스도쿠는 키보드나 마우스로 플레이할 수 있습니다."
+
+#. (itstool) path: section/title
+#: C/basics.page:26
+msgid "Using the keyboard"
+msgstr "키보드 사용하기"
+
+#. (itstool) path: item/p
+#: C/basics.page:28
+msgid "To select a cell, use the arrow keys to move the blue outline onto it."
+msgstr ""
+"칸을 선택하려면 방향키를 눌러 파란색 상자를 칸 위에 오도록 위치시키세요."
+
+#. (itstool) path: item/p
+#: C/basics.page:29
+msgid "To put a number in a cell, select the cell, and then press the number."
+msgstr "칸에 숫자를 기입하려면 칸을 선택하고 숫자 키를 누르면 됩니다."
+
+#. (itstool) path: item/p
+#: C/basics.page:30
+msgid ""
+"To remove a number from a cell, select the cell, and then press the "
+"<key>Delete</key> key, the <key>Backspace</key>, or the <key>0</key> key."
+msgstr ""
+"칸에 적힌 숫자를 지우려면 칸을 선택하고 <key>Delete</key>, <key>Backspace</"
+"key>, 또는 <key>0</key>를 누르세요."
+
+#. (itstool) path: section/title
+#: C/basics.page:36
+msgid "Using the mouse"
+msgstr "마우스 사용하기"
+
+#. (itstool) path: item/p
+#: C/basics.page:38
+msgid "To select a cell, move your mouse over it and click."
+msgstr "칸을 선택하려면 마우스를 칸 위로 가게 하고 클릭합니다."
+
+#. (itstool) path: item/p
+#: C/basics.page:39
+msgid ""
+"To put a number in a selected cell, click on the center of the cell, and "
+"then click on the number you wish to input."
+msgstr ""
+"선택한 칸에 숫자를 기입하려면 칸의 가운데를 클릭하고 원하는 숫자를 적어넣습니"
+"다."
+
+#. (itstool) path: item/p
+#: C/basics.page:40
+msgid ""
+"To remove a number from a selected cell, click in the center of the cell and "
+"then click <gui>Clear</gui>."
+msgstr ""
+"선택된 칸에서 숫자를 제거하려면 칸의 가운데를 누르고 <gui>지우기</gui>를 클릭"
+"하세요."
+
+#. (itstool) path: credit/name
+#: C/bug-filing.page:10 C/commandline.page:8 C/develop.page:10
+#: C/documentation.page:8 C/highlighting.page:11 C/hints.page:8 C/index.page:14
+#: C/keyboard-shortcuts.page:14 C/print-blank-puzzles.page:9
+#: C/print-inprogress-game.page:10 C/statistics.page:8 C/strategy.page:14
+#: C/trackers.page:9 C/translate.page:10
+msgid "Tiffany Antopolski"
+msgstr "Tiffany Antopolski"
+
+#. (itstool) path: page/title
+#: C/bug-filing.page:19
+msgid "Report a Problem"
+msgstr "문제 보고하기"
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:20
+msgid ""
+"<app>GNOME Sudoku</app> is maintained by a volunteer community. You are "
+"welcome to participate. If you notice a problem you can file a <em>bug "
+"report</em>. To file a bug, go to <link href=\"https://bugzilla.gnome.org/\"/"
+">."
+msgstr ""
+"<app>그놈 스도쿠</app>는 기여자 커뮤니티를 통하여 관리됩니다. 기여 참여를 환"
+"영합니다. 문제를 발견했다면 <em>버그 보고</em>을 통해 제출할 수 있습니다. 버"
+"그를 제출하려면 <link href=\"https://bugzilla.gnome.org/\"/>를 참고하세요."
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:23
+msgid ""
+"This is a bug tracking system where users and developers can file details "
+"about bugs, crashes and request enhancements."
+msgstr ""
+"이는 사용자와 개발자가 버그, 충돌에 대한 사항이나 개선 요청사항을 알릴 수 있"
+"는 버그 추적 체계입니다."
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:26
+msgid ""
+"To participate you need an account which will give you the ability to gain "
+"access, file bugs, and make comments. Also, you need to register so you can "
+"receive updates by e-mail about the status of your bug. If you don't already "
+"have an account, just click on the <gui>New Account</gui> link to create one."
+msgstr ""
+"참여하려면 계정이 필요하고, 계정을 통해 접근, 버그 보고, 댓글 남기기를 할 수 "
+"있습니다. 제출한 버그에 대한 상황을 전자메일로 받아보려면 계정 등록이 필요합"
+"니다. 계정을 갖고 있지 않다면, <gui>새 계정</gui>를 클릭해서 새 계정을 만드세"
+"요."
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:30
+msgid ""
+"Once you have an account, log in, click on <guiseq><gui>File a Bug</"
+"gui><gui>Applications</gui><gui>gnome-sudoku</gui></guiseq>. Before "
+"reporting a bug, please read the <link href=\"https://bugzilla.gnome.org/"
+"page.cgi?id=bug-writing.html\">bug writing guidelines</link>, and please "
+"<link href=\"https://bugzilla.gnome.org/browse.cgi?product=gnome-sudoku"
+"\">browse</link> for the bug to see if it already exists."
+msgstr ""
+"계정이 있다면, 로그인 후 <guiseq><gui>버그 보고</gui><gui>응용 프로그램</"
+"gui><gui>그놈-스도쿠</gui></guiseq>를 클릭하세요. 버그를 보고하기 전에, "
+"<link href=\"https://bugzilla.gnome.org/page.cgi?id=bug-writing.html\">버그 "
+"제출 가이드라인</link>를 읽고 <link href=\"https://bugzilla.gnome.org/browse."
+"cgi?product=gnome-sudoku\">찾아보기</link>에서 버그가 이미 제출되었는지 확인"
+"하세요."
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:38
+#, fuzzy
+#| msgid ""
+#| "If you are requesting a new feature, choose <gui>enhancement</gui> in the "
+#| "<gui>Severity</gui> menu. Fill in the Summary and Description sections "
+#| "and click <gui>Commit</gui>."
+msgid ""
+"If you are requesting a new feature, choose <gui>enhancement</gui> in the "
+"<gui>Severity</gui> menu. Fill in the Summary and Description sections and "
+"click <gui>Submit Bug</gui>."
+msgstr ""
+"새 기능을 요청하려면, <gui>Severity</gui>메뉴에서 <gui>개선</gui>를 선택하세"
+"요. 요약 사항과 내용 설명을 채운 후에 <gui>제출</gui>을 클릭하세요."
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:42
+msgid ""
+"Your report will be given an ID number, and its status will be updated as it "
+"is being dealt with."
+msgstr ""
+"여러분의 보고는 ID를 부여받으며, 버그가 해결되는 과정에 따라 업데이트됩니다."
+
+#. (itstool) path: page/title
+#: C/commandline.page:21
+msgid "Commandline"
+msgstr "명령줄"
+
+#. (itstool) path: page/p
+#: C/commandline.page:22
+msgid ""
+"To view commandline options for gnome-sudoku: <cmd>gnome-sudoku --help</cmd>"
+msgstr "그놈-스도쿠에서 명령줄 옵션 확인하기: <cmd>gnome-sudoku --help</cmd>"
+
+#. (itstool) path: page/p
+#: C/commandline.page:23
+msgid ""
+"To view the version number of your gnome-sudoku: <cmd>gnome-sudoku --"
+"version</cmd>"
+msgstr "그놈-스도쿠에서 버전 확인하기: <cmd>gnome-sudoku --version</cmd>"
+
+#. (itstool) path: section/title
+#: C/commandline.page:26
+msgid "Print debug information"
+msgstr "디버깅 정보 출력"
+
+#. (itstool) path: section/p
+#: C/commandline.page:27
+msgid ""
+"This command may be useful when you are filing a bug and need to post debug "
+"information: <cmd>gnome-sudoku -v</cmd>"
+msgstr ""
+"이 명령어는 버그를 제출하고 디버깅 정보를 올릴 때 편리합니다. <cmd>gnome-"
+"sudoku -v</cmd>"
+
+#. (itstool) path: section/title
+#: C/commandline.page:31
+msgid "Profile information"
+msgstr "프로필 정보"
+
+#. (itstool) path: section/p
+#: C/commandline.page:32
+msgid ""
+"This command is useful if you are filing a bug about slow performance. It "
+"will show the performance of different functions that run, and possibly "
+"reveal which specific function(s) may be responsible for poor performance. "
+"This information attached to a bug could make it easier to fix the problem, "
+"but this command is used mostly by programmers."
+msgstr ""
+"이 명령어는 게임이 느린 문제를 보고할 때 유용합니다. 여러 기능들이 작동하는 "
+"상황을 보여주고, 느린 성능의 원인으로 생각되는 특정 기능들을 밝혀냅니다. 이 "
+"정보를 버그 보고에 포함하면 문제를 쉽게 고칠 수 있도록 돕습니다. 주로 프로그"
+"래머가 많이 사용하는 기능입니다."
+
+#. (itstool) path: section/p
+#: C/commandline.page:33
+msgid "<cmd>gnome-sudoku -p</cmd>"
+msgstr "<cmd>gnome-sudoku -p</cmd>"
+
+#. (itstool) path: section/p
+#: C/commandline.page:34
+msgid ""
+"When you exit the application, the terminal will show you performance "
+"statistics."
+msgstr ""
+"응용 프로그램을 종료할 때, 이 명령어는 여러분의 실적 통계를 보여줍니다."
+
+#. (itstool) path: section/title
+#: C/commandline.page:38
+msgid "Step through <app>GNOME Sudoku</app>"
+msgstr "<app>그놈 스도쿠</app> 단계별로 분석하기"
+
+#. (itstool) path: section/p
+#: C/commandline.page:39
+msgid ""
+"This command is mostly used by programmers to step through the code: "
+"<cmd>gnome-sudoku -w</cmd>"
+msgstr ""
+"이 명령어는 코드를 단계별로 분석하기 위해 프로그래머가 자주 사용합니다. : "
+"<cmd>gnome-sudoku -w</cmd>"
+
+#. (itstool) path: page/title
+#: C/develop.page:19
+msgid "Help develop"
+msgstr "개발 기여"
+
+#. (itstool) path: page/p
+#: C/develop.page:20
+msgid ""
+"The <app>GNOME Games</app> are developed and maintained by a volunteer "
+"community. You are welcome to participate."
+msgstr ""
+"<app>그놈 게임</app>은 기여자 커뮤니티가 개발하고 관리합니다. 기여 참여를 환"
+"영합니다."
+
+#. (itstool) path: page/p
+#: C/develop.page:23
+msgid ""
+"If you would like to <link href=\"https://wiki.gnome.org/Apps/Games/"
+"Contributing\">help develop <app>GNOME Games</app></link>, you can get in "
+"touch with the developers using <link href=\"https://cbe005.chat.mibbit.com/?"
+"url=irc%3A%2F%2Firc.gnome.org%2Fgnome-games\">irc</link>, or via our <link "
+"href=\"http://mail.gnome.org/mailman/listinfo/games-list\">mailing list</"
+"link>."
+msgstr ""
+"<link href=\"https://wiki.gnome.org/Apps/Games/Contributing\"><app>그놈 게임"
+"</app> 개발 기여</link>에 관심있다면, <link href=\"https://cbe005.chat."
+"mibbit.com/?url=irc%3A%2F%2Firc.gnome.org%2Fgnome-games\">IRC</link>, 또는 "
+"<link href=\"http://mail.gnome.org/mailman/listinfo/games-list\">메일링 리스"
+"트</link>를 통해 개발자들과 교류할 수 있습니다."
+
+#. (itstool) path: page/title
+#: C/documentation.page:17
+msgid "Help write documentation"
+msgstr "문서 작성 기여"
+
+#. (itstool) path: page/p
+#: C/documentation.page:19
+msgid ""
+"The <app>GNOME Games</app> documentation is maintained by a volunteer "
+"community. You are welcome to participate."
+msgstr ""
+"<app>그놈 게임</app> 문서는 기여자 커뮤니티를 통하여 관리됩니다. 기여 참여를 "
+"환영합니다."
+
+#. (itstool) path: page/p
+#: C/documentation.page:22
+msgid ""
+"To contribute to the Documentation Project, feel free to get in touch with "
+"us using <link href=\"https://cbe003.chat.mibbit.com/?url=irc%3A%2F%2Firc."
+"gnome.org%2Fdocs\">irc</link>, or via our <link href=\"http://mail.gnome.org/"
+"mailman/listinfo/gnome-doc-list\">mailing list</link>."
+msgstr ""
+"문서 프로젝트에 참여하려면, <link href=\"https://cbe003.chat.mibbit.com/?"
+"url=irc%3A%2F%2Firc.gnome.org%2Fdocs\">IRC</link>, 또는 <link href=\"http://"
+"mail.gnome.org/mailman/listinfo/gnome-doc-list\">메일링 리스트</link>를 통해 "
+"교류하세요."
+
+#. (itstool) path: page/p
+#: C/documentation.page:24
+msgid ""
+"Our <link href=\"https://live.gnome.org/DocumentationProject/Contributing"
+"\">wiki</link> page contains useful information."
+msgstr ""
+"<link href=\"https://live.gnome.org/DocumentationProject/Contributing\">위키"
+"</link> 페이지는 유용한 정보를 포함하고 있습니다."
+
+#. (itstool) path: page/title
+#: C/highlighting.page:20
+msgid "Highlighting"
+msgstr "반전"
+
+#. (itstool) path: page/p
+#: C/highlighting.page:22
+msgid ""
+"You can turn on highlighting to automatically highlight the current row, "
+"column and box in different colors. This can make it easier to see which "
+"values cannot go into a current square. To toggle highlighting, click "
+"<guiseq><gui>Settings</gui><gui>Highlighter</gui></guiseq>."
+msgstr ""
+"자동으로 현재 열, 행, 칸을 여러 색상으로 강조할 수 있는 반전 기능을 활성화할 "
+"수 있습니다. 이는 현재 칸에 들어갈 수 없는 값을 판단하는 것을 더욱 쉽게 할 "
+"수 있도록 도와줍니다. 반전 기능을 활성화하려면, <guiseq><gui>설정</gui><gui>"
+"반전</gui></guiseq>을 클릭하세요."
+
+#. (itstool) path: figure/desc
+#: C/highlighting.page:25
+msgid "<app>Sudoku</app> with highlighting."
+msgstr "<app>스도쿠</app>와 반전."
+
+#. (itstool) path: page/title
+#: C/hints.page:17
+msgid "Hints"
+msgstr "힌트"
+
+#. (itstool) path: page/p
+#: C/hints.page:18
+msgid "To show possible values for all cells click:"
+msgstr "각각의 칸에 들어갈 수 있는 값을 확인하려면:"
+
+#. (itstool) path: page/p
+#: C/hints.page:21
+msgid "<guiseq><gui>Settings</gui><gui>Show Possible Numbers</gui></guiseq>."
+msgstr "<guiseq><gui>설정</gui><gui>가능한 숫자들 보기</gui></guiseq>."
+
+#. (itstool) path: page/p
+#: C/hints.page:25
+msgid "To ask Sudoku to show a cell that is easy to fill:"
+msgstr "채우기 쉬운 칸을 프로그램에 물어보기:"
+
+#. (itstool) path: item/p
+#: C/hints.page:30
+msgid ""
+"Click <guiseq><gui>Tools</gui><gui>Hint</gui></guiseq>, or <gui>Hint</gui> "
+"in the <link xref=\"toolbar\">toolbar</link>."
+msgstr ""
+"<guiseq><gui>도구</gui><gui>힌트</gui></guiseq>또는 <link xref=\"toolbar\">툴"
+"바</link>에 있는 <gui>힌트</gui>를 클릭하세요."
+
+#. (itstool) path: note/p
+#: C/hints.page:35
+msgid ""
+"These features work based on the logical possibilities given the current "
+"board and not work by looking at the solution. This means that if you made "
+"an error in an earlier move, these features may show incorrect possible "
+"values."
+msgstr ""
+"이 기능들은 주어진 스도쿠 게임판 하에서 논리적인 가능성을 판단하지만 답을 찾"
+"는 방식으로 작동하지는 않습니다. 즉, 이전에 오류를 범했다면 이러한 기능이 잘"
+"못된 값을 보여줄 수도 있습니다."
+
+#. (itstool) path: note/p
+#: C/hints.page:41
+msgid ""
+"A cell which usually has only one possible solution based on the current "
+"state of the board is outlined with flashing red. In the case of a puzzle "
+"that has no cells that have only one possible solution, a cell with two "
+"possible solutions or the least amount of possible solutions will be "
+"highlighted. Clicking <gui>Hint</gui> multiple times may not always point "
+"you to the same cell."
+msgstr ""
+"테두리가 빨간색으로 빛나는 각각의 칸은 현재 스도쿠 격자판의 상태에 기반하여 "
+"일반적으로 한 가지의 가능한 해답을 가지고 있습니다. 한 가지만의 해답이 있는 "
+"칸이 없을 경우, 두 가지나 혹은 그 이상의 해답을 가지고 있는 칸이 강조됩니다. "
+"<gui>힌트</gui>를 여러 번 누를 경우 언제나 같은 칸을 강조하지는 않습니다."
+
+#. (itstool) path: page/p
+#: C/hints.page:46
+msgid ""
+"You can edit the possible numbers by clicking in the bottom of the cell."
+msgstr ""
+"칸의 아래쪽을 클릭하면 표시되는 답이 될 만한 숫자를 수정할 수 있습니다."
+
+#. (itstool) path: note/p
+#: C/hints.page:51
+msgid ""
+"These features can make easy puzzles too easy, so you should use this mode "
+"sparingly."
+msgstr ""
+"이 기능들은 스도쿠 풀이를 너무 쉽게 만들기 때문에, 적당한 이용을 권장합니다."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/hints.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/possible-numbers.png' "
+"md5='69bee04ef4e72e58978939dac2a20b33'"
+msgstr ""
+
+#. (itstool) path: info/title
+#: C/index.page:7
+msgctxt "link"
+msgid "GNOME Sudoku"
+msgstr "그놈 스도쿠"
+
+#. (itstool) path: info/title
+#: C/index.page:8
+msgctxt "text"
+msgid "GNOME Sudoku"
+msgstr "그놈 스도쿠"
+
+#. (itstool) path: credit/name
+#: C/index.page:19
+msgid "Ekaterina Gerasimova"
+msgstr "Ekaterina Gerasimova"
+
+#. (itstool) path: credit/years
+#: C/index.page:21
+msgid "2015"
+msgstr "2015"
+
+#. (itstool) path: info/desc
+#: C/index.page:26
+msgid ""
+"Learn to play GNOME Sudoku, a logic-based puzzle game in which a grid must "
+"be filled with the correct numbers."
+msgstr ""
+"올바른 숫자를 격자에 적어 넣는 논리적인 퍼즐 게임인 그놈 스도쿠를 배워보세요."
+
+#. (itstool) path: page/title
+#: C/index.page:31
+msgid "<_:media-1/> GNOME Sudoku"
+msgstr "<_:media-1/> 그놈 스도쿠"
+
+#. (itstool) path: page/p
+#: C/index.page:36
+msgid ""
+"GNOME Sudoku is a logic-based number-placement puzzle in which a 9×9 square "
+"must be filled with the correct digits. The unique puzzles can be played on "
+"screen or <link xref=\"index#print\">printed</link>. If you do not have time "
+"to finish a game, you can <link xref=\"save-resume#resume\">resume</link> it "
+"any time, as well as replay any game you've already won."
+msgstr ""
+"그놈 스도쿠는 9x9 격자판에 올바른 숫자들을 적어 넣는 논리 기반의 수 위치 퍼즐"
+"입니다. 스도쿠는 화면이나 <link xref=\"index#print\">인쇄</link>를 통해 플레"
+"이할 수 있습니다. 게임을 끝낼 시간이 없다면, <link xref=\"save-resume#resume"
+"\">다시 시작</link>을 언제든지 할 수 있고, 이미 여러분이 이긴 게임의 리플레이"
+"를 볼 수도 있습니다."
+
+#. (itstool) path: section/title
+#: C/index.page:44
+msgid "Game Play"
+msgstr "게임 플레이하기"
+
+#. (itstool) path: section/title
+#: C/index.page:48
+msgid "Useful tips"
+msgstr "유용한 정보"
+
+#. (itstool) path: section/title
+#: C/index.page:52
+msgid "Printing"
+msgstr "인쇄"
+
+#. (itstool) path: section/title
+#: C/index.page:56
+msgid "Advanced"
+msgstr "고급"
+
+#. (itstool) path: section/title
+#: C/index.page:60
+msgid "Get Involved"
+msgstr "참여하기"
+
+#. (itstool) path: page/title
+#: C/keyboard-shortcuts.page:22
+msgid "Keyboard shortcuts"
+msgstr "키보드 단축키"
+
+#. (itstool) path: page/p
+#: C/keyboard-shortcuts.page:23
+msgid "This is a list of the keyboard shortcuts you can use in Sudoku."
+msgstr "스도쿠에서 여러분이 이용할 수 있는 키보드 단축키 목록입니다."
+
+#. (itstool) path: section/title
+#: C/keyboard-shortcuts.page:26
+msgid "Starting and exiting"
+msgstr "시작 및 나가기"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:30
+msgid "New game"
+msgstr "새 게임"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:31
+msgid "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:34
+msgid "Reset game"
+msgstr "게임 재시작"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:35
+msgid "<keyseq><key>Ctrl</key><key>B</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>B</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:38
+msgid "Close the sudoku window"
+msgstr "스도쿠 창 닫기"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:39
+msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+
+#. (itstool) path: section/title
+#: C/keyboard-shortcuts.page:44
+msgid "Hints and Notes"
+msgstr "힌트와 메모"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:47
+msgid "Hint"
+msgstr "힌트"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:48
+msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:51
+msgid "Track Additions"
+msgstr "추가 사항 추적"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:52
+msgid "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:55
+msgid "Clear notes from the top of a cell"
+msgstr "칸 위의 메모 지우기"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:56
+msgid "<keyseq><key>Ctrl</key><key>J</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>J</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:59
+msgid "Clear notes from the bottom of a cell"
+msgstr "칸 아래의 메모 지우기"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:60
+msgid "<keyseq><key>Ctrl</key><key>K</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>K</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:63
+msgid "Add a number to the top notes of a cell"
+msgstr "칸 위의 메모에 숫자 기입하기"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:64
+msgid "<keyseq><key>Ctrl</key><key>#</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>#</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:67
+msgid "Remove a number to the top notes of a cell"
+msgstr "칸 위의 메모에서 숫자 제거"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:68
+msgid "<keyseq><key>Alt</key><key>#</key></keyseq>"
+msgstr "<keyseq><key>Alt</key><key>#</key></keyseq>"
+
+#. (itstool) path: section/title
+#: C/keyboard-shortcuts.page:73
+msgid "Other"
+msgstr "기타"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:76
+msgid "Print displayed puzzle"
+msgstr "표시된 퍼즐 인쇄"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:77
+msgid "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:80
+msgid "Undo"
+msgstr "이전으로"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:81
+msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:84
+msgid "Redo"
+msgstr "다음으로"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:85
+msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>Z</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>Z</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:88
+msgid "Open Help"
+msgstr "도움말 열기"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:89
+msgid "<key>F1</key>"
+msgstr "<key>F1</key>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:92
+msgid "Switch to fullscreen mode"
+msgstr "전체 화면 모드로 전환"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:93
+msgid "<key>F11</key>"
+msgstr "<key>F11</key>"
+
+#. (itstool) path: p/link
+#: C/legal.xml:3
+msgid "Creative Commons Attribution-ShareAlike 3.0 Unported License"
+msgstr "크리에이티브 커먼즈 저작자표시-동일조건변경허락 3.0 Unported 라이선스"
+
+#. (itstool) path: license/p
+#: C/legal.xml:3
+msgid "This work is licensed under a <_:link-1/>."
+msgstr "이는 <_:link-1/> 하에 라이선싱 되어 있습니다."
+
+#. (itstool) path: info/desc
+#: C/license.page:8
+msgid "Legal information."
+msgstr "법적 정보."
+
+#. (itstool) path: page/title
+#: C/license.page:11
+msgid "License"
+msgstr "라이선스"
+
+#. (itstool) path: page/p
+#: C/license.page:12
+msgid ""
+"This work is distributed under a CreativeCommons Attribution-Share Alike 3.0 "
+"Unported license."
+msgstr ""
+"이 저작물은 크리에이티브 커먼즈 저작자표시-동일조건변경허락 3.0 Unported 라이"
+"선스 하에 배포됩니다."
+
+#. (itstool) path: page/p
+#: C/license.page:20
+msgid "You are free:"
+msgstr "아래와 같은 사항은 자유입니다:"
+
+#. (itstool) path: item/title
+#: C/license.page:25
+msgid "<em>To share</em>"
+msgstr "<em>공유</em>"
+
+#. (itstool) path: item/p
+#: C/license.page:26
+msgid "To copy, distribute and transmit the work."
+msgstr "이 저작물을 복사, 배포, 및 전송할 수 있습니다."
+
+#. (itstool) path: item/title
+#: C/license.page:29
+msgid "<em>To remix</em>"
+msgstr "<em>변경</em>"
+
+#. (itstool) path: item/p
+#: C/license.page:30
+msgid "To adapt the work."
+msgstr "이 저작물을 수정할 수 있습니다."
+
+#. (itstool) path: page/p
+#: C/license.page:33
+msgid "Under the following conditions:"
+msgstr "아래와 같은 조건을 수용해야 합니다:"
+
+#. (itstool) path: item/title
+#: C/license.page:38
+msgid "<em>Attribution</em>"
+msgstr "<em>저작자 표시</em>"
+
+#. (itstool) path: item/p
+#: C/license.page:39
+msgid ""
+"You must attribute the work in the manner specified by the author or "
+"licensor (but not in any way that suggests that they endorse you or your use "
+"of the work)."
+msgstr ""
+"저작자나 저작권자에 의하여 명시된 조건 하에 이 저작물을 표기해야 합니다.(저작"
+"권자가 여러분이나 여러분에 의한 저작물의 사용을 지지할 것으로 임의로 추정하"
+"여 사용하지 말아야 합니다)"
+
+#. (itstool) path: item/title
+#: C/license.page:46
+msgid "<em>Share Alike</em>"
+msgstr "<em>동일 조건</em>"
+
+#. (itstool) path: item/p
+#: C/license.page:47
+msgid ""
+"If you alter, transform, or build upon this work, you may distribute the "
+"resulting work only under the same, similar or a compatible license."
+msgstr ""
+"이 저작물을 수정, 변형하거나 이를 기반으로 2차 저작물을 제작할 경우, 동일하거"
+"나 호환되는 라이선스 하에 배포할 수 있습니다."
+
+#. (itstool) path: page/p
+#: C/license.page:53
+msgid ""
+"For the full text of the license, see the <link href=\"http://"
+"creativecommons.org/licenses/by-sa/3.0/legalcode\">CreativeCommons website</"
+"link>, or read the full <link href=\"http://creativecommons.org/licenses/by-"
+"sa/3.0/\">Commons Deed</link>."
+msgstr ""
+"이 라이선스의 전문을 확인하려면 <link href=\"http://creativecommons.org/"
+"licenses/by-sa/3.0/legalcode\"> 크리에이티브커먼스 웹사이트</link> 또는 "
+"<link href=\"http://creativecommons.org/licenses/by-sa/3.0/\">커먼스 증서</"
+"link>를 확인하세요."
+
+#. (itstool) path: credit/name
+#: C/notes.page:8 C/rules.page:11 C/save-resume.page:10
+msgid "Thomas Hinkle"
+msgstr "Thomas Hinkle"
+
+#. (itstool) path: page/title
+#: C/notes.page:25
+msgid "Notes"
+msgstr "메모"
+
+#. (itstool) path: page/p
+#: C/notes.page:26
+msgid ""
+"Notes, or pencilmarks, can be added to any cell. They allow you to mark "
+"possible values for a cell, or store other data that might help you. Notes "
+"will store all characters in order, but will remove repetitions of "
+"characters."
+msgstr ""
+"메모 또는 연필자국은 어느 칸이라도 남길 수 있습니다. 해당 칸에 가능한 값을 적"
+"거나, 도움이 될 만한 다른 정보를 저장할 수 있습니다. 메모는 모든 글자들을 순"
+"서대로 저장하지만, 반복되는 글자는 지워집니다."
+
+#. (itstool) path: page/p
+#: C/notes.page:28
+msgid "To add notes to a cell:"
+msgstr "칸에 메모 추가하기:"
+
+#. (itstool) path: item/p
+#: C/notes.page:31
+msgid "Select the cell"
+msgstr "칸 선택"
+
+#. (itstool) path: item/p
+#: C/notes.page:32
+msgid ""
+"Click on the part of a cell that is above the line that appears when you "
+"hover over it. Alternatively, type <key>N</key>."
+msgstr ""
+"마우스를 위에 올렸을 때 나타나는 선 위에 있는 칸을 클릭하세요. 또는 <key>N</"
+"key>키를 누르세요."
+
+#. (itstool) path: item/p
+#: C/notes.page:33
+msgid "Type your notes"
+msgstr "자신만의 메모 적어넣기"
+
+#. (itstool) path: item/p
+#: C/notes.page:34
+msgid "Press <key>Enter</key> or click outside of the text box."
+msgstr "<key>Enter</key>를 누르거나 글상자의 바깥쪽을 클릭하세요."
+
+#. (itstool) path: note/p
+#: C/notes.page:37
+msgid ""
+"You can also take notes in the bottom of the cell by clicking in the bottom "
+"of the cell or by typing <key>M</key>. However, this area is used when you "
+"click <link xref=\"hints\">Show All Possible Numbers</link>. If you plan to "
+"use this area, you should not use <gui>Show All Possible Numbers</gui>."
+msgstr ""
+"칸의 아래쪽을 클릭하거나 <key>M</key>키를 눌러서 아래쪽에 메모를 기입할 수도 "
+"있습니다. 하지만 아래쪽은 <link xref=\"hints\">모든 가능한 숫자 보기</link> "
+"기능이 사용하기 때문에 이 부분을 사용하려면 <gui>모든 가능한 숫자 보기</gui> "
+"기능을 사용하지 않는 것이 좋습니다."
+
+#. (itstool) path: note/p
+#: C/notes.page:39
+msgid ""
+"You can add a number to the notes at the top of the square by typing "
+"<keyseq><key>Ctrl</key><key>1</key></keyseq> through <keyseq><key>Ctrl</"
+"key><key>9</key></keyseq>"
+msgstr ""
+"칸 위의 메모에 <keyseq><key>Ctrl</key><key>1</key></keyseq> 부터 "
+"<keyseq><key>Ctrl</key><key>9</key></keyseq>까지 눌러서 숫자를 추가할 수 있습"
+"니다"
+
+#. (itstool) path: page/title
+#: C/print-blank-puzzles.page:21
+msgid "Print blank sudokus"
+msgstr "새 게임 인쇄하기"
+
+#. (itstool) path: page/p
+#: C/print-blank-puzzles.page:23
+msgid "To print one or more blank puzzles:"
+msgstr "하나 이상의 스도쿠 게임을 인쇄하려면:"
+
+#. (itstool) path: item/p
+#: C/print-blank-puzzles.page:28
+msgid ""
+"Click <guiseq><gui>Game</gui><gui>Print multiple sudokus</gui></guiseq>."
+msgstr "<guiseq><gui>게임</gui><gui>여러 스도쿠 출력</gui></guiseq>."
+
+#. (itstool) path: item/p
+#: C/print-blank-puzzles.page:30
+msgid "Select the total number of sudokus to print from the drop down menu."
+msgstr "드롭 다운 메뉴에서 출력할 스도쿠 게임의 수를 선택하세요."
+
+#. (itstool) path: item/p
+#: C/print-blank-puzzles.page:31
+msgid "Select the number of sudokus per page from the next drop down menu."
+msgstr ""
+"다음 드롭 다운 메뉴에서 한 페이지당 삽입될 스도쿠 게임의 수를 선택하세요."
+
+#. (itstool) path: item/p
+#: C/print-blank-puzzles.page:32
+msgid "Select difficult level of the games you would like to print."
+msgstr "출력할 게임의 난이도를 설정하세요."
+
+#. (itstool) path: item/p
+#: C/print-blank-puzzles.page:33
+msgid ""
+"Games that have already been played are not printed by default. If you don't "
+"care about repeating games, select <gui>Include games you've already played "
+"in list of games to print</gui> in the <gui>Details</gui> category."
+msgstr ""
+"이미 플레이된 게임은 기본적으로 출력되지 않도록 되어 있습니다. 게임을 반복해"
+"서 하는 것이 상관없다면, <gui>세부 사항</gui>에서 <gui>이전에 플레이한 게임"
+"을 출력 목록에 포함</gui>을 선택하세요."
+
+#. (itstool) path: item/p
+#: C/print-blank-puzzles.page:34
+msgid ""
+"Games that are printed are not marked as played by default. You can choose "
+"to <gui>Mark games as played once you've printed them.</gui> under the "
+"<gui>Details</gui> category."
+msgstr ""
+"출력된 게임은 플레이하지 않은 것으로 되어 있습니다. <gui>세부 사항</gui>에서 "
+"<gui>출력한 게임을 플레이한 것으로 표시</gui>하기를 선택할 수 있습니다."
+
+#. (itstool) path: page/title
+#: C/print-inprogress-game.page:19
+msgid "Print your game"
+msgstr "게임 인쇄하기"
+
+#. (itstool) path: page/p
+#: C/print-inprogress-game.page:20
+msgid "You can print the sudoku are playing to a file or to a printer."
+msgstr ""
+"현재 플레이하는 스도쿠를 파일로 저장하거나 프린터로 인쇄할 수 있습니다."
+
+#. (itstool) path: page/p
+#: C/print-inprogress-game.page:23
+msgid "To print the sudoku you are currently playing:"
+msgstr "현재 플레이하는 게임을 출력하려면:"
+
+#. (itstool) path: item/p
+#: C/print-inprogress-game.page:27
+msgid "Click <guiseq><gui>Game</gui><gui>Print</gui></guiseq>."
+msgstr "<guiseq><gui>게임</gui><gui>인쇄</gui></guiseq>를 클릭하세요."
+
+#. (itstool) path: item/p
+#: C/print-inprogress-game.page:30
+msgid "Select your printer."
+msgstr "프린터를 지정하세요."
+
+#. (itstool) path: item/p
+#: C/print-inprogress-game.page:33
+msgid "Click <gui>Print</gui>."
+msgstr "<gui>인쇄</gui>를 클릭하세요."
+
+#. (itstool) path: note/p
+#: C/print-inprogress-game.page:37
+msgid ""
+"If you don't have a printer in the list, see <link href=\"https://help.gnome."
+"org/users/gnome-help/stable/printing-setup.html\" xref=\"help:gnome-help/"
+"printing-setup\">Set up a local printer</link>."
+msgstr ""
+"프린터가 목록에 보이지 않을 경우 <link href=\"https://help.gnome.org/users/"
+"gnome-help/stable/printing-setup.html\" xref=\"help:gnome-help/printing-setup"
+"\">로컬 프린터 설정</link>을 참고하세요."
+
+#. (itstool) path: page/title
+#: C/rules.page:20
+msgid "Game rules"
+msgstr "게임 규칙"
+
+#. (itstool) path: page/p
+#: C/rules.page:21
+msgid ""
+"In order to complete the puzzle, you must fill each cell with a number "
+"between 1 and 9, inclusive, such that no number is repeated in any row, "
+"column or 3x3 box."
+msgstr ""
+"스도쿠를 완성하기 위해서 어떤 행, 열, 3x3 상자에도 1부터 9까지의 숫자가 반복"
+"되지 않도록 채워넣어야 합니다."
+
+#. (itstool) path: page/p
+#: C/rules.page:23
+msgid ""
+"In a solved sudoku, each row, column, and 3x3 box contains all the numbers 1 "
+"through 9."
+msgstr ""
+"해결된 스도쿠 게임은 3x3 상자, 행, 열 각각에 모두 1부터 9까지의 숫자들을 포함"
+"하고 있습니다."
+
+#. (itstool) path: page/p
+#: C/rules.page:26
+msgid "Each puzzle has only one solution."
+msgstr "각각의 스도쿠는 오직 하나의 정답을 가지고 있습니다."
+
+#. (itstool) path: figure/desc
+#: C/rules.page:30
+msgid "Outline of a row, a column and a 3x3 box using highlighting option."
+msgstr ""
+"열, 행, 3x3 상자를 강조 옵션을 이용하여 윤곽을 뚜렷하게 할 수 있습니다."
+
+#. (itstool) path: page/title
+#: C/save-resume.page:23
+msgid "Save and resume"
+msgstr "저장 및 이어하기"
+
+#. (itstool) path: section/title
+#: C/save-resume.page:26
+msgid "Saving your game"
+msgstr "게임 저장"
+
+#. (itstool) path: section/p
+#: C/save-resume.page:27
+msgid ""
+"Your games are saved automatically every few minutes and whenever you change "
+"games or close the application."
+msgstr ""
+"여러분의 게임은 매번 몇분마다 자동으로 저장되며, 게임을 바꾸거나 스도쿠를 종"
+"료할 때도 적용됩니다."
+
+#. (itstool) path: section/title
+#: C/save-resume.page:32
+msgid "Resuming your game"
+msgstr "이전 게임 이어하기"
+
+#. (itstool) path: section/p
+#: C/save-resume.page:33
+msgid ""
+"Whenever you start <app>Sudoku</app> or click <gui>New</gui>, your saved "
+"games will be listed in the puzzle selection screen. You will see a "
+"miniature image of the saved puzzle, the date you last played it, and how "
+"long you have played it. To open the puzzle, just double click on it."
+msgstr ""
+"<app>스도쿠</app>를 시작하거나 <gui>새 게임</gui>을 클릭하면, 여러분의 저장되"
+"었던 게임 목록이 스도쿠 선택 화면에 나타납니다. 저장된 스도쿠의 섬네일 이미지"
+"와 마지막으로 플레이한 일자, 플레이한 시간이 표시됩니다. 더블클릭하여 해당 게"
+"임을 이어할 수 있습니다."
+
+#. (itstool) path: section/p
+#: C/save-resume.page:35
+msgid ""
+"If you'd like to stop playing one game and begin another, just select "
+"<gui>New</gui> and begin your new game."
+msgstr ""
+"플레이하던 게임을 중단하고 다른 게임을 시작하고 싶다면, <gui>새 게임</gui>를 "
+"선택하고 새 게임을 시작하세요."
+
+#. (itstool) path: figure/desc
+#: C/save-resume.page:39
+msgid "Resuming previous games."
+msgstr "이전 게임들을 이어하세요."
+
+#. (itstool) path: figure/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/save-resume.page:40
+msgctxt "_"
+msgid ""
+"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/statistics.page:17
+msgid "Statistics"
+msgstr "통계"
+
+#. (itstool) path: page/p
+#: C/statistics.page:18
+msgid ""
+"To view the statistics about the current puzzle, click <guiseq><gui>Game</"
+"gui><gui>Puzzle Statistics</gui></guiseq>."
+msgstr ""
+"현재 풀고 있는 스도쿠의 통계를 보고 싶다면, <guiseq><gui>게임</gui><gui>퍼즐 "
+"통계</gui></guiseq>를 클릭하세요."
+
+#. (itstool) path: figure/desc
+#: C/statistics.page:20
+msgid "Very hard puzzle statistics box example"
+msgstr "'매우 어려움' 스도쿠 통계 상자 예시"
+
+#. (itstool) path: figure/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/statistics.page:22
+msgctxt "_"
+msgid ""
+"external ref='figures/stats-very-hard.png' "
+"md5='13bff6de1e513a499dece168d4e69af5'"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/statistics.page:26
+msgid ""
+"<app>GNOME Sudoku</app> ranks puzzles based on the number of cells that can "
+"be rapidly filled."
+msgstr ""
+"<app>그놈 스도쿠</app>는 빠르게 채울 수 있는 칸의 개수를 기준으로 난이도 등급"
+"을 매깁니다."
+
+#. (itstool) path: page/p
+#: C/statistics.page:30
+msgid "The puzzle statistics box shows:"
+msgstr "스도쿠 통계 상자는 이와 같은 것을 보여줍니다:"
+
+#. (itstool) path: item/p
+#: C/statistics.page:35
+msgid "the overall difficulty"
+msgstr "전체적인 난이도"
+
+#. (itstool) path: item/p
+#: C/statistics.page:36
+msgid ""
+"the number of cells which can be filled by elimination, starting from the "
+"blank grid (i.e. only a 2 can go in this box, so it must be a 2)"
+msgstr ""
+"빈 격자부터 시작하여 소거법으로 채울 수 있는 칸의 개수(즉, 2만 해당 상자에 들"
+"어갈 수 있다면 다른 것이 될 수가 없음)"
+
+#. (itstool) path: item/p
+#: C/statistics.page:37
+msgid ""
+"the number of cells that can be filled by the process of filling, starting "
+"from the blank grid (i.e. only one cell in this row can be a 2, so it must "
+"be a 2)"
+msgstr ""
+"빈 격자부터 시작하여 이러한 방식으로 채울 수 있는 칸의 개수(즉, 2만 해당 상자"
+"에 들어갈 수 있다면 다른 것이 될 수가 없음)"
+
+#. (itstool) path: item/p
+#: C/statistics.page:38
+msgid ""
+"the number of times in solving the puzzle that the program used the trial-"
+"and-error algorithm to solve the puzzle"
+msgstr "시행착오 알고리즘을 이용하여 스도쿠를 푸는 데에 프로그램이 사용한 시간"
+
+#. (itstool) path: note/p
+#: C/statistics.page:41
+msgid ""
+"All sudoku puzzles can be solved without ever having to guess. When the "
+"statistics box says that Sudoku used trial-and-error X number of times, it "
+"does not mean that a human would have to use trial-and-error to solve the "
+"puzzle."
+msgstr ""
+"모든 스도쿠는 추측하는 과정 없이 해결될 수 있습니다. 통계 상자에 스도쿠 프로"
+"그램이 시행착오 방법을 몇 번 사용했는지 나타내는 것이 여러분이 꼭 시행착오 방"
+"법을 스도쿠를 푸는 데에 이용해야 한다는 것을 의미하지는 않습니다."
+
+#. (itstool) path: credit/name
+#: C/strategy.page:9
+msgid "Radoslav Asparuhov"
+msgstr "Radoslav Asparuhov"
+
+#. (itstool) path: page/title
+#: C/strategy.page:22
+msgid "Strategy"
+msgstr "전략"
+
+#. (itstool) path: page/p
+#: C/strategy.page:23
+msgid ""
+"There is only one possibility for each cell in a Sudoku puzzle. The "
+"following strategies will help you systematically discover the solution for "
+"every cell."
+msgstr ""
+"스도쿠 퍼즐은 각각의 칸마다 오직 하나의 정답만을 가지고 있습니다. 다음과 같"
+"은 전략은 체계적으로 모든 칸에 대한 답을 도출할 수 있도록 도와줍니다."
+
+#. (itstool) path: section/title
+#: C/strategy.page:26
+msgid "Strategy 1:"
+msgstr "전략 1:"
+
+#. (itstool) path: item/p
+#: C/strategy.page:28
+msgid "Choose the row with the most numbers in it."
+msgstr "숫자가 가장 많이 들어있는 열을 고르세요."
+
+#. (itstool) path: note/p
+#: C/strategy.page:29
+msgid ""
+"You should choose the row or column with the most numbers. For simplicity, "
+"these instructions are written as if a row had the most numbers in it."
+msgstr ""
+"숫자가 가장 많이 들어있는 열이나 행을 골라야 합니다. 간단하게 말하면, 이러한 "
+"방법은 해당 열이 가장 많은 숫자를 가지고 있음을 가정하고 쓰여졌습니다."
+
+#. (itstool) path: item/p
+#: C/strategy.page:33
+msgid "Determine which numbers in the row are missing."
+msgstr "해당 열에 없는 숫자를 생각하세요."
+
+#. (itstool) path: item/p
+#: C/strategy.page:34
+msgid ""
+"Choose one of the empty cells in this row. Determine which of the missing "
+"numbers are in that column or in that 3x3 box."
+msgstr ""
+"이 열에 빈 칸을 고르세요. 그 칸이 들어 있는 3x3 상자에 어떤 숫자가 없는지 생"
+"각하세요."
+
+#. (itstool) path: item/p
+#: C/strategy.page:35
+msgid ""
+"Using <link xref=\"notes\">notes</link>, enter the missing numbers which are "
+"not in that column or 3x3 box, into the the upper field. These numbers are "
+"candidate solutions for that cell."
+msgstr ""
+"<link xref=\"notes\">메모</link>를 이용해서, 위쪽에 어떤 숫자가 해당 행이나 "
+"3x3 상자에 없는지 입력하세요. 이 숫자는 해당 칸의 해답일 가능성이 있습니다."
+
+#. (itstool) path: item/p
+#: C/strategy.page:36
+msgid ""
+"Go to the next empty cell of the chosen row and repeat the above method. "
+"Repeat this for every row and column, starting at those with the most "
+"numbers and continuing through to the least. Always look carefully for the "
+"numbers and don't forget the 3x3 boxes."
+msgstr ""
+"선택한 열의 다음 빈칸으로 가서 위와 같은 방법을 반복하세요. 이를 모든 행과 열"
+"에 대하여 가장 많은 숫자들이 있는 곳부터 순서대로 반복하세요. 항상 숫자를 주"
+"의깊게 관찰하고 3x3 상자를 잊지 마세요."
+
+#. (itstool) path: note/p
+#: C/strategy.page:38 C/strategy.page:55
+msgid ""
+"This strategy will help reveal the cells which have only one possible "
+"choice. When revealed, you can fill those cells in with that choice, and "
+"repeat the strategy again until the entire puzzle is solved."
+msgstr ""
+"이 전략은 오직 하나의 정답만 존재하는 칸을 알아내는데 도움을 줍니다. 알아낸 "
+"후에 해당 칸을 채울 수 있으며, 이러한 방법을 스도쿠 퍼즐 전체가 풀릴 때까지 "
+"반복할 수 있습니다."
+
+#. (itstool) path: figure/desc
+#: C/strategy.page:40
+msgid "Example use of strategy 1."
+msgstr "전략 1의 사용 예시."
+
+#. (itstool) path: section/title
+#: C/strategy.page:47
+msgid "Strategy 2:"
+msgstr "전략 2:"
+
+#. (itstool) path: item/p
+#: C/strategy.page:49
+msgid "Find the number which appears most often."
+msgstr "자주 보이는 숫자를 찾아보세요."
+
+#. (itstool) path: item/p
+#: C/strategy.page:50
+msgid ""
+"Now look at the left vertical alignment of the 3x3 boxes and locate the "
+"column(s) in which this number appears."
+msgstr ""
+"이제 3x3 상자의 좌측에 수직한 부분을 보면서 해당 숫자가 나타나는 행을 지정하"
+"세요."
+
+#. (itstool) path: item/p
+#: C/strategy.page:51
+msgid ""
+"In this alignment, go to a 3x3 box which does not contain this number in any "
+"of its cells. Using <link xref=\"notes\">notes</link>, enter this number in "
+"every empty cell of the column in which this number does not appear. If the "
+"number appears in the row of one of these cells, do not enter it in that "
+"cell's notes."
+msgstr ""
+"해당 부분에서 어떤 칸에도 그 숫자를 포함하지 않는 3x3 상자를 찾으세요. <link "
+"xref=\"notes\">메모</link>기능을 이용하여, 그 행에 나타나지 않는 숫자들을 모"
+"든 빈 칸에 적어넣으세요. 만약 행에 나타나는 숫자가 있으면, 메모에 적어넣으면 "
+"안됩니다."
+
+#. (itstool) path: item/p
+#: C/strategy.page:52
+msgid "Repeat the last two steps for the center and right vertical alignments."
+msgstr "중앙, 그리고 우측의 수직한 부분에 마지막 두 과정을 반복하세요."
+
+#. (itstool) path: item/p
+#: C/strategy.page:53
+msgid ""
+"Find the next number which appears most, and repeat until you have done this "
+"for all 9 numbers."
+msgstr ""
+"그 다음으로 많이 나타나는 숫자를 찾고, 아홉 개 숫자 모두에 대하여 이 과정을 "
+"반복하세요."
+
+#. (itstool) path: figure/desc
+#: C/strategy.page:57
+msgid "Example use of strategy2."
+msgstr "전략 2의 사용 예시."
+
+#. (itstool) path: note/p
+#: C/strategy.page:61
+msgid ""
+"If neither of the above strategies solves the puzzle on its own, you can "
+"alternate strategies. You can also combine the strategies."
+msgstr ""
+"위와 같은 방법으로 한 문제도 풀지 못했다면, 독자적인 방법을 구상하거나 이러"
+"한 방법들을 병행할 수도 있습니다."
+
+#. (itstool) path: page/title
+#: C/toolbar.page:17
+msgid "Toolbar"
+msgstr "툴바"
+
+#. (itstool) path: page/p
+#: C/toolbar.page:19
+msgid ""
+"To show or hide the toolbar, click <guiseq><gui>Settings</gui><gui>Show "
+"Toolbar</gui></guiseq>."
+msgstr ""
+"툴바를 보이거나 숨기려면 <guiseq><gui>설정</gui><gui>툴바 보이기</gui></"
+"guiseq>를 클릭하세요."
+
+#. (itstool) path: page/p
+#: C/toolbar.page:21
+msgid ""
+"The toolbar, located under the menu bar, lets you perform common actions "
+"with your mouse. To use a toolbar item, just click on it. The buttons, from "
+"left to right, are New Game, Undo, Redo, <link xref=\"hints\">Hint</link>, "
+"and <link xref=\"trackers\">Track Additions</link>."
+msgstr ""
+"메뉴 막대 아래에 있는 툴바는 공통적인 동작을 마우스로 할 수 있도록 도와줍니"
+"다. 툴바에 있는 기능을 사용하려면 클릭하면 됩니다. 왼쪽부터 순서대로 새 게"
+"임, 되돌리기, 다시 하기, <link xref=\"hints\">힌트</link>, <link xref="
+"\"trackers\">추가 사항 추적</link> 버튼이 있습니다."
+
+#. (itstool) path: page/title
+#: C/trackers.page:22
+msgid "Track trial-and-error solutions"
+msgstr "시행착오를 통한 해답 추적"
+
+#. (itstool) path: page/p
+#: C/trackers.page:23
+msgid ""
+"Trackers can be used to keep track of trial-and-error solutions. Tracked "
+"moves are entered in a different color to help make the moves visually "
+"distinct from moves made earlier in the game. This feature is particularly "
+"useful when solving difficult games."
+msgstr ""
+"추적기는 시행착오 방법을 쫒아가는 데에 사용할 수 있습니다. 추적된 수들은 여"
+"러 가지 색으로 구별되어 시각적으로 이전에 만든 수와 아닌 것을 쉽게 구별할 수 "
+"있습니다. 이 기능은 특히 어려운 게임에서 유용합니다."
+
+#. (itstool) path: page/p
+#: C/trackers.page:26
+msgid "Using the tracker:"
+msgstr "추적기 사용하기:"
+
+#. (itstool) path: item/p
+#: C/trackers.page:29
+msgid "You can toggle the tracker interface in one of the following ways:"
+msgstr "추적기 인터페이스를 아래와 같은 방법으로 켜고 끌 수 있습니다:"
+
+#. (itstool) path: item/p
+#. (itstool) path: div/p
+#: C/trackers.page:33 C/trackers.page:62
+msgid "Click <guiseq><gui>Tools</gui><gui>Track Additions</gui></guiseq>."
+msgstr ""
+"<guiseq><gui>도구</gui><gui>추가 사항 추적</gui></guiseq>을 클릭하세요."
+
+#. (itstool) path: item/p
+#: C/trackers.page:34
+msgid ""
+"Click <gui>Track Additions</gui> in the toolbar. If the toolbar is not "
+"visible, click <guiseq><gui>Settings</gui><gui>Show Toolbar</gui></guiseq>."
+msgstr ""
+"툴바에서 <gui>추가 사항 추적</gui>을 클릭하세요. 툴바가 보이지 않는다면, "
+"<guiseq><gui>설정</gui><gui>툴바 보이기</gui></guiseq>를 클릭하세요."
+
+#. (itstool) path: note/p
+#. (itstool) path: div/p
+#: C/trackers.page:36 C/trackers.page:67
+msgid "You can make untracked moves if no tracker is selected."
+msgstr ""
+"추적기가 선택되지 않았다면 추적되지 않은 수를 만들어낼 가능성이 있습니다."
+
+#. (itstool) path: item/p
+#. (itstool) path: div/p
+#: C/trackers.page:39 C/trackers.page:72
+msgid ""
+"To create a new tracker click <gui>Add</gui>. From this point on, any number "
+"you enter will be part of the selected tracker."
+msgstr ""
+"새로운 추적기를 생성하려면 <gui>추가</gui>를 클릭하세요. 추적기를 만들면 여러"
+"분이 입력하는 어떤 숫자라도 선택된 추적기가 기록하게 됩니다."
+
+#. (itstool) path: item/p
+#. (itstool) path: div/p
+#: C/trackers.page:42 C/trackers.page:77
+msgid "You can create as many trackers as you want by clicking <gui>Add</gui>."
+msgstr "<gui>추가</gui>를 클릭해서 원하는 만큼 추적기를 만들 수 있습니다."
+
+#. (itstool) path: item/p
+#. (itstool) path: div/p
+#: C/trackers.page:45 C/trackers.page:82
+msgid ""
+"You can apply a set of tracked additions by selecting the tracker and "
+"clicking <gui>Apply</gui>."
+msgstr ""
+"추적기를 선택하고 <gui>적용</gui>을 클릭하여 추적된 추가 사항의 집합을 적용"
+"할 수 있습니다."
+
+#. (itstool) path: item/p
+#. (itstool) path: div/p
+#: C/trackers.page:48 C/trackers.page:87
+msgid "You can clear a tracker by selecting it and clicking <gui>Clear</gui>."
+msgstr ""
+"추적기를 선택하고 <gui>지우기</gui>를 클릭해서 내용을 비울 수 있습니다."
+
+#. (itstool) path: note/p
+#: C/trackers.page:53
+msgid ""
+"Some sudoku players believe you should never use trial-and-error to solve a "
+"puzzle. These players should not use this feature."
+msgstr ""
+"일부 스도쿠 플레이어는 퍼즐을 풀 때 시행착오 방법을 절대 사용하지 말아야 한다"
+"고 생각하기도 합니다. 이러한 플레이어는 이 기능을 사용하지 않습니다."
+
+#. (itstool) path: section/title
+#: C/trackers.page:56
+msgid "Video Demonstration"
+msgstr "영상 데모"
+
+#. (itstool) path: section/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trackers.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/translate.page:23
+msgid "Help translate"
+msgstr "번역 기여"
+
+#. (itstool) path: page/p
+#: C/translate.page:24
+msgid ""
+"The <app>GNOME games</app> user interface and documentation is being "
+"translated by a world-wide volunteer community. You are welcome to "
+"participate."
+msgstr ""
+"<app>그놈 게임</app> 유저 인터페이스와 문서는 세계적인 기여자 커뮤니티를 통하"
+"여 번역되고 있습니다. 기여 참여를 환영합니다."
+
+#. (itstool) path: page/p
+#: C/translate.page:27
+msgid ""
+"There are <link href=\"http://l10n.gnome.org/module/gnome-sudoku/\">many "
+"languages</link> for which translations are still needed."
+msgstr ""
+"아직 번역이 필요한 <link href=\"http://l10n.gnome.org/module/gnome-sudoku/\">"
+"많은 언어</link>들이 남아 있습니다."
+
+#. (itstool) path: page/p
+#: C/translate.page:30
+msgid ""
+"To start translating you will need to <link href=\"http://l10n.gnome.org"
+"\">create an account</link> and join the <link href=\"http://l10n.gnome.org/"
+"teams/\">translation team</link> for your language. This will give you the "
+"ability to upload new translations."
+msgstr ""
+"번역을 시작하려면 <link href=\"http://l10n.gnome.org\">새 계정 생성</link>이 "
+"필요하고, 여러분의 언어에 해당하는 <link href=\"http://l10n.gnome.org/teams/"
+"\">번역 팀</link>에 가입해야 합니다. 이를 통해 새 번역을 올릴 수 있는 권한을 "
+"얻을 수 있습니다."
+
+#. (itstool) path: page/p
+#: C/translate.page:34
+msgid ""
+"You can chat with GNOME translators using <link href=\"https://cbe003.chat."
+"mibbit.com/?url=irc%3A%2F%2Firc.gnome.org%2Fi18n\">irc</link>. People on the "
+"channel are located worldwide, so you may not get an immediate response as a "
+"result of timezone differences."
+msgstr ""
+"<link href=\"https://cbe003.chat.mibbit.com/?url=irc%3A%2F%2Firc.gnome.org"
+"%2Fi18n\">IRC</link>를 통하여 그놈 번역자들과 대화할 수 있습니다. 이 채널에 "
+"있는 사람들은 전 세계에 분포해 있으므로, 시간대별 차이로 인하여 즉각적인 응답"
+"을 받지 못할 수도 있습니다."
+
+#. (itstool) path: page/p
+#: C/translate.page:37
+msgid ""
+"Alternatively, you can contact the Internationalization Team using their "
+"<link href=\"http://mail.gnome.org/mailman/listinfo/gnome-i18n\">mailing "
+"list</link>."
+msgstr ""
+"또한, 국제화 팀의 <link href=\"http://mail.gnome.org/mailman/listinfo/gnome-"
+"i18n\">메일링 리스트</link>를 통해 해당 팀과 연락할 수 있습니다."
