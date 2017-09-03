@@ -1,5 +1,5 @@
 # Brazilian Portuguese translation of gnome-sudoku.
-# Copyright (C) 1999-2016 Free Software Foundation, Inc.
+# Copyright (C) 1999-2017 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-sudoku package.
 # Sandro Nunes Henrique <sandro@conectiva.com.br>, 1999.
 # Cândida Nunes da Silva <candida@zaz.com.br>, 2000-2001.
@@ -22,17 +22,16 @@
 # Flamarion Jorge <jorge.flamarion@gmail.com>, 2011.
 # Djavan Fagundes <djavan@comum.org>, 2012.
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2013.
-# Rafael Ferreira <rafael.f.f1@gmail.com>, 2014.
 # Felipe Braga <fbobraga@gmail.com>, 2015.
 # Enrico Nicoletto <liverig@gmail.com>, 2014, 2016.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2016.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2014, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-06 15:33+0000\n"
-"PO-Revision-Date: 2016-11-09 18:48-0200\n"
+"POT-Creation-Date: 2017-08-13 22:15+0000\n"
+"PO-Revision-Date: 2017-09-03 12:04-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -40,7 +39,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Virtaal 1.0.0-beta1\n"
 "X-Project-Style: gnome\n"
 
 #: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
@@ -67,7 +66,7 @@ msgstr "_Avisos"
 msgid "_About"
 msgstr "_Sobre"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:406
+#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "Sai_r"
 
@@ -114,8 +113,12 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Uma prévia do GNOME para o jogo sudoku"
 
+#: data/gnome-sudoku.appdata.xml.in:47
+msgid "The GNOME Project"
+msgstr "O projeto GNOME"
+
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:606
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -161,7 +164,7 @@ msgstr "Mui_to difícil"
 msgid "_Create your own puzzle"
 msgstr "_Criar seu próprio jogo"
 
-#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:331
+#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
 msgid "_Pause"
 msgstr "_Pausar"
 
@@ -194,12 +197,15 @@ msgid "Difficulty level of sudokus to be printed"
 msgstr "Nível de dificuldade dos sudokus a ser imprimido"
 
 #: data/org.gnome.sudoku.gschema.xml:12
+#| msgid ""
+#| "Set the difficulty level of the sudokus you want to print. Possible "
+#| "values are - \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
-"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
 "Define o nível de dificuldade dos sudokus que você deseja imprimir. Os "
-"valores possíveis são - \"fácil\", \"médio\", \"difícil\" e \"muito difícil\""
+"valores possíveis são: \"easy\", \"medium\", \"hard\", \"very_hard\""
 
 #: data/org.gnome.sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
@@ -289,60 +295,60 @@ msgid "Show the possible values for each cell"
 msgstr "Mostrar os valores possíveis para cada célula"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "O jogo que você entrou não é um jogo de Sudoku válido."
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "Please enter a valid puzzle."
 msgstr "Por favor entre com um jogo válido."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "O jogo que você entrou tem múltiplas soluções."
 
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Jogos de Sudoku válidos têm apenas uma solução."
 
-#: src/gnome-sudoku.vala:294
+#: src/gnome-sudoku.vala:290
 msgid "_Back"
 msgstr "_Voltar"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:291
 msgid "Play _Anyway"
 msgstr "Jogar _assim mesmo"
 
-#: src/gnome-sudoku.vala:337
+#: src/gnome-sudoku.vala:333
 msgid "_Resume"
 msgstr "_Continuar"
 
-#: src/gnome-sudoku.vala:401
+#: src/gnome-sudoku.vala:397
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Parabéns, você concluiu o jogo em %d minuto!"
 msgstr[1] "Parabéns, você concluiu o jogo em %d minutos!"
 
-#: src/gnome-sudoku.vala:407
+#: src/gnome-sudoku.vala:403
 msgid "Play _Again"
 msgstr "Jogar _novamente"
 
-#: src/gnome-sudoku.vala:426
+#: src/gnome-sudoku.vala:422
 msgid "Select Difficulty"
 msgstr "Selecionar a dificuldade"
 
-#: src/gnome-sudoku.vala:482
+#: src/gnome-sudoku.vala:478
 msgid "Reset the board to its original state?"
 msgstr "Reiniciar o jogo para seu estado original?"
 
-#: src/gnome-sudoku.vala:529
+#: src/gnome-sudoku.vala:525
 msgid "Create Puzzle"
 msgstr "Criar jogo"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:610
+#: src/gnome-sudoku.vala:606
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -353,7 +359,7 @@ msgstr ""
 "\n"
 "Jogos criados pelo QQwing %s"
 
-#: src/gnome-sudoku.vala:615
+#: src/gnome-sudoku.vala:611
 msgid "translator-credits"
 msgstr ""
 "Sandro Nunes Henrique <sandro@conectiva.com.br>\n"
@@ -370,7 +376,7 @@ msgstr ""
 "Felipe Borges <felipe10borges@gmail.com>\n"
 "Sérgio Cipolla <secipolla@gmail.com>\n"
 "Rodrigo Padula de Oliveira <contato@rodrigopadula.com>\n"
-"Rafael Ferreira <rafael.f.f1@gmail.com>\n"
+"Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Fábio Nogueira <deb-user-ba@ubuntu.com>\n"
 "Enrico Nicoletto <liverig@gmail.com>\n"
 "Felipe Braga <fbobraga@gmail.com>"
@@ -385,12 +391,9 @@ msgid "Error printing file:"
 msgstr "Erro ao imprimir arquivo:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:630
+#: src/sudoku-view.vala:631
 msgid "Paused"
 msgstr "Pausado"
-
-#~ msgid "The GNOME Project"
-#~ msgstr "O projeto GNOME"
 
 #~ msgid "_Help"
 #~ msgstr "Aj_uda"
