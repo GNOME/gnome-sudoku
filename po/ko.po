@@ -19,10 +19,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-11 20:25+0000\n"
-"PO-Revision-Date: 2015-09-12 13:33+0900\n"
+"POT-Creation-Date: 2017-08-13 22:15+0000\n"
+"PO-Revision-Date: 2017-09-06 18:27+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -31,15 +31,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:1
+#: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
+msgid "_Print"
+msgstr "인쇄(_P)"
+
+#: data/gnome-sudoku-menu.ui:10
+msgid "Print _Current Puzzle…"
+msgstr "현재 퍼즐 인쇄(_C)…"
+
+#: data/gnome-sudoku-menu.ui:14
+msgid "Print _Multiple Puzzles…"
+msgstr "퍼즐 여러 개 인쇄(_M)…"
+
+#: data/gnome-sudoku-menu.ui:22
+msgid "High_lighter"
+msgstr "반전(_L)"
+
+#: data/gnome-sudoku-menu.ui:26
+msgid "_Warnings"
+msgstr "경고(_W)"
+
+#: data/gnome-sudoku-menu.ui:39
+msgid "_About"
+msgstr "정보(_A)"
+
+#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
+msgid "_Quit"
+msgstr "끝내기(_Q)"
+
+#: data/gnome-sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
 msgstr "그놈 스도쿠"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "이 숫자 퍼즐에서 논리력을 테스트해 보세요"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: data/gnome-sudoku.appdata.xml.in:10
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -50,7 +78,7 @@ msgstr ""
 "은 인터페이스를 이용해 모든 수준의 플레이어가 스도쿠를 재미있게 즐길 수 있습"
 "니다."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: data/gnome-sudoku.appdata.xml.in:15
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -58,7 +86,7 @@ msgstr ""
 "게임마다 신문과 웹사이트에 쓰여 있는 난이도와 비슷하게 난이도가 설정되어 있습"
 "니다. 그러므로 원하는대로 난이도가 쉽거나 어렵게 설정됩니다."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:5
+#: data/gnome-sudoku.appdata.xml.in:20
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -68,132 +96,114 @@ msgstr ""
 "할 게임 수나 인쇄할 난이도를 지정할 수 있습니다. 즉 그놈 스도쿠는 개속 개정되"
 "는 스도쿠 책과 같습니다."
 
-#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:626
+#: data/gnome-sudoku.appdata.xml.in:30
+msgid "A GNOME sudoku game preview"
+msgstr "그놈 스도쿠 게임 미리보기"
+
+#: data/gnome-sudoku.appdata.xml.in:47
+msgid "The GNOME Project"
+msgstr "그놈 프로젝트"
+
+#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
 msgid "Sudoku"
 msgstr "스도쿠"
 
-#: ../data/gnome-sudoku.desktop.in.h:3
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/gnome-sudoku.desktop.in:6
 msgid "magic;square;"
 msgstr "magic;square;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
-msgid "_Print"
-msgstr "인쇄(_P)"
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gnome-sudoku.desktop.in:9
+msgid "gnome-sudoku"
+msgstr "gnome-sudoku"
 
-#: ../data/gnome-sudoku-menu.ui.h:2
-msgid "Print _Current Puzzle…"
-msgstr "현재 퍼즐 인쇄(_C)…"
-
-#: ../data/gnome-sudoku-menu.ui.h:3
-msgid "Print _Multiple Puzzles…"
-msgstr "퍼즐 여러 개 인쇄(_M)…"
-
-#: ../data/gnome-sudoku-menu.ui.h:4
-msgid "High_lighter"
-msgstr "반전(_L)"
-
-#: ../data/gnome-sudoku-menu.ui.h:5
-msgid "_Warnings"
-msgstr "경고(_W)"
-
-#: ../data/gnome-sudoku-menu.ui.h:6
-msgid "_Help"
-msgstr "도움말(_H)"
-
-#: ../data/gnome-sudoku-menu.ui.h:7
-msgid "_About"
-msgstr "정보(_A)"
-
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:426
-msgid "_Quit"
-msgstr "끝내기(_Q)"
-
-#: ../data/gnome-sudoku.ui.h:2
+#: data/gnome-sudoku.ui:22
 msgid "Undo your last action"
 msgstr "마지막 동작을 취소합니다"
 
-#: ../data/gnome-sudoku.ui.h:3
+#: data/gnome-sudoku.ui:43
 msgid "Redo your last action"
 msgstr "마지막 동작을 다시 실행합니다"
 
-#: ../data/gnome-sudoku.ui.h:4
+#: data/gnome-sudoku.ui:91
 msgid "Go back to the current game"
 msgstr "현재 게임으로 돌아옵니다"
 
-#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
+#: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
 msgid "_Easy"
 msgstr "쉬움(_E)"
 
-#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
+#: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
 msgid "_Medium"
 msgstr "중간(_M)"
 
-#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
+#: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
 msgid "_Hard"
 msgstr "어려움(_H)"
 
-#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
+#: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
 msgid "_Very Hard"
 msgstr "매우 어려움(_V)"
 
-#: ../data/gnome-sudoku.ui.h:9
+#: data/gnome-sudoku.ui:189
 msgid "_Create your own puzzle"
 msgstr "나만의 퍼즐 만들기(_C)"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:351
+#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
 msgid "_Pause"
 msgstr "일시 중지(_P)"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: data/gnome-sudoku.ui:251
 msgid "_Clear Board"
 msgstr "게임판 지우기(_C)"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: data/gnome-sudoku.ui:255
 msgid "Reset the board to its original state"
 msgstr "게임판을 원래 상태로 초기화합니다"
 
-#: ../data/gnome-sudoku.ui.h:13
+#: data/gnome-sudoku.ui:269
 msgid "_New Puzzle"
 msgstr "새 퍼즐(_N)"
 
-#: ../data/gnome-sudoku.ui.h:14
+#: data/gnome-sudoku.ui:273
 msgid "Start a new puzzle"
 msgstr "새 퍼즐을 시작합니다"
 
-#: ../data/gnome-sudoku.ui.h:15
+#: data/gnome-sudoku.ui:287
 msgid "_Start Playing"
 msgstr "플레이 시작(_S)"
 
-#: ../data/gnome-sudoku.ui.h:16
+#: data/gnome-sudoku.ui:291
 msgid "Start playing the custom puzzle you have created"
 msgstr "내가 만든 사용자 정의 퍼즐 플레이를 시작합니다"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:1
+#: data/org.gnome.sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
 msgstr "인쇄할 스도쿠의 난이도"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:2
+#: data/org.gnome.sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
-"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"인쇄하는 스도쿠 퍼즐의 난이도를 설정합니다. 가능한 값은 - \"easy\", \"medium"
+"인쇄하는 스도쿠 퍼즐의 난이도를 설정합니다. 가능한 값은: \"easy\", \"medium"
 "\", \"hard\", \"very_hard\""
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:3
+#: data/org.gnome.sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
 msgstr "인쇄할 스도쿠 수"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:4
+#: data/org.gnome.sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
 msgstr "인쇄할 스도쿠 수를 설정합니다"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:5
+#: data/org.gnome.sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "채울 수 없는 칸 및 같은 숫자 반복 경고"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:6
+#: data/org.gnome.sudoku.gschema.xml:23
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -201,126 +211,126 @@ msgstr ""
 "어떤 숫자로도 채울 수 없는 경우 빨간 색 큰 X표를 표시하고, 같은 숫자를 다시 "
 "쓰면 빨간 색으로 표시합니다."
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:7
+#: data/org.gnome.sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "선택한 셀이 들어 있는 행, 열, 스퀘어를 반전합니다"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: data/org.gnome.sudoku.gschema.xml:31
 msgid "Width of the window in pixels"
 msgstr "창의 너비, 픽셀 단위"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: data/org.gnome.sudoku.gschema.xml:35
 msgid "Height of the window in pixels"
 msgstr "창의 높이, 픽셀 단위"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:10
+#: data/org.gnome.sudoku.gschema.xml:39
 msgid "true if the window is maximized"
 msgstr "참이면 창을 최대화"
 
-#: ../data/print-dialog.ui.h:1
+#: data/print-dialog.ui:12
 msgid "Print Multiple Puzzles"
 msgstr "퍼즐 여러개 인쇄"
 
-#: ../data/print-dialog.ui.h:2
+#: data/print-dialog.ui:21
 msgid "_Cancel"
 msgstr "취소(_C)"
 
-#: ../data/print-dialog.ui.h:4
+#: data/print-dialog.ui:67
 msgid "_Number of puzzles"
 msgstr "퍼즐 수(_N)"
 
-#: ../data/print-dialog.ui.h:5
+#: data/print-dialog.ui:110
 msgid "Difficulty"
 msgstr "난이도"
 
-#: ../lib/sudoku-board.vala:583
+#: lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "알 수 없는 난이도"
 
-#: ../lib/sudoku-board.vala:585
+#: lib/sudoku-board.vala:585
 msgid "Easy Difficulty"
 msgstr "쉬움 난이도"
 
-#: ../lib/sudoku-board.vala:587
+#: lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "중간 난이도"
 
-#: ../lib/sudoku-board.vala:589
+#: lib/sudoku-board.vala:589
 msgid "Hard Difficulty"
 msgstr "어려움 난이도"
 
-#: ../lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:591
 msgid "Very Hard Difficulty"
 msgstr "아주 어려움 난이도"
 
-#: ../lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:593
 msgid "Custom Puzzle"
 msgstr "사용자 정의 퍼즐"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:85
+#: src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "릴리스 버전을 표시합니다"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:89
+#: src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "각 칸마다 가능한 값을 표시합니다"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:303
+#: src/gnome-sudoku.vala:279
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "입력한 퍼즐이 올바른 스도쿠 게임이 아닙니다."
 
-#: ../src/gnome-sudoku.vala:303
+#: src/gnome-sudoku.vala:279
 msgid "Please enter a valid puzzle."
 msgstr "올바른 퍼즐을 입력하십시오."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:312
+#: src/gnome-sudoku.vala:288
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "입력한 퍼즐에 여러개의 해법이 있습니다."
 
-#: ../src/gnome-sudoku.vala:312
+#: src/gnome-sudoku.vala:288
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "올바른 스도쿠 퍼즐은 한 가지 해법만 있습니다."
 
-#: ../src/gnome-sudoku.vala:314
+#: src/gnome-sudoku.vala:290
 msgid "_Back"
 msgstr "뒤로(_B)"
 
-#: ../src/gnome-sudoku.vala:315
+#: src/gnome-sudoku.vala:291
 msgid "Play _Anyway"
 msgstr "어쨌든 플레이(_A)"
 
-#: ../src/gnome-sudoku.vala:357
+#: src/gnome-sudoku.vala:333
 msgid "_Resume"
 msgstr "다시 시작(_R)"
 
-#: ../src/gnome-sudoku.vala:421
+#: src/gnome-sudoku.vala:397
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "잘 했습니다. 퍼즐을 %d분 만에 마쳤습니다!"
 
-#: ../src/gnome-sudoku.vala:427
+#: src/gnome-sudoku.vala:403
 msgid "Play _Again"
 msgstr "다시 플레이(_A)"
 
-#: ../src/gnome-sudoku.vala:446
+#: src/gnome-sudoku.vala:422
 msgid "Select Difficulty"
 msgstr "난이도 선택"
 
-#: ../src/gnome-sudoku.vala:502
+#: src/gnome-sudoku.vala:478
 msgid "Reset the board to its original state?"
 msgstr "게임판을 원래 상태로 초기화하시겠습니까?"
 
-#: ../src/gnome-sudoku.vala:549
+#: src/gnome-sudoku.vala:525
 msgid "Create Puzzle"
 msgstr "퍼즐 만들기"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:630
+#: src/gnome-sudoku.vala:606
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -331,20 +341,23 @@ msgstr ""
 "\n"
 "QQwing %s 버전으로 퍼즐 생성"
 
-#: ../src/gnome-sudoku.vala:635
+#: src/gnome-sudoku.vala:611
 msgid "translator-credits"
 msgstr "류창우 <cwryu@debian.org>"
 
-#: ../src/number-picker.vala:90
+#: src/number-picker.vala:90
 msgid "Clear"
 msgstr "지우기"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:48
+#: src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "파일을 인쇄하는데 오류:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:629
+#: src/sudoku-view.vala:631
 msgid "Paused"
 msgstr "일시 중지함"
+
+#~ msgid "_Help"
+#~ msgstr "도움말(_H)"
