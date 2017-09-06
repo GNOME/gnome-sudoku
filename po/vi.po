@@ -3,15 +3,15 @@
 # T.M.Thanh <tmthanh@yahoo.com>, 2002.
 # Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2007, 2012.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2009.
-# Trần Ngọc Quân <vnwildman@gmail.com>, 2015, 2016.
+# Trần Ngọc Quân <vnwildman@gmail.com>, 2015, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-06 18:25+0000\n"
-"PO-Revision-Date: 2016-09-08 08:28+0700\n"
+"POT-Creation-Date: 2017-09-05 15:02+0000\n"
+"PO-Revision-Date: 2017-09-06 07:19+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
 "Language: vi\n"
@@ -21,16 +21,44 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
+#: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
+msgid "_Print"
+msgstr "_In"
+
+#: data/gnome-sudoku-menu.ui:10
+msgid "Print _Current Puzzle…"
+msgstr "In lượt _chơi hiện tại…"
+
+#: data/gnome-sudoku-menu.ui:14
+msgid "Print _Multiple Puzzles…"
+msgstr "In _nhiều ván chơi…"
+
+#: data/gnome-sudoku-menu.ui:22
+msgid "High_lighter"
+msgstr "Tô _sáng"
+
+#: data/gnome-sudoku-menu.ui:26
+msgid "_Warnings"
+msgstr "Cảnh _báo"
+
+#: data/gnome-sudoku-menu.ui:39
+msgid "_About"
+msgstr "_Giới thiệu"
+
+#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
+msgid "_Quit"
+msgstr "T_hoát"
+
 # Name: don't translate/Tên: đừng dịch
-#: ../data/gnome-sudoku.appdata.xml.in.h:1
+#: data/gnome-sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
 msgstr "Sudoku dành cho GNOME"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:2 ../data/gnome-sudoku.desktop.in.h:2
+#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "Kiểm tra kỹ năng lôgic của bạn trong câu đố lưới con số"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:3
+#: data/gnome-sudoku.appdata.xml.in:10
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -41,7 +69,7 @@ msgstr ""
 "cái mà làm cho những người chơi Sudoku trở nên thú vị cho dù họ ở bất kỳ mức "
 "độ chơi nào."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:4
+#: data/gnome-sudoku.appdata.xml.in:15
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -49,7 +77,7 @@ msgstr ""
 "Mỗi ván chơi được gán một mức khó tương tự trên báo chí và trang web, do vậy "
 "ván chơi của bạn sẽ dễ hay khó là tùy vào ý muốn của bạn."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:5
+#: data/gnome-sudoku.appdata.xml.in:20
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -60,141 +88,115 @@ msgstr ""
 "GNOME Sudoku có thể thực hiện như là một quyển sách Sudoku có thể đổi mới "
 "dành cho bạn."
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:6
+#: data/gnome-sudoku.appdata.xml.in:30
 msgid "A GNOME sudoku game preview"
 msgstr "Xem thử về trò chơi sudoku GNOME"
 
-#: ../data/gnome-sudoku.appdata.xml.in.h:7
+#: data/gnome-sudoku.appdata.xml.in:47
 msgid "The GNOME Project"
 msgstr "Dự án GNOME"
 
 # Name: don't translate/Tên: đừng dịch
-#: ../data/gnome-sudoku.desktop.in.h:1 ../data/gnome-sudoku.ui.h:1
-#: ../src/gnome-sudoku.vala:606
+#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: ../data/gnome-sudoku.desktop.in.h:3
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/gnome-sudoku.desktop.in:6
 msgid "magic;square;"
 msgstr "magic;ma lực;ma luc;square;bàn vuông;ban vuong;"
 
-#: ../data/gnome-sudoku-menu.ui.h:1 ../data/print-dialog.ui.h:3
-msgid "_Print"
-msgstr "_In"
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gnome-sudoku.desktop.in:9
+msgid "gnome-sudoku"
+msgstr "gnome-sudoku"
 
-#: ../data/gnome-sudoku-menu.ui.h:2
-msgid "Print _Current Puzzle…"
-msgstr "In lượt _chơi hiện tại…"
-
-#: ../data/gnome-sudoku-menu.ui.h:3
-msgid "Print _Multiple Puzzles…"
-msgstr "In _nhiều ván chơi…"
-
-#: ../data/gnome-sudoku-menu.ui.h:4
-msgid "High_lighter"
-msgstr "Tô _sáng"
-
-#: ../data/gnome-sudoku-menu.ui.h:5
-msgid "_Warnings"
-msgstr "Cảnh _báo"
-
-#: ../data/gnome-sudoku-menu.ui.h:6
-msgid "_Help"
-msgstr "Trợ _giúp"
-
-#: ../data/gnome-sudoku-menu.ui.h:7
-msgid "_About"
-msgstr "_Giới thiệu"
-
-#: ../data/gnome-sudoku-menu.ui.h:8 ../src/gnome-sudoku.vala:406
-msgid "_Quit"
-msgstr "T_hoát"
-
-#: ../data/gnome-sudoku.ui.h:2
+#: data/gnome-sudoku.ui:22
 msgid "Undo your last action"
 msgstr "Hoàn tác bước cuối"
 
-#: ../data/gnome-sudoku.ui.h:3
+#: data/gnome-sudoku.ui:43
 msgid "Redo your last action"
 msgstr "Làm lại bước cuối cùng"
 
-#: ../data/gnome-sudoku.ui.h:4
+#: data/gnome-sudoku.ui:91
 msgid "Go back to the current game"
-msgstr "Quay trở lại ván chơi hiện thời"
+msgstr "Quay trở lại ván chơi hiện tại"
 
-#: ../data/gnome-sudoku.ui.h:5 ../data/print-dialog.ui.h:6
+#: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
 msgid "_Easy"
 msgstr "_Dễ"
 
-#: ../data/gnome-sudoku.ui.h:6 ../data/print-dialog.ui.h:7
+#: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
 msgid "_Medium"
 msgstr "_Trung bình"
 
-#: ../data/gnome-sudoku.ui.h:7 ../data/print-dialog.ui.h:8
+#: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
 msgid "_Hard"
 msgstr "_Khó"
 
-#: ../data/gnome-sudoku.ui.h:8 ../data/print-dialog.ui.h:9
+#: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
 msgid "_Very Hard"
 msgstr "_Rất khó"
 
-#: ../data/gnome-sudoku.ui.h:9
+#: data/gnome-sudoku.ui:189
 msgid "_Create your own puzzle"
 msgstr "Tạ_o bàn riêng của bạn"
 
-#: ../data/gnome-sudoku.ui.h:10 ../src/gnome-sudoku.vala:331
+#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
 msgid "_Pause"
 msgstr "Tạm _dừng"
 
-#: ../data/gnome-sudoku.ui.h:11
+#: data/gnome-sudoku.ui:251
 msgid "_Clear Board"
 msgstr "_Xóa trống bàn"
 
-#: ../data/gnome-sudoku.ui.h:12
+#: data/gnome-sudoku.ui:255
 msgid "Reset the board to its original state"
 msgstr "Đặt bảng chơi thành trạng thái ban đầu"
 
-#: ../data/gnome-sudoku.ui.h:13
+#: data/gnome-sudoku.ui:269
 msgid "_New Puzzle"
 msgstr "_Ván chơi mới"
 
-#: ../data/gnome-sudoku.ui.h:14
+#: data/gnome-sudoku.ui:273
 msgid "Start a new puzzle"
 msgstr "Bắt đầu lượt chơi mới"
 
-#: ../data/gnome-sudoku.ui.h:15
+#: data/gnome-sudoku.ui:287
 msgid "_Start Playing"
 msgstr "_Bắt đầu chơi"
 
-#: ../data/gnome-sudoku.ui.h:16
+#: data/gnome-sudoku.ui:291
 msgid "Start playing the custom puzzle you have created"
 msgstr "Bắt đầu chơi bàn do bạn vừa tạo"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:1
+#: data/org.gnome.sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Mức khó của các sudoku muốn in"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:2
+#: data/org.gnome.sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
-"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"Đặt mức khó của các sudoku bạn muốn in. Các giá trị có thể là - \"easy\", "
+"Đặt mức khó của các sudoku bạn muốn in. Các giá trị có thể là: \"easy\", "
 "\"medium\", \"hard\", \"very_hard\""
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:3
+#: data/org.gnome.sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
 msgstr "Số Sudoku cần in "
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:4
+#: data/org.gnome.sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
 msgstr "Số Sudoku mà bạn muốn in"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:5
+#: data/org.gnome.sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Cảnh báo về ô vuông không điền được và số trùng lặp"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:6
+#: data/org.gnome.sudoku.gschema.xml:23
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -202,126 +204,126 @@ msgstr ""
 "Hiển thị chữ X lớn màu đỏ trong một ô vuông nếu nó không thể điền vào bất cứ "
 "con số nào và các số trùng lặp sẽ được tô màu đỏ"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:7
+#: data/org.gnome.sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Tô sáng dòng, cột và ô vuông cái mà chứa ô được chọn"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:8
+#: data/org.gnome.sudoku.gschema.xml:31
 msgid "Width of the window in pixels"
 msgstr "Chiều rộng cửa sổ theo điểm ảnh"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:9
+#: data/org.gnome.sudoku.gschema.xml:35
 msgid "Height of the window in pixels"
 msgstr "Chiều cao cửa sổ theo điểm ảnh"
 
-#: ../data/org.gnome.sudoku.gschema.xml.h:10
+#: data/org.gnome.sudoku.gschema.xml:39
 msgid "true if the window is maximized"
 msgstr "đặt là đúng nếu cửa sổ được phóng to tối đa"
 
-#: ../data/print-dialog.ui.h:1
+#: data/print-dialog.ui:12
 msgid "Print Multiple Puzzles"
 msgstr "In nhiều ván đấu"
 
-#: ../data/print-dialog.ui.h:2
+#: data/print-dialog.ui:21
 msgid "_Cancel"
 msgstr "_Thôi"
 
-#: ../data/print-dialog.ui.h:4
+#: data/print-dialog.ui:67
 msgid "_Number of puzzles"
 msgstr "_Số lượng câu đố:"
 
-#: ../data/print-dialog.ui.h:5
+#: data/print-dialog.ui:110
 msgid "Difficulty"
 msgstr "Độ khó"
 
-#: ../lib/sudoku-board.vala:583
+#: lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
 msgstr "Độ khó chưa biết"
 
-#: ../lib/sudoku-board.vala:585
+#: lib/sudoku-board.vala:585
 msgid "Easy Difficulty"
 msgstr "Mức chơi dễ"
 
-#: ../lib/sudoku-board.vala:587
+#: lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
 msgstr "Độ khó trung bình"
 
-#: ../lib/sudoku-board.vala:589
+#: lib/sudoku-board.vala:589
 msgid "Hard Difficulty"
 msgstr "Độ khó cao"
 
-#: ../lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:591
 msgid "Very Hard Difficulty"
 msgstr "Độ khó cực cao"
 
-#: ../lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:593
 msgid "Custom Puzzle"
 msgstr "Câu đố tùy ý"
 
 #. Help string for command line --version flag
-#: ../src/gnome-sudoku.vala:85
+#: src/gnome-sudoku.vala:85
 msgid "Show release version"
 msgstr "Hiện phiên bản phát hành"
 
 #. Help string for command line --show-possible flag
-#: ../src/gnome-sudoku.vala:89
+#: src/gnome-sudoku.vala:89
 msgid "Show the possible values for each cell"
 msgstr "Hiện các giá trị có thể cho từng ô"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: ../src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Câu đố bạn nhập vào không phải là Sudoku hợp lệ."
 
-#: ../src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "Please enter a valid puzzle."
 msgstr "Hãy nhập vào một câu đố hợp lệ"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: ../src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Câu đố bạn đã nhập vào có nhiều cách giải."
 
-#: ../src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Một câu đố Sudoku hợp lệ chỉ có một phương án giải duy nhất."
 
-#: ../src/gnome-sudoku.vala:294
+#: src/gnome-sudoku.vala:290
 msgid "_Back"
 msgstr "Lù_i"
 
-#: ../src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:291
 msgid "Play _Anyway"
 msgstr "_Vẫn chơi"
 
-#: ../src/gnome-sudoku.vala:337
+#: src/gnome-sudoku.vala:333
 msgid "_Resume"
 msgstr "_Phục hồi lại"
 
-#: ../src/gnome-sudoku.vala:401
+#: src/gnome-sudoku.vala:397
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Hay quá, bạn đã giải câu đố trong vòng %d phút!"
 
-#: ../src/gnome-sudoku.vala:407
+#: src/gnome-sudoku.vala:403
 msgid "Play _Again"
 msgstr "Chơi _lại"
 
-#: ../src/gnome-sudoku.vala:426
+#: src/gnome-sudoku.vala:422
 msgid "Select Difficulty"
 msgstr "Chọn độ khó"
 
-#: ../src/gnome-sudoku.vala:482
+#: src/gnome-sudoku.vala:478
 msgid "Reset the board to its original state?"
 msgstr "Đặt bàn thành trạng thái ban đầu của nó?"
 
-#: ../src/gnome-sudoku.vala:529
+#: src/gnome-sudoku.vala:525
 msgid "Create Puzzle"
 msgstr "Tạo câu đố"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: ../src/gnome-sudoku.vala:610
+#: src/gnome-sudoku.vala:606
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -332,20 +334,23 @@ msgstr ""
 "\n"
 "Puzzles được tạo bởi QQwing %s"
 
-#: ../src/gnome-sudoku.vala:615
+#: src/gnome-sudoku.vala:611
 msgid "translator-credits"
 msgstr "Nhóm Việt hóa GNOME <gnome-vi-list@gnome.org>"
 
-#: ../src/number-picker.vala:90
+#: src/number-picker.vala:90
 msgid "Clear"
 msgstr "Xóa trắng"
 
 #. Error message if printing fails
-#: ../src/sudoku-printer.vala:48
+#: src/sudoku-printer.vala:48
 msgid "Error printing file:"
 msgstr "Gặp lỗi khi in tập tin:"
 
 #. Text on overlay when game is paused
-#: ../src/sudoku-view.vala:630
+#: src/sudoku-view.vala:631
 msgid "Paused"
 msgstr "Đã tạm dừng"
+
+#~ msgid "_Help"
+#~ msgstr "Trợ _giúp"
