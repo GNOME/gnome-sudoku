@@ -1,14 +1,15 @@
 # Ales Nyakhaychyk <nab@mail.by>, 2003.
 # Ihar Hrachyshka <ihar.hrachyshka@gmail.com>, 2011, 2013.
 # Kasia Bondarava <kasia.bondarava@gmail.com>, 2012.
+# Yuras Shumovich <shumovichy@gmail.com>, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-18 14:52+0000\n"
-"PO-Revision-Date: 2012-09-07 18:13+0300\n"
-"Last-Translator: Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
+"POT-Creation-Date: 2017-08-13 22:15+0000\n"
+"PO-Revision-Date: 2017-09-17 19:28+0300\n"
+"Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
 "MIME-Version: 1.0\n"
@@ -16,526 +17,630 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:1 ../src/lib/defaults.py:48
-msgid "Sudoku"
-msgstr "Судоку"
+#: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
+msgid "_Print"
+msgstr "_Надрукаваць"
 
-#: ../data/gnome-sudoku.desktop.in.in.h:2
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Праверце сваё лагічнае мышленне на гэтай лічбавай галаваломцы"
+#: data/gnome-sudoku-menu.ui:10
+msgid "Print _Current Puzzle…"
+msgstr "Надрукаваць _бягучую галаваломку..."
 
-#: ../data/gnome-sudoku.desktop.in.in.h:3
-msgid "game;board;tiles;japanese;"
-msgstr "гульня;настольная гульня;японская гульня;"
+#: data/gnome-sudoku-menu.ui:14
+msgid "Print _Multiple Puzzles…"
+msgstr "Надрукаваць _некалькі галаваломак..."
 
-#: ../data/print_games.ui.h:1
-msgid "Print Sudokus"
-msgstr "Друк гульняў судоку"
+#: data/gnome-sudoku-menu.ui:22
+msgid "High_lighter"
+msgstr "Пад_светка"
 
-#: ../data/print_games.ui.h:2
-msgid "Print Games"
-msgstr "Друк гульняў"
+#: data/gnome-sudoku-menu.ui:26
+msgid "_Warnings"
+msgstr "_Папярэджанні"
 
-#: ../data/print_games.ui.h:3
-msgid "_Number of sudoku to print: "
-msgstr "Колькасць _табліц судоку для друку: "
+#: data/gnome-sudoku-menu.ui:39
+msgid "_About"
+msgstr "_Аб праграме"
 
-#: ../data/print_games.ui.h:4
-msgid "_Sudokus per page: "
-msgstr "Колькасць табліц судоку на _бачыне: "
+#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
+msgid "_Quit"
+msgstr "_Выхад"
 
-#: ../data/print_games.ui.h:5
-msgid "Levels of difficulty to print"
-msgstr "Узроўні цяжкасці для друку"
-
-#: ../data/print_games.ui.h:6
-msgid "_Easy"
-msgstr "_Просты"
-
-#: ../data/print_games.ui.h:7
-msgid "_Medium"
-msgstr "_Сярэдні"
-
-#: ../data/print_games.ui.h:8
-msgid "_Hard"
-msgstr "_Цяжкі"
-
-#: ../data/print_games.ui.h:9
-msgid "_Very Hard"
-msgstr "_Вельмі цяжкі"
-
-#: ../data/print_games.ui.h:10
-msgid "Details"
-msgstr "Падрабязнасці"
-
-#: ../data/print_games.ui.h:11
-msgid "_Mark games as played once you've printed them."
-msgstr "_Пазначаць гульні як закончаныя пасля друку."
-
-#: ../data/print_games.ui.h:12
-msgid "_Include games you've already played in list of games to print"
-msgstr "_Улучыць у спіс для друку гульні, у якія вы ўжо гулялі"
-
-#: ../data/select_game.ui.h:1
-msgid "_New Game"
-msgstr "_Новая гульня"
-
-#: ../data/select_game.ui.h:2
-msgid "_Saved Games"
-msgstr "_Захаваныя гульні"
-
-#: ../data/tracker.ui.h:1
-msgid "Add a new tracker"
-msgstr "Дадаць новы трэкер"
-
-#: ../data/tracker.ui.h:2
-msgid "Remove the selected tracker"
-msgstr "Выдаліць вылучаны трэкер"
-
-#: ../data/tracker.ui.h:3
-msgid "Make the tracked changes permanent"
-msgstr "Замацаваць змены трэкера"
-
-#: ../data/tracker.ui.h:4 ../src/lib/main.py:750
-msgid "H_ide"
-msgstr "_Схаваць"
-
-#: ../data/tracker.ui.h:5
-msgid "Hide the tracked values"
-msgstr "Схаваць значэнні трэкера"
-
-#: ../src/lib/defaults.py:47
+#: data/gnome-sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
 msgstr "GNOME Судоку"
 
-#: ../src/lib/defaults.py:50
+#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Праверце сваё лагічнае мышленне на гэтай лічбавай галаваломцы"
+
+#: data/gnome-sudoku.appdata.xml.in:10
+msgid ""
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
+msgstr ""
+"Гуляйце ў папулярную Японскую лагічную гульню. Раім GNOME Судоку ўсім "
+"аматарам судоку, бо яго просты і ненадакучлівы інтэрфейс робіць гульню "
+"вясёлай незалежна ад вашага майстэрства."
+
+#: data/gnome-sudoku.appdata.xml.in:15
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites, so your game will be as easy or as difficult as you want it to be."
+msgstr ""
+"Кожная гульня мае узровень цяжкасць, падобны на той, які пазначаюць у "
+"газетах і на сеціўных пляцоўках, таму гульня можа быць настолькі лёгкай ці "
+"складанай, на колькі вы жадаеце."
+
+#: data/gnome-sudoku.appdata.xml.in:20
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"Калі вам падабаецца гуляць на паперы, то галаваломкі можна надрукаваць. "
+"Выберыце колькасць галаваломак на кожнай старонцы і іх узровень цяжкасці. "
+"Такім чынам GNOME Судоку можа адыгрываць ролю бясконцай кнігі з судоку."
+
+#: data/gnome-sudoku.appdata.xml.in:30
+msgid "A GNOME sudoku game preview"
+msgstr "Папярэдні агляд гульні GNOME Судоку"
+
+#: data/gnome-sudoku.appdata.xml.in:47
+msgid "The GNOME Project"
+msgstr "Праект GNOME"
+
+#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
+msgid "Sudoku"
+msgstr "Судоку"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/gnome-sudoku.desktop.in:6
+msgid "magic;square;"
+msgstr "магічны;квадрат;"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gnome-sudoku.desktop.in:9
+msgid "gnome-sudoku"
+msgstr "gnome-sudoku"
+
+#: data/gnome-sudoku.ui:22
+msgid "Undo your last action"
+msgstr "Адрабіць апошняе дзеянне"
+
+#: data/gnome-sudoku.ui:43
+msgid "Redo your last action"
+msgstr "Паўтарыць апошняе скасаванае дзеянне"
+
+#: data/gnome-sudoku.ui:91
+msgid "Go back to the current game"
+msgstr "Вярнуцца да бягучай гульні"
+
+#: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
+msgid "_Easy"
+msgstr "_Просты"
+
+#: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
+msgid "_Medium"
+msgstr "_Сярэдні"
+
+#: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
+msgid "_Hard"
+msgstr "_Цяжкі"
+
+#: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
+msgid "_Very Hard"
+msgstr "_Вельмі цяжкі"
+
+#: data/gnome-sudoku.ui:189
+msgid "_Create your own puzzle"
+msgstr "_Стварыць сваю галаваломку"
+
+#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
+msgid "_Pause"
+msgstr "_Паўза"
+
+#: data/gnome-sudoku.ui:251
+msgid "_Clear Board"
+msgstr "_Ачысціць дошку"
+
+#: data/gnome-sudoku.ui:255
+msgid "Reset the board to its original state"
+msgstr "Вярнуць дашку ў першапачатковы стан"
+
+#: data/gnome-sudoku.ui:269
+msgid "_New Puzzle"
+msgstr "_Новая галаваломка"
+
+#: data/gnome-sudoku.ui:273
+msgid "Start a new puzzle"
+msgstr "Распачаць новую галаваломку"
+
+#: data/gnome-sudoku.ui:287
+msgid "_Start Playing"
+msgstr "_Пачаць гульню"
+
+#: data/gnome-sudoku.ui:291
+msgid "Start playing the custom puzzle you have created"
+msgstr "Пачаць уласную галаваломку, якую вы толькі што стварылі"
+
+#: data/org.gnome.sudoku.gschema.xml:11
+msgid "Difficulty level of sudokus to be printed"
+msgstr "Узровень цяжкасці судоку для друку"
+
+#: data/org.gnome.sudoku.gschema.xml:12
+msgid ""
+"Set the difficulty level of the sudokus you want to print. Possible values "
+"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
+msgstr ""
+"Настаўце ўзровень цяжкасці судоку, якія вы жадаеце надрукаваць. Магчымыя "
+"значэнні: \"easy\" (лёгка), \"medium\" (сярэдне), \"hard\" (цяжка), "
+"\"very_hard\" (вельмі цяжка)"
+
+#: data/org.gnome.sudoku.gschema.xml:17
+msgid "Number of Sudokus to print"
+msgstr "Колькасць судоку для друку"
+
+#: data/org.gnome.sudoku.gschema.xml:18
+msgid "Set the number of sudokus you want to print"
+msgstr "Настаўце колькасць судоку, якія вы жадаеце надрукаваць"
+
+#: data/org.gnome.sudoku.gschema.xml:22
+msgid "Warn about unfillable squares and duplicate numbers"
+msgstr "Папярэджваць аб паўторах і квадрах, якія немагчыма запоўніць"
+
+#: data/org.gnome.sudoku.gschema.xml:23
+msgid ""
+"Displays a big red X in a square if it cannot possibly be filled by any "
+"number and duplicate numbers are highlighted in red"
+msgstr ""
+"Паказвае вялікі чырвоны крыжык у квадраце, калі яго нельга запоўніць ніякай "
+"лічбай, паўторныя лічбы падсвечваюцца чырвоным"
+
+#: data/org.gnome.sudoku.gschema.xml:27
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Падсвяціць радок, слупок і квадрат, якія змяшчаюць абраную клетку"
+
+#: data/org.gnome.sudoku.gschema.xml:31
+msgid "Width of the window in pixels"
+msgstr "Шырыня акна ў пікселах"
+
+#: data/org.gnome.sudoku.gschema.xml:35
+msgid "Height of the window in pixels"
+msgstr "Вышыня акна ў пікселах"
+
+#: data/org.gnome.sudoku.gschema.xml:39
+msgid "true if the window is maximized"
+msgstr "уключана, калі акно максімалізавана"
+
+#: data/print-dialog.ui:12
+msgid "Print Multiple Puzzles"
+msgstr "Надрукаваць некалькі галаваломак"
+
+#: data/print-dialog.ui:21
+msgid "_Cancel"
+msgstr "_Скасаваць"
+
+#: data/print-dialog.ui:67
+msgid "_Number of puzzles"
+msgstr "_Колькасць галаваломак"
+
+#: data/print-dialog.ui:110
+msgid "Difficulty"
+msgstr "Цяжкасць"
+
+#: lib/sudoku-board.vala:583
+msgid "Unknown Difficulty"
+msgstr "Невядомая цяжкасць"
+
+#: lib/sudoku-board.vala:585
+msgid "Easy Difficulty"
+msgstr "Проста"
+
+#: lib/sudoku-board.vala:587
+msgid "Medium Difficulty"
+msgstr "Сярэдне"
+
+#: lib/sudoku-board.vala:589
+msgid "Hard Difficulty"
+msgstr "Цяжка"
+
+#: lib/sudoku-board.vala:591
+msgid "Very Hard Difficulty"
+msgstr "Вельмі цяжка"
+
+#: lib/sudoku-board.vala:593
+msgid "Custom Puzzle"
+msgstr "Свая галаваломка"
+
+#. Help string for command line --version flag
+#: src/gnome-sudoku.vala:85
+msgid "Show release version"
+msgstr "Паказаць версію выдання"
+
+#. Help string for command line --show-possible flag
+#: src/gnome-sudoku.vala:89
+msgid "Show the possible values for each cell"
+msgstr "Паказаць магчымыя значэнні для кожнай клеткі"
+
+#. Error dialog shown when starting a custom game that is not valid.
+#: src/gnome-sudoku.vala:279
+msgid "The puzzle you have entered is not a valid Sudoku."
+msgstr "Уведзеная галаваломка не з'яўляецца правільным судоку."
+
+#: src/gnome-sudoku.vala:279
+msgid "Please enter a valid puzzle."
+msgstr "Увядзіце правільную галаваломку."
+
+#. Warning dialog shown when starting a custom game that has multiple solutions.
+#: src/gnome-sudoku.vala:288
+msgid "The puzzle you have entered has multiple solutions."
+msgstr "Уведзеная галаваломка мае некалькі рашэнняў."
+
+#: src/gnome-sudoku.vala:288
+msgid "Valid Sudoku puzzles have exactly one solution."
+msgstr "Правільныя судоку маюць дакладна адно рашэнне."
+
+#: src/gnome-sudoku.vala:290
+msgid "_Back"
+msgstr "_Назад"
+
+#: src/gnome-sudoku.vala:291
+msgid "Play _Anyway"
+msgstr "Гуляць усё роўна"
+
+#: src/gnome-sudoku.vala:333
+msgid "_Resume"
+msgstr "_Узнавіць"
+
+#: src/gnome-sudoku.vala:397
+#, c-format
+msgid "Well done, you completed the puzzle in %d minute!"
+msgid_plural "Well done, you completed the puzzle in %d minutes!"
+msgstr[0] "Выдатна, вы вырашылі галаваломку за %d секунду!"
+msgstr[1] "Выдатна, вы вырашылі галаваломку за %d секунды!"
+msgstr[2] "Выдатна, вы вырашылі галаваломку за %d секунд!"
+
+#: src/gnome-sudoku.vala:403
+msgid "Play _Again"
+msgstr "Гуляць _зноў"
+
+#: src/gnome-sudoku.vala:422
+msgid "Select Difficulty"
+msgstr "Абярыце цяжкасць"
+
+#: src/gnome-sudoku.vala:478
+msgid "Reset the board to its original state?"
+msgstr "Сапраўды вярнуць дашку ў першапачатковы стан?"
+
+#: src/gnome-sudoku.vala:525
+msgid "Create Puzzle"
+msgstr "Стварыць галаваломку"
+
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: src/gnome-sudoku.vala:606
+#, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
-"GNOME Sudoku is a part of GNOME Games."
+"Puzzles generated by QQwing %s"
 msgstr ""
 "Папулярная японская галаваломка\n"
 "\n"
-"\n"
-"GNOME Судоку з'яўляецца складовай часткай пакунка гульняў GNOME."
+"Галаваломкі згенераваны QQwing %s"
 
-#: ../src/lib/defaults.py:53
-msgid "GNOME Games web site"
-msgstr "Сеціўная пляцоўка гульняў GNOME"
-
-#: ../src/lib/game_selector.py:121 ../src/lib/main.py:627
-#: ../src/lib/printing.py:186
-msgid "Easy"
-msgstr "Лёгка"
-
-#: ../src/lib/game_selector.py:122 ../src/lib/main.py:628
-#: ../src/lib/printing.py:187
-msgid "Medium"
-msgstr "Сярэдне"
-
-#: ../src/lib/game_selector.py:123 ../src/lib/main.py:629
-#: ../src/lib/printing.py:188
-msgid "Hard"
-msgstr "Цяжка"
-
-#: ../src/lib/game_selector.py:124 ../src/lib/printing.py:189
-msgid "Very hard"
-msgstr "Вельмі цяжка"
-
-#. Then we're today
-#. within the minute
-#: ../src/lib/game_selector.py:160
-#, python-format
-msgid "Last played %(n)s second ago"
-msgid_plural "Last played %(n)s seconds ago"
-msgstr[0] "Апошняя гульня была %(n)s секунду таму"
-msgstr[1] "Апошняя гульня была %(n)s секунды таму"
-msgstr[2] "Апошняя гульня была %(n)s секунд таму"
-
-#: ../src/lib/game_selector.py:164
-#, python-format
-msgid "Last played %(n)s minute ago"
-msgid_plural "Last played %(n)s minutes ago"
-msgstr[0] "Апошняя гульня была %(n)s хвіліну таму"
-msgstr[1] "Апошняя гульня была %(n)s хвіліны таму"
-msgstr[2] "Апошняя гульня была %(n)s хвілін таму"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:168
-msgid "Last played at %I:%M %p"
-msgstr "Апошняя гульня была ў %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:171
-msgid "Last played yesterday at %I:%M %p"
-msgstr "Апошняя гульня была ўчора ў %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:174
-msgid "Last played on %A at %I:%M %p"
-msgstr "Апошняя гульня была ў %A, %H:%M"
-
-#. Translators, see strftime manual in order to translate %? format strings
-#: ../src/lib/game_selector.py:177
-msgid "Last played on %B %e %Y"
-msgstr "Апошняя гульня была %e %b, %Y"
-
-#: ../src/lib/game_selector.py:190
-msgid "Easy puzzle"
-msgstr "Простая галаваломка"
-
-#: ../src/lib/game_selector.py:191
-msgid "Medium puzzle"
-msgstr "Сярэдняя галаваломка"
-
-#: ../src/lib/game_selector.py:192
-msgid "Hard puzzle"
-msgstr "Цяжкая галаваломка"
-
-#: ../src/lib/game_selector.py:193
-msgid "Very hard puzzle"
-msgstr "Вельмі цяжкая галаваломка"
-
-#: ../src/lib/game_selector.py:199
-#, python-format
-msgid "Played for %d hour"
-msgid_plural "Played for %d hours"
-msgstr[0] "Працягласць гульні: %d гадзіна"
-msgstr[1] "Працягласць гульні: %d гадзіны"
-msgstr[2] "Працягласць гульні: %d гадзін"
-
-#: ../src/lib/game_selector.py:202
-#, python-format
-msgid "Played for %d minute"
-msgid_plural "Played for %d minutes"
-msgstr[0] "Працягласць гульні: %d хвіліна"
-msgstr[1] "Працягласць гульні: %d хвіліны"
-msgstr[2] "Працягласць гульні: %d хвілін"
-
-#: ../src/lib/game_selector.py:205
-#, python-format
-msgid "Played for %d second"
-msgid_plural "Played for %d seconds"
-msgstr[0] "Працягласць гульні: %d секунда"
-msgstr[1] "Працягласць гульні: %d секунды"
-msgstr[2] "Працягласць гульні: %d секунд"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:162
-msgid "Do you really want to do this?"
-msgstr "Ці вы сапраўды хочаце зрабіць гэта?"
-
-#: ../src/lib/gtk_goodies/dialog_extras.py:196
-msgid "Don't ask me this again."
-msgstr "Больш не пытацца ў мяне пра гэта."
-
-#: ../src/lib/main.py:195
-msgid "_Game"
-msgstr "_Гульня"
-
-#: ../src/lib/main.py:196
-msgid "New game"
-msgstr "Новая гульня"
-
-#: ../src/lib/main.py:197
-msgid "_Reset"
-msgstr "_Ануляваць"
-
-#: ../src/lib/main.py:199
-msgid "_Undo"
-msgstr "_Адрабіць назад"
-
-#: ../src/lib/main.py:200
-msgid "Undo last action"
-msgstr "Адрабіць апошняе дзеянне назад"
-
-#: ../src/lib/main.py:201
-msgid "_Redo"
-msgstr "_Паўтарыць скасаванае"
-
-#: ../src/lib/main.py:202
-msgid "Redo last action"
-msgstr "Паўтарыць апошняе скасаванае дзеянне"
-
-#: ../src/lib/main.py:203
-msgid "Puzzle _Statistics..."
-msgstr "_Статыстыка галаваломкі..."
-
-#: ../src/lib/main.py:205
-msgid "_Print..."
-msgstr "_Надрукаваць..."
-
-#: ../src/lib/main.py:206
-msgid "Print _Multiple Sudokus..."
-msgstr "Надрукаваць _некалькі судоку..."
-
-#: ../src/lib/main.py:209
-msgid "_Settings"
-msgstr "_Настройкі"
-
-#: ../src/lib/main.py:211
-msgid "_Tools"
-msgstr "Пры_лады"
-
-#: ../src/lib/main.py:212
-msgid "_Hint"
-msgstr "Пад_казка"
-
-#: ../src/lib/main.py:213
-msgid "Show a square that is easy to fill."
-msgstr "Паказаць квадрат, які зручна запаўняць."
-
-#: ../src/lib/main.py:214
-msgid "Clear _Top Notes"
-msgstr "Ачысціць _верхнія пазнакі"
-
-#: ../src/lib/main.py:216
-msgid "Clear _Bottom Notes"
-msgstr "Ачысціць _ніжнія пазнакі"
-
-#: ../src/lib/main.py:218
-msgid "_Help"
-msgstr "_Дапамога"
-
-#: ../src/lib/main.py:219
-msgid "_Contents"
-msgstr "_Змест"
-
-#: ../src/lib/main.py:225
-msgid "Show _Possible Numbers"
-msgstr "Паказваць _магчымыя лічбы"
-
-#: ../src/lib/main.py:227
-msgid "Always show possible numbers in a square"
-msgstr "Заўсёды паказваць магчымыя лічбы ў квадраце"
-
-#: ../src/lib/main.py:231
-msgid "Warn About _Unfillable Squares"
-msgstr "Папярэджваць аб квадраце, _які немагчыма запоўніць"
-
-#: ../src/lib/main.py:233
-msgid "Warn about squares made unfillable by a move"
-msgstr ""
-"Папярэджваць аб квадраце, якія немагчыма запоўніць пасля зробленага ходу"
-
-#: ../src/lib/main.py:235
-msgid "_Track Additions"
-msgstr "_Адсочваць хады"
-
-#: ../src/lib/main.py:237
-msgid "Mark new additions in a separate color so you can keep track of them."
-msgstr ""
-"Пазначаць новыя дадаткі асобным колерам, каб іх было зручней адсочваць."
-
-#: ../src/lib/main.py:239
-msgid "Show _Toolbar"
-msgstr "_Паказваць паліцу прылад"
-
-#: ../src/lib/main.py:240
-msgid "_Highlighter"
-msgstr "_Падсветка"
-
-#: ../src/lib/main.py:241
-msgid "Highlight the current row, column and box"
-msgstr "Падсветка актыўнага радка, слупка і клеткі"
-
-#: ../src/lib/main.py:366
-#, python-format
-msgid "You completed the puzzle in %d second"
-msgid_plural "You completed the puzzle in %d seconds"
-msgstr[0] "Вы вырашылі галаваломку за %d секунду"
-msgstr[1] "Вы вырашылі галаваломку за %d секунды"
-msgstr[2] "Вы вырашылі галаваломку за %d секунд"
-
-#: ../src/lib/main.py:371 ../src/lib/main.py:379
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d хвіліну"
-msgstr[1] "%d хвіліны"
-msgstr[2] "%d хвілін"
-
-#: ../src/lib/main.py:372 ../src/lib/main.py:380
-#, python-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d секунду"
-msgstr[1] "%d секунды"
-msgstr[2] "%d секунд"
-
-#: ../src/lib/main.py:373
-#, python-format
-msgid "You completed the puzzle in %(minute)s and %(second)s"
-msgstr "Вы вырашылі галаваломку за %(minute)s і %(second)s"
-
-#: ../src/lib/main.py:378
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d гадзіну"
-msgstr[1] "%d гадзіны"
-msgstr[2] "%d гадзін"
-
-#: ../src/lib/main.py:381
-#, python-format
-msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-msgstr "Вы вырашылі галаваломку за %(hour)s, %(minute)s і %(second)s"
-
-#: ../src/lib/main.py:383
-#, python-format
-msgid "You got %(n)s hint."
-msgid_plural "You got %(n)s hints."
-msgstr[0] "Вы папрасілі %(n)s падказку."
-msgstr[1] "Вы папрасілі %(n)s падказкі."
-msgstr[2] "Вы папрасілі %(n)s падказак."
-
-#: ../src/lib/main.py:386
-#, python-format
-msgid "You had %(n)s impossibility pointed out."
-msgid_plural "You had %(n)s impossibilities pointed out."
-msgstr[0] "Вы атрымалі %(n)s падказку аб немагчымасці запаўнення квадрата."
-msgstr[1] "Вы атрымалі %(n)s падказкі аб немагчымасці запаўнення квадрата."
-msgstr[2] "Вы атрымалі %(n)s падказак аб немагчымасці запаўнення квадрата."
-
-#: ../src/lib/main.py:391
-msgid "You win!"
-msgstr "Вы перамаглі!"
-
-#: ../src/lib/main.py:401
-msgid "Save this game before starting new one?"
-msgstr "Захаваць гэту гульню перад пачаткам новай?"
-
-#: ../src/lib/main.py:402
-msgid "_Save game for later"
-msgstr "_Захаваць гульню на потым"
-
-#: ../src/lib/main.py:403
-msgid "_Abandon game"
-msgstr "_Занядбаць гульню"
-
-#: ../src/lib/main.py:421
-msgid "Save game before closing?"
-msgstr "Захаваць гульню перад закрыццём?"
-
-#: ../src/lib/main.py:619
-msgid "Puzzle Information"
-msgstr "Інфармацыя аб галаваломцы"
-
-#: ../src/lib/main.py:620
-msgid "There is no current puzzle."
-msgstr "Галаваломка не адкрыта."
-
-#: ../src/lib/main.py:625
-msgid "Calculated difficulty: "
-msgstr "Падлічаная цяжкасць: "
-
-#: ../src/lib/main.py:630
-msgid "Very Hard"
-msgstr "Вельмі цяжка"
-
-#: ../src/lib/main.py:635
-msgid "Number of moves instantly fillable by elimination: "
-msgstr "Колькасць хадоў, якія імгненна запаўняюцца метадам выключэння: "
-
-#: ../src/lib/main.py:638
-msgid "Number of moves instantly fillable by filling: "
-msgstr "Колькасць хадоў, якія імгненна запаўняюцца метадам запаўнення: "
-
-#: ../src/lib/main.py:641
-msgid "Amount of trial-and-error required to solve: "
-msgstr "Колькасць памылковых спробаў, патрэбных для рашэння: "
-
-#: ../src/lib/main.py:644 ../src/lib/main.py:645
-msgid "Puzzle Statistics"
-msgstr "Статыстыка галаваломкі"
-
-#: ../src/lib/main.py:669
+#: src/gnome-sudoku.vala:611
 msgid "translator-credits"
 msgstr ""
 "Ales Nyakhaychyk <nab@mail.by>\n"
-"Ihar Hrachyshka <ihar.hrachyshka@gmail.com>"
+"Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
+"Юрась Шумовіч <shumovichy@gmail.com>"
 
-#. FIXME: This should create a pop-up dialog
-#: ../src/lib/main.py:679
-#, python-format
-msgid "Unable to display help: %s"
-msgstr "Не ўдалося паказаць даведнік: %s"
+#: src/number-picker.vala:90
+msgid "Clear"
+msgstr "Ачысціць"
 
-#: ../src/lib/main.py:735
-msgid "Untracked"
-msgstr "Без трэкера"
+#. Error message if printing fails
+#: src/sudoku-printer.vala:48
+msgid "Error printing file:"
+msgstr "Памылка друкавання файла:"
 
-#: ../src/lib/main.py:744
-msgid "_Remove"
-msgstr "_Выдаліць"
+#. Text on overlay when game is paused
+#: src/sudoku-view.vala:631
+msgid "Paused"
+msgstr "Прыпынена"
 
-#: ../src/lib/main.py:745
-msgid "Delete selected tracker."
-msgstr "Выдаліць вылучаны трэкер."
+#~ msgid "game;board;tiles;japanese;"
+#~ msgstr "гульня;настольная гульня;японская гульня;"
 
-#: ../src/lib/main.py:751
-msgid "Hide current tracker entries."
-msgstr "Схаваць элементы актыўнага трэкера."
+#~ msgid "Print Sudokus"
+#~ msgstr "Друк гульняў судоку"
 
-#: ../src/lib/main.py:756
-msgid "A_pply"
-msgstr "_Ужыць"
+#~ msgid "Print Games"
+#~ msgstr "Друк гульняў"
 
-#: ../src/lib/main.py:757
-msgid "Apply all tracked values and remove the tracker."
-msgstr "Ужыць усе значэнні трэкера і выдаліць яго."
+#~ msgid "_Sudokus per page: "
+#~ msgstr "Колькасць табліц судоку на _бачыне: "
 
-#: ../src/lib/main.py:795
-#, python-format
-msgid "Tracker %s"
-msgstr "Трэкер %s"
+#~ msgid "Levels of difficulty to print"
+#~ msgstr "Узроўні цяжкасці для друку"
 
-#: ../src/lib/number_box.py:68
-msgid "_Clear"
-msgstr "_Ачысціць"
+#~ msgid "Details"
+#~ msgstr "Падрабязнасці"
 
-#: ../src/lib/saver.py:155
-msgid "No Space"
-msgstr "Няма вольнай прасторы"
+#~ msgid "_Mark games as played once you've printed them."
+#~ msgstr "_Пазначаць гульні як закончаныя пасля друку."
 
-#: ../src/lib/saver.py:156
-msgid "No space left on disk"
-msgstr "Не стае вольнай дыскавай прасторы"
+#~ msgid "_Include games you've already played in list of games to print"
+#~ msgstr "_Улучыць у спіс для друку гульні, у якія вы ўжо гулялі"
 
-#: ../src/lib/saver.py:158 ../src/lib/saver.py:165
-#, python-format
-msgid "Unable to create data folder %(path)s."
-msgstr "Не ўдалося стварыць папку даных %(path)s."
+#~ msgid "_Saved Games"
+#~ msgstr "_Захаваныя гульні"
 
-#: ../src/lib/saver.py:159
-msgid "There is no disk space left!"
-msgstr "Не стае вольнай дыскавай прасторы!"
+#~ msgid "Add a new tracker"
+#~ msgstr "Дадаць новы трэкер"
 
-#: ../src/lib/saver.py:163 ../src/lib/saver.py:164
-msgid "Error creating directory"
-msgstr "Памылка стварэння каталога"
+#~ msgid "Remove the selected tracker"
+#~ msgstr "Выдаліць вылучаны трэкер"
 
-#: ../src/lib/saver.py:166 ../src/lib/saver.py:191 ../src/lib/saver.py:215
-#: ../src/lib/saver.py:233
-#, python-format
-msgid "Error %(errno)s: %(error)s"
-msgstr "Памылка %(errno)s: %(error)s"
+#~ msgid "Make the tracked changes permanent"
+#~ msgstr "Замацаваць змены трэкера"
 
-#: ../src/lib/saver.py:186 ../src/lib/saver.py:187
-msgid "Unable to save game."
-msgstr "Не ўдалося захаваць гульню."
+#~ msgid "H_ide"
+#~ msgstr "_Схаваць"
 
-#: ../src/lib/saver.py:189 ../src/lib/saver.py:214 ../src/lib/saver.py:232
-#, python-format
-msgid "Unable to save file %(filename)s."
-msgstr "Не ўдалося захаваць файл %(filename)s."
+#~ msgid "Hide the tracked values"
+#~ msgstr "Схаваць значэнні трэкера"
 
-#: ../src/lib/saver.py:211 ../src/lib/saver.py:212
-msgid "Unable to mark game as finished."
-msgstr "Не ўдалося пазначыць гульню як закончаную."
+#~ msgid "GNOME Games web site"
+#~ msgstr "Сеціўная пляцоўка гульняў GNOME"
 
-#: ../src/lib/saver.py:229 ../src/lib/saver.py:230
-msgid "Sudoku unable to mark game as finished."
-msgstr "Не ўдалося пазначыць гульню як закончаную."
+#~ msgid "Easy"
+#~ msgstr "Лёгка"
+
+#~ msgid "Medium"
+#~ msgstr "Сярэдне"
+
+#~ msgid "Hard"
+#~ msgstr "Цяжка"
+
+#~ msgid "Very hard"
+#~ msgstr "Вельмі цяжка"
+
+#~ msgid "Last played %(n)s second ago"
+#~ msgid_plural "Last played %(n)s seconds ago"
+#~ msgstr[0] "Апошняя гульня была %(n)s секунду таму"
+#~ msgstr[1] "Апошняя гульня была %(n)s секунды таму"
+#~ msgstr[2] "Апошняя гульня была %(n)s секунд таму"
+
+#~ msgid "Last played %(n)s minute ago"
+#~ msgid_plural "Last played %(n)s minutes ago"
+#~ msgstr[0] "Апошняя гульня была %(n)s хвіліну таму"
+#~ msgstr[1] "Апошняя гульня была %(n)s хвіліны таму"
+#~ msgstr[2] "Апошняя гульня была %(n)s хвілін таму"
+
+#~ msgid "Last played at %I:%M %p"
+#~ msgstr "Апошняя гульня была ў %H:%M"
+
+#~ msgid "Last played yesterday at %I:%M %p"
+#~ msgstr "Апошняя гульня была ўчора ў %H:%M"
+
+#~ msgid "Last played on %A at %I:%M %p"
+#~ msgstr "Апошняя гульня была ў %A, %H:%M"
+
+#~ msgid "Last played on %B %e %Y"
+#~ msgstr "Апошняя гульня была %e %b, %Y"
+
+#~ msgid "Easy puzzle"
+#~ msgstr "Простая галаваломка"
+
+#~ msgid "Very hard puzzle"
+#~ msgstr "Вельмі цяжкая галаваломка"
+
+#~ msgid "Played for %d hour"
+#~ msgid_plural "Played for %d hours"
+#~ msgstr[0] "Працягласць гульні: %d гадзіна"
+#~ msgstr[1] "Працягласць гульні: %d гадзіны"
+#~ msgstr[2] "Працягласць гульні: %d гадзін"
+
+#~ msgid "Played for %d minute"
+#~ msgid_plural "Played for %d minutes"
+#~ msgstr[0] "Працягласць гульні: %d хвіліна"
+#~ msgstr[1] "Працягласць гульні: %d хвіліны"
+#~ msgstr[2] "Працягласць гульні: %d хвілін"
+
+#~ msgid "Played for %d second"
+#~ msgid_plural "Played for %d seconds"
+#~ msgstr[0] "Працягласць гульні: %d секунда"
+#~ msgstr[1] "Працягласць гульні: %d секунды"
+#~ msgstr[2] "Працягласць гульні: %d секунд"
+
+#~ msgid "Do you really want to do this?"
+#~ msgstr "Ці вы сапраўды хочаце зрабіць гэта?"
+
+#~ msgid "Don't ask me this again."
+#~ msgstr "Больш не пытацца ў мяне пра гэта."
+
+#~ msgid "_Game"
+#~ msgstr "_Гульня"
+
+#~ msgid "New game"
+#~ msgstr "Новая гульня"
+
+#~ msgid "_Undo"
+#~ msgstr "_Адрабіць назад"
+
+#~ msgid "_Redo"
+#~ msgstr "_Паўтарыць скасаванае"
+
+#~ msgid "Puzzle _Statistics..."
+#~ msgstr "_Статыстыка галаваломкі..."
+
+#~ msgid "_Settings"
+#~ msgstr "_Настройкі"
+
+#~ msgid "_Tools"
+#~ msgstr "Пры_лады"
+
+#~ msgid "_Hint"
+#~ msgstr "Пад_казка"
+
+#~ msgid "Show a square that is easy to fill."
+#~ msgstr "Паказаць квадрат, які зручна запаўняць."
+
+#~ msgid "Clear _Top Notes"
+#~ msgstr "Ачысціць _верхнія пазнакі"
+
+#~ msgid "Clear _Bottom Notes"
+#~ msgstr "Ачысціць _ніжнія пазнакі"
+
+#~ msgid "_Help"
+#~ msgstr "_Дапамога"
+
+#~ msgid "_Contents"
+#~ msgstr "_Змест"
+
+#~ msgid "Show _Possible Numbers"
+#~ msgstr "Паказваць _магчымыя лічбы"
+
+#~ msgid "Always show possible numbers in a square"
+#~ msgstr "Заўсёды паказваць магчымыя лічбы ў квадраце"
+
+#~ msgid "Warn about squares made unfillable by a move"
+#~ msgstr ""
+#~ "Папярэджваць аб квадраце, якія немагчыма запоўніць пасля зробленага ходу"
+
+#~ msgid "_Track Additions"
+#~ msgstr "_Адсочваць хады"
+
+#~ msgid ""
+#~ "Mark new additions in a separate color so you can keep track of them."
+#~ msgstr ""
+#~ "Пазначаць новыя дадаткі асобным колерам, каб іх было зручней адсочваць."
+
+#~ msgid "Show _Toolbar"
+#~ msgstr "_Паказваць паліцу прылад"
+
+#~ msgid "Highlight the current row, column and box"
+#~ msgstr "Падсветка актыўнага радка, слупка і клеткі"
+
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d хвіліну"
+#~ msgstr[1] "%d хвіліны"
+#~ msgstr[2] "%d хвілін"
+
+#~ msgid "%d second"
+#~ msgid_plural "%d seconds"
+#~ msgstr[0] "%d секунду"
+#~ msgstr[1] "%d секунды"
+#~ msgstr[2] "%d секунд"
+
+#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
+#~ msgstr "Вы вырашылі галаваломку за %(minute)s і %(second)s"
+
+#~ msgid "%d hour"
+#~ msgid_plural "%d hours"
+#~ msgstr[0] "%d гадзіну"
+#~ msgstr[1] "%d гадзіны"
+#~ msgstr[2] "%d гадзін"
+
+#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
+#~ msgstr "Вы вырашылі галаваломку за %(hour)s, %(minute)s і %(second)s"
+
+#~ msgid "You got %(n)s hint."
+#~ msgid_plural "You got %(n)s hints."
+#~ msgstr[0] "Вы папрасілі %(n)s падказку."
+#~ msgstr[1] "Вы папрасілі %(n)s падказкі."
+#~ msgstr[2] "Вы папрасілі %(n)s падказак."
+
+#~ msgid "You had %(n)s impossibility pointed out."
+#~ msgid_plural "You had %(n)s impossibilities pointed out."
+#~ msgstr[0] "Вы атрымалі %(n)s падказку аб немагчымасці запаўнення квадрата."
+#~ msgstr[1] "Вы атрымалі %(n)s падказкі аб немагчымасці запаўнення квадрата."
+#~ msgstr[2] "Вы атрымалі %(n)s падказак аб немагчымасці запаўнення квадрата."
+
+#~ msgid "You win!"
+#~ msgstr "Вы перамаглі!"
+
+#~ msgid "Save this game before starting new one?"
+#~ msgstr "Захаваць гэту гульню перад пачаткам новай?"
+
+#~ msgid "_Save game for later"
+#~ msgstr "_Захаваць гульню на потым"
+
+#~ msgid "_Abandon game"
+#~ msgstr "_Занядбаць гульню"
+
+#~ msgid "Save game before closing?"
+#~ msgstr "Захаваць гульню перад закрыццём?"
+
+#~ msgid "Puzzle Information"
+#~ msgstr "Інфармацыя аб галаваломцы"
+
+#~ msgid "Number of moves instantly fillable by elimination: "
+#~ msgstr "Колькасць хадоў, якія імгненна запаўняюцца метадам выключэння: "
+
+#~ msgid "Number of moves instantly fillable by filling: "
+#~ msgstr "Колькасць хадоў, якія імгненна запаўняюцца метадам запаўнення: "
+
+#~ msgid "Amount of trial-and-error required to solve: "
+#~ msgstr "Колькасць памылковых спробаў, патрэбных для рашэння: "
+
+#~ msgid "Puzzle Statistics"
+#~ msgstr "Статыстыка галаваломкі"
+
+#~ msgid "Unable to display help: %s"
+#~ msgstr "Не ўдалося паказаць даведнік: %s"
+
+#~ msgid "Untracked"
+#~ msgstr "Без трэкера"
+
+#~ msgid "_Remove"
+#~ msgstr "_Выдаліць"
+
+#~ msgid "Delete selected tracker."
+#~ msgstr "Выдаліць вылучаны трэкер."
+
+#~ msgid "Hide current tracker entries."
+#~ msgstr "Схаваць элементы актыўнага трэкера."
+
+#~ msgid "A_pply"
+#~ msgstr "_Ужыць"
+
+#~ msgid "Apply all tracked values and remove the tracker."
+#~ msgstr "Ужыць усе значэнні трэкера і выдаліць яго."
+
+#~ msgid "Tracker %s"
+#~ msgstr "Трэкер %s"
+
+#~ msgid "No Space"
+#~ msgstr "Няма вольнай прасторы"
+
+#~ msgid "No space left on disk"
+#~ msgstr "Не стае вольнай дыскавай прасторы"
+
+#~ msgid "Unable to create data folder %(path)s."
+#~ msgstr "Не ўдалося стварыць папку даных %(path)s."
+
+#~ msgid "There is no disk space left!"
+#~ msgstr "Не стае вольнай дыскавай прасторы!"
+
+#~ msgid "Error %(errno)s: %(error)s"
+#~ msgstr "Памылка %(errno)s: %(error)s"
+
+#~ msgid "Unable to save game."
+#~ msgstr "Не ўдалося захаваць гульню."
+
+#~ msgid "Unable to save file %(filename)s."
+#~ msgstr "Не ўдалося захаваць файл %(filename)s."
+
+#~ msgid "Unable to mark game as finished."
+#~ msgstr "Не ўдалося пазначыць гульню як закончаную."
+
+#~ msgid "Sudoku unable to mark game as finished."
+#~ msgstr "Не ўдалося пазначыць гульню як закончаную."
