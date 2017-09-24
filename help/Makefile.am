@@ -29,7 +29,6 @@ HELP_FILES = \
 	print-inprogress-game.page	\
 	rules.page			\
 	save-resume.page		\
-	statistics.page			\
 	strategy.page			\
 	toolbar.page			\
 	trackers.page			\
