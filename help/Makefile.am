@@ -33,6 +33,6 @@ HELP_FILES = \
 	trackers.page			\
 	translate.page
 
-HELP_LINGUAS = ca cs de en_GB el es eu fr gl hu it ko oc pt_BR ru sl sr sr@latin sv da zh_CN
+HELP_LINGUAS = ca cs de en_GB el es eu fr gl hu it ko oc pl pt_BR ru sl sr sr@latin sv da zh_CN
 
 -include $(top_srcdir)/git.mk
