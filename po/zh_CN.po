@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-01-20 15:00+0000\n"
-"PO-Revision-Date: 2017-02-05 22:33+0800\n"
+"POT-Creation-Date: 2017-10-01 11:35+0000\n"
+"PO-Revision-Date: 2017-09-02 04:09+0800\n"
 "Last-Translator: Mandy Wang <wangmychn@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -43,7 +43,7 @@ msgstr "警告(_W)"
 msgid "_About"
 msgstr "关于(_A)"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:406
+#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "退出(_Q)"
 
@@ -89,7 +89,7 @@ msgid "The GNOME Project"
 msgstr "GNOME 项目"
 
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:606
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:604
 msgid "Sudoku"
 msgstr "数独"
 
@@ -135,7 +135,7 @@ msgstr "非常困难(_V)"
 msgid "_Create your own puzzle"
 msgstr "生成你自己的谜题(_C)"
 
-#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:331
+#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
 msgid "_Pause"
 msgstr "暂停(_P)"
 
@@ -170,7 +170,7 @@ msgstr "待打印的数独难度等级"
 #: data/org.gnome.sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
-"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr "设置数独的难度等级。可能的值有 - “简单”，“中等”，“困难”，“非常困难”"
 
 #: data/org.gnome.sudoku.gschema.xml:17
@@ -259,59 +259,58 @@ msgid "Show the possible values for each cell"
 msgstr "显示每格可能的值"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "你输入的不是一个有效的的谜题。"
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "Please enter a valid puzzle."
 msgstr "请输入一个有效的谜题"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "你输入的谜题有多种解法。"
 
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "有效的数独谜题有且仅有一种解法。"
 
-#: src/gnome-sudoku.vala:294
+#: src/gnome-sudoku.vala:290
 msgid "_Back"
 msgstr "返回(_B)"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:291
 msgid "Play _Anyway"
 msgstr "强行开始(_A)"
 
-#: src/gnome-sudoku.vala:337
+#: src/gnome-sudoku.vala:333
 msgid "_Resume"
 msgstr "恢复(_R)"
 
-#: src/gnome-sudoku.vala:401
+#: src/gnome-sudoku.vala:397
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "非常好。您在 %d 分钟内完成了谜题。"
 
-#: src/gnome-sudoku.vala:407
+#: src/gnome-sudoku.vala:403
 msgid "Play _Again"
 msgstr "再玩一把(_A)"
 
-#: src/gnome-sudoku.vala:426
+#: src/gnome-sudoku.vala:422
 msgid "Select Difficulty"
 msgstr "选择难度"
 
-#: src/gnome-sudoku.vala:482
+#: src/gnome-sudoku.vala:478
 msgid "Reset the board to its original state?"
 msgstr "重置面板到其初试状态？"
 
-#: src/gnome-sudoku.vala:529
+#: src/gnome-sudoku.vala:525
 msgid "Create Puzzle"
 msgstr "创建谜题"
 
-#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:610
+#: src/gnome-sudoku.vala:601
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -322,7 +321,7 @@ msgstr ""
 "\n"
 "谜题由 QQwing %s 生成"
 
-#: src/gnome-sudoku.vala:615
+#: src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
 "Yang Zhang <zyangmath@gmail.com>, 2007\n"
@@ -340,7 +339,7 @@ msgid "Error printing file:"
 msgstr "打印文件出错："
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:630
+#: src/sudoku-view.vala:631
 msgid "Paused"
 msgstr "暂停"
 
