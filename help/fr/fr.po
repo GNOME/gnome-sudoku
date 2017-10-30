@@ -5,18 +5,21 @@
 #
 # Bruno Brouard <annoa.b@gmail.com>, 2007-2010, 2012.
 # Claude Paroz <claude@2xlibre.net>, 2007-2008.
+# Charles Monzat <superboa@hotmail.fr>, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku 2.0 fr\n"
-"POT-Creation-Date: 2016-08-13 19:54+0000\n"
-"PO-Revision-Date: 2016-09-19 12:46+0200\n"
-"Last-Translator: Bruno Brouard <annoa.b@gmail.com>\n"
-"Language-Team: French <gnomefr@traduc.org>\n"
+"POT-Creation-Date: 2017-09-24 12:41+0000\n"
+"PO-Revision-Date: 2017-10-21 21:04+0200\n"
+"Last-Translator: Charles Monzat <superboa@hotmail.fr>\n"
+"Language-Team: français <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -35,8 +38,8 @@ msgstr "Chris Beiser"
 #: C/develop.page:12 C/documentation.page:10 C/highlighting.page:13
 #: C/hints.page:10 C/index.page:16 C/keyboard-shortcuts.page:11 C/notes.page:10
 #: C/print-blank-puzzles.page:8 C/print-inprogress-game.page:12 C/rules.page:13
-#: C/save-resume.page:12 C/statistics.page:10 C/strategy.page:11
-#: C/toolbar.page:10 C/trackers.page:11 C/translate.page:12
+#: C/save-resume.page:12 C/strategy.page:11 C/toolbar.page:10
+#: C/trackers.page:11 C/translate.page:12
 msgid "2011"
 msgstr "2011"
 
@@ -52,8 +55,8 @@ msgstr "Michael Hill"
 #: C/develop.page:15 C/documentation.page:13 C/highlighting.page:16
 #: C/hints.page:13 C/keyboard-shortcuts.page:18 C/notes.page:21
 #: C/print-blank-puzzles.page:17 C/print-inprogress-game.page:15
-#: C/rules.page:16 C/save-resume.page:19 C/statistics.page:13
-#: C/strategy.page:18 C/toolbar.page:13 C/trackers.page:18 C/translate.page:19
+#: C/rules.page:16 C/save-resume.page:19 C/strategy.page:18 C/toolbar.page:13
+#: C/trackers.page:18 C/translate.page:19
 msgid "Creative Commons Share Alike 3.0"
 msgstr ""
 "Creative Commons Paternité-Partage des Conditions Initiales à l'Identique 3.0"
@@ -135,8 +138,8 @@ msgstr ""
 #: C/bug-filing.page:10 C/commandline.page:8 C/develop.page:10
 #: C/documentation.page:8 C/highlighting.page:11 C/hints.page:8 C/index.page:14
 #: C/keyboard-shortcuts.page:14 C/print-blank-puzzles.page:9
-#: C/print-inprogress-game.page:10 C/statistics.page:8 C/strategy.page:14
-#: C/trackers.page:9 C/translate.page:10
+#: C/print-inprogress-game.page:10 C/strategy.page:14 C/trackers.page:9
+#: C/translate.page:10
 msgid "Tiffany Antopolski"
 msgstr "Tiffany Antopolski"
 
@@ -204,15 +207,19 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:38
+#| msgid ""
+#| "If you are requesting a new feature, choose <gui>enhancement</gui> in the "
+#| "<gui>Severity</gui> menu. Fill in the Summary and Description sections "
+#| "and click <gui>Commit</gui>."
 msgid ""
 "If you are requesting a new feature, choose <gui>enhancement</gui> in the "
 "<gui>Severity</gui> menu. Fill in the Summary and Description sections and "
-"click <gui>Commit</gui>."
+"click <gui>Submit Bug</gui>."
 msgstr ""
 "Si vous demandez une nouvelle fonctionnalité, choisissez <gui>enhancement</"
 "gui> (amélioration) dans le menu <gui>Severity</gui> (sévérité). Remplissez "
 "les rubriques « Summary » (résumé) et « Description » puis cliquez sur "
-"<gui>Commit</gui> (soumettre)."
+"<gui>Submit Bug</gui> (signaler un bogue)."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:42
@@ -400,20 +407,6 @@ msgstr ""
 msgid "<app>Sudoku</app> with highlighting."
 msgstr "<app>Sudoku</app> avec le surlignage."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/hints.page:58
-msgctxt "_"
-msgid ""
-"external ref='figures/possible-numbers.png' "
-"md5='69bee04ef4e72e58978939dac2a20b33'"
-msgstr ""
-"external ref='figures/possible-numbers.png' "
-"md5='69bee04ef4e72e58978939dac2a20b33'"
-
 #. (itstool) path: page/title
 #: C/hints.page:17
 msgid "Hints"
@@ -492,6 +485,20 @@ msgstr ""
 "Ces fonctionnalités peuvent rendre les grilles faciles trop faciles, "
 "n'utilisez donc ce mode qu'occasionnellement."
 
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/hints.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/possible-numbers.png' "
+"md5='69bee04ef4e72e58978939dac2a20b33'"
+msgstr ""
+"external ref='figures/possible-numbers.png' "
+"md5='69bee04ef4e72e58978939dac2a20b33'"
+
 #. (itstool) path: info/title
 #: C/index.page:7
 msgctxt "link"
@@ -520,7 +527,8 @@ msgid ""
 "Learn to play GNOME Sudoku, a logic-based puzzle game in which a grid must "
 "be filled with the correct numbers."
 msgstr ""
-"Apprenez à jouer à GNOME Sudoku, un jeu de logique dans lequel une grille doit être remplie avec les nombres corrects."
+"Apprenez à jouer à GNOME Sudoku, un jeu de logique dans lequel une grille "
+"doit être remplie avec les nombres corrects."
 
 #. (itstool) path: page/title
 #: C/index.page:31
@@ -536,10 +544,10 @@ msgid ""
 "to finish a game, you can <link xref=\"save-resume#resume\">resume</link> it "
 "any time, as well as replay any game you've already won."
 msgstr ""
-"GNOME Sudoku est un jeu de logique basé sur la populaire énigme de placement de nombres"
-"nombres pour laquelle il faut remplir un carré 9 X 9 avec les nombres "
-"corrects. Les grilles toutes uniques peuvent être résolues à l'écran ou "
-"<link xref=\"index#print\">imprimées</link> pour les emporter avec vous. "
+"GNOME Sudoku est un jeu de logique basé sur la populaire énigme de placement "
+"de nombresnombres pour laquelle il faut remplir un carré 9 X 9 avec les "
+"nombres corrects. Les grilles toutes uniques peuvent être résolues à l'écran "
+"ou <link xref=\"index#print\">imprimées</link> pour les emporter avec vous. "
 "Toutes les parties sont sauvegardées à travers les sessions et vous pouvez "
 "<link xref=\"save-resume#resume\">reprendre</link> n'importe quelle ancienne "
 "partie n'importe quand et également rejouer celles que vous avez déjà "
@@ -1061,18 +1069,6 @@ msgstr ""
 "Mise en évidence d'une ligne, colonne et boîte 3x3 en utilisant l'option de "
 "surlignage."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/save-resume.page:40
-msgctxt "_"
-msgid ""
-"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
-msgstr ""
-"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
-
 #. (itstool) path: page/title
 #: C/save-resume.page:23
 msgid "Save and resume"
@@ -1127,102 +1123,17 @@ msgstr ""
 msgid "Resuming previous games."
 msgstr "Reprise des parties précédentes."
 
-#. (itstool) path: media
+#. (itstool) path: figure/media
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/statistics.page:22
+#: C/save-resume.page:40
 msgctxt "_"
 msgid ""
-"external ref='figures/stats-very-hard.png' "
-"md5='13bff6de1e513a499dece168d4e69af5'"
+"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
 msgstr ""
-"external ref='figures/stats-very-hard.png' "
-"md5='13bff6de1e513a499dece168d4e69af5'"
-
-#. (itstool) path: page/title
-#: C/statistics.page:17
-msgid "Statistics"
-msgstr "Statistiques"
-
-#. (itstool) path: page/p
-#: C/statistics.page:18
-msgid ""
-"To view the statistics about the current puzzle, click <guiseq><gui>Game</"
-"gui><gui>Puzzle Statistics</gui></guiseq>."
-msgstr ""
-"Pour afficher les statistiques de la grille actuelle, cliquez sur "
-"<guiseq><gui>Jeu</gui><gui>Statistiques de la grille</gui></guiseq>."
-
-#. (itstool) path: figure/desc
-#: C/statistics.page:20
-msgid "Very hard puzzle statistics box example"
-msgstr ""
-"Exemple de boîte de dialogue de statistiques d'une grille très difficile"
-
-#. (itstool) path: page/p
-#: C/statistics.page:26
-msgid ""
-"<app>GNOME Sudoku</app> ranks puzzles based on the number of cells that can "
-"be rapidly filled."
-msgstr ""
-"<app>GNOME Sudoku</app> classe les grilles en se basant sur le nombre de "
-"cellules qui peuvent être remplies rapidement."
-
-#. (itstool) path: page/p
-#: C/statistics.page:30
-msgid "The puzzle statistics box shows:"
-msgstr "La boîte de dialogue de statistiques d'une grille affiche :"
-
-#. (itstool) path: item/p
-#: C/statistics.page:35
-msgid "the overall difficulty"
-msgstr "la difficulté globale,"
-
-#. (itstool) path: item/p
-#: C/statistics.page:36
-msgid ""
-"the number of cells which can be filled by elimination, starting from the "
-"blank grid (i.e. only a 2 can go in this box, so it must be a 2)"
-msgstr ""
-"le nombre de cellules pouvant être immédiatement remplies par élimination, "
-"en partant de la grille vierge (c.-à-d. seul un 2 peut aller dans cette "
-"boîte, donc c'est un 2),"
-
-#. (itstool) path: item/p
-#: C/statistics.page:37
-msgid ""
-"the number of cells that can be filled by the process of filling, starting "
-"from the blank grid (i.e. only one cell in this row can be a 2, so it must "
-"be a 2)"
-msgstr ""
-"le nombre de cellules pouvant être immédiatement remplies, en partant de la "
-"grille vierge (c.-à-d. seule une cellule dans cette ligne peut être un 2, "
-"donc c'est un 2),"
-
-#. (itstool) path: item/p
-#: C/statistics.page:38
-msgid ""
-"the number of times in solving the puzzle that the program used the trial-"
-"and-error algorithm to solve the puzzle"
-msgstr ""
-"le nombre de fois où le programme a dû progresser par essais-erreurs pour "
-"résoudre la grille."
-
-#. (itstool) path: note/p
-#: C/statistics.page:41
-msgid ""
-"All sudoku puzzles can be solved without ever having to guess. When the "
-"statistics box says that Sudoku used trial-and-error X number of times, it "
-"does not mean that a human would have to use trial-and-error to solve the "
-"puzzle."
-msgstr ""
-"Toutes les grilles de sudoku peuvent être résolues sans jamais avoir à "
-"supposer. Quand la boîte de dialogue des statistiques affiche que "
-"<app>Sudoku</app> a eu besoin de faire X essais-erreurs, cela ne signifie "
-"pas qu'un être humain devra absolument utiliser des essais-erreurs pour "
-"résoudre la grille."
+"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
 
 #. (itstool) path: credit/name
 #: C/strategy.page:9
@@ -1413,18 +1324,6 @@ msgstr ""
 "droite, sont Nouveau, Annuler, Rétablir, <link xref=\"hints\">Astuce</link> "
 "et <link xref=\"trackers\">Activer le suivi des coups</link>."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/trackers.page:58
-msgctxt "_"
-msgid ""
-"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
-msgstr ""
-"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
-
 #. (itstool) path: page/title
 #: C/trackers.page:22
 msgid "Track trial-and-error solutions"
@@ -1533,6 +1432,18 @@ msgstr ""
 msgid "Video Demonstration"
 msgstr "Démonstration vidéo"
 
+#. (itstool) path: section/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trackers.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
+msgstr ""
+"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
+
 #. (itstool) path: page/title
 #: C/translate.page:23
 msgid "Help translate"
@@ -1596,6 +1507,77 @@ msgstr ""
 "Vous pouvez aussi joindre par courriel l'équipe d'internationalisation en "
 "utilisant leur <link href=\"http://mail.gnome.org/mailman/listinfo/gnome-i18n"
 "\">liste de diffusion</link>."
+
+#~ msgctxt "_"
+#~ msgid ""
+#~ "external ref='figures/stats-very-hard.png' "
+#~ "md5='13bff6de1e513a499dece168d4e69af5'"
+#~ msgstr ""
+#~ "external ref='figures/stats-very-hard.png' "
+#~ "md5='13bff6de1e513a499dece168d4e69af5'"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistiques"
+
+#~ msgid ""
+#~ "To view the statistics about the current puzzle, click <guiseq><gui>Game</"
+#~ "gui><gui>Puzzle Statistics</gui></guiseq>."
+#~ msgstr ""
+#~ "Pour afficher les statistiques de la grille actuelle, cliquez sur "
+#~ "<guiseq><gui>Jeu</gui><gui>Statistiques de la grille</gui></guiseq>."
+
+#~ msgid "Very hard puzzle statistics box example"
+#~ msgstr ""
+#~ "Exemple de boîte de dialogue de statistiques d'une grille très difficile"
+
+#~ msgid ""
+#~ "<app>GNOME Sudoku</app> ranks puzzles based on the number of cells that "
+#~ "can be rapidly filled."
+#~ msgstr ""
+#~ "<app>GNOME Sudoku</app> classe les grilles en se basant sur le nombre de "
+#~ "cellules qui peuvent être remplies rapidement."
+
+#~ msgid "The puzzle statistics box shows:"
+#~ msgstr "La boîte de dialogue de statistiques d'une grille affiche :"
+
+#~ msgid "the overall difficulty"
+#~ msgstr "la difficulté globale,"
+
+#~ msgid ""
+#~ "the number of cells which can be filled by elimination, starting from the "
+#~ "blank grid (i.e. only a 2 can go in this box, so it must be a 2)"
+#~ msgstr ""
+#~ "le nombre de cellules pouvant être immédiatement remplies par "
+#~ "élimination, en partant de la grille vierge (c.-à-d. seul un 2 peut aller "
+#~ "dans cette boîte, donc c'est un 2),"
+
+#~ msgid ""
+#~ "the number of cells that can be filled by the process of filling, "
+#~ "starting from the blank grid (i.e. only one cell in this row can be a 2, "
+#~ "so it must be a 2)"
+#~ msgstr ""
+#~ "le nombre de cellules pouvant être immédiatement remplies, en partant de "
+#~ "la grille vierge (c.-à-d. seule une cellule dans cette ligne peut être un "
+#~ "2, donc c'est un 2),"
+
+#~ msgid ""
+#~ "the number of times in solving the puzzle that the program used the trial-"
+#~ "and-error algorithm to solve the puzzle"
+#~ msgstr ""
+#~ "le nombre de fois où le programme a dû progresser par essais-erreurs pour "
+#~ "résoudre la grille."
+
+#~ msgid ""
+#~ "All sudoku puzzles can be solved without ever having to guess. When the "
+#~ "statistics box says that Sudoku used trial-and-error X number of times, "
+#~ "it does not mean that a human would have to use trial-and-error to solve "
+#~ "the puzzle."
+#~ msgstr ""
+#~ "Toutes les grilles de sudoku peuvent être résolues sans jamais avoir à "
+#~ "supposer. Quand la boîte de dialogue des statistiques affiche que "
+#~ "<app>Sudoku</app> a eu besoin de faire X essais-erreurs, cela ne signifie "
+#~ "pas qu'un être humain devra absolument utiliser des essais-erreurs pour "
+#~ "résoudre la grille."
 
 #~ msgid "GNOME Sudoku logo"
 #~ msgstr "Logo de GNOME Sudoku"
