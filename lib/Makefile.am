@@ -17,7 +17,12 @@ libsudoku_la_CPPFLAGS = \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	$(LIBSUDOKU_CFLAGS)
 
+# C++11 thread support library needs pthreads to work properly.
+libsudoku_la_CXXFLAGS = \
+	$(PTHREAD_CFLAGS)
+
 libsudoku_la_LIBADD = \
+	$(PTHREAD_LIBS) \
 	$(LIBSUDOKU_LIBS)
 
 libsudoku_la_VALAFLAGS = \
