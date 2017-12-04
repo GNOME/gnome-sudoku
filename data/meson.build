@@ -34,6 +34,9 @@ foreach icon_size: ['16x16', '22x22', '24x24', '32x32', '48x48']
 endforeach
 
 install_data('icons/hicolor/scalable/gnome-sudoku.svg',
-  'icons/hicolor/scalable/gnome-sudoku-symbolic.svg',
   install_dir: join_paths(icondir, 'scalable', 'apps')
+)
+
+install_data('icons/hicolor/symbolic/gnome-sudoku-symbolic.svg',
+  install_dir: join_paths(icondir, 'symbolic', 'apps')
 )
