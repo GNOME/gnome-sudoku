@@ -23,9 +23,6 @@ install_data('org.gnome.sudoku.gschema.xml',
   install_dir: join_paths(datadir, 'glib-2.0', 'schemas')
 )
 
-install_data('footprints.png',
-  install_dir: join_paths(datadir, meson.project_name(), 'images'))
-
 install_man('gnome-sudoku.6')
 
 icondir = join_paths(datadir, 'icons', 'hicolor')
