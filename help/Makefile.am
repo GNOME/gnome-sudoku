@@ -4,7 +4,6 @@ HELP_ID = gnome-sudoku
 HELP_MEDIA = \
 	figures/logo32.png		\
 	figures/logo.png		\
-	figures/resuming.png		\
 	figures/rowcolumnbox.png	\
 	figures/strategy1.png		\
 	figures/strategy2.png
