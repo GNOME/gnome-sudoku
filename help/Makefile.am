@@ -14,7 +14,6 @@ HELP_MEDIA = \
 HELP_FILES = \
 	basics.page			\
 	bug-filing.page			\
-	commandline.page		\
 	develop.page			\
 	documentation.page		\
 	highlighting.page		\
