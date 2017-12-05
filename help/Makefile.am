@@ -26,7 +26,6 @@ HELP_FILES = \
 	rules.page			\
 	save-resume.page		\
 	strategy.page			\
-	toolbar.page			\
 	trackers.page			\
 	translate.page
 
