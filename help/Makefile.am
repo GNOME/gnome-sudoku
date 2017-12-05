@@ -14,12 +14,12 @@ HELP_FILES = \
 	bug-filing.page			\
 	develop.page			\
 	documentation.page		\
+	earmarks.page			\
 	highlighting.page		\
 	index.page			\
 	keyboard-shortcuts.page		\
 	legal.xml			\
 	license.page			\
-	notes.page			\
 	print-blank-puzzles.page	\
 	print-inprogress-game.page	\
 	rules.page			\
