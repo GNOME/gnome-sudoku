@@ -7,8 +7,7 @@ HELP_MEDIA = \
 	figures/resuming.png		\
 	figures/rowcolumnbox.png	\
 	figures/strategy1.png		\
-	figures/strategy2.png		\
-	figures/trackers.webm
+	figures/strategy2.png
 
 HELP_FILES = \
 	basics.page			\
@@ -26,7 +25,6 @@ HELP_FILES = \
 	rules.page			\
 	save-resume.page		\
 	strategy.page			\
-	trackers.page			\
 	translate.page
 
 HELP_LINGUAS = ca cs de en_GB el es eu fr gl hu it ko oc pl pt_BR ru sl sr sr@latin sv da zh_CN
