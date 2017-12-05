@@ -4,7 +4,6 @@ HELP_ID = gnome-sudoku
 HELP_MEDIA = \
 	figures/logo32.png		\
 	figures/logo.png		\
-	figures/possible-numbers.png	\
 	figures/resuming.png		\
 	figures/rowcolumnbox.png	\
 	figures/strategy1.png		\
@@ -17,7 +16,6 @@ HELP_FILES = \
 	develop.page			\
 	documentation.page		\
 	highlighting.page		\
-	hints.page			\
 	index.page			\
 	keyboard-shortcuts.page		\
 	legal.xml			\
