@@ -5,18 +5,21 @@
 #
 # Bruno Brouard <annoa.b@gmail.com>, 2007-2010, 2012.
 # Claude Paroz <claude@2xlibre.net>, 2007-2008.
+# Charles Monzat <superboa@hotmail.fr>, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku 2.0 fr\n"
-"POT-Creation-Date: 2016-08-13 19:54+0000\n"
-"PO-Revision-Date: 2016-09-19 12:46+0200\n"
-"Last-Translator: Bruno Brouard <annoa.b@gmail.com>\n"
-"Language-Team: French <gnomefr@traduc.org>\n"
+"POT-Creation-Date: 2017-12-05 01:53+0000\n"
+"PO-Revision-Date: 2017-12-06 10:27+0100\n"
+"Last-Translator: Charles Monzat <superboa@hotmail.fr>\n"
+"Language-Team: français <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -204,15 +207,19 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:38
+#| msgid ""
+#| "If you are requesting a new feature, choose <gui>enhancement</gui> in the "
+#| "<gui>Severity</gui> menu. Fill in the Summary and Description sections "
+#| "and click <gui>Commit</gui>."
 msgid ""
 "If you are requesting a new feature, choose <gui>enhancement</gui> in the "
 "<gui>Severity</gui> menu. Fill in the Summary and Description sections and "
-"click <gui>Commit</gui>."
+"click <gui>Submit Bug</gui>."
 msgstr ""
 "Si vous demandez une nouvelle fonctionnalité, choisissez <gui>enhancement</"
 "gui> (amélioration) dans le menu <gui>Severity</gui> (sévérité). Remplissez "
 "les rubriques « Summary » (résumé) et « Description » puis cliquez sur "
-"<gui>Commit</gui> (soumettre)."
+"<gui>Submit Bug</gui> (signaler un bogue)."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:42
@@ -400,20 +407,6 @@ msgstr ""
 msgid "<app>Sudoku</app> with highlighting."
 msgstr "<app>Sudoku</app> avec le surlignage."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/hints.page:58
-msgctxt "_"
-msgid ""
-"external ref='figures/possible-numbers.png' "
-"md5='69bee04ef4e72e58978939dac2a20b33'"
-msgstr ""
-"external ref='figures/possible-numbers.png' "
-"md5='69bee04ef4e72e58978939dac2a20b33'"
-
 #. (itstool) path: page/title
 #: C/hints.page:17
 msgid "Hints"
@@ -492,6 +485,20 @@ msgstr ""
 "Ces fonctionnalités peuvent rendre les grilles faciles trop faciles, "
 "n'utilisez donc ce mode qu'occasionnellement."
 
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/hints.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/possible-numbers.png' "
+"md5='69bee04ef4e72e58978939dac2a20b33'"
+msgstr ""
+"external ref='figures/possible-numbers.png' "
+"md5='69bee04ef4e72e58978939dac2a20b33'"
+
 #. (itstool) path: info/title
 #: C/index.page:7
 msgctxt "link"
@@ -520,7 +527,8 @@ msgid ""
 "Learn to play GNOME Sudoku, a logic-based puzzle game in which a grid must "
 "be filled with the correct numbers."
 msgstr ""
-"Apprenez à jouer à GNOME Sudoku, un jeu de logique dans lequel une grille doit être remplie avec les nombres corrects."
+"Apprenez à jouer à GNOME Sudoku, un jeu de logique dans lequel une grille "
+"doit être remplie avec les nombres corrects."
 
 #. (itstool) path: page/title
 #: C/index.page:31
@@ -536,10 +544,10 @@ msgid ""
 "to finish a game, you can <link xref=\"save-resume#resume\">resume</link> it "
 "any time, as well as replay any game you've already won."
 msgstr ""
-"GNOME Sudoku est un jeu de logique basé sur la populaire énigme de placement de nombres"
-"nombres pour laquelle il faut remplir un carré 9 X 9 avec les nombres "
-"corrects. Les grilles toutes uniques peuvent être résolues à l'écran ou "
-"<link xref=\"index#print\">imprimées</link> pour les emporter avec vous. "
+"GNOME Sudoku est un jeu de logique basé sur la populaire énigme de placement "
+"de nombresnombres pour laquelle il faut remplir un carré 9 X 9 avec les "
+"nombres corrects. Les grilles toutes uniques peuvent être résolues à l'écran "
+"ou <link xref=\"index#print\">imprimées</link> pour les emporter avec vous. "
 "Toutes les parties sont sauvegardées à travers les sessions et vous pouvez "
 "<link xref=\"save-resume#resume\">reprendre</link> n'importe quelle ancienne "
 "partie n'importe quand et également rejouer celles que vous avez déjà "
@@ -1061,18 +1069,6 @@ msgstr ""
 "Mise en évidence d'une ligne, colonne et boîte 3x3 en utilisant l'option de "
 "surlignage."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/save-resume.page:40
-msgctxt "_"
-msgid ""
-"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
-msgstr ""
-"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
-
 #. (itstool) path: page/title
 #: C/save-resume.page:23
 msgid "Save and resume"
@@ -1127,19 +1123,17 @@ msgstr ""
 msgid "Resuming previous games."
 msgstr "Reprise des parties précédentes."
 
-#. (itstool) path: media
+#. (itstool) path: figure/media
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/statistics.page:22
+#: C/save-resume.page:40
 msgctxt "_"
 msgid ""
-"external ref='figures/stats-very-hard.png' "
-"md5='13bff6de1e513a499dece168d4e69af5'"
+"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
 msgstr ""
-"external ref='figures/stats-very-hard.png' "
-"md5='13bff6de1e513a499dece168d4e69af5'"
+"external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
 
 #. (itstool) path: page/title
 #: C/statistics.page:17
@@ -1160,6 +1154,20 @@ msgstr ""
 msgid "Very hard puzzle statistics box example"
 msgstr ""
 "Exemple de boîte de dialogue de statistiques d'une grille très difficile"
+
+#. (itstool) path: figure/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/statistics.page:22
+msgctxt "_"
+msgid ""
+"external ref='figures/stats-very-hard.png' "
+"md5='13bff6de1e513a499dece168d4e69af5'"
+msgstr ""
+"external ref='figures/stats-very-hard.png' "
+"md5='13bff6de1e513a499dece168d4e69af5'"
 
 #. (itstool) path: page/p
 #: C/statistics.page:26
@@ -1413,18 +1421,6 @@ msgstr ""
 "droite, sont Nouveau, Annuler, Rétablir, <link xref=\"hints\">Astuce</link> "
 "et <link xref=\"trackers\">Activer le suivi des coups</link>."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/trackers.page:58
-msgctxt "_"
-msgid ""
-"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
-msgstr ""
-"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
-
 #. (itstool) path: page/title
 #: C/trackers.page:22
 msgid "Track trial-and-error solutions"
@@ -1532,6 +1528,18 @@ msgstr ""
 #: C/trackers.page:56
 msgid "Video Demonstration"
 msgstr "Démonstration vidéo"
+
+#. (itstool) path: section/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trackers.page:58
+msgctxt "_"
+msgid ""
+"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
+msgstr ""
+"external ref='figures/trackers.webm' md5='ea60faea1b59d16cae73b697aa06da8e'"
 
 #. (itstool) path: page/title
 #: C/translate.page:23
