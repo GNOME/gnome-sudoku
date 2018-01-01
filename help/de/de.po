@@ -1,13 +1,13 @@
 # German translation of the gnome-sudoku manual.
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2008-2012, 2017.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2008-2012, 2017-2018.
 # Christian Kirbach <Christian.Kirbach@googlemail.com>, 2011.
 # Wolfgang Stöggl <c72578@yahoo.de>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
-"POT-Creation-Date: 2017-12-05 16:14+0000\n"
-"PO-Revision-Date: 2017-12-27 17:18+0100\n"
+"POT-Creation-Date: 2017-12-30 13:59+0000\n"
+"PO-Revision-Date: 2018-01-01 16:12+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de_DE\n"
@@ -20,8 +20,8 @@ msgstr ""
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
-"Mario Blättermann <mario.blaettermann@gmail.com>, 2008, 2011, 2012.\n"
-"Christian Kirbach <Christian.Kirbach@googlemail.com>, 2011, 2014, 2015."
+"Mario Blättermann <mario.blaettermann@gmail.com>, 2008, 2011-2012, 2018.\n"
+"Christian Kirbach <Christian.Kirbach@googlemail.com>, 2011, 2014-2015."
 
 #. (itstool) path: credit/name
 #: C/basics.page:9 C/earmarks.page:14 C/keyboard-shortcuts.page:10
@@ -290,22 +290,16 @@ msgstr "Thomas Hinkle"
 #. (itstool) path: page/title
 #: C/earmarks.page:26
 msgid "Earmarks"
-msgstr ""
+msgstr "Notizen"
 
 #. (itstool) path: page/p
 #: C/earmarks.page:27
-#, fuzzy
-#| msgid ""
-#| "Notes, or pencilmarks, can be added to any cell. They allow you to mark "
-#| "possible values for a cell, or store other data that might help you. "
-#| "Notes will store all characters in order, but will remove repetitions of "
-#| "characters."
 msgid ""
 "Earmarks (small numeric notes) can be added to any cell. They allow you to "
 "mark possible values for a cell. Earmarks allow you to store any number of "
 "digits in the cell. Each digit may be selected only once."
 msgstr ""
-"Notizen können zu jedem Kästchen hinzugefügt werden. Dies erlaubt das "
+"Notizziffern können zu jedem Kästchen hinzugefügt werden. Dies erlaubt das "
 "Hinzufügen möglicher Werte für ein Kästchen oder anderer Daten, die für Sie "
 "nützlich sein könnten. In den Notizen werden alle Zeichen in der Reihenfolge "
 "der Eingabe gespeichert, allerdings sind mehrfache Eingaben eines Zeichens "
@@ -313,8 +307,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/earmarks.page:29
-#, fuzzy
-#| msgid "To add notes to a cell:"
 msgid "To add earmarks to a cell:"
 msgstr "So fügen Sie Notizen zu einem Kästchen hinzu:"
 
@@ -325,10 +317,6 @@ msgstr "Wählen Sie das Kästchen aus."
 
 #. (itstool) path: item/p
 #: C/earmarks.page:33
-#| msgid ""
-#| "You can add a number to the notes at the top of the square by typing "
-#| "<keyseq><key>Ctrl</key><key>1</key></keyseq> through <keyseq><key>Ctrl</"
-#| "key><key>9</key></keyseq>"
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>1</key></keyseq> through "
 "<keyseq><key>Ctrl</key><key>9</key></keyseq>."
@@ -338,11 +326,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/earmarks.page:36
-#, fuzzy
-#| msgid ""
-#| "You can add a number to the notes at the top of the square by typing "
-#| "<keyseq><key>Ctrl</key><key>1</key></keyseq> through <keyseq><key>Ctrl</"
-#| "key><key>9</key></keyseq>"
 msgid ""
 "You can remove a number from the earmarks by pressing <keyseq><key>Ctrl</"
 "key><key>1</key></keyseq> through <keyseq><key>Ctrl</key><key>9</key></"
@@ -359,6 +342,9 @@ msgid ""
 "You can also add earmarks by clicking the cell while pressing <key>Ctrl</"
 "key>, or right-clicking the cell, and then choosing a number."
 msgstr ""
+"Sie können Notizen auch hinzufügen, indem Sie die <key>Strg</key>-Taste "
+"gedrückt halten oder mit der rechten Maustaste in ein Kästchen klicken und "
+"dann eine Ziffer wählen."
 
 #. (itstool) path: page/title
 #: C/highlighting.page:21
@@ -540,15 +526,12 @@ msgstr "<keyseq><key>Strg</key><key>Umschalttaste</key><key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:60
-#, fuzzy
-#| msgid "Add a number to the top notes of a cell"
 msgid "Add a number to the earmarks of a cell"
 msgstr ""
 "Eine Ziffer zu den Notizen im oberen Bereich eines Kästchens hinzufügen"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:61
-#| msgid "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>1-9</key></keyseq>"
 msgstr "<keyseq><key>Strg</key><key>1-9</key></keyseq>"
 
@@ -878,17 +861,12 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/strategy.page:35
-#, fuzzy
-#| msgid ""
-#| "Using <link xref=\"notes\">notes</link>, enter the missing numbers which "
-#| "are not in that column or 3x3 box, into the the upper field. These "
-#| "numbers are candidate solutions for that cell."
 msgid ""
 "Using <link xref=\"earmarks\">earmarks</link>, enter the missing numbers "
 "which are not in that column or 3×3 box. These numbers are candidate "
 "solutions for that cell."
 msgstr ""
-"Geben Sie als <link xref=\"notes\">Notizen</link> im oberen Bereich die "
+"Geben Sie als <link xref=\"earmarks\">Notizen</link> im oberen Bereich die "
 "fehlenden Ziffern ein, die sich weder in der Spalte noch im 3x3-Teilfeld "
 "befinden. Diese Ziffern sind die »Kandidaten« für dieses Kästchen."
 
@@ -944,7 +922,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/strategy.page:51
-#, fuzzy
 msgid ""
 "In this alignment, go to a 3×3 box which does not contain this number in any "
 "of its cells. Using <link xref=\"earmarks\">earmarks</link>, enter this "
@@ -954,7 +931,7 @@ msgid ""
 msgstr ""
 "Gehen Sie innerhalb der linken Anordnung zu dem 3×3-Teilfeld, welches in "
 "keinem der Kästchen diese Ziffer enthält. Geben Sie mit Hilfe von <link xref="
-"\"notes\">Notizen</link> diese Ziffer in jedes leere Kästchen ein, in "
+"\"earmarks\">Notizen</link> diese Ziffer in jedes leere Kästchen ein, in "
 "welchem diese Ziffer nicht erscheint. Falls die Ziffer in der Zeile eines "
 "dieser Kästchen bereits enthalten ist, geben Sie sie dort nicht in den "
 "Notizbereich ein."
@@ -1051,461 +1028,3 @@ msgstr ""
 "Alternativ können Sie das Internationalisierungsteam über dessen <link href="
 "\"https://mail.gnome.org/mailman/listinfo/gnome-i18n\">Mailingliste</link> "
 "kontaktieren."
-
-#~ msgid "Commandline"
-#~ msgstr "Befehlszeile"
-
-#~ msgid ""
-#~ "To view commandline options for gnome-sudoku: <cmd>gnome-sudoku --help</"
-#~ "cmd>"
-#~ msgstr ""
-#~ "So zeigen Sie die Befehlszeilenoptionen für gnome-sudoku an: <cmd>gnome-"
-#~ "sudoku --help</cmd>"
-
-#~ msgid ""
-#~ "To view the version number of your gnome-sudoku: <cmd>gnome-sudoku --"
-#~ "version</cmd>"
-#~ msgstr ""
-#~ "So zeigen Sie die Versionsnummer von gnome-sudoku an: <cmd>gnome-sudoku --"
-#~ "version</cmd>"
-
-#~ msgid "Print debug information"
-#~ msgstr "Informationen zur Fehlerdiagnose ausgeben"
-
-#~ msgid ""
-#~ "This command may be useful when you are filing a bug and need to post "
-#~ "debug information: <cmd>gnome-sudoku -v</cmd>"
-#~ msgstr ""
-#~ "Dieser Befehl kann nützlich sein, wenn Sie einen Fehler melden und "
-#~ "Fehlerdiagnoseinformationen veröffentlichen wollen: <cmd>gnome-sudoku -v</"
-#~ "cmd>"
-
-#~ msgid "Profile information"
-#~ msgstr "Profil-Informationen"
-
-#~ msgid ""
-#~ "This command is useful if you are filing a bug about slow performance. It "
-#~ "will show the performance of different functions that run, and possibly "
-#~ "reveal which specific function(s) may be responsible for poor "
-#~ "performance. This information attached to a bug could make it easier to "
-#~ "fix the problem, but this command is used mostly by programmers."
-#~ msgstr ""
-#~ "Dieser Befehl ist nützlich, wenn Sie einen Fehler bezüglich schlechter "
-#~ "Arbeitsgeschwindigkeit des Programms melden wollen. Die Leistung "
-#~ "verschiedener ausgeführter Funktionen wird angezeigt und es ist "
-#~ "gegebenenfalls ersichtlich, welche spezifische(n) Funktion(en) "
-#~ "möglicherweise für die schlechte Leistung verantwortlich sind. Wenn Sie "
-#~ "diese Informationen zu einem Fehlerbericht hinzufügen, kann dies die "
-#~ "Beseitigung des Problems erleichtern, doch wird dieser Befehl vorwiegend "
-#~ "von Programmierern verwendet."
-
-#~ msgid "<cmd>gnome-sudoku -p</cmd>"
-#~ msgstr "<cmd>gnome-sudoku -p</cmd>"
-
-#~ msgid ""
-#~ "When you exit the application, the terminal will show you performance "
-#~ "statistics."
-#~ msgstr ""
-#~ "Wenn Sie die Anwendung beenden, werden im Terminal Statistiken zur "
-#~ "Leistung angezeigt."
-
-#~ msgid "Step through <app>GNOME Sudoku</app>"
-#~ msgstr "Schrittweise durch <app>GNOME Sudoku</app>"
-
-#~ msgid ""
-#~ "This command is mostly used by programmers to step through the code: "
-#~ "<cmd>gnome-sudoku -w</cmd>"
-#~ msgstr ""
-#~ "Dieser Befehl wird meist von Programmierern zum Untersuchen des Codes "
-#~ "verwendet: <cmd>gnome-sudoku -w</cmd>"
-
-#~ msgid "Hints"
-#~ msgstr "Hinweise"
-
-#~ msgid "To show possible values for all cells click:"
-#~ msgstr ""
-#~ "Um die möglichen Werte für alle Kästchen anzuzeigen, klicken Sie auf:"
-
-#~ msgid ""
-#~ "<guiseq><gui>Settings</gui><gui>Show Possible Numbers</gui></guiseq>."
-#~ msgstr ""
-#~ "<guiseq><gui>Einstellungen</gui><gui>Mögliche Ziffern anzeigen</gui></"
-#~ "guiseq>."
-
-#~ msgid "To ask Sudoku to show a cell that is easy to fill:"
-#~ msgstr ""
-#~ "So lassen Sie Sudoku die Kästchen anzeigen, die einfach ausgefüllt werden "
-#~ "können:"
-
-#~ msgid ""
-#~ "Click <guiseq><gui>Tools</gui><gui>Hint</gui></guiseq>, or <gui>Hint</"
-#~ "gui> in the <link xref=\"toolbar\">toolbar</link>."
-#~ msgstr ""
-#~ "Klicken Sie auf <guiseq><gui>Werkzeuge</gui><gui>Hinweis</gui></guiseq> "
-#~ "oder auf <gui>Hinweis</gui> in der <link xref=\"toolbar\">Werkzeugleiste</"
-#~ "link>."
-
-#~ msgid ""
-#~ "These features work based on the logical possibilities given the current "
-#~ "board and not work by looking at the solution. This means that if you "
-#~ "made an error in an earlier move, these features may show incorrect "
-#~ "possible values."
-#~ msgstr ""
-#~ "Diese Werkzeuge basieren auf den logischen Lösungsmöglichkeiten des "
-#~ "aktuellen Spielfeldes. Sie untersuchen nicht, ob eine endgültige logische "
-#~ "Lösung möglich ist. Wenn Ihnen in einer früheren Eintragung ein Fehler "
-#~ "unterlaufen ist, könnten durch die Benutzung dieser Werkzeuge eventuell "
-#~ "weitere falsche Einträge entstehen."
-
-#~ msgid ""
-#~ "A cell which usually has only one possible solution based on the current "
-#~ "state of the board is outlined with flashing red. In the case of a puzzle "
-#~ "that has no cells that have only one possible solution, a cell with two "
-#~ "possible solutions or the least amount of possible solutions will be "
-#~ "highlighted. Clicking <gui>Hint</gui> multiple times may not always point "
-#~ "you to the same cell."
-#~ msgstr ""
-#~ "Ein Feld, für das es für den aktuellen Eintragungszustand nur eine "
-#~ "eindeutige Eintragung gibt, wird von einer blinkenden roten Linie "
-#~ "umrahmt. Falls es im Rätsel keine eindeutig ausfüllbaren Felder gibt, "
-#~ "wird ein Feld mit zwei möglichen Lösungen oder der geringsten Anzahl der "
-#~ "möglichen Lösungen auf diese Weise hervorgehoben. Ein Klick auf "
-#~ "<gui>Hinweis</gui> führt nicht in jedem Fall zum gleichen Feld."
-
-#~ msgid ""
-#~ "You can edit the possible numbers by clicking in the bottom of the cell."
-#~ msgstr ""
-#~ "Sie können die möglichen Ziffern bearbeiten, indem Sie in den unteren "
-#~ "Bereich des Kästchens klicken."
-
-#~ msgid ""
-#~ "These features can make easy puzzles too easy, so you should use this "
-#~ "mode sparingly."
-#~ msgstr ""
-#~ "Durch diese Funktionen können ohnehin leichte Rätsel noch leichter "
-#~ "werden, so dass Sie diese sparsam verwenden sollten."
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/possible-numbers.png' "
-#~ "md5='69bee04ef4e72e58978939dac2a20b33'"
-#~ msgstr "translated"
-
-#~ msgid "Advanced"
-#~ msgstr "Fortgeschritten"
-
-#~ msgid "<keyseq><key>Ctrl</key><key>B</key></keyseq>"
-#~ msgstr "<keyseq><key>Strg</key><key>B</key></keyseq>"
-
-#~ msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
-#~ msgstr "<keyseq><key>Strg</key><key>W</key></keyseq>"
-
-#~ msgid "Hints and Notes"
-#~ msgstr "Hinweise und Notizen"
-
-#~ msgid "Hint"
-#~ msgstr "Hinweis"
-
-#~ msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
-#~ msgstr "<keyseq><key>Strg</key><key>H</key></keyseq>"
-
-#~ msgid "Track Additions"
-#~ msgstr "Änderungen markieren"
-
-#~ msgid "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
-#~ msgstr "<keyseq><key>Strg</key><key>T</key></keyseq>"
-
-#~ msgid "Clear notes from the top of a cell"
-#~ msgstr "Notizen aus dem oberen Bereich eines Kästchens löschen"
-
-#~ msgid "<keyseq><key>Ctrl</key><key>J</key></keyseq>"
-#~ msgstr "<keyseq><key>Strg</key><key>J</key></keyseq>"
-
-#~ msgid "Clear notes from the bottom of a cell"
-#~ msgstr "Notizen aus dem unteren Bereich eines Kästchens löschen"
-
-#~ msgid "<keyseq><key>Ctrl</key><key>K</key></keyseq>"
-#~ msgstr "<keyseq><key>Strg</key><key>K</key></keyseq>"
-
-#~ msgid "<keyseq><key>Ctrl</key><key>#</key></keyseq>"
-#~ msgstr "<keyseq><key>Strg</key><key>#</key></keyseq>"
-
-#~ msgid "Remove a number to the top notes of a cell"
-#~ msgstr ""
-#~ "Eine Ziffer aus den Notizen im oberen Bereich eines Kästchens entfernen"
-
-#~ msgid "<keyseq><key>Alt</key><key>#</key></keyseq>"
-#~ msgstr "<keyseq><key>Alt</key><key>#</key></keyseq>"
-
-#~ msgid "Switch to fullscreen mode"
-#~ msgstr "In den Vollbildmodus wechseln"
-
-#~ msgid "<key>F11</key>"
-#~ msgstr "<key>F11</key>"
-
-#~ msgid "Notes"
-#~ msgstr "Notizen"
-
-#~ msgid ""
-#~ "Click on the part of a cell that is above the line that appears when you "
-#~ "hover over it. Alternatively, type <key>N</key>."
-#~ msgstr ""
-#~ "Klicken Sie in den Teil des Kästchens, der oberhalb der Linie liegt, die "
-#~ "beim Überfahren mit dem Mauszeiger erscheint. Alternativ können Sie "
-#~ "<key>N</key> drücken."
-
-#~ msgid "Type your notes"
-#~ msgstr "Geben Sie Ihre Notizen ein"
-
-#~ msgid "Press <key>Enter</key> or click outside of the text box."
-#~ msgstr ""
-#~ "Drücken Sie die <key>Eingabetaste</key> oder klicken Sie außerhalb des "
-#~ "Textfeldes."
-
-#~ msgid ""
-#~ "You can also take notes in the bottom of the cell by clicking in the "
-#~ "bottom of the cell or by typing <key>M</key>. However, this area is used "
-#~ "when you click <link xref=\"hints\">Show All Possible Numbers</link>. If "
-#~ "you plan to use this area, you should not use <gui>Show All Possible "
-#~ "Numbers</gui>."
-#~ msgstr ""
-#~ "Sie können Notizen auch im unteren Bereich eines Kästchens hinzufügen. "
-#~ "Klicken Sie dazu in diesen Bereich oder drücken Sie <key>M</key>. "
-#~ "Allerdings wird dieser Bereich beim Anklicken von <link xref=\"hints"
-#~ "\">Mögliche Ziffern anzeigen</link> verwendet. Sollten Sie diesen Bereich "
-#~ "benötigen, verwenden Sie die Funktion <gui>Mögliche Ziffern anzeigen</"
-#~ "gui> nicht."
-
-#~ msgid ""
-#~ "Click <guiseq><gui>Game</gui><gui>Print multiple sudokus</gui></guiseq>."
-#~ msgstr ""
-#~ "Wählen Sie <guiseq><gui>Spiel</gui><gui>Mehrere Sudokus drucken</gui></"
-#~ "guiseq>."
-
-#~ msgid "Select the number of sudokus per page from the next drop down menu."
-#~ msgstr ""
-#~ "Wählen Sie in der nächsten Auswahlliste die Anzahl der Sudokus pro Seite "
-#~ "aus."
-
-#~ msgid ""
-#~ "Games that have already been played are not printed by default. If you "
-#~ "don't care about repeating games, select <gui>Include games you've "
-#~ "already played in list of games to print</gui> in the <gui>Details</gui> "
-#~ "category."
-#~ msgstr ""
-#~ "Standardmäßig werden keine Spiele gedruckt, die Sie bereits gespielt "
-#~ "haben. Wenn es Ihnen nichts ausmacht, Spiele zu wiederholen, wählen Sie "
-#~ "<gui>Bereits gespielte Spiele in die auszudruckenden Spiele übernehmen</"
-#~ "gui> in der Kategorie <gui>Details</gui>."
-
-#~ msgid ""
-#~ "Games that are printed are not marked as played by default. You can "
-#~ "choose to <gui>Mark games as played once you've printed them.</gui> under "
-#~ "the <gui>Details</gui> category."
-#~ msgstr ""
-#~ "Ausgedruckte Spiele werden standardmäßig nicht als gespielt markiert. Um "
-#~ "dies zu tun, wählen Sie <gui>Gedruckte Spiele als gespielt markieren</"
-#~ "gui> in der Kategorie <gui>Details</gui>."
-
-#~ msgid "Click <guiseq><gui>Game</gui><gui>Print</gui></guiseq>."
-#~ msgstr ""
-#~ "Klicken Sie auf <guiseq><gui>Spiel</gui><gui>Drucken</gui></guiseq>."
-
-#~ msgid ""
-#~ "Whenever you start <app>Sudoku</app> or click <gui>New</gui>, your saved "
-#~ "games will be listed in the puzzle selection screen. You will see a "
-#~ "miniature image of the saved puzzle, the date you last played it, and how "
-#~ "long you have played it. To open the puzzle, just double click on it."
-#~ msgstr ""
-#~ "Jedes Mal beim Start von <app>Sudoku</app> oder bei einem Klick auf "
-#~ "<gui>Neu</gui> werden Ihre gespeicherten Rätsel in einem Auswahlfenster "
-#~ "aufgelistet. Sie sehen ein verkleinertes Vorschaubild des gespeicherten "
-#~ "Rätsels, das Datum der letzten Bearbeitung und die Zeit, die Sie damit "
-#~ "verbracht haben. Um ein Spiel zu öffnen, klicken Sie doppelt darauf."
-
-#~ msgid "Resuming previous games."
-#~ msgstr "Frühere Spiele wiederaufnehmen."
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/resuming.png' md5='1ab6c0b1b34262bd0fb6bb6c5f622506'"
-#~ msgstr "translated"
-
-#~ msgid "Statistics"
-#~ msgstr "Statistiken"
-
-#~ msgid ""
-#~ "To view the statistics about the current puzzle, click <guiseq><gui>Game</"
-#~ "gui><gui>Puzzle Statistics</gui></guiseq>."
-#~ msgstr ""
-#~ "Um die Statistiken zum aktuellen Rätsel anzuzeigen, klicken Sie auf "
-#~ "<guiseq><gui>Spiel</gui><gui>Rätselstatistiken</gui></guiseq>."
-
-#~ msgid "Very hard puzzle statistics box example"
-#~ msgstr "Beispiel für Statistiken für sehr schwere Rätsel"
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/stats-very-hard.png' "
-#~ "md5='13bff6de1e513a499dece168d4e69af5'"
-#~ msgstr "translated"
-
-#~ msgid ""
-#~ "<app>GNOME Sudoku</app> ranks puzzles based on the number of cells that "
-#~ "can be rapidly filled."
-#~ msgstr ""
-#~ "<app>GNOME-Sudoku</app> gliedert die Puzzles nach der Anzahl der "
-#~ "Kästchen, die unmittelbar ausgefüllt werden können."
-
-#~ msgid "The puzzle statistics box shows:"
-#~ msgstr "Die Puzzle-Statistiken zeigen Folgendes:"
-
-#~ msgid "the overall difficulty"
-#~ msgstr "den generellen Schwierigkeitsgrad."
-
-#~ msgid ""
-#~ "the number of cells which can be filled by elimination, starting from the "
-#~ "blank grid (i.e. only a 2 can go in this box, so it must be a 2)"
-#~ msgstr ""
-#~ "Die Anzahl der Kästchen, die nach dem Ausschlussverfahren ausgefüllt "
-#~ "werden können, ausgehend von einem leeren Spielfeld. Beispiel: Nur die "
-#~ "Ziffer 2 passt in dieses Kästchen, folglich muss eine 2 eingetragen "
-#~ "werden."
-
-#~ msgid ""
-#~ "the number of cells that can be filled by the process of filling, "
-#~ "starting from the blank grid (i.e. only one cell in this row can be a 2, "
-#~ "so it must be a 2)"
-#~ msgstr ""
-#~ "Die Anzahl der Kästchen, die direkt ausfüllbar sind, ausgehend von einem "
-#~ "leeren Spielfeld. Beispiel: Nur ein einziges Kästchen in dieser Zeile "
-#~ "kann eine 2 sein, folglich muss eine 2 eingetragen werden."
-
-#~ msgid ""
-#~ "the number of times in solving the puzzle that the program used the trial-"
-#~ "and-error algorithm to solve the puzzle"
-#~ msgstr ""
-#~ "Die Anzahl, wie oft das Programm den Inhalt eines Kästchens durch "
-#~ "Ausprobieren oder »Erraten« gefunden hat."
-
-#~ msgid ""
-#~ "All sudoku puzzles can be solved without ever having to guess. When the "
-#~ "statistics box says that Sudoku used trial-and-error X number of times, "
-#~ "it does not mean that a human would have to use trial-and-error to solve "
-#~ "the puzzle."
-#~ msgstr ""
-#~ "Alle Sudoku-Rätsel können auch ohne Ausprobieren gelöst werden. Wenn die "
-#~ "Rätselstatistik sagt, dass Sudoku X-mal nur durch Ausprobieren ein "
-#~ "Kästchen ausfüllen konnte, dann muss das nicht zwangsläufig heißen, dass "
-#~ "auch ein Mensch die Lösung nur durch Ausprobieren finden kann."
-
-#~ msgid "Toolbar"
-#~ msgstr "Werkzeugleiste"
-
-#~ msgid ""
-#~ "To show or hide the toolbar, click <guiseq><gui>Settings</gui><gui>Show "
-#~ "Toolbar</gui></guiseq>."
-#~ msgstr ""
-#~ "Um die Werkzeugleiste anzuzeigen oder zu verbergen, wählen Sie "
-#~ "<guiseq><gui>Einstellungen</gui><gui>Werkzeugleiste anzeigen</gui></"
-#~ "guiseq>."
-
-#~ msgid ""
-#~ "The toolbar, located under the menu bar, lets you perform common actions "
-#~ "with your mouse. To use a toolbar item, just click on it. The buttons, "
-#~ "from left to right, are New Game, Undo, Redo, <link xref=\"hints\">Hint</"
-#~ "link>, and <link xref=\"trackers\">Track Additions</link>."
-#~ msgstr ""
-#~ "Mit der unterhalb der Menüleiste angezeigten Werkzeugleiste können Sie "
-#~ "häufig verwendete Aktionen mit der Maus ausführen. Um ein "
-#~ "Werkzeugleistenobjekt zu nutzen, klicken Sie es einfach an. Die Knöpfe "
-#~ "bedeuten (von links nach rechts): Neues Spiel, Rückgängig, Wiederholen, "
-#~ "<link xref=\"hints\">Tipp</link> und <link xref=\"trackers\">Änderungen "
-#~ "markieren</link>."
-
-#~ msgid "Track trial-and-error solutions"
-#~ msgstr "Verschiedene Wege zur Lösung aufzeichnen"
-
-#~ msgid ""
-#~ "Trackers can be used to keep track of trial-and-error solutions. Tracked "
-#~ "moves are entered in a different color to help make the moves visually "
-#~ "distinct from moves made earlier in the game. This feature is "
-#~ "particularly useful when solving difficult games."
-#~ msgstr ""
-#~ "Sie können Änderungen markieren, um mehrere ausprobierte Eintragungen zu "
-#~ "kennzeichnen. Markierte Einträge werden in einer anderen Farbe angezeigt, "
-#~ "so dass sie sich optisch von anderen Einträgen unterscheiden. Dies ist "
-#~ "bei schwierigen Rätseln nützlich, bei denen Sie mehrere Lösungswege "
-#~ "ausprobieren wollen."
-
-#~ msgid "Using the tracker:"
-#~ msgstr "So wird die Änderungsaufzeichnung verwendet:"
-
-#~ msgid "You can toggle the tracker interface in one of the following ways:"
-#~ msgstr ""
-#~ "Sie können die Anzeige der markierten Änderungen auf folgende Arten "
-#~ "aktivieren:"
-
-#~ msgid "Click <guiseq><gui>Tools</gui><gui>Track Additions</gui></guiseq>."
-#~ msgstr ""
-#~ "Klicken Sie auf <guiseq><gui>Werkzeuge</gui><gui>Änderungen markieren</"
-#~ "gui></guiseq>."
-
-#~ msgid ""
-#~ "Click <gui>Track Additions</gui> in the toolbar. If the toolbar is not "
-#~ "visible, click <guiseq><gui>Settings</gui><gui>Show Toolbar</gui></"
-#~ "guiseq>."
-#~ msgstr ""
-#~ "Klicken Sie auf <gui>Änderungen markieren</gui> in der Werkzeugleiste. "
-#~ "Falls die Werkzeugleiste nicht sichtbar ist, wählen Sie "
-#~ "<guiseq><gui>Einstellungen</gui><gui>Werkzeugleiste anzeigen</gui></"
-#~ "guiseq>."
-
-#~ msgid "You can make untracked moves if no tracker is selected."
-#~ msgstr ""
-#~ "Sie können Eintragungen nicht aufzeichnen, wenn keine Aufzeichnung "
-#~ "ausgewählt ist."
-
-#~ msgid ""
-#~ "To create a new tracker click <gui>Add</gui>. From this point on, any "
-#~ "number you enter will be part of the selected tracker."
-#~ msgstr ""
-#~ "Eine neue Aufzeichnung erzeugen Sie, indem Sie auf <gui>Hinzufügen</gui> "
-#~ "klicken. Von da an werden alle Ziffern, die Sie eintragen, zur "
-#~ "ausgewählten Aufzeichnung hinzugefügt."
-
-#~ msgid ""
-#~ "You can create as many trackers as you want by clicking <gui>Add</gui>."
-#~ msgstr ""
-#~ "Sie können so viele Aufzeichnungen anlegen, wie Sie wollen, indem Sie auf "
-#~ "<gui>Hinzufügen</gui> klicken."
-
-#~ msgid ""
-#~ "You can apply a set of tracked additions by selecting the tracker and "
-#~ "clicking <gui>Apply</gui>."
-#~ msgstr ""
-#~ "Sie können eine aufgezeichnete Reihe von Eintragungen hinzufügen, indem "
-#~ "Sie die Aufzeichnung auswählen und auf <gui>Anwenden</gui> klicken."
-
-#~ msgid ""
-#~ "You can clear a tracker by selecting it and clicking <gui>Clear</gui>."
-#~ msgstr ""
-#~ "Um eine Aufzeichnung zu löschen, wählen Sie sie aus und klicken Sie auf "
-#~ "<gui>Leeren</gui>."
-
-#~ msgid ""
-#~ "Some sudoku players believe you should never use trial-and-error to solve "
-#~ "a puzzle. These players should not use this feature."
-#~ msgstr ""
-#~ "Manche Sudoku-Spieler glauben, niemals verschiedene Lösungswege "
-#~ "auszuprobieren, um ein Puzzle zu lösen. Diese Spieler sollten dieses "
-#~ "Hilfsmittel nicht verwenden."
-
-#~ msgid "Video Demonstration"
-#~ msgstr "Video-Demonstration"
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/trackers.webm' "
-#~ "md5='ea60faea1b59d16cae73b697aa06da8e'"
-#~ msgstr "original"
