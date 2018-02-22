@@ -39,14 +39,15 @@
 # Redmar <redmar@ubuntu-nl.org>, 2011.
 # Justin van Steijn <justin50@live.nl>, 2015, 2016.
 # Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2017.
+# Nathan Follens <nthn@unseen.is>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-07-15 23:36+0000\n"
-"PO-Revision-Date: 2017-09-01 10:51+0100\n"
-"Last-Translator: Hannie Dumoleyn <hannie@ubuntu-nl.org>\n"
+"POT-Creation-Date: 2018-02-03 23:47+0000\n"
+"PO-Revision-Date: 2018-02-08 18:34+0100\n"
+"Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -54,7 +55,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2011-09-18 07:04+0000\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
 msgid "_Print"
@@ -63,11 +64,11 @@ msgstr "Af_drukken"
 # de huidige sudoku afdrukken
 #: data/gnome-sudoku-menu.ui:10
 msgid "Print _Current Puzzle…"
-msgstr "Het _huidige spel afdrukken"
+msgstr "_Huidige sudoku afdrukken…"
 
 #: data/gnome-sudoku-menu.ui:14
 msgid "Print _Multiple Puzzles…"
-msgstr "_Meerdere sudoku's afdrukken"
+msgstr "_Meerdere sudoku’s afdrukken…"
 
 # vakjes accentueren met verschillende kleuren
 #: data/gnome-sudoku-menu.ui:22
@@ -78,11 +79,15 @@ msgstr "_Uitlichten"
 msgid "_Warnings"
 msgstr "_Waarschuwingen"
 
-#: data/gnome-sudoku-menu.ui:39
+#: data/gnome-sudoku-menu.ui:32
+msgid "_Help"
+msgstr "_Hulp"
+
+#: data/gnome-sudoku-menu.ui:36
 msgid "_About"
 msgstr "I_nfo"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
+#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "_Afsluiten"
 
@@ -134,7 +139,7 @@ msgid "The GNOME Project"
 msgstr "Het Gnome-project"
 
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -211,23 +216,23 @@ msgstr "Beginnen met spelen van het aangepaste spel dat u heeft gemaakt"
 
 #: data/org.gnome.sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
-msgstr "Moeilijkheidsgraad van de sudoku's die worden geprint"
+msgstr "Moeilijkheidsgraad van de af te drukken sudoku’s"
 
 #: data/org.gnome.sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"Stel de moeilijkheidsgraad in van de sudoku's die u wilt afdrukken. "
+"Stel de moeilijkheidsgraad in van de sudoku’s die u wilt afdrukken. "
 "Mogelijkheden zijn ‘gemakkelijk’, ‘gemiddeld’, ‘moeilijk’, ‘zeer moeilijk’"
 
 #: data/org.gnome.sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
-msgstr "Aa_ntal af te drukken sudoku's"
+msgstr "Aantal af te drukken sudoku’s"
 
 #: data/org.gnome.sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
-msgstr "Stel het aantal sudoku's in dat u wilt afdrukken"
+msgstr "Stel het aantal sudoku’s in dat u wilt afdrukken"
 
 #: data/org.gnome.sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
@@ -260,7 +265,7 @@ msgstr "waar als het venster is gemaximaliseerd"
 
 #: data/print-dialog.ui:12
 msgid "Print Multiple Puzzles"
-msgstr "_Meerdere sudoku's afdrukken"
+msgstr "Meerdere sudoku’s afdrukken"
 
 #: data/print-dialog.ui:21
 msgid "_Cancel"
@@ -268,7 +273,7 @@ msgstr "_Annuleren"
 
 #: data/print-dialog.ui:67
 msgid "_Number of puzzles"
-msgstr "_Aantal sudoku's"
+msgstr "Aa_ntal sudoku’s"
 
 #: data/print-dialog.ui:110
 msgid "Difficulty"
@@ -315,7 +320,7 @@ msgstr "De sudoku die u heeft ingevoerd is geen geldige sudoku."
 
 #: src/gnome-sudoku.vala:279
 msgid "Please enter a valid puzzle."
-msgstr "Voer alstublieft een geldige sudoku in."
+msgstr "Voer een geldige sudoku in."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
 #: src/gnome-sudoku.vala:288
@@ -324,7 +329,7 @@ msgstr "De sudoku die u heeft ingevoerd heeft meerdere oplossingen."
 
 #: src/gnome-sudoku.vala:288
 msgid "Valid Sudoku puzzles have exactly one solution."
-msgstr "Geldige sudoku's hebben exact één oplossing."
+msgstr "Geldige sudoku’s hebben precies één oplossing."
 
 #: src/gnome-sudoku.vala:290
 msgid "_Back"
@@ -336,14 +341,14 @@ msgstr "_Toch spelen"
 
 #: src/gnome-sudoku.vala:333
 msgid "_Resume"
-msgstr "_Hervatten"
+msgstr "He_rvatten"
 
 #: src/gnome-sudoku.vala:397
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "Goed gedaan, u heeft de sudoku in %d minuut voltooid!"
-msgstr[1] "Goed gedaan, u heeft de sudoku in %d minuten voltooid!"
+msgstr[0] "Goed gedaan, u heeft de sudoku in %d minuut opgelost!"
+msgstr[1] "Goed gedaan, u heeft de sudoku in %d minuten opgelost!"
 
 #: src/gnome-sudoku.vala:403
 msgid "Play _Again"
@@ -362,7 +367,7 @@ msgid "Create Puzzle"
 msgstr "Sudoku maken"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:606
+#: src/gnome-sudoku.vala:602
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -371,9 +376,9 @@ msgid ""
 msgstr ""
 "De populaire Japanse denkpuzzel\n"
 "\n"
-"Sudoku's gegenereerd door QQwing %s"
+"Sudoku’s gegenereerd door QQwing %s"
 
-#: src/gnome-sudoku.vala:611
+#: src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
 "Tino Meinen\n"
@@ -383,9 +388,9 @@ msgstr ""
 "Erik Kruijswijk\n"
 "Justin van Steijn\n"
 "\n"
-"Kijk voor meer informatie op http://nl.gnome.org/\n"
+"Meer info over Gnome-NL http://nl.gnome.org/\n"
 "\n"
-"Launchpad Contributions:\n"
+"Launchpad-bijdragen:\n"
 "  Balaam's Miracle https://launchpad.net/~balaam-balaamsmiracle\n"
 "  Bert de Bruijn https://launchpad.net/~lpdebruijn\n"
 "  Bram Smulders https://launchpad.net/~bramsmulders\n"
