@@ -9,6 +9,7 @@
 # Updated for gnome-sudoku:
 #
 # Changwoo Ryu <cwryu@debian.org>, 2013-2015.
+# Yeol Park <peary2@gmail.com>, 2018.
 #
 #
 # 새로 번역하신 분은 아래 "translator-credits"에 추가하세요.
@@ -21,15 +22,16 @@ msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-13 22:15+0000\n"
-"PO-Revision-Date: 2017-09-06 18:27+0900\n"
-"Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
+"POT-Creation-Date: 2018-02-22 17:23+0000\n"
+"PO-Revision-Date: 2018-02-24 17:43+0900\n"
+"Last-Translator: Yeol Park <peary2@gmail.com>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
 msgid "_Print"
@@ -51,11 +53,15 @@ msgstr "반전(_L)"
 msgid "_Warnings"
 msgstr "경고(_W)"
 
-#: data/gnome-sudoku-menu.ui:39
+#: data/gnome-sudoku-menu.ui:32
+msgid "_Help"
+msgstr "도움말(_H)"
+
+#: data/gnome-sudoku-menu.ui:36
 msgid "_About"
 msgstr "정보(_A)"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
+#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "끝내기(_Q)"
 
@@ -105,7 +111,7 @@ msgid "The GNOME Project"
 msgstr "그놈 프로젝트"
 
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "스도쿠"
 
@@ -209,7 +215,7 @@ msgid ""
 "number and duplicate numbers are highlighted in red"
 msgstr ""
 "어떤 숫자로도 채울 수 없는 경우 빨간 색 큰 X표를 표시하고, 같은 숫자를 다시 "
-"쓰면 빨간 색으로 표시합니다."
+"쓰면 빨간 색으로 표시합니다"
 
 #: data/org.gnome.sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
@@ -330,7 +336,7 @@ msgid "Create Puzzle"
 msgstr "퍼즐 만들기"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:606
+#: src/gnome-sudoku.vala:602
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -341,9 +347,11 @@ msgstr ""
 "\n"
 "QQwing %s 버전으로 퍼즐 생성"
 
-#: src/gnome-sudoku.vala:611
+#: src/gnome-sudoku.vala:613
 msgid "translator-credits"
-msgstr "류창우 <cwryu@debian.org>"
+msgstr ""
+"류창우 <cwryu@debian.org>\n"
+"박열 <peary2@gmail.com>"
 
 #: src/number-picker.vala:90
 msgid "Clear"
