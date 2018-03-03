@@ -10,15 +10,15 @@
 # Alexandre Franke <alexandre.franke@gmail.com>, 2014.
 # Claude Paroz <claude@2xlibre.net>, 2007-2015.
 # Victor Levasseur <victorlevasseur52@gmail.com>, 2015
-# Charles Monzat <superboa@hotmail.fr>, 2016.
+# Charles Monzat <superboa@hotmail.fr>, 2016, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-19 15:39+0000\n"
-"PO-Revision-Date: 2017-09-08 17:38+0200\n"
+"POT-Creation-Date: 2018-02-25 00:15+0000\n"
+"PO-Revision-Date: 2018-03-01 12:30+0100\n"
 "Last-Translator: Charles Monzat <superboa@hotmail.fr>\n"
 "Language-Team: français <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -48,11 +48,15 @@ msgstr "Sur_ligneur"
 msgid "_Warnings"
 msgstr "A_vertissements"
 
-#: data/gnome-sudoku-menu.ui:39
+#: data/gnome-sudoku-menu.ui:32
+msgid "_Help"
+msgstr "Aid_e"
+
+#: data/gnome-sudoku-menu.ui:36
 msgid "_About"
 msgstr "À _propos"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
+#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "_Quitter"
 
@@ -104,7 +108,7 @@ msgid "The GNOME Project"
 msgstr "Le projet GNOME"
 
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -333,7 +337,7 @@ msgid "Create Puzzle"
 msgstr "Créer une grille"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:606
+#: src/gnome-sudoku.vala:602
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -344,7 +348,7 @@ msgstr ""
 "\n"
 "Grilles générées par QQwing %s"
 
-#: src/gnome-sudoku.vala:611
+#: src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
 "Christophe Merlet <redfox@redfoxcenter.org>\n"
