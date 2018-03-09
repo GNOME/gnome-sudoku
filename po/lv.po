@@ -5,22 +5,22 @@
 # Peteris Krisjanis <peteris.krisjanis@os.lv>, 2002.
 # Raivis Dejus <orvils@gmail.com>, 2006, 2007.
 # Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2010, 2011.
-# Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011, 2012, 2013, 2014, 2016, 2017.
+# Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011, 2012, 2013, 2014, 2016, 2017, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-13 22:15+0000\n"
-"PO-Revision-Date: 2017-08-27 23:31+0200\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-s"
+"udoku&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2018-03-05 15:26+0000\n"
+"PO-Revision-Date: 2018-03-09 20:33+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 :"
+" 2);\n"
 "X-Generator: Lokalize 2.0\n"
 "X-Poedit-Language: Latvian\n"
 "X-Poedit-Country: LATVIA\n"
@@ -45,11 +45,15 @@ msgstr "_Izgaismotājs"
 msgid "_Warnings"
 msgstr "_Brīdinājumi"
 
-#: data/gnome-sudoku-menu.ui:39
+#: data/gnome-sudoku-menu.ui:32
+msgid "_Help"
+msgstr "_Palīdzība"
+
+#: data/gnome-sudoku-menu.ui:36
 msgid "_About"
 msgstr "P_ar"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
+#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "_Iziet"
 
@@ -98,7 +102,7 @@ msgid "The GNOME Project"
 msgstr "GNOME projekts"
 
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -326,7 +330,7 @@ msgid "Create Puzzle"
 msgstr "Izveidot mīklu"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:606
+#: src/gnome-sudoku.vala:602
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -337,7 +341,7 @@ msgstr ""
 "\n"
 "Mīklas ģenerē QQwing %s"
 
-#: src/gnome-sudoku.vala:611
+#: src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
 "Raivis Dejus <orvils@gmail.com>\n"
@@ -357,3 +361,4 @@ msgstr "Kļūda, drukājot datni:"
 #: src/sudoku-view.vala:631
 msgid "Paused"
 msgstr "Apturēts"
+
