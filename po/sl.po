@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2018-03-05 15:26+0000\n"
-"PO-Revision-Date: 2018-03-06 22:16+0100\n"
+"PO-Revision-Date: 2018-04-05 19:35+0200\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
 msgid "_Print"
@@ -31,11 +31,11 @@ msgstr "_Natisni"
 
 #: data/gnome-sudoku-menu.ui:10
 msgid "Print _Current Puzzle…"
-msgstr "Natisni _trenutno uganko"
+msgstr "Natisni _trenutno uganko …"
 
 #: data/gnome-sudoku-menu.ui:14
 msgid "Print _Multiple Puzzles…"
-msgstr "Natisni _več ugank sudoku ..."
+msgstr "Natisni _več ugank sudoku …"
 
 #: data/gnome-sudoku-menu.ui:22
 msgid "High_lighter"
@@ -63,7 +63,7 @@ msgstr "Sudoku GNOME"
 
 #: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
 msgid "Test your logic skills in this number grid puzzle"
-msgstr "Preverite svoje logično razmišljenje z reševanjem mrežne uganke."
+msgstr "Preverite svoje logično razmišljanje z reševanjem mrežne uganke."
 
 #: data/gnome-sudoku.appdata.xml.in:10
 msgid ""
@@ -79,8 +79,8 @@ msgid ""
 "websites, so your game will be as easy or as difficult as you want it to be."
 msgstr ""
 "Vsaki uganki je določena težavnost, podobno kot to velja za tiskane "
-"različice. Težavnost je opredeljena podobno, kot velja za uganke v zabavnih "
-"revijah ali na spletnih straneh."
+"različice. Težavnost je opredeljena na isti način, kot velja za uganke v "
+"zabavnih revijah in na spletnih straneh."
 
 #: data/gnome-sudoku.appdata.xml.in:20
 msgid ""
@@ -89,8 +89,8 @@ msgid ""
 "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
 msgstr ""
 "Če vam je ljubše uganke reševati na papirju, je te mogoče tudi natisniti. "
-"Pred tiskanjem je treba izberati število iger, ki naj se natisnejo na vsako "
-"stran."
+"Pred tiskanjem je treba izbrati število iger, ki naj se natisnejo na vsako "
+"stran lista. Na ta način si lahko ustvarite tudi knjižico ugank za na pot."
 
 #: data/gnome-sudoku.appdata.xml.in:30
 msgid "A GNOME sudoku game preview"
@@ -131,23 +131,23 @@ msgstr "Vrni se na trenutno uganko"
 
 #: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
 msgid "_Easy"
-msgstr "_Enostavno"
+msgstr "_Enostavna uganka"
 
 #: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
 msgid "_Medium"
-msgstr "_Srednje"
+msgstr "_Srednje zahtevna uganka"
 
 #: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
 msgid "_Hard"
-msgstr "_Zahtevno"
+msgstr "_Zahtevna uganka"
 
 #: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
 msgid "_Very Hard"
-msgstr "_Zelo težko"
+msgstr "_Zelo zahtevna uganka"
 
 #: data/gnome-sudoku.ui:189
 msgid "_Create your own puzzle"
-msgstr "_Ustvari lastno uganko"
+msgstr "_Ustvari uganko po meri"
 
 #: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
 msgid "_Pause"
@@ -171,7 +171,7 @@ msgstr "Začni novo uganko"
 
 #: data/gnome-sudoku.ui:287
 msgid "_Start Playing"
-msgstr "_Začni uganko"
+msgstr "_Začni reševati uganko"
 
 #: data/gnome-sudoku.ui:291
 msgid "Start playing the custom puzzle you have created"
@@ -179,16 +179,16 @@ msgstr "Začni z reševanjem ustvarjene uganke po meri"
 
 #: data/org.gnome.sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
-msgstr "Težavnost uganke sudoku za tiskanje"
+msgstr "Zahtevnost ugank sudoku za tiskanje"
 
 #: data/org.gnome.sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"Nastavitev ravni težavnosti uganke sudoku, ki naj bo pripravljena za "
-"tiskanje. Izbirati je mogoče med možnostmi – »enostavno», »srednje težko«, "
-"»težko«, »zelo težko«."
+"Nastavitev ravni zahtevnosti ugank sudoku, ki naj se pripravijo za tiskanje. "
+"Izbirati je mogoče med možnostmi – »enostavne», »srednje zahtevne«, "
+"»zahtevne« in »zelo zahtevne«."
 
 #: data/org.gnome.sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
@@ -240,27 +240,27 @@ msgstr "_Število ugank"
 
 #: data/print-dialog.ui:110
 msgid "Difficulty"
-msgstr "Težavnost"
+msgstr "Zahtevnost"
 
 #: lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
-msgstr "Neznano"
+msgstr "Neznana zahtevnost"
 
 #: lib/sudoku-board.vala:585
 msgid "Easy Difficulty"
-msgstr "Enostavno"
+msgstr "Enostavna uganka"
 
 #: lib/sudoku-board.vala:587
 msgid "Medium Difficulty"
-msgstr "Srednje težko"
+msgstr "Srednje zahtevna uganka"
 
 #: lib/sudoku-board.vala:589
 msgid "Hard Difficulty"
-msgstr "Težko"
+msgstr "Zahtevna uganka"
 
 #: lib/sudoku-board.vala:591
 msgid "Very Hard Difficulty"
-msgstr "Zelo težko"
+msgstr "Zelo zahtevna uganka"
 
 #: lib/sudoku-board.vala:593
 msgid "Custom Puzzle"
@@ -283,7 +283,7 @@ msgstr "Izbrana uganka ni veljavna uganka sudoku."
 
 #: src/gnome-sudoku.vala:279
 msgid "Please enter a valid puzzle."
-msgstr "Vnesite veljavno število uganke."
+msgstr "Vnesite veljavno številko uganke."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
 #: src/gnome-sudoku.vala:288
@@ -300,7 +300,7 @@ msgstr "_Nazaj"
 
 #: src/gnome-sudoku.vala:291
 msgid "Play _Anyway"
-msgstr "Vseeno _rešuj"
+msgstr "Vseeno _pokaži"
 
 #: src/gnome-sudoku.vala:333
 msgid "_Resume"
@@ -310,18 +310,18 @@ msgstr "Na_daljuj"
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "Za rešitev uganke ste potrebovali %d minut!"
-msgstr[1] "Za rešitev uganke ste potrebovali %d minuto!"
-msgstr[2] "Za rešitev uganke ste potrebovali %d minuti!"
-msgstr[3] "Za rešitev uganke ste potrebovali %d minute!"
+msgstr[0] "Za reševanje uganke ste potrebovali %d minut!"
+msgstr[1] "Za reševanje uganke ste potrebovali %d minuto!"
+msgstr[2] "Za reševanje uganke ste potrebovali %d minuti!"
+msgstr[3] "Za reševanje uganke ste potrebovali %d minute!"
 
 #: src/gnome-sudoku.vala:403
 msgid "Play _Again"
-msgstr "_Nova uganka"
+msgstr "_Igraj znova"
 
 #: src/gnome-sudoku.vala:422
 msgid "Select Difficulty"
-msgstr "Spremeni težavnost"
+msgstr "Izbor zahtevnosti uganke"
 
 #: src/gnome-sudoku.vala:478
 msgid "Reset the board to its original state?"
@@ -341,7 +341,7 @@ msgid ""
 msgstr ""
 "Zabavna Japonska logična uganka\n"
 "\n"
-"Uganka je zasnovana na QQwing %s"
+"Uganka je zasnovana z ustvarjalnikom ugank QQwing %s"
 
 #: src/gnome-sudoku.vala:613
 msgid "translator-credits"
