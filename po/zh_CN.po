@@ -2,22 +2,23 @@
 # Copyright 2011 Free Software Foundation, Inc.
 # Aron Xu <aronxu@gnome.org>, 2011.
 # YunQiang Su <wzssyqa@gmail.com>, 2011, 2012.
+# Mingcong Bai <jeffbai@aosc.xyz>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-10-01 11:35+0000\n"
-"PO-Revision-Date: 2017-09-02 04:09+0800\n"
-"Last-Translator: Mandy Wang <wangmychn@gmail.com>\n"
+"POT-Creation-Date: 2018-03-05 15:26+0000\n"
+"PO-Revision-Date: 2018-05-10 11:29-0500\n"
+"Last-Translator: Mingcong Bai <jeffbai@aosc.xyz>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
 msgid "_Print"
@@ -25,11 +26,11 @@ msgstr "打印(_P)"
 
 #: data/gnome-sudoku-menu.ui:10
 msgid "Print _Current Puzzle…"
-msgstr "打印当前游戏(_C)..."
+msgstr "打印当前游戏(_C)…"
 
 #: data/gnome-sudoku-menu.ui:14
 msgid "Print _Multiple Puzzles…"
-msgstr "打印多个谜题(_M)..."
+msgstr "打印多个谜题(_M)…"
 
 #: data/gnome-sudoku-menu.ui:22
 msgid "High_lighter"
@@ -39,11 +40,15 @@ msgstr "高亮显示(_L)"
 msgid "_Warnings"
 msgstr "警告(_W)"
 
-#: data/gnome-sudoku-menu.ui:39
+#: data/gnome-sudoku-menu.ui:32
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: data/gnome-sudoku-menu.ui:36
 msgid "_About"
 msgstr "关于(_A)"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
+#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "退出(_Q)"
 
@@ -89,7 +94,7 @@ msgid "The GNOME Project"
 msgstr "GNOME 项目"
 
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:604
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "数独"
 
@@ -171,7 +176,7 @@ msgstr "待打印的数独难度等级"
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
-msgstr "设置数独的难度等级。可能的值有 - “简单”，“中等”，“困难”，“非常困难”"
+msgstr "设置数独的难度等级。可设置为“简单”，“中等”，“困难”或“非常困难”"
 
 #: data/org.gnome.sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
@@ -310,7 +315,8 @@ msgstr "重置面板到其初试状态？"
 msgid "Create Puzzle"
 msgstr "创建谜题"
 
-#: src/gnome-sudoku.vala:601
+#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
+#: src/gnome-sudoku.vala:602
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -327,7 +333,8 @@ msgstr ""
 "Yang Zhang <zyangmath@gmail.com>, 2007\n"
 "Ping Z <zpsigma@gmail.com>, 2007\n"
 "Xhacker Liu <liu.dongyuan@gmail.com>, 2010\n"
-"Tong Hui <tonghuix@gmail.com>, 2014"
+"Tong Hui <tonghuix@gmail.com>, 2014\n"
+"Mingcong Bai <jeffbai@aosc.xyz>, 2018"
 
 #: src/number-picker.vala:90
 msgid "Clear"
