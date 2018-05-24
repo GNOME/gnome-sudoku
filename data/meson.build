@@ -15,7 +15,7 @@ appdata = i18n.merge_file('appdata',
   input: 'gnome-sudoku.appdata.xml.in',
   output: 'gnome-sudoku.appdata.xml',
   install: true,
-  install_dir: join_paths(datadir, 'appdata'),
+  install_dir: join_paths(datadir, 'metainfo'),
   po_dir: '../po'
 )
 
