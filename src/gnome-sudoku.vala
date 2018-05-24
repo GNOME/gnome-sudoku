@@ -30,7 +30,9 @@ public class Sudoku : Gtk.Application
     private int window_height;
     private Gtk.Button play_custom_game_button;
     private Gtk.Button play_pause_button;
+    private Gtk.Button show_possibilities_button;
     private Gtk.Label play_pause_label;
+    private Gtk.Label show_possibilities_label;
     private Gtk.Label clock_label;
     private Gtk.Image clock_image;
 
@@ -72,6 +74,7 @@ public class Sudoku : Gtk.Application
         {"print", print_cb                                          },
         {"play-custom-game", play_custom_game_cb                    },
         {"pause", toggle_pause_cb                                   },
+        {"show_possibilities", toggle_show_possibilities_cb         },
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
@@ -167,7 +170,9 @@ public class Sudoku : Gtk.Application
         clock_label = (Gtk.Label) builder.get_object ("clock_label");
         clock_image = (Gtk.Image) builder.get_object ("clock_image");
         play_custom_game_button = (Gtk.Button) builder.get_object ("play_custom_game_button");
+        show_possibilities_button = (Gtk.Button) builder.get_object ("show_possibilities_button");
         play_pause_button = (Gtk.Button) builder.get_object ("play_pause_button");
+        show_possibilities_label = (Gtk.Label) builder.get_object ("show_possibilities_label");
         play_pause_label = (Gtk.Label) builder.get_object ("play_pause_label");
 
         undo_action = (SimpleAction) lookup_action ("undo");
@@ -299,6 +304,17 @@ public class Sudoku : Gtk.Application
 
             dialog.show ();
         }
+    }
+
+    private void toggle_show_possibilities_cb ()
+    {
+       show_possibilities = !show_possibilities;
+       if (show_possibilities)
+         show_possibilities_label.label = _("_Hide possibilities");
+       else
+         show_possibilities_label.label = _("_Show possibilities");
+
+       view.show_possibilities = show_possibilities;
     }
 
     private void toggle_pause_cb ()
