@@ -9,10 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games 3.3.91\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-13 22:15+0000\n"
-"PO-Revision-Date: 2017-09-01 20:04+0800\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
+"POT-Creation-Date: 2018-05-31 13:17+0000\n"
+"PO-Revision-Date: 2018-06-09 13:14+0800\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (traditional)\n"
 "Language: zh_TW\n"
@@ -20,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
 msgid "_Print"
@@ -42,11 +41,15 @@ msgstr "高亮度突顯(_L)"
 msgid "_Warnings"
 msgstr "警告(_W)"
 
-#: data/gnome-sudoku-menu.ui:39
+#: data/gnome-sudoku-menu.ui:32
+msgid "_Help"
+msgstr "說明(_H)"
+
+#: data/gnome-sudoku-menu.ui:36
 msgid "_About"
 msgstr "關於(_A)"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
+#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "結束(_Q)"
 
@@ -64,8 +67,8 @@ msgid ""
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
 "Sudoku fun for players of any skill level."
 msgstr ""
-"來玩最受歡迎的日本邏輯遊戲。GNOME Sudoku 是數獨愛好者必裝的，用簡單而含蓄的介"
-"面，讓任何技能水準的數獨玩家能快樂的玩數獨。"
+"來玩最受歡迎的日本邏輯遊戲。GNOME Sudoku 是數獨愛好者必裝的，用簡單而含蓄的"
+"介面，讓任何技能水準的數獨玩家能快樂的玩數獨。"
 
 #: data/gnome-sudoku.appdata.xml.in:15
 msgid ""
@@ -93,7 +96,7 @@ msgid "The GNOME Project"
 msgstr "GNOME 計畫"
 
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "數獨"
 
@@ -315,7 +318,7 @@ msgid "Create Puzzle"
 msgstr "建立題目"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:606
+#: src/gnome-sudoku.vala:602
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -326,7 +329,7 @@ msgstr ""
 "\n"
 "題目由 QQwing %s 創製"
 
-#: src/gnome-sudoku.vala:611
+#: src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
 "如對翻譯有任何意見，請送一封電子郵件給\n"
