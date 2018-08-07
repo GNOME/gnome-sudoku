@@ -3,26 +3,29 @@
 # This file is distributed under the same license as the gnome-sudoku package
 # Vladimir Melo <vladimirmelo@foresightlinux.org>, 2007.
 # Yuri Otávio <yuriotavio@hotmail.com>, 2017.
-#
+# Rafael Fontenelle <rafaelff@gnome.org>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Sudoku Manual\n"
-"POT-Creation-Date: 2018-03-11 09:26+0000\n"
-"PO-Revision-Date: 2017-05-15 18:59-0300\n"
-"Last-Translator: Yuri Otávio <yuriotavio@hotmail.com>\n"
+"POT-Creation-Date: 2018-08-07 13:45+0000\n"
+"PO-Revision-Date: 2018-08-07 11:19-0200\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Virtaal 1.0.0-beta1\n"
+"X-Project-Style: gnome\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
-"Vladimir Melo <vladimirmelo@foresightlinux.org>, 2007.\n"
-"Yuri Otávio <yuriotavio@hotmail.com>, 2017."
+"Vladimir Melo <vladimirmelo@foresightlinux.org>, 2007,\n"
+"Yuri Otávio <yuriotavio@hotmail.com>, 2017,\n"
+"Rafael Fontenelle <rafaelff@gnome.org>, 2018."
 
 #. (itstool) path: credit/name
 #: C/basics.page:9 C/earmarks.page:14 C/keyboard-shortcuts.page:10
@@ -56,7 +59,7 @@ msgstr "Creative Commons Compartilha Igual 3.0"
 #. (itstool) path: page/title
 #: C/basics.page:22
 msgid "Basics"
-msgstr "Basico"
+msgstr "Básico"
 
 #. (itstool) path: page/p
 #: C/basics.page:23
@@ -70,7 +73,7 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/basics.page:27
 msgid "Using the keyboard"
-msgstr "Usando o techado"
+msgstr "Usando o teclado"
 
 #. (itstool) path: item/p
 #: C/basics.page:29
@@ -83,7 +86,8 @@ msgstr ""
 #: C/basics.page:30
 msgid "To put a number in a cell, select the cell, and then press the number."
 msgstr ""
-"Para colocar um número na célula, selecione célula e então clique no número."
+"Para colocar um número na célula, selecione a célula e então pressione no "
+"número."
 
 #. (itstool) path: item/p
 #: C/basics.page:31
@@ -91,9 +95,8 @@ msgid ""
 "To remove a number from a cell, select the cell, and then press the "
 "<key>Delete</key> key, the <key>Backspace</key>, or the <key>0</key> key."
 msgstr ""
-"Para remover o número da célula, selecione a célula e depois clique em "
-"<key>Delete</key> tecla, e <key>barra de espaço</key> ou a <key>0</key> "
-"tecla."
+"Para remover o número da célula, selecione a célula e pressione a tecla "
+"<key>Delete</key>, a <key>Backspace</key> ou <key>0</key>."
 
 #. (itstool) path: section/title
 #: C/basics.page:37
@@ -103,7 +106,7 @@ msgstr "Usando o mouse"
 #. (itstool) path: item/p
 #: C/basics.page:39
 msgid "To select a cell, move your mouse over it and click."
-msgstr "Para selecionar a célula, mova seu mouse sobre ela e clique."
+msgstr "Para selecionar uma célula, mova seu mouse sobre ela e clique."
 
 #. (itstool) path: item/p
 #: C/basics.page:40
@@ -120,8 +123,8 @@ msgid ""
 "To remove a number from a selected cell, click in the center of the cell and "
 "then click <gui>Clear</gui>."
 msgstr ""
-"Para remover o número da célula selecionada, clique no centro da célula e "
-"clique em <gui>Limpar</gui>."
+"Para remover um número de uma célula selecionada, clique no centro da célula "
+"e clique em <gui>Limpar</gui>."
 
 #. (itstool) path: credit/name
 #: C/bug-filing.page:10 C/develop.page:10 C/documentation.page:8
@@ -134,7 +137,7 @@ msgstr "Tiffany Antopolski"
 #. (itstool) path: page/title
 #: C/bug-filing.page:19
 msgid "Report a Problem"
-msgstr "Relatar o problema"
+msgstr "Relatando um problema"
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:20
@@ -145,9 +148,9 @@ msgid ""
 ">."
 msgstr ""
 "<app>GNOME Sudoku</app> é mantido pelos voluntários da comunidade. Você é "
-"bem vindo para participar. Se você tiver algum problema, você pode <em> "
-"relatar o erro</em>. Para relatar um erro, vá em <link href=\"https://bugzilla.gnome.org/\"/"
-">."
+"bem-vindo para participar. Se você tiver algum problema, você pode "
+"<em>relatar um erro</em>. Para relatar um erro, vá em <link href=\"https://"
+"bugzilla.gnome.org/\"/>."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:23
@@ -160,13 +163,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:26
-#, fuzzy
-#| msgid ""
-#| "To participate you need an account which will give you the ability to "
-#| "gain access, file bugs, and make comments. Also, you need to register so "
-#| "you can receive updates by e-mail about the status of your bug. If you "
-#| "don't already have an account, just click on the <gui>New Account</gui> "
-#| "link to create one."
 msgid ""
 "To participate you need an account which will give you the ability to gain "
 "access, file bugs, and make comments. Also, you need to register so you can "
@@ -174,10 +170,10 @@ msgid ""
 "have an account, just click on the <gui>New Account</gui> link to create one."
 msgstr ""
 "Para participar você precisa de uma conta a qual vai te dar a possibilidade "
-"para acessar, relatar erros e fazer comentários. Além disso, você precisa "
-"se registrar então você poderá receber atualizações por e-mail sobre o status "
-"do bug. Se você ainda não tiver a conta, só clique em <gui>New Account</gui> "
-"para criar uma."
+"para acessar, relatar erros e fazer comentários. Além disso, você precisa se "
+"registrar então você poderá receber atualizações por e-mail sobre o status "
+"do erro. Se você ainda não tiver a conta, só clique em <gui>New Account</"
+"gui> para criar uma."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:30
@@ -190,26 +186,21 @@ msgid ""
 "\">browse</link> for the bug to see if it already exists."
 msgstr ""
 "Tendo a sua conta, autentique-se, clique em <guiseq><gui>File a Bug</"
-"gui><gui>Applications</gui><gui>gnome-sudoku</gui></guiseq>. Depois relate o "
-"erro, por favor leia estas <link href=\"https://bugzilla.gnome.org/page.cgi?"
-"id=bug-writing.html\">diretrizes de relatório de erro</link>, e por favor <link "
-"href=\"https://bugzilla.gnome.org/browse.cgi?product=gnome-sudoku"
-"\">pesquise</link> sobre o erro e veja se ele já foi relatado."
+"gui><gui>Applications</gui><gui>gnome-sudoku</gui></guiseq>. Antes de "
+"relatar um erro, por favor leia estas <link href=\"https://bugzilla.gnome."
+"org/page.cgi?id=bug-writing.html\">diretrizes de relatório de erro</link>, e "
+"por favor <link href=\"https://bugzilla.gnome.org/browse.cgi?product=gnome-"
+"sudoku\">pesquise</link> sobre o erro e veja se ele já foi relatado."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:38
-#, fuzzy
-#| msgid ""
-#| "If you are requesting a new feature, choose <gui>enhancement</gui> in the "
-#| "<gui>Severity</gui> menu. Fill in the Summary and Description sections "
-#| "and click <gui>Commit</gui>."
 msgid ""
 "If you are requesting a new feature, choose <gui>enhancement</gui> in the "
 "<gui>Severity</gui> menu. Fill in the Summary and Description sections and "
 "click <gui>Submit Bug</gui>."
 msgstr ""
-"Se você solicitar um novo recurso, escolha <gui>enhancement</gui> no menu "
-"<gui>Severity</gui>. Preencha as seções Summary e Description e clique "
+"Se você está solicitando um novo recurso, escolha <gui>enhancement</gui> no "
+"menu <gui>Severity</gui>. Preencha as seções Summary e Description e clique "
 "em <gui>Submit Bug</gui>."
 
 #. (itstool) path: page/p
@@ -218,8 +209,8 @@ msgid ""
 "Your report will be given an ID number, and its status will be updated as it "
 "is being dealt with."
 msgstr ""
-"Seu relatório receberá um número de ID, e este status será atualizado "
-"na medida em que estiver sendo tratado."
+"Seu relatório receberá um número de ID, e este status será atualizado na "
+"medida em que estiver sendo tratado."
 
 #. (itstool) path: page/title
 #: C/develop.page:19
@@ -237,14 +228,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/develop.page:23
-#, fuzzy
-#| msgid ""
-#| "If you would like to <link href=\"https://wiki.gnome.org/Apps/Games/"
-#| "Contributing\">help develop <app>GNOME Games</app></link>, you can get in "
-#| "touch with the developers using <link href=\"https://cbe005.chat.mibbit."
-#| "com/?url=irc%3A%2F%2Firc.gnome.org%2Fgnome-games\">irc</link>, or via our "
-#| "<link href=\"http://mail.gnome.org/mailman/listinfo/games-list\">mailing "
-#| "list</link>."
 msgid ""
 "If you would like to <link href=\"https://wiki.gnome.org/Apps/Sudoku\">help "
 "develop <app>GNOME Sudoku</app></link>, you can get in touch with the "
@@ -252,12 +235,12 @@ msgid ""
 "%2Firc.gnome.org%2Fgnome-games\">IRC</link>, or via our <link href=\"https://"
 "mail.gnome.org/mailman/listinfo/games-list\">mailing list</link>."
 msgstr ""
-"Se você quiser <link href=\"https://wiki.gnome.org/Apps/Games/Contributing"
-"\">ajudar a desenvolver o <app>GNOME Games</app></link>, você pode entrar em "
-"contato com os desenvolvedores usando <link href=\"https://cbe005.chat."
-"mibbit.com/?url=irc%3A%2F%2Firc.gnome.org%2Fgnome-games\">IRC</link>, ou via "
-"nossa <link href=\"http://mail.gnome.org/mailman/listinfo/games-list\"> "
-"lista de discussão</link>."
+"Se você quiser <link href=\"https://wiki.gnome.org/Apps/Sudoku\">ajudar a "
+"desenvolver o <app>GNOME Sudoku</app></link>, você pode entrar em contato "
+"com os desenvolvedores usando <link href=\"https://cbe005.chat.mibbit.com/?"
+"url=irc%3A%2F%2Firc.gnome.org%2Fgnome-games\">IRC</link>, ou via nossa <link "
+"href=\"https://mail.gnome.org/mailman/listinfo/games-list\">lista de "
+"discussão</link>."
 
 #. (itstool) path: page/title
 #: C/documentation.page:17
@@ -275,35 +258,26 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/documentation.page:22
-#, fuzzy
-#| msgid ""
-#| "To contribute to the Documentation Project, feel free to get in touch "
-#| "with us using <link href=\"https://cbe003.chat.mibbit.com/?url=irc%3A%2F"
-#| "%2Firc.gnome.org%2Fdocs\">irc</link>, or via our <link href=\"http://mail."
-#| "gnome.org/mailman/listinfo/gnome-doc-list\">mailing list</link>."
 msgid ""
 "To contribute to the Documentation Project, feel free to get in touch with "
 "us using <link href=\"https://cbe003.chat.mibbit.com/?url=irc%3A%2F%2Firc."
 "gnome.org%2Fdocs\">irc</link>, or via our <link href=\"https://mail.gnome."
 "org/mailman/listinfo/gnome-doc-list\">mailing list</link>."
 msgstr ""
-"Para contribuir para o Projeto de Documentação, sinta-se à vontade para entrar em "
-"contato conosco usando <link href=\"https://cbe003.chat.mibbit.com/?url=irc"
-"%3A%2F%2Firc.gnome.org%2Fdocs\">irc</link> ou por nossa <link href=\"http://"
-"mail.gnome.org/mailman/listinfo/gnome-doc-list\">lista de discussão</link>."
+"Para contribuir para o Projeto de Documentação, sinta-se à vontade para "
+"entrar em contato conosco usando <link href=\"https://cbe003.chat.mibbit."
+"com/?url=irc%3A%2F%2Firc.gnome.org%2Fdocs\">IRC</link> ou por nossa <link "
+"href=\"https://mail.gnome.org/mailman/listinfo/gnome-doc-list\">lista de "
+"discussão</link>."
 
 #. (itstool) path: page/p
 #: C/documentation.page:24
-#, fuzzy
-#| msgid ""
-#| "Our <link href=\"https://live.gnome.org/DocumentationProject/Contributing"
-#| "\">wiki</link> page contains useful information."
 msgid ""
 "Our <link href=\"https://wiki.gnome.org/DocumentationProject/Contributing"
 "\">wiki</link> page contains useful information."
 msgstr ""
-"Nossa página <link href=\"https://wiki.gnome.org/DocumentationProject/Contributing"
-"\">wiki</link> contém informações úteis."
+"Nossa página <link href=\"https://wiki.gnome.org/DocumentationProject/"
+"Contributing\">wiki</link> contém informações úteis."
 
 #. (itstool) path: credit/name
 #: C/earmarks.page:9 C/rules.page:11 C/save-resume.page:11
@@ -313,7 +287,7 @@ msgstr "Thomas Hinkle"
 #. (itstool) path: page/title
 #: C/earmarks.page:26
 msgid "Earmarks"
-msgstr ""
+msgstr "Marcações"
 
 #. (itstool) path: page/p
 #: C/earmarks.page:27
@@ -322,27 +296,29 @@ msgid ""
 "mark possible values for a cell. Earmarks allow you to store any number of "
 "digits in the cell. Each digit may be selected only once."
 msgstr ""
+"Marcações (pequenas notas numéricas) podem ser adicionadas a qualquer "
+"célula. Elas permitem marcar valores possíveis para uma célula. Essas "
+"marcações permitem que você armazene qualquer número de dígitos na célula. "
+"Cada dígito pode ser selecionado apenas uma vez."
 
 #. (itstool) path: page/p
 #: C/earmarks.page:29
 msgid "To add earmarks to a cell:"
-msgstr ""
+msgstr "Para adicionar marcações a uma célula:"
 
 #. (itstool) path: item/p
 #: C/earmarks.page:32
-#, fuzzy
-#| msgid "Select the cell"
 msgid "Select the cell."
-msgstr "Selecione a célula"
+msgstr "Selecione a célula."
 
 #. (itstool) path: item/p
 #: C/earmarks.page:33
-#, fuzzy
-#| msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>Z</key></keyseq>"
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>1</key></keyseq> through "
 "<keyseq><key>Ctrl</key><key>9</key></keyseq>."
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>Z</key></keyseq>"
+msgstr ""
+"Pressione <keyseq><key>Ctrl</key><key>1</key></keyseq> até "
+"<keyseq><key>Ctrl</key><key>9</key></keyseq>."
 
 #. (itstool) path: page/p
 #: C/earmarks.page:36
@@ -351,6 +327,9 @@ msgid ""
 "key><key>1</key></keyseq> through <keyseq><key>Ctrl</key><key>9</key></"
 "keyseq> again."
 msgstr ""
+"Você pode remover um número das marcações pressionando <keyseq><key>Ctrl</"
+"key><key>1</key></keyseq> até <keyseq><key>Ctrl</key><key>9</key></keyseq> "
+"novamente."
 
 #. (itstool) path: note/p
 #: C/earmarks.page:38
@@ -358,48 +337,41 @@ msgid ""
 "You can also add earmarks by clicking the cell while pressing <key>Ctrl</"
 "key>, or right-clicking the cell, and then choosing a number."
 msgstr ""
+"Você também pode adicionar marcações clicando na célula ao pressionar "
+"<key>Ctrl</key> ou clicando com botão direito na célula e escolhendo um "
+"número."
 
 #. (itstool) path: page/title
 #: C/highlighting.page:21
 msgid "Highlighting"
-msgstr "Destacando"
+msgstr "Realce"
 
 #. (itstool) path: page/p
 #: C/highlighting.page:23
-#, fuzzy
-#| msgid ""
-#| "You can turn on highlighting to automatically highlight the current row, "
-#| "column and box in different colors. This can make it easier to see which "
-#| "values cannot go into a current square. To toggle highlighting, you can:"
 msgid ""
 "You can turn on highlighting to automatically highlight the current row, "
 "column and box in different colors. This can make it easier to see which "
 "values cannot go into a current square. To toggle highlighting, click "
 "<gui>Sudoku</gui> in the top bar and then select <gui>Highlighter</gui>."
 msgstr ""
-"Você pode ligar o destaque para destacar automaticamente a linha, coluna ou "
-"caixa atual em cores diferentes. Isso pode tornar fácil ver quais valores "
-"não podem ir no quadrado atual. Para alternar para destaque, você pode:"
+"Você pode ligar o realce para realçar automaticamente a linha, coluna ou "
+"caixa atual em cores diferentes. Isso pode facilitar a visualização de quais "
+"valores não podem ir no quadrado atual. Para alternar para destaque, clique "
+"em <gui>Sudoku</gui> na barra superior e selecione <gui>Realçador</gui>."
 
 #. (itstool) path: figure/desc
 #: C/highlighting.page:26
-#, fuzzy
-#| msgid "<application>Sudoku</application> with highlighting"
 msgid "<app>Sudoku</app> with highlighting."
-msgstr "<application>Sudoku</application> com destaque"
+msgstr "<app>Sudoku</app> com realce."
 
 #. (itstool) path: info/title
 #: C/index.page:7
-#, fuzzy
-#| msgid "GNOME Sudoku"
 msgctxt "link"
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
 #. (itstool) path: info/title
 #: C/index.page:8
-#, fuzzy
-#| msgid "GNOME Sudoku"
 msgctxt "text"
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
@@ -416,35 +388,20 @@ msgstr "2015"
 
 #. (itstool) path: info/desc
 #: C/index.page:27
-#, fuzzy
-#| msgid ""
-#| "Sudoku is an application for playing the popular sudoku logic puzzle "
-#| "game, in which one must fill a 9 by 9 square with the correct digits."
 msgid ""
 "Learn to play GNOME Sudoku, a logic-based puzzle game in which a grid must "
 "be filled with the correct numbers."
 msgstr ""
-"O Sudoku é uma aplicação para jogar o popular jogo lógico de quebra-cabeças "
-"sudoku, no qual deve ser preenchido um quadrado 9 por 9 com os dígitos "
-"corretos."
+"Aprenda a jogar o GNOME Sudoku, um jogo de quebra-cabeça baseado em lógica "
+"no qual uma grade deve ser preenchida com os números corretos."
 
 #. (itstool) path: page/title
 #: C/index.page:32
-#, fuzzy
-#| msgid "GNOME Sudoku"
 msgid "<_:media-1/> GNOME Sudoku"
-msgstr "GNOME Sudoku"
+msgstr "<_:media-1/> GNOME Sudoku"
 
 #. (itstool) path: page/p
 #: C/index.page:37
-#, fuzzy
-#| msgid ""
-#| "GNOME Sudoku is a logic-based number-placement puzzle in which a 9×9 "
-#| "square must be filled with the correct digits. The unique puzzles can be "
-#| "played on screen or <link xref=\"index#print\">printed</link>. If you do "
-#| "not have time to finish a game, you can <link xref=\"save-resume#resume"
-#| "\">resume</link> it any time, as well as replay any game you've already "
-#| "won."
 msgid ""
 "GNOME Sudoku is a logic-based number-placement puzzle in which a 9×9 square "
 "must be filled with the correct digits. The unique puzzles can be played on "
@@ -453,11 +410,10 @@ msgid ""
 "any time."
 msgstr ""
 "GNOME Sudoku é um quebra-cabeça baseado em lógica de colocação de números no "
-"qual um quadrado de 9 x 9 deve ser preenchido pelos dígitos corretos. Os "
-"quebra-cabeças únicos podem ser jogado na tela ou <link "
-"xref=\"index#print\">imprimido</link>. Se você não tiver tempo para "
-"finalizar o jogo, você pode <link xref=\"save-resume#resume\">continuá-lo"
-"</link> a qualquer momento."
+"qual um quadrado de 9×9 deve ser preenchido pelos dígitos corretos. Os "
+"quebra-cabeças únicos podem ser jogados na tela ou <link xref=\"index#print"
+"\">impressos</link>. Se você não tiver tempo para finalizar o jogo, você "
+"pode <link xref=\"save-resume#resume\">continuá-lo</link> a qualquer momento."
 
 #. (itstool) path: section/title
 #: C/index.page:44
@@ -507,24 +463,20 @@ msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:35
 msgid "Reset game"
-msgstr "Redefina jogo"
+msgstr "Reinicia o jogo"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:36
-#, fuzzy
-#| msgid "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:39
 msgid "Close the sudoku window"
-msgstr "Feche a janela do sudoku"
+msgstr "Fecha a janela do sudoku"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:40
-#, fuzzy
-#| msgid "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 
@@ -536,7 +488,7 @@ msgstr "Outro"
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:48
 msgid "Print displayed puzzle"
-msgstr "Imprimir a tela do puzzle"
+msgstr "Imprime o quebra-cabeça exibido"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:49
@@ -546,7 +498,7 @@ msgstr "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:52
 msgid "Undo"
-msgstr "Desfazer"
+msgstr "Desfaz"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:53
@@ -556,7 +508,7 @@ msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:56
 msgid "Redo"
-msgstr "Refazer"
+msgstr "Refaz"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:57
@@ -565,29 +517,23 @@ msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:60
-#, fuzzy
-#| msgid "Add a number to the top notes of a cell"
 msgid "Add a number to the earmarks of a cell"
-msgstr "Adicione um número na nota no topo da célula."
+msgstr "Adiciona um número às marcações da célula"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:61
-#, fuzzy
-#| msgid "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>1-9</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>1-9</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:64
 msgid "Open Help"
-msgstr "Abrir ajuda"
+msgstr "Abre a ajuda"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:65
-#, fuzzy
-#| msgid "Type <keycap>N</keycap>"
 msgid "<key>F1</key>"
-msgstr "Digite <keycap>N</keycap>"
+msgstr "<key>F1</key>"
 
 #. (itstool) path: p/link
 #: C/legal.xml:3
@@ -615,7 +561,8 @@ msgid ""
 "This work is distributed under a CreativeCommons Attribution-Share Alike 3.0 "
 "Unported license."
 msgstr ""
-"Este trabalho é distribuído sob a licença Creative Commons Atribuição-CompartilhaIgual 3.0 Não Adaptada."
+"Este trabalho é distribuído sob a licença Creative Commons Atribuição-"
+"CompartilhaIgual 3.0 Não Adaptada."
 
 #. (itstool) path: page/p
 #: C/license.page:20
@@ -659,8 +606,9 @@ msgid ""
 "licensor (but not in any way that suggests that they endorse you or your use "
 "of the work)."
 msgstr ""
-"Você deve atribuir o trabalho no modo especificado pelo autor ou licenciador "
-"(mas em nenhum caso deve sugerir que ele endosse a você ou ao seu trabalho)."
+"Você deve atribuir o trabalho da maneira especificada pelo autor ou "
+"licenciante (mas não de forma alguma que sugira que eles endossem você ou "
+"seu uso do trabalho)."
 
 #. (itstool) path: item/title
 #: C/license.page:46
@@ -673,8 +621,8 @@ msgid ""
 "If you alter, transform, or build upon this work, you may distribute the "
 "resulting work only under the same, similar or a compatible license."
 msgstr ""
-"Se você alterar, transformar, ou fazer sobre este trabalho, você distribuirá "
-"o trabalho resultado só  sob o mesmo, licença similar ou compatível."
+"Se você alterar, transformar ou basear-se neste trabalho, poderá distribuir "
+"o trabalho resultante apenas sob a mesma licença, semelhante ou compatível."
 
 #. (itstool) path: page/p
 #: C/license.page:53
@@ -685,51 +633,49 @@ msgid ""
 "sa/3.0/\">Commons Deed</link>."
 msgstr ""
 "Para todo o texto da licença, veja o <link href=\"http://creativecommons.org/"
-"licenses/by-sa/3.0/legalcode\">site de CreativeCommons</link>, ou leia toda a "
-"<link href=\"http://creativecommons.org/licenses/by-sa/3.0/deed.pt_BR\">Commons "
-"Deed</link>."
+"licenses/by-sa/3.0/legalcode\">site de CreativeCommons</link>, ou leia toda "
+"a <link href=\"http://creativecommons.org/licenses/by-sa/3.0/deed.pt_BR"
+"\">Commons Deed</link>."
 
 #. (itstool) path: page/title
 #: C/print-blank-puzzles.page:22
-#, fuzzy
-#| msgid "Printing Sudoku"
 msgid "Print blank sudokus"
-msgstr "Imprimindo Sudoku"
+msgstr "Imprimindo sudokus vazios"
 
 #. (itstool) path: page/p
 #: C/print-blank-puzzles.page:24
 msgid "To print one or more blank puzzles:"
-msgstr ""
+msgstr "Para imprimir um ou mais quebra-cabeças vazios:"
 
 #. (itstool) path: item/p
 #: C/print-blank-puzzles.page:29 C/print-inprogress-game.page:28
 msgid ""
 "Click <gui>Sudoku</gui> in the top bar and then select <gui>Print</gui>."
 msgstr ""
+"Clique em <gui>Sudoku</gui> na barra superior e selecione <gui>Imprimir</"
+"gui>."
 
 #. (itstool) path: item/p
 #: C/print-blank-puzzles.page:30
-#, fuzzy
-#| msgid "Click <guibutton>Highlighter</guibutton>"
 msgid "Click <gui>Print Multiple Puzzles…</gui>."
-msgstr "Clique em <guibutton>Destacador</guibutton>"
+msgstr "Clique em <gui>Imprimir múltiplos jogos…</gui>."
 
 #. (itstool) path: item/p
 #: C/print-blank-puzzles.page:31
 msgid "Select the total number of sudokus to print from the drop down menu."
-msgstr ""
+msgstr "Selecione o número total de sudokus para imprimir no menu suspenso."
 
 #. (itstool) path: item/p
 #: C/print-blank-puzzles.page:32
-msgid "Select difficult level of the games you would like to print."
+#| msgid "Select difficult level of the games you would like to print."
+msgid "Select the difficulty level of the games you would like to print."
 msgstr ""
+"Selecione o nível de dificuldade dos jogos que você gostaria de imprimir."
 
 #. (itstool) path: item/p
 #: C/print-blank-puzzles.page:33 C/print-inprogress-game.page:37
-#, fuzzy
-#| msgid "Click <guibutton>Highlighter</guibutton>"
 msgid "Click <gui>Print</gui>."
-msgstr "Clique em <guibutton>Destacador</guibutton>"
+msgstr "Clique em <gui>Imprimir</gui>."
 
 #. (itstool) path: page/title
 #: C/print-inprogress-game.page:20
@@ -740,23 +686,22 @@ msgstr "Imprimindo seu jogo"
 #: C/print-inprogress-game.page:21
 msgid "You can print the sudoku are playing to a file or to a printer."
 msgstr ""
+"Você pode imprimir o sudoku está jogando em um arquivo ou em uma impressora."
 
 #. (itstool) path: page/p
 #: C/print-inprogress-game.page:24
 msgid "To print the sudoku you are currently playing:"
-msgstr ""
+msgstr "Para imprimir o sudoku que você está jogando atualmente:"
 
 #. (itstool) path: item/p
 #: C/print-inprogress-game.page:31
-#, fuzzy
-#| msgid "Click <guibutton>Highlighter</guibutton>"
 msgid "Click <gui>Print Current Puzzle…</gui>."
-msgstr "Clique em <guibutton>Destacador</guibutton>"
+msgstr "Clique em <gui>Imprimir jogo atual…</gui>."
 
 #. (itstool) path: item/p
 #: C/print-inprogress-game.page:34
 msgid "Select your printer."
-msgstr ""
+msgstr "Selecione sua impressora."
 
 #. (itstool) path: note/p
 #: C/print-inprogress-game.page:41
@@ -765,6 +710,9 @@ msgid ""
 "org/users/gnome-help/stable/printing-setup.html\" xref=\"help:gnome-help/"
 "printing-setup\">Set up a local printer</link>."
 msgstr ""
+"Se você não tiver uma impressora na lista, consulte <link href=\"https://"
+"help.gnome.org/users/gnome-help/stable/printing-setup.html\" xref=\"help:"
+"gnome-help/printing-setup\">Configurando uma impressora local</link>."
 
 #. (itstool) path: page/title
 #: C/rules.page:20
@@ -778,6 +726,9 @@ msgid ""
 "between 1 and 9, inclusive, such that no number is repeated in any row, "
 "column or 3×3 box."
 msgstr ""
+"Para completar o quebra-cabeça, você deve preencher cada célula com um "
+"número entre 1 e 9, inclusive, de modo que nenhum número seja repetido em "
+"qualquer linha, coluna ou caixa 3×3."
 
 #. (itstool) path: page/p
 #: C/rules.page:23
@@ -785,23 +736,24 @@ msgid ""
 "In a solved sudoku, each row, column, and 3×3 box contains all the numbers 1 "
 "through 9."
 msgstr ""
+"Em um sudoku resolvido, cada linha, coluna e caixa 3×3 contém todos os "
+"números de 1 a 9."
 
 #. (itstool) path: page/p
 #: C/rules.page:26
 msgid "Each puzzle has only one solution."
-msgstr ""
+msgstr "Cada quebra-cabeça tem apenas uma solução."
 
 #. (itstool) path: figure/desc
 #: C/rules.page:30
 msgid "Outline of a row, a column and a 3×3 box using highlighting option."
 msgstr ""
+"Esboço de uma linha, uma coluna e uma caixa 3×3 usando a opção de realce."
 
 #. (itstool) path: page/title
 #: C/save-resume.page:24
-#, fuzzy
-#| msgid "Saving and Resuming Games"
 msgid "Save and resume"
-msgstr "Salvando e Continuando Jogos"
+msgstr "Salvando e continuando"
 
 #. (itstool) path: section/title
 #: C/save-resume.page:27
@@ -810,44 +762,33 @@ msgstr "Salvando seu jogo"
 
 #. (itstool) path: section/p
 #: C/save-resume.page:28
-#, fuzzy
-#| msgid ""
-#| "Sudokus are saved automatically every few minutes and whenever you change "
-#| "games or close the application."
 msgid "Your game is saved automatically when you close the application."
-msgstr ""
-"Os Sudokus são salvos automaticamente a cada poucos minutos e sempre que "
-"você altera os jogos ou fecha a aplicação."
+msgstr "Seu jogo é salvo automaticamente quando você fecha o aplicativo."
 
 #. (itstool) path: section/title
 #: C/save-resume.page:34
-#, fuzzy
-#| msgid "Resuming old games"
 msgid "Resuming your game"
-msgstr "Continuando jogos antigos"
+msgstr "Continuando seu jogo"
 
 #. (itstool) path: section/p
 #: C/save-resume.page:35
 msgid "Whenever you start <app>Sudoku</app>, your saved game will be opened."
 msgstr ""
+"Sempre que você iniciar o <app>Sudoku</app>, seu jogo salvo será aberto."
 
 #. (itstool) path: section/p
 #: C/save-resume.page:38
-#, fuzzy
-#| msgid ""
-#| "If you'd like to stop playing one game and begin another, just select "
-#| "<guibutton>New</guibutton> and begin your new game."
 msgid ""
 "If you’d like to stop playing that game and begin another, just select "
 "<gui>New Puzzle</gui> and begin your new game."
 msgstr ""
-"Se você quiser parar de jogar um jogo e começar outro, apenas selecione "
-"<guibutton>Novo</guibutton> e comece um jogo novo."
+"Se você quiser parar de jogar o jogo e começar outro, basta selecionar "
+"<gui>Novo jogo</gui> e começar um jogo novo."
 
 #. (itstool) path: credit/name
 #: C/strategy.page:9
 msgid "Radoslav Asparuhov"
-msgstr ""
+msgstr "Radoslav Asparuhov"
 
 #. (itstool) path: page/title
 #: C/strategy.page:22
@@ -861,16 +802,19 @@ msgid ""
 "following strategies will help you systematically discover the solution for "
 "every cell."
 msgstr ""
+"Existe apenas uma possibilidade para cada célula em um quebra-cabeça do "
+"Sudoku. As estratégias a seguir ajudarão você a descobrir sistematicamente a "
+"solução para cada célula."
 
 #. (itstool) path: section/title
 #: C/strategy.page:26
 msgid "Strategy 1:"
-msgstr ""
+msgstr "Estratégia 1:"
 
 #. (itstool) path: item/p
 #: C/strategy.page:28
 msgid "Choose the row with the most numbers in it."
-msgstr ""
+msgstr "Escolha a linha com o maior quantidade de números."
 
 #. (itstool) path: note/p
 #: C/strategy.page:29
@@ -878,11 +822,14 @@ msgid ""
 "You should choose the row or column with the most numbers. For simplicity, "
 "these instructions are written as if a row had the most numbers in it."
 msgstr ""
+"Você deve escolher a linha ou coluna com mais números. Por simplicidade, "
+"essas instruções são escritas como se uma linha tivesse o maior número de "
+"números."
 
 #. (itstool) path: item/p
 #: C/strategy.page:33
 msgid "Determine which numbers in the row are missing."
-msgstr ""
+msgstr "Determine quais números na linha estão faltando."
 
 #. (itstool) path: item/p
 #: C/strategy.page:34
@@ -890,6 +837,8 @@ msgid ""
 "Choose one of the empty cells in this row. Determine which of the missing "
 "numbers are in that column or in that 3×3 box."
 msgstr ""
+"Escolha uma das células vazias nessa linha. Determine quais dos números "
+"ausentes estão nessa coluna ou nessa caixa 3×3."
 
 #. (itstool) path: item/p
 #: C/strategy.page:35
@@ -898,6 +847,9 @@ msgid ""
 "which are not in that column or 3×3 box. These numbers are candidate "
 "solutions for that cell."
 msgstr ""
+"Usando <link xref=\"earmarks\">marcações</link>, insira os números que "
+"faltam e que não estão nessa coluna ou ma caixa 3×3. Esses números são "
+"soluções em potencial para essa célula."
 
 #. (itstool) path: item/p
 #: C/strategy.page:36
@@ -907,6 +859,10 @@ msgid ""
 "numbers and continuing through to the least. Always look carefully for the "
 "numbers and don’t forget the 3×3 boxes."
 msgstr ""
+"Vá para a próxima célula vazia da linha escolhida e repita o método acima. "
+"Repita isso para cada linha e coluna, começando com aqueles com mais números "
+"e continuando até o mínimo. Sempre olhe cuidadosamente para os números e não "
+"se esqueça das caixas 3×3."
 
 #. (itstool) path: note/p
 #: C/strategy.page:38 C/strategy.page:55
@@ -915,21 +871,25 @@ msgid ""
 "choice. When revealed, you can fill those cells in with that choice, and "
 "repeat the strategy again until the entire puzzle is solved."
 msgstr ""
+"Essa estratégia ajudará a revelar as células que têm apenas uma escolha "
+"possível. Quando revelado, você pode preencher essas células com essa "
+"escolha e repetir a estratégia novamente até que todo o quebra-cabeça seja "
+"resolvido."
 
 #. (itstool) path: figure/desc
 #: C/strategy.page:40
 msgid "Example use of strategy 1."
-msgstr ""
+msgstr "Exemplo de uso da estratégia 1."
 
 #. (itstool) path: section/title
 #: C/strategy.page:47
 msgid "Strategy 2:"
-msgstr ""
+msgstr "Estratégia 2:"
 
 #. (itstool) path: item/p
 #: C/strategy.page:49
 msgid "Find the number which appears most often."
-msgstr ""
+msgstr "Encontre o número que aparece com mais frequência."
 
 #. (itstool) path: item/p
 #: C/strategy.page:50
@@ -937,6 +897,8 @@ msgid ""
 "Now look at the left vertical alignment of the 3×3 boxes and locate the "
 "column(s) in which this number appears."
 msgstr ""
+"Agora olhe para o alinhamento vertical esquerdo das caixas 3×3 e localize as "
+"colunas nas quais este número aparece."
 
 #. (itstool) path: item/p
 #: C/strategy.page:51
@@ -947,11 +909,18 @@ msgid ""
 "appear. If the number appears in the row of one of these cells, do not enter "
 "it in that cell’s earmarks."
 msgstr ""
+"Nesse alinhamento, vá para uma caixa 3×3 que não contenha esse número em "
+"nenhuma de suas células. Usando <link xref=\"earmarks\">marcações</link>, "
+"insira esse número em cada célula vazia da coluna na qual esse número não "
+"aparece. Se o número aparecer na linha de uma dessas células, não o insira "
+"nos marcações da célula."
 
 #. (itstool) path: item/p
 #: C/strategy.page:52
 msgid "Repeat the last two steps for the center and right vertical alignments."
 msgstr ""
+"Repita os dois últimos passos para os alinhamentos verticais centro e "
+"direito."
 
 #. (itstool) path: item/p
 #: C/strategy.page:53
@@ -959,11 +928,13 @@ msgid ""
 "Find the next number which appears most, and repeat until you have done this "
 "for all 9 numbers."
 msgstr ""
+"Encontre o próximo número que aparece mais e repita até que você tenha feito "
+"isso para todos os 9 números."
 
 #. (itstool) path: figure/desc
 #: C/strategy.page:57
 msgid "Example use of strategy 2."
-msgstr ""
+msgstr "Exemplo de uso da estratégia 2."
 
 #. (itstool) path: note/p
 #: C/strategy.page:61
@@ -971,11 +942,13 @@ msgid ""
 "If neither of the above strategies solves the puzzle on its own, you can "
 "alternate strategies. You can also combine the strategies."
 msgstr ""
+"Se nenhuma das estratégias acima resolver o quebra-cabeça sozinho, você "
+"poderá alternar estratégias. Você também pode combinar as estratégias."
 
 #. (itstool) path: page/title
 #: C/translate.page:23
 msgid "Help translate"
-msgstr ""
+msgstr "Ajudando a traduzir"
 
 #. (itstool) path: page/p
 #: C/translate.page:24
@@ -984,6 +957,9 @@ msgid ""
 "translated by a world-wide volunteer community. You are welcome to "
 "participate."
 msgstr ""
+"A interface de usuário e documentação do <app>GNOME games</app> é mantida "
+"por uma comunidade de voluntários de todo o mundo. Você é bem-vindo para "
+"participar."
 
 #. (itstool) path: page/p
 #: C/translate.page:27
@@ -991,6 +967,8 @@ msgid ""
 "There are <link href=\"https://l10n.gnome.org/module/gnome-sudoku/\">many "
 "languages</link> for which translations are still needed."
 msgstr ""
+"Há <link href=\"https://l10n.gnome.org/module/gnome-sudoku/\">muitos "
+"idiomas</link> para os quais traduções ainda são necessárias."
 
 #. (itstool) path: page/p
 #: C/translate.page:30
@@ -1000,6 +978,10 @@ msgid ""
 "teams/\">translation team</link> for your language. This will give you the "
 "ability to upload new translations."
 msgstr ""
+"Para começar a traduzir você precisará <link href=\"https://l10n.gnome.org"
+"\">criar uma conta</link> e se juntar à <link href=\"https://l10n.gnome.org/"
+"teams/\">equipe de tradução</link> para o seu idioma. Isso lhe dará a "
+"capacidade de fazer upload de novas traduções."
 
 #. (itstool) path: page/p
 #: C/translate.page:34
@@ -1009,6 +991,10 @@ msgid ""
 "channel are located worldwide, so you may not get an immediate response as a "
 "result of timezone differences."
 msgstr ""
+"Você pode conversar com tradutores do GNOME usando <link href=\"https://"
+"cbe003.chat.mibbit.com/?url=irc%3A%2F%2Firc.gnome.org%2Fi18n\">IRC</link>. "
+"Pessoas no canal estão espalhadas por todo o mundo, então você pode não "
+"obter uma resposta imediata como um resultado de diferenças de fuso horário."
 
 #. (itstool) path: page/p
 #: C/translate.page:37
@@ -1017,6 +1003,9 @@ msgid ""
 "<link href=\"https://mail.gnome.org/mailman/listinfo/gnome-i18n\">mailing "
 "list</link>."
 msgstr ""
+"Alternativamente, você pode contatar a Equipe de Internacionalização usando "
+"sua <link href=\"https://mail.gnome.org/mailman/listinfo/gnome-i18n\">lista "
+"de discussão</link>."
 
 #, fuzzy
 #~| msgid "Command line"
