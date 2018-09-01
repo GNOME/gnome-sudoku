@@ -1,5 +1,5 @@
 # Danish translation of gnome-games.
-# Copyright (C) 1998-2017 Free Software Foundation, Inc.
+# Copyright (C) 1998-2018 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-games package.
 #
 # Anders Wegge Jakobsen <wegge@wegge.dk>, 1998.
@@ -8,7 +8,7 @@
 # Ole Laursen <olau@hardworking.dk>, 2001, 02, 03, 04.
 # Martin Willemoes Hansen <mwh@sysrq.dk>, 2004, 05.
 # flemming christensen <fc@stromata.dk>, 2011.
-# Ask Hjorth Larsen <asklarsen@gmail.com>, 2007-2015, 2017.
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2007-2015, 2017-2018.
 # scootergrisen, 2015.
 # Joe Hansen <joedalton2@yahoo.dk>, 2017.
 #
@@ -17,11 +17,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-13 22:15+0000\n"
-"PO-Revision-Date: 2017-09-07 03:33+0200\n"
-"Last-Translator: scootergrisen\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
+"POT-Creation-Date: 2018-08-22 15:41+0000\n"
+"PO-Revision-Date: 2018-08-30 21:02+0200\n"
+"Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -51,11 +50,15 @@ msgstr "Frem_hævning"
 msgid "_Warnings"
 msgstr "_Advarsler"
 
-#: data/gnome-sudoku-menu.ui:39
+#: data/gnome-sudoku-menu.ui:32
+msgid "_Help"
+msgstr "_Hjælp"
+
+#: data/gnome-sudoku-menu.ui:36
 msgid "_About"
 msgstr "_Om"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
+#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "_Afslut"
 
@@ -104,7 +107,7 @@ msgid "The GNOME Project"
 msgstr "GNOME-projektet"
 
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -331,7 +334,7 @@ msgid "Create Puzzle"
 msgstr "Opret spil"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:606
+#: src/gnome-sudoku.vala:602
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -342,7 +345,7 @@ msgstr ""
 "\n"
 "Spillene genereres af QQwing %s"
 
-#: src/gnome-sudoku.vala:611
+#: src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
 "Anders Wegge Jakobsen\n"
