@@ -17,10 +17,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games trunk\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-13 22:15+0000\n"
-"PO-Revision-Date: 2017-09-20 12:19+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
+"POT-Creation-Date: 2018-05-31 13:17+0000\n"
+"PO-Revision-Date: 2018-09-10 22:43+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -29,7 +28,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
 msgid "_Print"
@@ -51,11 +50,15 @@ msgstr "_Выделять ячейки"
 msgid "_Warnings"
 msgstr "_Предупреждения"
 
-#: data/gnome-sudoku-menu.ui:39
+#: data/gnome-sudoku-menu.ui:32
+msgid "_Help"
+msgstr "_Справка"
+
+#: data/gnome-sudoku-menu.ui:36
 msgid "_About"
 msgstr "_О приложении"
 
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:402
+#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
 msgid "_Quit"
 msgstr "_Завершить"
 
@@ -104,7 +107,7 @@ msgid "The GNOME Project"
 msgstr "Проект GNOME"
 
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:602
+#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "Судоку"
 
@@ -332,7 +335,7 @@ msgid "Create Puzzle"
 msgstr "Создать головоломку"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:606
+#: src/gnome-sudoku.vala:602
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -343,10 +346,10 @@ msgstr ""
 "\n"
 "Головоломки создаются с помощью QQwing %s"
 
-#: src/gnome-sudoku.vala:611
+#: src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
-"Stas Solovey <whats_up@tut.by>, 2015-2017.\n"
+"Stas Solovey <whats_up@tut.by>, 2015-2018.\n"
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2012-2015."
 
 #: src/number-picker.vala:90
