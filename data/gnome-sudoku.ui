@@ -59,6 +59,22 @@
             </object>
         </child>
         <child>
+            <object class="GtkMenuButton">
+                <property name="visible">True</property>
+                <property name="menu_model">primary_menu</property>
+                <child>
+                    <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="halign">center</property>
+                        <property name="icon_name">open-menu-symbolic</property>
+                    </object>
+                </child>
+            </object>
+            <packing>
+                <property name="pack-type">end</property>
+            </packing>
+        </child>
+        <child>
             <object class="GtkBox" id="timer_box">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -104,6 +120,43 @@
             </object>
         </child>
     </object>
+    <menu id="primary_menu">
+        <section>
+            <submenu>
+                <attribute name="label" translatable="yes">_Print</attribute>
+                <section>
+                    <item>
+                        <attribute name="label" translatable="yes">Print _Current Puzzle…</attribute>
+                        <attribute name="action">app.print</attribute>
+                    </item>
+                    <item>
+                        <attribute name="label" translatable="yes">Print _Multiple Puzzles…</attribute>
+                        <attribute name="action">app.print-multiple</attribute>
+                    </item>
+                </section>
+            </submenu>
+        </section>
+        <section>
+            <item>
+                <attribute name="label" translatable="yes">High_lighter</attribute>
+                <attribute name="action">app.highlighter</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes">_Warnings</attribute>
+                <attribute name="action">app.show-warnings</attribute>
+            </item>
+        </section>
+        <section>
+            <item>
+                <attribute name="label" translatable="yes">_Help</attribute>
+                <attribute name="action">app.help</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes">_About Sudoku</attribute>
+                <attribute name="action">app.about</attribute>
+            </item>
+        </section>
+    </menu>
     <object class="GtkApplicationWindow" id="sudoku_app">
         <property name="title" translatable="yes">Sudoku</property>
         <child>
