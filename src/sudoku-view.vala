@@ -533,6 +533,15 @@ public class SudokuView : Gtk.AspectFrame
                             cells[coord.row, coord.col].background_color = free_cell_color;
                     }
 
+                    for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
+                    {
+                        for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
+                        {
+                            if (cells[cell_row, cell_col].value == cells[row_tmp, col_tmp].value && cells[cell_row, cell_col].value != 0)
+                                cells[row_tmp, col_tmp].background_color = selected_bg_color;
+                        }
+                    }
+
                     cells[cell_row, cell_col].background_color = selected_bg_color;
 
                     queue_draw ();
