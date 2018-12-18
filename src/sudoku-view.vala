@@ -538,7 +538,7 @@ public class SudokuView : Gtk.AspectFrame
                     {
                         for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
                         {
-                            if (cells[cell_row, cell_col].value == cells[row_tmp, col_tmp].value && cells[cell_row, cell_col].value != 0)
+                            if (cells[cell_row, cell_col].value != 0 && cells[cell_row, cell_col].value == cells[row_tmp, col_tmp].value)
                                 cells[row_tmp, col_tmp].background_color = same_value_bg_color;
                         }
                     }
