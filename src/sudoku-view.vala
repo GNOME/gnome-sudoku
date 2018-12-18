@@ -444,6 +444,7 @@ public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
 public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
 public const RGBA highlight_color = {0.93, 0.93, 0.93, 0};
 public const RGBA selected_bg_color = {0.7, 0.8, 0.9};
+public const RGBA same_value_bg_color = {0.6, 0.8, 1.0};
 
 public class SudokuView : Gtk.AspectFrame
 {
@@ -538,7 +539,7 @@ public class SudokuView : Gtk.AspectFrame
                         for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
                         {
                             if (cells[cell_row, cell_col].value == cells[row_tmp, col_tmp].value && cells[cell_row, cell_col].value != 0)
-                                cells[row_tmp, col_tmp].background_color = selected_bg_color;
+                                cells[row_tmp, col_tmp].background_color = same_value_bg_color;
                         }
                     }
 
