@@ -35,10 +35,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.el\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-02-03 23:47+0000\n"
-"PO-Revision-Date: 2018-02-14 19:05+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
+"POT-Creation-Date: 2018-10-25 19:54+0000\n"
+"PO-Revision-Date: 2018-12-24 13:58+0200\n"
 "Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
 "Language-Team: Ελληνικά <>\n"
 "Language: el\n"
@@ -46,40 +45,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Project-Style: gnome\n"
-
-#: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
-msgid "_Print"
-msgstr "Ε_κτύπωση"
-
-#: data/gnome-sudoku-menu.ui:10
-msgid "Print _Current Puzzle…"
-msgstr "Εκτύπωση του _τρέχοντος γρίφου…"
-
-#: data/gnome-sudoku-menu.ui:14
-msgid "Print _Multiple Puzzles…"
-msgstr "Εκτύπωση _πολλαπλών γρίφων…"
-
-#: data/gnome-sudoku-menu.ui:22
-msgid "High_lighter"
-msgstr "Επ_ισήμανση"
-
-#: data/gnome-sudoku-menu.ui:26
-msgid "_Warnings"
-msgstr "Π_ροειδοποιήσεις"
-
-#: data/gnome-sudoku-menu.ui:32
-msgid "_Help"
-msgstr "_Βοήθεια"
-
-#: data/gnome-sudoku-menu.ui:36
-msgid "_About"
-msgstr "_Περί"
-
-#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
-msgid "_Quit"
-msgstr "Έ_ξοδος"
 
 #: data/gnome-sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -129,7 +96,7 @@ msgid "The GNOME Project"
 msgstr "Έργο GNOME"
 
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
+#: data/gnome-sudoku.ui:161 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "Σουντόκου"
 
@@ -151,55 +118,83 @@ msgstr "Αναίρεση της τελευταίας σας κίνησης"
 msgid "Redo your last action"
 msgstr "Ακύρωση αναίρεσης της τελευταίας σας κίνησης"
 
-#: data/gnome-sudoku.ui:91
+#: data/gnome-sudoku.ui:107
 msgid "Go back to the current game"
 msgstr "Επιστροφή στο τρέχον παιχνίδι"
 
-#: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
+#: data/gnome-sudoku.ui:126 data/print-dialog.ui:32
+msgid "_Print"
+msgstr "Ε_κτύπωση"
+
+#: data/gnome-sudoku.ui:129
+msgid "Print _Current Puzzle…"
+msgstr "Εκτύπωση του _τρέχοντος γρίφου…"
+
+#: data/gnome-sudoku.ui:133
+msgid "Print _Multiple Puzzles…"
+msgstr "Εκτύπωση _πολλαπλών γρίφων…"
+
+#: data/gnome-sudoku.ui:141
+msgid "High_lighter"
+msgstr "Επ_ισήμανση"
+
+#: data/gnome-sudoku.ui:145
+msgid "_Warnings"
+msgstr "Π_ροειδοποιήσεις"
+
+#: data/gnome-sudoku.ui:151
+msgid "_Help"
+msgstr "_Βοήθεια"
+
+#: data/gnome-sudoku.ui:155
+msgid "_About Sudoku"
+msgstr "_Περί του Σουντόκου"
+
+#: data/gnome-sudoku.ui:185 data/print-dialog.ui:130
 msgid "_Easy"
 msgstr "Εύκο_λο"
 
-#: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
+#: data/gnome-sudoku.ui:199 data/print-dialog.ui:146
 msgid "_Medium"
 msgstr "_Μεσαίο"
 
-#: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
+#: data/gnome-sudoku.ui:213 data/print-dialog.ui:163
 msgid "_Hard"
 msgstr "_Δύσκολο"
 
-#: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
+#: data/gnome-sudoku.ui:227 data/print-dialog.ui:180
 msgid "_Very Hard"
 msgstr "_Πολύ δύσκολο"
 
-#: data/gnome-sudoku.ui:189
+#: data/gnome-sudoku.ui:242
 msgid "_Create your own puzzle"
 msgstr "_Δημιουργήστε τον δικό σας γρίφο"
 
-#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
+#: data/gnome-sudoku.ui:288 src/gnome-sudoku.vala:327
 msgid "_Pause"
 msgstr "Παύ_ση"
 
-#: data/gnome-sudoku.ui:251
+#: data/gnome-sudoku.ui:304
 msgid "_Clear Board"
 msgstr "Κα_θαρισμός πίνακα"
 
-#: data/gnome-sudoku.ui:255
+#: data/gnome-sudoku.ui:308
 msgid "Reset the board to its original state"
 msgstr "Επαναφορά του πίνακα στην αρχική του κατάσταση"
 
-#: data/gnome-sudoku.ui:269
+#: data/gnome-sudoku.ui:322
 msgid "_New Puzzle"
 msgstr "_Νέος γρίφος"
 
-#: data/gnome-sudoku.ui:273
+#: data/gnome-sudoku.ui:326
 msgid "Start a new puzzle"
 msgstr "Εκκίνηση νέου γρίφου"
 
-#: data/gnome-sudoku.ui:287
+#: data/gnome-sudoku.ui:340
 msgid "_Start Playing"
 msgstr "Έ_ναρξη παιχνιδιού"
 
-#: data/gnome-sudoku.ui:291
+#: data/gnome-sudoku.ui:344
 msgid "Start playing the custom puzzle you have created"
 msgstr "Έναρξη παιχνιδιού του προσαρμοσμένου γρίφου που έχετε δημιουργήσει"
 
@@ -339,6 +334,10 @@ msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Μπράβο, ολοκληρώσατε το πρόβλημα σε %d λεπτό!"
 msgstr[1] "Μπράβο, ολοκληρώσατε το πρόβλημα σε %d λεπτά!"
+
+#: src/gnome-sudoku.vala:402
+msgid "_Quit"
+msgstr "Έ_ξοδος"
 
 #: src/gnome-sudoku.vala:403
 msgid "Play _Again"
