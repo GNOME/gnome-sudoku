@@ -10,10 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-02-03 23:47+0000\n"
-"PO-Revision-Date: 2018-02-04 13:47+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
+"POT-Creation-Date: 2018-10-25 19:54+0000\n"
+"PO-Revision-Date: 2018-12-28 11:46+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -21,39 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.5\n"
-
-#: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
-msgid "_Print"
-msgstr "Skriv _ut"
-
-#: data/gnome-sudoku-menu.ui:10
-msgid "Print _Current Puzzle…"
-msgstr "Skriv ut _aktuellt pussel…"
-
-#: data/gnome-sudoku-menu.ui:14
-msgid "Print _Multiple Puzzles…"
-msgstr "Skriv ut _flera pussel…"
-
-#: data/gnome-sudoku-menu.ui:22
-msgid "High_lighter"
-msgstr "Mär_kpenna"
-
-#: data/gnome-sudoku-menu.ui:26
-msgid "_Warnings"
-msgstr "Varn_ingar"
-
-#: data/gnome-sudoku-menu.ui:32
-msgid "_Help"
-msgstr "_Hjälp"
-
-#: data/gnome-sudoku-menu.ui:36
-msgid "_About"
-msgstr "_Om"
-
-#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
-msgid "_Quit"
-msgstr "A_vsluta"
+"X-Generator: Poedit 2.2\n"
 
 #: data/gnome-sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -101,7 +68,7 @@ msgid "The GNOME Project"
 msgstr "GNOME-projektet"
 
 #: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
+#: data/gnome-sudoku.ui:161 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -123,55 +90,83 @@ msgstr "Ångra din senaste åtgärd"
 msgid "Redo your last action"
 msgstr "Gör om din senaste åtgärd"
 
-#: data/gnome-sudoku.ui:91
+#: data/gnome-sudoku.ui:107
 msgid "Go back to the current game"
 msgstr "Återvänd till aktuellt spel"
 
-#: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
+#: data/gnome-sudoku.ui:126 data/print-dialog.ui:32
+msgid "_Print"
+msgstr "Skriv _ut"
+
+#: data/gnome-sudoku.ui:129
+msgid "Print _Current Puzzle…"
+msgstr "Skriv ut _aktuellt pussel…"
+
+#: data/gnome-sudoku.ui:133
+msgid "Print _Multiple Puzzles…"
+msgstr "Skriv ut _flera pussel…"
+
+#: data/gnome-sudoku.ui:141
+msgid "High_lighter"
+msgstr "Mär_kpenna"
+
+#: data/gnome-sudoku.ui:145
+msgid "_Warnings"
+msgstr "Varn_ingar"
+
+#: data/gnome-sudoku.ui:151
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: data/gnome-sudoku.ui:155
+msgid "_About Sudoku"
+msgstr "_Om Sudoku"
+
+#: data/gnome-sudoku.ui:185 data/print-dialog.ui:130
 msgid "_Easy"
 msgstr "_Enkel"
 
-#: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
+#: data/gnome-sudoku.ui:199 data/print-dialog.ui:146
 msgid "_Medium"
 msgstr "_Medel"
 
-#: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
+#: data/gnome-sudoku.ui:213 data/print-dialog.ui:163
 msgid "_Hard"
 msgstr "_Svår"
 
-#: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
+#: data/gnome-sudoku.ui:227 data/print-dialog.ui:180
 msgid "_Very Hard"
 msgstr "M_ycket svår"
 
-#: data/gnome-sudoku.ui:189
+#: data/gnome-sudoku.ui:242
 msgid "_Create your own puzzle"
 msgstr "S_kapa ditt eget pussel"
 
-#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
+#: data/gnome-sudoku.ui:288 src/gnome-sudoku.vala:327
 msgid "_Pause"
 msgstr "Pa_us"
 
-#: data/gnome-sudoku.ui:251
+#: data/gnome-sudoku.ui:304
 msgid "_Clear Board"
 msgstr "_Töm bräde"
 
-#: data/gnome-sudoku.ui:255
+#: data/gnome-sudoku.ui:308
 msgid "Reset the board to its original state"
 msgstr "Återställ brädet till dess ursprungliga tillstånd"
 
-#: data/gnome-sudoku.ui:269
+#: data/gnome-sudoku.ui:322
 msgid "_New Puzzle"
 msgstr "_Nytt pussel"
 
-#: data/gnome-sudoku.ui:273
+#: data/gnome-sudoku.ui:326
 msgid "Start a new puzzle"
 msgstr "Starta ett nytt pussel"
 
-#: data/gnome-sudoku.ui:287
+#: data/gnome-sudoku.ui:340
 msgid "_Start Playing"
 msgstr "_Börja spela"
 
-#: data/gnome-sudoku.ui:291
+#: data/gnome-sudoku.ui:344
 msgid "Start playing the custom puzzle you have created"
 msgstr "Börja spela det anpassade pusslet som du har skapat"
 
@@ -309,6 +304,10 @@ msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Bra gjort, du lade pusslet på %d minut!"
 msgstr[1] "Bra gjort, du lade pusslet på %d minuter!"
+
+#: src/gnome-sudoku.vala:402
+msgid "_Quit"
+msgstr "A_vsluta"
 
 #: src/gnome-sudoku.vala:403
 msgid "Play _Again"
