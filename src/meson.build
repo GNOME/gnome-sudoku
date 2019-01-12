@@ -15,7 +15,7 @@ gnome_sudoku_sources = [
 
 gnome_sudoku_dependencies = [gtk, libsudoku_dep]
 
-gnome_sudoku = executable('gnome-sudoku', gnome_sudoku_sources,
+gnome_sudoku = executable(meson.project_name(), gnome_sudoku_sources,
   vala_args: gnome_sudoku_vala_args,
   dependencies: gnome_sudoku_dependencies,
   link_with: libsudoku,
