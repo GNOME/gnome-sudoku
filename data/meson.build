@@ -3,7 +3,7 @@ resource_files = files('gnome-sudoku.gresource.xml')
 resources = gnome.compile_resources('gnome-sudoku', resource_files)
 
 desktop = i18n.merge_file('desktop',
-  input: '@0@.in'.format(application_id),
+  input: '@0@.desktop.in'.format(application_id),
   output: '@0@.desktop'.format(application_id),
   install: true,
   install_dir: join_paths(datadir, 'applications'),
