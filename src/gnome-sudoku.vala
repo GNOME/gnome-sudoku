@@ -123,7 +123,7 @@ public class Sudoku : Gtk.Application
 
         add_action_entries (action_entries, this);
 
-        settings = new GLib.Settings ("org.gnome.sudoku");
+        settings = new GLib.Settings ("org.gnome.Sudoku");
         var action = settings.create_action ("show-warnings");
         action.notify["state"].connect (() => {
             if (view != null && current_game_mode == GameMode.PLAY)
@@ -146,9 +146,9 @@ public class Sudoku : Gtk.Application
         set_accels_for_action ("app.redo", {"<Primary><Shift>z"});
         set_accels_for_action ("app.help", {"F1"});
 
-        Window.set_default_icon_name ("gnome-sudoku");
+        Window.set_default_icon_name ("org.gnome.Sudoku");
 
-        var builder = new Builder.from_resource ("/org/gnome/sudoku/ui/gnome-sudoku.ui");
+        var builder = new Builder.from_resource ("/org/gnome/Sudoku/ui/gnome-sudoku.ui");
 
         window = (ApplicationWindow) builder.get_object ("sudoku_app");
         window.size_allocate.connect (size_allocate_cb);
@@ -603,7 +603,7 @@ public class Sudoku : Gtk.Application
 
         show_about_dialog (window,
                                "program-name", _("Sudoku"),
-                               "logo-icon-name", "gnome-sudoku",
+                               "logo-icon-name", "org.gnome.Sudoku",
                                "version", VERSION,
                                "comments", localized_comments_format.printf (SudokuGenerator.qqwing_version ()),
                                "copyright", "Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha",

@@ -6,7 +6,7 @@ project('gnome-sudoku', ['c', 'cpp', 'vala'],
   meson_version: '>= 0.44.1',
   version: '3.31.1'
 )
-
+application_id = 'org.gnome.Sudoku'
 add_project_arguments([
     '-include', 'config.h'
   ],
@@ -40,7 +40,7 @@ config_include_dir = include_directories('.')
 
 conf = configuration_data()
 
-conf.set_quoted('GETTEXT_PACKAGE', 'gnome-sudoku')
+conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('LOCALEDIR', join_paths(prefix, localedir))
 conf.set_quoted('VERSION', meson.project_version())
 
@@ -54,4 +54,4 @@ subdir('lib')
 subdir('po')
 subdir('src')
 
-meson.add_install_script('post_install.py')
+meson.add_install_script('build-aux/post_install.py')

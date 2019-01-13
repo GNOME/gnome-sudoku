@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2013 Michael Catanzaro and contributors -->
-<component type="desktop">
-  <id>gnome-sudoku.desktop</id>
+<component type="desktop-application">
+  <id>org.gnome.Sudoku</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>GNOME Sudoku</name>
@@ -30,15 +30,18 @@
       <caption>A GNOME sudoku game preview</caption>
     </screenshot>
   </screenshots>
+  <launchable type="desktop-id">org.gnome.Sudoku.desktop</launchable>
   <url type="homepage">https://wiki.gnome.org/Apps/Sudoku</url>
-  <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-sudoku</url>
+  <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-sudoku</url>
   <url type="donation">http://www.gnome.org/friends/</url>
   <url type="help">https://help.gnome.org/users/gnome-sudoku/stable/</url>
   <url type="translate">https://wiki.gnome.org/TranslationProject</url>
   <update_contact>mcatanzaro_at_gnome.org</update_contact>
   <project_group>GNOME</project_group>
+  <provides>
+    <id>gnome-sudoku.desktop</id>
+  </provides>
   <kudos>
-    <kudo>AppMenu</kudo>
     <kudo>HiDpiIcon</kudo>
     <kudo>ModernToolkit</kudo>
     <kudo>UserDocs</kudo>
