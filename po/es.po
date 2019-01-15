@@ -5,14 +5,14 @@
 # Lucas Vieites <lucas@codexion.com>, 2007, 2008.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009, 2010, 2011.
 # Chris Leonard <cjl@laptop.org>, 2012.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2008-2018, 2018.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2008-2018, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2018-10-25 19:54+0000\n"
-"PO-Revision-Date: 2018-12-04 15:54+0100\n"
+"POT-Creation-Date: 2019-01-14 20:08+0000\n"
+"PO-Revision-Date: 2019-01-15 15:14+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -23,68 +23,10 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.7\n"
 "X-Project-Style: gnome\n"
 
-#: data/gnome-sudoku.appdata.xml.in:7
-msgid "GNOME Sudoku"
-msgstr "GNOME Sudoku"
-
-#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr ""
-"Ponga a prueba sus habilidades de lógica en este puzle de rejilla numérica"
-
-#: data/gnome-sudoku.appdata.xml.in:10
-msgid ""
-"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
-"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
-"Sudoku fun for players of any skill level."
-msgstr ""
-"Juegue al popular juego de lógica japonés. GNOME Sudoku es un juego "
-"imprescindible para los amantes del sudoku, con una interfaz sencilla y no "
-"intrusiva que hace que sea divertido jugar a sudoku para los jugadores de "
-"todos los niveles."
-
-#: data/gnome-sudoku.appdata.xml.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as easy or as difficult as you want it to be."
-msgstr ""
-"Cada juego tiene un nivel de dificultad similar a los que aparecen en los "
-"periódicos y en las páginas web, por lo que su partida será tan fácil o "
-"difícil como quiera."
-
-#: data/gnome-sudoku.appdata.xml.in:20
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"Si quiere jugar en papel, puede imprimir los juegos. Puede elegir cuántos "
-"juegos por página quiere imprimir y su nivel de dificultad: el resultado es "
-"que GNOME Sudoku puede convertirse en un libro de Sudokus renovables por "
-"usted mismo."
-
-#: data/gnome-sudoku.appdata.xml.in:30
-msgid "A GNOME sudoku game preview"
-msgstr "Una vista previa del juego de sudoku de GNOME"
-
-#: data/gnome-sudoku.appdata.xml.in:47
-msgid "The GNOME Project"
-msgstr "El proyecto GNOME"
-
-#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:161 src/gnome-sudoku.vala:605
+#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "Sudoku"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/gnome-sudoku.desktop.in:6
-msgid "magic;square;"
-msgstr "magia;cuadrado;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gnome-sudoku.desktop.in:9
-msgid "gnome-sudoku"
-msgstr "gnome-sudoku"
 
 #: data/gnome-sudoku.ui:22
 msgid "Undo your last action"
@@ -123,7 +65,6 @@ msgid "_Help"
 msgstr "Ay_uda"
 
 #: data/gnome-sudoku.ui:155
-#| msgid "_About"
 msgid "_About Sudoku"
 msgstr "_Acerca de Sudoku"
 
@@ -175,11 +116,70 @@ msgstr "_Empezar a jugar"
 msgid "Start playing the custom puzzle you have created"
 msgstr "Empezar a jugar el puzle personalizado que ha creado"
 
-#: data/org.gnome.sudoku.gschema.xml:11
+#: data/org.gnome.Sudoku.appdata.xml.in:7
+msgid "GNOME Sudoku"
+msgstr "GNOME Sudoku"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:8 data/org.gnome.Sudoku.desktop.in:4
+msgid "Test your logic skills in this number grid puzzle"
+msgstr ""
+"Ponga a prueba sus habilidades de lógica en este puzle de rejilla numérica"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:10
+msgid ""
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
+msgstr ""
+"Juegue al popular juego de lógica japonés. GNOME Sudoku es un juego "
+"imprescindible para los amantes del sudoku, con una interfaz sencilla y no "
+"intrusiva que hace que sea divertido jugar a sudoku para los jugadores de "
+"todos los niveles."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:15
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites, so your game will be as easy or as difficult as you want it to be."
+msgstr ""
+"Cada juego tiene un nivel de dificultad similar a los que aparecen en los "
+"periódicos y en las páginas web, por lo que su partida será tan fácil o "
+"difícil como quiera."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:20
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"Si quiere jugar en papel, puede imprimir los juegos. Puede elegir cuántos "
+"juegos por página quiere imprimir y su nivel de dificultad: el resultado es "
+"que GNOME Sudoku puede convertirse en un libro de Sudokus renovables por "
+"usted mismo."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:30
+msgid "A GNOME sudoku game preview"
+msgstr "Una vista previa del juego de sudoku de GNOME"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:50
+msgid "The GNOME Project"
+msgstr "El proyecto GNOME"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Sudoku.desktop.in:6
+msgid "magic;square;"
+msgstr "magia;cuadrado;"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Sudoku.desktop.in:9
+#| msgid "gnome-sudoku"
+msgid "org.gnome.Sudoku"
+msgstr "org.gnome.Sudoku"
+
+#: data/org.gnome.Sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Nivel de dificultad de los sudokus que imprimir"
 
-#: data/org.gnome.sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -187,19 +187,19 @@ msgstr ""
 "Establecer el nivel de dificultad de los sudokus que quiere imprimir. Los "
 "valores posibles son \"easy\", \"medium\", \"hard\", \"very_hard\""
 
-#: data/org.gnome.sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
 msgstr "Número de sudokus que imprimir"
 
-#: data/org.gnome.sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
 msgstr "Establecer el número de sudokus que quiere imprimir"
 
-#: data/org.gnome.sudoku.gschema.xml:22
+#: data/org.gnome.Sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Advertir acerca de cuadros no rellenables y números duplicados"
 
-#: data/org.gnome.sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:23
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -207,19 +207,19 @@ msgstr ""
 "Muestra una X roja grande en un cuadrado si no se puede rellenar con ningún "
 "número, y los números duplicados se resaltan en rojo"
 
-#: data/org.gnome.sudoku.gschema.xml:27
+#: data/org.gnome.Sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Resaltar fila, columna o cuadrado que contenga la casilla seleccionada"
 
-#: data/org.gnome.sudoku.gschema.xml:31
+#: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Width of the window in pixels"
 msgstr "Anchura de la ventana en píxeles"
 
-#: data/org.gnome.sudoku.gschema.xml:35
+#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Height of the window in pixels"
 msgstr "Altura de la ventana en píxeles"
 
-#: data/org.gnome.sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid "true if the window is maximized"
 msgstr "cierto si la ventana está maximizada"
 
