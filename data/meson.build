@@ -2,7 +2,7 @@ resource_files = files('gnome-sudoku.gresource.xml')
 
 resources = gnome.compile_resources('gnome-sudoku', resource_files)
 
-desktop = i18n.merge_file('desktop',
+desktop_file = i18n.merge_file('desktop',
   input: '@0@.desktop.in'.format(application_id),
   output: '@0@.desktop'.format(application_id),
   install: true,
@@ -10,14 +10,33 @@ desktop = i18n.merge_file('desktop',
   po_dir: '../po',
   type: 'desktop'
 )
+desktop_file_validate = find_program('desktop-file-validate', required: false)
+if desktop_file_validate.found()
+  test(
+    'validate-desktop',
+    desktop_file_validate,
+    args: [
+      desktop_file.full_path()
+    ]
+  )
+endif
 
-appdata = i18n.merge_file('appdata',
+appdata_file = i18n.merge_file('appdata',
   input: '@0@.appdata.xml.in'.format(application_id),
   output: '@0@.appdata.xml'.format(application_id),
   install: true,
   install_dir: join_paths(datadir, 'metainfo'),
   po_dir: '../po'
 )
+appstream_util = find_program('appstream-util', required: false)
+if appstream_util.found()
+  test(
+    'validate-appdata', appstream_util,
+    args: [
+      'validate-relax', '--nonet', appdata_file.full_path()
+    ]
+  )
+endif
 
 install_data('@0@.gschema.xml'.format(application_id),
   install_dir: join_paths(datadir, 'glib-2.0', 'schemas')
