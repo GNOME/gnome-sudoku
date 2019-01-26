@@ -10,61 +10,121 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-02-03 23:47+0000\n"
-"PO-Revision-Date: 2018-02-05 12:16+0700\n"
-"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
+"POT-Creation-Date: 2019-01-25 20:29+0000\n"
+"PO-Revision-Date: 2019-01-26 21:20+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural= n!=1;\n"
 "X-Rosetta-Export-Date: 2007-04-23 05:58:10+0000\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
-#: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
+#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:605
+msgid "Sudoku"
+msgstr "Sudoku"
+
+#: data/gnome-sudoku.ui:22
+msgid "Undo your last action"
+msgstr "Tak jadikan aksi terakhir"
+
+#: data/gnome-sudoku.ui:43
+msgid "Redo your last action"
+msgstr "Ulangi langkah terakhir"
+
+#: data/gnome-sudoku.ui:107
+msgid "Go back to the current game"
+msgstr "Kembali ke permainan yang sedang berjalan"
+
+#: data/gnome-sudoku.ui:126 data/print-dialog.ui:32
 msgid "_Print"
 msgstr "C_etak"
 
-#: data/gnome-sudoku-menu.ui:10
+#: data/gnome-sudoku.ui:129
 msgid "Print _Current Puzzle…"
 msgstr "_Cetak Teka-teki Ini…"
 
-#: data/gnome-sudoku-menu.ui:14
+#: data/gnome-sudoku.ui:133
 msgid "Print _Multiple Puzzles…"
 msgstr "Cetak _Beberapa Teka-teki…"
 
-#: data/gnome-sudoku-menu.ui:22
+#: data/gnome-sudoku.ui:141
 msgid "High_lighter"
 msgstr "Peny_orot"
 
-#: data/gnome-sudoku-menu.ui:26
+#: data/gnome-sudoku.ui:145
 msgid "_Warnings"
 msgstr "_Peringatan"
 
-#: data/gnome-sudoku-menu.ui:32
+#: data/gnome-sudoku.ui:151
 msgid "_Help"
 msgstr "_Bantuan"
 
-#: data/gnome-sudoku-menu.ui:36
-msgid "_About"
-msgstr "Tent_ang"
+#: data/gnome-sudoku.ui:155
+msgid "_About Sudoku"
+msgstr "Tent_ang Sudoku"
 
-#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
-msgid "_Quit"
-msgstr "_Keluar"
+#: data/gnome-sudoku.ui:185 data/print-dialog.ui:130
+msgid "_Easy"
+msgstr "Mu_dah"
 
-#: data/gnome-sudoku.appdata.xml.in:7
+#: data/gnome-sudoku.ui:199 data/print-dialog.ui:146
+msgid "_Medium"
+msgstr "_Sedang"
+
+#: data/gnome-sudoku.ui:213 data/print-dialog.ui:163
+msgid "_Hard"
+msgstr "S_ulit"
+
+#: data/gnome-sudoku.ui:227 data/print-dialog.ui:180
+msgid "_Very Hard"
+msgstr "Sa_ngat sulit"
+
+#: data/gnome-sudoku.ui:242
+msgid "_Create your own puzzle"
+msgstr "Buat _teka-teki Anda sendiri"
+
+#: data/gnome-sudoku.ui:288 src/gnome-sudoku.vala:327
+msgid "_Pause"
+msgstr "_Jeda"
+
+#: data/gnome-sudoku.ui:304
+msgid "_Clear Board"
+msgstr "K_osongkan Papan"
+
+#: data/gnome-sudoku.ui:308
+msgid "Reset the board to its original state"
+msgstr "Reset papan ke keadaan aslinya"
+
+#: data/gnome-sudoku.ui:322
+msgid "_New Puzzle"
+msgstr "Teka-teki _Baru"
+
+#: data/gnome-sudoku.ui:326
+msgid "Start a new puzzle"
+msgstr "Mulai teka-teki baru"
+
+#: data/gnome-sudoku.ui:340
+msgid "_Start Playing"
+msgstr "_Mulai Bermain"
+
+#: data/gnome-sudoku.ui:344
+msgid "Start playing the custom puzzle you have created"
+msgstr "Mulai bermain teka-teki ubahan yang telah Anda buat"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
+#: data/org.gnome.Sudoku.appdata.xml.in:8 data/org.gnome.Sudoku.desktop.in:4
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "Uji kemampuan logika Anda dalam teka-teki ini"
 
-#: data/gnome-sudoku.appdata.xml.in:10
+#: data/org.gnome.Sudoku.appdata.xml.in:10
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -75,7 +135,7 @@ msgstr ""
 "yang membuat bermain Sudoku menarik bagi pemain dengan tingkat ketrampilan "
 "apapun."
 
-#: data/gnome-sudoku.appdata.xml.in:15
+#: data/org.gnome.Sudoku.appdata.xml.in:15
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -84,7 +144,7 @@ msgstr ""
 "surat kabar dan situs web, sehingga permainan Anda bisa semudah atau sesulit "
 "yang Anda inginkan."
 
-#: data/gnome-sudoku.appdata.xml.in:20
+#: data/org.gnome.Sudoku.appdata.xml.in:20
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -95,94 +155,29 @@ msgstr ""
 "pada tingkat kesulitan apa: sebagai hasilnya, GNOME Sudoku bisa berlaku "
 "sebagai buku Sudoku yang dapat diperbarui bagi Anda."
 
-#: data/gnome-sudoku.appdata.xml.in:30
+#: data/org.gnome.Sudoku.appdata.xml.in:30
 msgid "A GNOME sudoku game preview"
 msgstr "Pratinjau Permainan GNOME Sudoku"
 
-#: data/gnome-sudoku.appdata.xml.in:47
+#: data/org.gnome.Sudoku.appdata.xml.in:50
 msgid "The GNOME Project"
 msgstr "Proyek GNOME"
 
-#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
-msgid "Sudoku"
-msgstr "Sudoku"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/gnome-sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in:6
 msgid "magic;square;"
 msgstr "sulap;kotak;"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gnome-sudoku.desktop.in:9
-msgid "gnome-sudoku"
-msgstr "gnome-sudoku"
+#: data/org.gnome.Sudoku.desktop.in:9
+msgid "org.gnome.Sudoku"
+msgstr "org.gnome.Sudoku"
 
-#: data/gnome-sudoku.ui:22
-msgid "Undo your last action"
-msgstr "Tak jadikan aksi terakhir"
-
-#: data/gnome-sudoku.ui:43
-msgid "Redo your last action"
-msgstr "Ulangi langkah terakhir"
-
-#: data/gnome-sudoku.ui:91
-msgid "Go back to the current game"
-msgstr "Kembali ke permainan yang sedang berjalan"
-
-#: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
-msgid "_Easy"
-msgstr "Mu_dah"
-
-#: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
-msgid "_Medium"
-msgstr "_Sedang"
-
-#: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
-msgid "_Hard"
-msgstr "S_ulit"
-
-#: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
-msgid "_Very Hard"
-msgstr "Sa_ngat sulit"
-
-#: data/gnome-sudoku.ui:189
-msgid "_Create your own puzzle"
-msgstr "Buat _teka-teki Anda sendiri"
-
-#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
-msgid "_Pause"
-msgstr "_Jeda"
-
-#: data/gnome-sudoku.ui:251
-msgid "_Clear Board"
-msgstr "K_osongkan Papan"
-
-#: data/gnome-sudoku.ui:255
-msgid "Reset the board to its original state"
-msgstr "Reset papan ke keadaan aslinya"
-
-#: data/gnome-sudoku.ui:269
-msgid "_New Puzzle"
-msgstr "Teka-teki _Baru"
-
-#: data/gnome-sudoku.ui:273
-msgid "Start a new puzzle"
-msgstr "Mulai teka-teki baru"
-
-#: data/gnome-sudoku.ui:287
-msgid "_Start Playing"
-msgstr "_Mulai Bermain"
-
-#: data/gnome-sudoku.ui:291
-msgid "Start playing the custom puzzle you have created"
-msgstr "Mulai bermain teka-teki ubahan yang telah Anda buat"
-
-#: data/org.gnome.sudoku.gschema.xml:11
+#: data/org.gnome.Sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Tingkat kesulitan sudoku yang akan dicetak"
 
-#: data/org.gnome.sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -190,19 +185,19 @@ msgstr ""
 "Atur tingkat kesulitan sudoku yang ingin Anda cetak. Nilai yang mungkin "
 "adalah: \"easy\", \"medium\", \"hard\", \"very_hard\""
 
-#: data/org.gnome.sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
 msgstr "Cacak Sudoku yang akan dicetak"
 
-#: data/org.gnome.sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
 msgstr "Atur cacah sudoku yang ingin Anda cetak"
 
-#: data/org.gnome.sudoku.gschema.xml:22
+#: data/org.gnome.Sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Peringatkan tentang kotak yang tak dapat diisi dan angka duplikat"
 
-#: data/org.gnome.sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:23
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -210,19 +205,19 @@ msgstr ""
 "Tampilkan sebuah X besar merah pada suatu kotak bila itu tak mungkin diisi "
 "oleh sebarang bilangan dan bilangan yang duplikat disorot merah"
 
-#: data/org.gnome.sudoku.gschema.xml:27
+#: data/org.gnome.Sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Sorot baris, kolom, dan kotak pada sel yang dipilih"
 
-#: data/org.gnome.sudoku.gschema.xml:31
+#: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Width of the window in pixels"
 msgstr "Lebar jendela dalam piksel"
 
-#: data/org.gnome.sudoku.gschema.xml:35
+#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Height of the window in pixels"
 msgstr "Tinggi jendela dalam piksel"
 
-#: data/org.gnome.sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid "true if the window is maximized"
 msgstr "true bila jendela dimaksimalkan"
 
@@ -264,7 +259,7 @@ msgstr "Kesulitan Sangat Tinggi"
 
 #: lib/sudoku-board.vala:593
 msgid "Custom Puzzle"
-msgstr " Teka-teki Ubahan"
+msgstr "Teka-teki Ubahan"
 
 #. Help string for command line --version flag
 #: src/gnome-sudoku.vala:85
@@ -310,7 +305,12 @@ msgstr "_Lanjutkan"
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "Selamat, Anda menyelesaikan teka-teki dalam %d menit"
+msgstr[0] "Selamat, Anda menyelesaikan teka-teki dalam %d menit!"
+msgstr[1] "Selamat, Anda menyelesaikan teka-teki dalam %d menit!"
+
+#: src/gnome-sudoku.vala:402
+msgid "_Quit"
+msgstr "_Keluar"
 
 #: src/gnome-sudoku.vala:403
 msgid "Play _Again"
@@ -349,7 +349,7 @@ msgstr ""
 "Vincent Sebastian The <vincent.s.the@gmail.com>, 2011, 2012.\n"
 "Dirgita <dirgitadevina@yahoo.co.id>, 2012.\n"
 "Ronaldi Santosa <ronald.santosa@gmail.com>, 2015.\n"
-"Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017, 2018."
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019."
 
 #: src/number-picker.vala:90
 msgid "Clear"
