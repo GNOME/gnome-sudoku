@@ -1,5 +1,5 @@
 # Hungarian translation for gnome-sudoku.
-# Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. Free Software Foundation, Inc.
+# Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019. Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-sudoku package.
 #
 # Szabolcs Ban <shooby at gnome dot hu>, 1999, 2000, 2001.
@@ -9,16 +9,15 @@
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Szabolcs Varga <shirokuma at shirokuma dot hu>, 2005.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
-# Balázs Úr <urbalazs at gmail dot com>, 2013, 2014, 2015, 2016, 2017, 2018.
+# Balázs Úr <urbalazs at gmail dot com>, 2013, 2014, 2015, 2016, 2017, 2018, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-12-05 16:46+0000\n"
-"PO-Revision-Date: 2018-01-22 00:23+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
+"POT-Creation-Date: 2019-01-14 20:08+0000\n"
+"PO-Revision-Date: 2019-01-27 16:21+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
-"Language-Team: Hungarian <openscope at gmail dot com>\n"
+"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,47 +25,108 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.2\n"
 
-#: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
+#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:605
+msgid "Sudoku"
+msgstr "Sudoku"
+
+#: data/gnome-sudoku.ui:22
+msgid "Undo your last action"
+msgstr "Utolsó művelet visszavonása"
+
+#: data/gnome-sudoku.ui:43
+msgid "Redo your last action"
+msgstr "Mégis az utolsó műveletet"
+
+#: data/gnome-sudoku.ui:107
+msgid "Go back to the current game"
+msgstr "Vissza a jelenlegi játékhoz"
+
+#: data/gnome-sudoku.ui:126 data/print-dialog.ui:32
 msgid "_Print"
 msgstr "_Nyomtatás"
 
-#: data/gnome-sudoku-menu.ui:10
+#: data/gnome-sudoku.ui:129
 msgid "Print _Current Puzzle…"
 msgstr "Jelenlegi feladvány _nyomtatása…"
 
-#: data/gnome-sudoku-menu.ui:14
+#: data/gnome-sudoku.ui:133
 msgid "Print _Multiple Puzzles…"
 msgstr "_Több feladvány nyomtatása…"
 
-#: data/gnome-sudoku-menu.ui:22
+#: data/gnome-sudoku.ui:141
 msgid "High_lighter"
 msgstr "Kie_melő"
 
-#: data/gnome-sudoku-menu.ui:26
+#: data/gnome-sudoku.ui:145
 msgid "_Warnings"
 msgstr "_Figyelmeztetések"
 
-#: data/gnome-sudoku-menu.ui:32
+#: data/gnome-sudoku.ui:151
 msgid "_Help"
 msgstr "_Súgó"
 
-#: data/gnome-sudoku-menu.ui:36
-msgid "_About"
-msgstr "_Névjegy"
+#: data/gnome-sudoku.ui:155
+msgid "_About Sudoku"
+msgstr "A Sudoku _névjegye"
 
-#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
-msgid "_Quit"
-msgstr "_Kilépés"
+#: data/gnome-sudoku.ui:185 data/print-dialog.ui:130
+msgid "_Easy"
+msgstr "Kö_nnyű"
 
-#: data/gnome-sudoku.appdata.xml.in:7
+#: data/gnome-sudoku.ui:199 data/print-dialog.ui:146
+msgid "_Medium"
+msgstr "Kö_zepes"
+
+#: data/gnome-sudoku.ui:213 data/print-dialog.ui:163
+msgid "_Hard"
+msgstr "Ne_héz"
+
+#: data/gnome-sudoku.ui:227 data/print-dialog.ui:180
+msgid "_Very Hard"
+msgstr "Nag_yon nehéz"
+
+#: data/gnome-sudoku.ui:242
+msgid "_Create your own puzzle"
+msgstr "_Saját feladvány létrehozása"
+
+#: data/gnome-sudoku.ui:288 src/gnome-sudoku.vala:327
+msgid "_Pause"
+msgstr "_Szünet"
+
+#: data/gnome-sudoku.ui:304
+msgid "_Clear Board"
+msgstr "_Tábla törlése"
+
+#: data/gnome-sudoku.ui:308
+msgid "Reset the board to its original state"
+msgstr "A tábla visszaállítása az eredeti állapotába"
+
+#: data/gnome-sudoku.ui:322
+msgid "_New Puzzle"
+msgstr "Új _feladvány"
+
+#: data/gnome-sudoku.ui:326
+msgid "Start a new puzzle"
+msgstr "Új feladvány indítása"
+
+#: data/gnome-sudoku.ui:340
+msgid "_Start Playing"
+msgstr "_Játék indítása"
+
+#: data/gnome-sudoku.ui:344
+msgid "Start playing the custom puzzle you have created"
+msgstr "Játék indítása az egyéni feladványon, amit létrehozott"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
+#: data/org.gnome.Sudoku.appdata.xml.in:8 data/org.gnome.Sudoku.desktop.in:4
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "Tesztelje logikai képességeit ezzel a számrács-fejtörővel"
 
-#: data/gnome-sudoku.appdata.xml.in:10
+#: data/org.gnome.Sudoku.appdata.xml.in:10
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -76,7 +136,7 @@ msgstr ""
 "minden Sudoku-rajongónak. Egyszerű felülete a játékot minden tapasztalati "
 "szintű játékos számára élvezetessé teszi."
 
-#: data/gnome-sudoku.appdata.xml.in:15
+#: data/org.gnome.Sudoku.appdata.xml.in:15
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -85,7 +145,7 @@ msgstr ""
 "a weboldalak feladványaihoz, így a játék nehézsége vagy egyszerűsége csak "
 "Önön múlik."
 
-#: data/gnome-sudoku.appdata.xml.in:20
+#: data/org.gnome.Sudoku.appdata.xml.in:20
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -96,94 +156,29 @@ msgstr ""
 "szeretne nyomtatni; melynek eredményeként a GNOME Sudoku újrafelhasználható "
 "feladványkötetként használható."
 
-#: data/gnome-sudoku.appdata.xml.in:30
+#: data/org.gnome.Sudoku.appdata.xml.in:30
 msgid "A GNOME sudoku game preview"
 msgstr "Egy GNOME sudoku játékelőnézet"
 
-#: data/gnome-sudoku.appdata.xml.in:47
+#: data/org.gnome.Sudoku.appdata.xml.in:50
 msgid "The GNOME Project"
 msgstr "A GNOME projekt"
 
-#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
-msgid "Sudoku"
-msgstr "Sudoku"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/gnome-sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in:6
 msgid "magic;square;"
 msgstr "bűvös;négyzet;"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gnome-sudoku.desktop.in:9
-msgid "gnome-sudoku"
-msgstr "gnome-sudoku"
+#: data/org.gnome.Sudoku.desktop.in:9
+msgid "org.gnome.Sudoku"
+msgstr "org.gnome.Sudoku"
 
-#: data/gnome-sudoku.ui:22
-msgid "Undo your last action"
-msgstr "Utolsó művelet visszavonása"
-
-#: data/gnome-sudoku.ui:43
-msgid "Redo your last action"
-msgstr "Mégis az utolsó műveletet"
-
-#: data/gnome-sudoku.ui:91
-msgid "Go back to the current game"
-msgstr "Vissza a jelenlegi játékhoz"
-
-#: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
-msgid "_Easy"
-msgstr "Kö_nnyű"
-
-#: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
-msgid "_Medium"
-msgstr "Kö_zepes"
-
-#: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
-msgid "_Hard"
-msgstr "Ne_héz"
-
-#: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
-msgid "_Very Hard"
-msgstr "Nag_yon nehéz"
-
-#: data/gnome-sudoku.ui:189
-msgid "_Create your own puzzle"
-msgstr "_Saját feladvány létrehozása"
-
-#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
-msgid "_Pause"
-msgstr "_Szünet"
-
-#: data/gnome-sudoku.ui:251
-msgid "_Clear Board"
-msgstr "_Tábla törlése"
-
-#: data/gnome-sudoku.ui:255
-msgid "Reset the board to its original state"
-msgstr "A tábla visszaállítása az eredeti állapotába"
-
-#: data/gnome-sudoku.ui:269
-msgid "_New Puzzle"
-msgstr "Új _feladvány"
-
-#: data/gnome-sudoku.ui:273
-msgid "Start a new puzzle"
-msgstr "Új feladvány indítása"
-
-#: data/gnome-sudoku.ui:287
-msgid "_Start Playing"
-msgstr "_Játék indítása"
-
-#: data/gnome-sudoku.ui:291
-msgid "Start playing the custom puzzle you have created"
-msgstr "Játék indítása az egyéni feladványon, amit létrehozott"
-
-#: data/org.gnome.sudoku.gschema.xml:11
+#: data/org.gnome.Sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
 msgstr "_Nyomtatandó sudokuk nehézségi szintje"
 
-#: data/org.gnome.sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -192,19 +187,19 @@ msgstr ""
 "értékek: „easy” (egyszerű), „medium” (közepes), „hard” (nehéz), "
 "„very_hard” (nagyon nehéz)"
 
-#: data/org.gnome.sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
 msgstr "Nyomtatandó sudokuk száma"
 
-#: data/org.gnome.sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
 msgstr "A nyomtatandó sudokuk számának beállítása"
 
-#: data/org.gnome.sudoku.gschema.xml:22
+#: data/org.gnome.Sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Figyelmeztessen a kitölthetetlen négyzetekre és a többszörös számokra"
 
-#: data/org.gnome.sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:23
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -212,20 +207,20 @@ msgstr ""
 "Egy nagy piros X-et jelenít meg, ha egy négyzetet egyetlen számmal se lehet "
 "kitölteni, és a többször szereplő számok pirossal lesznek kiemelve"
 
-#: data/org.gnome.sudoku.gschema.xml:27
+#: data/org.gnome.Sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr ""
 "Sor, oszlop és négyzet kiemelése, amelyek tartalmazzák a kijelölt cellát"
 
-#: data/org.gnome.sudoku.gschema.xml:31
+#: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Width of the window in pixels"
 msgstr "Az ablak szélessége képpontokban"
 
-#: data/org.gnome.sudoku.gschema.xml:35
+#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Height of the window in pixels"
 msgstr "Az ablak magassága képpontokban"
 
-#: data/org.gnome.sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid "true if the window is maximized"
 msgstr "Az ablak teljes méretű-e"
 
@@ -317,6 +312,10 @@ msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Szép munka, a feladványt %d perc alatt oldotta meg!"
 msgstr[1] "Szép munka, a feladványt %d perc alatt oldotta meg!"
 
+#: src/gnome-sudoku.vala:402
+msgid "_Quit"
+msgstr "_Kilépés"
+
 #: src/gnome-sudoku.vala:403
 msgid "Play _Again"
 msgstr "Játék új_ra"
@@ -370,3 +369,4 @@ msgstr "Hiba a fájl nyomtatása közben:"
 #: src/sudoku-view.vala:631
 msgid "Paused"
 msgstr "Szüneteltetve"
+
