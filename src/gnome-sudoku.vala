@@ -98,7 +98,7 @@ public class Sudoku : Gtk.Application
         Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         Intl.textdomain (GETTEXT_PACKAGE);
 
-        Object (application_id: "org.gnome.sudoku", flags: ApplicationFlags.FLAGS_NONE);
+        Object (application_id: "org.gnome.Sudoku", flags: ApplicationFlags.FLAGS_NONE);
         add_main_option_entries (option_entries);
     }
 
