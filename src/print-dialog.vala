@@ -52,7 +52,7 @@ public class PrintDialog : Gtk.Dialog
         Object (use_header_bar: 1);
 
         this.saver = saver;
-        settings = new GLib.Settings ("org.gnome.sudoku");
+        settings = new GLib.Settings ("org.gnome.Sudoku");
 
         this.response.connect ((response_id) => {
             if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT)
