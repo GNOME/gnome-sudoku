@@ -19,7 +19,7 @@
  * along with GNOME Sudoku. If not, see <http://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/org/gnome/sudoku/ui/print-dialog.ui")]
+[GtkTemplate (ui = "/org/gnome/Sudoku/ui/print-dialog.ui")]
 public class PrintDialog : Gtk.Dialog
 {
     private SudokuSaver saver;
