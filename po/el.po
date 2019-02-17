@@ -36,8 +36,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.el\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2018-10-25 19:54+0000\n"
-"PO-Revision-Date: 2018-12-24 13:58+0200\n"
+"POT-Creation-Date: 2019-01-31 13:07+0000\n"
+"PO-Revision-Date: 2019-02-17 02:47+0200\n"
 "Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
 "Language-Team: Ελληνικά <>\n"
 "Language: el\n"
@@ -45,70 +45,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Project-Style: gnome\n"
 
-#: data/gnome-sudoku.appdata.xml.in:7
-msgid "GNOME Sudoku"
-msgstr "Σουντόκου GNOME"
-
-#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Δοκιμάστε τη λογική σας σε αυτό το παιχνίδι με αριθμούς"
-
-#: data/gnome-sudoku.appdata.xml.in:10
-msgid ""
-"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
-"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
-"Sudoku fun for players of any skill level."
-msgstr ""
-"Παίξτε το δημοφιλές ιαπωνικό παιχνίδι λογικής. Το Σουντόκου GNOME είναι ένα "
-"απαραίτητο παιχνίδι για τους λάτρεις του σουντόκου, με μια απλή, διακριτική "
-"διεπαφή που κάνει το παιχνίδι διασκέδαση για παίκτες οποιουδήποτε επιπέδου "
-"ικανότητας."
-
-#: data/gnome-sudoku.appdata.xml.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as easy or as difficult as you want it to be."
-msgstr ""
-"Κάθε παιχνίδι αντιστοιχεί σε επίπεδο δυσκολίας παρόμοιο με αυτό που δίνεται "
-"σε εφημερίδες και ιστότοπους, έτσι ώστε το παιχνίδι σας να είναι τόσο εύκολο "
-"ή τόσο δύσκολο όσο θέλετε να είναι."
-
-#: data/gnome-sudoku.appdata.xml.in:20
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"Εάν σας αρέσει να παίξετε σε χαρτί, μπορείτε να εκτυπώσετε τα παιχνίδια. "
-"Μπορείτε να επιλέξετε πόσα παιχνίδια θέλετε να εκτυπώσετε ανά σελίδα και τι "
-"επίπεδο δυσκολίας θέλετε να έχουν: ως αποτέλεσμα, το Σουντόκου GNOME μπορεί "
-"να αποτελέσει ένα ανανεώσιμο βιβλίο Σουντόκου για εσάς."
-
-#: data/gnome-sudoku.appdata.xml.in:30
-msgid "A GNOME sudoku game preview"
-msgstr "Προεπισκόπηση του παιχνιδιού Σουντόκου GNOME"
-
-#: data/gnome-sudoku.appdata.xml.in:47
-msgid "The GNOME Project"
-msgstr "Έργο GNOME"
-
-#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:161 src/gnome-sudoku.vala:605
+#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "Σουντόκου"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/gnome-sudoku.desktop.in:6
-msgid "magic;square;"
-msgstr "μαγικό;τετράγωνο;magic;square;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gnome-sudoku.desktop.in:9
-msgid "gnome-sudoku"
-msgstr "gnome-sudoku"
 
 #: data/gnome-sudoku.ui:22
 msgid "Undo your last action"
@@ -198,11 +141,69 @@ msgstr "Έ_ναρξη παιχνιδιού"
 msgid "Start playing the custom puzzle you have created"
 msgstr "Έναρξη παιχνιδιού του προσαρμοσμένου γρίφου που έχετε δημιουργήσει"
 
-#: data/org.gnome.sudoku.gschema.xml:11
+#: data/org.gnome.Sudoku.appdata.xml.in:7
+msgid "GNOME Sudoku"
+msgstr "Σουντόκου GNOME"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:8 data/org.gnome.Sudoku.desktop.in:4
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Δοκιμάστε τη λογική σας σε αυτό το παιχνίδι με αριθμούς"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:10
+msgid ""
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
+msgstr ""
+"Παίξτε το δημοφιλές ιαπωνικό παιχνίδι λογικής. Το Σουντόκου GNOME είναι ένα "
+"απαραίτητο παιχνίδι για τους λάτρεις του σουντόκου, με μια απλή, διακριτική "
+"διεπαφή που κάνει το παιχνίδι διασκέδαση για παίκτες οποιουδήποτε επιπέδου "
+"ικανότητας."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:15
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites, so your game will be as easy or as difficult as you want it to be."
+msgstr ""
+"Κάθε παιχνίδι αντιστοιχεί σε επίπεδο δυσκολίας παρόμοιο με αυτό που δίνεται "
+"σε εφημερίδες και ιστότοπους, έτσι ώστε το παιχνίδι σας να είναι τόσο εύκολο "
+"ή τόσο δύσκολο όσο θέλετε να είναι."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:20
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"Εάν σας αρέσει να παίξετε σε χαρτί, μπορείτε να εκτυπώσετε τα παιχνίδια. "
+"Μπορείτε να επιλέξετε πόσα παιχνίδια θέλετε να εκτυπώσετε ανά σελίδα και τι "
+"επίπεδο δυσκολίας θέλετε να έχουν: ως αποτέλεσμα, το Σουντόκου GNOME μπορεί "
+"να αποτελέσει ένα ανανεώσιμο βιβλίο Σουντόκου για εσάς."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:30
+msgid "A GNOME sudoku game preview"
+msgstr "Προεπισκόπηση του παιχνιδιού Σουντόκου GNOME"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:50
+msgid "The GNOME Project"
+msgstr "Έργο GNOME"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Sudoku.desktop.in:6
+msgid "magic;square;"
+msgstr "μαγικό;τετράγωνο;magic;square;"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Sudoku.desktop.in:9
+#| msgid "gnome-sudoku"
+msgid "org.gnome.Sudoku"
+msgstr "org.gnome.Sudoku"
+
+#: data/org.gnome.Sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Το επίπεδο δυσκολίας των σουντόκου προς εκτύπωση"
 
-#: data/org.gnome.sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -210,19 +211,19 @@ msgstr ""
 "Ορίστε το επίπεδο δυσκολίας των σουντόκου που θέλετε να εκτυπώσετε. Πιθανές "
 "τιμές είναι: \"easy\", \"medium\", \"hard\", \"very_hard\""
 
-#: data/org.gnome.sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
 msgstr "Αριθμός σουντόκου προς εκτύπωση"
 
-#: data/org.gnome.sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
 msgstr "Ορίστε τον αριθμό των σουντόκου που θέλετε να εκτυπώσετε"
 
-#: data/org.gnome.sudoku.gschema.xml:22
+#: data/org.gnome.Sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Προειδοποίηση για ασυμπλήρωτα τετράγωνα και διπλότυπους αριθμούς"
 
-#: data/org.gnome.sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:23
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -231,20 +232,20 @@ msgstr ""
 "συμπληρωθεί από οποιοδήποτε αριθμό και οι διπλότυποι αριθμοί επισημαίνονται "
 "με κόκκινο χρώμα"
 
-#: data/org.gnome.sudoku.gschema.xml:27
+#: data/org.gnome.Sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr ""
 "Επισήμανση γραμμής, στήλης και τετραγώνου που περιέχει το επιλεγμένο κελί"
 
-#: data/org.gnome.sudoku.gschema.xml:31
+#: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Width of the window in pixels"
 msgstr "Το πλάτος του παραθύρου σε εικονοστοιχεία"
 
-#: data/org.gnome.sudoku.gschema.xml:35
+#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Height of the window in pixels"
 msgstr "Το ύψος του παραθύρου σε εικονοστοιχεία"
 
-#: data/org.gnome.sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid "true if the window is maximized"
 msgstr "αληθές αν το παράθυρο είναι μεγιστοποιημένο"
 
