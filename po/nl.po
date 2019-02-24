@@ -37,16 +37,15 @@
 # Tino Meinen <tino.meinen@gmail.com>, 2002–2009.
 # Wouter Bolsterlee <wbolster@gnome.org>, 2008.
 # Redmar <redmar@ubuntu-nl.org>, 2011.
-# Justin van Steijn <justin50@live.nl>, 2015, 2016.
+# Justin van Steijn <jvs@fsfe.org>, 2015, 2016.
 # Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2017.
-# Nathan Follens <nthn@unseen.is>, 2018.
+# Nathan Follens <nthn@unseen.is>, 2018-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-02-03 23:47+0000\n"
-"PO-Revision-Date: 2018-02-08 18:34+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
+"POT-Creation-Date: 2019-01-31 13:07+0000\n"
+"PO-Revision-Date: 2019-02-24 15:40+0100\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
@@ -55,52 +54,114 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2011-09-18 07:04+0000\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
-#: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
+#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:605
+msgid "Sudoku"
+msgstr "Sudoku"
+
+#: data/gnome-sudoku.ui:22
+msgid "Undo your last action"
+msgstr "Uw laatste actie ongedaan maken"
+
+#: data/gnome-sudoku.ui:43
+msgid "Redo your last action"
+msgstr "Uw laatste actie herhalen"
+
+#: data/gnome-sudoku.ui:107
+msgid "Go back to the current game"
+msgstr "Teruggaan naar het huidige spel"
+
+#: data/gnome-sudoku.ui:126 data/print-dialog.ui:32
 msgid "_Print"
 msgstr "Af_drukken"
 
 # de huidige sudoku afdrukken
-#: data/gnome-sudoku-menu.ui:10
+#: data/gnome-sudoku.ui:129
 msgid "Print _Current Puzzle…"
 msgstr "_Huidige sudoku afdrukken…"
 
-#: data/gnome-sudoku-menu.ui:14
+#: data/gnome-sudoku.ui:133
 msgid "Print _Multiple Puzzles…"
 msgstr "_Meerdere sudoku’s afdrukken…"
 
 # vakjes accentueren met verschillende kleuren
-#: data/gnome-sudoku-menu.ui:22
+#: data/gnome-sudoku.ui:141
 msgid "High_lighter"
 msgstr "_Uitlichten"
 
-#: data/gnome-sudoku-menu.ui:26
+#: data/gnome-sudoku.ui:145
 msgid "_Warnings"
 msgstr "_Waarschuwingen"
 
-#: data/gnome-sudoku-menu.ui:32
+#: data/gnome-sudoku.ui:151
 msgid "_Help"
 msgstr "_Hulp"
 
-#: data/gnome-sudoku-menu.ui:36
-msgid "_About"
-msgstr "I_nfo"
+#: data/gnome-sudoku.ui:155
+msgid "_About Sudoku"
+msgstr "_Over Sudoku"
 
-#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
-msgid "_Quit"
-msgstr "_Afsluiten"
+#: data/gnome-sudoku.ui:185 data/print-dialog.ui:130
+msgid "_Easy"
+msgstr "_Makkelijk"
 
-#: data/gnome-sudoku.appdata.xml.in:7
+#: data/gnome-sudoku.ui:199 data/print-dialog.ui:146
+msgid "_Medium"
+msgstr "_Middel"
+
+#: data/gnome-sudoku.ui:213 data/print-dialog.ui:163
+msgid "_Hard"
+msgstr "M_oeilijk"
+
+#: data/gnome-sudoku.ui:227 data/print-dialog.ui:180
+msgid "_Very Hard"
+msgstr "_Zeer moeilijk"
+
+#: data/gnome-sudoku.ui:242
+msgid "_Create your own puzzle"
+msgstr "Uw _eigen spel maken"
+
+#: data/gnome-sudoku.ui:288 src/gnome-sudoku.vala:327
+msgid "_Pause"
+msgstr "_Pauzeren"
+
+# leegmaken/wissen
+#: data/gnome-sudoku.ui:304
+msgid "_Clear Board"
+msgstr "Bord _wissen"
+
+#: data/gnome-sudoku.ui:308
+msgid "Reset the board to its original state"
+msgstr "Het bord naar zijn oorspronkelijke status herstellen"
+
+#: data/gnome-sudoku.ui:322
+msgid "_New Puzzle"
+msgstr "_Nieuw spel"
+
+#: data/gnome-sudoku.ui:326
+msgid "Start a new puzzle"
+msgstr "Een nieuw spel beginnen"
+
+#: data/gnome-sudoku.ui:340
+msgid "_Start Playing"
+msgstr "_Spelen starten"
+
+#: data/gnome-sudoku.ui:344
+msgid "Start playing the custom puzzle you have created"
+msgstr "Beginnen met spelen van het aangepaste spel dat u heeft gemaakt"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
 msgstr "Gnome Sudoku"
 
 # cijferpuzzel/getallenpuzzel
-#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
+#: data/org.gnome.Sudoku.appdata.xml.in:8 data/org.gnome.Sudoku.desktop.in:4
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "Stel uw logische denkvermogen op de proef met deze cijferpuzzel"
 
-#: data/gnome-sudoku.appdata.xml.in:10
+#: data/org.gnome.Sudoku.appdata.xml.in:10
 msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
@@ -110,7 +171,7 @@ msgstr ""
 "liefhebbers van sudoku, met een simpele, niet-verstorende interface die het "
 "spelen van sudoku leuk maakt voor spelers van elk niveau."
 
-#: data/gnome-sudoku.appdata.xml.in:15
+#: data/org.gnome.Sudoku.appdata.xml.in:15
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as easy or as difficult as you want it to be."
@@ -119,7 +180,7 @@ msgstr ""
 "die van kranten en websites, dus uw spel zal ongeveer zo makkelijk of "
 "moeilijk zijn als u wilt."
 
-#: data/gnome-sudoku.appdata.xml.in:20
+#: data/org.gnome.Sudoku.appdata.xml.in:20
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -130,95 +191,30 @@ msgstr ""
 "wilt printen, wat erin resulteert dat Gnome Sudoku als een hernieuwbaar "
 "sudoku-boek kan dienen."
 
-#: data/gnome-sudoku.appdata.xml.in:30
+#: data/org.gnome.Sudoku.appdata.xml.in:30
 msgid "A GNOME sudoku game preview"
 msgstr "Voorbeeld van een Gnome-sudoku spel"
 
-#: data/gnome-sudoku.appdata.xml.in:47
+#: data/org.gnome.Sudoku.appdata.xml.in:50
 msgid "The GNOME Project"
 msgstr "Het Gnome-project"
 
-#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
-msgid "Sudoku"
-msgstr "Sudoku"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/gnome-sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in:6
 msgid "magic;square;"
 msgstr "magie;vierkant;"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gnome-sudoku.desktop.in:9
-msgid "gnome-sudoku"
-msgstr "gnome-sudoku"
+#: data/org.gnome.Sudoku.desktop.in:9
+#| msgid "gnome-sudoku"
+msgid "org.gnome.Sudoku"
+msgstr "org.gnome.Sudoku"
 
-#: data/gnome-sudoku.ui:22
-msgid "Undo your last action"
-msgstr "Uw laatste actie ongedaan maken"
-
-#: data/gnome-sudoku.ui:43
-msgid "Redo your last action"
-msgstr "Uw laatste actie herhalen"
-
-#: data/gnome-sudoku.ui:91
-msgid "Go back to the current game"
-msgstr "Teruggaan naar het huidige spel"
-
-#: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
-msgid "_Easy"
-msgstr "_Makkelijk"
-
-#: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
-msgid "_Medium"
-msgstr "_Middel"
-
-#: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
-msgid "_Hard"
-msgstr "M_oeilijk"
-
-#: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
-msgid "_Very Hard"
-msgstr "_Zeer moeilijk"
-
-#: data/gnome-sudoku.ui:189
-msgid "_Create your own puzzle"
-msgstr "Uw _eigen spel maken"
-
-#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
-msgid "_Pause"
-msgstr "_Pauzeren"
-
-# leegmaken/wissen
-#: data/gnome-sudoku.ui:251
-msgid "_Clear Board"
-msgstr "Bord _wissen"
-
-#: data/gnome-sudoku.ui:255
-msgid "Reset the board to its original state"
-msgstr "Het bord naar zijn oorspronkelijke status herstellen"
-
-#: data/gnome-sudoku.ui:269
-msgid "_New Puzzle"
-msgstr "_Nieuw spel"
-
-#: data/gnome-sudoku.ui:273
-msgid "Start a new puzzle"
-msgstr "Een nieuw spel beginnen"
-
-#: data/gnome-sudoku.ui:287
-msgid "_Start Playing"
-msgstr "_Spelen starten"
-
-#: data/gnome-sudoku.ui:291
-msgid "Start playing the custom puzzle you have created"
-msgstr "Beginnen met spelen van het aangepaste spel dat u heeft gemaakt"
-
-#: data/org.gnome.sudoku.gschema.xml:11
+#: data/org.gnome.Sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Moeilijkheidsgraad van de af te drukken sudoku’s"
 
-#: data/org.gnome.sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -226,19 +222,19 @@ msgstr ""
 "Stel de moeilijkheidsgraad in van de sudoku’s die u wilt afdrukken. "
 "Mogelijkheden zijn ‘gemakkelijk’, ‘gemiddeld’, ‘moeilijk’, ‘zeer moeilijk’"
 
-#: data/org.gnome.sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
 msgstr "Aantal af te drukken sudoku’s"
 
-#: data/org.gnome.sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
 msgstr "Stel het aantal sudoku’s in dat u wilt afdrukken"
 
-#: data/org.gnome.sudoku.gschema.xml:22
+#: data/org.gnome.Sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "_Waarschuwen bij niet in te vullen vakjes en dubbele cijfers"
 
-#: data/org.gnome.sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:23
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -246,20 +242,20 @@ msgstr ""
 "Geeft een grote rode X weer in een vakje als het niet ingevuld kan worden "
 "met enig getal en dubbele cijfers worden gemarkeerd met rood"
 
-#: data/org.gnome.sudoku.gschema.xml:27
+#: data/org.gnome.Sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Markeer de rij, kolom en vierkant dat het geselecteerde vakje bevat"
 
-#: data/org.gnome.sudoku.gschema.xml:31
+#: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Width of the window in pixels"
 msgstr "De breedte van het hoofdvenster in beeldpunten"
 
 # de gevraagde hoogte/de hoogte
-#: data/org.gnome.sudoku.gschema.xml:35
+#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Height of the window in pixels"
 msgstr "De hoogte van het hoofdvenster in beeldpunten"
 
-#: data/org.gnome.sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid "true if the window is maximized"
 msgstr "waar als het venster is gemaximaliseerd"
 
@@ -350,6 +346,10 @@ msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Goed gedaan, u heeft de sudoku in %d minuut opgelost!"
 msgstr[1] "Goed gedaan, u heeft de sudoku in %d minuten opgelost!"
 
+#: src/gnome-sudoku.vala:402
+msgid "_Quit"
+msgstr "_Afsluiten"
+
 #: src/gnome-sudoku.vala:403
 msgid "Play _Again"
 msgstr "_Nogmaals spelen"
@@ -387,6 +387,7 @@ msgstr ""
 "Taco Witte\n"
 "Erik Kruijswijk\n"
 "Justin van Steijn\n"
+"Nathan Follens\n"
 "\n"
 "Meer info over Gnome-NL http://nl.gnome.org/\n"
 "\n"
