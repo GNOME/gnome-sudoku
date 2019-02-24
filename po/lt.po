@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2018-10-25 19:54+0000\n"
-"PO-Revision-Date: 2019-01-04 22:17+0200\n"
+"POT-Creation-Date: 2019-01-31 13:07+0000\n"
+"PO-Revision-Date: 2019-02-24 17:14+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -23,69 +23,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2);\n"
+"%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Gtranslator 3.30.1\n"
 
-#: data/gnome-sudoku.appdata.xml.in:7
-msgid "GNOME Sudoku"
-msgstr "GNOME Sudoku"
-
-#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Išmėgink savo loginį mąstymą šioje skaičių dėlionėje"
-
-#: data/gnome-sudoku.appdata.xml.in:10
-msgid ""
-"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
-"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
-"Sudoku fun for players of any skill level."
-msgstr ""
-"Žaiskite populiarų japonišką loginį žaidimą. GNOME Sudoku yra būtina visiems "
-"Sudoku mėgėjams, su paprasta, netrukdančia sąsaja ji padaro Sudoku žaidimą "
-"smagų bet kokio lygio žaidėjams."
-
-#: data/gnome-sudoku.appdata.xml.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as easy or as difficult as you want it to be."
-msgstr ""
-"Kiekvienam žaidimui yra priskiriamas sudėtingumas, panašiai kaip "
-"laikraščiuose ir tinklalapiuose, tad jūsų žaidimas bus kiek norima paprastas "
-"arba sudėtingas."
-
-#: data/gnome-sudoku.appdata.xml.in:20
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"Jei norite žaisti popieriuje, galite atsispausdinti žaidimus. Galite "
-"pasirinkti, kiek žaidimų atspausdinti puslapyje ir kokio sudėtingumo "
-"žaidimus norite spausdinti: taip GNOME sudoku gali būti jums atsinaujinančia "
-"sudoku knyga."
-
-#: data/gnome-sudoku.appdata.xml.in:30
-msgid "A GNOME sudoku game preview"
-msgstr "GNOME sudoku žaidimo peržiūra"
-
-#: data/gnome-sudoku.appdata.xml.in:47
-msgid "The GNOME Project"
-msgstr "GNOME projektas"
-
-#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:161 src/gnome-sudoku.vala:605
+#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:605
 msgid "Sudoku"
 msgstr "Sudoku"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/gnome-sudoku.desktop.in:6
-msgid "magic;square;"
-msgstr "magiškas;kvadratas;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gnome-sudoku.desktop.in:9
-msgid "gnome-sudoku"
-msgstr "gnome-sudoku"
 
 #: data/gnome-sudoku.ui:22
 msgid "Undo your last action"
@@ -124,7 +68,6 @@ msgid "_Help"
 msgstr "Ž_inynas"
 
 #: data/gnome-sudoku.ui:155
-#| msgid "_About"
 msgid "_About Sudoku"
 msgstr "_Apie Sudoku"
 
@@ -176,11 +119,68 @@ msgstr "_Pradėti žaisti"
 msgid "Start playing the custom puzzle you have created"
 msgstr "Pradėti žaisti savo sukurtą galvosūkį"
 
-#: data/org.gnome.sudoku.gschema.xml:11
+#: data/org.gnome.Sudoku.appdata.xml.in:7
+msgid "GNOME Sudoku"
+msgstr "GNOME Sudoku"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:8 data/org.gnome.Sudoku.desktop.in:4
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Išmėgink savo loginį mąstymą šioje skaičių dėlionėje"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:10
+msgid ""
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
+msgstr ""
+"Žaiskite populiarų japonišką loginį žaidimą. GNOME Sudoku yra būtina visiems "
+"Sudoku mėgėjams, su paprasta, netrukdančia sąsaja ji padaro Sudoku žaidimą "
+"smagų bet kokio lygio žaidėjams."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:15
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites, so your game will be as easy or as difficult as you want it to be."
+msgstr ""
+"Kiekvienam žaidimui yra priskiriamas sudėtingumas, panašiai kaip "
+"laikraščiuose ir tinklalapiuose, tad jūsų žaidimas bus kiek norima paprastas "
+"arba sudėtingas."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:20
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"Jei norite žaisti popieriuje, galite atsispausdinti žaidimus. Galite "
+"pasirinkti, kiek žaidimų atspausdinti puslapyje ir kokio sudėtingumo "
+"žaidimus norite spausdinti: taip GNOME sudoku gali būti jums atsinaujinančia "
+"sudoku knyga."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:30
+msgid "A GNOME sudoku game preview"
+msgstr "GNOME sudoku žaidimo peržiūra"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:50
+msgid "The GNOME Project"
+msgstr "GNOME projektas"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Sudoku.desktop.in:6
+msgid "magic;square;"
+msgstr "magiškas;kvadratas;"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Sudoku.desktop.in:9
+#| msgid "gnome-sudoku"
+msgid "org.gnome.Sudoku"
+msgstr "org.gnome.Sudoku"
+
+#: data/org.gnome.Sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Sudoku sudėtingumo lygis bus atspausdintas"
 
-#: data/org.gnome.sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -188,19 +188,19 @@ msgstr ""
 "Nustatykite spausdinamų sudoku sudėtingumo lygį. Galimos vertės yra - "
 "„easy“, „medium“, „hard“, „very_hard“"
 
-#: data/org.gnome.sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
 msgstr "Spausdinamų sudoku skaičius"
 
-#: data/org.gnome.sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
 msgstr "Nustatykite spausdinamų sudoku skaičių"
 
-#: data/org.gnome.sudoku.gschema.xml:22
+#: data/org.gnome.Sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Perspėti apie neužpildomus kvadratus bei besidubliuojančius skaičius"
 
-#: data/org.gnome.sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:23
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -208,20 +208,20 @@ msgstr ""
 "Rodo didelį raudoną X kvadrate, jei jo neįmanoma užpildyti jokių skaičiumi, "
 "o dublikatai yra paryškinami raudonai"
 
-#: data/org.gnome.sudoku.gschema.xml:27
+#: data/org.gnome.Sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr ""
 "Paryškinti eilutę, stulpelį ir kvadratėlį, kuriame yra pažymėtas langelis"
 
-#: data/org.gnome.sudoku.gschema.xml:31
+#: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Width of the window in pixels"
 msgstr "Lango plotis taškais"
 
-#: data/org.gnome.sudoku.gschema.xml:35
+#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Height of the window in pixels"
 msgstr "Lango aukštis taškais"
 
-#: data/org.gnome.sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid "true if the window is maximized"
 msgstr "teigiama, jei langas yra išdidintas"
 
