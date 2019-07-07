@@ -284,7 +284,9 @@ private class SudokuCellView : Gtk.DrawingArea
             k_no = key_map_keypad (k_name);
         if (k_no >= 1 && k_no <= 9)
         {
-            if ((event.state & ModifierType.CONTROL_MASK) > 0 && game.mode == GameMode.PLAY)
+            bool want_earmark = (earmark_picker != null && earmark_picker.is_visible())
+                || (event.state & ModifierType.CONTROL_MASK) > 0;
+            if (want_earmark && game.mode == GameMode.PLAY)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, k_no);
                 if (earmark_picker == null)
