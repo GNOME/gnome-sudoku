@@ -537,6 +537,7 @@ public class Sudoku : Gtk.Application
             return;
         game.undo ();
         undo_action.set_enabled (!game.is_undostack_null ());
+        view.hide_popovers ();
         view.queue_draw ();
     }
 
@@ -546,6 +547,7 @@ public class Sudoku : Gtk.Application
             return;
         game.redo ();
         redo_action.set_enabled (!game.is_redostack_null ());
+        view.hide_popovers ();
         view.queue_draw ();
     }
 

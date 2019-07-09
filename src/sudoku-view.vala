@@ -232,7 +232,7 @@ private class SudokuCellView : Gtk.DrawingArea
         }
     }
 
-    private void hide_both_popovers ()
+    public void hide_both_popovers ()
     {
         if (popover != null)
             popover.hide ();
@@ -675,5 +675,12 @@ public class SudokuView : Gtk.AspectFrame
         set {
             _highlighter = value;
         }
+    }
+
+    public void hide_popovers ()
+    {
+        for (var i = 0; i < game.board.rows; i++)
+            for (var j = 0; j < game.board.cols; j++)
+                cells[i,j].hide_both_popovers ();
     }
 }
