@@ -293,10 +293,6 @@ private class SudokuCellView : Gtk.DrawingArea
                     create_earmark_picker ();
                 if (earmark_picker.set_earmark (row, col, k_no-1, new_state))
                 {
-                    if (new_state)
-                        game.board.enable_earmark (row, col, k_no);
-                    else
-                        game.board.disable_earmark (row, col, k_no);
                     queue_draw ();
                 }
             }
