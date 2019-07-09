@@ -76,7 +76,7 @@ public class SudokuGame : Object
     public void insert (int row, int col, int val)
     {
         var old_val = board[row, col];
-        update_undo (row, col, old_val, val);
+        update_undo (row, col, old_val);
 
         if (mode == GameMode.CREATE)
         {
@@ -92,7 +92,7 @@ public class SudokuGame : Object
     public void remove (int row, int col)
     {
         int old_val = board[row, col];
-        update_undo (row, col, old_val, 0);
+        update_undo (row, col, old_val);
 
         if (mode == GameMode.CREATE)
         {
@@ -149,7 +149,7 @@ public class SudokuGame : Object
         cell_changed (row, col, old_val, new_val);
     }
 
-    public void update_undo (int row, int col, int old_val, int new_val)
+    public void update_undo (int row, int col, int old_val)
     {
         add_to_stack (undostack, row, col, old_val);
         redostack.clear ();
