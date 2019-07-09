@@ -504,6 +504,14 @@ public class SudokuBoard : Object
         return file.query_exists ();
     }
 
+    public bool[] get_earmarks (int row, int col)
+    {
+        bool[] the_earmarks = new bool[max_val];
+        for (var i = 1; i <= max_val; i++)
+            the_earmarks[i-1] = earmarks[row, col, i-1];
+        return the_earmarks;
+    }
+
     public string get_earmarks_string (int row, int col)
     {
         string s = "";

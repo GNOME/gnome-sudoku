@@ -47,6 +47,7 @@ public class SudokuGame : Object
         public int row;
         public int col;
         public int val;
+        public bool[] earmarks;
     }
 
     public signal void cell_changed (int row, int col, int old_val, int new_val);
@@ -73,10 +74,29 @@ public class SudokuGame : Object
         redostack = new ArrayList<UndoItem?> ();
     }
 
+    public void enable_earmark (int row, int col, int k_no)
+    {
+        var old_val = board[row, col];
+        var old_earmarks = board.get_earmarks(row, col);
+        update_undo (row, col, old_val, old_earmarks);
+
+        board.enable_earmark (row, col, k_no);
+    }
+
+    public void disable_earmark (int row, int col, int k_no)
+    {
+        var old_val = board[row, col];
+        var old_earmarks = board.get_earmarks(row, col);
+        update_undo (row, col, old_val, old_earmarks);
+
+        board.disable_earmark (row, col, k_no);
+    }
+
     public void insert (int row, int col, int val)
     {
         var old_val = board[row, col];
-        update_undo (row, col, old_val);
+        var old_earmarks = board.get_earmarks(row, col);
+        update_undo (row, col, old_val, old_earmarks);
 
         if (mode == GameMode.CREATE)
         {
@@ -91,8 +111,9 @@ public class SudokuGame : Object
 
     public void remove (int row, int col)
     {
-        int old_val = board[row, col];
-        update_undo (row, col, old_val);
+        var old_val = board[row, col];
+        var old_earmarks = board.get_earmarks(row, col);
+        update_undo (row, col, old_val, old_earmarks);
 
         if (mode == GameMode.CREATE)
         {
@@ -149,15 +170,15 @@ public class SudokuGame : Object
         cell_changed (row, col, old_val, new_val);
     }
 
-    public void update_undo (int row, int col, int old_val)
+    public void update_undo (int row, int col, int old_val, bool[] old_earmarks)
     {
-        add_to_stack (undostack, row, col, old_val);
+        add_to_stack (undostack, row, col, old_val, old_earmarks);
         redostack.clear ();
     }
 
-    private void add_to_stack (Gee.List<UndoItem?> stack, int r, int c, int v)
+    private void add_to_stack (Gee.List<UndoItem?> stack, int r, int c, int v, bool[] e)
     {
-        UndoItem step = { r, c, v };
+        UndoItem step = { r, c, v, e };
         stack.add (step);
     }
 
@@ -168,7 +189,8 @@ public class SudokuGame : Object
 
         var top = from.remove_at (from.size - 1);
         int old_val = board [top.row, top.col];
-        add_to_stack (to, top.row, top.col, old_val);
+        bool[] old_earmarks = board.get_earmarks (top.row, top.col);
+        add_to_stack (to, top.row, top.col, old_val, old_earmarks);
 
         if (mode == GameMode.CREATE)
         {
@@ -187,6 +209,14 @@ public class SudokuGame : Object
             }
             else
                 board.insert (top.row, top.col, top.val);
+        }
+
+        for (var i = 1; i <= top.earmarks.length; i++)
+        {
+            if (top.earmarks[i-1])
+                board.enable_earmark (top.row, top.col, i);
+            else
+                board.disable_earmark (top.row, top.col, i);
         }
 
         cell_changed (top.row, top.col, old_val, top.val);
