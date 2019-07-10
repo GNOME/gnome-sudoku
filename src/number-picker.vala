@@ -42,7 +42,7 @@ private class NumberPicker : Gtk.Grid
         {
             for (var row = 0; row < board.block_rows; row++)
             {
-                int n = col + row * board.block_cols + 1;
+                int n = col + (2 - row) * board.block_cols + 1;
 
                 var button = earmark ? new ToggleButton () : new Button ();
                 button.focus_on_click = false;
@@ -124,8 +124,7 @@ private class NumberPicker : Gtk.Grid
     {
         if (state && earmarks_active >= EARMARKS_MAX_ALLOWED)
             return false;
-        var button = (ToggleButton) this.get_child_at (index % board.block_cols, index / board.block_rows);
-        button.set_active (state);
+        get_button_for(index).set_active (state);
         return true;
     }
 
@@ -133,13 +132,19 @@ private class NumberPicker : Gtk.Grid
     {
         if (state)
             for (var i = 0; i < board.max_val; i++)
-                this.get_child_at (i % board.block_cols, i / board.block_rows).sensitive = true;
+                get_button_for(i).sensitive = true;
         else
             for (var i = 0; i < board.max_val; i++)
             {
-                var button = (ToggleButton) this.get_child_at (i % board.block_cols, i / board.block_rows);
+                var button = get_button_for (i);
                 if (!button.active)
                     button.sensitive = false;
             }
+    }
+
+    private ToggleButton get_button_for (int number)
+    {
+        return (ToggleButton) this.get_child_at(number % board.block_cols,
+            2 - (number / board.block_rows));
     }
 }
