@@ -77,7 +77,7 @@ public class SudokuGame : Object
     public void enable_earmark (int row, int col, int k_no)
     {
         var old_val = board[row, col];
-        var old_earmarks = board.get_earmarks(row, col);
+        var old_earmarks = board.get_earmarks (row, col);
         update_undo (row, col, old_val, old_earmarks);
 
         board.enable_earmark (row, col, k_no);
@@ -86,7 +86,7 @@ public class SudokuGame : Object
     public void disable_earmark (int row, int col, int k_no)
     {
         var old_val = board[row, col];
-        var old_earmarks = board.get_earmarks(row, col);
+        var old_earmarks = board.get_earmarks (row, col);
         update_undo (row, col, old_val, old_earmarks);
 
         board.disable_earmark (row, col, k_no);
@@ -95,7 +95,7 @@ public class SudokuGame : Object
     public void insert (int row, int col, int val)
     {
         var old_val = board[row, col];
-        var old_earmarks = board.get_earmarks(row, col);
+        var old_earmarks = board.get_earmarks (row, col);
         update_undo (row, col, old_val, old_earmarks);
 
         if (mode == GameMode.CREATE)
@@ -112,7 +112,7 @@ public class SudokuGame : Object
     public void remove (int row, int col)
     {
         var old_val = board[row, col];
-        var old_earmarks = board.get_earmarks(row, col);
+        var old_earmarks = board.get_earmarks (row, col);
         update_undo (row, col, old_val, old_earmarks);
 
         if (mode == GameMode.CREATE)
