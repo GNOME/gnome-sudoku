@@ -292,9 +292,7 @@ private class SudokuCellView : Gtk.DrawingArea
                 if (earmark_picker == null)
                     create_earmark_picker ();
                 if (earmark_picker.set_earmark (row, col, k_no-1, new_state))
-                {
                     queue_draw ();
-                }
             }
             else
             {
