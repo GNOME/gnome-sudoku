@@ -50,9 +50,10 @@ private class NumberPicker : Gtk.Grid
 
                 var label = new Label ("<big>%d</big>".printf (n));
                 label.use_markup = true;
-                label.margin = 4;
-                label.margin_start = 8;
-                label.margin_end = 8;
+                label.margin_start = earmark ? 0 : 8;
+                label.margin_end = earmark ? 16 : 8;
+                label.margin_top = earmark ? 0 : 4;
+                label.margin_bottom = earmark ? 8 : 4;
                 button.add (label);
                 label.show ();
 
