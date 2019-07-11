@@ -124,7 +124,7 @@ private class NumberPicker : Gtk.Grid
     {
         if (state && earmarks_active >= EARMARKS_MAX_ALLOWED)
             return false;
-        get_button_for(index).set_active (state);
+        get_button_for (index).set_active (state);
         return true;
     }
 
@@ -132,7 +132,7 @@ private class NumberPicker : Gtk.Grid
     {
         if (state)
             for (var i = 0; i < board.max_val; i++)
-                get_button_for(i).sensitive = true;
+                get_button_for (i).sensitive = true;
         else
             for (var i = 0; i < board.max_val; i++)
             {
@@ -144,7 +144,7 @@ private class NumberPicker : Gtk.Grid
 
     private ToggleButton get_button_for (int number)
     {
-        return (ToggleButton) this.get_child_at(number % board.block_cols,
+        return (ToggleButton) this.get_child_at (number % board.block_cols,
             2 - (number / board.block_rows));
     }
 }
