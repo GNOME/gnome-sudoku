@@ -3,20 +3,21 @@
 # Yukihiro Nakai <Nakai@technologist.com>, 1998.
 # Akira Higuchi <a-higuti@math.sci.hokudai.ac.jp>, 1999.
 # Yuusuke Tahara <tahara@gnome.gr.jp>, 2000.
-# Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2002, 2010.
 # Takeshi AIHANA <takeshi.aihana@gmail.com>, 2001-2009.
+# Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2002, 2010.
 # KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>, 2003.
 # Satoru SATOH <ss@gnome.gr.jp>, 2006.
 # Shushi KUROSE <md81bird@hitaki.net>, 2012.
 # Jiro Matsuzawa <jmatsuzawa@gnome.org>, 2013.
+# sicklylife <translation@sicklylife.jp>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games gnome-2-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
 "POT-Creation-Date: 2019-03-26 18:03+0000\n"
-"PO-Revision-Date: 2013-09-16 13:27+0900\n"
-"Last-Translator: Jiro Matsuzawa <jmatsuzawa@gnome.org>\n"
+"PO-Revision-Date: 2019-09-07 20:40+0900\n"
+"Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -30,58 +31,44 @@ msgid "Sudoku"
 msgstr "GNOME 数独"
 
 #: data/gnome-sudoku.ui:22
-#, fuzzy
-#| msgid "Undo last action"
 msgid "Undo your last action"
-msgstr "最後の操作に戻します"
+msgstr "直近の操作を元に戻す"
 
 #: data/gnome-sudoku.ui:43
-#, fuzzy
-#| msgid "Redo last action"
 msgid "Redo your last action"
-msgstr "最後の操作を取り消します"
+msgstr "直近の操作をやり直す"
 
 #: data/gnome-sudoku.ui:107
 msgid "Go back to the current game"
-msgstr ""
+msgstr "今のゲームに戻る"
 
 #: data/gnome-sudoku.ui:126 data/print-dialog.ui:32
-#, fuzzy
-#| msgid "_Print..."
 msgid "_Print"
-msgstr "印刷(_P)..."
+msgstr "印刷(_P)"
 
 #: data/gnome-sudoku.ui:129
-#, fuzzy
-#| msgid "There is no current puzzle."
 msgid "Print _Current Puzzle…"
-msgstr "現在パズルはありません"
+msgstr "今のパズルを印刷(_C)…"
 
 #: data/gnome-sudoku.ui:133
-#, fuzzy
-#| msgid "Print _Multiple Sudokus..."
 msgid "Print _Multiple Puzzles…"
-msgstr "複数の数独を印刷(_M)..."
+msgstr "複数のパズルを印刷(_M)…"
 
 #: data/gnome-sudoku.ui:141
-#, fuzzy
-#| msgid "_Highlighter"
 msgid "High_lighter"
-msgstr "強調表示する(_H)"
+msgstr ""
 
 #: data/gnome-sudoku.ui:145
 msgid "_Warnings"
-msgstr ""
+msgstr "警告(_W)"
 
 #: data/gnome-sudoku.ui:151
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
 #: data/gnome-sudoku.ui:155
-#, fuzzy
-#| msgid "Sudoku"
 msgid "_About Sudoku"
-msgstr "GNOME 数独"
+msgstr "GNOME 数独について(_A)"
 
 #: data/gnome-sudoku.ui:185 data/print-dialog.ui:130
 msgid "_Easy"
@@ -101,41 +88,35 @@ msgstr "超難問(_V)"
 
 #: data/gnome-sudoku.ui:242
 msgid "_Create your own puzzle"
-msgstr ""
+msgstr "パズルを自作する(_C)"
 
 #: data/gnome-sudoku.ui:288 src/gnome-sudoku.vala:327
 msgid "_Pause"
-msgstr ""
+msgstr "一時停止(_P)"
 
 #: data/gnome-sudoku.ui:304
-#, fuzzy
-#| msgid "_Clear"
 msgid "_Clear Board"
-msgstr "クリア(_C)"
+msgstr "ボードを消去(_C)"
 
 #: data/gnome-sudoku.ui:308
 msgid "Reset the board to its original state"
-msgstr ""
+msgstr "ボードを元の状態にリセットする"
 
 #: data/gnome-sudoku.ui:322
-#, fuzzy
-#| msgid "_New Game"
 msgid "_New Puzzle"
-msgstr "新しいゲーム(_N)"
+msgstr "新しいパズル(_N)"
 
 #: data/gnome-sudoku.ui:326
-#, fuzzy
-#| msgid "Hard puzzle"
 msgid "Start a new puzzle"
-msgstr "上級パズル"
+msgstr "新しいパズルを開始する"
 
 #: data/gnome-sudoku.ui:340
 msgid "_Start Playing"
-msgstr ""
+msgstr "パズルを解く(_S)"
 
 #: data/gnome-sudoku.ui:344
 msgid "Start playing the custom puzzle you have created"
-msgstr ""
+msgstr "作成した自作パズルを開始する"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -171,7 +152,7 @@ msgstr ""
 
 #: data/org.gnome.Sudoku.appdata.xml.in:50
 msgid "The GNOME Project"
-msgstr ""
+msgstr "The GNOME Project"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Sudoku.desktop.in:6
@@ -179,10 +160,8 @@ msgid "magic;square;"
 msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:11
-#, fuzzy
-#| msgid "_Number of sudoku to print: "
 msgid "Difficulty level of sudokus to be printed"
-msgstr "印刷する数独の数(_N): "
+msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:12
 msgid ""
@@ -191,22 +170,16 @@ msgid ""
 msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:17
-#, fuzzy
-#| msgid "_Number of sudoku to print: "
 msgid "Number of Sudokus to print"
-msgstr "印刷する数独の数(_N): "
+msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:18
-#, fuzzy
-#| msgid "_Number of sudoku to print: "
 msgid "Set the number of sudokus you want to print"
-msgstr "印刷する数独の数(_N): "
+msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:22
-#, fuzzy
-#| msgid "Warn About _Unfillable Squares"
 msgid "Warn about unfillable squares and duplicate numbers"
-msgstr "埋められないブロックを警告する(_U)"
+msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:23
 msgid ""
@@ -231,59 +204,49 @@ msgid "true if the window is maximized"
 msgstr ""
 
 #: data/print-dialog.ui:12
-#, fuzzy
-#| msgid "Print _Multiple Sudokus..."
 msgid "Print Multiple Puzzles"
-msgstr "複数の数独を印刷(_M)..."
+msgstr "複数のパズルを印刷"
 
 #: data/print-dialog.ui:21
 msgid "_Cancel"
-msgstr ""
+msgstr "キャンセル(_C)"
 
 #: data/print-dialog.ui:67
 msgid "_Number of puzzles"
-msgstr ""
+msgstr "パズルの数(_N)"
 
 #: data/print-dialog.ui:110
 msgid "Difficulty"
-msgstr ""
+msgstr "難易度"
 
 #: lib/sudoku-board.vala:583
 msgid "Unknown Difficulty"
-msgstr ""
+msgstr "難易度: 不明"
 
 #: lib/sudoku-board.vala:585
 msgid "Easy Difficulty"
-msgstr ""
+msgstr "難易度: 初級"
 
 #: lib/sudoku-board.vala:587
-#, fuzzy
-#| msgid "Calculated difficulty: "
 msgid "Medium Difficulty"
-msgstr "計算した難易度:"
+msgstr "難易度: 中級"
 
 #: lib/sudoku-board.vala:589
-#, fuzzy
-#| msgid "Calculated difficulty: "
 msgid "Hard Difficulty"
-msgstr "計算した難易度:"
+msgstr "難易度: 上級"
 
 #: lib/sudoku-board.vala:591
-#, fuzzy
-#| msgid "Very Hard"
 msgid "Very Hard Difficulty"
-msgstr "超難問"
+msgstr "難易度: 超難問"
 
 #: lib/sudoku-board.vala:593
-#, fuzzy
-#| msgid "Medium puzzle"
 msgid "Custom Puzzle"
-msgstr "中級パズル"
+msgstr "自作パズル"
 
 #. Help string for command line --version flag
 #: src/gnome-sudoku.vala:85
 msgid "Show release version"
-msgstr ""
+msgstr "バージョンを表示する"
 
 #. Help string for command line --show-possible flag
 #: src/gnome-sudoku.vala:89
@@ -293,72 +256,62 @@ msgstr ""
 #. Error dialog shown when starting a custom game that is not valid.
 #: src/gnome-sudoku.vala:279
 msgid "The puzzle you have entered is not a valid Sudoku."
-msgstr ""
+msgstr "入力したパズルは正常な数独ではありません。"
 
 #: src/gnome-sudoku.vala:279
 msgid "Please enter a valid puzzle."
-msgstr ""
+msgstr "正しいパズルを入力してください。"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
 #: src/gnome-sudoku.vala:288
 msgid "The puzzle you have entered has multiple solutions."
-msgstr ""
+msgstr "入力したパズルには解答が複数存在します。"
 
 #: src/gnome-sudoku.vala:288
 msgid "Valid Sudoku puzzles have exactly one solution."
-msgstr ""
+msgstr "通常、数独パズルの解答は一つだけです。"
 
 #: src/gnome-sudoku.vala:290
 msgid "_Back"
-msgstr ""
+msgstr "戻る(_B)"
 
 #: src/gnome-sudoku.vala:291
 msgid "Play _Anyway"
-msgstr ""
+msgstr "とにかくプレイ(_A)"
 
 #: src/gnome-sudoku.vala:333
-#, fuzzy
-#| msgid "_Reset"
 msgid "_Resume"
-msgstr "リセット(_R)"
+msgstr "再開(_R)"
 
 #: src/gnome-sudoku.vala:397
-#, fuzzy, c-format
-#| msgid "You completed the puzzle in %d second"
-#| msgid_plural "You completed the puzzle in %d seconds"
+#, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "あなたは %d 秒でパズルを解きました。"
+msgstr[0] "おみごと! %d 分でパズルを解きました!"
 
 #: src/gnome-sudoku.vala:402
 msgid "_Quit"
-msgstr ""
+msgstr "終了(_Q)"
 
 #: src/gnome-sudoku.vala:403
 msgid "Play _Again"
-msgstr ""
+msgstr "再プレイ(_A)"
 
 #: src/gnome-sudoku.vala:422
-#, fuzzy
-#| msgid "Calculated difficulty: "
 msgid "Select Difficulty"
-msgstr "計算した難易度:"
+msgstr "難易度を選択してください"
 
 #: src/gnome-sudoku.vala:478
 msgid "Reset the board to its original state?"
-msgstr ""
+msgstr "ボードを元の状態にリセットしますか?"
 
 #: src/gnome-sudoku.vala:525
 msgid "Create Puzzle"
-msgstr ""
+msgstr "パズルを作成"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
 #: src/gnome-sudoku.vala:602
-#, fuzzy, c-format
-#| msgid ""
-#| "The popular Japanese logic puzzle\n"
-#| "\n"
-#| "GNOME Sudoku is a part of GNOME Games."
+#, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
 "\n"
@@ -366,39 +319,37 @@ msgid ""
 msgstr ""
 "日本生まれのポピュラーな論理パズル\n"
 "\n"
-"GNOME 数独は GNOME ゲーム集の一部です。"
+"パズルは QQwing %s によって生成されます"
 
 #: src/gnome-sudoku.vala:613
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
-"佐藤 暁 <ss@gnome.gr.jp>\n"
-"KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
 "草野 貴之 <AE5T-KSN@asahi-net.or.jp>\n"
-"Yuusuke Tahara <tahara@gnome.gr.jp>\n"
-"Akira Higuchi <a-higuti@math.sci.hokudai.ac.jp>\n"
-"Yukihiro Nakai <Nakai@technologist.com>\n"
-"catback (Hiromi Imazato) <catback@lindwurm.biz>\n"
+"佐藤 暁 <ss@gnome.gr.jp>\n"
+"日本 GNOME ユーザー会 <http://www.gnome.gr.jp>\n"
 "松澤 二郎 <jmatsuzawa@gnome.org>\n"
-"日本GNOMEユーザー会 <http://www.gnome.gr.jp>"
+"Akira Higuchi <a-higuti@math.sci.hokudai.ac.jp>\n"
+"catback (Hiromi Imazato) <catback@lindwurm.biz>\n"
+"KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
+"Shushi KUROSE <md81bird@hitaki.net>\n"
+"sicklylife <translation@sicklylife.jp>\n"
+"Yukihiro Nakai <Nakai@technologist.com>\n"
+"Yuusuke Tahara <tahara@gnome.gr.jp>"
 
 #: src/number-picker.vala:90
-#, fuzzy
-#| msgid "_Clear"
 msgid "Clear"
-msgstr "クリア(_C)"
+msgstr "消去"
 
 #. Error message if printing fails
 #: src/sudoku-printer.vala:48
-#, fuzzy
-#| msgid "Error creating directory"
 msgid "Error printing file:"
-msgstr "フォルダー作成時にエラー"
+msgstr ""
 
 #. Text on overlay when game is paused
 #: src/sudoku-view.vala:631
 msgid "Paused"
-msgstr ""
+msgstr "一時停止"
 
 #~ msgid "game;board;tiles;japanese;"
 #~ msgstr ""
