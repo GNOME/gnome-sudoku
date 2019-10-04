@@ -1,5 +1,5 @@
 # gnome-games ja.po.
-# Copyright (C) 1998-2010 Free Software Foundation, Inc.
+# Copyright (C) 1998-2019 Free Software Foundation, Inc.
 # Yukihiro Nakai <Nakai@technologist.com>, 1998.
 # Akira Higuchi <a-higuti@math.sci.hokudai.ac.jp>, 1999.
 # Yuusuke Tahara <tahara@gnome.gr.jp>, 2000.
@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games gnome-2-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2019-03-26 18:03+0000\n"
-"PO-Revision-Date: 2019-09-07 20:40+0900\n"
+"POT-Creation-Date: 2019-09-07 12:26+0000\n"
+"PO-Revision-Date: 2019-10-04 23:40+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -26,17 +26,17 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:605
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:607
 msgid "Sudoku"
 msgstr "GNOME 数独"
 
 #: data/gnome-sudoku.ui:22
 msgid "Undo your last action"
-msgstr "直近の操作を元に戻す"
+msgstr "最後の操作を元に戻す"
 
 #: data/gnome-sudoku.ui:43
 msgid "Redo your last action"
-msgstr "直近の操作をやり直す"
+msgstr "最後の操作をやり直す"
 
 #: data/gnome-sudoku.ui:107
 msgid "Go back to the current game"
@@ -116,7 +116,7 @@ msgstr "パズルを解く(_S)"
 
 #: data/gnome-sudoku.ui:344
 msgid "Start playing the custom puzzle you have created"
-msgstr "作成した自作パズルを開始する"
+msgstr "自作したパズルを開始する"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -150,7 +150,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr ""
 
-#: data/org.gnome.Sudoku.appdata.xml.in:50
+#: data/org.gnome.Sudoku.appdata.xml.in:54
 msgid "The GNOME Project"
 msgstr "The GNOME Project"
 
@@ -219,34 +219,34 @@ msgstr "パズルの数(_N)"
 msgid "Difficulty"
 msgstr "難易度"
 
-#: lib/sudoku-board.vala:583
+#: lib/sudoku-board.vala:591
 msgid "Unknown Difficulty"
 msgstr "難易度: 不明"
 
-#: lib/sudoku-board.vala:585
+#: lib/sudoku-board.vala:593
 msgid "Easy Difficulty"
 msgstr "難易度: 初級"
 
-#: lib/sudoku-board.vala:587
+#: lib/sudoku-board.vala:595
 msgid "Medium Difficulty"
 msgstr "難易度: 中級"
 
-#: lib/sudoku-board.vala:589
+#: lib/sudoku-board.vala:597
 msgid "Hard Difficulty"
 msgstr "難易度: 上級"
 
-#: lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:599
 msgid "Very Hard Difficulty"
 msgstr "難易度: 超難問"
 
-#: lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:601
 msgid "Custom Puzzle"
 msgstr "自作パズル"
 
 #. Help string for command line --version flag
 #: src/gnome-sudoku.vala:85
 msgid "Show release version"
-msgstr "バージョンを表示する"
+msgstr "リリースバージョンを表示する"
 
 #. Help string for command line --show-possible flag
 #: src/gnome-sudoku.vala:89
@@ -310,7 +310,7 @@ msgid "Create Puzzle"
 msgstr "パズルを作成"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:602
+#: src/gnome-sudoku.vala:604
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -321,7 +321,7 @@ msgstr ""
 "\n"
 "パズルは QQwing %s によって生成されます"
 
-#: src/gnome-sudoku.vala:613
+#: src/gnome-sudoku.vala:615
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
@@ -337,7 +337,7 @@ msgstr ""
 "Yukihiro Nakai <Nakai@technologist.com>\n"
 "Yuusuke Tahara <tahara@gnome.gr.jp>"
 
-#: src/number-picker.vala:90
+#: src/number-picker.vala:91
 msgid "Clear"
 msgstr "消去"
 
@@ -347,7 +347,7 @@ msgid "Error printing file:"
 msgstr ""
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:631
+#: src/sudoku-view.vala:627
 msgid "Paused"
 msgstr "一時停止"
 
