@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2019-01-31 13:07+0000\n"
-"PO-Revision-Date: 2019-03-03 18:33+0700\n"
-"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
+"POT-Creation-Date: 2020-03-21 18:21+0000\n"
+"PO-Revision-Date: 2020-03-25 14:13+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -21,10 +21,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural= n!=1;\n"
 "X-Rosetta-Export-Date: 2007-04-23 05:58:10+0000\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:605
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:607
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -159,7 +159,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Pratinjau Permainan GNOME Sudoku"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:50
+#: data/org.gnome.Sudoku.appdata.xml.in:57
 msgid "The GNOME Project"
 msgstr "Proyek GNOME"
 
@@ -167,11 +167,6 @@ msgstr "Proyek GNOME"
 #: data/org.gnome.Sudoku.desktop.in:6
 msgid "magic;square;"
 msgstr "sulap;kotak;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Sudoku.desktop.in:9
-msgid "org.gnome.Sudoku"
-msgstr "org.gnome.Sudoku"
 
 #: data/org.gnome.Sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
@@ -187,7 +182,7 @@ msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
-msgstr "Cacak Sudoku yang akan dicetak"
+msgstr "Cacah Sudoku yang akan dicetak"
 
 #: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
@@ -237,27 +232,27 @@ msgstr "_Cacah teka-teki"
 msgid "Difficulty"
 msgstr "Kesulitan"
 
-#: lib/sudoku-board.vala:583
+#: lib/sudoku-board.vala:591
 msgid "Unknown Difficulty"
 msgstr "Kesulitan Tak Diketahui"
 
-#: lib/sudoku-board.vala:585
+#: lib/sudoku-board.vala:593
 msgid "Easy Difficulty"
 msgstr "Kesulitan Rendah"
 
-#: lib/sudoku-board.vala:587
+#: lib/sudoku-board.vala:595
 msgid "Medium Difficulty"
 msgstr "Kesulitan Sedang"
 
-#: lib/sudoku-board.vala:589
+#: lib/sudoku-board.vala:597
 msgid "Hard Difficulty"
 msgstr "Kesulitan Tinggi"
 
-#: lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:599
 msgid "Very Hard Difficulty"
 msgstr "Kesulitan Sangat Tinggi"
 
-#: lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:601
 msgid "Custom Puzzle"
 msgstr "Teka-teki Ubahan"
 
@@ -329,7 +324,7 @@ msgid "Create Puzzle"
 msgstr "Buat Teka-teki"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:602
+#: src/gnome-sudoku.vala:604
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -340,18 +335,18 @@ msgstr ""
 "\n"
 "Teka-teki dihasilkan oleh QQwing %s"
 
-#: src/gnome-sudoku.vala:613
+#: src/gnome-sudoku.vala:615
 msgid "translator-credits"
 msgstr ""
 "Mohammad DAMT <mdamt@bisnisweb.com>\n"
 "Ahmad Riza H Nst  <rizahnst@gnome.org>\n"
-"Andika Triwidada <andika@gmail.com>, 2010, 2012, 2013, 2014.\n"
+"Andika Triwidada <andika@gmail.com>, 2010, 2012-2014, 2020.\n"
 "Vincent Sebastian The <vincent.s.the@gmail.com>, 2011, 2012.\n"
 "Dirgita <dirgitadevina@yahoo.co.id>, 2012.\n"
 "Ronaldi Santosa <ronald.santosa@gmail.com>, 2015.\n"
 "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019."
 
-#: src/number-picker.vala:90
+#: src/number-picker.vala:91
 msgid "Clear"
 msgstr "Bersihkan"
 
@@ -361,6 +356,9 @@ msgid "Error printing file:"
 msgstr "Galat saat mencetak berkas:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:631
+#: src/sudoku-view.vala:627
 msgid "Paused"
-msgstr "Istirahat"
+msgstr "Rehat"
+
+#~ msgid "org.gnome.Sudoku"
+#~ msgstr "org.gnome.Sudoku"
