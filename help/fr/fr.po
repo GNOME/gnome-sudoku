@@ -7,21 +7,21 @@
 # Bruno Brouard <annoa.b@gmail.com>, 2007-2010, 2012.
 # Claude Paroz <claude@2xlibre.net>, 2007-2008.
 # jean-baptiste <jean-baptiste@holcroft.fr>, 2018.
-# Charles Monzat <charles.monzat@free.fr>, 2017-2019.
+# Charles Monzat <charles.monzat@free.fr>, 2017-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku 2.0 fr\n"
-"POT-Creation-Date: 2019-03-09 22:55+0000\n"
-"PO-Revision-Date: 2019-09-24 14:59+0200\n"
+"POT-Creation-Date: 2020-03-01 08:38+0000\n"
+"PO-Revision-Date: 2020-03-26 21:54+0100\n"
 "Last-Translator: Charles Monzat <charles.monzat@free.fr>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 3.32.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 3.34.0\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -30,7 +30,7 @@ msgstr ""
 "Bruno Brouard <annoa.b@gmail.com>, 2007-2012\n"
 "Claude Paroz <claude@2xlibre.net>, 2007-2008\n"
 "Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2018\n"
-"Charles Monzat <charles.monzat@free.fr>, 2019"
+"Charles Monzat <charles.monzat@free.fr>, 2019-2020"
 
 #. (itstool) path: credit/name
 #: C/basics.page:9 C/earmarks.page:14 C/keyboard-shortcuts.page:10
@@ -189,17 +189,23 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:30
+#| msgid ""
+#| "Once you have an account, log in, and click on <gui>New issue</gui>. "
+#| "Before reporting a bug, please read the <link href=\"https://bugzilla."
+#| "gnome.org/page.cgi?id=bug-writing.html\">bug writing guidelines</link>, "
+#| "and please <link href=\"https://gitlab.gnome.org/GNOME/gnome-sudoku/issues"
+#| "\">browse</link> for the bug to see if it already exists."
 msgid ""
 "Once you have an account, log in, and click on <gui>New issue</gui>. Before "
-"reporting a bug, please read the <link href=\"https://bugzilla.gnome.org/"
-"page.cgi?id=bug-writing.html\">bug writing guidelines</link>, and please "
-"<link href=\"https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\">browse</"
-"link> for the bug to see if it already exists."
+"reporting a bug, please read the <link href=\"https://wiki.gnome.org/"
+"Community/GettingInTouch/BugReportingGuidelines\">bug writing guidelines</"
+"link>, and please <link href=\"https://gitlab.gnome.org/GNOME/gnome-sudoku/"
+"issues\">browse</link> for the bug to see if it already exists."
 msgstr ""
 "Une fois en possession de votre compte, connectez-vous et cliquez sur "
-"<gui>New issue</gui> (Nouveau problème). Avant de signaler une anomalie, "
-"lisez le <link href=\"https://bugzilla.gnome.org/page.cgi?id=bug-writing.html"
-"\"> guide de rédaction des rapport de bogues</link> et faites une <link href="
+"<gui>New issue</gui>. Avant de signaler une anomalie, lisez le <link href="
+"\"https://wiki.gnome.org/Community/GettingInTouch/BugReportingGuidelines"
+"\">guide de rédaction des rapport de bogues</link> et faites une <link href="
 "\"https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\">recherche</link> au "
 "sujet de l’anomalie au cas où quelque chose de similaire existerait déjà."
 
@@ -359,11 +365,6 @@ msgstr "Surlignage"
 
 #. (itstool) path: page/p
 #: C/highlighting.page:24
-#| msgid ""
-#| "You can turn on highlighting to automatically highlight the current row, "
-#| "column and box in different colors. This can make it easier to see which "
-#| "values cannot go into a current square. To toggle highlighting, click "
-#| "<gui>Sudoku</gui> in the top bar and then select <gui>Highlighter</gui>."
 msgid ""
 "You can turn on highlighting to automatically highlight the current row, "
 "column and box in different colors. This can make it easier to see which "
@@ -679,7 +680,6 @@ msgstr ""
 # ATTENTION : pas de point final car la phrase se termine par des points de suspension.
 #. (itstool) path: item/p
 #: C/print-blank-puzzles.page:31
-#| msgid "Click <gui>Print Multiple Puzzles…</gui>."
 msgid "Select <gui style=\"menuitem\">Print Multiple Puzzles…</gui>."
 msgstr "Sélectionnez <gui style=\"menuitem\">Imprimer plusieurs sudokus…</gui>"
 
@@ -696,7 +696,6 @@ msgstr "Sélectionnez la difficulté des grilles que vous voulez imprimer."
 
 #. (itstool) path: item/p
 #: C/print-blank-puzzles.page:34 C/print-inprogress-game.page:38
-#| msgid "Click <gui>Print</gui>."
 msgid "Press <gui>Print</gui>."
 msgstr "Cliquez sur <gui>Imprimer</gui>."
 
@@ -720,7 +719,6 @@ msgstr "Pour imprimer le sudoku que vous êtes en train de résoudre :"
 # ATTENTION : pas de point final car la phrase se termine par des points de suspension.
 #. (itstool) path: item/p
 #: C/print-inprogress-game.page:32
-#| msgid "Click <gui>Print Current Puzzle…</gui>."
 msgid "Select <gui style=\"menuitem\">Print Current Puzzle…</gui>."
 msgstr ""
 "Sélectionnez <gui style=\"menuitem\">Imprimer la grille en cours…</gui>"
