@@ -105,6 +105,7 @@ private class SudokuCellView : DrawingArea
     private NumberPicker earmark_picker;
 
     private EventControllerKey key_controller;      // for keeping in memory
+    private GestureClick click_controller;          // for keeping in memory
 
     public SudokuCellView (int row, int col, ref SudokuGame game)
     {
@@ -112,6 +113,7 @@ private class SudokuCellView : DrawingArea
         this.row = row;
         this.col = col;
 
+        init_mouse ();
         init_keyboard ();
 
         style.font_desc.set_size (Pango.SCALE * 13);
@@ -129,33 +131,41 @@ private class SudokuCellView : DrawingArea
         game.cell_changed.connect (cell_changed_cb);
     }
 
-    public override bool button_press_event (EventButton event)
+    private inline void init_mouse ()  // called on construct
     {
-        if (event.button != 1 && event.button != 3)
-            return false;
+        click_controller = new Gtk.GestureClick ();
+        click_controller.set_button (/* all buttons */ 0);
+        click_controller.pressed.connect (on_click);
+        add_controller (click_controller);
+    }
+
+    private inline void on_click (GestureClick _click_controller, int n_press, double event_x, double event_y)
+    {
+        uint button = _click_controller.get_current_button ();
+        if (button != Gdk.BUTTON_PRIMARY && button != Gdk.BUTTON_SECONDARY)
+            return;
 
         if (!is_focus)
             grab_focus ();
         if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
-            return false;
+            return;
 
         if (popover != null || earmark_popover != null)
         {
             hide_both_popovers ();
-            return false;
+            return;
         }
 
-        if (event.button == 1)            // Left-Click
+        if (button == Gdk.BUTTON_PRIMARY)       // Left-Click
         {
-            if (!_show_possibilities && (event.state & ModifierType.CONTROL_MASK) > 0 && game.mode == GameMode.PLAY)
+            Gdk.ModifierType state = _click_controller.get_current_event_state ();
+            if (!_show_possibilities && (state & ModifierType.CONTROL_MASK) > 0 && game.mode == GameMode.PLAY)
                 show_earmark_picker ();
             else
                 show_number_picker ();
         }
-        else if (!_show_possibilities && event.button == 3 && game.mode == GameMode.PLAY)         // Right-Click
+        else if (!_show_possibilities && button == Gdk.BUTTON_SECONDARY && game.mode == GameMode.PLAY)      // Right-Click
             show_earmark_picker ();
-
-        return false;
     }
 
     private void create_earmark_picker ()
@@ -279,8 +289,9 @@ private class SudokuCellView : DrawingArea
 
     private inline void init_keyboard ()  // called on construct
     {
-        key_controller = new EventControllerKey (this);
+        key_controller = new EventControllerKey ();
         key_controller.key_pressed.connect (on_key_pressed);
+        add_controller (key_controller);
     }
 
     private inline bool on_key_pressed (EventControllerKey _key_controller, uint keyval, uint keycode, ModifierType state)
