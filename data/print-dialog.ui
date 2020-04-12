@@ -5,25 +5,25 @@
   <object class="GtkAdjustment" id="adjustment1">
     <property name="lower">1</property>
     <property name="upper">100</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
   </object>
   <template class="PrintDialog" parent="GtkDialog">
     <property name="title" translatable="yes">Print Multiple Puzzles</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="resizable">False</property>
-    <property name="type_hint">dialog</property>
-    <property name="width_request">460</property>
+    <property name="type-hint">dialog</property>
+    <property name="width-request">460</property>
     <property name="expand">False</property>
     <property name="modal">True</property>
     <child type="action">
       <object class="GtkButton" id="cancelbutton1">
         <property name="label" translatable="yes">_Cancel</property>
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="can_default">True</property>
-        <property name="receives_default">False</property>
-        <property name="use_underline">True</property>
+        <property name="can-focus">True</property>
+        <property name="can-default">True</property>
+        <property name="receives-default">False</property>
+        <property name="use-underline">True</property>
         <property name="valign">center</property>
       </object>
     </child>
@@ -31,42 +31,42 @@
       <object class="GtkButton" id="print_button">
         <property name="label" translatable="yes">_Print</property>
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="can_default">True</property>
-        <property name="receives_default">False</property>
-        <property name="use_underline">True</property>
+        <property name="can-focus">True</property>
+        <property name="can-default">True</property>
+        <property name="receives-default">False</property>
+        <property name="use-underline">True</property>
         <property name="valign">center</property>
       </object>
     </child>
     <child internal-child="vbox">
       <object class="GtkBox">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkBox" id="print_box">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="border_width">12</property>
+            <property name="can-focus">False</property>
+            <property name="border-width">12</property>
             <property name="spacing">18</property>
             <property name="margin">6</property>
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkBox" id="number_label_box">
+                  <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="width_request">150</property>
+                    <property name="width-request">150</property>
                     <child>
-                      <object class="GtkLabel" id="number_label">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Number of puzzles</property>
-                        <property name="use_underline">True</property>
-                        <property name="mnemonic_widget">n_sudokus_button</property>
+                        <property name="use-underline">True</property>
+                        <property name="mnemonic-widget">n_sudokus_button</property>
                         <property name="valign">center</property>
                         <property name="halign">end</property>
                       </object>
@@ -80,32 +80,32 @@
                 <child>
                   <object class="GtkSpinButton" id="n_sudokus_button">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can-focus">True</property>
                     <property name="halign">center</property>
-                    <property name="primary_icon_activatable">False</property>
-                    <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
+                    <property name="primary-icon-activatable">False</property>
+                    <property name="secondary-icon-activatable">False</property>
+                    <property name="primary-icon-sensitive">True</property>
+                    <property name="secondary-icon-sensitive">True</property>
                     <property name="adjustment">adjustment1</property>
-                    <property name="climb_rate">1</property>
+                    <property name="climb-rate">1</property>
                     <property name="valign">center</property>
                   </object>
                 </child>
               </object>
             </child>
             <child>
-              <object class="GtkBox" id="difficulty_box">
+              <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkBox" id="difficulty_label_box">
+                  <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="width_request">150</property>
+                    <property name="width-request">150</property>
                     <child>
-                      <object class="GtkLabel" id="difficulty_label">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
                         <property name="label" translatable="yes">Difficulty</property>
                         <property name="halign">end</property>
@@ -118,7 +118,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkBox" id="vbox2">
+                  <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="orientation">vertical</property>
                     <property name="homogeneous">True</property>
@@ -129,11 +129,11 @@
                       <object class="GtkRadioButton" id="easy_radio_button">
                         <property name="label" translatable="yes">_Easy</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">False</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="use_underline">True</property>
-                        <property name="draw_indicator">True</property>
+                        <property name="use-underline">True</property>
+                        <property name="draw-indicator">True</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -145,11 +145,11 @@
                       <object class="GtkRadioButton" id="medium_radio_button">
                         <property name="label" translatable="yes">_Medium</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">False</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="use_underline">True</property>
-                        <property name="draw_indicator">True</property>
+                        <property name="use-underline">True</property>
+                        <property name="draw-indicator">True</property>
                         <property name="group">easy_radio_button</property>
                       </object>
                       <packing>
@@ -162,11 +162,11 @@
                       <object class="GtkRadioButton" id="hard_radio_button">
                         <property name="label" translatable="yes">_Hard</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="can-focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="use_underline">True</property>
-                        <property name="draw_indicator">True</property>
+                        <property name="use-underline">True</property>
+                        <property name="draw-indicator">True</property>
                         <property name="group">easy_radio_button</property>
                       </object>
                       <packing>
@@ -179,11 +179,11 @@
                       <object class="GtkRadioButton" id="very_hard_radio_button">
                         <property name="label" translatable="yes">_Very Hard</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="can-focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="use_underline">True</property>
-                        <property name="draw_indicator">True</property>
+                        <property name="use-underline">True</property>
+                        <property name="draw-indicator">True</property>
                         <property name="group">easy_radio_button</property>
                       </object>
                       <packing>
