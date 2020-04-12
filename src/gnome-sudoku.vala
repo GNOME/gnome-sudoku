@@ -152,7 +152,7 @@ public class Sudoku : Gtk.Application
         var builder = new Builder.from_resource ("/org/gnome/Sudoku/ui/gnome-sudoku.ui");
 
         window = (ApplicationWindow) builder.get_object ("sudoku_app");
-        window.size_allocate.connect (size_allocate_cb);
+        window.size_allocate.connect (on_size_allocate);
         window.map.connect (init_state_watcher);
         window.set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
         if (settings.get_boolean ("window-is-maximized"))
@@ -231,11 +231,17 @@ public class Sudoku : Gtk.Application
         base.shutdown ();
     }
 
-    private void size_allocate_cb (Allocation allocation)
+    private void on_size_allocate (int width, int height, int baseline)
     {
         if (window_is_maximized || window_is_fullscreen || window_is_tiled)
             return;
-        window.get_size (out window_width, out window_height);
+        int? _window_width = null;
+        int? _window_height = null;
+        window.get_size (out _window_width, out _window_height);
+        if (_window_width == null || _window_height == null)
+            return;
+        window_width = (!) _window_width;
+        window_height = (!) _window_height;
     }
 
     private inline void init_state_watcher ()
