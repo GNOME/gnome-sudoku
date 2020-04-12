@@ -86,7 +86,6 @@ public class PrintDialog : Dialog
     public bool start_spinner_cb ()
     {
         revealer.set_transition_type (RevealerTransitionType.SLIDE_LEFT);
-        revealer.show_all ();
         spinner.start ();
         revealer.set_reveal_child (true);
         return Source.REMOVE;
@@ -128,7 +127,7 @@ public class PrintDialog : Dialog
                 var boards = SudokuGenerator.generate_boards_async.end (res);
 
                 spinner.stop ();
-                revealer.hide ();
+                revealer.hide ();   // TODO check if hide is the good thing
 
                 var printer = new SudokuPrinter (boards, this);
                 if (printer.print_sudoku () == PrintOperationResult.APPLY)
