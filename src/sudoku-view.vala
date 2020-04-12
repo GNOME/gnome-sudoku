@@ -145,7 +145,7 @@ private class SudokuCellView : DrawingArea
         if (button != Gdk.BUTTON_PRIMARY && button != Gdk.BUTTON_SECONDARY)
             return;
 
-        if (!is_focus)
+        if (!has_focus)
             grab_focus ();
         if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
             return;
