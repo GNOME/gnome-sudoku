@@ -155,7 +155,6 @@ public class Sudoku : Gtk.Application
         var builder = new Builder.from_resource ("/org/gnome/Sudoku/ui/gnome-sudoku.ui");
 
         window = (ApplicationWindow) builder.get_object ("sudoku_app");
-        window.size_allocate.connect (size_allocate_cb);
         window.map.connect (init_state_watcher);
         window.set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
         if (settings.get_boolean ("window-is-maximized"))
@@ -234,13 +233,6 @@ public class Sudoku : Gtk.Application
         base.shutdown ();
     }
 
-    private void size_allocate_cb (Allocation allocation)
-    {
-        if (window_is_maximized || window_is_fullscreen || window_is_tiled)
-            return;
-        window.get_size (out window_width, out window_height);
-    }
-
     private inline void init_state_watcher ()
     {
         Gdk.Surface? nullable_surface = window.get_surface ();     // TODO report bug, get_surface() returns a nullable Surface
@@ -248,6 +240,15 @@ public class Sudoku : Gtk.Application
             assert_not_reached ();
         surface = (Gdk.Toplevel) (!) nullable_surface;
         surface.notify ["state"].connect (on_window_state_event);
+        surface.size_changed.connect (on_size_changed);
+    }
+
+    private inline void on_size_changed (Gdk.Surface _surface, int width, int height)
+    {
+        if (window_is_maximized || window_is_fullscreen || window_is_tiled)
+            return;
+        window_width  = width;
+        window_height = height;
     }
 
     private Gdk.Toplevel surface;
