@@ -104,6 +104,7 @@ private class SudokuCellView : DrawingArea
     private NumberPicker number_picker;
     private NumberPicker earmark_picker;
 
+    internal EventControllerFocus focus_controller; // for keeping in memory
     private EventControllerKey key_controller;      // for keeping in memory
     private GestureClick click_controller;          // for keeping in memory
 
@@ -127,7 +128,6 @@ private class SudokuCellView : DrawingArea
         if (is_fixed && game.mode == GameMode.PLAY)
             return;
 
-        focus_out_event.connect (focus_out_cb);
         game.cell_changed.connect (cell_changed_cb);
     }
 
@@ -182,6 +182,7 @@ private class SudokuCellView : DrawingArea
         earmark_picker.set_earmarks (row, col);
     }
 
+    private EventControllerFocus popover_focus_controller;
     private void show_number_picker ()
     {
         if (earmark_popover != null)
@@ -206,14 +207,14 @@ private class SudokuCellView : DrawingArea
             if (!popover.visible)
                 destroy_popover (ref popover);
         });
-        popover.focus_out_event.connect (() => {
-            popover.hide ();
-            return true;
-        });
+        popover_focus_controller = new EventControllerFocus ();
+        popover_focus_controller.leave.connect (popover.hide);
+        ((Widget) popover).add_controller (popover_focus_controller);
 
         popover.show ();
     }
 
+    private EventControllerFocus earmark_focus_controller;
     private void show_earmark_picker ()
     {
         if (popover != null)
@@ -229,10 +230,9 @@ private class SudokuCellView : DrawingArea
             if (!earmark_popover.visible)
                 destroy_popover (ref earmark_popover);
         });
-        earmark_popover.focus_out_event.connect (() => {
-            earmark_popover.hide ();
-            return true;
-        });
+        earmark_focus_controller = new EventControllerFocus ();
+        earmark_focus_controller.leave.connect (earmark_popover.hide);
+        ((Widget) earmark_popover).add_controller (earmark_focus_controller);
 
         earmark_popover.show ();
     }
@@ -252,12 +252,6 @@ private class SudokuCellView : DrawingArea
             popover.hide ();
         if (earmark_popover != null)
             earmark_popover.hide ();
-    }
-
-    private bool focus_out_cb (Widget widget, EventFocus event)
-    {
-        hide_both_popovers ();
-        return false;
     }
 
     /* Key mapping function to help convert Gdk.keyval_name string to numbers */
@@ -289,9 +283,18 @@ private class SudokuCellView : DrawingArea
 
     private inline void init_keyboard ()  // called on construct
     {
+        focus_controller = new EventControllerFocus ();
+        focus_controller.leave.connect (on_focus_out);
+        add_controller (focus_controller);
+
         key_controller = new EventControllerKey ();
         key_controller.key_pressed.connect (on_key_pressed);
         add_controller (key_controller);
+    }
+
+    private inline void on_focus_out ()
+    {
+        hide_both_popovers ();
     }
 
     private inline bool on_key_pressed (EventControllerKey _key_controller, uint keyval, uint keycode, ModifierType state)
@@ -518,9 +521,9 @@ public class SudokuView : AspectFrame
 
                 cell.background_color = cell.is_fixed ? fixed_cell_color : free_cell_color;
 
-                cell.focus_in_event.connect (() => {
+                cell.focus_controller.enter.connect (() => {
                     if (game.paused)
-                        return false;
+                        return;
 
                     this.set_selected (cell_row, cell_col);
 
@@ -553,8 +556,6 @@ public class SudokuView : AspectFrame
                     cells[cell_row, cell_col].background_color = selected_bg_color;
 
                     queue_draw ();
-
-                    return false;
                 });
 
                 cell.notify["value"].connect ((s, p)=> {
