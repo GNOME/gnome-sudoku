@@ -390,7 +390,7 @@ public class Sudoku : Gtk.Application
             view.show_warnings = settings.get_boolean ("show-warnings");
         view.highlighter = settings.get_boolean ("highlighter");
 
-        game_box.pack_start (view);
+        game_box.prepend (view);
 
         game.cell_changed.connect (() => {
             undo_action.set_enabled (!game.is_undostack_null ());
