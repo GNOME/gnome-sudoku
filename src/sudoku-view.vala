@@ -104,6 +104,7 @@ private class SudokuCellView : DrawingArea
 
         init_mouse ();
         init_keyboard ();
+        set_draw_func (draw);
 
         value = game.board [row, col];
 
@@ -345,7 +346,7 @@ private class SudokuCellView : DrawingArea
         return false;
     }
 
-    public override bool draw (Cairo.Context c)
+    private inline void draw (DrawingArea _this, Cairo.Context c, int new_width, int new_height)
     {
         RGBA background_color;
         if (_selected && is_focus)
@@ -370,7 +371,7 @@ private class SudokuCellView : DrawingArea
             c.set_source_rgb (0.0, 0.0, 0.0);
 
         if (game.paused)
-            return false;
+            return;
 
         if (value != 0)
         {
@@ -380,11 +381,11 @@ private class SudokuCellView : DrawingArea
 
             c.set_font_size (height / size_ratio);
             print_centered (c, text, width, height);
-            return false;
+            return;
         }
 
         if (is_fixed && game.mode == GameMode.PLAY)
-            return false;
+            return;
 
         bool[] marks = null;
         if (!_show_possibilities)
@@ -435,8 +436,6 @@ private class SudokuCellView : DrawingArea
             c.set_source_rgb (1.0, 0.0, 0.0);
             print_centered (c, "X", get_allocated_width (), get_allocated_height ());
         }
-
-        return false;
     }
 
     private void print_centered (Cairo.Context c, string text, double width, double height)
@@ -513,7 +512,7 @@ public class SudokuView : AspectFrame
 
         drawing = new DrawingArea ();
         drawing.visible = false;
-        drawing.draw.connect (draw_board);
+        drawing.set_draw_func (draw_board);
 
         if (grid != null)
             overlay.remove (grid);
@@ -627,7 +626,7 @@ public class SudokuView : AspectFrame
         }
     }
 
-    private bool draw_board (Cairo.Context c)
+    private inline void draw_board (DrawingArea _drawing, Cairo.Context c, int new_width, int new_height)
     {
         if (game.paused)
         {
@@ -647,8 +646,6 @@ public class SudokuView : AspectFrame
             c.set_source_rgb (1, 1, 1);
             c.show_text (text);
         }
-
-        return false;
     }
 
     public void clear ()
