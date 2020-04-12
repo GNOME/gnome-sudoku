@@ -172,7 +172,7 @@ private class SudokuCellView : DrawingArea
     private void show_number_picker ()
     {
         if (earmark_popover != null)
-            earmark_popover.hide ();
+            earmark_popover.popdown ();
 
         number_picker = new NumberPicker (ref game.board);
         number_picker.number_picked.connect ((o, number) => {
@@ -181,46 +181,46 @@ private class SudokuCellView : DrawingArea
                 notify_property ("value");
             this.game.board.disable_all_earmarks (row, col);
 
-            popover.hide ();
+            popover.popdown ();
         });
         number_picker.set_clear_button_visibility (value != 0);
 
-        popover = new Popover (this);
+        popover = new Popover ();
         popover.add (number_picker);
-        popover.modal = false;
+        popover.set_autohide (false);
         popover.position = PositionType.BOTTOM;
         popover.notify["visible"].connect (()=> {
             if (!popover.visible)
                 destroy_popover (ref popover, ref number_picker);
         });
         popover_focus_controller = new EventControllerFocus ();
-        popover_focus_controller.leave.connect (popover.hide);
+        popover_focus_controller.leave.connect (popover.popdown);
         ((Widget) popover).add_controller (popover_focus_controller);
 
-        popover.show ();
+        popover.popup ();
     }
 
     private EventControllerFocus earmark_focus_controller;
     private void show_earmark_picker ()
     {
         if (popover != null)
-            popover.hide ();
+            popover.popdown ();
 
         create_earmark_picker ();
 
-        earmark_popover = new Popover (this);
+        earmark_popover = new Popover ();
         earmark_popover.add (earmark_picker);
-        earmark_popover.modal = false;
+        earmark_popover.set_autohide (false);
         earmark_popover.position = PositionType.BOTTOM;
         earmark_popover.notify["visible"].connect (()=> {
             if (!earmark_popover.visible)
                 destroy_popover (ref earmark_popover, ref earmark_picker);
         });
         earmark_focus_controller = new EventControllerFocus ();
-        earmark_focus_controller.leave.connect (earmark_popover.hide);
+        earmark_focus_controller.leave.connect (earmark_popover.popdown);
         ((Widget) earmark_popover).add_controller (earmark_focus_controller);
 
-        earmark_popover.show ();
+        earmark_popover.popup ();
     }
 
     private void destroy_popover (ref Popover popover, ref NumberPicker picker)
@@ -236,9 +236,9 @@ private class SudokuCellView : DrawingArea
     public void hide_both_popovers ()
     {
         if (popover != null)
-            popover.hide ();
+            popover.popdown ();
         if (earmark_popover != null)
-            earmark_popover.hide ();
+            earmark_popover.popdown ();
     }
 
     /* Key mapping function to help convert Gdk.keyval_name string to numbers */
@@ -329,7 +329,7 @@ private class SudokuCellView : DrawingArea
         {
             if (popover != null)
             {
-                popover.hide ();
+                popover.popdown ();
                 return false;
             }
             show_number_picker ();
