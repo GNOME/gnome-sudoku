@@ -315,7 +315,7 @@ public class Sudoku : Gtk.Application
                 dialog.destroy ();
             });
 
-            dialog.show ();
+            dialog.present ();
         }
     }
 
@@ -387,7 +387,6 @@ public class Sudoku : Gtk.Application
             view.show_warnings = settings.get_boolean ("show-warnings");
         view.highlighter = settings.get_boolean ("highlighter");
 
-        view.show ();
         game_box.pack_start (view);
 
         game.cell_changed.connect (() => {
@@ -428,7 +427,7 @@ public class Sudoku : Gtk.Application
                 dialog.destroy ();
             });
 
-            dialog.show ();
+            dialog.present ();
         });
     }
 
@@ -506,7 +505,7 @@ public class Sudoku : Gtk.Application
             dialog.destroy ();
         });
 
-        dialog.show ();
+        dialog.present ();
     }
 
     private void show_game_view ()
@@ -524,14 +523,14 @@ public class Sudoku : Gtk.Application
         if (current_game_mode == GameMode.PLAY)
         {
             play_custom_game_button.visible = false;
-            play_pause_button.visible = true;
+            play_pause_button.show ();
         }
         else
         {
             clock_label.hide ();
             clock_image.hide ();
             play_custom_game_button.visible = true;
-            play_pause_button.visible = false;
+            play_pause_button.hide ();
         }
     }
 
