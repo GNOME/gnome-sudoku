@@ -116,6 +116,7 @@ private class SudokuCellView : DrawingArea
 
         init_mouse ();
         init_keyboard ();
+        set_draw_func (draw);
 
 //        style.font_desc.set_size (Pango.SCALE * 13);
         value = game.board [row, col];
@@ -352,7 +353,7 @@ private class SudokuCellView : DrawingArea
         return false;
     }
 
-    public override bool draw (Cairo.Context c)
+    private inline void draw (DrawingArea _this, Cairo.Context c, int new_width, int new_height)
     {
         int glyph_width, glyph_height;
         layout.get_pixel_size (out glyph_width, out glyph_height);
@@ -364,7 +365,7 @@ private class SudokuCellView : DrawingArea
             c.set_source_rgb (0.0, 0.0, 0.0);
 
         if (game.paused)
-            return false;
+            return;
 
         if (value != 0)
         {
@@ -381,7 +382,7 @@ private class SudokuCellView : DrawingArea
         }
 
         if (is_fixed && game.mode == GameMode.PLAY)
-            return false;
+            return;
 
         if (!_show_possibilities)
         {
@@ -431,8 +432,6 @@ private class SudokuCellView : DrawingArea
             c.set_source_rgb (1.0, 0.0, 0.0);
             c.show_text (warning);
         }
-
-        return false;
     }
 
     public void cell_changed_cb (int row, int col, int old_val, int new_val)
@@ -496,7 +495,7 @@ public class SudokuView : AspectFrame
         add (overlay);
 
         drawing = new DrawingArea ();
-        drawing.draw.connect (draw_board);
+        drawing.set_draw_func (draw_board);
 
         if (grid != null)
             overlay.remove (grid);
@@ -574,7 +573,7 @@ public class SudokuView : AspectFrame
         overlay.add_overlay (grid);
     }
 
-    private bool draw_board (Cairo.Context c)
+    private inline void draw_board (DrawingArea _drawing, Cairo.Context c, int new_width, int new_height)
     {
         int board_length = grid.get_allocated_width ();
         /* not exactly the tile's edge length: includes the width of a border line (1) */
@@ -649,8 +648,6 @@ public class SudokuView : AspectFrame
             c.set_source_rgb (1, 1, 1);
             c.show_text (text);
         }
-
-        return false;
     }
 
     public void clear ()
