@@ -463,16 +463,17 @@ public const RGBA   free_cell_color = { 1.0f,  1.0f,  1.0f,  1.0f };
 public const RGBA   highlight_color = { 0.93f, 0.93f, 0.93f, 0.0f };
 public const RGBA selected_bg_color = { 0.7f,  0.8f,  0.9f,  1.0f };
 
-public class SudokuView : AspectFrame
+public class SudokuView : Widget
 {
     public SudokuGame game;
     private SudokuCellView[,] cells;
 
     private bool previous_board_broken_state = false;
 
-    private Overlay overlay;
+    private AspectFrame frame;
+    private Overlay     overlay;
     private DrawingArea drawing;
-    private Grid grid;
+    private Grid        grid;
 
     private int selected_row = 0;
     private int selected_col = 0;
@@ -487,12 +488,15 @@ public class SudokuView : AspectFrame
 
     public SudokuView (SudokuGame game)
     {
-        shadow_type = ShadowType.NONE;
-        obey_child = false;
-        ratio = 1;
+        BinLayout layout = new BinLayout ();
+        set_layout_manager (layout);
+
+        frame = new AspectFrame (/* no title */ null, /* xalign */ 0.5f, /* yalign */ 0.5f, /* ratio */ 1.0f, /* obey child */ false);
+        frame.shadow_type = ShadowType.NONE;
+        frame.insert_after (this, /* insert first */ null);
 
         overlay = new Overlay ();
-        add (overlay);
+        frame.add (overlay);
 
         drawing = new DrawingArea ();
         drawing.set_draw_func (draw_board);
