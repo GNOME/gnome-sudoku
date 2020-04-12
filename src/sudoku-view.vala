@@ -600,9 +600,6 @@ public class SudokuView : AspectFrame
 
         overlay.add_overlay (drawing);
         overlay.add (grid);
-        grid.show_all ();
-        overlay.show ();
-        drawing.hide ();
     }
 
     private bool draw_board (Cairo.Context c)
