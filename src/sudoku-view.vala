@@ -513,6 +513,7 @@ public class SudokuView : AspectFrame
         add (overlay);
 
         drawing = new DrawingArea ();
+        drawing.visible = false;
         drawing.draw.connect (draw_board);
 
         if (grid != null)
@@ -601,9 +602,6 @@ public class SudokuView : AspectFrame
 
         overlay.add_overlay (drawing);
         overlay.add (grid);
-        grid.show_all ();
-        overlay.show ();
-        drawing.hide ();
     }
 
     private void update_highlights ()
