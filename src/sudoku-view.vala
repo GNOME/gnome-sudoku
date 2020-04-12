@@ -22,14 +22,14 @@
 using Gtk;
 using Gdk;
 
-private class SudokuCellView : Gtk.DrawingArea
+private class SudokuCellView : DrawingArea
 {
     private Pango.Layout layout;
 
     private double size_ratio = 2;
 
-    private Gtk.Popover popover;
-    private Gtk.Popover earmark_popover;
+    private Popover popover;
+    private Popover earmark_popover;
 
     private SudokuGame game;
 
@@ -104,11 +104,15 @@ private class SudokuCellView : Gtk.DrawingArea
     private NumberPicker number_picker;
     private NumberPicker earmark_picker;
 
+    private EventControllerKey key_controller;      // for keeping in memory
+
     public SudokuCellView (int row, int col, ref SudokuGame game)
     {
         this.game = game;
         this.row = row;
         this.col = col;
+
+        init_keyboard ();
 
         style.font_desc.set_size (Pango.SCALE * 13);
         value = game.board [row, col];
@@ -125,7 +129,7 @@ private class SudokuCellView : Gtk.DrawingArea
         game.cell_changed.connect (cell_changed_cb);
     }
 
-    public override bool button_press_event (Gdk.EventButton event)
+    public override bool button_press_event (EventButton event)
     {
         if (event.button != 1 && event.button != 3)
             return false;
@@ -223,7 +227,7 @@ private class SudokuCellView : Gtk.DrawingArea
         earmark_popover.show ();
     }
 
-    private void destroy_popover (ref Gtk.Popover popover)
+    private void destroy_popover (ref Popover popover)
     {
         if (popover != null)
         {
@@ -240,7 +244,7 @@ private class SudokuCellView : Gtk.DrawingArea
             earmark_popover.hide ();
     }
 
-    private bool focus_out_cb (Gtk.Widget widget, Gdk.EventFocus event)
+    private bool focus_out_cb (Widget widget, EventFocus event)
     {
         hide_both_popovers ();
         return false;
@@ -273,11 +277,17 @@ private class SudokuCellView : Gtk.DrawingArea
         return -1;
     }
 
-    public override bool key_press_event (Gdk.EventKey event)
+    private inline void init_keyboard ()  // called on construct
+    {
+        key_controller = new EventControllerKey (this);
+        key_controller.key_pressed.connect (on_key_pressed);
+    }
+
+    private inline bool on_key_pressed (EventControllerKey _key_controller, uint keyval, uint keycode, ModifierType state)
     {
         if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
             return false;
-        string k_name = Gdk.keyval_name (event.keyval);
+        string k_name = keyval_name (keyval);
         int k_no = int.parse (k_name);
         /* If k_no is 0, there might be some error in parsing, crosscheck with keypad values. */
         if (k_no == 0)
@@ -285,7 +295,7 @@ private class SudokuCellView : Gtk.DrawingArea
         if (k_no >= 1 && k_no <= 9)
         {
             bool want_earmark = (earmark_popover != null && earmark_popover.is_visible ())
-                || (event.state & ModifierType.CONTROL_MASK) > 0;
+                || (state & ModifierType.CONTROL_MASK) > 0;
             if (want_earmark && game.mode == GameMode.PLAY)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, k_no);
@@ -441,16 +451,16 @@ public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
 public const RGBA highlight_color = {0.93, 0.93, 0.93, 0};
 public const RGBA selected_bg_color = {0.7, 0.8, 0.9};
 
-public class SudokuView : Gtk.AspectFrame
+public class SudokuView : AspectFrame
 {
     public SudokuGame game;
     private SudokuCellView[,] cells;
 
     private bool previous_board_broken_state = false;
 
-    private Gtk.Overlay overlay;
-    private Gtk.DrawingArea drawing;
-    private Gtk.Grid grid;
+    private Overlay overlay;
+    private DrawingArea drawing;
+    private Grid grid;
 
     private int selected_row = 0;
     private int selected_col = 0;
@@ -465,14 +475,14 @@ public class SudokuView : Gtk.AspectFrame
 
     public SudokuView (SudokuGame game)
     {
-        shadow_type = Gtk.ShadowType.NONE;
+        shadow_type = ShadowType.NONE;
         obey_child = false;
         ratio = 1;
 
-        overlay = new Gtk.Overlay ();
+        overlay = new Overlay ();
         add (overlay);
 
-        drawing = new Gtk.DrawingArea ();
+        drawing = new DrawingArea ();
         drawing.draw.connect (draw_board);
 
         if (grid != null)
@@ -480,7 +490,7 @@ public class SudokuView : Gtk.AspectFrame
 
         this.game = game;
 
-        grid = new Gtk.Grid ();
+        grid = new Grid ();
         grid.row_spacing = 1;
         grid.column_spacing = 1;
         grid.column_homogeneous = true;
@@ -562,7 +572,7 @@ public class SudokuView : Gtk.AspectFrame
         /* not exactly the tile's edge length: includes the width of a border line (1) */
         double tile_length = ((double) (board_length - 1)) / game.board.cols;
 
-        if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL)
+        if (Widget.get_default_direction () == TextDirection.RTL)
         {
             c.translate (board_length, 0);
             c.scale (-1, 1);

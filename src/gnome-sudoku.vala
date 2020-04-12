@@ -222,9 +222,11 @@ public class Sudoku : Gtk.Application
         }
 
         /* Save window state */
+        settings.delay ();
         settings.set_int ("window-width", window_width);
         settings.set_int ("window-height", window_height);
         settings.set_boolean ("window-is-maximized", is_maximized);
+        settings.apply ();
 
         base.shutdown ();
     }
@@ -583,7 +585,7 @@ public class Sudoku : Gtk.Application
     {
         try
         {
-            show_uri (window.get_screen (), "help:gnome-sudoku", get_current_event_time ());
+            show_uri_on_window (window, "help:gnome-sudoku", get_current_event_time ());
         }
         catch (GLib.Error e)
         {
