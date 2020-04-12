@@ -463,10 +463,10 @@ private class SudokuCellView : DrawingArea
     }
 }
 
-public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 1.0};
-public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
-public const RGBA highlight_color = {0.93, 0.93, 0.93, 1.0};
-public const RGBA selected_bg_color = {0.7, 0.8, 0.9, 1.0};
+public const RGBA  fixed_cell_color = { 0.8f,  0.8f,  0.8f,  1.0f };
+public const RGBA   free_cell_color = { 1.0f,  1.0f,  1.0f,  1.0f };
+public const RGBA   highlight_color = { 0.93f, 0.93f, 0.93f, 1.0f };
+public const RGBA selected_bg_color = { 0.7f,  0.8f,  0.9f,  1.0f };
 
 public class SudokuView : AspectFrame
 {
