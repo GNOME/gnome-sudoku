@@ -413,7 +413,7 @@ public class Sudoku : Gtk.Application
 
             for (var i = 0; i < game.board.rows; i++)
                 for (var j = 0; j < game.board.cols; j++)
-                    view.can_focus = false;
+                    view.can_focus = false;                 // FIXME what?
 
             saver.add_game_to_finished (game, true);
 
