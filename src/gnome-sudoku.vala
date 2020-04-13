@@ -24,15 +24,16 @@ using Gtk;
 public class Sudoku : Gtk.Application
 {
     private GLib.Settings settings;
-    private bool is_maximized;
-    private bool is_tiled;
+    private bool window_is_maximized;
+    private bool window_is_fullscreen;
+    private bool window_is_tiled;
     private int window_width;
     private int window_height;
-    private Gtk.Button play_custom_game_button;
-    private Gtk.Button play_pause_button;
-    private Gtk.Label play_pause_label;
-    private Gtk.Label clock_label;
-    private Gtk.Image clock_image;
+    private Button play_custom_game_button;
+    private Button play_pause_button;
+    private Label play_pause_label;
+    private Label clock_label;
+    private Image clock_image;
 
     private ApplicationWindow window;
 
@@ -164,11 +165,11 @@ public class Sudoku : Gtk.Application
         game_box = (Box) builder.get_object ("game_box");
         undo_redo_box = (Box) builder.get_object ("undo_redo_box");
         back_button = (Button) builder.get_object ("back_button");
-        clock_label = (Gtk.Label) builder.get_object ("clock_label");
-        clock_image = (Gtk.Image) builder.get_object ("clock_image");
-        play_custom_game_button = (Gtk.Button) builder.get_object ("play_custom_game_button");
-        play_pause_button = (Gtk.Button) builder.get_object ("play_pause_button");
-        play_pause_label = (Gtk.Label) builder.get_object ("play_pause_label");
+        clock_label = (Label) builder.get_object ("clock_label");
+        clock_image = (Image) builder.get_object ("clock_image");
+        play_custom_game_button = (Button) builder.get_object ("play_custom_game_button");
+        play_pause_button = (Button) builder.get_object ("play_pause_button");
+        play_pause_label = (Label) builder.get_object ("play_pause_label");
 
         undo_action = (SimpleAction) lookup_action ("undo");
         redo_action = (SimpleAction) lookup_action ("redo");
@@ -179,7 +180,6 @@ public class Sudoku : Gtk.Application
         pause_action = (SimpleAction) lookup_action ("pause");
         play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
 
-        headerbar.show_close_button = true;
         window.set_titlebar (headerbar);
 
         saver = new SudokuSaver ();
@@ -225,7 +225,7 @@ public class Sudoku : Gtk.Application
         settings.delay ();
         settings.set_int ("window-width", window_width);
         settings.set_int ("window-height", window_height);
-        settings.set_boolean ("window-is-maximized", is_maximized);
+        settings.set_boolean ("window-is-maximized", window_is_maximized || window_is_fullscreen);
         settings.apply ();
 
         base.shutdown ();
@@ -233,18 +233,29 @@ public class Sudoku : Gtk.Application
 
     private void size_allocate_cb (Allocation allocation)
     {
-        if (is_maximized || is_tiled)
+        if (window_is_maximized || window_is_fullscreen || window_is_tiled)
             return;
         window.get_size (out window_width, out window_height);
     }
 
+    private const Gdk.WindowState tiled_state = Gdk.WindowState.TILED
+                                              | Gdk.WindowState.TOP_TILED
+                                              | Gdk.WindowState.BOTTOM_TILED
+                                              | Gdk.WindowState.LEFT_TILED
+                                              | Gdk.WindowState.RIGHT_TILED;
     private bool window_state_event_cb (Gdk.EventWindowState event)
     {
         if ((event.changed_mask & Gdk.WindowState.MAXIMIZED) != 0)
-            is_maximized = (event.new_window_state & Gdk.WindowState.MAXIMIZED) != 0;
+            window_is_maximized = (event.new_window_state & Gdk.WindowState.MAXIMIZED) != 0;
+
+        /* fullscreen: saved as maximized */
+        if ((event.changed_mask & Gdk.WindowState.FULLSCREEN) != 0)
+            window_is_fullscreen = (event.new_window_state & Gdk.WindowState.FULLSCREEN) != 0;
+
         /* We don’t save this state, but track it for saving size allocation */
-        if ((event.changed_mask & Gdk.WindowState.TILED) != 0)
-            is_tiled = (event.new_window_state & Gdk.WindowState.TILED) != 0;
+        if ((event.changed_mask & tiled_state) != 0)
+            window_is_tiled = (event.new_window_state & tiled_state) != 0;
+
         return false;
     }
 
@@ -289,11 +300,11 @@ public class Sudoku : Gtk.Application
             // Warning dialog shown when starting a custom game that has multiple solutions.
             var warning_str = "%s\n%s".printf(_("The puzzle you have entered has multiple solutions."), _("Valid Sudoku puzzles have exactly one solution."));
             var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.WARNING, ButtonsType.NONE, warning_str);
-            dialog.add_button (_("_Back"), Gtk.ResponseType.REJECT);
-            dialog.add_button (_("Play _Anyway"), Gtk.ResponseType.ACCEPT);
+            dialog.add_button (_("_Back"), ResponseType.REJECT);
+            dialog.add_button (_("Play _Anyway"), ResponseType.ACCEPT);
 
             dialog.response.connect ((response_id) => {
-                if (response_id == Gtk.ResponseType.ACCEPT)
+                if (response_id == ResponseType.ACCEPT)
                     start_custom_game (game.board);
 
                 dialog.destroy ();
@@ -401,13 +412,13 @@ public class Sudoku : Gtk.Application
                                      minutes).printf (minutes);
             var dialog = new MessageDialog (window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, time_str);
 
-            dialog.add_button (_("_Quit"), Gtk.ResponseType.REJECT);
-            dialog.add_button (_("Play _Again"), Gtk.ResponseType.ACCEPT);
+            dialog.add_button (_("_Quit"),       ResponseType.REJECT);
+            dialog.add_button (_("Play _Again"), ResponseType.ACCEPT);
 
             dialog.response.connect ((response_id) => {
-                if (response_id == Gtk.ResponseType.ACCEPT)
+                if (response_id == ResponseType.ACCEPT)
                     show_new_game_screen ();
-                else if (response_id == Gtk.ResponseType.REJECT)
+                else if (response_id == ResponseType.REJECT)
                     quit ();
                 dialog.destroy ();
             });

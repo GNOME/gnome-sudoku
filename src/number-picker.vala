@@ -21,7 +21,7 @@
 
 using Gtk;
 
-private class NumberPicker : Gtk.Grid
+private class NumberPicker : Grid
 {
     private SudokuBoard board;
 
