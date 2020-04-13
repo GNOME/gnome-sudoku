@@ -66,11 +66,20 @@ public class PrintDialog : Dialog
         if (saved_difficulty == DifficultyCategory.EASY)
             easy_radio_button.set_active (true);
         else if (saved_difficulty == DifficultyCategory.MEDIUM)
+        {
             medium_radio_button.set_active (true);
+            easy_radio_button.set_active (false);
+        }
         else if (saved_difficulty == DifficultyCategory.HARD)
+        {
             hard_radio_button.set_active (true);
+            easy_radio_button.set_active (false);
+        }
         else if (saved_difficulty == DifficultyCategory.VERY_HARD)
+        {
             very_hard_radio_button.set_active (true);
+            easy_radio_button.set_active (false);
+        }
         else
             assert_not_reached ();
 
