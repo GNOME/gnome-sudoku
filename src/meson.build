@@ -14,7 +14,7 @@ gnome_sudoku_sources = [
   resources
 ]
 
-gnome_sudoku_dependencies = [gtk, libsudoku_dep]
+gnome_sudoku_dependencies = [gtk, libsudoku_dep, pango_cairo]
 
 gnome_sudoku = executable(meson.project_name(), gnome_sudoku_sources,
   vala_args: gnome_sudoku_vala_args,
