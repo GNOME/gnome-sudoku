@@ -179,7 +179,6 @@ public class Sudoku : Gtk.Application
         pause_action = (SimpleAction) lookup_action ("pause");
         play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
 
-        headerbar.show_close_button = true;
         window.set_titlebar (headerbar);
 
         saver = new SudokuSaver ();
