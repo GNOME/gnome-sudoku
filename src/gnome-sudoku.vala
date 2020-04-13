@@ -385,6 +385,8 @@ public class Sudoku : Gtk.Application
 
         view = new SudokuView (game);
         view.set_size_request (480, 480);
+        view.hexpand = true;
+        view.vexpand = true;
 
         view.show_possibilities = show_possibilities;
         if (current_game_mode == GameMode.CREATE)
