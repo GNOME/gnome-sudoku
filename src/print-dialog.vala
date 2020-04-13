@@ -19,35 +19,30 @@
  * along with GNOME Sudoku. If not, see <http://www.gnu.org/licenses/>.
  */
 
+using Gtk;
+
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/print-dialog.ui")]
-public class PrintDialog : Gtk.Dialog
+public class PrintDialog : Dialog
 {
     private SudokuSaver saver;
-    private Settings settings;
+    private GLib.Settings settings;
 
-    [GtkChild]
-    private Gtk.Button print_button;
-    [GtkChild]
-    private Gtk.Box print_box;
-    [GtkChild]
-    private Gtk.SpinButton n_sudokus_button;
-    [GtkChild]
-    private Gtk.RadioButton easy_radio_button;
-    [GtkChild]
-    private Gtk.RadioButton medium_radio_button;
-    [GtkChild]
-    private Gtk.RadioButton hard_radio_button;
-    [GtkChild]
-    private Gtk.RadioButton very_hard_radio_button;
+    [GtkChild] private Button print_button;
+    [GtkChild] private Box print_box;
+    [GtkChild] private SpinButton n_sudokus_button;
+    [GtkChild] private RadioButton easy_radio_button;
+    [GtkChild] private RadioButton medium_radio_button;
+    [GtkChild] private RadioButton hard_radio_button;
+    [GtkChild] private RadioButton very_hard_radio_button;
 
-    private Gtk.Revealer revealer;
-    private Gtk.Spinner spinner;
+    private Revealer revealer;
+    private Spinner spinner;
 
     private Cancellable cancellable;
 
     private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
 
-    public PrintDialog (SudokuSaver saver, Gtk.Window window)
+    public PrintDialog (SudokuSaver saver, Window window)
     {
         Object (use_header_bar: 1);
 
@@ -55,17 +50,17 @@ public class PrintDialog : Gtk.Dialog
         settings = new GLib.Settings ("org.gnome.Sudoku");
 
         this.response.connect ((response_id) => {
-            if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT)
+            if (response_id == ResponseType.CANCEL || response_id == ResponseType.DELETE_EVENT)
                 cancellable.cancel ();
         });
 
         set_transient_for (window);
 
-        spinner = new Gtk.Spinner ();
-        revealer = new Gtk.Revealer ();
+        spinner = new Spinner ();
+        revealer = new Revealer ();
         revealer.add (spinner);
-        revealer.valign = Gtk.Align.CENTER;
-        ((Gtk.HeaderBar) get_header_bar ()).pack_end (revealer);
+        revealer.valign = Align.CENTER;
+        ((HeaderBar) get_header_bar ()).pack_end (revealer);
 
         var saved_difficulty = (DifficultyCategory) settings.get_enum (DIFFICULTY_KEY_NAME);
         if (saved_difficulty == DifficultyCategory.EASY)
@@ -82,7 +77,7 @@ public class PrintDialog : Gtk.Dialog
         wrap_adjustment ("print-multiple-sudokus-to-print", n_sudokus_button.get_adjustment ());
     }
 
-    private void wrap_adjustment (string key_name, Gtk.Adjustment action)
+    private void wrap_adjustment (string key_name, Adjustment action)
     {
         action.set_value (settings.get_int (key_name));
         action.value_changed.connect (() => settings.set_int (key_name, (int) action.get_value ()));
@@ -90,7 +85,7 @@ public class PrintDialog : Gtk.Dialog
 
     public bool start_spinner_cb ()
     {
-        revealer.set_transition_type (Gtk.RevealerTransitionType.SLIDE_LEFT);
+        revealer.set_transition_type (RevealerTransitionType.SLIDE_LEFT);
         revealer.show_all ();
         spinner.start ();
         revealer.set_reveal_child (true);
@@ -99,7 +94,7 @@ public class PrintDialog : Gtk.Dialog
 
     public override void response (int response)
     {
-        if (response != Gtk.ResponseType.OK)
+        if (response != ResponseType.OK)
         {
             destroy ();
             return;
@@ -136,7 +131,7 @@ public class PrintDialog : Gtk.Dialog
                 revealer.hide ();
 
                 var printer = new SudokuPrinter (boards, this);
-                if (printer.print_sudoku () == Gtk.PrintOperationResult.APPLY)
+                if (printer.print_sudoku () == PrintOperationResult.APPLY)
                 {
                     foreach (SudokuBoard board in boards)
                         saver.add_game_to_finished (new SudokuGame (board));
