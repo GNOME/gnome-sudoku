@@ -28,7 +28,7 @@ public class PrintDialog : Dialog
     private GLib.Settings settings;
 
     [GtkChild] private Button print_button;
-    [GtkChild] private Box print_box;
+    [GtkChild] private Grid print_grid;
     [GtkChild] private SpinButton n_sudokus_button;
     [GtkChild] private RadioButton easy_radio_button;
     [GtkChild] private RadioButton medium_radio_button;
@@ -119,7 +119,7 @@ public class PrintDialog : Dialog
         Timeout.add_seconds (3, (SourceFunc) start_spinner_cb);
 
         print_button.sensitive = false;
-        print_box.sensitive = false;
+        print_grid.sensitive = false;
 
         cancellable = new Cancellable ();
         SudokuGenerator.generate_boards_async.begin (nsudokus, level, cancellable, (obj, res) => {
