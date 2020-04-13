@@ -20,12 +20,11 @@
  */
 
 using Gtk;
-using Gdk;
 
 public class SudokuPrinter : GLib.Object {
 
     private Gee.List<SudokuBoard> boards;
-    private Gtk.Window window;
+    private Window window;
 
     private int margin;
     private int n_sudokus;
@@ -37,33 +36,33 @@ public class SudokuPrinter : GLib.Object {
     {
         try
         {
-            var result = print_op.run (Gtk.PrintOperationAction.PRINT_DIALOG, window);
+            var result = print_op.run (PrintOperationAction.PRINT_DIALOG, window);
             return result;
         }
         catch (GLib.Error e)
         {
-            new Gtk.MessageDialog (window, Gtk.DialogFlags.MODAL,
-                                   Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE,
-                                   /* Error message if printing fails */
-                                   "%s\n%s".printf (_("Error printing file:"), e.message)).run ();
+            new MessageDialog (window, DialogFlags.MODAL,
+                               MessageType.ERROR, ButtonsType.CLOSE,
+                               /* Error message if printing fails */
+                               "%s\n%s".printf (_("Error printing file:"), e.message)).run ();
         }
 
-        return Gtk.PrintOperationResult.ERROR;
+        return PrintOperationResult.ERROR;
     }
 
-    public SudokuPrinter (Gee.List<SudokuBoard> boards, Gtk.Window window)
+    public SudokuPrinter (Gee.List<SudokuBoard> boards, Window window)
     {
         this.boards = boards;
         this.window = window;
         this.margin = 25;
         this.n_sudokus = boards.size;
 
-        this.print_op = new Gtk.PrintOperation ();
+        this.print_op = new PrintOperation ();
         print_op.begin_print.connect (begin_print_cb);
         print_op.draw_page.connect (draw_page_cb);
     }
 
-    private void begin_print_cb (Gtk.PrintOperation operation, Gtk.PrintContext context)
+    private void begin_print_cb (PrintOperation operation, PrintContext context)
     {
         int pages = n_sudokus / SUDOKUS_PER_PAGE;
         while (pages * SUDOKUS_PER_PAGE < n_sudokus)
@@ -72,7 +71,7 @@ public class SudokuPrinter : GLib.Object {
         operation.set_n_pages (pages);
     }
 
-    private void draw_page_cb (Gtk.PrintOperation operation, Gtk.PrintContext context, int page_nr)
+    private void draw_page_cb (PrintOperation operation, PrintContext context, int page_nr)
     {
         Cairo.Context cr = context.get_cairo_context ();
         var width = context.get_width ();
@@ -204,7 +203,7 @@ public class SudokuPrinter : GLib.Object {
         Cairo.TextExtents extents;
         var sudoku = sudoku_board.get_cells ();
 
-        var invert = Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL;
+        var invert = Widget.get_default_direction () == TextDirection.RTL;
 
         for (var x = 0; x < SUDOKU_SIZE; x++)
         {
