@@ -126,6 +126,12 @@ private class SudokuCellView : Widget
         game.cell_changed.connect (cell_changed_cb);
     }
 
+    protected override void snapshot (Gtk.Snapshot snap)
+    {
+        drawing.queue_draw ();
+        base.snapshot (snap);
+    }
+
     private inline void init_mouse ()  // called on construct
     {
         click_controller = new Gtk.GestureClick ();
@@ -500,6 +506,15 @@ public class SudokuView : Widget
         cells[selected_row, selected_col].selected = true;
     }
 
+    protected override void snapshot (Gtk.Snapshot snap)
+    {
+        drawing.queue_draw ();
+        for (uint8 i = 0; i < game.board.cols; i++)
+            for (uint8 j = 0; j < game.board.rows; j++)
+                cells[i, j].queue_draw ();
+        base.snapshot (snap);
+    }
+
     public SudokuView (SudokuGame game)
     {
         BinLayout layout = new BinLayout ();
@@ -593,6 +608,7 @@ public class SudokuView : Widget
                         }
                     }
 
+                    // Redraw the board
                     queue_draw ();
                 });
 
@@ -601,7 +617,7 @@ public class SudokuView : Widget
                         previous_board_broken_state = game.board.broken;
 
                     // Redraw the board
-                    this.queue_draw ();
+                    queue_draw ();
                 });
 
                 cells[row, col] = cell;
