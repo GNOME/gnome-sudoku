@@ -491,8 +491,7 @@ public class SudokuView : Widget
         BinLayout layout = new BinLayout ();
         set_layout_manager (layout);
 
-        frame = new AspectFrame (/* no title */ null, /* xalign */ 0.5f, /* yalign */ 0.5f, /* ratio */ 1.0f, /* obey child */ false);
-        frame.shadow_type = ShadowType.NONE;
+        frame = new AspectFrame (/* xalign */ 0.5f, /* yalign */ 0.5f, /* ratio */ 1.0f, /* obey child */ false);
         frame.insert_after (this, /* insert first */ null);
 
         overlay = new Overlay ();
