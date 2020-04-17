@@ -22,7 +22,7 @@
 using Gtk;
 using Gdk;
 
-private class SudokuCellView : DrawingArea
+private class SudokuCellView : Widget
 {
     private Pango.Layout layout;
 
@@ -108,10 +108,15 @@ private class SudokuCellView : DrawingArea
     private EventControllerKey key_controller;      // for keeping in memory
     private GestureClick click_controller;          // for keeping in memory
 
+    private DrawingArea drawing;
+
     construct
     {
         BinLayout layout = new BinLayout ();
         set_layout_manager (layout);
+
+        drawing = new DrawingArea ();
+        drawing.insert_after (this, /* insert first */ null);
     }
 
     public SudokuCellView (int row, int col, ref SudokuGame game)
@@ -122,14 +127,12 @@ private class SudokuCellView : DrawingArea
 
         init_mouse ();
         init_keyboard ();
-        set_draw_func (draw);
+        drawing.set_draw_func (draw);
 
 //        style.font_desc.set_size (Pango.SCALE * 13);
         value = game.board [row, col];
 
         // background_color is set in the SudokuView, as it manages the color of the cells
-
-        can_focus = true;
 
         if (is_fixed && game.mode == GameMode.PLAY)
             return;
