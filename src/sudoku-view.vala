@@ -96,6 +96,12 @@ private class SudokuCellView : DrawingArea
     private EventControllerKey key_controller;      // for keeping in memory
     private GestureClick click_controller;          // for keeping in memory
 
+    construct
+    {
+        BinLayout layout = new BinLayout ();
+        set_layout_manager (layout);
+    }
+
     public SudokuCellView (int row, int col, ref SudokuGame game)
     {
         this.game = game;
@@ -190,6 +196,7 @@ private class SudokuCellView : DrawingArea
         popover.add (number_picker);
         popover.set_autohide (false);
         popover.position = PositionType.BOTTOM;
+        popover.set_parent (this);
         popover.notify["visible"].connect (()=> {
             if (!popover.visible)
                 destroy_popover (ref popover, ref number_picker);
@@ -213,6 +220,7 @@ private class SudokuCellView : DrawingArea
         earmark_popover.add (earmark_picker);
         earmark_popover.set_autohide (false);
         earmark_popover.position = PositionType.BOTTOM;
+        earmark_popover.set_parent (this);
         earmark_popover.notify["visible"].connect (()=> {
             if (!earmark_popover.visible)
                 destroy_popover (ref earmark_popover, ref earmark_picker);
