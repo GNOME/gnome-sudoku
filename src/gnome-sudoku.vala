@@ -608,7 +608,7 @@ public class Sudoku : Gtk.Application
     {
         try
         {
-            show_uri_on_window (window, "help:gnome-sudoku", get_current_event_time ());
+            show_uri (window, "help:gnome-sudoku", Gdk.CURRENT_TIME);
         }
         catch (GLib.Error e)
         {
