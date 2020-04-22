@@ -45,7 +45,7 @@ private class SudokuCellView : DrawingArea
             {
                 string text = "%d".printf (game.board [row, col]);
                 layout = create_pango_layout (text);
-                layout.set_font_description (style.font_desc);
+//                layout.set_font_description (style.font_desc);
                 if (game.mode == GameMode.PLAY)
                     return;
             }
@@ -53,7 +53,7 @@ private class SudokuCellView : DrawingArea
             {
                 string text = "";
                 layout = create_pango_layout (text);
-                layout.set_font_description (style.font_desc);
+//                layout.set_font_description (style.font_desc);
                 if (game.board [row, col] != 0)
                     game.remove (row, col);
                 if (game.mode == GameMode.PLAY)
@@ -63,7 +63,7 @@ private class SudokuCellView : DrawingArea
             {
                 string text = "%d".printf (value);
                 layout = create_pango_layout (text);
-                layout.set_font_description (style.font_desc);
+//                layout.set_font_description (style.font_desc);
                 return;
             }
             assert (layout != null);
@@ -117,7 +117,7 @@ private class SudokuCellView : DrawingArea
         init_mouse ();
         init_keyboard ();
 
-        style.font_desc.set_size (Pango.SCALE * 13);
+//        style.font_desc.set_size (Pango.SCALE * 13);
         value = game.board [row, col];
 
         // background_color is set in the SudokuView, as it manages the color of the cells
