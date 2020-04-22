@@ -602,14 +602,7 @@ public class Sudoku : Gtk.Application
 
     private void help_cb ()
     {
-        try
-        {
-            show_uri_on_window (window, "help:gnome-sudoku", get_current_event_time ());
-        }
-        catch (GLib.Error e)
-        {
-            GLib.warning ("Unable to open help: %s", e.message);
-        }
+        show_uri (window, "help:gnome-sudoku", Gdk.CURRENT_TIME);
     }
 
     private const string[] authors = { "Robert Ancell <robert.ancell@gmail.com>",
