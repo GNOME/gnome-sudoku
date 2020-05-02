@@ -194,7 +194,7 @@ private class SudokuCellView : DrawingArea
         popover.position = PositionType.BOTTOM;
         popover.notify["visible"].connect (()=> {
             if (!popover.visible)
-                destroy_popover (ref popover);
+                destroy_popover (ref popover, ref number_picker);
         });
         popover.focus_out_event.connect (() => {
             popover.hide ();
@@ -217,7 +217,7 @@ private class SudokuCellView : DrawingArea
         earmark_popover.position = PositionType.BOTTOM;
         earmark_popover.notify["visible"].connect (()=> {
             if (!earmark_popover.visible)
-                destroy_popover (ref earmark_popover);
+                destroy_popover (ref earmark_popover, ref earmark_picker);
         });
         earmark_popover.focus_out_event.connect (() => {
             earmark_popover.hide ();
@@ -227,8 +227,9 @@ private class SudokuCellView : DrawingArea
         earmark_popover.show ();
     }
 
-    private void destroy_popover (ref Popover popover)
+    private void destroy_popover (ref Popover popover, ref NumberPicker picker)
     {
+        picker = null;
         if (popover != null)
         {
             popover.destroy ();
@@ -299,10 +300,15 @@ private class SudokuCellView : DrawingArea
             if (want_earmark && game.mode == GameMode.PLAY)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, k_no);
-                if (earmark_picker == null)
-                    create_earmark_picker ();
-                if (earmark_picker.set_earmark (row, col, k_no-1, new_state))
-                    queue_draw ();
+                if (new_state)
+                    game.enable_earmark (row, col, k_no);
+                else
+                    game.disable_earmark (row, col, k_no);
+
+                if (earmark_picker != null)
+                    earmark_picker.set_earmark (row, col, k_no-1, new_state);
+
+                queue_draw ();
             }
             else
             {
