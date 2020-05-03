@@ -30,7 +30,6 @@ private class NumberPicker : Grid
 
     private Button clear_button;
 
-    private const int EARMARKS_MAX_ALLOWED = 5;
     private int earmarks_active;
 
     public NumberPicker (ref SudokuBoard board, bool earmark = false)
@@ -67,11 +66,6 @@ private class NumberPicker : Grid
                     toggle_button.toggled.connect (() => {
                         var toggle_active = toggle_button.get_active ();
                         earmark_state_changed (n, toggle_active);
-                        earmarks_active = toggle_active ? earmarks_active + 1 : earmarks_active - 1;
-                        if (earmarks_active < EARMARKS_MAX_ALLOWED)
-                            set_toggle_sensitive (true);
-                        else
-                            set_toggle_sensitive (false);
                     });
                 }
 
@@ -120,26 +114,9 @@ private class NumberPicker : Grid
             set_earmark (row, col, i, board.is_earmark_enabled (row, col, i + 1));
     }
 
-    public bool set_earmark (int row, int col, int index, bool state)
+    public void set_earmark (int row, int col, int index, bool state)
     {
-        if (state && earmarks_active >= EARMARKS_MAX_ALLOWED)
-            return false;
         get_button_for (index).set_active (state);
-        return true;
-    }
-
-    private void set_toggle_sensitive (bool state)
-    {
-        if (state)
-            for (var i = 0; i < board.max_val; i++)
-                get_button_for (i).sensitive = true;
-        else
-            for (var i = 0; i < board.max_val; i++)
-            {
-                var button = get_button_for (i);
-                if (!button.active)
-                    button.sensitive = false;
-            }
     }
 
     private ToggleButton get_button_for (int number)
