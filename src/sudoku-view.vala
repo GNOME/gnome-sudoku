@@ -24,8 +24,6 @@ using Gdk;
 
 private class SudokuCellView : DrawingArea
 {
-    private Pango.Layout layout;
-
     private double size_ratio = 2;
 
     private Popover popover;
@@ -43,30 +41,19 @@ private class SudokuCellView : DrawingArea
         {
             if (is_fixed)
             {
-                string text = "%d".printf (game.board [row, col]);
-                layout = create_pango_layout (text);
-                layout.set_font_description (style.font_desc);
                 if (game.mode == GameMode.PLAY)
                     return;
             }
             if (value == 0)
             {
-                string text = "";
-                layout = create_pango_layout (text);
-                layout.set_font_description (style.font_desc);
                 if (game.board [row, col] != 0)
                     game.remove (row, col);
                 if (game.mode == GameMode.PLAY)
                     return;
             }
             if (value == game.board [row, col])
-            {
-                string text = "%d".printf (value);
-                layout = create_pango_layout (text);
-                layout.set_font_description (style.font_desc);
                 return;
-            }
-            assert (layout != null);
+
             game.insert (row, col, value);
         }
     }
@@ -114,7 +101,6 @@ private class SudokuCellView : DrawingArea
 
         init_keyboard ();
 
-        style.font_desc.set_size (Pango.SCALE * 13);
         value = game.board [row, col];
 
         // background_color is set in the SudokuView, as it manages the color of the cells
@@ -360,8 +346,6 @@ private class SudokuCellView : DrawingArea
         c.rectangle (0, 0, get_allocated_width (), get_allocated_height ());
         c.fill();
 
-        int glyph_width, glyph_height;
-        layout.get_pixel_size (out glyph_width, out glyph_height);
         if (_show_warnings && game.board.broken_coords.contains (Coord (row, col)))
             c.set_source_rgb (1.0, 0.0, 0.0);
         else if (_selected)
@@ -374,16 +358,12 @@ private class SudokuCellView : DrawingArea
 
         if (value != 0)
         {
-            int width, height;
-            layout.get_size (out width, out height);
-            height /= Pango.SCALE;
+            double height = (double) get_allocated_height ();
+            double width = (double) get_allocated_width ();
+            string text = "%d".printf (value);
 
-            double scale = ((double) get_allocated_height () / size_ratio) / height;
-            c.move_to ((get_allocated_width () - glyph_width * scale) / 2, (get_allocated_height () - glyph_height * scale) / 2);
-            c.save ();
-            c.scale (scale, scale);
-            Pango.cairo_show_layout (c, layout);
-            c.restore ();
+            c.set_font_size (height / size_ratio);
+            print_centered (c, text, width, height);
             return false;
         }
 
@@ -402,12 +382,9 @@ private class SudokuCellView : DrawingArea
 
         if (marks != null)
         {
-            double possibility_size = get_allocated_height () / (size_ratio * 2);
+            double possibility_size = get_allocated_height () / size_ratio / 2;
             c.set_font_size (possibility_size);
             c.set_source_rgb (0.0, 0.0, 0.0);
-
-            Cairo.FontExtents font_extents;
-            c.font_extents (out font_extents);
 
             double height = (double) get_allocated_height () / game.board.block_rows;
             double width = (double) get_allocated_width () / game.board.block_cols;
@@ -422,14 +399,11 @@ private class SudokuCellView : DrawingArea
                     if (marks[num - 1])
                     {
                         var text = "%d".printf (num);
-                        Cairo.TextExtents text_extents;
 
-                        c.text_extents (text, out text_extents);
-                        c.move_to (
-                            col_tmp * width + (width - text_extents.width) / 2 - text_extents.x_bearing,
-                            ((game.board.block_rows - row_tmp - 1) * height) + (height + font_extents.height) / 2 - font_extents.descent
-                        );
-                        c.show_text (text);
+                        c.save ();
+                        c.translate (col_tmp * width, (game.board.block_rows - row_tmp - 1) * height);
+                        print_centered (c, text, width, height);
+                        c.restore ();
                     }
                 }
             }
@@ -437,16 +411,27 @@ private class SudokuCellView : DrawingArea
 
         if (_show_warnings && (value == 0 && game.board.count_possibilities (row, col) == 0))
         {
-            string warning = "X";
-            Cairo.TextExtents extents;
-            c.set_font_size (get_allocated_height () / 2);
-            c.text_extents (warning, out extents);
-            c.move_to ((get_allocated_width () - extents.width) / 2 - 1, (get_allocated_height () + extents.height) / 2 + 1);
+            c.set_font_size (get_allocated_height () / size_ratio);
             c.set_source_rgb (1.0, 0.0, 0.0);
-            c.show_text (warning);
+            print_centered (c, "X", get_allocated_width (), get_allocated_height ());
         }
 
         return false;
+    }
+
+    private void print_centered (Cairo.Context c, string text, double width, double height)
+    {
+        Cairo.FontExtents font_extents;
+        c.font_extents (out font_extents);
+
+        Cairo.TextExtents text_extents;
+        c.text_extents (text, out text_extents);
+
+        c.move_to (
+            (width - text_extents.width) / 2 - text_extents.x_bearing,
+            (height + font_extents.height) / 2 - font_extents.descent
+        );
+        c.show_text (text);
     }
 
     public void cell_changed_cb (int row, int col, int old_val, int new_val)
