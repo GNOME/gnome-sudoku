@@ -99,7 +99,7 @@ private class SudokuCellView : DrawingArea
     }
 
     public bool selected { get; set; }
-    public RGBA background_color { get; set; }
+    public bool highlighted { get; set; }
 
     private NumberPicker number_picker;
     private NumberPicker earmark_picker;
@@ -341,6 +341,19 @@ private class SudokuCellView : DrawingArea
 
     public override bool draw (Cairo.Context c)
     {
+        RGBA background_color;
+        if (_selected)
+            background_color = selected_bg_color;
+        else if (is_fixed)
+            background_color = fixed_cell_color;
+        else if (_highlighted)
+            background_color = highlight_color;
+        else
+            background_color = free_cell_color;
+        c.set_source_rgba (background_color.red, background_color.green, background_color.blue, background_color.alpha);
+        c.rectangle (0, 0, get_allocated_width (), get_allocated_height ());
+        c.fill();
+
         int glyph_width, glyph_height;
         layout.get_pixel_size (out glyph_width, out glyph_height);
         if (_show_warnings && game.board.broken_coords.contains (Coord (row, col)))
@@ -365,32 +378,33 @@ private class SudokuCellView : DrawingArea
             c.scale (scale, scale);
             Pango.cairo_show_layout (c, layout);
             c.restore ();
+            return false;
         }
 
         if (is_fixed && game.mode == GameMode.PLAY)
             return false;
 
+        bool[] marks = null;
         if (!_show_possibilities)
         {
-            // Draw the earmarks
-            double earmark_size = get_allocated_height () / (size_ratio * 2);
-            c.set_font_size (earmark_size);
-
-            c.move_to (0, earmark_size);
-
-            c.set_source_rgb (0.0, 0.0, 0.0);
-            c.show_text (game.board.get_earmarks_string (row, col));
+            marks = game.board.get_earmarks (row, col);
         }
         else if (value == 0)
+        {
+            marks = game.board.get_possibilities_as_bool_array (row, col);
+        }
+
+        if (marks != null)
         {
             double possibility_size = get_allocated_height () / (size_ratio * 2);
             c.set_font_size (possibility_size);
             c.set_source_rgb (0.0, 0.0, 0.0);
 
-            bool[] possibilities = game.board.get_possibilities_as_bool_array (row, col);
+            Cairo.FontExtents font_extents;
+            c.font_extents (out font_extents);
 
-            int height = get_allocated_height () / game.board.block_cols;
-            int width = get_allocated_height () / game.board.block_rows;
+            double height = (double) get_allocated_height () / game.board.block_rows;
+            double width = (double) get_allocated_width () / game.board.block_cols;
 
             int num = 0;
             for (int row_tmp = 0; row_tmp < game.board.block_rows; row_tmp++)
@@ -399,10 +413,17 @@ private class SudokuCellView : DrawingArea
                 {
                     num++;
 
-                    if (possibilities[num - 1])
+                    if (marks[num - 1])
                     {
-                        c.move_to (col_tmp * width, (row_tmp * height) + possibility_size);
-                        c.show_text ("%d".printf (num));
+                        var text = "%d".printf (num);
+                        Cairo.TextExtents text_extents;
+
+                        c.text_extents (text, out text_extents);
+                        c.move_to (
+                            col_tmp * width + (width - text_extents.width) / 2 - text_extents.x_bearing,
+                            ((game.board.block_rows - row_tmp - 1) * height) + (height + font_extents.height) / 2 - font_extents.descent
+                        );
+                        c.show_text (text);
                     }
                 }
             }
@@ -427,15 +448,6 @@ private class SudokuCellView : DrawingArea
         if (row == this.row && col == this.col)
         {
             this.value = new_val;
-
-            if (game.mode == GameMode.CREATE)
-            {
-                if (_selected)
-                    background_color = selected_bg_color;
-                else
-                    background_color = is_fixed ? fixed_cell_color : free_cell_color;
-            }
-
             notify_property ("value");
         }
     }
@@ -446,10 +458,10 @@ private class SudokuCellView : DrawingArea
     }
 }
 
-public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 0};
+public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 1.0};
 public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
-public const RGBA highlight_color = {0.93, 0.93, 0.93, 0};
-public const RGBA selected_bg_color = {0.7, 0.8, 0.9};
+public const RGBA highlight_color = {0.93, 0.93, 0.93, 1.0};
+public const RGBA selected_bg_color = {0.7, 0.8, 0.9, 1.0};
 
 public class SudokuView : AspectFrame
 {
@@ -489,12 +501,53 @@ public class SudokuView : AspectFrame
             overlay.remove (grid);
 
         this.game = game;
+        this.game.paused_changed.connect(() => {
+            if (this.game.paused)
+                drawing.show ();
+            else
+                drawing.hide ();
+        });
+
+        var css_provider = new CssProvider ();
+        try {
+            css_provider.load_from_data ("
+                grid.board {
+                    border: 2px solid #333;
+                    background: #333;
+                }
+                grid.block {
+                    background: #999;
+                }
+            ");
+        } catch (Error e) {
+            assert_no_error(e);
+        }
 
         grid = new Grid ();
-        grid.row_spacing = 1;
-        grid.column_spacing = 1;
+        grid.row_spacing = 2;
+        grid.column_spacing = 2;
         grid.column_homogeneous = true;
         grid.row_homogeneous = true;
+        grid.get_style_context ().add_class ("board");
+        grid.get_style_context ().add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+        var blocks = new Grid[game.board.block_rows, game.board.block_cols];
+        for (var block_row = 0; block_row < game.board.block_rows; block_row++)
+        {
+            for (var block_col = 0; block_col < game.board.block_cols; block_col++)
+            {
+                var block_grid = new Grid ();
+                block_grid.row_spacing = 1;
+                block_grid.column_spacing = 1;
+                block_grid.column_homogeneous = true;
+                block_grid.row_homogeneous = true;
+                block_grid.get_style_context ().add_class ("block");
+                block_grid.get_style_context ().add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                grid.attach (block_grid, block_col, block_row, 1, 1);
+
+                blocks[block_row, block_col] = block_grid;
+            }
+        }
 
         cells = new SudokuCellView[game.board.rows, game.board.cols];
         for (var row = 0; row < game.board.rows; row++)
@@ -505,8 +558,6 @@ public class SudokuView : AspectFrame
                 var cell_row = row;
                 var cell_col = col;
 
-                cell.background_color = cell.is_fixed ? fixed_cell_color : free_cell_color;
-
                 cell.focus_in_event.connect (() => {
                     if (game.paused)
                         return false;
@@ -515,31 +566,15 @@ public class SudokuView : AspectFrame
 
                     for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
                     {
-                        var color = (col_tmp == cell_col && _highlighter) ? highlight_color : free_cell_color;
-                        for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
-                            cells[row_tmp,col_tmp].background_color = cells[row_tmp,col_tmp].is_fixed ? fixed_cell_color : color;
+                        for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++) {
+                            cells[row_tmp, col_tmp].highlighted = _highlighter && (
+                                col_tmp == cell_col ||
+                                row_tmp == cell_row ||
+                                (col_tmp / game.board.block_cols == cell_col / game.board.block_cols &&
+                                 row_tmp / game.board.block_rows == cell_row / game.board.block_rows)
+                            );
+                        }
                     }
-                    for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
-                    {
-                        if (cells[cell_row, col_tmp].is_fixed)
-                            cells[cell_row, col_tmp].background_color = fixed_cell_color;
-                        else if (_highlighter)
-                            cells[cell_row, col_tmp].background_color = highlight_color;
-                        else
-                            cells[cell_row, col_tmp].background_color = free_cell_color;
-                    }
-
-                    foreach (Coord? coord in game.board.coords_for_block.get (Coord (cell_row / game.board.block_rows, cell_col / game.board.block_cols)))
-                    {
-                        if (cells[coord.row, coord.col].is_fixed)
-                            cells[coord.row, coord.col].background_color = fixed_cell_color;
-                        else if (_highlighter)
-                            cells[coord.row, coord.col].background_color = highlight_color;
-                        else
-                            cells[coord.row, coord.col].background_color = free_cell_color;
-                    }
-
-                    cells[cell_row, cell_col].background_color = selected_bg_color;
 
                     queue_draw ();
 
@@ -555,78 +590,24 @@ public class SudokuView : AspectFrame
                 });
 
                 cells[row, col] = cell;
-                grid.attach (cell, col, row, 1, 1);
+
+                blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
             }
         }
 
-        overlay.add (drawing);
-        overlay.add_overlay (grid);
-        drawing.show ();
+        overlay.add_overlay (drawing);
+        overlay.add (grid);
         grid.show_all ();
         overlay.show ();
+        drawing.hide ();
     }
 
     private bool draw_board (Cairo.Context c)
     {
-        int board_length = grid.get_allocated_width ();
-        /* not exactly the tile's edge length: includes the width of a border line (1) */
-        double tile_length = ((double) (board_length - 1)) / game.board.cols;
-
-        if (Widget.get_default_direction () == TextDirection.RTL)
-        {
-            c.translate (board_length, 0);
-            c.scale (-1, 1);
-        }
-
-        /* TODO game.board.cols == game.board.rows... */
-        for (var i = 0; i < game.board.cols; i++)
-        {
-            for (var j = 0; j < game.board.cols; j++)
-            {
-                var background_color = cells[i, j].background_color;
-                c.set_source_rgb (background_color.red, background_color.green, background_color.blue);
-
-                c.rectangle ((int) (j * tile_length) + 0.5, (int) (i * tile_length) + 0.5, (int) ((j + 1) * tile_length) + 0.5, (int) ((i + 1) * tile_length) + 0.5);
-                c.fill ();
-            }
-        }
-
-        c.set_line_width (1);
-        c.set_source_rgb (0.6, 0.6, 0.6);
-        for (var i = 1; i < game.board.cols; i++)
-        {
-            if (i % game.board.block_cols == 0)
-                continue;
-            /* we could use board_length - 1 */
-            c.move_to (((int) (i * tile_length)) + 0.5, 1);
-            c.line_to (((int) (i * tile_length)) + 0.5, board_length);
-        }
-        for (var i = 1; i < game.board.cols; i++)
-        {
-            if (i % game.board.block_rows == 0)
-                continue;
-
-            c.move_to (1, ((int) (i * tile_length)) + 0.5);
-            c.line_to (board_length, ((int) (i * tile_length)) + 0.5);
-        }
-        c.stroke ();
-
-        c.set_line_width (2);
-        c.set_source_rgb (0.0, 0.0, 0.0);
-        for (var i = 0; i <= game.board.cols; i += game.board.block_cols)
-        {
-            c.move_to (((int) (i * tile_length)) + 0.5, 0);
-            c.line_to (((int) (i * tile_length)) + 0.5, board_length);
-        }
-        for (var i = 0; i <= game.board.cols; i += game.board.block_rows)
-        {
-            c.move_to (0, ((int) (i * tile_length)) + 0.5);
-            c.line_to (board_length, ((int) (i * tile_length)) + 0.5);
-        }
-        c.stroke ();
-
         if (game.paused)
         {
+            int board_length = grid.get_allocated_width ();
+
             c.set_source_rgba (0, 0, 0, 0.75);
             c.paint ();
 
