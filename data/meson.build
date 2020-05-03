@@ -59,3 +59,17 @@ install_data('icons/hicolor/scalable/@0@.svg'.format(application_id),
 install_data('icons/hicolor/symbolic/@0@-symbolic.svg'.format(application_id),
   install_dir: join_paths(icondir, 'symbolic', 'apps')
 )
+
+# Make D-Bus activatable
+service_conf = configuration_data()
+service_conf.set('bindir', join_paths(prefix, bindir))
+
+service = 'org.gnome.Sudoku.service'
+
+configure_file (
+  input: service + '.in',
+  output: service,
+  install: true,
+  install_dir: join_paths(prefix, datadir, 'dbus-1', 'services'),
+  configuration: service_conf
+)

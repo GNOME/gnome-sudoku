@@ -22,9 +22,10 @@ add_project_arguments([
 gnome = import('gnome')
 i18n = import('i18n')
 
-datadir = get_option('datadir')
-localedir = get_option('localedir')
-prefix = get_option('prefix')
+datadir     = get_option('datadir')
+localedir   = get_option('localedir')
+prefix      = get_option('prefix')
+bindir      = get_option('bindir')
 
 glib_version = '2.40.0'
 
