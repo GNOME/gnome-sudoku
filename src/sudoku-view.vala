@@ -500,19 +500,7 @@ public class SudokuView : AspectFrame
         });
 
         var css_provider = new CssProvider ();
-        try {
-            css_provider.load_from_data ("
-                grid.board {
-                    border: 2px solid #333;
-                    background: #333;
-                }
-                grid.block {
-                    background: #999;
-                }
-            ");
-        } catch (Error e) {
-            assert_no_error(e);
-        }
+        css_provider.load_from_resource ("/org/gnome/Sudoku/ui/gnome-sudoku.css");
 
         grid = new Grid ();
         grid.row_spacing = 2;
