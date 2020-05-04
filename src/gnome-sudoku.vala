@@ -439,7 +439,7 @@ public class Sudoku : Gtk.Application
         main_stack.set_visible_child_name ("start_box");
         back_button.visible = game != null;
         undo_redo_box.visible = false;
-        headerbar.title = _("Select Difficulty");
+        window.set_title (_("Select Difficulty"));
         print_action.set_enabled (false);
         clock_label.hide ();
         clock_image.hide ();
@@ -540,9 +540,9 @@ public class Sudoku : Gtk.Application
     private void set_headerbar_title ()
     {
         if (current_game_mode == GameMode.PLAY)
-            headerbar.title = game.board.difficulty_category.to_string ();
+            window.set_title (game.board.difficulty_category.to_string ());
         else
-            headerbar.title = _("Create Puzzle");
+            window.set_title (_("Create Puzzle"));
     }
 
     private void back_cb ()
