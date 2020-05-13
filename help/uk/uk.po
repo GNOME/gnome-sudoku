@@ -1,0 +1,1007 @@
+# Ukrainian translation for gnome-sudoku.
+# Copyright (C) 2020 gnome-sudoku's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-sudoku package.
+#
+# Yuri Chornoivan <yurchor@ukr.net>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-sudoku master\n"
+"POT-Creation-Date: 2020-05-04 14:46+0000\n"
+"PO-Revision-Date: 2020-05-13 17:47+0300\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 20.07.70\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2020"
+
+#. (itstool) path: credit/name
+#: C/basics.page:9 C/earmarks.page:14 C/keyboard-shortcuts.page:10
+msgid "Chris Beiser"
+msgstr "Chris Beiser"
+
+#. (itstool) path: credit/years
+#: C/basics.page:11 C/bug-filing.page:12 C/develop.page:12
+#: C/documentation.page:10 C/earmarks.page:11 C/highlighting.page:15
+#: C/index.page:17 C/keyboard-shortcuts.page:12 C/print-blank-puzzles.page:10
+#: C/print-inprogress-game.page:14 C/rules.page:13 C/save-resume.page:13
+#: C/strategy.page:11 C/translate.page:12
+msgid "2011"
+msgstr "2011"
+
+#. (itstool) path: credit/name
+#: C/basics.page:14 C/earmarks.page:18 C/print-blank-puzzles.page:15
+#: C/save-resume.page:16 C/translate.page:15
+msgid "Michael Hill"
+msgstr "Майкл Гілл (Michael Hill)"
+
+#. (itstool) path: license/p
+#: C/basics.page:18 C/bug-filing.page:15 C/develop.page:15
+#: C/documentation.page:13 C/earmarks.page:22 C/highlighting.page:18
+#: C/keyboard-shortcuts.page:19 C/print-blank-puzzles.page:19
+#: C/print-inprogress-game.page:17 C/rules.page:16 C/save-resume.page:20
+#: C/strategy.page:18 C/translate.page:19
+msgid "Creative Commons Share Alike 3.0"
+msgstr "Creative Commons Share Alike 3.0"
+
+#. (itstool) path: page/title
+#: C/basics.page:22
+msgid "Basics"
+msgstr "Основи"
+
+#. (itstool) path: page/p
+#: C/basics.page:23
+msgid ""
+"Sudoku can be played using the keyboard, the mouse, or any combination of "
+"the two."
+msgstr ""
+"У «Судоку» можна грати за допомогою клавіатури, миші або будь-якої комбінації"
+" миші і клавіатури."
+
+#. (itstool) path: section/title
+#: C/basics.page:27
+msgid "Using the keyboard"
+msgstr "Використання клавіатури"
+
+#. (itstool) path: item/p
+#: C/basics.page:29
+msgid "To select a cell, use the arrow keys to move the blue outline onto it."
+msgstr ""
+"Щоб позначити клітинку, скористайтеся клавішами зі стрілками, щоб перемістити"
+" синій контур до потрібної вам клітинки."
+
+#. (itstool) path: item/p
+#: C/basics.page:30
+msgid "To put a number in a cell, select the cell, and then press the number."
+msgstr ""
+"Щоб вставити число до клітинки, виберіть клітинку і натисніть клавішу із"
+" відповідною цифрою."
+
+#. (itstool) path: item/p
+#: C/basics.page:31
+msgid ""
+"To remove a number from a cell, select the cell, and then press the "
+"<key>Delete</key> key, the <key>Backspace</key>, or the <key>0</key> key."
+msgstr ""
+"Щоб вилучити число з клітинки, позначте клітинку, а потім натисніть клавішу <"
+"key>Delete</key>, клавішу <key>Backspace</key> або клавішу <key>0</key>."
+
+#. (itstool) path: section/title
+#: C/basics.page:37
+msgid "Using the mouse"
+msgstr "Використання миші"
+
+#. (itstool) path: item/p
+#: C/basics.page:39
+msgid "To select a cell, move your mouse over it and click."
+msgstr ""
+"Щоб позначити клітинку, наведіть на неї вказівник миші і клацніть лівою"
+" кнопкою миші."
+
+#. (itstool) path: item/p
+#: C/basics.page:40
+msgid ""
+"To put a number in a selected cell, click on the center of the cell, and "
+"then click on the number you wish to input."
+msgstr ""
+"Щоб вставити число до позначеної клітинки, клацніть у центрі клітинки, а"
+" потім клацніть на цифрі, яку ви хочете вставити."
+
+#. (itstool) path: item/p
+#: C/basics.page:41
+msgid ""
+"To remove a number from a selected cell, click in the center of the cell and "
+"then click <gui>Clear</gui>."
+msgstr ""
+"Щоб вилучити число з позначеної клітинки, клацніть у центрі клітинки, а потім"
+" натисніть кнопку <gui>Очистити</gui>."
+
+#. (itstool) path: credit/name
+#: C/bug-filing.page:10 C/develop.page:10 C/documentation.page:8
+#: C/highlighting.page:13 C/index.page:15 C/keyboard-shortcuts.page:15
+#: C/print-blank-puzzles.page:11 C/print-inprogress-game.page:12
+#: C/strategy.page:14 C/translate.page:10
+msgid "Tiffany Antopolski"
+msgstr "Tiffany Antopolski"
+
+#. (itstool) path: page/title
+#: C/bug-filing.page:19
+msgid "Report a Problem"
+msgstr "Звітування про проблеми"
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:20
+msgid ""
+"<app>GNOME Sudoku</app> is maintained by a volunteer community. You are "
+"welcome to participate. If you notice a problem you can file a <em>bug "
+"report</em>. To file a bug, go to <link href=\"https://gitlab.gnome.org/"
+"GNOME/gnome-sudoku/issues/\"/>."
+msgstr ""
+"Супроводом програми <app>Судоку GNOME</app> займається спільнота"
+" добровольців. Ми будемо раді вашій допомозі. Якщо ви виявили проблему у"
+" програмі, ви можете створити <em>звіт щодо вади</em>. Для створення такого"
+" звіту перейдіть на сторінку <link href=\"https://gitlab.gnome.org/GNOME/gnome"
+"-sudoku/issues/\"/>."
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:23
+msgid ""
+"This is a bug tracking system where users and developers can file details "
+"about bugs, crashes and request enhancements."
+msgstr ""
+"Це сторінка системи стеження за вадами, де користувачі і розробники можуть"
+" спілкуватися щодо подробиць вади, аварійного завершення роботи програми або"
+" запитів щодо реалізації додаткових можливостей."
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:26
+msgid ""
+"To participate you need an account which will give you the ability to gain "
+"access, file bugs, and make comments. Also, you need to register so you can "
+"receive updates by e-mail about the status of your bug. If you don't already "
+"have an account, just click on the <gui>Sign in / Register</gui> link to "
+"create one."
+msgstr ""
+"Щоб взяти участь у обговореннях, вам потрібен обліковий запис, який надасть "
+"вам змогу отримувати доступ до сайта, створювати записи вад і додавати "
+"коментарі. Крім того, вам слід зареєструватися, щоб отримувати оновлення "
+"щодо стану вашої вади електронною поштою. Якщо у вас ще немає облікового "
+"запису, натисніть посилання <gui>Sign in / Register</gui>, щоб створити "
+"обліковий запис."
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:30
+msgid ""
+"Once you have an account, log in, and click on <gui>New issue</gui>. Before "
+"reporting a bug, please read the <link href=\"https://wiki.gnome.org/"
+"Community/GettingInTouch/BugReportingGuidelines\">bug writing guidelines</"
+"link>, and please <link href=\"https://gitlab.gnome.org/GNOME/gnome-sudoku/"
+"issues\">browse</link> for the bug to see if it already exists."
+msgstr ""
+"Щойно ваш обліковий запис буде зареєстровано, увійдіть до нього і натисніть "
+"кнопку <gui>New issue</gui> («Нова вада»). Перш ніж повідомляти про ваду, "
+"будь ласка, ознайомтеся із <link href=\"https://wiki.gnome.org/Community/Getti"
+"ngInTouch/BugReportingGuidelines\">настановами щодо створення "
+"повідомлень про вади</link>, і, будь ласка, <link"
+" href=\"https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\">перегляньте</link"
+"> список вад, щоб переконатися "
+"у тому, що про виявлену вами ваду ще ніхто не повідомив."
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:34
+msgid ""
+"If you are requesting a new feature, choose <gui>1. Feature</gui> in the "
+"<gui>Labels</gui> menu. Fill in the Title and Description sections and click "
+"<gui>Submit Issue</gui>."
+msgstr ""
+"Якщо ви надсилаєте запит щодо реалізації нової можливості, виберіть <gui>1. "
+"Feature</gui> («1. Можливість») у меню <gui>Labels</gui> («Мітки»). "
+"Заповніть поля назви («Title») і опису («Description») і натисніть кнопку "
+"<gui>Submit Issue</gui> («Надіслати ваду»)."
+
+#. (itstool) path: page/p
+#: C/bug-filing.page:38
+msgid ""
+"Your report will be given an ID number, and its status will be updated as it "
+"is being dealt with."
+msgstr ""
+"Вашому звіту буде надано ідентифікаційного номера, його стан буде оновлено,"
+" щойно над ним попрацює хтось із розробників."
+
+#. (itstool) path: page/title
+#: C/develop.page:19
+msgid "Help develop"
+msgstr "Допомога у розробці"
+
+#. (itstool) path: page/p
+#: C/develop.page:20
+msgid ""
+"The <app>GNOME Games</app> are developed and maintained by a volunteer "
+"community. You are welcome to participate."
+msgstr ""
+"Розробкою і супроводом <app>Ігор GNOME</app> переймається "
+"спільнота добровольців. Ми будемо раді вашій участі у ній."
+
+#. (itstool) path: page/p
+#: C/develop.page:23
+msgid ""
+"If you would like to <link href=\"https://wiki.gnome.org/Apps/Sudoku\">help "
+"develop <app>GNOME Sudoku</app></link>, you can get in touch with the "
+"developers using <link href=\"https://cbe005.chat.mibbit.com/?url=irc%3A%2F"
+"%2Firc.gnome.org%2Fgnome-games\">IRC</link>, or via our <link href=\"https://"
+"mail.gnome.org/mailman/listinfo/games-list\">mailing list</link>."
+msgstr ""
+"Якщо ви хочете допомогти у <link href=\"https://wiki.gnome.org/Apps/Sudoku\""
+">розробці <app>Судоку</app></link>, можете зв'язатися із нашими"
+" розробниками за допомогою <link href=\"https://cbe005.chat.mibbit.com/?url=ir"
+"c%3A%2F%2Firc.gnome.org%2Fgnome-games\">IRC</link> або нашого <link"
+" href=\"https://mail.gnome.org/mailman/listinfo/games-list\">списку"
+" листування</link>."
+
+#. (itstool) path: page/title
+#: C/documentation.page:17
+msgid "Help write documentation"
+msgstr "Допомога у написанні документації"
+
+#. (itstool) path: page/p
+#: C/documentation.page:19
+msgid ""
+"The <app>GNOME Games</app> documentation is maintained by a volunteer "
+"community. You are welcome to participate."
+msgstr ""
+"Документуванням <app>Ігор GNOME</app> переймається спільнота "
+"добровольців. Ми будемо раді вашій участі у ній."
+
+#. (itstool) path: page/p
+#: C/documentation.page:22
+msgid ""
+"To contribute to the Documentation Project, feel free to get in touch with "
+"us using <link href=\"https://cbe003.chat.mibbit.com/?url=irc%3A%2F%2Firc."
+"gnome.org%2Fdocs\">irc</link>, or via our <link href=\"https://mail.gnome."
+"org/mailman/listinfo/gnome-doc-list\">mailing list</link>."
+msgstr ""
+"Щоб взяти участь у проєкті з документування, можете зв'язатися із нами за "
+"допомогою <link href=\"https://cbe003.chat.mibbit.com/?url=irc%3A%2F%2Firc."
+"gnome.org%2Fdocs\">irc</link> або нашого <link href=\"https://mail.gnome.org/"
+"mailman/listinfo/gnome-doc-list\">списку листування</link>."
+
+#. (itstool) path: page/p
+#: C/documentation.page:24
+msgid ""
+"Our <link href=\"https://wiki.gnome.org/DocumentationProject/Contributing"
+"\">wiki</link> page contains useful information."
+msgstr ""
+"На нашій <link href=\"https://wiki.gnome.org/DocumentationProject/"
+"Contributing\">сторінці у вікі</link> містяться корисні настанови."
+
+#. (itstool) path: credit/name
+#: C/earmarks.page:9 C/rules.page:11 C/save-resume.page:11
+msgid "Thomas Hinkle"
+msgstr "Thomas Hinkle"
+
+#. (itstool) path: page/title
+#: C/earmarks.page:26
+msgid "Earmarks"
+msgstr "Позначки"
+
+#. (itstool) path: page/p
+#: C/earmarks.page:27
+msgid ""
+"Earmarks (small numeric notes) can be added to any cell. They allow you to "
+"mark possible values for a cell. Earmarks allow you to store any number of "
+"digits in the cell. Each digit may be selected only once."
+msgstr ""
+"До будь-якої клітинки може бути додано позначки (маленькі числові нотатки)."
+" За їх допомогою ви можете вказувати можливі значення для клітинки. Позначки"
+" надають вам змогу зберігати у комірці довільну кількість цифр. Кожну цифру"
+" можна вибрати лише один раз."
+
+#. (itstool) path: page/p
+#: C/earmarks.page:29
+msgid "To add earmarks to a cell:"
+msgstr "Щоб додати позначку до клітинки, виконайте такі дії:"
+
+#. (itstool) path: item/p
+#: C/earmarks.page:32
+msgid "Select the cell."
+msgstr "Виберіть клітинку."
+
+#. (itstool) path: item/p
+#: C/earmarks.page:33
+msgid ""
+"Press <keyseq><key>Ctrl</key><key>1</key></keyseq> through "
+"<keyseq><key>Ctrl</key><key>9</key></keyseq>."
+msgstr ""
+"Натисніть одну з комбінацій клавіш від <keyseq><key>Ctrl</key><key>1</key><"
+"/keyseq> до <keyseq><key>Ctrl</key><key>9</key></keyseq>."
+
+#. (itstool) path: page/p
+#: C/earmarks.page:36
+msgid ""
+"You can remove a number from the earmarks by pressing <keyseq><key>Ctrl</"
+"key><key>1</key></keyseq> through <keyseq><key>Ctrl</key><key>9</key></"
+"keyseq> again."
+msgstr ""
+"Щоб вилучити число з позначок, натисніть комбінацію клавіш від <keyseq><key"
+">Ctrl</key><key>1</key></keyseq> до <keyseq><key>Ctrl</key><key>9</key><"
+"/keyseq> ще раз."
+
+#. (itstool) path: note/p
+#: C/earmarks.page:38
+msgid ""
+"You can also add earmarks by clicking the cell while pressing <key>Ctrl</"
+"key>, or right-clicking the cell, and then choosing a number."
+msgstr ""
+"Ви також можете додавати позначки клацанням на клітинці з одночасним"
+" натисканням клавіші <key>Ctrl</key> або клацанням правою кнопкою миші на"
+" комірці із наступним вибором числа."
+
+#. (itstool) path: page/title
+#: C/highlighting.page:22
+msgid "Highlighting"
+msgstr "Підсвічування"
+
+#. (itstool) path: page/p
+#: C/highlighting.page:24
+msgid ""
+"You can turn on highlighting to automatically highlight the current row, "
+"column and box in different colors. This can make it easier to see which "
+"values cannot go into a current square. To toggle highlighting, press the "
+"menu button in the top-right corner of the window and then select <gui style="
+"\"menuitem\">Highlighter</gui>."
+msgstr ""
+"Ви можете увімкнути підсвічування, щоб програма автоматично підсвічувала"
+" поточний рядок, стовпчик і блок різними кольорами. Це спрощує визначення"
+" значень, яких не може бути у поточній клітинці. Щоб перемкнути"
+" підсвічування, натисніть кнопку меню у верхньому правому куті вікна програми"
+" і виберіть <gui style=\"menuitem\">Підсвічування</gui>."
+
+#. (itstool) path: info/title
+#: C/index.page:7
+msgctxt "link"
+msgid "GNOME Sudoku"
+msgstr "Судоку GNOME"
+
+#. (itstool) path: info/title
+#: C/index.page:8
+msgctxt "text"
+msgid "GNOME Sudoku"
+msgstr "Судоку GNOME"
+
+#. (itstool) path: credit/name
+#: C/index.page:20
+msgid "Ekaterina Gerasimova"
+msgstr "Єкатерина Герасимова (Ekaterina Gerasimova)"
+
+#. (itstool) path: credit/years
+#: C/index.page:22
+msgid "2015"
+msgstr "2015"
+
+#. (itstool) path: info/desc
+#: C/index.page:27
+msgid ""
+"Learn to play GNOME Sudoku, a logic-based puzzle game in which a grid must "
+"be filled with the correct numbers."
+msgstr ""
+"Дізнайтеся про те, як грати у «Судоку GNOME» — логічну гру-головоломку, у"
+" якій слід заповнити таблицю відповідними до правил числами."
+
+#. (itstool) path: page/title
+#: C/index.page:32
+msgid "<_:media-1/> GNOME Sudoku"
+msgstr "<_:media-1/> Судоку GNOME"
+
+#. (itstool) path: page/p
+#: C/index.page:37
+msgid ""
+"GNOME Sudoku is a logic-based number-placement puzzle in which a 9×9 square "
+"must be filled with the correct digits. The unique puzzles can be played on "
+"screen or <link xref=\"index#print\">printed</link>. If you do not have time "
+"to finish a game, you can <link xref=\"save-resume#resume\">resume</link> it "
+"any time."
+msgstr ""
+"«Судоку GNOME» — логічна гра у заповнення квадратної таблиці розміром 9×9"
+" відповідними до правил числами. У головоломки можна грати на екрані або <"
+"link xref=\"index#print\">друкувати</link>. Якщо у вас недостатньо часу для"
+" завершення гри за один сеанс, ви можете будь-коли <link"
+" xref=\"save-resume#resume\">відновити</link> гру."
+
+#. (itstool) path: section/title
+#: C/index.page:44
+msgid "Game Play"
+msgstr "Ігровий процес"
+
+#. (itstool) path: section/title
+#: C/index.page:48
+msgid "Useful tips"
+msgstr "Корисні поради"
+
+#. (itstool) path: section/title
+#: C/index.page:52
+msgid "Printing"
+msgstr "Друк"
+
+#. (itstool) path: section/title
+#: C/index.page:56
+msgid "Get Involved"
+msgstr "Приєднатися до команди"
+
+#. (itstool) path: page/title
+#: C/keyboard-shortcuts.page:23
+msgid "Keyboard shortcuts"
+msgstr "Клавіатурні скорочення"
+
+#. (itstool) path: page/p
+#: C/keyboard-shortcuts.page:24
+msgid "This is a list of the keyboard shortcuts you can use in Sudoku."
+msgstr "Це список комбінацій клавіш, якими ви можете скористатися у «Судоку»."
+
+#. (itstool) path: section/title
+#: C/keyboard-shortcuts.page:27
+msgid "Starting and exiting"
+msgstr "Початок і завершення гри"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:31
+msgid "New game"
+msgstr "Нова гра"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:32
+msgid "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:35
+msgid "Reset game"
+msgstr "Відновити початковий стан гри"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:36
+msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:39
+msgid "Close the sudoku window"
+msgstr "Закрити вікно судоку"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:40
+msgid "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
+
+#. (itstool) path: section/title
+#: C/keyboard-shortcuts.page:45
+msgid "Other"
+msgstr "Інше"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:48
+msgid "Print displayed puzzle"
+msgstr "Надрукувати показану головоломку"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:49
+msgid "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:52
+msgid "Undo"
+msgstr "Скасувати"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:53
+msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:56
+msgid "Redo"
+msgstr "Повторити"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:57
+msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>Z</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>Z</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:60
+msgid "Add a number to the earmarks of a cell"
+msgstr "Додавання числової позначки до клітинки"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:61
+msgid "<keyseq><key>Ctrl</key><key>1-9</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>1-9</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:64
+msgid "Open Help"
+msgstr "Відкрити довідку"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:65
+msgid "<key>F1</key>"
+msgstr "<key>F1</key>"
+
+#. (itstool) path: p/link
+#: C/legal.xml:3
+msgid "Creative Commons Attribution-ShareAlike 3.0 Unported License"
+msgstr "Creative Commons Attribution-ShareAlike 3.0 Unported License"
+
+#. (itstool) path: license/p
+#: C/legal.xml:3
+msgid "This work is licensed under a <_:link-1/>."
+msgstr "Ця робота розповсюджується за умов дотримання <_:link-1/>."
+
+#. (itstool) path: info/desc
+#: C/license.page:8
+msgid "Legal information."
+msgstr "Правові відомості."
+
+#. (itstool) path: page/title
+#: C/license.page:11
+msgid "License"
+msgstr "Ліцензування"
+
+#. (itstool) path: page/p
+#: C/license.page:12
+msgid ""
+"This work is distributed under a CreativeCommons Attribution-Share Alike 3.0 "
+"Unported license."
+msgstr ""
+"Ця робота поширюється за умов ліцензування CreativeCommons Attribution-Share "
+"Alike 3.0 Unported."
+
+#. (itstool) path: page/p
+#: C/license.page:20
+msgid "You are free:"
+msgstr "Ви можете:"
+
+#. (itstool) path: item/title
+#: C/license.page:25
+msgid "<em>To share</em>"
+msgstr "<em>Ділитися</em>"
+
+#. (itstool) path: item/p
+#: C/license.page:26
+msgid "To copy, distribute and transmit the work."
+msgstr "Копіювати, поширювати і передавати цю роботу"
+
+#. (itstool) path: item/title
+#: C/license.page:29
+msgid "<em>To remix</em>"
+msgstr "<em>Змінювати</em>"
+
+#. (itstool) path: item/p
+#: C/license.page:30
+msgid "To adapt the work."
+msgstr "Адаптувати цю роботу."
+
+#. (itstool) path: page/p
+#: C/license.page:33
+msgid "Under the following conditions:"
+msgstr "За дотримання таких умов:"
+
+#. (itstool) path: item/title
+#: C/license.page:38
+msgid "<em>Attribution</em>"
+msgstr "<em>Посилання на джерело</em>"
+
+#. (itstool) path: item/p
+#: C/license.page:39
+msgid ""
+"You must attribute the work in the manner specified by the author or "
+"licensor (but not in any way that suggests that they endorse you or your use "
+"of the work)."
+msgstr ""
+"Ви маєте вказати авторство так, як це визначено автором або ліцензіатом (але "
+"не у такий спосіб, наче вони підтримують вас або ваше використання роботи)."
+
+#. (itstool) path: item/title
+#: C/license.page:46
+msgid "<em>Share Alike</em>"
+msgstr "<em>Поширення на тих самих умовах</em>"
+
+#. (itstool) path: item/p
+#: C/license.page:47
+msgid ""
+"If you alter, transform, or build upon this work, you may distribute the "
+"resulting work only under the same, similar or a compatible license."
+msgstr ""
+"Якщо ви змінюєте, перетворюєте або створюєте роботу на основі цієї роботи, "
+"ви можете поширювати результати лише за тих самих, подібних або сумісних "
+"умов ліцензування."
+
+#. (itstool) path: page/p
+#: C/license.page:53
+msgid ""
+"For the full text of the license, see the <link href=\"http://"
+"creativecommons.org/licenses/by-sa/3.0/legalcode\">CreativeCommons website</"
+"link>, or read the full <link href=\"http://creativecommons.org/licenses/by-"
+"sa/3.0/\">Commons Deed</link>."
+msgstr ""
+"Щоб ознайомитися із повним текстом ліцензційних умов, скористайтеся <link "
+"href=\"http://creativecommons.org/licenses/by-sa/3.0/legalcode\">сайтом "
+"CreativeCommons</link> або прочитайте повністю <link href=\"http://"
+"creativecommons.org/licenses/by-sa/3.0/\">Commons Deed</link>."
+
+#. (itstool) path: page/title
+#: C/print-blank-puzzles.page:23
+msgid "Print blank sudokus"
+msgstr "Друк порожніх судоку"
+
+#. (itstool) path: page/p
+#: C/print-blank-puzzles.page:25
+msgid "To print one or more blank puzzles:"
+msgstr "Щоб надрукувати одну або декілька головоломок, виконайте такі дії:"
+
+#. (itstool) path: item/p
+#: C/print-blank-puzzles.page:30 C/print-inprogress-game.page:29
+msgid ""
+"Press the menu button in the top-right corner of the window and then select "
+"<gui style=\"menuitem\">Print</gui>."
+msgstr ""
+"Натисніть кнопку меню у верхньому правому куті вікна і виберіть <gui"
+" style=\"menuitem\">Надрукувати</gui>."
+
+#. (itstool) path: item/p
+#: C/print-blank-puzzles.page:31
+msgid "Select <gui style=\"menuitem\">Print Multiple Puzzles…</gui>."
+msgstr ""
+"Виберіть <gui style=\"menuitem\">Друкувати декілька головоломок…</gui>."
+
+#. (itstool) path: item/p
+#: C/print-blank-puzzles.page:32
+msgid "Select the total number of sudokus to print from the drop down menu."
+msgstr ""
+"Виберіть загальну кількість судоку, які слід надрукувати, зі спадного меню."
+
+#. (itstool) path: item/p
+#: C/print-blank-puzzles.page:33
+msgid "Select the difficulty level of the games you would like to print."
+msgstr "Виберіть рівень складності ігор, які ви хочете надрукувати."
+
+#. (itstool) path: item/p
+#: C/print-blank-puzzles.page:34 C/print-inprogress-game.page:38
+msgid "Press <gui>Print</gui>."
+msgstr "Натисніть <gui>Надрукувати</gui>."
+
+#. (itstool) path: page/title
+#: C/print-inprogress-game.page:21
+msgid "Print your game"
+msgstr "Друк вашої гри"
+
+#. (itstool) path: page/p
+#: C/print-inprogress-game.page:22
+msgid "You can print the sudoku are playing to a file or to a printer."
+msgstr "Ви можете надрукувати судоку до файла або на принтері."
+
+#. (itstool) path: page/p
+#: C/print-inprogress-game.page:25
+msgid "To print the sudoku you are currently playing:"
+msgstr "Щоб надрукувати судоку, яке ви розв'язуєте, виконайте такі дії:"
+
+#. (itstool) path: item/p
+#: C/print-inprogress-game.page:32
+msgid "Select <gui style=\"menuitem\">Print Current Puzzle…</gui>."
+msgstr ""
+"Виберіть пункт <gui style=\"menuitem\">Надрукувати поточну головоломку…</gui>."
+
+#. (itstool) path: item/p
+#: C/print-inprogress-game.page:35
+msgid "Select your printer."
+msgstr "Виберіть принтер."
+
+#. (itstool) path: note/p
+#: C/print-inprogress-game.page:42
+msgid ""
+"If you don’t have a printer in the list, see <link href=\"https://help.gnome."
+"org/users/gnome-help/stable/printing-setup.html\" xref=\"help:gnome-help/"
+"printing-setup\">Set up a local printer</link>."
+msgstr ""
+"Якщо у списку немає вашого принтера, ознайомтеся із настановами щодо <link"
+" href=\"https://help.gnome."
+"org/users/gnome-help/stable/printing-setup.html\" xref=\"help:gnome-help/"
+"printing-setup\">налаштовування локального принтера</link>."
+
+#. (itstool) path: page/title
+#: C/rules.page:20
+msgid "Game rules"
+msgstr "Правила гри"
+
+#. (itstool) path: page/p
+#: C/rules.page:21
+msgid ""
+"In order to complete the puzzle, you must fill each cell with a number "
+"between 1 and 9, inclusive, such that no number is repeated in any row, "
+"column or 3×3 box."
+msgstr ""
+"Щоб виграти, вам слід заповнити усі комірки числами від 1 до 9, включно, так,"
+" щоб числа у кожному рядку, стовпчику і блоку 3×3 не повторювалися."
+
+#. (itstool) path: page/p
+#: C/rules.page:23
+msgid ""
+"In a solved sudoku, each row, column, and 3×3 box contains all the numbers 1 "
+"through 9."
+msgstr ""
+"У розв'язаному судоку кожен рядок, стовпчик і блок 3×3 містить усі числа від"
+" 1 до 9."
+
+#. (itstool) path: page/p
+#: C/rules.page:26
+msgid "Each puzzle has only one solution."
+msgstr "У кожної головоломки є лише одне розв'язання."
+
+#. (itstool) path: figure/desc
+#: C/rules.page:30
+msgid "Outline of a row, a column and a 3×3 box using highlighting option."
+msgstr "Позначення рядка, стовпчика і блоку 3×3 за допомогою підсвічування."
+
+#. (itstool) path: page/title
+#: C/save-resume.page:24
+msgid "Save and resume"
+msgstr "Збереження і відновлення гри"
+
+#. (itstool) path: section/title
+#: C/save-resume.page:27
+msgid "Saving your game"
+msgstr "Збереження гри"
+
+#. (itstool) path: section/p
+#: C/save-resume.page:28
+msgid "Your game is saved automatically when you close the application."
+msgstr "Гру буде автоматично збережено, коли ви закриєте вікно програми."
+
+#. (itstool) path: section/title
+#: C/save-resume.page:34
+msgid "Resuming your game"
+msgstr "Відновлення гри"
+
+#. (itstool) path: section/p
+#: C/save-resume.page:35
+msgid "Whenever you start <app>Sudoku</app>, your saved game will be opened."
+msgstr "Після запуску <app>Судоку</app> буде відкрито останню збережену гру."
+
+#. (itstool) path: section/p
+#: C/save-resume.page:38
+msgid ""
+"If you’d like to stop playing that game and begin another, just select "
+"<gui>New Puzzle</gui> and begin your new game."
+msgstr ""
+"Якщо ви хочете припинити розв'язування поточної головоломки і розпочати"
+" розв'язування іншої, просто виберіть пункт <gui>Нова головоломка</gui> і"
+" розпочніть нову гру."
+
+#. (itstool) path: credit/name
+#: C/strategy.page:9
+msgid "Radoslav Asparuhov"
+msgstr "Radoslav Asparuhov"
+
+#. (itstool) path: page/title
+#: C/strategy.page:22
+msgid "Strategy"
+msgstr "Стратегія"
+
+#. (itstool) path: page/p
+#: C/strategy.page:23
+msgid ""
+"There is only one possibility for each cell in a Sudoku puzzle. The "
+"following strategies will help you systematically discover the solution for "
+"every cell."
+msgstr ""
+"Число у кожній з клітинок у судоку визначається однозначно. Нижче наведено"
+" стратегії, які допоможуть вам послідовно заповнити усі клітинки."
+
+#. (itstool) path: section/title
+#: C/strategy.page:26
+msgid "Strategy 1:"
+msgstr "Стратегія 1:"
+
+#. (itstool) path: item/p
+#: C/strategy.page:28
+msgid "Choose the row with the most numbers in it."
+msgstr "Виберіть рядок, у якому найбільше заповнених клітинок."
+
+#. (itstool) path: note/p
+#: C/strategy.page:29
+msgid ""
+"You should choose the row or column with the most numbers. For simplicity, "
+"these instructions are written as if a row had the most numbers in it."
+msgstr ""
+"Вам слід вибрати рядок або стовпчик, у якому найбільше заповнених клітинок."
+" Для простоти, ці настанови записано для рядка, у якому найбільше заповнених"
+" клітинок."
+
+#. (itstool) path: item/p
+#: C/strategy.page:33
+msgid "Determine which numbers in the row are missing."
+msgstr "Визначте, яких чисел у рядку не вистачає."
+
+#. (itstool) path: item/p
+#: C/strategy.page:34
+msgid ""
+"Choose one of the empty cells in this row. Determine which of the missing "
+"numbers are in that column or in that 3×3 box."
+msgstr ""
+"Виберіть одну з порожніх клітинок у цьому рядку. Визначте, яких чисел не"
+" вистачає у відповідному стовпчику або блоці 3×3."
+
+#. (itstool) path: item/p
+#: C/strategy.page:35
+msgid ""
+"Using <link xref=\"earmarks\">earmarks</link>, enter the missing numbers "
+"which are not in that column or 3×3 box. These numbers are candidate "
+"solutions for that cell."
+msgstr ""
+"За допомогою <link xref=\"earmarks\">позначок</link> введіть числа, яких"
+" немає у відповідному стовпчику або блоці 3×3. Це числа-кандидати на вміст"
+" клітинки."
+
+#. (itstool) path: item/p
+#: C/strategy.page:36
+msgid ""
+"Go to the next empty cell of the chosen row and repeat the above method. "
+"Repeat this for every row and column, starting at those with the most "
+"numbers and continuing through to the least. Always look carefully for the "
+"numbers and don’t forget the 3×3 boxes."
+msgstr ""
+"Перейдіть до наступної порожньої клітинки у вибраному рядку і повторіть"
+" описану вище процедуру визначення кандидатів. Повторіть процедуру для"
+" кожного рядка і стовпчика, починаючи з тих, де більше заповнених клітинок, і"
+" продовжуючи тими, де таких клітинок менше. Уважно стежте на числами і не"
+" забувайте про блоки 3×3."
+
+#. (itstool) path: note/p
+#: C/strategy.page:38 C/strategy.page:55
+msgid ""
+"This strategy will help reveal the cells which have only one possible "
+"choice. When revealed, you can fill those cells in with that choice, and "
+"repeat the strategy again until the entire puzzle is solved."
+msgstr ""
+"Ця стратегія допоможе вам заповнити комірки, у яких число-кандидат"
+" визначається однозначно. Однозначні клітинки можна заповнити, а потім"
+" повторити стратегію знову, аж доки головоломку не буде розв'язано."
+
+#. (itstool) path: figure/desc
+#: C/strategy.page:40
+msgid "Example use of strategy 1."
+msgstr "Приклад використання стратегії 1."
+
+#. (itstool) path: section/title
+#: C/strategy.page:47
+msgid "Strategy 2:"
+msgstr "Стратегія 2:"
+
+#. (itstool) path: item/p
+#: C/strategy.page:49
+msgid "Find the number which appears most often."
+msgstr "Знайдіть число, яке трапляється найчастіше."
+
+#. (itstool) path: item/p
+#: C/strategy.page:50
+msgid ""
+"Now look at the left vertical alignment of the 3×3 boxes and locate the "
+"column(s) in which this number appears."
+msgstr ""
+"Тепер вивчіть ліве вертикальне розташування блоків 3×3 і зафіксуйте"
+" стовпчики, у яких трапляється це найпоширеніше число."
+
+#. (itstool) path: item/p
+#: C/strategy.page:51
+msgid ""
+"In this alignment, go to a 3×3 box which does not contain this number in any "
+"of its cells. Using <link xref=\"earmarks\">earmarks</link>, enter this "
+"number in every empty cell of the column in which this number does not "
+"appear. If the number appears in the row of one of these cells, do not enter "
+"it in that cell’s earmarks."
+msgstr ""
+"Серед усіх блоків 3×3 знайдіть той, який не містить цього числа у будь-якій з"
+" клітинок. За допомогою <link xref=\"earmarks\">позначок</link>, введіть це"
+" число до усіх порожніх клітинок стовпчика, у якому немає заповнених клітинок"
+" із цим числом. Якщо число є у рядку одної з цих клітинок, не вводьте його до"
+" позначок клітинки."
+
+#. (itstool) path: item/p
+#: C/strategy.page:52
+msgid "Repeat the last two steps for the center and right vertical alignments."
+msgstr ""
+"Повторіть два останні кроки для центральних і правих частин головоломки."
+
+#. (itstool) path: item/p
+#: C/strategy.page:53
+msgid ""
+"Find the next number which appears most, and repeat until you have done this "
+"for all 9 numbers."
+msgstr ""
+"Знайдіть наступне за найпоширенішим чисел у заповнених клітинках. Повторюйте"
+" процедуру, аж доки її не буде виконано для усіх 9 чисел."
+
+#. (itstool) path: figure/desc
+#: C/strategy.page:57
+msgid "Example use of strategy 2."
+msgstr "Приклад використання стратегії 2."
+
+#. (itstool) path: note/p
+#: C/strategy.page:61
+msgid ""
+"If neither of the above strategies solves the puzzle on its own, you can "
+"alternate strategies. You can also combine the strategies."
+msgstr ""
+"Якщо жодна з цих стратегій не вирішує головоломку самостійно, ви можете"
+" комбінувати ці стратегії."
+
+#. (itstool) path: page/title
+#: C/translate.page:23
+msgid "Help translate"
+msgstr "Допомога у перекладі"
+
+#. (itstool) path: page/p
+#: C/translate.page:24
+msgid ""
+"The <app>GNOME games</app> user interface and documentation is being "
+"translated by a world-wide volunteer community. You are welcome to "
+"participate."
+msgstr ""
+"Перекладом інтерфейсу та документації до <app>Ігор GNOME</app> "
+"переймається спільнота добровольців з усього світу. Ми будемо раді вашій "
+"участі у ній."
+
+#. (itstool) path: page/p
+#: C/translate.page:27
+msgid ""
+"There are <link href=\"https://l10n.gnome.org/module/gnome-sudoku/\">many "
+"languages</link> for which translations are still needed."
+msgstr ""
+"Маємо ще <link href=\"https://l10n.gnome.org/module/gnome-sudoku/\">багато"
+" мов</link>, переклад якими далекий від досконалості."
+
+#. (itstool) path: page/p
+#: C/translate.page:30
+msgid ""
+"To start translating you will need to <link href=\"https://l10n.gnome.org"
+"\">create an account</link> and join the <link href=\"https://l10n.gnome.org/"
+"teams/\">translation team</link> for your language. This will give you the "
+"ability to upload new translations."
+msgstr ""
+"Щоб почати перекладати, вам слід <link href=\"https://l10n.gnome.org"
+"\">створити обліковий запис</link> і долучитися до <link href=\"https://l10n."
+"gnome.org/teams/\">команди перекладачів</link> вашою мовою. Після цього ви "
+"зможете вивантажувати нові переклади."
+
+#. (itstool) path: page/p
+#: C/translate.page:34
+msgid ""
+"You can chat with GNOME translators using <link href=\"https://cbe003.chat."
+"mibbit.com/?url=irc%3A%2F%2Firc.gnome.org%2Fi18n\">IRC</link>. People on the "
+"channel are located worldwide, so you may not get an immediate response as a "
+"result of timezone differences."
+msgstr ""
+"Ви можете спілкуватися із перекладачами GNOME за допомогою <link href="
+"\"https://cbe003.chat.mibbit.com/?url=irc%3A%2F%2Firc.gnome.org%2Fi18n"
+"\">IRC</link>. Учасники каналу живуть у різних кінцях світу, тому, можливо, "
+"відповідь надійде не одразу — це результат того, що люди мешкають у різних "
+"часових поясах."
+
+#. (itstool) path: page/p
+#: C/translate.page:37
+msgid ""
+"Alternatively, you can contact the Internationalization Team using their "
+"<link href=\"https://mail.gnome.org/mailman/listinfo/gnome-i18n\">mailing "
+"list</link>."
+msgstr ""
+"Крім того, ви можете зв'язатися із командою з інтернаціоналізації за "
+"допомогою відповідного <link href=\"https://mail.gnome.org/mailman/listinfo/"
+"gnome-i18n\">списку листування</link>."
