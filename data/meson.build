@@ -46,12 +46,6 @@ install_man('@0@.6'.format(meson.project_name()))
 
 icondir = join_paths(datadir, 'icons', 'hicolor')
 
-foreach icon_size: ['16x16', '22x22', '24x24', '32x32', '48x48']
-  install_data('icons/hicolor/@0@/@1@.png'.format(icon_size, application_id),
-    install_dir: join_paths(icondir, icon_size, 'apps')
-  )
-endforeach
-
 install_data('icons/hicolor/scalable/@0@.svg'.format(application_id),
   install_dir: join_paths(icondir, 'scalable', 'apps')
 )
