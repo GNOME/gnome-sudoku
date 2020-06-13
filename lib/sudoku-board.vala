@@ -270,7 +270,7 @@ public class SudokuBoard : Object
         assert (val > 0);
         assert (val <= max_val);
 
-        /* Cant insert in to a fixed cell, unless you know what you are doing */
+        /* Can't insert in to a fixed cell, unless you know what you are doing */
         if (!is_fixed)
             assert (!this.is_fixed[row, col]);
 
@@ -371,12 +371,12 @@ public class SudokuBoard : Object
 
     public Set<Coord?> get_occurances(Gee.List<Coord?> coords, int val)
     {
-        Set<Coord?> occurances = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
+        Set<Coord?> occurrences = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         foreach (Coord coord in coords)
             if (cells[coord.row, coord.col] == val)
-                occurances.add (coord);
+                occurrences.add (coord);
 
-        return occurances;
+        return occurrences;
     }
 
     public bool row_contains(int row, int val)
@@ -404,9 +404,9 @@ public class SudokuBoard : Object
     /* returns if val is possible in coords */
     private void mark_breakages_for(Gee.List<Coord?> coords, int val)
     {
-        Set<Coord?> occurances = get_occurances(coords, val);
-        if (occurances.size != 1)
-            broken_coords.add_all(occurances);
+        Set<Coord?> occurrences = get_occurances(coords, val);
+        if (occurrences.size != 1)
+            broken_coords.add_all(occurrences);
     }
 
     public void to_initial_state ()
