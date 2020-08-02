@@ -334,7 +334,7 @@ private class SudokuCellView : DrawingArea
     public override bool draw (Cairo.Context c)
     {
         RGBA background_color;
-        if (_selected)
+        if (_selected && is_focus)
             background_color = selected_bg_color;
         else if (is_fixed)
             background_color = fixed_cell_color;
@@ -465,15 +465,21 @@ public class SudokuView : AspectFrame
     private DrawingArea drawing;
     private Grid grid;
 
-    private int selected_row = 0;
-    private int selected_col = 0;
+    private int selected_row = -1;
+    private int selected_col = -1;
     private void set_selected (int cell_row, int cell_col)
     {
-        cells[selected_row, selected_col].selected = false;
-        cells[selected_row, selected_col].queue_draw ();
+        if (selected_row >= 0 && selected_col >= 0)
+        {
+            cells[selected_row, selected_col].selected = false;
+            cells[selected_row, selected_col].queue_draw ();
+        }
         selected_row = cell_row;
         selected_col = cell_col;
-        cells[selected_row, selected_col].selected = true;
+        if (selected_row >= 0 && selected_col >= 0)
+        {
+            cells[selected_row, selected_col].selected = true;
+        }
     }
 
     public SudokuView (SudokuGame game)
@@ -545,13 +551,33 @@ public class SudokuView : AspectFrame
 
                     for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
                     {
-                        for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++) {
+                        for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
+                        {
                             cells[row_tmp, col_tmp].highlighted = _highlighter && (
                                 col_tmp == cell_col ||
                                 row_tmp == cell_row ||
                                 (col_tmp / game.board.block_cols == cell_col / game.board.block_cols &&
                                  row_tmp / game.board.block_rows == cell_row / game.board.block_rows)
                             );
+                        }
+                    }
+
+                    queue_draw ();
+
+                    return false;
+                });
+
+                cell.focus_out_event.connect (() => {
+                    if (game.paused)
+                        return false;
+
+                    this.set_selected (-1, -1);
+
+                    for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
+                    {
+                        for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
+                        {
+                            cells[row_tmp, col_tmp].highlighted = false;
                         }
                     }
 
