@@ -86,7 +86,8 @@ private class SudokuCellView : DrawingArea
     }
 
     public bool selected { get; set; }
-    public bool highlighted { get; set; }
+    public bool highlighted_background { get; set; }
+    public bool highlighted_value { get; set; }
 
     private NumberPicker number_picker;
     private NumberPicker earmark_picker;
@@ -338,7 +339,7 @@ private class SudokuCellView : DrawingArea
             background_color = selected_bg_color;
         else if (is_fixed)
             background_color = fixed_cell_color;
-        else if (_highlighted)
+        else if (_highlighted_background)
             background_color = highlight_color;
         else
             background_color = free_cell_color;
@@ -348,6 +349,8 @@ private class SudokuCellView : DrawingArea
 
         if (_show_warnings && game.board.broken_coords.contains (Coord (row, col)))
             c.set_source_rgb (1.0, 0.0, 0.0);
+        else if (_highlighted_value)
+            c.set_source_rgb (0.2, 0.4, 0.9);
         else if (_selected)
             c.set_source_rgb (0.2, 0.2, 0.2);
         else
@@ -548,17 +551,19 @@ public class SudokuView : AspectFrame
                         return false;
 
                     this.set_selected (cell_row, cell_col);
+                    var cell_value = cell.value;
 
                     for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
                     {
                         for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
                         {
-                            cells[row_tmp, col_tmp].highlighted = _highlighter && (
+                            cells[row_tmp, col_tmp].highlighted_background = _highlighter && (
                                 col_tmp == cell_col ||
                                 row_tmp == cell_row ||
                                 (col_tmp / game.board.block_cols == cell_col / game.board.block_cols &&
                                  row_tmp / game.board.block_rows == cell_row / game.board.block_rows)
                             );
+                            cells[row_tmp, col_tmp].highlighted_value = _highlighter && cell_value == cells[row_tmp, col_tmp].value;
                         }
                     }
 
@@ -577,7 +582,8 @@ public class SudokuView : AspectFrame
                     {
                         for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
                         {
-                            cells[row_tmp, col_tmp].highlighted = false;
+                            cells[row_tmp, col_tmp].highlighted_background = false;
+                            cells[row_tmp, col_tmp].highlighted_value = false;
                         }
                     }
 
