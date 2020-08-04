@@ -551,22 +551,7 @@ public class SudokuView : AspectFrame
                         return false;
 
                     this.set_selected (cell_row, cell_col);
-                    var cell_value = cell.value;
-
-                    for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
-                    {
-                        for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
-                        {
-                            cells[row_tmp, col_tmp].highlighted_background = _highlighter && (
-                                col_tmp == cell_col ||
-                                row_tmp == cell_row ||
-                                (col_tmp / game.board.block_cols == cell_col / game.board.block_cols &&
-                                 row_tmp / game.board.block_rows == cell_row / game.board.block_rows)
-                            );
-                            cells[row_tmp, col_tmp].highlighted_value = _highlighter && cell_value == cells[row_tmp, col_tmp].value;
-                        }
-                    }
-
+                    this.update_highlights ();
                     queue_draw ();
 
                     return false;
@@ -577,16 +562,7 @@ public class SudokuView : AspectFrame
                         return false;
 
                     this.set_selected (-1, -1);
-
-                    for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
-                    {
-                        for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
-                        {
-                            cells[row_tmp, col_tmp].highlighted_background = false;
-                            cells[row_tmp, col_tmp].highlighted_value = false;
-                        }
-                    }
-
+                    this.update_highlights ();
                     queue_draw ();
 
                     return false;
@@ -596,6 +572,7 @@ public class SudokuView : AspectFrame
                     if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken_state)
                         previous_board_broken_state = game.board.broken;
 
+                    this.update_highlights ();
                     // Redraw the board
                     this.queue_draw ();
                 });
@@ -611,6 +588,30 @@ public class SudokuView : AspectFrame
         grid.show_all ();
         overlay.show ();
         drawing.hide ();
+    }
+
+    private void update_highlights ()
+    {
+        var has_selection = selected_row >= 0 && selected_col >= 0;
+        var cell_value = -1;
+        if (has_selection)
+            cell_value = cells[selected_row, selected_col].value;
+
+        for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
+        {
+            for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
+            {
+                cells[row_tmp, col_tmp].highlighted_background = has_selection && _highlighter && (
+                    col_tmp == selected_col ||
+                    row_tmp == selected_row ||
+                    (col_tmp / game.board.block_cols == selected_col / game.board.block_cols &&
+                     row_tmp / game.board.block_rows == selected_row / game.board.block_rows)
+                );
+                cells[row_tmp, col_tmp].highlighted_value = has_selection &&
+                    _highlighter &&
+                    cell_value == cells[row_tmp, col_tmp].value;
+            }
+        }
     }
 
     private bool draw_board (Cairo.Context c)
