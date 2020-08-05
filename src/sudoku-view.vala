@@ -202,7 +202,7 @@ private class SudokuCellView : Widget
         number_picker.set_clear_button_visibility (value != 0);
 
         popover = new Popover ();
-        popover.add (number_picker);
+        popover.set_child (number_picker);
         popover.set_autohide (false);
         popover.position = PositionType.BOTTOM;
         popover.set_parent (this);
@@ -226,7 +226,7 @@ private class SudokuCellView : Widget
         create_earmark_picker ();
 
         earmark_popover = new Popover ();
-        earmark_popover.add (earmark_picker);
+        earmark_popover.set_child (earmark_picker);
         earmark_popover.set_autohide (false);
         earmark_popover.position = PositionType.BOTTOM;
         earmark_popover.set_parent (this);
@@ -538,14 +538,18 @@ public class SudokuView : Widget
         frame.insert_after (this, /* insert first */ null);
 
         overlay = new Overlay ();
-        frame.add (overlay);
+        frame.set_child (overlay);
 
         drawing = new DrawingArea ();
         drawing.visible = false;
         drawing.set_draw_func (draw_board);
 
         if (grid != null)
-            overlay.remove (grid);
+        {
+            grid.unparent ();
+            grid.destroy ();
+            overlay.set_child (null);
+        }
 
         this.game = game;
         this.game.paused_changed.connect(() => {
@@ -629,7 +633,7 @@ public class SudokuView : Widget
         }
 
         overlay.add_overlay (drawing);
-        overlay.add (grid);
+        overlay.set_child (grid);
     }
 
     private void update_highlights ()

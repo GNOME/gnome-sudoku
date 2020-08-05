@@ -53,7 +53,7 @@ private class NumberPicker : Grid
                 label.margin_end    = earmark ? 16 : 8;
                 label.margin_top    = earmark ?  0 : 4;
                 label.margin_bottom = earmark ?  8 : 4;
-                button.add (label);
+                button.set_child (label);
 
                 if (!earmark)
                     button.clicked.connect (() => {
@@ -81,7 +81,7 @@ private class NumberPicker : Grid
 
             var label = new Label ("<big>%s</big>".printf (_("Clear")));
             label.use_markup = true;
-            clear_button.add (label);
+            clear_button.set_child (label);
 
             clear_button.clicked.connect (() => {
                 number_picked (0);

@@ -60,7 +60,7 @@ public class PrintDialog : Dialog
 
         spinner = new Spinner ();
         revealer = new Revealer ();
-        revealer.add (spinner);
+        revealer.set_child (spinner);
         revealer.valign = Align.CENTER;
         ((HeaderBar) get_header_bar ()).pack_end (revealer);
 
