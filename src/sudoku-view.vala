@@ -366,7 +366,7 @@ private class SudokuCellView : Widget
     private inline void draw (DrawingArea _this, Cairo.Context c, int new_width, int new_height)
     {
         RGBA background_color;
-        if (_selected && is_focus)
+        if (_selected && focus_controller.is_focus)
             background_color = selected_bg_color;
         else if (is_fixed)
             background_color = fixed_cell_color;
@@ -604,13 +604,11 @@ public class SudokuView : Widget
                     this.set_selected (cell_row, cell_col);
                     this.update_highlights ();
                     queue_draw ();
-
-                    return false;
                 });
 
-                cell.focus_out_event.connect (() => {
+                cell.focus_controller.leave.connect (() => {
                     if (game.paused)
-                        return false;
+                        return;
 
                     this.set_selected (-1, -1);
                     this.update_highlights ();
