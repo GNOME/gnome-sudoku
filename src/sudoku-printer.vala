@@ -44,7 +44,7 @@ public class SudokuPrinter : GLib.Object {
             new MessageDialog (window, DialogFlags.MODAL,
                                MessageType.ERROR, ButtonsType.CLOSE,
                                /* Error message if printing fails */
-                               "%s\n%s".printf (_("Error printing file:"), e.message)).run ();
+                               "%s\n%s".printf (_("Error printing file:"), e.message)).present ();
         }
 
         return PrintOperationResult.ERROR;
