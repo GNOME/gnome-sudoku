@@ -180,73 +180,53 @@
                 <property name="width-request">350</property>
                 <property name="height-request">350</property>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkFrame">
                     <property name="visible">True</property>
-                    <property name="use-underline">True</property>
-                    <property name="label" translatable="yes">_Easy</property>
-                    <property name="action-name">app.start-game</property>
-                    <property name="action-target">1</property>  <!-- 1 corresponds to enum DifficultyCategory.EASY -->
+                    <property name="shadow-type">GTK_SHADOW_IN</property>
+                    <child>
+                      <object class="SudokuMainMenu">
+                        <child>
+                          <object class="SudokuMainMenuItem">
+                            <property name="label" translatable="yes">_Easy</property>
+                            <property name="action-name">app.start-game</property>
+                            <property name="action-target">1</property>  <!-- 1 corresponds to enum DifficultyCategory.EASY -->
+                          </object>
+                        </child>
+                        <child>
+                          <object class="SudokuMainMenuItem">
+                            <property name="label" translatable="yes">_Medium</property>
+                            <property name="action-name">app.start-game</property>
+                            <property name="action-target">2</property>  <!-- 2 corresponds to enum DifficultyCategory.MEDIUM -->
+                          </object>
+                        </child>
+                        <child>
+                          <object class="SudokuMainMenuItem">
+                            <property name="label" translatable="yes">_Hard</property>
+                            <property name="action-name">app.start-game</property>
+                            <property name="action-target">3</property>  <!-- 3 corresponds to enum DifficultyCategory.HARD -->
+                          </object>
+                        </child>
+                        <child>
+                          <object class="SudokuMainMenuItem">
+                            <property name="label" translatable="yes">_Very Hard</property>
+                            <property name="action-name">app.start-game</property>
+                            <property name="action-target">4</property>  <!-- 4 corresponds to enum DifficultyCategory.VERY_HARD -->
+                          </object>
+                        </child>
+                        <child>
+                          <object class="SudokuMainMenuItem">
+                            <property name="label" translatable="yes">_Create your own puzzle</property>
+                            <property name="action-name">app.create-game</property>
+                            <property name="has-separator">True</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton">
-                    <property name="visible">True</property>
-                    <property name="use-underline">True</property>
-                    <property name="label" translatable="yes">_Medium</property>
-                    <property name="action-name">app.start-game</property>
-                    <property name="action-target">2</property>  <!-- 2 corresponds to enum DifficultyCategory.MEDIUM -->
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton">
-                    <property name="visible">True</property>
-                    <property name="use-underline">True</property>
-                    <property name="label" translatable="yes">_Hard</property>
-                    <property name="action-name">app.start-game</property>
-                    <property name="action-target">3</property>  <!-- 3 corresponds to enum DifficultyCategory.HARD -->
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton">
-                    <property name="visible">True</property>
-                    <property name="use-underline">True</property>
-                    <property name="label" translatable="yes">_Very Hard</property>
-                    <property name="action-name">app.start-game</property>
-                    <property name="action-target">4</property>  <!-- 4 corresponds to enum DifficultyCategory.VERY_HARD -->
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton">
-                    <property name="visible">True</property>
-                    <property name="use-underline">True</property>
-                    <property name="margin-top">30</property>
-                    <property name="label" translatable="yes">_Create your own puzzle</property>
-                    <property name="action-name">app.create-game</property>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">5</property>
                   </packing>
                 </child>
               </object> <!-- End of start_box -->

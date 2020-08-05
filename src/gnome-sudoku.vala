@@ -101,6 +101,9 @@ public class Sudoku : Gtk.Application
 
         Object (application_id: "org.gnome.Sudoku", flags: ApplicationFlags.FLAGS_NONE);
         add_main_option_entries (option_entries);
+
+        typeof (SudokuMainMenu).ensure ();
+        typeof (SudokuMainMenuItem).ensure ();
     }
 
     protected override int handle_local_options (GLib.VariantDict options)
