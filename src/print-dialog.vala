@@ -30,6 +30,7 @@ public class PrintDialog : Dialog
     [GtkChild] private Button print_button;
     [GtkChild] private Grid print_grid;
     [GtkChild] private SpinButton n_sudokus_button;
+    [GtkChild] private SpinButton n_sudokus_per_page_button;
     [GtkChild] private RadioButton easy_radio_button;
     [GtkChild] private RadioButton medium_radio_button;
     [GtkChild] private RadioButton hard_radio_button;
@@ -75,6 +76,7 @@ public class PrintDialog : Dialog
             assert_not_reached ();
 
         wrap_adjustment ("print-multiple-sudokus-to-print", n_sudokus_button.get_adjustment ());
+        wrap_adjustment ("print-multiple-sudokus-to-print-per-page", n_sudokus_per_page_button.get_adjustment ());
     }
 
     private void wrap_adjustment (string key_name, Adjustment action)
@@ -101,6 +103,7 @@ public class PrintDialog : Dialog
         }
 
         var nsudokus = (int) n_sudokus_button.get_adjustment ().get_value ();
+        var nsudokus_per_page = (int) n_sudokus_per_page_button.get_adjustment ().get_value ();
         DifficultyCategory level;
 
         if (easy_radio_button.get_active ())
@@ -130,7 +133,7 @@ public class PrintDialog : Dialog
                 spinner.stop ();
                 revealer.hide ();
 
-                var printer = new SudokuPrinter (boards, this);
+                var printer = new SudokuPrinter (boards, nsudokus_per_page, this);
                 if (printer.print_sudoku () == PrintOperationResult.APPLY)
                 {
                     foreach (SudokuBoard board in boards)

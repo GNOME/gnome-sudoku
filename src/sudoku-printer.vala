@@ -28,7 +28,7 @@ public class SudokuPrinter : GLib.Object {
 
     private int margin;
     private int n_sudokus;
-    private const int SUDOKUS_PER_PAGE = 2;
+    private int sudokus_per_page;
 
     private PrintOperation print_op;
 
@@ -50,12 +50,13 @@ public class SudokuPrinter : GLib.Object {
         return PrintOperationResult.ERROR;
     }
 
-    public SudokuPrinter (Gee.List<SudokuBoard> boards, Window window)
+    public SudokuPrinter (Gee.List<SudokuBoard> boards, int sudokus_per_page, Window window)
     {
         this.boards = boards;
         this.window = window;
         this.margin = 25;
         this.n_sudokus = boards.size;
+        this.sudokus_per_page = sudokus_per_page;
 
         this.print_op = new PrintOperation ();
         print_op.begin_print.connect (begin_print_cb);
@@ -64,8 +65,8 @@ public class SudokuPrinter : GLib.Object {
 
     private void begin_print_cb (PrintOperation operation, PrintContext context)
     {
-        int pages = n_sudokus / SUDOKUS_PER_PAGE;
-        while (pages * SUDOKUS_PER_PAGE < n_sudokus)
+        int pages = n_sudokus / sudokus_per_page;
+        while (pages * sudokus_per_page < n_sudokus)
             pages += 1;
 
         operation.set_n_pages (pages);
@@ -77,49 +78,69 @@ public class SudokuPrinter : GLib.Object {
         var width = context.get_width ();
         var height = context.get_height ();
 
-        var best_square_size = fit_squares_in_rectangle (width, height, margin);
+        set_label_font (cr);
+        Cairo.TextExtents label_extents;
+        cr.text_extents ("Ww", out label_extents);
 
-        var start = page_nr * SUDOKUS_PER_PAGE;
-        var end = int.min ((start + SUDOKUS_PER_PAGE), boards.size);
+        uint n_across, n_down;
+        var best_square_size = fit_squares_in_rectangle (width, height, label_extents.height, margin, out n_across, out n_down);
+        double margin_x = (width - best_square_size * n_across) / (n_across + 1);
+        double margin_y = (height - best_square_size * n_down) / (n_down + 1);
+
+        var start = page_nr * sudokus_per_page;
+        var end = int.min ((start + sudokus_per_page), boards.size);
         Gee.List<SudokuBoard> sudokus_on_page = boards.slice (start, end);
 
-        double left = (width - best_square_size) / 2;
-        double top = margin;
+        uint index = 0;
 
         foreach (SudokuBoard sudoku in sudokus_on_page)
         {
+            double left = margin_x + (index % n_across) * (best_square_size + margin_x);
+            double top = margin_y + label_extents.height + (index / n_across) * (best_square_size + margin_y + label_extents.height);
+
             var label = sudoku.difficulty_category.to_string ();
-            cr.set_font_size (12);
-            cr.select_font_face ("Sans", Cairo.FontSlant.NORMAL, Cairo.FontWeight.BOLD);
+            set_label_font (cr);
             cr.set_source_rgb (0, 0, 0);
             Cairo.TextExtents extents;
             cr.text_extents (label, out extents);
-            cr.move_to ((width - extents.width) / 2, top - extents.height / 2);
+            cr.move_to (left + (best_square_size - extents.width) / 2, top - extents.height / 2);
             cr.show_text (label);
 
             draw_sudoku (cr, sudoku, best_square_size, left, top);
 
-            top += best_square_size + (2 * margin);
+            index += 1;
         }
     }
 
-    private double fit_squares_in_rectangle (double width, double height, int margin)
+    private void set_label_font (Cairo.Context cr)
     {
-        var n = SUDOKUS_PER_PAGE;
+        cr.set_font_size (12);
+        cr.select_font_face ("Sans", Cairo.FontSlant.NORMAL, Cairo.FontWeight.BOLD);
+    }
+
+    private double fit_squares_in_rectangle (double width, double height, double label_height, int margin, out uint across, out uint down)
+    {
+        var n = sudokus_per_page;
         var best_square_size = 0.0;
         var square_size = 0.0;
+        across = 1;
+        down = n;
 
         for (var n_across = 1; n_across <= n; n_across++)
         {
-            double n_down = n / n_across;
+            int n_down = (n + n_across - 1) / n_across;
             double across_size = width - ((n_across + 1) * margin);
             across_size = across_size / n_across;
-            double down_size = height - ((n_down + 1) * margin);
+            double down_size = height - ((n_down + 1) * margin) - n_down * label_height;
             down_size = down_size / n_down;
 
             square_size = double.min (across_size, down_size);
             if (square_size > best_square_size)
+            {
                 best_square_size = square_size;
+                across = n_across;
+                down = n_down;
+            }
         }
 
         return best_square_size;

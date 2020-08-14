@@ -576,7 +576,7 @@ public class Sudoku : Gtk.Application
 
         var list = new Gee.ArrayList<SudokuBoard> ();
         list.add (game.board.clone ());
-        var printer = new SudokuPrinter (list, window);
+        var printer = new SudokuPrinter (list, 1, window);
         printer.print_sudoku ();
 
         print_action.set_enabled (true);
