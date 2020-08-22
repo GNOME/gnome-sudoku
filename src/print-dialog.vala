@@ -75,14 +75,29 @@ public class PrintDialog : Dialog
         else
             assert_not_reached ();
 
-        wrap_adjustment ("print-multiple-sudokus-to-print", n_sudokus_button.get_adjustment ());
-        wrap_adjustment ("print-multiple-sudokus-to-print-per-page", n_sudokus_per_page_button.get_adjustment ());
-    }
+        var initial_total_value = settings.get_int ("print-multiple-sudokus-to-print");
+        var initial_per_page_value = settings.get_int ("print-multiple-sudokus-to-print-per-page");
 
-    private void wrap_adjustment (string key_name, Adjustment action)
-    {
-        action.set_value (settings.get_int (key_name));
-        action.value_changed.connect (() => settings.set_int (key_name, (int) action.get_value ()));
+        var total = n_sudokus_button.get_adjustment ();
+        var per_page = n_sudokus_per_page_button.get_adjustment ();
+
+        total.set_value (initial_total_value);
+        per_page.set_value (int.min (initial_total_value, initial_per_page_value));
+        per_page.set_upper (initial_total_value);
+
+        total.value_changed.connect (() => {
+            var total_value = (int) total.get_value ();
+            settings.set_int ("print-multiple-sudokus-to-print", total_value);
+
+            var per_page_value = (int) per_page.get_value ();
+            per_page_value = int.min (per_page_value, total_value);
+            per_page.set_upper (total_value);
+            per_page.set_value (per_page_value);
+        });
+        per_page.value_changed.connect (() => {
+            var per_page_value = (int) per_page.get_value ();
+            settings.set_int ("print-multiple-sudokus-to-print-per-page", per_page_value);
+        });
     }
 
     public bool start_spinner_cb ()
