@@ -1,5 +1,5 @@
 # gnome-games ja.po.
-# Copyright (C) 1998-2013, 2020 Free Software Foundation, Inc.
+# Copyright (C) 1998-2010, 2012-2013, 2019-2020 Free Software Foundation, Inc.
 # Yukihiro Nakai <Nakai@technologist.com>, 1998.
 # Akira Higuchi <a-higuti@math.sci.hokudai.ac.jp>, 1999.
 # Yuusuke Tahara <tahara@gnome.gr.jp>, 2000.
@@ -9,14 +9,14 @@
 # Satoru SATOH <ss@gnome.gr.jp>, 2006.
 # Shushi KUROSE <md81bird@hitaki.net>, 2012.
 # Jiro Matsuzawa <jmatsuzawa@gnome.org>, 2013.
-# sicklylife <translation@sicklylife.jp>, 2019.
+# sicklylife <translation@sicklylife.jp>, 2019-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games gnome-2-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
 "POT-Creation-Date: 2020-08-17 14:35+0000\n"
-"PO-Revision-Date: 2020-01-31 00:00+0900\n"
+"PO-Revision-Date: 2020-08-23 00:16+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -56,7 +56,7 @@ msgstr "複数のパズルを印刷(_M)…"
 
 #: data/gnome-sudoku.ui:142
 msgid "High_lighter"
-msgstr ""
+msgstr "強調表示(_L)"
 
 #: data/gnome-sudoku.ui:146
 msgid "_Warnings"
@@ -161,47 +161,51 @@ msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
-msgstr ""
+msgstr "印刷する数独の難易度レベル"
 
 #: data/org.gnome.Sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
+"印刷したい数独の難易度レベルを設定します。設定可能な値: \"easy\", "
+"\"medium\", \"hard\", \"very_hard\""
 
 #: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
-msgstr ""
+msgstr "印刷する数独の数"
 
 #: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
-msgstr ""
+msgstr "印刷したい数独の数を設定します"
 
 #: data/org.gnome.Sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
-msgstr ""
+msgstr "埋められないマス目と数字の重複について警告する"
 
 #: data/org.gnome.Sudoku.gschema.xml:23
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
 msgstr ""
+"数字を埋めることができないマス目に大きな赤い X を表示し、重複している数"
+"字は赤くします"
 
 #: data/org.gnome.Sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
-msgstr ""
+msgstr "行、列、および選択したマス目があるブロックを強調します"
 
 #: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Width of the window in pixels"
-msgstr ""
+msgstr "ウィンドウの幅 (ピクセル単位)"
 
 #: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Height of the window in pixels"
-msgstr ""
+msgstr "ウィンドウの高さ (ピクセル単位)"
 
 #: data/org.gnome.Sudoku.gschema.xml:39
 msgid "true if the window is maximized"
-msgstr ""
+msgstr "ウィンドウが最小化されている場合は true"
 
 #: data/print-dialog.ui:12
 msgid "Print Multiple Puzzles"
@@ -251,7 +255,7 @@ msgstr "リリースバージョンを表示する"
 #. Help string for command line --show-possible flag
 #: src/gnome-sudoku.vala:90
 msgid "Show the possible values for each cell"
-msgstr ""
+msgstr "各マス目に入力可能な数字を表示する"
 
 #. Error dialog shown when starting a custom game that is not valid.
 #: src/gnome-sudoku.vala:295
@@ -277,7 +281,7 @@ msgstr "戻る(_B)"
 
 #: src/gnome-sudoku.vala:307
 msgid "Play _Anyway"
-msgstr "とにかくプレイ(_A)"
+msgstr "とにかくプレイする(_A)"
 
 #: src/gnome-sudoku.vala:349
 msgid "_Resume"
@@ -356,12 +360,6 @@ msgstr "一時停止"
 #~ "game;board;tiles;japanese;ゲーム;ボード;タイル;日本;logic;ロジック;論理;"
 #~ "puzzle;パズル;sudoku;ナンバープレース;ナンプレ;"
 
-#~ msgid "Print Sudokus"
-#~ msgstr "数独の印刷"
-
-#~ msgid "Print Games"
-#~ msgstr "ゲームを印刷する"
-
 #~ msgid "_Sudokus per page: "
 #~ msgstr "ページあたりの数(_S): "
 
@@ -372,31 +370,19 @@ msgstr "一時停止"
 #~ msgstr "詳細"
 
 #~ msgid "_Mark games as played once you've printed them."
-#~ msgstr "既にプレイした旨も印刷する(_M)"
+#~ msgstr "すでにプレイした旨も印刷する(_M)"
 
 #~ msgid "_Include games you've already played in list of games to print"
-#~ msgstr "既にプレイしたゲームも印刷一覧に含める(_I)"
+#~ msgstr "すでにプレイしたゲームも印刷一覧に含める(_I)"
 
 #~ msgid "_Saved Games"
 #~ msgstr "保存したゲーム(_S)"
 
-#~ msgid "Add a new tracker"
-#~ msgstr "新しいトラッカーの追加"
-
-#~ msgid "Remove the selected tracker"
-#~ msgstr "選択されたトラッカーを削除"
-
 #~ msgid "Make the tracked changes permanent"
 #~ msgstr "トラッカーの変更点を固定する"
 
-#~ msgid "H_ide"
-#~ msgstr "隠す(_I)"
-
 #~ msgid "Hide the tracked values"
 #~ msgstr "トラッカーの値を隠す"
-
-#~ msgid "GNOME Games web site"
-#~ msgstr "GNOME ゲーム集のウェブサイト"
 
 #~ msgid "Easy"
 #~ msgstr "初級"
@@ -417,18 +403,6 @@ msgstr "一時停止"
 #~ msgid "Last played %(n)s minute ago"
 #~ msgid_plural "Last played %(n)s minutes ago"
 #~ msgstr[0] "最後にプレイしたのは %(n)s 分前"
-
-#~ msgid "Last played at %I:%M %p"
-#~ msgstr "最後にプレイしたのは%p%I:%M "
-
-#~ msgid "Last played yesterday at %I:%M %p"
-#~ msgstr "最後にプレイしたのは昨日の%p%I:%M "
-
-#~ msgid "Last played on %A at %I:%M %p"
-#~ msgstr "最後にプレイしたのは%Aの%p%I:%M "
-
-#~ msgid "Last played on %B %e %Y"
-#~ msgstr "最後にプレイしたのは%Y年%B%-e日"
 
 #~ msgid "Easy puzzle"
 #~ msgstr "初級パズル"
@@ -454,12 +428,6 @@ msgstr "一時停止"
 #~ msgid "Don't ask me this again."
 #~ msgstr "次回から表示しない"
 
-#~ msgid "_Game"
-#~ msgstr "ゲーム(_G)"
-
-#~ msgid "New game"
-#~ msgstr "新しいゲームを始めます"
-
 #~ msgid "_Undo"
 #~ msgstr "元に戻す(_U)"
 
@@ -469,23 +437,8 @@ msgstr "一時停止"
 #~ msgid "Puzzle _Statistics..."
 #~ msgstr "パズルの情報(_S)..."
 
-#~ msgid "_Settings"
-#~ msgstr "設定(_S)"
-
-#~ msgid "_Tools"
-#~ msgstr "ツール(_T)"
-
-#~ msgid "_Hint"
-#~ msgstr "ヒント(_H)"
-
 #~ msgid "Show a square that is easy to fill."
 #~ msgstr "簡単に埋められるブロックを表示します。"
-
-#~ msgid "Clear _Top Notes"
-#~ msgstr "上のメモのクリア(_T)"
-
-#~ msgid "Clear _Bottom Notes"
-#~ msgstr "下のメモのクリア(_B)"
 
 #~ msgid "_Contents"
 #~ msgstr "目次(_C)"
@@ -499,36 +452,12 @@ msgstr "一時停止"
 #~ msgid "Warn about squares made unfillable by a move"
 #~ msgstr "未だ埋められていないブロックについて警告します"
 
-#~ msgid "_Track Additions"
-#~ msgstr "トラッカーの追加(_T)"
-
 #~ msgid ""
 #~ "Mark new additions in a separate color so you can keep track of them."
 #~ msgstr "別の色の新しいトラッカーを追加して数値の動きを監視します"
 
-#~ msgid "Show _Toolbar"
-#~ msgstr "ツールバーを表示する(_T)"
-
 #~ msgid "Highlight the current row, column and box"
 #~ msgstr "現在のタテ列やヨコ列、そしてブロックを強調表示します"
-
-#~ msgid "%d minute"
-#~ msgid_plural "%d minutes"
-#~ msgstr[0] "%d 分"
-
-#~ msgid "%d second"
-#~ msgid_plural "%d seconds"
-#~ msgstr[0] "%d 秒"
-
-#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
-#~ msgstr "あなたは %(minute)s %(second)sでパズルを解きました。"
-
-#~ msgid "%d hour"
-#~ msgid_plural "%d hours"
-#~ msgstr[0] "%d 時間"
-
-#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-#~ msgstr "あなたは %(hour)s %(minute)s %(second)sでパズルを解きました。"
 
 #~ msgid "You got %(n)s hint."
 #~ msgid_plural "You got %(n)s hints."
@@ -563,56 +492,11 @@ msgstr "一時停止"
 #~ msgstr "そのまま埋め込みが可能な移動数: "
 
 #~ msgid "Amount of trial-and-error required to solve: "
-#~ msgstr "トライ&エラーが必要な数: "
+#~ msgstr "トライ & エラーが必要な数: "
 
 # 原文では Statistics だが、実際は成績ではなく生成されたパズルのパラメータを表示しているため。
 #~ msgid "Puzzle Statistics"
 #~ msgstr "パズルの情報"
-
-#~ msgid "Unable to display help: %s"
-#~ msgstr "ヘルプを表示できません: %s"
-
-#~ msgid "Untracked"
-#~ msgstr "トラックしていません"
-
-#~ msgid "_Remove"
-#~ msgstr "削除(_R)"
-
-#~ msgid "Delete selected tracker."
-#~ msgstr "選択されたトラッカーを削除します。"
-
-#~ msgid "Hide current tracker entries."
-#~ msgstr "現在のトラッカーのエントリーを隠します。"
-
-#~ msgid "A_pply"
-#~ msgstr "適用(_P)"
-
-#~ msgid "Apply all tracked values and remove the tracker."
-#~ msgstr "すべてのトラッカーの値を適用してトラッカーを削除します。"
-
-#~ msgid "Tracker %s"
-#~ msgstr "トラッカー %s"
-
-#~ msgid "No Space"
-#~ msgstr "空き容量なし"
-
-#~ msgid "No space left on disk"
-#~ msgstr "ディスクに空き容量がありません"
-
-#~ msgid "Unable to create data folder %(path)s."
-#~ msgstr "データフォルダー %(path)s を作成できませんでした。"
-
-#~ msgid "There is no disk space left!"
-#~ msgstr "ディスクに空き容量がありません!"
-
-#~ msgid "Error %(errno)s: %(error)s"
-#~ msgstr "エラー %(errno)s: %(error)s"
-
-#~ msgid "Unable to save game."
-#~ msgstr "ゲームを保存できません"
-
-#~ msgid "Unable to save file %(filename)s."
-#~ msgstr "%(filename)s というファイルを保存できません。"
 
 #~ msgid "Unable to mark game as finished."
 #~ msgstr "GNOME 数独の終了処理を完了できません。"
