@@ -387,7 +387,6 @@ private class SudokuCellView : DrawingArea
         {
             double possibility_size = get_allocated_height () / size_ratio / 2;
             c.set_font_size (possibility_size);
-            c.set_source_rgb (0.0, 0.0, 0.0);
 
             double height = (double) get_allocated_height () / game.board.block_rows;
             double width = (double) get_allocated_width () / game.board.block_cols;
@@ -401,6 +400,11 @@ private class SudokuCellView : DrawingArea
 
                     if (marks[num - 1])
                     {
+                        if (_show_warnings && !game.board.is_possible (row, col, num))
+                            c.set_source_rgb (1.0, 0.0, 0.0);
+                        else
+                            c.set_source_rgb (0.0, 0.0, 0.0);
+
                         var text = "%d".printf (num);
 
                         c.save ();
