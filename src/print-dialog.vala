@@ -42,6 +42,7 @@ public class PrintDialog : Dialog
     private Cancellable cancellable;
 
     private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
+    private const int MAX_PUZZLES_PER_PAGE = 15;
 
     public PrintDialog (SudokuSaver saver, Window window)
     {
@@ -82,16 +83,18 @@ public class PrintDialog : Dialog
         var per_page = n_sudokus_per_page_button.get_adjustment ();
 
         total.set_value (initial_total_value);
-        per_page.set_value (int.min (initial_total_value, initial_per_page_value));
-        per_page.set_upper (initial_total_value);
+        var initial_max_per_page = int.min (MAX_PUZZLES_PER_PAGE, initial_total_value);
+        per_page.set_value (int.min (initial_max_per_page, initial_per_page_value));
+        per_page.set_upper (initial_max_per_page);
 
         total.value_changed.connect (() => {
             var total_value = (int) total.get_value ();
             settings.set_int ("print-multiple-sudokus-to-print", total_value);
 
+            var max_per_page = int.min (MAX_PUZZLES_PER_PAGE, total_value);
             var per_page_value = (int) per_page.get_value ();
-            per_page_value = int.min (per_page_value, total_value);
-            per_page.set_upper (total_value);
+            per_page_value = int.min (per_page_value, max_per_page);
+            per_page.set_upper (max_per_page);
             per_page.set_value (per_page_value);
         });
         per_page.value_changed.connect (() => {
