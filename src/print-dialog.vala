@@ -31,10 +31,10 @@ public class PrintDialog : Dialog
     [GtkChild] private Grid print_grid;
     [GtkChild] private SpinButton n_sudokus_button;
     [GtkChild] private SpinButton n_sudokus_per_page_button;
-    [GtkChild] private RadioButton easy_radio_button;
-    [GtkChild] private RadioButton medium_radio_button;
-    [GtkChild] private RadioButton hard_radio_button;
-    [GtkChild] private RadioButton very_hard_radio_button;
+    [GtkChild] private CheckButton easy_radio_button;
+    [GtkChild] private CheckButton medium_radio_button;
+    [GtkChild] private CheckButton hard_radio_button;
+    [GtkChild] private CheckButton very_hard_radio_button;
 
     private Revealer revealer;
     private Spinner spinner;
