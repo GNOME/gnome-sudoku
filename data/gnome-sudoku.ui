@@ -183,40 +183,76 @@
                     <property name="visible">True</property>
                     <property name="shadow-type">GTK_SHADOW_IN</property>
                     <child>
-                      <object class="SudokuMainMenu">
+                      <object class="GtkListBox">
+                        <property name="show-separators">True</property>
+                        <property name="can-focus">False</property>
                         <child>
-                          <object class="SudokuMainMenuItem">
-                            <property name="label" translatable="yes">_Easy</property>
+                          <object class="GtkListBoxRow">
                             <property name="action-name">app.start-game</property>
                             <property name="action-target">1</property>  <!-- 1 corresponds to enum DifficultyCategory.EASY -->
+                            <property name="height-request">80</property>
+                            <property name="can-focus">True</property>
+                            <property name="child">
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">_Easy</property>
+                                <property name="use-underline">True</property>
+                              </object>
+                            </property>
                           </object>
                         </child>
                         <child>
-                          <object class="SudokuMainMenuItem">
-                            <property name="label" translatable="yes">_Medium</property>
+                          <object class="GtkListBoxRow">
                             <property name="action-name">app.start-game</property>
                             <property name="action-target">2</property>  <!-- 2 corresponds to enum DifficultyCategory.MEDIUM -->
+                            <property name="height-request">80</property>
+                            <property name="can-focus">True</property>
+                            <property name="child">
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">_Medium</property>
+                                <property name="use-underline">True</property>
+                              </object>
+                            </property>
                           </object>
                         </child>
                         <child>
-                          <object class="SudokuMainMenuItem">
-                            <property name="label" translatable="yes">_Hard</property>
+                          <object class="GtkListBoxRow">
                             <property name="action-name">app.start-game</property>
                             <property name="action-target">3</property>  <!-- 3 corresponds to enum DifficultyCategory.HARD -->
+                            <property name="height-request">80</property>
+                            <property name="can-focus">True</property>
+                            <property name="child">
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">_Hard</property>
+                                <property name="use-underline">True</property>
+                              </object>
+                            </property>
                           </object>
                         </child>
                         <child>
-                          <object class="SudokuMainMenuItem">
-                            <property name="label" translatable="yes">_Very Hard</property>
+                          <object class="GtkListBoxRow">
                             <property name="action-name">app.start-game</property>
                             <property name="action-target">4</property>  <!-- 4 corresponds to enum DifficultyCategory.VERY_HARD -->
+                            <property name="height-request">80</property>
+                            <property name="can-focus">True</property>
+                            <property name="child">
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">_Very Hard</property>
+                                <property name="use-underline">True</property>
+                              </object>
+                            </property>
                           </object>
                         </child>
                         <child>
-                          <object class="SudokuMainMenuItem">
-                            <property name="label" translatable="yes">_Create your own puzzle</property>
+                          <object class="GtkListBoxRow">
                             <property name="action-name">app.create-game</property>
-                            <property name="has-separator">True</property>
+                            <property name="height-request">80</property>
+                            <property name="can-focus">True</property>
+                            <property name="child">
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">_Create your own puzzle</property>
+                                <property name="use-underline">True</property>
+                              </object>
+                            </property>
                           </object>
                         </child>
                       </object>

@@ -6,7 +6,6 @@ gnome_sudoku_vala_args = [
 gnome_sudoku_sources = [
   'config.vapi',
   'gnome-sudoku.vala',
-  'main-menu.vala',
   'number-picker.vala',
   'print-dialog.vala',
   'sudoku-printer.vala',
