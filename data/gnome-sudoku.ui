@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.10 -->
+  <requires lib="gtk+" version="3.99"/>
   <object class="GtkHeaderBar" id="headerbar">
-    <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="show-close-button">True</property>
-    <child>
+    <property name="show-title-buttons">True</property>
+    <child type="start">
       <object class="GtkBox" id="undo_redo_box">
-        <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="homogeneous">True</property>
         <style>
@@ -16,72 +14,45 @@
         </style>
         <child>
           <object class="GtkButton">
-            <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Undo your last action</property>
-            <property name="can-focus">True</property>
             <property name="focus-on-click">False</property>
             <property name="action-name">app.undo</property>
+            <property name="icon-name">edit-undo-symbolic</property>
             <style>
               <class name="image-button"/>
             </style>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">edit-undo-symbolic</property>
-                <property name="visible">True</property>
-                <property name="icon-size">1</property>
-              </object>
-            </child>
           </object>
         </child>
         <child>
           <object class="GtkButton">
-            <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Redo your last action</property>
-            <property name="can-focus">True</property>
             <property name="focus-on-click">False</property>
             <property name="action-name">app.redo</property>
+            <property name="icon-name">edit-redo-symbolic</property>
             <style>
               <class name="image-button"/>
             </style>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">edit-redo-symbolic</property>
-                <property name="visible">True</property>
-                <property name="icon-size">1</property>
-              </object>
-            </child>
           </object>
         </child>
       </object>
     </child>
-    <child>
+    <child type="end">
       <object class="GtkMenuButton">
-        <property name="visible">True</property>
         <property name="menu-model">primary-menu</property>
-        <child>
-          <object class="GtkImage">
-            <property name="visible">True</property>
-            <property name="halign">center</property>
-            <property name="icon-name">open-menu-symbolic</property>
-          </object>
-        </child>
+        <property name="valign">center</property>
+        <property name="icon-name">open-menu-symbolic</property>
       </object>
-      <packing>
-        <property name="pack-type">end</property>
-      </packing>
     </child>
-    <child>
+    <child type="end">
       <object class="GtkBox">
-        <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="spacing">6</property>
         <child>
           <object class="GtkImage" id="clock_image">
-            <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="icon-name">preferences-system-time-symbolic</property>
             <property name="icon-size">1</property>
@@ -89,15 +60,11 @@
         </child>
         <child>
           <object class="GtkLabel" id="clock_label">
-            <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">center</property>
           </object>
         </child>
       </object>
-      <packing>
-        <property name="pack-type">end</property>
-      </packing>
     </child>
     <child>
       <object class="GtkButton" id="back_button">
@@ -107,16 +74,10 @@
         <property name="tooltip-text" translatable="yes">Go back to the current game</property>
         <property name="use-underline">True</property>
         <property name="action-name">app.back</property>
+        <property name="icon-name">go-previous-symbolic</property>
         <style>
           <class name="image-button"/>
         </style>
-        <child>
-          <object class="GtkImage">
-            <property name="icon-name">go-previous-symbolic</property>
-            <property name="visible">True</property>
-            <property name="icon-size">1</property>
-          </object>
-        </child>
       </object>
     </child>
   </object>
@@ -162,229 +123,195 @@
     <child>
       <object class="GtkBox"> <!-- vbox -->
         <property name="orientation">vertical</property>
-        <property name="visible">True</property>
         <child>
           <object class="GtkStack" id="main_stack">
-            <property name="visible">True</property>
-            <property name="homogeneous">True</property>
-            <property name="margin">25</property>
-            <property name="expand">True</property>
+            <property name="hhomogeneous">True</property>
+            <property name="vhomogeneous">True</property>
+            <property name="margin-start">25</property>
+            <property name="margin-end">25</property>
+            <property name="margin-top">25</property>
+            <property name="margin-bottom">25</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
             <child>
-              <object class="GtkBox"> <!-- start_box -->
-                <property name="orientation">vertical</property>
-                <property name="visible">True</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="margin">0</property>
-                <property name="width-request">350</property>
-                <property name="height-request">350</property>
-                <child>
-                  <object class="GtkFrame">
-                    <property name="visible">True</property>
-                    <property name="shadow-type">GTK_SHADOW_IN</property>
+              <object class="GtkStackPage"> <!-- start_box page -->
+                <property name="name">start_box</property>
+                <property name="child">
+                  <object class="GtkBox"> <!-- start_box -->
+                    <property name="orientation">vertical</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="margin-start">0</property>
+                    <property name="margin-end">0</property>
+                    <property name="margin-top">0</property>
+                    <property name="margin-bottom">0</property>
+                    <property name="width-request">350</property>
+                    <property name="height-request">350</property>
                     <child>
-                      <object class="GtkListBox">
-                        <property name="show-separators">True</property>
-                        <property name="can-focus">False</property>
+                      <object class="GtkFrame">
                         <child>
-                          <object class="GtkListBoxRow">
-                            <property name="action-name">app.start-game</property>
-                            <property name="action-target">1</property>  <!-- 1 corresponds to enum DifficultyCategory.EASY -->
-                            <property name="height-request">80</property>
-                            <property name="can-focus">True</property>
-                            <property name="child">
-                              <object class="GtkLabel">
-                                <property name="label" translatable="yes">_Easy</property>
-                                <property name="use-underline">True</property>
+                          <object class="GtkListBox">
+                            <property name="show-separators">True</property>
+                            <property name="can-focus">False</property>
+                            <child>
+                              <object class="GtkListBoxRow">
+                                <property name="action-name">app.start-game</property>
+                                <property name="action-target">1</property>  <!-- 1 corresponds to enum DifficultyCategory.EASY -->
+                                <property name="height-request">80</property>
+                                <property name="can-focus">True</property>
+                                <property name="child">
+                                  <object class="GtkLabel">
+                                    <property name="label" translatable="yes">_Easy</property>
+                                    <property name="use-underline">True</property>
+                                  </object>
+                                </property>
                               </object>
-                            </property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkListBoxRow">
-                            <property name="action-name">app.start-game</property>
-                            <property name="action-target">2</property>  <!-- 2 corresponds to enum DifficultyCategory.MEDIUM -->
-                            <property name="height-request">80</property>
-                            <property name="can-focus">True</property>
-                            <property name="child">
-                              <object class="GtkLabel">
-                                <property name="label" translatable="yes">_Medium</property>
-                                <property name="use-underline">True</property>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow">
+                                <property name="action-name">app.start-game</property>
+                                <property name="action-target">2</property>  <!-- 2 corresponds to enum DifficultyCategory.MEDIUM -->
+                                <property name="height-request">80</property>
+                                <property name="can-focus">True</property>
+                                <property name="child">
+                                  <object class="GtkLabel">
+                                    <property name="label" translatable="yes">_Medium</property>
+                                    <property name="use-underline">True</property>
+                                  </object>
+                                </property>
                               </object>
-                            </property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkListBoxRow">
-                            <property name="action-name">app.start-game</property>
-                            <property name="action-target">3</property>  <!-- 3 corresponds to enum DifficultyCategory.HARD -->
-                            <property name="height-request">80</property>
-                            <property name="can-focus">True</property>
-                            <property name="child">
-                              <object class="GtkLabel">
-                                <property name="label" translatable="yes">_Hard</property>
-                                <property name="use-underline">True</property>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow">
+                                <property name="action-name">app.start-game</property>
+                                <property name="action-target">3</property>  <!-- 3 corresponds to enum DifficultyCategory.HARD -->
+                                <property name="height-request">80</property>
+                                <property name="can-focus">True</property>
+                                <property name="child">
+                                  <object class="GtkLabel">
+                                    <property name="label" translatable="yes">_Hard</property>
+                                    <property name="use-underline">True</property>
+                                  </object>
+                                </property>
                               </object>
-                            </property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkListBoxRow">
-                            <property name="action-name">app.start-game</property>
-                            <property name="action-target">4</property>  <!-- 4 corresponds to enum DifficultyCategory.VERY_HARD -->
-                            <property name="height-request">80</property>
-                            <property name="can-focus">True</property>
-                            <property name="child">
-                              <object class="GtkLabel">
-                                <property name="label" translatable="yes">_Very Hard</property>
-                                <property name="use-underline">True</property>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow">
+                                <property name="action-name">app.start-game</property>
+                                <property name="action-target">4</property>  <!-- 4 corresponds to enum DifficultyCategory.VERY_HARD -->
+                                <property name="height-request">80</property>
+                                <property name="can-focus">True</property>
+                                <property name="child">
+                                  <object class="GtkLabel">
+                                    <property name="label" translatable="yes">_Very Hard</property>
+                                    <property name="use-underline">True</property>
+                                  </object>
+                                </property>
                               </object>
-                            </property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkListBoxRow">
-                            <property name="action-name">app.create-game</property>
-                            <property name="height-request">80</property>
-                            <property name="can-focus">True</property>
-                            <property name="child">
-                              <object class="GtkLabel">
-                                <property name="label" translatable="yes">_Create your own puzzle</property>
-                                <property name="use-underline">True</property>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow">
+                                <property name="action-name">app.create-game</property>
+                                <property name="height-request">80</property>
+                                <property name="can-focus">True</property>
+                                <property name="child">
+                                  <object class="GtkLabel">
+                                    <property name="label" translatable="yes">_Create your own puzzle</property>
+                                    <property name="use-underline">True</property>
+                                  </object>
+                                </property>
                               </object>
-                            </property>
+                            </child>
                           </object>
                         </child>
                       </object>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-              </object> <!-- End of start_box -->
-              <packing>
-                <property name="name">start_box</property>
-              </packing>
+                  </object> <!-- End of start_box -->
+                </property>
+              </object> <!-- End of start_box page -->
             </child>
             <child>
-              <object class="GtkAspectFrame"> <!-- frame -->
-                <property name="visible">True</property>
-                <property name="obey-child">False</property>
-                <property name="ratio">1.4</property>
-                <child>
-                  <object class="GtkBox" id="game_box">
-                    <property name="visible">True</property>
-                    <property name="spacing">25</property>
+              <object class="GtkStackPage"> <!-- frame page -->
+                <property name="name">frame</property>
+                <property name="child">
+                  <object class="GtkAspectFrame"> <!-- frame -->
+                    <property name="obey-child">False</property>
+                    <property name="ratio">1.4</property>
                     <child>
-                      <object class="GtkButtonBox"> <!-- controls_box -->
-                        <property name="visible">True</property>
-                        <property name="halign">end</property>
-                        <property name="valign">end</property>
-                        <property name="can-focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">6</property>
+                      <object class="GtkBox" id="game_box">
+                        <property name="spacing">25</property>
                         <child>
-                          <object class="GtkButton" id="play_pause_button">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
-                            <property name="action-name">app.pause</property>
-                            <property name="use-underline">True</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
+                          <object class="GtkBox"> <!-- controls_box -->
+                            <property name="halign">end</property>
+                            <property name="valign">end</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">6</property>
                             <child>
-                              <object class="GtkLabel" id="play_pause_label">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="margin">12</property>
-                                <property name="label" translatable="yes">_Pause</property>
+                              <object class="GtkButton" id="play_pause_button">
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
+                                <property name="action-name">app.pause</property>
                                 <property name="use-underline">True</property>
+                                <property name="width-request">120</property>
+                                <property name="height-request">60</property>
+                                <child>
+                                  <object class="GtkLabel" id="play_pause_label">
+                                    <property name="can-focus">False</property>
+                                    <property name="margin-start">12</property>
+                                    <property name="margin-end">12</property>
+                                    <property name="margin-top">12</property>
+                                    <property name="margin-bottom">12</property>
+                                    <property name="label" translatable="yes">_Pause</property>
+                                    <property name="use-underline">True</property>
+                                  </object>
+                                </child>
                               </object>
                             </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="pack-type">end</property>
-                            <property name="position">0</property>
-                          </packing>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="use-underline">True</property>
+                                <property name="label" translatable="yes">_Clear Board</property>
+                                <property name="halign">fill</property>
+                                <property name="valign">center</property>
+                                <property name="action-name">app.reset</property>
+                                <property name="tooltip-text" translatable="yes">Reset the board to its original state</property>
+                                <property name="width-request">120</property>
+                                <property name="height-request">60</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="use-underline">True</property>
+                                <property name="label" translatable="yes">_New Puzzle</property>
+                                <property name="halign">fill</property>
+                                <property name="valign">center</property>
+                                <property name="action-name">app.new-game</property>
+                                <property name="tooltip-text" translatable="yes">Start a new puzzle</property>
+                                <property name="width-request">120</property>
+                                <property name="height-request">60</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="play_custom_game_button">
+                                <property name="use-underline">True</property>
+                                <property name="label" translatable="yes">_Start Playing</property>
+                                <property name="halign">fill</property>
+                                <property name="valign">center</property>
+                                <property name="action-name">app.play-custom-game</property>
+                                <property name="tooltip-text" translatable="yes">Start playing the custom puzzle you have created</property>
+                                <property name="width-request">120</property>
+                                <property name="height-request">60</property>
+                              </object>
+                            </child>
+                          </object>  <!-- End of controls_box -->
                         </child>
-                        <child>
-                          <object class="GtkButton">
-                            <property name="visible">True</property>
-                            <property name="use-underline">True</property>
-                            <property name="label" translatable="yes">_Clear Board</property>
-                            <property name="halign">fill</property>
-                            <property name="valign">center</property>
-                            <property name="action-name">app.reset</property>
-                            <property name="tooltip-text" translatable="yes">Reset the board to its original state</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton">
-                            <property name="visible">True</property>
-                            <property name="use-underline">True</property>
-                            <property name="label" translatable="yes">_New Puzzle</property>
-                            <property name="halign">fill</property>
-                            <property name="valign">center</property>
-                            <property name="action-name">app.new-game</property>
-                            <property name="tooltip-text" translatable="yes">Start a new puzzle</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="play_custom_game_button">
-                            <property name="visible">False</property>
-                            <property name="use-underline">True</property>
-                            <property name="label" translatable="yes">_Start Playing</property>
-                            <property name="halign">fill</property>
-                            <property name="valign">center</property>
-                            <property name="action-name">app.play-custom-game</property>
-                            <property name="tooltip-text" translatable="yes">Start playing the custom puzzle you have created</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">3</property>
-                          </packing>
-                        </child>
-                      </object>  <!-- End of controls_box -->
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="pack-type">end</property>
-                        <property name="padding">0</property>
-                      </packing>
+                      </object> <!-- End of game_box -->
                     </child>
-                  </object> <!-- End of game_box -->
-                </child>
-              </object> <!-- End of frame -->
-              <packing>
-                <property name="name">frame</property>
-              </packing>
+                  </object> <!-- End of frame -->
+                </property>
+              </object> <!-- End of frame page -->
             </child>
           </object> <!-- End of main_stack -->
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
         </child>
       </object> <!-- End of vbox -->
     </child>
