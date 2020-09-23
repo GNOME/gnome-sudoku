@@ -54,6 +54,6 @@ private class SudokuMainMenuItem : ListBoxRow
         label_widget.can_focus = false;
         label_widget.use_underline = true;
 
-        add (label_widget);
+        set_child (label_widget);
     }
 }
