@@ -558,16 +558,12 @@ public class SudokuView : Widget
                 drawing.hide ();
         });
 
-        var css_provider = new CssProvider ();
-        css_provider.load_from_resource ("/org/gnome/Sudoku/ui/gnome-sudoku.css");
-
         grid = new Grid ();
         grid.row_spacing = 2;
         grid.column_spacing = 2;
         grid.column_homogeneous = true;
         grid.row_homogeneous = true;
         grid.get_style_context ().add_class ("board");
-        grid.get_style_context ().add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         var blocks = new Grid[game.board.block_rows, game.board.block_cols];
         for (var block_row = 0; block_row < game.board.block_rows; block_row++)
@@ -580,7 +576,6 @@ public class SudokuView : Widget
                 block_grid.column_homogeneous = true;
                 block_grid.row_homogeneous = true;
                 block_grid.get_style_context ().add_class ("block");
-                block_grid.get_style_context ().add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
                 grid.attach (block_grid, block_col, block_row, 1, 1);
 
                 blocks[block_row, block_col] = block_grid;

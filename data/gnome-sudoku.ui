@@ -151,7 +151,6 @@
                       <object class="GtkFrame">
                         <child>
                           <object class="GtkListBox">
-                            <property name="show-separators">True</property>
                             <property name="can-focus">False</property>
                             <child>
                               <object class="GtkListBoxRow">
@@ -220,6 +219,9 @@
                                     <property name="use-underline">True</property>
                                   </object>
                                 </property>
+                                <style>
+                                  <class name="top-separator"/>
+                                </style>
                               </object>
                             </child>
                           </object>

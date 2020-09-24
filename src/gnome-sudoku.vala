@@ -149,6 +149,12 @@ public class Sudoku : Gtk.Application
 
         Window.set_default_icon_name ("org.gnome.Sudoku");
 
+        var css_provider = new CssProvider ();
+        css_provider.load_from_resource ("/org/gnome/Sudoku/ui/gnome-sudoku.css");
+        Gdk.Display? gdk_display = Gdk.Display.get_default ();
+        if (gdk_display != null) // else..?
+            StyleContext.add_provider_for_display ((!) gdk_display, css_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
+
         var builder = new Builder.from_resource ("/org/gnome/Sudoku/ui/gnome-sudoku.ui");
 
         window = (ApplicationWindow) builder.get_object ("sudoku_app");
