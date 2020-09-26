@@ -139,13 +139,13 @@ public class Sudoku : Gtk.Application
         });
         add_action (highlighter_action);
 
-        set_accels_for_action ("app.new-game", {"<Primary>n"});
-        set_accels_for_action ("app.print", {"<Primary>p"});
-        set_accels_for_action ("app.quit", {"<Primary>q"});
-        set_accels_for_action ("app.reset", {"<Primary>r"});
-        set_accels_for_action ("app.undo", {"<Primary>z"});
-        set_accels_for_action ("app.redo", {"<Primary><Shift>z"});
-        set_accels_for_action ("app.help", {"F1"});
+        set_accels_for_action ("app.new-game",  {        "<Control>n"   });
+        set_accels_for_action ("app.print",     {        "<Control>p"   });
+        set_accels_for_action ("app.quit",      {        "<Control>q"   });
+        set_accels_for_action ("app.reset",     {        "<Control>r"   });
+        set_accels_for_action ("app.undo",      {        "<Control>z"   });
+        set_accels_for_action ("app.redo",      { "<Shift><Control>z"   });
+        set_accels_for_action ("app.help",      {                 "F1"  });
 
         Window.set_default_icon_name ("org.gnome.Sudoku");
 
