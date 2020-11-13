@@ -43,6 +43,8 @@ public class Sudoku : Gtk.Application
     private HeaderBar headerbar;
     private Stack main_stack;
     private Box game_box; // Holds the view
+    private AspectFrame frame;
+    private ButtonBox controls_box;
 
     private Box undo_redo_box;
     private Button back_button;
@@ -57,6 +59,8 @@ public class Sudoku : Gtk.Application
     private SimpleAction pause_action;
     private SimpleAction play_custom_game_action;
     private SimpleAction new_game_action;
+
+    private Orientation current_layout;
 
     private bool show_possibilities = false;
     private GameMode current_game_mode = GameMode.PLAY;
@@ -158,6 +162,7 @@ public class Sudoku : Gtk.Application
         window.size_allocate.connect (size_allocate_cb);
         window.window_state_event.connect (window_state_event_cb);
         window.set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
+        window.configure_event.connect (configure_event_cb);
         if (settings.get_boolean ("window-is-maximized"))
             window.maximize ();
 
@@ -166,6 +171,9 @@ public class Sudoku : Gtk.Application
         headerbar = (HeaderBar) builder.get_object ("headerbar");
         main_stack = (Stack) builder.get_object ("main_stack");
         game_box = (Box) builder.get_object ("game_box");
+        frame = (AspectFrame) builder.get_object ("frame");
+        controls_box = (ButtonBox) builder.get_object ("controls_box");
+
         undo_redo_box = (Box) builder.get_object ("undo_redo_box");
         back_button = (Button) builder.get_object ("back_button");
         clock_label = (Label) builder.get_object ("clock_label");
@@ -361,6 +369,7 @@ public class Sudoku : Gtk.Application
         if (view != null)
             game_box.remove (view);
 
+        check_initial_layout_ratio ();
         show_game_view ();
         game = new SudokuGame (board);
         game.mode = current_game_mode;
@@ -631,6 +640,43 @@ public class Sudoku : Gtk.Application
                                "translator-credits", _("translator-credits"),
                                "website", "https://wiki.gnome.org/Apps/Sudoku/"
                                );
+    }
+
+    private void check_initial_layout_ratio ()
+    {
+        apply_layout_ratio (get_window_orientation ());
+    }
+
+    private bool configure_event_cb ()
+    {
+        var layout = get_window_orientation ();
+        if (layout == current_layout)
+            return false;
+
+        apply_layout_ratio (layout);
+        return false;
+    }
+
+    private Orientation get_window_orientation ()
+    {
+        int width, height;
+        window.get_size(out width, out height);
+        return width > height ? Orientation.HORIZONTAL : Orientation.VERTICAL;
+    }
+
+    private void apply_layout_ratio (Orientation layout)
+    {
+        if(layout == Orientation.HORIZONTAL) {
+            frame.ratio = 1.4f;
+            controls_box.halign = Align.END;
+            controls_box.orientation = Orientation.VERTICAL;
+        } else {
+            frame.ratio = 0.8f;
+            controls_box.halign = Align.CENTER;
+            controls_box.orientation = Orientation.HORIZONTAL;
+        }
+        game_box.orientation = layout;
+        current_layout = layout;
     }
 
     public static int main (string[] args)

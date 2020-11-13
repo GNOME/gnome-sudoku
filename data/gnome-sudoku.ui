@@ -235,7 +235,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkAspectFrame"> <!-- frame -->
+              <object class="GtkAspectFrame" id="frame">
                 <property name="visible">True</property>
                 <property name="shadow-type">GTK_SHADOW_NONE</property>
                 <property name="obey-child">False</property>
@@ -245,7 +245,7 @@
                     <property name="visible">True</property>
                     <property name="spacing">25</property>
                     <child>
-                      <object class="GtkButtonBox"> <!-- controls_box -->
+                      <object class="GtkButtonBox" id="controls_box">
                         <property name="visible">True</property>
                         <property name="halign">end</property>
                         <property name="valign">end</property>
