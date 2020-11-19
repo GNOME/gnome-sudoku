@@ -42,14 +42,18 @@ public class Sudoku : Gtk.Application
 
     private HeaderBar headerbar;
     private Stack main_stack;
+    private Hdy.Squeezer squeezer;
+    private AspectFrame frame_v;
+    private AspectFrame frame_h;
     private Box game_box; // Holds the view
-    private AspectFrame frame;
     private ButtonBox controls_box;
 
     private Box undo_redo_box;
     private Button back_button;
 
     private SudokuSaver saver;
+
+    private Orientation current_layout = Orientation.HORIZONTAL;
 
     private SimpleAction undo_action;
     private SimpleAction redo_action;
@@ -60,10 +64,10 @@ public class Sudoku : Gtk.Application
     private SimpleAction play_custom_game_action;
     private SimpleAction new_game_action;
 
-    private Orientation current_layout;
-
     private bool show_possibilities = false;
     private GameMode current_game_mode = GameMode.PLAY;
+
+    private const int board_size = 360;
 
     private const GLib.ActionEntry action_entries[] =
     {
@@ -162,7 +166,6 @@ public class Sudoku : Gtk.Application
         window.size_allocate.connect (size_allocate_cb);
         window.window_state_event.connect (window_state_event_cb);
         window.set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
-        window.configure_event.connect (configure_event_cb);
         if (settings.get_boolean ("window-is-maximized"))
             window.maximize ();
 
@@ -170,10 +173,14 @@ public class Sudoku : Gtk.Application
 
         headerbar = (HeaderBar) builder.get_object ("headerbar");
         main_stack = (Stack) builder.get_object ("main_stack");
-        game_box = (Box) builder.get_object ("game_box");
-        frame = (AspectFrame) builder.get_object ("frame");
-        controls_box = (ButtonBox) builder.get_object ("controls_box");
 
+        squeezer = (Hdy.Squeezer) builder.get_object ("squeezer");
+        squeezer.draw.connect (draw_cb);
+
+        frame_h = (AspectFrame) builder.get_object ("frame_h");
+        frame_v = (AspectFrame) builder.get_object ("frame_v");
+        game_box = (Box) builder.get_object ("game_box");
+        controls_box = (ButtonBox) builder.get_object ("controls_box");
         undo_redo_box = (Box) builder.get_object ("undo_redo_box");
         back_button = (Button) builder.get_object ("back_button");
         clock_label = (Label) builder.get_object ("clock_label");
@@ -192,6 +199,7 @@ public class Sudoku : Gtk.Application
         play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
 
         window.set_titlebar (headerbar);
+        prepare_layout ();
 
         saver = new SudokuSaver ();
         var savegame = saver.get_savedgame ();
@@ -369,7 +377,6 @@ public class Sudoku : Gtk.Application
         if (view != null)
             game_box.remove (view);
 
-        check_initial_layout_ratio ();
         show_game_view ();
         game = new SudokuGame (board);
         game.mode = current_game_mode;
@@ -385,7 +392,7 @@ public class Sudoku : Gtk.Application
         game.start_clock ();
 
         view = new SudokuView (game);
-        view.set_size_request (480, 480);
+        view.set_size_request (board_size, board_size);
 
         view.show_possibilities = show_possibilities;
         if (current_game_mode == GameMode.CREATE)
@@ -518,7 +525,7 @@ public class Sudoku : Gtk.Application
 
     private void show_game_view ()
     {
-        main_stack.set_visible_child_name ("frame");
+        main_stack.set_visible_child_name ("squeezer");
         back_button.visible = false;
         undo_redo_box.visible = true;
         print_action.set_enabled (true);
@@ -558,7 +565,7 @@ public class Sudoku : Gtk.Application
 
     private void undo_cb ()
     {
-        if (main_stack.get_visible_child_name () != "frame")
+        if (main_stack.get_visible_child_name () != "squeezer")
             return;
         game.undo ();
         undo_action.set_enabled (!game.is_undostack_null ());
@@ -568,7 +575,7 @@ public class Sudoku : Gtk.Application
 
     private void redo_cb ()
     {
-        if (main_stack.get_visible_child_name () != "frame")
+        if (main_stack.get_visible_child_name () != "squeezer")
             return;
         game.redo ();
         redo_action.set_enabled (!game.is_redostack_null ());
@@ -578,7 +585,7 @@ public class Sudoku : Gtk.Application
 
     private void print_cb ()
     {
-        if (main_stack.get_visible_child_name () != "frame")
+        if (main_stack.get_visible_child_name () != "squeezer")
             return;
         print_action.set_enabled (false);
         print_multiple_action.set_enabled (false);
@@ -598,7 +605,7 @@ public class Sudoku : Gtk.Application
         print_multiple_action.set_enabled (false);
         var print_dialog = new PrintDialog (saver, window);
         print_dialog.destroy.connect (() => {
-            this.print_action.set_enabled (main_stack.get_visible_child_name () == "frame");
+            this.print_action.set_enabled (main_stack.get_visible_child_name () == "squeezer");
             this.print_multiple_action.set_enabled (true);
         });
         print_dialog.run ();
@@ -642,41 +649,63 @@ public class Sudoku : Gtk.Application
                                );
     }
 
-    private void check_initial_layout_ratio ()
+    private void prepare_layout ()
     {
-        apply_layout_ratio (get_window_orientation ());
+        var main_stack_m = main_stack.margin;
+        var game_box_s = game_box.spacing;
+        var controls_box_s = controls_box.spacing;
+        var button_w = play_pause_button.width_request;
+        var button_h = play_pause_button.height_request;
+
+        var complementary_size = (int) (board_size + 2 * game_box_s + 2 * main_stack_m);
+        var board_and_spacing = board_size + 3 * game_box_s + 2 * controls_box_s + 2 * main_stack_m;
+
+        frame_h.width_request = (int) (board_and_spacing + button_w);
+        frame_h.height_request = complementary_size;
+
+        frame_v.width_request = complementary_size;
+        frame_v.height_request =  (int) (board_and_spacing + button_h);
     }
 
-    private bool configure_event_cb ()
+    private bool draw_cb ()
+    {
+        return check_layout_change ();
+    }
+
+    private bool check_layout_change ()
     {
         var layout = get_window_orientation ();
-        if (layout == current_layout)
-            return false;
-
-        apply_layout_ratio (layout);
-        return false;
+        var changed = layout != current_layout;
+        if (changed)
+            set_layout (layout);
+        return changed;
     }
 
     private Orientation get_window_orientation ()
     {
-        int width, height;
-        window.get_size(out width, out height);
-        return width > height ? Orientation.HORIZONTAL : Orientation.VERTICAL;
+        var is_vertical = squeezer.visible_child == frame_v;
+        return is_vertical ? Orientation.VERTICAL : Orientation.HORIZONTAL;
     }
 
-    private void apply_layout_ratio (Orientation layout)
+    private void set_layout (Orientation layout)
     {
-        if(layout == Orientation.HORIZONTAL) {
-            frame.ratio = 1.4f;
+        current_layout = layout;
+        AspectFrame previous;
+        AspectFrame next;
+        if (layout == Orientation.HORIZONTAL) {
+            next = frame_h;
+            previous = frame_v;
             controls_box.halign = Align.END;
             controls_box.orientation = Orientation.VERTICAL;
         } else {
-            frame.ratio = 0.8f;
+            next = frame_v;
+            previous = frame_h;
             controls_box.halign = Align.CENTER;
             controls_box.orientation = Orientation.HORIZONTAL;
         }
         game_box.orientation = layout;
-        current_layout = layout;
+        previous.remove (game_box);
+        next.add (game_box);
     }
 
     public static int main (string[] args)

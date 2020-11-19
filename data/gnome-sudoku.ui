@@ -235,116 +235,130 @@
               </packing>
             </child>
             <child>
-              <object class="GtkAspectFrame" id="frame">
+              <object class="HdySqueezer" id="squeezer">
                 <property name="visible">True</property>
-                <property name="shadow-type">GTK_SHADOW_NONE</property>
-                <property name="obey-child">False</property>
-                <property name="ratio">1.4</property>
+                <property name="transition-type">crossfade</property>
                 <child>
-                  <object class="GtkBox" id="game_box">
+                  <object class="GtkAspectFrame" id="frame_h">
                     <property name="visible">True</property>
-                    <property name="spacing">25</property>
+                    <property name="shadow-type">GTK_SHADOW_NONE</property>
+                    <property name="obey-child">False</property>
+                    <property name="ratio">1.4</property>
                     <child>
-                      <object class="GtkButtonBox" id="controls_box">
+                      <object class="GtkBox" id="game_box">
                         <property name="visible">True</property>
-                        <property name="halign">end</property>
-                        <property name="valign">end</property>
-                        <property name="can-focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">6</property>
+                        <property name="spacing">25</property>
                         <child>
-                          <object class="GtkButton" id="play_pause_button">
+                          <object class="GtkButtonBox" id="controls_box">
                             <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
-                            <property name="action-name">app.pause</property>
-                            <property name="use-underline">True</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
+                            <property name="halign">end</property>
+                            <property name="valign">end</property>
+                            <property name="can-focus">False</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">6</property>
                             <child>
-                              <object class="GtkLabel" id="play_pause_label">
+                              <object class="GtkButton" id="play_pause_button">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="margin">12</property>
-                                <property name="label" translatable="yes">_Pause</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
+                                <property name="action-name">app.pause</property>
                                 <property name="use-underline">True</property>
+                                <property name="width-request">120</property>
+                                <property name="height-request">60</property>
+                                <child>
+                                  <object class="GtkLabel" id="play_pause_label">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="margin">12</property>
+                                    <property name="label" translatable="yes">_Pause</property>
+                                    <property name="use-underline">True</property>
+                                  </object>
+                                </child>
                               </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="pack-type">end</property>
+                                <property name="position">0</property>
+                              </packing>
                             </child>
-                          </object>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="visible">True</property>
+                                <property name="use-underline">True</property>
+                                <property name="label" translatable="yes">_Clear Board</property>
+                                <property name="halign">fill</property>
+                                <property name="valign">center</property>
+                                <property name="action-name">app.reset</property>
+                                <property name="tooltip-text" translatable="yes">Reset the board to its original state</property>
+                                <property name="width-request">120</property>
+                                <property name="height-request">60</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="visible">True</property>
+                                <property name="use-underline">True</property>
+                                <property name="label" translatable="yes">_New Puzzle</property>
+                                <property name="halign">fill</property>
+                                <property name="valign">center</property>
+                                <property name="action-name">app.new-game</property>
+                                <property name="tooltip-text" translatable="yes">Start a new puzzle</property>
+                                <property name="width-request">120</property>
+                                <property name="height-request">60</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="play_custom_game_button">
+                                <property name="visible">False</property>
+                                <property name="use-underline">True</property>
+                                <property name="label" translatable="yes">_Start Playing</property>
+                                <property name="halign">fill</property>
+                                <property name="valign">center</property>
+                                <property name="action-name">app.play-custom-game</property>
+                                <property name="tooltip-text" translatable="yes">Start playing the custom puzzle you have created</property>
+                                <property name="width-request">120</property>
+                                <property name="height-request">60</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">3</property>
+                              </packing>
+                            </child>
+                          </object>  <!-- End of controls_box -->
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
                             <property name="pack-type">end</property>
-                            <property name="position">0</property>
+                            <property name="padding">0</property>
                           </packing>
                         </child>
-                        <child>
-                          <object class="GtkButton">
-                            <property name="visible">True</property>
-                            <property name="use-underline">True</property>
-                            <property name="label" translatable="yes">_Clear Board</property>
-                            <property name="halign">fill</property>
-                            <property name="valign">center</property>
-                            <property name="action-name">app.reset</property>
-                            <property name="tooltip-text" translatable="yes">Reset the board to its original state</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton">
-                            <property name="visible">True</property>
-                            <property name="use-underline">True</property>
-                            <property name="label" translatable="yes">_New Puzzle</property>
-                            <property name="halign">fill</property>
-                            <property name="valign">center</property>
-                            <property name="action-name">app.new-game</property>
-                            <property name="tooltip-text" translatable="yes">Start a new puzzle</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="play_custom_game_button">
-                            <property name="visible">False</property>
-                            <property name="use-underline">True</property>
-                            <property name="label" translatable="yes">_Start Playing</property>
-                            <property name="halign">fill</property>
-                            <property name="valign">center</property>
-                            <property name="action-name">app.play-custom-game</property>
-                            <property name="tooltip-text" translatable="yes">Start playing the custom puzzle you have created</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">3</property>
-                          </packing>
-                        </child>
-                      </object>  <!-- End of controls_box -->
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="pack-type">end</property>
-                        <property name="padding">0</property>
-                      </packing>
+                      </object> <!-- End of game_box -->
                     </child>
-                  </object> <!-- End of game_box -->
+                  </object> <!-- End of frame_h -->
                 </child>
-              </object> <!-- End of frame -->
+                <child>
+                  <object class="GtkAspectFrame" id="frame_v">
+                    <property name="visible">True</property>
+                    <property name="shadow-type">GTK_SHADOW_NONE</property>
+                    <property name="obey-child">False</property>
+                    <property name="ratio">0.9</property>
+                  </object> <!-- End of frame_v -->
+                </child>
+              </object> <!-- End of squeezer -->
               <packing>
-                <property name="name">frame</property>
+                <property name="name">squeezer</property>
               </packing>
             </child>
           </object> <!-- End of main_stack -->
