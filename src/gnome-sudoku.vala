@@ -67,7 +67,7 @@ public class Sudoku : Gtk.Application
     private bool show_possibilities = false;
     private GameMode current_game_mode = GameMode.PLAY;
 
-    private const int board_size = 360;
+    private const int board_size = 140;
 
     private const GLib.ActionEntry action_entries[] =
     {
