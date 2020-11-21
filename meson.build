@@ -34,9 +34,9 @@ gio = dependency('gio-2.0', version: '>= @0@'.format(glib_version))
 glib = dependency('glib-2.0', version: '>= @0@'.format(glib_version))
 gtk = dependency('gtk+-3.0', version: '>= 3.24.0')
 json_glib = dependency('json-glib-1.0')
+libhandy = dependency('libhandy-1')
 qqwing = dependency('qqwing', version: '>= 1.3.4')
 threads = dependency('threads')
-libhandy = dependency('libhandy-1')
 
 config_include_dir = include_directories('.')
 
