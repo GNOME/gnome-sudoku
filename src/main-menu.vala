@@ -45,7 +45,6 @@ private class SudokuMainMenuItem : ListBoxRow
 
     construct
     {
-        height_request = 80;
         visible = true;
         can_focus = true;
 

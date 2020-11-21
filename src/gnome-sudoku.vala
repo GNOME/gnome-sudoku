@@ -41,8 +41,9 @@ public class Sudoku : Gtk.Application
     private SudokuView? view;
 
     private HeaderBar headerbar;
-    private Stack main_stack;
-    private Hdy.Squeezer squeezer;
+    private Hdy.Squeezer main_squeezer;
+    private Box start_box;
+    private Box start_box_s;
     private AspectFrame frame_v;
     private AspectFrame frame_h;
     private Box game_box; // Holds the view
@@ -172,10 +173,11 @@ public class Sudoku : Gtk.Application
         add_window (window);
 
         headerbar = (HeaderBar) builder.get_object ("headerbar");
-        main_stack = (Stack) builder.get_object ("main_stack");
+        main_squeezer = (Hdy.Squeezer) builder.get_object ("main_squeezer");
+        main_squeezer.draw.connect (draw_cb);
 
-        squeezer = (Hdy.Squeezer) builder.get_object ("squeezer");
-        squeezer.draw.connect (draw_cb);
+        start_box = (Box) builder.get_object ("start_box");
+        start_box_s = (Box) builder.get_object ("start_box_s");
 
         frame_h = (AspectFrame) builder.get_object ("frame_h");
         frame_v = (AspectFrame) builder.get_object ("frame_v");
@@ -448,7 +450,7 @@ public class Sudoku : Gtk.Application
 
     private void show_new_game_screen ()
     {
-        main_stack.set_visible_child_name ("start_box");
+        set_board_visible (false);
         back_button.visible = game != null;
         undo_redo_box.visible = false;
         headerbar.title = _("Select Difficulty");
@@ -525,7 +527,7 @@ public class Sudoku : Gtk.Application
 
     private void show_game_view ()
     {
-        main_stack.set_visible_child_name ("squeezer");
+        set_board_visible (true);
         back_button.visible = false;
         undo_redo_box.visible = true;
         print_action.set_enabled (true);
@@ -565,7 +567,7 @@ public class Sudoku : Gtk.Application
 
     private void undo_cb ()
     {
-        if (main_stack.get_visible_child_name () != "squeezer")
+        if (!is_board_visible ())
             return;
         game.undo ();
         undo_action.set_enabled (!game.is_undostack_null ());
@@ -575,7 +577,7 @@ public class Sudoku : Gtk.Application
 
     private void redo_cb ()
     {
-        if (main_stack.get_visible_child_name () != "squeezer")
+        if (!is_board_visible ())
             return;
         game.redo ();
         redo_action.set_enabled (!game.is_redostack_null ());
@@ -585,7 +587,7 @@ public class Sudoku : Gtk.Application
 
     private void print_cb ()
     {
-        if (main_stack.get_visible_child_name () != "squeezer")
+        if (!is_board_visible ())
             return;
         print_action.set_enabled (false);
         print_multiple_action.set_enabled (false);
@@ -605,7 +607,7 @@ public class Sudoku : Gtk.Application
         print_multiple_action.set_enabled (false);
         var print_dialog = new PrintDialog (saver, window);
         print_dialog.destroy.connect (() => {
-            this.print_action.set_enabled (main_stack.get_visible_child_name () == "squeezer");
+            this.print_action.set_enabled (is_board_visible ());
             this.print_multiple_action.set_enabled (true);
         });
         print_dialog.run ();
@@ -651,13 +653,15 @@ public class Sudoku : Gtk.Application
 
     private void prepare_layout ()
     {
-        var main_stack_m = main_stack.margin;
+        var main_squeezer_m = main_squeezer.margin;
         var game_box_s = game_box.spacing;
         var controls_box_s = controls_box.spacing;
         var button_w = play_pause_button.width_request;
+        var button_h = play_pause_button.height_request;
 
-        var board_and_spacing = board_size + 3 * game_box_s + 2 * controls_box_s + 2 * main_stack_m;
+        var board_and_spacing = board_size + 3 * game_box_s + 2 * controls_box_s + 2 * main_squeezer_m;
         frame_h.width_request = board_and_spacing + button_w;
+        frame_v.height_request = board_and_spacing + button_h + 50;
     }
 
     private bool draw_cb ()
@@ -676,7 +680,7 @@ public class Sudoku : Gtk.Application
 
     private Orientation get_window_orientation ()
     {
-        var is_vertical = squeezer.visible_child == frame_v;
+        var is_vertical = main_squeezer.visible_child == frame_v;
         return is_vertical ? Orientation.VERTICAL : Orientation.HORIZONTAL;
     }
 
@@ -699,6 +703,19 @@ public class Sudoku : Gtk.Application
         game_box.orientation = layout;
         previous.remove (game_box);
         next.add (game_box);
+    }
+
+    private void set_board_visible (bool value)
+    {
+        start_box.visible = !value;
+        start_box_s.visible = !value;
+        frame_h.visible = value;
+        frame_v.visible = value;
+    }
+
+    private bool is_board_visible ()
+    {
+        return frame_h.visible;
     }
 
     public static int main (string[] args)
