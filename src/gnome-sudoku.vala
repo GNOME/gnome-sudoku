@@ -405,7 +405,7 @@ public class Sudoku : Gtk.Application
 
         view.show ();
         game_box.pack_start (view);
-
+        game_box.child_set_property (view, "position", 0);
         game.cell_changed.connect (() => {
             undo_action.set_enabled (!game.is_undostack_null ());
             redo_action.set_enabled (!game.is_redostack_null ());
@@ -658,15 +658,14 @@ public class Sudoku : Gtk.Application
         var main_squeezer_m = main_squeezer.margin;
         var game_box_s = game_box.spacing;
         var controls_box_s = controls_box.spacing;
-        var button_w = 120;
-        var button_h = 60;
+        const int BUTTON_W = 120;
+        const int BUTTON_H = 60;
 
         var spacing = 2 * game_box_s + 2 * main_squeezer_m;
         var board_and_spacing = board_size + spacing;
         var board_with_buttons = board_and_spacing + game_box_s + 2 * controls_box_s;
-        frame_h.width_request = board_with_buttons + button_w;
-        frame_h.height_request = board_and_spacing;
-        frame_v.height_request = board_and_spacing + 3 * button_h + 4 * controls_box_s;
+        frame_h.width_request = board_with_buttons + BUTTON_W;
+        frame_v.height_request = board_and_spacing + 3 * BUTTON_H + 4 * controls_box_s;
     }
 
     private bool draw_cb ()
