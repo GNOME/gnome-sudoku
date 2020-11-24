@@ -656,12 +656,14 @@ public class Sudoku : Gtk.Application
         var main_squeezer_m = main_squeezer.margin;
         var game_box_s = game_box.spacing;
         var controls_box_s = controls_box.spacing;
-        var button_w = play_pause_button.width_request;
-        var button_h = play_pause_button.height_request;
+        var button_w = 120;
+        var button_h = 60;
 
-        var board_and_spacing = board_size + 3 * game_box_s + 2 * controls_box_s + 2 * main_squeezer_m;
-        frame_h.width_request = board_and_spacing + button_w;
-        frame_v.height_request = board_and_spacing + button_h + 50;
+        var board_and_spacing = board_size + 2 * game_box_s + 2 * main_squeezer_m;
+        var board_with_buttons = board_and_spacing + game_box_s + 2 * controls_box_s;
+        frame_h.width_request = board_with_buttons + button_w;
+        frame_h.height_request = board_and_spacing;
+        frame_v.height_request = board_with_buttons + button_h;
     }
 
     private bool draw_cb ()

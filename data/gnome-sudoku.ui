@@ -320,6 +320,7 @@
                         <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">6</property>
+                        <property name="homogeneous">True</property>
                         <child>
                           <object class="GtkButton" id="play_pause_button">
                             <property name="visible">True</property>
@@ -327,8 +328,8 @@
                             <property name="receives-default">True</property>
                             <property name="action-name">app.pause</property>
                             <property name="use-underline">True</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
+                            <property name="valign">fill</property>
+                            <property name="halign">fill</property>
                             <child>
                               <object class="GtkLabel" id="play_pause_label">
                                 <property name="visible">True</property>
@@ -340,8 +341,7 @@
                             </child>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
+                            <property name="expand">True</property>
                             <property name="pack-type">end</property>
                             <property name="position">0</property>
                           </packing>
@@ -355,12 +355,11 @@
                             <property name="valign">center</property>
                             <property name="action-name">app.reset</property>
                             <property name="tooltip-text" translatable="yes">Reset the board to its original state</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
+                            <property name="valign">fill</property>
+                            <property name="halign">fill</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
-                            <property name="fill">True</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
@@ -373,12 +372,11 @@
                             <property name="valign">center</property>
                             <property name="action-name">app.new-game</property>
                             <property name="tooltip-text" translatable="yes">Start a new puzzle</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
+                            <property name="valign">fill</property>
+                            <property name="halign">fill</property>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
+                            <property name="expand">True</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
@@ -391,12 +389,11 @@
                             <property name="valign">center</property>
                             <property name="action-name">app.play-custom-game</property>
                             <property name="tooltip-text" translatable="yes">Start playing the custom puzzle you have created</property>
-                            <property name="width-request">120</property>
-                            <property name="height-request">60</property>
+                            <property name="valign">fill</property>
+                            <property name="halign">fill</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
-                            <property name="fill">True</property>
                             <property name="position">3</property>
                           </packing>
                         </child>
