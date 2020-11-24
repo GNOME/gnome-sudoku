@@ -45,7 +45,6 @@ public class Sudoku : Gtk.Application
     private Box start_box;
     private Box start_box_s;
     private AspectFrame frame_v;
-    private AspectFrame frame_sq;
     private AspectFrame frame_h;
     private Box game_box; // Holds the view
     private ButtonBox controls_box;
@@ -181,7 +180,6 @@ public class Sudoku : Gtk.Application
         start_box_s = (Box) builder.get_object ("start_box_s");
 
         frame_h = (AspectFrame) builder.get_object ("frame_h");
-        frame_sq = (AspectFrame) builder.get_object ("frame_sq");
         frame_v = (AspectFrame) builder.get_object ("frame_v");
         game_box = (Box) builder.get_object ("game_box");
         controls_box = (ButtonBox) builder.get_object ("controls_box");
@@ -668,8 +666,6 @@ public class Sudoku : Gtk.Application
         var board_with_buttons = board_and_spacing + game_box_s + 2 * controls_box_s;
         frame_h.width_request = board_with_buttons + button_w;
         frame_h.height_request = board_and_spacing;
-        frame_sq.width_request = spacing + 3 * button_w + 4 * controls_box_s;
-        frame_sq.height_request = board_with_buttons + button_h;
         frame_v.height_request = board_and_spacing + 3 * button_h + 4 * controls_box_s;
     }
 
@@ -691,15 +687,14 @@ public class Sudoku : Gtk.Application
 
     private void set_layout (AspectFrame new_layout)
     {
-        if (new_layout == frame_h) {
+        if (new_layout == frame_h)
+        {
             controls_box.halign = Align.END;
             controls_box.orientation = Orientation.VERTICAL;
             game_box.orientation = Orientation.HORIZONTAL;
-        } else if (new_layout == frame_sq) {
-            controls_box.halign = Align.CENTER;
-            controls_box.orientation = Orientation.HORIZONTAL;
-            game_box.orientation = Orientation.VERTICAL;
-        } else {
+        }
+        else
+        {
             controls_box.halign = Align.CENTER;
             controls_box.orientation = Orientation.VERTICAL;
             game_box.orientation = Orientation.VERTICAL;
@@ -714,7 +709,7 @@ public class Sudoku : Gtk.Application
         start_box.visible = !value;
         start_box_s.visible = !value;
         frame_h.visible = value;
-        frame_sq.visible = value;
+        frame_v.visible = value;
     }
 
     private bool is_board_visible ()
