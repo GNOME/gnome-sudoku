@@ -410,12 +410,20 @@
               </object> <!-- End of frame_h -->
             </child>
             <child>
-              <object class="GtkAspectFrame" id="frame_v">
+              <object class="GtkAspectFrame" id="frame_sq">
                 <property name="visible">True</property>
                 <property name="shadow-type">GTK_SHADOW_NONE</property>
                 <property name="obey-child">False</property>
                 <property name="ratio">0.9</property>
-              </object> <!-- End of frame_v -->
+              </object> <!-- End of frame_sq -->
+            </child>
+            <child>
+              <object class="GtkAspectFrame" id="frame_v">
+                <property name="visible">True</property>
+                <property name="shadow-type">GTK_SHADOW_NONE</property>
+                <property name="obey-child">False</property>
+                <property name="ratio">0.6</property>
+              </object> <!-- End of frame_v-->
             </child>
           </object> <!-- End of main_squeezer -->
           <packing>

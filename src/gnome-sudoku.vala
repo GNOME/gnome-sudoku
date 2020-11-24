@@ -45,6 +45,7 @@ public class Sudoku : Gtk.Application
     private Box start_box;
     private Box start_box_s;
     private AspectFrame frame_v;
+    private AspectFrame frame_sq;
     private AspectFrame frame_h;
     private Box game_box; // Holds the view
     private ButtonBox controls_box;
@@ -54,7 +55,7 @@ public class Sudoku : Gtk.Application
 
     private SudokuSaver saver;
 
-    private Orientation current_layout = Orientation.HORIZONTAL;
+    private AspectFrame previous_layout;
 
     private SimpleAction undo_action;
     private SimpleAction redo_action;
@@ -180,6 +181,7 @@ public class Sudoku : Gtk.Application
         start_box_s = (Box) builder.get_object ("start_box_s");
 
         frame_h = (AspectFrame) builder.get_object ("frame_h");
+        frame_sq = (AspectFrame) builder.get_object ("frame_sq");
         frame_v = (AspectFrame) builder.get_object ("frame_v");
         game_box = (Box) builder.get_object ("game_box");
         controls_box = (ButtonBox) builder.get_object ("controls_box");
@@ -653,17 +655,22 @@ public class Sudoku : Gtk.Application
 
     private void prepare_layout ()
     {
+        previous_layout = frame_h;
+
         var main_squeezer_m = main_squeezer.margin;
         var game_box_s = game_box.spacing;
         var controls_box_s = controls_box.spacing;
         var button_w = 120;
         var button_h = 60;
 
-        var board_and_spacing = board_size + 2 * game_box_s + 2 * main_squeezer_m;
+        var spacing = 2 * game_box_s + 2 * main_squeezer_m;
+        var board_and_spacing = board_size + spacing;
         var board_with_buttons = board_and_spacing + game_box_s + 2 * controls_box_s;
         frame_h.width_request = board_with_buttons + button_w;
         frame_h.height_request = board_and_spacing;
-        frame_v.height_request = board_with_buttons + button_h;
+        frame_sq.width_request = spacing + 3 * button_w + 4 * controls_box_s;
+        frame_sq.height_request = board_with_buttons + button_h;
+        frame_v.height_request = board_and_spacing + 3 * button_h + 4 * controls_box_s;
     }
 
     private bool draw_cb ()
@@ -673,38 +680,33 @@ public class Sudoku : Gtk.Application
 
     private bool check_layout_change ()
     {
-        var layout = get_window_orientation ();
-        var changed = layout != current_layout;
+        var layout = main_squeezer.visible_child;
+        if (! (layout is AspectFrame))
+            return false;
+        var changed = layout != previous_layout;
         if (changed)
-            set_layout (layout);
+            set_layout ((AspectFrame) layout);
         return changed;
     }
 
-    private Orientation get_window_orientation ()
+    private void set_layout (AspectFrame new_layout)
     {
-        var is_vertical = main_squeezer.visible_child == frame_v;
-        return is_vertical ? Orientation.VERTICAL : Orientation.HORIZONTAL;
-    }
-
-    private void set_layout (Orientation layout)
-    {
-        current_layout = layout;
-        AspectFrame previous;
-        AspectFrame next;
-        if (layout == Orientation.HORIZONTAL) {
-            next = frame_h;
-            previous = frame_v;
+        if (new_layout == frame_h) {
             controls_box.halign = Align.END;
             controls_box.orientation = Orientation.VERTICAL;
-        } else {
-            next = frame_v;
-            previous = frame_h;
+            game_box.orientation = Orientation.HORIZONTAL;
+        } else if (new_layout == frame_sq) {
             controls_box.halign = Align.CENTER;
             controls_box.orientation = Orientation.HORIZONTAL;
+            game_box.orientation = Orientation.VERTICAL;
+        } else {
+            controls_box.halign = Align.CENTER;
+            controls_box.orientation = Orientation.VERTICAL;
+            game_box.orientation = Orientation.VERTICAL;
         }
-        game_box.orientation = layout;
-        previous.remove (game_box);
-        next.add (game_box);
+        previous_layout.remove (game_box);
+        new_layout.add (game_box);
+        previous_layout = new_layout;
     }
 
     private void set_board_visible (bool value)
@@ -712,7 +714,7 @@ public class Sudoku : Gtk.Application
         start_box.visible = !value;
         start_box_s.visible = !value;
         frame_h.visible = value;
-        frame_v.visible = value;
+        frame_sq.visible = value;
     }
 
     private bool is_board_visible ()
