@@ -55,6 +55,7 @@ public class Sudoku : Gtk.Application
     private SudokuSaver saver;
 
     private AspectFrame previous_layout;
+    private Orientation main_squeezer_orientation;
 
     private SimpleAction undo_action;
     private SimpleAction redo_action;
@@ -254,9 +255,29 @@ public class Sudoku : Gtk.Application
 
     private void size_allocate_cb (Allocation allocation)
     {
+        int width, height;
+        window.get_size (out width, out height);
+        update_layout (width, height);
         if (window_is_maximized || window_is_fullscreen || window_is_tiled)
             return;
-        window.get_size (out window_width, out window_height);
+        window_width = width;
+        window_height = height;
+    }
+
+    private void update_layout (int width, int height)
+    {
+        main_squeezer_orientation = height > width ? Orientation.HORIZONTAL : Orientation.VERTICAL;
+        frame_h.ratio = height < 350 ? 1.9f : 1.4f;
+        apply_main_squeezer_orientation ();
+    }
+
+    private void apply_main_squeezer_orientation ()
+    {
+        var child = main_squeezer.visible_child;
+        if (child == start_box || child == start_box_s)
+            main_squeezer.orientation = main_squeezer_orientation;
+        else
+            main_squeezer.orientation = Orientation.HORIZONTAL;
     }
 
     private const Gdk.WindowState tiled_state = Gdk.WindowState.TILED
@@ -709,6 +730,7 @@ public class Sudoku : Gtk.Application
         start_box_s.visible = !value;
         frame_h.visible = value;
         frame_v.visible = value;
+        apply_main_squeezer_orientation ();
     }
 
     private bool is_board_visible ()
