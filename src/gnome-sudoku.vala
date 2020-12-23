@@ -452,7 +452,7 @@ public class Sudoku : Gtk.Application
             var time_str = ngettext ("Well done, you completed the puzzle in %d minute!",
                                      "Well done, you completed the puzzle in %d minutes!",
                                      minutes).printf (minutes);
-            var dialog = new MessageDialog (window, DialogFlags.DESTROY_WITH_PARENT, MessageType.INFO, ButtonsType.NONE, time_str);
+            var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.INFO, ButtonsType.NONE, time_str);
 
             dialog.add_button (_("_Quit"),       ResponseType.REJECT);
             dialog.add_button (_("Play _Again"), ResponseType.ACCEPT);
