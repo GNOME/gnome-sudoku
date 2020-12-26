@@ -264,4 +264,39 @@ public class SudokuWindow : ApplicationWindow
         else
             clock_label.set_text ("%02d∶\xE2\x80\x8E%02d".printf (minutes, seconds));
     }
+
+    private void set_layout (AspectFrame new_layout)
+    {
+        if (new_layout == frame_h)
+        {
+            controls_box.halign = Align.END;
+            controls_box.orientation = Orientation.VERTICAL;
+            game_box.orientation = Orientation.HORIZONTAL;
+        }
+        else
+        {
+            controls_box.halign = Align.CENTER;
+            controls_box.orientation = Orientation.VERTICAL;
+            game_box.orientation = Orientation.VERTICAL;
+        }
+        previous_layout.remove (game_box);
+        new_layout.add (game_box);
+        previous_layout = new_layout;
+    }
+
+    private bool check_layout_change ()
+    {
+        var layout = main_squeezer.visible_child;
+        if (!(layout is AspectFrame))
+            return false;
+        var changed = layout != previous_layout;
+        if (changed)
+            set_layout ((AspectFrame) layout);
+        return changed;
+    }
+
+    [GtkCallback] private bool main_squeezer_draw_cb ()
+    {
+        return check_layout_change ();
+    }
 }

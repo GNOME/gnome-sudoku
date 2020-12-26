@@ -173,6 +173,7 @@
             <property name="homogeneous">False</property>
             <property name="transition-type">crossfade</property>
             <property name="interpolate-size">True</property>
+            <signal name="draw" handler="main_squeezer_draw_cb" swapped="no"/>
             <child>
               <object class="GtkBox" id="start_box">
                 <property name="visible">True</property>
