@@ -225,8 +225,8 @@ public class Sudoku : Gtk.Application
             var error_str = "%s\n%s".printf(_("The puzzle you have entered is not a valid Sudoku."), _("Please enter a valid puzzle."));
             var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.ERROR, ButtonsType.OK, error_str);
 
-            dialog.run ();
-            dialog.destroy ();
+            dialog.response.connect (() => dialog.destroy ());
+            dialog.show ();
         }
         else
         {
@@ -451,11 +451,13 @@ public class Sudoku : Gtk.Application
         print_action.set_enabled (false);
         print_multiple_action.set_enabled (false);
         var print_dialog = new PrintDialog (saver, window);
-        print_dialog.destroy.connect (() => {
+        print_dialog.response.connect (() => {
             this.print_action.set_enabled (window.is_board_visible ());
             this.print_multiple_action.set_enabled (true);
+            // Do not destroy the PrintDialog. It will take some time to
+            // generate puzzles, then destroy itself when finished.
         });
-        print_dialog.run ();
+        print_dialog.show ();
     }
 
     private void help_cb ()
