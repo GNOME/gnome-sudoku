@@ -24,38 +24,16 @@ using Gtk;
 public class Sudoku : Gtk.Application
 {
     private GLib.Settings settings;
-    private bool window_is_maximized;
-    private bool window_is_fullscreen;
-    private bool window_is_tiled;
-    private int window_width;
-    private int window_height;
-    private Button play_custom_game_button;
-    private Button play_pause_button;
-    private Label play_pause_label;
-    private Label clock_label;
-    private Image clock_image;
 
-    private ApplicationWindow window;
+    private SudokuWindow window;
+    private SudokuGame? game = null;
 
-    private SudokuGame? game;
-    private SudokuView? view;
-
-    private HeaderBar headerbar;
-    private Hdy.Squeezer main_squeezer;
-    private Box start_box;
-    private Box start_box_s;
-    private AspectFrame frame_v;
-    private AspectFrame frame_h;
-    private Box game_box; // Holds the view
-    private ButtonBox controls_box;
-
-    private Box undo_redo_box;
-    private Button back_button;
+    private SudokuView? view
+    {
+        get { return window.view; }
+    }
 
     private SudokuSaver saver;
-
-    private AspectFrame previous_layout;
-    private Orientation main_squeezer_orientation;
 
     private SimpleAction undo_action;
     private SimpleAction redo_action;
@@ -68,8 +46,6 @@ public class Sudoku : Gtk.Application
 
     private bool show_possibilities = false;
     private GameMode current_game_mode = GameMode.PLAY;
-
-    private const int board_size = 140;
 
     private const GLib.ActionEntry action_entries[] =
     {
@@ -160,38 +136,6 @@ public class Sudoku : Gtk.Application
         set_accels_for_action ("app.redo", {"<Primary><Shift>z"});
         set_accels_for_action ("app.help", {"F1"});
 
-        Window.set_default_icon_name ("org.gnome.Sudoku");
-
-        var builder = new Builder.from_resource ("/org/gnome/Sudoku/ui/gnome-sudoku.ui");
-
-        window = (ApplicationWindow) builder.get_object ("sudoku_app");
-        window.size_allocate.connect (size_allocate_cb);
-        window.window_state_event.connect (window_state_event_cb);
-        window.set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
-        if (settings.get_boolean ("window-is-maximized"))
-            window.maximize ();
-
-        add_window (window);
-
-        headerbar = (HeaderBar) builder.get_object ("headerbar");
-        main_squeezer = (Hdy.Squeezer) builder.get_object ("main_squeezer");
-        main_squeezer.draw.connect (draw_cb);
-
-        start_box = (Box) builder.get_object ("start_box");
-        start_box_s = (Box) builder.get_object ("start_box_s");
-
-        frame_h = (AspectFrame) builder.get_object ("frame_h");
-        frame_v = (AspectFrame) builder.get_object ("frame_v");
-        game_box = (Box) builder.get_object ("game_box");
-        controls_box = (ButtonBox) builder.get_object ("controls_box");
-        undo_redo_box = (Box) builder.get_object ("undo_redo_box");
-        back_button = (Button) builder.get_object ("back_button");
-        clock_label = (Label) builder.get_object ("clock_label");
-        clock_image = (Image) builder.get_object ("clock_image");
-        play_custom_game_button = (Button) builder.get_object ("play_custom_game_button");
-        play_pause_button = (Button) builder.get_object ("play_pause_button");
-        play_pause_label = (Label) builder.get_object ("play_pause_label");
-
         undo_action = (SimpleAction) lookup_action ("undo");
         redo_action = (SimpleAction) lookup_action ("redo");
         new_game_action = (SimpleAction) lookup_action ("new-game");
@@ -201,8 +145,10 @@ public class Sudoku : Gtk.Application
         pause_action = (SimpleAction) lookup_action ("pause");
         play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
 
-        window.set_titlebar (headerbar);
-        prepare_layout ();
+        Window.set_default_icon_name ("org.gnome.Sudoku");
+
+        window = new SudokuWindow (settings);
+        add_window (window);
 
         saver = new SudokuSaver ();
         var savegame = saver.get_savedgame ();
@@ -243,69 +189,14 @@ public class Sudoku : Gtk.Application
             }
         }
 
-        /* Save window state */
-        settings.delay ();
-        settings.set_int ("window-width", window_width);
-        settings.set_int ("window-height", window_height);
-        settings.set_boolean ("window-is-maximized", window_is_maximized || window_is_fullscreen);
-        settings.apply ();
-
         base.shutdown ();
-    }
-
-    private void size_allocate_cb (Allocation allocation)
-    {
-        int width, height;
-        window.get_size (out width, out height);
-        update_layout (width, height);
-        if (window_is_maximized || window_is_fullscreen || window_is_tiled)
-            return;
-        window_width = width;
-        window_height = height;
-    }
-
-    private void update_layout (int width, int height)
-    {
-        main_squeezer_orientation = height > width ? Orientation.HORIZONTAL : Orientation.VERTICAL;
-        frame_h.ratio = height < 350 ? 1.9f : 1.4f;
-        apply_main_squeezer_orientation ();
-    }
-
-    private void apply_main_squeezer_orientation ()
-    {
-        var child = main_squeezer.visible_child;
-        if (child == start_box || child == start_box_s)
-            main_squeezer.orientation = main_squeezer_orientation;
-        else
-            main_squeezer.orientation = Orientation.HORIZONTAL;
-    }
-
-    private const Gdk.WindowState tiled_state = Gdk.WindowState.TILED
-                                              | Gdk.WindowState.TOP_TILED
-                                              | Gdk.WindowState.BOTTOM_TILED
-                                              | Gdk.WindowState.LEFT_TILED
-                                              | Gdk.WindowState.RIGHT_TILED;
-    private bool window_state_event_cb (Gdk.EventWindowState event)
-    {
-        if ((event.changed_mask & Gdk.WindowState.MAXIMIZED) != 0)
-            window_is_maximized = (event.new_window_state & Gdk.WindowState.MAXIMIZED) != 0;
-
-        /* fullscreen: saved as maximized */
-        if ((event.changed_mask & Gdk.WindowState.FULLSCREEN) != 0)
-            window_is_fullscreen = (event.new_window_state & Gdk.WindowState.FULLSCREEN) != 0;
-
-        /* We don’t save this state, but track it for saving size allocation */
-        if ((event.changed_mask & tiled_state) != 0)
-            window_is_tiled = (event.new_window_state & tiled_state) != 0;
-
-        return false;
     }
 
     private void paused_changed_cb ()
     {
         if (game.paused)
         {
-            display_unpause_button ();
+            window.display_unpause_button ();
             clear_action.set_enabled (false);
             undo_action.set_enabled (false);
             redo_action.set_enabled (false);
@@ -313,7 +204,7 @@ public class Sudoku : Gtk.Application
         }
         else if (game.get_total_time_played () > 0)
         {
-            display_pause_button ();
+            window.display_pause_button ();
             clear_action.set_enabled (!game.is_empty ());
             undo_action.set_enabled (!game.is_undostack_null ());
             redo_action.set_enabled (!game.is_redostack_null ());
@@ -364,28 +255,44 @@ public class Sudoku : Gtk.Application
            game.stop_clock ();
     }
 
-    private void tick_cb ()
+    private void cell_changed_cb ()
     {
-        var elapsed_time = (int) game.get_total_time_played ();
-        var hours = elapsed_time / 3600;
-        var minutes = (elapsed_time - hours * 3600) / 60;
-        var seconds = elapsed_time - hours * 3600 - minutes * 60;
-        if (hours > 0)
-            clock_label.set_text ("%02d∶\xE2\x80\x8E%02d∶\xE2\x80\x8E%02d".printf (hours, minutes, seconds));
-        else
-            clock_label.set_text ("%02d∶\xE2\x80\x8E%02d".printf (minutes, seconds));
+        undo_action.set_enabled (!game.is_undostack_null ());
+        redo_action.set_enabled (!game.is_redostack_null ());
+        clear_action.set_enabled (!game.is_empty ());
+        play_custom_game_action.set_enabled (!game.is_empty () && !game.board.is_fully_filled ());
     }
 
-    private void display_pause_button ()
+    private void board_completed_cb ()
     {
-        play_pause_button.show ();
-        play_pause_label.label = _("_Pause");
-    }
+        window.board_completed ();
 
-    private void display_unpause_button ()
-    {
-        play_pause_button.show ();
-        play_pause_label.label = _("_Resume");
+        game.stop_clock ();
+
+        for (var i = 0; i < game.board.rows; i++)
+            for (var j = 0; j < game.board.cols; j++)
+                view.can_focus = false;
+
+        saver.add_game_to_finished (game, true);
+
+        /* Text in dialog that displays when the game is over. */
+        var minutes = int.max (1, (int) game.get_total_time_played () / 60);
+        var time_str = ngettext ("Well done, you completed the puzzle in %d minute!",
+                                 "Well done, you completed the puzzle in %d minutes!",
+                                 minutes).printf (minutes);
+        var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.INFO, ButtonsType.NONE, time_str);
+        dialog.add_button (_("_Quit"),       ResponseType.REJECT);
+        dialog.add_button (_("Play _Again"), ResponseType.ACCEPT);
+
+        dialog.response.connect ((response_id) => {
+            if (response_id == ResponseType.ACCEPT)
+                show_new_game_screen ();
+            else if (response_id == ResponseType.REJECT)
+                quit ();
+            dialog.destroy ();
+        });
+
+        dialog.show ();
     }
 
     private void start_custom_game (SudokuBoard board)
@@ -397,89 +304,40 @@ public class Sudoku : Gtk.Application
 
     private void start_game (SudokuBoard board)
     {
-        if (view != null)
-            game_box.remove (view);
+        if (game != null)
+        {
+            game.paused_changed.disconnect (paused_changed_cb);
+            game.cell_changed.disconnect (cell_changed_cb);
+            game.board.completed.disconnect (board_completed_cb);
+        }
 
-        show_game_view ();
         game = new SudokuGame (board);
         game.mode = current_game_mode;
 
+        game.paused_changed.connect (paused_changed_cb);
+        game.cell_changed.connect (cell_changed_cb);
+
+        window.start_game (game, show_possibilities);
+
+        print_action.set_enabled (true);
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);
-        set_headerbar_title ();
+
         clear_action.set_enabled (!game.is_empty ());
         play_custom_game_action.set_enabled (!game.is_empty ());
 
-        game.tick.connect (tick_cb);
-        game.paused_changed.connect (paused_changed_cb);
-        game.start_clock ();
-
-        view = new SudokuView (game);
-        view.set_size_request (board_size, board_size);
-
-        view.show_possibilities = show_possibilities;
-        if (current_game_mode == GameMode.CREATE)
-            view.show_warnings = true;
-        else
-            view.show_warnings = settings.get_boolean ("show-warnings");
-        view.highlighter = settings.get_boolean ("highlighter");
-
-        view.show ();
-        game_box.pack_start (view);
-        game_box.child_set_property (view, "position", 0);
-        game.cell_changed.connect (() => {
-            undo_action.set_enabled (!game.is_undostack_null ());
-            redo_action.set_enabled (!game.is_redostack_null ());
-            clear_action.set_enabled (!game.is_empty ());
-            play_custom_game_action.set_enabled (!game.is_empty () && !game.board.is_fully_filled ());
-        });
-
-        if (current_game_mode == GameMode.CREATE)
-            return;
-
-        game.board.completed.connect (() => {
-            play_custom_game_button.visible = false;
-            game.stop_clock ();
-
-            for (var i = 0; i < game.board.rows; i++)
-                for (var j = 0; j < game.board.cols; j++)
-                    view.can_focus = false;
-
-            saver.add_game_to_finished (game, true);
-
-            /* Text in dialog that displays when the game is over. */
-            var minutes = int.max (1, (int) game.get_total_time_played () / 60);
-            var time_str = ngettext ("Well done, you completed the puzzle in %d minute!",
-                                     "Well done, you completed the puzzle in %d minutes!",
-                                     minutes).printf (minutes);
-            var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.INFO, ButtonsType.NONE, time_str);
-
-            dialog.add_button (_("_Quit"),       ResponseType.REJECT);
-            dialog.add_button (_("Play _Again"), ResponseType.ACCEPT);
-
-            dialog.response.connect ((response_id) => {
-                if (response_id == ResponseType.ACCEPT)
-                    show_new_game_screen ();
-                else if (response_id == ResponseType.REJECT)
-                    quit ();
-                dialog.destroy ();
-            });
-
-            dialog.show ();
-        });
+        if (current_game_mode != GameMode.CREATE)
+            game.board.completed.connect (board_completed_cb);
     }
 
     private void show_new_game_screen ()
     {
-        set_board_visible (false);
-        back_button.visible = game != null;
-        undo_redo_box.visible = false;
-        headerbar.title = _("Select Difficulty");
         print_action.set_enabled (false);
-        clock_label.hide ();
-        clock_image.hide ();
+
         if (game != null)
             game.stop_clock ();
+
+        window.show_new_game_screen ();
     }
 
     private void new_game_cb ()
@@ -505,20 +363,19 @@ public class Sudoku : Gtk.Application
 
     private void start_game_cb (SimpleAction action, Variant? difficulty)
     {
+        window.will_start_game ();
+        current_game_mode = GameMode.PLAY;
+
         // Since we cannot have enums in .ui file, the 'action-target' property
         // of new game buttons in data/gnome-sudoku.ui
         // has been set to integers corresponding to the enums.
         // Following line converts those ints to their DifficultyCategory
         var selected_difficulty = (DifficultyCategory) difficulty.get_int32 ();
 
-        back_button.sensitive = false;
-        current_game_mode = GameMode.PLAY;
-
         SudokuGenerator.generate_boards_async.begin (1, selected_difficulty, null, (obj, res) => {
             try
             {
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);
-                back_button.sensitive = true;
                 start_game (gen_boards[0]);
             }
             catch (Error e)
@@ -546,49 +403,16 @@ public class Sudoku : Gtk.Application
         dialog.show ();
     }
 
-    private void show_game_view ()
-    {
-        set_board_visible (true);
-        back_button.visible = false;
-        undo_redo_box.visible = true;
-        print_action.set_enabled (true);
-        clock_label.show ();
-        clock_image.show ();
-
-        if (game != null)
-            game.resume_clock ();
-
-        if (current_game_mode == GameMode.PLAY)
-        {
-            play_custom_game_button.visible = false;
-            play_pause_button.visible = true;
-        }
-        else
-        {
-            clock_label.hide ();
-            clock_image.hide ();
-            play_custom_game_button.visible = true;
-            play_pause_button.visible = false;
-        }
-    }
-
-    private void set_headerbar_title ()
-    {
-        if (current_game_mode == GameMode.PLAY)
-            headerbar.title = game.board.difficulty_category.to_string ();
-        else
-            headerbar.title = _("Create Puzzle");
-    }
-
     private void back_cb ()
     {
-        show_game_view ();
-        set_headerbar_title ();
+        window.show_game_view ();
+
+        print_action.set_enabled (true);
     }
 
     private void undo_cb ()
     {
-        if (!is_board_visible ())
+        if (!window.is_board_visible ())
             return;
         game.undo ();
         undo_action.set_enabled (!game.is_undostack_null ());
@@ -598,7 +422,7 @@ public class Sudoku : Gtk.Application
 
     private void redo_cb ()
     {
-        if (!is_board_visible ())
+        if (!window.is_board_visible ())
             return;
         game.redo ();
         redo_action.set_enabled (!game.is_redostack_null ());
@@ -608,7 +432,7 @@ public class Sudoku : Gtk.Application
 
     private void print_cb ()
     {
-        if (!is_board_visible ())
+        if (!window.is_board_visible ())
             return;
         print_action.set_enabled (false);
         print_multiple_action.set_enabled (false);
@@ -628,7 +452,7 @@ public class Sudoku : Gtk.Application
         print_multiple_action.set_enabled (false);
         var print_dialog = new PrintDialog (saver, window);
         print_dialog.destroy.connect (() => {
-            this.print_action.set_enabled (is_board_visible ());
+            this.print_action.set_enabled (window.is_board_visible ());
             this.print_multiple_action.set_enabled (true);
         });
         print_dialog.run ();
@@ -672,23 +496,8 @@ public class Sudoku : Gtk.Application
                                );
     }
 
-    private void prepare_layout ()
-    {
-        previous_layout = frame_h;
-
-        var main_squeezer_m = main_squeezer.margin;
-        var game_box_s = game_box.spacing;
-        var controls_box_s = controls_box.spacing;
-        const int BUTTON_W = 120;
-        const int BUTTON_H = 60;
-
-        var spacing = 2 * game_box_s + 2 * main_squeezer_m;
-        var board_and_spacing = board_size + spacing;
-        var board_with_buttons = board_and_spacing + game_box_s + 2 * controls_box_s;
-        frame_h.width_request = board_with_buttons + BUTTON_W;
-        frame_v.height_request = board_and_spacing + 3 * BUTTON_H + 4 * controls_box_s;
-    }
-
+#if 0
+    // Unused?
     private bool draw_cb ()
     {
         return check_layout_change ();
@@ -723,20 +532,7 @@ public class Sudoku : Gtk.Application
         new_layout.add (game_box);
         previous_layout = new_layout;
     }
-
-    private void set_board_visible (bool value)
-    {
-        start_box.visible = !value;
-        start_box_s.visible = !value;
-        frame_h.visible = value;
-        frame_v.visible = value;
-        apply_main_squeezer_orientation ();
-    }
-
-    private bool is_board_visible ()
-    {
-        return frame_h.visible;
-    }
+#endif
 
     public static int main (string[] args)
     {

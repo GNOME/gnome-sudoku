@@ -11,6 +11,7 @@ gnome_sudoku_sources = [
   'print-dialog.vala',
   'sudoku-printer.vala',
   'sudoku-view.vala',
+  'sudoku-window.vala',
   resources
 ]
 

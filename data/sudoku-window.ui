@@ -1,126 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.10 -->
-  <object class="GtkHeaderBar" id="headerbar">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="title" translatable="yes">Sudoku</property>
-    <property name="show-close-button">True</property>
-    <child>
-      <object class="GtkBox" id="undo_redo_box">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="homogeneous">True</property>
-        <style>
-          <class name="raised"/>
-          <class name="linked"/>
-        </style>
-        <child>
-          <object class="GtkButton">
-            <property name="visible">True</property>
-            <property name="sensitive">False</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Undo your last action</property>
-            <property name="can-focus">True</property>
-            <property name="focus-on-click">False</property>
-            <property name="action-name">app.undo</property>
-            <style>
-              <class name="image-button"/>
-            </style>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">edit-undo-symbolic</property>
-                <property name="visible">True</property>
-                <property name="icon-size">1</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton">
-            <property name="visible">True</property>
-            <property name="sensitive">False</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Redo your last action</property>
-            <property name="can-focus">True</property>
-            <property name="focus-on-click">False</property>
-            <property name="action-name">app.redo</property>
-            <style>
-              <class name="image-button"/>
-            </style>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">edit-redo-symbolic</property>
-                <property name="visible">True</property>
-                <property name="icon-size">1</property>
-              </object>
-            </child>
-          </object>
-        </child>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuButton">
-        <property name="visible">True</property>
-        <property name="menu-model">primary-menu</property>
-        <child>
-          <object class="GtkImage">
-            <property name="visible">True</property>
-            <property name="halign">center</property>
-            <property name="icon-name">open-menu-symbolic</property>
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="pack-type">end</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkBox">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="spacing">6</property>
-        <child>
-          <object class="GtkImage" id="clock_image">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="icon-name">preferences-system-time-symbolic</property>
-            <property name="icon-size">1</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel" id="clock_label">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="halign">center</property>
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="pack-type">end</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="back_button">
-        <property name="visible">False</property>
-        <property name="halign">center</property>
-        <property name="valign">center</property>
-        <property name="tooltip-text" translatable="yes">Go back to the current game</property>
-        <property name="use-underline">True</property>
-        <property name="action-name">app.back</property>
-        <style>
-          <class name="image-button"/>
-        </style>
-        <child>
-          <object class="GtkImage">
-            <property name="icon-name">go-previous-symbolic</property>
-            <property name="visible">True</property>
-            <property name="icon-size">1</property>
-          </object>
-        </child>
-      </object>
-    </child>
-  </object>
   <menu id="primary-menu">
     <section>
       <submenu>
@@ -158,8 +38,130 @@
       </item>
     </section>
   </menu>
-  <object class="GtkApplicationWindow" id="sudoku_app">
+  <template class="SudokuWindow" parent="GtkApplicationWindow">
     <property name="title" translatable="yes">Sudoku</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="headerbar">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="title" translatable="yes">Sudoku</property>
+        <property name="show-close-button">True</property>
+        <child>
+          <object class="GtkBox" id="undo_redo_box">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="homogeneous">True</property>
+            <style>
+              <class name="raised"/>
+              <class name="linked"/>
+            </style>
+            <child>
+              <object class="GtkButton">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="valign">center</property>
+                <property name="tooltip-text" translatable="yes">Undo your last action</property>
+                <property name="can-focus">True</property>
+                <property name="focus-on-click">False</property>
+                <property name="action-name">app.undo</property>
+                <style>
+                  <class name="image-button"/>
+                </style>
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">edit-undo-symbolic</property>
+                    <property name="visible">True</property>
+                    <property name="icon-size">1</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="valign">center</property>
+                <property name="tooltip-text" translatable="yes">Redo your last action</property>
+                <property name="can-focus">True</property>
+                <property name="focus-on-click">False</property>
+                <property name="action-name">app.redo</property>
+                <style>
+                  <class name="image-button"/>
+                </style>
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">edit-redo-symbolic</property>
+                    <property name="visible">True</property>
+                    <property name="icon-size">1</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkMenuButton">
+            <property name="visible">True</property>
+            <property name="menu-model">primary-menu</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="halign">center</property>
+                <property name="icon-name">open-menu-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="spacing">6</property>
+            <child>
+              <object class="GtkImage" id="clock_image">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">preferences-system-time-symbolic</property>
+                <property name="icon-size">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="clock_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="halign">center</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="back_button">
+            <property name="visible">False</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Go back to the current game</property>
+            <property name="use-underline">True</property>
+            <property name="action-name">app.back</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">go-previous-symbolic</property>
+                <property name="visible">True</property>
+                <property name="icon-size">1</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
     <child>
       <object class="GtkBox"> <!-- vbox -->
         <property name="orientation">vertical</property>
@@ -419,5 +421,5 @@
         </child>
       </object> <!-- End of vbox -->
     </child>
-  </object> <!-- End of sudoku_app -->
+  </template> <!-- End of SudokuWindow -->
 </interface>
