@@ -6,7 +6,7 @@ gnome_sudoku_vala_args = [
 gnome_sudoku_sources = [
   'config.vapi',
   'gnome-sudoku.vala',
-  'main-menu.vala',
+  'menu-item.vala',
   'number-picker.vala',
   'print-dialog.vala',
   'sudoku-printer.vala',
@@ -15,7 +15,7 @@ gnome_sudoku_sources = [
   resources
 ]
 
-gnome_sudoku_dependencies = [gtk, libhandy, libsudoku_dep]
+gnome_sudoku_dependencies = [gtk, libsudoku_dep]
 
 gnome_sudoku = executable(meson.project_name(), gnome_sudoku_sources,
   vala_args: gnome_sudoku_vala_args,

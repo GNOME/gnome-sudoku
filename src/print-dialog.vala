@@ -31,10 +31,10 @@ public class PrintDialog : Dialog
     [GtkChild] private Grid print_grid;
     [GtkChild] private SpinButton n_sudokus_button;
     [GtkChild] private SpinButton n_sudokus_per_page_button;
-    [GtkChild] private RadioButton easy_radio_button;
-    [GtkChild] private RadioButton medium_radio_button;
-    [GtkChild] private RadioButton hard_radio_button;
-    [GtkChild] private RadioButton very_hard_radio_button;
+    [GtkChild] private CheckButton easy_radio_button;
+    [GtkChild] private CheckButton medium_radio_button;
+    [GtkChild] private CheckButton hard_radio_button;
+    [GtkChild] private CheckButton very_hard_radio_button;
 
     private Revealer revealer;
     private Spinner spinner;
@@ -60,7 +60,7 @@ public class PrintDialog : Dialog
 
         spinner = new Spinner ();
         revealer = new Revealer ();
-        revealer.add (spinner);
+        revealer.child = spinner;
         revealer.valign = Align.CENTER;
         ((HeaderBar) get_header_bar ()).pack_end (revealer);
 
@@ -106,7 +106,6 @@ public class PrintDialog : Dialog
     public bool start_spinner_cb ()
     {
         revealer.set_transition_type (RevealerTransitionType.SLIDE_LEFT);
-        revealer.show_all ();
         spinner.start ();
         revealer.set_reveal_child (true);
         return Source.REMOVE;

@@ -1,7 +1,7 @@
 /* -*- Mode: vala; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
  * Copyright © 2014 Parin Porecha
- * Copyright © 2014 Michael Catanzaro
+ * Copyright © 2014, 2020 Michael Catanzaro
  *
  * This file is part of GNOME Sudoku.
  *
@@ -92,7 +92,7 @@ private class SudokuCellView : DrawingArea
     private NumberPicker number_picker;
     private NumberPicker earmark_picker;
 
-    private EventControllerKey key_controller;      // for keeping in memory
+    private ModifierType key_modifiers;
 
     public SudokuCellView (int row, int col, ref SudokuGame game)
     {
@@ -100,49 +100,60 @@ private class SudokuCellView : DrawingArea
         this.row = row;
         this.col = col;
 
-        init_keyboard ();
+        var focus_controller = new EventControllerFocus ();
+        focus_controller.leave.connect (on_focus_leave);
+        add_controller (focus_controller);
+
+        var key_controller = new EventControllerKey ();
+        key_controller.key_pressed.connect (on_key_pressed);
+        add_controller (key_controller);
+
+        var click_controller = new Gtk.GestureClick ();
+        click_controller.button = 0; // listen for every button
+        click_controller.pressed.connect (on_click);
+        add_controller (click_controller);
 
         value = game.board [row, col];
 
         // background_color is set in the SudokuView, as it manages the color of the cells
 
-        can_focus = true;
-        events = EventMask.EXPOSURE_MASK | EventMask.BUTTON_PRESS_MASK | EventMask.BUTTON_RELEASE_MASK | EventMask.KEY_PRESS_MASK;
-
         if (is_fixed && game.mode == GameMode.PLAY)
             return;
 
-        focus_out_event.connect (focus_out_cb);
         game.cell_changed.connect (cell_changed_cb);
+
+        set_draw_func (draw);
     }
 
-    public override bool button_press_event (EventButton event)
+    private void on_click (Gtk.GestureClick click_controller, int n_press, double event_x, double event_y)
     {
-        if (event.button != 1 && event.button != 3)
-            return false;
+        uint button = click_controller.get_current_button ();
+        if (button != 1 && button != 3)
+            return;
 
-        if (!is_focus)
+        if (!is_focus ())
             grab_focus ();
+
         if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
-            return false;
+            return;
 
         if (popover != null || earmark_popover != null)
         {
             hide_both_popovers ();
-            return false;
+            return;
         }
 
-        if (event.button == 1)            // Left-Click
+        if (button == 1) // Left-Click
         {
-            if (!_show_possibilities && (event.state & ModifierType.CONTROL_MASK) > 0 && game.mode == GameMode.PLAY)
+            if (!_show_possibilities && (key_modifiers & ModifierType.CONTROL_MASK) > 0 && game.mode == GameMode.PLAY)
                 show_earmark_picker ();
             else
                 show_number_picker ();
         }
-        else if (!_show_possibilities && event.button == 3 && game.mode == GameMode.PLAY)         // Right-Click
+        else if (!_show_possibilities && button == 3 && game.mode == GameMode.PLAY) // Right-Click
+        {
             show_earmark_picker ();
-
-        return false;
+        }
     }
 
     private void create_earmark_picker ()
@@ -162,7 +173,7 @@ private class SudokuCellView : DrawingArea
     private void show_number_picker ()
     {
         if (earmark_popover != null)
-            earmark_popover.hide ();
+            earmark_popover.popdown ();
 
         number_picker = new NumberPicker (ref game.board);
         number_picker.number_picked.connect ((o, number) => {
@@ -171,47 +182,39 @@ private class SudokuCellView : DrawingArea
                 notify_property ("value");
             this.game.board.disable_all_earmarks (row, col);
 
-            popover.hide ();
+            popover.popdown ();
         });
         number_picker.set_clear_button_visibility (value != 0);
 
-        popover = new Popover (this);
-        popover.add (number_picker);
-        popover.modal = false;
+        popover = new Popover ();
+        popover.set_parent (this);
+        popover.child = number_picker;
+        popover.autohide = true;
         popover.position = PositionType.BOTTOM;
+        popover.popup ();
         popover.notify["visible"].connect (()=> {
             if (!popover.visible)
                 destroy_popover (ref popover, ref number_picker);
         });
-        popover.focus_out_event.connect (() => {
-            popover.hide ();
-            return true;
-        });
-
-        popover.show ();
     }
 
     private void show_earmark_picker ()
     {
         if (popover != null)
-            popover.hide ();
+            popover.popdown ();
 
         create_earmark_picker ();
 
-        earmark_popover = new Popover (this);
-        earmark_popover.add (earmark_picker);
-        earmark_popover.modal = false;
+        earmark_popover = new Popover ();
+        earmark_popover.set_parent (this);
+        earmark_popover.child = earmark_picker;
+        earmark_popover.autohide = true;
         earmark_popover.position = PositionType.BOTTOM;
+        earmark_popover.popup ();
         earmark_popover.notify["visible"].connect (()=> {
             if (!earmark_popover.visible)
                 destroy_popover (ref earmark_popover, ref earmark_picker);
         });
-        earmark_popover.focus_out_event.connect (() => {
-            earmark_popover.hide ();
-            return true;
-        });
-
-        earmark_popover.show ();
     }
 
     private void destroy_popover (ref Popover popover, ref NumberPicker picker)
@@ -232,10 +235,9 @@ private class SudokuCellView : DrawingArea
             earmark_popover.hide ();
     }
 
-    private bool focus_out_cb (Widget widget, EventFocus event)
+    private void on_focus_leave (Gtk.EventControllerFocus controller)
     {
         hide_both_popovers ();
-        return false;
     }
 
     /* Key mapping function to help convert Gdk.keyval_name string to numbers */
@@ -265,14 +267,10 @@ private class SudokuCellView : DrawingArea
         return -1;
     }
 
-    private inline void init_keyboard ()  // called on construct
+    private bool on_key_pressed (EventControllerKey key_controller, uint keyval, uint keycode, ModifierType state)
     {
-        key_controller = new EventControllerKey (this);
-        key_controller.key_pressed.connect (on_key_pressed);
-    }
+        key_modifiers = state;
 
-    private inline bool on_key_pressed (EventControllerKey _key_controller, uint keyval, uint keycode, ModifierType state)
-    {
         if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
             return false;
         string k_name = keyval_name (keyval);
@@ -332,10 +330,10 @@ private class SudokuCellView : DrawingArea
         return false;
     }
 
-    public override bool draw (Cairo.Context c)
+    private void draw (Gtk.DrawingArea self, Cairo.Context c, int width, int height)
     {
         RGBA background_color;
-        if (_selected && is_focus)
+        if (_selected && is_focus ())
             background_color = selected_bg_color;
         else if (is_fixed)
             background_color = fixed_cell_color;
@@ -344,7 +342,7 @@ private class SudokuCellView : DrawingArea
         else
             background_color = free_cell_color;
         c.set_source_rgba (background_color.red, background_color.green, background_color.blue, background_color.alpha);
-        c.rectangle (0, 0, get_allocated_width (), get_allocated_height ());
+        c.rectangle (0, 0, width, height);
         c.fill();
 
         if (_show_warnings && game.board.broken_coords.contains (Coord (row, col)))
@@ -357,21 +355,19 @@ private class SudokuCellView : DrawingArea
             c.set_source_rgb (0.0, 0.0, 0.0);
 
         if (game.paused)
-            return false;
+            return;
 
         if (value != 0)
         {
-            double height = (double) get_allocated_height ();
-            double width = (double) get_allocated_width ();
             string text = "%d".printf (value);
 
             c.set_font_size (height / size_ratio);
             print_centered (c, text, width, height);
-            return false;
+            return;
         }
 
         if (is_fixed && game.mode == GameMode.PLAY)
-            return false;
+            return;
 
         bool[] marks = null;
         if (!_show_possibilities)
@@ -388,8 +384,8 @@ private class SudokuCellView : DrawingArea
             double possibility_size = get_allocated_height () / size_ratio / 2;
             c.set_font_size (possibility_size);
 
-            double height = (double) get_allocated_height () / game.board.block_rows;
-            double width = (double) get_allocated_width () / game.board.block_cols;
+            double h = (double) height / game.board.block_rows;
+            double w = (double) width / game.board.block_cols;
 
             int num = 0;
             for (int row_tmp = 0; row_tmp < game.board.block_rows; row_tmp++)
@@ -408,8 +404,8 @@ private class SudokuCellView : DrawingArea
                         var text = "%d".printf (num);
 
                         c.save ();
-                        c.translate (col_tmp * width, (game.board.block_rows - row_tmp - 1) * height);
-                        print_centered (c, text, width, height);
+                        c.translate (col_tmp * w, (game.board.block_rows - row_tmp - 1) * h);
+                        print_centered (c, text, w, h);
                         c.restore ();
                     }
                 }
@@ -418,12 +414,10 @@ private class SudokuCellView : DrawingArea
 
         if (_show_warnings && (value == 0 && game.board.count_possibilities (row, col) == 0))
         {
-            c.set_font_size (get_allocated_height () / size_ratio);
+            c.set_font_size (height / size_ratio);
             c.set_source_rgb (1.0, 0.0, 0.0);
-            print_centered (c, "X", get_allocated_width (), get_allocated_height ());
+            print_centered (c, "X", width, height);
         }
-
-        return false;
     }
 
     private void print_centered (Cairo.Context c, string text, double width, double height)
@@ -456,20 +450,20 @@ private class SudokuCellView : DrawingArea
     }
 }
 
-public const RGBA fixed_cell_color = {0.8, 0.8, 0.8, 1.0};
-public const RGBA free_cell_color = {1.0, 1.0, 1.0, 1.0};
-public const RGBA highlight_color = {0.93, 0.93, 0.93, 1.0};
-public const RGBA selected_bg_color = {0.7, 0.8, 0.9, 1.0};
+public const RGBA fixed_cell_color = {0.8f, 0.8f, 0.8f, 1.0f};
+public const RGBA free_cell_color = {1.0f, 1.0f, 1.0f, 1.0f};
+public const RGBA highlight_color = {0.93f, 0.93f, 0.93f, 1.0f};
+public const RGBA selected_bg_color = {0.7f, 0.8f, 0.9f, 1.0f};
 
-public class SudokuView : AspectFrame
+public class SudokuView : Widget
 {
     public SudokuGame game;
     private SudokuCellView[,] cells;
 
     private bool previous_board_broken_state = false;
 
-    private Overlay overlay;
-    private DrawingArea drawing;
+    private Overlay? overlay;
+    private DrawingArea drawing_area;
     private Grid grid;
 
     private int selected_row = -1;
@@ -491,26 +485,16 @@ public class SudokuView : AspectFrame
 
     public SudokuView (SudokuGame game)
     {
-        shadow_type = ShadowType.NONE;
-        obey_child = false;
-        ratio = 1;
-
         overlay = new Overlay ();
-        add (overlay);
+        overlay.hexpand = true;
+        overlay.vexpand = true;
+        overlay.set_parent (this);
 
-        drawing = new DrawingArea ();
-        drawing.draw.connect (draw_board);
-
-        if (grid != null)
-            overlay.remove (grid);
+        drawing_area = new DrawingArea ();
+        drawing_area.set_draw_func (draw_board);
+        overlay.add_overlay (drawing_area);
 
         this.game = game;
-        this.game.paused_changed.connect(() => {
-            if (this.game.paused)
-                drawing.show ();
-            else
-                drawing.hide ();
-        });
 
         var css_provider = new CssProvider ();
         css_provider.load_from_resource ("/org/gnome/Sudoku/ui/gnome-sudoku.css");
@@ -522,6 +506,7 @@ public class SudokuView : AspectFrame
         grid.row_homogeneous = true;
         grid.get_style_context ().add_class ("board");
         grid.get_style_context ().add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        overlay.child = grid;
 
         var blocks = new Grid[game.board.block_rows, game.board.block_cols];
         for (var block_row = 0; block_row < game.board.block_rows; block_row++)
@@ -547,29 +532,26 @@ public class SudokuView : AspectFrame
             for (var col = 0; col < game.board.cols; col++)
             {
                 var cell = new SudokuCellView (row, col, ref this.game);
+                var focus_controller = new EventControllerFocus ();
+                cell.add_controller (focus_controller);
+
                 var cell_row = row;
                 var cell_col = col;
 
-                cell.focus_in_event.connect (() => {
+                focus_controller.enter.connect (() => {
                     if (game.paused)
-                        return false;
-
+                        return;
                     this.set_selected (cell_row, cell_col);
                     this.update_highlights ();
                     queue_draw ();
-
-                    return false;
                 });
 
-                cell.focus_out_event.connect (() => {
+                focus_controller.leave.connect (() => {
                     if (game.paused)
-                        return false;
-
+                        return;
                     this.set_selected (-1, -1);
                     this.update_highlights ();
                     queue_draw ();
-
-                    return false;
                 });
 
                 cell.notify["value"].connect ((s, p)=> {
@@ -586,12 +568,15 @@ public class SudokuView : AspectFrame
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
             }
         }
+    }
 
-        overlay.add_overlay (drawing);
-        overlay.add (grid);
-        grid.show_all ();
-        overlay.show ();
-        drawing.hide ();
+    ~SudokuView ()
+    {
+        if (overlay != null)
+        {
+            overlay.unparent ();
+            overlay = null;
+        }
     }
 
     private void update_highlights ()
@@ -618,28 +603,24 @@ public class SudokuView : AspectFrame
         }
     }
 
-    private bool draw_board (Cairo.Context c)
+    private void draw_board (Gtk.DrawingArea drawing_area, Cairo.Context c, int width, int height)
     {
         if (game.paused)
         {
-            int board_length = grid.get_allocated_width ();
-
             c.set_source_rgba (0, 0, 0, 0.75);
             c.paint ();
 
             c.select_font_face ("Sans", Cairo.FontSlant.NORMAL, Cairo.FontWeight.BOLD);
-            c.set_font_size (get_allocated_width () * 0.125);
+            c.set_font_size (width * 0.125);
 
             /* Text on overlay when game is paused */
             var text = _("Paused");
             Cairo.TextExtents extents;
             c.text_extents (text, out extents);
-            c.move_to (board_length/2.0 - extents.width/2.0, board_length/2.0 + extents.height/2.0);
+            c.move_to (width/2.0 - extents.width/2.0, width/2.0 + extents.height/2.0);
             c.set_source_rgb (1, 1, 1);
             c.show_text (text);
         }
-
-        return false;
     }
 
     public void clear ()

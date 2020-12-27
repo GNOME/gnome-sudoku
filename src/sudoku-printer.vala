@@ -41,10 +41,12 @@ public class SudokuPrinter : GLib.Object {
         }
         catch (GLib.Error e)
         {
-            new MessageDialog (window, DialogFlags.MODAL,
-                               MessageType.ERROR, ButtonsType.CLOSE,
-                               /* Error message if printing fails */
-                               "%s\n%s".printf (_("Error printing file:"), e.message)).run ();
+            var dialog = new MessageDialog (window, DialogFlags.MODAL,
+                                            MessageType.ERROR, ButtonsType.CLOSE,
+                                            /* Error message if printing fails */
+                                            "%s\n%s".printf (_("Error printing file:"), e.message));
+            dialog.response.connect (() => dialog.destroy ());
+            dialog.show ();
         }
 
         return PrintOperationResult.ERROR;

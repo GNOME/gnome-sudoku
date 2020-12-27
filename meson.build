@@ -32,9 +32,8 @@ glib_version = '2.40.0'
 gee = dependency('gee-0.8')
 gio = dependency('gio-2.0', version: '>= @0@'.format(glib_version))
 glib = dependency('glib-2.0', version: '>= @0@'.format(glib_version))
-gtk = dependency('gtk+-3.0', version: '>= 3.24.0')
+gtk = dependency('gtk4')
 json_glib = dependency('json-glib-1.0')
-libhandy = dependency('libhandy-1')
 qqwing = dependency('qqwing', version: '>= 1.3.4')
 threads = dependency('threads')
 

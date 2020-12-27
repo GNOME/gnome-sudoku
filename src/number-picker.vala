@@ -53,8 +53,7 @@ private class NumberPicker : Grid
                 label.margin_end = earmark ? 16 : 8;
                 label.margin_top = earmark ? 0 : 4;
                 label.margin_bottom = earmark ? 8 : 4;
-                button.add (label);
-                label.show ();
+                button.child = label;
 
                 if (!earmark)
                     button.clicked.connect (() => {
@@ -71,8 +70,6 @@ private class NumberPicker : Grid
 
                 if (n == 5)
                     button.grab_focus ();
-
-                button.show ();
             }
         }
 
@@ -84,8 +81,7 @@ private class NumberPicker : Grid
 
             var label = new Label ("<big>%s</big>".printf (_("Clear")));
             label.use_markup = true;
-            clear_button.add (label);
-            label.show ();
+            clear_button.child = label;
 
             clear_button.clicked.connect (() => {
                 number_picked (0);
@@ -94,10 +90,12 @@ private class NumberPicker : Grid
 
         this.valign = Align.CENTER;
         this.halign = Align.CENTER;
-        this.margin = 2;
+        this.margin_start = 2;
+        this.margin_end = 2;
+        this.margin_top = 2;
+        this.margin_bottom = 2;
         this.row_spacing = 3;
         this.column_spacing = 3;
-        this.show ();
     }
 
     public void set_clear_button_visibility (bool visible)

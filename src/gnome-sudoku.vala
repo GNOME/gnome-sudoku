@@ -1,7 +1,7 @@
 /* -*- Mode: vala; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
  * Copyright © 2014 Parin Porecha
- * Copyright © 2014 Michael Catanzaro
+ * Copyright © 2014, 2020 Michael Catanzaro
  *
  * This file is part of GNOME Sudoku.
  *
@@ -88,7 +88,6 @@ public class Sudoku : Gtk.Application
         Object (application_id: "org.gnome.Sudoku", flags: ApplicationFlags.FLAGS_NONE);
         add_main_option_entries (option_entries);
 
-        typeof (SudokuMainMenu).ensure ();
         typeof (SudokuMainMenuItem).ensure ();
     }
 
@@ -462,14 +461,7 @@ public class Sudoku : Gtk.Application
 
     private void help_cb ()
     {
-        try
-        {
-            show_uri_on_window (window, "help:gnome-sudoku", get_current_event_time ());
-        }
-        catch (GLib.Error e)
-        {
-            GLib.warning ("Unable to open help: %s", e.message);
-        }
+        show_uri (window, "help:gnome-sudoku", Gdk.CURRENT_TIME);
     }
 
     private const string[] authors = { "Robert Ancell <robert.ancell@gmail.com>",
