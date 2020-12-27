@@ -3,7 +3,7 @@ project('gnome-sudoku', ['c', 'cpp', 'vala'],
     'cpp_std=c++11'
   ],
   license: 'GPL3+',
-  meson_version: '>= 0.44.1',
+  meson_version: '>= 0.50',
   version: '3.38.0'
 )
 application_id = 'org.gnome.Sudoku'
