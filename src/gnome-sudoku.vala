@@ -196,7 +196,6 @@ public class Sudoku : Gtk.Application
     {
         if (game.paused)
         {
-            window.display_unpause_button ();
             clear_action.set_enabled (false);
             undo_action.set_enabled (false);
             redo_action.set_enabled (false);
@@ -204,13 +203,13 @@ public class Sudoku : Gtk.Application
         }
         else if (game.get_total_time_played () > 0)
         {
-            window.display_pause_button ();
             clear_action.set_enabled (!game.is_empty ());
             undo_action.set_enabled (!game.is_undostack_null ());
             redo_action.set_enabled (!game.is_redostack_null ());
             new_game_action.set_enabled (true);
         }
 
+        window.display_pause_button ();
         view.queue_draw ();
     }
 
@@ -322,6 +321,7 @@ public class Sudoku : Gtk.Application
         print_action.set_enabled (true);
         undo_action.set_enabled (false);
         redo_action.set_enabled (false);
+        new_game_action.set_enabled (true);
 
         clear_action.set_enabled (!game.is_empty ());
         play_custom_game_action.set_enabled (!game.is_empty ());

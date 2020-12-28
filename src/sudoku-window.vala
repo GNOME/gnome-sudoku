@@ -25,23 +25,20 @@ using Gtk;
 public class SudokuWindow : ApplicationWindow
 {
     [GtkChild] private HeaderBar headerbar;
-    [GtkChild] private Hdy.Squeezer main_squeezer;
     [GtkChild] private Box start_box;
-    [GtkChild] private Box start_box_s;
-    [GtkChild] private AspectFrame frame_v;
-    [GtkChild] private AspectFrame frame_h;
+    [GtkChild] private Frame frame;
     [GtkChild] private Box game_box; // Holds the view
-    [GtkChild] private ButtonBox controls_box;
 
     [GtkChild] private Box undo_redo_box;
     [GtkChild] private Button back_button;
 
+    [GtkChild] private Box clock_box;
     [GtkChild] private Label clock_label;
     [GtkChild] private Image clock_image;
 
     [GtkChild] private Button play_custom_game_button;
     [GtkChild] private Button play_pause_button;
-    [GtkChild] private Label play_pause_label;
+    [GtkChild] private Image play_pause_image;
 
     private bool window_is_maximized;
     private bool window_is_fullscreen;
@@ -49,16 +46,16 @@ public class SudokuWindow : ApplicationWindow
     private int window_width;
     private int window_height;
 
+    private bool clock_in_headerbar;
+
     private GLib.Settings settings;
 
     public SudokuView? view { get; private set; }
 
     private SudokuGame? game = null;
 
-    private AspectFrame previous_layout;
-    private Orientation main_squeezer_orientation;
-
     private const int board_size = 140;
+    private const int clock_in_headerbar_min_width = 450;
 
     public SudokuWindow (GLib.Settings settings)
     {
@@ -67,16 +64,6 @@ public class SudokuWindow : ApplicationWindow
         set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
         if (settings.get_boolean ("window-is-maximized"))
             maximize ();
-
-        previous_layout = frame_h;
-
-        const int BUTTON_W = 120;
-        const int BUTTON_H = 60;
-        var spacing = 2 * game_box.spacing + 2 * main_squeezer.margin;
-        var board_and_spacing = board_size + spacing;
-        var board_with_buttons = board_and_spacing + game_box.spacing + 2 * controls_box.spacing;
-        frame_h.width_request = board_with_buttons + BUTTON_W;
-        frame_v.height_request = board_and_spacing + 3 * BUTTON_H + 4 * controls_box.spacing;
     }
 
     ~SudokuWindow ()
@@ -95,7 +82,7 @@ public class SudokuWindow : ApplicationWindow
 
         int width, height;
         get_size (out width, out height);
-        update_layout (width, height);
+        set_clock_placed_in_headerbar (width > clock_in_headerbar_min_width);
 
         if (window_is_maximized || window_is_fullscreen || window_is_tiled)
             return;
@@ -124,22 +111,6 @@ public class SudokuWindow : ApplicationWindow
             window_is_tiled = (event.new_window_state & tiled_state) != 0;
 
         return base.window_state_event (event);
-    }
-
-    private void update_layout (int width, int height)
-    {
-        main_squeezer_orientation = height > width ? Orientation.HORIZONTAL : Orientation.VERTICAL;
-        frame_h.ratio = height < 350 ? 1.9f : 1.4f;
-        apply_main_squeezer_orientation ();
-    }
-
-    private void apply_main_squeezer_orientation ()
-    {
-        var child = main_squeezer.visible_child;
-        if (child == start_box || child == start_box_s)
-            main_squeezer.orientation = main_squeezer_orientation;
-        else
-            main_squeezer.orientation = Orientation.HORIZONTAL;
     }
 
     public void will_start_game ()
@@ -190,15 +161,17 @@ public class SudokuWindow : ApplicationWindow
     public void set_board_visible (bool visible)
     {
         start_box.visible = !visible;
-        start_box_s.visible = !visible;
-        frame_h.visible = visible;
-        frame_v.visible = visible;
-        apply_main_squeezer_orientation ();
+        play_custom_game_button.visible = visible && game.mode == GameMode.CREATE;
+        if (visible && game.mode != GameMode.CREATE)
+            display_pause_button ();
+        else
+            play_pause_button.visible = false;
+        frame.visible = visible;
     }
 
     public bool is_board_visible ()
     {
-        return frame_h.visible;
+        return frame.visible;
     }
 
     public void show_game_view ()
@@ -236,7 +209,7 @@ public class SudokuWindow : ApplicationWindow
         requires (game != null)
     {
         if (game.mode == GameMode.PLAY)
-            headerbar.title = game.board.difficulty_category.to_string ();
+            headerbar.title = _("Sudoku");
         else
             headerbar.title = _("Create Puzzle");
     }
@@ -244,13 +217,7 @@ public class SudokuWindow : ApplicationWindow
     public void display_pause_button ()
     {
         play_pause_button.show ();
-        play_pause_label.label = _("_Pause");
-    }
-
-    public void display_unpause_button ()
-    {
-        play_pause_button.show ();
-        play_pause_label.label = _("_Resume");
+        play_pause_image.icon_name = game.paused ? "media-playback-start-symbolic" : "media-playback-pause-symbolic";
     }
 
     private void tick_cb ()
@@ -265,38 +232,21 @@ public class SudokuWindow : ApplicationWindow
             clock_label.set_text ("%02d∶\xE2\x80\x8E%02d".printf (minutes, seconds));
     }
 
-    private void set_layout (AspectFrame new_layout)
+    private void set_clock_placed_in_headerbar (bool value)
     {
-        if (new_layout == frame_h)
+        if (value == clock_in_headerbar)
+            return;
+
+        clock_in_headerbar = value;
+        if(value)
         {
-            controls_box.halign = Align.END;
-            controls_box.orientation = Orientation.VERTICAL;
-            game_box.orientation = Orientation.HORIZONTAL;
+            game_box.remove (clock_box);
+            headerbar.pack_end (clock_box);
         }
         else
         {
-            controls_box.halign = Align.CENTER;
-            controls_box.orientation = Orientation.VERTICAL;
-            game_box.orientation = Orientation.VERTICAL;
+            headerbar.remove (clock_box);
+            game_box.pack_end (clock_box);
         }
-        previous_layout.remove (game_box);
-        new_layout.add (game_box);
-        previous_layout = new_layout;
-    }
-
-    private bool check_layout_change ()
-    {
-        var layout = main_squeezer.visible_child;
-        if (!(layout is AspectFrame))
-            return false;
-        var changed = layout != previous_layout;
-        if (changed)
-            set_layout ((AspectFrame) layout);
-        return changed;
-    }
-
-    [GtkCallback] private bool main_squeezer_draw_cb ()
-    {
-        return check_layout_change ();
     }
 }
