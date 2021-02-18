@@ -1,5 +1,5 @@
 # Brazilian Portuguese translation of gnome-sudoku.
-# Copyright (C) 2019 gnome-sudoku's COPYRIGHT HOLDERS.
+# Copyright (C) 2021 gnome-sudoku's COPYRIGHT HOLDERS.
 # This file is distributed under the same license as the gnome-sudoku package.
 # Sandro Nunes Henrique <sandro@conectiva.com.br>, 1999.
 # Cândida Nunes da Silva <candida@zaz.com.br>, 2000-2001.
@@ -24,116 +24,106 @@
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2013.
 # Felipe Braga <fbobraga@gmail.com>, 2015.
 # Enrico Nicoletto <liverig@gmail.com>, 2014, 2016.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2014-2019.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2014-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2020-08-22 22:53+0000\n"
-"PO-Revision-Date: 2020-11-29 09:36-0300\n"
+"POT-Creation-Date: 2021-01-26 15:08+0000\n"
+"PO-Revision-Date: 2021-02-17 23:41-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
-"Language-Team: Portuguese - Brazil <gnome-pt_br-list@gnome.org>\n"
+"Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 3.38.0\n"
 "X-Project-Style: gnome\n"
 
-#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:162
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:623
-msgid "Sudoku"
-msgstr "Sudoku"
-
-#: data/gnome-sudoku.ui:23
-msgid "Undo your last action"
-msgstr "Desfazer sua última ação"
-
-#: data/gnome-sudoku.ui:44
-msgid "Redo your last action"
-msgstr "Refazer sua última ação"
-
-#: data/gnome-sudoku.ui:108
-msgid "Go back to the current game"
-msgstr "Voltar ao jogo atual"
-
-#: data/gnome-sudoku.ui:127 data/print-dialog.ui:38
-msgid "_Print"
-msgstr "Im_primir"
-
-#: data/gnome-sudoku.ui:130
-msgid "Print _Current Puzzle…"
-msgstr "Imprimir jogo _atual…"
-
-#: data/gnome-sudoku.ui:134
-msgid "Print _Multiple Puzzles…"
-msgstr "Imprimir _múltiplos jogos…"
-
-#: data/gnome-sudoku.ui:142
-msgid "High_lighter"
-msgstr "_Realçador"
-
-#: data/gnome-sudoku.ui:146
-msgid "_Warnings"
-msgstr "_Avisos"
-
-#: data/gnome-sudoku.ui:152
-msgid "_Help"
-msgstr "Aj_uda"
-
-#: data/gnome-sudoku.ui:156
-msgid "_About Sudoku"
-msgstr "_Sobre o Sudoku"
-
-#: data/gnome-sudoku.ui:190 data/print-dialog.ui:157
-msgid "_Easy"
-msgstr "_Fácil"
-
-#: data/gnome-sudoku.ui:197 data/print-dialog.ui:172
-msgid "_Medium"
-msgstr "_Médio"
-
-#: data/gnome-sudoku.ui:204 data/print-dialog.ui:188
-msgid "_Hard"
-msgstr "_Difícil"
-
-#: data/gnome-sudoku.ui:211 data/print-dialog.ui:204
-msgid "_Very Hard"
-msgstr "Mui_to difícil"
-
-#: data/gnome-sudoku.ui:218
-msgid "_Create your own puzzle"
-msgstr "_Criar seu próprio jogo"
-
-#: data/gnome-sudoku.ui:269 src/gnome-sudoku.vala:343
-msgid "_Pause"
-msgstr "_Pausar"
-
-#: data/gnome-sudoku.ui:285
-msgid "_Clear Board"
-msgstr "_Limpar jogo"
-
-#: data/gnome-sudoku.ui:289
-msgid "Reset the board to its original state"
-msgstr "Reiniciar o jogo para seu estado original"
-
-#: data/gnome-sudoku.ui:303
+#: data/sudoku-window.ui:7
 msgid "_New Puzzle"
 msgstr "_Novo jogo"
 
-#: data/gnome-sudoku.ui:307
-msgid "Start a new puzzle"
-msgstr "Iniciar um novo jogo"
+#: data/sudoku-window.ui:11
+msgid "_Clear Board"
+msgstr "_Limpar jogo"
 
-#: data/gnome-sudoku.ui:321
-msgid "_Start Playing"
-msgstr "_Jogar"
+#: data/sudoku-window.ui:17 data/print-dialog.ui:38
+msgid "_Print"
+msgstr "Im_primir"
 
-#: data/gnome-sudoku.ui:325
+#: data/sudoku-window.ui:20
+msgid "Print _Current Puzzle…"
+msgstr "Imprimir jogo _atual…"
+
+#: data/sudoku-window.ui:24
+msgid "Print _Multiple Puzzles…"
+msgstr "Imprimir _múltiplos jogos…"
+
+#: data/sudoku-window.ui:32
+msgid "High_lighter"
+msgstr "_Realçador"
+
+#: data/sudoku-window.ui:36
+msgid "_Warnings"
+msgstr "_Avisos"
+
+#: data/sudoku-window.ui:42
+msgid "_Help"
+msgstr "Aj_uda"
+
+#: data/sudoku-window.ui:46
+msgid "_About Sudoku"
+msgstr "_Sobre o Sudoku"
+
+#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
+#: src/sudoku-window.vala:212
+msgid "Sudoku"
+msgstr "Sudoku"
+
+#: data/sudoku-window.ui:73
+msgid "Undo your last action"
+msgstr "Desfazer sua última ação"
+
+#: data/sudoku-window.ui:94
+msgid "Redo your last action"
+msgstr "Refazer sua última ação"
+
+#: data/sudoku-window.ui:126
+#| msgid "_Pause"
+msgid "Pause"
+msgstr "Pausar"
+
+#: data/sudoku-window.ui:147
 msgid "Start playing the custom puzzle you have created"
 msgstr "Comece a jogar no jogo criado por você"
+
+#: data/sudoku-window.ui:189
+msgid "Go back to the current game"
+msgstr "Voltar ao jogo atual"
+
+#: data/sudoku-window.ui:233 data/print-dialog.ui:157
+msgid "_Easy"
+msgstr "_Fácil"
+
+#: data/sudoku-window.ui:241 data/print-dialog.ui:172
+msgid "_Medium"
+msgstr "_Médio"
+
+#: data/sudoku-window.ui:249 data/print-dialog.ui:188
+msgid "_Hard"
+msgstr "_Difícil"
+
+#: data/sudoku-window.ui:257 data/print-dialog.ui:204
+msgid "_Very Hard"
+msgstr "Mui_to difícil"
+
+#: data/sudoku-window.ui:265
+msgid "_Create your own puzzle"
+msgstr "_Criar seu próprio jogo"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -178,7 +168,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Uma prévia do GNOME para o jogo sudoku"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:61
+#: data/org.gnome.Sudoku.appdata.xml.in:64
 msgid "The GNOME Project"
 msgstr "O projeto GNOME"
 
@@ -289,74 +279,62 @@ msgid "Custom Puzzle"
 msgstr "Jogo customizado"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:86
+#: src/gnome-sudoku.vala:72
 msgid "Show release version"
 msgstr "Mostrar versão de lançamento"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:90
+#: src/gnome-sudoku.vala:76
 msgid "Show the possible values for each cell"
 msgstr "Mostrar os valores possíveis para cada célula"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:224
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "O jogo que você entrou não é um jogo de Sudoku válido."
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:224
 msgid "Please enter a valid puzzle."
 msgstr "Por favor entre com um jogo válido."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:304
+#: src/gnome-sudoku.vala:233
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "O jogo que você entrou tem múltiplas soluções."
 
-#: src/gnome-sudoku.vala:304
+#: src/gnome-sudoku.vala:233
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Jogos de Sudoku válidos têm apenas uma solução."
 
-#: src/gnome-sudoku.vala:306
+#: src/gnome-sudoku.vala:235
 msgid "_Back"
 msgstr "_Voltar"
 
-#: src/gnome-sudoku.vala:307
+#: src/gnome-sudoku.vala:236
 msgid "Play _Anyway"
 msgstr "Jogar _assim mesmo"
 
-#: src/gnome-sudoku.vala:349
-msgid "_Resume"
-msgstr "_Continuar"
-
-#: src/gnome-sudoku.vala:413
+#: src/gnome-sudoku.vala:279
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Parabéns, você concluiu o jogo em %d minuto!"
 msgstr[1] "Parabéns, você concluiu o jogo em %d minutos!"
 
-#: src/gnome-sudoku.vala:418
+#: src/gnome-sudoku.vala:283
 msgid "_Quit"
 msgstr "Sai_r"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:284
 msgid "Play _Again"
 msgstr "Jogar _novamente"
 
-#: src/gnome-sudoku.vala:438
-msgid "Select Difficulty"
-msgstr "Selecionar a dificuldade"
-
-#: src/gnome-sudoku.vala:494
+#: src/gnome-sudoku.vala:390
 msgid "Reset the board to its original state?"
 msgstr "Reiniciar o jogo para seu estado original?"
 
-#: src/gnome-sudoku.vala:541
-msgid "Create Puzzle"
-msgstr "Criar jogo"
-
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:620
+#: src/gnome-sudoku.vala:485
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -367,7 +345,7 @@ msgstr ""
 "\n"
 "Jogos criados pelo QQwing %s"
 
-#: src/gnome-sudoku.vala:631
+#: src/gnome-sudoku.vala:496
 msgid "translator-credits"
 msgstr ""
 "Sandro Nunes Henrique <sandro@conectiva.com.br>\n"
@@ -403,6 +381,26 @@ msgstr "Erro ao imprimir arquivo:"
 #: src/sudoku-view.vala:634
 msgid "Paused"
 msgstr "Pausado"
+
+#: src/sudoku-window.vala:153
+msgid "Select Difficulty"
+msgstr "Selecionar a dificuldade"
+
+#: src/sudoku-window.vala:214
+msgid "Create Puzzle"
+msgstr "Criar jogo"
+
+#~ msgid "Reset the board to its original state"
+#~ msgstr "Reiniciar o jogo para seu estado original"
+
+#~ msgid "Start a new puzzle"
+#~ msgstr "Iniciar um novo jogo"
+
+#~ msgid "_Start Playing"
+#~ msgstr "_Jogar"
+
+#~ msgid "_Resume"
+#~ msgstr "_Continuar"
 
 #~| msgid "gnome-sudoku"
 #~ msgid "org.gnome.Sudoku"
