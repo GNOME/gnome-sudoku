@@ -8,14 +8,14 @@
 # Vytautas Povilaitis <punktyras@nkm.lt>, 2007.
 # Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007, 2008, 2010.
 # Algimantas Margevičius <gymka@mail.ru>, 2011.
-# Aurimas Černius <aurisc4@gmail.com>, 2010-2019.
+# Aurimas Černius <aurisc4@gmail.com>, 2010-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2019-01-31 13:07+0000\n"
-"PO-Revision-Date: 2019-02-24 17:14+0200\n"
+"POT-Creation-Date: 2020-12-31 18:10+0000\n"
+"PO-Revision-Date: 2021-02-27 13:59+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -24,100 +24,90 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Gtranslator 3.30.1\n"
+"X-Generator: Gtranslator 3.38.0\n"
 
-#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:605
-msgid "Sudoku"
-msgstr "Sudoku"
-
-#: data/gnome-sudoku.ui:22
-msgid "Undo your last action"
-msgstr "Atšaukti paskutinį veiksmą"
-
-#: data/gnome-sudoku.ui:43
-msgid "Redo your last action"
-msgstr "Pakartoti paskutinį veiksmą"
-
-#: data/gnome-sudoku.ui:107
-msgid "Go back to the current game"
-msgstr "Grįžti prie dabartinio žaidimo"
-
-#: data/gnome-sudoku.ui:126 data/print-dialog.ui:32
-msgid "_Print"
-msgstr "S_pausdinti"
-
-#: data/gnome-sudoku.ui:129
-msgid "Print _Current Puzzle…"
-msgstr "Spausdinti dabartinį galvosūkį…"
-
-#: data/gnome-sudoku.ui:133
-msgid "Print _Multiple Puzzles…"
-msgstr "Spausdinti _keletą galvosūkių…"
-
-#: data/gnome-sudoku.ui:141
-msgid "High_lighter"
-msgstr "_Žymėjimas"
-
-#: data/gnome-sudoku.ui:145
-msgid "_Warnings"
-msgstr "Į_spėjimai"
-
-#: data/gnome-sudoku.ui:151
-msgid "_Help"
-msgstr "Ž_inynas"
-
-#: data/gnome-sudoku.ui:155
-msgid "_About Sudoku"
-msgstr "_Apie Sudoku"
-
-#: data/gnome-sudoku.ui:185 data/print-dialog.ui:130
-msgid "_Easy"
-msgstr "_Lengvas"
-
-#: data/gnome-sudoku.ui:199 data/print-dialog.ui:146
-msgid "_Medium"
-msgstr "_Vidutinis"
-
-#: data/gnome-sudoku.ui:213 data/print-dialog.ui:163
-msgid "_Hard"
-msgstr "_Sunkus"
-
-#: data/gnome-sudoku.ui:227 data/print-dialog.ui:180
-msgid "_Very Hard"
-msgstr "_Labai sunkus"
-
-#: data/gnome-sudoku.ui:242
-msgid "_Create your own puzzle"
-msgstr "_Sukurti savo galvosūkį"
-
-#: data/gnome-sudoku.ui:288 src/gnome-sudoku.vala:327
-msgid "_Pause"
-msgstr "_Pauzė"
-
-#: data/gnome-sudoku.ui:304
-msgid "_Clear Board"
-msgstr "Iš_valyti lentą"
-
-#: data/gnome-sudoku.ui:308
-msgid "Reset the board to its original state"
-msgstr "Atstatyti lentos pradinę būseną"
-
-#: data/gnome-sudoku.ui:322
+#: data/sudoku-window.ui:7
 msgid "_New Puzzle"
 msgstr "_Naujas galvosūkis"
 
-#: data/gnome-sudoku.ui:326
-msgid "Start a new puzzle"
-msgstr "Pradėti naują galvosūkį"
+#: data/sudoku-window.ui:11
+msgid "_Clear Board"
+msgstr "Iš_valyti lentą"
 
-#: data/gnome-sudoku.ui:340
-msgid "_Start Playing"
-msgstr "_Pradėti žaisti"
+#: data/sudoku-window.ui:17 data/print-dialog.ui:38
+msgid "_Print"
+msgstr "S_pausdinti"
 
-#: data/gnome-sudoku.ui:344
+#: data/sudoku-window.ui:20
+msgid "Print _Current Puzzle…"
+msgstr "Spausdinti dabartinį galvosūkį…"
+
+#: data/sudoku-window.ui:24
+msgid "Print _Multiple Puzzles…"
+msgstr "Spausdinti _keletą galvosūkių…"
+
+#: data/sudoku-window.ui:32
+msgid "High_lighter"
+msgstr "_Žymėjimas"
+
+#: data/sudoku-window.ui:36
+msgid "_Warnings"
+msgstr "Į_spėjimai"
+
+#: data/sudoku-window.ui:42
+msgid "_Help"
+msgstr "Ž_inynas"
+
+#: data/sudoku-window.ui:46
+msgid "_About Sudoku"
+msgstr "_Apie Sudoku"
+
+#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
+#: src/sudoku-window.vala:212
+msgid "Sudoku"
+msgstr "Sudoku"
+
+#: data/sudoku-window.ui:73
+msgid "Undo your last action"
+msgstr "Atšaukti paskutinį veiksmą"
+
+#: data/sudoku-window.ui:94
+msgid "Redo your last action"
+msgstr "Pakartoti paskutinį veiksmą"
+
+#: data/sudoku-window.ui:126
+#| msgid "_Pause"
+msgid "Pause"
+msgstr "Pauzė"
+
+#: data/sudoku-window.ui:147
 msgid "Start playing the custom puzzle you have created"
 msgstr "Pradėti žaisti savo sukurtą galvosūkį"
+
+#: data/sudoku-window.ui:189
+msgid "Go back to the current game"
+msgstr "Grįžti prie dabartinio žaidimo"
+
+#: data/sudoku-window.ui:233 data/print-dialog.ui:157
+msgid "_Easy"
+msgstr "_Lengvas"
+
+#: data/sudoku-window.ui:241 data/print-dialog.ui:172
+msgid "_Medium"
+msgstr "_Vidutinis"
+
+#: data/sudoku-window.ui:249 data/print-dialog.ui:188
+msgid "_Hard"
+msgstr "_Sunkus"
+
+#: data/sudoku-window.ui:257 data/print-dialog.ui:204
+msgid "_Very Hard"
+msgstr "_Labai sunkus"
+
+#: data/sudoku-window.ui:265
+msgid "_Create your own puzzle"
+msgstr "_Sukurti savo galvosūkį"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -161,7 +151,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "GNOME sudoku žaidimo peržiūra"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:50
+#: data/org.gnome.Sudoku.appdata.xml.in:63
 msgid "The GNOME Project"
 msgstr "GNOME projektas"
 
@@ -169,12 +159,6 @@ msgstr "GNOME projektas"
 #: data/org.gnome.Sudoku.desktop.in:6
 msgid "magic;square;"
 msgstr "magiškas;kvadratas;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Sudoku.desktop.in:9
-#| msgid "gnome-sudoku"
-msgid "org.gnome.Sudoku"
-msgstr "org.gnome.Sudoku"
 
 #: data/org.gnome.Sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
@@ -196,11 +180,21 @@ msgstr "Spausdinamų sudoku skaičius"
 msgid "Set the number of sudokus you want to print"
 msgstr "Nustatykite spausdinamų sudoku skaičių"
 
-#: data/org.gnome.Sudoku.gschema.xml:22
+#: data/org.gnome.Sudoku.gschema.xml:23
+#| msgid "Number of Sudokus to print"
+msgid "Number of Sudokus to print per page"
+msgstr "Spausdinamų sudoku skaičius puslapyje"
+
+#: data/org.gnome.Sudoku.gschema.xml:24
+#| msgid "Set the number of sudokus you want to print"
+msgid "Set the number of sudokus you want to print per page"
+msgstr "Nustatykite spausdinamų sudoku skaičių puslapyje"
+
+#: data/org.gnome.Sudoku.gschema.xml:28
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Perspėti apie neužpildomus kvadratus bei besidubliuojančius skaičius"
 
-#: data/org.gnome.Sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:29
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -208,104 +202,105 @@ msgstr ""
 "Rodo didelį raudoną X kvadrate, jei jo neįmanoma užpildyti jokių skaičiumi, "
 "o dublikatai yra paryškinami raudonai"
 
-#: data/org.gnome.Sudoku.gschema.xml:27
+#: data/org.gnome.Sudoku.gschema.xml:33
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr ""
 "Paryškinti eilutę, stulpelį ir kvadratėlį, kuriame yra pažymėtas langelis"
 
-#: data/org.gnome.Sudoku.gschema.xml:31
+#: data/org.gnome.Sudoku.gschema.xml:37
 msgid "Width of the window in pixels"
 msgstr "Lango plotis taškais"
 
-#: data/org.gnome.Sudoku.gschema.xml:35
+#: data/org.gnome.Sudoku.gschema.xml:41
 msgid "Height of the window in pixels"
 msgstr "Lango aukštis taškais"
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:45
 msgid "true if the window is maximized"
 msgstr "teigiama, jei langas yra išdidintas"
 
-#: data/print-dialog.ui:12
+#: data/print-dialog.ui:18
 msgid "Print Multiple Puzzles"
 msgstr "Spausdinti _keletą galvosūkių"
 
-#: data/print-dialog.ui:21
+#: data/print-dialog.ui:27
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
-#: data/print-dialog.ui:67
+#: data/print-dialog.ui:65
 msgid "_Number of puzzles"
 msgstr "Spausdinamų _galvosūkių skaičius"
 
-#: data/print-dialog.ui:110
+#: data/print-dialog.ui:101
+#| msgid "_Number of puzzles"
+msgid "_Number of puzzles per page"
+msgstr "_Spausdinamų galvosūkių skaičius puslapyje"
+
+#: data/print-dialog.ui:138
 msgid "Difficulty"
 msgstr "Sudėtingumas"
 
-#: lib/sudoku-board.vala:583
+#: lib/sudoku-board.vala:591
 msgid "Unknown Difficulty"
 msgstr "Nežinomas sudėtingumas"
 
-#: lib/sudoku-board.vala:585
+#: lib/sudoku-board.vala:593
 msgid "Easy Difficulty"
 msgstr "Lengvas"
 
-#: lib/sudoku-board.vala:587
+#: lib/sudoku-board.vala:595
 msgid "Medium Difficulty"
 msgstr "Vidutinis sudėtingumas"
 
-#: lib/sudoku-board.vala:589
+#: lib/sudoku-board.vala:597
 msgid "Hard Difficulty"
 msgstr "Sunkus"
 
-#: lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:599
 msgid "Very Hard Difficulty"
 msgstr "Labai sunkus"
 
-#: lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:601
 msgid "Custom Puzzle"
 msgstr "Pasirinktinis galvosūkis"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:85
+#: src/gnome-sudoku.vala:72
 msgid "Show release version"
 msgstr "Rodyti leidimo versiją"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:89
+#: src/gnome-sudoku.vala:76
 msgid "Show the possible values for each cell"
 msgstr "Rodyti galimas kiekvieno langelio vertes"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:224
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Jūsų įvestas galvosūkis nėra tinkamas Sudoku."
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:224
 msgid "Please enter a valid puzzle."
 msgstr "Įveskite tinkamą galvosūkį."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:288
+#: src/gnome-sudoku.vala:233
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Jūsų įvestas galvosūkis turi keletą sprendimų."
 
-#: src/gnome-sudoku.vala:288
+#: src/gnome-sudoku.vala:233
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Tinkami Sudoku galvosūkiai turi vienintelį sprendimą."
 
-#: src/gnome-sudoku.vala:290
+#: src/gnome-sudoku.vala:235
 msgid "_Back"
 msgstr "_Atgal"
 
-#: src/gnome-sudoku.vala:291
+#: src/gnome-sudoku.vala:236
 msgid "Play _Anyway"
 msgstr "_Vistiek žaisti"
 
-#: src/gnome-sudoku.vala:333
-msgid "_Resume"
-msgstr "_Tęsti"
-
-#: src/gnome-sudoku.vala:397
+#: src/gnome-sudoku.vala:279
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -313,28 +308,20 @@ msgstr[0] "Šaunu, išsprendėte galvosūkį per %d minutę!"
 msgstr[1] "Šaunu, išsprendėte galvosūkį per %d minutes!"
 msgstr[2] "Šaunu, išsprendėte galvosūkį per %d minučių!"
 
-#: src/gnome-sudoku.vala:402
+#: src/gnome-sudoku.vala:283
 msgid "_Quit"
 msgstr "Išeiti"
 
-#: src/gnome-sudoku.vala:403
+#: src/gnome-sudoku.vala:284
 msgid "Play _Again"
 msgstr "Žaisti _dar kartą"
 
-#: src/gnome-sudoku.vala:422
-msgid "Select Difficulty"
-msgstr "Pasirinkti sudėtingumą"
-
-#: src/gnome-sudoku.vala:478
+#: src/gnome-sudoku.vala:390
 msgid "Reset the board to its original state?"
 msgstr "Atstatyti lentos pradinę būseną?"
 
-#: src/gnome-sudoku.vala:525
-msgid "Create Puzzle"
-msgstr "Sukurti galvosūkį"
-
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:602
+#: src/gnome-sudoku.vala:485
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -345,7 +332,7 @@ msgstr ""
 "\n"
 "Galvosūkius generuoja QQwing %s"
 
-#: src/gnome-sudoku.vala:613
+#: src/gnome-sudoku.vala:496
 msgid "translator-credits"
 msgstr ""
 "Paskutinieji vertėjai:\n"
@@ -357,16 +344,40 @@ msgstr ""
 "Gediminas Paulauskas <menesis@chatsubo.lt>\n"
 "Moo"
 
-#: src/number-picker.vala:90
+#: src/number-picker.vala:85
 msgid "Clear"
 msgstr "Išvalyti"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:48
+#: src/sudoku-printer.vala:47
 msgid "Error printing file:"
 msgstr "Klaida spausdinant failą:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:631
+#: src/sudoku-view.vala:634
 msgid "Paused"
 msgstr "Pristabdyta"
+
+#: src/sudoku-window.vala:153
+msgid "Select Difficulty"
+msgstr "Pasirinkti sudėtingumą"
+
+#: src/sudoku-window.vala:214
+msgid "Create Puzzle"
+msgstr "Sukurti galvosūkį"
+
+#~ msgid "Reset the board to its original state"
+#~ msgstr "Atstatyti lentos pradinę būseną"
+
+#~ msgid "Start a new puzzle"
+#~ msgstr "Pradėti naują galvosūkį"
+
+#~ msgid "_Start Playing"
+#~ msgstr "_Pradėti žaisti"
+
+#~| msgid "gnome-sudoku"
+#~ msgid "org.gnome.Sudoku"
+#~ msgstr "org.gnome.Sudoku"
+
+#~ msgid "_Resume"
+#~ msgstr "_Tęsti"
