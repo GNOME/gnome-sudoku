@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2020-08-22 22:53+0000\n"
+"POT-Creation-Date: 2021-01-26 15:08+0000\n"
 "PO-Revision-Date: 2020-12-22 16:23+0100\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -26,100 +26,89 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 2.4.1\n"
 
-#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:162
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:623
-msgid "Sudoku"
-msgstr "Sudoku"
+#: data/sudoku-window.ui:7
+msgid "_New Puzzle"
+msgstr "Trencaclosques _nou"
 
-#: data/gnome-sudoku.ui:23
-msgid "Undo your last action"
-msgstr "Desfés l'última acció"
+#: data/sudoku-window.ui:11
+msgid "_Clear Board"
+msgstr "_Neteja el tauler"
 
-#: data/gnome-sudoku.ui:44
-msgid "Redo your last action"
-msgstr "Refés l'última acció"
-
-#: data/gnome-sudoku.ui:108
-msgid "Go back to the current game"
-msgstr "Torna a la partida actual"
-
-#: data/gnome-sudoku.ui:127 data/print-dialog.ui:38
+#: data/sudoku-window.ui:17 data/print-dialog.ui:38
 msgid "_Print"
 msgstr "_Imprimeix"
 
-#: data/gnome-sudoku.ui:130
+#: data/sudoku-window.ui:20
 msgid "Print _Current Puzzle…"
 msgstr "Imprimeix el trencaclosques _actual…"
 
-#: data/gnome-sudoku.ui:134
+#: data/sudoku-window.ui:24
 msgid "Print _Multiple Puzzles…"
 msgstr "Imprimeix _múltiples trencaclosques…"
 
-#: data/gnome-sudoku.ui:142
+#: data/sudoku-window.ui:32
 msgid "High_lighter"
 msgstr "_Molt més clar"
 
-#: data/gnome-sudoku.ui:146
+#: data/sudoku-window.ui:36
 msgid "_Warnings"
 msgstr "_Avisos"
 
-#: data/gnome-sudoku.ui:152
+#: data/sudoku-window.ui:42
 msgid "_Help"
 msgstr "_Ajuda"
 
-#: data/gnome-sudoku.ui:156
+#: data/sudoku-window.ui:46
 msgid "_About Sudoku"
 msgstr "_Quant al Sudoku"
 
+#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
+#: src/sudoku-window.vala:212
+msgid "Sudoku"
+msgstr "Sudoku"
+
+#: data/sudoku-window.ui:73
+msgid "Undo your last action"
+msgstr "Desfés l'última acció"
+
+#: data/sudoku-window.ui:94
+msgid "Redo your last action"
+msgstr "Refés l'última acció"
+
+#: data/sudoku-window.ui:126
+msgid "Pause"
+msgstr "Pausa"
+
+#: data/sudoku-window.ui:147
+msgid "Start playing the custom puzzle you have created"
+msgstr "Inicieu el joc amb el trencaclosques personalitzat que heu creat"
+
+#: data/sudoku-window.ui:189
+msgid "Go back to the current game"
+msgstr "Torna a la partida actual"
+
 # N.T.: En femení, fa referència a la dificultat
-#: data/gnome-sudoku.ui:190 data/print-dialog.ui:157
+#: data/sudoku-window.ui:233 data/print-dialog.ui:157
 msgid "_Easy"
 msgstr "_Fàcil"
 
 # N.T.: En femení, fa referència a la dificultat
-#: data/gnome-sudoku.ui:197 data/print-dialog.ui:172
+#: data/sudoku-window.ui:241 data/print-dialog.ui:172
 msgid "_Medium"
 msgstr "_Mitjana"
 
-#: data/gnome-sudoku.ui:204 data/print-dialog.ui:188
+#: data/sudoku-window.ui:249 data/print-dialog.ui:188
 msgid "_Hard"
 msgstr "_Difícil"
 
-#: data/gnome-sudoku.ui:211 data/print-dialog.ui:204
+#: data/sudoku-window.ui:257 data/print-dialog.ui:204
 msgid "_Very Hard"
 msgstr "_Molt difícil"
 
-#: data/gnome-sudoku.ui:218
+#: data/sudoku-window.ui:265
 msgid "_Create your own puzzle"
 msgstr "_Crea el teu propi trencaclosques"
-
-#: data/gnome-sudoku.ui:269 src/gnome-sudoku.vala:343
-msgid "_Pause"
-msgstr "_Pausa"
-
-#: data/gnome-sudoku.ui:285
-msgid "_Clear Board"
-msgstr "_Neteja el tauler"
-
-#: data/gnome-sudoku.ui:289
-msgid "Reset the board to its original state"
-msgstr "Reinicia el tauler al seu estat original"
-
-#: data/gnome-sudoku.ui:303
-msgid "_New Puzzle"
-msgstr "Trencaclosques _nou"
-
-#: data/gnome-sudoku.ui:307
-msgid "Start a new puzzle"
-msgstr "Comença un trencaclosques nou"
-
-#: data/gnome-sudoku.ui:321
-msgid "_Start Playing"
-msgstr "_Comença a jugar"
-
-#: data/gnome-sudoku.ui:325
-msgid "Start playing the custom puzzle you have created"
-msgstr "Inicieu el joc amb el trencaclosques personalitzat que heu creat"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -163,7 +152,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Demostració de Gnome sudoku"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:61
+#: data/org.gnome.Sudoku.appdata.xml.in:64
 msgid "The GNOME Project"
 msgstr "El projecte GNOME"
 
@@ -275,74 +264,62 @@ msgid "Custom Puzzle"
 msgstr "Trencaclosques personalitzat"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:86
+#: src/gnome-sudoku.vala:72
 msgid "Show release version"
 msgstr "Mostra la versió"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:90
+#: src/gnome-sudoku.vala:76
 msgid "Show the possible values for each cell"
 msgstr "Mostra els valors possibles per a cada casella"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:224
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "El trencaclosques que heu entrat no és un Sudoku vàlid."
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:224
 msgid "Please enter a valid puzzle."
 msgstr "Introduït un trencaclosques vàlid."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:304
+#: src/gnome-sudoku.vala:233
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "El trencaclosques que heu introduït té múltiples solucions."
 
-#: src/gnome-sudoku.vala:304
+#: src/gnome-sudoku.vala:233
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Els trencaclosques Sudoku vàlids cal que tinguin sols una solució."
 
-#: src/gnome-sudoku.vala:306
+#: src/gnome-sudoku.vala:235
 msgid "_Back"
 msgstr "_Enrere"
 
-#: src/gnome-sudoku.vala:307
+#: src/gnome-sudoku.vala:236
 msgid "Play _Anyway"
 msgstr "Juga _igualment"
 
-#: src/gnome-sudoku.vala:349
-msgid "_Resume"
-msgstr "_Reprèn"
-
-#: src/gnome-sudoku.vala:413
+#: src/gnome-sudoku.vala:279
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Felicitats! Heu completat el trencaclosques en %d minut!"
 msgstr[1] "Felicitats! Heu completat el trencaclosques en %d minuts!"
 
-#: src/gnome-sudoku.vala:418
+#: src/gnome-sudoku.vala:283
 msgid "_Quit"
 msgstr "_Surt"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:284
 msgid "Play _Again"
 msgstr "Juga _altra vegada"
 
-#: src/gnome-sudoku.vala:438
-msgid "Select Difficulty"
-msgstr "Selecciona la dificultat"
-
-#: src/gnome-sudoku.vala:494
+#: src/gnome-sudoku.vala:390
 msgid "Reset the board to its original state?"
 msgstr "Voleu reiniciar el tauler al seu estat original?"
 
-#: src/gnome-sudoku.vala:541
-msgid "Create Puzzle"
-msgstr "Crea un trencaclosques"
-
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:620
+#: src/gnome-sudoku.vala:485
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -353,7 +330,7 @@ msgstr ""
 "\n"
 "Trencaclosques generats amb QQwing %s"
 
-#: src/gnome-sudoku.vala:631
+#: src/gnome-sudoku.vala:496
 msgid "translator-credits"
 msgstr ""
 "Jordi Vila <gnome@softcatala.net>\n"
@@ -377,6 +354,26 @@ msgstr "S'ha produït un error en imprimir el fitxer:"
 #: src/sudoku-view.vala:634
 msgid "Paused"
 msgstr "En pausa"
+
+#: src/sudoku-window.vala:153
+msgid "Select Difficulty"
+msgstr "Selecciona la dificultat"
+
+#: src/sudoku-window.vala:214
+msgid "Create Puzzle"
+msgstr "Crea un trencaclosques"
+
+#~ msgid "Reset the board to its original state"
+#~ msgstr "Reinicia el tauler al seu estat original"
+
+#~ msgid "Start a new puzzle"
+#~ msgstr "Comença un trencaclosques nou"
+
+#~ msgid "_Start Playing"
+#~ msgstr "_Comença a jugar"
+
+#~ msgid "_Resume"
+#~ msgstr "_Reprèn"
 
 #~ msgid "org.gnome.Sudoku"
 #~ msgstr "org.gnome.Sudoku"
