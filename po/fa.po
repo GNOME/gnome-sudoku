@@ -5,15 +5,15 @@
 # Elnaz Sarbar <elnaz@farsiweb.info>, 2005, 2006.
 # Meelad Zakaria <meelad@farsiweb.info>, 2005.
 # Farzaneh Sarafraz <farzaneh@farsiweb.info>, 2006.
-# Arash Mousavi <mousavi.arash@gmail.com>, 2012, 2013, 2016.
-# Danial Behzadi <dani.behzi@gmail.com>, 2012, 2017, 2018, 2019.
+# Arash Mousavi <mousavi.arash@gmail.com>, 2012-2013, 2016.
+# Danial Behzadi <dani.behzi@gmail.com>, 2012, 2017-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2019-03-26 18:03+0000\n"
-"PO-Revision-Date: 2019-09-14 21:04+0000\n"
+"POT-Creation-Date: 2020-12-31 18:10+0000\n"
+"PO-Revision-Date: 2021-03-04 00:31+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -22,100 +22,89 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
-#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:605
-msgid "Sudoku"
-msgstr "سودوکو"
-
-#: data/gnome-sudoku.ui:22
-msgid "Undo your last action"
-msgstr "برگردان آخرین حرکت"
-
-#: data/gnome-sudoku.ui:43
-msgid "Redo your last action"
-msgstr "انجام دوبارهٔ آخرین حرکت"
-
-#: data/gnome-sudoku.ui:107
-msgid "Go back to the current game"
-msgstr "بازگشت به بازی جاری"
-
-#: data/gnome-sudoku.ui:126 data/print-dialog.ui:32
-msgid "_Print"
-msgstr "_چاپ"
-
-#: data/gnome-sudoku.ui:129
-msgid "Print _Current Puzzle…"
-msgstr "چاپ پازل _فعلی…"
-
-#: data/gnome-sudoku.ui:133
-msgid "Print _Multiple Puzzles…"
-msgstr "چاپ چند _پازل…"
-
-#: data/gnome-sudoku.ui:141
-msgid "High_lighter"
-msgstr "_پررنگ‌ساز"
-
-#: data/gnome-sudoku.ui:145
-msgid "_Warnings"
-msgstr "_هشدارها"
-
-#: data/gnome-sudoku.ui:151
-msgid "_Help"
-msgstr "_راهنما"
-
-#: data/gnome-sudoku.ui:155
-msgid "_About Sudoku"
-msgstr "_دربارهٔ سودوکو"
-
-#: data/gnome-sudoku.ui:185 data/print-dialog.ui:130
-msgid "_Easy"
-msgstr "_آسان"
-
-#: data/gnome-sudoku.ui:199 data/print-dialog.ui:146
-msgid "_Medium"
-msgstr "_متوسط"
-
-#: data/gnome-sudoku.ui:213 data/print-dialog.ui:163
-msgid "_Hard"
-msgstr "_سخت"
-
-#: data/gnome-sudoku.ui:227 data/print-dialog.ui:180
-msgid "_Very Hard"
-msgstr "_خیلی سخت"
-
-#: data/gnome-sudoku.ui:242
-msgid "_Create your own puzzle"
-msgstr "_پازل خودتان را بسازید"
-
-#: data/gnome-sudoku.ui:288 src/gnome-sudoku.vala:327
-msgid "_Pause"
-msgstr "_مکث"
-
-#: data/gnome-sudoku.ui:304
-msgid "_Clear Board"
-msgstr "پاک کردن تخته"
-
-#: data/gnome-sudoku.ui:308
-msgid "Reset the board to its original state"
-msgstr "بازنشاندن مجدد تخته به وضعیت اولیه"
-
-#: data/gnome-sudoku.ui:322
+#: data/sudoku-window.ui:7
 msgid "_New Puzzle"
 msgstr "پازل _جدید"
 
-#: data/gnome-sudoku.ui:326
-msgid "Start a new puzzle"
-msgstr "شروع یک پازل جدید"
+#: data/sudoku-window.ui:11
+msgid "_Clear Board"
+msgstr "پاک کردن تخته"
 
-#: data/gnome-sudoku.ui:340
-msgid "_Start Playing"
-msgstr "_شروع بازی"
+#: data/sudoku-window.ui:17 data/print-dialog.ui:38
+msgid "_Print"
+msgstr "_چاپ"
 
-#: data/gnome-sudoku.ui:344
+#: data/sudoku-window.ui:20
+msgid "Print _Current Puzzle…"
+msgstr "چاپ پازل _فعلی…"
+
+#: data/sudoku-window.ui:24
+msgid "Print _Multiple Puzzles…"
+msgstr "چاپ چند _پازل…"
+
+#: data/sudoku-window.ui:32
+msgid "High_lighter"
+msgstr "_پررنگ‌ساز"
+
+#: data/sudoku-window.ui:36
+msgid "_Warnings"
+msgstr "_هشدارها"
+
+#: data/sudoku-window.ui:42
+msgid "_Help"
+msgstr "_راهنما"
+
+#: data/sudoku-window.ui:46
+msgid "_About Sudoku"
+msgstr "_دربارهٔ سودوکو"
+
+#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
+#: src/sudoku-window.vala:212
+msgid "Sudoku"
+msgstr "سودوکو"
+
+#: data/sudoku-window.ui:73
+msgid "Undo your last action"
+msgstr "برگردان آخرین حرکت"
+
+#: data/sudoku-window.ui:94
+msgid "Redo your last action"
+msgstr "انجام دوبارهٔ آخرین حرکت"
+
+#: data/sudoku-window.ui:126
+msgid "Pause"
+msgstr "مکث"
+
+#: data/sudoku-window.ui:147
 msgid "Start playing the custom puzzle you have created"
 msgstr "شروع به بازی کردن پازل سفارشی‌ای که ساخته‌اید"
+
+#: data/sudoku-window.ui:189
+msgid "Go back to the current game"
+msgstr "بازگشت به بازی جاری"
+
+#: data/sudoku-window.ui:233 data/print-dialog.ui:157
+msgid "_Easy"
+msgstr "_آسان"
+
+#: data/sudoku-window.ui:241 data/print-dialog.ui:172
+msgid "_Medium"
+msgstr "_متوسط"
+
+#: data/sudoku-window.ui:249 data/print-dialog.ui:188
+msgid "_Hard"
+msgstr "_سخت"
+
+#: data/sudoku-window.ui:257 data/print-dialog.ui:204
+msgid "_Very Hard"
+msgstr "_خیلی سخت"
+
+#: data/sudoku-window.ui:265
+msgid "_Create your own puzzle"
+msgstr "_پازل خودتان را بسازید"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -157,7 +146,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "یک پیش‌نمایش بازی سودوکوی گنوم"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:50
+#: data/org.gnome.Sudoku.appdata.xml.in:63
 msgid "The GNOME Project"
 msgstr "پروژهٔ گنوم"
 
@@ -186,11 +175,19 @@ msgstr "تعداد سودوکوها برای چاپ"
 msgid "Set the number of sudokus you want to print"
 msgstr "تنظیم تعداد سودوکوهایی که میخواهید چاپ کنید"
 
-#: data/org.gnome.Sudoku.gschema.xml:22
+#: data/org.gnome.Sudoku.gschema.xml:23
+msgid "Number of Sudokus to print per page"
+msgstr "تعداد سودوکوها در صفحه برای چاپ"
+
+#: data/org.gnome.Sudoku.gschema.xml:24
+msgid "Set the number of sudokus you want to print per page"
+msgstr "تنظیم تعداد سودوکوهایی که میخواهید در هر صفحه چاپ کنید"
+
+#: data/org.gnome.Sudoku.gschema.xml:28
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "هشدار دربارهٔ خانه‌های غیرقابل پرکردن و اعداد تکراری"
 
-#: data/org.gnome.Sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:29
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any number "
 "and duplicate numbers are highlighted in red"
@@ -198,131 +195,123 @@ msgstr ""
 "نمایش یک X قرمز بزرگ در خانه اگر نتوان آن را با هیچ عددی پر کرد و عددهای تکراری "
 "به رنگ قرمز برجسته شوند"
 
-#: data/org.gnome.Sudoku.gschema.xml:27
+#: data/org.gnome.Sudoku.gschema.xml:33
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "برجسته کردن ردیف، ستون و جایگاهی که خانهٔ انتخاب شده در آن است"
 
-#: data/org.gnome.Sudoku.gschema.xml:31
+#: data/org.gnome.Sudoku.gschema.xml:37
 msgid "Width of the window in pixels"
 msgstr "عرض پنجره به پیکسل"
 
-#: data/org.gnome.Sudoku.gschema.xml:35
+#: data/org.gnome.Sudoku.gschema.xml:41
 msgid "Height of the window in pixels"
 msgstr "ارتفاع پنجره به پیکسل"
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:45
 msgid "true if the window is maximized"
 msgstr "درست اگر پنجره بیشینه باشد"
 
-#: data/print-dialog.ui:12
+#: data/print-dialog.ui:18
 msgid "Print Multiple Puzzles"
 msgstr "چاپ چند سودوکو"
 
-#: data/print-dialog.ui:21
+#: data/print-dialog.ui:27
 msgid "_Cancel"
 msgstr "_لغو"
 
-#: data/print-dialog.ui:67
+#: data/print-dialog.ui:65
 msgid "_Number of puzzles"
 msgstr "_تعداد پازل‌ها"
 
-#: data/print-dialog.ui:110
+#: data/print-dialog.ui:101
+msgid "_Number of puzzles per page"
+msgstr "_تعداد پازل‌ها در صفحه"
+
+#: data/print-dialog.ui:138
 msgid "Difficulty"
 msgstr "سختی"
 
-#: lib/sudoku-board.vala:583
+#: lib/sudoku-board.vala:591
 msgid "Unknown Difficulty"
 msgstr "سختی ناشناس"
 
-#: lib/sudoku-board.vala:585
+#: lib/sudoku-board.vala:593
 msgid "Easy Difficulty"
 msgstr "ساده"
 
-#: lib/sudoku-board.vala:587
+#: lib/sudoku-board.vala:595
 msgid "Medium Difficulty"
 msgstr "معمولی"
 
-#: lib/sudoku-board.vala:589
+#: lib/sudoku-board.vala:597
 msgid "Hard Difficulty"
 msgstr "سخت"
 
-#: lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:599
 msgid "Very Hard Difficulty"
 msgstr "خیلی سخت"
 
-#: lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:601
 msgid "Custom Puzzle"
 msgstr "پازل سفارشی"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:85
+#: src/gnome-sudoku.vala:72
 msgid "Show release version"
 msgstr "نمایش نگارش ارائه"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:89
+#: src/gnome-sudoku.vala:76
 msgid "Show the possible values for each cell"
 msgstr "نمایش مقادیر ممکن برای هر خانه"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:224
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "پازلی که وارد کرده‌اید یک پازل معتبر نیست."
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:224
 msgid "Please enter a valid puzzle."
 msgstr "لطفا یک پازل معتبر وارد کنید."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:288
+#: src/gnome-sudoku.vala:233
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "پازلی که وارد کرده‌اید بیش از یک راه‌حل دارد."
 
-#: src/gnome-sudoku.vala:288
+#: src/gnome-sudoku.vala:233
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "پازل‌های سودوکو معتبر دقیقا تنها یک راه حل دارند."
 
-#: src/gnome-sudoku.vala:290
+#: src/gnome-sudoku.vala:235
 msgid "_Back"
 msgstr "_بازگشت"
 
-#: src/gnome-sudoku.vala:291
+#: src/gnome-sudoku.vala:236
 msgid "Play _Anyway"
 msgstr "به هر حال بازی _شود"
 
-#: src/gnome-sudoku.vala:333
-msgid "_Resume"
-msgstr "_از سر گیری"
-
-#: src/gnome-sudoku.vala:397
+#: src/gnome-sudoku.vala:279
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "آفرین، پازل را در %Id دقیقه کامل کردید!"
 msgstr[1] "آفرین، پازل را در %Id دقیقه کامل کردید!"
 
-#: src/gnome-sudoku.vala:402
+#: src/gnome-sudoku.vala:283
 msgid "_Quit"
 msgstr "_خروج"
 
-#: src/gnome-sudoku.vala:403
+#: src/gnome-sudoku.vala:284
 msgid "Play _Again"
 msgstr "بازی _دوباره"
 
-#: src/gnome-sudoku.vala:422
-msgid "Select Difficulty"
-msgstr "گزینش سختی"
-
-#: src/gnome-sudoku.vala:478
+#: src/gnome-sudoku.vala:390
 msgid "Reset the board to its original state?"
 msgstr "بازنشانی تخته به حالت نخستین؟"
 
-#: src/gnome-sudoku.vala:525
-msgid "Create Puzzle"
-msgstr "ایجاد پازل"
-
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:602
+#: src/gnome-sudoku.vala:485
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -333,25 +322,45 @@ msgstr ""
 "\n"
 "پازل‌ها توسط QQwing منتشر شده‌اند %s"
 
-#: src/gnome-sudoku.vala:613
+#: src/gnome-sudoku.vala:496
 msgid "translator-credits"
 msgstr ""
 "آرش موسوی <mousavi.arash@gmail.com>\n"
 "دانیال بهزادی <dani.behzi@gmail.com>"
 
-#: src/number-picker.vala:90
+#: src/number-picker.vala:85
 msgid "Clear"
 msgstr "پاک‌سازی"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:48
+#: src/sudoku-printer.vala:47
 msgid "Error printing file:"
 msgstr "خطا در چاپ پرونده:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:631
+#: src/sudoku-view.vala:634
 msgid "Paused"
 msgstr "مکث شده"
+
+#: src/sudoku-window.vala:153
+msgid "Select Difficulty"
+msgstr "گزینش سختی"
+
+#: src/sudoku-window.vala:214
+msgid "Create Puzzle"
+msgstr "ایجاد پازل"
+
+#~ msgid "Reset the board to its original state"
+#~ msgstr "بازنشاندن مجدد تخته به وضعیت اولیه"
+
+#~ msgid "Start a new puzzle"
+#~ msgstr "شروع یک پازل جدید"
+
+#~ msgid "_Start Playing"
+#~ msgstr "_شروع بازی"
+
+#~ msgid "_Resume"
+#~ msgstr "_از سر گیری"
 
 #~ msgid "gnome-sudoku"
 #~ msgstr "gnome-sudoku"
