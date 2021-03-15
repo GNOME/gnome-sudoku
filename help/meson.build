@@ -1,6 +1,5 @@
 help_media = [
-  'figures/logo32.png',
-  'figures/logo.png',
+  'figures/org.gnome.Sudoku.svg',
   'figures/rowcolumnbox.png',
   'figures/strategy1.png',
   'figures/strategy2.png'
