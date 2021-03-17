@@ -27,14 +27,14 @@ public class PrintDialog : Dialog
     private SudokuSaver saver;
     private GLib.Settings settings;
 
-    [GtkChild] private Button print_button;
-    [GtkChild] private Grid print_grid;
-    [GtkChild] private SpinButton n_sudokus_button;
-    [GtkChild] private SpinButton n_sudokus_per_page_button;
-    [GtkChild] private RadioButton easy_radio_button;
-    [GtkChild] private RadioButton medium_radio_button;
-    [GtkChild] private RadioButton hard_radio_button;
-    [GtkChild] private RadioButton very_hard_radio_button;
+    [GtkChild] private unowned Button print_button;
+    [GtkChild] private unowned Grid print_grid;
+    [GtkChild] private unowned SpinButton n_sudokus_button;
+    [GtkChild] private unowned SpinButton n_sudokus_per_page_button;
+    [GtkChild] private unowned RadioButton easy_radio_button;
+    [GtkChild] private unowned RadioButton medium_radio_button;
+    [GtkChild] private unowned RadioButton hard_radio_button;
+    [GtkChild] private unowned RadioButton very_hard_radio_button;
 
     private Revealer revealer;
     private Spinner spinner;

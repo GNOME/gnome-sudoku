@@ -24,21 +24,21 @@ using Gtk;
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/sudoku-window.ui")]
 public class SudokuWindow : ApplicationWindow
 {
-    [GtkChild] private HeaderBar headerbar;
-    [GtkChild] private Box start_box;
-    [GtkChild] private Frame frame;
-    [GtkChild] private Box game_box; // Holds the view
+    [GtkChild] private unowned HeaderBar headerbar;
+    [GtkChild] private unowned Box start_box;
+    [GtkChild] private unowned Frame frame;
+    [GtkChild] private unowned Box game_box; // Holds the view
 
-    [GtkChild] private Box undo_redo_box;
-    [GtkChild] private Button back_button;
+    [GtkChild] private unowned Box undo_redo_box;
+    [GtkChild] private unowned Button back_button;
 
-    [GtkChild] private Box clock_box;
-    [GtkChild] private Label clock_label;
-    [GtkChild] private Image clock_image;
+    [GtkChild] private unowned Box clock_box;
+    [GtkChild] private unowned Label clock_label;
+    [GtkChild] private unowned Image clock_image;
 
-    [GtkChild] private Button play_custom_game_button;
-    [GtkChild] private Button play_pause_button;
-    [GtkChild] private Image play_pause_image;
+    [GtkChild] private unowned Button play_custom_game_button;
+    [GtkChild] private unowned Button play_pause_button;
+    [GtkChild] private unowned Image play_pause_image;
 
     private bool window_is_maximized;
     private bool window_is_fullscreen;
