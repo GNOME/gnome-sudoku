@@ -10,102 +10,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 3.12\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-06 15:33+0000\n"
-"PO-Revision-Date: 2016-11-17 20:19+0000\n"
-"Last-Translator: Tiago Santos <tiagofsantos81@sapo.pt>\n"
-"Language-Team: Português <>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
+"POT-Creation-Date: 2020-06-26 10:03+0000\n"
+"PO-Revision-Date: 2021-04-23 13:12+0100\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"Language-Team: Português <https://l10n.gnome.org/teams/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.3\n"
 
-#: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
-msgid "_Print"
-msgstr "_Imprimir"
-
-#: data/gnome-sudoku-menu.ui:10
-msgid "Print _Current Puzzle…"
-msgstr "Imprimir o _jogo atual…"
-
-#: data/gnome-sudoku-menu.ui:14
-msgid "Print _Multiple Puzzles…"
-msgstr "Imprimir _múltiplos jogos..."
-
-#: data/gnome-sudoku-menu.ui:22
-msgid "High_lighter"
-msgstr "Rea_lce"
-
-#: data/gnome-sudoku-menu.ui:26
-msgid "_Warnings"
-msgstr "_Avisos"
-
-#: data/gnome-sudoku-menu.ui:39
-msgid "_About"
-msgstr "_Sobre"
-
-#: data/gnome-sudoku-menu.ui:43 src/gnome-sudoku.vala:406
-msgid "_Quit"
-msgstr "_Sair"
-
-#: data/gnome-sudoku.appdata.xml.in:7
-msgid "GNOME Sudoku"
-msgstr "Sudoku GNOME"
-
-#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Teste as suas capacidades lógicas neste jogo numérico"
-
-#: data/gnome-sudoku.appdata.xml.in:10
-msgid ""
-"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
-"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
-"Sudoku fun for players of any skill level."
-msgstr ""
-"Jogue o popular jogo de lógica japonês. O sudoku GNOME é essencial para "
-"entusiastas de sudoku, com um ambiente simples e discreto, que torna este "
-"jogo divertido para jogadores de qualquer nível."
-
-#: data/gnome-sudoku.appdata.xml.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as easy or as difficult as you want it to be."
-msgstr ""
-"A cada jogo é atribuída uma dificuldade equivalente às dadas em jornais e "
-"páginas web, pelo que o seu jogo será tão fácil ou tão difícil quanto o "
-"queira."
-
-#: data/gnome-sudoku.appdata.xml.in:20
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"Se gosta de jogar em papel, pode imprimir os jogos. Pode escolher quantos "
-"jogos quer imprimir por página e qual a dificuldade do jogo que quer "
-"imprimir. Como tal, o GNOME Sudoku age como um livro de Sudoku renovável."
-
-#: data/gnome-sudoku.appdata.xml.in:30
-msgid "A GNOME sudoku game preview"
-msgstr "Uma previsão do jogo GNOME Sudoku"
-
-#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:606
+#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:607
 msgid "Sudoku"
 msgstr "Sudoku"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/gnome-sudoku.desktop.in:6
-msgid "magic;square;"
-msgstr "magia;quadrado;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gnome-sudoku.desktop.in:9
-msgid "gnome-sudoku"
-msgstr "gnome-sudoku"
 
 #: data/gnome-sudoku.ui:22
 msgid "Undo your last action"
@@ -115,83 +35,161 @@ msgstr "Desfazer a última ação"
 msgid "Redo your last action"
 msgstr "Refazer a última ação"
 
-#: data/gnome-sudoku.ui:91
+#: data/gnome-sudoku.ui:107
 msgid "Go back to the current game"
 msgstr "Voltar ao jogo atual"
 
-#: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
+#: data/gnome-sudoku.ui:126 data/print-dialog.ui:32
+msgid "_Print"
+msgstr "_Imprimir"
+
+#: data/gnome-sudoku.ui:129
+msgid "Print _Current Puzzle…"
+msgstr "Imprimir o _jogo atual…"
+
+#: data/gnome-sudoku.ui:133
+msgid "Print _Multiple Puzzles…"
+msgstr "Imprimir _múltiplos puzzles…"
+
+#: data/gnome-sudoku.ui:141
+msgid "High_lighter"
+msgstr "Rea_lce"
+
+#: data/gnome-sudoku.ui:145
+msgid "_Warnings"
+msgstr "_Avisos"
+
+#: data/gnome-sudoku.ui:151
+msgid "_Help"
+msgstr "Ajuda"
+
+#: data/gnome-sudoku.ui:155
+msgid "_About Sudoku"
+msgstr "_Acerca do Sudoku"
+
+#: data/gnome-sudoku.ui:185 data/print-dialog.ui:130
 msgid "_Easy"
 msgstr "_Fácil"
 
-#: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
+#: data/gnome-sudoku.ui:199 data/print-dialog.ui:146
 msgid "_Medium"
 msgstr "_Médio"
 
-#: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
+#: data/gnome-sudoku.ui:213 data/print-dialog.ui:163
 msgid "_Hard"
 msgstr "_Difícil"
 
-#: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
+#: data/gnome-sudoku.ui:227 data/print-dialog.ui:180
 msgid "_Very Hard"
 msgstr "_Muito difícil"
 
-#: data/gnome-sudoku.ui:189
+#: data/gnome-sudoku.ui:242
 msgid "_Create your own puzzle"
 msgstr "_Crie o seu próprio jogo"
 
-#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:331
+#: data/gnome-sudoku.ui:288 src/gnome-sudoku.vala:327
 msgid "_Pause"
 msgstr "_Pausa"
 
-#: data/gnome-sudoku.ui:251
+#: data/gnome-sudoku.ui:304
 msgid "_Clear Board"
 msgstr "_Limpar tabuleiro"
 
-#: data/gnome-sudoku.ui:255
+#: data/gnome-sudoku.ui:308
 msgid "Reset the board to its original state"
 msgstr "Repor o tabuleiro no seu estado original"
 
-#: data/gnome-sudoku.ui:269
+#: data/gnome-sudoku.ui:322
 msgid "_New Puzzle"
 msgstr "_Novo jogo"
 
-#: data/gnome-sudoku.ui:273
+#: data/gnome-sudoku.ui:326
 msgid "Start a new puzzle"
 msgstr "Iniciar um novo jogo"
 
-#: data/gnome-sudoku.ui:287
+#: data/gnome-sudoku.ui:340
 msgid "_Start Playing"
 msgstr "_Começar a jogar"
 
-#: data/gnome-sudoku.ui:291
+#: data/gnome-sudoku.ui:344
 msgid "Start playing the custom puzzle you have created"
 msgstr "Começar a jogar o jogo personalizado que criou"
 
-#: data/org.gnome.sudoku.gschema.xml:11
+#: data/org.gnome.Sudoku.appdata.xml.in:7
+msgid "GNOME Sudoku"
+msgstr "Sudoku GNOME"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:8 data/org.gnome.Sudoku.desktop.in:4
+msgid "Test your logic skills in this number grid puzzle"
+msgstr "Teste as suas capacidades lógicas neste jogo numérico"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:10
+msgid ""
+"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
+"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
+"Sudoku fun for players of any skill level."
+msgstr ""
+"Jogue o popular jogo de lógica japonês. O sudoku GNOME é essencial para "
+"entusiastas de sudoku, com um ambiente simples e discreto, que torna este "
+"jogo divertido para jogadores de qualquer nível."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:15
+msgid ""
+"Each game is assigned a difficulty similar to those given by newspapers and "
+"websites, so your game will be as easy or as difficult as you want it to be."
+msgstr ""
+"A cada jogo é atribuída uma dificuldade equivalente às dadas em jornais e "
+"páginas web, pelo que o seu jogo será tão fácil ou tão difícil quanto o "
+"queira."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:20
+msgid ""
+"If you like to play on paper, you can print games out. You can choose how "
+"many games you want to print per page and what difficulty of games you want "
+"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+msgstr ""
+"Se gosta de jogar em papel, pode imprimir os jogos. Pode escolher quantos "
+"jogos quer imprimir por página e qual a dificuldade do jogo que quer "
+"imprimir. Como tal, o GNOME Sudoku age como um livro de Sudoku renovável."
+
+#: data/org.gnome.Sudoku.appdata.xml.in:30
+msgid "A GNOME sudoku game preview"
+msgstr "Uma previsão do jogo GNOME Sudoku"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:57
+msgid "The GNOME Project"
+msgstr "O Projeto GNOME"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Sudoku.desktop.in:6
+msgid "magic;square;"
+msgstr "magia;quadrado;"
+
+#: data/org.gnome.Sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Nível de dificuldade dos jogos a imprimir"
 
-#: data/org.gnome.sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:12
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
-"are - \"easy\", \"medium\", \"hard\", \"very_hard\""
+"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
 "Defina o nível de dificuldade dos jogos que quer imprimir. Valores possíveis "
-"são \"Fácil\", \"Média\", \"Alta\" e \"Muito alta\"."
+"são: \"fácil\", \"média\", \"alta\" e \"muito alta\""
 
-#: data/org.gnome.sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
 msgstr "Número de jogos a imprimir"
 
-#: data/org.gnome.sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Set the number of sudokus you want to print"
 msgstr "Defina o número de jogos que quer imprimir"
 
-#: data/org.gnome.sudoku.gschema.xml:22
+#: data/org.gnome.Sudoku.gschema.xml:22
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Avisar sobre espaços impossíveis de preencher e números duplicados"
 
-#: data/org.gnome.sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:23
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -199,19 +197,19 @@ msgstr ""
 "Mostra um grande X vermelho num espaço se este não puder ser preenchido por "
 "qualquer número e os números duplicados são realçados a vermelho"
 
-#: data/org.gnome.sudoku.gschema.xml:27
+#: data/org.gnome.Sudoku.gschema.xml:27
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Realçar linha, coluna e espaço que contêm a célula selecionada"
 
-#: data/org.gnome.sudoku.gschema.xml:31
+#: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Width of the window in pixels"
 msgstr "Largura em pixels da janela"
 
-#: data/org.gnome.sudoku.gschema.xml:35
+#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Height of the window in pixels"
 msgstr "Altura em pixels da janela"
 
-#: data/org.gnome.sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid "true if the window is maximized"
 msgstr "verdadeiro se a janela estiver maximizada"
 
@@ -231,27 +229,27 @@ msgstr "_Número de jogos"
 msgid "Difficulty"
 msgstr "Dificuldade"
 
-#: lib/sudoku-board.vala:583
+#: lib/sudoku-board.vala:591
 msgid "Unknown Difficulty"
 msgstr "Dificuldade desconhecida"
 
-#: lib/sudoku-board.vala:585
+#: lib/sudoku-board.vala:593
 msgid "Easy Difficulty"
 msgstr "Dificuldade fácil"
 
-#: lib/sudoku-board.vala:587
+#: lib/sudoku-board.vala:595
 msgid "Medium Difficulty"
 msgstr "Dificuldade média"
 
-#: lib/sudoku-board.vala:589
+#: lib/sudoku-board.vala:597
 msgid "Hard Difficulty"
 msgstr "Dificuldade alta"
 
-#: lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:599
 msgid "Very Hard Difficulty"
 msgstr "Dificuldade muito alta"
 
-#: lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:601
 msgid "Custom Puzzle"
 msgstr "Jogo personalizado"
 
@@ -266,60 +264,64 @@ msgid "Show the possible values for each cell"
 msgstr "Mostrar valores possíveis para cada célula"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "The puzzle you have entered is not a valid Sudoku."
-msgstr "O jogo que inseriu não é um sudoku válido"
+msgstr "O puzzle que inseriu não é um Sudoku válido."
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:279
 msgid "Please enter a valid puzzle."
 msgstr "Por favor, insira um jogo válido."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "O jogo que inseriu tem múltiplas soluções."
 
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:288
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Jogos de sudoku válidos só têm uma solução."
 
-#: src/gnome-sudoku.vala:294
+#: src/gnome-sudoku.vala:290
 msgid "_Back"
 msgstr "_Recuar"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:291
 msgid "Play _Anyway"
 msgstr "Ainda assim _jogar"
 
-#: src/gnome-sudoku.vala:337
+#: src/gnome-sudoku.vala:333
 msgid "_Resume"
 msgstr "_Retomar"
 
-#: src/gnome-sudoku.vala:401
+#: src/gnome-sudoku.vala:397
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "Bem jogado, terminou o puzzle em %d minuto."
-msgstr[1] "Bem jogado, terminou o puzzle em %d minutos."
+msgstr[0] "Bem jogado, terminou o puzzle em %d minuto!"
+msgstr[1] "Bem jogado, terminou o puzzle em %d minutos!"
 
-#: src/gnome-sudoku.vala:407
+#: src/gnome-sudoku.vala:402
+msgid "_Quit"
+msgstr "_Sair"
+
+#: src/gnome-sudoku.vala:403
 msgid "Play _Again"
 msgstr "Jogar _novamente"
 
-#: src/gnome-sudoku.vala:426
+#: src/gnome-sudoku.vala:422
 msgid "Select Difficulty"
 msgstr "Selecione a dificuldade"
 
-#: src/gnome-sudoku.vala:482
+#: src/gnome-sudoku.vala:478
 msgid "Reset the board to its original state?"
 msgstr "Repor o tabuleiro no seu estado original?"
 
-#: src/gnome-sudoku.vala:529
+#: src/gnome-sudoku.vala:525
 msgid "Create Puzzle"
 msgstr "Criar jogo"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:610
+#: src/gnome-sudoku.vala:604
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -335,9 +337,10 @@ msgid "translator-credits"
 msgstr ""
 "Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Pedro Albuquerque <palbuquerque73@gmail.com>\n"
-"Tiago Santos <tiagofsantos81@sapo.pt>"
+"Tiago Santos <tiagofsantos81@sapo.pt>\n"
+"Hugo Carvalho <hugokarvalho@hotmail.com>"
 
-#: src/number-picker.vala:90
+#: src/number-picker.vala:91
 msgid "Clear"
 msgstr "Limpar"
 
@@ -347,6 +350,9 @@ msgid "Error printing file:"
 msgstr "Erro ao imprimir o ficheiro:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:630
+#: src/sudoku-view.vala:627
 msgid "Paused"
 msgstr "Pausado"
+
+#~ msgid "gnome-sudoku"
+#~ msgstr "gnome-sudoku"
