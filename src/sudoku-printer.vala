@@ -93,18 +93,27 @@ public class SudokuPrinter : GLib.Object {
 
         uint index = 0;
 
+        var pango_context = Pango.cairo_create_context (cr);
+        Pango.cairo_context_set_font_options (pango_context, Gdk.Screen.get_default ().get_font_options ());
+
         foreach (SudokuBoard sudoku in sudokus_on_page)
         {
             double left = margin_x + (index % n_across) * (best_square_size + margin_x);
             double top = margin_y + label_extents.height + (index / n_across) * (best_square_size + margin_y + label_extents.height);
 
             var label = sudoku.difficulty_category.to_string ();
-            set_label_font (cr);
+            var layout = new Pango.Layout (pango_context);
+            layout.set_font_description (Pango.FontDescription.from_string ("Sans Bold 9"));
+            layout.set_text (label, -1);
+
+            int layout_width;
+            int layout_height;
+            layout.get_size (out layout_width, out layout_height);
+            layout_width /= Pango.SCALE;
+            layout_height /= Pango.SCALE;
+            cr.move_to (left + (best_square_size - layout_width) / 2, top - layout_height);
             cr.set_source_rgb (0, 0, 0);
-            Cairo.TextExtents extents;
-            cr.text_extents (label, out extents);
-            cr.move_to (left + (best_square_size - extents.width) / 2, top - extents.height / 2);
-            cr.show_text (label);
+            Pango.cairo_show_layout (cr, layout);
 
             draw_sudoku (cr, sudoku, best_square_size, left, top);
 
