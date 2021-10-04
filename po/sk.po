@@ -5,121 +5,110 @@
 # Marcel Telka <marcel@telka.sk>, 2005, 2008.
 # Peter Mráz <etkinator@gmail.com>, 2010, 2011.
 # Ján Kyselica <kyselica.jan@gmail.com>, 2013, 2014.
-# Dušan Kazik <prescott66@gmail.com>, 2014, 2015.
+# Dušan Kazik <prescott66@gmail.com>, 2014-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2019-10-04 14:45+0000\n"
-"PO-Revision-Date: 2020-01-27 10:16+0100\n"
+"POT-Creation-Date: 2021-04-29 16:14+0000\n"
+"PO-Revision-Date: 2021-10-04 14:08+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
-"Language-Team: slovenčina <gnome-sk-list@gnome.org>\n"
+"Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 2.2.4\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0\n"
+"X-Generator: Gtranslator 40.0\n"
 
-#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:161
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:607
+#: data/sudoku-window.ui:7
+msgid "_New Puzzle"
+msgstr "_Nový hlavolam"
+
+#: data/sudoku-window.ui:11
+msgid "_Clear Board"
+msgstr "_Zmazať hraciu plochu"
+
+#: data/sudoku-window.ui:17 data/print-dialog.ui:38
+msgid "_Print"
+msgstr "_Tlačiť"
+
+#: data/sudoku-window.ui:20
+msgid "Print _Current Puzzle…"
+msgstr "Vytlačiť _aktuálny hlavolam…"
+
+#: data/sudoku-window.ui:24
+msgid "Print _Multiple Puzzles…"
+msgstr "Vytlačiť _viacero hlavolamov…"
+
+#: data/sudoku-window.ui:32
+msgid "High_lighter"
+msgstr "_Zvýrazňovač"
+
+#: data/sudoku-window.ui:36
+msgid "_Warnings"
+msgstr "_Upozornenia"
+
+#: data/sudoku-window.ui:42
+msgid "_Help"
+msgstr "_Pomocník"
+
+#: data/sudoku-window.ui:46
+msgid "_About Sudoku"
+msgstr "_O aplikácii Sudoku"
+
+#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
+#: src/sudoku-window.vala:212
 msgid "Sudoku"
 msgstr "Sudoku"
 
 # tooltip
-#: data/gnome-sudoku.ui:22
+#: data/sudoku-window.ui:73
 msgid "Undo your last action"
 msgstr "Vráti poslednú akciu"
 
 # tooltip
-#: data/gnome-sudoku.ui:43
+#: data/sudoku-window.ui:94
 msgid "Redo your last action"
 msgstr "Znovu vykoná poslednú akciu"
 
 # tooltip
-#: data/gnome-sudoku.ui:107
+#: data/sudoku-window.ui:126
+#| msgid "_Pause"
+msgid "Pause"
+msgstr "Pozastaví"
+
+# tooltip
+#: data/sudoku-window.ui:147
+msgid "Start playing the custom puzzle you have created"
+msgstr "Začne hru vlastného hlavolamu, ktorý ste vytvorili"
+
+# tooltip
+#: data/sudoku-window.ui:189
 msgid "Go back to the current game"
 msgstr "Vráti sa späť k aktuálnej hre"
 
-#: data/gnome-sudoku.ui:126 data/print-dialog.ui:32
-msgid "_Print"
-msgstr "_Tlačiť"
-
-#: data/gnome-sudoku.ui:129
-msgid "Print _Current Puzzle…"
-msgstr "Vytlačiť _aktuálny hlavolam…"
-
-#: data/gnome-sudoku.ui:133
-msgid "Print _Multiple Puzzles…"
-msgstr "Vytlačiť _viacero hlavolamov…"
-
-#: data/gnome-sudoku.ui:141
-msgid "High_lighter"
-msgstr "_Zvýrazňovač"
-
-#: data/gnome-sudoku.ui:145
-msgid "_Warnings"
-msgstr "_Upozornenia"
-
-#: data/gnome-sudoku.ui:151
-msgid "_Help"
-msgstr "_Pomocník"
-
-#: data/gnome-sudoku.ui:155
-msgid "_About Sudoku"
-msgstr "_O aplikácii Sudoku"
-
-#: data/gnome-sudoku.ui:185 data/print-dialog.ui:130
+#: data/sudoku-window.ui:233 data/print-dialog.ui:157
 msgid "_Easy"
 msgstr "Ľa_hká"
 
-#: data/gnome-sudoku.ui:199 data/print-dialog.ui:146
+#: data/sudoku-window.ui:241 data/print-dialog.ui:172
 msgid "_Medium"
 msgstr "_Stredná"
 
-#: data/gnome-sudoku.ui:213 data/print-dialog.ui:163
+#: data/sudoku-window.ui:249 data/print-dialog.ui:188
 msgid "_Hard"
 msgstr "Ť_ažká"
 
-#: data/gnome-sudoku.ui:227 data/print-dialog.ui:180
+#: data/sudoku-window.ui:257 data/print-dialog.ui:204
 msgid "_Very Hard"
 msgstr "_Veľmi ťažká"
 
-#: data/gnome-sudoku.ui:242
+#: data/sudoku-window.ui:265
 msgid "_Create your own puzzle"
 msgstr "_vytvoriť váš vlastný hlavolam"
-
-#: data/gnome-sudoku.ui:288 src/gnome-sudoku.vala:327
-msgid "_Pause"
-msgstr "_Pozastaviť"
-
-#: data/gnome-sudoku.ui:304
-msgid "_Clear Board"
-msgstr "_Zmazať hraciu plochu"
-
-# tooltip
-#: data/gnome-sudoku.ui:308
-msgid "Reset the board to its original state"
-msgstr "Obnoví hraciu plochu do pôvodného stavu"
-
-#: data/gnome-sudoku.ui:322
-msgid "_New Puzzle"
-msgstr "_Nový hlavolam"
-
-# tooltip
-#: data/gnome-sudoku.ui:326
-msgid "Start a new puzzle"
-msgstr "Začne nový hlavolam"
-
-#: data/gnome-sudoku.ui:340
-msgid "_Start Playing"
-msgstr "_Začať hru"
-
-# tooltip
-#: data/gnome-sudoku.ui:344
-msgid "Start playing the custom puzzle you have created"
-msgstr "Začne hru vlastného hlavolamu, ktorý ste vytvorili"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -162,7 +151,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Náhľad hry Sudoku prostredia GNOME"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:55
+#: data/org.gnome.Sudoku.appdata.xml.in:66
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -195,13 +184,24 @@ msgstr "Počet sudoku, ktoré sa majú tlačiť"
 msgid "Set the number of sudokus you want to print"
 msgstr "Nastaví počet hlavolamov sudoku, ktoré chcete vytlačiť"
 
+#: data/org.gnome.Sudoku.gschema.xml:23
+#| msgid "Number of Sudokus to print"
+msgid "Number of Sudokus to print per page"
+msgstr "Počet hlavolamov sudoku, ktoré sa majú tlačiť na stránku"
+
+# desc
+#: data/org.gnome.Sudoku.gschema.xml:24
+#| msgid "Set the number of sudokus you want to print"
+msgid "Set the number of sudokus you want to print per page"
+msgstr "Nastaví počet hlavolamov sudoku, ktoré chcete vytlačiť na stránku"
+
 # summary
-#: data/org.gnome.Sudoku.gschema.xml:22
+#: data/org.gnome.Sudoku.gschema.xml:28
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "Upozorniť na nevyplniteľné štvorce a zdvojené číslice"
 
 # desc
-#: data/org.gnome.Sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:29
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -210,36 +210,41 @@ msgstr ""
 "číslicou a zdvojené číslice budú označené na červeno."
 
 # summary
-#: data/org.gnome.Sudoku.gschema.xml:27
+#: data/org.gnome.Sudoku.gschema.xml:33
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Zvýrazniť riadok, stĺpec a štvorec, ktorý obsahuje vybranú bunku"
 
-#: data/org.gnome.Sudoku.gschema.xml:31
+#: data/org.gnome.Sudoku.gschema.xml:37
 msgid "Width of the window in pixels"
 msgstr "Šírka okna v pixeloch"
 
-#: data/org.gnome.Sudoku.gschema.xml:35
+#: data/org.gnome.Sudoku.gschema.xml:41
 msgid "Height of the window in pixels"
 msgstr "Výška okna v pixeloch"
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:45
 msgid "true if the window is maximized"
 msgstr "hodnota true ak je okno maximalizované"
 
 # dialog title
-#: data/print-dialog.ui:12
+#: data/print-dialog.ui:18
 msgid "Print Multiple Puzzles"
 msgstr "Tlač viacerých hlavolamov"
 
-#: data/print-dialog.ui:21
+#: data/print-dialog.ui:27
 msgid "_Cancel"
 msgstr "_Zrušiť"
 
-#: data/print-dialog.ui:67
+#: data/print-dialog.ui:65
 msgid "_Number of puzzles"
 msgstr "Počet _hlavolamov"
 
-#: data/print-dialog.ui:110
+#: data/print-dialog.ui:101
+#| msgid "_Number of puzzles"
+msgid "_Number of puzzles per page"
+msgstr "Počet _hlavolamov na stránku"
+
+#: data/print-dialog.ui:138
 msgid "Difficulty"
 msgstr "Obtiažnosť"
 
@@ -268,46 +273,42 @@ msgid "Custom Puzzle"
 msgstr "Vlastný hlavolam"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:85
+#: src/gnome-sudoku.vala:72
 msgid "Show release version"
 msgstr "Zobrazí verziu vydania"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:89
+#: src/gnome-sudoku.vala:76
 msgid "Show the possible values for each cell"
 msgstr "Zobrazí vhodné hodnoty pre každú bunku"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:224
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Hlavolam, ktorý ste zadali, nie je platnou hrou Sudoku."
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:224
 msgid "Please enter a valid puzzle."
 msgstr "Prosím, zadajte platný hlavolam."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:288
+#: src/gnome-sudoku.vala:233
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Hlavolam, ktorý ste zadali, má viacero riešení."
 
-#: src/gnome-sudoku.vala:288
+#: src/gnome-sudoku.vala:233
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Platné hlavolamy Sudoku majú iba jedno riešenie."
 
-#: src/gnome-sudoku.vala:290
+#: src/gnome-sudoku.vala:235
 msgid "_Back"
 msgstr "_Späť"
 
-#: src/gnome-sudoku.vala:291
+#: src/gnome-sudoku.vala:236
 msgid "Play _Anyway"
 msgstr "Hrať _aj napriek tomu"
 
-#: src/gnome-sudoku.vala:333
-msgid "_Resume"
-msgstr "_Pokračovať"
-
-#: src/gnome-sudoku.vala:397
+#: src/gnome-sudoku.vala:279
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -315,28 +316,20 @@ msgstr[0] "Výborne, hlavolam ste dokončili za %d minút!"
 msgstr[1] "Výborne, hlavolam ste dokončili za %d minútu!"
 msgstr[2] "Výborne, hlavolam ste dokončili za %d minúty!"
 
-#: src/gnome-sudoku.vala:402
+#: src/gnome-sudoku.vala:283
 msgid "_Quit"
 msgstr "_Ukončiť"
 
-#: src/gnome-sudoku.vala:403
+#: src/gnome-sudoku.vala:284
 msgid "Play _Again"
 msgstr "Hrať _znovu"
 
-#: src/gnome-sudoku.vala:422
-msgid "Select Difficulty"
-msgstr "Výber obtiažnosti"
-
-#: src/gnome-sudoku.vala:478
+#: src/gnome-sudoku.vala:390
 msgid "Reset the board to its original state?"
 msgstr "Obnoviť hraciu plochu do pôvodného stavu?"
 
-#: src/gnome-sudoku.vala:525
-msgid "Create Puzzle"
-msgstr "Vytvorenie hlavolamu"
-
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:604
+#: src/gnome-sudoku.vala:485
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -347,7 +340,7 @@ msgstr ""
 "\n"
 "Hlavolamy sú generované pomocou QQwing %s"
 
-#: src/gnome-sudoku.vala:615
+#: src/gnome-sudoku.vala:496
 msgid "translator-credits"
 msgstr ""
 "Stanislav Višňovský <visnovsky@nenya.ms.mff.cuni.cz>\n"
@@ -356,19 +349,41 @@ msgstr ""
 "Ján Kyselica <kyselica.jan@gmail.com>\n"
 "Dušan Kazik <prescott66@gmail.com>"
 
-#: src/number-picker.vala:91
+#: src/number-picker.vala:85
 msgid "Clear"
 msgstr "Zmazať"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:48
+#: src/sudoku-printer.vala:47
 msgid "Error printing file:"
 msgstr "Chyba pri tlačení súboru:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:627
+#: src/sudoku-view.vala:634
 msgid "Paused"
 msgstr "Pozastavená"
+
+#: src/sudoku-window.vala:153
+msgid "Select Difficulty"
+msgstr "Výber obtiažnosti"
+
+#: src/sudoku-window.vala:214
+msgid "Create Puzzle"
+msgstr "Vytvorenie hlavolamu"
+
+# tooltip
+#~ msgid "Reset the board to its original state"
+#~ msgstr "Obnoví hraciu plochu do pôvodného stavu"
+
+# tooltip
+#~ msgid "Start a new puzzle"
+#~ msgstr "Začne nový hlavolam"
+
+#~ msgid "_Start Playing"
+#~ msgstr "_Začať hru"
+
+#~ msgid "_Resume"
+#~ msgstr "_Pokračovať"
 
 #~ msgid "gnome-sudoku"
 #~ msgstr "gnome-sudoku"
