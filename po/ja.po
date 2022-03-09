@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games gnome-2-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2020-08-17 14:35+0000\n"
+"POT-Creation-Date: 2021-04-29 15:03+0000\n"
 "PO-Revision-Date: 2020-08-23 00:16+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -25,98 +25,89 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/gnome-sudoku.ui:7 data/gnome-sudoku.ui:162
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:623
-msgid "Sudoku"
-msgstr "GNOME 数独"
-
-#: data/gnome-sudoku.ui:23
-msgid "Undo your last action"
-msgstr "最後の操作を元に戻す"
-
-#: data/gnome-sudoku.ui:44
-msgid "Redo your last action"
-msgstr "最後の操作をやり直す"
-
-#: data/gnome-sudoku.ui:108
-msgid "Go back to the current game"
-msgstr "今のゲームに戻る"
-
-#: data/gnome-sudoku.ui:127 data/print-dialog.ui:32
-msgid "_Print"
-msgstr "印刷(_P)"
-
-#: data/gnome-sudoku.ui:130
-msgid "Print _Current Puzzle…"
-msgstr "今のパズルを印刷(_C)…"
-
-#: data/gnome-sudoku.ui:134
-msgid "Print _Multiple Puzzles…"
-msgstr "複数のパズルを印刷(_M)…"
-
-#: data/gnome-sudoku.ui:142
-msgid "High_lighter"
-msgstr "強調表示(_L)"
-
-#: data/gnome-sudoku.ui:146
-msgid "_Warnings"
-msgstr "警告(_W)"
-
-#: data/gnome-sudoku.ui:152
-msgid "_Help"
-msgstr "ヘルプ(_H)"
-
-#: data/gnome-sudoku.ui:156
-msgid "_About Sudoku"
-msgstr "GNOME 数独について(_A)"
-
-#: data/gnome-sudoku.ui:190 data/print-dialog.ui:115
-msgid "_Easy"
-msgstr "初級(_E)"
-
-#: data/gnome-sudoku.ui:197 data/print-dialog.ui:130
-msgid "_Medium"
-msgstr "中級(_M)"
-
-#: data/gnome-sudoku.ui:204 data/print-dialog.ui:146
-msgid "_Hard"
-msgstr "上級(_H)"
-
-#: data/gnome-sudoku.ui:211 data/print-dialog.ui:162
-msgid "_Very Hard"
-msgstr "超難問(_V)"
-
-#: data/gnome-sudoku.ui:218
-msgid "_Create your own puzzle"
-msgstr "パズルを自作する(_C)"
-
-#: data/gnome-sudoku.ui:269 src/gnome-sudoku.vala:343
-msgid "_Pause"
-msgstr "一時停止(_P)"
-
-#: data/gnome-sudoku.ui:285
-msgid "_Clear Board"
-msgstr "ボードを消去(_C)"
-
-#: data/gnome-sudoku.ui:289
-msgid "Reset the board to its original state"
-msgstr "ボードを元の状態にリセットする"
-
-#: data/gnome-sudoku.ui:303
+#: data/sudoku-window.ui:7
 msgid "_New Puzzle"
 msgstr "新しいパズル(_N)"
 
-#: data/gnome-sudoku.ui:307
-msgid "Start a new puzzle"
-msgstr "新しいパズルを開始する"
+#: data/sudoku-window.ui:11
+msgid "_Clear Board"
+msgstr "ボードを消去(_C)"
 
-#: data/gnome-sudoku.ui:321
-msgid "_Start Playing"
-msgstr "パズルを解く(_S)"
+#: data/sudoku-window.ui:17 data/print-dialog.ui:38
+msgid "_Print"
+msgstr "印刷(_P)"
 
-#: data/gnome-sudoku.ui:325
+#: data/sudoku-window.ui:20
+msgid "Print _Current Puzzle…"
+msgstr "今のパズルを印刷(_C)…"
+
+#: data/sudoku-window.ui:24
+msgid "Print _Multiple Puzzles…"
+msgstr "複数のパズルを印刷(_M)…"
+
+#: data/sudoku-window.ui:32
+msgid "High_lighter"
+msgstr "強調表示(_L)"
+
+#: data/sudoku-window.ui:36
+msgid "_Warnings"
+msgstr "警告(_W)"
+
+#: data/sudoku-window.ui:42
+msgid "_Help"
+msgstr "ヘルプ(_H)"
+
+#: data/sudoku-window.ui:46
+msgid "_About Sudoku"
+msgstr "GNOME 数独について(_A)"
+
+#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
+#: src/sudoku-window.vala:212
+msgid "Sudoku"
+msgstr "GNOME 数独"
+
+#: data/sudoku-window.ui:73
+msgid "Undo your last action"
+msgstr "最後の操作を元に戻す"
+
+#: data/sudoku-window.ui:94
+msgid "Redo your last action"
+msgstr "最後の操作をやり直す"
+
+#: data/sudoku-window.ui:126
+#, fuzzy
+#| msgid "_Pause"
+msgid "Pause"
+msgstr "一時停止(_P)"
+
+#: data/sudoku-window.ui:147
 msgid "Start playing the custom puzzle you have created"
 msgstr "自作したパズルを開始する"
+
+#: data/sudoku-window.ui:189
+msgid "Go back to the current game"
+msgstr "今のゲームに戻る"
+
+#: data/sudoku-window.ui:233 data/print-dialog.ui:157
+msgid "_Easy"
+msgstr "初級(_E)"
+
+#: data/sudoku-window.ui:241 data/print-dialog.ui:172
+msgid "_Medium"
+msgstr "中級(_M)"
+
+#: data/sudoku-window.ui:249 data/print-dialog.ui:188
+msgid "_Hard"
+msgstr "上級(_H)"
+
+#: data/sudoku-window.ui:257 data/print-dialog.ui:204
+msgid "_Very Hard"
+msgstr "超難問(_V)"
+
+#: data/sudoku-window.ui:265
+msgid "_Create your own puzzle"
+msgstr "パズルを自作する(_C)"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -150,7 +141,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr ""
 
-#: data/org.gnome.Sudoku.appdata.xml.in:61
+#: data/org.gnome.Sudoku.appdata.xml.in:66
 msgid "The GNOME Project"
 msgstr "The GNOME Project"
 
@@ -168,8 +159,8 @@ msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
-"印刷したい数独の難易度レベルを設定します。設定可能な値: \"easy\", "
-"\"medium\", \"hard\", \"very_hard\""
+"印刷したい数独の難易度レベルを設定します。設定可能な値: \"easy\", \"medium"
+"\", \"hard\", \"very_hard\""
 
 #: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
@@ -179,47 +170,65 @@ msgstr "印刷する数独の数"
 msgid "Set the number of sudokus you want to print"
 msgstr "印刷したい数独の数を設定します"
 
-#: data/org.gnome.Sudoku.gschema.xml:22
+#: data/org.gnome.Sudoku.gschema.xml:23
+#, fuzzy
+#| msgid "Number of Sudokus to print"
+msgid "Number of Sudokus to print per page"
+msgstr "印刷する数独の数"
+
+#: data/org.gnome.Sudoku.gschema.xml:24
+#, fuzzy
+#| msgid "Set the number of sudokus you want to print"
+msgid "Set the number of sudokus you want to print per page"
+msgstr "印刷したい数独の数を設定します"
+
+#: data/org.gnome.Sudoku.gschema.xml:28
 msgid "Warn about unfillable squares and duplicate numbers"
 msgstr "埋められないマス目と数字の重複について警告する"
 
-#: data/org.gnome.Sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:29
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
 msgstr ""
-"数字を埋めることができないマス目に大きな赤い X を表示し、重複している数"
-"字は赤くします"
+"数字を埋めることができないマス目に大きな赤い X を表示し、重複している数字は赤"
+"くします"
 
-#: data/org.gnome.Sudoku.gschema.xml:27
+#: data/org.gnome.Sudoku.gschema.xml:33
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "行、列、および選択したマス目があるブロックを強調します"
 
-#: data/org.gnome.Sudoku.gschema.xml:31
+#: data/org.gnome.Sudoku.gschema.xml:37
 msgid "Width of the window in pixels"
 msgstr "ウィンドウの幅 (ピクセル単位)"
 
-#: data/org.gnome.Sudoku.gschema.xml:35
+#: data/org.gnome.Sudoku.gschema.xml:41
 msgid "Height of the window in pixels"
 msgstr "ウィンドウの高さ (ピクセル単位)"
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:45
 msgid "true if the window is maximized"
 msgstr "ウィンドウが最小化されている場合は true"
 
-#: data/print-dialog.ui:12
+#: data/print-dialog.ui:18
 msgid "Print Multiple Puzzles"
 msgstr "複数のパズルを印刷"
 
-#: data/print-dialog.ui:21
+#: data/print-dialog.ui:27
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: data/print-dialog.ui:59
+#: data/print-dialog.ui:65
 msgid "_Number of puzzles"
 msgstr "パズルの数(_N)"
 
-#: data/print-dialog.ui:96
+#: data/print-dialog.ui:101
+#, fuzzy
+#| msgid "_Number of puzzles"
+msgid "_Number of puzzles per page"
+msgstr "パズルの数(_N)"
+
+#: data/print-dialog.ui:138
 msgid "Difficulty"
 msgstr "難易度"
 
@@ -248,73 +257,61 @@ msgid "Custom Puzzle"
 msgstr "自作パズル"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:86
+#: src/gnome-sudoku.vala:72
 msgid "Show release version"
 msgstr "リリースバージョンを表示する"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:90
+#: src/gnome-sudoku.vala:76
 msgid "Show the possible values for each cell"
 msgstr "各マス目に入力可能な数字を表示する"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:224
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "入力したパズルは正常な数独ではありません。"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:224
 msgid "Please enter a valid puzzle."
 msgstr "正しいパズルを入力してください。"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:304
+#: src/gnome-sudoku.vala:233
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "入力したパズルには解答が複数存在します。"
 
-#: src/gnome-sudoku.vala:304
+#: src/gnome-sudoku.vala:233
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "通常、数独パズルの解答は一つだけです。"
 
-#: src/gnome-sudoku.vala:306
+#: src/gnome-sudoku.vala:235
 msgid "_Back"
 msgstr "戻る(_B)"
 
-#: src/gnome-sudoku.vala:307
+#: src/gnome-sudoku.vala:236
 msgid "Play _Anyway"
 msgstr "とにかくプレイする(_A)"
 
-#: src/gnome-sudoku.vala:349
-msgid "_Resume"
-msgstr "再開(_R)"
-
-#: src/gnome-sudoku.vala:413
+#: src/gnome-sudoku.vala:279
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "おみごと! %d 分でパズルを解きました!"
 
-#: src/gnome-sudoku.vala:418
+#: src/gnome-sudoku.vala:283
 msgid "_Quit"
 msgstr "終了(_Q)"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:284
 msgid "Play _Again"
 msgstr "再プレイ(_A)"
 
-#: src/gnome-sudoku.vala:438
-msgid "Select Difficulty"
-msgstr "難易度を選択してください"
-
-#: src/gnome-sudoku.vala:494
+#: src/gnome-sudoku.vala:390
 msgid "Reset the board to its original state?"
 msgstr "ボードを元の状態にリセットしますか?"
 
-#: src/gnome-sudoku.vala:541
-msgid "Create Puzzle"
-msgstr "パズルを作成"
-
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:620
+#: src/gnome-sudoku.vala:485
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -325,7 +322,7 @@ msgstr ""
 "\n"
 "パズルは QQwing %s によって生成されます"
 
-#: src/gnome-sudoku.vala:631
+#: src/gnome-sudoku.vala:496
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
@@ -351,9 +348,29 @@ msgid "Error printing file:"
 msgstr "ファイル印刷エラー:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:630
+#: src/sudoku-view.vala:634
 msgid "Paused"
 msgstr "一時停止"
+
+#: src/sudoku-window.vala:153
+msgid "Select Difficulty"
+msgstr "難易度を選択してください"
+
+#: src/sudoku-window.vala:214
+msgid "Create Puzzle"
+msgstr "パズルを作成"
+
+#~ msgid "Reset the board to its original state"
+#~ msgstr "ボードを元の状態にリセットする"
+
+#~ msgid "Start a new puzzle"
+#~ msgstr "新しいパズルを開始する"
+
+#~ msgid "_Start Playing"
+#~ msgstr "パズルを解く(_S)"
+
+#~ msgid "_Resume"
+#~ msgstr "再開(_R)"
 
 #~ msgid "game;board;tiles;japanese;"
 #~ msgstr ""
