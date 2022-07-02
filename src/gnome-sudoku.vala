@@ -128,6 +128,13 @@ public class Sudoku : Gtk.Application
         });
         add_action (highlighter_action);
 
+        var initialize_earmarks_action = settings.create_action ("initialize-earmarks");
+        initialize_earmarks_action.notify["state"].connect (() => {
+            if (view != null)
+                view.initialize_earmarks = settings.get_boolean ("initialize-earmarks");
+        });
+        add_action (initialize_earmarks_action);
+
         set_accels_for_action ("app.new-game", {"<Primary>n"});
         set_accels_for_action ("app.print", {"<Primary>p"});
         set_accels_for_action ("app.quit", {"<Primary>q"});

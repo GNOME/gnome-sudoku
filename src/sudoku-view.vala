@@ -34,6 +34,8 @@ private class SudokuCellView : DrawingArea
     private int row;
     private int col;
 
+    private bool initialized_earmarks;
+
     public int value
     {
         get { return game.board [row, col]; }
@@ -70,6 +72,17 @@ private class SudokuCellView : DrawingArea
         set
         {
             _show_possibilities = value;
+            queue_draw ();
+        }
+    }
+
+    private bool _initialize_earmarks;
+    public bool initialize_earmarks
+    {
+        get { return _initialize_earmarks; }
+        set
+        {
+            _initialize_earmarks = value;
             queue_draw ();
         }
     }
@@ -376,6 +389,26 @@ private class SudokuCellView : DrawingArea
         bool[] marks = null;
         if (!_show_possibilities)
         {
+            // Onetime earmark initialization.
+            if (!initialized_earmarks)
+            {
+                // For gsetting "initialize-earmarks" only initialize the earmarks
+                // if playing a new game.
+                if (_initialize_earmarks && (game.mode == GameMode.PLAY) &&
+                    (game.board.previous_played_time == 0.0))
+                {
+                    marks = game.board.get_possibilities_as_bool_array (row, col);
+                    for (int num = 1; num <= marks.length; num++)
+                    {
+                        if (marks[num - 1])
+                        {
+                            game.board.enable_earmark (row, col, num);
+                        }
+                    }
+                }
+                initialized_earmarks = true;
+            }
+
             marks = game.board.get_earmarks (row, col);
         }
         else if (value == 0)
@@ -670,6 +703,18 @@ public class SudokuView : AspectFrame
             for (var i = 0; i < game.board.rows; i++)
                 for (var j = 0; j < game.board.cols; j++)
                     cells[i,j].show_possibilities = value;
+        }
+    }
+
+    private bool _initialize_earmarks = false;
+    public bool initialize_earmarks
+    {
+        get { return _initialize_earmarks; }
+        set {
+            _initialize_earmarks = value;
+            for (var i = 0; i < game.board.rows; i++)
+                for (var j = 0; j < game.board.cols; j++)
+                    cells[i,j].initialize_earmarks = value;
         }
     }
 

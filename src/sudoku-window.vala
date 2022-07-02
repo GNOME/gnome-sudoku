@@ -140,6 +140,7 @@ public class SudokuWindow : ApplicationWindow
         else
             view.show_warnings = settings.get_boolean ("show-warnings");
         view.highlighter = settings.get_boolean ("highlighter");
+        view.initialize_earmarks = settings.get_boolean ("initialize-earmarks");
 
         view.show ();
         game_box.pack_start (view);
