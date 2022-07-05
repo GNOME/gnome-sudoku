@@ -5,22 +5,22 @@
 # Wanderlust <wanderlust@ukr.net>, 2009.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
 # Daniel Korostil <ted.korostiled@gmail.com>, 2015, 2016, 2017.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2020-12-31 18:10+0000\n"
-"PO-Revision-Date: 2021-01-01 00:37+0200\n"
+"POT-Creation-Date: 2022-07-04 23:01+0000\n"
+"PO-Revision-Date: 2022-07-05 08:29+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
-"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 20.11.70\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 20.12.0\n"
 "X-Project-Style: gnome\n"
 
 #: data/sudoku-window.ui:7
@@ -60,8 +60,8 @@ msgid "_About Sudoku"
 msgstr "_Про «Судоку»"
 
 #: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
-#: src/sudoku-window.vala:212
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:495
+#: src/sudoku-window.vala:213
 msgid "Sudoku"
 msgstr "Судоку"
 
@@ -74,7 +74,6 @@ msgid "Redo your last action"
 msgstr "Повторити останній хід"
 
 #: data/sudoku-window.ui:126
-#| msgid "_Pause"
 msgid "Pause"
 msgstr "Пауза"
 
@@ -149,7 +148,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Перегляд гри Судоку"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:63
+#: data/org.gnome.Sudoku.appdata.xml.in:72
 msgid "The GNOME Project"
 msgstr "Проект GNOME"
 
@@ -214,6 +213,11 @@ msgstr "Висота вікна, в точках"
 msgid "true if the window is maximized"
 msgstr "встановлено, якщо вікно розгорнуто"
 
+#: data/org.gnome.Sudoku.gschema.xml:49
+#| msgid "Show the possible values for each cell"
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr "Спочатку показувати можливі значення для кожної клітинки"
+
 #: data/print-dialog.ui:18
 msgid "Print Multiple Puzzles"
 msgstr "Надрукувати декілька головоломок"
@@ -269,32 +273,32 @@ msgid "Show the possible values for each cell"
 msgstr "Показувати можливі значення для кожної клітинки"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Головоломку, яку ви ввели, — не сумісна з судоку."
 
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "Please enter a valid puzzle."
 msgstr "Введіть правильну головоломку."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Головоломка, яку ви ввели, має кілька розв'язків."
 
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Правильний судоку може мати тільки один розв'язок."
 
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:242
 msgid "_Back"
 msgstr "_Назад"
 
-#: src/gnome-sudoku.vala:236
+#: src/gnome-sudoku.vala:243
 msgid "Play _Anyway"
 msgstr "О_днаково зіграти"
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:286
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -302,20 +306,20 @@ msgstr[0] "Чудово! Ви склали головоломку за %d хви
 msgstr[1] "Чудово! Ви склали головоломку за %d хвилини"
 msgstr[2] "Чудово! Ви склали головоломку за %d хвилин"
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:290
 msgid "_Quit"
 msgstr "Ви_йти"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:291
 msgid "Play _Again"
 msgstr "Зіграти _ще раз"
 
-#: src/gnome-sudoku.vala:390
+#: src/gnome-sudoku.vala:397
 msgid "Reset the board to its original state?"
 msgstr "Скинути дошку до її початкового стану?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:485
+#: src/gnome-sudoku.vala:492
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -326,7 +330,7 @@ msgstr ""
 "\n"
 "Головоломки породжує — QQwing %s"
 
-#: src/gnome-sudoku.vala:496
+#: src/gnome-sudoku.vala:503
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота\n"
@@ -345,15 +349,15 @@ msgid "Error printing file:"
 msgstr "Помилка друкування файла:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:634
+#: src/sudoku-view.vala:667
 msgid "Paused"
 msgstr "Призупинено"
 
-#: src/sudoku-window.vala:153
+#: src/sudoku-window.vala:154
 msgid "Select Difficulty"
 msgstr "Виберіть складність"
 
-#: src/sudoku-window.vala:214
+#: src/sudoku-window.vala:215
 msgid "Create Puzzle"
 msgstr "Створити головоломку"
 
