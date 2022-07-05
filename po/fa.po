@@ -6,14 +6,14 @@
 # Meelad Zakaria <meelad@farsiweb.info>, 2005.
 # Farzaneh Sarafraz <farzaneh@farsiweb.info>, 2006.
 # Arash Mousavi <mousavi.arash@gmail.com>, 2012-2013, 2016.
-# Danial Behzadi <dani.behzi@gmail.com>, 2012, 2017-2021.
+# Danial Behzadi <dani.behzi@gmail.com>, 2012, 2017-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2020-12-31 18:10+0000\n"
-"PO-Revision-Date: 2021-03-04 00:31+0000\n"
+"POT-Creation-Date: 2022-07-04 23:01+0000\n"
+"PO-Revision-Date: 2022-07-05 11:29+0430\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.1\n"
 
 #: data/sudoku-window.ui:7
 msgid "_New Puzzle"
@@ -61,8 +61,8 @@ msgid "_About Sudoku"
 msgstr "_دربارهٔ سودوکو"
 
 #: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
-#: src/sudoku-window.vala:212
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:495
+#: src/sudoku-window.vala:213
 msgid "Sudoku"
 msgstr "سودوکو"
 
@@ -146,7 +146,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "یک پیش‌نمایش بازی سودوکوی گنوم"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:63
+#: data/org.gnome.Sudoku.appdata.xml.in:72
 msgid "The GNOME Project"
 msgstr "پروژهٔ گنوم"
 
@@ -211,6 +211,10 @@ msgstr "ارتفاع پنجره به پیکسل"
 msgid "true if the window is maximized"
 msgstr "درست اگر پنجره بیشینه باشد"
 
+#: data/org.gnome.Sudoku.gschema.xml:49
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr "مقدار دهی نخستین نشانه‌گذاری‌ها با مقدارهای ممکن برای هر خانه"
+
 #: data/print-dialog.ui:18
 msgid "Print Multiple Puzzles"
 msgstr "چاپ چند سودوکو"
@@ -266,52 +270,52 @@ msgid "Show the possible values for each cell"
 msgstr "نمایش مقادیر ممکن برای هر خانه"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "پازلی که وارد کرده‌اید یک پازل معتبر نیست."
 
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "Please enter a valid puzzle."
 msgstr "لطفا یک پازل معتبر وارد کنید."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "پازلی که وارد کرده‌اید بیش از یک راه‌حل دارد."
 
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "پازل‌های سودوکو معتبر دقیقا تنها یک راه حل دارند."
 
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:242
 msgid "_Back"
 msgstr "_بازگشت"
 
-#: src/gnome-sudoku.vala:236
+#: src/gnome-sudoku.vala:243
 msgid "Play _Anyway"
 msgstr "به هر حال بازی _شود"
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:286
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "آفرین، پازل را در %Id دقیقه کامل کردید!"
 msgstr[1] "آفرین، پازل را در %Id دقیقه کامل کردید!"
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:290
 msgid "_Quit"
 msgstr "_خروج"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:291
 msgid "Play _Again"
 msgstr "بازی _دوباره"
 
-#: src/gnome-sudoku.vala:390
+#: src/gnome-sudoku.vala:397
 msgid "Reset the board to its original state?"
 msgstr "بازنشانی تخته به حالت نخستین؟"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:485
+#: src/gnome-sudoku.vala:492
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -322,7 +326,7 @@ msgstr ""
 "\n"
 "پازل‌ها توسط QQwing منتشر شده‌اند %s"
 
-#: src/gnome-sudoku.vala:496
+#: src/gnome-sudoku.vala:503
 msgid "translator-credits"
 msgstr ""
 "آرش موسوی <mousavi.arash@gmail.com>\n"
@@ -338,15 +342,15 @@ msgid "Error printing file:"
 msgstr "خطا در چاپ پرونده:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:634
+#: src/sudoku-view.vala:667
 msgid "Paused"
 msgstr "مکث شده"
 
-#: src/sudoku-window.vala:153
+#: src/sudoku-window.vala:154
 msgid "Select Difficulty"
 msgstr "گزینش سختی"
 
-#: src/sudoku-window.vala:214
+#: src/sudoku-window.vala:215
 msgid "Create Puzzle"
 msgstr "ایجاد پازل"
 
