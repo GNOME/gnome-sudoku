@@ -6,13 +6,14 @@
 # Tiago Santos <tiagofsantos81@sapo.pt>, 2014 - 2016.
 # Pedro Albuquerque <palbuquerque73@gmail.com>, 2015.
 # Sérgio Cardeira <cardeira dot sergio at gmail dot com>, 2016.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2019 - 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 3.12\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2020-12-31 18:10+0000\n"
-"PO-Revision-Date: 2021-01-06 14:16+0000\n"
+"POT-Creation-Date: 2022-07-04 23:01+0000\n"
+"PO-Revision-Date: 2022-07-06 20:46+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Português <>\n"
 "Language: pt\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.1\n"
 
 #: data/sudoku-window.ui:7
 msgid "_New Puzzle"
@@ -55,13 +56,12 @@ msgid "_Help"
 msgstr "_Ajuda"
 
 #: data/sudoku-window.ui:46
-#| msgid "_About"
 msgid "_About Sudoku"
 msgstr "_Acerca do Sudoku"
 
 #: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
-#: src/sudoku-window.vala:212
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:495
+#: src/sudoku-window.vala:213
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -146,7 +146,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Uma previsão do jogo sudoku do GNOME"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:63
+#: data/org.gnome.Sudoku.appdata.xml.in:72
 msgid "The GNOME Project"
 msgstr "O Projeto GNOME"
 
@@ -211,6 +211,10 @@ msgstr "Altura em píxeis da janela"
 msgid "true if the window is maximized"
 msgstr "verdadeiro se a janela estiver maximizada"
 
+#: data/org.gnome.Sudoku.gschema.xml:49
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr "Inicializar as indicações com os valores possíveis para cada célula"
+
 #: data/print-dialog.ui:18
 msgid "Print Multiple Puzzles"
 msgstr "Imprimir múltiplos jogos"
@@ -266,52 +270,52 @@ msgid "Show the possible values for each cell"
 msgstr "Mostrar valores possíveis para cada célula"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "O puzzle que inseriu não é um Sudoku válido."
 
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "Please enter a valid puzzle."
 msgstr "Por favor, insira um jogo válido."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "O jogo que inseriu tem múltiplas soluções."
 
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Jogos de sudoku válidos só têm uma solução."
 
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:242
 msgid "_Back"
 msgstr "_Recuar"
 
-#: src/gnome-sudoku.vala:236
+#: src/gnome-sudoku.vala:243
 msgid "Play _Anyway"
 msgstr "Ainda assim _jogar"
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:286
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Bem jogado, terminou o puzzle em %d minuto!"
 msgstr[1] "Bem jogado, terminou o puzzle em %d minutos!"
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:290
 msgid "_Quit"
 msgstr "_Sair"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:291
 msgid "Play _Again"
 msgstr "Jogar _novamente"
 
-#: src/gnome-sudoku.vala:390
+#: src/gnome-sudoku.vala:397
 msgid "Reset the board to its original state?"
 msgstr "Repor o tabuleiro no seu estado original?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:485
+#: src/gnome-sudoku.vala:492
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -322,7 +326,7 @@ msgstr ""
 "\n"
 "Jogos gerados por QQwing %s"
 
-#: src/gnome-sudoku.vala:496
+#: src/gnome-sudoku.vala:503
 msgid "translator-credits"
 msgstr ""
 "Duarte Loreto <happyguy_pt@hotmail.com>\n"
@@ -341,15 +345,15 @@ msgid "Error printing file:"
 msgstr "Erro ao imprimir o ficheiro:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:634
+#: src/sudoku-view.vala:667
 msgid "Paused"
 msgstr "Pausado"
 
-#: src/sudoku-window.vala:153
+#: src/sudoku-window.vala:154
 msgid "Select Difficulty"
 msgstr "Selecione a dificuldade"
 
-#: src/sudoku-window.vala:214
+#: src/sudoku-window.vala:215
 msgid "Create Puzzle"
 msgstr "Criar jogo"
 
