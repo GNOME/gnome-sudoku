@@ -162,10 +162,12 @@ private class SudokuCellView : DrawingArea
     {
         earmark_picker = new NumberPicker (ref game.board, true);
         earmark_picker.earmark_state_changed.connect ((number, state) => {
+            // For enable and disable the "board" is written to directly to
+            // avoid affecting the undo stack.
             if (state)
-                this.game.enable_earmark (row, col, number);
+                this.game.board.enable_earmark (row, col, number);
             else
-                this.game.disable_earmark (row, col, number);
+                this.game.board.disable_earmark (row, col, number);
             this.game.cell_changed (row, col, value, value);
             queue_draw ();
         });
