@@ -26,6 +26,7 @@ public class SudokuBoard : Object
     /* Implemented in such a way that it can be extended for other sizes ( like 2x3 sudoku or 4x4 sudoku ) instead of normal 3x3 sudoku. */
 
     protected int[,] cells;                     /* stores the value of the cells */
+    protected int[,] solution;                  /* stores the solution, if any, null otherwise */
     public bool[,] is_fixed;                    /* if the value at location is fixed or not */
     private bool[,] possible_in_row;            /* if specific value is possible in specific row */
     private bool[,] possible_in_col;            /* if specific value is possible in specific col */
@@ -172,6 +173,7 @@ public class SudokuBoard : Object
     {
         SudokuBoard board = new SudokuBoard (block_rows , block_cols);
         board.cells = cells;
+        board.solution = solution;
         board.is_fixed = is_fixed;
         board.possible_in_row = possible_in_row;
         board.possible_in_col = possible_in_col;
@@ -364,6 +366,31 @@ public class SudokuBoard : Object
             fixed--;
     }
 
+    public void set_solution (int row, int col, int val)
+    {
+        solution[row, col] = val;
+    }
+
+    public int get_solution (int row, int col)
+    {
+        return solution[row, col];
+    }
+
+    public void solve ()
+    {
+        int[] solution_1d = convert_2d_to_1d(cells);
+
+        if (QQwing.solve_puzzle (solution_1d))
+            solution = convert_1d_to_2d(solution_1d);
+        else
+            solution = null;
+    }
+
+    public bool solved ()
+    {
+        return solution != null;
+    }
+
     public int count_solutions_limited ()
     {
         return QQwing.count_solutions_limited ((int[]) cells);
@@ -520,6 +547,30 @@ public class SudokuBoard : Object
                 s += i.to_string ();
 
         return s;
+    }
+
+    // Convert a 2D array to a 1D array. The 2D array is assumed to have
+    // dimensions rows, cols.
+    private int[] convert_2d_to_1d(int[,] ints_2d)
+    {
+        int[] ints_1d = new int[rows * cols];
+        int i = 0;
+        for (int row = 0; row < rows; row++)
+            for (int col = 0; col < cols; col++)
+                ints_1d[i++] = ints_2d[row, col];
+        return ints_1d;
+    }
+
+    // Convert a 1D array to a 2D array. The 1D array is assumed to have
+    // length rows * cols.
+    private int[,] convert_1d_to_2d(int[] ints_1d)
+    {
+        int[,] ints_2d = new int[rows, cols];
+        int i = 0;
+        for (int row = 0; row < rows; row++)
+            for (int col = 0; col < cols; col++)
+                ints_2d[row, col] = ints_1d[i++];
+        return ints_2d;
     }
 }
 

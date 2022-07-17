@@ -36,6 +36,10 @@ private class SudokuCellView : DrawingArea
 
     private bool initialized_earmarks;
 
+    // Whether the control keys are pressed.
+    private bool left_control;
+    private bool right_control;
+
     public int value
     {
         get { return game.board [row, col]; }
@@ -236,6 +240,10 @@ private class SudokuCellView : DrawingArea
         {
             popover.destroy ();
             popover = null;
+
+            // Destroying a popover means that this type of warning is now possible.
+            if (warn_incorrect_solution())
+                queue_draw ();
         }
     }
 
@@ -284,10 +292,16 @@ private class SudokuCellView : DrawingArea
     {
         key_controller = new EventControllerKey (this);
         key_controller.key_pressed.connect (on_key_pressed);
+        key_controller.key_released.connect (on_key_release);
     }
 
     private inline bool on_key_pressed (EventControllerKey _key_controller, uint keyval, uint keycode, ModifierType state)
     {
+        if (keyval == Gdk.Key.Control_L)
+            left_control = true;
+        if (keyval == Gdk.Key.Control_R)
+            right_control = true;
+
         if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
             return false;
         string k_name = keyval_name (keyval);
@@ -347,6 +361,25 @@ private class SudokuCellView : DrawingArea
         return false;
     }
 
+    private inline void on_key_release (EventControllerKey _key_controller, uint keyval, uint keycode, ModifierType state)
+    {
+        bool control_released = false;
+        if (keyval == Gdk.Key.Control_L)
+        {
+            left_control = false;
+            control_released = true;
+        }
+        if (keyval == Gdk.Key.Control_R)
+        {
+            right_control = false;
+            control_released = true;
+        }
+
+        // Releasing a control means that this type of warning is now possible.
+        if (control_released && warn_incorrect_solution())
+            queue_draw ();
+    }
+
     public override bool draw (Cairo.Context c)
     {
         RGBA background_color;
@@ -358,6 +391,45 @@ private class SudokuCellView : DrawingArea
             background_color = highlight_color;
         else
             background_color = free_cell_color;
+
+        // Highlight the cell if the value or earmarks are inconsistent with
+        // a known solution, if any.
+        if (warn_incorrect_solution())
+        {
+            bool cell_error = false;
+            int solution = game.board.get_solution (row, col);
+            if (value != 0)
+            {
+                // Check value against the solution.
+                cell_error = value != solution;
+            }
+            else
+            {
+                // Check earmarks against the solution.
+                var marks = game.board.get_earmarks (row, col);
+                bool earmarked = false;
+                bool solution_found = false;
+                for (int num = 1; num <= marks.length; num++)
+                {
+                    if (marks[num - 1])
+                    {
+                        earmarked = true;
+                        if (num == solution)
+                            solution_found = true;
+                    }
+                }
+                if (earmarked && !solution_found)
+                    cell_error = true;
+            }
+
+            // Make the error cell more red by reducing the other colors to 60%.
+            if (cell_error)
+            {
+                background_color.green *= 0.6;
+                background_color.blue  *= 0.6;
+            }
+        }
+
         c.set_source_rgba (background_color.red, background_color.green, background_color.blue, background_color.alpha);
         c.rectangle (0, 0, get_allocated_width (), get_allocated_height ());
         c.fill();
@@ -488,6 +560,21 @@ private class SudokuCellView : DrawingArea
     public void clear ()
     {
         game.board.disable_all_earmarks (row, col);
+    }
+
+    // Return true if the user is to be warned when the value or earmarks are
+    // inconsistent with the known solution, and it is ok for the user to be
+    // warned.
+    private bool warn_incorrect_solution()
+    {
+        // In the following popovers are checked so that the solution of the cell
+        // is not revealed to the user as the user enters candidate numbers for
+        // the cell using the earmark picker. Similarly don't reveal the solution
+        // while earmarks are being entered with the control key.
+        return _show_warnings &&                                  // show warnings?
+               (popover == null) && (earmark_popover == null) && // popovers gone?
+               (!left_control) && (!right_control) &&             // control keys not pressed?
+               game.board.solved();                               // solution exists?
     }
 }
 

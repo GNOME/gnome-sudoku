@@ -23,6 +23,7 @@
 namespace QQwing {
     [CCode (array_length=false)]
     int[] generate_puzzle (int difficulty);
+    bool solve_puzzle([CCode (array_length = false)] int[] puzzle);
     int count_solutions_limited ([CCode (array_length = false)] int[] puzzle);
     void print_stats ([CCode (array_length = false)] int[] puzzle);
     string get_version ();

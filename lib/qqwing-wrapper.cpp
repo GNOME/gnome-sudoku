@@ -29,6 +29,10 @@
 #include <glib.h>
 #include <qqwing.hpp>
 
+// Constants
+
+const int BOARD_SIZE = 81;
+
 /*
  * Generate a symmetric puzzle of specified difficulty.
  * The result must be freed with g_free().
@@ -37,7 +41,6 @@ int* qqwing_generate_puzzle(int difficulty)
 {
     int i = 0;
     const int MAX_ITERATIONS = 1000;
-    const int BOARD_SIZE = 81;
     qqwing::SudokuBoard board;
     static std::once_flag flag;
 
@@ -65,6 +68,39 @@ int* qqwing_generate_puzzle(int difficulty)
     int* copy = g_new(int, BOARD_SIZE);
     std::copy(original, &original[BOARD_SIZE], copy);
     return copy;
+}
+
+/*
+ * Solve a given puzzle in place. If true is returned the puzzle will be solved.
+ * If false is returned the puzzle will be unchanged.
+ */
+gboolean qqwing_solve_puzzle(int* puzzle)
+{
+    qqwing::SudokuBoard board;
+
+    if (!board.setPuzzle(puzzle))
+    {
+        // This can happen when there is no solution.
+        g_warning("Failed to solve puzzle: the puzzle could not be set.");
+        return FALSE;
+    }
+    if (!board.hasUniqueSolution())
+    {
+        // The multiple solution case.
+        g_warning("Failed to solve puzzle: the puzzle does not have a unique solution.");
+        return FALSE;
+    }
+    if (!board.solve())
+    {
+        // This should not happen given the above checks.
+        g_warning("Failed to solve puzzle: the call to solve() failed.");
+        return FALSE;
+    }
+
+    // Valid. Copy and return true.
+    const int* solution = board.getSolution();
+    std::copy(solution, &solution[BOARD_SIZE], puzzle);
+    return TRUE;
 }
 
 /*

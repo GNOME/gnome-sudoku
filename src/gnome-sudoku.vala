@@ -310,6 +310,9 @@ public class Sudoku : Gtk.Application
 
     private void start_game (SudokuBoard board)
     {
+        if (current_game_mode == GameMode.PLAY)
+            board.solve();
+
         if (game != null)
         {
             game.paused_changed.disconnect (paused_changed_cb);
