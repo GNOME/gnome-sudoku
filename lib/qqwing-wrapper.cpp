@@ -58,7 +58,7 @@ int* qqwing_generate_puzzle(int difficulty)
     }
 
     if (i == MAX_ITERATIONS)
-        g_error("Could not generate puzzle of specified difficulty. I tried so hard. Please report at bugzilla.gnome.org.");
+        g_error("Could not generate puzzle of specified difficulty. I tried so hard. Please report at https://gitlab.gnome.org/GNOME/gnome-sudoku/-/issues.");
 
     const int* original = board.getPuzzle();
     // Will be deleted by Vala using g_free(), so the new operator is not safe.
