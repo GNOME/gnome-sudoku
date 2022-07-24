@@ -393,7 +393,9 @@ public class SudokuBoard : Object
 
     public int count_solutions_limited ()
     {
-        return QQwing.count_solutions_limited ((int[]) cells);
+        int[] cells_1d = convert_2d_to_1d(cells);
+
+        return QQwing.count_solutions_limited (cells_1d);
     }
 
     public Set<Coord?> get_occurances(Gee.List<Coord?> coords, int val)
