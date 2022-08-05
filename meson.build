@@ -4,7 +4,7 @@ project('gnome-sudoku', ['c', 'cpp', 'vala'],
   ],
   license: 'GPL3+',
   meson_version: '>= 0.50',
-  version: '43.alpha'
+  version: '43.beta'
 )
 application_id = 'org.gnome.Sudoku'
 add_project_arguments([
