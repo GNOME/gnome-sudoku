@@ -1,5 +1,5 @@
 # Hungarian translation for gnome-sudoku.
-# Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020. Free Software Foundation, Inc.
+# Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022. Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-sudoku package.
 #
 # Szabolcs Ban <shooby at gnome dot hu>, 1999, 2000, 2001.
@@ -9,21 +9,21 @@
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Szabolcs Varga <shirokuma at shirokuma dot hu>, 2005.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2021-01-26 15:08+0000\n"
-"PO-Revision-Date: 2021-02-12 17:24+0100\n"
-"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
+"POT-Creation-Date: 2022-07-08 13:30+0000\n"
+"PO-Revision-Date: 2022-08-30 01:28+0200\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Lokalize 19.12.3\n"
 
 #: data/sudoku-window.ui:7
 msgid "_New Puzzle"
@@ -62,8 +62,8 @@ msgid "_About Sudoku"
 msgstr "A Sudoku _névjegye"
 
 #: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
-#: src/sudoku-window.vala:212
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:495
+#: src/sudoku-window.vala:213
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -149,7 +149,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Egy GNOME sudoku játékelőnézet"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:64
+#: data/org.gnome.Sudoku.appdata.xml.in:72
 msgid "The GNOME Project"
 msgstr "A GNOME projekt"
 
@@ -216,6 +216,11 @@ msgstr "Az ablak magassága képpontokban"
 msgid "true if the window is maximized"
 msgstr "igaz, ha az ablak teljes méretű"
 
+#: data/org.gnome.Sudoku.gschema.xml:49
+#| msgid "Show the possible values for each cell"
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr "A füljelzők előkészítése az egyes cellák lehetséges értékeivel"
+
 #: data/print-dialog.ui:18
 msgid "Print Multiple Puzzles"
 msgstr "Több sudoku nyomtatása"
@@ -271,52 +276,52 @@ msgid "Show the possible values for each cell"
 msgstr "Az egyes cellák lehetséges értékeinek megjelenítése"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "A megadott feladvány nem érvényes Sudoku."
 
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "Please enter a valid puzzle."
 msgstr "Érvényes feladványt adjon meg."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "A megadott feladványnak több megoldása van."
 
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Az érvényes Sudoku feladványoknak pontosan egy megoldása van."
 
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:242
 msgid "_Back"
 msgstr "_Vissza"
 
-#: src/gnome-sudoku.vala:236
+#: src/gnome-sudoku.vala:243
 msgid "Play _Anyway"
 msgstr "Játszás _mindenképp"
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:286
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Szép munka, a feladványt %d perc alatt oldotta meg!"
 msgstr[1] "Szép munka, a feladványt %d perc alatt oldotta meg!"
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:290
 msgid "_Quit"
 msgstr "_Kilépés"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:291
 msgid "Play _Again"
 msgstr "Játék új_ra"
 
-#: src/gnome-sudoku.vala:390
+#: src/gnome-sudoku.vala:397
 msgid "Reset the board to its original state?"
 msgstr "A tábla visszaállítása az eredeti állapotába?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:485
+#: src/gnome-sudoku.vala:492
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -327,7 +332,7 @@ msgstr ""
 "\n"
 "A feladványokat a QQwing %s generálja"
 
-#: src/gnome-sudoku.vala:496
+#: src/gnome-sudoku.vala:503
 msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby at gnome dot hu>\n"
@@ -350,30 +355,14 @@ msgid "Error printing file:"
 msgstr "Hiba a fájl nyomtatása közben:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:634
+#: src/sudoku-view.vala:669
 msgid "Paused"
 msgstr "Szüneteltetve"
 
-#: src/sudoku-window.vala:153
+#: src/sudoku-window.vala:154
 msgid "Select Difficulty"
 msgstr "Nehézség kiválasztása"
 
-#: src/sudoku-window.vala:214
+#: src/sudoku-window.vala:215
 msgid "Create Puzzle"
 msgstr "Feladvány létrehozása"
-
-#~ msgid "Reset the board to its original state"
-#~ msgstr "A tábla visszaállítása az eredeti állapotába"
-
-#~ msgid "Start a new puzzle"
-#~ msgstr "Új feladvány indítása"
-
-#~ msgid "_Start Playing"
-#~ msgstr "_Játék indítása"
-
-# aisleriot/dialog.c:112
-#~ msgid "_Resume"
-#~ msgstr "_Folytatás"
-
-#~ msgid "org.gnome.Sudoku"
-#~ msgstr "org.gnome.Sudoku"
