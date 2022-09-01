@@ -8,7 +8,7 @@
 # Ole Laursen <olau@hardworking.dk>, 2001, 02, 03, 04.
 # Martin Willemoes Hansen <mwh@sysrq.dk>, 2004, 05.
 # flemming christensen <fc@stromata.dk>, 2011.
-# Ask Hjorth Larsen <asklarsen@gmail.com>, 2007-2015, 2017-2019, 2021.
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2007-2015, 2017-2019, 2021-2022.
 # scootergrisen, 2015.
 # Joe Hansen <joedalton2@yahoo.dk>, 2017.
 #
@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2021-04-29 15:03+0000\n"
-"PO-Revision-Date: 2021-09-15 20:06+0200\n"
+"POT-Creation-Date: 2022-07-10 09:30+0000\n"
+"PO-Revision-Date: 2022-08-27 20:24+0200\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -65,8 +65,8 @@ msgid "_About Sudoku"
 msgstr "_Om Sudoku"
 
 #: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
-#: src/sudoku-window.vala:212
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:495
+#: src/sudoku-window.vala:213
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -150,7 +150,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Smugkig på et spil GNOME sudoku"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:66
+#: data/org.gnome.Sudoku.appdata.xml.in:73
 msgid "The GNOME Project"
 msgstr "GNOME-projektet"
 
@@ -215,6 +215,10 @@ msgstr "Højden af vinduet i pixels"
 msgid "true if the window is maximized"
 msgstr "sand hvis vinduet er maksimeret"
 
+#: data/org.gnome.Sudoku.gschema.xml:49
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr "Initialisér øremærkerne med mulige værdier i hver celle"
+
 #: data/print-dialog.ui:18
 msgid "Print Multiple Puzzles"
 msgstr "Udskriv flere opgaver"
@@ -270,52 +274,52 @@ msgid "Show the possible values for each cell"
 msgstr "Vis de mulige værdier for hver celle"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Opgaven du har indtastet er ikke en gyldig Sudoku."
 
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "Please enter a valid puzzle."
 msgstr "Indtast venligst en gyldig opgave."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Den opgave du har indtastet har flere løsninger."
 
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Gyldige Sudoku-opgaver har kun én løsning."
 
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:242
 msgid "_Back"
 msgstr "_Tilbage"
 
-#: src/gnome-sudoku.vala:236
+#: src/gnome-sudoku.vala:243
 msgid "Play _Anyway"
 msgstr "Spil _alligevel"
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:286
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Godt gået! Du gennemførte opgaven på %d minut!"
 msgstr[1] "Godt gået! Du gennemførte opgaven på %d minutter!"
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:290
 msgid "_Quit"
 msgstr "_Afslut"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:291
 msgid "Play _Again"
 msgstr "Spil _igen"
 
-#: src/gnome-sudoku.vala:390
+#: src/gnome-sudoku.vala:397
 msgid "Reset the board to its original state?"
 msgstr "Nulstil brættet til dets oprindelige tilstand?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:485
+#: src/gnome-sudoku.vala:492
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -326,7 +330,7 @@ msgstr ""
 "\n"
 "Opgaverne genereres af QQwing %s"
 
-#: src/gnome-sudoku.vala:496
+#: src/gnome-sudoku.vala:503
 msgid "translator-credits"
 msgstr ""
 "Anders Wegge Jakobsen\n"
@@ -351,15 +355,15 @@ msgid "Error printing file:"
 msgstr "Fejl ved udskrivning af fil:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:634
+#: src/sudoku-view.vala:669
 msgid "Paused"
 msgstr "Pause"
 
-#: src/sudoku-window.vala:153
+#: src/sudoku-window.vala:154
 msgid "Select Difficulty"
 msgstr "Vælg sværhedsgrad"
 
-#: src/sudoku-window.vala:214
+#: src/sudoku-window.vala:215
 msgid "Create Puzzle"
 msgstr "Opret opgave"
 
