@@ -11,21 +11,27 @@
 # Claude Paroz <claude@2xlibre.net>, 2007-2021.
 # Victor Levasseur <victorlevasseur52@gmail.com>, 2015
 # Charles Monzat <charles.monzat@free.fr>, 2016-2022.
+# Irénée THIRION <irenee.thirion@e.email>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2021-04-29 15:03+0000\n"
-"PO-Revision-Date: 2022-04-08 19:41+0200\n"
-"Last-Translator: Charles Monzat <charles.monzat@free.fr>\n"
-"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"POT-Creation-Date: 2022-07-10 09:30+0000\n"
+"PO-Revision-Date: 2022-09-08 11:51+0200\n"
+"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
+"Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 40.0\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-DL-Team: fr\n"
+"X-DL-Module: gnome-sudoku\n"
+"X-DL-Branch: master\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
 
 #: data/sudoku-window.ui:7
 msgid "_New Puzzle"
@@ -64,8 +70,8 @@ msgid "_About Sudoku"
 msgstr "À _propos de Sudoku"
 
 #: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
-#: src/sudoku-window.vala:212
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:495
+#: src/sudoku-window.vala:213
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -152,14 +158,14 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Un aperçu d’une partie de sudoku de GNOME"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:66
+#: data/org.gnome.Sudoku.appdata.xml.in:73
 msgid "The GNOME Project"
 msgstr "Le projet GNOME"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Sudoku.desktop.in:6
 msgid "magic;square;"
-msgstr "magique;carré;"
+msgstr "magique;carré;sudoku;"
 
 #: data/org.gnome.Sudoku.gschema.xml:11
 msgid "Difficulty level of sudokus to be printed"
@@ -220,6 +226,11 @@ msgstr "Hauteur de la fenêtre en pixels"
 msgid "true if the window is maximized"
 msgstr "true (vrai) si la fenêtre est maximisée"
 
+#: data/org.gnome.Sudoku.gschema.xml:49
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr ""
+"Initialiser les annotations avec les valeurs possibles pour chaque cellule"
+
 #: data/print-dialog.ui:18
 msgid "Print Multiple Puzzles"
 msgstr "Imprimer plusieurs sudokus"
@@ -275,52 +286,52 @@ msgid "Show the possible values for each cell"
 msgstr "Affiche les valeurs possibles pour chaque cellule"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "La grille que vous avez saisie n’est pas un sudoku valable."
 
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "Please enter a valid puzzle."
 msgstr "Saisissez une grille valable."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "La grille que vous avez saisie possède plusieurs solutions."
 
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Les grilles valables ont exactement une solution."
 
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:242
 msgid "_Back"
 msgstr "_Précédent"
 
-#: src/gnome-sudoku.vala:236
+#: src/gnome-sudoku.vala:243
 msgid "Play _Anyway"
 msgstr "_Jouer quand même"
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:286
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "Bravo, vous avez fini la grille en %d minute."
-msgstr[1] "Bravo, vous avez fini la grille en %d minutes."
+msgstr[0] "Bravo, vous avez fini la grille en %d minute !"
+msgstr[1] "Bravo, vous avez fini la grille en %d minutes !"
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:290
 msgid "_Quit"
 msgstr "_Quitter"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:291
 msgid "Play _Again"
 msgstr "_Rejouer"
 
-#: src/gnome-sudoku.vala:390
+#: src/gnome-sudoku.vala:397
 msgid "Reset the board to its original state?"
 msgstr "Réinitialiser la grille à son état de départ ?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:485
+#: src/gnome-sudoku.vala:492
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -331,7 +342,7 @@ msgstr ""
 "\n"
 "Grilles générées par QQwing %s"
 
-#: src/gnome-sudoku.vala:496
+#: src/gnome-sudoku.vala:503
 msgid "translator-credits"
 msgstr ""
 "Christophe Merlet <redfox@redfoxcenter.org>\n"
@@ -357,15 +368,15 @@ msgid "Error printing file:"
 msgstr "Erreur à l’impression du fichier :"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:634
+#: src/sudoku-view.vala:669
 msgid "Paused"
 msgstr "En pause"
 
-#: src/sudoku-window.vala:153
+#: src/sudoku-window.vala:154
 msgid "Select Difficulty"
 msgstr "Sélectionner la difficulté"
 
-#: src/sudoku-window.vala:214
+#: src/sudoku-window.vala:215
 msgid "Create Puzzle"
 msgstr "Créer une grille"
 
