@@ -40,6 +40,8 @@ private class SudokuCellView : DrawingArea
     private bool left_control;
     private bool right_control;
 
+    public Gtk.GestureLongPress long_press;
+
     public int value
     {
         get { return game.board [row, col]; }
@@ -160,6 +162,14 @@ private class SudokuCellView : DrawingArea
             show_earmark_picker ();
 
         return false;
+    }
+
+    public void long_press_event ()
+    {
+        if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
+            return;
+
+        show_earmark_picker ();
     }
 
     private void create_earmark_picker ()
@@ -692,6 +702,12 @@ public class SudokuView : AspectFrame
                     queue_draw ();
 
                     return false;
+                });
+
+                cell.long_press = new Gtk.GestureLongPress (cell);
+                cell.long_press.set_propagation_phase (Gtk.PropagationPhase.TARGET);
+                cell.long_press.pressed.connect (() => {
+                    cell.long_press_event ();
                 });
 
                 cell.notify["value"].connect ((s, p)=> {
