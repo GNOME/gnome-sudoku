@@ -604,6 +604,8 @@ public class SudokuView : AspectFrame
     private DrawingArea drawing;
     private Grid grid;
 
+    private EventControllerKey key_controller;
+
     private int selected_row = -1;
     private int selected_col = -1;
     private void set_selected (int cell_row, int cell_col)
@@ -619,6 +621,35 @@ public class SudokuView : AspectFrame
         {
             cells[selected_row, selected_col].selected = true;
         }
+    }
+
+    private bool on_key_pressed (EventControllerKey _key_controller, uint keyval, uint keycode, ModifierType state)
+    {
+        if ((keyval == Gdk.Key.Left || keyval == Gdk.Key.KP_Left) && selected_col == 0)
+        {
+            cells[selected_row, 8].grab_focus ();
+            return true;
+        }
+
+        if ((keyval == Gdk.Key.Right || keyval == Gdk.Key.KP_Right) && selected_col == 8)
+        {
+            cells[selected_row, 0].grab_focus ();
+            return true;
+        }
+
+        if ((keyval == Gdk.Key.Up || keyval == Gdk.Key.KP_Up) && selected_row == 0)
+        {
+            cells[8, selected_col].grab_focus ();
+            return true;
+        }
+
+        if ((keyval == Gdk.Key.Down || keyval == Gdk.Key.KP_Down) && selected_row == 8)
+        {
+            cells[0, selected_col].grab_focus ();
+            return true;
+        }
+
+        return false;
     }
 
     public SudokuView (SudokuGame game)
@@ -730,6 +761,9 @@ public class SudokuView : AspectFrame
         grid.show_all ();
         overlay.show ();
         drawing.hide ();
+
+        key_controller = new EventControllerKey (this);
+        key_controller.key_pressed.connect (on_key_pressed);
     }
 
     private void update_highlights ()
