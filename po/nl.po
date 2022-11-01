@@ -39,14 +39,14 @@
 # Redmar <redmar@ubuntu-nl.org>, 2011.
 # Justin van Steijn <jvs@fsfe.org>, 2015, 2016.
 # Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2017.
-# Nathan Follens <nthn@unseen.is>, 2018-2019, 2021.
+# Nathan Follens <nfollens@gnome.org>, 2018-2019, 2021-2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2020-12-31 18:10+0000\n"
-"PO-Revision-Date: 2021-04-01 22:12+0200\n"
-"Last-Translator: Nathan Follens <nthn@unseen.is>\n"
+"POT-Creation-Date: 2022-09-24 18:57+0000\n"
+"PO-Revision-Date: 2022-11-01 23:23+0100\n"
+"Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -54,7 +54,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2011-09-18 07:04+0000\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/sudoku-window.ui:7
 msgid "_New Puzzle"
@@ -96,8 +96,8 @@ msgid "_About Sudoku"
 msgstr "_Over Sudoku"
 
 #: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
-#: src/sudoku-window.vala:212
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:498
+#: src/sudoku-window.vala:213
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -184,7 +184,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Voorbeeld van een Gnome-sudoku spel"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:63
+#: data/org.gnome.Sudoku.appdata.xml.in:75
 msgid "The GNOME Project"
 msgstr "Het Gnome-project"
 
@@ -250,6 +250,10 @@ msgstr "De hoogte van het hoofdvenster in beeldpunten"
 msgid "true if the window is maximized"
 msgstr "waar als het venster is gemaximaliseerd"
 
+#: data/org.gnome.Sudoku.gschema.xml:49
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr "De ezelsoortjes instellen met de mogelijke waarden voor elk vakje"
+
 #: data/print-dialog.ui:18
 msgid "Print Multiple Puzzles"
 msgstr "Meerdere sudoku’s afdrukken"
@@ -270,27 +274,27 @@ msgstr "Aa_ntal puzzels per pagina"
 msgid "Difficulty"
 msgstr "Moeilijkheidsgraad"
 
-#: lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:644
 msgid "Unknown Difficulty"
 msgstr "Onbekende moeilijkheidsgraad"
 
-#: lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:646
 msgid "Easy Difficulty"
 msgstr "Lage moeilijkheidsgraad"
 
-#: lib/sudoku-board.vala:595
+#: lib/sudoku-board.vala:648
 msgid "Medium Difficulty"
 msgstr "Gemiddelde moeilijkheidsgraad"
 
-#: lib/sudoku-board.vala:597
+#: lib/sudoku-board.vala:650
 msgid "Hard Difficulty"
 msgstr "Hoge moeilijkheidsgraad"
 
-#: lib/sudoku-board.vala:599
+#: lib/sudoku-board.vala:652
 msgid "Very Hard Difficulty"
 msgstr "Zeer hoge moeilijkheidsgraad"
 
-#: lib/sudoku-board.vala:601
+#: lib/sudoku-board.vala:654
 msgid "Custom Puzzle"
 msgstr "Aangepaste grootte"
 
@@ -305,52 +309,52 @@ msgid "Show the possible values for each cell"
 msgstr "De mogelijke waardes voor elk vakje weergeven"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "De sudoku die u heeft ingevoerd is geen geldige sudoku."
 
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:231
 msgid "Please enter a valid puzzle."
 msgstr "Voer een geldige sudoku in."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "De sudoku die u heeft ingevoerd heeft meerdere oplossingen."
 
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:240
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Geldige sudoku’s hebben precies één oplossing."
 
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:242
 msgid "_Back"
 msgstr "_Terug"
 
-#: src/gnome-sudoku.vala:236
+#: src/gnome-sudoku.vala:243
 msgid "Play _Anyway"
 msgstr "_Toch spelen"
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:286
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Goed gedaan, u heeft de sudoku in %d minuut opgelost!"
 msgstr[1] "Goed gedaan, u heeft de sudoku in %d minuten opgelost!"
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:290
 msgid "_Quit"
 msgstr "_Afsluiten"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:291
 msgid "Play _Again"
 msgstr "_Nogmaals spelen"
 
-#: src/gnome-sudoku.vala:390
+#: src/gnome-sudoku.vala:400
 msgid "Reset the board to its original state?"
 msgstr "Het bord naar zijn oorspronkelijke status herstellen?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:485
+#: src/gnome-sudoku.vala:495
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -361,7 +365,7 @@ msgstr ""
 "\n"
 "Sudoku’s gegenereerd door QQwing %s"
 
-#: src/gnome-sudoku.vala:496
+#: src/gnome-sudoku.vala:506
 msgid "translator-credits"
 msgstr ""
 "Tino Meinen\n"
@@ -370,7 +374,7 @@ msgstr ""
 "Taco Witte\n"
 "Erik Kruijswijk\n"
 "Justin van Steijn\n"
-"Nathan Follens\n"
+"Nathan Follens <nfollens@gnome.org>\n"
 "\n"
 "Meer info over Gnome-NL http://nl.gnome.org/\n"
 "\n"
@@ -404,15 +408,15 @@ msgid "Error printing file:"
 msgstr "Fout bij het printen van bestand:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:634
+#: src/sudoku-view.vala:756
 msgid "Paused"
 msgstr "Gepauzeerd"
 
-#: src/sudoku-window.vala:153
+#: src/sudoku-window.vala:154
 msgid "Select Difficulty"
 msgstr "Selecteer moeilijkheidsgraad"
 
-#: src/sudoku-window.vala:214
+#: src/sudoku-window.vala:215
 msgid "Create Puzzle"
 msgstr "Sudoku maken"
 
