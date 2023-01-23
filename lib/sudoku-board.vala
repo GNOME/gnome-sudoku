@@ -378,10 +378,10 @@ public class SudokuBoard : Object
 
     public void solve ()
     {
-        int[] solution_1d = convert_2d_to_1d(cells);
+        int[] solution_1d = convert_2d_to_1d (cells);
 
         if (QQwing.solve_puzzle (solution_1d))
-            solution = convert_1d_to_2d(solution_1d);
+            solution = convert_1d_to_2d (solution_1d);
         else
             solution = null;
     }
@@ -393,7 +393,7 @@ public class SudokuBoard : Object
 
     public int count_solutions_limited ()
     {
-        int[] cells_1d = convert_2d_to_1d(cells);
+        int[] cells_1d = convert_2d_to_1d (cells);
 
         return QQwing.count_solutions_limited (cells_1d);
     }

@@ -250,7 +250,7 @@ private class SudokuCellView : DrawingArea
             popover = null;
 
             // Destroying a popover means that this type of warning is now possible.
-            if (warn_incorrect_solution())
+            if (warn_incorrect_solution ())
                 queue_draw ();
         }
     }
@@ -384,7 +384,7 @@ private class SudokuCellView : DrawingArea
         }
 
         // Releasing a control means that this type of warning is now possible.
-        if (control_released && warn_incorrect_solution())
+        if (control_released && warn_incorrect_solution ())
             queue_draw ();
     }
 
@@ -402,7 +402,7 @@ private class SudokuCellView : DrawingArea
 
         // Highlight the cell if the value or earmarks are inconsistent with
         // a known solution, if any.
-        if (warn_incorrect_solution())
+        if (warn_incorrect_solution ())
         {
             bool cell_error = false;
             int solution = game.board.get_solution (row, col);
@@ -573,16 +573,16 @@ private class SudokuCellView : DrawingArea
     // Return true if the user is to be warned when the value or earmarks are
     // inconsistent with the known solution, and it is ok for the user to be
     // warned.
-    private bool warn_incorrect_solution()
+    private bool warn_incorrect_solution ()
     {
         // In the following popovers are checked so that the solution of the cell
         // is not revealed to the user as the user enters candidate numbers for
         // the cell using the earmark picker. Similarly don't reveal the solution
         // while earmarks are being entered with the control key.
         return _show_warnings &&                                  // show warnings?
-               (popover == null) && (earmark_popover == null) && // popovers gone?
+               (popover == null) && (earmark_popover == null) &&  // popovers gone?
                (!left_control) && (!right_control) &&             // control keys not pressed?
-               game.board.solved();                               // solution exists?
+               game.board.solved ();                              // solution exists?
     }
 }
 
