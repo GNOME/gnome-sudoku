@@ -411,24 +411,6 @@ private class SudokuCellView : DrawingArea
                 // Check value against the solution.
                 cell_error = value != solution;
             }
-            else
-            {
-                // Check earmarks against the solution.
-                var marks = game.board.get_earmarks (row, col);
-                bool earmarked = false;
-                bool solution_found = false;
-                for (int num = 1; num <= marks.length; num++)
-                {
-                    if (marks[num - 1])
-                    {
-                        earmarked = true;
-                        if (num == solution)
-                            solution_found = true;
-                    }
-                }
-                if (earmarked && !solution_found)
-                    cell_error = true;
-            }
 
             // Make the error cell more red by reducing the other colors to 60%.
             if (cell_error)
