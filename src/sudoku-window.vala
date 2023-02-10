@@ -139,6 +139,7 @@ public class SudokuWindow : ApplicationWindow
             view.show_warnings = true;
         else
             view.show_warnings = settings.get_boolean ("show-warnings");
+        view.show_extra_warnings = settings.get_boolean ("show-extra-warnings");
         view.highlighter = settings.get_boolean ("highlighter");
         view.initialize_earmarks = settings.get_boolean ("initialize-earmarks");
 

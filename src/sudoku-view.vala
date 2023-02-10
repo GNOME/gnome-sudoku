@@ -104,6 +104,17 @@ private class SudokuCellView : DrawingArea
         }
     }
 
+    private bool _show_extra_warnings = false;
+    public bool show_extra_warnings
+    {
+        get { return _show_extra_warnings; }
+        set
+        {
+            _show_extra_warnings = value;
+            queue_draw ();
+        }
+    }
+
     public bool selected { get; set; }
     public bool highlighted_background { get; set; }
     public bool highlighted_value { get; set; }
@@ -579,7 +590,7 @@ private class SudokuCellView : DrawingArea
         // is not revealed to the user as the user enters candidate numbers for
         // the cell using the earmark picker. Similarly don't reveal the solution
         // while earmarks are being entered with the control key.
-        return _show_warnings &&                                  // show warnings?
+        return _show_extra_warnings &&                            // show extra warnings?
                (popover == null) && (earmark_popover == null) &&  // popovers gone?
                (!left_control) && (!right_control) &&             // control keys not pressed?
                game.board.solved ();                              // solution exists?
@@ -828,6 +839,18 @@ public class SudokuView : AspectFrame
             for (var i = 0; i < game.board.rows; i++)
                 for (var j = 0; j < game.board.cols; j++)
                     cells[i,j].show_warnings = _show_warnings;
+         }
+    }
+
+    private bool _show_extra_warnings = false;
+    public bool show_extra_warnings
+    {
+        get { return _show_extra_warnings; }
+        set {
+            _show_extra_warnings = value;
+            for (var i = 0; i < game.board.rows; i++)
+                for (var j = 0; j < game.board.cols; j++)
+                    cells[i,j].show_extra_warnings = _show_extra_warnings;
          }
     }
 

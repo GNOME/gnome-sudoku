@@ -121,19 +121,26 @@ public class Sudoku : Gtk.Application
         });
         add_action (action);
 
-        var highlighter_action = settings.create_action ("highlighter");
-        highlighter_action.notify["state"].connect (() => {
+        action = settings.create_action ("show-extra-warnings");
+        action.notify["state"].connect (() => {
+            if (view != null && current_game_mode == GameMode.PLAY)
+                view.show_extra_warnings = settings.get_boolean ("show-extra-warnings");
+        });
+        add_action (action);
+
+        action = settings.create_action ("highlighter");
+        action.notify["state"].connect (() => {
             if (view != null)
                 view.highlighter = settings.get_boolean ("highlighter");
         });
-        add_action (highlighter_action);
+        add_action (action);
 
-        var initialize_earmarks_action = settings.create_action ("initialize-earmarks");
-        initialize_earmarks_action.notify["state"].connect (() => {
+        action = settings.create_action ("initialize-earmarks");
+        action.notify["state"].connect (() => {
             if (view != null)
                 view.initialize_earmarks = settings.get_boolean ("initialize-earmarks");
         });
-        add_action (initialize_earmarks_action);
+        add_action (action);
 
         set_accels_for_action ("app.new-game", {"<Primary>n"});
         set_accels_for_action ("app.print", {"<Primary>p"});

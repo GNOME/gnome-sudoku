@@ -28,6 +28,11 @@
       <summary>Warn about unfillable squares and duplicate numbers</summary>
       <description>Displays a big red X in a square if it cannot possibly be filled by any number and duplicate numbers are highlighted in red</description>
     </key>
+    <key name="show-extra-warnings" type="b">
+      <default>false</default>
+      <summary>Additionally warn when correct solution is violated or not earmarked</summary>
+      <description>Changes the background color of a square to red if the value does not match puzzle solution, or if no earmark matches the puzzle solution</description>
+    </key>
     <key name="highlighter" type="b">
         <default>false</default>
         <summary>Highlight row, column and square that contain the selected cell</summary>
