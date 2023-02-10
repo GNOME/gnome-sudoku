@@ -404,9 +404,17 @@ private class SudokuCellView : DrawingArea
         // a known solution, if any.
         if (warn_incorrect_solution ())
         {
-            if (value != 0 && value != game.board.get_solution (row, col))
+            bool cell_error = false;
+            int solution = game.board.get_solution (row, col);
+            if (value != 0)
             {
-                // Make the error cell more red by reducing the other colors to 60%.
+                // Check value against the solution.
+                cell_error = value != solution;
+            }
+
+            // Make the error cell more red by reducing the other colors to 60%.
+            if (cell_error)
+            {
                 background_color.green *= 0.6;
                 background_color.blue  *= 0.6;
             }
