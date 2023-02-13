@@ -6,14 +6,14 @@
 # Vincent Sebastian The <vincent.s.the@gmail.com>, 2011, 2012.
 # Dirgita <dirgitadevina@yahoo.co.id>, 2012.
 # Ronaldi Santosa <ronald.santosa@gmail.com>, 2015.
-# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019, 2021, 2022.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2022-07-09 18:00+0000\n"
-"PO-Revision-Date: 2022-07-10 16:29+0700\n"
+"POT-Creation-Date: 2023-02-10 20:28+0000\n"
+"PO-Revision-Date: 2023-02-13 09:27+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Rosetta-Export-Date: 2007-04-23 05:58:10+0000\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/sudoku-window.ui:7
 msgid "_New Puzzle"
@@ -61,8 +61,8 @@ msgid "_About Sudoku"
 msgstr "Tent_ang Sudoku"
 
 #: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:495
-#: src/sudoku-window.vala:213
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:505
+#: src/sudoku-window.vala:214
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -149,7 +149,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Pratinjau Permainan GNOME Sudoku"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:73
+#: data/org.gnome.Sudoku.appdata.xml.in:76
 msgid "The GNOME Project"
 msgstr "Proyek GNOME"
 
@@ -199,22 +199,37 @@ msgstr ""
 "oleh sebarang bilangan dan bilangan yang duplikat disorot merah"
 
 #: data/org.gnome.Sudoku.gschema.xml:33
+msgid "Additionally warn when correct solution is violated or not earmarked"
+msgstr ""
+"Selain itu peringatkan ketika solusi yang benar dilanggar atau tidak "
+"dialokasikan"
+
+#: data/org.gnome.Sudoku.gschema.xml:34
+msgid ""
+"Changes the background color of a square to red if the value does not match "
+"puzzle solution, or if no earmark matches the puzzle solution"
+msgstr ""
+"Mengubah warna latar belakang kotak menjadi merah jika nilainya tidak cocok "
+"dengan solusi teka-teki, atau jika tidak ada penanda yang cocok dengan "
+"solusi teka-teki"
+
+#: data/org.gnome.Sudoku.gschema.xml:38
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Sorot baris, kolom, dan kotak pada sel yang dipilih"
 
-#: data/org.gnome.Sudoku.gschema.xml:37
+#: data/org.gnome.Sudoku.gschema.xml:42
 msgid "Width of the window in pixels"
 msgstr "Lebar jendela dalam piksel"
 
-#: data/org.gnome.Sudoku.gschema.xml:41
+#: data/org.gnome.Sudoku.gschema.xml:46
 msgid "Height of the window in pixels"
 msgstr "Tinggi jendela dalam piksel"
 
-#: data/org.gnome.Sudoku.gschema.xml:45
+#: data/org.gnome.Sudoku.gschema.xml:50
 msgid "true if the window is maximized"
 msgstr "true bila jendela dimaksimalkan"
 
-#: data/org.gnome.Sudoku.gschema.xml:49
+#: data/org.gnome.Sudoku.gschema.xml:54
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Inisialisasi alokasi dengan nilai yang mungkin untuk setiap sel"
 
@@ -238,27 +253,27 @@ msgstr "_Cacah teka-teki per halaman"
 msgid "Difficulty"
 msgstr "Kesulitan"
 
-#: lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:644
 msgid "Unknown Difficulty"
 msgstr "Kesulitan Tak Diketahui"
 
-#: lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:646
 msgid "Easy Difficulty"
 msgstr "Kesulitan Rendah"
 
-#: lib/sudoku-board.vala:595
+#: lib/sudoku-board.vala:648
 msgid "Medium Difficulty"
 msgstr "Kesulitan Sedang"
 
-#: lib/sudoku-board.vala:597
+#: lib/sudoku-board.vala:650
 msgid "Hard Difficulty"
 msgstr "Kesulitan Tinggi"
 
-#: lib/sudoku-board.vala:599
+#: lib/sudoku-board.vala:652
 msgid "Very Hard Difficulty"
 msgstr "Kesulitan Sangat Tinggi"
 
-#: lib/sudoku-board.vala:601
+#: lib/sudoku-board.vala:654
 msgid "Custom Puzzle"
 msgstr "Teka-teki Ubahan"
 
@@ -273,51 +288,51 @@ msgid "Show the possible values for each cell"
 msgstr "Tampilkan nilai-nilai yang mungkin bagi setiap sel"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:231
+#: src/gnome-sudoku.vala:238
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Teka-teki yang Anda masukkan bukan Sudoku yang valid."
 
-#: src/gnome-sudoku.vala:231
+#: src/gnome-sudoku.vala:238
 msgid "Please enter a valid puzzle."
 msgstr "Tolong masukkan teka-teki yang valid."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:247
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Teka-teki yang Anda masukkan memiliki beberapa solusi."
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:247
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Teka-teki Sudoku yang valid hanya memiliki satu solusi."
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:249
 msgid "_Back"
 msgstr "Kem_bali"
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:250
 msgid "Play _Anyway"
 msgstr "Mainkan S_aja"
 
-#: src/gnome-sudoku.vala:286
+#: src/gnome-sudoku.vala:293
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Selamat, Anda menyelesaikan teka-teki dalam %d menit!"
 
-#: src/gnome-sudoku.vala:290
+#: src/gnome-sudoku.vala:297
 msgid "_Quit"
 msgstr "_Keluar"
 
-#: src/gnome-sudoku.vala:291
+#: src/gnome-sudoku.vala:298
 msgid "Play _Again"
 msgstr "Maink_an Kembali"
 
-#: src/gnome-sudoku.vala:397
+#: src/gnome-sudoku.vala:407
 msgid "Reset the board to its original state?"
 msgstr "Reset papan ke keadaan aslinya?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:492
+#: src/gnome-sudoku.vala:502
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -328,7 +343,7 @@ msgstr ""
 "\n"
 "Teka-teki dihasilkan oleh QQwing %s"
 
-#: src/gnome-sudoku.vala:503
+#: src/gnome-sudoku.vala:513
 msgid "translator-credits"
 msgstr ""
 "Mohammad DAMT <mdamt@bisnisweb.com>\n"
@@ -337,7 +352,7 @@ msgstr ""
 "Vincent Sebastian The <vincent.s.the@gmail.com>, 2011, 2012.\n"
 "Dirgita <dirgitadevina@yahoo.co.id>, 2012.\n"
 "Ronaldi Santosa <ronald.santosa@gmail.com>, 2015.\n"
-"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019, 2021, 2022."
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019, 2021, 2022, 2023."
 
 #: src/number-picker.vala:85
 msgid "Clear"
@@ -349,15 +364,15 @@ msgid "Error printing file:"
 msgstr "Galat saat mencetak berkas:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:669
+#: src/sudoku-view.vala:815
 msgid "Paused"
 msgstr "Rehat"
 
-#: src/sudoku-window.vala:154
+#: src/sudoku-window.vala:155
 msgid "Select Difficulty"
 msgstr "Pilih Tingkat Kesulitan"
 
-#: src/sudoku-window.vala:215
+#: src/sudoku-window.vala:216
 msgid "Create Puzzle"
 msgstr "Buat Teka-teki"
 
