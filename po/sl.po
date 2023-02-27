@@ -5,14 +5,14 @@
 # Matej Erman <matej.erman@guest.arnes.si>, 2002.
 # Tadej Janež <tadej_janez@email.si>, 2003.
 # Matic Žgur <mr.zgur@gmail.com>, 2006-2007.
-# Matej Urbančič <mateju@src.gnome.org>, + 2007–2021.
+# Matej Urbančič <mateju@src.gnome.org>, + 2007–2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2022-08-29 23:29+0000\n"
-"PO-Revision-Date: 2022-08-31 20:58+0200\n"
+"POT-Creation-Date: 2023-02-20 20:25+0000\n"
+"PO-Revision-Date: 2023-02-27 21:51+0100\n"
 "Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -61,8 +61,8 @@ msgid "_About Sudoku"
 msgstr "_O igri"
 
 #: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:498
-#: src/sudoku-window.vala:213
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:505
+#: src/sudoku-window.vala:214
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -145,7 +145,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Predogled uganke Sudoku GNOME"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:74
+#: data/org.gnome.Sudoku.appdata.xml.in:77
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -198,22 +198,34 @@ msgstr ""
 "podvojene pa so izpisane rdeče."
 
 #: data/org.gnome.Sudoku.gschema.xml:33
+msgid "Additionally warn when correct solution is violated or not earmarked"
+msgstr "Opozori ob kršitvi pravilne rešitve oziroma, ko ta ni označena"
+
+#: data/org.gnome.Sudoku.gschema.xml:34
+msgid ""
+"Changes the background color of a square to red if the value does not match "
+"puzzle solution, or if no earmark matches the puzzle solution"
+msgstr ""
+"Spremeni barvo ozadja kvadrata v rdečo, če vrednost ni skladna z rešitvijo "
+"sestavljanke oziroma se z rešitvijo ne ujema noben znak"
+
+#: data/org.gnome.Sudoku.gschema.xml:38
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Poudari vrstice, stolpce in polja, ki vsebujejo izbrano celico."
 
-#: data/org.gnome.Sudoku.gschema.xml:37
+#: data/org.gnome.Sudoku.gschema.xml:42
 msgid "Width of the window in pixels"
 msgstr "Širina okna v točkah"
 
-#: data/org.gnome.Sudoku.gschema.xml:41
+#: data/org.gnome.Sudoku.gschema.xml:46
 msgid "Height of the window in pixels"
 msgstr "Višina okna v točkah"
 
-#: data/org.gnome.Sudoku.gschema.xml:45
+#: data/org.gnome.Sudoku.gschema.xml:50
 msgid "true if the window is maximized"
 msgstr "PRAV, če je okno razpeto"
 
-#: data/org.gnome.Sudoku.gschema.xml:49
+#: data/org.gnome.Sudoku.gschema.xml:54
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Začni oznake z možnimi vrednostmi za vsako celico"
 
@@ -272,32 +284,32 @@ msgid "Show the possible values for each cell"
 msgstr "Pokaži možne vrednosti za vsako celico"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:231
+#: src/gnome-sudoku.vala:238
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Izbrana uganka ni veljavna uganka sudoku."
 
-#: src/gnome-sudoku.vala:231
+#: src/gnome-sudoku.vala:238
 msgid "Please enter a valid puzzle."
 msgstr "Vnesite veljavno številko uganke."
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:247
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Izbrana uganka ima več možnih rešitev."
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:247
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Veljavne uganke sudoku imajo natanko eno rešitev."
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:249
 msgid "_Back"
 msgstr "_Nazaj"
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:250
 msgid "Play _Anyway"
 msgstr "Vseeno _pokaži"
 
-#: src/gnome-sudoku.vala:286
+#: src/gnome-sudoku.vala:293
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -306,20 +318,20 @@ msgstr[1] "Za reševanje uganke ste potrebovali %d minuto!"
 msgstr[2] "Za reševanje uganke ste potrebovali %d minuti!"
 msgstr[3] "Za reševanje uganke ste potrebovali %d minute!"
 
-#: src/gnome-sudoku.vala:290
+#: src/gnome-sudoku.vala:297
 msgid "_Quit"
 msgstr "_Končaj"
 
-#: src/gnome-sudoku.vala:291
+#: src/gnome-sudoku.vala:298
 msgid "Play _Again"
 msgstr "_Igraj znova"
 
-#: src/gnome-sudoku.vala:400
+#: src/gnome-sudoku.vala:407
 msgid "Reset the board to its original state?"
 msgstr "Ali želite povrniti mrežo na začetno stanje?"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:495
+#: src/gnome-sudoku.vala:502
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -330,7 +342,7 @@ msgstr ""
 "\n"
 "Uganka je zasnovana z ustvarjalnikom ugank QQwing %s"
 
-#: src/gnome-sudoku.vala:506
+#: src/gnome-sudoku.vala:513
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
@@ -348,15 +360,15 @@ msgid "Error printing file:"
 msgstr "Napaka med tiskanjem datoteke:"
 
 #. Text on overlay when game is paused
-#: src/sudoku-view.vala:756
+#: src/sudoku-view.vala:815
 msgid "Paused"
 msgstr "Premor"
 
-#: src/sudoku-window.vala:154
+#: src/sudoku-window.vala:155
 msgid "Select Difficulty"
 msgstr "Izbor zahtevnosti uganke"
 
-#: src/sudoku-window.vala:215
+#: src/sudoku-window.vala:216
 msgid "Create Puzzle"
 msgstr "Ustvari uganko"
 
