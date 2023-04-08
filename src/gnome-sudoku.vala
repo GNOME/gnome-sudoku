@@ -214,6 +214,7 @@ public class Sudoku : Gtk.Application
             undo_action.set_enabled (false);
             redo_action.set_enabled (false);
             new_game_action.set_enabled (false);
+            view.hide_popovers ();
         }
         else if (game.get_total_time_played () > 0)
         {
