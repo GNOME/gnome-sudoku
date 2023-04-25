@@ -15,14 +15,7 @@
         "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
         "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
-    "modules": [{
-            "name": "libgee",
-            "config-opts": ["--enable-introspection=no"],
-            "sources": [{
-                "type": "git",
-                "url": "https://gitlab.gnome.org/GNOME/libgee.git"
-            }]
-        },
+    "modules": [
         {
             "name": "qqwing",
             "sources": [{
