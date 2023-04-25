@@ -1,0 +1,44 @@
+grid.board {
+  border: 2px solid #333;
+  background: #333;
+}
+grid.block {
+  background: #999;
+}
+
+.paused {
+  background: rgba(0, 0, 0, 0.75);
+  font-weight: bold;
+  color: #FFF;
+}
+
+sudokucell {
+  background: #FFF;
+}
+sudokucell.highlight-bg {
+  background: #EDEDED;
+}
+sudokucell.selected {
+  background: #B2CCE5;
+}
+sudokucell.fixed {
+  background: #CCC;
+}
+sudokucell label {
+  color: #000;
+}
+sudokucell.selected > label {
+  color: #333;
+}
+sudokucell.highlight-label > label {
+  color: #3366E5;
+}
+sudokucell.highlight-label > label.earmark {
+  color: #000;
+}
+.earmark.error,
+sudokucell.highlight-label > .earmark.error,
+sudokucell.selected > .earmark.error,
+sudokucell.error > label {
+  color: @destructive_color;
+}

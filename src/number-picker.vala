@@ -32,10 +32,14 @@ private class NumberPicker : Grid
 
     private int earmarks_active;
 
+    public bool is_earmark;
+
     public NumberPicker (ref SudokuBoard board, bool earmark = false)
     {
         this.board = board;
         earmarks_active = 0;
+
+        is_earmark = earmark;
 
         for (var col = 0; col < board.block_cols; col++)
         {
@@ -53,7 +57,7 @@ private class NumberPicker : Grid
                 label.margin_end = earmark ? 16 : 8;
                 label.margin_top = earmark ? 0 : 4;
                 label.margin_bottom = earmark ? 8 : 4;
-                button.add (label);
+                button.set_child (label);
                 label.show ();
 
                 if (!earmark)
@@ -82,7 +86,7 @@ private class NumberPicker : Grid
 
         var label = new Label ("<big>%s</big>".printf (_("Clear")));
         label.use_markup = true;
-        clear_button.add (label);
+        clear_button.set_child (label);
         label.show ();
 
         clear_button.clicked.connect (() => {
@@ -91,7 +95,7 @@ private class NumberPicker : Grid
 
             if (earmark)
             {
-                for (var i = 1; i <= 9; i++)
+                for (var i = 0; i <= 8; i++)
                 {
                     var button = get_button_for (i);
                     button.set_active (false);
@@ -101,7 +105,10 @@ private class NumberPicker : Grid
 
         this.valign = Align.CENTER;
         this.halign = Align.CENTER;
-        this.margin = 2;
+        this.margin_top = 2;
+        this.margin_bottom = 2;
+        this.margin_start = 2;
+        this.margin_end = 2;
         this.row_spacing = 3;
         this.column_spacing = 3;
         this.show ();

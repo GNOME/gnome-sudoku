@@ -21,23 +21,6 @@
 using Gtk;
 using Gdk;
 
-private class SudokuMainMenu : ListBox
-{
-    construct
-    {
-        visible = true;
-        can_focus = false;
-        set_header_func ((row) => {
-            var mi = row as SudokuMainMenuItem;
-            if (mi != null && mi.has_separator)
-            {
-                var separator = new Separator (Orientation.HORIZONTAL);
-                mi.set_header (separator);
-            }
-        });
-    }
-}
-
 private class SudokuMainMenuItem : ListBoxRow
 {
     public string label { get; set construct; }
@@ -53,6 +36,6 @@ private class SudokuMainMenuItem : ListBoxRow
         label_widget.can_focus = false;
         label_widget.use_underline = true;
 
-        add (label_widget);
+        set_child (label_widget);
     }
 }

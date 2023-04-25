@@ -22,22 +22,16 @@
 using Gtk;
 
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/print-dialog.ui")]
-public class PrintDialog : Dialog
+public class PrintDialog : Adw.Window
 {
     private SudokuSaver saver;
     private GLib.Settings settings;
 
     [GtkChild] private unowned Button print_button;
-    [GtkChild] private unowned Grid print_grid;
-    [GtkChild] private unowned SpinButton n_sudokus_button;
-    [GtkChild] private unowned SpinButton n_sudokus_per_page_button;
-    [GtkChild] private unowned RadioButton easy_radio_button;
-    [GtkChild] private unowned RadioButton medium_radio_button;
-    [GtkChild] private unowned RadioButton hard_radio_button;
-    [GtkChild] private unowned RadioButton very_hard_radio_button;
-
-    private Revealer revealer;
-    private Spinner spinner;
+    [GtkChild] private unowned Adw.PreferencesGroup options_group;
+    [GtkChild] private unowned Adw.SpinRow n_puzzles;
+    [GtkChild] private unowned Adw.SpinRow n_puzzles_per_page;
+    [GtkChild] private unowned Adw.ComboRow difficulty;
 
     private Cancellable cancellable;
 
@@ -46,41 +40,21 @@ public class PrintDialog : Dialog
 
     public PrintDialog (SudokuSaver saver, Window window)
     {
-        Object (use_header_bar: 1);
+        Object ();
 
         this.saver = saver;
         settings = new GLib.Settings ("org.gnome.Sudoku");
 
-        this.response.connect ((response_id) => {
-            if (response_id == ResponseType.CANCEL || response_id == ResponseType.DELETE_EVENT)
-                cancellable.cancel ();
-        });
-
         set_transient_for (window);
 
-        spinner = new Spinner ();
-        revealer = new Revealer ();
-        revealer.add (spinner);
-        revealer.valign = Align.CENTER;
-        ((HeaderBar) get_header_bar ()).pack_end (revealer);
-
         var saved_difficulty = (DifficultyCategory) settings.get_enum (DIFFICULTY_KEY_NAME);
-        if (saved_difficulty == DifficultyCategory.EASY)
-            easy_radio_button.set_active (true);
-        else if (saved_difficulty == DifficultyCategory.MEDIUM)
-            medium_radio_button.set_active (true);
-        else if (saved_difficulty == DifficultyCategory.HARD)
-            hard_radio_button.set_active (true);
-        else if (saved_difficulty == DifficultyCategory.VERY_HARD)
-            very_hard_radio_button.set_active (true);
-        else
-            assert_not_reached ();
+        difficulty.set_selected (((int) saved_difficulty) - 1);
 
         var initial_total_value = settings.get_int ("print-multiple-sudokus-to-print");
         var initial_per_page_value = settings.get_int ("print-multiple-sudokus-to-print-per-page");
 
-        var total = n_sudokus_button.get_adjustment ();
-        var per_page = n_sudokus_per_page_button.get_adjustment ();
+        var total = n_puzzles.get_adjustment ();
+        var per_page = n_puzzles_per_page.get_adjustment ();
 
         total.set_value (initial_total_value);
         var initial_max_per_page = int.min (MAX_PUZZLES_PER_PAGE, initial_total_value);
@@ -101,57 +75,37 @@ public class PrintDialog : Dialog
             var per_page_value = (int) per_page.get_value ();
             settings.set_int ("print-multiple-sudokus-to-print-per-page", per_page_value);
         });
+
+        print_button.clicked.connect (() => {
+            print ();
+        });
     }
 
-    public bool start_spinner_cb ()
-    {
-        revealer.set_transition_type (RevealerTransitionType.SLIDE_LEFT);
-        revealer.show_all ();
-        spinner.start ();
-        revealer.set_reveal_child (true);
-        return Source.REMOVE;
+    static construct {
+        add_binding (Gdk.Key.Escape, 0, (self) => {
+            ((PrintDialog) self).destroy ();
+            return Gdk.EVENT_STOP;
+        }, null);
     }
 
-    public override void response (int response)
+    public void print ()
     {
-        if (response != ResponseType.OK)
-        {
-            destroy ();
-            return;
-        }
-
-        var nsudokus = (int) n_sudokus_button.get_adjustment ().get_value ();
-        var nsudokus_per_page = (int) n_sudokus_per_page_button.get_adjustment ().get_value ();
-        DifficultyCategory level;
-
-        if (easy_radio_button.get_active ())
-            level = DifficultyCategory.EASY;
-        else if (medium_radio_button.get_active ())
-            level = DifficultyCategory.MEDIUM;
-        else if (hard_radio_button.get_active ())
-            level = DifficultyCategory.HARD;
-        else if (very_hard_radio_button.get_active ())
-            level = DifficultyCategory.VERY_HARD;
-        else
-            assert_not_reached ();
+        var npuzzles = (int) n_puzzles.get_adjustment ().get_value ();
+        var npuzzles_per_page = (int) n_puzzles_per_page.get_adjustment ().get_value ();
+        DifficultyCategory level = (DifficultyCategory) difficulty.get_selected() + 1;
 
         settings.set_enum (DIFFICULTY_KEY_NAME, level);
 
-        Timeout.add_seconds (3, (SourceFunc) start_spinner_cb);
-
         print_button.sensitive = false;
-        print_grid.sensitive = false;
+        options_group.sensitive = false;
 
         cancellable = new Cancellable ();
-        SudokuGenerator.generate_boards_async.begin (nsudokus, level, cancellable, (obj, res) => {
+        SudokuGenerator.generate_boards_async.begin (npuzzles, level, cancellable, (obj, res) => {
             try
             {
                 var boards = SudokuGenerator.generate_boards_async.end (res);
 
-                spinner.stop ();
-                revealer.hide ();
-
-                var printer = new SudokuPrinter (boards, nsudokus_per_page, this);
+                var printer = new SudokuPrinter (boards, npuzzles_per_page, this);
                 if (printer.print_sudoku () == PrintOperationResult.APPLY)
                 {
                     foreach (SudokuBoard board in boards)

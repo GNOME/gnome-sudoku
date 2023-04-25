@@ -41,10 +41,10 @@ public class SudokuPrinter : GLib.Object {
         }
         catch (GLib.Error e)
         {
-            new MessageDialog (window, DialogFlags.MODAL,
-                               MessageType.ERROR, ButtonsType.CLOSE,
-                               /* Error message if printing fails */
-                               "%s\n%s".printf (_("Error printing file:"), e.message)).run ();
+            /* Error message if printing fails */
+            var dialog = new Adw.MessageDialog (window, "%s\n%s".printf (_("Error printing file:"), e.message), null);
+            dialog.add_response ("close", _("Close"));
+            dialog.present ();
         }
 
         return PrintOperationResult.ERROR;
@@ -94,7 +94,7 @@ public class SudokuPrinter : GLib.Object {
         uint index = 0;
 
         var pango_context = Pango.cairo_create_context (cr);
-        Pango.cairo_context_set_font_options (pango_context, Gdk.Screen.get_default ().get_font_options ());
+        Pango.cairo_context_set_font_options (pango_context, window.get_font_options ());
 
         foreach (SudokuBoard sudoku in sudokus_on_page)
         {
