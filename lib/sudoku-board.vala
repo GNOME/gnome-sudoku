@@ -541,6 +541,19 @@ public class SudokuBoard : Object
         return the_earmarks;
     }
 
+    public bool has_earmarks (int row, int col)
+    {
+        bool[] current_earmarks = this.get_earmarks (row, col);
+        bool has_earmarks = false;
+        for (int i = 0; i < 9; i++)
+            if (current_earmarks [i])
+            {
+                has_earmarks = true;
+                break;
+            }
+        return has_earmarks;
+    }
+
     public string get_earmarks_string (int row, int col)
     {
         string s = "";

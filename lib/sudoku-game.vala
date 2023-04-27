@@ -92,6 +92,15 @@ public class SudokuGame : Object
         board.disable_earmark (row, col, k_no);
     }
 
+    public void disable_all_earmarks (int row, int col)
+    {
+        var old_val = board[row, col];
+        var old_earmarks = board.get_earmarks (row, col);
+        update_undo (row, col, old_val, old_earmarks);
+
+        board.disable_all_earmarks (row, col);
+    }
+
     public void insert (int row, int col, int val)
     {
         var old_val = board[row, col];

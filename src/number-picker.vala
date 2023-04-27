@@ -76,21 +76,28 @@ private class NumberPicker : Grid
             }
         }
 
-        if (!earmark)
-        {
-            clear_button = new Button ();
-            clear_button.focus_on_click = false;
-            this.attach (clear_button, 0, 4, 3, 1);
+        clear_button = new Button ();
+        clear_button.focus_on_click = false;
+        this.attach (clear_button, 0, 4, 3, 1);
 
-            var label = new Label ("<big>%s</big>".printf (_("Clear")));
-            label.use_markup = true;
-            clear_button.add (label);
-            label.show ();
+        var label = new Label ("<big>%s</big>".printf (_("Clear")));
+        label.use_markup = true;
+        clear_button.add (label);
+        label.show ();
 
-            clear_button.clicked.connect (() => {
-                number_picked (0);
-            });
-        }
+        clear_button.clicked.connect (() => {
+            number_picked (0);
+            earmark_state_changed (0, false);
+
+            if (earmark)
+            {
+                for (var i = 1; i <= 9; i++)
+                {
+                    var button = get_button_for (i);
+                    button.set_active (false);
+                }
+            }
+        });
 
         this.valign = Align.CENTER;
         this.halign = Align.CENTER;
@@ -106,6 +113,14 @@ private class NumberPicker : Grid
             clear_button.show ();
         else
             clear_button.hide ();
+    }
+
+    public void set_clear_button_enabled (bool enabled)
+    {
+        if (enabled)
+            clear_button.sensitive = true;
+        else
+            clear_button.sensitive = false;
     }
 
     public void set_earmarks (int row, int col)

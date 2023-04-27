@@ -186,11 +186,23 @@ private class SudokuCellView : DrawingArea
     private void create_earmark_picker ()
     {
         earmark_picker = new NumberPicker (ref game.board, true);
+        earmark_picker.set_clear_button_visibility (true);
+        if (!this.game.board.has_earmarks (row, col))
+            earmark_picker.set_clear_button_enabled (false);
         earmark_picker.earmark_state_changed.connect ((number, state) => {
             if (state)
                 this.game.enable_earmark (row, col, number);
             else
-                this.game.disable_earmark (row, col, number);
+                if (number == 0)
+                    this.game.disable_all_earmarks (row, col);
+                else
+                    this.game.disable_earmark (row, col, number);
+
+            if (!this.game.board.has_earmarks (row, col))
+                earmark_picker.set_clear_button_enabled (false);
+            else
+                earmark_picker.set_clear_button_enabled (true);
+
             this.game.cell_changed (row, col, value, value);
             queue_draw ();
         });
