@@ -17,7 +17,10 @@ if desktop_file_validate.found()
     desktop_file_validate,
     args: [
       desktop_file.full_path()
-    ]
+    ],
+    depends: [
+      desktop_file
+    ],
   )
 endif
 
@@ -34,7 +37,10 @@ if appstreamcli.found()
     'validate-appdata', appstreamcli,
     args: [
       'validate', '--no-net', appdata_file.full_path()
-    ]
+    ],
+    depends: [
+      appdata_file
+    ],
   )
 endif
 
