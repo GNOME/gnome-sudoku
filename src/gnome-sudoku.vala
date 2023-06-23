@@ -21,7 +21,7 @@
 
 using Gtk;
 
-public class Sudoku : Gtk.Application
+public class Sudoku : Adw.Application
 {
     private GLib.Settings settings;
 
@@ -88,8 +88,9 @@ public class Sudoku : Gtk.Application
         Object (application_id: "org.gnome.Sudoku", flags: ApplicationFlags.FLAGS_NONE);
         add_main_option_entries (option_entries);
 
-        typeof (SudokuMainMenu).ensure ();
         typeof (SudokuMainMenuItem).ensure ();
+
+        this.get_style_manager ().set_color_scheme (Adw.ColorScheme.FORCE_LIGHT);
     }
 
     protected override int handle_local_options (GLib.VariantDict options)
@@ -214,7 +215,6 @@ public class Sudoku : Gtk.Application
             undo_action.set_enabled (false);
             redo_action.set_enabled (false);
             new_game_action.set_enabled (false);
-            view.hide_popovers ();
         }
         else if (game.get_total_time_played () > 0)
         {
@@ -236,8 +236,8 @@ public class Sudoku : Gtk.Application
         else if (solutions == 0)
         {
             // Error dialog shown when starting a custom game that is not valid.
-            var error_str = "%s\n%s".printf(_("The puzzle you have entered is not a valid Sudoku."), _("Please enter a valid puzzle."));
-            var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.ERROR, ButtonsType.OK, error_str);
+            var dialog = new Adw.MessageDialog (window, _("The puzzle you have entered is not a valid Sudoku."), _("Please enter a valid puzzle."));
+            dialog.add_response ("close", _("Close"));
 
             dialog.response.connect (() => dialog.destroy ());
             dialog.show ();
@@ -245,15 +245,13 @@ public class Sudoku : Gtk.Application
         else
         {
             // Warning dialog shown when starting a custom game that has multiple solutions.
-            var warning_str = "%s\n%s".printf(_("The puzzle you have entered has multiple solutions."), _("Valid Sudoku puzzles have exactly one solution."));
-            var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.WARNING, ButtonsType.NONE, warning_str);
-            dialog.add_button (_("_Back"), ResponseType.REJECT);
-            dialog.add_button (_("Play _Anyway"), ResponseType.ACCEPT);
+            var dialog = new Adw.MessageDialog (window, _("The puzzle you have entered has multiple solutions."), _("Valid Sudoku puzzles have exactly one solution."));
+            dialog.add_response ("close", _("_Back"));
+            dialog.add_response ("continue", _("Play _Anyway"));
+            dialog.set_response_appearance ("continue", Adw.ResponseAppearance.DESTRUCTIVE);
 
-            dialog.response.connect ((response_id) => {
-                if (response_id == ResponseType.ACCEPT)
-                    start_custom_game (game.board);
-
+            dialog.response["continue"].connect (() => {
+                start_custom_game (game.board);
                 dialog.destroy ();
             });
 
@@ -294,19 +292,20 @@ public class Sudoku : Gtk.Application
         var time_str = ngettext ("Well done, you completed the puzzle in %d minute!",
                                  "Well done, you completed the puzzle in %d minutes!",
                                  minutes).printf (minutes);
-        var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.INFO, ButtonsType.NONE, time_str);
-        dialog.add_button (_("_Quit"),       ResponseType.REJECT);
-        dialog.add_button (_("Play _Again"), ResponseType.ACCEPT);
+        var dialog = new Adw.MessageDialog (window, time_str, null);
+        dialog.add_response ("close", _("Quit"));
+        dialog.add_response ("play-again", _("Play _Again"));
+        dialog.set_response_appearance ("play-again", Adw.ResponseAppearance.SUGGESTED);
 
         dialog.response.connect ((response_id) => {
-            if (response_id == ResponseType.ACCEPT)
+            if (response_id == "play-again")
                 show_new_game_screen ();
-            else if (response_id == ResponseType.REJECT)
+            else if (response_id == "close")
                 quit ();
             dialog.destroy ();
         });
 
-        dialog.show ();
+        dialog.present ();
     }
 
     private void start_custom_game (SudokuBoard board)
@@ -405,20 +404,19 @@ public class Sudoku : Gtk.Application
 
     private void reset_cb ()
     {
-        var dialog = new MessageDialog (window, DialogFlags.MODAL, MessageType.QUESTION, ButtonsType.OK_CANCEL, _("Reset the board to its original state?"));
-
-        dialog.response.connect ((response_id) => {
-            if (response_id == ResponseType.OK)
-            {
-                game.reset ();
-                view.clear ();
-                undo_action.set_enabled (false);
-                redo_action.set_enabled (false);
-            }
+        var dialog = new Adw.MessageDialog (window, _("Reset the board to its original state?"), null);
+        dialog.add_response ("close", _("No"));
+        dialog.add_response ("yes", _("Yes"));
+        dialog.set_response_appearance ("yes", Adw.ResponseAppearance.DESTRUCTIVE);
+        dialog.response["yes"].connect ((response_id) => {
+            game.reset ();
+            view.clear ();
+            undo_action.set_enabled (false);
+            redo_action.set_enabled (false);
             dialog.destroy ();
         });
 
-        dialog.show ();
+        dialog.present ();
     }
 
     private void back_cb ()
@@ -434,8 +432,7 @@ public class Sudoku : Gtk.Application
             return;
         game.undo ();
         undo_action.set_enabled (!game.is_undostack_null ());
-        view.hide_popovers ();
-        view.queue_draw ();
+        view.redraw ();
     }
 
     private void redo_cb ()
@@ -444,8 +441,7 @@ public class Sudoku : Gtk.Application
             return;
         game.redo ();
         redo_action.set_enabled (!game.is_redostack_null ());
-        view.hide_popovers ();
-        view.queue_draw ();
+        view.redraw ();
     }
 
     private void print_cb ()
@@ -466,28 +462,14 @@ public class Sudoku : Gtk.Application
 
     private void print_multiple_cb ()
     {
-        print_action.set_enabled (false);
-        print_multiple_action.set_enabled (false);
         var print_dialog = new PrintDialog (saver, window);
-        print_dialog.response.connect (() => {
-            this.print_action.set_enabled (window.is_board_visible ());
-            this.print_multiple_action.set_enabled (true);
-            // Do not destroy the PrintDialog. It will take some time to
-            // generate puzzles, then destroy itself when finished.
-        });
         print_dialog.show ();
     }
 
     private void help_cb ()
     {
-        try
-        {
-            show_uri_on_window (window, "help:gnome-sudoku", get_current_event_time ());
-        }
-        catch (GLib.Error e)
-        {
-            GLib.warning ("Unable to open help: %s", e.message);
-        }
+        var launcher = new Gtk.UriLauncher ("help:gnome-sudoku");
+        launcher.launch.begin (window, null, () => {});
     }
 
     private const string[] authors = { "Robert Ancell <robert.ancell@gmail.com>",
@@ -495,6 +477,7 @@ public class Sudoku : Gtk.Application
                                        "Thomas M. Hinkle <Thomas_Hinkle@alumni.brown.edu>",
                                        "Parin Porecha <parinporecha@gmail.com>",
                                        "John Stowers <john.stowers@gmail.com>",
+                                       "Jamie Murphy <jmurphy@gnome.org>",
                                        null };
 
     private void about_cb ()
@@ -502,18 +485,20 @@ public class Sudoku : Gtk.Application
         /* Appears on the About dialog. %s is the version of the QQwing puzzle generator in use. */
         var localized_comments_format = _("The popular Japanese logic puzzle\n\nPuzzles generated by QQwing %s");
 
-        show_about_dialog (window,
-                               "program-name", _("Sudoku"),
-                               "logo-icon-name", "org.gnome.Sudoku",
-                               "version", VERSION,
-                               "comments", localized_comments_format.printf (SudokuGenerator.qqwing_version ()),
-                               "copyright", "Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha",
-                               "license-type", License.GPL_3_0,
-                               "authors", authors,
-                               "artists", null,
-                               "translator-credits", _("translator-credits"),
-                               "website", "https://wiki.gnome.org/Apps/Sudoku/"
-                               );
+        var about = new Adw.AboutWindow () {
+            application_name = _("Sudoku"),
+            application_icon = "org.gnome.Sudoku",
+            version = VERSION,
+            comments = localized_comments_format.printf (SudokuGenerator.qqwing_version ()),
+            copyright = "Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha\nCopyright © 2023 Jamie Murphy",
+            license_type = License.GPL_3_0,
+            developers = authors,
+            translator_credits = _("translator-credits"),
+            website = "https://wiki.gnome.org/Apps/Sudoku/",
+        };
+
+        about.set_transient_for (window);
+        about.present ();
     }
 
     public static int main (string[] args)
@@ -521,3 +506,4 @@ public class Sudoku : Gtk.Application
         return new Sudoku ().run (args);
     }
 }
+

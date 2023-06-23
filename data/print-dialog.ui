@@ -1,233 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="3.12"/>
-  <!-- interface-naming-policy toplevel-contextual -->
-  <object class="GtkAdjustment" id="adjustment1">
-    <property name="lower">1</property>
-    <property name="upper">100</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="adjustment2">
-    <property name="lower">1</property>
-    <property name="upper">100</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">1</property>
-  </object>
-  <template class="PrintDialog" parent="GtkDialog">
+  <template class="PrintDialog" parent="AdwWindow">
     <property name="title" translatable="yes">Print Multiple Puzzles</property>
-    <property name="can-focus">False</property>
     <property name="resizable">False</property>
-    <property name="type-hint">dialog</property>
     <property name="width-request">460</property>
-    <property name="expand">False</property>
     <property name="modal">True</property>
-    <child type="action">
-      <object class="GtkButton" id="cancelbutton1">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="can-default">True</property>
-        <property name="receives-default">False</property>
-        <property name="use-underline">True</property>
-        <property name="valign">center</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="print_button">
-        <property name="label" translatable="yes">_Print</property>
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="can-default">True</property>
-        <property name="receives-default">False</property>
-        <property name="use-underline">True</property>
-        <property name="valign">center</property>
-      </object>
-    </child>
-    <child internal-child="vbox">
-      <object class="GtkBox">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid" id="print_grid">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="border-width">12</property>
-            <property name="row-spacing">16</property>
-            <property name="column-spacing">10</property>
-            <property name="margin">6</property>
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">_Number of puzzles</property>
-                <property name="use-underline">True</property>
-                <property name="mnemonic-widget">n_sudokus_button</property>
-                <property name="valign">center</property>
-                <property name="halign">end</property>
-                <property name="width-request">150</property>
-                <property name="xalign">1.0</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton" id="n_sudokus_button">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="halign">center</property>
-                <property name="primary-icon-activatable">False</property>
-                <property name="secondary-icon-activatable">False</property>
-                <property name="primary-icon-sensitive">True</property>
-                <property name="secondary-icon-sensitive">True</property>
-                <property name="adjustment">adjustment1</property>
-                <property name="climb-rate">1</property>
-                <property name="valign">center</property>
-                <property name="margin-start">12</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">_Number of puzzles per page</property>
-                <property name="use-underline">True</property>
-                <property name="mnemonic-widget">n_sudokus_per_page_button</property>
-                <property name="valign">center</property>
-                <property name="halign">end</property>
-                <property name="width-request">150</property>
-                <property name="xalign">1.0</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton" id="n_sudokus_per_page_button">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="halign">center</property>
-                <property name="primary-icon-activatable">False</property>
-                <property name="secondary-icon-activatable">False</property>
-                <property name="primary-icon-sensitive">True</property>
-                <property name="secondary-icon-sensitive">True</property>
-                <property name="adjustment">adjustment2</property>
-                <property name="climb-rate">1</property>
-                <property name="valign">center</property>
-                <property name="margin-start">12</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="valign">start</property>
-                <property name="label" translatable="yes">Difficulty</property>
-                <property name="halign">end</property>
-                <property name="width-request">150</property>
-                <property name="xalign">1.0</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
+    <property name="default-widget">print_button</property>
+    <property name="focus-widget">print_button</property>
+    <child>
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar"/>
+        </child>
+        <property name="content">
+          <object class="AdwClamp">
+            <property name="maximum-size">400</property>
+            <property name="margin-top">12</property>
+            <property name="margin-bottom">12</property>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
                 <property name="orientation">vertical</property>
-                <property name="homogeneous">True</property>
-                <property name="halign">center</property>
-                <property name="valign">start</property>
                 <child>
-                  <object class="GtkRadioButton" id="easy_radio_button">
-                    <property name="label" translatable="yes">_Easy</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">False</property>
-                    <property name="use-underline">True</property>
-                    <property name="draw-indicator">True</property>
+                  <object class="AdwPreferencesGroup" id="options_group">
+                    <child>
+                      <object class="AdwSpinRow" id="n_puzzles">
+                        <property name="title" translatable="yes">Number of Puzzles</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment">
+                            <property name="lower">1</property>
+                            <property name="upper">100</property>
+                            <property name="step-increment">1</property>
+                            <property name="page-increment">10</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwSpinRow" id="n_puzzles_per_page">
+                        <property name="title" translatable="yes">Number of puzzles per page</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment">
+                            <property name="lower">1</property>
+                            <property name="upper">100</property>
+                            <property name="step-increment">1</property>
+                            <property name="page-increment">1</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwComboRow" id="difficulty">
+                        <property name="title" translatable="yes">Difficulty</property>
+                        <property name="model">
+                          <object class="GtkStringList">
+                            <items>
+                              <item translatable="yes">Easy</item>
+                              <item translatable="yes">Medium</item>
+                              <item translatable="yes">Hard</item>
+                              <item translatable="yes">Very Hard</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
                   </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkRadioButton" id="medium_radio_button">
-                    <property name="label" translatable="yes">_Medium</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">False</property>
-                    <property name="use-underline">True</property>
-                    <property name="draw-indicator">True</property>
-                    <property name="group">easy_radio_button</property>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkRadioButton" id="hard_radio_button">
-                    <property name="label" translatable="yes">_Hard</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">False</property>
-                    <property name="use-underline">True</property>
-                    <property name="draw-indicator">True</property>
-                    <property name="group">easy_radio_button</property>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkRadioButton" id="very_hard_radio_button">
-                    <property name="label" translatable="yes">_Very Hard</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">False</property>
-                    <property name="use-underline">True</property>
-                    <property name="draw-indicator">True</property>
-                    <property name="group">easy_radio_button</property>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
                 </child>
               </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">2</property>
-              </packing>
+            </child>
+          </object>
+        </property>
+        <child type="bottom">
+          <object class="GtkActionBar">
+            <child type="end">
+              <object class="GtkButton" id="print_button">
+                <property name="label" translatable="yes">_Print</property>
+                <property name="receives-default">False</property>
+                <property name="use-underline">True</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
+              </object>
             </child>
           </object>
         </child>
       </object>
     </child>
-    <action-widgets>
-      <action-widget response="cancel">cancelbutton1</action-widget>
-      <action-widget response="ok" default="true">print_button</action-widget>
-    </action-widgets>
   </template>
 </interface>
