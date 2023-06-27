@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2023-02-10 20:28+0000\n"
-"PO-Revision-Date: 2023-03-04 20:44+0200\n"
+"POT-Creation-Date: 2023-06-25 11:56+0000\n"
+"PO-Revision-Date: 2023-06-27 19:26+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2010-09-13 15:09+0000\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 "X-POT-Import-Date: 2012-03-05 14:46:29+0000\n"
 
 #: data/sudoku-window.ui:7
@@ -32,82 +32,94 @@ msgid "_New Puzzle"
 msgstr "_Uusi pulma"
 
 #: data/sudoku-window.ui:11
+msgid "Create Custom Game"
+msgstr "Luo mukautettu peli"
+
+#: data/sudoku-window.ui:15
 msgid "_Clear Board"
 msgstr "_Tyhjennä lauta"
 
-#: data/sudoku-window.ui:17 data/print-dialog.ui:38
+#: data/sudoku-window.ui:21 data/print-dialog.ui:77
 msgid "_Print"
 msgstr "T_ulosta"
 
-#: data/sudoku-window.ui:20
+#: data/sudoku-window.ui:24
 msgid "Print _Current Puzzle…"
 msgstr "Tu_losta nykyinen sudoku…"
 
-#: data/sudoku-window.ui:24
+#: data/sudoku-window.ui:28
 msgid "Print _Multiple Puzzles…"
 msgstr "Tulosta _useita sudokuja…"
 
-#: data/sudoku-window.ui:32
+#: data/sudoku-window.ui:36
 msgid "High_lighter"
 msgstr "_Korostus"
 
-#: data/sudoku-window.ui:36
+#: data/sudoku-window.ui:40
 msgid "_Warnings"
 msgstr "_Varoitukset"
 
-#: data/sudoku-window.ui:42
+#: data/sudoku-window.ui:46
 msgid "_Help"
 msgstr "_Ohje"
 
-#: data/sudoku-window.ui:46
+#: data/sudoku-window.ui:50
 msgid "_About Sudoku"
 msgstr "_Tietoja - Sudoku"
 
-#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:505
-#: src/sudoku-window.vala:214
+#: data/sudoku-window.ui:56 data/sudoku-window.ui:64
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:489
+#: src/sudoku-window.vala:217
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/sudoku-window.ui:73
+#: data/sudoku-window.ui:72
 msgid "Undo your last action"
 msgstr "Kumoa viimeisin toiminto"
 
-#: data/sudoku-window.ui:94
+#: data/sudoku-window.ui:84
 msgid "Redo your last action"
 msgstr "Tee edellinen toiminto uudestaan"
 
-#: data/sudoku-window.ui:126
-msgid "Pause"
-msgstr "Keskeytä"
-
-#: data/sudoku-window.ui:147
-msgid "Start playing the custom puzzle you have created"
-msgstr "Aloita luomasi pulman pelaaminen"
-
-#: data/sudoku-window.ui:189
+#: data/sudoku-window.ui:96
 msgid "Go back to the current game"
 msgstr "Siirry takaisin nykyiseen peliin"
 
-#: data/sudoku-window.ui:233 data/print-dialog.ui:157
-msgid "_Easy"
-msgstr "H_elppo"
+#: data/sudoku-window.ui:107
+msgid "Main Menu"
+msgstr "Päävalikko"
 
-#: data/sudoku-window.ui:241 data/print-dialog.ui:172
-msgid "_Medium"
-msgstr "_Keskitaso"
+#: data/sudoku-window.ui:115
+msgid "Pause"
+msgstr "Keskeytä"
 
-#: data/sudoku-window.ui:249 data/print-dialog.ui:188
-msgid "_Hard"
-msgstr "V_aikea"
+#: data/sudoku-window.ui:127
+msgid "Start playing the custom puzzle you have created"
+msgstr "Aloita luomasi pulman pelaaminen"
 
-#: data/sudoku-window.ui:257 data/print-dialog.ui:204
-msgid "_Very Hard"
-msgstr "_Hyvin vaikea"
+#: data/sudoku-window.ui:153
+msgid "Select Game Difficulty"
+msgstr "Valitse pelin vaikeustaso"
 
-#: data/sudoku-window.ui:265
-msgid "_Create your own puzzle"
-msgstr "_Luo oma pulma"
+#: data/sudoku-window.ui:169 data/print-dialog.ui:58
+msgid "Easy"
+msgstr "Helppo"
+
+#: data/sudoku-window.ui:180 data/print-dialog.ui:59
+msgid "Medium"
+msgstr "Keskitaso"
+
+#: data/sudoku-window.ui:191 data/print-dialog.ui:60
+msgid "Hard"
+msgstr "Vaikea"
+
+#: data/sudoku-window.ui:202 data/print-dialog.ui:61
+msgid "Very Hard"
+msgstr "Hyvin vaikea"
+
+#: data/sudoku-window.ui:212
+msgid "Start Game"
+msgstr "Käynnistä peli"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -149,7 +161,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Gnome Sudoku -pelin esikatselu"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:76
+#: data/org.gnome.Sudoku.appdata.xml.in:74
 msgid "The GNOME Project"
 msgstr "Gnome-projekti"
 
@@ -231,47 +243,43 @@ msgstr "tosi jos ikkuna on suurennettu"
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Alusta muistiinpanot sisältäen jokaisen solun mahdolliset arvot"
 
-#: data/print-dialog.ui:18
+#: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
 msgstr "Tulosta useita sudokuja"
 
-#: data/print-dialog.ui:27
-msgid "_Cancel"
-msgstr "_Peru"
+#: data/print-dialog.ui:28
+msgid "Number of Puzzles"
+msgstr "Pulmien määrä"
 
-#: data/print-dialog.ui:65
-msgid "_Number of puzzles"
-msgstr "P_ulmien määrä"
+#: data/print-dialog.ui:41
+msgid "Number of puzzles per page"
+msgstr "Pulmien määrä sivua kohden"
 
-#: data/print-dialog.ui:101
-msgid "_Number of puzzles per page"
-msgstr "P_ulmien määrä sivua kohden"
-
-#: data/print-dialog.ui:138
+#: data/print-dialog.ui:54
 msgid "Difficulty"
 msgstr "Vaikeustaso"
 
-#: lib/sudoku-board.vala:644
+#: lib/sudoku-board.vala:657
 msgid "Unknown Difficulty"
 msgstr "Tuntematon vaikeustaso"
 
-#: lib/sudoku-board.vala:646
+#: lib/sudoku-board.vala:659
 msgid "Easy Difficulty"
 msgstr "Helppo vaikeustaso"
 
-#: lib/sudoku-board.vala:648
+#: lib/sudoku-board.vala:661
 msgid "Medium Difficulty"
 msgstr "Keskinkertainen vaikeustaso"
 
-#: lib/sudoku-board.vala:650
+#: lib/sudoku-board.vala:663
 msgid "Hard Difficulty"
 msgstr "Vaikea vaikeustaso"
 
-#: lib/sudoku-board.vala:652
+#: lib/sudoku-board.vala:665
 msgid "Very Hard Difficulty"
 msgstr "Erittäin vaikea vaikeustaso"
 
-#: lib/sudoku-board.vala:654
+#: lib/sudoku-board.vala:667
 msgid "Custom Puzzle"
 msgstr "Oma pulma"
 
@@ -286,20 +294,24 @@ msgid "Show the possible values for each cell"
 msgstr "Näytä jokaisen solun mahdolliset arvot"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:239
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Antamasi pulma ei ole kelvollinen sudoku."
 
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:239
 msgid "Please enter a valid puzzle."
 msgstr "Anna kelvollinen pulma."
 
+#: src/gnome-sudoku.vala:240 src/sudoku-printer.vala:46
+msgid "Close"
+msgstr "Sulje"
+
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:248
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Antamallasi pulmalla on lukuisia ratkaisuja."
 
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:248
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Kelvolliset sudokupulmat omaavat vain yhden ratkaisun."
 
@@ -311,18 +323,18 @@ msgstr "_Takaisin"
 msgid "Play _Anyway"
 msgstr "Pelaa _silti"
 
-#: src/gnome-sudoku.vala:293
+#: src/gnome-sudoku.vala:292
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Onnittelut, ratkaisit pulman %d minuuttissa!"
 msgstr[1] "Onnittelut, ratkaisit pulman %d minuuttissa!"
 
-#: src/gnome-sudoku.vala:297
-msgid "_Quit"
-msgstr "_Lopeta"
+#: src/gnome-sudoku.vala:296
+msgid "Quit"
+msgstr "Lopeta"
 
-#: src/gnome-sudoku.vala:298
+#: src/gnome-sudoku.vala:297
 msgid "Play _Again"
 msgstr "_Pelaa uudelleen"
 
@@ -330,8 +342,16 @@ msgstr "_Pelaa uudelleen"
 msgid "Reset the board to its original state?"
 msgstr "Palautetaanko lauta sen alkuperäistilaan?"
 
+#: src/gnome-sudoku.vala:408
+msgid "No"
+msgstr "Ei"
+
+#: src/gnome-sudoku.vala:409
+msgid "Yes"
+msgstr "Kyllä"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:502
+#: src/gnome-sudoku.vala:486
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -342,7 +362,7 @@ msgstr ""
 "\n"
 "Pulmat tuottaa QQwing %s"
 
-#: src/gnome-sudoku.vala:513
+#: src/gnome-sudoku.vala:496
 msgid "translator-credits"
 msgstr ""
 "Jiri Grönroos, 2012-2023\n"
@@ -363,27 +383,31 @@ msgstr ""
 "  Timo Jyrinki https://launchpad.net/~timo-jyrinki\n"
 "  eGetin https://launchpad.net/~egetin"
 
-#: src/number-picker.vala:85
+#: src/number-picker.vala:87
 msgid "Clear"
 msgstr "Tyhjennä"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:47
+#: src/sudoku-printer.vala:45
 msgid "Error printing file:"
 msgstr "Virhe tulostaessa tiedostoa:"
 
-#. Text on overlay when game is paused
-#: src/sudoku-view.vala:815
-msgid "Paused"
-msgstr "Keskeytetty"
-
-#: src/sudoku-window.vala:155
+#: src/sudoku-window.vala:156
 msgid "Select Difficulty"
 msgstr "Valitse vaikeustaso"
 
-#: src/sudoku-window.vala:216
+#: src/sudoku-window.vala:219
 msgid "Create Puzzle"
 msgstr "Luo pulma"
+
+#~ msgid "_Create your own puzzle"
+#~ msgstr "_Luo oma pulma"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Peru"
+
+#~ msgid "Paused"
+#~ msgstr "Keskeytetty"
 
 #~ msgid "Reset the board to its original state"
 #~ msgstr "Palauta lauta alkuperäistilaan"
