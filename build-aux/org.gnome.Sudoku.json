@@ -3,6 +3,7 @@
     "runtime": "org.gnome.Platform",
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [ "org.freedesktop.Sdk.Extension.vala-nightly" ],
     "command": "gnome-sudoku",
     "tags": ["nightly"],
     "desktop-file-name-prefix": "(Nightly) ",
@@ -13,7 +14,27 @@
         "--socket=wayland",
         "--metadata=X-DConf=migrate-path=/org/gnome/Sudoku/"
     ],
+    "build-options": {
+        "prepend-path": "/usr/lib/sdk/vala-nightly/bin/",
+        "prepend-ld-library-path": "/usr/lib/sdk/vala-nightly/lib"
+    },
     "modules": [
+        {
+            "name": "libgee",
+            "buildsystem": "autotools",
+            "build-options": {
+                "env": {
+                    "ACLOCAL_PATH" : "/usr/lib/sdk/vala-nightly/share/aclocal"
+                }
+            },
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libgee.git",
+                    "branch": "main"
+                }
+            ]
+        },
         {
             "name": "qqwing",
             "sources": [{
