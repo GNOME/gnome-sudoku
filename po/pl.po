@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2023-02-10 20:28+0000\n"
-"PO-Revision-Date: 2023-03-11 15:31+0100\n"
+"POT-Creation-Date: 2023-06-25 11:56+0000\n"
+"PO-Revision-Date: 2023-07-16 13:50+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -35,82 +35,94 @@ msgid "_New Puzzle"
 msgstr "_Nowa łamigłówka"
 
 #: data/sudoku-window.ui:11
+msgid "Create Custom Game"
+msgstr "Utwórz własną łamigłówkę"
+
+#: data/sudoku-window.ui:15
 msgid "_Clear Board"
 msgstr "Wyc_zyść planszę"
 
-#: data/sudoku-window.ui:17 data/print-dialog.ui:38
+#: data/sudoku-window.ui:21 data/print-dialog.ui:77
 msgid "_Print"
 msgstr "Wy_drukuj"
 
-#: data/sudoku-window.ui:20
+#: data/sudoku-window.ui:24
 msgid "Print _Current Puzzle…"
 msgstr "Wydrukuj _bieżącą planszę…"
 
-#: data/sudoku-window.ui:24
+#: data/sudoku-window.ui:28
 msgid "Print _Multiple Puzzles…"
 msgstr "Wydrukuj _wiele plansz…"
 
-#: data/sudoku-window.ui:32
+#: data/sudoku-window.ui:36
 msgid "High_lighter"
 msgstr "Wy_różnianie"
 
-#: data/sudoku-window.ui:36
+#: data/sudoku-window.ui:40
 msgid "_Warnings"
 msgstr "Po_dpowiedzi"
 
-#: data/sudoku-window.ui:42
+#: data/sudoku-window.ui:46
 msgid "_Help"
 msgstr "Pomo_c"
 
-#: data/sudoku-window.ui:46
+#: data/sudoku-window.ui:50
 msgid "_About Sudoku"
 msgstr "_O grze"
 
-#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:505
-#: src/sudoku-window.vala:214
+#: data/sudoku-window.ui:56 data/sudoku-window.ui:64
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:489
+#: src/sudoku-window.vala:217
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/sudoku-window.ui:73
+#: data/sudoku-window.ui:72
 msgid "Undo your last action"
 msgstr "Cofa ostatni ruch"
 
-#: data/sudoku-window.ui:94
+#: data/sudoku-window.ui:84
 msgid "Redo your last action"
 msgstr "Powtarza ostatni ruch"
 
-#: data/sudoku-window.ui:126
-msgid "Pause"
-msgstr "Wstrzymuje"
-
-#: data/sudoku-window.ui:147
-msgid "Start playing the custom puzzle you have created"
-msgstr "Rozpoczyna grę w utworzoną łamigłówkę"
-
-#: data/sudoku-window.ui:189
+#: data/sudoku-window.ui:96
 msgid "Go back to the current game"
 msgstr "Wraca do bieżącej gry"
 
-#: data/sudoku-window.ui:233 data/print-dialog.ui:157
-msgid "_Easy"
-msgstr "Ł_atwa"
+#: data/sudoku-window.ui:107
+msgid "Main Menu"
+msgstr "Menu główne"
 
-#: data/sudoku-window.ui:241 data/print-dialog.ui:172
-msgid "_Medium"
-msgstr "Ś_rednia"
+#: data/sudoku-window.ui:115
+msgid "Pause"
+msgstr "Wstrzymuje"
 
-#: data/sudoku-window.ui:249 data/print-dialog.ui:188
-msgid "_Hard"
-msgstr "_Trudna"
+#: data/sudoku-window.ui:127
+msgid "Start playing the custom puzzle you have created"
+msgstr "Rozpoczyna grę w utworzoną łamigłówkę"
 
-#: data/sudoku-window.ui:257 data/print-dialog.ui:204
-msgid "_Very Hard"
-msgstr "_Bardzo trudna"
+#: data/sudoku-window.ui:153
+msgid "Select Game Difficulty"
+msgstr "Wybór trudności gry"
 
-#: data/sudoku-window.ui:265
-msgid "_Create your own puzzle"
-msgstr "_Utwórz własną łamigłówkę"
+#: data/sudoku-window.ui:169 data/print-dialog.ui:58
+msgid "Easy"
+msgstr "Łatwa"
+
+#: data/sudoku-window.ui:180 data/print-dialog.ui:59
+msgid "Medium"
+msgstr "Średnia"
+
+#: data/sudoku-window.ui:191 data/print-dialog.ui:60
+msgid "Hard"
+msgstr "Trudna"
+
+#: data/sudoku-window.ui:202 data/print-dialog.ui:61
+msgid "Very Hard"
+msgstr "Bardzo trudna"
+
+#: data/sudoku-window.ui:212
+msgid "Start Game"
+msgstr "Rozpocznij grę"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -152,7 +164,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Podgląd gry GNOME Sudoku"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:76
+#: data/org.gnome.Sudoku.appdata.xml.in:74
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -237,47 +249,43 @@ msgstr "Wartość „true” oznacza, że okno jest zmaksymalizowane"
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Notatki zaczynają z możliwymi wartościami dla każdej komórki"
 
-#: data/print-dialog.ui:18
+#: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
 msgstr "Drukowanie wielu plansz"
 
-#: data/print-dialog.ui:27
-msgid "_Cancel"
-msgstr "_Anuluj"
+#: data/print-dialog.ui:28
+msgid "Number of Puzzles"
+msgstr "Liczba plansz"
 
-#: data/print-dialog.ui:65
-msgid "_Number of puzzles"
-msgstr "_Liczba plansz"
+#: data/print-dialog.ui:41
+msgid "Number of puzzles per page"
+msgstr "Liczba plansz na stronę"
 
-#: data/print-dialog.ui:101
-msgid "_Number of puzzles per page"
-msgstr "_Liczba plansz na stronę"
-
-#: data/print-dialog.ui:138
+#: data/print-dialog.ui:54
 msgid "Difficulty"
 msgstr "Trudność"
 
-#: lib/sudoku-board.vala:644
+#: lib/sudoku-board.vala:657
 msgid "Unknown Difficulty"
 msgstr "Nieznana trudność"
 
-#: lib/sudoku-board.vala:646
+#: lib/sudoku-board.vala:659
 msgid "Easy Difficulty"
 msgstr "Niska trudność"
 
-#: lib/sudoku-board.vala:648
+#: lib/sudoku-board.vala:661
 msgid "Medium Difficulty"
 msgstr "Średnia trudność"
 
-#: lib/sudoku-board.vala:650
+#: lib/sudoku-board.vala:663
 msgid "Hard Difficulty"
 msgstr "Wysoka trudność"
 
-#: lib/sudoku-board.vala:652
+#: lib/sudoku-board.vala:665
 msgid "Very Hard Difficulty"
 msgstr "Bardzo wysoka trudność"
 
-#: lib/sudoku-board.vala:654
+#: lib/sudoku-board.vala:667
 msgid "Custom Puzzle"
 msgstr "Własna łamigłówka"
 
@@ -292,20 +300,24 @@ msgid "Show the possible values for each cell"
 msgstr "Wyświetla możliwe wartości dla każdej komórki"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:239
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Podana łamigłówka jest nieprawidłowa."
 
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:239
 msgid "Please enter a valid puzzle."
 msgstr "Proszę podać prawidłową łamigłówkę."
 
+#: src/gnome-sudoku.vala:240 src/sudoku-printer.vala:46
+msgid "Close"
+msgstr "Zamknij"
+
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:248
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Podana łamigłówka ma kilka rozwiązań."
 
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:248
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Prawidłowe łamigłówki Sudoku mają dokładnie jedno rozwiązanie."
 
@@ -317,7 +329,7 @@ msgstr "_Wstecz"
 msgid "Play _Anyway"
 msgstr "_Zagraj mimo to"
 
-#: src/gnome-sudoku.vala:293
+#: src/gnome-sudoku.vala:292
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -325,11 +337,11 @@ msgstr[0] "Łamigłówkę rozwiązano w %d minutę!"
 msgstr[1] "Łamigłówkę rozwiązano w %d minuty!"
 msgstr[2] "Łamigłówkę rozwiązano w %d minut!"
 
-#: src/gnome-sudoku.vala:297
-msgid "_Quit"
-msgstr "Za_kończ"
+#: src/gnome-sudoku.vala:296
+msgid "Quit"
+msgstr "Zakończ"
 
-#: src/gnome-sudoku.vala:298
+#: src/gnome-sudoku.vala:297
 msgid "Play _Again"
 msgstr "_Zagraj ponownie"
 
@@ -337,8 +349,16 @@ msgstr "_Zagraj ponownie"
 msgid "Reset the board to its original state?"
 msgstr "Przywrócić planszę do jej pierwotnego stanu?"
 
+#: src/gnome-sudoku.vala:408
+msgid "No"
+msgstr "Nie"
+
+#: src/gnome-sudoku.vala:409
+msgid "Yes"
+msgstr "Tak"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:502
+#: src/gnome-sudoku.vala:486
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -349,7 +369,7 @@ msgstr ""
 "\n"
 "Łamigłówki tworzone przez program QQwing %s"
 
-#: src/gnome-sudoku.vala:513
+#: src/gnome-sudoku.vala:496
 msgid "translator-credits"
 msgstr ""
 "Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 1998-2002\n"
@@ -366,24 +386,19 @@ msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2010-2023\n"
 "Aviary.pl <community-poland@mozilla.org>, 2007-2023"
 
-#: src/number-picker.vala:85
+#: src/number-picker.vala:87
 msgid "Clear"
 msgstr "Wyczyść"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:47
+#: src/sudoku-printer.vala:45
 msgid "Error printing file:"
 msgstr "Błąd podczas drukowania pliku:"
 
-#. Text on overlay when game is paused
-#: src/sudoku-view.vala:815
-msgid "Paused"
-msgstr "Wstrzymano"
-
-#: src/sudoku-window.vala:155
+#: src/sudoku-window.vala:156
 msgid "Select Difficulty"
 msgstr "Wybór trudności"
 
-#: src/sudoku-window.vala:216
+#: src/sudoku-window.vala:219
 msgid "Create Puzzle"
 msgstr "Tworzenie łamigłówki"
