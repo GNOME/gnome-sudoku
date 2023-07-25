@@ -8,8 +8,8 @@
 msgid ""
 msgstr "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2023-02-10 20:28+0000\n"
-"PO-Revision-Date: 2023-02-12 10:00+0100\n"
+"POT-Creation-Date: 2023-06-25 11:56+0000\n"
+"PO-Revision-Date: 2023-07-24 10:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -23,82 +23,94 @@ msgid "_New Puzzle"
 msgstr "Puzzle _berria"
 
 #: data/sudoku-window.ui:11
+msgid "Create Custom Game"
+msgstr "Sortu joko pertsonalizatua"
+
+#: data/sudoku-window.ui:15
 msgid "_Clear Board"
 msgstr "_Garbitu taula"
 
-#: data/sudoku-window.ui:17 data/print-dialog.ui:38
+#: data/sudoku-window.ui:21 data/print-dialog.ui:77
 msgid "_Print"
 msgstr "I_nprimatu"
 
-#: data/sudoku-window.ui:20
+#: data/sudoku-window.ui:24
 msgid "Print _Current Puzzle…"
 msgstr "Inprimatu _uneko puzzle…"
 
-#: data/sudoku-window.ui:24
+#: data/sudoku-window.ui:28
 msgid "Print _Multiple Puzzles…"
 msgstr "Inprimatu _hainbat puzzle..."
 
-#: data/sudoku-window.ui:32
+#: data/sudoku-window.ui:36
 msgid "High_lighter"
 msgstr "_Nabarmentzailea"
 
-#: data/sudoku-window.ui:36
+#: data/sudoku-window.ui:40
 msgid "_Warnings"
 msgstr "_Abisuak"
 
-#: data/sudoku-window.ui:42
+#: data/sudoku-window.ui:46
 msgid "_Help"
 msgstr "_Laguntza"
 
-#: data/sudoku-window.ui:46
+#: data/sudoku-window.ui:50
 msgid "_About Sudoku"
 msgstr "Sudoku jokoari _buruz"
 
-#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:505
-#: src/sudoku-window.vala:214
+#: data/sudoku-window.ui:56 data/sudoku-window.ui:64
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:489
+#: src/sudoku-window.vala:217
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/sudoku-window.ui:73
+#: data/sudoku-window.ui:72
 msgid "Undo your last action"
 msgstr "Desegin zure azken ekintza"
 
-#: data/sudoku-window.ui:94
+#: data/sudoku-window.ui:84
 msgid "Redo your last action"
 msgstr "Berregin zure azken ekintza"
 
-#: data/sudoku-window.ui:126
-msgid "Pause"
-msgstr "Pausatu"
-
-#: data/sudoku-window.ui:147
-msgid "Start playing the custom puzzle you have created"
-msgstr "Hasi sortu duzun puzzle pertsonalizatua jokatzen"
-
-#: data/sudoku-window.ui:189
+#: data/sudoku-window.ui:96
 msgid "Go back to the current game"
 msgstr "Joan atzera uneko jokoan"
 
-#: data/sudoku-window.ui:233 data/print-dialog.ui:157
-msgid "_Easy"
-msgstr "_Erraza"
+#: data/sudoku-window.ui:107
+msgid "Main Menu"
+msgstr "Menu nagusia"
 
-#: data/sudoku-window.ui:241 data/print-dialog.ui:172
-msgid "_Medium"
-msgstr "Ta_rtekoa"
+#: data/sudoku-window.ui:115
+msgid "Pause"
+msgstr "Pausatu"
 
-#: data/sudoku-window.ui:249 data/print-dialog.ui:188
-msgid "_Hard"
-msgstr "_Zaila"
+#: data/sudoku-window.ui:127
+msgid "Start playing the custom puzzle you have created"
+msgstr "Hasi sortu duzun puzzle pertsonalizatua jokatzen"
 
-#: data/sudoku-window.ui:257 data/print-dialog.ui:204
-msgid "_Very Hard"
-msgstr "_Oso zaila"
+#: data/sudoku-window.ui:153
+msgid "Select Game Difficulty"
+msgstr "Hautatu jokoaren zailtasuna"
 
-#: data/sudoku-window.ui:265
-msgid "_Create your own puzzle"
-msgstr "_Sortu zeure puzzlea"
+#: data/sudoku-window.ui:169 data/print-dialog.ui:58
+msgid "Easy"
+msgstr "Erraza"
+
+#: data/sudoku-window.ui:180 data/print-dialog.ui:59
+msgid "Medium"
+msgstr "Tartekoa"
+
+#: data/sudoku-window.ui:191 data/print-dialog.ui:60
+msgid "Hard"
+msgstr "Zaila"
+
+#: data/sudoku-window.ui:202 data/print-dialog.ui:61
+msgid "Very Hard"
+msgstr "Oso zaila"
+
+#: data/sudoku-window.ui:212
+msgid "Start Game"
+msgstr "Hasi jokoa"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -113,7 +125,7 @@ msgid ""
 "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
 "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
 "Sudoku fun for players of any skill level."
-msgstr "Jokatu Japoniako joko logiko ospetsura. Sudoku-zaleek GNOME Sudoku instalatuta eduki beharko lukete. Interfaze xumekoa (eta trabarik egiten ez duena) edozer mailatan trebetasuna duten jokalarientzako prestatuta dago."
+msgstr "Jokatu logikako joko japoniar ospetsua. Sudoku-zaleek GNOME Sudoku instalatuta eduki beharko lukete. Interfaze xumekoa (eta trabarik egiten ez duena) edozer mailatan trebetasuna duten jokalarientzako prestatuta dago."
 
 #: data/org.gnome.Sudoku.appdata.xml.in:15
 msgid ""
@@ -126,13 +138,13 @@ msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
 "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr "Paperean jokatzea nahi izanez gero, jokoak inprima ditzakezu. Orrialdeko zenbat joko inprimatzea nahi dituzun aukera dezakezu, baita jokoen zailtasun-maila ere. Ondorioz, Sudoku liburu berriztagarri gisa erabil dezakezu GNOME Sudoku."
+msgstr "Paperean jokatzea gustuko baduzu, jokoak inprimatu ditzakezu. Orrialdeko zenbat joko inprimatzea nahi dituzun aukera dezakezu, baita jokoen zailtasun-maila ere. Ondorioz, Sudoku liburu berriztagarri gisa erabil dezakezu GNOME Sudoku."
 
 #: data/org.gnome.Sudoku.appdata.xml.in:30
 msgid "A GNOME sudoku game preview"
 msgstr "GNOME sudoku jokoaren aurrebista"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:76
+#: data/org.gnome.Sudoku.appdata.xml.in:74
 msgid "The GNOME Project"
 msgstr "GNOME proiektua"
 
@@ -149,7 +161,7 @@ msgstr "Inprimatuko diren sudokuen zailtasun maila"
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
-msgstr "Ezarri inprimatu nahi dituzun sudokuen zailtasun maila. Balio erabilgarriak: \"easy\" (erraza), \"medium\" (ertaina), \"hard\" (zaila), \"very_hard\" (oso zaila)"
+msgstr "Ezarri inprimatu nahi dituzun sudokuen zailtasun maila. Balio erabilgarriak: \"easy\" (erraza), \"medium\" (tartekoa), \"hard\" (zaila), \"very_hard\" (oso zaila)"
 
 #: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Number of Sudokus to print"
@@ -207,47 +219,43 @@ msgstr "egia leihoa maximizatuta badago"
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Hasieratu ohartxoak gelaxka bakoitzeko balio posibleekin"
 
-#: data/print-dialog.ui:18
+#: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
 msgstr "Inprimatu hainbat puzzle"
 
-#: data/print-dialog.ui:27
-msgid "_Cancel"
-msgstr "_Utzi"
+#: data/print-dialog.ui:28
+msgid "Number of Puzzles"
+msgstr "Puzzle kopurua"
 
-#: data/print-dialog.ui:65
-msgid "_Number of puzzles"
-msgstr "Puzzle _kopurua"
+#: data/print-dialog.ui:41
+msgid "Number of puzzles per page"
+msgstr "Puzzle kopurua orrialdeko"
 
-#: data/print-dialog.ui:101
-msgid "_Number of puzzles per page"
-msgstr "Puzzle kopurua _orrialdeko"
-
-#: data/print-dialog.ui:138
+#: data/print-dialog.ui:54
 msgid "Difficulty"
 msgstr "Zailtasuna"
 
-#: lib/sudoku-board.vala:644
+#: lib/sudoku-board.vala:657
 msgid "Unknown Difficulty"
 msgstr "Zailtasun ezezaguna"
 
-#: lib/sudoku-board.vala:646
+#: lib/sudoku-board.vala:659
 msgid "Easy Difficulty"
 msgstr "Zailtasun erraza"
 
-#: lib/sudoku-board.vala:648
+#: lib/sudoku-board.vala:661
 msgid "Medium Difficulty"
 msgstr "Tarteko zailtasuna"
 
-#: lib/sudoku-board.vala:650
+#: lib/sudoku-board.vala:663
 msgid "Hard Difficulty"
 msgstr "Zailtasun zaila"
 
-#: lib/sudoku-board.vala:652
+#: lib/sudoku-board.vala:665
 msgid "Very Hard Difficulty"
 msgstr "Zailtasun oso zaila"
 
-#: lib/sudoku-board.vala:654
+#: lib/sudoku-board.vala:667
 msgid "Custom Puzzle"
 msgstr "Puzzle pertsonalizatua"
 
@@ -262,20 +270,24 @@ msgid "Show the possible values for each cell"
 msgstr "Erakutsi gelaxka bakoitzeko balio posibleak"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:239
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Sartu duzun puzzlea ez da baliozko sudokua."
 
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:239
 msgid "Please enter a valid puzzle."
 msgstr "Sartu baliozko puzzlea."
 
+#: src/gnome-sudoku.vala:240 src/sudoku-printer.vala:46
+msgid "Close"
+msgstr "Itxi"
+
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:248
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Sartu duzun puzzleak hainbat ebazpen ditu."
 
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:248
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Baliozko sudoku puzzleek ebazpen bakarra daukate."
 
@@ -287,18 +299,18 @@ msgstr "At_zera"
 msgid "Play _Anyway"
 msgstr "Jokatu _dena den"
 
-#: src/gnome-sudoku.vala:293
+#: src/gnome-sudoku.vala:292
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Ongi eginda! Puzzlea minutu %d-ean osatuta!"
 msgstr[1] "Ongi eginda! Puzzlea %d minututan osatuta!"
 
-#: src/gnome-sudoku.vala:297
-msgid "_Quit"
-msgstr "I_rten"
+#: src/gnome-sudoku.vala:296
+msgid "Quit"
+msgstr "Irten"
 
-#: src/gnome-sudoku.vala:298
+#: src/gnome-sudoku.vala:297
 msgid "Play _Again"
 msgstr "Jokatu _berriro"
 
@@ -306,8 +318,16 @@ msgstr "Jokatu _berriro"
 msgid "Reset the board to its original state?"
 msgstr "Berrezarri taula bere jatorriko egoerara?"
 
+#: src/gnome-sudoku.vala:408
+msgid "No"
+msgstr "Ez"
+
+#: src/gnome-sudoku.vala:409
+msgid "Yes"
+msgstr "Bai"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:502
+#: src/gnome-sudoku.vala:486
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -317,31 +337,35 @@ msgstr "Japoniako logika-puzzlea da.\n"
 "\n"
 "Puzzleak QQwing %s-(e)k sortuta"
 
-#: src/gnome-sudoku.vala:513
+#: src/gnome-sudoku.vala:496
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#: src/number-picker.vala:85
+#: src/number-picker.vala:87
 msgid "Clear"
 msgstr "Garbitu"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:47
+#: src/sudoku-printer.vala:45
 msgid "Error printing file:"
 msgstr "Errorea fitxategia inprimatzean:"
 
-#. Text on overlay when game is paused
-#: src/sudoku-view.vala:815
-msgid "Paused"
-msgstr "Pausatuta"
-
-#: src/sudoku-window.vala:155
+#: src/sudoku-window.vala:156
 msgid "Select Difficulty"
 msgstr "Hautatu zailtasuna"
 
-#: src/sudoku-window.vala:216
+#: src/sudoku-window.vala:219
 msgid "Create Puzzle"
 msgstr "Sortu puzzlea"
+
+#~ msgid "_Create your own puzzle"
+#~ msgstr "_Sortu zeure puzzlea"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Utzi"
+
+#~ msgid "Paused"
+#~ msgstr "Pausatuta"
 
 #~ msgid "Reset the board to its original state"
 #~ msgstr "Berrezarri taula bere jatorriko egoerara"
