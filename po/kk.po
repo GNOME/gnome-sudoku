@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2022-07-08 13:30+0000\n"
-"PO-Revision-Date: 2022-09-18 12:34+0600\n"
+"POT-Creation-Date: 2023-06-25 11:56+0000\n"
+"PO-Revision-Date: 2023-08-20 19:43+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "Language: kk\n"
@@ -16,89 +16,101 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/sudoku-window.ui:7
 msgid "_New Puzzle"
 msgstr "Ж_аңа ойын"
 
 #: data/sudoku-window.ui:11
+msgid "Create Custom Game"
+msgstr "Таңдауыңызша ойынды жасау"
+
+#: data/sudoku-window.ui:15
 msgid "_Clear Board"
 msgstr "Та_зарту"
 
-#: data/sudoku-window.ui:17 data/print-dialog.ui:38
+#: data/sudoku-window.ui:21 data/print-dialog.ui:77
 msgid "_Print"
 msgstr "Бас_паға шығару"
 
-#: data/sudoku-window.ui:20
+#: data/sudoku-window.ui:24
 msgid "Print _Current Puzzle…"
 msgstr "Ағ_ымдағы судоку баспаға шығару…"
 
-#: data/sudoku-window.ui:24
+#: data/sudoku-window.ui:28
 msgid "Print _Multiple Puzzles…"
 msgstr "_Бірнеше судоку баспаға шығару…"
 
-#: data/sudoku-window.ui:32
+#: data/sudoku-window.ui:36
 msgid "High_lighter"
 msgstr "Тү_спен ерекшелеу"
 
-#: data/sudoku-window.ui:36
+#: data/sudoku-window.ui:40
 msgid "_Warnings"
 msgstr "_Ескертулер"
 
-#: data/sudoku-window.ui:42
+#: data/sudoku-window.ui:46
 msgid "_Help"
 msgstr "_Көмек"
 
-#: data/sudoku-window.ui:46
+#: data/sudoku-window.ui:50
 msgid "_About Sudoku"
 msgstr "Судоку тур_алы"
 
-#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:495
-#: src/sudoku-window.vala:213
+#: data/sudoku-window.ui:56 data/sudoku-window.ui:64
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:489
+#: src/sudoku-window.vala:217
 msgid "Sudoku"
 msgstr "Судоку"
 
-#: data/sudoku-window.ui:73
+#: data/sudoku-window.ui:72
 msgid "Undo your last action"
 msgstr "Соңғы әрекетті болдырмау"
 
-#: data/sudoku-window.ui:94
+#: data/sudoku-window.ui:84
 msgid "Redo your last action"
 msgstr "Соңғы әрекетті қайталау"
 
-#: data/sudoku-window.ui:126
-msgid "Pause"
-msgstr "Аялдату"
-
-#: data/sudoku-window.ui:147
-msgid "Start playing the custom puzzle you have created"
-msgstr "Сіз жасаған таңдауыңызша ойжұмбақпен ойынды бастау"
-
-#: data/sudoku-window.ui:189
+#: data/sudoku-window.ui:96
 msgid "Go back to the current game"
 msgstr "Ағымдағы ойынға қайтып оралу"
 
-#: data/sudoku-window.ui:233 data/print-dialog.ui:157
-msgid "_Easy"
-msgstr "_Оңай"
+#: data/sudoku-window.ui:107
+msgid "Main Menu"
+msgstr "Басты мәзір"
 
-#: data/sudoku-window.ui:241 data/print-dialog.ui:172
-msgid "_Medium"
-msgstr "О_рташа"
+#: data/sudoku-window.ui:115
+msgid "Pause"
+msgstr "Аялдату"
 
-#: data/sudoku-window.ui:249 data/print-dialog.ui:188
-msgid "_Hard"
-msgstr "Қ_иын"
+#: data/sudoku-window.ui:127
+msgid "Start playing the custom puzzle you have created"
+msgstr "Сіз жасаған таңдауыңызша ойжұмбақпен ойынды бастау"
 
-#: data/sudoku-window.ui:257 data/print-dialog.ui:204
-msgid "_Very Hard"
-msgstr "Өте қи_ын"
+#: data/sudoku-window.ui:153
+msgid "Select Game Difficulty"
+msgstr "Ойын қиындығын таңдау"
 
-#: data/sudoku-window.ui:265
-msgid "_Create your own puzzle"
-msgstr "Өз ойжұмбағыңызды жа_сау"
+#: data/sudoku-window.ui:169 data/print-dialog.ui:58
+msgid "Easy"
+msgstr "Оңай"
+
+#: data/sudoku-window.ui:180 data/print-dialog.ui:59
+msgid "Medium"
+msgstr "Орташа"
+
+#: data/sudoku-window.ui:191 data/print-dialog.ui:60
+msgid "Hard"
+msgstr "Қиын"
+
+#: data/sudoku-window.ui:202 data/print-dialog.ui:61
+msgid "Very Hard"
+msgstr "Өте қиын"
+
+#: data/sudoku-window.ui:212
+msgid "Start Game"
+msgstr "Ойынды бастау"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -141,7 +153,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "GNOME судоку ойынын алдын ала қарау"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:72
+#: data/org.gnome.Sudoku.appdata.xml.in:74
 msgid "The GNOME Project"
 msgstr "GNOME жобасы"
 
@@ -191,66 +203,74 @@ msgstr ""
 "ал қосарланған сандар қызыл түспен ерекшеленеді"
 
 #: data/org.gnome.Sudoku.gschema.xml:33
+msgid "Additionally warn when correct solution is violated or not earmarked"
+msgstr "Дұрыс шешім бұзылған немесе тағайындалмаған кезде қосымша ескерту"
+
+#: data/org.gnome.Sudoku.gschema.xml:34
+msgid ""
+"Changes the background color of a square to red if the value does not match "
+"puzzle solution, or if no earmark matches the puzzle solution"
+msgstr ""
+"Мән ойжұмбақ шешіміне сәйкес келмесе немесе ойжұмбақ шешіміне ешқандай "
+"арнауыш сәйкес келмесе, шаршының фон түсін қызылға өзгертеді"
+
+#: data/org.gnome.Sudoku.gschema.xml:38
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Таңдалған ұяшық орналасқан жолды, бағанды және шаршыны бөлектеу"
 
-#: data/org.gnome.Sudoku.gschema.xml:37
+#: data/org.gnome.Sudoku.gschema.xml:42
 msgid "Width of the window in pixels"
 msgstr "Терезе ені, пиксельмен"
 
-#: data/org.gnome.Sudoku.gschema.xml:41
+#: data/org.gnome.Sudoku.gschema.xml:46
 msgid "Height of the window in pixels"
 msgstr "Терезе биіктігі, пиксельмен"
 
-#: data/org.gnome.Sudoku.gschema.xml:45
+#: data/org.gnome.Sudoku.gschema.xml:50
 msgid "true if the window is maximized"
 msgstr "терезе максималды болса, мәні true болады"
 
-#: data/org.gnome.Sudoku.gschema.xml:49
+#: data/org.gnome.Sudoku.gschema.xml:54
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Әрбір ұяшық үшін мүмкін мәндері бар түсіндірмелерді іске қосу"
 
-#: data/print-dialog.ui:18
+#: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
 msgstr "Бірнеше ойжұмбақты басып шығару"
 
-#: data/print-dialog.ui:27
-msgid "_Cancel"
-msgstr "Ба_с тарту"
+#: data/print-dialog.ui:28
+msgid "Number of Puzzles"
+msgstr "Ойжұмбақтар саны"
 
-#: data/print-dialog.ui:65
-msgid "_Number of puzzles"
-msgstr "Ойжұмбақтар са_ны"
+#: data/print-dialog.ui:41
+msgid "Number of puzzles per page"
+msgstr "Бір беттегі ойжұмбақтар саны"
 
-#: data/print-dialog.ui:101
-msgid "_Number of puzzles per page"
-msgstr "Бір беттегі ойжұмбақтар са_ны"
-
-#: data/print-dialog.ui:138
+#: data/print-dialog.ui:54
 msgid "Difficulty"
 msgstr "Қиындық"
 
-#: lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:657
 msgid "Unknown Difficulty"
 msgstr "Белгісіз қиындық"
 
-#: lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:659
 msgid "Easy Difficulty"
 msgstr "Оңай қиындық"
 
-#: lib/sudoku-board.vala:595
+#: lib/sudoku-board.vala:661
 msgid "Medium Difficulty"
 msgstr "Орташа қиындық"
 
-#: lib/sudoku-board.vala:597
+#: lib/sudoku-board.vala:663
 msgid "Hard Difficulty"
 msgstr "Жоғары қиындық"
 
-#: lib/sudoku-board.vala:599
+#: lib/sudoku-board.vala:665
 msgid "Very Hard Difficulty"
 msgstr "Өте жоғары қиындық"
 
-#: lib/sudoku-board.vala:601
+#: lib/sudoku-board.vala:667
 msgid "Custom Puzzle"
 msgstr "Таңдауыңызша өлшем"
 
@@ -265,51 +285,63 @@ msgid "Show the possible values for each cell"
 msgstr "Әрбір ұяшық үшін мүмкін мәндерді көрсету"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:231
+#: src/gnome-sudoku.vala:239
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Сіз енгізген ойжұмбақ жарамды судоку емес."
 
-#: src/gnome-sudoku.vala:231
+#: src/gnome-sudoku.vala:239
 msgid "Please enter a valid puzzle."
 msgstr "Жарамды ойжұмбақты енгізіңіз."
 
+#: src/gnome-sudoku.vala:240 src/sudoku-printer.vala:46
+msgid "Close"
+msgstr "Жабу"
+
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:248
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Сіз енгізген ойжұмбақтың бірнеше шешімі бар."
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:248
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Жарамды судоку ойжұмбақтарының тек бір шешімі бар."
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:249
 msgid "_Back"
 msgstr "Ар_тқа"
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:250
 msgid "Play _Anyway"
 msgstr "Со_нда да ойнау"
 
-#: src/gnome-sudoku.vala:286
+#: src/gnome-sudoku.vala:292
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Жарайсыз, сіз тапсырманы %d минутта орындадыңыз!"
 
-#: src/gnome-sudoku.vala:290
-msgid "_Quit"
-msgstr "_Шығу"
+#: src/gnome-sudoku.vala:296
+msgid "Quit"
+msgstr "Шығу"
 
-#: src/gnome-sudoku.vala:291
+#: src/gnome-sudoku.vala:297
 msgid "Play _Again"
 msgstr "Қ_айта ойнау"
 
-#: src/gnome-sudoku.vala:397
+#: src/gnome-sudoku.vala:407
 msgid "Reset the board to its original state?"
 msgstr "Тақтаны бастапқы күйіне қалпына келтіру керек пе?"
 
+#: src/gnome-sudoku.vala:408
+msgid "No"
+msgstr "Жоқ"
+
+#: src/gnome-sudoku.vala:409
+msgid "Yes"
+msgstr "Иә"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:492
+#: src/gnome-sudoku.vala:486
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -320,31 +352,35 @@ msgstr ""
 "\n"
 "Ойжұмбақтарды генерациялаған QQwing %s"
 
-#: src/gnome-sudoku.vala:503
+#: src/gnome-sudoku.vala:496
 msgid "translator-credits"
 msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 
-#: src/number-picker.vala:85
+#: src/number-picker.vala:87
 msgid "Clear"
 msgstr "Тазарту"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:47
+#: src/sudoku-printer.vala:45
 msgid "Error printing file:"
 msgstr "Файлды баспаға шығару қатесі:"
 
-#. Text on overlay when game is paused
-#: src/sudoku-view.vala:669
-msgid "Paused"
-msgstr "Аялдатылған"
-
-#: src/sudoku-window.vala:154
+#: src/sudoku-window.vala:156
 msgid "Select Difficulty"
 msgstr "Қиындықты таңдау"
 
-#: src/sudoku-window.vala:215
+#: src/sudoku-window.vala:219
 msgid "Create Puzzle"
 msgstr "Ойжұмбақты жасау"
+
+#~ msgid "_Create your own puzzle"
+#~ msgstr "Өз ойжұмбағыңызды жа_сау"
+
+#~ msgid "_Cancel"
+#~ msgstr "Ба_с тарту"
+
+#~ msgid "Paused"
+#~ msgstr "Аялдатылған"
 
 #~ msgid "Reset the board to its original state"
 #~ msgstr "Тақтаны бастапқы күйіне қалпына келтіру"
