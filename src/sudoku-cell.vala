@@ -172,6 +172,8 @@ private class SudokuCell : Widget
         if (is_fixed)
             this.add_css_class ("fixed");
 
+        this.button_controller.set_button (0 /* all buttons */);
+
         this.add_controller (this.button_controller);
         this.add_controller (this.long_press_controller);
         this.add_controller (this.key_controller);
