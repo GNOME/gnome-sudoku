@@ -75,7 +75,7 @@ public class SudokuView : Adw.Bin
                 attr_list = new Pango.AttrList ();
 
             attr_list.change (
-                Pango.AttrSize.new_absolute ((int) (this.get_allocated_width () * 0.125) * Pango.SCALE)
+                Pango.AttrSize.new_absolute ((int) (this.get_width () * 0.125) * Pango.SCALE)
             );
 
             this.paused.set_attributes (attr_list);
