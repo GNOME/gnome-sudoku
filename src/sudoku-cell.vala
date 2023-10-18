@@ -274,13 +274,19 @@ private class SudokuCell : Widget
             if (want_earmark && game.mode == GameMode.PLAY)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, key);
-                if (new_state)
-                    game.enable_earmark (row, col, key);
-                else
-                    game.disable_earmark (row, col, key);
 
                 if (earmark_picker != null)
+                {
                     earmark_picker.set_earmark (row, col, key - 1, new_state);
+                }
+                else
+                {
+                    if (new_state)
+                        game.enable_earmark (row, col, key);
+                    else
+                        game.disable_earmark (row, col, key);
+                    this.game.cell_changed (row, col, value, value);
+                }
             }
             else
             {
