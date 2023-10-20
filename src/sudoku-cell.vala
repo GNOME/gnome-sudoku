@@ -269,7 +269,7 @@ private class SudokuCell : Widget
             // check for earmark popover
             var number_picker = (NumberPicker) this.popover.get_child ();
 
-            bool want_earmark = (number_picker != null && number_picker.is_earmark) ||
+            bool want_earmark = (this.popover.visible && number_picker != null && number_picker.is_earmark) ||
                                 (state & ModifierType.CONTROL_MASK) > 0;
             if (want_earmark && game.mode == GameMode.PLAY)
             {
