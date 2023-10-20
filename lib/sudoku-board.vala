@@ -376,9 +376,28 @@ public class SudokuBoard : Object
         return solution[row, col];
     }
 
+    private int[,] fixed_cells_only ()
+    {
+        int[,] result = new int[rows, cols];
+
+        for (int row = 0; row < rows; row++)
+        {
+            for (int col = 0; col < cols; col++)
+            {
+                if (is_fixed[row, col])
+                    result[row, col] = cells[row, col];
+                else
+                    result[row, col] = 0;
+            }
+        }
+
+        return result;
+    }
+
     public void solve ()
     {
-        int[] solution_1d = convert_2d_to_1d (cells);
+        int[,] fixed_cells = fixed_cells_only ();
+        int[] solution_1d = convert_2d_to_1d (fixed_cells);
 
         if (QQwing.solve_puzzle (solution_1d))
             solution = convert_1d_to_2d (solution_1d);
