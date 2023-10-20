@@ -45,7 +45,7 @@ private class NumberPicker : Grid
         {
             for (var row = 0; row < board.block_rows; row++)
             {
-                int n = col + (2 - row) * board.block_cols + 1;
+                int n = col + ((board.block_rows - 1) - row) * board.block_cols + 1;
 
                 var button = earmark ? new ToggleButton () : new Button ();
                 button.focus_on_click = false;
@@ -144,6 +144,6 @@ private class NumberPicker : Grid
     private ToggleButton get_button_for (int number)
     {
         return (ToggleButton) this.get_child_at (number % board.block_cols,
-            2 - (number / board.block_rows));
+            (board.block_rows - 1) - (number / board.block_rows));
     }
 }
