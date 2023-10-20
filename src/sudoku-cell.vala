@@ -267,17 +267,17 @@ private class SudokuCell : Widget
         if (key >= 1 && key <= 9)
         {
             // check for earmark popover
-            var earmark_picker = (NumberPicker) this.popover.get_child ();
+            var number_picker = (NumberPicker) this.popover.get_child ();
 
-            bool want_earmark = (earmark_picker != null && earmark_picker.is_earmark) ||
+            bool want_earmark = (number_picker != null && number_picker.is_earmark) ||
                                 (state & ModifierType.CONTROL_MASK) > 0;
             if (want_earmark && game.mode == GameMode.PLAY)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, key);
 
-                if (earmark_picker != null)
+                if (number_picker != null)
                 {
-                    earmark_picker.set_earmark (row, col, key - 1, new_state);
+                    number_picker.set_earmark (row, col, key - 1, new_state);
                 }
                 else
                 {
@@ -604,3 +604,4 @@ private class SudokuCell : Widget
         label.set_attributes (attr_list);
     }
 }
+
