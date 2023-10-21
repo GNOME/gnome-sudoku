@@ -11,9 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.ro\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2020-12-31 18:10+0000\n"
-"PO-Revision-Date: 2021-01-02 13:21+0200\n"
-"Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
+"POT-Creation-Date: 2023-06-25 11:56+0000\n"
+"PO-Revision-Date: 2023-10-21 16:52+0300\n"
+"Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
+"gmail [dot] com>\n"
 "Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.4\n"
 "X-Launchpad-Export-Date: 2009-11-27 09:12+0000\n"
 
 #: data/sudoku-window.ui:7
@@ -29,82 +30,94 @@ msgid "_New Puzzle"
 msgstr "Puzzle _nou"
 
 #: data/sudoku-window.ui:11
+msgid "Create Custom Game"
+msgstr "Creează joc personalizat"
+
+#: data/sudoku-window.ui:15
 msgid "_Clear Board"
 msgstr "_Eliberează tabla"
 
-#: data/sudoku-window.ui:17 data/print-dialog.ui:38
+#: data/sudoku-window.ui:21 data/print-dialog.ui:77
 msgid "_Print"
 msgstr "Ti_părește"
 
-#: data/sudoku-window.ui:20
+#: data/sudoku-window.ui:24
 msgid "Print _Current Puzzle…"
 msgstr "Tipărește puzzle-ul _curent…"
 
-#: data/sudoku-window.ui:24
+#: data/sudoku-window.ui:28
 msgid "Print _Multiple Puzzles…"
 msgstr "Tipărește puzzle-uri _multiple…"
 
-#: data/sudoku-window.ui:32
+#: data/sudoku-window.ui:36
 msgid "High_lighter"
 msgstr "_Evidențiere"
 
-#: data/sudoku-window.ui:36
+#: data/sudoku-window.ui:40
 msgid "_Warnings"
 msgstr "_Avertismente"
 
-#: data/sudoku-window.ui:42
+#: data/sudoku-window.ui:46
 msgid "_Help"
 msgstr "_Ajutor"
 
-#: data/sudoku-window.ui:46
+#: data/sudoku-window.ui:50
 msgid "_About Sudoku"
 msgstr "_Despre Sudoku"
 
-#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:488
-#: src/sudoku-window.vala:212
+#: data/sudoku-window.ui:56 data/sudoku-window.ui:64
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:489
+#: src/sudoku-window.vala:217
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/sudoku-window.ui:73
+#: data/sudoku-window.ui:72
 msgid "Undo your last action"
 msgstr "Anulează ultima acțiune"
 
-#: data/sudoku-window.ui:94
+#: data/sudoku-window.ui:84
 msgid "Redo your last action"
 msgstr "Refă ultima acțiune"
 
-#: data/sudoku-window.ui:126
-msgid "Pause"
-msgstr "Pauză"
-
-#: data/sudoku-window.ui:147
-msgid "Start playing the custom puzzle you have created"
-msgstr "Începeți să jucați puzzle-ul personalizat pe care l-ați creat"
-
-#: data/sudoku-window.ui:189
+#: data/sudoku-window.ui:96
 msgid "Go back to the current game"
 msgstr "Navighează înapoi la jocul curent"
 
-#: data/sudoku-window.ui:233 data/print-dialog.ui:157
-msgid "_Easy"
-msgstr "_Simplu"
+#: data/sudoku-window.ui:107
+msgid "Main Menu"
+msgstr "Meniu principal"
 
-#: data/sudoku-window.ui:241 data/print-dialog.ui:172
-msgid "_Medium"
-msgstr "_Mediu"
+#: data/sudoku-window.ui:115
+msgid "Pause"
+msgstr "Pauză"
 
-#: data/sudoku-window.ui:249 data/print-dialog.ui:188
-msgid "_Hard"
-msgstr "_Dificil"
+#: data/sudoku-window.ui:127
+msgid "Start playing the custom puzzle you have created"
+msgstr "Începeți să jucați puzzle-ul personalizat pe care l-ați creat"
 
-#: data/sudoku-window.ui:257 data/print-dialog.ui:204
-msgid "_Very Hard"
-msgstr "_Foarte dificil"
+#: data/sudoku-window.ui:153
+msgid "Select Game Difficulty"
+msgstr "Selectați dificultatea jocului"
 
-#: data/sudoku-window.ui:265
-msgid "_Create your own puzzle"
-msgstr "_Creați propriul puzzle"
+#: data/sudoku-window.ui:169 data/print-dialog.ui:58
+msgid "Easy"
+msgstr "Simplu"
+
+#: data/sudoku-window.ui:180 data/print-dialog.ui:59
+msgid "Medium"
+msgstr "Mediu"
+
+#: data/sudoku-window.ui:191 data/print-dialog.ui:60
+msgid "Hard"
+msgstr "Dificil"
+
+#: data/sudoku-window.ui:202 data/print-dialog.ui:61
+msgid "Very Hard"
+msgstr "Foarte dificil"
+
+#: data/sudoku-window.ui:212
+msgid "Start Game"
+msgstr "Începe jocul"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -149,7 +162,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "O previzualizare de joc sudoku GNOME"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:63
+#: data/org.gnome.Sudoku.appdata.xml.in:74
 msgid "The GNOME Project"
 msgstr "Proiectul GNOME"
 
@@ -202,62 +215,76 @@ msgstr ""
 "număr și numerele duplicate sunt evidențiate cu roșu"
 
 #: data/org.gnome.Sudoku.gschema.xml:33
+msgid "Additionally warn when correct solution is violated or not earmarked"
+msgstr ""
+"În plus, avertizați când soluția corectă este încălcată sau nu este marcată"
+
+#: data/org.gnome.Sudoku.gschema.xml:34
+msgid ""
+"Changes the background color of a square to red if the value does not match "
+"puzzle solution, or if no earmark matches the puzzle solution"
+msgstr ""
+"Modifică culoarea de fundal a unui pătrat în roșu dacă valoarea nu se "
+"potrivește cu soluția puzzle-ului sau dacă niciun marcaj nu se potrivește cu "
+"soluția puzzle-ului"
+
+#: data/org.gnome.Sudoku.gschema.xml:38
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Evidențiază rândul, coloana și pătratul care conțin celula selectată"
 
-#: data/org.gnome.Sudoku.gschema.xml:37
+#: data/org.gnome.Sudoku.gschema.xml:42
 msgid "Width of the window in pixels"
 msgstr "Lățimea ferestrei în pixeli"
 
-#: data/org.gnome.Sudoku.gschema.xml:41
+#: data/org.gnome.Sudoku.gschema.xml:46
 msgid "Height of the window in pixels"
 msgstr "Înălțimea ferestrei în pixeli"
 
-#: data/org.gnome.Sudoku.gschema.xml:45
+#: data/org.gnome.Sudoku.gschema.xml:50
 msgid "true if the window is maximized"
 msgstr "adevărat dacă fereastra este maximizată"
 
-#: data/print-dialog.ui:18
+#: data/org.gnome.Sudoku.gschema.xml:54
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr "Inițializează marcajele cu valorile posibile pentru fiecare celulă"
+
+#: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
 msgstr "Tipărește puzzle-uri multiple"
 
-#: data/print-dialog.ui:27
-msgid "_Cancel"
-msgstr "_Anulează"
+#: data/print-dialog.ui:28
+msgid "Number of Puzzles"
+msgstr "Numărul de puzzle-uri"
 
-#: data/print-dialog.ui:65
-msgid "_Number of puzzles"
-msgstr "_Numărul de puzzle-uri"
+#: data/print-dialog.ui:41
+msgid "Number of puzzles per page"
+msgstr "Numărul de puzzle-uri pe pagină"
 
-#: data/print-dialog.ui:101
-msgid "_Number of puzzles per page"
-msgstr "_Numărul de puzzle-uri per pagină"
-
-#: data/print-dialog.ui:138
+#: data/print-dialog.ui:54
 msgid "Difficulty"
 msgstr "Dificultate"
 
-#: lib/sudoku-board.vala:591
+#: lib/sudoku-board.vala:657
 msgid "Unknown Difficulty"
 msgstr "Dificultate necunoscută"
 
-#: lib/sudoku-board.vala:593
+#: lib/sudoku-board.vala:659
 msgid "Easy Difficulty"
 msgstr "Dificultate simplă"
 
-#: lib/sudoku-board.vala:595
+#: lib/sudoku-board.vala:661
 msgid "Medium Difficulty"
 msgstr "Dificultate medie"
 
-#: lib/sudoku-board.vala:597
+#: lib/sudoku-board.vala:663
 msgid "Hard Difficulty"
 msgstr "Dificultate dificilă"
 
-#: lib/sudoku-board.vala:599
+#: lib/sudoku-board.vala:665
 msgid "Very Hard Difficulty"
 msgstr "Dificultate foarte dificilă"
 
-#: lib/sudoku-board.vala:601
+#: lib/sudoku-board.vala:667
 msgid "Custom Puzzle"
 msgstr "Puzzle personalizat"
 
@@ -272,32 +299,36 @@ msgid "Show the possible values for each cell"
 msgstr "Arată valorile posibile pentru fiecare celulă"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:239
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Puzzle-ul pe care l-ați introdus nu este un Sudoku valid."
 
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:239
 msgid "Please enter a valid puzzle."
 msgstr "Introduceți un puzzle valid."
 
+#: src/gnome-sudoku.vala:240 src/sudoku-printer.vala:46
+msgid "Close"
+msgstr "Închide"
+
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:248
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Puzzle-ul pe care l-ați introdus are soluții multiple."
 
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:248
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Puzzle-urile Sudoku valide au exact o soluție."
 
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:249
 msgid "_Back"
 msgstr "Î_napoi"
 
-#: src/gnome-sudoku.vala:236
+#: src/gnome-sudoku.vala:250
 msgid "Play _Anyway"
 msgstr "Joacă oricum"
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:292
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -305,20 +336,28 @@ msgstr[0] "Foarte bine, ați completat puzzle-ul în %d minut!"
 msgstr[1] "Foarte bine, ați completat puzzle-ul în %d minute!"
 msgstr[2] "Foarte bine, ați completat puzzle-ul în %d de minute!"
 
-#: src/gnome-sudoku.vala:283
-msgid "_Quit"
-msgstr "_Ieșire"
+#: src/gnome-sudoku.vala:296
+msgid "Quit"
+msgstr "Ieșire"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:297
 msgid "Play _Again"
 msgstr "Juc_ați din nou"
 
-#: src/gnome-sudoku.vala:390
+#: src/gnome-sudoku.vala:407
 msgid "Reset the board to its original state?"
 msgstr "Restabiliți tabla la starea ei originală?"
 
+#: src/gnome-sudoku.vala:408
+msgid "No"
+msgstr "Nu"
+
+#: src/gnome-sudoku.vala:409
+msgid "Yes"
+msgstr "Da"
+
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:485
+#: src/gnome-sudoku.vala:486
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -335,7 +374,7 @@ msgstr ""
 "Mugurel Tudor <mugurelu@gnome.ro>\n"
 "Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
 "Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
-"2019-2021\n"
+"2019-2021, 2023\n"
 "\n"
 "Launchpad Contributions:\n"
 "  Adi Roiban https://launchpad.net/~adiroiban\n"
@@ -353,27 +392,31 @@ msgstr ""
 "  Mugurel Tudor https://launchpad.net/~mugurelu-gnome\n"
 "  leandrud https://launchpad.net/~leandrud"
 
-#: src/number-picker.vala:85
+#: src/number-picker.vala:87
 msgid "Clear"
 msgstr "Eliberează"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:47
+#: src/sudoku-printer.vala:45
 msgid "Error printing file:"
 msgstr "Eroare la tipărirea fișierului:"
 
-#. Text on overlay when game is paused
-#: src/sudoku-view.vala:634
-msgid "Paused"
-msgstr "Pauzat"
-
-#: src/sudoku-window.vala:153
+#: src/sudoku-window.vala:156
 msgid "Select Difficulty"
 msgstr "Selectați dificultatea"
 
-#: src/sudoku-window.vala:214
+#: src/sudoku-window.vala:219
 msgid "Create Puzzle"
 msgstr "Creează un puzzle"
+
+#~ msgid "_Create your own puzzle"
+#~ msgstr "_Creați propriul puzzle"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Anulează"
+
+#~ msgid "Paused"
+#~ msgstr "Pauzat"
 
 #~ msgid "Reset the board to its original state"
 #~ msgstr "Restabilește tabla la starea ei originală"
