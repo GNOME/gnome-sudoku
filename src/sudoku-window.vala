@@ -223,6 +223,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         play_pause_button.show ();
         play_pause_button.icon_name = game.paused ? "media-playback-start-symbolic" : "media-playback-pause-symbolic";
+        play_pause_button.tooltip_text = game.paused ? _("Play") : _("Pause");
     }
 
     private void tick_cb ()
