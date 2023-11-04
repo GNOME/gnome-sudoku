@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2023-06-25 11:56+0000\n"
-"PO-Revision-Date: 2023-08-23 17:12+0200\n"
+"POT-Creation-Date: 2023-10-27 22:21+0000\n"
+"PO-Revision-Date: 2023-11-03 22:03+0100\n"
 "Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
 "Language-Team: Catalan <Catalan <info@softcatala.org>>\n"
 "Language: ca\n"
@@ -26,16 +26,16 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle"
-msgstr "Trencaclosques _nou"
+msgid "_New Puzzle…"
+msgstr "Trencaclosques _nou…"
 
 #: data/sudoku-window.ui:11
-msgid "Create Custom Game"
-msgstr "Crea un joc personalitzat"
+msgid "Create Custom Game…"
+msgstr "Crea un joc personalitzat…"
 
 #: data/sudoku-window.ui:15
-msgid "_Clear Board"
-msgstr "_Neteja el tauler"
+msgid "_Clear Board…"
+msgstr "_Neteja el tauler…"
 
 #: data/sudoku-window.ui:21 data/print-dialog.ui:77
 msgid "_Print"
@@ -72,54 +72,50 @@ msgid "Sudoku"
 msgstr "Sudoku"
 
 #: data/sudoku-window.ui:72
-msgid "Undo your last action"
-msgstr "Desfés l'última acció"
+msgid "Undo Action"
+msgstr "Desfés l'acció"
 
 #: data/sudoku-window.ui:84
-msgid "Redo your last action"
-msgstr "Refés l'última acció"
+msgid "Redo Action"
+msgstr "Refés l'acció"
 
 #: data/sudoku-window.ui:96
-msgid "Go back to the current game"
-msgstr "Torna a la partida actual"
+msgid "Back"
+msgstr "Enrere"
 
 #: data/sudoku-window.ui:107
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: data/sudoku-window.ui:115
-msgid "Pause"
-msgstr "Pausa"
+#: data/sudoku-window.ui:126
+msgid "Play Custom Puzzle"
+msgstr "Juga amb un trencaclosques personalitzat"
 
-#: data/sudoku-window.ui:127
-msgid "Start playing the custom puzzle you have created"
-msgstr "Inicieu el joc amb el trencaclosques personalitzat que heu creat"
-
-#: data/sudoku-window.ui:153
+#: data/sudoku-window.ui:152
 msgid "Select Game Difficulty"
 msgstr "Selecciona la dificultat del joc"
 
 # N.T.: En femení, fa referència a la dificultat
-#: data/sudoku-window.ui:169 data/print-dialog.ui:58
-msgid "Easy"
-msgstr "Fàcil"
+#: data/sudoku-window.ui:168
+msgid "_Easy"
+msgstr "_Fàcil"
 
 # N.T.: En femení, fa referència a la dificultat
-#: data/sudoku-window.ui:180 data/print-dialog.ui:59
-msgid "Medium"
-msgstr "Mitjana"
+#: data/sudoku-window.ui:180
+msgid "_Medium"
+msgstr "_Mitjana"
 
-#: data/sudoku-window.ui:191 data/print-dialog.ui:60
-msgid "Hard"
-msgstr "Difícil"
+#: data/sudoku-window.ui:192
+msgid "_Hard"
+msgstr "_Difícil"
 
-#: data/sudoku-window.ui:202 data/print-dialog.ui:61
-msgid "Very Hard"
-msgstr "Molt difícil"
+#: data/sudoku-window.ui:204
+msgid "_Very Hard"
+msgstr "_Extremament difícil"
 
-#: data/sudoku-window.ui:212
-msgid "Start Game"
-msgstr "Inicia el joc"
+#: data/sudoku-window.ui:215
+msgid "_Start Game"
+msgstr "_Inicia el joc"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -163,7 +159,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Demostració de Gnome sudoku"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:74
+#: data/org.gnome.Sudoku.appdata.xml.in:78
 msgid "The GNOME Project"
 msgstr "El projecte GNOME"
 
@@ -218,7 +214,7 @@ msgstr ""
 #: data/org.gnome.Sudoku.gschema.xml:33
 msgid "Additionally warn when correct solution is violated or not earmarked"
 msgstr ""
-"Addicionalment, avisa quan es violi o no s'inclogui la solució correcta."
+"Addicionalment, avisa quan es violi o no s'inclogui la solució correcta"
 
 #: data/org.gnome.Sudoku.gschema.xml:34
 msgid ""
@@ -265,27 +261,45 @@ msgstr "Nombre de trencaclosques per pàgina"
 msgid "Difficulty"
 msgstr "Dificultat"
 
-#: lib/sudoku-board.vala:657
+# N.T.: En femení, fa referència a la dificultat
+#: data/print-dialog.ui:58
+msgid "Easy"
+msgstr "Fàcil"
+
+# N.T.: En femení, fa referència a la dificultat
+#: data/print-dialog.ui:59
+msgid "Medium"
+msgstr "Mitjana"
+
+#: data/print-dialog.ui:60
+msgid "Hard"
+msgstr "Difícil"
+
+#: data/print-dialog.ui:61
+msgid "Very Hard"
+msgstr "Molt difícil"
+
+#: lib/sudoku-board.vala:676
 msgid "Unknown Difficulty"
 msgstr "Dificultat desconeguda"
 
-#: lib/sudoku-board.vala:659
+#: lib/sudoku-board.vala:678
 msgid "Easy Difficulty"
 msgstr "Dificultat fàcil"
 
-#: lib/sudoku-board.vala:661
+#: lib/sudoku-board.vala:680
 msgid "Medium Difficulty"
 msgstr "Dificultat mitjana"
 
-#: lib/sudoku-board.vala:663
+#: lib/sudoku-board.vala:682
 msgid "Hard Difficulty"
 msgstr "Dificultat alta"
 
-#: lib/sudoku-board.vala:665
+#: lib/sudoku-board.vala:684
 msgid "Very Hard Difficulty"
 msgstr "Dificultat molt alta"
 
-#: lib/sudoku-board.vala:667
+#: lib/sudoku-board.vala:686
 msgid "Custom Puzzle"
 msgstr "Trencaclosques personalitzat"
 
@@ -395,6 +409,20 @@ msgstr "Selecciona la dificultat"
 #: src/sudoku-window.vala:219
 msgid "Create Puzzle"
 msgstr "Crea un trencaclosques"
+
+#: src/sudoku-window.vala:226
+msgid "Play"
+msgstr "Juga"
+
+#: src/sudoku-window.vala:226
+msgid "Pause"
+msgstr "Pausa"
+
+#~ msgid "Go back to the current game"
+#~ msgstr "Torna a la partida actual"
+
+#~ msgid "Start playing the custom puzzle you have created"
+#~ msgstr "Inicieu el joc amb el trencaclosques personalitzat que heu creat"
 
 #~ msgid "_Create your own puzzle"
 #~ msgstr "_Crea el teu propi trencaclosques"
