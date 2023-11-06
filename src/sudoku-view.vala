@@ -162,42 +162,54 @@ public class SudokuView : Adw.Bin
         ShortcutFunc up_func = (self) => {
             var view = (SudokuView) self;
 
+            if (view.selected_row == -1 || view.selected_col == -1)
+                return Gdk.EVENT_PROPAGATE;
+
             if (view.selected_row == 0)
                 view.cells[8, view.selected_col].grab_focus ();
             else
                 view.cells[view.selected_row - 1, view.selected_col].grab_focus ();
 
-            return true;
+            return Gdk.EVENT_STOP;
         };
         ShortcutFunc down_func = (self) => {
             var view = (SudokuView) self;
+
+            if (view.selected_row == -1 || view.selected_col == -1)
+                return Gdk.EVENT_PROPAGATE;
 
             if (view.selected_row == 8)
                 view.cells[0, view.selected_col].grab_focus ();
             else
                 view.cells[view.selected_row + 1, view.selected_col].grab_focus ();
 
-            return true;
+            return Gdk.EVENT_STOP;
         };
         ShortcutFunc left_func = (self) => {
             var view = (SudokuView) self;
+
+            if (view.selected_row == -1 || view.selected_col == -1)
+                return Gdk.EVENT_PROPAGATE;
 
             if (view.selected_col == 0)
                 view.cells[view.selected_row, 8].grab_focus ();
             else
                 view.cells[view.selected_row, view.selected_col - 1].grab_focus ();
 
-            return true;
+            return Gdk.EVENT_STOP;
         };
         ShortcutFunc right_func = (self) => {
             var view = (SudokuView) self;
+
+            if (view.selected_row == -1 || view.selected_col == -1)
+                return Gdk.EVENT_PROPAGATE;
 
             if (view.selected_col == 8)
                 view.cells[view.selected_row, 0].grab_focus ();
             else
                 view.cells[view.selected_row, view.selected_col + 1].grab_focus ();
 
-            return true;
+            return Gdk.EVENT_STOP;
         };
 
         add_binding (Gdk.Key.Up, 0, up_func, null);
