@@ -491,43 +491,45 @@ private class SudokuCell : Widget
     public void check_warnings ()
     {
         bool error = false;
+        int solution = game.board.get_solution (row, col);
+        var marks = game.board.get_earmarks (row, col);
 
         if (show_warnings &&
             this.value == 0 &&
             game.board.count_possibilities (row, col) == 0)
-            value_label.set_label ("X");
-        else
-            value_label.set_label (value.to_string ());
-
-        if (warn_incorrect_solution ())
         {
-            int solution = game.board.get_solution (row, col);
-            if (this.value != 0)
-            {
-                error = value != solution;
-            }
-            else
-            {
-                var marks = game.board.get_earmarks (row, col);
-                for (int num = 1; num <= marks.length; num++)
-                {
-                    if (marks[num - 1])
-                    {
-                        if (num != solution)
-                            earmark_labels[num - 1].add_css_class ("error");
-                    }
-                }
-            }
+            value_label.set_label ("X");
         }
+        else
+            value_label.set_label (this.value.to_string ());
+
+        if (warn_incorrect_solution () && this.value != 0)
+            error = this.value != solution;
 
         if (show_warnings &&
             game.board.broken_coords.contains (Coord (row, col)))
+        {
             error = true;
+        }
 
         if (error)
             add_css_class ("error");
         else
             remove_css_class ("error");
+
+        if (this.value != 0)
+            return;
+
+        for (int num = 1; num <= marks.length; num++)
+        {
+            if (marks[num - 1])
+            {
+                if (!game.board.is_possible (row, col, num) || warn_incorrect_solution () && num != solution)
+                    earmark_labels[num - 1].add_css_class ("error");
+                else
+                    earmark_labels[num - 1].remove_css_class ("error");
+            }
+        }
     }
 
     // Return true if the user is to be warned when the value or earmarks are
