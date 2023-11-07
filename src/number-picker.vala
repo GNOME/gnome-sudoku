@@ -131,12 +131,14 @@ private class NumberPicker : Grid
     }
 
     public void set_earmarks (int row, int col)
+        requires (is_earmark)
     {
         for (var i = 0; i < board.max_val; i++)
             set_earmark (row, col, i, board.is_earmark_enabled (row, col, i + 1));
     }
 
     public void set_earmark (int row, int col, int index, bool state)
+        requires (is_earmark)
     {
         get_button_for (index).set_active (state);
     }

@@ -275,7 +275,7 @@ private class SudokuCell : Widget
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, key);
 
-                if (number_picker != null)
+                if (number_picker != null && number_picker.is_earmark)
                 {
                     number_picker.set_earmark (row, col, key - 1, new_state);
                 }
