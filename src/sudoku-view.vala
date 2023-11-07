@@ -29,7 +29,7 @@ public class SudokuView : Adw.Bin
     private SudokuCell[,] cells;
     private Label paused;
 
-    private bool previous_board_broken_state = false;
+    private bool previous_board_broken = false;
 
     private Overlay overlay;
     private Grid grid;
@@ -138,8 +138,8 @@ public class SudokuView : Adw.Bin
                 });
 
                 cell.notify["value"].connect ((s, p)=> {
-                    if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken_state)
-                        previous_board_broken_state = game.board.broken;
+                    if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken)
+                        previous_board_broken = game.board.broken;
 
                     this.update_highlights ();
                     cell.check_warnings ();
