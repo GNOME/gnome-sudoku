@@ -34,8 +34,8 @@ public class SudokuView : Adw.Bin
     private Overlay overlay;
     private Grid grid;
 
-    public int selected_row = 0;
-    public int selected_col = 0;
+    public int selected_row { get; private set; default = 0; }
+    public int selected_col { get; private set; default = 0; }
     private void set_selected (int cell_row, int cell_col)
     {
         if (selected_row >= 0 && selected_col >= 0)
