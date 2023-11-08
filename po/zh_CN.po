@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2023-06-25 11:56+0000\n"
-"PO-Revision-Date: 2023-10-06 10:24+0800\n"
+"POT-Creation-Date: 2023-10-27 22:21+0000\n"
+"PO-Revision-Date: 2023-11-08 07:10+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Gtranslator 45.2\n"
+"X-Generator: Gtranslator 45.3\n"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle"
-msgstr "新谜题(_N)"
+msgid "_New Puzzle…"
+msgstr "新谜题(_N)…"
 
 #: data/sudoku-window.ui:11
-msgid "Create Custom Game"
-msgstr "创建自定义游戏"
+msgid "Create Custom Game…"
+msgstr "创建自定义游戏…"
 
 #: data/sudoku-window.ui:15
-msgid "_Clear Board"
-msgstr "清除盘面(_C)"
+msgid "_Clear Board…"
+msgstr "清除盘面(_C)…"
 
 #: data/sudoku-window.ui:21 data/print-dialog.ui:77
 msgid "_Print"
@@ -67,52 +67,48 @@ msgid "Sudoku"
 msgstr "数独"
 
 #: data/sudoku-window.ui:72
-msgid "Undo your last action"
-msgstr "撤消最后一步"
+msgid "Undo Action"
+msgstr "撤消动作"
 
 #: data/sudoku-window.ui:84
-msgid "Redo your last action"
-msgstr "重做最后一步"
+msgid "Redo Action"
+msgstr "重做动作"
 
 #: data/sudoku-window.ui:96
-msgid "Go back to the current game"
-msgstr "返回当前游戏"
+msgid "Back"
+msgstr "返回"
 
 #: data/sudoku-window.ui:107
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: data/sudoku-window.ui:115
-msgid "Pause"
-msgstr "暂停"
+#: data/sudoku-window.ui:126
+msgid "Play Custom Puzzle"
+msgstr "玩自定义谜题"
 
-#: data/sudoku-window.ui:127
-msgid "Start playing the custom puzzle you have created"
-msgstr "开始玩你自己创建的谜题"
-
-#: data/sudoku-window.ui:153
+#: data/sudoku-window.ui:152
 msgid "Select Game Difficulty"
 msgstr "选择游戏难度"
 
-#: data/sudoku-window.ui:169 data/print-dialog.ui:58
-msgid "Easy"
-msgstr "简单"
+#: data/sudoku-window.ui:168
+msgid "_Easy"
+msgstr "简单(_E)"
 
-#: data/sudoku-window.ui:180 data/print-dialog.ui:59
-msgid "Medium"
-msgstr "中等"
+#: data/sudoku-window.ui:180
+msgid "_Medium"
+msgstr "正常(_M)"
 
-#: data/sudoku-window.ui:191 data/print-dialog.ui:60
-msgid "Hard"
-msgstr "困难"
+#: data/sudoku-window.ui:192
+msgid "_Hard"
+msgstr "困难(_H)"
 
-#: data/sudoku-window.ui:202 data/print-dialog.ui:61
-msgid "Very Hard"
-msgstr "非常困难"
+#: data/sudoku-window.ui:204
+msgid "_Very Hard"
+msgstr "非常困难(_V)"
 
-#: data/sudoku-window.ui:212
-msgid "Start Game"
-msgstr "开始游戏"
+#: data/sudoku-window.ui:215
+msgid "_Start Game"
+msgstr "开始游戏(_S)"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -151,7 +147,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "GNOME 数独游戏预览"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:74
+#: data/org.gnome.Sudoku.appdata.xml.in:78
 msgid "The GNOME Project"
 msgstr "GNOME 项目"
 
@@ -243,27 +239,43 @@ msgstr "每页谜题数量"
 msgid "Difficulty"
 msgstr "难度"
 
-#: lib/sudoku-board.vala:657
+#: data/print-dialog.ui:58
+msgid "Easy"
+msgstr "简单"
+
+#: data/print-dialog.ui:59
+msgid "Medium"
+msgstr "中等"
+
+#: data/print-dialog.ui:60
+msgid "Hard"
+msgstr "困难"
+
+#: data/print-dialog.ui:61
+msgid "Very Hard"
+msgstr "非常困难"
+
+#: lib/sudoku-board.vala:676
 msgid "Unknown Difficulty"
 msgstr "未知难度"
 
-#: lib/sudoku-board.vala:659
+#: lib/sudoku-board.vala:678
 msgid "Easy Difficulty"
 msgstr "简易难度"
 
-#: lib/sudoku-board.vala:661
+#: lib/sudoku-board.vala:680
 msgid "Medium Difficulty"
 msgstr "中等难度"
 
-#: lib/sudoku-board.vala:663
+#: lib/sudoku-board.vala:682
 msgid "Hard Difficulty"
 msgstr "困难"
 
-#: lib/sudoku-board.vala:665
+#: lib/sudoku-board.vala:684
 msgid "Very Hard Difficulty"
 msgstr "非常困难"
 
-#: lib/sudoku-board.vala:667
+#: lib/sudoku-board.vala:686
 msgid "Custom Puzzle"
 msgstr "自定义谜题"
 
@@ -371,6 +383,20 @@ msgstr "选择难度"
 #: src/sudoku-window.vala:219
 msgid "Create Puzzle"
 msgstr "创建谜题"
+
+#: src/sudoku-window.vala:226
+msgid "Play"
+msgstr "游玩"
+
+#: src/sudoku-window.vala:226
+msgid "Pause"
+msgstr "暂停"
+
+#~ msgid "Go back to the current game"
+#~ msgstr "返回当前游戏"
+
+#~ msgid "Start playing the custom puzzle you have created"
+#~ msgstr "开始玩你自己创建的谜题"
 
 #~ msgid "_Create your own puzzle"
 #~ msgstr "生成你自己的谜题(_C)"
