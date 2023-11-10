@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2023-06-23 22:04+0000\n"
-"PO-Revision-Date: 2023-06-25 12:15+0200\n"
+"POT-Creation-Date: 2023-10-27 22:21+0000\n"
+"PO-Revision-Date: 2023-11-11 00:31+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -21,19 +21,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle"
-msgstr "_Nytt pussel"
+msgid "_New Puzzle…"
+msgstr "_Nytt pussel…"
 
 #: data/sudoku-window.ui:11
-msgid "Create Custom Game"
-msgstr "Skapa anpassat spel"
+msgid "Create Custom Game…"
+msgstr "Skapa anpassat spel…"
 
 #: data/sudoku-window.ui:15
-msgid "_Clear Board"
-msgstr "_Töm bräde"
+msgid "_Clear Board…"
+msgstr "_Töm bräde…"
 
 #: data/sudoku-window.ui:21 data/print-dialog.ui:77
 msgid "_Print"
@@ -70,52 +70,48 @@ msgid "Sudoku"
 msgstr "Sudoku"
 
 #: data/sudoku-window.ui:72
-msgid "Undo your last action"
-msgstr "Ångra din senaste åtgärd"
+msgid "Undo Action"
+msgstr "Ångra åtgärd"
 
 #: data/sudoku-window.ui:84
-msgid "Redo your last action"
-msgstr "Gör om din senaste åtgärd"
+msgid "Redo Action"
+msgstr "Gör om åtgärd"
 
 #: data/sudoku-window.ui:96
-msgid "Go back to the current game"
-msgstr "Återvänd till aktuellt spel"
+msgid "Back"
+msgstr "Bakåt"
 
 #: data/sudoku-window.ui:107
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: data/sudoku-window.ui:115
-msgid "Pause"
-msgstr "Paus"
+#: data/sudoku-window.ui:126
+msgid "Play Custom Puzzle"
+msgstr "Spela anpassat pussel"
 
-#: data/sudoku-window.ui:127
-msgid "Start playing the custom puzzle you have created"
-msgstr "Börja spela det anpassade pusslet som du har skapat"
-
-#: data/sudoku-window.ui:153
+#: data/sudoku-window.ui:152
 msgid "Select Game Difficulty"
 msgstr "Välj svårighetsgrad på spelet"
 
-#: data/sudoku-window.ui:169 data/print-dialog.ui:58
-msgid "Easy"
-msgstr "Enkel"
+#: data/sudoku-window.ui:168
+msgid "_Easy"
+msgstr "_Enkel"
 
-#: data/sudoku-window.ui:180 data/print-dialog.ui:59
-msgid "Medium"
-msgstr "Medel"
+#: data/sudoku-window.ui:180
+msgid "_Medium"
+msgstr "_Medel"
 
-#: data/sudoku-window.ui:191 data/print-dialog.ui:60
-msgid "Hard"
-msgstr "Svår"
+#: data/sudoku-window.ui:192
+msgid "_Hard"
+msgstr "S_vår"
 
-#: data/sudoku-window.ui:202 data/print-dialog.ui:61
-msgid "Very Hard"
-msgstr "Mycket svår"
+#: data/sudoku-window.ui:204
+msgid "_Very Hard"
+msgstr "M_ycket svår"
 
-#: data/sudoku-window.ui:212
-msgid "Start Game"
-msgstr "Starta spel"
+#: data/sudoku-window.ui:215
+msgid "_Start Game"
+msgstr "_Starta spel"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -158,7 +154,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "En förhandsvisning av GNOME Sudoku"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:74
+#: data/org.gnome.Sudoku.appdata.xml.in:78
 msgid "The GNOME Project"
 msgstr "GNOME-projektet"
 
@@ -256,27 +252,43 @@ msgstr "Antal pussel per sida"
 msgid "Difficulty"
 msgstr "Svårighetsgrad"
 
-#: lib/sudoku-board.vala:657
+#: data/print-dialog.ui:58
+msgid "Easy"
+msgstr "Enkel"
+
+#: data/print-dialog.ui:59
+msgid "Medium"
+msgstr "Medel"
+
+#: data/print-dialog.ui:60
+msgid "Hard"
+msgstr "Svår"
+
+#: data/print-dialog.ui:61
+msgid "Very Hard"
+msgstr "Mycket svår"
+
+#: lib/sudoku-board.vala:676
 msgid "Unknown Difficulty"
 msgstr "Okänd svårighetsgrad"
 
-#: lib/sudoku-board.vala:659
+#: lib/sudoku-board.vala:678
 msgid "Easy Difficulty"
 msgstr "Enkel svårighetsgrad"
 
-#: lib/sudoku-board.vala:661
+#: lib/sudoku-board.vala:680
 msgid "Medium Difficulty"
 msgstr "Medelsvår svårighetsgrad"
 
-#: lib/sudoku-board.vala:663
+#: lib/sudoku-board.vala:682
 msgid "Hard Difficulty"
 msgstr "Svår svårighetsgrad"
 
-#: lib/sudoku-board.vala:665
+#: lib/sudoku-board.vala:684
 msgid "Very Hard Difficulty"
 msgstr "Mycket svår svårighetsgrad"
 
-#: lib/sudoku-board.vala:667
+#: lib/sudoku-board.vala:686
 msgid "Custom Puzzle"
 msgstr "Anpassat pussel"
 
@@ -389,3 +401,17 @@ msgstr "Välj svårighetsgrad"
 #: src/sudoku-window.vala:219
 msgid "Create Puzzle"
 msgstr "Skapa pussel"
+
+#: src/sudoku-window.vala:226
+msgid "Play"
+msgstr "Spela"
+
+#: src/sudoku-window.vala:226
+msgid "Pause"
+msgstr "Pausa"
+
+#~ msgid "Go back to the current game"
+#~ msgstr "Återvänd till aktuellt spel"
+
+#~ msgid "Start playing the custom puzzle you have created"
+#~ msgstr "Börja spela det anpassade pusslet som du har skapat"
