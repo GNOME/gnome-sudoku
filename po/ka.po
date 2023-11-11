@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2023-06-23 22:04+0000\n"
-"PO-Revision-Date: 2023-06-24 08:05+0200\n"
+"POT-Creation-Date: 2023-10-27 22:21+0000\n"
+"PO-Revision-Date: 2023-11-11 21:08+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -16,18 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle"
+msgid "_New Puzzle…"
 msgstr ""
 
 #: data/sudoku-window.ui:11
-msgid "Create Custom Game"
+msgid "Create Custom Game…"
 msgstr ""
 
 #: data/sudoku-window.ui:15
-msgid "_Clear Board"
+msgid "_Clear Board…"
 msgstr ""
 
 #: data/sudoku-window.ui:21 data/print-dialog.ui:77
@@ -65,52 +65,48 @@ msgid "Sudoku"
 msgstr "Sudoku"
 
 #: data/sudoku-window.ui:72
-msgid "Undo your last action"
+msgid "Undo Action"
 msgstr ""
 
 #: data/sudoku-window.ui:84
-msgid "Redo your last action"
+msgid "Redo Action"
 msgstr ""
 
 #: data/sudoku-window.ui:96
-msgid "Go back to the current game"
-msgstr "მიმდინარე თამაშზე დაბრუნება"
+msgid "Back"
+msgstr "უკან"
 
 #: data/sudoku-window.ui:107
 msgid "Main Menu"
 msgstr "მთავარი მენიუ"
 
-#: data/sudoku-window.ui:115
-msgid "Pause"
-msgstr "შეჩერება"
-
-#: data/sudoku-window.ui:127
-msgid "Start playing the custom puzzle you have created"
+#: data/sudoku-window.ui:126
+msgid "Play Custom Puzzle"
 msgstr ""
 
-#: data/sudoku-window.ui:153
+#: data/sudoku-window.ui:152
 msgid "Select Game Difficulty"
 msgstr "აირჩიეთ თქვენი სირთულე"
 
-#: data/sudoku-window.ui:169 data/print-dialog.ui:58
-msgid "Easy"
-msgstr "ადვილი"
+#: data/sudoku-window.ui:168
+msgid "_Easy"
+msgstr "_ადვილი"
 
-#: data/sudoku-window.ui:180 data/print-dialog.ui:59
-msgid "Medium"
-msgstr "საშუალო"
+#: data/sudoku-window.ui:180
+msgid "_Medium"
+msgstr "_საშუალო"
 
-#: data/sudoku-window.ui:191 data/print-dialog.ui:60
-msgid "Hard"
-msgstr "ძნელი"
+#: data/sudoku-window.ui:192
+msgid "_Hard"
+msgstr "ძ_ნელი"
 
-#: data/sudoku-window.ui:202 data/print-dialog.ui:61
-msgid "Very Hard"
-msgstr "ძალიან ძნელი"
+#: data/sudoku-window.ui:204
+msgid "_Very Hard"
+msgstr "ძ_ალიან ძნელი"
 
-#: data/sudoku-window.ui:212
-msgid "Start Game"
-msgstr "თამაშის დაწყება"
+#: data/sudoku-window.ui:215
+msgid "_Start Game"
+msgstr "თამაშის _დაწყება"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -144,7 +140,7 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr ""
 
-#: data/org.gnome.Sudoku.appdata.xml.in:74
+#: data/org.gnome.Sudoku.appdata.xml.in:78
 msgid "The GNOME Project"
 msgstr "პროექტი \"GNOME\""
 
@@ -235,27 +231,43 @@ msgstr ""
 msgid "Difficulty"
 msgstr "სირთულე"
 
-#: lib/sudoku-board.vala:657
+#: data/print-dialog.ui:58
+msgid "Easy"
+msgstr "ადვილი"
+
+#: data/print-dialog.ui:59
+msgid "Medium"
+msgstr "საშუალო"
+
+#: data/print-dialog.ui:60
+msgid "Hard"
+msgstr "ძნელი"
+
+#: data/print-dialog.ui:61
+msgid "Very Hard"
+msgstr "ძალიან ძნელი"
+
+#: lib/sudoku-board.vala:676
 msgid "Unknown Difficulty"
 msgstr ""
 
-#: lib/sudoku-board.vala:659
+#: lib/sudoku-board.vala:678
 msgid "Easy Difficulty"
 msgstr ""
 
-#: lib/sudoku-board.vala:661
+#: lib/sudoku-board.vala:680
 msgid "Medium Difficulty"
 msgstr ""
 
-#: lib/sudoku-board.vala:663
+#: lib/sudoku-board.vala:682
 msgid "Hard Difficulty"
 msgstr ""
 
-#: lib/sudoku-board.vala:665
+#: lib/sudoku-board.vala:684
 msgid "Very Hard Difficulty"
 msgstr ""
 
-#: lib/sudoku-board.vala:667
+#: lib/sudoku-board.vala:686
 msgid "Custom Puzzle"
 msgstr ""
 
@@ -355,6 +367,17 @@ msgstr "აირჩიეთ სირთულე"
 #: src/sudoku-window.vala:219
 msgid "Create Puzzle"
 msgstr "პაზლის შექმნა"
+
+#: src/sudoku-window.vala:226
+msgid "Play"
+msgstr "თამაში"
+
+#: src/sudoku-window.vala:226
+msgid "Pause"
+msgstr "შეჩერება"
+
+#~ msgid "Go back to the current game"
+#~ msgstr "მიმდინარე თამაშზე დაბრუნება"
 
 #~ msgid "_Cancel"
 #~ msgstr "გაუქმება"
