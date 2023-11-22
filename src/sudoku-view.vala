@@ -137,12 +137,16 @@ public class SudokuView : Adw.Bin
                     cell.check_warnings ();
                 });
 
-                cell.notify["value"].connect ((s, p)=> {
+                cell.notify["value"].connect ((s, p) => {
                     if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken)
                         previous_board_broken = game.board.broken;
 
                     this.update_highlights ();
                     cell.check_warnings ();
+                });
+
+                cell.will_open_popover.connect (() => {
+                    dismiss_popovers ();
                 });
 
                 cells[row, col] = cell;
@@ -170,6 +174,7 @@ public class SudokuView : Adw.Bin
             else
                 view.cells[view.selected_row - 1, view.selected_col].grab_focus ();
 
+            view.dismiss_popovers ();
             return Gdk.EVENT_STOP;
         };
         ShortcutFunc down_func = (self) => {
@@ -183,6 +188,7 @@ public class SudokuView : Adw.Bin
             else
                 view.cells[view.selected_row + 1, view.selected_col].grab_focus ();
 
+            view.dismiss_popovers ();
             return Gdk.EVENT_STOP;
         };
         ShortcutFunc left_func = (self) => {
@@ -196,6 +202,7 @@ public class SudokuView : Adw.Bin
             else
                 view.cells[view.selected_row, view.selected_col - 1].grab_focus ();
 
+            view.dismiss_popovers ();
             return Gdk.EVENT_STOP;
         };
         ShortcutFunc right_func = (self) => {
@@ -209,6 +216,7 @@ public class SudokuView : Adw.Bin
             else
                 view.cells[view.selected_row, view.selected_col + 1].grab_focus ();
 
+            view.dismiss_popovers ();
             return Gdk.EVENT_STOP;
         };
 
@@ -320,6 +328,13 @@ public class SudokuView : Adw.Bin
         set {
             _highlighter = value;
         }
+    }
+
+    public void dismiss_popovers ()
+    {
+        for (var i = 0; i < game.board.rows; i++)
+            for (var j = 0; j < game.board.cols; j++)
+                cells[i,j].popover.popdown ();
     }
 }
 

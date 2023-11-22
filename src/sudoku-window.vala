@@ -20,6 +20,7 @@
  */
 
 using Gtk;
+using Gdk;
 
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/sudoku-window.ui")]
 public class SudokuWindow : Adw.ApplicationWindow
@@ -62,6 +63,9 @@ public class SudokuWindow : Adw.ApplicationWindow
     private const int board_size = 140;
     private const int clock_in_headerbar_min_width = 450;
 
+    private GestureClick button_controller = new GestureClick ();
+    private GestureLongPress long_press_controller = new GestureLongPress ();
+
     public SudokuWindow (GLib.Settings settings)
     {
         this.settings = settings;
@@ -77,6 +81,13 @@ public class SudokuWindow : Adw.ApplicationWindow
         this.notify["fullscreened"].connect(() => {
             this.window_is_fullscreen = true;
         });
+
+        this.button_controller.set_button (0 /* all buttons */);
+        this.button_controller.released.connect (button_released_cb);
+        ((Widget)this).add_controller (this.button_controller);
+
+        this.long_press_controller.pressed.connect (long_press_cb);
+        ((Widget)this).add_controller (this.long_press_controller);
     }
 
     ~SudokuWindow ()
@@ -244,7 +255,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             return;
 
         clock_in_headerbar = value;
-        if(value)
+        if (value)
         {
             game_box.remove (clock_box);
             headerbar.pack_end (clock_box);
@@ -254,5 +265,26 @@ public class SudokuWindow : Adw.ApplicationWindow
             headerbar.remove (clock_box);
             game_box.append (clock_box);
         }
+    }
+
+    private void button_released_cb (GestureClick gesture,
+                                     int          n_press,
+                                     double       x,
+                                     double       y)
+    {
+        if (gesture.get_current_button () != BUTTON_PRIMARY &&
+            gesture.get_current_button () != BUTTON_SECONDARY)
+            return;
+
+        view.dismiss_popovers ();
+        gesture.set_state (EventSequenceState.CLAIMED);
+    }
+
+    private void long_press_cb (GestureLongPress gesture,
+                                double           x,
+                                double           y)
+    {
+        view.dismiss_popovers ();
+        gesture.set_state (EventSequenceState.CLAIMED);
     }
 }

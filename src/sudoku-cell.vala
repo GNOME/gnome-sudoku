@@ -28,16 +28,24 @@ private class SudokuCell : Widget
     private int row;
     private int col;
     private SudokuGame game;
+    public signal void will_open_popover ();
 
     /* Gesture Controllers */
     private GestureClick button_controller = new GestureClick ();
     private GestureLongPress long_press_controller = new GestureLongPress ();
     private EventControllerKey key_controller = new EventControllerKey ();
 
-    private Popover _popover = new Popover ();
+    private Popover _popover = null;
     public Popover popover
     {
-        get { return _popover; }
+        get {
+            if (_popover == null)
+            {
+                _popover = new Popover ();
+                _popover.autohide = false;
+            }
+            return _popover;
+        }
     }
 
     // The label can also be set to X if the label is invalid.
@@ -251,7 +259,7 @@ private class SudokuCell : Widget
 
         // This must return false to pass the key control to the view as well,
         // for navigation and other related things
-        return false;
+        return EVENT_PROPAGATE;
     }
 
     private void key_released_cb (uint         keyval,
@@ -318,9 +326,16 @@ private class SudokuCell : Widget
             show_number_picker ();
             return;
         }
+
+        if (keyval == Gdk.Key.Escape)
+        {
+            if (popover.visible)
+                popover.popdown ();
+            return;
+        }
     }
 
-    private void long_press_cb (GestureLongPress event,
+    private void long_press_cb (GestureLongPress gesture,
                                 double           x,
                                 double           y)
     {
@@ -330,13 +345,13 @@ private class SudokuCell : Widget
         show_earmark_picker ();
     }
 
-    private void button_released_cb (GestureClick event,
+    private void button_released_cb (GestureClick gesture,
                                      int          n_press,
                                      double       x,
                                      double       y)
     {
-        if (event.get_current_button () != BUTTON_PRIMARY &&
-            event.get_current_button () != BUTTON_SECONDARY)
+        if (gesture.get_current_button () != BUTTON_PRIMARY &&
+            gesture.get_current_button () != BUTTON_SECONDARY)
             return;
 
         if (!this.has_focus)
@@ -345,19 +360,23 @@ private class SudokuCell : Widget
         if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
             return;
 
-        if (event.get_current_button () == BUTTON_PRIMARY)
+        if (gesture.get_current_button () == BUTTON_PRIMARY)
         {
             if (!show_possibilities &&
-                (event.get_last_event (event.get_last_updated_sequence ()).get_modifier_state () & ModifierType.CONTROL_MASK) > 0 &&
+                (gesture.get_last_event (gesture.get_last_updated_sequence ()).get_modifier_state () & ModifierType.CONTROL_MASK) > 0 &&
                 this.value == 0)
                 show_earmark_picker ();
             else
                 show_number_picker ();
+            gesture.set_state (EventSequenceState.CLAIMED);
         }
         else if (!show_possibilities &&
-                 event.get_current_button () == BUTTON_SECONDARY &&
+                 gesture.get_current_button () == BUTTON_SECONDARY &&
                  this.value == 0)
+        {
             show_earmark_picker ();
+            gesture.set_state (EventSequenceState.CLAIMED);
+        }
     }
 
     private int get_key_number (uint keyval)
@@ -446,6 +465,11 @@ private class SudokuCell : Widget
     private void show_earmark_picker ()
         requires (this.value == 0)
     {
+        if (this.popover.visible && ((NumberPicker)popover.child).is_earmark_picker)
+            return;
+
+        will_open_popover ();
+
         var earmark_picker = new NumberPicker (game, true);
         earmark_picker.set_clear_button_visibility (true);
         if (!this.game.board.has_earmarks (row, col))
@@ -479,6 +503,11 @@ private class SudokuCell : Widget
 
     private void show_number_picker ()
     {
+        if (this.popover.visible && ((NumberPicker)popover.child).is_earmark_picker)
+            return;
+
+        will_open_popover ();
+
         var number_picker = new NumberPicker (game);
         number_picker.number_picked.connect ((o, number) => {
             popover.popdown ();
