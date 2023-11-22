@@ -32,14 +32,14 @@ private class NumberPicker : Grid
 
     private int earmarks_active;
 
-    public bool is_earmark;
+    public bool is_earmark_picker { get; private set; }
 
-    public NumberPicker (ref SudokuBoard board, bool earmark = false)
+    public NumberPicker (SudokuGame game, bool for_earmarks = false)
     {
-        this.board = board;
+        board = game.board;
         earmarks_active = 0;
 
-        is_earmark = earmark;
+        is_earmark_picker = for_earmarks;
 
         for (var col = 0; col < board.block_cols; col++)
         {
@@ -47,20 +47,20 @@ private class NumberPicker : Grid
             {
                 int n = col + ((board.block_rows - 1) - row) * board.block_cols + 1;
 
-                var button = earmark ? new ToggleButton () : new Button ();
+                var button = for_earmarks ? new ToggleButton () : new Button ();
                 button.focus_on_click = false;
                 this.attach (button, col, row, 1, 1);
 
                 var label = new Label ("<big>%d</big>".printf (n));
                 label.use_markup = true;
-                label.margin_start = earmark ? 0 : 8;
-                label.margin_end = earmark ? 16 : 8;
-                label.margin_top = earmark ? 0 : 4;
-                label.margin_bottom = earmark ? 8 : 4;
+                label.margin_start = for_earmarks ? 0 : 8;
+                label.margin_end = for_earmarks ? 16 : 8;
+                label.margin_top = for_earmarks ? 0 : 4;
+                label.margin_bottom = for_earmarks ? 8 : 4;
                 button.set_child (label);
                 label.show ();
 
-                if (!earmark)
+                if (!for_earmarks)
                     button.clicked.connect (() => {
                         number_picked (n);
                     });
@@ -93,7 +93,7 @@ private class NumberPicker : Grid
             number_picked (0);
             earmark_state_changed (0, false);
 
-            if (earmark)
+            if (for_earmarks)
             {
                 for (var i = 0; i <= 8; i++)
                 {
@@ -131,14 +131,14 @@ private class NumberPicker : Grid
     }
 
     public void set_earmarks (int row, int col)
-        requires (is_earmark)
+        requires (is_earmark_picker)
     {
         for (var i = 0; i < board.max_val; i++)
             set_earmark (row, col, i, board.is_earmark_enabled (row, col, i + 1));
     }
 
     public void set_earmark (int row, int col, int index, bool state)
-        requires (is_earmark)
+        requires (is_earmark_picker)
     {
         get_button_for (index).set_active (state);
     }

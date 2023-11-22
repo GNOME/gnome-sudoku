@@ -34,7 +34,11 @@ private class SudokuCell : Widget
     private GestureLongPress long_press_controller = new GestureLongPress ();
     private EventControllerKey key_controller = new EventControllerKey ();
 
-    public Popover popover = new Popover ();
+    private Popover _popover = new Popover ();
+    public Popover popover
+    {
+        get { return _popover; }
+    }
 
     // The label can also be set to X if the label is invalid.
     // If this happens, the value **must not** be changed, only the label.
@@ -77,7 +81,7 @@ private class SudokuCell : Widget
 
     public bool is_fixed
     {
-        get { return game.board.is_fixed[row, col]; }
+        get { return game.board.get_is_fixed (row, col); }
     }
 
     private bool _selected = false;
@@ -269,13 +273,13 @@ private class SudokuCell : Widget
             // check for earmark popover
             var number_picker = (NumberPicker) this.popover.get_child ();
 
-            bool want_earmark = (this.popover.visible && number_picker != null && number_picker.is_earmark) ||
+            bool want_earmark = (this.popover.visible && number_picker != null && number_picker.is_earmark_picker) ||
                                 (state & ModifierType.CONTROL_MASK) > 0;
             if (want_earmark && game.mode == GameMode.PLAY)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, key);
 
-                if (number_picker != null && number_picker.is_earmark)
+                if (number_picker != null && number_picker.is_earmark_picker)
                 {
                     number_picker.set_earmark (row, col, key - 1, new_state);
                 }
@@ -439,7 +443,7 @@ private class SudokuCell : Widget
 
     private void show_earmark_picker ()
     {
-        var earmark_picker = new NumberPicker (ref game.board, true);
+        var earmark_picker = new NumberPicker (game, true);
         earmark_picker.set_clear_button_visibility (true);
         if (!this.game.board.has_earmarks (row, col))
             earmark_picker.set_clear_button_enabled (false);
@@ -472,7 +476,7 @@ private class SudokuCell : Widget
 
     private void show_number_picker ()
     {
-        var number_picker = new NumberPicker (ref game.board);
+        var number_picker = new NumberPicker (game);
         number_picker.number_picked.connect ((o, number) => {
             popover.popdown ();
 

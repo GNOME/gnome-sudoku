@@ -247,7 +247,7 @@ public class SudokuPrinter : GLib.Object {
                 {
                     letter = (sudoku[y,real_x]).to_string ();
 
-                    if (sudoku_board.is_fixed[y,real_x])
+                    if (sudoku_board.get_is_fixed (y, real_x))
                     {
                         cr.select_font_face ("Sans", Cairo.FontSlant.NORMAL, FONT_WEIGHT);
                         cr.set_source_rgb (0, 0, 0);

@@ -23,9 +23,9 @@ using Gee;
 
 public class SudokuGame : Object
 {
-    public SudokuBoard board;
-    public GameMode mode;
-    public GLib.Timer timer;
+    public SudokuBoard board { get; private set; }
+    public GameMode mode { get; set; }
+    private GLib.Timer timer;
     private uint clock_timeout;
 
     public signal void tick ();
@@ -110,7 +110,7 @@ public class SudokuGame : Object
         if (mode == GameMode.CREATE)
         {
             board.insert (row, col, val, true);
-            board.is_fixed[row, col] = true;
+            board.set_is_fixed (row, col, true);
         }
         else
             board.insert (row, col, val);
@@ -127,7 +127,7 @@ public class SudokuGame : Object
         if (mode == GameMode.CREATE)
         {
             board.remove (row, col, true);
-            board.is_fixed[row, col] = false;
+            board.set_is_fixed (row, col, false);
         }
         else
             board.remove (row, col);
@@ -163,11 +163,11 @@ public class SudokuGame : Object
         {
             for (var l2 = 0; l2 < board.cols; l2++)
             {
-                if (mode == GameMode.PLAY && board.is_fixed[l1, l2])
+                if (mode == GameMode.PLAY && board.get_is_fixed (l1, l2))
                     continue;
 
-                board.remove (l1, l2, board.is_fixed[l1, l2]);
-                board.is_fixed[l1, l2] = false;
+                board.remove (l1, l2, board.get_is_fixed (l1, l2));
+                board.set_is_fixed (l1, l2, false);
                 cell_changed (l1, l2, board.get (l1, l2), 0);
             }
         }
@@ -203,8 +203,8 @@ public class SudokuGame : Object
 
         if (mode == GameMode.CREATE)
         {
-            board.remove (top.row, top.col, board.is_fixed[top.row, top.col]);
-            board.is_fixed[top.row, top.col] = false;
+            board.remove (top.row, top.col, board.get_is_fixed (top.row, top.col));
+            board.set_is_fixed (top.row, top.col, false);
         }
         else
             board.remove (top.row, top.col);
@@ -213,8 +213,8 @@ public class SudokuGame : Object
         {
             if (mode == GameMode.CREATE)
             {
-                board.insert (top.row, top.col, top.val, board.is_fixed[top.row, top.col]);
-                board.is_fixed[top.row, top.col] = true;
+                board.insert (top.row, top.col, top.val, board.get_is_fixed (top.row, top.col));
+                board.set_is_fixed (top.row, top.col, true);
             }
             else
                 board.insert (top.row, top.col, top.val);

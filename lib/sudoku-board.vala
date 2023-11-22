@@ -25,9 +25,9 @@ public class SudokuBoard : Object
 {
     /* Implemented in such a way that it can be extended for other sizes ( like 2x3 sudoku or 4x4 sudoku ) instead of normal 3x3 sudoku. */
 
-    protected int[,] cells;                     /* stores the value of the cells */
-    protected int[,] solution;                  /* stores the solution, if any, null otherwise */
-    public bool[,] is_fixed;                    /* if the value at location is fixed or not */
+    private int[,] cells;                       /* stores the value of the cells */
+    private int[,] solution;                    /* stores the solution, if any, null otherwise */
+    private bool[,] is_fixed;                   /* if the value at location is fixed or not */
     private bool[,] possible_in_row;            /* if specific value is possible in specific row */
     private bool[,] possible_in_col;            /* if specific value is possible in specific col */
     private bool[,,] possible_in_block;         /* if specific value is possible in specific block */
@@ -91,16 +91,16 @@ public class SudokuBoard : Object
     public signal void completed ();
 
     /* The set of coordinates on the board which are invalid */
-    public Gee.Set<Coord?> broken_coords;
+    public Gee.Set<Coord?> broken_coords { get; private set; }
 
     /* The list of coordinates for each column on the board */
-    public Gee.List<Gee.List<Coord?>> coords_for_col;
+    public Gee.List<Gee.List<Coord?>> coords_for_col { get; private set; }
 
     /* The list of coordinates for each row on the board */
-    public Gee.List<Gee.List<Coord?>> coords_for_row;
+    public Gee.List<Gee.List<Coord?>> coords_for_row { get; private set; }
 
     /* The map from the coordinate of a box, to the list of coordinates in that box, for each box on the board */
-    public Map<Coord?, Gee.List<Coord?>> coords_for_block;
+    public Map<Coord?, Gee.List<Coord?>> coords_for_block { get; private set; }
 
     public SudokuBoard (int block_rows = 3, int block_cols = 3)
     {
@@ -186,6 +186,16 @@ public class SudokuBoard : Object
         board.difficulty_category = difficulty_category;
 
         return board;
+    }
+
+    public bool get_is_fixed (int row, int column)
+    {
+        return is_fixed[row, column];
+    }
+
+    public void set_is_fixed (int row, int column, bool _value)
+    {
+        is_fixed[row, column] = _value;
     }
 
     public void enable_earmark (int row, int column, int digit)

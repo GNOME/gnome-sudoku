@@ -142,7 +142,7 @@ public class SudokuSaver : Object
                 builder.set_member_name ("value");
                 builder.add_int_value (board_cells[i, j]);
                 builder.set_member_name ("fixed");
-                builder.add_boolean_value (board.is_fixed[i, j]);
+                builder.add_boolean_value (board.get_is_fixed (i, j));
                 builder.set_member_name ("earmarks");
                 builder.begin_array ();
 
