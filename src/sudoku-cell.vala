@@ -272,9 +272,9 @@ private class SudokuCell : Widget
         {
             // check for earmark popover
             var number_picker = (NumberPicker) this.popover.get_child ();
-
+            bool ctrl_pressed = (state & ModifierType.CONTROL_MASK) > 0;
             bool want_earmark = (this.popover.visible && number_picker != null && number_picker.is_earmark_picker) ||
-                                (state & ModifierType.CONTROL_MASK) > 0;
+                                ctrl_pressed && this.value == 0;
             if (want_earmark && game.mode == GameMode.PLAY)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, key);
@@ -292,7 +292,7 @@ private class SudokuCell : Widget
                     this.game.cell_changed (row, col, value, value);
                 }
             }
-            else
+            else if (!ctrl_pressed)
             {
                 value = key;
                 this.game.board.disable_all_earmarks (row, col);
@@ -324,7 +324,7 @@ private class SudokuCell : Widget
                                 double           x,
                                 double           y)
     {
-        if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
+        if (game.mode == GameMode.PLAY && (is_fixed || game.paused) || this.value != 0)
             return;
 
         show_earmark_picker ();
@@ -348,13 +348,15 @@ private class SudokuCell : Widget
         if (event.get_current_button () == BUTTON_PRIMARY)
         {
             if (!show_possibilities &&
-                (event.get_last_event (event.get_last_updated_sequence ()).get_modifier_state () & ModifierType.CONTROL_MASK) > 0)
+                (event.get_last_event (event.get_last_updated_sequence ()).get_modifier_state () & ModifierType.CONTROL_MASK) > 0 &&
+                this.value == 0)
                 show_earmark_picker ();
             else
                 show_number_picker ();
         }
         else if (!show_possibilities &&
-                 event.get_current_button () == BUTTON_SECONDARY)
+                 event.get_current_button () == BUTTON_SECONDARY &&
+                 this.value == 0)
             show_earmark_picker ();
     }
 
@@ -442,6 +444,7 @@ private class SudokuCell : Widget
     }
 
     private void show_earmark_picker ()
+        requires (this.value == 0)
     {
         var earmark_picker = new NumberPicker (game, true);
         earmark_picker.set_clear_button_visibility (true);

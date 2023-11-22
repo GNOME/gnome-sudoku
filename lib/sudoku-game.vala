@@ -75,28 +75,28 @@ public class SudokuGame : Object
     }
 
     public void enable_earmark (int row, int col, int k_no)
+        requires (board[row, col] == 0)
     {
-        var old_val = board[row, col];
         var old_earmarks = board.get_earmarks (row, col);
-        update_undo (row, col, old_val, old_earmarks);
+        update_undo (row, col, 0, old_earmarks);
 
         board.enable_earmark (row, col, k_no);
     }
 
     public void disable_earmark (int row, int col, int k_no)
+        requires (board[row, col] == 0)
     {
-        var old_val = board[row, col];
         var old_earmarks = board.get_earmarks (row, col);
-        update_undo (row, col, old_val, old_earmarks);
+        update_undo (row, col, 0, old_earmarks);
 
         board.disable_earmark (row, col, k_no);
     }
 
     public void disable_all_earmarks (int row, int col)
+        requires (board[row, col] == 0)
     {
-        var old_val = board[row, col];
         var old_earmarks = board.get_earmarks (row, col);
-        update_undo (row, col, old_val, old_earmarks);
+        update_undo (row, col, 0, old_earmarks);
 
         board.disable_all_earmarks (row, col);
     }
@@ -115,6 +115,7 @@ public class SudokuGame : Object
         else
             board.insert (row, col, val);
 
+        board.disable_all_earmarks (row, col);
         cell_changed (row, col, old_val, val);
     }
 
