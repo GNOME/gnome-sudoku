@@ -641,5 +641,11 @@ private class SudokuCell : Widget
 
         label.set_attributes (attr_list);
     }
+
+    public void dismiss_popover ()
+    {
+        if (_popover != null)
+            _popover.popdown ();
+    }
 }
 

@@ -334,7 +334,7 @@ public class SudokuView : Adw.Bin
     {
         for (var i = 0; i < game.board.rows; i++)
             for (var j = 0; j < game.board.cols; j++)
-                cells[i,j].popover.popdown ();
+                cells[i,j].dismiss_popover ();
     }
 }
 
