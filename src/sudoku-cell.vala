@@ -64,26 +64,23 @@ private class SudokuCell : Widget
             else
                 value_label.set_visible (false);
 
-            if (is_fixed)
+            if (value == game.board [row, col] ||
+                is_fixed && game.mode == GameMode.PLAY)
             {
-                if (game.mode == GameMode.PLAY)
-                    return;
+                /* This early return avoids the property change notify. */
+                return;
             }
 
             if (value == 0)
             {
                 if (game.board [row, col] != 0)
                     game.remove (row, col);
-                if (game.mode == GameMode.PLAY)
-                    return;
             }
-
-            if (value == game.board [row, col])
-                return;
-
-            value_label.set_label (value.to_string ());
-
-            game.insert (row, col, value);
+            else
+            {
+                value_label.set_label (value.to_string ());
+                game.insert (row, col, value);
+            }
         }
     }
 
@@ -245,7 +242,6 @@ private class SudokuCell : Widget
         if (row == this.row && col == this.col)
         {
             this.value = new_val;
-            notify_property ("value");
             get_visible_earmarks ();
         }
     }
@@ -313,7 +309,6 @@ private class SudokuCell : Widget
             keyval == Gdk.Key.Delete)
         {
             value = 0;
-            notify_property ("value");
             return;
         }
 
@@ -513,8 +508,6 @@ private class SudokuCell : Widget
             popover.popdown ();
 
             value = number;
-            if (number == 0)
-                notify_property ("value");
             this.game.board.disable_all_earmarks (row, col);
             this.game.cell_changed (row, col, value, value);
         });
