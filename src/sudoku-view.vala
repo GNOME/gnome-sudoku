@@ -25,7 +25,13 @@ using Gdk;
 
 public class SudokuView : Adw.Bin
 {
-    public SudokuGame game;
+    private SudokuGame _game;
+    public SudokuGame game
+    {
+        get { return _game; }
+        private set { _game = value; }
+    }
+
     private SudokuCell[,] cells;
     private Label paused;
 
@@ -118,7 +124,7 @@ public class SudokuView : Adw.Bin
         {
             for (var col = 0; col < game.board.cols; col++)
             {
-                var cell = new SudokuCell (row, col, ref this.game);
+                var cell = new SudokuCell (row, col, ref _game);
                 var cell_row = row;
                 var cell_col = col;
 
