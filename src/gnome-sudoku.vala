@@ -21,6 +21,12 @@
 
 using Gtk;
 
+// https://gitlab.gnome.org/GNOME/gtk/-/issues/6135
+namespace Workaround {
+    [CCode (cheader_filename = "gtk/gtk.h", cname = "gtk_show_uri")]
+    extern static void gtk_show_uri (Gtk.Window? parent, string uri, uint32 timestamp);
+}
+
 public class Sudoku : Adw.Application
 {
     private GLib.Settings settings;
@@ -468,8 +474,7 @@ public class Sudoku : Adw.Application
 
     private void help_cb ()
     {
-        var launcher = new Gtk.UriLauncher ("help:gnome-sudoku");
-        launcher.launch.begin (window, null, () => {});
+        Workaround.gtk_show_uri (window, "help:gnome-sudoku", Gdk.CURRENT_TIME);
     }
 
     private const string[] authors = { "Robert Ancell <robert.ancell@gmail.com>",
