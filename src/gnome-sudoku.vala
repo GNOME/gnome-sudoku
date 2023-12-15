@@ -95,8 +95,6 @@ public class Sudoku : Adw.Application
         add_main_option_entries (option_entries);
 
         typeof (SudokuMainMenuItem).ensure ();
-
-        this.get_style_manager ().set_color_scheme (Adw.ColorScheme.FORCE_LIGHT);
     }
 
     protected override int handle_local_options (GLib.VariantDict options)
