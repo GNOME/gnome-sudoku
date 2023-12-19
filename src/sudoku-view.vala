@@ -257,7 +257,10 @@ public class SudokuView : Adw.Bin
                         (col_tmp / game.board.block_cols == selected_col / game.board.block_cols &&
                          row_tmp / game.board.block_rows == selected_row / game.board.block_rows)
                     );
-                    cells[row_tmp, col_tmp].highlighted_value = cell_value == cells[row_tmp, col_tmp].value;
+                    if (cell_value > 0)
+                        cells[row_tmp, col_tmp].highlighted_value = cell_value == cells[row_tmp, col_tmp].value;
+                    else
+                        cells[row_tmp, col_tmp].highlighted_value = false;
                 }
             }
         }
