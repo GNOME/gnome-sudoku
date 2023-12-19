@@ -266,7 +266,7 @@ public class SudokuView : Adw.Bin
         }
     }
 
-    private void clear_highlights()
+    private void clear_highlights ()
     {
         for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
         {
