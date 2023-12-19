@@ -553,7 +553,7 @@ private class SudokuCell : Widget
         {
             if (marks[num - 1])
             {
-                if (!game.board.is_possible (row, col, num) || warn_incorrect_solution () && num != solution)
+                if (show_warnings && !game.board.is_possible (row, col, num) || warn_incorrect_solution () && num != solution)
                     earmark_labels[num - 1].add_css_class ("error");
                 else
                     earmark_labels[num - 1].remove_css_class ("error");
