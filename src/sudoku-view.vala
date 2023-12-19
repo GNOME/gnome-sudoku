@@ -134,7 +134,6 @@ public class SudokuView : Adw.Bin
                         this.set_selected (-1, -1);
 
                     this.update_highlights ();
-                    cell.check_warnings ();
                 });
 
                 cell.notify["value"].connect ((s, p)=> {
@@ -142,7 +141,6 @@ public class SudokuView : Adw.Bin
                         previous_board_broken_state = game.board.broken;
 
                     this.update_highlights ();
-                    cell.check_warnings ();
                 });
 
                 cells[row, col] = cell;
