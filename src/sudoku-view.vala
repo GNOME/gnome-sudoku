@@ -265,6 +265,18 @@ public class SudokuView : Adw.Bin
         }
     }
 
+    private void clear_highlights()
+    {
+        for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
+        {
+            for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
+            {
+                cells[row_tmp, col_tmp].highlighted_value = false;
+                cells[row_tmp, col_tmp].highlighted_background = false;
+            }
+        }
+    }
+
     public void clear ()
     {
         for (var i = 0; i < game.board.rows; i++)
@@ -333,6 +345,8 @@ public class SudokuView : Adw.Bin
         get { return _highlighter; }
         set {
             _highlighter = value;
+            if (!_highlighter)
+                clear_highlights ();
         }
     }
 
