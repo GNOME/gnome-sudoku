@@ -71,11 +71,11 @@ public class SudokuWindow : Adw.ApplicationWindow
             maximize ();
 
         this.notify["maximized"].connect(() => {
-            this.window_is_maximized = true;
+            this.window_is_maximized = !this.window_is_maximized;
         });
 
         this.notify["fullscreened"].connect(() => {
-            this.window_is_fullscreen = true;
+            this.window_is_fullscreen = !this.window_is_fullscreen;
         });
     }
 
