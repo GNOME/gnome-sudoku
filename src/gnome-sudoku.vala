@@ -188,6 +188,9 @@ public class Sudoku : Adw.Application
 
     protected override void shutdown ()
     {
+        if (window != null)
+            window.close ();
+
         if (game != null)
         {
             if (!game.is_empty () && !game.board.complete)
