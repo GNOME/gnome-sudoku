@@ -69,6 +69,7 @@ public class Sudoku : Adw.Application
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
+        {"unfullscreen", unfullscreen_cb                            },
         {"quit", quit                                               },
         {"show-timer", show_timer_cb, null, "true"                  }
     };
@@ -540,6 +541,11 @@ public class Sudoku : Adw.Application
 
         about.set_transient_for (window);
         about.present ();
+    }
+
+    private void unfullscreen_cb ()
+    {
+        window.unfullscreen ();
     }
 
     public static int main (string[] args)

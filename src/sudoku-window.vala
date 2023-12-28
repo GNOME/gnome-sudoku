@@ -40,12 +40,14 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Button undo_button;
     [GtkChild] private unowned Button redo_button;
     [GtkChild] private unowned Button back_button;
+    [GtkChild] private unowned Button unfullscreen_button;
 
     [GtkChild] private unowned Box clock_box;
     [GtkChild] private unowned Label clock_label;
 
     [GtkChild] private unowned Button play_custom_game_button;
     [GtkChild] private unowned Button play_pause_button;
+    [GtkChild] private unowned Adw.HeaderBar headerbar;
 
     private bool window_is_maximized;
     private bool window_is_fullscreen;
@@ -69,10 +71,10 @@ public class SudokuWindow : Adw.ApplicationWindow
         window_width = settings.get_int ("window-width");
         window_height = settings.get_int ("window-height");
         is_window_small = window_width <= small_window_size;
-
         set_default_size (window_width, window_height);
-        if (settings.get_boolean ("window-is-maximized"))
-            maximize ();
+
+        this.window_is_maximized = settings.get_boolean ("window-is-maximized");
+        this.window_is_fullscreen = settings.get_boolean ("window-is-fullscreen");
 
         Label title_label = (Label) windowtitle.get_first_child ().get_first_child ();
         title_label.set_property ("ellipsize", false);
@@ -83,6 +85,21 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         this.notify["fullscreened"].connect(() => {
             this.window_is_fullscreen = !this.window_is_fullscreen;
+            if (this.window_is_fullscreen)
+            {
+                headerbar.set_decoration_layout (":close");
+                unfullscreen_button.visible = true;
+            }
+            else
+            {
+                headerbar.set_decoration_layout (null);
+                unfullscreen_button.visible = false;
+                if (window_is_maximized)
+                {
+                    this.maximize ();
+                    return;
+                }
+            }
         });
 
         main_menu.notify["active"].connect(() => {
@@ -92,6 +109,11 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         this.notify["default-width"].connect(width_change_cb);
         this.notify["default-height"].connect(height_change_cb);
+
+        if (this.window_is_fullscreen)
+            fullscreen ();
+        else if (this.window_is_maximized)
+            maximize ();
 
         this.button_controller.set_button (0 /* all buttons */);
         this.button_controller.released.connect (button_released_cb);
@@ -107,7 +129,8 @@ public class SudokuWindow : Adw.ApplicationWindow
         settings.delay ();
         settings.set_int ("window-width", window_width);
         settings.set_int ("window-height", window_height);
-        settings.set_boolean ("window-is-maximized", window_is_maximized || window_is_fullscreen);
+        settings.set_boolean ("window-is-maximized", window_is_maximized);
+        settings.set_boolean ("window-is-fullscreen", window_is_fullscreen);
         settings.set_boolean ("show-timer", show_timer);
         settings.apply ();
     }
