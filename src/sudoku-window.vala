@@ -276,7 +276,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             gesture.get_current_button () != BUTTON_SECONDARY)
             return;
 
-        view.dismiss_popovers ();
+        view?.dismiss_popovers ();
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 
@@ -284,7 +284,7 @@ public class SudokuWindow : Adw.ApplicationWindow
                                 double           x,
                                 double           y)
     {
-        view.dismiss_popovers ();
+        view?.dismiss_popovers ();
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 }
