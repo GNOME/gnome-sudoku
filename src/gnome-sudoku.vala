@@ -49,6 +49,7 @@ public class Sudoku : Adw.Application
     private SimpleAction pause_action;
     private SimpleAction play_custom_game_action;
     private SimpleAction new_game_action;
+    private SimpleAction show_timer_action;
 
     private bool show_possibilities = false;
     private GameMode current_game_mode = GameMode.PLAY;
@@ -68,7 +69,8 @@ public class Sudoku : Adw.Application
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
-        {"quit", quit                                               }
+        {"quit", quit                                               },
+        {"show-timer", show_timer_cb, null, "true"                  }
     };
 
     private const OptionEntry[] option_entries =
@@ -163,6 +165,8 @@ public class Sudoku : Adw.Application
         print_multiple_action = (SimpleAction) lookup_action ("print-multiple");
         pause_action = (SimpleAction) lookup_action ("pause");
         play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
+        show_timer_action = (SimpleAction) lookup_action ("show-timer");
+        show_timer_action.set_state (settings.get_boolean ("show-timer"));
 
         Window.set_default_icon_name ("org.gnome.Sudoku");
 
@@ -233,6 +237,12 @@ public class Sudoku : Adw.Application
 
         window.display_pause_button ();
         view.queue_draw ();
+    }
+
+    private void show_timer_cb ()
+    {
+        window.show_timer = !window.show_timer;
+        show_timer_action.set_state (window.show_timer);
     }
 
     private void play_custom_game_cb ()

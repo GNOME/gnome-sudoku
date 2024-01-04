@@ -69,6 +69,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     public SudokuWindow (GLib.Settings settings)
     {
         this.settings = settings;
+        this.show_timer = settings.get_boolean ("show-timer");
 
         set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
         if (settings.get_boolean ("window-is-maximized"))
@@ -97,6 +98,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         settings.set_int ("window-width", window_width);
         settings.set_int ("window-height", window_height);
         settings.set_boolean ("window-is-maximized", window_is_maximized || window_is_fullscreen);
+        settings.set_boolean ("show-timer", show_timer);
         settings.apply ();
     }
 
@@ -124,6 +126,24 @@ public class SudokuWindow : Adw.ApplicationWindow
             (this as Widget)?.activate_action ("app.start-game", "i", 3);
         else if (this.very_hard_check.active)
             (this as Widget)?.activate_action ("app.start-game", "i", 4);
+    }
+
+    private bool _show_timer = true;
+    public bool show_timer {
+        get { return _show_timer; }
+        set
+        {
+            _show_timer = value;
+            if (game != null && game.mode != GameMode.CREATE)
+            {
+                clock_label.visible = value;
+                clock_image.visible = value;
+                if (value)
+                    display_pause_button ();
+                else
+                    play_pause_button.visible = false;
+            }
+        }
     }
 
     public void will_start_game ()
@@ -177,7 +197,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         start_box.visible = !visible;
         play_custom_game_button.visible = visible && game.mode == GameMode.CREATE;
-        if (visible && game.mode != GameMode.CREATE)
+        if (visible && game.mode != GameMode.CREATE && show_timer)
             display_pause_button ();
         else
             play_pause_button.visible = false;
@@ -197,13 +217,12 @@ public class SudokuWindow : Adw.ApplicationWindow
         undo_button.visible = true;
         redo_button.visible = true;
 
-        clock_label.visible = true;
-        clock_image.visible = true;
-
         if (game.mode == GameMode.PLAY)
         {
             play_custom_game_button.visible = false;
-            play_pause_button.visible = true;
+            play_pause_button.visible = show_timer;
+            clock_label.visible = show_timer;
+            clock_image.visible = show_timer;
         }
         else
         {
