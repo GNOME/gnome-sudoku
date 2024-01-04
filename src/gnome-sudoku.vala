@@ -305,11 +305,18 @@ public class Sudoku : Adw.Application
         saver.add_game_to_finished (game, true);
 
         /* Text in dialog that displays when the game is over. */
-        var minutes = int.max (1, (int) game.get_total_time_played () / 60);
-        var time_str = ngettext ("Well done, you completed the puzzle in %d minute!",
-                                 "Well done, you completed the puzzle in %d minutes!",
-                                 minutes).printf (minutes);
-        var dialog = new Adw.MessageDialog (window, time_str, null);
+        string win_str;
+        if (window.show_timer)
+        {
+            var minutes = int.max (1, (int) game.get_total_time_played () / 60);
+            win_str = ngettext ("Well done, you completed the puzzle in %d minute!",
+                                "Well done, you completed the puzzle in %d minutes!",
+                                minutes).printf (minutes);
+        }
+        else
+            win_str = gettext ("Well done, you completed the puzzle!");
+
+        var dialog = new Adw.MessageDialog (window, win_str, null);
         dialog.add_response ("close", _("Quit"));
         dialog.add_response ("play-again", _("Play _Again"));
         dialog.set_response_appearance ("play-again", Adw.ResponseAppearance.SUGGESTED);
