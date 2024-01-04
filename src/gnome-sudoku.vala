@@ -278,10 +278,16 @@ public class Sudoku : Adw.Application
 
     private void toggle_pause_cb ()
     {
-       if (game.paused)
-           game.resume_clock ();
-       else
-           game.stop_clock ();
+        if (game.paused)
+        {
+            game.resume_clock ();
+            show_timer_action.set_enabled (true);
+        }
+        else
+        {
+            game.stop_clock ();
+            show_timer_action.set_enabled (false);
+        }
     }
 
     private void cell_changed_cb ()
@@ -375,7 +381,7 @@ public class Sudoku : Adw.Application
     {
         print_action.set_enabled (false);
 
-        if (game != null)
+        if (game != null && window.show_timer)
             game.stop_clock ();
 
         window.show_new_game_screen ();
