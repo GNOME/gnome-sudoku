@@ -4,14 +4,14 @@
 # Copyright (C) 2005 THE PACKAGE'S COPYRIGHT HOLDER
 # Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2002,2003
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2010.
-# Yosef Or Boczko <yoseforb@gmail.com>, 2014-2023.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2014-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2023-12-08 10:33+0000\n"
-"PO-Revision-Date: 2023-12-26 08:07+0200\n"
+"POT-Creation-Date: 2024-01-04 15:10+0000\n"
+"PO-Revision-Date: 2024-01-09 20:54+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -59,61 +59,65 @@ msgstr "_סימון"
 msgid "_Warnings"
 msgstr "_אזהרות"
 
-#: data/sudoku-window.ui:46
+#: data/sudoku-window.ui:44
+msgid "_Timer"
+msgstr "_קוצב זמן"
+
+#: data/sudoku-window.ui:50
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: data/sudoku-window.ui:50
+#: data/sudoku-window.ui:54
 msgid "_About Sudoku"
 msgstr "_על אודות סודוקו"
 
-#: data/sudoku-window.ui:56 data/sudoku-window.ui:64
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:494
-#: src/sudoku-window.vala:228
+#: data/sudoku-window.ui:60 data/sudoku-window.ui:68
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:518
+#: src/sudoku-window.vala:247
 msgid "Sudoku"
 msgstr "סודוקו"
 
-#: data/sudoku-window.ui:72
+#: data/sudoku-window.ui:76
 msgid "Undo Action"
 msgstr "ביטול הפעולה האחרונה"
 
-#: data/sudoku-window.ui:84
+#: data/sudoku-window.ui:88
 msgid "Redo Action"
 msgstr "חזרה על פעולה שבוטלה"
 
-#: data/sudoku-window.ui:96
+#: data/sudoku-window.ui:100
 msgid "Back"
 msgstr "חזרה"
 
-#: data/sudoku-window.ui:107
+#: data/sudoku-window.ui:111
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: data/sudoku-window.ui:126
+#: data/sudoku-window.ui:130
 msgid "Play Custom Puzzle"
 msgstr "לשחק בלוח מותאם"
 
-#: data/sudoku-window.ui:152
+#: data/sudoku-window.ui:156
 msgid "Select Game Difficulty"
 msgstr "בחירת רמת קושי למשחק"
 
-#: data/sudoku-window.ui:168
+#: data/sudoku-window.ui:172
 msgid "_Easy"
 msgstr "_קל"
 
-#: data/sudoku-window.ui:180
+#: data/sudoku-window.ui:184
 msgid "_Medium"
 msgstr "_בינוני"
 
-#: data/sudoku-window.ui:192
+#: data/sudoku-window.ui:196
 msgid "_Hard"
 msgstr "ק_שה"
 
-#: data/sudoku-window.ui:204
+#: data/sudoku-window.ui:208
 msgid "_Very Hard"
 msgstr "_קשה מאד"
 
-#: data/sudoku-window.ui:215
+#: data/sudoku-window.ui:219
 msgid "_Start Game"
 msgstr "ה_תחלת משחק"
 
@@ -219,18 +223,22 @@ msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Highlight row, column and square that contain the selected cell"
 
 #: data/org.gnome.Sudoku.gschema.xml:42
+msgid "Toggle timer and pause buttons"
+msgstr "Toggle timer and pause buttons"
+
+#: data/org.gnome.Sudoku.gschema.xml:46
 msgid "Width of the window in pixels"
 msgstr "Width of the window in pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:46
+#: data/org.gnome.Sudoku.gschema.xml:50
 msgid "Height of the window in pixels"
 msgstr "Height of the window in pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:50
+#: data/org.gnome.Sudoku.gschema.xml:54
 msgid "true if the window is maximized"
 msgstr "true if the window is maximized"
 
-#: data/org.gnome.Sudoku.gschema.xml:54
+#: data/org.gnome.Sudoku.gschema.xml:58
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Initialize the earmarks with the possible values for each cell"
 
@@ -291,46 +299,46 @@ msgid "Custom Puzzle"
 msgstr "לוח מותאם"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:78
+#: src/gnome-sudoku.vala:80
 msgid "Show release version"
 msgstr "Show release version"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:82
+#: src/gnome-sudoku.vala:84
 msgid "Show the possible values for each cell"
 msgstr "Show the possible values for each cell"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:256
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "הלוח שהזנת אינו סודוקו תקף."
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:256
 msgid "Please enter a valid puzzle."
 msgstr "נא להכניס לוח תקף."
 
-#: src/gnome-sudoku.vala:246 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:257 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "סגירה"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:254
+#: src/gnome-sudoku.vala:265
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "ללוח שהזנת יש מספר פתרונות אפשריים."
 
-#: src/gnome-sudoku.vala:254
+#: src/gnome-sudoku.vala:265
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "לסודוקו תקף יש בדיוק פתרון אפשרי אחד."
 
-#: src/gnome-sudoku.vala:255
+#: src/gnome-sudoku.vala:266
 msgid "_Back"
 msgstr "_חזרה"
 
-#: src/gnome-sudoku.vala:256
+#: src/gnome-sudoku.vala:267
 msgid "Play _Anyway"
 msgstr "לשחק _בכל מקרה"
 
-#: src/gnome-sudoku.vala:298
+#: src/gnome-sudoku.vala:318
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -338,28 +346,28 @@ msgstr[0] "כל הכבוד, השלמת את הלוח בדקה אחת!"
 msgstr[1] "כל הכבוד, השלמת את הלוח ב־%d דקות!"
 msgstr[2] "כל הכבוד, השלמת את הלוח בשתי דקות!"
 
-#: src/gnome-sudoku.vala:302
+#: src/gnome-sudoku.vala:326
 msgid "Quit"
 msgstr "יציאה"
 
-#: src/gnome-sudoku.vala:303
+#: src/gnome-sudoku.vala:327
 msgid "Play _Again"
 msgstr "לשחק _שוב"
 
-#: src/gnome-sudoku.vala:413
+#: src/gnome-sudoku.vala:437
 msgid "Reset the board to its original state?"
 msgstr "איפוס הלוח למצבו המקורי?"
 
-#: src/gnome-sudoku.vala:414
+#: src/gnome-sudoku.vala:438
 msgid "No"
 msgstr "לא"
 
-#: src/gnome-sudoku.vala:415
+#: src/gnome-sudoku.vala:439
 msgid "Yes"
 msgstr "כן"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:491
+#: src/gnome-sudoku.vala:515
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -370,7 +378,7 @@ msgstr ""
 "\n"
 "הלוחות נוצרות על ידי QQwing %s"
 
-#: src/gnome-sudoku.vala:501
+#: src/gnome-sudoku.vala:525
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -394,19 +402,19 @@ msgstr "ניקוי"
 msgid "Error printing file:"
 msgstr "שגיאה בהדפסת קובץ:"
 
-#: src/sudoku-window.vala:167
+#: src/sudoku-window.vala:187
 msgid "Select Difficulty"
 msgstr "בחירת רמת קושי"
 
-#: src/sudoku-window.vala:230
+#: src/sudoku-window.vala:249
 msgid "Create Puzzle"
 msgstr "יצירת לוח"
 
-#: src/sudoku-window.vala:237
+#: src/sudoku-window.vala:256
 msgid "Play"
 msgstr "לשחק"
 
-#: src/sudoku-window.vala:237
+#: src/sudoku-window.vala:256
 msgid "Pause"
 msgstr "השהייה"
 
