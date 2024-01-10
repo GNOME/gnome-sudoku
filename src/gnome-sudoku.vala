@@ -386,7 +386,7 @@ public class Sudoku : Adw.Application
     {
         print_action.set_enabled (false);
 
-        if (game != null && window.show_timer)
+        if (game != null)
             game.stop_clock ();
 
         window.show_new_game_screen ();
