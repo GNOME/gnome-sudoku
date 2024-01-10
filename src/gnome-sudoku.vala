@@ -284,11 +284,13 @@ public class Sudoku : Adw.Application
         if (game.paused)
         {
             game.resume_clock ();
+            game.paused = false;
             show_timer_action.set_enabled (true);
         }
         else
         {
             game.stop_clock ();
+            game.paused = true;
             show_timer_action.set_enabled (false);
         }
     }
@@ -455,6 +457,8 @@ public class Sudoku : Adw.Application
     private void back_cb ()
     {
         window.show_game_view ();
+        if (game.mode != GameMode.CREATE)
+            game.resume_clock ();
 
         print_action.set_enabled (true);
     }

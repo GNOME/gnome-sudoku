@@ -34,7 +34,7 @@ public class SudokuGame : Object
     private bool _paused = false;
     public bool paused
     {
-        private set
+        public set
         {
             _paused = value;
             paused_changed ();
@@ -259,7 +259,6 @@ public class SudokuGame : Object
         if (clock_timeout != 0)
             Source.remove (clock_timeout);
         clock_timeout = 0;
-        paused = true;
         timer.stop ();
         tick ();
     }
@@ -268,7 +267,6 @@ public class SudokuGame : Object
         requires (timer != null && clock_timeout == 0)
     {
         timer.continue ();
-        paused = false;
         timeout_cb ();
     }
 }
