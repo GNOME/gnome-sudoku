@@ -31,7 +31,7 @@ public class Sudoku : Adw.Application
 {
     private GLib.Settings settings;
 
-    private SudokuWindow window;
+    private SudokuWindow? window = null;
     private SudokuGame? game = null;
 
     private SudokuView? view
@@ -189,7 +189,10 @@ public class Sudoku : Adw.Application
     protected override void shutdown ()
     {
         if (window != null)
+        {
             window.close ();
+            window = null;
+        }
 
         if (game != null)
         {
