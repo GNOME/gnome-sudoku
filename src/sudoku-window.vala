@@ -29,6 +29,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Adw.WindowTitle windowtitle;
 
     [GtkChild] private unowned Box start_box;
+    [GtkChild] private unowned Button start_button;
     [GtkChild] private unowned CheckButton easy_check;
     [GtkChild] private unowned CheckButton medium_check;
     [GtkChild] private unowned CheckButton hard_check;
@@ -191,6 +192,8 @@ public class SudokuWindow : Adw.ApplicationWindow
         redo_button.visible = false;
         clock_label.visible = false;
         clock_image.visible = false;
+        start_button.grab_focus ();
+    }
 
     public void activate_difficulty_checkbutton (DifficultyCategory difficulty)
     {
