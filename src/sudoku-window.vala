@@ -191,6 +191,26 @@ public class SudokuWindow : Adw.ApplicationWindow
         redo_button.visible = false;
         clock_label.visible = false;
         clock_image.visible = false;
+
+    public void activate_difficulty_checkbutton (DifficultyCategory difficulty)
+    {
+        switch (difficulty)
+        {
+            case DifficultyCategory.EASY:
+                easy_check.activate ();
+                return;
+            case DifficultyCategory.MEDIUM:
+                medium_check.activate ();
+                return;
+            case DifficultyCategory.HARD:
+                hard_check.activate ();
+                return;
+            case DifficultyCategory.VERY_HARD:
+                very_hard_check.activate ();
+                return;
+            default:
+                assert_not_reached ();
+        }
     }
 
     public void set_board_visible (bool visible)

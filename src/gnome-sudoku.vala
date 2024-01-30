@@ -53,6 +53,7 @@ public class Sudoku : Adw.Application
 
     private bool show_possibilities = false;
     private GameMode current_game_mode = GameMode.PLAY;
+    private DifficultyCategory play_difficulty;
 
     private const GLib.ActionEntry action_entries[] =
     {
@@ -168,6 +169,8 @@ public class Sudoku : Adw.Application
         show_timer_action = (SimpleAction) lookup_action ("show-timer");
         show_timer_action.set_state (settings.get_boolean ("show-timer"));
 
+        play_difficulty = (DifficultyCategory) settings.get_enum ("play-difficulty");
+
         Window.set_default_icon_name ("org.gnome.Sudoku");
 
         window = new SudokuWindow (settings);
@@ -197,6 +200,9 @@ public class Sudoku : Adw.Application
             window.close ();
             window = null;
         }
+
+        settings.set_enum ("play-difficulty", play_difficulty);
+        settings.apply ();
 
         if (game != null)
         {
@@ -390,6 +396,7 @@ public class Sudoku : Adw.Application
             game.stop_clock ();
 
         window.show_new_game_screen ();
+        window.activate_difficulty_checkbutton (play_difficulty);
     }
 
     private void new_game_cb ()
@@ -422,9 +429,9 @@ public class Sudoku : Adw.Application
         // of new game buttons in data/gnome-sudoku.ui
         // has been set to integers corresponding to the enums.
         // Following line converts those ints to their DifficultyCategory
-        var selected_difficulty = (DifficultyCategory) difficulty.get_int32 ();
+        play_difficulty = (DifficultyCategory) difficulty.get_int32 ();
 
-        SudokuGenerator.generate_boards_async.begin (1, selected_difficulty, null, (obj, res) => {
+        SudokuGenerator.generate_boards_async.begin (1, play_difficulty, null, (obj, res) => {
             try
             {
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);

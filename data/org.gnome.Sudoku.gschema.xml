@@ -1,12 +1,12 @@
 <schemalist>
-  <enum id="org.gnome.Sudoku.print-multiple-sudoku-difficulty">
+  <enum id="org.gnome.Sudoku.play-difficulty">
     <value nick="easy" value="1" />
     <value nick="medium" value="2" />
     <value nick="hard" value="3"  />
     <value nick="very_hard" value="4"  />
   </enum>
   <schema id="org.gnome.Sudoku" path="/org/gnome/Sudoku/" gettext-domain="gnome-sudoku">
-    <key name="print-multiple-sudoku-difficulty" enum="org.gnome.Sudoku.print-multiple-sudoku-difficulty">
+    <key name="print-multiple-sudoku-difficulty" enum="org.gnome.Sudoku.play-difficulty">
       <default>"easy"</default>
       <summary>Difficulty level of sudokus to be printed</summary>
       <description>Set the difficulty level of the sudokus you want to print. Possible values are: "easy", "medium", "hard", "very_hard"</description>
@@ -36,6 +36,10 @@
     <key name="highlighter" type="b">
         <default>false</default>
         <summary>Highlight row, column and square that contain the selected cell</summary>
+    </key>
+    <key name="play-difficulty" enum="org.gnome.Sudoku.play-difficulty">
+      <default>"easy"</default>
+      <summary>The puzzle's difficulty</summary>
     </key>
     <key name="show-timer" type="b">
         <default>false</default>
