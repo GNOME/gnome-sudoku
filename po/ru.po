@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2024-01-04 15:10+0000\n"
-"PO-Revision-Date: 2024-01-05 14:14+1000\n"
+"POT-Creation-Date: 2024-02-03 15:17+0000\n"
+"PO-Revision-Date: 2024-02-04 16:09+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -76,8 +76,8 @@ msgid "_About Sudoku"
 msgstr "_О приложении"
 
 #: data/sudoku-window.ui:60 data/sudoku-window.ui:68
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:518
-#: src/sudoku-window.vala:247
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:532
+#: src/sudoku-window.vala:270
 msgid "Sudoku"
 msgstr "Судоку"
 
@@ -105,23 +105,23 @@ msgstr "Решить свою головоломку"
 msgid "Select Game Difficulty"
 msgstr "Выберите сложность игры"
 
-#: data/sudoku-window.ui:172
+#: data/sudoku-window.ui:171
 msgid "_Easy"
 msgstr "_Лёгкая"
 
-#: data/sudoku-window.ui:184
+#: data/sudoku-window.ui:183
 msgid "_Medium"
 msgstr "_Средняя"
 
-#: data/sudoku-window.ui:196
+#: data/sudoku-window.ui:195
 msgid "_Hard"
 msgstr "С_ложная"
 
-#: data/sudoku-window.ui:208
+#: data/sudoku-window.ui:207
 msgid "_Very Hard"
 msgstr "_Очень сложная"
 
-#: data/sudoku-window.ui:219
+#: data/sudoku-window.ui:218
 msgid "_Start Game"
 msgstr "_Начать игру"
 
@@ -232,22 +232,26 @@ msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Выделять строку, столбец и квадрат с выбранной ячейкой"
 
 #: data/org.gnome.Sudoku.gschema.xml:42
+msgid "The puzzle's difficulty"
+msgstr "Сложность игры"
+
+#: data/org.gnome.Sudoku.gschema.xml:46
 msgid "Toggle timer and pause buttons"
 msgstr "Переключать кнопки таймера и паузы"
 
-#: data/org.gnome.Sudoku.gschema.xml:46
+#: data/org.gnome.Sudoku.gschema.xml:50
 msgid "Width of the window in pixels"
 msgstr "Ширина окна в пикселах"
 
-#: data/org.gnome.Sudoku.gschema.xml:50
+#: data/org.gnome.Sudoku.gschema.xml:54
 msgid "Height of the window in pixels"
 msgstr "Высота окна в пикселах"
 
-#: data/org.gnome.Sudoku.gschema.xml:54
+#: data/org.gnome.Sudoku.gschema.xml:58
 msgid "true if the window is maximized"
 msgstr "«true», если окно имеет максимальный размер"
 
-#: data/org.gnome.Sudoku.gschema.xml:58
+#: data/org.gnome.Sudoku.gschema.xml:62
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Инициализировать примечания с возможными значениями для каждой ячейки"
 
@@ -308,46 +312,46 @@ msgid "Custom Puzzle"
 msgstr "Пользовательская головоломка"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:80
+#: src/gnome-sudoku.vala:81
 msgid "Show release version"
 msgstr "Показать номер версии"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:84
+#: src/gnome-sudoku.vala:85
 msgid "Show the possible values for each cell"
 msgstr "Показывать доступные значения для каждой ячейки"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:256
+#: src/gnome-sudoku.vala:265
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Введенная головоломка не является правильной головоломкой Судоку."
 
-#: src/gnome-sudoku.vala:256
+#: src/gnome-sudoku.vala:265
 msgid "Please enter a valid puzzle."
 msgstr "Введите правильную головоломку."
 
-#: src/gnome-sudoku.vala:257 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:266 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "Закрыть"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:265
+#: src/gnome-sudoku.vala:274
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Введенная головоломка имеет несколько решений."
 
-#: src/gnome-sudoku.vala:265
+#: src/gnome-sudoku.vala:274
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Правильная головоломка Судоку имеет только одно решение."
 
-#: src/gnome-sudoku.vala:266
+#: src/gnome-sudoku.vala:275
 msgid "_Back"
 msgstr "_Назад"
 
-#: src/gnome-sudoku.vala:267
+#: src/gnome-sudoku.vala:276
 msgid "Play _Anyway"
 msgstr "Сыграть все _равно"
 
-#: src/gnome-sudoku.vala:318
+#: src/gnome-sudoku.vala:329
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -355,28 +359,28 @@ msgstr[0] "Очень хорошо, вы решили головоломку з�
 msgstr[1] "Очень хорошо, вы решили головоломку за %d минуты!"
 msgstr[2] "Очень хорошо, вы решили головоломку за %d минут!"
 
-#: src/gnome-sudoku.vala:326
+#: src/gnome-sudoku.vala:337
 msgid "Quit"
 msgstr "Выйти"
 
-#: src/gnome-sudoku.vala:327
+#: src/gnome-sudoku.vala:338
 msgid "Play _Again"
 msgstr "Сыграть _ещё раз"
 
-#: src/gnome-sudoku.vala:437
+#: src/gnome-sudoku.vala:449
 msgid "Reset the board to its original state?"
 msgstr "Вернуть игровую доску к исходному состоянию?"
 
-#: src/gnome-sudoku.vala:438
+#: src/gnome-sudoku.vala:450
 msgid "No"
 msgstr "Нет"
 
-#: src/gnome-sudoku.vala:439
+#: src/gnome-sudoku.vala:451
 msgid "Yes"
 msgstr "Да"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:515
+#: src/gnome-sudoku.vala:529
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -387,7 +391,7 @@ msgstr ""
 "\n"
 "Головоломки создаются с помощью QQwing %s"
 
-#: src/gnome-sudoku.vala:525
+#: src/gnome-sudoku.vala:539
 msgid "translator-credits"
 msgstr ""
 "Stas Solovey <whats_up@tut.by>, 2015-2018.\n"
@@ -403,19 +407,19 @@ msgstr "Очистить"
 msgid "Error printing file:"
 msgstr "Ошибка печати в файл:"
 
-#: src/sudoku-window.vala:187
+#: src/sudoku-window.vala:188
 msgid "Select Difficulty"
 msgstr "Выберите сложность"
 
-#: src/sudoku-window.vala:249
+#: src/sudoku-window.vala:272
 msgid "Create Puzzle"
 msgstr "Создание головоломки"
 
-#: src/sudoku-window.vala:256
+#: src/sudoku-window.vala:279
 msgid "Play"
 msgstr "Играть"
 
-#: src/sudoku-window.vala:256
+#: src/sudoku-window.vala:279
 msgid "Pause"
 msgstr "Пауза"
 
