@@ -91,11 +91,14 @@ public class SudokuView : Adw.Bin
             );
 
             this.paused.set_attributes (attr_list);
+            paused.set_visible (this.game.paused);
 
             if (this.game.paused)
-                paused.set_visible (true);
+                clear_all_warnings ();
             else
-                paused.set_visible (false);
+                update_warnings ();
+
+            has_selection = !this.game.paused;
         });
 
         this.game.cell_changed.connect (cell_changed_cb);
@@ -397,14 +400,34 @@ public class SudokuView : Adw.Bin
         }
     }
 
-    private bool _highlighter = false;
+    private bool _highlighter = true;
     public bool highlighter
     {
         get { return _highlighter; }
         set {
+            if (value == highlighter)
+                return;
+
+            set_cell_highlighter (selected_row, selected_col, false);
             _highlighter = value;
-            if (!_highlighter)
-                clear_highlights ();
+            set_cell_highlighter (selected_row, selected_col, true);
+        }
+    }
+
+    private bool _has_selection = true;
+    public bool has_selection
+    {
+        get { return _has_selection; }
+        set {
+            _has_selection = value;
+            var cell = cells[selected_row, selected_col];
+            cell.selected = has_selection;
+            if (has_selection)
+                cell.grab_focus ();
+            else
+                cell.dismiss_popover ();
+
+            set_cell_highlighter (selected_row, selected_col, has_selection);
         }
     }
 

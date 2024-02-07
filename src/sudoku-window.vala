@@ -37,6 +37,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     [GtkChild] private unowned Box game_box; // Holds the view
 
+    [GtkChild] private unowned MenuButton main_menu;
     [GtkChild] private unowned Button undo_button;
     [GtkChild] private unowned Button redo_button;
     [GtkChild] private unowned Button back_button;
@@ -82,6 +83,11 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         this.notify["fullscreened"].connect(() => {
             this.window_is_fullscreen = !this.window_is_fullscreen;
+        });
+
+        main_menu.notify["active"].connect(() => {
+            if (view != null)
+                view.has_selection = !main_menu.active;
         });
 
         this.button_controller.set_button (0 /* all buttons */);
