@@ -251,41 +251,66 @@ public class SudokuView : Adw.Bin
         update_warnings ();
     }
 
-    private void earmark_changed_cb (int row, int col, bool enabled, int val)
+    private void earmark_changed_cb (int row, int col, int val, bool enabled)
     {
         cells[row, col].update_earmark (val, enabled);
     }
 
+    private void set_cell_highlighter (int row, int col, bool enabled)
+    {
+        if (!highlighter)
+            return;
+
+        var cell = cells[row, col];
 
         for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
         {
             for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
             {
-                cells[row_tmp, col_tmp].check_warnings ();
-                if (has_selection && _highlighter) {
-                    cells[row_tmp, col_tmp].highlighted_background = (
-                        col_tmp == selected_col ||
-                        row_tmp == selected_row ||
-                        (col_tmp / game.board.block_cols == selected_col / game.board.block_cols &&
-                         row_tmp / game.board.block_rows == selected_row / game.board.block_rows)
-                    );
-                    if (cell_value > 0)
-                        cells[row_tmp, col_tmp].highlighted_value = cell_value == cells[row_tmp, col_tmp].value;
-                    else
-                        cells[row_tmp, col_tmp].highlighted_value = false;
+                var cell_tmp = cells[row_tmp, col_tmp];
+
+                if (cell == cell_tmp)
+                    continue;
+
+                if (cell.value > 0)
+                {
+                    if (cell.value == cell_tmp.value)
+                        cell_tmp.highlighted_value = enabled;
+                    else if (cell_tmp.value == 0)
+                        cell_tmp.set_earmark_highlight (cell.value, enabled);
+                }
+
+                if (!cell_tmp.is_fixed &&
+                   (row_tmp == row || col_tmp == col ||
+                   (row_tmp / game.board.block_cols == row / game.board.block_cols &&
+                   col_tmp / game.board.block_rows == col / game.board.block_rows)))
+                {
+                    cell_tmp.highlighted_background = enabled;
                 }
             }
         }
     }
 
-    private void clear_highlights ()
+    private void set_value_highlighter (int val, bool enabled)
     {
+        if (!highlighter || val == 0)
+            return;
+
+        var cell = cells[selected_row, selected_col];
+
         for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
         {
             for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
             {
-                cells[row_tmp, col_tmp].highlighted_value = false;
-                cells[row_tmp, col_tmp].highlighted_background = false;
+                var cell_tmp = cells[row_tmp, col_tmp];
+
+                if (cell == cell_tmp)
+                    continue;
+
+                if (val == cell_tmp.value)
+                    cell_tmp.highlighted_value = enabled;
+                else if (cell_tmp.value == 0)
+                    cell_tmp.set_earmark_highlight (val, enabled);
             }
         }
     }
