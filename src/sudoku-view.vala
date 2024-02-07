@@ -278,11 +278,30 @@ public class SudokuView : Adw.Bin
         }
     }
 
+    private void update_warnings ()
+    {
+        if (!show_warnings)
+            return;
+
+        for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
+            for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
+                cells[row_tmp, col_tmp].check_warnings ();
+    }
+
     public void clear ()
     {
         for (var i = 0; i < game.board.rows; i++)
             for (var j = 0; j < game.board.cols; j++)
                 game.board.disable_all_earmarks (i, j);
+    }
+
+    private void clear_all_warnings ()
+    {
+        for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
+            for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
+            {
+                cells[row_tmp, col_tmp].clear_warnings ();
+            }
     }
 
     public void redraw ()
@@ -301,6 +320,11 @@ public class SudokuView : Adw.Bin
             for (var i = 0; i < game.board.rows; i++)
                 for (var j = 0; j < game.board.cols; j++)
                     cells[i,j].show_warnings = _show_warnings;
+
+            if (show_warnings)
+                update_warnings ();
+            else
+                clear_all_warnings ();
          }
     }
 

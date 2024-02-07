@@ -128,6 +128,18 @@ private class SudokuCell : Widget
         }
     }
 
+    public void set_earmark_highlight (int val, bool enabled)
+    {
+        if (!game.board.is_earmark_enabled (row, col, val))
+            return;
+
+        var earmark = earmark_labels[val-1];
+        if (enabled && !earmark.has_css_class ("error"))
+            earmark.add_css_class ("highlight-label");
+        else
+            earmark.remove_css_class ("highlight-label");
+    }
+
     private bool _show_warnings = true;
     public bool show_warnings
     {
@@ -173,7 +185,11 @@ private class SudokuCell : Widget
         this.col = col;
         this.game = game;
 
-        this.value = game.board [row, col];
+        if (value != 0)
+        {
+            value_label.set_label (this.value.to_string ());
+            value_label.set_visible (true);
+        }
 
         focusable = true;
         can_focus = true;
@@ -192,7 +208,6 @@ private class SudokuCell : Widget
         this.button_controller.released.connect (button_released_cb);
         this.key_controller.key_pressed.connect (key_pressed_cb);
         this.key_controller.key_released.connect (key_released_cb);
-        game.cell_changed.connect (cell_changed_cb);
 
         value_label.set_parent (this);
 
@@ -234,18 +249,30 @@ private class SudokuCell : Widget
         set_css_name ("sudokucell");
     }
 
-    private void cell_changed_cb (int row,
-                                  int col,
-                                  int old_val,
-                                  int new_val)
+    public void update_value ()
     {
-        if (row == this.row && col == this.col)
+        if (!has_focus)
+            grab_focus ();
+
+        if (value != 0)
         {
-            this.value = new_val;
-            get_visible_earmarks ();
+            value_label.set_label (this.value.to_string ());
+            value_label.set_visible (true);
         }
+        else
+            value_label.set_visible (false);
+
+        get_visible_earmarks ();
     }
 
+    public void update_earmark (int val, bool enabled)
+    {
+        if (!has_focus)
+            grab_focus ();
+
+        check_earmark_warnings (val, enabled);
+        get_visible_earmarks ();
+    }
     private bool key_pressed_cb (uint         keyval,
                                  uint         keycode,
                                  ModifierType state)
@@ -524,27 +551,22 @@ private class SudokuCell : Widget
 
     public void check_warnings ()
     {
+        if (!show_warnings)
+            return;
+
         bool error = false;
         int solution = game.board.get_solution (row, col);
-        var marks = game.board.get_earmarks (row, col);
 
-        if (show_warnings &&
-            this.value == 0 &&
-            game.board.count_possibilities (row, col) == 0)
-        {
+        if (this.value == 0 && game.board.count_possibilities (row, col) == 0)
             value_label.set_label ("X");
-        }
         else
             value_label.set_label (this.value.to_string ());
 
         if (warn_incorrect_solution () && this.value != 0)
             error = this.value != solution;
 
-        if (show_warnings &&
-            game.board.broken_coords.contains (Coord (row, col)))
-        {
+        if (game.board.broken_coords.contains (Coord (row, col)))
             error = true;
-        }
 
         if (error)
             add_css_class ("error");
@@ -554,16 +576,39 @@ private class SudokuCell : Widget
         if (this.value != 0)
             return;
 
+        var marks = game.board.get_earmarks (row, col);
         for (int num = 1; num <= marks.length; num++)
         {
             if (marks[num - 1])
             {
-                if (show_warnings && !game.board.is_possible (row, col, num) || warn_incorrect_solution () && num != solution)
+                if (!game.board.is_possible (row, col, num) || warn_incorrect_solution () && num != solution)
                     earmark_labels[num - 1].add_css_class ("error");
                 else
                     earmark_labels[num - 1].remove_css_class ("error");
             }
         }
+    }
+
+    public void check_earmark_warnings (int value, bool enabled)
+    {
+        if (!show_warnings || !enabled || this.value != 0)
+            return;
+
+        int solution = game.board.get_solution (row, col);
+
+        if (!game.board.is_possible (row, col, value) || warn_incorrect_solution () && value != solution)
+            earmark_labels[value - 1].add_css_class ("error");
+        else
+            earmark_labels[value - 1].remove_css_class ("error");
+    }
+
+    public void clear_warnings ()
+    {
+        var marks = game.board.get_earmarks (row, col);
+        value_label.set_label (this.value.to_string ());
+        remove_css_class ("error");
+        for (int num = 1; num <= marks.length; num++)
+            earmark_labels[num-1].remove_css_class ("error");
     }
 
     // Return true if the user is to be warned when the value or earmarks are
