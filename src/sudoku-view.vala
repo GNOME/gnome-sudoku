@@ -35,25 +35,31 @@ public class SudokuView : Adw.Bin
     private SudokuCell[,] cells;
     private Label paused;
 
-    private bool previous_board_broken = false;
-
     private Overlay overlay;
     private Grid grid;
 
     public int selected_row { get; private set; default = 0; }
     public int selected_col { get; private set; default = 0; }
+    public signal void selection_changed (int old_row, int old_col, int new_row, int new_col);
+
     private void set_selected (int cell_row, int cell_col)
     {
+        if (selected_row == cell_row && selected_col == cell_col)
+            return;
+
         if (selected_row >= 0 && selected_col >= 0)
-        {
             cells[selected_row, selected_col].selected = false;
-        }
+
+        var old_row = selected_row;
+        var old_col = selected_col;
+
         selected_row = cell_row;
         selected_col = cell_col;
+
+        selection_changed(old_row, old_col, selected_row, selected_col);
+
         if (selected_row >= 0 && selected_col >= 0)
-        {
             cells[selected_row, selected_col].selected = true;
-        }
     }
 
     public SudokuView (int frame_size, SudokuGame game)
@@ -91,6 +97,10 @@ public class SudokuView : Adw.Bin
             else
                 paused.set_visible (false);
         });
+
+        this.game.cell_changed.connect (cell_changed_cb);
+        this.game.board.earmark_changed.connect (earmark_changed_cb);
+        this.selection_changed.connect (selection_changed_cb);
 
         grid = new Grid () {
             row_spacing = 2,
@@ -132,21 +142,8 @@ public class SudokuView : Adw.Bin
                     if (game.paused)
                         return;
 
-                    // Popover is needed because when the popover is open, the focus shifts.
-                    // However, the current cell should still be selected.
-                    if (cell.has_focus || cell.popover.visible)
+                    if (cell.has_focus)
                         this.set_selected (cell_row, cell_col);
-                    else
-                        this.set_selected (-1, -1);
-
-                    this.update_highlights ();
-                });
-
-                cell.notify["value"].connect ((s, p) => {
-                    if (_show_possibilities || _show_warnings || game.board.broken || previous_board_broken)
-                        previous_board_broken = game.board.broken;
-
-                    this.update_highlights ();
                 });
 
                 cell.will_open_popover.connect (() => {
@@ -238,12 +235,27 @@ public class SudokuView : Adw.Bin
         add_binding (Gdk.Key.d, 0, right_func, null);
     }
 
-    private void update_highlights ()
+    private void selection_changed_cb (int old_row, int old_col, int new_row, int new_col)
     {
-        var has_selection = selected_row >= 0 && selected_col >= 0;
-        var cell_value = -1;
-        if (has_selection)
-            cell_value = cells[selected_row, selected_col].value;
+        set_cell_highlighter (old_row, old_col, false);
+        set_cell_highlighter (new_row, new_col, true);
+        cells[old_row, old_col].dismiss_popover ();
+    }
+
+    private void cell_changed_cb (int row, int col, int old_val, int new_val)
+    {
+        cells[row, col].update_value ();
+
+        set_value_highlighter (old_val, false);
+        set_value_highlighter (new_val, true);
+        update_warnings ();
+    }
+
+    private void earmark_changed_cb (int row, int col, bool enabled, int val)
+    {
+        cells[row, col].update_earmark (val, enabled);
+    }
+
 
         for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
         {
