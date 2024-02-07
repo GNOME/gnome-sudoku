@@ -17,10 +17,10 @@ sudokucell {
   background: #454545;
 }
 sudokucell.highlight-bg {
-  background: #8d8d8d;
+  background: #717171;
 }
 sudokucell.selected {
-  background: #51637e;
+  background: #4c5e79;
 }
 sudokucell.fixed {
   background: #343434;
@@ -29,14 +29,16 @@ sudokucell label {
   color: #FFF;
 }
 sudokucell.selected > label {
-   background: #51637e;
+  background: #4c5e79;
 }
 sudokucell.highlight-label > label {
-   background: #51637e;
+  background: #20324b;
 }
-sudokucell.highlight-label > label.earmark {
-   background: #8d8d8d;
+sudokucell > label.earmark.highlight-label {
+  color: #20324b;
+  font-weight: bold;
 }
+
 .earmark.error,
 sudokucell.highlight-label > .earmark.error,
 sudokucell.selected > .earmark.error,

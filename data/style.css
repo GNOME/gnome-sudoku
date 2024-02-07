@@ -33,8 +33,9 @@ sudokucell.selected > label {
 sudokucell.highlight-label > label {
   color: #3366E5;
 }
-sudokucell.highlight-label > label.earmark {
-  color: #000;
+sudokucell > label.earmark.highlight-label {
+  font-weight: bold;
+  color: #3366E5;
 }
 .earmark.error,
 sudokucell.highlight-label > .earmark.error,
