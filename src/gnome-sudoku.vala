@@ -301,7 +301,7 @@ public class Sudoku : Adw.Application
         }
     }
 
-    private void cell_changed_cb ()
+    private void cell_modified_cb ()
     {
         undo_action.set_enabled (!game.is_undostack_null ());
         redo_action.set_enabled (!game.is_redostack_null ());
@@ -364,7 +364,8 @@ public class Sudoku : Adw.Application
         if (game != null)
         {
             game.paused_changed.disconnect (paused_changed_cb);
-            game.cell_changed.disconnect (cell_changed_cb);
+            game.cell_changed.disconnect (cell_modified_cb);
+            game.board.earmark_changed.disconnect (cell_modified_cb);
             game.board.completed.disconnect (board_completed_cb);
         }
 
@@ -372,7 +373,8 @@ public class Sudoku : Adw.Application
         game.mode = current_game_mode;
 
         game.paused_changed.connect (paused_changed_cb);
-        game.cell_changed.connect (cell_changed_cb);
+        game.cell_changed.connect (cell_modified_cb);
+        game.board.earmark_changed.connect (cell_modified_cb);
 
         window.start_game (game, show_possibilities);
 

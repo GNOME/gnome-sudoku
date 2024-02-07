@@ -107,6 +107,7 @@ public class SudokuGame : Object
         var old_earmarks = board.get_earmarks (row, col);
         update_undo (row, col, old_val, old_earmarks);
 
+        board.disable_all_earmarks (row, col);
         if (mode == GameMode.CREATE)
         {
             board.insert (row, col, val, true);
@@ -115,7 +116,6 @@ public class SudokuGame : Object
         else
             board.insert (row, col, val);
 
-        board.disable_all_earmarks (row, col);
         cell_changed (row, col, old_val, val);
     }
 
@@ -202,23 +202,18 @@ public class SudokuGame : Object
         bool[] old_earmarks = board.get_earmarks (top.row, top.col);
         add_to_stack (to, top.row, top.col, old_val, old_earmarks);
 
-        if (mode == GameMode.CREATE)
+        if (top.val != old_val)
         {
-            board.remove (top.row, top.col, board.get_is_fixed (top.row, top.col));
-            board.set_is_fixed (top.row, top.col, false);
-        }
-        else
-            board.remove (top.row, top.col);
-
-        if (top.val != 0)
-        {
+            board.set (top.row, top.col, top.val);
             if (mode == GameMode.CREATE)
             {
-                board.insert (top.row, top.col, top.val, board.get_is_fixed (top.row, top.col));
-                board.set_is_fixed (top.row, top.col, true);
+                if (top.val > 0)
+                    board.set_is_fixed (top.row, top.col, true);
+                else
+                    board.set_is_fixed (top.row, top.col, false);
             }
-            else
-                board.insert (top.row, top.col, top.val);
+
+            cell_changed (top.row, top.col, old_val, top.val);
         }
 
         for (var i = 1; i <= top.earmarks.length; i++)
@@ -228,8 +223,6 @@ public class SudokuGame : Object
             else
                 board.disable_earmark (top.row, top.col, i);
         }
-
-        cell_changed (top.row, top.col, old_val, top.val);
     }
 
     public double get_total_time_played ()

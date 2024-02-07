@@ -89,6 +89,7 @@ public class SudokuBoard : Object
     }
 
     public signal void completed ();
+    public signal void earmark_changed (int row, int col, int val, bool enabled);
 
     /* The set of coordinates on the board which are invalid */
     public Gee.Set<Coord?> broken_coords { get; private set; }
@@ -205,6 +206,7 @@ public class SudokuBoard : Object
         {
             earmarks[row, column, digit-1] = true;
             n_earmarks++;
+            earmark_changed (row, column, digit, true);
         }
     }
 
@@ -215,6 +217,7 @@ public class SudokuBoard : Object
         {
             earmarks[row, column, digit-1] = false;
             n_earmarks--;
+            earmark_changed (row, column, digit, false);
         }
     }
 
