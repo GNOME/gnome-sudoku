@@ -175,7 +175,6 @@ public class SudokuView : Adw.Bin
             else
                 view.cells[view.selected_row - 1, view.selected_col].grab_focus ();
 
-            view.dismiss_popovers ();
             return Gdk.EVENT_STOP;
         };
         ShortcutFunc down_func = (self) => {
@@ -189,7 +188,6 @@ public class SudokuView : Adw.Bin
             else
                 view.cells[view.selected_row + 1, view.selected_col].grab_focus ();
 
-            view.dismiss_popovers ();
             return Gdk.EVENT_STOP;
         };
         ShortcutFunc left_func = (self) => {
@@ -203,7 +201,6 @@ public class SudokuView : Adw.Bin
             else
                 view.cells[view.selected_row, view.selected_col - 1].grab_focus ();
 
-            view.dismiss_popovers ();
             return Gdk.EVENT_STOP;
         };
         ShortcutFunc right_func = (self) => {
@@ -217,7 +214,6 @@ public class SudokuView : Adw.Bin
             else
                 view.cells[view.selected_row, view.selected_col + 1].grab_focus ();
 
-            view.dismiss_popovers ();
             return Gdk.EVENT_STOP;
         };
 

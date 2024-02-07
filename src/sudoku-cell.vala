@@ -147,7 +147,6 @@ private class SudokuCell : Widget
         set
         {
             _show_warnings = value;
-            check_warnings ();
         }
     }
 
@@ -235,8 +234,6 @@ private class SudokuCell : Widget
             if (popover.visible)
             {
                 popover.set_child (null);
-
-                check_warnings ();
                 this.grab_focus ();
             }
         });
@@ -293,10 +290,7 @@ private class SudokuCell : Widget
             return;
 
         if (keyval == Key.Control_L || keyval == Key.Control_R)
-        {
             control_key_pressed = false;
-            check_warnings ();
-        }
 
         int key = get_key_number (keyval);
         if (key >= 1 && key <= 9)
@@ -320,7 +314,6 @@ private class SudokuCell : Widget
                         game.enable_earmark (row, col, key);
                     else
                         game.disable_earmark (row, col, key);
-                    this.game.cell_changed (row, col, value, value);
                 }
             }
             else if (!ctrl_pressed)
@@ -518,9 +511,6 @@ private class SudokuCell : Widget
                 earmark_picker.set_clear_button_enabled (false);
             else
                 earmark_picker.set_clear_button_enabled (true);
-
-            check_warnings ();
-            this.game.cell_changed (row, col, value, value);
         });
         earmark_picker.set_earmarks (row, col);
         popover.set_child (earmark_picker);
@@ -541,7 +531,6 @@ private class SudokuCell : Widget
 
             value = number;
             this.game.board.disable_all_earmarks (row, col);
-            this.game.cell_changed (row, col, value, value);
         });
         number_picker.set_clear_button_visibility (value != 0);
         popover.set_child (number_picker);
