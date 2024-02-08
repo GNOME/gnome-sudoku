@@ -280,11 +280,9 @@ public class SudokuBoard : Object
     }
 
     public void insert (int row, int col, int val, bool is_fixed = false)
+    requires (val > 0)
+    requires (val <= max_val)
     {
-        /* This should not happen when coded properly ;) */
-        assert (val > 0);
-        assert (val <= max_val);
-
         /* Cant insert in to a fixed cell, unless you know what you are doing */
         if (!is_fixed)
             assert (!this.is_fixed[row, col]);
@@ -334,11 +332,8 @@ public class SudokuBoard : Object
     }
 
     public void remove (int row, int col, bool is_fixed = false)
+    requires (cells[row, col] > 0)
     {
-        /* You can't remove an empty cell */
-        if (cells[row, col] == 0)
-            return;
-
         /* You can't remove an fixed cell */
         if (!is_fixed)
             assert (!this.is_fixed[row, col]);
