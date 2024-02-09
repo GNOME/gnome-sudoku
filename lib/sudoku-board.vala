@@ -375,11 +375,13 @@ public class SudokuBoard : Object
     }
 
     public void set_solution (int row, int col, int val)
+        requires (solution != null)
     {
         solution[row, col] = val;
     }
 
     public int get_solution (int row, int col)
+        requires (solution != null)
     {
         return solution[row, col];
     }
