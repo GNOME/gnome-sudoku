@@ -586,7 +586,7 @@ private class SudokuCell : Widget
 
     public void check_earmark_warnings (int value, bool enabled)
     {
-        if (!show_warnings || !enabled || this.value != 0 || game.mode != SudokuGame.GameMode.Play)
+        if (!show_warnings || !enabled || this.value != 0 || game.mode != GameMode.PLAY)
             return;
 
         int solution = game.board.get_solution (row, col);
