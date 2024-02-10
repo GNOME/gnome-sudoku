@@ -59,17 +59,16 @@ private class SudokuCell : Widget
     {
         get { return game.board [row, col]; }
         set {
-            if (value != 0)
-                value_label.set_visible (true);
-            else
-                value_label.set_visible (false);
-
-            if (value == game.board [row, col] ||
-                is_fixed && game.mode == GameMode.PLAY)
+            if (value == game.board [row, col] || is_fixed)
             {
                 /* This early return avoids the property change notify. */
                 return;
             }
+
+            if (value != 0)
+                value_label.set_visible (true);
+            else
+                value_label.set_visible (false);
 
             if (value == 0)
             {
@@ -286,7 +285,7 @@ private class SudokuCell : Widget
                                   uint         keycode,
                                   ModifierType state)
     {
-        if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
+        if (is_fixed || game.paused)
             return;
 
         if (keyval == Key.Control_L || keyval == Key.Control_R)
@@ -356,7 +355,7 @@ private class SudokuCell : Widget
                                 double           x,
                                 double           y)
     {
-        if (game.mode == GameMode.PLAY && (is_fixed || game.paused) || this.value != 0)
+        if (game.mode == GameMode.CREATE || is_fixed || game.paused || this.value != 0)
             return;
 
         show_earmark_picker ();
@@ -374,21 +373,25 @@ private class SudokuCell : Widget
         if (!this.has_focus)
             grab_focus ();
 
-        if (game.mode == GameMode.PLAY && (is_fixed || game.paused))
+        if (is_fixed || game.paused)
             return;
 
         if (gesture.get_current_button () == BUTTON_PRIMARY)
         {
-            if (!show_possibilities &&
+            if (game.mode == GameMode.PLAY &&
+                !show_possibilities &&
                 (gesture.get_last_event (gesture.get_last_updated_sequence ()).get_modifier_state () & ModifierType.CONTROL_MASK) > 0 &&
                 this.value == 0)
+            {
                 show_earmark_picker ();
+            }
             else
                 show_number_picker ();
             gesture.set_state (EventSequenceState.CLAIMED);
         }
-        else if (!show_possibilities &&
-                 gesture.get_current_button () == BUTTON_SECONDARY &&
+        else if (gesture.get_current_button () == BUTTON_SECONDARY &&
+                 game.mode == GameMode.PLAY &&
+                 !show_possibilities &&
                  this.value == 0)
         {
             show_earmark_picker ();

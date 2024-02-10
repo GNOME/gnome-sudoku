@@ -108,13 +108,7 @@ public class SudokuGame : Object
         update_undo (row, col, old_val, old_earmarks);
 
         board.disable_all_earmarks (row, col);
-        if (mode == GameMode.CREATE)
-        {
-            board.insert (row, col, val, true);
-            board.set_is_fixed (row, col, true);
-        }
-        else
-            board.insert (row, col, val);
+        board.insert (row, col, val);
 
         cell_changed (row, col, old_val, val);
     }
@@ -125,14 +119,7 @@ public class SudokuGame : Object
         var old_earmarks = board.get_earmarks (row, col);
         update_undo (row, col, old_val, old_earmarks);
 
-        if (mode == GameMode.CREATE)
-        {
-            board.remove (row, col, true);
-            board.set_is_fixed (row, col, false);
-        }
-        else
-            board.remove (row, col);
-
+        board.remove (row, col);
         cell_changed (row, col, old_val, 0);
     }
 
@@ -160,16 +147,21 @@ public class SudokuGame : Object
         timer.start ();
         undostack.clear ();
         redostack.clear ();
+        var cells = board.get_cells ();
         for (var l1 = 0; l1 < board.rows; l1++)
         {
             for (var l2 = 0; l2 < board.cols; l2++)
             {
-                if (mode == GameMode.PLAY && board.get_is_fixed (l1, l2))
+                if (board.get_is_fixed (l1, l2))
                     continue;
 
-                board.remove (l1, l2, board.get_is_fixed (l1, l2));
-                board.set_is_fixed (l1, l2, false);
-                cell_changed (l1, l2, board.get (l1, l2), 0);
+                if (cells[l1, l2] > 0)
+                {
+                    board.remove (l1, l2);
+                    cell_changed (l1, l2, cells[l1, l2], 0);
+                }
+                else
+                    board.disable_all_earmarks (l1, l2);
             }
         }
         board.broken_coords.clear ();

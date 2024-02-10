@@ -181,7 +181,7 @@ public class Sudoku : Adw.Application
         if (savegame != null)
         {
             if (savegame.board.difficulty_category == DifficultyCategory.CUSTOM)
-                current_game_mode = savegame.board.filled == savegame.board.fixed ? GameMode.CREATE : GameMode.PLAY;
+                current_game_mode = savegame.board.fixed == 0 ? GameMode.CREATE : GameMode.PLAY;
             start_game (savegame.board);
         }
         else
@@ -351,6 +351,7 @@ public class Sudoku : Adw.Application
 
     private void start_custom_game (SudokuBoard board)
     {
+        game.board.set_all_is_fixed ();
         current_game_mode = GameMode.PLAY;
         game.stop_clock ();
         start_game (board);

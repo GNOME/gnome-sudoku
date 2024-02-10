@@ -73,6 +73,14 @@ public class SudokuBoard : Object
         get { return rows * cols; }
     }
 
+    public void set_all_is_fixed ()
+    {
+        for (var r = 0; r < rows; r++)
+            for (var c = 0; c < cols; c++)
+                if (cells[r, c] > 0)
+                    is_fixed[r, c] = true;
+    }
+
     public bool complete
     {
         get { return filled == cols * rows && !broken; }
