@@ -337,8 +337,6 @@ private class SudokuCell : Widget
             keyval == Gdk.Key.Return ||
             keyval == Gdk.Key.KP_Enter)
         {
-            if (popover.visible)
-                return;
             show_number_picker ();
             return;
         }
@@ -378,6 +376,8 @@ private class SudokuCell : Widget
             gesture.get_current_button () != BUTTON_SECONDARY)
             return;
 
+        gesture.set_state (EventSequenceState.CLAIMED);
+
         if (!this.has_focus)
             grab_focus ();
 
@@ -395,7 +395,6 @@ private class SudokuCell : Widget
             }
             else
                 show_number_picker ();
-            gesture.set_state (EventSequenceState.CLAIMED);
         }
         else if (gesture.get_current_button () == BUTTON_SECONDARY &&
                  game.mode == GameMode.PLAY &&
@@ -403,7 +402,6 @@ private class SudokuCell : Widget
                  this.value == 0)
         {
             show_earmark_picker ();
-            gesture.set_state (EventSequenceState.CLAIMED);
         }
     }
 
@@ -493,8 +491,12 @@ private class SudokuCell : Widget
     private void show_earmark_picker ()
         requires (this.value == 0)
     {
-        if (this.popover.visible && ((NumberPicker)popover.child).is_earmark_picker)
-            return;
+        if (this.popover.visible)
+        {
+            dismiss_popover ();
+            if (((NumberPicker)popover.child).is_earmark_picker)
+                return;
+        }
 
         will_open_popover ();
 
@@ -518,10 +520,7 @@ private class SudokuCell : Widget
                     this.game.disable_earmark (row, col, number);
             }
 
-            if (!this.game.board.has_earmarks (row, col))
-                earmark_picker.set_clear_button_enabled (false);
-            else
-                earmark_picker.set_clear_button_enabled (true);
+            earmark_picker.set_clear_button_enabled (this.game.board.has_earmarks (row, col));
         });
         earmark_picker.set_earmarks (row, col);
         popover.set_child (earmark_picker);
@@ -531,19 +530,27 @@ private class SudokuCell : Widget
 
     private void show_number_picker ()
     {
-        if (this.popover.visible && ((NumberPicker)popover.child).is_earmark_picker)
-            return;
+        if (this.popover.visible)
+        {
+            dismiss_popover ();
+            if (!((NumberPicker)popover.child).is_earmark_picker)
+                return;
+        }
 
         will_open_popover ();
 
         var number_picker = new NumberPicker (game);
         number_picker.number_picked.connect ((o, number) => {
-            popover.popdown ();
-
+            if (number > 0)
+                popover.popdown ();
+            else
+            {
+                this.game.board.disable_all_earmarks (row, col);
+                number_picker.set_clear_button_visibility (false);
+            }
             value = number;
-            this.game.board.disable_all_earmarks (row, col);
         });
-        number_picker.set_clear_button_visibility (value != 0);
+        number_picker.set_clear_button_visibility (value > 0 || game.board.has_earmarks (row, col));
         popover.set_child (number_picker);
 
         popover.popup ();
