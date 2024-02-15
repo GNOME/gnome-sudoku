@@ -332,7 +332,6 @@ public class SudokuWindow : Adw.ApplicationWindow
                                 double           x,
                                 double           y)
     {
-        view?.dismiss_popovers ();
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 }

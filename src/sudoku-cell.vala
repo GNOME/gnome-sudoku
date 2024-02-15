@@ -355,10 +355,18 @@ private class SudokuCell : Widget
                                 double           x,
                                 double           y)
     {
-        if (game.mode == GameMode.CREATE || is_fixed || game.paused || this.value != 0)
+        gesture.set_state (EventSequenceState.CLAIMED);
+
+        if (!this.has_focus)
+            grab_focus ();
+
+        if (is_fixed || game.paused)
             return;
 
-        show_earmark_picker ();
+        if (game.mode == GameMode.CREATE)
+            show_number_picker ();
+        else if (this.value == 0)
+            show_earmark_picker ();
     }
 
     private void button_released_cb (GestureClick gesture,
