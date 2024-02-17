@@ -72,10 +72,10 @@ private class NumberPicker : Grid
                         earmark_state_changed (n, toggle_active);
                     });
                 }
-
                 if (n == 5)
-                    button.grab_focus ();
-
+                    button.realize.connect (() => {
+                        button.grab_focus ();
+                    });
                 button.show ();
             }
         }
