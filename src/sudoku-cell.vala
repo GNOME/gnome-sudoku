@@ -160,7 +160,6 @@ private class SudokuCell : Widget
         }
     }
 
-    public bool show_possibilities;
     private bool control_key_pressed;
 
     public SudokuCell (int row, int col, ref SudokuGame game)
@@ -225,8 +224,6 @@ private class SudokuCell : Widget
             }
         });
 
-        // Needed for initial earmarks from saved games
-        get_visible_earmarks ();
     }
 
     static construct {
@@ -375,7 +372,6 @@ private class SudokuCell : Widget
         if (gesture.get_current_button () == BUTTON_PRIMARY)
         {
             if (game.mode == GameMode.PLAY &&
-                !show_possibilities &&
                 (gesture.get_last_event (gesture.get_last_updated_sequence ()).get_modifier_state () & ModifierType.CONTROL_MASK) > 0 &&
                 this.value == 0)
             {
@@ -386,7 +382,6 @@ private class SudokuCell : Widget
         }
         else if (gesture.get_current_button () == BUTTON_SECONDARY &&
                  game.mode == GameMode.PLAY &&
-                 !show_possibilities &&
                  this.value == 0)
         {
             show_earmark_picker ();
@@ -432,41 +427,33 @@ private class SudokuCell : Widget
         }
     }
 
+    public void initialize_earmarks (bool show_possibilities)
+    {
+        if (value != 0 || game.mode == GameMode.CREATE)
+            return;
+
+        if (show_possibilities && game.board.previous_played_time == 0.0)
+        {
+            var marks = game.board.get_possibilities_as_bool_array (row, col);
+            for (int num = 1; num <= 9; num++)
+            {
+                if (marks[num])
+                    game.board.enable_earmark (row, col, num);
+            }
+        }
+
+        get_visible_earmarks ();
+    }
+
     private void get_visible_earmarks ()
     {
-        bool[] marks = null;
-        if (!show_possibilities)
+        var marks = game.board.get_earmarks (row, col);
+        for (int num = 1; num <= 9; num ++)
         {
-            if (game.mode == GameMode.PLAY &&
-                game.board.previous_played_time == 0.0)
-            {
-                marks = game.board.get_possibilities_as_bool_array (row, col);
-                for (int num = 1; num <= marks.length; num++)
-                {
-                    if (marks[num - 1])
-                    {
-                        game.board.enable_earmark (row, col, num);
-                    }
-                }
-            }
-            marks = game.board.get_earmarks (row, col);
-        }
-        else if (value == 0){
-            marks = game.board.get_possibilities_as_bool_array (row, col);
-        }
-
-        int num = 0;
-        for (int row_tmp = 0; row_tmp < game.board.block_rows; row_tmp++)
-        {
-            for (int col_tmp = 0; col_tmp < game.board.block_cols; col_tmp++)
-            {
-                num++;
-
-                if (marks == null || value != 0)
-                    earmark_labels[num - 1].set_visible (false);
-                else
-                    earmark_labels[num - 1].set_visible (marks[num - 1]);
-            }
+            if (value != 0)
+                earmark_labels[num - 1].set_visible (false);
+            else
+                earmark_labels[num - 1].set_visible (marks[num - 1]);
         }
     }
 

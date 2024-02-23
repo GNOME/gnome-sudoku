@@ -163,10 +163,9 @@ public class SudokuView : Adw.Bin
 
                 cells[row, col] = cell;
 
-                cells[row, col].show_possibilities = show_possibilities;
                 cells[row, col].show_warnings = show_warnings;
                 cells[row, col].show_extra_warnings = show_extra_warnings;
-                cells[row, col].initialize_earmarks ();
+                cells[row, col].initialize_earmarks (show_possibilities);
 
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
             }
@@ -398,9 +397,6 @@ public class SudokuView : Adw.Bin
         get { return _show_possibilities; }
         set {
             _show_possibilities = value;
-            for (var i = 0; i < game.board.rows; i++)
-                for (var j = 0; j < game.board.cols; j++)
-                    cells[i,j].show_possibilities = value;
         }
     }
 
