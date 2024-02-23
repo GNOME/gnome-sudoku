@@ -62,12 +62,20 @@ public class SudokuView : Adw.Bin
             cells[selected_row, selected_col].selected = true;
     }
 
-    public SudokuView (int frame_size, SudokuGame game)
+    public SudokuView (SudokuGame game, GLib.Settings settings)
     {
         this.vexpand = true;
 
         this.focusable = true;
         this.can_focus = true;
+
+        if (game.mode == GameMode.CREATE)
+            this._show_warnings = true;
+        else
+            this._show_warnings = settings.get_boolean ("show-warnings");
+        this._show_extra_warnings = settings.get_boolean ("show-extra-warnings");
+        this._show_possibilities = settings.get_boolean ("show-possibilities");
+        this._highlighter = settings.get_boolean ("highlighter");
 
         overlay = new Overlay ();
         var frame = new SudokuFrame (overlay);
@@ -155,10 +163,16 @@ public class SudokuView : Adw.Bin
 
                 cells[row, col] = cell;
 
+                cells[row, col].show_possibilities = show_possibilities;
+                cells[row, col].show_warnings = show_warnings;
+                cells[row, col].show_extra_warnings = show_extra_warnings;
+                cells[row, col].initialize_earmarks ();
+
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
             }
         }
 
+        update_warnings ();
         overlay.add_overlay (paused);
         overlay.set_child (grid);
         grid.show ();
@@ -347,7 +361,7 @@ public class SudokuView : Adw.Bin
                 cells[i,j].check_warnings ();
     }
 
-    private bool _show_warnings = false;
+    private bool _show_warnings;
     public bool show_warnings
     {
         get { return _show_warnings; }
@@ -361,10 +375,12 @@ public class SudokuView : Adw.Bin
                 update_warnings ();
             else
                 clear_all_warnings ();
+            //refresh css rules
+            set_cell_highlighter (selected_row, selected_col, true);
          }
     }
 
-    private bool _show_extra_warnings = false;
+    private bool _show_extra_warnings;
     public bool show_extra_warnings
     {
         get { return _show_extra_warnings; }
@@ -376,7 +392,7 @@ public class SudokuView : Adw.Bin
          }
     }
 
-    private bool _show_possibilities = false;
+    private bool _show_possibilities;
     public bool show_possibilities
     {
         get { return _show_possibilities; }
@@ -388,14 +404,11 @@ public class SudokuView : Adw.Bin
         }
     }
 
-    private bool _highlighter = true;
+    private bool _highlighter;
     public bool highlighter
     {
         get { return _highlighter; }
         set {
-            if (value == highlighter)
-                return;
-
             set_cell_highlighter (selected_row, selected_col, false);
             _highlighter = value;
             set_cell_highlighter (selected_row, selected_col, true);

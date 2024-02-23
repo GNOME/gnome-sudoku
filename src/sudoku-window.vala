@@ -171,15 +171,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         show_game_view ();
 
-        view = new SudokuView (board_size, game);
-
-        if (game.mode == GameMode.CREATE)
-            view.show_warnings = true;
-        else
-            view.show_warnings = settings.get_boolean ("show-warnings");
-        view.show_extra_warnings = settings.get_boolean ("show-extra-warnings");
-        view.show_possibilities = settings.get_boolean ("show-possibilites");
-        view.highlighter = settings.get_boolean ("highlighter");
+        view = new SudokuView (game, settings);
 
         view.show ();
         game_box.prepend (view);
