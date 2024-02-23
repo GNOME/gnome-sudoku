@@ -163,18 +163,6 @@ private class SudokuCell : Widget
     public bool show_possibilities;
     private bool control_key_pressed;
 
-    private bool initialized_earmarks;
-    private bool _initialize_earmarks;
-    public bool initialize_earmarks
-    {
-        get { return _initialize_earmarks; }
-        set
-        {
-            _initialize_earmarks = value;
-            get_visible_earmarks ();
-        }
-    }
-
     public SudokuCell (int row, int col, ref SudokuGame game)
     {
         this.set_accessible_role (AccessibleRole.BUTTON);
@@ -449,27 +437,21 @@ private class SudokuCell : Widget
         bool[] marks = null;
         if (!show_possibilities)
         {
-            if (!initialized_earmarks)
+            if (game.mode == GameMode.PLAY &&
+                game.board.previous_played_time == 0.0)
             {
-                if (_initialize_earmarks && (game.mode == GameMode.PLAY) &&
-                    (game.board.previous_played_time == 0.0))
+                marks = game.board.get_possibilities_as_bool_array (row, col);
+                for (int num = 1; num <= marks.length; num++)
                 {
-                    marks = game.board.get_possibilities_as_bool_array (row, col);
-                    for (int num = 1; num <= marks.length; num++)
+                    if (marks[num - 1])
                     {
-                        if (marks[num - 1])
-                        {
-                            game.board.enable_earmark (row, col, num);
-                        }
+                        game.board.enable_earmark (row, col, num);
                     }
                 }
-                initialized_earmarks = true;
             }
-
             marks = game.board.get_earmarks (row, col);
         }
-        else if (value == 0)
-        {
+        else if (value == 0){
             marks = game.board.get_possibilities_as_bool_array (row, col);
         }
 

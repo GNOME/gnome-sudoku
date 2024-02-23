@@ -388,18 +388,6 @@ public class SudokuView : Adw.Bin
         }
     }
 
-    private bool _initialize_earmarks = false;
-    public bool initialize_earmarks
-    {
-        get { return _initialize_earmarks; }
-        set {
-            _initialize_earmarks = value;
-            for (var i = 0; i < game.board.rows; i++)
-                for (var j = 0; j < game.board.cols; j++)
-                    cells[i,j].initialize_earmarks = value;
-        }
-    }
-
     private bool _highlighter = true;
     public bool highlighter
     {

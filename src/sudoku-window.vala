@@ -158,7 +158,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         back_button.sensitive = false;
     }
 
-    public void start_game (SudokuGame game, bool show_possibilities)
+    public void start_game (SudokuGame game)
     {
         if (this.game != null)
             this.game.tick.disconnect (tick_cb);
@@ -173,14 +173,13 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         view = new SudokuView (board_size, game);
 
-        view.show_possibilities = show_possibilities;
         if (game.mode == GameMode.CREATE)
             view.show_warnings = true;
         else
             view.show_warnings = settings.get_boolean ("show-warnings");
         view.show_extra_warnings = settings.get_boolean ("show-extra-warnings");
+        view.show_possibilities = settings.get_boolean ("show-possibilites");
         view.highlighter = settings.get_boolean ("highlighter");
-        view.initialize_earmarks = settings.get_boolean ("initialize-earmarks");
 
         view.show ();
         game_box.prepend (view);

@@ -28,22 +28,26 @@
       <summary>Warn about unfillable squares and duplicate numbers</summary>
       <description>Displays a big red X in a square if it cannot possibly be filled by any number and duplicate numbers are highlighted in red</description>
     </key>
+    <key name="show-possibilities" type="b">
+      <default>false</default>
+      <summary>Initialize the earmarks with the possible values for each cell</summary>
+    </key>
     <key name="show-extra-warnings" type="b">
       <default>false</default>
       <summary>Additionally warn when correct solution is violated or not earmarked</summary>
       <description>Changes the background color of a square to red if the value does not match puzzle solution, or if no earmark matches the puzzle solution</description>
     </key>
     <key name="highlighter" type="b">
-        <default>false</default>
-        <summary>Highlight row, column and square that contain the selected cell</summary>
+      <default>false</default>
+      <summary>Highlight row, column and square that contain the selected cell</summary>
     </key>
     <key name="play-difficulty" enum="org.gnome.Sudoku.play-difficulty">
       <default>"easy"</default>
       <summary>The puzzle's difficulty</summary>
     </key>
     <key name="show-timer" type="b">
-        <default>false</default>
-        <summary>Toggle timer and pause buttons</summary>
+      <default>false</default>
+      <summary>Toggle timer and pause buttons</summary>
     </key>
     <key name="window-width" type="i">
       <default>730</default>
@@ -56,10 +60,6 @@
     <key name="window-is-maximized" type="b">
       <default>false</default>
       <summary>true if the window is maximized</summary>
-    </key>
-    <key name="initialize-earmarks" type="b">
-      <default>false</default>
-      <summary>Initialize the earmarks with the possible values for each cell</summary>
     </key>
   </schema>
 </schemalist>

@@ -51,7 +51,6 @@ public class Sudoku : Adw.Application
     private SimpleAction new_game_action;
     private SimpleAction show_timer_action;
 
-    private bool show_possibilities = false;
     private GameMode current_game_mode = GameMode.PLAY;
     private DifficultyCategory play_difficulty;
 
@@ -108,8 +107,6 @@ public class Sudoku : Adw.Application
             stderr.printf ("gnome-sudoku %s\n", VERSION);
             return Posix.EXIT_SUCCESS;
         }
-        if (options.contains ("show-possible-values"))
-            show_possibilities = true;
 
         /* Activate */
         return -1;
@@ -136,17 +133,17 @@ public class Sudoku : Adw.Application
         });
         add_action (action);
 
+        action = settings.create_action ("show-possibilities");
+        action.notify["state"].connect (() => {
+            if (view != null && current_game_mode == GameMode.PLAY)
+                view.show_possibilities = settings.get_boolean ("show-possibilities");
+        });
+        add_action (action);
+
         action = settings.create_action ("highlighter");
         action.notify["state"].connect (() => {
             if (view != null)
                 view.highlighter = settings.get_boolean ("highlighter");
-        });
-        add_action (action);
-
-        action = settings.create_action ("initialize-earmarks");
-        action.notify["state"].connect (() => {
-            if (view != null)
-                view.initialize_earmarks = settings.get_boolean ("initialize-earmarks");
         });
         add_action (action);
 
@@ -377,7 +374,7 @@ public class Sudoku : Adw.Application
         game.cell_changed.connect (cell_modified_cb);
         game.board.earmark_changed.connect (cell_modified_cb);
 
-        window.start_game (game, show_possibilities);
+        window.start_game (game);
 
         print_action.set_enabled (true);
         undo_action.set_enabled (false);
