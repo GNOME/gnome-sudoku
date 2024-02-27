@@ -98,6 +98,7 @@ public class SudokuBoard : Object
 
     public signal void completed ();
     public signal void earmark_changed (int row, int col, int val, bool enabled);
+    public signal void cell_changed (int row, int col, int old_val, int new_val);
 
     /* The set of coordinates on the board which are invalid */
     public Gee.Set<Coord?> broken_coords { get; private set; }
@@ -208,29 +209,24 @@ public class SudokuBoard : Object
     }
 
     public void enable_earmark (int row, int column, int digit)
-        ensures (n_earmarks > 0)
+        requires (cells[row, column] == 0)
+        requires (!earmarks[row, column, digit-1])
     {
-        if (!earmarks[row, column, digit-1])
-        {
-            earmarks[row, column, digit-1] = true;
-            n_earmarks++;
-            earmark_changed (row, column, digit, true);
-        }
+        earmarks[row, column, digit-1] = true;
+        n_earmarks++;
+        earmark_changed (row, column, digit, true);
     }
 
     public void disable_earmark (int row, int column, int digit)
-        ensures (n_earmarks >= 0)
+        requires (cells[row, column] == 0)
+        requires (earmarks[row, column, digit-1])
     {
-        if (earmarks[row, column, digit-1])
-        {
-            earmarks[row, column, digit-1] = false;
-            n_earmarks--;
-            earmark_changed (row, column, digit, false);
-        }
+        earmarks[row, column, digit-1] = false;
+        n_earmarks--;
+        earmark_changed (row, column, digit, false);
     }
 
     public void disable_all_earmarks (int row, int column)
-        ensures (n_earmarks >= 0)
     {
         for (var i = 1; i <= max_val; i++)
             if (earmarks[row, column, i-1])
@@ -288,40 +284,43 @@ public class SudokuBoard : Object
     }
 
     public void insert (int row, int col, int val, bool is_fixed = false)
-    requires (val > 0)
-    requires (val <= max_val)
+        requires (val > 0 && val <= max_val)
+        requires (!this.is_fixed[row, col])
     {
-        /* Cant insert in to a fixed cell, unless you know what you are doing */
-        if (!is_fixed)
-            assert (!this.is_fixed[row, col]);
-
-        // If the cell has a previous value, remove it before continuing
-        if (cells[row, col] != 0)
-            remove(row, col, is_fixed);
-
+        var old_val = cells[row, col];
         cells[row, col] = val;
+
         this.is_fixed[row, col] = is_fixed;
-        filled++;
         if (is_fixed)
             fixed++;
 
-        if (!possible_in_row[row, val - 1]) // If val was not possible in this row
-            mark_breakages_for(coords_for_row[row], val); // Mark the breakages
+        if (old_val != 0)
+            update_old_breakages (row, col, old_val);
+        else
+            filled++;
 
-        if (!possible_in_col[col, val - 1]) // If val was not possible in this col
-            mark_breakages_for(coords_for_col[col], val); // Mark the breakages
-
-        if (!possible_in_block[row / block_cols, col / block_rows, val - 1]) // If val was not possible in this block
-            mark_breakages_for(coords_for_block[Coord(row / block_cols, col / block_rows)], val); // Mark the breakages
-
-        // Then just mark it as not possible
-        val--;
-        possible_in_row[row, val] = false;
-        possible_in_col[col, val] = false;
-        possible_in_block[row / block_cols, col / block_rows, val] = false;
+        mark_breakages (row, col, val);
+        set_val_possible (row, col, val, false);
 
         if (complete)
             completed();
+        cell_changed (row, col, old_val, val);
+    }
+
+    public void remove (int row, int col)
+        requires (cells[row, col] > 0)
+        requires (!this.is_fixed[row, col])
+    {
+        int old_val = cells[row, col];
+        cells[row, col] = 0;
+        filled--;
+        update_old_breakages (row, col, old_val);
+        cell_changed (row, col, old_val, 0);
+    }
+
+    public new int get (int row, int col)
+    {
+        return cells[row, col];
     }
 
     public new void set (int row, int col, int val)
@@ -334,52 +333,45 @@ public class SudokuBoard : Object
             assert_not_reached();
     }
 
-    public new int get (int row, int col)
+    private void update_old_breakages (int row, int col, int val)
     {
-        return cells[row, col];
+        if (broken_coords.contains(Coord(row, col)))
+        {
+            //remove all the related breakages in the related sets of cells
+            remove_breakages_for (coords_for_row[row], val);
+            remove_breakages_for (coords_for_col[col], val);
+            remove_breakages_for (coords_for_block[Coord(row / block_rows, col / block_cols)], val);
+            broken_coords.remove (Coord(row, col));
+
+            //we need a manual update here in case there's more than 1 occurence on removal
+            possible_in_row[row, val - 1] = get_occurences (coords_for_row[row], val).size == 0;
+            possible_in_col[col, val - 1] = get_occurences (coords_for_col[col], val).size == 0;
+            possible_in_block[row / block_cols, col / block_rows, val - 1] = get_occurences (coords_for_block[Coord(row / block_rows, col / block_cols)], val).size == 0;
+
+            //refresh other cell breakages to reflect the removed value
+            mark_breakages (row, col, val);
+        }
+        else
+            set_val_possible (row, col, val, true);
     }
 
-    public void remove (int row, int col, bool is_fixed = false)
-    requires (cells[row, col] > 0)
+    private void set_val_possible (int row, int col, int val, bool enabled)
     {
-        /* You can't remove an fixed cell */
-        if (!is_fixed)
-            assert (!this.is_fixed[row, col]);
+        possible_in_row[row, val - 1] = enabled;
+        possible_in_col[col, val - 1] = enabled;
+        possible_in_block[row / block_cols, col / block_rows, val - 1] = enabled;
+    }
 
-        int previous_val = cells[row, col];
-        cells[row, col] = 0;
+    private void mark_breakages (int row, int col, int val)
+    {
+        if (!possible_in_row[row, val - 1]) // If val was not possible in this row
+            mark_breakages_for (coords_for_row[row], val); // Mark the breakages
 
-        if (broken_coords.contains(Coord(row, col))) // If this cell was broken
-        {
-            // Remove all the related breakages in the related sets of cells
-            remove_breakages_for(coords_for_row[row], previous_val);
-            remove_breakages_for(coords_for_col[col], previous_val);
-            remove_breakages_for(coords_for_block[Coord(row / block_rows, col / block_cols)], previous_val);
-            broken_coords.remove(Coord(row, col));
+        if (!possible_in_col[col, val - 1]) // If val was not possible in this col
+            mark_breakages_for (coords_for_col[col], val); // Mark the breakages
 
-            // Re-mark all the breakages,
-            mark_breakages_for(coords_for_row[row], previous_val);
-            mark_breakages_for(coords_for_col[col], previous_val);
-            mark_breakages_for(coords_for_block[Coord(row / block_rows, col / block_cols)], previous_val);
-
-            // and update the possibilities accordingly
-            possible_in_row[row, previous_val - 1] = get_occurances(coords_for_row[row], previous_val).size == 0;
-            possible_in_col[col, previous_val - 1] = get_occurances(coords_for_col[col], previous_val).size == 0;
-            possible_in_block[row / block_cols, col / block_rows, previous_val - 1] = get_occurances(coords_for_block[Coord(row / block_rows, col / block_cols)], previous_val).size == 0;
-        }
-        else // Not previously broken, so just mark as a possible value
-        {
-            previous_val--;
-
-            possible_in_row[row, previous_val] = true;
-            possible_in_col[col, previous_val] = true;
-            possible_in_block[row / block_cols, col / block_rows, previous_val] = true;
-        }
-
-        filled--;
-
-        if (is_fixed)
-            fixed--;
+        if (!possible_in_block[row / block_cols, col / block_rows, val - 1]) // If val was not possible in this block
+            mark_breakages_for (coords_for_block[Coord(row / block_cols, col / block_rows)], val); // Mark the breakages
     }
 
     public void set_solution (int row, int col, int val)
@@ -435,44 +427,44 @@ public class SudokuBoard : Object
         return QQwing.count_solutions_limited (cells_1d);
     }
 
-    public Set<Coord?> get_occurances(Gee.List<Coord?> coords, int val)
+    public Set<Coord?> get_occurences(Gee.List<Coord?> coords, int val)
     {
-        Set<Coord?> occurances = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
+        Set<Coord?> occurences = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         foreach (Coord coord in coords)
             if (cells[coord.row, coord.col] == val)
-                occurances.add (coord);
+                occurences.add (coord);
 
-        return occurances;
+        return occurences;
     }
 
-    public bool row_contains(int row, int val)
+    public bool row_contains (int row, int val)
     {
-        return get_occurances(coords_for_row[row], val).size != 0;
+        return get_occurences (coords_for_row[row], val).size != 0;
     }
 
-    public bool col_contains(int col, int val)
+    public bool col_contains (int col, int val)
     {
-        return get_occurances(coords_for_col[col], val).size != 0;
+        return get_occurences (coords_for_col[col], val).size != 0;
     }
 
-    public bool block_contains(Coord block, int val)
+    public bool block_contains (Coord block, int val)
     {
-        return get_occurances(coords_for_block[block], val).size != 0;
+        return get_occurences (coords_for_block[block], val).size != 0;
     }
 
-    private void remove_breakages_for(Gee.List<Coord?> coords, int val)
+    private void remove_breakages_for (Gee.List<Coord?> coords, int val)
     {
         foreach (Coord coord in coords)
             if (cells[coord.row, coord.col] == val && broken_coords.contains(coord))
-                broken_coords.remove(coord);
+                broken_coords.remove (coord);
     }
 
     /* returns if val is possible in coords */
-    private void mark_breakages_for(Gee.List<Coord?> coords, int val)
+    private void mark_breakages_for (Gee.List<Coord?> coords, int val)
     {
-        Set<Coord?> occurances = get_occurances(coords, val);
+        Set<Coord?> occurances = get_occurences (coords, val);
         if (occurances.size != 1)
-            broken_coords.add_all(occurances);
+            broken_coords.add_all (occurances);
     }
 
     public void to_initial_state ()
@@ -536,7 +528,7 @@ public class SudokuBoard : Object
         return board_string;
     }
 
-    public int[,] get_cells()
+    public int[,] get_cells ()
     {
         return cells;
     }

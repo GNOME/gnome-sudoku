@@ -50,7 +50,6 @@ public class SudokuGame : Object
         public bool[] earmarks;
     }
 
-    public signal void cell_changed (int row, int col, int old_val, int new_val);
 
     private Gee.List<UndoItem?> undostack;
     private Gee.List<UndoItem?> redostack;
@@ -75,7 +74,6 @@ public class SudokuGame : Object
     }
 
     public void enable_earmark (int row, int col, int k_no)
-        requires (board[row, col] == 0)
     {
         var old_earmarks = board.get_earmarks (row, col);
         update_undo (row, col, 0, old_earmarks);
@@ -84,7 +82,6 @@ public class SudokuGame : Object
     }
 
     public void disable_earmark (int row, int col, int k_no)
-        requires (board[row, col] == 0)
     {
         var old_earmarks = board.get_earmarks (row, col);
         update_undo (row, col, 0, old_earmarks);
@@ -93,7 +90,6 @@ public class SudokuGame : Object
     }
 
     public void disable_all_earmarks (int row, int col)
-        requires (board[row, col] == 0)
     {
         var old_earmarks = board.get_earmarks (row, col);
         update_undo (row, col, 0, old_earmarks);
@@ -109,8 +105,6 @@ public class SudokuGame : Object
 
         board.disable_all_earmarks (row, col);
         board.insert (row, col, val);
-
-        cell_changed (row, col, old_val, val);
     }
 
     public void remove (int row, int col)
@@ -120,7 +114,6 @@ public class SudokuGame : Object
         update_undo (row, col, old_val, old_earmarks);
 
         board.remove (row, col);
-        cell_changed (row, col, old_val, 0);
     }
 
     public bool is_empty ()
@@ -156,10 +149,7 @@ public class SudokuGame : Object
                     continue;
 
                 if (cells[l1, l2] > 0)
-                {
                     board.remove (l1, l2);
-                    cell_changed (l1, l2, cells[l1, l2], 0);
-                }
                 else
                     board.disable_all_earmarks (l1, l2);
             }
@@ -167,10 +157,6 @@ public class SudokuGame : Object
         board.broken_coords.clear ();
     }
 
-    public void cell_changed_cb (int row, int col, int old_val, int new_val)
-    {
-        cell_changed (row, col, old_val, new_val);
-    }
 
     public void update_undo (int row, int col, int old_val, bool[] old_earmarks)
     {
@@ -195,17 +181,18 @@ public class SudokuGame : Object
         add_to_stack (to, top.row, top.col, old_val, old_earmarks);
 
         if (top.val != old_val)
-        {
             board.set (top.row, top.col, top.val);
-            cell_changed (top.row, top.col, old_val, top.val);
-        }
 
         for (var i = 1; i <= top.earmarks.length; i++)
         {
-            if (top.earmarks[i-1])
-                board.enable_earmark (top.row, top.col, i);
-            else
-                board.disable_earmark (top.row, top.col, i);
+            if (top.earmarks[i-1] != old_earmarks[i-1])
+            {
+                if (top.earmarks[i-1])
+                    board.enable_earmark (top.row, top.col, i);
+                else
+                    board.disable_earmark (top.row, top.col, i);
+            }
+
         }
     }
 

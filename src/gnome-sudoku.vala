@@ -362,7 +362,7 @@ public class Sudoku : Adw.Application
         if (game != null)
         {
             game.paused_changed.disconnect (paused_changed_cb);
-            game.cell_changed.disconnect (cell_modified_cb);
+            game.board.cell_changed.disconnect (cell_modified_cb);
             game.board.earmark_changed.disconnect (cell_modified_cb);
             game.board.completed.disconnect (board_completed_cb);
         }
@@ -371,7 +371,7 @@ public class Sudoku : Adw.Application
         game.mode = current_game_mode;
 
         game.paused_changed.connect (paused_changed_cb);
-        game.cell_changed.connect (cell_modified_cb);
+        game.board.cell_changed.connect (cell_modified_cb);
         game.board.earmark_changed.connect (cell_modified_cb);
 
         window.start_game (game);

@@ -109,10 +109,6 @@ public class SudokuView : Adw.Bin
             has_selection = !this.game.paused;
         });
 
-        this.game.cell_changed.connect (cell_changed_cb);
-        this.game.board.earmark_changed.connect (earmark_changed_cb);
-        this.selection_changed.connect (selection_changed_cb);
-
         grid = new Grid () {
             row_spacing = 2,
             column_spacing = 2,
@@ -170,6 +166,10 @@ public class SudokuView : Adw.Bin
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
             }
         }
+
+        this.game.board.cell_changed.connect (cell_changed_cb);
+        this.game.board.earmark_changed.connect (earmark_changed_cb);
+        this.selection_changed.connect (selection_changed_cb);
 
         update_warnings ();
         overlay.add_overlay (paused);
