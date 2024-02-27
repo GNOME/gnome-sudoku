@@ -246,13 +246,13 @@ private class SudokuCell : Widget
         get_visible_earmarks ();
     }
 
-    public void update_earmark (int val, bool enabled)
+    public void update_earmark (int num, bool enabled)
     {
         if (!has_focus)
             grab_focus ();
 
-        check_earmark_warnings (val, enabled);
-        get_visible_earmarks ();
+        check_earmark_warnings (num, enabled);
+        get_visible_earmark (num);
     }
     private bool key_pressed_cb (uint         keyval,
                                  uint         keycode,
@@ -447,14 +447,16 @@ private class SudokuCell : Widget
 
     private void get_visible_earmarks ()
     {
-        var marks = game.board.get_earmarks (row, col);
         for (int num = 1; num <= 9; num ++)
-        {
-            if (value != 0)
-                earmark_labels[num - 1].set_visible (false);
-            else
-                earmark_labels[num - 1].set_visible (marks[num - 1]);
-        }
+            get_visible_earmark (num);
+    }
+
+    private void get_visible_earmark (int num)
+    {
+        if (value != 0)
+            earmark_labels[num - 1].set_visible (false);
+        else
+            earmark_labels[num - 1].set_visible (game.board.is_earmark_enabled(row, col, num));
     }
 
     private void show_earmark_picker ()
@@ -571,17 +573,17 @@ private class SudokuCell : Widget
         }
     }
 
-    public void check_earmark_warnings (int value, bool enabled)
+    public void check_earmark_warnings (int num, bool enabled)
     {
         if (!show_warnings || !enabled || this.value != 0 || game.mode != GameMode.PLAY)
             return;
 
         int solution = game.board.get_solution (row, col);
 
-        if (!game.board.is_possible (row, col, value) || warn_incorrect_solution () && value != solution)
-            earmark_labels[value - 1].add_css_class ("error");
+        if (!game.board.is_possible (row, col, num) || warn_incorrect_solution () && num != solution)
+            earmark_labels[num - 1].add_css_class ("error");
         else
-            earmark_labels[value - 1].remove_css_class ("error");
+            earmark_labels[num - 1].remove_css_class ("error");
     }
 
     public void clear_warnings ()

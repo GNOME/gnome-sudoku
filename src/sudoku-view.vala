@@ -263,9 +263,9 @@ public class SudokuView : Adw.Bin
         update_warnings ();
     }
 
-    private void earmark_changed_cb (int row, int col, int val, bool enabled)
+    private void earmark_changed_cb (int row, int col, int num, bool enabled)
     {
-        cells[row, col].update_earmark (val, enabled);
+        cells[row, col].update_earmark (num, enabled);
     }
 
     private void set_cell_highlighter (int row, int col, bool enabled)

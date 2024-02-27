@@ -97,7 +97,7 @@ public class SudokuBoard : Object
     }
 
     public signal void completed ();
-    public signal void earmark_changed (int row, int col, int val, bool enabled);
+    public signal void earmark_changed (int row, int col, int num, bool enabled);
     public signal void cell_changed (int row, int col, int old_val, int new_val);
 
     /* The set of coordinates on the board which are invalid */
@@ -208,22 +208,22 @@ public class SudokuBoard : Object
         is_fixed[row, column] = _value;
     }
 
-    public void enable_earmark (int row, int column, int digit)
+    public void enable_earmark (int row, int column, int num)
         requires (cells[row, column] == 0)
-        requires (!earmarks[row, column, digit-1])
+        requires (!earmarks[row, column, num-1])
     {
-        earmarks[row, column, digit-1] = true;
+        earmarks[row, column, num-1] = true;
         n_earmarks++;
-        earmark_changed (row, column, digit, true);
+        earmark_changed (row, column, num, true);
     }
 
-    public void disable_earmark (int row, int column, int digit)
+    public void disable_earmark (int row, int column, int num)
         requires (cells[row, column] == 0)
-        requires (earmarks[row, column, digit-1])
+        requires (earmarks[row, column, num-1])
     {
-        earmarks[row, column, digit-1] = false;
+        earmarks[row, column, num-1] = false;
         n_earmarks--;
-        earmark_changed (row, column, digit, false);
+        earmark_changed (row, column, num, false);
     }
 
     public void disable_all_earmarks (int row, int column)
@@ -233,9 +233,9 @@ public class SudokuBoard : Object
                 disable_earmark (row, column, i);
     }
 
-    public bool is_earmark_enabled (int row, int column, int digit)
+    public bool is_earmark_enabled (int row, int column, int num)
     {
-        return earmarks[row, column, digit-1];
+        return earmarks[row, column, num-1];
     }
 
     public bool is_possible (int row, int col, int val)
