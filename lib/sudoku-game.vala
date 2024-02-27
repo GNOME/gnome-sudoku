@@ -197,14 +197,6 @@ public class SudokuGame : Object
         if (top.val != old_val)
         {
             board.set (top.row, top.col, top.val);
-            if (mode == GameMode.CREATE)
-            {
-                if (top.val > 0)
-                    board.set_is_fixed (top.row, top.col, true);
-                else
-                    board.set_is_fixed (top.row, top.col, false);
-            }
-
             cell_changed (top.row, top.col, old_val, top.val);
         }
 
