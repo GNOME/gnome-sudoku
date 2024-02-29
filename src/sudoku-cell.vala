@@ -437,7 +437,7 @@ private class SudokuCell : Widget
             var marks = game.board.get_possibilities_as_bool_array (row, col);
             for (int num = 1; num <= 9; num++)
             {
-                if (marks[num])
+                if (marks[num - 1])
                     game.board.enable_earmark (row, col, num);
             }
         }
