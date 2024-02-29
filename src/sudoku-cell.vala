@@ -95,9 +95,10 @@ private class SudokuCell : Widget
         {
             _selected = value;
             if (value)
-                this.add_css_class ("selected");
-            else
-                this.remove_css_class ("selected");
+                this.set_css_classes ({"selected"});
+            else if (is_fixed)
+                this.set_css_classes ({"fixed"});
+            else this.set_css_classes ({});
         }
     }
 
@@ -108,9 +109,10 @@ private class SudokuCell : Widget
         {
             _highlighted_background = value;
             if (value)
-                this.add_css_class ("highlight-bg");
-            else
-                this.remove_css_class ("highlight-bg");
+                this.set_css_classes ({"highlight-bg"});
+            else if (is_fixed)
+                this.set_css_classes ({"fixed"});
+            else this.set_css_classes ({});
         }
     }
 
