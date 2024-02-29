@@ -3,7 +3,7 @@ resource_files = files('gnome-sudoku.gresource.xml')
 resources = gnome.compile_resources('gnome-sudoku', resource_files)
 
 desktop_file = i18n.merge_file(
-  input: '@0@.desktop.in'.format(application_id),
+  input: 'org.gnome.Sudoku.desktop.in',
   output: '@0@.desktop'.format(application_id),
   install: true,
   install_dir: join_paths(datadir, 'applications'),
@@ -25,7 +25,7 @@ if desktop_file_validate.found()
 endif
 
 appdata_file = i18n.merge_file(
-  input: '@0@.appdata.xml.in'.format(application_id),
+  input: 'org.gnome.Sudoku.appdata.xml.in',
   output: '@0@.appdata.xml'.format(application_id),
   install: true,
   install_dir: join_paths(datadir, 'metainfo'),
@@ -44,7 +44,7 @@ if appstreamcli.found()
   )
 endif
 
-install_data('@0@.gschema.xml'.format(application_id),
+install_data('org.gnome.Sudoku.gschema.xml',
   install_dir: join_paths(datadir, 'glib-2.0', 'schemas')
 )
 
@@ -56,8 +56,9 @@ install_data('icons/hicolor/scalable/@0@.svg'.format(application_id),
   install_dir: join_paths(icondir, 'scalable', 'apps')
 )
 
-install_data('icons/hicolor/symbolic/@0@-symbolic.svg'.format(application_id),
-  install_dir: join_paths(icondir, 'symbolic', 'apps')
+install_data('icons/hicolor/symbolic/org.gnome.Sudoku-symbolic.svg',
+  install_dir: join_paths(icondir, 'symbolic', 'apps'),
+  rename: '@0@-symbolic.svg'.format(application_id)
 )
 
 # Make D-Bus activatable

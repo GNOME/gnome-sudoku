@@ -6,7 +6,7 @@ project('gnome-sudoku', ['c', 'cpp', 'vala'],
   meson_version: '>= 0.59',
   version: '46.rc'
 )
-application_id = 'org.gnome.Sudoku'
+
 add_project_arguments([
     '-include', 'config.h'
   ],
@@ -26,6 +26,12 @@ datadir     = get_option('datadir')
 localedir   = get_option('localedir')
 prefix      = get_option('prefix')
 bindir      = get_option('bindir')
+profile     = get_option('profile')
+
+application_id = 'org.gnome.Sudoku'
+if profile != ''
+  application_id = 'org.gnome.Sudoku.' + profile
+endif
 
 glib_version = '2.40.0'
 

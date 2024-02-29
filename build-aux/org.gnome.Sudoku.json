@@ -44,6 +44,9 @@
         {
             "name": "gnome-sudoku",
             "buildsystem": "meson",
+            "config-opts": [
+                "-Dprofile=Devel"
+            ],
             "sources": [{
                 "type": "git",
                 "url": "https://gitlab.gnome.org/GNOME/gnome-sudoku.git"
