@@ -391,6 +391,15 @@ public class SudokuView : Adw.Bin
         get { return _show_possibilities; }
         set {
             _show_possibilities = value;
+            for (var row = 0; row < game.board.rows; row++)
+                for (var col = 0; col < game.board.cols; col++)
+                {
+                    if (show_possibilities)
+                        cells[row, col].initialize_earmarks (show_possibilities, true);
+                    else
+                        game.disable_all_earmarks (row, col);
+                }
+
         }
     }
 
