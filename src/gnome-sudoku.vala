@@ -476,7 +476,6 @@ public class Sudoku : Adw.Application
             return;
         game.undo ();
         undo_action.set_enabled (!game.is_undostack_null ());
-        view.redraw ();
     }
 
     private void redo_cb ()
@@ -485,7 +484,6 @@ public class Sudoku : Adw.Application
             return;
         game.redo ();
         redo_action.set_enabled (!game.is_redostack_null ());
-        view.redraw ();
     }
 
     private void print_cb ()
