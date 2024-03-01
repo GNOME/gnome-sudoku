@@ -83,6 +83,17 @@ private class SudokuCell : Widget
         }
     }
 
+    private void set_fixed_css (bool enabled)
+    {
+        if (is_fixed)
+        {
+            if (enabled)
+                this.add_css_class ("fixed");
+            else
+                this.remove_css_class ("fixed");
+        }
+    }
+
     public bool is_fixed
     {
         get { return game.board.get_is_fixed (row, col); }
@@ -94,11 +105,11 @@ private class SudokuCell : Widget
         set
         {
             _selected = value;
+            set_fixed_css (!value);
             if (value)
-                this.set_css_classes ({"selected"});
-            else if (is_fixed)
-                this.set_css_classes ({"fixed"});
-            else this.set_css_classes ({});
+                this.add_css_class ("selected");
+            else
+                this.remove_css_class ("selected");
         }
     }
 
@@ -108,11 +119,11 @@ private class SudokuCell : Widget
         set
         {
             _highlighted_background = value;
+            set_fixed_css (!value);
             if (value)
-                this.set_css_classes ({"highlight-bg"});
-            else if (is_fixed)
-                this.set_css_classes ({"fixed"});
-            else this.set_css_classes ({});
+                this.add_css_class ("highlight-bg");
+            else
+                this.remove_css_class ("highlight-bg");
         }
     }
 
@@ -160,8 +171,7 @@ private class SudokuCell : Widget
         focusable = true;
         can_focus = true;
 
-        if (is_fixed)
-            this.add_css_class ("fixed");
+        this.set_fixed_css (true);
 
         this.button_controller.set_button (0 /* all buttons */);
 
