@@ -126,13 +126,6 @@ public class Sudoku : Adw.Application
         });
         add_action (action);
 
-        action = settings.create_action ("show-extra-warnings");
-        action.notify["state"].connect (() => {
-            if (view != null && current_game_mode == GameMode.PLAY)
-                view.show_extra_warnings = settings.get_boolean ("show-extra-warnings");
-        });
-        add_action (action);
-
         action = settings.create_action ("show-possibilities");
         action.notify["state"].connect (() => {
             if (view != null && current_game_mode == GameMode.PLAY)
@@ -140,10 +133,24 @@ public class Sudoku : Adw.Application
         });
         add_action (action);
 
+        action = settings.create_action ("show-earmark-warnings");
+        action.notify["state"].connect (() => {
+            if (view != null)
+                view.show_earmark_warnings = settings.get_boolean ("show-earmark-warnings");
+        });
+        add_action (action);
+
         action = settings.create_action ("highlighter");
         action.notify["state"].connect (() => {
             if (view != null)
                 view.highlighter = settings.get_boolean ("highlighter");
+        });
+        add_action (action);
+
+        action = settings.create_action ("simple-warnings");
+        action.notify["state"].connect (() => {
+            if (view != null)
+                view.simple_warnings = settings.get_boolean ("simple-warnings");
         });
         add_action (action);
 

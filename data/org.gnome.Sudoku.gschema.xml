@@ -23,19 +23,26 @@
       <summary>Number of Sudokus to print per page</summary>
       <description>Set the number of sudokus you want to print per page</description>
     </key>
-    <key name="show-warnings" type="b">
-      <default>true</default>
-      <summary>Warn about unfillable squares and duplicate numbers</summary>
-      <description>Displays a big red X in a square if it cannot possibly be filled by any number and duplicate numbers are highlighted in red</description>
-    </key>
     <key name="show-possibilities" type="b">
       <default>false</default>
       <summary>Initialize the earmarks with the possible values for each cell</summary>
     </key>
-    <key name="show-extra-warnings" type="b">
+    <key name="show-warnings" type="b">
+      <default>true</default>
+      <summary>Color mistakes and duplicate numbers in red</summary>
+      <description>Displays a big red X in a square if it cannot possibly be filled by any number and duplicate numbers are highlighted in red</description>
+    </key>
+    <key name="show-earmark-warnings" type="b">
       <default>false</default>
-      <summary>Additionally warn when correct solution is violated or not earmarked</summary>
-      <description>Changes the background color of a square to red if the value does not match puzzle solution, or if no earmark matches the puzzle solution</description>
+      <summary>Check earmarks against duplicates in row, column and block</summary>
+    </key>
+    <key name="show-timer" type="b">
+      <default>false</default>
+      <summary>Toggle timer and pause buttons</summary>
+    </key>
+    <key name="simple-warnings" type="b">
+      <default>false</default>
+      <summary>Check cells only against duplicates in row, column and block</summary>
     </key>
     <key name="highlighter" type="b">
       <default>false</default>
@@ -44,10 +51,6 @@
     <key name="play-difficulty" enum="org.gnome.Sudoku.play-difficulty">
       <default>"easy"</default>
       <summary>The puzzle's difficulty</summary>
-    </key>
-    <key name="show-timer" type="b">
-      <default>false</default>
-      <summary>Toggle timer and pause buttons</summary>
     </key>
     <key name="window-width" type="i">
       <default>730</default>
