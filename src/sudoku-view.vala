@@ -73,8 +73,8 @@ public class SudokuView : Adw.Bin
             this._show_warnings = true;
         else
             this._show_warnings = settings.get_boolean ("show-warnings");
-        this._show_extra_warnings = settings.get_boolean ("show-extra-warnings");
         this._show_possibilities = settings.get_boolean ("show-possibilities");
+        this._show_extra_warnings = settings.get_boolean ("show-extra-warnings");
         this._highlighter = settings.get_boolean ("highlighter");
 
         overlay = new Overlay ();
@@ -158,9 +158,6 @@ public class SudokuView : Adw.Bin
                 });
 
                 cells[row, col] = cell;
-
-                cells[row, col].show_warnings = show_warnings;
-                cells[row, col].show_extra_warnings = show_extra_warnings;
                 cells[row, col].initialize_earmarks (show_possibilities);
 
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
@@ -256,16 +253,24 @@ public class SudokuView : Adw.Bin
 
     private void cell_changed_cb (int row, int col, int old_val, int new_val)
     {
+        if (!cells[row, col].has_focus)
+            cells[row, col].grab_focus ();
+
         cells[row, col].update_value ();
 
+        update_warnings ();
         set_value_highlighter (old_val, false);
         set_value_highlighter (new_val, true);
-        update_warnings ();
     }
 
     private void earmark_changed_cb (int row, int col, int num, bool enabled)
     {
-        cells[row, col].update_earmark (num, enabled);
+        if (!cells[row, col].has_focus)
+            cells[row, col].grab_focus ();
+
+        cells[row, col].update_earmark (num);
+        if (enabled)
+            cells[row, col].check_earmark_warnings (num);
     }
 
     private void set_cell_highlighter (int row, int col, bool enabled)
@@ -332,9 +337,12 @@ public class SudokuView : Adw.Bin
         if (!show_warnings)
             return;
 
-        for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
-            for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
-                cells[row_tmp, col_tmp].check_warnings ();
+        for (var col = 0; col < game.board.cols; col++)
+            for (var row = 0; row < game.board.rows; row++)
+            {
+                cells[row, col].check_value_warnings (show_extra_warnings);
+                cells[row, col].check_earmarks_warnings ();
+            }
     }
 
     public void clear ()
@@ -348,16 +356,7 @@ public class SudokuView : Adw.Bin
     {
         for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
             for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
-            {
                 cells[row_tmp, col_tmp].clear_warnings ();
-            }
-    }
-
-    public void redraw ()
-    {
-        for (var i = 0; i < game.board.rows; i++)
-            for (var j = 0; j < game.board.cols; j++)
-                cells[i,j].check_warnings ();
     }
 
     private bool _show_warnings;
@@ -366,9 +365,6 @@ public class SudokuView : Adw.Bin
         get { return _show_warnings; }
         set {
             _show_warnings = value;
-            for (var i = 0; i < game.board.rows; i++)
-                for (var j = 0; j < game.board.cols; j++)
-                    cells[i,j].show_warnings = _show_warnings;
 
             if (show_warnings)
                 update_warnings ();
@@ -385,10 +381,8 @@ public class SudokuView : Adw.Bin
         get { return _show_extra_warnings; }
         set {
             _show_extra_warnings = value;
-            for (var i = 0; i < game.board.rows; i++)
-                for (var j = 0; j < game.board.cols; j++)
-                    cells[i,j].show_extra_warnings = _show_extra_warnings;
-         }
+            show_warnings = show_warnings; //call the setter
+        }
     }
 
     private bool _show_possibilities;

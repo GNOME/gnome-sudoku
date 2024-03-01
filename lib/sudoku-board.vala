@@ -378,9 +378,8 @@ public class SudokuBoard : Object
     }
 
     public int get_solution (int row, int col)
-        requires (solution != null)
     {
-        return solution[row, col];
+        return solution == null ? 0 : solution[row, col];
     }
 
     private int[,] fixed_cells_only ()
