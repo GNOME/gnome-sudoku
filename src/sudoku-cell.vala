@@ -402,17 +402,17 @@ private class SudokuCell : Widget
         }
     }
 
-    public void initialize_earmarks (bool show_possibilities)
+    public void initialize_earmarks (bool show_possibilities, bool force = false)
     {
         if (value != 0 || game.mode == GameMode.CREATE)
             return;
 
-        if (show_possibilities && game.board.previous_played_time == 0.0)
+        if (show_possibilities && (game.board.previous_played_time == 0.0 || force))
         {
             var marks = game.board.get_possibilities_as_bool_array (row, col);
             for (int num = 1; num <= 9; num++)
             {
-                if (marks[num - 1])
+                if (marks[num - 1] && !game.board.is_earmark_enabled (row, col, num))
                     game.board.enable_earmark (row, col, num);
             }
         }
