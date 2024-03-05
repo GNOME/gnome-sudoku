@@ -232,13 +232,17 @@ public class Sudoku : Adw.Application
             undo_action.set_enabled (false);
             redo_action.set_enabled (false);
             new_game_action.set_enabled (false);
+            game.stop_clock ();
+            show_timer_action.set_enabled (false);
         }
-        else if (game.get_total_time_played () > 0)
+        else
         {
             clear_action.set_enabled (!game.is_empty ());
             undo_action.set_enabled (!game.is_undostack_null ());
             redo_action.set_enabled (!game.is_redostack_null ());
             new_game_action.set_enabled (true);
+            game.resume_clock ();
+            show_timer_action.set_enabled (true);
         }
 
         window.display_pause_button ();
@@ -284,18 +288,7 @@ public class Sudoku : Adw.Application
 
     private void toggle_pause_cb ()
     {
-        if (game.paused)
-        {
-            game.resume_clock ();
-            game.paused = false;
-            show_timer_action.set_enabled (true);
-        }
-        else
-        {
-            game.stop_clock ();
-            game.paused = true;
-            show_timer_action.set_enabled (false);
-        }
+        game.paused = !game.paused;
     }
 
     private void cell_modified_cb ()

@@ -25,7 +25,6 @@ using Gdk;
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/sudoku-window.ui")]
 public class SudokuWindow : Adw.ApplicationWindow
 {
-    [GtkChild] private unowned Adw.HeaderBar headerbar;
     [GtkChild] private unowned Adw.WindowTitle windowtitle;
 
     [GtkChild] private unowned Box start_box;
@@ -44,7 +43,6 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     [GtkChild] private unowned Box clock_box;
     [GtkChild] private unowned Label clock_label;
-    [GtkChild] private unowned Image clock_image;
 
     [GtkChild] private unowned Button play_custom_game_button;
     [GtkChild] private unowned Button play_pause_button;
@@ -54,16 +52,11 @@ public class SudokuWindow : Adw.ApplicationWindow
     private int window_width;
     private int window_height;
 
-    private bool clock_in_headerbar;
-
     private GLib.Settings settings;
 
     public SudokuView? view { get; private set; }
 
     private SudokuGame? game = null;
-
-    private const int board_size = 140;
-    private const int clock_in_headerbar_min_width = 450;
 
     private GestureClick button_controller = new GestureClick ();
     private GestureLongPress long_press_controller = new GestureLongPress ();
@@ -73,7 +66,11 @@ public class SudokuWindow : Adw.ApplicationWindow
         this.settings = settings;
         this.show_timer = settings.get_boolean ("show-timer");
 
-        set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
+        window_width = settings.get_int ("window-width");
+        window_height = settings.get_int ("window-height");
+        is_window_small = window_width <= small_window_size;
+
+        set_default_size (window_width, window_height);
         if (settings.get_boolean ("window-is-maximized"))
             maximize ();
 
@@ -92,6 +89,9 @@ public class SudokuWindow : Adw.ApplicationWindow
             if (view != null)
                 view.has_selection = !main_menu.active;
         });
+
+        this.notify["default-width"].connect(width_change_cb);
+        this.notify["default-height"].connect(height_change_cb);
 
         this.button_controller.set_button (0 /* all buttons */);
         this.button_controller.released.connect (button_released_cb);
@@ -112,17 +112,24 @@ public class SudokuWindow : Adw.ApplicationWindow
         settings.apply ();
     }
 
-    public override void size_allocate (int width, int height, int baseline)
+    private const int small_window_size = 600;
+    private bool is_window_small;
+    private void width_change_cb ()
     {
-        base.size_allocate (width, height, baseline);
+        window_width = this.get_width ();
 
-        set_clock_placed_in_headerbar (width > clock_in_headerbar_min_width);
+        bool is_new_size_small = window_width <= small_window_size;
+        if (is_window_small != is_new_size_small)
+        {
+            is_window_small = is_new_size_small;
+            if (game != null && game.mode != GameMode.CREATE)
+                clock_box.visible = show_timer && !is_window_small;
+        }
+    }
 
-        if (window_is_maximized || window_is_fullscreen)
-            return;
-
-        window_width = width;
-        window_height = height;
+    private void height_change_cb ()
+    {
+        window_height = this.get_height ();
     }
 
     [GtkCallback]
@@ -146,8 +153,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             _show_timer = value;
             if (game != null && game.mode != GameMode.CREATE)
             {
-                clock_label.visible = value;
-                clock_image.visible = value;
+                clock_box.visible = show_timer && !is_window_small;
                 if (value)
                     display_pause_button ();
                 else
@@ -190,8 +196,8 @@ public class SudokuWindow : Adw.ApplicationWindow
         back_button.visible = game != null;
         undo_button.visible = false;
         redo_button.visible = false;
-        clock_label.visible = false;
-        clock_image.visible = false;
+        clock_box.visible = false;
+        play_pause_button.visible = false;
         start_button.grab_focus ();
     }
 
@@ -219,12 +225,8 @@ public class SudokuWindow : Adw.ApplicationWindow
     public void set_board_visible (bool visible)
     {
         start_box.visible = !visible;
-        play_custom_game_button.visible = visible && game.mode == GameMode.CREATE;
-        if (visible && game.mode != GameMode.CREATE && show_timer)
-            display_pause_button ();
-        else
-            play_pause_button.visible = false;
         game_box.visible = visible;
+        play_custom_game_button.visible = visible && game.mode == GameMode.CREATE;
     }
 
     public bool is_board_visible ()
@@ -244,13 +246,11 @@ public class SudokuWindow : Adw.ApplicationWindow
         {
             play_custom_game_button.visible = false;
             play_pause_button.visible = show_timer;
-            clock_label.visible = show_timer;
-            clock_image.visible = show_timer;
+            clock_box.visible = show_timer && !is_window_small;
         }
         else
         {
-            clock_label.visible = false;
-            clock_image.visible = false;
+            clock_box.visible = false;
             play_custom_game_button.visible = true;
             play_pause_button.visible = false;
         }
@@ -289,24 +289,6 @@ public class SudokuWindow : Adw.ApplicationWindow
             clock_label.set_text ("%02d∶\xE2\x80\x8E%02d∶\xE2\x80\x8E%02d".printf (hours, minutes, seconds));
         else
             clock_label.set_text ("%02d∶\xE2\x80\x8E%02d".printf (minutes, seconds));
-    }
-
-    private void set_clock_placed_in_headerbar (bool value)
-    {
-        if (value == clock_in_headerbar)
-            return;
-
-        clock_in_headerbar = value;
-        if (value)
-        {
-            game_box.remove (clock_box);
-            headerbar.pack_end (clock_box);
-        }
-        else
-        {
-            headerbar.remove (clock_box);
-            game_box.append (clock_box);
-        }
     }
 
     private void button_released_cb (GestureClick gesture,
