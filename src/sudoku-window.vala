@@ -191,7 +191,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public void show_new_game_screen ()
     {
-        windowtitle.title = _("Select Difficulty");
+        windowtitle.subtitle = _("Select Difficulty");
         set_board_visible (false);
         back_button.visible = game != null;
         undo_button.visible = false;
@@ -267,9 +267,9 @@ public class SudokuWindow : Adw.ApplicationWindow
         requires (game != null)
     {
         if (game.mode == GameMode.PLAY)
-            windowtitle.title = _("Sudoku");
+            windowtitle.subtitle = null;
         else
-            windowtitle.title = _("Create Puzzle");
+            windowtitle.subtitle = _("Create Puzzle");
     }
 
     public void display_pause_button ()
