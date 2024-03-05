@@ -63,6 +63,7 @@
         <property name="orientation">vertical</property>
         <child>
           <object class="AdwHeaderBar" id="headerbar">
+            <property name="centering-policy">ADW_CENTERING_POLICY_STRICT</property>
             <property name="title-widget">
               <object class="AdwWindowTitle" id="windowtitle">
                 <property name="title" translatable="yes">Sudoku</property>
@@ -111,7 +112,7 @@
                 <property name="tooltip-text" translatable="yes">Main Menu</property>
               </object>
             </child>
-            <child type="end">
+            <child type="start">
               <object class="GtkButton" id="play_pause_button">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
@@ -122,7 +123,7 @@
                 <property name="icon-name">media-playback-pause-symbolic</property>
               </object>
             </child>
-            <child type="end">
+            <child type="start">
               <object class="GtkButton" id="play_custom_game_button">
                 <property name="visible">False</property>
                 <property name="sensitive">False</property>
@@ -132,6 +133,29 @@
                 <property name="focus-on-click">False</property>
                 <property name="action-name">app.play-custom-game</property>
                 <property name="icon-name">emblem-ok-symbolic</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkBox" id="clock_box">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="spacing">6</property>
+                <property name="halign">center</property>
+                <child>
+                  <object class="GtkImage" id="clock_image">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="icon-name">preferences-system-time-symbolic</property>
+                    <property name="icon-size">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="clock_label">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">center</property>
+                  </object>
+                </child>
               </object>
             </child>
             <style>
@@ -249,29 +273,6 @@
                 <property name="margin-start">25</property>
                 <property name="margin-end">25</property>
                 <property name="orientation">vertical</property>
-                <child>
-                  <object class="GtkBox" id="clock_box">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="spacing">6</property>
-                    <property name="halign">center</property>
-                    <child>
-                      <object class="GtkImage" id="clock_image">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="icon-name">preferences-system-time-symbolic</property>
-                        <property name="icon-size">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="clock_label">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="halign">center</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
               </object> <!-- End of game_box -->
             </child>
           </object> <!-- End of main_squeezer -->

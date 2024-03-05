@@ -77,6 +77,9 @@ public class SudokuWindow : Adw.ApplicationWindow
         if (settings.get_boolean ("window-is-maximized"))
             maximize ();
 
+        Label title_label = (Label) windowtitle.get_first_child ().get_first_child ();
+        title_label.set_property ("ellipsize", false);
+
         this.notify["maximized"].connect(() => {
             this.window_is_maximized = !this.window_is_maximized;
         });
