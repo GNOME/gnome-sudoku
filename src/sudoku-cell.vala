@@ -512,7 +512,7 @@ private class SudokuCell : Widget
         popover.popup ();
     }
 
-    public void check_value_warnings (bool show_extra_warnings)
+    public void check_value_warnings (bool simple_warnings)
     {
         bool error = false;
 
@@ -521,7 +521,7 @@ private class SudokuCell : Widget
             if (game.board.broken_coords.contains (Coord (row, col)))
                 error = true;
 
-            else if (show_extra_warnings && game.mode == GameMode.PLAY)
+            else if (!simple_warnings && game.mode == GameMode.PLAY)
             {
                 int solution = game.board.get_solution (row, col);
                 if (solution != 0)
@@ -540,7 +540,7 @@ private class SudokuCell : Widget
             remove_css_class ("error");
     }
 
-    public void check_earmarks_warnings ()
+    public void check_earmarks_warnings (bool show_earmark_warnings)
     {
         if (this.value != 0 || game.mode == GameMode.CREATE)
             return;
@@ -549,13 +549,13 @@ private class SudokuCell : Widget
         for (int num = 1; num <= marks.length; num++)
         {
             if (marks[num - 1])
-                check_earmark_warnings (num);
+                check_earmark_warnings (num, show_earmark_warnings);
         }
     }
 
-    public void check_earmark_warnings (int num)
+    public void check_earmark_warnings (int num, bool show_earmark_warnings)
     {
-        if (!game.board.is_possible (row, col, num))
+        if (!game.board.is_possible (row, col, num) && show_earmark_warnings)
             earmark_labels[num - 1].add_css_class ("error");
         else
             earmark_labels[num - 1].remove_css_class ("error");

@@ -74,7 +74,8 @@ public class SudokuView : Adw.Bin
         else
             this._show_warnings = settings.get_boolean ("show-warnings");
         this._show_possibilities = settings.get_boolean ("show-possibilities");
-        this._show_extra_warnings = settings.get_boolean ("show-extra-warnings");
+        this._simple_warnings = settings.get_boolean ("simple-warnings");
+        this._show_earmark_warnings = settings.get_boolean ("show-earmark-warnings");
         this._highlighter = settings.get_boolean ("highlighter");
 
         overlay = new Overlay ();
@@ -270,7 +271,7 @@ public class SudokuView : Adw.Bin
 
         cells[row, col].update_earmark (num);
         if (enabled)
-            cells[row, col].check_earmark_warnings (num);
+            cells[row, col].check_earmark_warnings (num, show_earmark_warnings);
     }
 
     private void set_cell_highlighter (int row, int col, bool enabled)
@@ -340,8 +341,8 @@ public class SudokuView : Adw.Bin
         for (var col = 0; col < game.board.cols; col++)
             for (var row = 0; row < game.board.rows; row++)
             {
-                cells[row, col].check_value_warnings (show_extra_warnings);
-                cells[row, col].check_earmarks_warnings ();
+                cells[row, col].check_value_warnings (simple_warnings);
+                cells[row, col].check_earmarks_warnings (show_earmark_warnings);
             }
     }
 
@@ -375,12 +376,22 @@ public class SudokuView : Adw.Bin
          }
     }
 
-    private bool _show_extra_warnings;
-    public bool show_extra_warnings
+    private bool _show_earmark_warnings;
+    public bool show_earmark_warnings
     {
-        get { return _show_extra_warnings; }
+        get { return _show_earmark_warnings; }
         set {
-            _show_extra_warnings = value;
+            _show_earmark_warnings = value;
+            show_warnings = show_warnings; //call the setter
+        }
+    }
+
+    private bool _simple_warnings;
+    public bool simple_warnings
+    {
+        get { return _simple_warnings; }
+        set {
+            _simple_warnings = value;
             show_warnings = show_warnings; //call the setter
         }
     }
