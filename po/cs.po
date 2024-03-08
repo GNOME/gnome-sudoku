@@ -21,9 +21,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2024-02-03 15:17+0000\n"
-"PO-Revision-Date: 2024-02-07 15:54+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
+"POT-Creation-Date: 2024-03-06 11:02+0000\n"
+"PO-Revision-Date: 2024-03-08 14:38+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -67,64 +67,79 @@ msgid "_Warnings"
 msgstr "_Varování"
 
 #: data/sudoku-window.ui:44
-msgid "_Timer"
-msgstr "Č_asovač"
+msgid "_More Options"
+msgstr "_Další volby"
 
-#: data/sudoku-window.ui:50
+#: data/sudoku-window.ui:47
+msgid "Show _Timer"
+msgstr "Zobrazit č_asovač"
+
+#: data/sudoku-window.ui:51
+msgid "Show _Possibilities"
+msgstr "Zobrazit _možnosti"
+
+#: data/sudoku-window.ui:57
+msgid "Simple _Earmark Warnings"
+msgstr ""
+
+#: data/sudoku-window.ui:61
+msgid "Simple _Warnings Mode"
+msgstr "Režim jednoduchých _varování"
+
+#: data/sudoku-window.ui:69
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: data/sudoku-window.ui:54
+#: data/sudoku-window.ui:73
 msgid "_About Sudoku"
 msgstr "O _aplikaci Sudoku"
 
-#: data/sudoku-window.ui:60 data/sudoku-window.ui:68
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:532
-#: src/sudoku-window.vala:270
+#: data/sudoku-window.ui:79 data/sudoku-window.ui:88
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:530
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/sudoku-window.ui:76
+#: data/sudoku-window.ui:96
 msgid "Undo Action"
 msgstr "Vrátit akci zpět"
 
-#: data/sudoku-window.ui:88
+#: data/sudoku-window.ui:108
 msgid "Redo Action"
 msgstr "Znovu provést akci"
 
-#: data/sudoku-window.ui:100
+#: data/sudoku-window.ui:120
 msgid "Back"
 msgstr "Zpět"
 
-#: data/sudoku-window.ui:111
+#: data/sudoku-window.ui:131
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
-#: data/sudoku-window.ui:130
+#: data/sudoku-window.ui:150
 msgid "Play Custom Puzzle"
 msgstr "Hrát vlastní sudoku"
 
-#: data/sudoku-window.ui:156
+#: data/sudoku-window.ui:199
 msgid "Select Game Difficulty"
 msgstr "Vybrat obtížnost hry"
 
-#: data/sudoku-window.ui:171
+#: data/sudoku-window.ui:216
 msgid "_Easy"
 msgstr "_Jednoduchá"
 
-#: data/sudoku-window.ui:183
+#: data/sudoku-window.ui:230
 msgid "_Medium"
 msgstr "_Střední"
 
-#: data/sudoku-window.ui:195
+#: data/sudoku-window.ui:244
 msgid "_Hard"
 msgstr "_Těžká"
 
-#: data/sudoku-window.ui:207
+#: data/sudoku-window.ui:258
 msgid "_Very Hard"
 msgstr "_Velmi těžká"
 
-#: data/sudoku-window.ui:218
+#: data/sudoku-window.ui:269
 msgid "_Start Game"
 msgstr "_Začít hru"
 
@@ -205,10 +220,14 @@ msgid "Set the number of sudokus you want to print per page"
 msgstr "Nastavit počet sudoku, které se mají vytisknout na jednu stránku."
 
 #: data/org.gnome.Sudoku.gschema.xml:28
-msgid "Warn about unfillable squares and duplicate numbers"
-msgstr "Varovat před nevyplnitelnými políčky a duplicitními čísly"
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr "Inicializovat u všech políček poznačení možných hodnot do oušek"
 
-#: data/org.gnome.Sudoku.gschema.xml:29
+#: data/org.gnome.Sudoku.gschema.xml:32
+msgid "Color mistakes and duplicate numbers in red"
+msgstr "Chyby v barvě a duplicitní čísla červeně"
+
+#: data/org.gnome.Sudoku.gschema.xml:33
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -216,45 +235,37 @@ msgstr ""
 "Zobrazovat velké červené X v políčcích, která není možné vyplnit žádným "
 "číslem, a duplicitní čísla červeně zvýrazňovat."
 
-#: data/org.gnome.Sudoku.gschema.xml:33
-msgid "Additionally warn when correct solution is violated or not earmarked"
-msgstr "Navíc varovat, když je správné řešení porušeno nebo není poznačeno"
-
-#: data/org.gnome.Sudoku.gschema.xml:34
-msgid ""
-"Changes the background color of a square to red if the value does not match "
-"puzzle solution, or if no earmark matches the puzzle solution"
+#: data/org.gnome.Sudoku.gschema.xml:37
+msgid "Check earmarks against duplicates in row, column and block"
 msgstr ""
-"Změní barvu pozadí políčka na červenou v situaci, kdy vyplněná hodnota "
-"neodpovídá správnému řešení, nebo správná hodnota není poznačena v oušku."
 
-#: data/org.gnome.Sudoku.gschema.xml:38
-msgid "Highlight row, column and square that contain the selected cell"
-msgstr "Zvýrazňovat řádek, sloupec a pole obsahující vybrané políčko"
-
-#: data/org.gnome.Sudoku.gschema.xml:42
-msgid "The puzzle's difficulty"
-msgstr "Obtížnost sudoku"
-
-#: data/org.gnome.Sudoku.gschema.xml:46
+#: data/org.gnome.Sudoku.gschema.xml:41
 msgid "Toggle timer and pause buttons"
 msgstr "Přepnout tlačítka časovače a pauzy"
 
-#: data/org.gnome.Sudoku.gschema.xml:50
+#: data/org.gnome.Sudoku.gschema.xml:45
+msgid "Check cells only against duplicates in row, column and block"
+msgstr "Kontrolovat políčka pouze proti duplikátům v řádku, sloupci a bloku"
+
+#: data/org.gnome.Sudoku.gschema.xml:49
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Zvýrazňovat řádek, sloupec a pole obsahující vybrané políčko"
+
+#: data/org.gnome.Sudoku.gschema.xml:53
+msgid "The puzzle's difficulty"
+msgstr "Obtížnost sudoku"
+
+#: data/org.gnome.Sudoku.gschema.xml:57
 msgid "Width of the window in pixels"
 msgstr "Šířka okna v pixelech"
 
-#: data/org.gnome.Sudoku.gschema.xml:54
+#: data/org.gnome.Sudoku.gschema.xml:61
 msgid "Height of the window in pixels"
 msgstr "Výška okna v pixelech"
 
-#: data/org.gnome.Sudoku.gschema.xml:58
+#: data/org.gnome.Sudoku.gschema.xml:65
 msgid "true if the window is maximized"
 msgstr "Zapnuto, když je okno maximalizováno"
-
-#: data/org.gnome.Sudoku.gschema.xml:62
-msgid "Initialize the earmarks with the possible values for each cell"
-msgstr "Inicializovat u všech políček poznačení možných hodnot do oušek"
 
 #: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
@@ -288,71 +299,71 @@ msgstr "Těžká"
 msgid "Very Hard"
 msgstr "Velmi těžká"
 
-#: lib/sudoku-board.vala:686
+#: lib/sudoku-board.vala:687
 msgid "Unknown Difficulty"
 msgstr "Neznámá obtížnost"
 
-#: lib/sudoku-board.vala:688
+#: lib/sudoku-board.vala:689
 msgid "Easy Difficulty"
 msgstr "Nízká obtížnost"
 
-#: lib/sudoku-board.vala:690
+#: lib/sudoku-board.vala:691
 msgid "Medium Difficulty"
 msgstr "Střední obtížnost"
 
-#: lib/sudoku-board.vala:692
+#: lib/sudoku-board.vala:693
 msgid "Hard Difficulty"
 msgstr "Vysoká obtížnost"
 
-#: lib/sudoku-board.vala:694
+#: lib/sudoku-board.vala:695
 msgid "Very Hard Difficulty"
 msgstr "Velmi vysoká obtížnost"
 
-#: lib/sudoku-board.vala:696
+#: lib/sudoku-board.vala:697
 msgid "Custom Puzzle"
 msgstr "Vlastní sudoku"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:81
+#: src/gnome-sudoku.vala:80
 msgid "Show release version"
 msgstr "Zobrazit verzi vydání"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:85
+#: src/gnome-sudoku.vala:84
 msgid "Show the possible values for each cell"
 msgstr "U každého políčka zobrazovat možné hodnoty"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:265
+#: src/gnome-sudoku.vala:273
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Sudoku, které jste zadali, není platné sudoku."
 
-#: src/gnome-sudoku.vala:265
+#: src/gnome-sudoku.vala:273
 msgid "Please enter a valid puzzle."
 msgstr "Zadejte prosím platný hlavolam."
 
-#: src/gnome-sudoku.vala:266 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:274 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "Zavřít"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:274
+#: src/gnome-sudoku.vala:282
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Sudoku, které jste zadali, má více řešení."
 
-#: src/gnome-sudoku.vala:274
+#: src/gnome-sudoku.vala:282
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Platné Sudoku má právě jedno řešení."
 
-#: src/gnome-sudoku.vala:275
+#: src/gnome-sudoku.vala:283
 msgid "_Back"
 msgstr "_Zpět"
 
-#: src/gnome-sudoku.vala:276
+#: src/gnome-sudoku.vala:284
 msgid "Play _Anyway"
 msgstr "_Přesto hrát"
 
-#: src/gnome-sudoku.vala:329
+#: src/gnome-sudoku.vala:326
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -360,11 +371,11 @@ msgstr[0] "Úspěšně hotovo, sudoku jste vyřešili za %d minutu!"
 msgstr[1] "Úspěšně hotovo, sudoku jste vyřešili za %d minuty!"
 msgstr[2] "Úspěšně hotovo, sudoku jste vyřešili za %d minut!"
 
-#: src/gnome-sudoku.vala:337
+#: src/gnome-sudoku.vala:334
 msgid "Quit"
 msgstr "Ukončit"
 
-#: src/gnome-sudoku.vala:338
+#: src/gnome-sudoku.vala:335
 msgid "Play _Again"
 msgstr "Hrát znov_u"
 
@@ -381,7 +392,7 @@ msgid "Yes"
 msgstr "Ano"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:529
+#: src/gnome-sudoku.vala:527
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -392,7 +403,7 @@ msgstr ""
 "\n"
 "Sudoku jsou vygenerované pomocí QQwing %s"
 
-#: src/gnome-sudoku.vala:539
+#: src/gnome-sudoku.vala:537
 msgid "translator-credits"
 msgstr ""
 "Jirka Lébl\n"
@@ -418,7 +429,7 @@ msgstr "Vymazat"
 msgid "Error printing file:"
 msgstr "Chyba při tisku souboru:"
 
-#: src/sudoku-window.vala:188
+#: src/sudoku-window.vala:194
 msgid "Select Difficulty"
 msgstr "Výběr obtížnosti"
 
@@ -433,6 +444,16 @@ msgstr "Hrát"
 #: src/sudoku-window.vala:279
 msgid "Pause"
 msgstr "Pozastavit"
+
+#~ msgid "Additionally warn when correct solution is violated or not earmarked"
+#~ msgstr "Navíc varovat, když je správné řešení porušeno nebo není poznačeno"
+
+#~ msgid ""
+#~ "Changes the background color of a square to red if the value does not "
+#~ "match puzzle solution, or if no earmark matches the puzzle solution"
+#~ msgstr ""
+#~ "Změní barvu pozadí políčka na červenou v situaci, kdy vyplněná hodnota "
+#~ "neodpovídá správnému řešení, nebo správná hodnota není poznačena v oušku."
 
 #~ msgid "Go back to the current game"
 #~ msgstr "Vrátit se do současné hry"
