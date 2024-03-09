@@ -13,9 +13,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2024-02-03 15:17+0000\n"
-"PO-Revision-Date: 2024-03-04 20:15+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
+"POT-Creation-Date: 2024-03-08 13:40+0000\n"
+"PO-Revision-Date: 2024-03-09 17:09+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -60,64 +60,79 @@ msgid "_Warnings"
 msgstr "_Varoitukset"
 
 #: data/sudoku-window.ui:44
-msgid "_Timer"
-msgstr "_Ajastin"
+msgid "_More Options"
+msgstr "_Lisää valintoja"
 
-#: data/sudoku-window.ui:50
+#: data/sudoku-window.ui:47
+msgid "Show _Timer"
+msgstr "Näytä _ajastin"
+
+#: data/sudoku-window.ui:51
+msgid "Show _Possibilities"
+msgstr "Näytä _mahdollisuudet"
+
+#: data/sudoku-window.ui:57
+msgid "Simple _Earmark Warnings"
+msgstr "Yksinkertaiset _muistiinpanovaroitukset"
+
+#: data/sudoku-window.ui:61
+msgid "Simple _Warnings Mode"
+msgstr "Yksinkertaisten _varoitusten tila"
+
+#: data/sudoku-window.ui:69
 msgid "_Help"
 msgstr "_Ohje"
 
-#: data/sudoku-window.ui:54
+#: data/sudoku-window.ui:73
 msgid "_About Sudoku"
 msgstr "_Tietoja - Sudoku"
 
-#: data/sudoku-window.ui:60 data/sudoku-window.ui:68
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:532
-#: src/sudoku-window.vala:270
+#: data/sudoku-window.ui:79 data/sudoku-window.ui:88
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:530
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/sudoku-window.ui:76
+#: data/sudoku-window.ui:96
 msgid "Undo Action"
 msgstr "Kumoa toiminto"
 
-#: data/sudoku-window.ui:88
+#: data/sudoku-window.ui:108
 msgid "Redo Action"
 msgstr "Tee toiminto uudelleen"
 
-#: data/sudoku-window.ui:100
+#: data/sudoku-window.ui:120
 msgid "Back"
 msgstr "Takaisin"
 
-#: data/sudoku-window.ui:111
+#: data/sudoku-window.ui:131
 msgid "Main Menu"
 msgstr "Päävalikko"
 
-#: data/sudoku-window.ui:130
+#: data/sudoku-window.ui:150
 msgid "Play Custom Puzzle"
 msgstr "Pelaa omavalintaista pulmaa"
 
-#: data/sudoku-window.ui:156
+#: data/sudoku-window.ui:199
 msgid "Select Game Difficulty"
 msgstr "Valitse pelin vaikeustaso"
 
-#: data/sudoku-window.ui:171
+#: data/sudoku-window.ui:216
 msgid "_Easy"
 msgstr "H_elppo"
 
-#: data/sudoku-window.ui:183
+#: data/sudoku-window.ui:230
 msgid "_Medium"
 msgstr "_Keskitaso"
 
-#: data/sudoku-window.ui:195
+#: data/sudoku-window.ui:244
 msgid "_Hard"
 msgstr "_Vaikea"
 
-#: data/sudoku-window.ui:207
+#: data/sudoku-window.ui:258
 msgid "_Very Hard"
 msgstr "_Hyvin vaikea"
 
-#: data/sudoku-window.ui:218
+#: data/sudoku-window.ui:269
 msgid "_Start Game"
 msgstr "_Käynnistä peli"
 
@@ -195,10 +210,14 @@ msgid "Set the number of sudokus you want to print per page"
 msgstr "Aseta tulostettavien sudokujen sivukohtainen lukumäärä"
 
 #: data/org.gnome.Sudoku.gschema.xml:28
-msgid "Warn about unfillable squares and duplicate numbers"
-msgstr "Varoista ruuduista, joita ei voi täyttää ja tuplanumeroista"
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr "Alusta muistiinpanot sisältäen jokaisen solun mahdolliset arvot"
 
-#: data/org.gnome.Sudoku.gschema.xml:29
+#: data/org.gnome.Sudoku.gschema.xml:32
+msgid "Color mistakes and duplicate numbers in red"
+msgstr "Osoita punaisella värillä virheet ja tuplanumerot"
+
+#: data/org.gnome.Sudoku.gschema.xml:33
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -206,46 +225,41 @@ msgstr ""
 "Näyttää ison punaisen X-merkin ruuduissa, joita ei voi täyttää millään "
 "numeroilla. Tuplanumerot merkitään punaisella värillä"
 
-#: data/org.gnome.Sudoku.gschema.xml:33
-msgid "Additionally warn when correct solution is violated or not earmarked"
+#: data/org.gnome.Sudoku.gschema.xml:37
+msgid "Check earmarks against duplicates in row, column and block"
 msgstr ""
-"Varoita lisäksi, jos oikeaa ratkaisua rikotaan tai ei ole muistiinpanoissa"
+"Tarkista muistiinpano rivissä, sarakkeessa ja lohkossa olevien "
+"tuplanumeroiden varalta"
 
-#: data/org.gnome.Sudoku.gschema.xml:34
-msgid ""
-"Changes the background color of a square to red if the value does not match "
-"puzzle solution, or if no earmark matches the puzzle solution"
-msgstr ""
-"Vaihtaa neliön taustavärin punaiseksi, jos arvo ei sovi pulman ratkaisuun, "
-"tai jos yksikään muistiinpano ei sovi pulman ratkaisuun"
-
-#: data/org.gnome.Sudoku.gschema.xml:38
-msgid "Highlight row, column and square that contain the selected cell"
-msgstr "Korosta valitun solun sisältävä rivi, sarake ja neliö"
-
-#: data/org.gnome.Sudoku.gschema.xml:42
-msgid "The puzzle's difficulty"
-msgstr "Pulman vaikeustaso"
-
-#: data/org.gnome.Sudoku.gschema.xml:46
+#: data/org.gnome.Sudoku.gschema.xml:41
 msgid "Toggle timer and pause buttons"
 msgstr "Vaihda ajastin- ja keskeytyspainikkeita"
 
-#: data/org.gnome.Sudoku.gschema.xml:50
+#: data/org.gnome.Sudoku.gschema.xml:45
+msgid "Check cells only against duplicates in row, column and block"
+msgstr ""
+"Tarkista solut vain rivissä, sarakkeessa ja lohkossa olevien tuplanumeroiden "
+"varalta"
+
+#: data/org.gnome.Sudoku.gschema.xml:49
+msgid "Highlight row, column and square that contain the selected cell"
+msgstr "Korosta valitun solun sisältävä rivi, sarake ja neliö"
+
+#: data/org.gnome.Sudoku.gschema.xml:53
+msgid "The puzzle's difficulty"
+msgstr "Pulman vaikeustaso"
+
+#: data/org.gnome.Sudoku.gschema.xml:57
 msgid "Width of the window in pixels"
 msgstr "Ikkunan leveys kuvapisteinä"
 
-#: data/org.gnome.Sudoku.gschema.xml:54
+#: data/org.gnome.Sudoku.gschema.xml:61
 msgid "Height of the window in pixels"
 msgstr "Ikkunan korkeus kuvapisteinä"
 
-#: data/org.gnome.Sudoku.gschema.xml:58
+#: data/org.gnome.Sudoku.gschema.xml:65
 msgid "true if the window is maximized"
 msgstr "tosi jos ikkuna on suurennettu"
-
-#: data/org.gnome.Sudoku.gschema.xml:62
-msgid "Initialize the earmarks with the possible values for each cell"
-msgstr "Alusta muistiinpanot sisältäen jokaisen solun mahdolliset arvot"
 
 #: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
@@ -279,82 +293,82 @@ msgstr "Vaikea"
 msgid "Very Hard"
 msgstr "Hyvin vaikea"
 
-#: lib/sudoku-board.vala:686
+#: lib/sudoku-board.vala:687
 msgid "Unknown Difficulty"
 msgstr "Tuntematon vaikeustaso"
 
-#: lib/sudoku-board.vala:688
+#: lib/sudoku-board.vala:689
 msgid "Easy Difficulty"
 msgstr "Helppo vaikeustaso"
 
-#: lib/sudoku-board.vala:690
+#: lib/sudoku-board.vala:691
 msgid "Medium Difficulty"
 msgstr "Keskinkertainen vaikeustaso"
 
-#: lib/sudoku-board.vala:692
+#: lib/sudoku-board.vala:693
 msgid "Hard Difficulty"
 msgstr "Vaikea vaikeustaso"
 
-#: lib/sudoku-board.vala:694
+#: lib/sudoku-board.vala:695
 msgid "Very Hard Difficulty"
 msgstr "Erittäin vaikea vaikeustaso"
 
-#: lib/sudoku-board.vala:696
+#: lib/sudoku-board.vala:697
 msgid "Custom Puzzle"
 msgstr "Oma pulma"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:81
+#: src/gnome-sudoku.vala:80
 msgid "Show release version"
 msgstr "Näytä julkaisuversio"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:85
+#: src/gnome-sudoku.vala:84
 msgid "Show the possible values for each cell"
 msgstr "Näytä jokaisen solun mahdolliset arvot"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:265
+#: src/gnome-sudoku.vala:273
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Antamasi pulma ei ole kelvollinen sudoku."
 
-#: src/gnome-sudoku.vala:265
+#: src/gnome-sudoku.vala:273
 msgid "Please enter a valid puzzle."
 msgstr "Anna kelvollinen pulma."
 
-#: src/gnome-sudoku.vala:266 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:274 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "Sulje"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:274
+#: src/gnome-sudoku.vala:282
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Antamallasi pulmalla on lukuisia ratkaisuja."
 
-#: src/gnome-sudoku.vala:274
+#: src/gnome-sudoku.vala:282
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Kelvolliset sudokupulmat omaavat vain yhden ratkaisun."
 
-#: src/gnome-sudoku.vala:275
+#: src/gnome-sudoku.vala:283
 msgid "_Back"
 msgstr "_Takaisin"
 
-#: src/gnome-sudoku.vala:276
+#: src/gnome-sudoku.vala:284
 msgid "Play _Anyway"
 msgstr "Pelaa _silti"
 
-#: src/gnome-sudoku.vala:329
+#: src/gnome-sudoku.vala:326
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Onnittelut, ratkaisit pulman %d minuuttissa!"
 msgstr[1] "Onnittelut, ratkaisit pulman %d minuuttissa!"
 
-#: src/gnome-sudoku.vala:337
+#: src/gnome-sudoku.vala:334
 msgid "Quit"
 msgstr "Lopeta"
 
-#: src/gnome-sudoku.vala:338
+#: src/gnome-sudoku.vala:335
 msgid "Play _Again"
 msgstr "_Pelaa uudelleen"
 
@@ -371,7 +385,7 @@ msgid "Yes"
 msgstr "Kyllä"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:529
+#: src/gnome-sudoku.vala:527
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -382,7 +396,7 @@ msgstr ""
 "\n"
 "Pulmat tuottaa QQwing %s"
 
-#: src/gnome-sudoku.vala:539
+#: src/gnome-sudoku.vala:537
 msgid "translator-credits"
 msgstr ""
 "Jiri Grönroos, 2012-2024\n"
@@ -412,7 +426,7 @@ msgstr "Tyhjennä"
 msgid "Error printing file:"
 msgstr "Virhe tulostaessa tiedostoa:"
 
-#: src/sudoku-window.vala:188
+#: src/sudoku-window.vala:194
 msgid "Select Difficulty"
 msgstr "Valitse vaikeustaso"
 
@@ -427,6 +441,17 @@ msgstr "Pelaa"
 #: src/sudoku-window.vala:279
 msgid "Pause"
 msgstr "Keskeytä"
+
+#~ msgid "Additionally warn when correct solution is violated or not earmarked"
+#~ msgstr ""
+#~ "Varoita lisäksi, jos oikeaa ratkaisua rikotaan tai ei ole muistiinpanoissa"
+
+#~ msgid ""
+#~ "Changes the background color of a square to red if the value does not "
+#~ "match puzzle solution, or if no earmark matches the puzzle solution"
+#~ msgstr ""
+#~ "Vaihtaa neliön taustavärin punaiseksi, jos arvo ei sovi pulman "
+#~ "ratkaisuun, tai jos yksikään muistiinpano ei sovi pulman ratkaisuun"
 
 #~ msgid "Go back to the current game"
 #~ msgstr "Siirry takaisin nykyiseen peliin"
