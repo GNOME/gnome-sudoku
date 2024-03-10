@@ -190,7 +190,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         back_button.sensitive = false;
     }
 
-    public void start_game (SudokuGame game)
+    public void start_game (SudokuGame game, DifficultyCategory difficulty)
     {
         if (this.game != null)
             this.game.tick.disconnect (tick_cb);
@@ -201,7 +201,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         if (view != null)
             game_box.remove (view);
 
-        show_game_view ();
+        show_game_view (difficulty);
 
         view = new SudokuView (game, settings);
 
@@ -240,6 +240,9 @@ public class SudokuWindow : Adw.ApplicationWindow
             case DifficultyCategory.VERY_HARD:
                 very_hard_check.activate ();
                 return;
+            case DifficultyCategory.CUSTOM:
+                easy_check.activate ();
+                return;
             default:
                 assert_not_reached ();
         }
@@ -257,7 +260,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         return game_box.visible;
     }
 
-    public void show_game_view ()
+    public void show_game_view (DifficultyCategory difficulty)
         requires (game != null)
     {
         set_board_visible (true);
@@ -270,29 +273,20 @@ public class SudokuWindow : Adw.ApplicationWindow
             play_custom_game_button.visible = false;
             play_pause_button.visible = show_timer;
             clock_box.visible = show_timer && !is_window_small;
+            windowtitle.subtitle = difficulty.to_string ();
         }
         else
         {
             clock_box.visible = false;
             play_custom_game_button.visible = true;
             play_pause_button.visible = false;
+            windowtitle.subtitle = _("Create Puzzle");
         }
-
-        set_headerbar_title ();
     }
 
     public void board_completed ()
     {
         play_custom_game_button.visible = false;
-    }
-
-    public void set_headerbar_title ()
-        requires (game != null)
-    {
-        if (game.mode == GameMode.PLAY)
-            windowtitle.subtitle = null;
-        else
-            windowtitle.subtitle = _("Create Puzzle");
     }
 
     public void display_pause_button ()

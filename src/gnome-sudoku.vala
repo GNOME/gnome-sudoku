@@ -189,6 +189,8 @@ public class Sudoku : Adw.Application
                 current_game_mode = savegame.board.fixed == 0 ? GameMode.CREATE : GameMode.PLAY;
             start_game (savegame.board);
         }
+        else if (play_difficulty == DifficultyCategory.CUSTOM)
+            create_game_cb ();
         else
             show_new_game_screen ();
     }
@@ -351,6 +353,7 @@ public class Sudoku : Adw.Application
     {
         game.board.set_all_is_fixed ();
         current_game_mode = GameMode.PLAY;
+        play_difficulty = DifficultyCategory.CUSTOM;
         game.stop_clock ();
         start_game (board);
     }
@@ -375,7 +378,7 @@ public class Sudoku : Adw.Application
         game.board.cell_changed.connect (cell_modified_cb);
         game.board.earmark_changed.connect (cell_modified_cb);
 
-        window.start_game (game);
+        window.start_game (game, play_difficulty);
 
         print_action.set_enabled (true);
         undo_action.set_enabled (false);
@@ -464,7 +467,7 @@ public class Sudoku : Adw.Application
 
     private void back_cb ()
     {
-        window.show_game_view ();
+        window.show_game_view (play_difficulty);
         if (game.mode != GameMode.CREATE)
             game.resume_clock ();
 
