@@ -178,7 +178,6 @@ private class SudokuCell : Widget
         this.add_controller (this.button_controller);
         this.add_controller (this.long_press_controller);
         this.add_controller (this.key_controller);
-        this.button_controller.group (this.long_press_controller);
 
         this.long_press_controller.pressed.connect (long_press_cb);
         this.button_controller.released.connect (button_released_cb);
@@ -319,24 +318,6 @@ private class SudokuCell : Widget
         }
     }
 
-    private void long_press_cb (GestureLongPress gesture,
-                                double           x,
-                                double           y)
-    {
-        gesture.set_state (EventSequenceState.CLAIMED);
-
-        if (!this.has_focus)
-            grab_focus ();
-
-        if (is_fixed || game.paused)
-            return;
-
-        if (game.mode == GameMode.CREATE)
-            show_number_picker ();
-        else if (this.value == 0)
-            show_earmark_picker ();
-    }
-
     private void button_released_cb (GestureClick gesture,
                                      int          n_press,
                                      double       x,
@@ -371,6 +352,23 @@ private class SudokuCell : Widget
         {
             show_earmark_picker ();
         }
+    }
+
+    private void long_press_cb (GestureLongPress gesture,
+                                double           x,
+                                double           y)
+    {
+        gesture.set_state (EventSequenceState.CLAIMED);
+        if (!this.has_focus)
+            grab_focus ();
+
+        if (is_fixed || game.paused)
+            return;
+
+        if (game.mode == GameMode.CREATE)
+            show_number_picker ();
+        else if (this.value == 0)
+            show_earmark_picker ();
     }
 
     private int get_key_number (uint keyval)
