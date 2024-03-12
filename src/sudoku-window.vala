@@ -81,13 +81,16 @@ public class SudokuWindow : Adw.ApplicationWindow
         construct_window_parameters ();
 
         this.notify["maximized"].connect(() => {
-            this.window_is_maximized = !this.window_is_maximized;
+            window_is_maximized = !window_is_maximized;
+            is_window_width_small = default_width <= 600 && !window_is_maximized;
+            if (game != null && game.mode != GameMode.CREATE)
+                clock_box.visible = show_timer && !is_window_width_small;
             set_gamebox_margins ();
         });
 
         this.notify["fullscreened"].connect(() => {
-            this.window_is_fullscreen = !this.window_is_fullscreen;
-            if (this.window_is_fullscreen)
+            window_is_fullscreen = !window_is_fullscreen;
+            if (window_is_fullscreen)
             {
                 headerbar.set_decoration_layout (":close");
                 unfullscreen_button.visible = true;
@@ -102,6 +105,9 @@ public class SudokuWindow : Adw.ApplicationWindow
                     return;
                 }
             }
+            is_window_width_small = default_width <= 600 && !window_is_fullscreen;
+            if (game != null && game.mode != GameMode.CREATE)
+                clock_box.visible = show_timer && !is_window_width_small;
             set_gamebox_margins ();
         });
 
