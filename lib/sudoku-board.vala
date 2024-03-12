@@ -31,9 +31,9 @@ public class SudokuBoard : Object
     private bool[,] is_fixed;                   /* if the value at location is fixed or not */
 
     //format is [*, value - 1]
-    private int[,] occurences_in_row;           /* counts of the value's occurences */
-    private int[,] occurences_in_col;           /* if any count is superior to 1 there's a breakage */
-    private int[,,] occurences_in_block;
+    private int[,] occurrences_in_row;           /* counts of the value's occurrences */
+    private int[,] occurrences_in_col;           /* if any count is superior to 1 there's a breakage */
+    private int[,,] occurrences_in_block;
 
     //format is [row, column, number - 1]
     private bool[,,] earmarks;                  /* Earmarks set by the user */
@@ -123,9 +123,9 @@ public class SudokuBoard : Object
         this.block_cols = block_cols;
         cells = new int[rows, cols];
         is_fixed = new bool[rows, cols];
-        occurences_in_row = new int[rows, cols];
-        occurences_in_col = new int[cols, rows];
-        occurences_in_block = new int[block_rows, block_cols, block_rows * block_cols];
+        occurrences_in_row = new int[rows, cols];
+        occurrences_in_col = new int[cols, rows];
+        occurrences_in_block = new int[block_rows, block_cols, block_rows * block_cols];
         earmarks = new bool[rows, cols, max_val];
 
         for (var l1 = 0; l1 < rows; l1++)
@@ -134,14 +134,14 @@ public class SudokuBoard : Object
             {
                 cells[l1, l2] = 0;
                 is_fixed[l1, l2] = false;
-                occurences_in_row[l1, l2] = 0;
-                occurences_in_col[l2, l1] = 0;
+                occurrences_in_row[l1, l2] = 0;
+                occurrences_in_col[l2, l1] = 0;
             }
         }
         for (var l1 = 0; l1 < block_rows; l1++)
             for (var l2 = 0; l2 < block_cols; l2++)
                 for (var l3 = 0; l3 < max_val; l3++)
-                    occurences_in_block[l1, l2, l3] = 0;
+                    occurrences_in_block[l1, l2, l3] = 0;
 
         broken_coords = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
 
@@ -189,9 +189,9 @@ public class SudokuBoard : Object
         board.cells = cells;
         board.solution = solution;
         board.is_fixed = is_fixed;
-        board.occurences_in_row = occurences_in_row;
-        board.occurences_in_col = occurences_in_col;
-        board.occurences_in_block = occurences_in_block;
+        board.occurrences_in_row = occurrences_in_row;
+        board.occurrences_in_col = occurrences_in_col;
+        board.occurrences_in_block = occurrences_in_block;
         board.filled = filled;
         board.fixed = fixed;
         board.n_earmarks = n_earmarks;
@@ -244,9 +244,9 @@ public class SudokuBoard : Object
 
     public bool is_possible (int row, int col, int val)
     {
-        return (occurences_in_row[row, val - 1] == 0
-                && occurences_in_col[col, val - 1] == 0
-                && occurences_in_block[row / block_cols, col / block_rows, val - 1] == 0);
+        return (occurrences_in_row[row, val - 1] == 0
+                && occurrences_in_col[col, val - 1] == 0
+                && occurrences_in_block[row / block_cols, col / block_rows, val - 1] == 0);
     }
 
     public int count_possibilities (int row, int col)
@@ -305,7 +305,7 @@ public class SudokuBoard : Object
             filled++;
 
         mark_breakages (row, col, val);
-        add_to_occurences (row, col, val, 1);
+        add_to_occurrences (row, col, val, 1);
 
         if (complete)
             completed();
@@ -340,7 +340,7 @@ public class SudokuBoard : Object
 
     private void update_old_breakages (int row, int col, int val)
     {
-        add_to_occurences (row, col, val, -1);
+        add_to_occurrences (row, col, val, -1);
 
         if (broken_coords.contains (Coord(row, col)))
         {
@@ -352,22 +352,22 @@ public class SudokuBoard : Object
         }
     }
 
-    private void add_to_occurences (int row, int col, int val, int add)
+    private void add_to_occurrences (int row, int col, int val, int add)
     {
-        occurences_in_row[row, val - 1] += add;
-        occurences_in_col[col, val - 1] += add;
-        occurences_in_block[row / block_cols, col / block_rows, val - 1] += add;
+        occurrences_in_row[row, val - 1] += add;
+        occurrences_in_col[col, val - 1] += add;
+        occurrences_in_block[row / block_cols, col / block_rows, val - 1] += add;
     }
 
     private void mark_breakages (int row, int col, int val)
     {
-        if (occurences_in_row[row, val - 1] > 0)
+        if (occurrences_in_row[row, val - 1] > 0)
             mark_breakages_for (coords_for_row[row], val);
 
-        if (occurences_in_col[col, val - 1] > 0)
+        if (occurrences_in_col[col, val - 1] > 0)
             mark_breakages_for (coords_for_col[col], val);
 
-        if (occurences_in_block[row / block_rows, col / block_cols, val - 1] > 0)
+        if (occurrences_in_block[row / block_rows, col / block_cols, val - 1] > 0)
             mark_breakages_for (coords_for_block[Coord(row / block_rows, col / block_cols)], val);
     }
 
@@ -423,38 +423,38 @@ public class SudokuBoard : Object
         return QQwing.count_solutions_limited (cells_1d);
     }
 
-    public Set<Coord?> get_occurences(Gee.List<Coord?> coords, int val)
+    public Set<Coord?> get_occurrences(Gee.List<Coord?> coords, int val)
     {
-        Set<Coord?> occurences = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
+        Set<Coord?> occurrences = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
         foreach (Coord coord in coords)
             if (cells[coord.row, coord.col] == val)
-                occurences.add (coord);
+                occurrences.add (coord);
 
-        return occurences;
+        return occurrences;
     }
 
     public bool row_contains (int row, int val)
     {
-        return occurences_in_row[row, val - 1] > 0;
+        return occurrences_in_row[row, val - 1] > 0;
     }
 
     public bool col_contains (int col, int val)
     {
-        return occurences_in_col[col, val - 1] > 0;
+        return occurrences_in_col[col, val - 1] > 0;
     }
 
     public bool block_contains (int row_block, int col_block, int val)
     {
-        return occurences_in_block[row_block, col_block, val - 1] > 0;
+        return occurrences_in_block[row_block, col_block, val - 1] > 0;
     }
 
     private void remove_breakages_for (Gee.List<Coord?> coords, int val)
     {
         foreach (Coord coord in coords)
             if (broken_coords.contains (coord)
-                && occurences_in_row[coord.row, val - 1] <= 1
-                && occurences_in_col[coord.col, val - 1] <= 1
-                && occurences_in_block[coord.row / block_cols, coord.col / block_rows, val - 1] <= 1)
+                && occurrences_in_row[coord.row, val - 1] <= 1
+                && occurrences_in_col[coord.col, val - 1] <= 1
+                && occurrences_in_block[coord.row / block_cols, coord.col / block_rows, val - 1] <= 1)
                 {
                     broken_coords.remove (coord);
                 }
@@ -463,9 +463,9 @@ public class SudokuBoard : Object
     /* returns if val is possible in coords */
     private void mark_breakages_for (Gee.List<Coord?> coords, int val)
     {
-        Set<Coord?> occurences = get_occurences (coords, val);
-        if (occurences.size != 1)
-            broken_coords.add_all (occurences);
+        Set<Coord?> occurrences = get_occurrences (coords, val);
+        if (occurrences.size != 1)
+            broken_coords.add_all (occurrences);
     }
 
     public void to_initial_state ()
