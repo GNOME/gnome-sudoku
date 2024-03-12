@@ -324,9 +324,7 @@ private class SudokuCell : Widget
                                 double           y)
     {
         gesture.set_state (EventSequenceState.CLAIMED);
-
-        if (!this.has_focus)
-            grab_focus ();
+        grab_focus ();
 
         if (is_fixed || game.paused)
             return;
@@ -347,9 +345,7 @@ private class SudokuCell : Widget
             return;
 
         gesture.set_state (EventSequenceState.CLAIMED);
-
-        if (!this.has_focus)
-            grab_focus ();
+        grab_focus ();
 
         if (is_fixed || game.paused)
             return;

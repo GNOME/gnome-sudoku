@@ -254,9 +254,7 @@ public class SudokuView : Adw.Bin
 
     private void cell_changed_cb (int row, int col, int old_val, int new_val)
     {
-        if (!cells[row, col].has_focus)
-            cells[row, col].grab_focus ();
-
+        cells[row, col].grab_focus ();
         cells[row, col].update_value ();
 
         update_warnings ();
@@ -266,9 +264,7 @@ public class SudokuView : Adw.Bin
 
     private void earmark_changed_cb (int row, int col, int num, bool enabled)
     {
-        if (!cells[row, col].has_focus)
-            cells[row, col].grab_focus ();
-
+        cells[row, col].grab_focus ();
         cells[row, col].update_earmark (num);
         if (enabled)
             cells[row, col].check_earmark_warnings (num, show_earmark_warnings);
