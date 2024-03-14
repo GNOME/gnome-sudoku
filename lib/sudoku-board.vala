@@ -451,7 +451,8 @@ public class SudokuBoard : Object
     private void remove_breakages_for (Gee.List<Coord?> coords, int val)
     {
         foreach (Coord coord in coords)
-            if (broken_coords.contains (coord)
+            if (cells[coord.row, coord.col] == val
+                && broken_coords.contains (coord)
                 && occurrences_in_row[coord.row, val - 1] <= 1
                 && occurrences_in_col[coord.col, val - 1] <= 1
                 && occurrences_in_block[coord.row / block_cols, coord.col / block_rows, val - 1] <= 1)
