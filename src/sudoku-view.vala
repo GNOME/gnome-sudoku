@@ -172,8 +172,6 @@ public class SudokuView : Adw.Bin
         update_warnings ();
         overlay.add_overlay (paused);
         overlay.set_child (grid);
-        grid.show ();
-        overlay.show ();
         paused.set_visible (false);
     }
 

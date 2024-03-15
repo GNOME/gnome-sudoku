@@ -94,7 +94,7 @@ public class Sudoku : Adw.Application
         Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         Intl.textdomain (GETTEXT_PACKAGE);
 
-        Object (application_id: "org.gnome.Sudoku", flags: ApplicationFlags.FLAGS_NONE);
+        Object (application_id: "org.gnome.Sudoku", flags: ApplicationFlags.DEFAULT_FLAGS);
         add_main_option_entries (option_entries);
 
         typeof (SudokuMainMenuItem).ensure ();
@@ -277,7 +277,7 @@ public class Sudoku : Adw.Application
             dialog.add_response ("close", _("Close"));
 
             dialog.response.connect (() => dialog.destroy ());
-            dialog.show ();
+            dialog.present ();
         }
         else
         {
@@ -292,7 +292,7 @@ public class Sudoku : Adw.Application
                 dialog.destroy ();
             });
 
-            dialog.show ();
+            dialog.present ();
         }
     }
 
@@ -509,7 +509,7 @@ public class Sudoku : Adw.Application
     private void print_multiple_cb ()
     {
         var print_dialog = new PrintDialog (saver, window);
-        print_dialog.show ();
+        print_dialog.visible = true;
     }
 
     private void help_cb ()

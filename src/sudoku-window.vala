@@ -222,7 +222,6 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         view = new SudokuView (game, settings);
 
-        view.show ();
         game_box.prepend (view);
         view.grab_focus ();
 
@@ -308,7 +307,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public void display_pause_button ()
     {
-        play_pause_button.show ();
+        play_pause_button.visible = true;
         play_pause_button.icon_name = game.paused ? "media-playback-start-symbolic" : "media-playback-pause-symbolic";
         play_pause_button.tooltip_text = game.paused ? _("Play") : _("Pause");
     }

@@ -58,7 +58,6 @@ private class NumberPicker : Grid
                 label.margin_top = for_earmarks ? 0 : 4;
                 label.margin_bottom = for_earmarks ? 8 : 4;
                 button.set_child (label);
-                label.show ();
 
                 if (!for_earmarks)
                     button.clicked.connect (() => {
@@ -76,7 +75,6 @@ private class NumberPicker : Grid
                     button.realize.connect (() => {
                         button.grab_focus ();
                     });
-                button.show ();
             }
         }
 
@@ -87,7 +85,6 @@ private class NumberPicker : Grid
         var label = new Label ("<big>%s</big>".printf (_("Clear")));
         label.use_markup = true;
         clear_button.set_child (label);
-        label.show ();
 
         clear_button.clicked.connect (() => {
             number_picked (0);
@@ -111,23 +108,16 @@ private class NumberPicker : Grid
         this.margin_end = 2;
         this.row_spacing = 3;
         this.column_spacing = 3;
-        this.show ();
     }
 
     public void set_clear_button_visibility (bool visible)
     {
-        if (visible)
-            clear_button.show ();
-        else
-            clear_button.hide ();
+        clear_button.visible = visible;
     }
 
     public void set_clear_button_enabled (bool enabled)
     {
-        if (enabled)
-            clear_button.sensitive = true;
-        else
-            clear_button.sensitive = false;
+        clear_button.sensitive = enabled;
     }
 
     public void set_earmarks (int row, int col)
