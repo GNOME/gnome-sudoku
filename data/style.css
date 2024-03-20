@@ -1,3 +1,4 @@
+/*contains styles that are always present.*/
 grid.board {
   border: 2px solid #333;
   background: #333;
@@ -5,13 +6,11 @@ grid.board {
 grid.block {
   background: #999;
 }
-
 .paused {
   background: rgba(0, 0, 0, 0.75);
   font-weight: bold;
   color: #FFF;
 }
-
 sudokucell {
   background: #FFF;
 }
@@ -25,10 +24,7 @@ sudokucell.fixed {
   background: #CCC;
 }
 sudokucell label {
-  color: #000;
-}
-sudokucell.selected > label {
-  color: #333;
+  color: @view_fg_color;
 }
 sudokucell.highlight-label > label {
   color: #3366E5;
@@ -38,8 +34,6 @@ sudokucell > label.earmark.highlight-label {
   color: #3366E5;
 }
 .earmark.error,
-sudokucell.highlight-label > .earmark.error,
-sudokucell.selected > .earmark.error,
 sudokucell.error > label {
   color: red;
   font-weight: bold;

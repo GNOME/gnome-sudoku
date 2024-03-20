@@ -1,18 +1,11 @@
+/*contains styles only used when AdwStyleManager:dark is TRUE.*/
 grid.board {
   border: none;
   background: #747474;
 }
-
 grid.block {
   background: #5b5b5b;
 }
-
-.paused {
-  background: rgba(0, 0, 0, 0.75);
-  font-weight: bold;
-  color: #fff;
-}
-
 sudokucell {
   background: #454545;
 }
@@ -25,25 +18,10 @@ sudokucell.selected {
 sudokucell.fixed {
   background: #343434;
 }
-sudokucell label {
-  color: #FFF;
-}
-sudokucell.selected > label {
-  background: #4c5e79;
-}
 sudokucell.highlight-label > label {
+  color: @view_fg_color;
   background: #20324b;
 }
 sudokucell > label.earmark.highlight-label {
   color: #20324b;
-  font-weight: bold;
 }
-
-.earmark.error,
-sudokucell.highlight-label > .earmark.error,
-sudokucell.selected > .earmark.error,
-sudokucell.error > label {
-  color: red;
-  font-weight: bold;
-}
-
