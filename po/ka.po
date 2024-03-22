@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-03-08 13:40+0000\n"
-"PO-Revision-Date: 2024-03-10 15:58+0100\n"
+"POT-Creation-Date: 2024-03-11 14:07+0000\n"
+"PO-Revision-Date: 2024-03-22 05:19+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -79,7 +79,7 @@ msgid "_About Sudoku"
 msgstr ""
 
 #: data/sudoku-window.ui:79 data/sudoku-window.ui:88
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:530
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:534
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -95,35 +95,39 @@ msgstr "ქმედების გამეორება"
 msgid "Back"
 msgstr "უკან"
 
-#: data/sudoku-window.ui:131
+#: data/sudoku-window.ui:132
+msgid "Leave Fullscreen"
+msgstr "სრული ეკრანიდან გასვლა"
+
+#: data/sudoku-window.ui:146
 msgid "Main Menu"
 msgstr "მთავარი მენიუ"
 
-#: data/sudoku-window.ui:150
+#: data/sudoku-window.ui:165
 msgid "Play Custom Puzzle"
 msgstr ""
 
-#: data/sudoku-window.ui:199
+#: data/sudoku-window.ui:214
 msgid "Select Game Difficulty"
 msgstr "აირჩიეთ თქვენი სირთულე"
 
-#: data/sudoku-window.ui:216
+#: data/sudoku-window.ui:231
 msgid "_Easy"
 msgstr "_ადვილი"
 
-#: data/sudoku-window.ui:230
+#: data/sudoku-window.ui:245
 msgid "_Medium"
 msgstr "_საშუალო"
 
-#: data/sudoku-window.ui:244
+#: data/sudoku-window.ui:259
 msgid "_Hard"
 msgstr "ძ_ნელი"
 
-#: data/sudoku-window.ui:258
+#: data/sudoku-window.ui:273
 msgid "_Very Hard"
 msgstr "ძ_ალიან ძნელი"
 
-#: data/sudoku-window.ui:269
+#: data/sudoku-window.ui:284
 msgid "_Start Game"
 msgstr "თამაშის _დაწყება"
 
@@ -164,77 +168,81 @@ msgstr ""
 msgid "magic;square;"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:11
+#: data/org.gnome.Sudoku.gschema.xml:12
 msgid "Difficulty level of sudokus to be printed"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:13
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Number of Sudokus to print"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:19
 msgid "Set the number of sudokus you want to print"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:24
 msgid "Number of Sudokus to print per page"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:24
+#: data/org.gnome.Sudoku.gschema.xml:25
 msgid "Set the number of sudokus you want to print per page"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:28
+#: data/org.gnome.Sudoku.gschema.xml:29
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:32
+#: data/org.gnome.Sudoku.gschema.xml:33
 msgid "Color mistakes and duplicate numbers in red"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:33
+#: data/org.gnome.Sudoku.gschema.xml:34
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:37
+#: data/org.gnome.Sudoku.gschema.xml:38
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:41
+#: data/org.gnome.Sudoku.gschema.xml:42
 msgid "Toggle timer and pause buttons"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:45
+#: data/org.gnome.Sudoku.gschema.xml:46
 msgid "Check cells only against duplicates in row, column and block"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:49
+#: data/org.gnome.Sudoku.gschema.xml:50
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:53
+#: data/org.gnome.Sudoku.gschema.xml:54
 msgid "The puzzle's difficulty"
 msgstr "პაზლის სირთულე"
 
-#: data/org.gnome.Sudoku.gschema.xml:57
+#: data/org.gnome.Sudoku.gschema.xml:58
 msgid "Width of the window in pixels"
 msgstr "ფანჯრის სიგანე, პიქსელებში"
 
-#: data/org.gnome.Sudoku.gschema.xml:61
+#: data/org.gnome.Sudoku.gschema.xml:62
 msgid "Height of the window in pixels"
 msgstr "ფანჯრის სიმაღლე, პიქსელებში"
 
-#: data/org.gnome.Sudoku.gschema.xml:65
+#: data/org.gnome.Sudoku.gschema.xml:66
 msgid "true if the window is maximized"
-msgstr "თუ ჩართულია, ფანჯარა გაშლილი გაიხსნება"
+msgstr "ჭეშმარიტია, თუ ფანჯარა მთელ ეკრანზეა"
+
+#: data/org.gnome.Sudoku.gschema.xml:70
+msgid "true if the window is fullscreen"
+msgstr "ჭეშმარიტია, თუ ფანჯარა სრულ ეკრანზეა"
 
 #: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
@@ -293,74 +301,74 @@ msgid "Custom Puzzle"
 msgstr ""
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:80
+#: src/gnome-sudoku.vala:81
 msgid "Show release version"
 msgstr "ვერსიის ჩვენება"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:84
+#: src/gnome-sudoku.vala:85
 msgid "Show the possible values for each cell"
 msgstr ""
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:273
+#: src/gnome-sudoku.vala:276
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr ""
 
-#: src/gnome-sudoku.vala:273
+#: src/gnome-sudoku.vala:276
 msgid "Please enter a valid puzzle."
 msgstr ""
 
-#: src/gnome-sudoku.vala:274 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:277 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "დახურვა"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:282
+#: src/gnome-sudoku.vala:285
 msgid "The puzzle you have entered has multiple solutions."
 msgstr ""
 
-#: src/gnome-sudoku.vala:282
+#: src/gnome-sudoku.vala:285
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr ""
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:286
 msgid "_Back"
 msgstr "უკან"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:287
 msgid "Play _Anyway"
 msgstr "_მაინც თამაში"
 
-#: src/gnome-sudoku.vala:326
+#: src/gnome-sudoku.vala:329
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gnome-sudoku.vala:334
+#: src/gnome-sudoku.vala:337
 msgid "Quit"
 msgstr "გასვლა"
 
-#: src/gnome-sudoku.vala:335
+#: src/gnome-sudoku.vala:338
 msgid "Play _Again"
 msgstr "_თავიდან თამაში"
 
-#: src/gnome-sudoku.vala:449
+#: src/gnome-sudoku.vala:453
 msgid "Reset the board to its original state?"
 msgstr ""
 
-#: src/gnome-sudoku.vala:450
+#: src/gnome-sudoku.vala:454
 msgid "No"
 msgstr "არა"
 
-#: src/gnome-sudoku.vala:451
+#: src/gnome-sudoku.vala:455
 msgid "Yes"
 msgstr "დიახ"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:527
+#: src/gnome-sudoku.vala:531
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -368,7 +376,7 @@ msgid ""
 "Puzzles generated by QQwing %s"
 msgstr ""
 
-#: src/gnome-sudoku.vala:537
+#: src/gnome-sudoku.vala:541
 msgid "translator-credits"
 msgstr "ეკატერინე პაპავა"
 
@@ -381,19 +389,19 @@ msgstr "გასუფთავება"
 msgid "Error printing file:"
 msgstr "ფაილის დაბეჭდვის შეცდომა:"
 
-#: src/sudoku-window.vala:194
+#: src/sudoku-window.vala:228
 msgid "Select Difficulty"
 msgstr "აირჩიეთ სირთულე"
 
-#: src/sudoku-window.vala:272
+#: src/sudoku-window.vala:294
 msgid "Create Puzzle"
 msgstr "პაზლის შექმნა"
 
-#: src/sudoku-window.vala:279
+#: src/sudoku-window.vala:307
 msgid "Play"
 msgstr "თამაში"
 
-#: src/sudoku-window.vala:279
+#: src/sudoku-window.vala:307
 msgid "Pause"
 msgstr "შეჩერება"
 
