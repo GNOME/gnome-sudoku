@@ -301,7 +301,7 @@ public class Sudoku : Adw.Application
         game.paused = !game.paused;
     }
 
-    private void cell_modified_cb ()
+    private void action_completed_cb ()
     {
         undo_action.set_enabled (!game.is_undostack_null ());
         redo_action.set_enabled (!game.is_redostack_null ());
@@ -366,8 +366,7 @@ public class Sudoku : Adw.Application
         if (game != null)
         {
             game.paused_changed.disconnect (paused_changed_cb);
-            game.board.cell_changed.disconnect (cell_modified_cb);
-            game.board.earmark_changed.disconnect (cell_modified_cb);
+            game.action_completed.disconnect (action_completed_cb);
             game.board.completed.disconnect (board_completed_cb);
         }
 
@@ -375,14 +374,13 @@ public class Sudoku : Adw.Application
         game.mode = current_game_mode;
 
         game.paused_changed.connect (paused_changed_cb);
-        game.board.cell_changed.connect (cell_modified_cb);
-        game.board.earmark_changed.connect (cell_modified_cb);
+        game.action_completed.connect (action_completed_cb);
 
         window.start_game (game, play_difficulty);
 
         print_action.set_enabled (true);
-        undo_action.set_enabled (false);
-        redo_action.set_enabled (false);
+        undo_action.set_enabled (!game.is_undostack_null ());
+        redo_action.set_enabled (!game.is_redostack_null ());
         new_game_action.set_enabled (true);
 
         clear_action.set_enabled (!game.is_empty ());
@@ -479,7 +477,6 @@ public class Sudoku : Adw.Application
         if (!window.is_board_visible ())
             return;
         game.undo ();
-        undo_action.set_enabled (!game.is_undostack_null ());
     }
 
     private void redo_cb ()
@@ -487,7 +484,6 @@ public class Sudoku : Adw.Application
         if (!window.is_board_visible ())
             return;
         game.redo ();
-        redo_action.set_enabled (!game.is_redostack_null ());
     }
 
     private void print_cb ()

@@ -30,6 +30,7 @@ public class SudokuGame : Object
 
     public signal void tick ();
     public signal void paused_changed ();
+    public signal void action_completed (StackAction action);
 
     private bool _paused = false;
     public bool paused
@@ -42,26 +43,47 @@ public class SudokuGame : Object
         get { return _paused; }
     }
 
-    private struct UndoItem
+    private struct earmark_change
     {
         public int row;
         public int col;
-        public int val;
-        public bool[] earmarks;
+        public int number;
+        public bool enabled;
+    }
+
+    private struct value_change
+    {
+        public int row;
+        public int col;
+        public int old_val;
+        public int new_val;
+    }
+
+    private class stack_item
+    {
+        public Gee.ArrayList<earmark_change?> earmarks;
+        public Gee.ArrayList<value_change?> values;
+        public StackAction action;
+        public stack_item (StackAction _action)
+        {
+            this.action = _action;
+            earmarks = new ArrayList<earmark_change?>();
+            values = new ArrayList<value_change?>();
+        }
     }
 
 
-    private Gee.List<UndoItem?> undostack;
-    private Gee.List<UndoItem?> redostack;
+    private ArrayList<stack_item?> stack;
+    private int stack_head_index = -1;
 
     public bool is_undostack_null ()
     {
-        return undostack.size == 0;
+        return stack_head_index == -1;
     }
 
     public bool is_redostack_null ()
     {
-        return redostack.size == 0;
+        return stack_head_index == stack.size - 1;
     }
 
     public SudokuGame (SudokuBoard board)
@@ -69,51 +91,81 @@ public class SudokuGame : Object
         this.board = board;
         this.mode = GameMode.PLAY;
         timer = new Timer();
-        undostack = new ArrayList<UndoItem?> ();
-        redostack = new ArrayList<UndoItem?> ();
+        stack = new ArrayList<stack_item?>();
     }
 
     public void enable_earmark (int row, int col, int k_no)
     {
-        var old_earmarks = board.get_earmarks (row, col);
-        update_undo (row, col, 0, old_earmarks);
+        var new_stack_item = new stack_item (StackAction.ENABLE_EARMARK);
+        add_to_stack (new_stack_item);
 
         board.enable_earmark (row, col, k_no);
+        add_earmark_step (new_stack_item, row, col, k_no, true);
+
+        action_completed (new_stack_item.action);
     }
 
     public void disable_earmark (int row, int col, int k_no)
     {
-        var old_earmarks = board.get_earmarks (row, col);
-        update_undo (row, col, 0, old_earmarks);
+        var new_stack_item = new stack_item (StackAction.DISABLE_EARMARK);
+        add_to_stack (new_stack_item);
 
         board.disable_earmark (row, col, k_no);
+        add_earmark_step (new_stack_item, row, col, k_no, false);
+
+        action_completed (new_stack_item.action);
     }
 
     public void disable_all_earmarks (int row, int col)
     {
-        var old_earmarks = board.get_earmarks (row, col);
-        update_undo (row, col, 0, old_earmarks);
+        var new_stack_item = new stack_item (StackAction.DISABLE_ALL_EARMARKS);
+        add_to_stack (new_stack_item);
 
         board.disable_all_earmarks (row, col);
+        add_disable_earmarks_step (new_stack_item, row, col);
+
+        action_completed (new_stack_item.action);
     }
 
     public void insert (int row, int col, int val)
     {
         var old_val = board[row, col];
-        var old_earmarks = board.get_earmarks (row, col);
-        update_undo (row, col, old_val, old_earmarks);
+
+        var new_stack_item = new stack_item (StackAction.INSERT);
+        add_to_stack (new_stack_item);
 
         board.disable_all_earmarks (row, col);
+        add_disable_earmarks_step (new_stack_item, row, col);
+
         board.insert (row, col, val);
+        add_value_step (new_stack_item, row, col, old_val, val);
+
+        action_completed (new_stack_item.action);
     }
 
     public void remove (int row, int col)
     {
         var old_val = board[row, col];
-        var old_earmarks = board.get_earmarks (row, col);
-        update_undo (row, col, old_val, old_earmarks);
+
+        var new_stack_item = new stack_item (StackAction.REMOVE);
+        add_to_stack (new_stack_item);
 
         board.remove (row, col);
+        add_value_step (new_stack_item, row, col, old_val, 0);
+
+        action_completed (new_stack_item.action);
+    }
+
+    public StackAction get_current_stack_action ()
+    {
+        return (stack_head_index == -1) ? StackAction.NONE : stack[stack_head_index].action;
+    }
+
+    private void add_to_stack (stack_item item)
+    {
+        stack_slice ();
+        stack.add (item);
+        stack_head_index = stack.size - 1;
     }
 
     public bool is_empty ()
@@ -124,76 +176,145 @@ public class SudokuGame : Object
             return board.is_empty ();
     }
 
+    public void reset ()
+    {
+        board.previous_played_time = 0;
+        var cells = board.get_cells ();
+        var new_stack_item = new stack_item (StackAction.CLEAR_BOARD);
+        add_to_stack (new_stack_item);
+        for (var row = 0; row < board.rows; row++)
+            for (var col = 0; col < board.cols; col++)
+            {
+                if (board.get_is_fixed (row, col))
+                    continue;
+
+                if (cells[row, col] > 0)
+                    add_value_step (new_stack_item, row, col, cells[row, col], 0);
+                else if (board.has_earmarks (row, col))
+                    add_disable_earmarks_step (new_stack_item, row, col);
+                board.set (row, col, 0);
+            }
+        action_completed (new_stack_item.action);
+    }
+
+    private void add_earmark_step (stack_item item, int row, int col, int number, bool enabled)
+    {
+        earmark_change step = {row, col, number, enabled};
+        item.earmarks.add (step);
+    }
+
+    private void add_disable_earmarks_step (stack_item item, int row, int col)
+    {
+        var marks = board.get_earmarks (row, col);
+        for (var num = 1; num <= 9; num++)
+            if (marks[num - 1])
+            {
+                earmark_change step = {row, col, num, false};
+                item.earmarks.add (step);
+            }
+    }
+
+    private void add_value_step (stack_item item, int row, int col, int old_val, int val)
+    {
+        value_change step = {row, col, old_val, val};
+        item.values.add (step);
+    }
+
     public void undo ()
     {
-        apply_stack (undostack, redostack);
+        var changes = stack[stack_head_index];
+
+        var value_iterator = changes.values.list_iterator ();
+        for (var has_next = value_iterator.next (); has_next; has_next = value_iterator.next ())
+        {
+            var val = value_iterator.get ();
+            board.set (val.row, val.col, val.old_val);
+        }
+
+        var earmark_iterator = changes.earmarks.list_iterator ();
+        for (var has_next = earmark_iterator.next (); has_next; has_next = earmark_iterator.next ())
+        {
+            var earmark = earmark_iterator.get ();
+            if (earmark.enabled)
+                board.disable_earmark (earmark.row, earmark.col, earmark.number);
+            else
+                board.enable_earmark (earmark.row, earmark.col, earmark.number);
+        }
+
+        stack_head_index--;
+        action_completed (stack[stack_head_index + 1].action);
     }
 
     public void redo ()
     {
-        apply_stack (redostack, undostack);
+        stack_head_index++;
+
+        var changes = stack.get (stack_head_index);
+
+        var earmark_iterator = changes.earmarks.list_iterator ();
+        for (var has_next = earmark_iterator.next (); has_next; has_next = earmark_iterator.next ())
+        {
+            var earmark = earmark_iterator.get ();
+            if (earmark.enabled)
+                board.enable_earmark (earmark.row, earmark.col, earmark.number);
+            else
+                board.disable_earmark (earmark.row, earmark.col, earmark.number);
+        }
+
+        var value_iterator = changes.values.list_iterator ();
+        for (var has_next = value_iterator.next (); has_next; has_next = value_iterator.next ())
+        {
+            var val = value_iterator.get ();
+            board.set (val.row, val.col, val.new_val);
+        }
+
+        action_completed (stack[stack_head_index].action);
     }
 
-    public void reset ()
+    public void enable_all_earmark_possibilities ()
     {
-        board.previous_played_time = 0;
-        timer.start ();
-        undostack.clear ();
-        redostack.clear ();
         var cells = board.get_cells ();
-        for (var l1 = 0; l1 < board.rows; l1++)
-        {
-            for (var l2 = 0; l2 < board.cols; l2++)
+        var new_stack_item = new stack_item (StackAction.ENABLE_ALL_EARMARK_POSSIBILITIES);
+        var head_backup = stack_head_index;
+        var stack_backup = stack;
+        add_to_stack (new_stack_item);
+
+        for (var row = 0; row < board.rows; row++)
+            for (var col = 0; col < board.cols; col++)
             {
-                if (board.get_is_fixed (l1, l2))
+                if (cells[row, col] != 0)
                     continue;
 
-                if (cells[l1, l2] > 0)
-                    board.remove (l1, l2);
-                else
-                    board.disable_all_earmarks (l1, l2);
+                var marks = board.get_possibilities_as_bool_array (row, col);
+                for (int num = 1; num <= 9; num++)
+                {
+                    if (marks[num - 1] && !board.is_earmark_enabled (row, col, num))
+                    {
+                        board.enable_earmark (row, col, num);
+                        add_earmark_step (new_stack_item, row, col, num, true);
+                    }
+                }
             }
+
+        if (new_stack_item.earmarks == 0)
+        {
+            stack = stack_backup;
+            stack_head_index = head_backup;
         }
-        board.broken_coords.clear ();
+        else
+            action_completed (new_stack_item.action);
     }
 
-
-    public void update_undo (int row, int col, int old_val, bool[] old_earmarks)
+    //creates a new stack branch, to use when the head is detached and changes occur
+    public void stack_slice ()
     {
-        add_to_stack (undostack, row, col, old_val, old_earmarks);
-        redostack.clear ();
-    }
-
-    private void add_to_stack (Gee.List<UndoItem?> stack, int r, int c, int v, bool[] e)
-    {
-        UndoItem step = { r, c, v, e };
-        stack.add (step);
-    }
-
-    private void apply_stack (Gee.List<UndoItem?> from, Gee.List<UndoItem?> to)
-    {
-        if (from.size == 0)
+        if (stack_head_index == stack.size - 1)
             return;
 
-        var top = from.remove_at (from.size - 1);
-        int old_val = board [top.row, top.col];
-        bool[] old_earmarks = board.get_earmarks (top.row, top.col);
-        add_to_stack (to, top.row, top.col, old_val, old_earmarks);
-
-        if (top.val != old_val)
-            board.set (top.row, top.col, top.val);
-
-        for (var i = 1; i <= top.earmarks.length; i++)
-        {
-            if (top.earmarks[i-1] != old_earmarks[i-1])
-            {
-                if (top.earmarks[i-1])
-                    board.enable_earmark (top.row, top.col, i);
-                else
-                    board.disable_earmark (top.row, top.col, i);
-            }
-
-        }
+        if (stack_head_index == -1)
+            stack.clear ();
+        else
+            stack = (ArrayList) stack.slice (0, stack_head_index + 1);
     }
 
     public double get_total_time_played ()
@@ -239,4 +360,42 @@ public enum GameMode
 {
     PLAY,
     CREATE;
+}
+
+public enum StackAction
+{
+    NONE,
+    INSERT,
+    REMOVE,
+    ENABLE_EARMARK,
+    DISABLE_EARMARK,
+    DISABLE_ALL_EARMARKS,
+    INSERT_AND_DISABLE_RELATED_EARMARKS,
+    ENABLE_ALL_EARMARK_POSSIBILITIES,
+    CLEAR_BOARD;
+
+    public bool is_multi_step ()
+    {
+        switch (this)
+        {
+            case DISABLE_ALL_EARMARKS:
+            case INSERT_AND_DISABLE_RELATED_EARMARKS:
+            case CLEAR_BOARD:
+            case INSERT:
+            case ENABLE_ALL_EARMARK_POSSIBILITIES:
+                return true;
+            default:
+                return false;
+        }
+    }
+    public bool is_multi_value_step ()
+    {
+        switch (this)
+        {
+            case CLEAR_BOARD:
+                return true;
+            default:
+                return false;
+        }
+    }
 }

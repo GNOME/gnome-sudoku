@@ -330,12 +330,17 @@ public class SudokuBoard : Object
 
     public new void set (int row, int col, int val)
     {
+        var old_val = get (row, col);
+        if (old_val == 0)
+            disable_all_earmarks (row, col);
+
+        if (old_val == val)
+            return;
+
         if (val == 0)
             remove (row, col);
-        else if (val > 0 && val <= max_val)
-            insert (row, col, val);
         else
-            assert_not_reached();
+            insert (row, col, val);
     }
 
     private void update_old_breakages (int row, int col, int val)

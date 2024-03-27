@@ -159,7 +159,7 @@ public class SudokuView : Adw.Bin
                 });
 
                 cells[row, col] = cell;
-                cells[row, col].initialize_earmarks (show_possibilities);
+                cells[row, col].get_visible_earmarks ();
 
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
             }
@@ -168,6 +168,9 @@ public class SudokuView : Adw.Bin
         this.game.board.cell_changed.connect (cell_changed_cb);
         this.game.board.earmark_changed.connect (earmark_changed_cb);
         this.selection_changed.connect (selection_changed_cb);
+
+        if (show_possibilities && game.mode != GameMode.CREATE && game.board.previous_played_time == 0.0)
+            game.enable_all_earmark_possibilities ();
 
         update_warnings ();
         overlay.add_overlay (paused);
@@ -252,9 +255,11 @@ public class SudokuView : Adw.Bin
 
     private void cell_changed_cb (int row, int col, int old_val, int new_val)
     {
-        cells[row, col].grab_focus ();
-        cells[row, col].update_value ();
+        var action = game.get_current_stack_action ();
+        if (!action.is_multi_value_step ())
+            cells[row, col].grab_focus ();
 
+        cells[row, col].update_value ();
         update_warnings ();
         set_value_highlighter (old_val, false);
         set_value_highlighter (new_val, true);
@@ -262,8 +267,11 @@ public class SudokuView : Adw.Bin
 
     private void earmark_changed_cb (int row, int col, int num, bool enabled)
     {
-        cells[row, col].grab_focus ();
-        cells[row, col].update_earmark (num);
+        var action = game.get_current_stack_action ();
+        if (!action.is_multi_step ())
+            cells[row, col].grab_focus ();
+
+        cells[row, col].get_visible_earmark (num);
         if (enabled)
             cells[row, col].check_earmark_warnings (num, show_earmark_warnings);
     }
@@ -340,13 +348,6 @@ public class SudokuView : Adw.Bin
             }
     }
 
-    public void clear ()
-    {
-        for (var i = 0; i < game.board.rows; i++)
-            for (var j = 0; j < game.board.cols; j++)
-                game.board.disable_all_earmarks (i, j);
-    }
-
     private void clear_all_warnings ()
     {
         for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
@@ -396,14 +397,12 @@ public class SudokuView : Adw.Bin
         get { return _show_possibilities; }
         set {
             _show_possibilities = value;
-            for (var row = 0; row < game.board.rows; row++)
-                for (var col = 0; col < game.board.cols; col++)
-                {
-                    if (show_possibilities)
-                        cells[row, col].initialize_earmarks (show_possibilities, true);
-                    else
-                        game.disable_all_earmarks (row, col);
-                }
+            if (show_possibilities && game.mode != GameMode.CREATE)
+                game.enable_all_earmark_possibilities ();
+            else if (game.get_current_stack_action () == StackAction.ENABLE_ALL_EARMARK_POSSIBILITIES)
+                game.undo ();
+        }
+    }
 
         }
     }
