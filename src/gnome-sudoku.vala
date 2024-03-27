@@ -455,19 +455,7 @@ public class Sudoku : Adw.Application
 
     private void reset_cb ()
     {
-        var dialog = new Adw.MessageDialog (window, _("Reset the board to its original state?"), null);
-        dialog.add_response ("close", _("No"));
-        dialog.add_response ("yes", _("Yes"));
-        dialog.set_response_appearance ("yes", Adw.ResponseAppearance.DESTRUCTIVE);
-        dialog.response["yes"].connect ((response_id) => {
-            game.reset ();
-            view.clear ();
-            undo_action.set_enabled (false);
-            redo_action.set_enabled (false);
-            dialog.destroy ();
-        });
-
-        dialog.present ();
+        game.reset ();
     }
 
     private void back_cb ()
