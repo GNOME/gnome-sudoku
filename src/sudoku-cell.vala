@@ -28,6 +28,7 @@ private class SudokuCell : Widget
     private int row;
     private int col;
     private SudokuGame game;
+    public bool autoclean_earmarks;
     public signal void will_open_popover ();
 
     /* Gesture Controllers */
@@ -78,7 +79,10 @@ private class SudokuCell : Widget
             else
             {
                 value_label.set_label (value.to_string ());
-                game.insert (row, col, value);
+                if (autoclean_earmarks && game.mode == GameMode.PLAY)
+                    game.insert_and_disable_related_earmarks (row, col, value);
+                else
+                    game.insert (row, col, value);
             }
         }
     }

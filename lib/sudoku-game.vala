@@ -156,6 +156,42 @@ public class SudokuGame : Object
         action_completed (new_stack_item.action);
     }
 
+    public void insert_and_disable_related_earmarks (int row, int col, int val){
+        var old_val = board[row, col];
+        var new_stack_item = new stack_item (StackAction.INSERT_AND_DISABLE_RELATED_EARMARKS);
+        add_to_stack (new_stack_item);
+
+        for (var col_tmp = 0; col_tmp < board.cols; col_tmp++)
+            for (var row_tmp = 0; row_tmp < board.rows; row_tmp++)
+            {
+                if (row_tmp == row && col_tmp == col)
+                    continue;
+
+                if ((row_tmp == row || col_tmp == col ||
+                   (row_tmp / board.block_cols == row / board.block_cols &&
+                   col_tmp / board.block_rows == col / board.block_rows)) &&
+                   board.is_earmark_enabled (row_tmp, col_tmp, val))
+                {
+                    board.disable_earmark (row_tmp, col_tmp, val);
+                    add_earmark_step (new_stack_item, row_tmp, col_tmp, val, false);
+                }
+            }
+
+        if (new_stack_item.earmarks.size == 0)
+            new_stack_item.action = StackAction.INSERT;
+
+        if (board.has_earmarks (row, col))
+        {
+            board.disable_all_earmarks (row, col);
+            add_disable_earmarks_step (new_stack_item, row, col);
+        }
+
+        board.insert (row, col, val);
+        add_value_step (new_stack_item, row, col, old_val, val);
+
+        action_completed (new_stack_item.action);
+    }
+
     public StackAction get_current_stack_action ()
     {
         return (stack_head_index == -1) ? StackAction.NONE : stack[stack_head_index].action;
@@ -296,7 +332,7 @@ public class SudokuGame : Object
                 }
             }
 
-        if (new_stack_item.earmarks == 0)
+        if (new_stack_item.earmarks.size == 0)
         {
             stack = stack_backup;
             stack_head_index = head_backup;

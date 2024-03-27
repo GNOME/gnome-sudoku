@@ -141,6 +141,13 @@ public class Sudoku : Adw.Application
         });
         add_action (action);
 
+        action = settings.create_action ("autoclean-earmarks");
+        action.notify["state"].connect (() => {
+            if (view != null)
+                view.autoclean_earmarks = settings.get_boolean ("autoclean-earmarks");
+        });
+        add_action (action);
+
         action = settings.create_action ("highlighter");
         action.notify["state"].connect (() => {
             if (view != null)

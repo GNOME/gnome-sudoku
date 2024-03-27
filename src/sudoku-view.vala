@@ -77,6 +77,7 @@ public class SudokuView : Adw.Bin
         this._simple_warnings = settings.get_boolean ("simple-warnings");
         this._show_earmark_warnings = settings.get_boolean ("show-earmark-warnings");
         this._highlighter = settings.get_boolean ("highlighter");
+        this._autoclean_earmarks = settings.get_boolean ("autoclean-earmarks");
 
         overlay = new Overlay ();
         var frame = new SudokuFrame (overlay);
@@ -159,6 +160,7 @@ public class SudokuView : Adw.Bin
                 });
 
                 cells[row, col] = cell;
+                cells[row, col].autoclean_earmarks = autoclean_earmarks;
                 cells[row, col].get_visible_earmarks ();
 
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
@@ -404,6 +406,15 @@ public class SudokuView : Adw.Bin
         }
     }
 
+    private bool _autoclean_earmarks;
+    public bool autoclean_earmarks
+    {
+        get { return _autoclean_earmarks; }
+        set {
+            _autoclean_earmarks = value;
+            for (var i = 0; i < game.board.rows; i++)
+                for (var j = 0; j < game.board.cols; j++)
+                    cells[i,j].autoclean_earmarks = _autoclean_earmarks;
         }
     }
 
