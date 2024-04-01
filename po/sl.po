@@ -10,101 +10,133 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2023-02-20 20:25+0000\n"
-"PO-Revision-Date: 2023-02-27 21:51+0100\n"
-"Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
+"POT-Creation-Date: 2024-03-29 19:20+0000\n"
+"PO-Revision-Date: 2024-04-01 18:43+0200\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
-"n%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle"
-msgstr "_Nova uganka"
+msgid "_New Puzzle…"
+msgstr "_Nova uganka …"
 
 #: data/sudoku-window.ui:11
-msgid "_Clear Board"
-msgstr "Počisti _mrežo"
+msgid "_Create Custom Game…"
+msgstr "_Ustvari igro po meri ..."
 
-#: data/sudoku-window.ui:17 data/print-dialog.ui:38
+#: data/sudoku-window.ui:15
+msgid "_Clear Board…"
+msgstr "Po_čisti igralno ploščo …"
+
+#: data/sudoku-window.ui:21 data/print-dialog.ui:77
 msgid "_Print"
 msgstr "_Natisni"
 
-#: data/sudoku-window.ui:20
+#: data/sudoku-window.ui:24
 msgid "Print _Current Puzzle…"
 msgstr "Natisni _trenutno uganko …"
 
-#: data/sudoku-window.ui:24
+#: data/sudoku-window.ui:28
 msgid "Print _Multiple Puzzles…"
 msgstr "Natisni _več ugank sudoku …"
 
-#: data/sudoku-window.ui:32
-msgid "High_lighter"
+#: data/sudoku-window.ui:36
+msgid "_Highlighter"
 msgstr "_Poudarjalnik"
 
-#: data/sudoku-window.ui:36
+#: data/sudoku-window.ui:40
 msgid "_Warnings"
 msgstr "_Opozorila"
 
-#: data/sudoku-window.ui:42
+#: data/sudoku-window.ui:44
+msgid "_More Options"
+msgstr "_Dodatne možnosti"
+
+#: data/sudoku-window.ui:47
+msgid "Show _Timer"
+msgstr "Pokaži _časovnik"
+
+#: data/sudoku-window.ui:51
+msgid "Show _Possibilities"
+msgstr "Pokaži _možnosti"
+
+#: data/sudoku-window.ui:57
+#, fuzzy
+msgid "Simple _Earmark Warnings"
+msgstr "Enostavna opozorila _ušesnih oznak"
+
+#: data/sudoku-window.ui:61
+msgid "Simple _Warnings Mode"
+msgstr "Način enostavnih _opozoril"
+
+#: data/sudoku-window.ui:69
 msgid "_Help"
 msgstr "Pomo_č"
 
-#: data/sudoku-window.ui:46
+#: data/sudoku-window.ui:73
 msgid "_About Sudoku"
-msgstr "_O igri"
+msgstr "_O programu Sudoku"
 
-#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:505
-#: src/sudoku-window.vala:214
+#: data/sudoku-window.ui:79 data/sudoku-window.ui:88
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:525
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/sudoku-window.ui:73
-msgid "Undo your last action"
-msgstr "Razveljavi zadnje dejanje"
+#: data/sudoku-window.ui:96
+msgid "Undo Action"
+msgstr "Razveljavi dejanje"
 
-#: data/sudoku-window.ui:94
-msgid "Redo your last action"
-msgstr "Ponovi zadnje dejanje"
+#: data/sudoku-window.ui:108
+msgid "Redo Action"
+msgstr "Ponovi dejanje"
 
-#: data/sudoku-window.ui:126
-msgid "Pause"
-msgstr "Premor"
+#: data/sudoku-window.ui:120
+msgid "Back"
+msgstr "Nazaj"
 
-#: data/sudoku-window.ui:147
-msgid "Start playing the custom puzzle you have created"
-msgstr "Začni z reševanjem ustvarjene uganke po meri"
+#: data/sudoku-window.ui:132
+msgid "Leave Fullscreen"
+msgstr "Zapusti celozaslonski način"
 
-#: data/sudoku-window.ui:189
-msgid "Go back to the current game"
-msgstr "Vrni se na trenutno uganko"
+#: data/sudoku-window.ui:146
+msgid "Main Menu"
+msgstr "Glavni meni"
 
-#: data/sudoku-window.ui:233 data/print-dialog.ui:157
+#: data/sudoku-window.ui:165
+msgid "Play Custom Puzzle"
+msgstr "Igraj uganko po meri"
+
+#: data/sudoku-window.ui:214
+msgid "Select Game Difficulty"
+msgstr "Izbor zahtevnosti uganke"
+
+#: data/sudoku-window.ui:231
 msgid "_Easy"
 msgstr "_Enostavna uganka"
 
-#: data/sudoku-window.ui:241 data/print-dialog.ui:172
+#: data/sudoku-window.ui:245
 msgid "_Medium"
 msgstr "_Srednje zahtevna uganka"
 
-#: data/sudoku-window.ui:249 data/print-dialog.ui:188
+#: data/sudoku-window.ui:259
 msgid "_Hard"
 msgstr "_Zahtevna uganka"
 
-#: data/sudoku-window.ui:257 data/print-dialog.ui:204
+#: data/sudoku-window.ui:273
 msgid "_Very Hard"
 msgstr "_Zelo zahtevna uganka"
 
-#: data/sudoku-window.ui:265
-msgid "_Create your own puzzle"
-msgstr "_Ustvari uganko po meri"
+#: data/sudoku-window.ui:284
+msgid "_Start Game"
+msgstr "_Začni igro"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -145,10 +177,6 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Predogled uganke Sudoku GNOME"
 
-#: data/org.gnome.Sudoku.appdata.xml.in:77
-msgid "The GNOME Project"
-msgstr "Projekt GNOME"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Sudoku.desktop.in:6
 msgid "magic;square;"
@@ -156,11 +184,11 @@ msgstr ""
 "magic;square;sudoku;mrežna igra;kvadrat;števila;mreža;plošča;tabla;ploščice;"
 "japonska;"
 
-#: data/org.gnome.Sudoku.gschema.xml:11
+#: data/org.gnome.Sudoku.gschema.xml:12
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Zahtevnost ugank sudoku za tiskanje"
 
-#: data/org.gnome.Sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:13
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -169,27 +197,31 @@ msgstr ""
 "Izbirati je mogoče med možnostmi – »enostavne», »srednje zahtevne«, "
 "»zahtevne« in »zelo zahtevne«."
 
-#: data/org.gnome.Sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Number of Sudokus to print"
 msgstr "Število ugank sudoku za tiskanje"
 
-#: data/org.gnome.Sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:19
 msgid "Set the number of sudokus you want to print"
 msgstr "Nastavitev števila ugank za tiskanje"
 
-#: data/org.gnome.Sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:24
 msgid "Number of Sudokus to print per page"
 msgstr "Število ugank sudoku za tiskanje na stran"
 
-#: data/org.gnome.Sudoku.gschema.xml:24
+#: data/org.gnome.Sudoku.gschema.xml:25
 msgid "Set the number of sudokus you want to print per page"
 msgstr "Nastavitev števila ugank za tiskanje na stran"
 
-#: data/org.gnome.Sudoku.gschema.xml:28
-msgid "Warn about unfillable squares and duplicate numbers"
-msgstr "Opozori na neizpolnjena polja in podvojene številke"
-
 #: data/org.gnome.Sudoku.gschema.xml:29
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr "Začni oznake z možnimi vrednostmi za vsako celico"
+
+#: data/org.gnome.Sudoku.gschema.xml:33
+msgid "Color mistakes and duplicate numbers in red"
+msgstr "Z rdečo obarvaj napake in podvojene številke"
+
+#: data/org.gnome.Sudoku.gschema.xml:34
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -197,119 +229,146 @@ msgstr ""
 "Možnost omogoči prikaz rdečega X, če ni mogoče vstaviti nobene številke, "
 "podvojene pa so izpisane rdeče."
 
-#: data/org.gnome.Sudoku.gschema.xml:33
-msgid "Additionally warn when correct solution is violated or not earmarked"
-msgstr "Opozori ob kršitvi pravilne rešitve oziroma, ko ta ni označena"
-
-#: data/org.gnome.Sudoku.gschema.xml:34
-msgid ""
-"Changes the background color of a square to red if the value does not match "
-"puzzle solution, or if no earmark matches the puzzle solution"
-msgstr ""
-"Spremeni barvo ozadja kvadrata v rdečo, če vrednost ni skladna z rešitvijo "
-"sestavljanke oziroma se z rešitvijo ne ujema noben znak"
-
 #: data/org.gnome.Sudoku.gschema.xml:38
+#, fuzzy
+msgid "Check earmarks against duplicates in row, column and block"
+msgstr "Potrdi ušesne oznake pred dvojniki v vrstici, stolpcu in bloku"
+
+#: data/org.gnome.Sudoku.gschema.xml:42
+msgid "Toggle timer and pause buttons"
+msgstr "Preklopi med gumbi časovnika in za začasno ustavitev"
+
+#: data/org.gnome.Sudoku.gschema.xml:46
+msgid "Check cells only against duplicates in row, column and block"
+msgstr "Preveri celice le za dvojnike v vrstici, stolpcu in bloku"
+
+#: data/org.gnome.Sudoku.gschema.xml:50
+#, fuzzy
+msgid "Automatically clear related earmarks on new number insertion"
+msgstr "Samodejno počisti povezane ušesne oznake ob novem vstavljanju številk"
+
+#: data/org.gnome.Sudoku.gschema.xml:54
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Poudari vrstice, stolpce in polja, ki vsebujejo izbrano celico."
 
-#: data/org.gnome.Sudoku.gschema.xml:42
+#: data/org.gnome.Sudoku.gschema.xml:58
+msgid "The puzzle's difficulty"
+msgstr "Zahtevnost sestavljanke"
+
+#: data/org.gnome.Sudoku.gschema.xml:62
 msgid "Width of the window in pixels"
 msgstr "Širina okna v točkah"
 
-#: data/org.gnome.Sudoku.gschema.xml:46
+#: data/org.gnome.Sudoku.gschema.xml:66
 msgid "Height of the window in pixels"
 msgstr "Višina okna v točkah"
 
-#: data/org.gnome.Sudoku.gschema.xml:50
+#: data/org.gnome.Sudoku.gschema.xml:70
 msgid "true if the window is maximized"
 msgstr "PRAV, če je okno razpeto"
 
-#: data/org.gnome.Sudoku.gschema.xml:54
-msgid "Initialize the earmarks with the possible values for each cell"
-msgstr "Začni oznake z možnimi vrednostmi za vsako celico"
+#: data/org.gnome.Sudoku.gschema.xml:74
+#, fuzzy
+msgid "true if the window is fullscreen"
+msgstr "PRAV, če je okno celozaslonsko"
 
-#: data/print-dialog.ui:18
+#: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
 msgstr "Natisni več ugank sudoku"
 
-#: data/print-dialog.ui:27
-msgid "_Cancel"
-msgstr "_Prekliči"
+#: data/print-dialog.ui:28
+msgid "Number of Puzzles"
+msgstr "Število ugank"
 
-#: data/print-dialog.ui:65
-msgid "_Number of puzzles"
-msgstr "_Število ugank"
+#: data/print-dialog.ui:41
+msgid "Number of puzzles per page"
+msgstr "Število ugank na stran"
 
-#: data/print-dialog.ui:101
-msgid "_Number of puzzles per page"
-msgstr "_Število ugank na stran"
-
-#: data/print-dialog.ui:138
+#: data/print-dialog.ui:54
 msgid "Difficulty"
 msgstr "Zahtevnost"
 
-#: lib/sudoku-board.vala:644
+#: data/print-dialog.ui:58
+msgid "Easy"
+msgstr "Enostavno"
+
+#: data/print-dialog.ui:59
+msgid "Medium"
+msgstr "Srednje"
+
+#: data/print-dialog.ui:60
+msgid "Hard"
+msgstr "Zahtevno"
+
+#: data/print-dialog.ui:61
+msgid "Very Hard"
+msgstr "Zelo zahtevno"
+
+#: lib/sudoku-board.vala:693
 msgid "Unknown Difficulty"
 msgstr "Neznana zahtevnost"
 
-#: lib/sudoku-board.vala:646
+#: lib/sudoku-board.vala:695
 msgid "Easy Difficulty"
 msgstr "Enostavna uganka"
 
-#: lib/sudoku-board.vala:648
+#: lib/sudoku-board.vala:697
 msgid "Medium Difficulty"
 msgstr "Srednje zahtevna uganka"
 
-#: lib/sudoku-board.vala:650
+#: lib/sudoku-board.vala:699
 msgid "Hard Difficulty"
 msgstr "Zahtevna uganka"
 
-#: lib/sudoku-board.vala:652
+#: lib/sudoku-board.vala:701
 msgid "Very Hard Difficulty"
 msgstr "Zelo zahtevna uganka"
 
-#: lib/sudoku-board.vala:654
+#: lib/sudoku-board.vala:703
 msgid "Custom Puzzle"
 msgstr "Uganka po meri"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:72
+#: src/gnome-sudoku.vala:81
 msgid "Show release version"
 msgstr "Pokaži podrobnosti različice"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:76
+#: src/gnome-sudoku.vala:85
 msgid "Show the possible values for each cell"
 msgstr "Pokaži možne vrednosti za vsako celico"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:283
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Izbrana uganka ni veljavna uganka sudoku."
 
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:283
 msgid "Please enter a valid puzzle."
 msgstr "Vnesite veljavno številko uganke."
 
+#: src/gnome-sudoku.vala:284 src/sudoku-printer.vala:46
+msgid "Close"
+msgstr "Zapri"
+
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:292
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Izbrana uganka ima več možnih rešitev."
 
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:292
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Veljavne uganke sudoku imajo natanko eno rešitev."
 
-#: src/gnome-sudoku.vala:249
+#: src/gnome-sudoku.vala:293
 msgid "_Back"
 msgstr "_Nazaj"
 
-#: src/gnome-sudoku.vala:250
+#: src/gnome-sudoku.vala:294
 msgid "Play _Anyway"
 msgstr "Vseeno _pokaži"
 
-#: src/gnome-sudoku.vala:293
+#: src/gnome-sudoku.vala:336
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -318,20 +377,16 @@ msgstr[1] "Za reševanje uganke ste potrebovali %d minuto!"
 msgstr[2] "Za reševanje uganke ste potrebovali %d minuti!"
 msgstr[3] "Za reševanje uganke ste potrebovali %d minute!"
 
-#: src/gnome-sudoku.vala:297
-msgid "_Quit"
-msgstr "_Končaj"
+#: src/gnome-sudoku.vala:344
+msgid "Quit"
+msgstr "Izhod"
 
-#: src/gnome-sudoku.vala:298
+#: src/gnome-sudoku.vala:345
 msgid "Play _Again"
 msgstr "_Igraj znova"
 
-#: src/gnome-sudoku.vala:407
-msgid "Reset the board to its original state?"
-msgstr "Ali želite povrniti mrežo na začetno stanje?"
-
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:502
+#: src/gnome-sudoku.vala:522
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -342,7 +397,7 @@ msgstr ""
 "\n"
 "Uganka je zasnovana z ustvarjalnikom ugank QQwing %s"
 
-#: src/gnome-sudoku.vala:513
+#: src/gnome-sudoku.vala:532
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
@@ -355,377 +410,22 @@ msgid "Clear"
 msgstr "Počisti"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:47
+#: src/sudoku-printer.vala:45
 msgid "Error printing file:"
 msgstr "Napaka med tiskanjem datoteke:"
 
-#. Text on overlay when game is paused
-#: src/sudoku-view.vala:815
-msgid "Paused"
-msgstr "Premor"
-
-#: src/sudoku-window.vala:155
+#: src/sudoku-window.vala:233
 msgid "Select Difficulty"
 msgstr "Izbor zahtevnosti uganke"
 
-#: src/sudoku-window.vala:216
+#: src/sudoku-window.vala:299
 msgid "Create Puzzle"
 msgstr "Ustvari uganko"
 
-#~ msgid "Reset the board to its original state"
-#~ msgstr "Ponastavi mrežo na začetno stanje"
-
-#~ msgid "Start a new puzzle"
-#~ msgstr "Začni novo uganko"
-
-#~ msgid "_Start Playing"
-#~ msgstr "_Začni reševati uganko"
-
-#~| msgid "gnome-sudoku"
-#~ msgid "org.gnome.Sudoku"
-#~ msgstr "org.gnome.Sudoku"
-
-#~ msgid "_Resume"
-#~ msgstr "Na_daljuj"
-
-#~ msgid "Easy Puzzle"
-#~ msgstr "Enostavna uganka"
-
-#~ msgid "Hard Puzzle"
-#~ msgstr "Zahtevna uganka"
-
-#~ msgid "Very Hard Puzzle"
-#~ msgstr "Zelo zahtevna uganka"
-
-#~ msgid "Same difficulty again"
-#~ msgstr "Enaka težavnost"
-
-#~ msgid "New difficulty"
-#~ msgstr "Nova težavnost"
-
-#~ msgid ""
-#~ "GNOME Sudoku has a simple, unobstrusive interface with all the features "
-#~ "that make playing Sudoku fun. Games are automatically saved when you "
-#~ "quit, and you can always come back to any game that you've played."
-#~ msgstr ""
-#~ "Uganka Sudoku GNOME je enostavna uganka na enostavnem vmesniku. Uganke se "
-#~ "samodejno shranjujejo in jih je ob vsaki priložnosti mogoče naložiti in "
-#~ "reševati naprej."
-
-#~ msgid "game;board;tiles;japanese;"
-#~ msgstr "igra;plošča;tabla;ploščice;japonska;"
-
-#~ msgid "The number of seconds between automatic saves"
-#~ msgstr "Čas v sekundah med samodejnimi posodobitvami."
-
-#~ msgid "Print games that have been played"
-#~ msgstr "Natisni uganke, ki so že rešene"
-
-#~ msgid "Mark printed games as played"
-#~ msgstr "Označi natisnjene uganke kot rešene"
-
-#~ msgid "Show hint highlights"
-#~ msgstr "Pokaži namige pravil"
-
-#~ msgid "Color of the grid border"
-#~ msgstr "Barva mreže"
-
-#~ msgid "Show the application toolbar"
-#~ msgstr "Pokaži orodno vrstico programa"
-
-#~ msgid "Print Sudokus"
-#~ msgstr "Natisni uganke sudoku"
-
-#~ msgid "Print Games"
-#~ msgstr "Natisni uganke"
-
-#~ msgid "_Sudokus per page: "
-#~ msgstr "_Število ugank sudoku na stran: "
-
-#~ msgid "Levels of difficulty to print"
-#~ msgstr "Ravni zahtevnosti za tiskanje"
-
-#~ msgid "Details"
-#~ msgstr "Podrobnosti"
-
-#~ msgid "_Mark games as played once you've printed them."
-#~ msgstr "_Po tiskanju označite natisnjene uganke, kot da ste jih že rešili."
-
-#~ msgid "_Include games you've already played in list of games to print"
-#~ msgstr "_Na seznam za tiskanje vključite tudi uganke, ki ste jih že rešili."
-
-#~ msgid "_Saved Games"
-#~ msgstr "_Shranjene uganke"
-
-#~ msgid "Add a new tracker"
-#~ msgstr "Dodaj nov sledilnik"
-
-#~ msgid "Remove the selected tracker"
-#~ msgstr "Odstrani izbrani sledilnik"
-
-#~ msgid "Make the tracked changes permanent"
-#~ msgstr "Naredi sledene spremembe trajne"
-
-#~ msgid "H_ide"
-#~ msgstr "_Skrij"
-
-#~ msgid "Hide the tracked values"
-#~ msgstr "Skrij sledene vrednosti"
-
-#~ msgid "Website"
-#~ msgstr "Spletna stran"
-
-#~ msgid "Easy"
-#~ msgstr "enostavno"
-
-#~ msgid "Medium"
-#~ msgstr "Srednja"
-
-#~ msgid "Hard"
-#~ msgstr "Zahtevno"
-
-#~ msgid "Very hard"
-#~ msgstr "Zelo težko"
-
-#~ msgid "Last played %(n)s second ago"
-#~ msgid_plural "Last played %(n)s seconds ago"
-#~ msgstr[0] "Zadnjič reševano pred %(n)s sekundami"
-#~ msgstr[1] "Zadnjič reševano pred %(n)s sekundo"
-#~ msgstr[2] "Zadnjič reševano pred %(n)s sekundama"
-#~ msgstr[3] "Zadnjič reševano pred %(n)s sekundami"
-
-#~ msgid "Last played %(n)s minute ago"
-#~ msgid_plural "Last played %(n)s minutes ago"
-#~ msgstr[0] "Zadnjič reševano pred %(n)s minutami"
-#~ msgstr[1] "Zadnjič reševano pred %(n)s minuto"
-#~ msgstr[2] "Zadnjič reševano pred %(n)s minutama"
-#~ msgstr[3] "Zadnjič reševano pred %(n)s minutami"
-
-#~ msgid "Last played at %I:%M %p"
-#~ msgstr "Zadnjič reševano ob %H.%M"
-
-#~ msgid "Last played yesterday at %I:%M %p"
-#~ msgstr "Zadnjič reševano včeraj ob %H.%M"
-
-#~ msgid "Last played on %A at %I:%M %p"
-#~ msgstr "Zadnjič reševano %A ob %H.%M"
-
-#~ msgid "Last played on %B %e %Y"
-#~ msgstr "Zadnjič reševano na %d. %m. %Y"
-
-#~ msgid "Medium puzzle"
-#~ msgstr "Srednja uganka"
-
-#~ msgid "Played for %d hour"
-#~ msgid_plural "Played for %d hours"
-#~ msgstr[0] "Uganko ste reševali %d ur"
-#~ msgstr[1] "Uganko ste reševali %d uro"
-#~ msgstr[2] "Uganko ste reševali %d uri"
-#~ msgstr[3] "Uganko ste reševali %d ure"
-
-#~ msgid "Played for %d minute"
-#~ msgid_plural "Played for %d minutes"
-#~ msgstr[0] "Uganko ste reševali %d minut"
-#~ msgstr[1] "Uganko ste reševali %d minuto"
-#~ msgstr[2] "Uganko ste reševali %d minuti"
-#~ msgstr[3] "Uganko ste reševali %d minute"
-
-#~ msgid "Played for %d second"
-#~ msgid_plural "Played for %d seconds"
-#~ msgstr[0] "Uganko ste reševali %d sekund"
-#~ msgstr[1] "Uganko ste reševali %d sekundo"
-#~ msgstr[2] "Uganko ste reševali %d sekundi"
-#~ msgstr[3] "Uganko ste reševali %d sekunde"
-
-#~ msgid "Do you really want to do this?"
-#~ msgstr "Ali zares želite nadaljevati?"
-
-#~ msgid "Don't ask me this again."
-#~ msgstr "Ne vprašaj več."
-
-#~ msgid "_Game"
-#~ msgstr "_Uganka"
-
-#~ msgid "New game"
-#~ msgstr "Nova uganka"
-
-#~ msgid "_Reset"
-#~ msgstr "_Ponastavi"
-
-#~ msgid "_Undo"
-#~ msgstr "_Razveljavi"
-
-#~ msgid "_Redo"
-#~ msgstr "_Ponovno uveljavi"
-
-#~ msgid "Puzzle _Statistics..."
-#~ msgstr "_Statistika sestavljanke ..."
-
-#~ msgid "_Settings"
-#~ msgstr "_Nastavitve"
-
-#~ msgid "_Tools"
-#~ msgstr "_Orodja"
-
-#~ msgid "_Hint"
-#~ msgstr "_Namig"
-
-#~ msgid "Show a square that is easy to fill."
-#~ msgstr "Pokaži kvadrat, ki ga je enostavno napolniti."
-
-#~ msgid "Clear _Top Notes"
-#~ msgstr "Počisti _zgornja sporočilca"
-
-#~ msgid "Clear _Bottom Notes"
-#~ msgstr "Počisti _spodnja sporočilca"
-
-#~ msgid "_Contents"
-#~ msgstr "_Vsebina"
-
-#~ msgid "Show _Possible Numbers"
-#~ msgstr "Pokaži _mogoče številke"
-
-#~ msgid "Always show possible numbers in a square"
-#~ msgstr "Vedno prikaži števila, ki lahko zapolnijo polje"
-
-#~ msgid "Warn about squares made unfillable by a move"
-#~ msgstr "Opozori na prostore, ki so s premikom postali nezapolnjivi"
-
-#~ msgid "_Track Additions"
-#~ msgstr "_Sledi dodajanju"
-
-#~ msgid ""
-#~ "Mark new additions in a separate color so you can keep track of them."
-#~ msgstr "Označi nova dodajanja z drugo barvo, za lažje sledenje spremembam."
-
-#~ msgid "Show _Toolbar"
-#~ msgstr "Pokaži orodno vrs_tico"
-
-#~ msgid "Highlight the current row, column and box"
-#~ msgstr "Poudari trenutno vrstico, stolpec in razpredelnico"
-
-#~ msgid "%d minute"
-#~ msgid_plural "%d minutes"
-#~ msgstr[0] "%d minut"
-#~ msgstr[1] "%d minuta"
-#~ msgstr[2] "%d minuti"
-#~ msgstr[3] "%d minute"
-
-#~ msgid "%d second"
-#~ msgid_plural "%d seconds"
-#~ msgstr[0] "%d sekund"
-#~ msgstr[1] "%d sekunda"
-#~ msgstr[2] "%d sekundi"
-#~ msgstr[3] "%d sekunde"
-
-#~ msgid "You completed the puzzle in %(minute)s and %(second)s"
-#~ msgstr "Za rešitev uganke ste potrebovali %(minute)s in %(second)s"
-
-#~ msgid "%d hour"
-#~ msgid_plural "%d hours"
-#~ msgstr[0] "%d ur"
-#~ msgstr[1] "%d ura"
-#~ msgstr[2] "%d uri"
-#~ msgstr[3] "%d ure"
-
-#~ msgid "You completed the puzzle in %(hour)s, %(minute)s and %(second)s"
-#~ msgstr ""
-#~ "Za rešitev uganke ste potrebovali %(hour)s, %(minute)s in %(second)s"
-
-#~ msgid "You got %(n)s hint."
-#~ msgid_plural "You got %(n)s hints."
-#~ msgstr[0] "Dobili ste %(n)s namigov."
-#~ msgstr[1] "Dobili ste %(n)s namig."
-#~ msgstr[2] "Dobili ste %(n)s namiga."
-#~ msgstr[3] "Dobili ste %(n)s namige."
-
-#~ msgid "You had %(n)s impossibility pointed out."
-#~ msgid_plural "You had %(n)s impossibilities pointed out."
-#~ msgstr[0] "Izpisanih je bilo %(n)s nemogočih vrednosti."
-#~ msgstr[1] "Izpisana je bila %(n)s nemogoča vrednost."
-#~ msgstr[2] "Izpisani sta bili %(n)s nemogoči vrednosti."
-#~ msgstr[3] "Izpisane so bile %(n)s nemogoče vrednosti."
-
-#~ msgid "You win!"
-#~ msgstr "Zmagali ste!"
-
-#~ msgid "Save this game before starting new one?"
-#~ msgstr "Ali naj se trenutna uganka shrani, preden začnete reševati novo?"
-
-#~ msgid "_Save game for later"
-#~ msgstr "_Shrani uganko za kasneje"
-
-#~ msgid "_Abandon game"
-#~ msgstr "_Končaj uganko"
-
-#~ msgid "Save game before closing?"
-#~ msgstr "Ali želite uganko pred izhodom shraniti?"
-
-#~ msgid "Puzzle Information"
-#~ msgstr "Podrobnosti uganke"
-
-#~ msgid "Number of moves instantly fillable by elimination: "
-#~ msgstr "Število potez, ki jih je mogoče takoj zapolniti z izločevanjem:"
-
-#~ msgid "Number of moves instantly fillable by filling: "
-#~ msgstr "Število potez, ki jih je mogoče takoj zapolniti s polnjenjem:"
-
-#~ msgid "Amount of trial-and-error required to solve: "
-#~ msgstr "Število poskusov in napak pred rešitvijo:"
-
-#~ msgid "Puzzle Statistics"
-#~ msgstr "Statistika sestavljanke"
-
-#~ msgid "Unable to display help: %s"
-#~ msgstr "Ni mogoče prikazati pomoči: %s"
-
-#~ msgid "Untracked"
-#~ msgstr "Brez sledenja"
-
-#~ msgid "_Remove"
-#~ msgstr "_Odstrani"
-
-#~ msgid "Delete selected tracker."
-#~ msgstr "Izbriši izbrani sledilnik."
-
-#~ msgid "Hide current tracker entries."
-#~ msgstr "Skrij trenutne vnose sledilnika."
-
-#~ msgid "A_pply"
-#~ msgstr "_Uveljavi"
-
-#~ msgid "Apply all tracked values and remove the tracker."
-#~ msgstr "Počisti vse korake, ki jih sledi izbrani sledilnik."
-
-#~ msgid "Tracker %s"
-#~ msgstr "Sledilec %s"
-
-#~ msgid "No Space"
-#~ msgstr "Ni prostora"
-
-#~ msgid "No space left on disk"
-#~ msgstr "Ni prostora na disku"
-
-#~ msgid "Unable to create data folder %(path)s."
-#~ msgstr "Ni mogoče ustvariti mape s podatki %(path)s."
-
-#~ msgid "There is no disk space left!"
-#~ msgstr "Na voljo ni več prostora na disku!"
-
-#~ msgid "Error %(errno)s: %(error)s"
-#~ msgstr "Napaka %(errno)s: %(error)s"
-
-#~ msgid "Unable to save game."
-#~ msgstr "Ni mogoče shraniti uganke."
-
-#~ msgid "Unable to save file %(filename)s."
-#~ msgstr "Ni mogoče shraniti datoteke %(filename)s."
-
-#~ msgid "Unable to mark game as finished."
-#~ msgstr "Uganke ni mogoče označiti kot končane."
-
-#~ msgid "Sudoku unable to mark game as finished."
-#~ msgstr "Ni mogoče označiti uganke kot končane"
-
-#~ msgid "GNOME Games web site"
-#~ msgstr "Spletna stran Iger GNOME"
+#: src/sudoku-window.vala:312
+msgid "Play"
+msgstr "Igraj"
+
+#: src/sudoku-window.vala:312
+msgid "Pause"
+msgstr "Premor"
