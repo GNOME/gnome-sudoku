@@ -165,6 +165,7 @@ public class Sudoku : Adw.Application
 
         set_accels_for_action ("app.new-game", {"<Primary>n"});
         set_accels_for_action ("app.print", {"<Primary>p"});
+        set_accels_for_action ("app.pause", {"p"});
         set_accels_for_action ("app.quit", {"<Primary>q"});
         set_accels_for_action ("app.reset", {"<Primary>r"});
         set_accels_for_action ("app.undo", {"<Primary>z"});
@@ -305,7 +306,8 @@ public class Sudoku : Adw.Application
 
     private void toggle_pause_cb ()
     {
-        game.paused = !game.paused;
+        if (current_game_screen == GameScreen.PLAY && window.show_timer)
+            game.paused = !game.paused;
     }
 
     private void action_completed_cb ()
