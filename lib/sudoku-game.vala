@@ -99,8 +99,8 @@ public class SudokuGame : Object
         var new_stack_item = new stack_item (StackAction.ENABLE_EARMARK);
         add_to_stack (new_stack_item);
 
-        board.enable_earmark (row, col, k_no);
         add_earmark_step (new_stack_item, row, col, k_no, true);
+        board.enable_earmark (row, col, k_no);
 
         action_completed (new_stack_item.action);
     }
@@ -110,8 +110,8 @@ public class SudokuGame : Object
         var new_stack_item = new stack_item (StackAction.DISABLE_EARMARK);
         add_to_stack (new_stack_item);
 
-        board.disable_earmark (row, col, k_no);
         add_earmark_step (new_stack_item, row, col, k_no, false);
+        board.disable_earmark (row, col, k_no);
 
         action_completed (new_stack_item.action);
     }
@@ -121,8 +121,8 @@ public class SudokuGame : Object
         var new_stack_item = new stack_item (StackAction.DISABLE_ALL_EARMARKS);
         add_to_stack (new_stack_item);
 
-        board.disable_all_earmarks (row, col);
         add_disable_earmarks_step (new_stack_item, row, col);
+        board.disable_all_earmarks (row, col);
 
         action_completed (new_stack_item.action);
     }
@@ -134,11 +134,11 @@ public class SudokuGame : Object
         var new_stack_item = new stack_item (StackAction.INSERT);
         add_to_stack (new_stack_item);
 
-        board.disable_all_earmarks (row, col);
         add_disable_earmarks_step (new_stack_item, row, col);
+        board.disable_all_earmarks (row, col);
 
-        board.insert (row, col, val);
         add_value_step (new_stack_item, row, col, old_val, val);
+        board.insert (row, col, val);
 
         action_completed (new_stack_item.action);
     }
@@ -150,8 +150,8 @@ public class SudokuGame : Object
         var new_stack_item = new stack_item (StackAction.REMOVE);
         add_to_stack (new_stack_item);
 
-        board.remove (row, col);
         add_value_step (new_stack_item, row, col, old_val, 0);
+        board.remove (row, col);
 
         action_completed (new_stack_item.action);
     }
@@ -172,8 +172,8 @@ public class SudokuGame : Object
                    col_tmp / board.block_rows == col / board.block_rows)) &&
                    board.is_earmark_enabled (row_tmp, col_tmp, val))
                 {
-                    board.disable_earmark (row_tmp, col_tmp, val);
                     add_earmark_step (new_stack_item, row_tmp, col_tmp, val, false);
+                    board.disable_earmark (row_tmp, col_tmp, val);
                 }
             }
 
@@ -186,8 +186,8 @@ public class SudokuGame : Object
             add_disable_earmarks_step (new_stack_item, row, col);
         }
 
-        board.insert (row, col, val);
         add_value_step (new_stack_item, row, col, old_val, val);
+        board.insert (row, col, val);
 
         action_completed (new_stack_item.action);
     }
@@ -326,8 +326,8 @@ public class SudokuGame : Object
                 {
                     if (marks[num - 1] && !board.is_earmark_enabled (row, col, num))
                     {
-                        board.enable_earmark (row, col, num);
                         add_earmark_step (new_stack_item, row, col, num, true);
+                        board.enable_earmark (row, col, num);
                     }
                 }
             }
