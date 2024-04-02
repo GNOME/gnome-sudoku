@@ -51,7 +51,9 @@ public class Sudoku : Adw.Application
     private SimpleAction new_game_action;
     private SimpleAction show_timer_action;
 
-    private GameMode current_game_mode = GameMode.PLAY;
+    private GameMode? current_game_mode = null;
+    private GameScreen? current_game_screen = null;
+
     private DifficultyCategory play_difficulty;
 
     private const GLib.ActionEntry action_entries[] =
@@ -192,8 +194,7 @@ public class Sudoku : Adw.Application
         var savegame = saver.get_savedgame ();
         if (savegame != null)
         {
-            if (savegame.board.difficulty_category == DifficultyCategory.CUSTOM)
-                current_game_mode = savegame.board.fixed == 0 ? GameMode.CREATE : GameMode.PLAY;
+            current_game_mode = savegame.board.fixed == 0 ? GameMode.CREATE : GameMode.PLAY;
             start_game (savegame.board);
         }
         else if (play_difficulty == DifficultyCategory.CUSTOM)
@@ -268,7 +269,7 @@ public class Sudoku : Adw.Application
 
     private void show_timer_cb ()
     {
-        window.show_timer = !window.show_timer;
+        window.toggle_show_timer (current_game_screen);
         show_timer_action.set_state (window.show_timer);
     }
 
@@ -379,6 +380,7 @@ public class Sudoku : Adw.Application
 
         game = new SudokuGame (board);
         game.mode = current_game_mode;
+        current_game_screen = (GameScreen) current_game_mode;
 
         game.paused_changed.connect (paused_changed_cb);
         game.action_completed.connect (action_completed_cb);
@@ -399,10 +401,11 @@ public class Sudoku : Adw.Application
 
     private void show_new_game_screen ()
     {
-        print_action.set_enabled (false);
-
         if (game != null)
             game.stop_clock ();
+
+        print_action.set_enabled (false);
+        current_game_screen = GameScreen.MENU;
 
         window.show_new_game_screen ();
         window.activate_difficulty_checkbutton (play_difficulty);
@@ -416,6 +419,7 @@ public class Sudoku : Adw.Application
     private void create_game_cb ()
     {
         current_game_mode = GameMode.CREATE;
+        current_game_screen = GameScreen.CREATE;
         SudokuGenerator.generate_boards_async.begin (1, DifficultyCategory.CUSTOM, null, (obj, res) => {
             try
             {
@@ -455,7 +459,8 @@ public class Sudoku : Adw.Application
 
     private void reset_cb ()
     {
-        game.reset ();
+        if (current_game_screen != GameScreen.MENU)
+            game.reset ();
     }
 
     private void back_cb ()
@@ -464,21 +469,20 @@ public class Sudoku : Adw.Application
         if (game.mode != GameMode.CREATE)
             game.resume_clock ();
 
+        current_game_screen = (GameScreen) current_game_mode;
         print_action.set_enabled (true);
     }
 
     private void undo_cb ()
     {
-        if (!window.is_board_visible ())
-            return;
-        game.undo ();
+        if (current_game_screen != GameScreen.MENU)
+            game.undo ();
     }
 
     private void redo_cb ()
     {
-        if (!window.is_board_visible ())
-            return;
-        game.redo ();
+        if (current_game_screen != GameScreen.MENU)
+            game.redo ();
     }
 
     private void print_cb ()

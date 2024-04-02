@@ -68,6 +68,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     private GLib.Settings settings;
 
     public SudokuView? view { get; private set; }
+    public bool show_timer { get; private set; }
 
     private SudokuGame? game = null;
 
@@ -138,7 +139,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         window_height = settings.get_int ("window-height");
         window_is_maximized = settings.get_boolean ("window-is-maximized");
         window_is_fullscreen = settings.get_boolean ("window-is-fullscreen");
-        _show_timer = settings.get_boolean ("show-timer");
+        show_timer = settings.get_boolean ("show-timer");
 
         int headerbar_minimum_height;
         clock_box.visible = false;
@@ -185,20 +186,16 @@ public class SudokuWindow : Adw.ApplicationWindow
             (this as Widget)?.activate_action ("app.start-game", "i", 4);
     }
 
-    private bool _show_timer = true;
-    public bool show_timer {
-        get { return _show_timer; }
-        set
+    public void toggle_show_timer (GameScreen current_game_screen)
+    {
+        show_timer = !show_timer;
+        if (current_game_screen == GameScreen.PLAY)
         {
-            _show_timer = value;
-            if (game != null && game.mode != GameMode.CREATE)
-            {
-                clock_box.visible = show_timer && !is_window_width_small;
-                if (value)
-                    display_pause_button ();
-                else
-                    play_pause_button.visible = false;
-            }
+            clock_box.visible = show_timer && !is_window_width_small;
+            if (show_timer)
+                display_pause_button ();
+            else
+                play_pause_button.visible = false;
         }
     }
 

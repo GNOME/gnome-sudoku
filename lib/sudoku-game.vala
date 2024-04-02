@@ -398,6 +398,14 @@ public enum GameMode
     CREATE;
 }
 
+//must be aligned with GameMode
+public enum GameScreen
+{
+    PLAY,
+    CREATE,
+    MENU;
+}
+
 public enum StackAction
 {
     NONE,
