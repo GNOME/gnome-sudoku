@@ -51,7 +51,6 @@ public class Sudoku : Adw.Application
     private SimpleAction new_game_action;
     private SimpleAction show_timer_action;
 
-    private GameMode? current_game_mode = null;
     private GameScreen? current_game_screen = null;
 
     private DifficultyCategory play_difficulty;
@@ -124,21 +123,21 @@ public class Sudoku : Adw.Application
         settings = new GLib.Settings ("org.gnome.Sudoku");
         var action = settings.create_action ("show-warnings");
         action.notify["state"].connect (() => {
-            if (view != null && current_game_mode == GameMode.PLAY)
+            if (view != null && game.mode == GameMode.PLAY)
                 view.show_warnings = settings.get_boolean ("show-warnings");
         });
         add_action (action);
 
         action = settings.create_action ("show-possibilities");
         action.notify["state"].connect (() => {
-            if (view != null && current_game_mode == GameMode.PLAY)
+            if (view != null && game.mode == GameMode.PLAY)
                 view.show_possibilities = settings.get_boolean ("show-possibilities");
         });
         add_action (action);
 
         action = settings.create_action ("show-earmark-warnings");
         action.notify["state"].connect (() => {
-            if (view != null)
+            if (view != null && game.mode == GameMode.PLAY)
                 view.show_earmark_warnings = settings.get_boolean ("show-earmark-warnings");
         });
         add_action (action);
@@ -194,8 +193,8 @@ public class Sudoku : Adw.Application
         var savegame = saver.get_savedgame ();
         if (savegame != null)
         {
-            current_game_mode = savegame.board.fixed == 0 ? GameMode.CREATE : GameMode.PLAY;
-            start_game (savegame.board);
+            var mode = savegame.board.fixed == 0 ? GameMode.CREATE : GameMode.PLAY;
+            start_game (savegame.board, mode);
         }
         else if (play_difficulty == DifficultyCategory.CUSTOM)
             create_game_cb ();
@@ -360,15 +359,14 @@ public class Sudoku : Adw.Application
     private void start_custom_game (SudokuBoard board)
     {
         game.board.set_all_is_fixed ();
-        current_game_mode = GameMode.PLAY;
         play_difficulty = DifficultyCategory.CUSTOM;
         game.stop_clock ();
-        start_game (board);
+        start_game (board, GameMode.PLAY);
     }
 
-    private void start_game (SudokuBoard board)
+    private void start_game (SudokuBoard board, GameMode mode)
     {
-        if (current_game_mode == GameMode.PLAY)
+        if (mode == GameMode.PLAY)
             board.solve ();
 
         if (game != null)
@@ -379,8 +377,8 @@ public class Sudoku : Adw.Application
         }
 
         game = new SudokuGame (board);
-        game.mode = current_game_mode;
-        current_game_screen = (GameScreen) current_game_mode;
+        game.mode = mode;
+        current_game_screen = (GameScreen) game.mode;
 
         game.paused_changed.connect (paused_changed_cb);
         game.action_completed.connect (action_completed_cb);
@@ -395,7 +393,7 @@ public class Sudoku : Adw.Application
         clear_action.set_enabled (!game.is_empty ());
         play_custom_game_action.set_enabled (!game.is_empty ());
 
-        if (current_game_mode != GameMode.CREATE)
+        if (game.mode != GameMode.CREATE)
             game.board.completed.connect (board_completed_cb);
     }
 
@@ -418,13 +416,11 @@ public class Sudoku : Adw.Application
 
     private void create_game_cb ()
     {
-        current_game_mode = GameMode.CREATE;
-        current_game_screen = GameScreen.CREATE;
         SudokuGenerator.generate_boards_async.begin (1, DifficultyCategory.CUSTOM, null, (obj, res) => {
             try
             {
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);
-                start_game (gen_boards[0]);
+                start_game (gen_boards[0], GameMode.CREATE);
             }
             catch (Error e)
             {
@@ -436,7 +432,6 @@ public class Sudoku : Adw.Application
     private void start_game_cb (SimpleAction action, Variant? difficulty)
     {
         window.will_start_game ();
-        current_game_mode = GameMode.PLAY;
 
         // Since we cannot have enums in .ui file, the 'action-target' property
         // of new game buttons in data/gnome-sudoku.ui
@@ -448,7 +443,7 @@ public class Sudoku : Adw.Application
             try
             {
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);
-                start_game (gen_boards[0]);
+                start_game (gen_boards[0], GameMode.PLAY);
             }
             catch (Error e)
             {
@@ -469,7 +464,7 @@ public class Sudoku : Adw.Application
         if (game.mode != GameMode.CREATE)
             game.resume_clock ();
 
-        current_game_screen = (GameScreen) current_game_mode;
+        current_game_screen = (GameScreen) game.mode;
         print_action.set_enabled (true);
     }
 
