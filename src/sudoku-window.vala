@@ -204,7 +204,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         back_button.sensitive = false;
     }
 
-    public void start_game (SudokuGame game, DifficultyCategory difficulty)
+    public void start_game (SudokuGame game)
     {
         if (this.game != null)
             this.game.tick.disconnect (tick_cb);
@@ -215,7 +215,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         if (view != null)
             game_box.remove (view);
 
-        show_game_view (difficulty);
+        show_game_view ();
 
         view = new SudokuView (game, settings);
 
@@ -273,7 +273,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         return game_box.visible;
     }
 
-    public void show_game_view (DifficultyCategory difficulty)
+    public void show_game_view ()
         requires (game != null)
     {
         set_board_visible (true);
@@ -286,7 +286,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             play_custom_game_button.visible = false;
             play_pause_button.visible = show_timer;
             clock_box.visible = show_timer && !is_window_width_small;
-            windowtitle.subtitle = difficulty.to_string ();
+            windowtitle.subtitle = game.board.difficulty_category.to_string ();
         }
         else
         {
