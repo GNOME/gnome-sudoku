@@ -383,7 +383,7 @@ public class Sudoku : Adw.Application
         game.paused_changed.connect (paused_changed_cb);
         game.action_completed.connect (action_completed_cb);
 
-        window.start_game (game, play_difficulty);
+        window.start_game (game);
 
         print_action.set_enabled (true);
         undo_action.set_enabled (!game.is_undostack_null ());
@@ -460,7 +460,7 @@ public class Sudoku : Adw.Application
 
     private void back_cb ()
     {
-        window.show_game_view (play_difficulty);
+        window.show_game_view ();
         if (game.mode != GameMode.CREATE)
             game.resume_clock ();
 
