@@ -13,7 +13,6 @@ help_sources = [
   'earmarks.page',
   'highlighting.page',
   'index.page',
-  'keyboard-shortcuts.page',
   'legal.xml',
   'license.page',
   'print-blank-puzzles.page',

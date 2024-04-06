@@ -51,6 +51,7 @@ public class Sudoku : Adw.Application
     private SimpleAction new_game_action;
     private SimpleAction show_timer_action;
 
+    private ShortcutsWindow? shortcuts_window = null;
     private GameScreen? current_game_screen = null;
 
     private DifficultyCategory play_difficulty;
@@ -71,6 +72,7 @@ public class Sudoku : Adw.Application
         {"help", help_cb                                            },
         {"about", about_cb                                          },
         {"fullscreen", fullscreen_cb                                },
+        {"shortcuts-window", shortcuts_window_cb                    },
         {"quit", quit                                               },
         {"show-timer", show_timer_cb, null, "true"                  }
     };
@@ -171,6 +173,7 @@ public class Sudoku : Adw.Application
         set_accels_for_action ("app.undo", {"<Primary>z", "u"});
         set_accels_for_action ("app.redo", {"<Primary><Shift>z", "r"});
         set_accels_for_action ("app.help", {"F1"});
+        set_accels_for_action ("app.shortcuts-window", {"<Primary>question"});
         set_accels_for_action ("app.fullscreen", {"F11", "f"});
 
         undo_action = (SimpleAction) lookup_action ("undo");
@@ -503,6 +506,14 @@ public class Sudoku : Adw.Application
     {
         var print_dialog = new PrintDialog (saver, window);
         print_dialog.visible = true;
+    }
+
+    private void shortcuts_window_cb ()
+    {
+        var builder = new Gtk.Builder.from_resource ("/org/gnome/Sudoku/ui/shortcuts-window.ui");
+        shortcuts_window = builder.get_object ("shortcuts-window") as ShortcutsWindow;
+        shortcuts_window.set_transient_for (window);
+        shortcuts_window.present ();
     }
 
     private void help_cb ()
