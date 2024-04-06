@@ -70,7 +70,7 @@ public class Sudoku : Adw.Application
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
-        {"unfullscreen", unfullscreen_cb                            },
+        {"fullscreen", fullscreen_cb                                },
         {"quit", quit                                               },
         {"show-timer", show_timer_cb, null, "true"                  }
     };
@@ -168,9 +168,10 @@ public class Sudoku : Adw.Application
         set_accels_for_action ("app.pause", {"p"});
         set_accels_for_action ("app.quit", {"<Primary>q"});
         set_accels_for_action ("app.reset", {"<Primary>r"});
-        set_accels_for_action ("app.undo", {"<Primary>z"});
-        set_accels_for_action ("app.redo", {"<Primary><Shift>z"});
+        set_accels_for_action ("app.undo", {"<Primary>z", "u"});
+        set_accels_for_action ("app.redo", {"<Primary><Shift>z", "r"});
         set_accels_for_action ("app.help", {"F1"});
+        set_accels_for_action ("app.fullscreen", {"F11", "f"});
 
         undo_action = (SimpleAction) lookup_action ("undo");
         redo_action = (SimpleAction) lookup_action ("redo");
@@ -538,9 +539,12 @@ public class Sudoku : Adw.Application
         about.present ();
     }
 
-    private void unfullscreen_cb ()
+    private void fullscreen_cb ()
     {
-        window.unfullscreen ();
+        if (window.is_fullscreen ())
+            window.unfullscreen ();
+        else
+            window.fullscreen ();
     }
 
     public static int main (string[] args)
