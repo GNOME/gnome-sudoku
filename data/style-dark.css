@@ -31,6 +31,12 @@ sudokucell label {
 sudokucell.selected > label {
   background: #4c5e79;
 }
+sudokucell.paused {
+  background: #454545;
+}
+sudokucell.paused label {
+  color: transparent;
+}
 sudokucell.highlight-label > label {
   background: #20324b;
 }

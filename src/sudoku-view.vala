@@ -102,9 +102,15 @@ public class SudokuView : Adw.Bin
             paused.set_visible (this.game.paused);
 
             if (this.game.paused)
+            {
+                mask_view ();
                 clear_all_warnings ();
+            }
             else
+            {
+                unmask_view ();
                 update_warnings ();
+            }
 
             has_selection = !this.game.paused;
         });
@@ -357,6 +363,20 @@ public class SudokuView : Adw.Bin
         for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
             for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
                 cells[row_tmp, col_tmp].clear_warnings ();
+    }
+
+    private void mask_view ()
+    {
+        for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
+            for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
+                cells[row_tmp, col_tmp].paused = true;
+    }
+
+    private void unmask_view ()
+    {
+        for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
+            for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
+                cells[row_tmp, col_tmp].paused = false;
     }
 
     private bool _show_warnings;
