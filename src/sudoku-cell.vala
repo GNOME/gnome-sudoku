@@ -144,6 +144,19 @@ private class SudokuCell : Widget
         }
     }
 
+    private bool _paused = false;
+    public bool paused {
+        get { return _paused; }
+        set
+        {
+            _paused = value;
+            if (value)
+                this.add_css_class ("paused");
+            else
+                this.remove_css_class ("paused");
+        }
+    }
+
     public void set_earmark_highlight (int val, bool enabled)
     {
         if (!game.board.is_earmark_enabled (row, col, val))
