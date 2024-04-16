@@ -280,7 +280,7 @@ public class SudokuView : Adw.Bin
             cells[row, col].grab_focus ();
 
         cells[row, col].get_visible_earmark (num);
-        if (enabled)
+        if (show_warnings && enabled)
             cells[row, col].check_earmark_warnings (num, show_earmark_warnings);
     }
 
