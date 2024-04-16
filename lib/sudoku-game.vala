@@ -182,8 +182,8 @@ public class SudokuGame : Object
 
         if (board.has_earmarks (row, col))
         {
-            board.disable_all_earmarks (row, col);
             add_disable_earmarks_step (new_stack_item, row, col);
+            board.disable_all_earmarks (row, col);
         }
 
         add_value_step (new_stack_item, row, col, old_val, val);
