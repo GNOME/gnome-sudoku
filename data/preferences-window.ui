@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="3.12"/>
+  <template class="SudokuPreferencesWindow" parent="AdwPreferencesWindow">
+    <child>
+      <object class="AdwPreferencesPage">
+        <property name="title" translatable="yes">General</property>
+        <property name="visible">true</property>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">General</property>
+            <property name="visible">True</property>
+            <child>
+              <object class="AdwSwitchRow" id="show_timer">
+                <property name="title" translatable="yes">Show timer and pause buttons</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="show_possibilities">
+                <property name="title" translatable="yes">Show earmark possibilities</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="autoclean_earmarks">
+                <property name="title" translatable="yes">Automatically clean earmarks</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Warnings</property>
+            <property name="visible">True</property>
+            <child>
+              <object class="AdwSwitchRow" id="simple_warnings">
+                <property name="title" translatable="yes">Check against solution</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="show_earmark_warnings">
+                <property name="title" translatable="yes">Show earmark warnings</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
+     </object>
+    </child>
+  </template>
+</interface>

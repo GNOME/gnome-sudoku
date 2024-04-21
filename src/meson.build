@@ -9,6 +9,7 @@ gnome_sudoku_sources = [
   'gnome-sudoku.vala',
   'main-menu.vala',
   'number-picker.vala',
+  'preferences-window.vala',
   'print-dialog.vala',
   'sudoku-cell.vala',
   'sudoku-printer.vala',

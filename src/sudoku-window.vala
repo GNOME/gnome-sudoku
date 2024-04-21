@@ -65,7 +65,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     private const int margin_small_size = 10;
     private const int margin_size_diff = margin_default_size - margin_small_size;
 
-    private GLib.Settings settings;
+    public GLib.Settings settings;
 
     public SudokuView? view { get; private set; }
 
@@ -168,7 +168,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         settings.set_int ("window-height", window_height);
         settings.set_boolean ("window-is-maximized", window_is_maximized);
         settings.set_boolean ("window-is-fullscreen", window_is_fullscreen);
-        settings.set_boolean ("show-timer", show_timer);
         settings.apply ();
     }
 
@@ -192,6 +191,10 @@ public class SudokuWindow : Adw.ApplicationWindow
         get { return _show_timer; }
         set {
             _show_timer = value;
+
+            if (game != null && game.paused)
+                game.paused = false;
+
             if (current_screen == SudokuWindowScreen.PLAY)
             {
                 clock_box.visible = show_timer && !is_window_width_small;
