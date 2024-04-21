@@ -174,6 +174,8 @@ public class Sudoku : Adw.Application
         set_accels_for_action ("app.help", {"F1"});
         set_accels_for_action ("app.shortcuts-window", {"<Primary>question"});
         set_accels_for_action ("app.fullscreen", {"F11", "f"});
+        set_accels_for_action ("app.highlighter", {"<Primary>h"});
+        set_accels_for_action ("app.show-warnings", {"<Primary>w"});
 
         undo_action = (SimpleAction) lookup_action ("undo");
         redo_action = (SimpleAction) lookup_action ("redo");
