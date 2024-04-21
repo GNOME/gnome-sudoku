@@ -131,6 +131,8 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         this.long_press_controller.pressed.connect (long_press_cb);
         ((Widget)this).add_controller (this.long_press_controller);
+
+        this.close_request.connect (close_cb);
     }
 
     private void construct_window_parameters ()
@@ -160,7 +162,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         title_label.set_property ("ellipsize", false);
     }
 
-    ~SudokuWindow ()
+    private bool close_cb ()
     {
         /* Save window state */
         settings.delay ();
@@ -169,8 +171,8 @@ public class SudokuWindow : Adw.ApplicationWindow
         settings.set_boolean ("window-is-maximized", window_is_maximized);
         settings.set_boolean ("window-is-fullscreen", window_is_fullscreen);
         settings.apply ();
+        return EVENT_PROPAGATE;
     }
-
 
     [GtkCallback]
     private void start_game_cb (Button btn)

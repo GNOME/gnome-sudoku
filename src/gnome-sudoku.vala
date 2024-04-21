@@ -186,12 +186,6 @@ public class Sudoku : Adw.Application
 
     protected override void shutdown ()
     {
-        if (window != null)
-        {
-            window.close ();
-            window = null;
-        }
-
         settings.set_enum ("play-difficulty", play_difficulty);
         settings.apply ();
 
@@ -215,6 +209,7 @@ public class Sudoku : Adw.Application
             }
         }
 
+        window.close ();
         base.shutdown ();
     }
 
