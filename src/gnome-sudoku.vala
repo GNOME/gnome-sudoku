@@ -50,7 +50,6 @@ public class Sudoku : Adw.Application
     private SimpleAction pause_action;
     private SimpleAction play_custom_game_action;
     private SimpleAction new_game_action;
-    private SimpleAction show_timer_action;
 
     private DifficultyCategory play_difficulty;
 
@@ -71,8 +70,8 @@ public class Sudoku : Adw.Application
         {"about", about_cb                                          },
         {"fullscreen", fullscreen_cb                                },
         {"shortcuts-window", shortcuts_window_cb                    },
-        {"quit", quit                                               },
-        {"show-timer", show_timer_cb, null, "true"                  }
+        {"preferences-dialog", preferences_dialog_cb                },
+        {"quit", quit                                               }
     };
 
     private const OptionEntry[] option_entries =
@@ -126,38 +125,10 @@ public class Sudoku : Adw.Application
         });
         add_action (action);
 
-        action = settings.create_action ("show-possibilities");
-        action.notify["state"].connect (() => {
-            if (view != null && game.mode == GameMode.PLAY)
-                view.show_possibilities = settings.get_boolean ("show-possibilities");
-        });
-        add_action (action);
-
-        action = settings.create_action ("show-earmark-warnings");
-        action.notify["state"].connect (() => {
-            if (view != null && game.mode == GameMode.PLAY)
-                view.show_earmark_warnings = settings.get_boolean ("show-earmark-warnings");
-        });
-        add_action (action);
-
-        action = settings.create_action ("autoclean-earmarks");
-        action.notify["state"].connect (() => {
-            if (view != null)
-                view.autoclean_earmarks = settings.get_boolean ("autoclean-earmarks");
-        });
-        add_action (action);
-
         action = settings.create_action ("highlighter");
         action.notify["state"].connect (() => {
             if (view != null)
                 view.highlighter = settings.get_boolean ("highlighter");
-        });
-        add_action (action);
-
-        action = settings.create_action ("simple-warnings");
-        action.notify["state"].connect (() => {
-            if (view != null)
-                view.simple_warnings = settings.get_boolean ("simple-warnings");
         });
         add_action (action);
 
@@ -170,6 +141,7 @@ public class Sudoku : Adw.Application
         set_accels_for_action ("app.redo", {"<Primary><Shift>z", "r"});
         set_accels_for_action ("app.help", {"F1"});
         set_accels_for_action ("app.shortcuts-window", {"<Primary>question"});
+        set_accels_for_action ("app.preferences-dialog", {"<Primary>comma"});
         set_accels_for_action ("app.fullscreen", {"F11", "f"});
         set_accels_for_action ("app.highlighter", {"<Primary>h"});
         set_accels_for_action ("app.show-warnings", {"<Primary>w"});
@@ -182,8 +154,6 @@ public class Sudoku : Adw.Application
         print_multiple_action = (SimpleAction) lookup_action ("print-multiple");
         pause_action = (SimpleAction) lookup_action ("pause");
         play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
-        show_timer_action = (SimpleAction) lookup_action ("show-timer");
-        show_timer_action.set_state (settings.get_boolean ("show-timer"));
 
         play_difficulty = (DifficultyCategory) settings.get_enum ("play-difficulty");
 
@@ -251,7 +221,6 @@ public class Sudoku : Adw.Application
             redo_action.set_enabled (false);
             new_game_action.set_enabled (false);
             game.stop_clock ();
-            show_timer_action.set_enabled (false);
         }
         else
         {
@@ -260,17 +229,10 @@ public class Sudoku : Adw.Application
             redo_action.set_enabled (!game.is_redostack_null ());
             new_game_action.set_enabled (true);
             game.resume_clock ();
-            show_timer_action.set_enabled (true);
         }
 
         window.display_pause_button ();
         view.queue_draw ();
-    }
-
-    private void show_timer_cb ()
-    {
-        window.show_timer = !window.show_timer;
-        show_timer_action.set_state (window.show_timer);
     }
 
     private void play_custom_game_cb ()
@@ -492,6 +454,12 @@ public class Sudoku : Adw.Application
         print_dialog.visible = true;
     }
 
+    private void preferences_dialog_cb ()
+    {
+        var preferences_dialog = new SudokuPreferencesDialog (this.window);
+        preferences_dialog.present (window);
+    }
+
     private void shortcuts_window_cb ()
     {
         var builder = new Gtk.Builder.from_resource ("/org/gnome/Sudoku/ui/shortcuts-window.ui");
@@ -547,4 +515,3 @@ public class Sudoku : Adw.Application
         return new Sudoku ().run (args);
     }
 }
-

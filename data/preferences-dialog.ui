@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="3.12"/>
+  <template class="SudokuPreferencesDialog" parent="AdwPreferencesDialog">
+    <child>
+      <object class="AdwPreferencesPage">
+        <property name="visible">true</property>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes" context="preferences dialog">General</property>
+            <property name="visible">True</property>
+            <child>
+              <object class="AdwSwitchRow" id="show_timer">
+                <property name="title" translatable="yes" context="general preferences">Show timer and pause buttons</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="show_possibilities">
+                <property name="title" translatable="yes" context="general preferences">Show earmark possibilities</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="autoclean_earmarks">
+                <property name="title" translatable="yes" context="general preferences">Automatically clean earmarks</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes" context="preferences dialog">Warnings</property>
+            <property name="visible">True</property>
+            <child>
+              <object class="AdwSwitchRow" id="simple_warnings">
+                <property name="title" translatable="yes" context="warning preferences">Check against solution</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="show_earmark_warnings">
+                <property name="title" translatable="yes" context="warning preferences">Show earmark warnings</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
