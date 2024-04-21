@@ -68,9 +68,9 @@ public class SudokuWindow : Adw.ApplicationWindow
     private GLib.Settings settings;
 
     public SudokuView? view { get; private set; }
-    public bool show_timer { get; private set; }
 
     private SudokuGame? game = null;
+    public SudokuWindowScreen? current_screen = null;
 
     private GestureClick button_controller = new GestureClick ();
     private GestureLongPress long_press_controller = new GestureLongPress ();
@@ -186,17 +186,21 @@ public class SudokuWindow : Adw.ApplicationWindow
             (this as Widget)?.activate_action ("app.start-game", "i", 4);
     }
 
-    public void toggle_show_timer (GameScreen current_game_screen)
+    private bool _show_timer;
+    public bool show_timer
     {
-        show_timer = !show_timer;
-        if (current_game_screen == GameScreen.PLAY)
-        {
-            clock_box.visible = show_timer && !is_window_width_small;
-            if (show_timer)
-                display_pause_button ();
-            else
-                play_pause_button.visible = false;
-        }
+        get { return _show_timer; }
+        set {
+            _show_timer = value;
+            if (current_screen == SudokuWindowScreen.PLAY)
+            {
+                clock_box.visible = show_timer && !is_window_width_small;
+                if (show_timer)
+                    display_pause_button ();
+                else
+                    play_pause_button.visible = false;
+            }
+         }
     }
 
     public void will_start_game ()
@@ -225,8 +229,9 @@ public class SudokuWindow : Adw.ApplicationWindow
         back_button.sensitive = true;
     }
 
-    public void show_new_game_screen ()
+    public void show_menu_screen ()
     {
+        current_screen = SudokuWindowScreen.MENU;
         windowtitle.subtitle = _("Select Difficulty");
         set_board_visible (false);
         back_button.visible = game != null;
@@ -276,6 +281,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     public void show_game_view ()
         requires (game != null)
     {
+        current_screen = (SudokuWindowScreen) game.mode;
         set_board_visible (true);
         back_button.visible = false;
         undo_button.visible = true;
@@ -420,4 +426,12 @@ public class SudokuWindow : Adw.ApplicationWindow
         game_box.margin_top = margin_size;
         game_box.margin_bottom = margin_size;
     }
+}
+
+//must be aligned with GameMode
+public enum SudokuWindowScreen
+{
+    PLAY,
+    CREATE,
+    MENU;
 }

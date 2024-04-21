@@ -52,7 +52,6 @@ public class Sudoku : Adw.Application
     private SimpleAction show_timer_action;
 
     private ShortcutsWindow? shortcuts_window = null;
-    private GameScreen? current_game_screen = null;
 
     private DifficultyCategory play_difficulty;
 
@@ -204,7 +203,7 @@ public class Sudoku : Adw.Application
         else if (play_difficulty == DifficultyCategory.CUSTOM)
             create_game_cb ();
         else
-            show_new_game_screen ();
+            show_menu_screen ();
     }
 
     protected override void activate ()
@@ -273,7 +272,7 @@ public class Sudoku : Adw.Application
 
     private void show_timer_cb ()
     {
-        window.toggle_show_timer (current_game_screen);
+        window.show_timer = !window.show_timer;
         show_timer_action.set_state (window.show_timer);
     }
 
@@ -310,7 +309,7 @@ public class Sudoku : Adw.Application
 
     private void toggle_pause_cb ()
     {
-        if (current_game_screen == GameScreen.PLAY && window.show_timer)
+        if (window.current_screen == SudokuWindowScreen.PLAY && window.show_timer)
             game.paused = !game.paused;
     }
 
@@ -353,7 +352,7 @@ public class Sudoku : Adw.Application
 
         dialog.response.connect ((response_id) => {
             if (response_id == "play-again")
-                show_new_game_screen ();
+                show_menu_screen ();
             else if (response_id == "close")
                 quit ();
             dialog.destroy ();
@@ -384,7 +383,6 @@ public class Sudoku : Adw.Application
 
         game = new SudokuGame (board);
         game.mode = mode;
-        current_game_screen = (GameScreen) game.mode;
 
         game.paused_changed.connect (paused_changed_cb);
         game.action_completed.connect (action_completed_cb);
@@ -403,21 +401,20 @@ public class Sudoku : Adw.Application
             game.board.completed.connect (board_completed_cb);
     }
 
-    private void show_new_game_screen ()
+    private void show_menu_screen ()
     {
         if (game != null)
             game.stop_clock ();
 
         print_action.set_enabled (false);
-        current_game_screen = GameScreen.MENU;
 
-        window.show_new_game_screen ();
+        window.show_menu_screen ();
         window.activate_difficulty_checkbutton (play_difficulty);
     }
 
     private void new_game_cb ()
     {
-        show_new_game_screen ();
+        show_menu_screen ();
     }
 
     private void create_game_cb ()
@@ -460,7 +457,7 @@ public class Sudoku : Adw.Application
 
     private void reset_cb ()
     {
-        if (current_game_screen != GameScreen.MENU)
+        if (window.current_screen != SudokuWindowScreen.MENU)
             game.reset ();
     }
 
@@ -470,19 +467,18 @@ public class Sudoku : Adw.Application
         if (game.mode != GameMode.CREATE)
             game.resume_clock ();
 
-        current_game_screen = (GameScreen) game.mode;
         print_action.set_enabled (true);
     }
 
     private void undo_cb ()
     {
-        if (current_game_screen != GameScreen.MENU)
+        if (window.current_screen != SudokuWindowScreen.MENU)
             game.undo ();
     }
 
     private void redo_cb ()
     {
-        if (current_game_screen != GameScreen.MENU)
+        if (window.current_screen != SudokuWindowScreen.MENU)
             game.redo ();
     }
 
