@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.master.hi\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-03-29 19:20+0000\n"
-"PO-Revision-Date: 2024-04-02 21:02+0530\n"
+"POT-Creation-Date: 2024-04-12 08:10+0000\n"
+"PO-Revision-Date: 2024-04-12 20:56+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi\n"
 "Language: hi\n"
@@ -78,63 +78,67 @@ msgid "Simple _Warnings Mode"
 msgstr "सरल चेतावनी मोड (_W)"
 
 #: data/sudoku-window.ui:69
+msgid "_Keyboard Shortcuts"
+msgstr "कीबोर्ड शॉर्टकट (_K)"
+
+#: data/sudoku-window.ui:73
 msgid "_Help"
 msgstr "सहायता (_H)"
 
-#: data/sudoku-window.ui:73
+#: data/sudoku-window.ui:77
 msgid "_About Sudoku"
 msgstr "Sudoku के बारे में (_A)"
 
-#: data/sudoku-window.ui:79 data/sudoku-window.ui:88
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:525
+#: data/sudoku-window.ui:83 data/sudoku-window.ui:92
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:538
 msgid "Sudoku"
 msgstr "सुडोकू"
 
-#: data/sudoku-window.ui:96
+#: data/sudoku-window.ui:100
 msgid "Undo Action"
 msgstr "कार्रवाई पूर्ववत करें"
 
-#: data/sudoku-window.ui:108
+#: data/sudoku-window.ui:112
 msgid "Redo Action"
 msgstr "कार्रवाई पुनः करें"
 
-#: data/sudoku-window.ui:120
+#: data/sudoku-window.ui:124
 msgid "Back"
 msgstr "पीछे"
 
-#: data/sudoku-window.ui:132
+#: data/sudoku-window.ui:136
 msgid "Leave Fullscreen"
 msgstr "फ़ुलस्क्रीन छोड़ें"
 
-#: data/sudoku-window.ui:146
+#: data/sudoku-window.ui:150
 msgid "Main Menu"
 msgstr "मुख्य मेनू"
 
-#: data/sudoku-window.ui:165
+#: data/sudoku-window.ui:169
 msgid "Play Custom Puzzle"
 msgstr "कस्टम पहेली खेलें"
 
-#: data/sudoku-window.ui:214
+#: data/sudoku-window.ui:218
 msgid "Select Game Difficulty"
 msgstr "खेल की कठिनाई का चयन करें"
 
-#: data/sudoku-window.ui:231
+#: data/sudoku-window.ui:235
 msgid "_Easy"
 msgstr "आसान (_E)"
 
-#: data/sudoku-window.ui:245
+#: data/sudoku-window.ui:249
 msgid "_Medium"
 msgstr "मध्यम (_M)"
 
-#: data/sudoku-window.ui:259
+#: data/sudoku-window.ui:263
 msgid "_Hard"
 msgstr "कठिन (_H)"
 
-#: data/sudoku-window.ui:273
+#: data/sudoku-window.ui:277
 msgid "_Very Hard"
 msgstr "बहुत कठिन (_V)"
 
-#: data/sudoku-window.ui:284
+#: data/sudoku-window.ui:288
 msgid "_Start Game"
 msgstr "खेल शुरू करें (_S)"
 
@@ -325,62 +329,62 @@ msgid "Custom Puzzle"
 msgstr "कस्टम पहेली"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:81
+#: src/gnome-sudoku.vala:84
 msgid "Show release version"
 msgstr "रिलीज संस्करण दिखायें"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:85
+#: src/gnome-sudoku.vala:88
 msgid "Show the possible values for each cell"
 msgstr "प्रत्येक कक्ष के लिए संभावित मान दिखाएँ"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:288
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "आपके द्वारा दर्ज की गई पहेली वैध सुडोकू नहीं है।"
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:288
 msgid "Please enter a valid puzzle."
 msgstr "कृपया एक वैध पहेली दर्ज करें।"
 
-#: src/gnome-sudoku.vala:284 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:289 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "बंद"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:297
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "आपने जो पहेली दर्ज की है उसके अनेक समाधान हैं।"
 
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:297
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "वैध सुडोकू पहेलियों का एक ही समाधान है।"
 
-#: src/gnome-sudoku.vala:293
+#: src/gnome-sudoku.vala:298
 msgid "_Back"
 msgstr "पीछे (_B)"
 
-#: src/gnome-sudoku.vala:294
+#: src/gnome-sudoku.vala:299
 msgid "Play _Anyway"
 msgstr "वैसे भी खेलें (_A)"
 
-#: src/gnome-sudoku.vala:336
+#: src/gnome-sudoku.vala:342
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "शाबाश, आपने पहेली %d मिनट में पूरी कर ली!"
 msgstr[1] "शाबाश, आपने पहेली %d मिनटों में पूरी कर ली!"
 
-#: src/gnome-sudoku.vala:344
+#: src/gnome-sudoku.vala:350
 msgid "Quit"
 msgstr "छोड़ें"
 
-#: src/gnome-sudoku.vala:345
+#: src/gnome-sudoku.vala:351
 msgid "Play _Again"
 msgstr "फिर से खेलें (_A)"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:522
+#: src/gnome-sudoku.vala:535
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -392,7 +396,7 @@ msgstr ""
 "QQwing %s द्वारा उत्पन्न पहेलियाँ"
 
 #  Translator credits
-#: src/gnome-sudoku.vala:532
+#: src/gnome-sudoku.vala:545
 msgid "translator-credits"
 msgstr ""
 "रविशंकर श्रीवास्तव (raviratlami@yahoo.com)\n"
@@ -408,19 +412,19 @@ msgstr "साफ़"
 msgid "Error printing file:"
 msgstr "फाइल प्रिंट करने में त्रुटि:"
 
-#: src/sudoku-window.vala:233
+#: src/sudoku-window.vala:230
 msgid "Select Difficulty"
 msgstr "कठिनाई चुनें"
 
-#: src/sudoku-window.vala:299
+#: src/sudoku-window.vala:296
 msgid "Create Puzzle"
 msgstr "पहेली बनाएँ"
 
-#: src/sudoku-window.vala:312
+#: src/sudoku-window.vala:309
 msgid "Play"
 msgstr "खेलें"
 
-#: src/sudoku-window.vala:312
+#: src/sudoku-window.vala:309
 msgid "Pause"
 msgstr "विराम"
 
