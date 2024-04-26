@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-04-09 09:35+0000\n"
-"PO-Revision-Date: 2024-04-09 13:53+0300\n"
+"POT-Creation-Date: 2024-04-15 05:34+0000\n"
+"PO-Revision-Date: 2024-04-18 00:11+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -28,123 +28,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.4.2\n"
-
-#: data/sudoku-window.ui:7
-msgid "_New Puzzle…"
-msgstr "Ye_ni Bulmaca…"
-
-#: data/sudoku-window.ui:11
-msgid "_Create Custom Game…"
-msgstr "Özel Oyun _Oluştur…"
-
-#: data/sudoku-window.ui:15
-msgid "_Clear Board…"
-msgstr "Tahtayı _Temizle…"
-
-#: data/sudoku-window.ui:21 data/print-dialog.ui:77
-msgid "_Print"
-msgstr "_Yazdır"
-
-#: data/sudoku-window.ui:24
-msgid "Print _Current Puzzle…"
-msgstr "Ş_imdiki Bulmacayı Yazdır…"
-
-#: data/sudoku-window.ui:28
-msgid "Print _Multiple Puzzles…"
-msgstr "Ço_klu Bulmaca Yazdır..."
-
-#: data/sudoku-window.ui:36
-msgid "_Highlighter"
-msgstr "_Vurgulayıcı"
-
-#: data/sudoku-window.ui:40
-msgid "_Warnings"
-msgstr "_Uyarılar"
-
-#: data/sudoku-window.ui:44
-msgid "_More Options"
-msgstr "_Daha Çok Seçenek"
-
-#: data/sudoku-window.ui:47
-msgid "Show _Timer"
-msgstr "_Zamanlayıcıyı Göster"
-
-#: data/sudoku-window.ui:51
-msgid "Show _Possibilities"
-msgstr "_Olasılıkları Göster"
-
-#: data/sudoku-window.ui:57
-msgid "Simple _Earmark Warnings"
-msgstr "Basit _Ayraç Uyarıları"
-
-#: data/sudoku-window.ui:61
-msgid "Simple _Warnings Mode"
-msgstr "Basit _Uyarılar Kipi"
-
-#: data/sudoku-window.ui:69
-msgid "_Keyboard Shortcuts"
-msgstr "_Klavye Kısayolları"
-
-#: data/sudoku-window.ui:73
-msgid "_Help"
-msgstr "_Yardım"
-
-#: data/sudoku-window.ui:77
-msgid "_About Sudoku"
-msgstr "Sudoku _Hakkında"
-
-#: data/sudoku-window.ui:83 data/sudoku-window.ui:92
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:538
-msgid "Sudoku"
-msgstr "Sudoku"
-
-#: data/sudoku-window.ui:100
-msgid "Undo Action"
-msgstr "İşlemi Geri Al"
-
-#: data/sudoku-window.ui:112
-msgid "Redo Action"
-msgstr "İşlemi Yinele"
-
-#: data/sudoku-window.ui:124
-msgid "Back"
-msgstr "Geri"
-
-#: data/sudoku-window.ui:136
-msgid "Leave Fullscreen"
-msgstr "Tam Ekrandan Çık"
-
-#: data/sudoku-window.ui:150
-msgid "Main Menu"
-msgstr "Ana Menü"
-
-#: data/sudoku-window.ui:169
-msgid "Play Custom Puzzle"
-msgstr "Özel Bulmaca Oyna"
-
-#: data/sudoku-window.ui:218
-msgid "Select Game Difficulty"
-msgstr "Oyun Zorluğu Seç"
-
-#: data/sudoku-window.ui:235
-msgid "_Easy"
-msgstr "_Kolay…"
-
-#: data/sudoku-window.ui:249
-msgid "_Medium"
-msgstr "_Orta"
-
-#: data/sudoku-window.ui:263
-msgid "_Hard"
-msgstr "_Zor"
-
-#: data/sudoku-window.ui:277
-msgid "_Very Hard"
-msgstr "Ç_ok Zor"
-
-#: data/sudoku-window.ui:288
-msgid "_Start Game"
-msgstr "Oyunu _Başlat"
 
 #: data/org.gnome.Sudoku.appdata.xml.in:7
 msgid "GNOME Sudoku"
@@ -186,6 +69,11 @@ msgstr ""
 #: data/org.gnome.Sudoku.appdata.xml.in:30
 msgid "A GNOME sudoku game preview"
 msgstr "GNOME sudoku oyunu ön izlemesi"
+
+#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:83
+#: data/sudoku-window.ui:92 src/gnome-sudoku.vala:538
+msgid "Sudoku"
+msgstr "Sudoku"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Sudoku.desktop.in:6
@@ -307,6 +195,208 @@ msgstr "Zor"
 #: data/print-dialog.ui:61
 msgid "Very Hard"
 msgstr "Çok Zor"
+
+#: data/print-dialog.ui:77 data/sudoku-window.ui:21
+msgid "_Print"
+msgstr "_Yazdır"
+
+#: data/shortcuts-window.ui:11
+msgctxt "shortcuts window"
+msgid "Game"
+msgstr "Oyun"
+
+#: data/shortcuts-window.ui:15 data/shortcuts-window.ui:21
+msgctxt "shortcuts window"
+msgid "Move"
+msgstr "Taşı"
+
+#: data/shortcuts-window.ui:27
+msgctxt "shortcuts window"
+msgid "Earmarks"
+msgstr "Ayraçlar"
+
+#: data/shortcuts-window.ui:33
+msgctxt "shortcuts window"
+msgid "Clear Cell"
+msgstr "Hücreyi Temizle"
+
+#: data/shortcuts-window.ui:39
+msgctxt "shortcuts window"
+msgid "Undo"
+msgstr "Geri Al"
+
+#: data/shortcuts-window.ui:45
+msgctxt "shortcuts window"
+msgid "Redo"
+msgstr "Yinele"
+
+#: data/shortcuts-window.ui:51
+msgctxt "shortcuts window"
+msgid "Pause"
+msgstr "Duraklat"
+
+#: data/shortcuts-window.ui:57
+msgctxt "shortcuts window"
+msgid "Number Picker"
+msgstr "Sayı Seçici"
+
+#: data/shortcuts-window.ui:63
+msgctxt "shortcuts window"
+msgid "Earmark Picker"
+msgstr "Ayraç Seçici"
+
+#: data/shortcuts-window.ui:70
+msgctxt "shortcuts window"
+msgid "Window"
+msgstr "Pencere"
+
+#: data/shortcuts-window.ui:74
+msgctxt "shortcuts window"
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: data/shortcuts-window.ui:80
+msgctxt "shortcuts window"
+msgid "New Game"
+msgstr "Yeni Oyun"
+
+#: data/shortcuts-window.ui:86
+msgctxt "shortcuts window"
+msgid "Print"
+msgstr "Yazdır"
+
+#: data/shortcuts-window.ui:92
+msgctxt "shortcuts window"
+msgid "Keyboard Shortcuts"
+msgstr "Klavye Kısayolları"
+
+#: data/shortcuts-window.ui:98
+msgctxt "shortcuts window"
+msgid "Quit"
+msgstr "Çık"
+
+#: data/shortcuts-window.ui:104
+msgctxt "shortcuts window"
+msgid "Help"
+msgstr "Yardım"
+
+#: data/shortcuts-window.ui:110
+msgctxt "shortcuts window"
+msgid "Menu"
+msgstr "Menü"
+
+#: data/shortcuts-window.ui:116
+msgctxt "shortcuts window"
+msgid "Fullscreen"
+msgstr "Tam Ekran"
+
+#: data/sudoku-window.ui:7
+msgid "_New Puzzle…"
+msgstr "Ye_ni Bulmaca…"
+
+#: data/sudoku-window.ui:11
+msgid "_Create Custom Game…"
+msgstr "Özel Oyun _Oluştur…"
+
+#: data/sudoku-window.ui:15
+msgid "_Clear Board…"
+msgstr "Tahtayı _Temizle…"
+
+#: data/sudoku-window.ui:24
+msgid "Print _Current Puzzle…"
+msgstr "Ş_imdiki Bulmacayı Yazdır…"
+
+#: data/sudoku-window.ui:28
+msgid "Print _Multiple Puzzles…"
+msgstr "Ço_klu Bulmaca Yazdır..."
+
+#: data/sudoku-window.ui:36
+msgid "_Highlighter"
+msgstr "_Vurgulayıcı"
+
+#: data/sudoku-window.ui:40
+msgid "_Warnings"
+msgstr "_Uyarılar"
+
+#: data/sudoku-window.ui:44
+msgid "_More Options"
+msgstr "_Daha Çok Seçenek"
+
+#: data/sudoku-window.ui:47
+msgid "Show _Timer"
+msgstr "_Zamanlayıcıyı Göster"
+
+#: data/sudoku-window.ui:51
+msgid "Show _Possibilities"
+msgstr "_Olasılıkları Göster"
+
+#: data/sudoku-window.ui:57
+msgid "Simple _Earmark Warnings"
+msgstr "Basit _Ayraç Uyarıları"
+
+#: data/sudoku-window.ui:61
+msgid "Simple _Warnings Mode"
+msgstr "Basit _Uyarılar Kipi"
+
+#: data/sudoku-window.ui:69
+msgid "_Keyboard Shortcuts"
+msgstr "_Klavye Kısayolları"
+
+#: data/sudoku-window.ui:73
+msgid "_Help"
+msgstr "_Yardım"
+
+#: data/sudoku-window.ui:77
+msgid "_About Sudoku"
+msgstr "Sudoku _Hakkında"
+
+#: data/sudoku-window.ui:100
+msgid "Undo Action"
+msgstr "İşlemi Geri Al"
+
+#: data/sudoku-window.ui:112
+msgid "Redo Action"
+msgstr "İşlemi Yinele"
+
+#: data/sudoku-window.ui:124
+msgid "Back"
+msgstr "Geri"
+
+#: data/sudoku-window.ui:136
+msgid "Leave Fullscreen"
+msgstr "Tam Ekrandan Çık"
+
+#: data/sudoku-window.ui:150
+msgid "Main Menu"
+msgstr "Ana Menü"
+
+#: data/sudoku-window.ui:169
+msgid "Play Custom Puzzle"
+msgstr "Özel Bulmaca Oyna"
+
+#: data/sudoku-window.ui:218
+msgid "Select Game Difficulty"
+msgstr "Oyun Zorluğu Seç"
+
+#: data/sudoku-window.ui:235
+msgid "_Easy"
+msgstr "_Kolay…"
+
+#: data/sudoku-window.ui:249
+msgid "_Medium"
+msgstr "_Orta"
+
+#: data/sudoku-window.ui:263
+msgid "_Hard"
+msgstr "_Zor"
+
+#: data/sudoku-window.ui:277
+msgid "_Very Hard"
+msgstr "Ç_ok Zor"
+
+#: data/sudoku-window.ui:288
+msgid "_Start Game"
+msgstr "Oyunu _Başlat"
 
 #: lib/sudoku-board.vala:693
 msgid "Unknown Difficulty"
