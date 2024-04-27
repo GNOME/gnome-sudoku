@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-04-15 05:34+0000\n"
-"PO-Revision-Date: 2024-04-15 17:51+0300\n"
+"POT-Creation-Date: 2024-04-27 15:00+0000\n"
+"PO-Revision-Date: 2024-04-27 19:13+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -67,7 +67,7 @@ msgid "A GNOME sudoku game preview"
 msgstr "Перегляд гри Судоку"
 
 #: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:83
-#: data/sudoku-window.ui:92 src/gnome-sudoku.vala:538
+#: data/sudoku-window.ui:92 src/gnome-sudoku.vala:531
 msgid "Sudoku"
 msgstr "Судоку"
 
@@ -212,7 +212,6 @@ msgid "Earmarks"
 msgstr "Позначки"
 
 #: data/shortcuts-window.ui:33
-#| msgid "Clear"
 msgctxt "shortcuts window"
 msgid "Clear Cell"
 msgstr "Очистити комірку"
@@ -228,13 +227,11 @@ msgid "Redo"
 msgstr "Повторити"
 
 #: data/shortcuts-window.ui:51
-#| msgid "Pause"
 msgctxt "shortcuts window"
 msgid "Pause"
 msgstr "Пауза"
 
 #: data/shortcuts-window.ui:57
-#| msgid "Number of Puzzles"
 msgctxt "shortcuts window"
 msgid "Number Picker"
 msgstr "Вибір числа"
@@ -244,53 +241,59 @@ msgctxt "shortcuts window"
 msgid "Earmark Picker"
 msgstr "Вибір позначок"
 
-#: data/shortcuts-window.ui:70
+#: data/shortcuts-window.ui:69
+#| msgid "_Warnings"
+msgctxt "shortcuts window"
+msgid "Warnings"
+msgstr "Попередження"
+
+#: data/shortcuts-window.ui:75
+#| msgid "_Highlighter"
+msgctxt "shortcuts window"
+msgid "Highlighter"
+msgstr "Підсвічування"
+
+#: data/shortcuts-window.ui:82
 msgctxt "shortcuts window"
 msgid "Window"
 msgstr "ВІкно"
 
-#: data/shortcuts-window.ui:74
+#: data/shortcuts-window.ui:86
 msgctxt "shortcuts window"
 msgid "Reset"
 msgstr "Скинути"
 
-#: data/shortcuts-window.ui:80
+#: data/shortcuts-window.ui:92
 msgctxt "shortcuts window"
 msgid "New Game"
 msgstr "Нова гра"
 
-#: data/shortcuts-window.ui:86
-#| msgid "_Print"
+#: data/shortcuts-window.ui:98
 msgctxt "shortcuts window"
 msgid "Print"
 msgstr "Надрукувати"
 
-#: data/shortcuts-window.ui:92
-#| msgid "_Keyboard Shortcuts"
+#: data/shortcuts-window.ui:104
 msgctxt "shortcuts window"
 msgid "Keyboard Shortcuts"
 msgstr "Клавіатурні скорочення"
 
-#: data/shortcuts-window.ui:98
-#| msgid "Quit"
+#: data/shortcuts-window.ui:110
 msgctxt "shortcuts window"
 msgid "Quit"
 msgstr "Вийти"
 
-#: data/shortcuts-window.ui:104
-#| msgid "_Help"
+#: data/shortcuts-window.ui:116
 msgctxt "shortcuts window"
 msgid "Help"
 msgstr "Довідка"
 
-#: data/shortcuts-window.ui:110
-#| msgid "Main Menu"
+#: data/shortcuts-window.ui:122
 msgctxt "shortcuts window"
 msgid "Menu"
 msgstr "Меню"
 
-#: data/shortcuts-window.ui:116
-#| msgid "Leave Fullscreen"
+#: data/shortcuts-window.ui:128
 msgctxt "shortcuts window"
 msgid "Fullscreen"
 msgstr "Повноекранний режим"
@@ -428,46 +431,46 @@ msgid "Custom Puzzle"
 msgstr "Власна головоломка"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:84
+#: src/gnome-sudoku.vala:83
 msgid "Show release version"
 msgstr "Показати версію випуску"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:88
+#: src/gnome-sudoku.vala:87
 msgid "Show the possible values for each cell"
 msgstr "Показувати можливі значення для кожної клітинки"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:288
+#: src/gnome-sudoku.vala:284
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Головоломку, яку ви ввели, — не сумісна з судоку."
 
-#: src/gnome-sudoku.vala:288
+#: src/gnome-sudoku.vala:284
 msgid "Please enter a valid puzzle."
 msgstr "Введіть правильну головоломку."
 
-#: src/gnome-sudoku.vala:289 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:285 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "Закрити"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:297
+#: src/gnome-sudoku.vala:293
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Головоломка, яку ви ввели, має кілька розв'язків."
 
-#: src/gnome-sudoku.vala:297
+#: src/gnome-sudoku.vala:293
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Правильний судоку може мати тільки один розв'язок."
 
-#: src/gnome-sudoku.vala:298
+#: src/gnome-sudoku.vala:294
 msgid "_Back"
 msgstr "_Назад"
 
-#: src/gnome-sudoku.vala:299
+#: src/gnome-sudoku.vala:295
 msgid "Play _Anyway"
 msgstr "О_днаково зіграти"
 
-#: src/gnome-sudoku.vala:342
+#: src/gnome-sudoku.vala:338
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -475,16 +478,16 @@ msgstr[0] "Чудово! Ви склали головоломку за %d хви
 msgstr[1] "Чудово! Ви склали головоломку за %d хвилини"
 msgstr[2] "Чудово! Ви склали головоломку за %d хвилин"
 
-#: src/gnome-sudoku.vala:350
+#: src/gnome-sudoku.vala:346
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/gnome-sudoku.vala:351
+#: src/gnome-sudoku.vala:347
 msgid "Play _Again"
 msgstr "Зіграти _ще раз"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:535
+#: src/gnome-sudoku.vala:528
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -495,7 +498,7 @@ msgstr ""
 "\n"
 "Головоломки породжує — QQwing %s"
 
-#: src/gnome-sudoku.vala:545
+#: src/gnome-sudoku.vala:538
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота\n"
@@ -513,19 +516,19 @@ msgstr "Очистити"
 msgid "Error printing file:"
 msgstr "Помилка друкування файла:"
 
-#: src/sudoku-window.vala:230
+#: src/sudoku-window.vala:237
 msgid "Select Difficulty"
 msgstr "Виберіть складність"
 
-#: src/sudoku-window.vala:296
+#: src/sudoku-window.vala:304
 msgid "Create Puzzle"
 msgstr "Створити головоломку"
 
-#: src/sudoku-window.vala:309
+#: src/sudoku-window.vala:317
 msgid "Play"
 msgstr "Грати"
 
-#: src/sudoku-window.vala:309
+#: src/sudoku-window.vala:317
 msgid "Pause"
 msgstr "Пауза"
 
