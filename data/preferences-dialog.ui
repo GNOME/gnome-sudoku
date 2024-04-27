@@ -47,6 +47,30 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes" context="preferences dialog">Highlighter</property>
+            <property name="visible">True</property>
+             <child>
+              <object class="AdwSwitchRow" id="highlight_numbers">
+                <property name="title" translatable="yes" context="highlighter preferences">Highlight matching numbers</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="highlight_row_column">
+                <property name="title" translatable="yes" context="highlighter preferences">Highlight row and column</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="highlight_block">
+                <property name="title" translatable="yes" context="highlighter preferences">Highlight block</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </template>

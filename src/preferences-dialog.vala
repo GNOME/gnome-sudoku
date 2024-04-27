@@ -29,6 +29,9 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
     [GtkChild] public unowned Adw.SwitchRow show_timer;
     [GtkChild] public unowned Adw.SwitchRow show_earmark_warnings;
     [GtkChild] public unowned Adw.SwitchRow simple_warnings;
+    [GtkChild] public unowned Adw.SwitchRow highlight_numbers;
+    [GtkChild] public unowned Adw.SwitchRow highlight_block;
+    [GtkChild] public unowned Adw.SwitchRow highlight_row_column;
 
     private SudokuWindow window;
 
@@ -41,6 +44,9 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
         show_possibilities.set_active (window.settings.get_boolean ("show-possibilities"));
         simple_warnings.set_active (!window.settings.get_boolean ("simple-warnings"));
         autoclean_earmarks.set_active (window.settings.get_boolean ("autoclean-earmarks"));
+        highlight_row_column.set_active (window.settings.get_boolean ("highlight-row-column"));
+        highlight_block.set_active (window.settings.get_boolean ("highlight-block"));
+        highlight_numbers.set_active (window.settings.get_boolean ("highlight-numbers"));
 
         show_earmark_warnings.notify["active"].connect (() => {
             bool value = show_earmark_warnings.get_active ();
@@ -74,6 +80,27 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
             bool value = show_timer.get_active ();
             this.window.settings.set_boolean ("show-timer", value);
             this.window.show_timer = value;
+        });
+
+        highlight_row_column.notify["active"].connect (() => {
+            bool value = highlight_row_column.get_active ();
+            this.window.settings.set_boolean ("highlight-row-column",  value);
+            if (this.window.view != null)
+                this.window.view.highlight_row_column = value;
+        });
+
+        highlight_block.notify["active"].connect (() => {
+            bool value = highlight_block.get_active ();
+            this.window.settings.set_boolean ("highlight-block", value);
+            if (this.window.view != null)
+                this.window.view.highlight_block = value;
+        });
+
+        highlight_numbers.notify["active"].connect (() => {
+            bool value = highlight_numbers.get_active ();
+            this.window.settings.set_boolean ("highlight-numbers", value);
+            if (this.window.view != null)
+                this.window.view.highlight_numbers = value;
         });
     }
 

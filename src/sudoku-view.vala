@@ -71,6 +71,9 @@ public class SudokuView : Adw.Bin
         this._show_earmark_warnings = settings.get_boolean ("show-earmark-warnings");
         this._highlighter = settings.get_boolean ("highlighter");
         this.autoclean_earmarks = settings.get_boolean ("autoclean-earmarks");
+        this._highlight_row_column = settings.get_boolean ("highlight-row-column");
+        this._highlight_block = settings.get_boolean ("highlight-block");
+        this._highlight_numbers = settings.get_boolean ("highlight-numbers");
 
         var overlay = new Overlay ();
         var frame = new SudokuFrame (overlay);
@@ -272,7 +275,7 @@ public class SudokuView : Adw.Bin
                 if (cell == cell_tmp)
                     continue;
 
-                if (cell.value > 0)
+                if (cell.value > 0 && highlight_numbers)
                 {
                     if (cell.value == cell_tmp.value)
                         cell_tmp.highlighted_value = enabled;
@@ -281,8 +284,9 @@ public class SudokuView : Adw.Bin
                 }
 
                 if (!cell_tmp.is_fixed &&
-                   (row_tmp == row || col_tmp == col ||
-                   (row_tmp / game.board.block_cols == row / game.board.block_cols &&
+                   ((highlight_row_column && (row_tmp == row || col_tmp == col)) ||
+                   (highlight_block &&
+                   row_tmp / game.board.block_cols == row / game.board.block_cols &&
                    col_tmp / game.board.block_rows == col / game.board.block_rows)))
                 {
                     cell_tmp.highlighted_background = enabled;
@@ -293,7 +297,7 @@ public class SudokuView : Adw.Bin
 
     private void set_value_highlighter (int val, bool enabled)
     {
-        if (!highlighter || val == 0)
+        if (!highlighter || val == 0 || !highlight_numbers)
             return;
 
         var cell = cells[selected_row, selected_col];
@@ -406,6 +410,39 @@ public class SudokuView : Adw.Bin
             set_cell_highlighter (selected_row, selected_col, false);
             _highlighter = value;
             set_cell_highlighter (selected_row, selected_col, true);
+        }
+    }
+
+    private bool _highlight_row_column;
+    public bool highlight_row_column
+    {
+        get { return _highlight_row_column; }
+        set {
+            set_cell_highlighter (selected_row, selected_col, false);
+            _highlight_row_column = value;
+            set_cell_highlighter (selected_row, selected_col, true);
+        }
+    }
+
+    private bool _highlight_block;
+    public bool highlight_block
+    {
+        get { return _highlight_block; }
+        set {
+            set_cell_highlighter (selected_row, selected_col, false);
+            _highlight_block = value;
+            set_cell_highlighter (selected_row, selected_col, true);
+        }
+    }
+
+    private bool _highlight_numbers;
+    public bool highlight_numbers
+    {
+        get { return _highlight_numbers; }
+        set {
+            set_value_highlighter (cells[selected_row, selected_col].value, false);
+            _highlight_numbers = value;
+            set_value_highlighter (cells[selected_row, selected_col].value, true);
         }
     }
 
