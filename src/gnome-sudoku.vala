@@ -448,15 +448,35 @@ public class Sudoku : Adw.Application
         print_multiple_action.set_enabled (true);
     }
 
+    private void add_transient_hooks (Adw.Dialog transient_dialog)
+    {
+        if (game == null)
+            return;
+
+        game.stop_clock ();
+
+        if (window.view != null)
+            window.view.has_selection = false;
+
+        transient_dialog.closed.connect(() => {
+            game.resume_clock ();
+
+            if (window.view != null)
+                window.view.has_selection = true;
+        });
+    }
+
     private void print_multiple_cb ()
     {
         var print_dialog = new PrintDialog (saver, window);
+        add_transient_hooks (print_dialog);
         print_dialog.present (window);
     }
 
     private void preferences_dialog_cb ()
     {
         var preferences_dialog = new SudokuPreferencesDialog (this.window);
+        add_transient_hooks (preferences_dialog);
         preferences_dialog.present (window);
     }
 
@@ -464,6 +484,23 @@ public class Sudoku : Adw.Application
     {
         var builder = new Gtk.Builder.from_resource ("/org/gnome/Sudoku/ui/shortcuts-window.ui");
         var shortcuts_window = builder.get_object ("shortcuts-window") as ShortcutsWindow;
+
+        if (game != null)
+        {
+            game.stop_clock ();
+
+            if (window.view != null)
+                window.view.has_selection = false;
+
+            shortcuts_window.close_request.connect(() => {
+                game.resume_clock ();
+
+                if (window.view != null)
+                    window.view.has_selection = true;
+                return Gdk.EVENT_PROPAGATE;
+            });
+        }
+
         shortcuts_window.set_transient_for (window);
         shortcuts_window.present ();
     }
@@ -498,6 +535,7 @@ public class Sudoku : Adw.Application
             website = "https://wiki.gnome.org/Apps/Sudoku/",
         };
 
+        add_transient_hooks (about_dialog);
         about_dialog.present (window);
     }
 
