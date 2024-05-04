@@ -7,7 +7,6 @@ gnome_sudoku_sources = [
   'config.vapi',
   'aspect-frame.vala',
   'gnome-sudoku.vala',
-  'main-menu.vala',
   'number-picker.vala',
   'print-dialog.vala',
   'sudoku-cell.vala',

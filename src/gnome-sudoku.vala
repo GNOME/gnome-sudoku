@@ -98,8 +98,6 @@ public class Sudoku : Adw.Application
 
         Object (application_id: "org.gnome.Sudoku", flags: ApplicationFlags.DEFAULT_FLAGS);
         add_main_option_entries (option_entries);
-
-        typeof (SudokuMainMenuItem).ensure ();
     }
 
     protected override int handle_local_options (GLib.VariantDict options)
