@@ -72,7 +72,6 @@ public class SudokuGame : Object
         }
     }
 
-
     private ArrayList<stack_item?> stack;
     private int stack_head_index = -1;
 

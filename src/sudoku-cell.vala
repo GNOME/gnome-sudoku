@@ -28,12 +28,13 @@ private class SudokuCell : Widget
     private int row;
     private int col;
     private SudokuGame game;
-    public bool autoclean_earmarks;
+    private unowned SudokuView view;
 
     /* Gesture Controllers */
     private GestureClick button_controller = new GestureClick ();
     private GestureLongPress long_press_controller = new GestureLongPress ();
     private EventControllerKey key_controller = new EventControllerKey ();
+    private bool control_key_pressed;
 
     private Popover _popover = null;
     public Popover popover
@@ -53,7 +54,7 @@ private class SudokuCell : Widget
     private Label value_label = new Label ("") {
         visible = false
     };
-    private Label[] earmark_labels = new Label[8];
+    private Label[] earmark_labels = new Label[9];
 
     public int value
     {
@@ -78,7 +79,7 @@ private class SudokuCell : Widget
             else
             {
                 value_label.set_label (value.to_string ());
-                if (autoclean_earmarks && game.mode == GameMode.PLAY)
+                if (view.autoclean_earmarks && game.mode == GameMode.PLAY)
                     game.insert_and_disable_related_earmarks (row, col, value);
                 else
                     game.insert (row, col, value);
@@ -168,15 +169,15 @@ private class SudokuCell : Widget
             earmark.remove_css_class ("highlight-label");
     }
 
-    private bool control_key_pressed;
 
-    public SudokuCell (int row, int col, ref SudokuGame game)
+    public SudokuCell (int row, int col, SudokuGame game, SudokuView view)
     {
         this.set_accessible_role (AccessibleRole.BUTTON);
 
         this.row = row;
         this.col = col;
         this.game = game;
+        this.view = view;
 
         if (value != 0)
         {
@@ -189,6 +190,7 @@ private class SudokuCell : Widget
 
         this.set_fixed_css (true);
 
+        this.notify["has-focus"].connect (focus_changed_cb);
         this.button_controller.set_button (0 /* all buttons */);
 
         this.add_controller (this.button_controller);
@@ -229,7 +231,6 @@ private class SudokuCell : Widget
                 this.grab_focus ();
             }
         });
-
     }
 
     static construct {
@@ -379,6 +380,15 @@ private class SudokuCell : Widget
             show_earmark_picker ();
     }
 
+    void focus_changed_cb ()
+    {
+        if (game.paused)
+            return;
+
+        if (this.has_focus)
+            view.set_selected (row, col);
+    }
+
     private int get_key_number (uint keyval)
     {
         switch (keyval)
@@ -496,7 +506,7 @@ private class SudokuCell : Widget
         popover.popup ();
     }
 
-    public void check_value_warnings (bool simple_warnings)
+    public void check_value_warnings ()
     {
         bool error = false;
 
@@ -505,7 +515,7 @@ private class SudokuCell : Widget
             if (game.board.broken_coords.contains (Coord (row, col)))
                 error = true;
 
-            else if (!simple_warnings && game.mode == GameMode.PLAY)
+            else if (!view.simple_warnings && game.mode == GameMode.PLAY)
             {
                 int solution = game.board.get_solution (row, col);
                 if (solution != 0)
@@ -524,7 +534,7 @@ private class SudokuCell : Widget
             remove_css_class ("error");
     }
 
-    public void check_earmarks_warnings (bool show_earmark_warnings)
+    public void check_earmarks_warnings ()
     {
         if (this.value != 0 || game.mode == GameMode.CREATE)
             return;
@@ -533,13 +543,13 @@ private class SudokuCell : Widget
         for (int num = 1; num <= marks.length; num++)
         {
             if (marks[num - 1])
-                check_earmark_warnings (num, show_earmark_warnings);
+                check_earmark_warnings (num);
         }
     }
 
-    public void check_earmark_warnings (int num, bool show_earmark_warnings)
+    public void check_earmark_warnings (int num)
     {
-        if (!game.board.is_possible (row, col, num) && show_earmark_warnings)
+        if (!game.board.is_possible (row, col, num) && view.show_earmark_warnings)
             earmark_labels[num - 1].add_css_class ("error");
         else
             earmark_labels[num - 1].remove_css_class ("error");
@@ -554,13 +564,6 @@ private class SudokuCell : Widget
             earmark_labels[num-1].remove_css_class ("error");
     }
 
-    public override void dispose ()
-    {
-        base.dispose ();
-
-        this.value_label.unparent ();
-    }
-
     public override void size_allocate (int width,
                                         int height,
                                         int baseline)
@@ -570,7 +573,7 @@ private class SudokuCell : Widget
         int value_width, value_height;
         value_width = value_height = int.min (width, height);
 
-        set_font_size (ref value_label, height / size_ratio);
+        set_font_size (value_label, height / size_ratio);
 
         Gsk.Transform center = new Gsk.Transform ().translate (Graphene.Point ().init (
             (width - value_width) / 2,
@@ -589,7 +592,7 @@ private class SudokuCell : Widget
             {
                 num++;
 
-                set_font_size (ref earmark_labels[num - 1], height / size_ratio / 2);
+                set_font_size (earmark_labels[num - 1], height / size_ratio / 2);
 
                 Gsk.Transform earmark_position = new Gsk.Transform ().translate (Graphene.Point ().init (
                     col_tmp * earmark_width,
@@ -601,7 +604,7 @@ private class SudokuCell : Widget
         }
     }
 
-    private void set_font_size (ref Label label, int font_size)
+    private void set_font_size (Label label, int font_size)
     {
         var attr_list = label.get_attributes ();
         if (attr_list == null)
@@ -618,6 +621,15 @@ private class SudokuCell : Widget
     {
         if (_popover != null)
             _popover.popdown ();
+    }
+
+    public override void dispose ()
+    {
+        this.value_label.unparent ();
+        foreach (Label earmark in earmark_labels)
+            earmark.unparent ();
+        popover.unparent ();
+        base.dispose ();
     }
 }
 

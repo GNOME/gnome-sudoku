@@ -31,10 +31,11 @@ public class Sudoku : Adw.Application
 {
     private GLib.Settings settings;
 
-    private SudokuWindow? window = null;
+    private SudokuWindow window;
+
     private SudokuGame? game = null;
 
-    private SudokuView? view
+    private SudokuView view
     {
         get { return window.view; }
     }
@@ -50,8 +51,6 @@ public class Sudoku : Adw.Application
     private SimpleAction play_custom_game_action;
     private SimpleAction new_game_action;
     private SimpleAction show_timer_action;
-
-    private ShortcutsWindow? shortcuts_window = null;
 
     private DifficultyCategory play_difficulty;
 
@@ -218,6 +217,9 @@ public class Sudoku : Adw.Application
 
         if (game != null)
         {
+            //Source timer holds a game ref
+            game.stop_clock ();
+
             if (!game.is_empty () && !game.board.complete)
                 saver.save_game (game);
 
@@ -322,9 +324,7 @@ public class Sudoku : Adw.Application
 
         game.stop_clock ();
 
-        for (var i = 0; i < game.board.rows; i++)
-            for (var j = 0; j < game.board.cols; j++)
-                view.can_focus = false;
+        view.can_focus = false;
 
         saver.add_game_to_finished (game, true);
 
@@ -368,13 +368,6 @@ public class Sudoku : Adw.Application
     {
         if (mode == GameMode.PLAY)
             board.solve ();
-
-        if (game != null)
-        {
-            game.paused_changed.disconnect (paused_changed_cb);
-            game.action_completed.disconnect (action_completed_cb);
-            game.board.completed.disconnect (board_completed_cb);
-        }
 
         game = new SudokuGame (board);
         game.mode = mode;
@@ -502,7 +495,7 @@ public class Sudoku : Adw.Application
     private void shortcuts_window_cb ()
     {
         var builder = new Gtk.Builder.from_resource ("/org/gnome/Sudoku/ui/shortcuts-window.ui");
-        shortcuts_window = builder.get_object ("shortcuts-window") as ShortcutsWindow;
+        var shortcuts_window = builder.get_object ("shortcuts-window") as ShortcutsWindow;
         shortcuts_window.set_transient_for (window);
         shortcuts_window.present ();
     }

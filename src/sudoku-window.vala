@@ -66,10 +66,9 @@ public class SudokuWindow : Adw.ApplicationWindow
     private const int margin_size_diff = margin_default_size - margin_small_size;
 
     private GLib.Settings settings;
-
-    public SudokuView? view { get; private set; }
-
     private SudokuGame? game = null;
+
+    public SudokuView? view { get; private set; default = null;}
     public SudokuWindowScreen? current_screen = null;
 
     private GestureClick button_controller = new GestureClick ();
@@ -212,8 +211,6 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public void start_game (SudokuGame game)
     {
-        if (this.game != null)
-            this.game.tick.disconnect (tick_cb);
         this.game = game;
         game.tick.connect (tick_cb);
         game.start_clock ();
@@ -427,6 +424,13 @@ public class SudokuWindow : Adw.ApplicationWindow
         int margin_size = margin_small_size + (int) (margin_size_diff * factor);
         game_box.margin_top = margin_size;
         game_box.margin_bottom = margin_size;
+    }
+
+    public override void dispose (){
+        //Vala calls init_template but doesn't call dispose_template
+        //see https://gitlab.gnome.org/GNOME/vala/-/issues/1515
+        dispose_template (this.get_type ());
+        base.dispose ();
     }
 }
 

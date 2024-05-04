@@ -25,24 +25,16 @@ using Gdk;
 
 public class SudokuView : Adw.Bin
 {
-    private SudokuGame _game;
-    public SudokuGame game
-    {
-        get { return _game; }
-        private set { _game = value; }
-    }
-
+    private SudokuGame game;
     private SudokuCell[,] cells;
-    private Label paused;
 
-    private Overlay overlay;
-    private Grid grid;
-
+    public bool autoclean_earmarks;
     public int selected_row { get; private set; default = 0; }
     public int selected_col { get; private set; default = 0; }
+
     public signal void selection_changed (int old_row, int old_col, int new_row, int new_col);
 
-    private void set_selected (int cell_row, int cell_col)
+    public void set_selected (int cell_row, int cell_col)
     {
         if (selected_row == cell_row && selected_col == cell_col)
             return;
@@ -64,8 +56,9 @@ public class SudokuView : Adw.Bin
 
     public SudokuView (SudokuGame game, GLib.Settings settings)
     {
-        this.vexpand = true;
+        this.game = game;
 
+        this.vexpand = true;
         this.focusable = true;
         this.can_focus = true;
 
@@ -77,22 +70,20 @@ public class SudokuView : Adw.Bin
         this._simple_warnings = settings.get_boolean ("simple-warnings");
         this._show_earmark_warnings = settings.get_boolean ("show-earmark-warnings");
         this._highlighter = settings.get_boolean ("highlighter");
-        this._autoclean_earmarks = settings.get_boolean ("autoclean-earmarks");
+        this.autoclean_earmarks = settings.get_boolean ("autoclean-earmarks");
 
-        overlay = new Overlay ();
+        var overlay = new Overlay ();
         var frame = new SudokuFrame (overlay);
         this.set_child (frame);
 
-        this.paused = new Gtk.Label ("Paused");
-        this.paused.add_css_class ("paused");
+        var paused_label = new Gtk.Label ("Paused");
+        paused_label.add_css_class ("paused");
+        paused_label.set_visible (false);
+        overlay.add_overlay (paused_label);
 
-        if (grid != null)
-            overlay.set_child (null);
-
-        this.game = game;
         this.game.paused_changed.connect(() => {
             // Set Font Size
-            var attr_list = this.paused.get_attributes ();
+            var attr_list = paused_label.get_attributes ();
             if (attr_list == null)
                 attr_list = new Pango.AttrList ();
 
@@ -100,8 +91,8 @@ public class SudokuView : Adw.Bin
                 Pango.AttrSize.new_absolute ((int) (this.get_width () * 0.125) * Pango.SCALE)
             );
 
-            this.paused.set_attributes (attr_list);
-            paused.set_visible (this.game.paused);
+            paused_label.set_attributes (attr_list);
+            paused_label.set_visible (this.game.paused);
 
             if (this.game.paused)
             {
@@ -117,7 +108,7 @@ public class SudokuView : Adw.Bin
             has_selection = !this.game.paused;
         });
 
-        grid = new Grid () {
+        var grid = new Grid () {
             row_spacing = 2,
             column_spacing = 2,
             column_homogeneous = true,
@@ -126,6 +117,7 @@ public class SudokuView : Adw.Bin
             hexpand = true
         };
         grid.add_css_class ("board");
+        overlay.set_child (grid);
 
         var blocks = new Grid[game.board.block_rows, game.board.block_cols];
         for (var block_row = 0; block_row < game.board.block_rows; block_row++)
@@ -149,23 +141,10 @@ public class SudokuView : Adw.Bin
         {
             for (var col = 0; col < game.board.cols; col++)
             {
-                var cell = new SudokuCell (row, col, ref _game);
-                var cell_row = row;
-                var cell_col = col;
-
-                cell.notify["has-focus"].connect (() => {
-                    if (game.paused)
-                        return;
-
-                    if (cell.has_focus)
-                        this.set_selected (cell_row, cell_col);
-                });
-
-                cells[row, col] = cell;
-                cells[row, col].autoclean_earmarks = autoclean_earmarks;
-                cells[row, col].get_visible_earmarks ();
-
+                var cell = new SudokuCell (row, col, game, this);
+                cell.get_visible_earmarks ();
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
+                cells[row, col] = cell;
             }
         }
 
@@ -177,9 +156,6 @@ public class SudokuView : Adw.Bin
             game.enable_all_earmark_possibilities ();
 
         update_warnings ();
-        overlay.add_overlay (paused);
-        overlay.set_child (grid);
-        paused.set_visible (false);
     }
 
     static construct {
@@ -277,7 +253,7 @@ public class SudokuView : Adw.Bin
 
         cells[row, col].get_visible_earmark (num);
         if (show_warnings && enabled)
-            cells[row, col].check_earmark_warnings (num, show_earmark_warnings);
+            cells[row, col].check_earmark_warnings (num);
     }
 
     private void set_cell_highlighter (int row, int col, bool enabled)
@@ -347,8 +323,8 @@ public class SudokuView : Adw.Bin
         for (var col = 0; col < game.board.cols; col++)
             for (var row = 0; row < game.board.rows; row++)
             {
-                cells[row, col].check_value_warnings (simple_warnings);
-                cells[row, col].check_earmarks_warnings (show_earmark_warnings);
+                cells[row, col].check_value_warnings ();
+                cells[row, col].check_earmarks_warnings ();
             }
     }
 
@@ -419,18 +395,6 @@ public class SudokuView : Adw.Bin
                 game.enable_all_earmark_possibilities ();
             else if (game.get_current_stack_action () == StackAction.ENABLE_ALL_EARMARK_POSSIBILITIES)
                 game.undo ();
-        }
-    }
-
-    private bool _autoclean_earmarks;
-    public bool autoclean_earmarks
-    {
-        get { return _autoclean_earmarks; }
-        set {
-            _autoclean_earmarks = value;
-            for (var i = 0; i < game.board.rows; i++)
-                for (var j = 0; j < game.board.cols; j++)
-                    cells[i,j].autoclean_earmarks = _autoclean_earmarks;
         }
     }
 
