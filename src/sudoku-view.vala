@@ -161,10 +161,6 @@ public class SudokuView : Adw.Bin
                         this.set_selected (cell_row, cell_col);
                 });
 
-                cell.will_open_popover.connect (() => {
-                    dismiss_popovers ();
-                });
-
                 cells[row, col] = cell;
                 cells[row, col].autoclean_earmarks = autoclean_earmarks;
                 cells[row, col].get_visible_earmarks ();

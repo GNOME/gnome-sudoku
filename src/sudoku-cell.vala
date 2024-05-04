@@ -29,7 +29,6 @@ private class SudokuCell : Widget
     private int col;
     private SudokuGame game;
     public bool autoclean_earmarks;
-    public signal void will_open_popover ();
 
     /* Gesture Controllers */
     private GestureClick button_controller = new GestureClick ();
@@ -443,8 +442,6 @@ private class SudokuCell : Widget
                 return;
         }
 
-        will_open_popover ();
-
         var earmark_picker = new NumberPicker (game, true);
         earmark_picker.set_clear_button_visibility (true);
         if (!this.game.board.has_earmarks (row, col))
@@ -481,8 +478,6 @@ private class SudokuCell : Widget
             if (!((NumberPicker)popover.child).is_earmark_picker)
                 return;
         }
-
-        will_open_popover ();
 
         var number_picker = new NumberPicker (game);
         number_picker.number_picked.connect ((o, number) => {
