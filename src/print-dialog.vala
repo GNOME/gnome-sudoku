@@ -22,7 +22,7 @@
 using Gtk;
 
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/print-dialog.ui")]
-public class PrintDialog : Adw.Window
+public class PrintDialog : Adw.Dialog
 {
     private SudokuSaver saver;
     private GLib.Settings settings;
@@ -34,18 +34,16 @@ public class PrintDialog : Adw.Window
     [GtkChild] private unowned Adw.ComboRow difficulty;
 
     private Cancellable cancellable;
+    private SudokuWindow window;
 
     private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
     private const int MAX_PUZZLES_PER_PAGE = 15;
 
-    public PrintDialog (SudokuSaver saver, Window window)
+    public PrintDialog (SudokuSaver saver, SudokuWindow window)
     {
-        Object ();
-
+        this.window = window;
         this.saver = saver;
         settings = new GLib.Settings ("org.gnome.Sudoku");
-
-        set_transient_for (window);
 
         var saved_difficulty = (DifficultyCategory) settings.get_enum (DIFFICULTY_KEY_NAME);
         difficulty.set_selected (((int) saved_difficulty) - 1);
@@ -81,13 +79,6 @@ public class PrintDialog : Adw.Window
         });
     }
 
-    static construct {
-        add_binding (Gdk.Key.Escape, 0, (self) => {
-            ((PrintDialog) self).destroy ();
-            return Gdk.EVENT_STOP;
-        }, null);
-    }
-
     public void print ()
     {
         var npuzzles = (int) n_puzzles.get_adjustment ().get_value ();
@@ -105,7 +96,7 @@ public class PrintDialog : Adw.Window
             {
                 var boards = SudokuGenerator.generate_boards_async.end (res);
 
-                var printer = new SudokuPrinter (boards, npuzzles_per_page, this);
+                var printer = new SudokuPrinter (boards, npuzzles_per_page, window);
                 if (printer.print_sudoku () == PrintOperationResult.APPLY)
                 {
                     foreach (SudokuBoard board in boards)
@@ -122,7 +113,7 @@ public class PrintDialog : Adw.Window
                     warning ("Error: %s\n", e.message);
             }
 
-            destroy ();
+            close ();
         });
     }
 }
