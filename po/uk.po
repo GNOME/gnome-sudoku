@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-04-27 15:00+0000\n"
-"PO-Revision-Date: 2024-04-27 19:13+0300\n"
+"POT-Creation-Date: 2024-05-06 03:18+0000\n"
+"PO-Revision-Date: 2024-05-06 22:38+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -66,8 +66,8 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Перегляд гри Судоку"
 
-#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:83
-#: data/sudoku-window.ui:92 src/gnome-sudoku.vala:531
+#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:64
+#: data/sudoku-window.ui:73 src/gnome-sudoku.vala:527
 msgid "Sudoku"
 msgstr "Судоку"
 
@@ -141,58 +141,135 @@ msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Підсвітити рядки, стовпці та квадрати, які містять вибранку клітинку"
 
 #: data/org.gnome.Sudoku.gschema.xml:58
+msgid "Highlight the selected cell's row and column"
+msgstr "Підсвітити рядок і стовпчик позначеної комірки"
+
+#: data/org.gnome.Sudoku.gschema.xml:62
+msgid "Highlight the selected cell's block"
+msgstr "Підсвітити блок позначеної комірки"
+
+#: data/org.gnome.Sudoku.gschema.xml:66
+msgid "Highlight the selected cell's matching numbers"
+msgstr "Підсвітити відповідні числа позначеної комірки"
+
+#: data/org.gnome.Sudoku.gschema.xml:70
 msgid "The puzzle's difficulty"
 msgstr "Складність гри"
 
-#: data/org.gnome.Sudoku.gschema.xml:62
+#: data/org.gnome.Sudoku.gschema.xml:74
 msgid "Width of the window in pixels"
 msgstr "Ширина вікна, у точках"
 
-#: data/org.gnome.Sudoku.gschema.xml:66
+#: data/org.gnome.Sudoku.gschema.xml:78
 msgid "Height of the window in pixels"
 msgstr "Висота вікна, в точках"
 
-#: data/org.gnome.Sudoku.gschema.xml:70
+#: data/org.gnome.Sudoku.gschema.xml:82
 msgid "true if the window is maximized"
 msgstr "встановлено, якщо вікно розгорнуто"
 
-#: data/org.gnome.Sudoku.gschema.xml:74
+#: data/org.gnome.Sudoku.gschema.xml:86
 msgid "true if the window is fullscreen"
 msgstr "встановлено, якщо вікно розгорнуто на увесь екран"
+
+#: data/preferences-dialog.ui:10
+msgctxt "preferences dialog"
+msgid "General"
+msgstr "Загальне"
+
+#: data/preferences-dialog.ui:14
+#| msgid "Toggle timer and pause buttons"
+msgctxt "general preferences"
+msgid "Show timer and pause buttons"
+msgstr "Показувати кнопки таймера і паузи"
+
+#: data/preferences-dialog.ui:20
+#| msgid "Show _Possibilities"
+msgctxt "general preferences"
+msgid "Show earmark possibilities"
+msgstr "Показати можливості позначок"
+
+#: data/preferences-dialog.ui:26
+#| msgid "Automatically clear related earmarks on new number insertion"
+msgctxt "general preferences"
+msgid "Automatically clean earmarks"
+msgstr "Автоматично знімати позначки"
+
+#: data/preferences-dialog.ui:34
+#| msgctxt "shortcuts window"
+#| msgid "Warnings"
+msgctxt "preferences dialog"
+msgid "Warnings"
+msgstr "Попередження"
+
+#: data/preferences-dialog.ui:38
+msgctxt "warning preferences"
+msgid "Check against solution"
+msgstr "Перевірка за розв'язком"
+
+#: data/preferences-dialog.ui:44
+#| msgid "Simple _Earmark Warnings"
+msgctxt "warning preferences"
+msgid "Show earmark warnings"
+msgstr "Показувати попередження щодо позначок"
+
+#: data/preferences-dialog.ui:52
+#| msgctxt "shortcuts window"
+#| msgid "Highlighter"
+msgctxt "preferences dialog"
+msgid "Highlighter"
+msgstr "Підсвічування"
+
+#: data/preferences-dialog.ui:56
+msgctxt "highlighter preferences"
+msgid "Highlight matching numbers"
+msgstr "Підсвітити відповідні числа"
+
+#: data/preferences-dialog.ui:62
+msgctxt "highlighter preferences"
+msgid "Highlight row and column"
+msgstr "Підсвітити рядок і стовпчик"
+
+#: data/preferences-dialog.ui:68
+#| msgctxt "shortcuts window"
+#| msgid "Highlighter"
+msgctxt "highlighter preferences"
+msgid "Highlight block"
+msgstr "Підсвітити блок"
 
 #: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
 msgstr "Надрукувати декілька головоломок"
 
-#: data/print-dialog.ui:28
+#: data/print-dialog.ui:26
 msgid "Number of Puzzles"
 msgstr "Кількість головоломок"
 
-#: data/print-dialog.ui:41
+#: data/print-dialog.ui:39
 msgid "Number of puzzles per page"
 msgstr "Кількість головоломок на сторінку"
 
-#: data/print-dialog.ui:54
+#: data/print-dialog.ui:52
 msgid "Difficulty"
 msgstr "Складність"
 
-#: data/print-dialog.ui:58
+#: data/print-dialog.ui:56
 msgid "Easy"
 msgstr "Проста"
 
-#: data/print-dialog.ui:59
+#: data/print-dialog.ui:57
 msgid "Medium"
 msgstr "Середня"
 
-#: data/print-dialog.ui:60
+#: data/print-dialog.ui:58
 msgid "Hard"
 msgstr "Складна"
 
-#: data/print-dialog.ui:61
+#: data/print-dialog.ui:59
 msgid "Very Hard"
 msgstr "Дуже складна"
 
-#: data/print-dialog.ui:77 data/sudoku-window.ui:21
+#: data/print-dialog.ui:75 data/sudoku-window.ui:21
 msgid "_Print"
 msgstr "На_друкувати…"
 
@@ -242,13 +319,11 @@ msgid "Earmark Picker"
 msgstr "Вибір позначок"
 
 #: data/shortcuts-window.ui:69
-#| msgid "_Warnings"
 msgctxt "shortcuts window"
 msgid "Warnings"
 msgstr "Попередження"
 
 #: data/shortcuts-window.ui:75
-#| msgid "_Highlighter"
 msgctxt "shortcuts window"
 msgid "Highlighter"
 msgstr "Підсвічування"
@@ -275,25 +350,30 @@ msgstr "Надрукувати"
 
 #: data/shortcuts-window.ui:104
 msgctxt "shortcuts window"
+msgid "Preferences"
+msgstr "Налаштування"
+
+#: data/shortcuts-window.ui:110
+msgctxt "shortcuts window"
 msgid "Keyboard Shortcuts"
 msgstr "Клавіатурні скорочення"
 
-#: data/shortcuts-window.ui:110
+#: data/shortcuts-window.ui:116
 msgctxt "shortcuts window"
 msgid "Quit"
 msgstr "Вийти"
 
-#: data/shortcuts-window.ui:116
+#: data/shortcuts-window.ui:122
 msgctxt "shortcuts window"
 msgid "Help"
 msgstr "Довідка"
 
-#: data/shortcuts-window.ui:122
+#: data/shortcuts-window.ui:128
 msgctxt "shortcuts window"
 msgid "Menu"
 msgstr "Меню"
 
-#: data/shortcuts-window.ui:128
+#: data/shortcuts-window.ui:134
 msgctxt "shortcuts window"
 msgid "Fullscreen"
 msgstr "Повноекранний режим"
@@ -326,83 +406,67 @@ msgstr "_Підсвічування"
 msgid "_Warnings"
 msgstr "П_опередження"
 
-#: data/sudoku-window.ui:44
-msgid "_More Options"
-msgstr "_Інші параметри"
+#: data/sudoku-window.ui:46
+msgid "_Preferences"
+msgstr "_Налаштування"
 
-#: data/sudoku-window.ui:47
-msgid "Show _Timer"
-msgstr "Показати _таймер"
-
-#: data/sudoku-window.ui:51
-msgid "Show _Possibilities"
-msgstr "Показати _можливості"
-
-#: data/sudoku-window.ui:57
-msgid "Simple _Earmark Warnings"
-msgstr "П_рості попередження позначками"
-
-#: data/sudoku-window.ui:61
-msgid "Simple _Warnings Mode"
-msgstr "Режим простих поп_ереджень"
-
-#: data/sudoku-window.ui:69
+#: data/sudoku-window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: data/sudoku-window.ui:73
+#: data/sudoku-window.ui:54
 msgid "_Help"
 msgstr "_Довідка"
 
-#: data/sudoku-window.ui:77
+#: data/sudoku-window.ui:58
 msgid "_About Sudoku"
 msgstr "_Про «Судоку»"
 
-#: data/sudoku-window.ui:100
+#: data/sudoku-window.ui:81
 msgid "Undo Action"
 msgstr "Скасувати дію"
 
-#: data/sudoku-window.ui:112
+#: data/sudoku-window.ui:93
 msgid "Redo Action"
 msgstr "Повторити дію"
 
-#: data/sudoku-window.ui:124
+#: data/sudoku-window.ui:105
 msgid "Back"
 msgstr "Назад"
 
-#: data/sudoku-window.ui:136
+#: data/sudoku-window.ui:117
 msgid "Leave Fullscreen"
 msgstr "Вийти з повноекранного режиму"
 
-#: data/sudoku-window.ui:150
+#: data/sudoku-window.ui:131
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: data/sudoku-window.ui:169
+#: data/sudoku-window.ui:150
 msgid "Play Custom Puzzle"
 msgstr "Грати у власну головоломку"
 
-#: data/sudoku-window.ui:218
+#: data/sudoku-window.ui:199
 msgid "Select Game Difficulty"
 msgstr "Виберіть складність гри"
 
-#: data/sudoku-window.ui:235
+#: data/sudoku-window.ui:216
 msgid "_Easy"
 msgstr "_Проста"
 
-#: data/sudoku-window.ui:249
+#: data/sudoku-window.ui:230
 msgid "_Medium"
 msgstr "_Посередня"
 
-#: data/sudoku-window.ui:263
+#: data/sudoku-window.ui:244
 msgid "_Hard"
 msgstr "С_кладна"
 
-#: data/sudoku-window.ui:277
+#: data/sudoku-window.ui:258
 msgid "_Very Hard"
 msgstr "Д_уже складно"
 
-#: data/sudoku-window.ui:288
+#: data/sudoku-window.ui:269
 msgid "_Start Game"
 msgstr "_Почати гру"
 
@@ -431,46 +495,46 @@ msgid "Custom Puzzle"
 msgstr "Власна головоломка"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:83
+#: src/gnome-sudoku.vala:81
 msgid "Show release version"
 msgstr "Показати версію випуску"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:87
+#: src/gnome-sudoku.vala:85
 msgid "Show the possible values for each cell"
 msgstr "Показувати можливі значення для кожної клітинки"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:246
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Головоломку, яку ви ввели, — не сумісна з судоку."
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:246
 msgid "Please enter a valid puzzle."
 msgstr "Введіть правильну головоломку."
 
-#: src/gnome-sudoku.vala:285 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:247 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "Закрити"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:293
+#: src/gnome-sudoku.vala:255
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Головоломка, яку ви ввели, має кілька розв'язків."
 
-#: src/gnome-sudoku.vala:293
+#: src/gnome-sudoku.vala:255
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Правильний судоку може мати тільки один розв'язок."
 
-#: src/gnome-sudoku.vala:294
+#: src/gnome-sudoku.vala:256
 msgid "_Back"
 msgstr "_Назад"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:257
 msgid "Play _Anyway"
 msgstr "О_днаково зіграти"
 
-#: src/gnome-sudoku.vala:338
+#: src/gnome-sudoku.vala:298
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -478,16 +542,16 @@ msgstr[0] "Чудово! Ви склали головоломку за %d хви
 msgstr[1] "Чудово! Ви склали головоломку за %d хвилини"
 msgstr[2] "Чудово! Ви склали головоломку за %d хвилин"
 
-#: src/gnome-sudoku.vala:346
+#: src/gnome-sudoku.vala:306
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/gnome-sudoku.vala:347
+#: src/gnome-sudoku.vala:307
 msgid "Play _Again"
 msgstr "Зіграти _ще раз"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:528
+#: src/gnome-sudoku.vala:524
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -498,7 +562,7 @@ msgstr ""
 "\n"
 "Головоломки породжує — QQwing %s"
 
-#: src/gnome-sudoku.vala:538
+#: src/gnome-sudoku.vala:534
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота\n"
@@ -531,6 +595,15 @@ msgstr "Грати"
 #: src/sudoku-window.vala:317
 msgid "Pause"
 msgstr "Пауза"
+
+#~ msgid "_More Options"
+#~ msgstr "_Інші параметри"
+
+#~ msgid "Show _Timer"
+#~ msgstr "Показати _таймер"
+
+#~ msgid "Simple _Warnings Mode"
+#~ msgstr "Режим простих поп_ереджень"
 
 #~ msgid "Reset the board to its original state?"
 #~ msgstr "Скинути дошку до її початкового стану?"
