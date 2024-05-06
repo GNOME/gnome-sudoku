@@ -29,6 +29,10 @@ public class SudokuView : Adw.Bin
     private SudokuCell[,] cells;
 
     public bool autoclean_earmarks;
+    public bool highlight_row_column;
+    public bool highlight_block;
+    public bool highlight_numbers;
+
     public int selected_row { get; private set; default = 0; }
     public int selected_col { get; private set; default = 0; }
 
@@ -71,9 +75,9 @@ public class SudokuView : Adw.Bin
         this._show_earmark_warnings = settings.get_boolean ("show-earmark-warnings");
         this._highlighter = settings.get_boolean ("highlighter");
         this.autoclean_earmarks = settings.get_boolean ("autoclean-earmarks");
-        this._highlight_row_column = settings.get_boolean ("highlight-row-column");
-        this._highlight_block = settings.get_boolean ("highlight-block");
-        this._highlight_numbers = settings.get_boolean ("highlight-numbers");
+        this.highlight_row_column = settings.get_boolean ("highlight-row-column");
+        this.highlight_block = settings.get_boolean ("highlight-block");
+        this.highlight_numbers = settings.get_boolean ("highlight-numbers");
 
         var overlay = new Overlay ();
         var frame = new SudokuFrame (overlay);
@@ -410,39 +414,6 @@ public class SudokuView : Adw.Bin
             set_cell_highlighter (selected_row, selected_col, false);
             _highlighter = value;
             set_cell_highlighter (selected_row, selected_col, true);
-        }
-    }
-
-    private bool _highlight_row_column;
-    public bool highlight_row_column
-    {
-        get { return _highlight_row_column; }
-        set {
-            set_cell_highlighter (selected_row, selected_col, false);
-            _highlight_row_column = value;
-            set_cell_highlighter (selected_row, selected_col, true);
-        }
-    }
-
-    private bool _highlight_block;
-    public bool highlight_block
-    {
-        get { return _highlight_block; }
-        set {
-            set_cell_highlighter (selected_row, selected_col, false);
-            _highlight_block = value;
-            set_cell_highlighter (selected_row, selected_col, true);
-        }
-    }
-
-    private bool _highlight_numbers;
-    public bool highlight_numbers
-    {
-        get { return _highlight_numbers; }
-        set {
-            set_value_highlighter (cells[selected_row, selected_col].value, false);
-            _highlight_numbers = value;
-            set_value_highlighter (cells[selected_row, selected_col].value, true);
         }
     }
 
