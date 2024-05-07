@@ -4,6 +4,9 @@
     <file>style.css</file>
     <file>style-dark.css</file>
   </gresource>
+  <gresource prefix="/org/gnome/Sudoku">
+    <file preprocess="xml-stripblanks" alias="appdata.xml">org.gnome.Sudoku.metainfo.xml.in</file>
+  </gresource>
   <gresource prefix="/org/gnome/Sudoku/ui">
     <file preprocess="xml-stripblanks">sudoku-window.ui</file>
     <file preprocess="xml-stripblanks">shortcuts-window.ui</file>
