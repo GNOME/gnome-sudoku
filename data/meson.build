@@ -24,9 +24,9 @@ if desktop_file_validate.found()
   )
 endif
 
-appdata_file = i18n.merge_file(
-  input: 'org.gnome.Sudoku.appdata.xml.in',
-  output: '@0@.appdata.xml'.format(application_id),
+metainfo_file = i18n.merge_file(
+  input: 'org.gnome.Sudoku.metainfo.xml.in',
+  output: '@0@.metainfo.xml'.format(application_id),
   install: true,
   install_dir: join_paths(datadir, 'metainfo'),
   po_dir: '../po'
@@ -34,12 +34,12 @@ appdata_file = i18n.merge_file(
 appstreamcli = find_program('appstreamcli', required: false)
 if appstreamcli.found()
   test(
-    'validate-appdata', appstreamcli,
+    'validate-metainfo', appstreamcli,
     args: [
-      'validate', '--no-net', appdata_file.full_path()
+      'validate', '--no-net', metainfo_file.full_path()
     ],
     depends: [
-      appdata_file
+      metainfo_file
     ],
   )
 endif
