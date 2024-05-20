@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-04-27 17:23+0000\n"
-"PO-Revision-Date: 2024-04-28 09:42+1000\n"
+"POT-Creation-Date: 2024-05-06 19:39+0000\n"
+"PO-Revision-Date: 2024-05-07 07:08+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -71,8 +71,8 @@ msgstr ""
 msgid "A GNOME sudoku game preview"
 msgstr "Предварительный просмотр игры судоку GNOME"
 
-#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:83
-#: data/sudoku-window.ui:92 src/gnome-sudoku.vala:531
+#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:64
+#: data/sudoku-window.ui:73 src/gnome-sudoku.vala:527
 msgid "Sudoku"
 msgstr "Судоку"
 
@@ -113,7 +113,7 @@ msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:29
 msgid "Initialize the earmarks with the possible values for each cell"
-msgstr "Инициализировать примечания с возможными значениями для каждой ячейки"
+msgstr "Создавать метки с возможными значениями для каждой ячейки"
 
 #: data/org.gnome.Sudoku.gschema.xml:33
 msgid "Color mistakes and duplicate numbers in red"
@@ -129,7 +129,7 @@ msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:38
 msgid "Check earmarks against duplicates in row, column and block"
-msgstr "Проверять метки на наличие дубликатов в строке, столбце и блоке"
+msgstr "Проверять метки на наличие дубликатов в строке, столбике и блоке"
 
 #: data/org.gnome.Sudoku.gschema.xml:42
 msgid "Toggle timer and pause buttons"
@@ -138,7 +138,7 @@ msgstr "Переключать кнопки таймера и паузы"
 #: data/org.gnome.Sudoku.gschema.xml:46
 msgid "Check cells only against duplicates in row, column and block"
 msgstr ""
-"Проверять ячейки только на наличие дубликатов в строке, столбце и блоке"
+"Проверять ячейки только на наличие дубликатов в строке, столбике и блоке"
 
 #: data/org.gnome.Sudoku.gschema.xml:50
 msgid "Automatically clear related earmarks on new number insertion"
@@ -146,61 +146,128 @@ msgstr "Автоматически очищать связанные метки 
 
 #: data/org.gnome.Sudoku.gschema.xml:54
 msgid "Highlight row, column and square that contain the selected cell"
-msgstr "Выделять строку, столбец и квадрат с выбранной ячейкой"
+msgstr "Подсвечивать строку, столбик и блок с выбранной ячейкой"
 
 #: data/org.gnome.Sudoku.gschema.xml:58
+msgid "Highlight the selected cell's row and column"
+msgstr "Подсвечивать строку и столбик с выбранной ячейкой"
+
+#: data/org.gnome.Sudoku.gschema.xml:62
+msgid "Highlight the selected cell's block"
+msgstr "Подсвечивать блок с выбранной ячейкой"
+
+#: data/org.gnome.Sudoku.gschema.xml:66
+msgid "Highlight the selected cell's matching numbers"
+msgstr "Выделять числа, совпадающие со значением в выбранной ячейке"
+
+#: data/org.gnome.Sudoku.gschema.xml:70
 msgid "The puzzle's difficulty"
 msgstr "Сложность игры"
 
-#: data/org.gnome.Sudoku.gschema.xml:62
+#: data/org.gnome.Sudoku.gschema.xml:74
 msgid "Width of the window in pixels"
 msgstr "Ширина окна в пикселах"
 
-#: data/org.gnome.Sudoku.gschema.xml:66
+#: data/org.gnome.Sudoku.gschema.xml:78
 msgid "Height of the window in pixels"
 msgstr "Высота окна в пикселах"
 
-#: data/org.gnome.Sudoku.gschema.xml:70
+#: data/org.gnome.Sudoku.gschema.xml:82
 msgid "true if the window is maximized"
 msgstr "«true», если окно имеет максимальный размер"
 
-#: data/org.gnome.Sudoku.gschema.xml:74
+#: data/org.gnome.Sudoku.gschema.xml:86
 msgid "true if the window is fullscreen"
 msgstr "«true», если окно развёрнуто во весь экран"
+
+#: data/preferences-dialog.ui:10
+msgctxt "preferences dialog"
+msgid "General"
+msgstr "Общее"
+
+#: data/preferences-dialog.ui:14
+msgctxt "general preferences"
+msgid "Show timer and pause buttons"
+msgstr "Показать кнопки таймера и паузы"
+
+#: data/preferences-dialog.ui:20
+msgctxt "general preferences"
+msgid "Show earmark possibilities"
+msgstr "Показывать отмеченные варианты"
+
+#: data/preferences-dialog.ui:26
+msgctxt "general preferences"
+msgid "Automatically clean earmarks"
+msgstr "Автоматически очищать метки"
+
+#: data/preferences-dialog.ui:34
+msgctxt "preferences dialog"
+msgid "Warnings"
+msgstr "Предупреждения"
+
+#: data/preferences-dialog.ui:38
+msgctxt "warning preferences"
+msgid "Check against solution"
+msgstr "Проверка по решению"
+
+#: data/preferences-dialog.ui:44
+msgctxt "warning preferences"
+msgid "Show earmark warnings"
+msgstr "Показывать предупреждения для меток"
+
+#: data/preferences-dialog.ui:52
+msgctxt "preferences dialog"
+msgid "Highlighter"
+msgstr "Подсвечивание"
+
+#: data/preferences-dialog.ui:56
+msgctxt "highlighter preferences"
+msgid "Highlight matching numbers"
+msgstr "Подсвечивать совпадающие числа"
+
+#: data/preferences-dialog.ui:62
+msgctxt "highlighter preferences"
+msgid "Highlight row and column"
+msgstr "Подсвечивать строку и столбик"
+
+#: data/preferences-dialog.ui:68
+msgctxt "highlighter preferences"
+msgid "Highlight block"
+msgstr "Подсвечивать блок"
 
 #: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
 msgstr "Печать нескольких головоломок"
 
-#: data/print-dialog.ui:28
+#: data/print-dialog.ui:26
 msgid "Number of Puzzles"
 msgstr "Количество головоломок"
 
-#: data/print-dialog.ui:41
+#: data/print-dialog.ui:39
 msgid "Number of puzzles per page"
 msgstr "Количество головоломок на странице"
 
-#: data/print-dialog.ui:54
+#: data/print-dialog.ui:52
 msgid "Difficulty"
 msgstr "Сложность"
 
-#: data/print-dialog.ui:58
+#: data/print-dialog.ui:56
 msgid "Easy"
 msgstr "Лёгкая"
 
-#: data/print-dialog.ui:59
+#: data/print-dialog.ui:57
 msgid "Medium"
 msgstr "Средняя"
 
-#: data/print-dialog.ui:60
+#: data/print-dialog.ui:58
 msgid "Hard"
 msgstr "Сложная"
 
-#: data/print-dialog.ui:61
+#: data/print-dialog.ui:59
 msgid "Very Hard"
 msgstr "Очень сложная"
 
-#: data/print-dialog.ui:77 data/sudoku-window.ui:21
+#: data/print-dialog.ui:75 data/sudoku-window.ui:21
 msgid "_Print"
 msgstr "_Печать"
 
@@ -257,7 +324,7 @@ msgstr "Предупреждения"
 #: data/shortcuts-window.ui:75
 msgctxt "shortcuts window"
 msgid "Highlighter"
-msgstr "Подсвечивать ячейки"
+msgstr "Подсвечивание"
 
 #: data/shortcuts-window.ui:82
 msgctxt "shortcuts window"
@@ -281,25 +348,30 @@ msgstr "Печать"
 
 #: data/shortcuts-window.ui:104
 msgctxt "shortcuts window"
+msgid "Preferences"
+msgstr "Параметры"
+
+#: data/shortcuts-window.ui:110
+msgctxt "shortcuts window"
 msgid "Keyboard Shortcuts"
 msgstr "Комбинации клавиш"
 
-#: data/shortcuts-window.ui:110
+#: data/shortcuts-window.ui:116
 msgctxt "shortcuts window"
 msgid "Quit"
 msgstr "Выйти"
 
-#: data/shortcuts-window.ui:116
+#: data/shortcuts-window.ui:122
 msgctxt "shortcuts window"
 msgid "Help"
 msgstr "Справка"
 
-#: data/shortcuts-window.ui:122
+#: data/shortcuts-window.ui:128
 msgctxt "shortcuts window"
 msgid "Menu"
 msgstr "Меню"
 
-#: data/shortcuts-window.ui:128
+#: data/shortcuts-window.ui:134
 msgctxt "shortcuts window"
 msgid "Fullscreen"
 msgstr "Во весь экран"
@@ -326,89 +398,73 @@ msgstr "Печать _нескольких головоломок…"
 
 #: data/sudoku-window.ui:36
 msgid "_Highlighter"
-msgstr "_Подсвечивать ячейки"
+msgstr "_Подсвечивание"
 
 #: data/sudoku-window.ui:40
 msgid "_Warnings"
 msgstr "_Предупреждения"
 
-#: data/sudoku-window.ui:44
-msgid "_More Options"
-msgstr "_Больше параметров"
+#: data/sudoku-window.ui:46
+msgid "_Preferences"
+msgstr "Па_раметры"
 
-#: data/sudoku-window.ui:47
-msgid "Show _Timer"
-msgstr "Показывать _таймер"
-
-#: data/sudoku-window.ui:51
-msgid "Show _Possibilities"
-msgstr "Показывать _варианты"
-
-#: data/sudoku-window.ui:57
-msgid "Simple _Earmark Warnings"
-msgstr "Простые предупреждения _метками"
-
-#: data/sudoku-window.ui:61
-msgid "Simple _Warnings Mode"
-msgstr "Режим простых _предупреждений"
-
-#: data/sudoku-window.ui:69
+#: data/sudoku-window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбинации клавиши"
 
-#: data/sudoku-window.ui:73
+#: data/sudoku-window.ui:54
 msgid "_Help"
 msgstr "_Справка"
 
-#: data/sudoku-window.ui:77
+#: data/sudoku-window.ui:58
 msgid "_About Sudoku"
 msgstr "_О приложении"
 
-#: data/sudoku-window.ui:100
+#: data/sudoku-window.ui:81
 msgid "Undo Action"
 msgstr "Отменить действие"
 
-#: data/sudoku-window.ui:112
+#: data/sudoku-window.ui:93
 msgid "Redo Action"
 msgstr "Вернуть действие"
 
-#: data/sudoku-window.ui:124
+#: data/sudoku-window.ui:105
 msgid "Back"
 msgstr "Назад"
 
-#: data/sudoku-window.ui:136
+#: data/sudoku-window.ui:117
 msgid "Leave Fullscreen"
 msgstr "Покинуть полноэкранный режим"
 
-#: data/sudoku-window.ui:150
+#: data/sudoku-window.ui:131
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: data/sudoku-window.ui:169
+#: data/sudoku-window.ui:150
 msgid "Play Custom Puzzle"
 msgstr "Решить свою головоломку"
 
-#: data/sudoku-window.ui:218
+#: data/sudoku-window.ui:199
 msgid "Select Game Difficulty"
 msgstr "Выберите сложность игры"
 
-#: data/sudoku-window.ui:235
+#: data/sudoku-window.ui:216
 msgid "_Easy"
 msgstr "_Лёгкая"
 
-#: data/sudoku-window.ui:249
+#: data/sudoku-window.ui:230
 msgid "_Medium"
 msgstr "_Средняя"
 
-#: data/sudoku-window.ui:263
+#: data/sudoku-window.ui:244
 msgid "_Hard"
 msgstr "С_ложная"
 
-#: data/sudoku-window.ui:277
+#: data/sudoku-window.ui:258
 msgid "_Very Hard"
 msgstr "_Очень сложная"
 
-#: data/sudoku-window.ui:288
+#: data/sudoku-window.ui:269
 msgid "_Start Game"
 msgstr "_Начать игру"
 
@@ -437,46 +493,46 @@ msgid "Custom Puzzle"
 msgstr "Пользовательская головоломка"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:83
+#: src/gnome-sudoku.vala:81
 msgid "Show release version"
 msgstr "Показать номер версии"
 
 #. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:87
+#: src/gnome-sudoku.vala:85
 msgid "Show the possible values for each cell"
 msgstr "Показывать доступные значения для каждой ячейки"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:246
 msgid "The puzzle you have entered is not a valid Sudoku."
-msgstr "Введенная головоломка не является правильной головоломкой Судоку."
+msgstr "Введенная вами головоломка не совместима с Судоку."
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:246
 msgid "Please enter a valid puzzle."
 msgstr "Введите правильную головоломку."
 
-#: src/gnome-sudoku.vala:285 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:247 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "Закрыть"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:293
+#: src/gnome-sudoku.vala:255
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Введенная головоломка имеет несколько решений."
 
-#: src/gnome-sudoku.vala:293
+#: src/gnome-sudoku.vala:255
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Правильная головоломка Судоку имеет только одно решение."
 
-#: src/gnome-sudoku.vala:294
+#: src/gnome-sudoku.vala:256
 msgid "_Back"
 msgstr "_Назад"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:257
 msgid "Play _Anyway"
 msgstr "Сыграть все _равно"
 
-#: src/gnome-sudoku.vala:338
+#: src/gnome-sudoku.vala:298
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -484,16 +540,16 @@ msgstr[0] "Очень хорошо, вы решили головоломку з�
 msgstr[1] "Очень хорошо, вы решили головоломку за %d минуты!"
 msgstr[2] "Очень хорошо, вы решили головоломку за %d минут!"
 
-#: src/gnome-sudoku.vala:346
+#: src/gnome-sudoku.vala:306
 msgid "Quit"
 msgstr "Выйти"
 
-#: src/gnome-sudoku.vala:347
+#: src/gnome-sudoku.vala:307
 msgid "Play _Again"
 msgstr "Сыграть _ещё раз"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:528
+#: src/gnome-sudoku.vala:524
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -504,7 +560,7 @@ msgstr ""
 "\n"
 "Головоломки создаются с помощью QQwing %s"
 
-#: src/gnome-sudoku.vala:538
+#: src/gnome-sudoku.vala:534
 msgid "translator-credits"
 msgstr ""
 "Stas Solovey <whats_up@tut.by>, 2015-2018.\n"
@@ -535,6 +591,15 @@ msgstr "Играть"
 #: src/sudoku-window.vala:317
 msgid "Pause"
 msgstr "Пауза"
+
+#~ msgid "_More Options"
+#~ msgstr "_Больше параметров"
+
+#~ msgid "Show _Timer"
+#~ msgstr "Показывать _таймер"
+
+#~ msgid "Simple _Warnings Mode"
+#~ msgstr "Режим простых _предупреждений"
 
 #~ msgid "Reset the board to its original state?"
 #~ msgstr "Вернуть игровую доску к исходному состоянию?"
