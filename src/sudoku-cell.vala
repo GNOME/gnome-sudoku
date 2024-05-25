@@ -30,24 +30,15 @@ private class SudokuCell : Widget
     private SudokuGame game;
     private unowned SudokuView view;
 
-    /* Gesture Controllers */
     private GestureClick button_controller = new GestureClick ();
     private GestureLongPress long_press_controller = new GestureLongPress ();
-    private EventControllerKey key_controller = new EventControllerKey ();
-    private bool control_key_pressed;
 
-    private Popover _popover = null;
-    public Popover popover
-    {
-        get {
-            if (_popover == null)
-            {
-                _popover = new Popover ();
-                _popover.autohide = false;
-            }
-            return _popover;
-        }
-    }
+    //Only initialized when the cell is not fixed
+    private bool control_key_pressed;
+    private Popover popover;
+    private EventControllerKey key_controller;
+    private NumberPicker earmark_picker;
+    private NumberPicker value_picker;
 
     // The label can also be set to X if the label is invalid.
     // If this happens, the value **must not** be changed, only the label.
@@ -55,6 +46,80 @@ private class SudokuCell : Widget
         visible = false
     };
     private Label[] earmark_labels = new Label[9];
+
+    public SudokuCell (int row, int col, SudokuGame game, SudokuView view)
+    {
+        this.set_accessible_role (AccessibleRole.BUTTON);
+
+        this.row = row;
+        this.col = col;
+        this.game = game;
+        this.view = view;
+
+        if (value != 0)
+        {
+            value_label.set_label (this.value.to_string ());
+            value_label.set_visible (true);
+        }
+
+        focusable = true;
+        can_focus = true;
+
+        this.set_fixed_css (true);
+
+        this.notify["has-focus"].connect (focus_changed_cb);
+        this.button_controller.set_button (0 /* all buttons */);
+
+        this.add_controller (this.button_controller);
+        this.add_controller (this.long_press_controller);
+
+        this.long_press_controller.pressed.connect (long_press_cb);
+        this.button_controller.released.connect (button_released_cb);
+
+        value_label.set_parent (this);
+
+        int num = 0;
+        for (int row_tmp = 0; row_tmp < game.board.block_rows; row_tmp++)
+        {
+            for (int col_tmp = 0; col_tmp < game.board.block_cols; col_tmp++)
+            {
+                num++;
+
+                earmark_labels[num - 1] = new Label (num.to_string ()) {
+                    visible = false
+                };
+                earmark_labels[num - 1].set_parent (this);
+                earmark_labels[num - 1].add_css_class ("earmark");
+            }
+        }
+
+        if (!is_fixed)
+        {
+            key_controller = new EventControllerKey  ();
+            add_controller (this.key_controller);
+            key_controller.key_pressed.connect (key_pressed_cb);
+            key_controller.key_released.connect (key_released_cb);
+
+            popover = new Popover ();
+            popover.set_autohide (false);
+            popover.set_parent (this);
+            var popover_controller = new EventControllerKey ();
+            popover_controller.key_pressed.connect (key_pressed_cb);
+            popover_controller.key_released.connect (key_released_cb);
+            (popover as Widget)?.add_controller (popover_controller);
+
+            value_picker = new NumberPicker (game, false);
+            value_picker.value_picked.connect (value_picked_cb);
+
+            earmark_picker = new NumberPicker (game, true);
+            earmark_picker.earmark_state_changed.connect (earmark_picked_cb);
+        }
+    }
+
+    static construct
+    {
+        set_css_name ("sudokucell");
+    }
 
     public int value
     {
@@ -169,74 +234,6 @@ private class SudokuCell : Widget
             earmark.remove_css_class ("highlight-label");
     }
 
-
-    public SudokuCell (int row, int col, SudokuGame game, SudokuView view)
-    {
-        this.set_accessible_role (AccessibleRole.BUTTON);
-
-        this.row = row;
-        this.col = col;
-        this.game = game;
-        this.view = view;
-
-        if (value != 0)
-        {
-            value_label.set_label (this.value.to_string ());
-            value_label.set_visible (true);
-        }
-
-        focusable = true;
-        can_focus = true;
-
-        this.set_fixed_css (true);
-
-        this.notify["has-focus"].connect (focus_changed_cb);
-        this.button_controller.set_button (0 /* all buttons */);
-
-        this.add_controller (this.button_controller);
-        this.add_controller (this.long_press_controller);
-        this.add_controller (this.key_controller);
-
-        this.long_press_controller.pressed.connect (long_press_cb);
-        this.button_controller.released.connect (button_released_cb);
-        this.key_controller.key_pressed.connect (key_pressed_cb);
-        this.key_controller.key_released.connect (key_released_cb);
-
-        value_label.set_parent (this);
-
-        int num = 0;
-        for (int row_tmp = 0; row_tmp < game.board.block_rows; row_tmp++)
-        {
-            for (int col_tmp = 0; col_tmp < game.board.block_cols; col_tmp++)
-            {
-                num++;
-
-                earmark_labels[num - 1] = new Label (num.to_string ()) {
-                    visible = false
-                };
-                earmark_labels[num - 1].set_parent (this);
-                earmark_labels[num - 1].add_css_class ("earmark");
-            }
-        }
-
-        popover.set_parent (this);
-        var popover_controller = new EventControllerKey ();
-        popover_controller.key_pressed.connect (key_pressed_cb);
-        popover_controller.key_released.connect (key_released_cb);
-        (popover as Widget)?.add_controller (popover_controller);
-        popover.closed.connect (() => {
-            if (popover.visible)
-            {
-                popover.set_child (null);
-                this.grab_focus ();
-            }
-        });
-    }
-
-    static construct {
-        set_css_name ("sudokucell");
-    }
-
     public void update_value ()
     {
         if (value != 0)
@@ -266,7 +263,7 @@ private class SudokuCell : Widget
                                   uint         keycode,
                                   ModifierType state)
     {
-        if (is_fixed || game.paused)
+        if (game.paused)
             return;
 
         if (keyval == Key.Control_L || keyval == Key.Control_R)
@@ -286,7 +283,7 @@ private class SudokuCell : Widget
 
                 if (number_picker != null && number_picker.is_earmark_picker)
                 {
-                    number_picker.set_earmark (row, col, key - 1, new_state);
+                    number_picker.set_earmark_button (key, new_state);
                 }
                 else
                 {
@@ -318,7 +315,7 @@ private class SudokuCell : Widget
             keyval == Gdk.Key.Return ||
             keyval == Gdk.Key.KP_Enter)
         {
-            show_number_picker ();
+            show_value_picker ();
             return;
         }
 
@@ -354,7 +351,7 @@ private class SudokuCell : Widget
                 show_earmark_picker ();
             }
             else
-                show_number_picker ();
+                show_value_picker ();
         }
         else if (gesture.get_current_button () == BUTTON_SECONDARY &&
                  game.mode == GameMode.PLAY &&
@@ -375,7 +372,7 @@ private class SudokuCell : Widget
             return;
 
         if (game.mode == GameMode.CREATE)
-            show_number_picker ();
+            show_value_picker ();
         else if (this.value == 0)
             show_earmark_picker ();
     }
@@ -387,6 +384,37 @@ private class SudokuCell : Widget
 
         if (this.has_focus)
             view.set_selected (row, col);
+    }
+
+    private void value_picked_cb (int val)
+    {
+        if (val > 0)
+            popover.popdown ();
+        else
+        {
+            this.game.board.disable_all_earmarks (row, col);
+            value_picker.set_clear_button_visibility (false);
+        }
+        this.value = val;
+    }
+
+    private void earmark_picked_cb (int num, bool state)
+    {
+        if (state)
+        {
+            if (!this.game.board.is_earmark_enabled (row, col, num))
+                this.game.enable_earmark (row, col, num);
+        }
+        else
+        {
+            if (num == 0)
+                this.game.disable_all_earmarks (row, col);
+
+            else if (this.game.board.is_earmark_enabled (row, col, num))
+                this.game.disable_earmark (row, col, num);
+        }
+
+        earmark_picker.set_clear_button_enabled (this.game.board.has_earmarks (row, col));
     }
 
     private int get_key_number (uint keyval)
@@ -445,64 +473,36 @@ private class SudokuCell : Widget
     private void show_earmark_picker ()
         requires (this.value == 0)
     {
-        if (this.popover.visible)
+        if (popover.visible)
         {
+            bool is_earmark_picker = ((NumberPicker)popover.child).is_earmark_picker;
             dismiss_popover ();
-            if (((NumberPicker)popover.child).is_earmark_picker)
+            if (is_earmark_picker)
                 return;
         }
 
-        var earmark_picker = new NumberPicker (game, true);
         earmark_picker.set_clear_button_visibility (true);
-        if (!this.game.board.has_earmarks (row, col))
+        earmark_picker.set_earmark_buttons (row, col);
+        if (!game.board.has_earmarks (row, col))
             earmark_picker.set_clear_button_enabled (false);
 
-        earmark_picker.earmark_state_changed.connect ((number, state) => {
-            if (state)
-            {
-                if (!this.game.board.is_earmark_enabled (row, col, number))
-                    this.game.enable_earmark (row, col, number);
-            }
-            else
-            {
-                if (number == 0)
-                    this.game.disable_all_earmarks (row, col);
-
-                else if (this.game.board.is_earmark_enabled (row, col, number))
-                    this.game.disable_earmark (row, col, number);
-            }
-
-            earmark_picker.set_clear_button_enabled (this.game.board.has_earmarks (row, col));
-        });
-        earmark_picker.set_earmarks (row, col);
         popover.set_child (earmark_picker);
-
         popover.popup ();
     }
 
-    private void show_number_picker ()
+    private void show_value_picker ()
     {
-        if (this.popover.visible)
+        if (popover.visible)
         {
+            bool is_earmark_picker = ((NumberPicker)popover.child).is_earmark_picker;
             dismiss_popover ();
-            if (!((NumberPicker)popover.child).is_earmark_picker)
+            if (!is_earmark_picker)
                 return;
         }
 
-        var number_picker = new NumberPicker (game);
-        number_picker.number_picked.connect ((o, number) => {
-            if (number > 0)
-                popover.popdown ();
-            else
-            {
-                this.game.board.disable_all_earmarks (row, col);
-                number_picker.set_clear_button_visibility (false);
-            }
-            value = number;
-        });
-        number_picker.set_clear_button_visibility (value > 0 || game.board.has_earmarks (row, col));
-        popover.set_child (number_picker);
+        value_picker.set_clear_button_visibility (value > 0 || game.board.has_earmarks (row, col));
 
+        popover.set_child (value_picker);
         popover.popup ();
     }
 
@@ -568,7 +568,7 @@ private class SudokuCell : Widget
                                         int height,
                                         int baseline)
     {
-        this.popover.present ();
+        this.popover?.present ();
 
         int value_width, value_height;
         value_width = value_height = int.min (width, height);
@@ -619,8 +619,11 @@ private class SudokuCell : Widget
 
     public void dismiss_popover ()
     {
-        if (_popover != null)
-            _popover.popdown ();
+        if (popover != null)
+        {
+            popover.popdown ();
+            popover.child = null;
+        }
     }
 
     public override void dispose ()
@@ -628,8 +631,7 @@ private class SudokuCell : Widget
         this.value_label.unparent ();
         foreach (Label earmark in earmark_labels)
             earmark.unparent ();
-        popover.unparent ();
+        popover?.unparent ();
         base.dispose ();
     }
 }
-
