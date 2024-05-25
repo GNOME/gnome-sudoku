@@ -447,7 +447,8 @@ public class SudokuWindow : Adw.ApplicationWindow
         game_box.margin_bottom = margin_size;
     }
 
-    public override void dispose (){
+    public override void dispose ()
+    {
         //Vala calls init_template but doesn't call dispose_template
         //see https://gitlab.gnome.org/GNOME/vala/-/issues/1515
         dispose_template (this.get_type ());

@@ -33,6 +33,9 @@ public class SudokuView : Adw.Bin
     public bool highlight_block;
     public bool highlight_numbers;
 
+    SudokuFrame frame;
+    Label paused_label;
+
     public int selected_row { get; private set; default = 0; }
     public int selected_col { get; private set; default = 0; }
 
@@ -80,10 +83,10 @@ public class SudokuView : Adw.Bin
         this.highlight_numbers = settings.get_boolean ("highlight-numbers");
 
         var overlay = new Overlay ();
-        var frame = new SudokuFrame (overlay);
+        frame = new SudokuFrame (overlay);
         this.set_child (frame);
 
-        var paused_label = new Gtk.Label ("Paused");
+        paused_label = new Label ("Paused");
         paused_label.add_css_class ("paused");
         paused_label.set_visible (false);
         overlay.add_overlay (paused_label);
@@ -439,6 +442,12 @@ public class SudokuView : Adw.Bin
         for (var i = 0; i < game.board.rows; i++)
             for (var j = 0; j < game.board.cols; j++)
                 cells[i,j].dismiss_popover ();
+    }
+
+    public override void dispose ()
+    {
+        frame.unparent ();
+        base.dispose ();
     }
 }
 
