@@ -37,6 +37,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Box game_box; // Holds the view
 
     [GtkChild] private unowned MenuButton main_menu;
+    [GtkChild] private unowned ToggleButton earmark_mode_button;
     [GtkChild] private unowned Button undo_button;
     [GtkChild] private unowned Button redo_button;
     [GtkChild] private unowned Button back_button;
@@ -146,6 +147,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         add_binding_action (Gdk.Key.z, Gdk.ModifierType.CONTROL_MASK, "app.undo", null);
         add_binding_action (Gdk.Key.r, Gdk.ModifierType.NO_MODIFIER_MASK, "app.redo", null);
         add_binding_action (Gdk.Key.z, Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK, "app.redo", null);
+        add_binding_action (Gdk.Key.e, Gdk.ModifierType.NO_MODIFIER_MASK, "app.earmark-mode", null);
         add_binding_action (Gdk.Key.question, Gdk.ModifierType.CONTROL_MASK, "app.shortcuts-window", null);
         add_binding_action (Gdk.Key.comma, Gdk.ModifierType.CONTROL_MASK, "app.preferences-dialog", null);
         add_binding_action (Gdk.Key.f, Gdk.ModifierType.NO_MODIFIER_MASK, "app.fullscreen", null);
@@ -206,15 +208,20 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     private void window_width_is_big_cb ()
     {
-        if (current_screen == SudokuWindowScreen.PLAY)
-            clock_box.visible = show_timer;
         window_width_is_small = false;
+        if (current_screen == SudokuWindowScreen.PLAY)
+        {
+            clock_box.visible = show_timer;
+            earmark_mode_button.visible = true;
+        }
     }
 
     private void window_width_is_small_cb ()
     {
-        clock_box.visible = false;
         window_width_is_small = true;
+        clock_box.visible = false;
+        if (current_screen == SudokuWindowScreen.PLAY)
+            earmark_mode_button.visible = !show_timer;
     }
 
     private bool _show_timer;
@@ -231,12 +238,14 @@ public class SudokuWindow : Adw.ApplicationWindow
             {
                 if (show_timer)
                 {
+                    earmark_mode_button.visible = !window_width_is_small;
+                    clock_box.visible = !window_width_is_small;
                     display_pause_button ();
-                    clock_box.visible = window_width_is_small;
                 }
                 else
                 {
                     clock_box.visible = false;
+                    earmark_mode_button.visible = true;
                     play_pause_button.visible = false;
                 }
             }
@@ -273,6 +282,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         windowtitle.subtitle = _("Select Difficulty");
         set_board_visible (false);
         back_button.visible = game != null;
+        earmark_mode_button.visible = false;
         undo_button.visible = false;
         redo_button.visible = false;
         clock_box.visible = false;
@@ -330,10 +340,12 @@ public class SudokuWindow : Adw.ApplicationWindow
             play_custom_game_button.visible = false;
             play_pause_button.visible = show_timer;
             clock_box.visible = show_timer && !window_width_is_small;
+            earmark_mode_button.visible = !window_width_is_small || !show_timer;
             windowtitle.subtitle = game.board.difficulty_category.to_string ();
         }
         else
         {
+            earmark_mode_button.visible = false;
             clock_box.visible = false;
             play_custom_game_button.visible = true;
             play_pause_button.visible = false;

@@ -108,6 +108,16 @@
                 <property name="icon-name">go-previous-symbolic</property>
               </object>
             </child>
+            <child type="start">
+              <object class="GtkToggleButton" id="earmark_mode_button">
+                <property name="visible">false</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="action-name">app.earmark-mode</property>
+                <property name="tooltip-text" translatable="yes">Earmark mode</property>
+                <property name="icon-name">pencil-symbolic</property>
+              </object>
+            </child>
             <child type="end">
               <object class="GtkButton" id="unfullscreen_button">
                 <property name="visible">False</property>

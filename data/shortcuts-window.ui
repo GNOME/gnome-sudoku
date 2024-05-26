@@ -53,6 +53,12 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="accelerator">e</property>
+                <property name="title" translatable="yes" context="shortcuts window">Eamarks Mode</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="accelerator">Return space</property>
                 <property name="title" translatable="yes" context="shortcuts window">Number Picker</property>
               </object>
@@ -63,6 +69,11 @@
                 <property name="title" translatable="yes" context="shortcuts window">Earmark Picker</property>
               </object>
             </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="title" translatable="yes" context="shortcuts window">Window</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;ctrl&gt;w</property>
@@ -75,11 +86,6 @@
                 <property name="title" translatable="yes" context="shortcuts window">Highlighter</property>
               </object>
             </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkShortcutsGroup">
-            <property name="title" translatable="yes" context="shortcuts window">Window</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;ctrl&gt;r</property>

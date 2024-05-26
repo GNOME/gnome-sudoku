@@ -272,18 +272,21 @@ private class SudokuCell : Widget
         int key = get_key_number (keyval);
         if (key >= 1 && key <= 9)
         {
-            // check for earmark popover
-            var number_picker = (NumberPicker) this.popover.get_child ();
-            bool ctrl_pressed = (state & ModifierType.CONTROL_MASK) > 0;
-            bool want_earmark = (this.popover.visible && number_picker != null && number_picker.is_earmark_picker) ||
-                                ctrl_pressed && this.value == 0;
-            if (want_earmark && game.mode == GameMode.PLAY)
+            bool want_earmark = control_key_pressed;
+            if (view.earmark_mode)
+                want_earmark = !want_earmark;
+
+            if (!want_earmark)
+            {
+                value = key;
+                this.game.board.disable_all_earmarks (row, col);
+            }
+            else if (game.mode == GameMode.PLAY && this.value == 0)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, key);
-
-                if (number_picker != null && number_picker.is_earmark_picker)
+                if (popover.child != null && ((NumberPicker)this.popover.child).is_earmark_picker)
                 {
-                    number_picker.set_earmark_button (key, new_state);
+                    earmark_picker.set_earmark_button (key, new_state);
                 }
                 else
                 {
@@ -292,11 +295,6 @@ private class SudokuCell : Widget
                     else
                         game.disable_earmark (row, col, key);
                 }
-            }
-            else if (!ctrl_pressed)
-            {
-                value = key;
-                this.game.board.disable_all_earmarks (row, col);
             }
             return;
         }
@@ -315,7 +313,10 @@ private class SudokuCell : Widget
             keyval == Gdk.Key.Return ||
             keyval == Gdk.Key.KP_Enter)
         {
-            show_value_picker ();
+            if (!view.earmark_mode)
+                show_value_picker ();
+            else if (this.value == 0)
+                show_earmark_picker ();
             return;
         }
 
@@ -342,22 +343,24 @@ private class SudokuCell : Widget
         if (is_fixed || game.paused)
             return;
 
+        bool want_earmark = control_key_pressed;
+        if (view.earmark_mode)
+            want_earmark = !want_earmark;
+
         if (gesture.get_current_button () == BUTTON_PRIMARY)
         {
-            if (game.mode == GameMode.PLAY &&
-                (gesture.get_last_event (gesture.get_last_updated_sequence ()).get_modifier_state () & ModifierType.CONTROL_MASK) > 0 &&
-                this.value == 0)
-            {
-                show_earmark_picker ();
-            }
-            else
+            if (!want_earmark)
                 show_value_picker ();
+            else if (game.mode == GameMode.PLAY && this.value == 0)
+                show_earmark_picker ();
+
         }
-        else if (gesture.get_current_button () == BUTTON_SECONDARY &&
-                 game.mode == GameMode.PLAY &&
-                 this.value == 0)
+        else if (gesture.get_current_button () == BUTTON_SECONDARY)
         {
-            show_earmark_picker ();
+            if (want_earmark)
+                show_value_picker ();
+            else if (game.mode == GameMode.PLAY && this.value == 0)
+                show_earmark_picker ();
         }
     }
 
@@ -371,7 +374,7 @@ private class SudokuCell : Widget
         if (is_fixed || game.paused)
             return;
 
-        if (game.mode == GameMode.CREATE)
+        if (game.mode == GameMode.CREATE || view.earmark_mode)
             show_value_picker ();
         else if (this.value == 0)
             show_earmark_picker ();

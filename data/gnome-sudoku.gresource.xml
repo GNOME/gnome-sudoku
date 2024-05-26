@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/org/gnome/Sudoku">
+  <gresource prefix="/org/gnome/Sudoku/">
+    <file preprocess="xml-stripblanks" alias="metainfo.xml">org.gnome.Sudoku.metainfo.xml.in</file>
     <file>style.css</file>
     <file>style-dark.css</file>
   </gresource>
-  <gresource prefix="/org/gnome/Sudoku">
-    <file preprocess="xml-stripblanks" alias="metainfo.xml">org.gnome.Sudoku.metainfo.xml.in</file>
-  </gresource>
-  <gresource prefix="/org/gnome/Sudoku/ui">
+  <gresource prefix="/org/gnome/Sudoku/ui/">
     <file preprocess="xml-stripblanks">sudoku-window.ui</file>
     <file preprocess="xml-stripblanks">shortcuts-window.ui</file>
     <file preprocess="xml-stripblanks">preferences-dialog.ui</file>
     <file preprocess="xml-stripblanks">print-dialog.ui</file>
+  </gresource>
+  <gresource prefix="/org/gnome/Sudoku/icons/scalable/actions/">
+    <file preprocess="xml-stripblanks">pencil-symbolic.svg</file>
   </gresource>
 </gresources>

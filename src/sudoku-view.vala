@@ -28,6 +28,7 @@ public class SudokuView : Adw.Bin
     private SudokuGame game;
     private SudokuCell[,] cells;
 
+    public bool earmark_mode = false;
     public bool autoclean_earmarks;
     public bool highlight_row_column;
     public bool highlight_block;
