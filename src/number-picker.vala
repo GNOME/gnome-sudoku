@@ -103,7 +103,7 @@ private class NumberPicker : Grid
 
             if (is_earmark_picker)
                 for (var i = 0; i < 9; i++)
-                    ((ToggleButton)this_button).set_active (false);
+                    earmark_buttons[i].set_active (false);
         });
 
         this.valign = Align.CENTER;
