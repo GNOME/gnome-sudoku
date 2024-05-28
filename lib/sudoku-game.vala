@@ -133,8 +133,11 @@ public class SudokuGame : Object
         var new_stack_item = new stack_item (StackAction.INSERT);
         add_to_stack (new_stack_item);
 
-        add_disable_earmarks_step (new_stack_item, row, col);
-        board.disable_all_earmarks (row, col);
+        if (board.has_earmarks (row, col))
+        {
+            add_disable_earmarks_step (new_stack_item, row, col);
+            board.disable_all_earmarks (row, col);
+        }
 
         add_value_step (new_stack_item, row, col, old_val, val);
         board.insert (row, col, val);

@@ -125,25 +125,15 @@ private class SudokuCell : Widget
     {
         get { return game.board [row, col]; }
         set {
-            if (value == game.board [row, col] || is_fixed)
-            {
-                /* This early return avoids the property change notify. */
-                return;
-            }
-
-            if (value != 0)
-                value_label.set_visible (true);
-            else
-                value_label.set_visible (false);
-
             if (value == 0)
             {
                 if (game.board [row, col] != 0)
                     game.remove (row, col);
+                else if (game.board.has_earmarks (row, col))
+                    game.disable_all_earmarks (row, col);
             }
-            else
+            else if (value != game.board [row, col])
             {
-                value_label.set_label (value.to_string ());
                 if (view.autoclean_earmarks && game.mode == GameMode.PLAY)
                     game.insert_and_disable_related_earmarks (row, col, value);
                 else
@@ -279,7 +269,6 @@ private class SudokuCell : Widget
             if (!want_earmark)
             {
                 value = key;
-                this.game.board.disable_all_earmarks (row, col);
             }
             else if (game.mode == GameMode.PLAY && this.value == 0)
             {
@@ -303,8 +292,6 @@ private class SudokuCell : Widget
             keyval == Gdk.Key.BackSpace ||
             keyval == Gdk.Key.Delete)
         {
-            if (game.board.has_earmarks (row, col))
-                game.disable_all_earmarks (row, col);
             value = 0;
             return;
         }
