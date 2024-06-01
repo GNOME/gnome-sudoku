@@ -55,11 +55,13 @@ public class SudokuWindow : Adw.ApplicationWindow
     private int window_height;
 
     private const int small_window_width = 600;
+    private const int smallest_possible_width = 360;
     private int small_window_height;
-    private int smallest_possible_width;
     private int smallest_possible_height;
-    private bool is_window_width_small;
-    private bool is_window_height_small;
+    private bool window_width_is_small;
+    private bool window_height_is_small;
+    Adw.Breakpoint small_window_breakpoint;
+    Adw.BreakpointCondition small_window_condition;
 
     private const int margin_default_size = 25;
     private const int margin_small_size = 10;
@@ -80,11 +82,14 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         construct_window_parameters ();
 
+        small_window_condition = new Adw.BreakpointCondition.length (Adw.BreakpointConditionLengthType.MAX_WIDTH, small_window_width, Adw.LengthUnit.PX);
+        small_window_breakpoint = new Adw.Breakpoint (small_window_condition);
+        small_window_breakpoint.unapply.connect (window_width_is_big_cb);
+        small_window_breakpoint.apply.connect (window_width_is_small_cb);
+        this.add_breakpoint (small_window_breakpoint);
+
         this.notify["maximized"].connect(() => {
             window_is_maximized = !window_is_maximized;
-            is_window_width_small = default_width <= 600 && !window_is_maximized;
-            if (game != null && game.mode != GameMode.CREATE)
-                clock_box.visible = show_timer && !is_window_width_small;
             set_gamebox_margins ();
         });
 
@@ -105,9 +110,6 @@ public class SudokuWindow : Adw.ApplicationWindow
                     return;
                 }
             }
-            is_window_width_small = default_width <= 600 && !window_is_fullscreen;
-            if (game != null && game.mode != GameMode.CREATE)
-                clock_box.visible = show_timer && !is_window_width_small;
             set_gamebox_margins ();
         });
 
@@ -160,16 +162,14 @@ public class SudokuWindow : Adw.ApplicationWindow
         window_is_fullscreen = settings.get_boolean ("window-is-fullscreen");
         show_timer = settings.get_boolean ("show-timer");
 
-        int headerbar_minimum_height;
-        clock_box.visible = false;
-        headerbar.measure (Orientation.HORIZONTAL, -1, out smallest_possible_width, null, null, null);
-        headerbar.measure (Orientation.VERTICAL, -1, out headerbar_minimum_height, null, null, null);
+        int headerbar_natural_height;
+        headerbar.measure (Orientation.VERTICAL, -1, null, out headerbar_natural_height, null, null);
 
-        small_window_height = small_window_width + headerbar_minimum_height;
-        smallest_possible_height = smallest_possible_width + headerbar_minimum_height;
+        small_window_height = small_window_width + headerbar_natural_height;
+        smallest_possible_height = smallest_possible_width + headerbar_natural_height;
 
-        is_window_width_small = window_width <= small_window_width;
-        is_window_height_small = window_height <= small_window_height;
+        window_width_is_small = window_width <= small_window_width;
+        window_height_is_small = window_height <= small_window_height;
 
         set_gamebox_margins ();
         set_size_request (smallest_possible_width, smallest_possible_height);
@@ -204,6 +204,19 @@ public class SudokuWindow : Adw.ApplicationWindow
             (this as Widget)?.activate_action ("app.start-game", "i", 4);
     }
 
+    private void window_width_is_big_cb ()
+    {
+        if (current_screen == SudokuWindowScreen.PLAY)
+            clock_box.visible = show_timer;
+        window_width_is_small = false;
+    }
+
+    private void window_width_is_small_cb ()
+    {
+        clock_box.visible = false;
+        window_width_is_small = true;
+    }
+
     private bool _show_timer;
     public bool show_timer
     {
@@ -216,11 +229,16 @@ public class SudokuWindow : Adw.ApplicationWindow
 
             if (current_screen == SudokuWindowScreen.PLAY)
             {
-                clock_box.visible = show_timer && !is_window_width_small;
                 if (show_timer)
+                {
                     display_pause_button ();
+                    clock_box.visible = window_width_is_small;
+                }
                 else
+                {
+                    clock_box.visible = false;
                     play_pause_button.visible = false;
+                }
             }
          }
     }
@@ -311,7 +329,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         {
             play_custom_game_button.visible = false;
             play_pause_button.visible = show_timer;
-            clock_box.visible = show_timer && !is_window_width_small;
+            clock_box.visible = show_timer && !window_width_is_small;
             windowtitle.subtitle = game.board.difficulty_category.to_string ();
         }
         else
@@ -387,21 +405,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         this.get ("default-width", ref window_width, null);
 
-        bool is_new_size_small = window_width <= small_window_width;
-        if (is_window_width_small != is_new_size_small)
-        {
-            is_window_width_small = is_new_size_small;
-            if (game != null && game.mode != GameMode.CREATE)
-                clock_box.visible = show_timer && !is_window_width_small;
-
-            if (!is_window_width_small)
-            {
-                set_gamebox_width_margins ();
-                return;
-            }
-        }
-
-        if (is_window_width_small)
+        if (window_width_is_small)
             set_gamebox_width_margins ();
     }
 
@@ -409,19 +413,19 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         this.get ("default-height", ref window_height, null);
 
-        bool is_new_height_small = window_height <= small_window_height;
-        if (is_new_height_small != is_window_height_small)
+        bool new_height_is_small = window_height <= small_window_height;
+        if (new_height_is_small != window_height_is_small)
         {
-            is_window_height_small = is_new_height_small;
+            window_height_is_small = new_height_is_small;
 
-            if (!is_window_height_small)
+            if (!window_height_is_small)
             {
                 set_gamebox_height_margins ();
                 return;
             }
         }
 
-        if (is_window_height_small)
+        if (window_height_is_small)
             set_gamebox_height_margins ();
     }
 
