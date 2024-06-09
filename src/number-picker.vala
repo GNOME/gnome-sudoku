@@ -25,21 +25,24 @@ private class NumberPicker : Grid
 {
     private SudokuBoard board;
 
-    public signal void number_picked (int number);
-    public signal void earmark_state_changed (int number, bool active);
+    public signal void value_picked (int val);
+    public signal void earmark_state_changed (int num, bool active);
 
     private Button clear_button;
-
-    private int earmarks_active;
+    private Button[] value_buttons;
+    private ToggleButton[] earmark_buttons;
 
     public bool is_earmark_picker { get; private set; }
 
     public NumberPicker (SudokuGame game, bool for_earmarks = false)
     {
         board = game.board;
-        earmarks_active = 0;
-
         is_earmark_picker = for_earmarks;
+
+        if (is_earmark_picker)
+            earmark_buttons = new ToggleButton [board.block_cols * board.block_rows];
+        else
+            value_buttons = new Button [board.block_cols * board.block_rows];
 
         for (var col = 0; col < board.block_cols; col++)
         {
@@ -60,21 +63,29 @@ private class NumberPicker : Grid
                 button.set_child (label);
                 label.show ();
 
+                //workaround to avoid lambda capture and memory leak
+                button.set_data<int> ("number-contained", n);
+
                 if (!for_earmarks)
-                    button.clicked.connect (() => {
-                        number_picked (n);
-                    });
-                else
                 {
-                    var toggle_button = (ToggleButton) button;
-                    toggle_button.toggled.connect (() => {
-                        var toggle_active = toggle_button.get_active ();
-                        earmark_state_changed (n, toggle_active);
+                    value_buttons[n - 1] = button;
+                    button.clicked.connect ((this_button) => {
+                        value_picked (this_button.get_data<int> ("number-contained"));
                     });
                 }
+                else
+                {
+                    earmark_buttons[n - 1] = (ToggleButton) button;
+                    earmark_buttons[n - 1].toggled.connect ((this_button) => {
+                        int number_contained = this_button.get_data<int> ("number-contained");
+                        var toggle_active = this_button.get_active ();
+                        earmark_state_changed (number_contained, toggle_active);
+                    });
+                }
+
                 if (n == 5)
-                    button.realize.connect (() => {
-                        button.grab_focus ();
+                    button.realize.connect ((this_button) => {
+                        this_button.grab_focus ();
                     });
                 button.show ();
             }
@@ -89,18 +100,13 @@ private class NumberPicker : Grid
         clear_button.set_child (label);
         label.show ();
 
-        clear_button.clicked.connect (() => {
-            number_picked (0);
+        clear_button.clicked.connect ((this_button) => {
+            value_picked (0);
             earmark_state_changed (0, false);
 
-            if (for_earmarks)
-            {
-                for (var i = 0; i <= 8; i++)
-                {
-                    var button = get_button_for (i);
-                    button.set_active (false);
-                }
-            }
+            if (is_earmark_picker)
+                for (var i = 0; i < 9; i++)
+                    ((ToggleButton)this_button).set_active (false);
         });
 
         this.valign = Align.CENTER;
@@ -130,22 +136,25 @@ private class NumberPicker : Grid
             clear_button.sensitive = false;
     }
 
-    public void set_earmarks (int row, int col)
+    public void set_earmark_buttons (int row, int col)
         requires (is_earmark_picker)
     {
-        for (var i = 0; i < board.max_val; i++)
-            set_earmark (row, col, i, board.is_earmark_enabled (row, col, i + 1));
+        for (var i = 1; i <= board.max_val; i++)
+            set_earmark_button (i, board.is_earmark_enabled (row, col, i));
     }
 
-    public void set_earmark (int row, int col, int index, bool state)
+    public void set_earmark_button (int num, bool state)
         requires (is_earmark_picker)
     {
-        get_button_for (index).set_active (state);
+        earmark_buttons[num - 1].set_active (state);
     }
 
-    private ToggleButton get_button_for (int number)
+    public override void dispose ()
     {
-        return (ToggleButton) this.get_child_at (number % board.block_cols,
-            (board.block_rows - 1) - (number / board.block_rows));
+        clear_button.unparent ();
+        foreach (var button in earmark_buttons)
+            button.unparent ();
+        foreach (var button in value_buttons)
+            button.unparent ();
     }
 }

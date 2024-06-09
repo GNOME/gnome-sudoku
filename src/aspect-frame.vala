@@ -75,10 +75,16 @@ private class SudokuFrame: Widget
     }
 
     public SudokuFrame (Widget? child)
-        {
-            this.child = child;
+    {
+        this.child = child;
 
-            this.set_css_name ("aspectframe");
-            this.set_accessible_role (AccessibleRole.GROUP);
-        }
+        this.set_css_name ("aspectframe");
+        this.set_accessible_role (AccessibleRole.GROUP);
+    }
+
+    public override void dispose ()
+    {
+        child.unparent ();
+        base.dispose ();
+    }
 }

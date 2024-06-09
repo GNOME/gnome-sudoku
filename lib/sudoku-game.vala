@@ -50,7 +50,6 @@ public class SudokuGame : Object
         public bool[] earmarks;
     }
 
-
     private Gee.List<UndoItem?> undostack;
     private Gee.List<UndoItem?> redostack;
 

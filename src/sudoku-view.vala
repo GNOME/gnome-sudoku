@@ -25,24 +25,17 @@ using Gdk;
 
 public class SudokuView : Adw.Bin
 {
-    private SudokuGame _game;
-    public SudokuGame game
-    {
-        get { return _game; }
-        private set { _game = value; }
-    }
-
+    private SudokuGame game;
     private SudokuCell[,] cells;
-    private Label paused;
 
-    private Overlay overlay;
-    private Grid grid;
-
+    SudokuFrame frame;
+    Label paused_label;
     public int selected_row { get; private set; default = 0; }
     public int selected_col { get; private set; default = 0; }
+
     public signal void selection_changed (int old_row, int old_col, int new_row, int new_col);
 
-    private void set_selected (int cell_row, int cell_col)
+    public void set_selected (int cell_row, int cell_col)
     {
         if (selected_row == cell_row && selected_col == cell_col)
             return;
@@ -64,8 +57,9 @@ public class SudokuView : Adw.Bin
 
     public SudokuView (SudokuGame game, GLib.Settings settings)
     {
-        this.vexpand = true;
+        this.game = game;
 
+        this.vexpand = true;
         this.focusable = true;
         this.can_focus = true;
 
@@ -77,20 +71,18 @@ public class SudokuView : Adw.Bin
         this._show_extra_warnings = settings.get_boolean ("show-extra-warnings");
         this._highlighter = settings.get_boolean ("highlighter");
 
-        overlay = new Overlay ();
-        var frame = new SudokuFrame (overlay);
+        var overlay = new Overlay ();
+        frame = new SudokuFrame (overlay);
         this.set_child (frame);
 
-        this.paused = new Gtk.Label ("Paused");
-        this.paused.add_css_class ("paused");
+        paused_label = new Label ("Paused");
+        paused_label.add_css_class ("paused");
+        paused_label.set_visible (false);
+        overlay.add_overlay (paused_label);
 
-        if (grid != null)
-            overlay.set_child (null);
-
-        this.game = game;
         this.game.paused_changed.connect(() => {
             // Set Font Size
-            var attr_list = this.paused.get_attributes ();
+            var attr_list = paused_label.get_attributes ();
             if (attr_list == null)
                 attr_list = new Pango.AttrList ();
 
@@ -98,8 +90,8 @@ public class SudokuView : Adw.Bin
                 Pango.AttrSize.new_absolute ((int) (this.get_width () * 0.125) * Pango.SCALE)
             );
 
-            this.paused.set_attributes (attr_list);
-            paused.set_visible (this.game.paused);
+            paused_label.set_attributes (attr_list);
+            paused_label.set_visible (this.game.paused);
 
             if (this.game.paused)
             {
@@ -115,7 +107,7 @@ public class SudokuView : Adw.Bin
             has_selection = !this.game.paused;
         });
 
-        grid = new Grid () {
+        var grid = new Grid () {
             row_spacing = 2,
             column_spacing = 2,
             column_homogeneous = true,
@@ -124,6 +116,7 @@ public class SudokuView : Adw.Bin
             hexpand = true
         };
         grid.add_css_class ("board");
+        overlay.set_child (grid);
 
         var blocks = new Grid[game.board.block_rows, game.board.block_cols];
         for (var block_row = 0; block_row < game.board.block_rows; block_row++)
@@ -147,26 +140,11 @@ public class SudokuView : Adw.Bin
         {
             for (var col = 0; col < game.board.cols; col++)
             {
-                var cell = new SudokuCell (row, col, ref _game);
-                var cell_row = row;
-                var cell_col = col;
 
-                cell.notify["has-focus"].connect (() => {
-                    if (game.paused)
-                        return;
-
-                    if (cell.has_focus)
-                        this.set_selected (cell_row, cell_col);
-                });
-
-                cell.will_open_popover.connect (() => {
-                    dismiss_popovers ();
-                });
-
-                cells[row, col] = cell;
-                cells[row, col].initialize_earmarks (show_possibilities);
-
+                var cell = new SudokuCell (row, col, game, this);
+                cell.initialize_earmarks (show_possibilities);
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
+                cells[row, col] = cell;
             }
         }
 
@@ -175,11 +153,6 @@ public class SudokuView : Adw.Bin
         this.selection_changed.connect (selection_changed_cb);
 
         update_warnings ();
-        overlay.add_overlay (paused);
-        overlay.set_child (grid);
-        grid.show ();
-        overlay.show ();
-        paused.set_visible (false);
     }
 
     static construct {
@@ -456,6 +429,12 @@ public class SudokuView : Adw.Bin
         for (var i = 0; i < game.board.rows; i++)
             for (var j = 0; j < game.board.cols; j++)
                 cells[i,j].dismiss_popover ();
+    }
+
+    public override void dispose ()
+    {
+        frame.unparent ();
+        base.dispose ();
     }
 }
 

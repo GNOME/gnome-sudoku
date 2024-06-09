@@ -31,10 +31,11 @@ public class Sudoku : Adw.Application
 {
     private GLib.Settings settings;
 
-    private SudokuWindow? window = null;
+    private SudokuWindow window;
+
     private SudokuGame? game = null;
 
-    private SudokuView? view
+    private SudokuView view
     {
         get { return window.view; }
     }
@@ -208,6 +209,9 @@ public class Sudoku : Adw.Application
 
         if (game != null)
         {
+            //Source timer holds a game ref
+            game.stop_clock ();
+
             if (!game.is_empty () && !game.board.complete)
                 saver.save_game (game);
 
@@ -316,9 +320,7 @@ public class Sudoku : Adw.Application
 
         game.stop_clock ();
 
-        for (var i = 0; i < game.board.rows; i++)
-            for (var j = 0; j < game.board.cols; j++)
-                view.can_focus = false;
+        view.can_focus = false;
 
         saver.add_game_to_finished (game, true);
 
@@ -362,14 +364,6 @@ public class Sudoku : Adw.Application
     {
         if (current_game_mode == GameMode.PLAY)
             board.solve ();
-
-        if (game != null)
-        {
-            game.paused_changed.disconnect (paused_changed_cb);
-            game.board.cell_changed.disconnect (cell_modified_cb);
-            game.board.earmark_changed.disconnect (cell_modified_cb);
-            game.board.completed.disconnect (board_completed_cb);
-        }
 
         game = new SudokuGame (board);
         game.mode = current_game_mode;

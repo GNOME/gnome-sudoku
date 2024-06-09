@@ -58,11 +58,9 @@ public class SudokuWindow : Adw.ApplicationWindow
     private bool clock_in_headerbar;
 
     private GLib.Settings settings;
-
-    public SudokuView? view { get; private set; }
-
     private SudokuGame? game = null;
 
+    public SudokuView? view { get; private set; default = null;}
     private const int board_size = 140;
     private const int clock_in_headerbar_min_width = 450;
 
@@ -183,8 +181,6 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public void start_game (SudokuGame game)
     {
-        if (this.game != null)
-            this.game.tick.disconnect (tick_cb);
         this.game = game;
         game.tick.connect (tick_cb);
         game.start_clock ();
