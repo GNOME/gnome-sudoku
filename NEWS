@@ -3,16 +3,18 @@
 
 - Add preferences dialog with new customizations for warnings and the highlighter (!87)
 - Add earmark mode button (shortcut e) to toggle earmark input (!89)
-- Warnings will now additionally check against the solution by default to prevent new players getting stuck (#101 and !78)
+- Change warnings to additionally check against the solution by default to prevent players getting stuck (#101 and !78)
 - Add autoclean earmarks feature toggleable in preferences (!83)
 - Add keyboard shortcuts window (!85)
-- The headerbar and error color will now follow adwaita's theme (!88)
+- Change the headerbar and error color to follow adwaita's theme (!88)
 - Port AboutDialog and PrintDialog to Adw.Dialog
-- Remove Clear Board confirmation, with the stack rework it can now be undone with "undo" (!83)
 - Restore the difficulty in the headerbar as a subtitle (!80)
 - Reduce margin sizes and hide the clock when the window gets too small (!80)
 - Move the paused button to the left side (!79)
-- Restrict most Sudoku shortcuts to the main window
+- Disable most Sudoku shortcuts in dialogs
+- Change dark mode's highlighter to be more subtle and its earmark highlight easier to read
+- Remove Clear Board confirmation, with the stack rework it can now be undone with "undo" (!83)
+- Updated translations
 
 46.2 - June 9, 2024
 ==========================
