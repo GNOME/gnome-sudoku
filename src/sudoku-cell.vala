@@ -505,12 +505,7 @@ private class SudokuCell : Widget
                 if (solution != 0)
                     error = this.value != solution;
             }
-
-            value_label.set_label (this.value.to_string ());
         }
-
-        else if (game.board.count_possibilities (row, col) == 0)
-            value_label.set_label ("X");
 
         if (error)
             add_css_class ("error");
@@ -542,7 +537,6 @@ private class SudokuCell : Widget
     public void clear_warnings ()
     {
         var marks = game.board.get_earmarks (row, col);
-        value_label.set_label (this.value.to_string ());
         remove_css_class ("error");
         for (int num = 1; num <= marks.length; num++)
             earmark_labels[num-1].remove_css_class ("error");
