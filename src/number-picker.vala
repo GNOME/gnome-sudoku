@@ -99,11 +99,12 @@ private class NumberPicker : Grid
 
         clear_button.clicked.connect ((this_button) => {
             value_picked (0);
-            earmark_state_changed (0, false);
 
             if (is_earmark_picker)
                 for (var i = 0; i < 9; i++)
                     earmark_buttons[i].set_active (false);
+
+            this.set_clear_button_enabled (false);
         });
 
         this.valign = Align.CENTER;

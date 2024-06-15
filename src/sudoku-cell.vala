@@ -381,10 +381,8 @@ private class SudokuCell : Widget
         if (val > 0)
             popover.popdown ();
         else
-        {
-            this.game.board.disable_all_earmarks (row, col);
             value_picker.set_clear_button_visibility (false);
-        }
+
         this.value = val;
     }
 
@@ -395,13 +393,9 @@ private class SudokuCell : Widget
             if (!this.game.board.is_earmark_enabled (row, col, num))
                 this.game.enable_earmark (row, col, num);
         }
-        else
+        else if (this.game.board.is_earmark_enabled (row, col, num))
         {
-            if (num == 0)
-                this.game.disable_all_earmarks (row, col);
-
-            else if (this.game.board.is_earmark_enabled (row, col, num))
-                this.game.disable_earmark (row, col, num);
+            this.game.disable_earmark (row, col, num);
         }
 
         earmark_picker.set_clear_button_enabled (this.game.board.has_earmarks (row, col));
