@@ -455,13 +455,15 @@ public class Sudoku : Adw.Application
         if (game == null)
             return;
 
-        game.stop_clock ();
+        if (!game.paused)
+            game.stop_clock ();
 
         if (window.view != null)
             window.view.has_selection = false;
 
         transient_dialog.closed.connect(() => {
-            game.resume_clock ();
+            if (!game.paused)
+                game.resume_clock ();
 
             if (window.view != null)
                 window.view.has_selection = true;
@@ -489,13 +491,15 @@ public class Sudoku : Adw.Application
 
         if (game != null)
         {
-            game.stop_clock ();
+            if (!game.paused)
+                game.stop_clock ();
 
             if (window.view != null)
                 window.view.has_selection = false;
 
             shortcuts_window.close_request.connect(() => {
-                game.resume_clock ();
+                if (!game.paused)
+                    game.resume_clock ();
 
                 if (window.view != null)
                     window.view.has_selection = true;
