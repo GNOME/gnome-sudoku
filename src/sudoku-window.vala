@@ -91,7 +91,6 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         this.notify["maximized"].connect(() => {
             window_is_maximized = !window_is_maximized;
-            set_gamebox_margins ();
         });
 
         this.notify["fullscreened"].connect(() => {
@@ -111,7 +110,6 @@ public class SudokuWindow : Adw.ApplicationWindow
                     return;
                 }
             }
-            set_gamebox_margins ();
         });
 
         main_menu.notify["active"].connect(() => {
@@ -119,13 +117,15 @@ public class SudokuWindow : Adw.ApplicationWindow
                 view.has_selection = !main_menu.active;
         });
 
-        this.notify["default-width"].connect(width_change_cb);
-        this.notify["default-height"].connect(height_change_cb);
-
         if (this.window_is_fullscreen)
             fullscreen ();
         else if (this.window_is_maximized)
             maximize ();
+        else
+        {
+            set_gamebox_width_margins (window_width);
+            set_gamebox_height_margins (window_height);
+        }
 
         this.button_controller.set_button (0 /* all buttons */);
         this.button_controller.released.connect (button_released_cb);
@@ -173,7 +173,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         window_width_is_small = window_width <= small_window_width;
         window_height_is_small = window_height <= small_window_height;
 
-        set_gamebox_margins ();
         set_size_request (smallest_possible_width, smallest_possible_height);
         set_default_size (window_width, window_height);
 
@@ -185,8 +184,11 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         /* Save window state */
         settings.delay ();
-        settings.set_int ("window-width", window_width);
-        settings.set_int ("window-height", window_height);
+
+        int default_width, default_height;
+        this.get_default_size (out default_width, out default_height);
+        settings.set_int ("window-width", default_width);
+        settings.set_int ("window-height", default_height);
         settings.set_boolean ("window-is-maximized", window_is_maximized);
         settings.set_boolean ("window-is-fullscreen", window_is_fullscreen);
         settings.apply ();
@@ -397,70 +399,42 @@ public class SudokuWindow : Adw.ApplicationWindow
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 
-    private void set_gamebox_margins ()
-    {
-        if (window_is_maximized || window_is_fullscreen)
-        {
-            game_box.margin_top = margin_default_size;
-            game_box.margin_bottom = margin_default_size;
-            game_box.margin_start = margin_default_size;
-            game_box.margin_end = margin_default_size;
-        }
-        else
-        {
-            set_gamebox_width_margins ();
-            set_gamebox_height_margins ();
-        }
-    }
-
-    private void width_change_cb ()
-    {
-        this.get ("default-width", ref window_width, null);
-
-        if (window_width_is_small)
-            set_gamebox_width_margins ();
-    }
-
-    private void height_change_cb ()
-    {
-        this.get ("default-height", ref window_height, null);
-
-        bool new_height_is_small = window_height <= small_window_height;
-        if (new_height_is_small != window_height_is_small)
-        {
-            window_height_is_small = new_height_is_small;
-
-            if (!window_height_is_small)
-            {
-                set_gamebox_height_margins ();
-                return;
-            }
-        }
-
-        if (window_height_is_small)
-            set_gamebox_height_margins ();
-    }
-
     private double normalize (int val, int min, int max)
     {
         val.clamp (min, max);
         return (val - min) / (double) (max - min);
     }
 
-    private void set_gamebox_width_margins ()
+    private void set_gamebox_width_margins (int width)
     {
-        double factor =  normalize (window_width, smallest_possible_width, small_window_width);
+        double factor =  normalize (width, smallest_possible_width, small_window_width);
         int margin_size = margin_small_size + (int) (margin_size_diff * factor);
         game_box.margin_start = margin_size;
         game_box.margin_end = margin_size;
     }
 
-    private void set_gamebox_height_margins ()
+    private void set_gamebox_height_margins (int height)
     {
-        double factor =  normalize (window_height, smallest_possible_height, small_window_height);
+        double factor =  normalize (height, smallest_possible_height, small_window_height);
         int margin_size = margin_small_size + (int) (margin_size_diff * factor);
         game_box.margin_top = margin_size;
         game_box.margin_bottom = margin_size;
+    }
+
+    public override void size_allocate (int width, int height, int baseline)
+    {
+        if (window_width != width && window_height != height)
+        {
+            set_gamebox_width_margins (width);
+            set_gamebox_height_margins (height);
+
+            Gtk.Requisition min_size;
+            this.get_preferred_size (out min_size, null);
+            window_width = width = int.max (min_size.width, width);
+            window_height = height = int.max (min_size.height, height);
+        }
+
+        base.size_allocate (width, height, baseline);
     }
 
     public override void dispose ()

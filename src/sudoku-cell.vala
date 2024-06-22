@@ -553,6 +553,11 @@ private class SudokuCell : Widget
 
         set_font_size (value_label, height / size_ratio);
 
+        Gtk.Requisition min_size;
+        value_label.get_preferred_size (out min_size, null);
+        value_width = int.max (value_width, min_size.width);
+        value_height = int.max (value_height, min_size.height);
+
         Gsk.Transform center = new Gsk.Transform ().translate (Graphene.Point ().init (
             (width - value_width) / 2,
             (height - value_height) / 2
@@ -571,6 +576,9 @@ private class SudokuCell : Widget
                 num++;
 
                 set_font_size (earmark_labels[num - 1], height / size_ratio / 2);
+                earmark_labels[num -1].get_preferred_size (out min_size, null);
+                earmark_width = int.max (earmark_width, min_size.width);
+                earmark_height = int.max (earmark_height, min_size.height);
 
                 Gsk.Transform earmark_position = new Gsk.Transform ().translate (Graphene.Point ().init (
                     col_tmp * earmark_width,
