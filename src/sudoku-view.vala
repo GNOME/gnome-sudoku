@@ -75,6 +75,7 @@ public class SudokuView : Adw.Bin
         else
             this._show_warnings = settings.get_boolean ("show-warnings");
         this._show_possibilities = settings.get_boolean ("show-possibilities");
+        this._number_picker_second_click = settings.get_boolean ("number-picker-second-click");
         this._simple_warnings = settings.get_boolean ("simple-warnings");
         this._show_earmark_warnings = settings.get_boolean ("show-earmark-warnings");
         this._highlighter = settings.get_boolean ("highlighter");
@@ -384,6 +385,15 @@ public class SudokuView : Adw.Bin
         set {
             _show_earmark_warnings = value;
             show_warnings = show_warnings; //call the setter
+        }
+    }
+
+    private bool _number_picker_second_click;
+    public bool number_picker_second_click
+    {
+        get { return _number_picker_second_click; }
+        set {
+             _number_picker_second_click = value;
         }
     }
 

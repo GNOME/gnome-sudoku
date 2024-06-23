@@ -325,7 +325,16 @@ private class SudokuCell : Widget
             return;
 
         gesture.set_state (EventSequenceState.CLAIMED);
-        grab_focus ();
+
+        if (this.view.number_picker_second_click && !selected)
+        {
+            grab_focus ();
+            return;
+        }
+        else
+        {
+            grab_focus ();
+        }
 
         if (is_fixed || game.paused)
             return;
