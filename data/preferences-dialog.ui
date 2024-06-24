@@ -11,25 +11,25 @@
             <property name="visible">True</property>
             <child>
               <object class="AdwSwitchRow" id="show_timer">
-                <property name="title" translatable="yes" context="general preferences">Show timer and pause buttons</property>
-                <property name="visible">True</property>
-              </object>
-            </child>
-            <child>
-              <object class="AdwSwitchRow" id="show_possibilities">
-                <property name="title" translatable="yes" context="general preferences">Show earmark possibilities</property>
+                <property name="title" translatable="yes" context="General Preferences">Timer and Pause Buttons</property>
                 <property name="visible">True</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="number_picker_second_click">
-                <property name="title" translatable="yes" context="general preferences">Show number picker on second click</property>
+                <property name="title" translatable="yes" context="General Preferences">Number Picker on Second Click</property>
                 <property name="visible">True</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="autoclean_earmarks">
-                <property name="title" translatable="yes" context="general preferences">Automatically clean earmarks</property>
+                <property name="title" translatable="yes" context="General Preferences">Automatically Clean Earmarks</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="show_possibilities">
+                <property name="title" translatable="yes" context="General Preferences">Show Earmark Possibilities</property>
                 <property name="visible">True</property>
               </object>
             </child>
@@ -37,17 +37,17 @@
         </child>
         <child>
           <object class="AdwPreferencesGroup">
-            <property name="title" translatable="yes" context="preferences dialog">Warnings</property>
+            <property name="title" translatable="yes" context="Preferences Dialog">Warnings</property>
             <property name="visible">True</property>
             <child>
               <object class="AdwSwitchRow" id="simple_warnings">
-                <property name="title" translatable="yes" context="warning preferences">Check against solution</property>
+                <property name="title" translatable="yes" context="Warning Preferences">Check Against Solution</property>
                 <property name="visible">True</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="show_earmark_warnings">
-                <property name="title" translatable="yes" context="warning preferences">Show earmark warnings</property>
+                <property name="title" translatable="yes" context="Warning Preferences">Earmark Warnings</property>
                 <property name="visible">True</property>
               </object>
             </child>
@@ -55,23 +55,23 @@
         </child>
         <child>
           <object class="AdwPreferencesGroup">
-            <property name="title" translatable="yes" context="preferences dialog">Highlighter</property>
+            <property name="title" translatable="yes" context="Preferences Dialog">Highlighter</property>
             <property name="visible">True</property>
              <child>
               <object class="AdwSwitchRow" id="highlight_numbers">
-                <property name="title" translatable="yes" context="highlighter preferences">Highlight matching numbers</property>
+                <property name="title" translatable="yes" context="Highlighter Preferences">Highlight Matching Numbers</property>
                 <property name="visible">True</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="highlight_row_column">
-                <property name="title" translatable="yes" context="highlighter preferences">Highlight row and column</property>
+                <property name="title" translatable="yes" context="Highlighter Preferences">Highlight Row and Column</property>
                 <property name="visible">True</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="highlight_block">
-                <property name="title" translatable="yes" context="highlighter preferences">Highlight block</property>
+                <property name="title" translatable="yes" context="Highlighter Preferences">Highlight Block</property>
                 <property name="visible">True</property>
               </object>
             </child>
