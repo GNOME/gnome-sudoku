@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-06-02 16:18+0000\n"
-"PO-Revision-Date: 2024-06-04 09:39+0200\n"
+"POT-Creation-Date: 2024-06-24 01:36+0000\n"
+"PO-Revision-Date: 2024-06-24 09:08+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -102,38 +102,42 @@ msgid "Automatically clear related earmarks on new number insertion"
 msgstr "Samodejno počisti povezana ušesca ob novem vstavljanju številk"
 
 #: data/org.gnome.Sudoku.gschema.xml:54
+msgid "Display number picker on second click"
+msgstr "Izbirnik številk prikaži ob drugem kliku"
+
+#: data/org.gnome.Sudoku.gschema.xml:58
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Poudari vrstice, stolpce in polja, ki vsebujejo izbrano celico."
 
-#: data/org.gnome.Sudoku.gschema.xml:58
+#: data/org.gnome.Sudoku.gschema.xml:62
 msgid "Highlight the selected cell's row and column"
 msgstr "Poudari vrstico in stolpec izbrane celice"
 
-#: data/org.gnome.Sudoku.gschema.xml:62
+#: data/org.gnome.Sudoku.gschema.xml:66
 msgid "Highlight the selected cell's block"
 msgstr "Poudari blok izbrane celice"
 
-#: data/org.gnome.Sudoku.gschema.xml:66
+#: data/org.gnome.Sudoku.gschema.xml:70
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Poudari ujemajoče se številke izbrane celice"
 
-#: data/org.gnome.Sudoku.gschema.xml:70
+#: data/org.gnome.Sudoku.gschema.xml:74
 msgid "The puzzle's difficulty"
 msgstr "Zahtevnost sestavljanke"
 
-#: data/org.gnome.Sudoku.gschema.xml:74
+#: data/org.gnome.Sudoku.gschema.xml:78
 msgid "Width of the window in pixels"
 msgstr "Širina okna v točkah"
 
-#: data/org.gnome.Sudoku.gschema.xml:78
+#: data/org.gnome.Sudoku.gschema.xml:82
 msgid "Height of the window in pixels"
 msgstr "Višina okna v točkah"
 
-#: data/org.gnome.Sudoku.gschema.xml:82
+#: data/org.gnome.Sudoku.gschema.xml:86
 msgid "true if the window is maximized"
 msgstr "PRAV, če je okno razpeto"
 
-#: data/org.gnome.Sudoku.gschema.xml:86
+#: data/org.gnome.Sudoku.gschema.xml:90
 msgid "true if the window is fullscreen"
 msgstr "Res (true), če je okno celozaslonsko"
 
@@ -198,40 +202,45 @@ msgstr "Pokaži možnosti ušesc"
 
 #: data/preferences-dialog.ui:26
 msgctxt "general preferences"
+msgid "Show number picker on second click"
+msgstr "Pokaži izbirnik številk ob drugem kliku"
+
+#: data/preferences-dialog.ui:32
+msgctxt "general preferences"
 msgid "Automatically clean earmarks"
 msgstr "Samodejno počisti ušesca"
 
-#: data/preferences-dialog.ui:34
+#: data/preferences-dialog.ui:40
 msgctxt "preferences dialog"
 msgid "Warnings"
 msgstr "Opozorila"
 
-#: data/preferences-dialog.ui:38
+#: data/preferences-dialog.ui:44
 msgctxt "warning preferences"
 msgid "Check against solution"
 msgstr "Preveri rešitev"
 
-#: data/preferences-dialog.ui:44
+#: data/preferences-dialog.ui:50
 msgctxt "warning preferences"
 msgid "Show earmark warnings"
 msgstr "Pokaži opozorila z ušesci"
 
-#: data/preferences-dialog.ui:52
+#: data/preferences-dialog.ui:58
 msgctxt "preferences dialog"
 msgid "Highlighter"
 msgstr "Poudarjalnik"
 
-#: data/preferences-dialog.ui:56
+#: data/preferences-dialog.ui:62
 msgctxt "highlighter preferences"
 msgid "Highlight matching numbers"
 msgstr "Poudari ujemajoče se številke"
 
-#: data/preferences-dialog.ui:62
+#: data/preferences-dialog.ui:68
 msgctxt "highlighter preferences"
 msgid "Highlight row and column"
 msgstr "Poudari vrstico in stolpec"
 
-#: data/preferences-dialog.ui:68
+#: data/preferences-dialog.ui:74
 msgctxt "highlighter preferences"
 msgid "Highlight block"
 msgstr "Poudari blok"
@@ -560,7 +569,7 @@ msgid "Play _Again"
 msgstr "_Igraj znova"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:526
+#: src/gnome-sudoku.vala:530
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -571,7 +580,7 @@ msgstr ""
 "\n"
 "Uganka je zasnovana z ustvarjalnikom ugank QQwing %s"
 
-#: src/gnome-sudoku.vala:534
+#: src/gnome-sudoku.vala:538
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
@@ -588,18 +597,18 @@ msgstr "Počisti"
 msgid "Error printing file:"
 msgstr "Napaka med tiskanjem datoteke:"
 
-#: src/sudoku-window.vala:282
+#: src/sudoku-window.vala:284
 msgid "Select Difficulty"
 msgstr "Izbor zahtevnosti uganke"
 
-#: src/sudoku-window.vala:352
+#: src/sudoku-window.vala:354
 msgid "Create Puzzle"
 msgstr "Ustvari uganko"
 
-#: src/sudoku-window.vala:365
+#: src/sudoku-window.vala:367
 msgid "Play"
 msgstr "Igraj"
 
-#: src/sudoku-window.vala:365
+#: src/sudoku-window.vala:367
 msgid "Pause"
 msgstr "Premor"
