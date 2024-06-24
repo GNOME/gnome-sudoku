@@ -26,6 +26,9 @@ using Gdk;
 public class SudokuWindow : Adw.ApplicationWindow
 {
     [GtkChild] private unowned Adw.WindowTitle windowtitle;
+    [GtkChild] private unowned Adw.HeaderBar headerbar;
+
+    [GtkChild] private unowned Box game_box; // Holds the view
 
     [GtkChild] private unowned Box start_box;
     [GtkChild] private unowned Button start_button;
@@ -34,21 +37,17 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned CheckButton hard_check;
     [GtkChild] private unowned CheckButton very_hard_check;
 
-    [GtkChild] private unowned Box game_box; // Holds the view
-
     [GtkChild] private unowned MenuButton main_menu;
     [GtkChild] private unowned ToggleButton earmark_mode_button;
     [GtkChild] private unowned Button undo_button;
     [GtkChild] private unowned Button redo_button;
     [GtkChild] private unowned Button back_button;
     [GtkChild] private unowned Button unfullscreen_button;
+    [GtkChild] private unowned Button play_custom_game_button;
+    [GtkChild] private unowned Button play_pause_button;
 
     [GtkChild] private unowned Box clock_box;
     [GtkChild] private unowned Label clock_label;
-
-    [GtkChild] private unowned Button play_custom_game_button;
-    [GtkChild] private unowned Button play_pause_button;
-    [GtkChild] private unowned Adw.HeaderBar headerbar;
 
     private bool window_is_maximized;
     private bool window_is_fullscreen;
@@ -61,21 +60,21 @@ public class SudokuWindow : Adw.ApplicationWindow
     private int smallest_possible_height;
     private bool window_width_is_small;
     private bool window_height_is_small;
-    Adw.Breakpoint small_window_breakpoint;
-    Adw.BreakpointCondition small_window_condition;
+    private Adw.Breakpoint small_window_breakpoint;
+    private Adw.BreakpointCondition small_window_condition;
 
     private const int margin_default_size = 25;
     private const int margin_small_size = 10;
     private const int margin_size_diff = margin_default_size - margin_small_size;
 
-    public GLib.Settings settings;
     private SudokuGame? game = null;
 
-    public SudokuView? view { get; private set; default = null;}
-    public SudokuWindowScreen? current_screen = null;
+    private GestureClick button_controller;
+    private GestureLongPress long_press_controller;
 
-    private GestureClick button_controller = new GestureClick ();
-    private GestureLongPress long_press_controller = new GestureLongPress ();
+    public GLib.Settings settings { get; private set;}
+    public SudokuView? view { get; private set; default = null;}
+    public SudokuWindowScreen current_screen { get; private set; default = SudokuWindowScreen.NONE;}
 
     public SudokuWindow (GLib.Settings settings)
     {
@@ -126,12 +125,13 @@ public class SudokuWindow : Adw.ApplicationWindow
             set_gamebox_width_margins (window_width);
             set_gamebox_height_margins (window_height);
         }
-
-        this.button_controller.set_button (0 /* all buttons */);
-        this.button_controller.released.connect (button_released_cb);
+        button_controller = new GestureClick ();
+        button_controller.set_button (0 /* all buttons */);
+        button_controller.released.connect (button_released_cb);
         ((Widget)this).add_controller (this.button_controller);
 
-        this.long_press_controller.pressed.connect (long_press_cb);
+        long_press_controller = new GestureLongPress ();
+        long_press_controller.pressed.connect (long_press_cb);
         ((Widget)this).add_controller (this.long_press_controller);
 
         this.close_request.connect (close_cb);
@@ -449,6 +449,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 //must be aligned with GameMode
 public enum SudokuWindowScreen
 {
+    NONE,
     PLAY,
     CREATE,
     MENU;

@@ -27,15 +27,15 @@ public class SudokuView : Adw.Bin
 {
     private SudokuGame game;
     private SudokuCell[,] cells;
+    private SudokuFrame frame;
+    private Label paused_label;
 
     public bool earmark_mode = false;
     public bool autoclean_earmarks;
+    public bool number_picker_second_click;
     public bool highlight_row_column;
     public bool highlight_block;
     public bool highlight_numbers;
-
-    SudokuFrame frame;
-    Label paused_label;
 
     public int selected_row { get; private set; default = 0; }
     public int selected_col { get; private set; default = 0; }
@@ -75,10 +75,10 @@ public class SudokuView : Adw.Bin
         else
             this._show_warnings = settings.get_boolean ("show-warnings");
         this._show_possibilities = settings.get_boolean ("show-possibilities");
-        this._number_picker_second_click = settings.get_boolean ("number-picker-second-click");
         this._simple_warnings = settings.get_boolean ("simple-warnings");
         this._show_earmark_warnings = settings.get_boolean ("show-earmark-warnings");
         this._highlighter = settings.get_boolean ("highlighter");
+        this.number_picker_second_click = settings.get_boolean ("number-picker-second-click");
         this.autoclean_earmarks = settings.get_boolean ("autoclean-earmarks");
         this.highlight_row_column = settings.get_boolean ("highlight-row-column");
         this.highlight_block = settings.get_boolean ("highlight-block");
@@ -385,15 +385,6 @@ public class SudokuView : Adw.Bin
         set {
             _show_earmark_warnings = value;
             show_warnings = show_warnings; //call the setter
-        }
-    }
-
-    private bool _number_picker_second_click;
-    public bool number_picker_second_click
-    {
-        get { return _number_picker_second_click; }
-        set {
-             _number_picker_second_click = value;
         }
     }
 

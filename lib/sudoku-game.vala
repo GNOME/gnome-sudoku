@@ -88,7 +88,7 @@ public class SudokuGame : Object
     public SudokuGame (SudokuBoard board)
     {
         this.board = board;
-        this.mode = GameMode.PLAY;
+        this.mode = GameMode.NONE;
         timer = new Timer();
         stack = new ArrayList<stack_item?>();
     }
@@ -396,6 +396,7 @@ public class SudokuGame : Object
 
 public enum GameMode
 {
+    NONE,
     PLAY,
     CREATE;
 }

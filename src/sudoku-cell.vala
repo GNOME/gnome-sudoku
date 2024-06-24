@@ -30,22 +30,19 @@ private class SudokuCell : Widget
     private SudokuGame game;
     private unowned SudokuView view;
 
-    private GestureClick button_controller = new GestureClick ();
-    private GestureLongPress long_press_controller = new GestureLongPress ();
+    private GestureClick button_controller;
+    private GestureLongPress long_press_controller;
 
     //Only initialized when the cell is not fixed
     private bool control_key_pressed;
     private Popover popover;
     private EventControllerKey key_controller;
+    private EventControllerKey popover_controller;
     private NumberPicker earmark_picker;
     private NumberPicker value_picker;
 
-    // The label can also be set to X if the label is invalid.
-    // If this happens, the value **must not** be changed, only the label.
-    private Label value_label = new Label ("") {
-        visible = false
-    };
-    private Label[] earmark_labels = new Label[9];
+    private Label value_label;
+    private Label[] earmark_labels;
 
     public SudokuCell (int row, int col, SudokuGame game, SudokuView view)
     {
@@ -56,29 +53,28 @@ private class SudokuCell : Widget
         this.game = game;
         this.view = view;
 
-        if (value != 0)
-        {
-            value_label.set_label (this.value.to_string ());
-            value_label.set_visible (true);
-        }
+        value_label = new Label (this.value.to_string ());
+        value_label.visible = value != 0;
+        value_label.set_parent (this);
 
         focusable = true;
         can_focus = true;
+        notify["has-focus"].connect (focus_changed_cb);
 
-        this.set_fixed_css (true);
+        set_fixed_css (true);
 
-        this.notify["has-focus"].connect (focus_changed_cb);
-        this.button_controller.set_button (0 /* all buttons */);
+        button_controller = new GestureClick ();
+        button_controller.set_button (0 /* all buttons */);
+        add_controller (this.button_controller);
 
-        this.add_controller (this.button_controller);
-        this.add_controller (this.long_press_controller);
+        long_press_controller = new GestureLongPress ();
+        add_controller (this.long_press_controller);
 
-        this.long_press_controller.pressed.connect (long_press_cb);
-        this.button_controller.released.connect (button_released_cb);
-
-        value_label.set_parent (this);
+        long_press_controller.pressed.connect (long_press_cb);
+        button_controller.released.connect (button_released_cb);
 
         int num = 0;
+        earmark_labels = new Label[9];
         for (int row_tmp = 0; row_tmp < game.board.block_rows; row_tmp++)
         {
             for (int col_tmp = 0; col_tmp < game.board.block_cols; col_tmp++)
@@ -103,7 +99,8 @@ private class SudokuCell : Widget
             popover = new Popover ();
             popover.set_autohide (false);
             popover.set_parent (this);
-            var popover_controller = new EventControllerKey ();
+
+            popover_controller = new EventControllerKey ();
             popover_controller.key_pressed.connect (key_pressed_cb);
             popover_controller.key_released.connect (key_released_cb);
             (popover as Widget)?.add_controller (popover_controller);
@@ -226,14 +223,8 @@ private class SudokuCell : Widget
 
     public void update_value ()
     {
-        if (value != 0)
-        {
-            value_label.set_label (this.value.to_string ());
-            value_label.set_visible (true);
-        }
-        else
-            value_label.set_visible (false);
-
+        value_label.set_label (this.value.to_string ());
+        value_label.visible = value != 0;
         get_visible_earmarks ();
     }
 
@@ -326,18 +317,14 @@ private class SudokuCell : Widget
 
         gesture.set_state (EventSequenceState.CLAIMED);
 
-        if (this.view.number_picker_second_click && !selected)
+        if ((this.view.number_picker_second_click && !selected) ||
+            is_fixed || game.paused)
         {
             grab_focus ();
             return;
-        }
-        else
-        {
-            grab_focus ();
         }
 
-        if (is_fixed || game.paused)
-            return;
+        grab_focus ();
 
         bool want_earmark = control_key_pressed;
         if (view.earmark_mode)
@@ -349,7 +336,6 @@ private class SudokuCell : Widget
                 show_value_picker ();
             else if (game.mode == GameMode.PLAY && this.value == 0)
                 show_earmark_picker ();
-
         }
         else if (gesture.get_current_button () == BUTTON_SECONDARY)
         {
