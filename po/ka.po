@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-06-02 16:18+0000\n"
-"PO-Revision-Date: 2024-06-14 06:05+0200\n"
+"POT-Creation-Date: 2024-06-24 10:26+0000\n"
+"PO-Revision-Date: 2024-06-25 05:34+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -89,38 +89,42 @@ msgid "Automatically clear related earmarks on new number insertion"
 msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:54
-msgid "Highlight row, column and square that contain the selected cell"
+msgid "Display number picker on second click"
 msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:58
-msgid "Highlight the selected cell's row and column"
+msgid "Highlight row, column and square that contain the selected cell"
 msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:62
-msgid "Highlight the selected cell's block"
+msgid "Highlight the selected cell's row and column"
 msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:66
-msgid "Highlight the selected cell's matching numbers"
+msgid "Highlight the selected cell's block"
 msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:70
+msgid "Highlight the selected cell's matching numbers"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:74
 msgid "The puzzle's difficulty"
 msgstr "პაზლის სირთულე"
 
-#: data/org.gnome.Sudoku.gschema.xml:74
+#: data/org.gnome.Sudoku.gschema.xml:78
 msgid "Width of the window in pixels"
 msgstr "ფანჯრის სიგანე, პიქსელებში"
 
-#: data/org.gnome.Sudoku.gschema.xml:78
+#: data/org.gnome.Sudoku.gschema.xml:82
 msgid "Height of the window in pixels"
 msgstr "ფანჯრის სიმაღლე, პიქსელებში"
 
-#: data/org.gnome.Sudoku.gschema.xml:82
+#: data/org.gnome.Sudoku.gschema.xml:86
 msgid "true if the window is maximized"
 msgstr "ჭეშმარიტია, თუ ფანჯარა მთელ ეკრანზეა"
 
-#: data/org.gnome.Sudoku.gschema.xml:86
+#: data/org.gnome.Sudoku.gschema.xml:90
 msgid "true if the window is fullscreen"
 msgstr "ჭეშმარიტია, თუ ფანჯარა სრულ ეკრანზეა"
 
@@ -160,60 +164,65 @@ msgstr ""
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr ""
 
-#: data/preferences-dialog.ui:10
+#: data/preferences-dialog.ui:9
 msgctxt "preferences dialog"
 msgid "General"
 msgstr ""
 
-#: data/preferences-dialog.ui:14
-msgctxt "general preferences"
-msgid "Show timer and pause buttons"
+#: data/preferences-dialog.ui:12
+msgctxt "General Preferences"
+msgid "_Timer and Pause Buttons"
 msgstr ""
 
-#: data/preferences-dialog.ui:20
-msgctxt "general preferences"
-msgid "Show earmark possibilities"
+#: data/preferences-dialog.ui:18
+msgctxt "General Preferences"
+msgid "Number Picker on _Second Click"
 msgstr ""
 
-#: data/preferences-dialog.ui:26
-msgctxt "general preferences"
-msgid "Automatically clean earmarks"
+#: data/preferences-dialog.ui:24
+msgctxt "General Preferences"
+msgid "Automatically _Clean Earmarks"
 msgstr ""
 
-#: data/preferences-dialog.ui:34
-msgctxt "preferences dialog"
+#: data/preferences-dialog.ui:30
+msgctxt "General Preferences"
+msgid "Show Earmark _Possibilities"
+msgstr ""
+
+#: data/preferences-dialog.ui:38
+msgctxt "Preferences Dialog"
 msgid "Warnings"
 msgstr "გაფრთხილებები"
 
-#: data/preferences-dialog.ui:38
-msgctxt "warning preferences"
-msgid "Check against solution"
+#: data/preferences-dialog.ui:41
+msgctxt "Warning Preferences"
+msgid "Check _Against Solution"
 msgstr ""
 
-#: data/preferences-dialog.ui:44
-msgctxt "warning preferences"
-msgid "Show earmark warnings"
-msgstr ""
+#: data/preferences-dialog.ui:47
+msgctxt "Warning Preferences"
+msgid "_Earmark Warnings"
+msgstr "_დაბრონილი აქტივის გაფრთხილებები"
 
-#: data/preferences-dialog.ui:52
-msgctxt "preferences dialog"
+#: data/preferences-dialog.ui:55
+msgctxt "Preferences Dialog"
 msgid "Highlighter"
 msgstr "გამომკვეთი"
 
-#: data/preferences-dialog.ui:56
-msgctxt "highlighter preferences"
-msgid "Highlight matching numbers"
+#: data/preferences-dialog.ui:58
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
 msgstr ""
 
-#: data/preferences-dialog.ui:62
-msgctxt "highlighter preferences"
-msgid "Highlight row and column"
+#: data/preferences-dialog.ui:64
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Row and Column"
 msgstr ""
 
-#: data/preferences-dialog.ui:68
-msgctxt "highlighter preferences"
-msgid "Highlight block"
-msgstr ""
+#: data/preferences-dialog.ui:70
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Block"
+msgstr "_ბლოკის გამოკვეთა"
 
 #: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
@@ -252,112 +261,112 @@ msgid "_Print"
 msgstr "_ბეჭდვა"
 
 #: data/shortcuts-window.ui:11
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Game"
 msgstr "თამაში"
 
 #: data/shortcuts-window.ui:15 data/shortcuts-window.ui:21
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Move"
 msgstr "გადატანა"
 
 #: data/shortcuts-window.ui:27
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Earmarks"
 msgstr ""
 
 #: data/shortcuts-window.ui:33
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "უჯრედის გასუფავება"
 
 #: data/shortcuts-window.ui:39
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Undo"
 msgstr "დაბრუნება"
 
 #: data/shortcuts-window.ui:45
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Redo"
 msgstr "გამეორება"
 
 #: data/shortcuts-window.ui:51
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Pause"
 msgstr "შეჩერება"
 
 #: data/shortcuts-window.ui:57
-msgctxt "shortcuts window"
-msgid "Earmarks Mode"
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
 msgstr ""
 
 #: data/shortcuts-window.ui:63
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Number Picker"
 msgstr ""
 
 #: data/shortcuts-window.ui:69
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Earmark Picker"
 msgstr ""
 
 #: data/shortcuts-window.ui:76
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Window"
 msgstr "ფანჯარა"
 
 #: data/shortcuts-window.ui:80
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Warnings"
 msgstr "გაფრთხილებები"
 
 #: data/shortcuts-window.ui:86
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Highlighter"
 msgstr "გამომკვეთი"
 
 #: data/shortcuts-window.ui:92
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Reset"
 msgstr "ჩამოყრა"
 
 #: data/shortcuts-window.ui:98
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "ახალი თამაში"
 
 #: data/shortcuts-window.ui:104
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Print"
 msgstr "დაბეჭდვა"
 
 #: data/shortcuts-window.ui:110
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "მორგება"
 
 #: data/shortcuts-window.ui:116
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "კლავიატურის მალსახმობები"
 
 #: data/shortcuts-window.ui:122
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "გასვლა"
 
 #: data/shortcuts-window.ui:128
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "დახმარება"
 
 #: data/shortcuts-window.ui:134
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "მენიუ"
 
 #: data/shortcuts-window.ui:140
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "სრულ ეკრანზე"
 
@@ -459,23 +468,23 @@ msgstr "თამაშის _დაწყება"
 
 #: lib/sudoku-board.vala:693
 msgid "Unknown Difficulty"
-msgstr ""
+msgstr "უცნობი სირთულე"
 
 #: lib/sudoku-board.vala:695
 msgid "Easy Difficulty"
-msgstr ""
+msgstr "მარტივი სირთულე"
 
 #: lib/sudoku-board.vala:697
 msgid "Medium Difficulty"
-msgstr ""
+msgstr "საშუალო სირთულე"
 
 #: lib/sudoku-board.vala:699
 msgid "Hard Difficulty"
-msgstr ""
+msgstr "რთული სირთულე"
 
 #: lib/sudoku-board.vala:701
 msgid "Very Hard Difficulty"
-msgstr ""
+msgstr "ძალიან რთული სირთულე"
 
 #: lib/sudoku-board.vala:703
 msgid "Custom Puzzle"
@@ -537,7 +546,7 @@ msgid "Play _Again"
 msgstr "_თავიდან თამაში"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:526
+#: src/gnome-sudoku.vala:530
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -545,7 +554,7 @@ msgid ""
 "Puzzles generated by QQwing %s"
 msgstr ""
 
-#: src/gnome-sudoku.vala:534
+#: src/gnome-sudoku.vala:538
 msgid "translator-credits"
 msgstr "ეკატერინე პაპავა"
 
@@ -558,21 +567,37 @@ msgstr "გასუფთავება"
 msgid "Error printing file:"
 msgstr "ფაილის დაბეჭდვის შეცდომა:"
 
-#: src/sudoku-window.vala:282
+#: src/sudoku-window.vala:284
 msgid "Select Difficulty"
 msgstr "აირჩიეთ სირთულე"
 
-#: src/sudoku-window.vala:352
+#: src/sudoku-window.vala:354
 msgid "Create Puzzle"
 msgstr "პაზლის შექმნა"
 
-#: src/sudoku-window.vala:365
+#: src/sudoku-window.vala:367
 msgid "Play"
 msgstr "თამაში"
 
-#: src/sudoku-window.vala:365
+#: src/sudoku-window.vala:367
 msgid "Pause"
 msgstr "შეჩერება"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Pause"
+#~ msgstr "შეჩერება"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Warnings"
+#~ msgstr "გაფრთხილებები"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Highlighter"
+#~ msgstr "გამომკვეთი"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Quit"
+#~ msgstr "გასვლა"
 
 #~ msgid "Show _Timer"
 #~ msgstr "_წამმზომის ჩვენება"
