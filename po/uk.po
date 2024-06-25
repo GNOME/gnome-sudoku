@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-06-02 16:18+0000\n"
-"PO-Revision-Date: 2024-06-05 09:33+0300\n"
+"POT-Creation-Date: 2024-06-24 10:26+0000\n"
+"PO-Revision-Date: 2024-06-25 15:18+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -98,38 +98,42 @@ msgid "Automatically clear related earmarks on new number insertion"
 msgstr "Автоматично знімати пов'язані позначки при введенні нового числа"
 
 #: data/org.gnome.Sudoku.gschema.xml:54
+msgid "Display number picker on second click"
+msgstr "Показувати засіб вибору числа у відповідь на друге клацання"
+
+#: data/org.gnome.Sudoku.gschema.xml:58
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Підсвітити рядки, стовпці та квадрати, які містять вибранку клітинку"
 
-#: data/org.gnome.Sudoku.gschema.xml:58
+#: data/org.gnome.Sudoku.gschema.xml:62
 msgid "Highlight the selected cell's row and column"
 msgstr "Підсвітити рядок і стовпчик позначеної комірки"
 
-#: data/org.gnome.Sudoku.gschema.xml:62
+#: data/org.gnome.Sudoku.gschema.xml:66
 msgid "Highlight the selected cell's block"
 msgstr "Підсвітити блок позначеної комірки"
 
-#: data/org.gnome.Sudoku.gschema.xml:66
+#: data/org.gnome.Sudoku.gschema.xml:70
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Підсвітити відповідні числа позначеної комірки"
 
-#: data/org.gnome.Sudoku.gschema.xml:70
+#: data/org.gnome.Sudoku.gschema.xml:74
 msgid "The puzzle's difficulty"
 msgstr "Складність гри"
 
-#: data/org.gnome.Sudoku.gschema.xml:74
+#: data/org.gnome.Sudoku.gschema.xml:78
 msgid "Width of the window in pixels"
 msgstr "Ширина вікна, у точках"
 
-#: data/org.gnome.Sudoku.gschema.xml:78
+#: data/org.gnome.Sudoku.gschema.xml:82
 msgid "Height of the window in pixels"
 msgstr "Висота вікна, в точках"
 
-#: data/org.gnome.Sudoku.gschema.xml:82
+#: data/org.gnome.Sudoku.gschema.xml:86
 msgid "true if the window is maximized"
 msgstr "встановлено, якщо вікно розгорнуто"
 
-#: data/org.gnome.Sudoku.gschema.xml:86
+#: data/org.gnome.Sudoku.gschema.xml:90
 msgid "true if the window is fullscreen"
 msgstr "встановлено, якщо вікно розгорнуто на увесь екран"
 
@@ -179,60 +183,86 @@ msgstr "Перегляд гри Судоку"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Гра судоку для GNOME у темному режимі з позначками і попередженнями"
 
-#: data/preferences-dialog.ui:10
+#: data/preferences-dialog.ui:9
 msgctxt "preferences dialog"
 msgid "General"
 msgstr "Загальне"
 
-#: data/preferences-dialog.ui:14
-msgctxt "general preferences"
-msgid "Show timer and pause buttons"
-msgstr "Показувати кнопки таймера і паузи"
+#: data/preferences-dialog.ui:12
+#| msgid "Toggle timer and pause buttons"
+msgctxt "General Preferences"
+msgid "_Timer and Pause Buttons"
+msgstr "Кнопки _таймера і паузи"
 
-#: data/preferences-dialog.ui:20
-msgctxt "general preferences"
-msgid "Show earmark possibilities"
-msgstr "Показати можливості позначок"
+#: data/preferences-dialog.ui:18
+#| msgctxt "shortcuts window"
+#| msgid "Number Picker"
+msgctxt "General Preferences"
+msgid "Number Picker on _Second Click"
+msgstr "Вибір числа після _другого клацання"
 
-#: data/preferences-dialog.ui:26
-msgctxt "general preferences"
-msgid "Automatically clean earmarks"
-msgstr "Автоматично знімати позначки"
+#: data/preferences-dialog.ui:24
+#| msgctxt "general preferences"
+#| msgid "Automatically clean earmarks"
+msgctxt "General Preferences"
+msgid "Automatically _Clean Earmarks"
+msgstr "Автоматично з_німати позначки"
 
-#: data/preferences-dialog.ui:34
-msgctxt "preferences dialog"
+#: data/preferences-dialog.ui:30
+#| msgctxt "general preferences"
+#| msgid "Show earmark possibilities"
+msgctxt "General Preferences"
+msgid "Show Earmark _Possibilities"
+msgstr "Показати _можливості позначок"
+
+#: data/preferences-dialog.ui:38
+#| msgctxt "preferences dialog"
+#| msgid "Warnings"
+msgctxt "Preferences Dialog"
 msgid "Warnings"
 msgstr "Попередження"
 
-#: data/preferences-dialog.ui:38
-msgctxt "warning preferences"
-msgid "Check against solution"
-msgstr "Перевірка за розв'язком"
+#: data/preferences-dialog.ui:41
+#| msgctxt "warning preferences"
+#| msgid "Check against solution"
+msgctxt "Warning Preferences"
+msgid "Check _Against Solution"
+msgstr "Перевірка за _розв'язком"
 
-#: data/preferences-dialog.ui:44
-msgctxt "warning preferences"
-msgid "Show earmark warnings"
-msgstr "Показувати попередження щодо позначок"
+#: data/preferences-dialog.ui:47
+#| msgctxt "warning preferences"
+#| msgid "Show earmark warnings"
+msgctxt "Warning Preferences"
+msgid "_Earmark Warnings"
+msgstr "Попередження _щодо позначок"
 
-#: data/preferences-dialog.ui:52
-msgctxt "preferences dialog"
+#: data/preferences-dialog.ui:55
+#| msgctxt "preferences dialog"
+#| msgid "Highlighter"
+msgctxt "Preferences Dialog"
 msgid "Highlighter"
 msgstr "Підсвічування"
 
-#: data/preferences-dialog.ui:56
-msgctxt "highlighter preferences"
-msgid "Highlight matching numbers"
-msgstr "Підсвітити відповідні числа"
+#: data/preferences-dialog.ui:58
+#| msgctxt "highlighter preferences"
+#| msgid "Highlight matching numbers"
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "Підсвітити відповідні _числа"
 
-#: data/preferences-dialog.ui:62
-msgctxt "highlighter preferences"
-msgid "Highlight row and column"
-msgstr "Підсвітити рядок і стовпчик"
+#: data/preferences-dialog.ui:64
+#| msgctxt "highlighter preferences"
+#| msgid "Highlight row and column"
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Row and Column"
+msgstr "Підсвітити _рядок і стовпчик"
 
-#: data/preferences-dialog.ui:68
-msgctxt "highlighter preferences"
-msgid "Highlight block"
-msgstr "Підсвітити блок"
+#: data/preferences-dialog.ui:70
+#| msgctxt "highlighter preferences"
+#| msgid "Highlight block"
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Block"
+msgstr "Підсвітити _блок"
 
 #: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
@@ -271,114 +301,154 @@ msgid "_Print"
 msgstr "На_друкувати…"
 
 #: data/shortcuts-window.ui:11
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Game"
+msgctxt "Shortcuts Window"
 msgid "Game"
 msgstr "Гра"
 
 #: data/shortcuts-window.ui:15 data/shortcuts-window.ui:21
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Move"
+msgctxt "Shortcuts Window"
 msgid "Move"
 msgstr "Пересунути"
 
 #: data/shortcuts-window.ui:27
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Earmarks"
+msgctxt "Shortcuts Window"
 msgid "Earmarks"
 msgstr "Позначки"
 
 #: data/shortcuts-window.ui:33
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Clear Cell"
+msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "Очистити комірку"
 
 #: data/shortcuts-window.ui:39
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Undo"
+msgctxt "Shortcuts Window"
 msgid "Undo"
 msgstr "Скасувати"
 
 #: data/shortcuts-window.ui:45
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Redo"
+msgctxt "Shortcuts Window"
 msgid "Redo"
 msgstr "Повторити"
 
 #: data/shortcuts-window.ui:51
-msgctxt "shortcuts window"
+#| msgid "Pause"
+msgctxt "Shortcuts Window"
 msgid "Pause"
 msgstr "Пауза"
 
 #: data/shortcuts-window.ui:57
 #| msgctxt "shortcuts window"
-#| msgid "Eamarks Mode"
-msgctxt "shortcuts window"
-msgid "Earmarks Mode"
+#| msgid "Earmarks Mode"
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
 msgstr "Режим позначок"
 
 #: data/shortcuts-window.ui:63
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Number Picker"
+msgctxt "Shortcuts Window"
 msgid "Number Picker"
 msgstr "Вибір числа"
 
 #: data/shortcuts-window.ui:69
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Earmark Picker"
+msgctxt "Shortcuts Window"
 msgid "Earmark Picker"
 msgstr "Вибір позначок"
 
 #: data/shortcuts-window.ui:76
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Window"
+msgctxt "Shortcuts Window"
 msgid "Window"
-msgstr "ВІкно"
+msgstr "Вікно"
 
 #: data/shortcuts-window.ui:80
-msgctxt "shortcuts window"
+#| msgctxt "preferences dialog"
+#| msgid "Warnings"
+msgctxt "Shortcuts Window"
 msgid "Warnings"
 msgstr "Попередження"
 
 #: data/shortcuts-window.ui:86
-msgctxt "shortcuts window"
+#| msgctxt "preferences dialog"
+#| msgid "Highlighter"
+msgctxt "Shortcuts Window"
 msgid "Highlighter"
 msgstr "Підсвічування"
 
 #: data/shortcuts-window.ui:92
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Reset"
+msgctxt "Shortcuts Window"
 msgid "Reset"
 msgstr "Скинути"
 
 #: data/shortcuts-window.ui:98
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "New Game"
+msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "Нова гра"
 
 #: data/shortcuts-window.ui:104
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Print"
+msgctxt "Shortcuts Window"
 msgid "Print"
 msgstr "Надрукувати"
 
 #: data/shortcuts-window.ui:110
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Preferences"
+msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Налаштування"
 
 #: data/shortcuts-window.ui:116
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Keyboard Shortcuts"
+msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Клавіатурні скорочення"
 
 #: data/shortcuts-window.ui:122
-msgctxt "shortcuts window"
+#| msgid "Quit"
+msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Вийти"
 
 #: data/shortcuts-window.ui:128
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Help"
+msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Довідка"
 
 #: data/shortcuts-window.ui:134
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Menu"
+msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Меню"
 
 #: data/shortcuts-window.ui:140
-msgctxt "shortcuts window"
+#| msgctxt "shortcuts window"
+#| msgid "Fullscreen"
+msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Повноекранний режим"
 
@@ -559,7 +629,7 @@ msgid "Play _Again"
 msgstr "Зіграти _ще раз"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:526
+#: src/gnome-sudoku.vala:530
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -570,7 +640,7 @@ msgstr ""
 "\n"
 "Головоломки породжує — QQwing %s"
 
-#: src/gnome-sudoku.vala:534
+#: src/gnome-sudoku.vala:538
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота\n"
@@ -588,21 +658,41 @@ msgstr "Очистити"
 msgid "Error printing file:"
 msgstr "Помилка друкування файла:"
 
-#: src/sudoku-window.vala:282
+#: src/sudoku-window.vala:284
 msgid "Select Difficulty"
 msgstr "Виберіть складність"
 
-#: src/sudoku-window.vala:352
+#: src/sudoku-window.vala:354
 msgid "Create Puzzle"
 msgstr "Створити головоломку"
 
-#: src/sudoku-window.vala:365
+#: src/sudoku-window.vala:367
 msgid "Play"
 msgstr "Грати"
 
-#: src/sudoku-window.vala:365
+#: src/sudoku-window.vala:367
 msgid "Pause"
 msgstr "Пауза"
+
+#~ msgctxt "general preferences"
+#~ msgid "Show timer and pause buttons"
+#~ msgstr "Показувати кнопки таймера і паузи"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Pause"
+#~ msgstr "Пауза"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Warnings"
+#~ msgstr "Попередження"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Highlighter"
+#~ msgstr "Підсвічування"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Quit"
+#~ msgstr "Вийти"
 
 #~ msgid "_More Options"
 #~ msgstr "_Інші параметри"
