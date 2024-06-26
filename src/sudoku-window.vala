@@ -423,7 +423,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public override void size_allocate (int width, int height, int baseline)
     {
-        if (window_width != width && window_height != height)
+        if (window_width != width || window_height != height)
         {
             set_gamebox_width_margins (width);
             set_gamebox_height_margins (height);
