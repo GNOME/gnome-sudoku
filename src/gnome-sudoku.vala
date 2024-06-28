@@ -81,10 +81,6 @@ public class Sudoku : Adw.Application
         /* Help string for command line --version flag */
         N_("Show release version"), null},
 
-        { "show-possible-values", 's', 0, OptionArg.NONE, null,
-        /* Help string for command line --show-possible flag */
-        N_("Show the possible values for each cell"), null},
-
         { null }
     };
 
