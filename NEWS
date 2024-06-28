@@ -1,10 +1,11 @@
-47.alpha - DEVEL
+47.alpha - June 28, 2024
 ==========================
 
-- Add preferences dialog with new customizations for warnings and the highlighter (!87)
+- Add preferences dialog with the previously hidden settings aswell as new customizations for warnings and the highlighter (!87)
 - Add earmark mode button (shortcut e) to toggle earmark input (!89)
-- Change warnings to additionally check against the solution by default to prevent players getting stuck (#101 and !78)
+- Change warnings to additionally check against the solution by default to prevent getting stuck (#101 and !78)
 - Add autoclean earmarks feature toggleable in preferences (!83)
+- Add number picker on second click feature toggleable in preferences (!90, Tanmay Patil)
 - Add keyboard shortcuts window (!85)
 - Change the headerbar and error color to follow adwaita's theme (!88)
 - Port AboutDialog and PrintDialog to Adw.Dialog
@@ -14,7 +15,14 @@
 - Disable most Sudoku shortcuts in dialogs
 - Change dark mode's highlighter to be more subtle and its earmark highlight easier to read
 - Remove Clear Board confirmation, with the stack rework it can now be undone with "undo" (!83)
+- Remove showing 'X' as warnings
 - Updated translations
+
+46.3 - June 28, 2024
+==========================
+
+- Fix GTK allocation warnings (#94, Automeris naranja)
+- Remove option show-possible-values from --help
 
 46.2 - June 9, 2024
 ==========================
