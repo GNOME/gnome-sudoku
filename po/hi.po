@@ -1,4 +1,4 @@
-# translation of gnome-games.master.hi.po to Hindi
+# Translation of gnome-sudoku to Hindi
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
@@ -12,10 +12,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-games.master.hi\n"
+"Project-Id-Version: gnome-sudoku-master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-06-11 15:51+0000\n"
-"PO-Revision-Date: 2024-06-13 11:50+0530\n"
+"POT-Creation-Date: 2024-06-24 10:26+0000\n"
+"PO-Revision-Date: 2024-06-26 20:37+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
 "Language: hi\n"
@@ -100,44 +100,48 @@ msgid "Automatically clear related earmarks on new number insertion"
 msgstr "नए नंबर प्रविष्टि पर संबंधित चिह्न स्वचालित रूप से साफ करें"
 
 #: data/org.gnome.Sudoku.gschema.xml:54
+msgid "Display number picker on second click"
+msgstr "दूसरे क्लिक पर नंबर पिकर दिखाएं"
+
+#: data/org.gnome.Sudoku.gschema.xml:58
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "चयनित कक्ष वाली पंक्ति, स्तंभ और वर्ग को चिन्हांकित करें"
 
-#: data/org.gnome.Sudoku.gschema.xml:58
+#: data/org.gnome.Sudoku.gschema.xml:62
 msgid "Highlight the selected cell's row and column"
 msgstr "चयनित कक्ष की पंक्ति और स्तंभ को चिन्हांकित करें"
 
-#: data/org.gnome.Sudoku.gschema.xml:62
+#: data/org.gnome.Sudoku.gschema.xml:66
 msgid "Highlight the selected cell's block"
 msgstr "चयनित कक्ष के खंड को चिन्हांकित करें"
 
-#: data/org.gnome.Sudoku.gschema.xml:66
+#: data/org.gnome.Sudoku.gschema.xml:70
 msgid "Highlight the selected cell's matching numbers"
 msgstr "चयनित कक्ष की मेल खाती संख्या को चिन्हांकित करें"
 
-#: data/org.gnome.Sudoku.gschema.xml:70
+#: data/org.gnome.Sudoku.gschema.xml:74
 msgid "The puzzle's difficulty"
 msgstr "पहेली की कठिनाई"
 
-#: data/org.gnome.Sudoku.gschema.xml:74
-msgid "Width of the window in pixels"
-msgstr "विंडो की चौड़ाई पिक्सल में"
-
 #: data/org.gnome.Sudoku.gschema.xml:78
-msgid "Height of the window in pixels"
-msgstr "विंडो की ऊंचाई पिक्सल में"
+msgid "Width of the window in pixels"
+msgstr "खिड़की की चौड़ाई पिक्सल में"
 
 #: data/org.gnome.Sudoku.gschema.xml:82
-msgid "true if the window is maximized"
-msgstr "सही, यदि विंडो अधिकतम है"
+msgid "Height of the window in pixels"
+msgstr "खिड़की की ऊंचाई पिक्सल में"
 
 #: data/org.gnome.Sudoku.gschema.xml:86
+msgid "true if the window is maximized"
+msgstr "सही, यदि खिड़की अधिकतम है"
+
+#: data/org.gnome.Sudoku.gschema.xml:90
 msgid "true if the window is fullscreen"
-msgstr "सही, यदि विंडो फ़ुलस्क्रीन है"
+msgstr "सही, यदि खिड़की फ़ुलस्क्रीन है"
 
 #: data/org.gnome.Sudoku.metainfo.xml.in:7
 msgid "GNOME Sudoku"
-msgstr "GNOME Sudoku"
+msgstr "गनोम सुडोकू"
 
 #: data/org.gnome.Sudoku.metainfo.xml.in:8
 msgid "Test yourself in this classic puzzle"
@@ -149,9 +153,9 @@ msgid ""
 "Japanese game, it comes with a simple interface that makes playing Sudoku "
 "fun for players of all skill level."
 msgstr ""
-"पहेली प्रेमियों के लिए *गनोम सुडोकू* एक जरूरी गेम है। लोकप्रिय जापानी खेल पर आधारित, यह "
-"एक सरल इंटरफ़ेस के साथ आता है जो सभी कौशल स्तर के खिलाड़ियों के लिए सुडोकू खेलना मजेदार "
-"बनाता है।"
+"पहेली प्रेमियों के लिए गनोम सुडोकू एक जरूरी गेम है। लोकप्रिय जापानी खेल पर आधारित, यह एक "
+"सरल इंटरफ़ेस के साथ आता है जो सभी कौशल स्तर के खिलाड़ियों के लिए सुडोकू खेलना मजेदार बनाता "
+"है।"
 
 #: data/org.gnome.Sudoku.metainfo.xml.in:15
 msgid ""
@@ -169,70 +173,75 @@ msgid ""
 msgstr ""
 "यदि आप कागज पर खेलना पसंद करते हैं, तो आप खेल को छाप सकते हैं। आप चुन सकते हैं कि आप प्रति "
 "पृष्ठ कितने खेल छापना चाहते हैं और किस कठिनाई के खेल को आप छापना चाहते हैं: परिणामस्वरूप, "
-"GNOME Sudoku आपके लिए एक नवीकरणीय सुडोकू पुस्तक के रूप में काम कर सकता है।"
+"गनोम सुडोकू आपके लिए एक नवीकरणीय सुडोकू पुस्तक के रूप में काम कर सकता है।"
 
 #: data/org.gnome.Sudoku.metainfo.xml.in:29
 msgid "A GNOME sudoku game preview"
-msgstr "GNOME सुडोकू खेल का पूर्वावलोकन"
+msgstr "गनोम सुडोकू खेल का पूर्वावलोकन"
 
 #: data/org.gnome.Sudoku.metainfo.xml.in:33
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
-msgstr "गहरे मोड में एक *गनोम सुडोकू* गेम जिसमें चिह्न और चेतावनियां शामिल हैं"
+msgstr "गहरे मोड में एक गनोम सुडोकू गेम जिसमें चिह्न और चेतावनियां शामिल हैं"
 
-#: data/preferences-dialog.ui:10
+#: data/preferences-dialog.ui:9
 msgctxt "preferences dialog"
 msgid "General"
 msgstr "सामान्य"
 
-#: data/preferences-dialog.ui:14
-msgctxt "general preferences"
-msgid "Show timer and pause buttons"
-msgstr "टाइमर और विराम बटन दिखाएं"
+#: data/preferences-dialog.ui:12
+msgctxt "General Preferences"
+msgid "_Timer and Pause Buttons"
+msgstr "टाइमर और विराम बटन (_T)"
 
-#: data/preferences-dialog.ui:20
-msgctxt "general preferences"
-msgid "Show earmark possibilities"
-msgstr "चिह्न संभावनाएं दिखाएं"
+#: data/preferences-dialog.ui:18
+msgctxt "General Preferences"
+msgid "Number Picker on _Second Click"
+msgstr "दूसरे क्लिक पर संख्या चयनकर्ता (_S)"
 
-#: data/preferences-dialog.ui:26
-msgctxt "general preferences"
-msgid "Automatically clean earmarks"
-msgstr "चिह्न स्वचालित रूप से साफ करें"
+#: data/preferences-dialog.ui:24
+msgctxt "General Preferences"
+msgid "Automatically _Clean Earmarks"
+msgstr "चिह्न स्वचालित रूप से साफ करें (_C)"
 
-#: data/preferences-dialog.ui:34
-msgctxt "preferences dialog"
+#: data/preferences-dialog.ui:30
+msgctxt "General Preferences"
+msgid "Show Earmark _Possibilities"
+msgstr "चिह्न संभावनाएं दिखाएं (_P)"
+
+#: data/preferences-dialog.ui:38
+msgctxt "Preferences Dialog"
 msgid "Warnings"
 msgstr "चेतावनियां"
 
-#: data/preferences-dialog.ui:38
-msgctxt "warning preferences"
-msgid "Check against solution"
-msgstr "समाधान के विरुद्ध जांचें"
+#: data/preferences-dialog.ui:41
+msgctxt "Warning Preferences"
+msgid "Check _Against Solution"
+msgstr "समाधान के विरुद्ध जांचें (_A)"
 
-#: data/preferences-dialog.ui:44
-msgctxt "warning preferences"
-msgid "Show earmark warnings"
-msgstr "चिह्न चेतावनियां दिखाएं"
+#: data/preferences-dialog.ui:47
+msgctxt "Warning Preferences"
+msgid "_Earmark Warnings"
+msgstr "चिह्न चेतावनियां (_E)"
 
-#: data/preferences-dialog.ui:52
-msgctxt "preferences dialog"
+#: data/preferences-dialog.ui:55
+msgctxt "Preferences Dialog"
 msgid "Highlighter"
 msgstr "चिन्हांकनकर्ता"
 
-#: data/preferences-dialog.ui:56
-msgctxt "highlighter preferences"
-msgid "Highlight matching numbers"
-msgstr "मेल खाती संख्याएं चिन्हांकित करें"
+#: data/preferences-dialog.ui:58
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "मेल खाती संख्याएं चिन्हांकित करें (_N)"
 
-#: data/preferences-dialog.ui:62
-msgctxt "highlighter preferences"
-msgid "Highlight row and column"
-msgstr "पंक्ति और स्तंभ को चिन्हांकित करें"
+#: data/preferences-dialog.ui:64
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Row and Column"
+msgstr "पंक्ति और स्तंभ को चिन्हांकित करें (_R)"
 
-#: data/preferences-dialog.ui:68
-msgctxt "highlighter preferences"
-msgid "Highlight block"
-msgstr "ब्लॉक को चिन्हांकित करें"
+#: data/preferences-dialog.ui:70
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Block"
+msgstr "ब्लॉक को चिन्हांकित करें (_B)"
 
 #: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
@@ -273,112 +282,112 @@ msgstr "छापें (_P)"
 # #-#-#-#-#  libgnomeui.gnome-2-2.hi.po (libgnomeui HEAD)  #-#-#-#-#
 # libgnomeui/gnome-app-helper.c:95 libgnomeui/gnome-app-helper.h:534
 #: data/shortcuts-window.ui:11
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Game"
 msgstr "खेल"
 
 #: data/shortcuts-window.ui:15 data/shortcuts-window.ui:21
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Move"
 msgstr "चाल"
 
 #: data/shortcuts-window.ui:27
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Earmarks"
 msgstr "चिह्न"
 
 #: data/shortcuts-window.ui:33
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "कक्ष साफ करें"
 
 #: data/shortcuts-window.ui:39
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Undo"
 msgstr "पूर्ववत करें"
 
 #: data/shortcuts-window.ui:45
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Redo"
 msgstr "पुनः करें"
 
 #: data/shortcuts-window.ui:51
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Pause"
 msgstr "विराम"
 
 #: data/shortcuts-window.ui:57
-msgctxt "shortcuts window"
-msgid "Earmarks Mode"
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
 msgstr "चिह्न मोड"
 
 #: data/shortcuts-window.ui:63
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Number Picker"
 msgstr "संख्या चयनकर्ता"
 
 #: data/shortcuts-window.ui:69
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Earmark Picker"
 msgstr "चिह्न चयनकर्ता"
 
 #: data/shortcuts-window.ui:76
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Window"
-msgstr "विंडो"
+msgstr "खिड़की"
 
 #: data/shortcuts-window.ui:80
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Warnings"
 msgstr "चेतावनियां"
 
 #: data/shortcuts-window.ui:86
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Highlighter"
 msgstr "चिन्हांकनकर्ता"
 
 #: data/shortcuts-window.ui:92
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Reset"
 msgstr "रीसेट करें"
 
 #: data/shortcuts-window.ui:98
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "नया खेल"
 
 #: data/shortcuts-window.ui:104
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Print"
 msgstr "छापें"
 
 #: data/shortcuts-window.ui:110
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "प्राथमिकताएं"
 
 #: data/shortcuts-window.ui:116
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "कीबोर्ड शॉर्टकट"
 
 #: data/shortcuts-window.ui:122
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "छोड़ें"
 
 #: data/shortcuts-window.ui:128
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "सहायता"
 
 #: data/shortcuts-window.ui:134
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "मेनू"
 
 #: data/shortcuts-window.ui:140
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "पूर्णस्क्रीन"
 
@@ -424,7 +433,7 @@ msgstr "सहायता (_H)"
 
 #: data/sudoku-window.ui:58
 msgid "_About Sudoku"
-msgstr "Sudoku के बारे में (_A)"
+msgstr "सुडोकू के बारे में (_A)"
 
 #: data/sudoku-window.ui:81
 msgid "Undo Action"
@@ -515,15 +524,15 @@ msgstr "प्रत्येक कक्ष के लिए संभाव�
 #. Error dialog shown when starting a custom game that is not valid.
 #: src/gnome-sudoku.vala:238
 msgid "The puzzle you have entered is not a valid Sudoku."
-msgstr "आपके द्वारा दर्ज की गई पहेली वैध सुडोकू नहीं है।"
+msgstr "आपके द्वारा दर्ज की गई पहेली मान्य सुडोकू नहीं है।"
 
 #: src/gnome-sudoku.vala:238
 msgid "Please enter a valid puzzle."
-msgstr "कृपया एक वैध पहेली दर्ज करें।"
+msgstr "कृपया एक मान्य पहेली दर्ज करें।"
 
 #: src/gnome-sudoku.vala:239 src/sudoku-printer.vala:46
 msgid "Close"
-msgstr "बंद"
+msgstr "बंद करें"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
 #: src/gnome-sudoku.vala:247
@@ -532,7 +541,7 @@ msgstr "आपने जो पहेली दर्ज की है उसक
 
 #: src/gnome-sudoku.vala:247
 msgid "Valid Sudoku puzzles have exactly one solution."
-msgstr "वैध सुडोकू पहेलियों का एक ही समाधान है।"
+msgstr "मान्य सुडोकू पहेलियों का एक ही समाधान है।"
 
 #: src/gnome-sudoku.vala:248
 msgid "_Back"
@@ -558,7 +567,7 @@ msgid "Play _Again"
 msgstr "फिर से खेलें (_A)"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:526
+#: src/gnome-sudoku.vala:530
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -570,7 +579,7 @@ msgstr ""
 "QQwing %s द्वारा उत्पन्न पहेलियां"
 
 #  Translator credits
-#: src/gnome-sudoku.vala:534
+#: src/gnome-sudoku.vala:538
 msgid "translator-credits"
 msgstr ""
 "रविशंकर श्रीवास्तव (raviratlami@yahoo.com)\n"
@@ -586,18 +595,18 @@ msgstr "साफ करें"
 msgid "Error printing file:"
 msgstr "फाइल छापने में त्रुटि:"
 
-#: src/sudoku-window.vala:282
+#: src/sudoku-window.vala:284
 msgid "Select Difficulty"
 msgstr "कठिनाई चुनें"
 
-#: src/sudoku-window.vala:352
+#: src/sudoku-window.vala:354
 msgid "Create Puzzle"
 msgstr "पहेली बनाएं"
 
-#: src/sudoku-window.vala:365
+#: src/sudoku-window.vala:367
 msgid "Play"
 msgstr "खेलें"
 
-#: src/sudoku-window.vala:365
+#: src/sudoku-window.vala:367
 msgid "Pause"
 msgstr "विराम"
