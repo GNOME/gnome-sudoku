@@ -18,7 +18,7 @@ sudokucell.highlight-bg {
   background: #EDEDED;
 }
 sudokucell.selected {
-  background: #B2CCE5;
+  background: shade(@accent_bg_color, 1.2);
 }
 sudokucell.fixed {
   background: #CCC;
@@ -33,11 +33,12 @@ sudokucell.paused label {
   color: transparent;
 }
 sudokucell.highlight-label > label {
-  color: #3366E5;
+  background: shade(@accent_bg_color, 1.5);
 }
 sudokucell > label.earmark.highlight-label {
+  /* reduce red to diffentiate from warnings */
+  color: oklab(from @accent_color l min(a, 0.1) b);
   font-weight: bold;
-  color: #3366E5;
 }
 .earmark.error,
 sudokucell.error > label {

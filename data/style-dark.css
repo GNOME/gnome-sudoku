@@ -13,7 +13,7 @@ sudokucell.highlight-bg {
   background: #545454;
 }
 sudokucell.selected {
-  background: #4c5e79;
+  background: shade(@accent_bg_color, 0.7);
 }
 sudokucell.fixed {
   background: #343434;
@@ -22,9 +22,5 @@ sudokucell.paused {
   background: #454545;
 }
 sudokucell.highlight-label > label {
-  color: @view_fg_color;
-  background: #20324b;
-}
-sudokucell > label.earmark.highlight-label {
-  color: #8fa2bf;
+  background: shade(@accent_bg_color, 0.5);
 }
