@@ -6,42 +6,41 @@ grid.board {
 grid.block {
   background: #999;
 }
-.paused {
-  background: rgba(0, 0, 0, 0.75);
-  font-weight: bold;
-  color: #FFF;
-}
 sudokucell {
-  background: #FFF;
+  background: @view_bg_color;
 }
-sudokucell.highlight-bg {
-  background: #EDEDED;
+label {
+  color: @view_fg_color;
 }
 sudokucell.selected {
   background: shade(@accent_bg_color, 1.2);
 }
-sudokucell.fixed {
-  background: #CCC;
+sudokucell.highlight-coord {
+  background: #EDEDED;
 }
-sudokucell label {
-  color: @view_fg_color;
-}
-sudokucell.paused {
-  background: #FFF;
-}
-sudokucell.paused label {
-  color: transparent;
-}
-sudokucell.highlight-label > label {
+sudokucell.highlight-number {
   background: shade(@accent_bg_color, 1.5);
 }
-sudokucell > label.earmark.highlight-label {
+label.earmark.highlight-number {
   /* reduce red to diffentiate from warnings */
   color: oklab(from @accent_color l min(a, 0.1) b);
   font-weight: bold;
 }
-.earmark.error,
-sudokucell.error > label {
+label.error {
   color: @error_color;
   font-weight: bold;
+}
+sudokucell.fixed {
+  background: #CCC;
+}
+overlay.paused > label {
+  background: rgba(0, 0, 0, 0.75);
+  font-weight: bold;
+  color: #FFF;
+}
+sudokucell.paused {
+  background: #FFF;
+}
+sudokucell.paused > label {
+  color: transparent;
 }

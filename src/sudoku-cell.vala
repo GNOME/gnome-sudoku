@@ -56,6 +56,7 @@ private class SudokuCell : Widget
         value_label = new Label (this.value.to_string ());
         value_label.visible = value != 0;
         value_label.set_parent (this);
+        value_label.add_css_class ("value");
 
         focusable = true;
         can_focus = true;
@@ -81,9 +82,8 @@ private class SudokuCell : Widget
             {
                 num++;
 
-                earmark_labels[num - 1] = new Label (num.to_string ()) {
-                    visible = false
-                };
+                earmark_labels[num - 1] = new Label (num.to_string ());
+                earmark_labels[num - 1].visible = false;
                 earmark_labels[num - 1].set_parent (this);
                 earmark_labels[num - 1].add_css_class ("earmark");
             }
@@ -169,30 +169,30 @@ private class SudokuCell : Widget
         }
     }
 
-    private bool _highlighted_background = false;
-    public bool highlighted_background {
-        get { return _highlighted_background; }
+    private bool _highlight_coord = false;
+    public bool highlight_coord {
+        get { return _highlight_coord; }
         set
         {
-            _highlighted_background = value;
-            set_fixed_css (!value);
+            _highlight_coord = value;
             if (value)
-                this.add_css_class ("highlight-bg");
+                this.add_css_class ("highlight-coord");
             else
-                this.remove_css_class ("highlight-bg");
+                this.remove_css_class ("highlight-coord");
         }
     }
 
-    private bool _highlighted_value = false;
-    public bool highlighted_value {
-        get { return _highlighted_value; }
+    private bool _highlight_number = false;
+    public bool highlight_number {
+        get { return _highlight_number; }
         set
         {
-            _highlighted_value = value;
-            if (value && !has_css_class ("error"))
-                this.add_css_class ("highlight-label");
+            _highlight_number = value;
+            set_fixed_css (!value);
+            if (value)
+                this.add_css_class ("highlight-number");
             else
-                this.remove_css_class ("highlight-label");
+                this.remove_css_class ("highlight-number");
         }
     }
 
@@ -216,9 +216,9 @@ private class SudokuCell : Widget
 
         var earmark = earmark_labels[val-1];
         if (enabled && !earmark.has_css_class ("error"))
-            earmark.add_css_class ("highlight-label");
+            earmark.add_css_class ("highlight-number");
         else
-            earmark.remove_css_class ("highlight-label");
+            earmark.remove_css_class ("highlight-number");
     }
 
     public void update_value ()
@@ -503,9 +503,9 @@ private class SudokuCell : Widget
         }
 
         if (error)
-            add_css_class ("error");
+            value_label.add_css_class ("error");
         else
-            remove_css_class ("error");
+            value_label.remove_css_class ("error");
     }
 
     public void check_earmarks_warnings ()
@@ -532,7 +532,7 @@ private class SudokuCell : Widget
     public void clear_warnings ()
     {
         var marks = game.board.get_earmarks (row, col);
-        remove_css_class ("error");
+        value_label.remove_css_class ("error");
         for (int num = 1; num <= marks.length; num++)
             earmark_labels[num-1].remove_css_class ("error");
     }

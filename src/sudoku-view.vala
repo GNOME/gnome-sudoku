@@ -89,9 +89,9 @@ public class SudokuView : Adw.Bin
         this.set_child (frame);
 
         paused_label = new Label (_("Paused"));
-        paused_label.add_css_class ("paused");
         paused_label.set_visible (false);
         overlay.add_overlay (paused_label);
+        overlay.add_css_class ("paused");
 
         this.game.paused_changed.connect(() => {
             // Set Font Size
@@ -287,7 +287,7 @@ public class SudokuView : Adw.Bin
                 if (cell.value > 0 && highlight_numbers)
                 {
                     if (cell.value == cell_tmp.value)
-                        cell_tmp.highlighted_value = enabled;
+                        cell_tmp.highlight_number = enabled;
                     else if (cell_tmp.value == 0)
                         cell_tmp.set_earmark_highlight (cell.value, enabled);
                 }
@@ -298,7 +298,7 @@ public class SudokuView : Adw.Bin
                    row_tmp / game.board.block_cols == row / game.board.block_cols &&
                    col_tmp / game.board.block_rows == col / game.board.block_rows)))
                 {
-                    cell_tmp.highlighted_background = enabled;
+                    cell_tmp.highlight_coord = enabled;
                 }
             }
         }
@@ -321,7 +321,7 @@ public class SudokuView : Adw.Bin
                     continue;
 
                 if (val == cell_tmp.value)
-                    cell_tmp.highlighted_value = enabled;
+                    cell_tmp.highlight_number = enabled;
                 else if (cell_tmp.value == 0)
                     cell_tmp.set_earmark_highlight (val, enabled);
             }

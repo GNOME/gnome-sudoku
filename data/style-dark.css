@@ -12,7 +12,7 @@ grid.block {
 sudokucell {
   background: shade(var(--sudoku-dark-grey), 0.59);
 }
-sudokucell.highlight-bg {
+sudokucell.highlight-coord {
   background: shade(var(--sudoku-dark-grey), 0.72);
 }
 sudokucell.selected {
@@ -21,9 +21,9 @@ sudokucell.selected {
 sudokucell.fixed {
   background: shade(var(--sudoku-dark-grey), 0.45);
 }
+sudokucell.highlight-number {
+  background: shade(@accent_bg_color, 0.5);
+}
 sudokucell.paused {
   background: shade(var(--sudoku-dark-grey), 0.59);
-}
-sudokucell.highlight-label > label {
-  background: shade(@accent_bg_color, 0.5);
 }
