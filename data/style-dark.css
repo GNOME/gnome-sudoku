@@ -1,25 +1,28 @@
 /*contains styles only used when AdwStyleManager:dark is TRUE.*/
+:root {
+  --sudoku-dark-grey: #747474;
+}
 grid.board {
   border: none;
-  background: #747474;
+  background: var(--sudoku-dark-grey);
 }
 grid.block {
-  background: #5b5b5b;
+  background: shade(var(--sudoku-dark-grey), 0.79);
 }
 sudokucell {
-  background: #454545;
+  background: shade(var(--sudoku-dark-grey), 0.59);
 }
 sudokucell.highlight-bg {
-  background: #545454;
+  background: shade(var(--sudoku-dark-grey), 0.72);
 }
 sudokucell.selected {
   background: shade(@accent_bg_color, 0.7);
 }
 sudokucell.fixed {
-  background: #343434;
+  background: shade(var(--sudoku-dark-grey), 0.45);
 }
 sudokucell.paused {
-  background: #454545;
+  background: shade(var(--sudoku-dark-grey), 0.59);
 }
 sudokucell.highlight-label > label {
   background: shade(@accent_bg_color, 0.5);
