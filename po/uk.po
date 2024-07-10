@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-06-24 10:26+0000\n"
-"PO-Revision-Date: 2024-06-25 15:18+0300\n"
+"POT-Creation-Date: 2024-07-10 16:11+0000\n"
+"PO-Revision-Date: 2024-07-10 19:56+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -90,8 +90,8 @@ msgid "Toggle timer and pause buttons"
 msgstr "Перемкнути кнопки таймера і паузи"
 
 #: data/org.gnome.Sudoku.gschema.xml:46
-msgid "Check cells only against duplicates in row, column and block"
-msgstr "Перевіряти комірки лише на дублікати у рядку, стовпчику та блоці"
+msgid "Additionally check against the solution for warnings"
+msgstr "Додатково перевіряти за розв'язком для попереджень"
 
 #: data/org.gnome.Sudoku.gschema.xml:50
 msgid "Automatically clear related earmarks on new number insertion"
@@ -189,77 +189,56 @@ msgid "General"
 msgstr "Загальне"
 
 #: data/preferences-dialog.ui:12
-#| msgid "Toggle timer and pause buttons"
 msgctxt "General Preferences"
 msgid "_Timer and Pause Buttons"
 msgstr "Кнопки _таймера і паузи"
 
 #: data/preferences-dialog.ui:18
-#| msgctxt "shortcuts window"
-#| msgid "Number Picker"
 msgctxt "General Preferences"
 msgid "Number Picker on _Second Click"
 msgstr "Вибір числа після _другого клацання"
 
 #: data/preferences-dialog.ui:24
-#| msgctxt "general preferences"
-#| msgid "Automatically clean earmarks"
 msgctxt "General Preferences"
 msgid "Automatically _Clean Earmarks"
 msgstr "Автоматично з_німати позначки"
 
 #: data/preferences-dialog.ui:30
-#| msgctxt "general preferences"
-#| msgid "Show earmark possibilities"
 msgctxt "General Preferences"
 msgid "Show Earmark _Possibilities"
 msgstr "Показати _можливості позначок"
 
 #: data/preferences-dialog.ui:38
-#| msgctxt "preferences dialog"
-#| msgid "Warnings"
 msgctxt "Preferences Dialog"
 msgid "Warnings"
 msgstr "Попередження"
 
 #: data/preferences-dialog.ui:41
-#| msgctxt "warning preferences"
-#| msgid "Check against solution"
 msgctxt "Warning Preferences"
 msgid "Check _Against Solution"
 msgstr "Перевірка за _розв'язком"
 
 #: data/preferences-dialog.ui:47
-#| msgctxt "warning preferences"
-#| msgid "Show earmark warnings"
 msgctxt "Warning Preferences"
 msgid "_Earmark Warnings"
 msgstr "Попередження _щодо позначок"
 
 #: data/preferences-dialog.ui:55
-#| msgctxt "preferences dialog"
-#| msgid "Highlighter"
 msgctxt "Preferences Dialog"
 msgid "Highlighter"
 msgstr "Підсвічування"
 
 #: data/preferences-dialog.ui:58
-#| msgctxt "highlighter preferences"
-#| msgid "Highlight matching numbers"
 msgctxt "Highlighter Preferences"
 msgid "Highlight Matching _Numbers"
 msgstr "Підсвітити відповідні _числа"
 
 #: data/preferences-dialog.ui:64
-#| msgctxt "highlighter preferences"
-#| msgid "Highlight row and column"
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Row and Column"
 msgstr "Підсвітити _рядок і стовпчик"
 
 #: data/preferences-dialog.ui:70
-#| msgctxt "highlighter preferences"
-#| msgid "Highlight block"
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "Підсвітити _блок"
@@ -301,153 +280,111 @@ msgid "_Print"
 msgstr "На_друкувати…"
 
 #: data/shortcuts-window.ui:11
-#| msgctxt "shortcuts window"
-#| msgid "Game"
 msgctxt "Shortcuts Window"
 msgid "Game"
 msgstr "Гра"
 
 #: data/shortcuts-window.ui:15 data/shortcuts-window.ui:21
-#| msgctxt "shortcuts window"
-#| msgid "Move"
 msgctxt "Shortcuts Window"
 msgid "Move"
 msgstr "Пересунути"
 
 #: data/shortcuts-window.ui:27
-#| msgctxt "shortcuts window"
-#| msgid "Earmarks"
 msgctxt "Shortcuts Window"
 msgid "Earmarks"
 msgstr "Позначки"
 
 #: data/shortcuts-window.ui:33
-#| msgctxt "shortcuts window"
-#| msgid "Clear Cell"
 msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "Очистити комірку"
 
 #: data/shortcuts-window.ui:39
-#| msgctxt "shortcuts window"
-#| msgid "Undo"
 msgctxt "Shortcuts Window"
 msgid "Undo"
 msgstr "Скасувати"
 
 #: data/shortcuts-window.ui:45
-#| msgctxt "shortcuts window"
-#| msgid "Redo"
 msgctxt "Shortcuts Window"
 msgid "Redo"
 msgstr "Повторити"
 
 #: data/shortcuts-window.ui:51
-#| msgid "Pause"
 msgctxt "Shortcuts Window"
 msgid "Pause"
 msgstr "Пауза"
 
 #: data/shortcuts-window.ui:57
-#| msgctxt "shortcuts window"
-#| msgid "Earmarks Mode"
 msgctxt "Shortcuts Window"
 msgid "Earmark Mode"
 msgstr "Режим позначок"
 
 #: data/shortcuts-window.ui:63
-#| msgctxt "shortcuts window"
-#| msgid "Number Picker"
 msgctxt "Shortcuts Window"
 msgid "Number Picker"
 msgstr "Вибір числа"
 
 #: data/shortcuts-window.ui:69
-#| msgctxt "shortcuts window"
-#| msgid "Earmark Picker"
 msgctxt "Shortcuts Window"
 msgid "Earmark Picker"
 msgstr "Вибір позначок"
 
 #: data/shortcuts-window.ui:76
-#| msgctxt "shortcuts window"
-#| msgid "Window"
 msgctxt "Shortcuts Window"
 msgid "Window"
 msgstr "Вікно"
 
 #: data/shortcuts-window.ui:80
-#| msgctxt "preferences dialog"
-#| msgid "Warnings"
 msgctxt "Shortcuts Window"
 msgid "Warnings"
 msgstr "Попередження"
 
 #: data/shortcuts-window.ui:86
-#| msgctxt "preferences dialog"
-#| msgid "Highlighter"
 msgctxt "Shortcuts Window"
 msgid "Highlighter"
 msgstr "Підсвічування"
 
 #: data/shortcuts-window.ui:92
-#| msgctxt "shortcuts window"
-#| msgid "Reset"
 msgctxt "Shortcuts Window"
 msgid "Reset"
 msgstr "Скинути"
 
 #: data/shortcuts-window.ui:98
-#| msgctxt "shortcuts window"
-#| msgid "New Game"
 msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "Нова гра"
 
 #: data/shortcuts-window.ui:104
-#| msgctxt "shortcuts window"
-#| msgid "Print"
 msgctxt "Shortcuts Window"
 msgid "Print"
 msgstr "Надрукувати"
 
 #: data/shortcuts-window.ui:110
-#| msgctxt "shortcuts window"
-#| msgid "Preferences"
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Налаштування"
 
 #: data/shortcuts-window.ui:116
-#| msgctxt "shortcuts window"
-#| msgid "Keyboard Shortcuts"
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Клавіатурні скорочення"
 
 #: data/shortcuts-window.ui:122
-#| msgid "Quit"
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Вийти"
 
 #: data/shortcuts-window.ui:128
-#| msgctxt "shortcuts window"
-#| msgid "Help"
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Довідка"
 
 #: data/shortcuts-window.ui:134
-#| msgctxt "shortcuts window"
-#| msgid "Menu"
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Меню"
 
 #: data/shortcuts-window.ui:140
-#| msgctxt "shortcuts window"
-#| msgid "Fullscreen"
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Повноекранний режим"
@@ -577,42 +514,37 @@ msgstr "Власна головоломка"
 msgid "Show release version"
 msgstr "Показати версію випуску"
 
-#. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:87
-msgid "Show the possible values for each cell"
-msgstr "Показувати можливі значення для кожної клітинки"
-
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:234
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Головоломку, яку ви ввели, — не сумісна з судоку."
 
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:234
 msgid "Please enter a valid puzzle."
 msgstr "Введіть правильну головоломку."
 
-#: src/gnome-sudoku.vala:239 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:235 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "Закрити"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:243
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Головоломка, яку ви ввели, має кілька розв'язків."
 
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:243
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Правильний судоку може мати тільки один розв'язок."
 
-#: src/gnome-sudoku.vala:248
+#: src/gnome-sudoku.vala:244
 msgid "_Back"
 msgstr "_Назад"
 
-#: src/gnome-sudoku.vala:249
+#: src/gnome-sudoku.vala:245
 msgid "Play _Anyway"
 msgstr "О_днаково зіграти"
 
-#: src/gnome-sudoku.vala:290
+#: src/gnome-sudoku.vala:286
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -620,16 +552,16 @@ msgstr[0] "Чудово! Ви склали головоломку за %d хви
 msgstr[1] "Чудово! Ви склали головоломку за %d хвилини"
 msgstr[2] "Чудово! Ви склали головоломку за %d хвилин"
 
-#: src/gnome-sudoku.vala:298
+#: src/gnome-sudoku.vala:294
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/gnome-sudoku.vala:299
+#: src/gnome-sudoku.vala:295
 msgid "Play _Again"
 msgstr "Зіграти _ще раз"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:530
+#: src/gnome-sudoku.vala:526
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -640,7 +572,7 @@ msgstr ""
 "\n"
 "Головоломки породжує — QQwing %s"
 
-#: src/gnome-sudoku.vala:538
+#: src/gnome-sudoku.vala:534
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота\n"
@@ -673,6 +605,12 @@ msgstr "Грати"
 #: src/sudoku-window.vala:367
 msgid "Pause"
 msgstr "Пауза"
+
+#~ msgid "Check cells only against duplicates in row, column and block"
+#~ msgstr "Перевіряти комірки лише на дублікати у рядку, стовпчику та блоці"
+
+#~ msgid "Show the possible values for each cell"
+#~ msgstr "Показувати можливі значення для кожної клітинки"
 
 #~ msgctxt "general preferences"
 #~ msgid "Show timer and pause buttons"
