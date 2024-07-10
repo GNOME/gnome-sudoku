@@ -231,16 +231,16 @@ public class Sudoku : Adw.Application
         else if (solutions == 0)
         {
             // Error dialog shown when starting a custom game that is not valid.
-            var dialog = new Adw.MessageDialog (window, _("The puzzle you have entered is not a valid Sudoku."), _("Please enter a valid puzzle."));
+            var dialog = new Adw.AlertDialog (_("The puzzle you have entered is not a valid Sudoku."), _("Please enter a valid puzzle."));
             dialog.add_response ("close", _("Close"));
 
             dialog.response.connect (() => dialog.destroy ());
-            dialog.present ();
+            dialog.present (window);
         }
         else
         {
             // Warning dialog shown when starting a custom game that has multiple solutions.
-            var dialog = new Adw.MessageDialog (window, _("The puzzle you have entered has multiple solutions."), _("Valid Sudoku puzzles have exactly one solution."));
+            var dialog = new Adw.AlertDialog (_("The puzzle you have entered has multiple solutions."), _("Valid Sudoku puzzles have exactly one solution."));
             dialog.add_response ("close", _("_Back"));
             dialog.add_response ("continue", _("Play _Anyway"));
             dialog.set_response_appearance ("continue", Adw.ResponseAppearance.DESTRUCTIVE);
@@ -250,7 +250,7 @@ public class Sudoku : Adw.Application
                 dialog.destroy ();
             });
 
-            dialog.present ();
+            dialog.present (window);
         }
     }
 
@@ -290,7 +290,7 @@ public class Sudoku : Adw.Application
         else
             win_str = gettext ("Well done, you completed the puzzle!");
 
-        var dialog = new Adw.MessageDialog (window, win_str, null);
+        var dialog = new Adw.AlertDialog (win_str, null);
         dialog.add_response ("close", _("Quit"));
         dialog.add_response ("play-again", _("Play _Again"));
         dialog.set_response_appearance ("play-again", Adw.ResponseAppearance.SUGGESTED);
@@ -303,7 +303,7 @@ public class Sudoku : Adw.Application
             dialog.destroy ();
         });
 
-        dialog.present ();
+        dialog.present (window);
     }
 
     private void start_custom_game (SudokuBoard board)
