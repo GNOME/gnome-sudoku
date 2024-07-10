@@ -88,7 +88,7 @@ public class SudokuView : Adw.Bin
         frame = new SudokuFrame (overlay);
         this.set_child (frame);
 
-        paused_label = new Label ("Paused");
+        paused_label = new Label (_("Paused"));
         paused_label.add_css_class ("paused");
         paused_label.set_visible (false);
         overlay.add_overlay (paused_label);
