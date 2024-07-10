@@ -15,6 +15,7 @@ libsudoku_dependencies = [
 ]
 
 libsudoku = static_library('sudoku', libsudoku_sources,
+  c_args: '-w',
   dependencies: libsudoku_dependencies,
   vala_header: 'libsudoku.h',
   vala_vapi: 'libsudoku.vapi'
