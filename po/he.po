@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-05-25 15:15+0000\n"
-"PO-Revision-Date: 2024-05-28 11:26+0300\n"
+"POT-Creation-Date: 2024-07-10 16:11+0000\n"
+"PO-Revision-Date: 2024-07-10 21:01+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -94,46 +94,50 @@ msgid "Toggle timer and pause buttons"
 msgstr "Toggle timer and pause buttons"
 
 #: data/org.gnome.Sudoku.gschema.xml:46
-msgid "Check cells only against duplicates in row, column and block"
-msgstr "Check cells only against duplicates in row, column and block"
+msgid "Additionally check against the solution for warnings"
+msgstr "Additionally check against the solution for warnings"
 
 #: data/org.gnome.Sudoku.gschema.xml:50
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr "Automatically clear related earmarks on new number insertion"
 
 #: data/org.gnome.Sudoku.gschema.xml:54
+msgid "Display number picker on second click"
+msgstr "Display number picker on second click"
+
+#: data/org.gnome.Sudoku.gschema.xml:58
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Highlight row, column and square that contain the selected cell"
 
-#: data/org.gnome.Sudoku.gschema.xml:58
+#: data/org.gnome.Sudoku.gschema.xml:62
 msgid "Highlight the selected cell's row and column"
 msgstr "Highlight the selected cell's row and column"
 
-#: data/org.gnome.Sudoku.gschema.xml:62
+#: data/org.gnome.Sudoku.gschema.xml:66
 msgid "Highlight the selected cell's block"
 msgstr "Highlight the selected cell's block"
 
-#: data/org.gnome.Sudoku.gschema.xml:66
+#: data/org.gnome.Sudoku.gschema.xml:70
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Highlight the selected cell's matching numbers"
 
-#: data/org.gnome.Sudoku.gschema.xml:70
+#: data/org.gnome.Sudoku.gschema.xml:74
 msgid "The puzzle's difficulty"
 msgstr "The puzzle's difficulty"
 
-#: data/org.gnome.Sudoku.gschema.xml:74
+#: data/org.gnome.Sudoku.gschema.xml:78
 msgid "Width of the window in pixels"
 msgstr "Width of the window in pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:78
+#: data/org.gnome.Sudoku.gschema.xml:82
 msgid "Height of the window in pixels"
 msgstr "Height of the window in pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:82
+#: data/org.gnome.Sudoku.gschema.xml:86
 msgid "true if the window is maximized"
 msgstr "true if the window is maximized"
 
-#: data/org.gnome.Sudoku.gschema.xml:86
+#: data/org.gnome.Sudoku.gschema.xml:90
 msgid "true if the window is fullscreen"
 msgstr "true if the window is fullscreen"
 
@@ -181,60 +185,75 @@ msgstr "תצוגה של משחק GNOME סודוקו"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "סודוקו GNOME במצב כהה מציג את תכונת סימוני מספרים אפשריים ואזהרות"
 
-#: data/preferences-dialog.ui:10
+#: data/preferences-dialog.ui:9
 msgctxt "preferences dialog"
 msgid "General"
 msgstr "כללי"
 
-#: data/preferences-dialog.ui:14
-msgctxt "general preferences"
-msgid "Show timer and pause buttons"
-msgstr "הצגת קוצב זמן וכפתור השהיה"
+#: data/preferences-dialog.ui:12
+msgctxt "General Preferences"
+msgid "_Timer and Pause Buttons"
+msgstr "כפתורי _קוצב זמן והשהיה"
 
-#: data/preferences-dialog.ui:20
-msgctxt "general preferences"
-msgid "Show earmark possibilities"
-msgstr "הצגת מספרים אפשריים"
+#: data/preferences-dialog.ui:18
+# msgctxt "shortcuts window"
+msgctxt "General Preferences"
+msgid "Number Picker on _Second Click"
+msgstr "בחירת מספר ב_לחיצה משנית"
 
-#: data/preferences-dialog.ui:26
-msgctxt "general preferences"
-msgid "Automatically clean earmarks"
-msgstr "ניקוי אוטומטי של מספרים שהיו אפשריים ואינם עוד"
+#: data/preferences-dialog.ui:24
+# msgctxt "general preferences"
+msgctxt "General Preferences"
+msgid "Automatically _Clean Earmarks"
+msgstr "_ניקוי אוטומטי של מספרים שהיו אפשריים ואינם עוד"
 
-#: data/preferences-dialog.ui:34
-msgctxt "preferences dialog"
+#: data/preferences-dialog.ui:30
+# msgctxt "general preferences"
+msgctxt "General Preferences"
+msgid "Show Earmark _Possibilities"
+msgstr "הצגת מספרים _אפשריים"
+
+#: data/preferences-dialog.ui:38
+# msgctxt "preferences dialog"
+msgctxt "Preferences Dialog"
 msgid "Warnings"
 msgstr "אזהרות"
 
-#: data/preferences-dialog.ui:38
-msgctxt "warning preferences"
-msgid "Check against solution"
-msgstr "בדיקה למול הפתרון"
+#: data/preferences-dialog.ui:41
+# msgctxt "warning preferences"
+msgctxt "Warning Preferences"
+msgid "Check _Against Solution"
+msgstr "בדיקה _למול הפתרון"
 
-#: data/preferences-dialog.ui:44
-msgctxt "warning preferences"
-msgid "Show earmark warnings"
-msgstr "הצגת אזהרות במספרים שסומנו כאפשריים"
+#: data/preferences-dialog.ui:47
+# msgctxt "warning preferences"
+msgctxt "Warning Preferences"
+msgid "_Earmark Warnings"
+msgstr "הצגת אזהרות במספרים שסומנו כ_אפשריים"
 
-#: data/preferences-dialog.ui:52
-msgctxt "preferences dialog"
+#: data/preferences-dialog.ui:55
+# msgctxt "preferences dialog"
+msgctxt "Preferences Dialog"
 msgid "Highlighter"
 msgstr "הדגשה"
 
-#: data/preferences-dialog.ui:56
-msgctxt "highlighter preferences"
-msgid "Highlight matching numbers"
-msgstr "הדגשת מספרים מתאימים"
+#: data/preferences-dialog.ui:58
+# msgctxt "highlighter preferences"
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "הדגשת _מספרים מתאימים"
 
-#: data/preferences-dialog.ui:62
-msgctxt "highlighter preferences"
-msgid "Highlight row and column"
-msgstr "הדגשת שורה ועמודה"
+#: data/preferences-dialog.ui:64
+# msgctxt "highlighter preferences"
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Row and Column"
+msgstr "הדגשת _שורה ועמודה"
 
-#: data/preferences-dialog.ui:68
-msgctxt "highlighter preferences"
-msgid "Highlight block"
-msgstr "הדגשת בלוק"
+#: data/preferences-dialog.ui:70
+# msgctxt "highlighter preferences"
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Block"
+msgstr "הדגשת _בלוק"
 
 #: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
@@ -273,107 +292,132 @@ msgid "_Print"
 msgstr "ה_דפסה"
 
 #: data/shortcuts-window.ui:11
-msgctxt "shortcuts window"
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Game"
 msgstr "משחק"
 
 #: data/shortcuts-window.ui:15 data/shortcuts-window.ui:21
-msgctxt "shortcuts window"
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Move"
 msgstr "הזזה"
 
 #: data/shortcuts-window.ui:27
-msgctxt "shortcuts window"
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Earmarks"
 msgstr "סימון אפשרות"
 
 #: data/shortcuts-window.ui:33
-msgctxt "shortcuts window"
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "ניקוי תא"
 
 #: data/shortcuts-window.ui:39
-msgctxt "shortcuts window"
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Undo"
 msgstr "ביטול"
 
 #: data/shortcuts-window.ui:45
-msgctxt "shortcuts window"
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Redo"
 msgstr "ביצוע חוזר"
 
 #: data/shortcuts-window.ui:51
-msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Pause"
 msgstr "השהיה"
 
 #: data/shortcuts-window.ui:57
-msgctxt "shortcuts window"
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
+msgstr "מצב סימון אפשרות"
+
+#: data/shortcuts-window.ui:63
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Number Picker"
 msgstr "בחירת מספר"
 
-#: data/shortcuts-window.ui:63
-msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:69
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Earmark Picker"
 msgstr "בחירת מספרים אפשריים"
 
-#: data/shortcuts-window.ui:69
-msgctxt "shortcuts window"
-msgid "Warnings"
-msgstr "אזהרות"
-
-#: data/shortcuts-window.ui:75
-msgctxt "shortcuts window"
-msgid "Highlighter"
-msgstr "הדגשה"
-
-#: data/shortcuts-window.ui:82
-msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:76
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Window"
 msgstr "חלון"
 
+#: data/shortcuts-window.ui:80
+# msgctxt "preferences dialog"
+msgctxt "Shortcuts Window"
+msgid "Warnings"
+msgstr "אזהרות"
+
 #: data/shortcuts-window.ui:86
-msgctxt "shortcuts window"
+# msgctxt "preferences dialog"
+msgctxt "Shortcuts Window"
+msgid "Highlighter"
+msgstr "הדגשה"
+
+#: data/shortcuts-window.ui:92
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Reset"
 msgstr "איפוס"
 
-#: data/shortcuts-window.ui:92
-msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:98
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "משחק חדש"
 
-#: data/shortcuts-window.ui:98
-msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:104
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Print"
 msgstr "הדפסה"
 
-#: data/shortcuts-window.ui:104
-msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:110
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "העדפות"
 
-#: data/shortcuts-window.ui:110
-msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:116
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "צירופי מקשים"
 
-#: data/shortcuts-window.ui:116
-msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:122
+msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "יציאה"
 
-#: data/shortcuts-window.ui:122
-msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:128
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "עזרה"
 
-#: data/shortcuts-window.ui:128
-msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:134
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "תפריט"
 
-#: data/shortcuts-window.ui:134
-msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:140
+# msgctxt "shortcuts window"
+msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "מסך מלא"
 
@@ -434,38 +478,43 @@ msgid "Back"
 msgstr "חזרה"
 
 #: data/sudoku-window.ui:117
+# msgctxt "shortcuts window"
+msgid "Earmark mode"
+msgstr "מצב סימון אפשרות"
+
+#: data/sudoku-window.ui:127
 msgid "Leave Fullscreen"
 msgstr "יציאה ממצב מסך מלא"
 
-#: data/sudoku-window.ui:131
+#: data/sudoku-window.ui:141
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: data/sudoku-window.ui:150
+#: data/sudoku-window.ui:160
 msgid "Play Custom Puzzle"
 msgstr "לשחק בלוח מותאם"
 
-#: data/sudoku-window.ui:196
+#: data/sudoku-window.ui:205
 msgid "Select Game Difficulty"
 msgstr "בחירת רמת קושי למשחק"
 
-#: data/sudoku-window.ui:213
+#: data/sudoku-window.ui:222
 msgid "_Easy"
 msgstr "_קל"
 
-#: data/sudoku-window.ui:227
+#: data/sudoku-window.ui:236
 msgid "_Medium"
 msgstr "_בינוני"
 
-#: data/sudoku-window.ui:241
+#: data/sudoku-window.ui:250
 msgid "_Hard"
 msgstr "ק_שה"
 
-#: data/sudoku-window.ui:255
+#: data/sudoku-window.ui:264
 msgid "_Very Hard"
 msgstr "_קשה מאד"
 
-#: data/sudoku-window.ui:266
+#: data/sudoku-window.ui:275
 msgid "_Start Game"
 msgstr "ה_תחלת משחק"
 
@@ -494,46 +543,41 @@ msgid "Custom Puzzle"
 msgstr "לוח מותאם"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:81
+#: src/gnome-sudoku.vala:83
 msgid "Show release version"
 msgstr "Show release version"
 
-#. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:85
-msgid "Show the possible values for each cell"
-msgstr "Show the possible values for each cell"
-
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:234
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "הלוח שהזנת אינו סודוקו תקף."
 
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:234
 msgid "Please enter a valid puzzle."
 msgstr "נא להכניס לוח תקף."
 
-#: src/gnome-sudoku.vala:236 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:235 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "סגירה"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:243
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "ללוח שהזנת יש מספר פתרונות אפשריים."
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:243
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "לסודוקו תקף יש בדיוק פתרון אפשרי אחד."
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:244
 msgid "_Back"
 msgstr "_חזרה"
 
-#: src/gnome-sudoku.vala:246
+#: src/gnome-sudoku.vala:245
 msgid "Play _Anyway"
 msgstr "לשחק _בכל מקרה"
 
-#: src/gnome-sudoku.vala:287
+#: src/gnome-sudoku.vala:286
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -541,16 +585,16 @@ msgstr[0] "כל הכבוד, השלמת את הלוח בדקה אחת!"
 msgstr[1] "כל הכבוד, השלמת את הלוח ב־%d דקות!"
 msgstr[2] "כל הכבוד, השלמת את הלוח בשתי דקות!"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:294
 msgid "Quit"
 msgstr "יציאה"
 
-#: src/gnome-sudoku.vala:296
+#: src/gnome-sudoku.vala:295
 msgid "Play _Again"
 msgstr "לשחק _שוב"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:513
+#: src/gnome-sudoku.vala:526
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -561,7 +605,7 @@ msgstr ""
 "\n"
 "הלוחות נוצרות על ידי QQwing %s"
 
-#: src/gnome-sudoku.vala:521
+#: src/gnome-sudoku.vala:534
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -584,21 +628,47 @@ msgstr "ניקוי"
 msgid "Error printing file:"
 msgstr "שגיאה בהדפסת קובץ:"
 
-#: src/sudoku-window.vala:255
+#: src/sudoku-window.vala:284
 msgid "Select Difficulty"
 msgstr "בחירת רמת קושי"
 
-#: src/sudoku-window.vala:322
+#: src/sudoku-window.vala:354
 msgid "Create Puzzle"
 msgstr "יצירת לוח"
 
-#: src/sudoku-window.vala:335
+#: src/sudoku-window.vala:367
 msgid "Play"
 msgstr "לשחק"
 
-#: src/sudoku-window.vala:335
+#: src/sudoku-window.vala:367
 msgid "Pause"
 msgstr "השהייה"
+
+#~ msgid "Check cells only against duplicates in row, column and block"
+#~ msgstr "Check cells only against duplicates in row, column and block"
+
+#~ msgctxt "general preferences"
+#~ msgid "Show timer and pause buttons"
+#~ msgstr "הצגת קוצב זמן וכפתור השהיה"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Pause"
+#~ msgstr "השהיה"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Warnings"
+#~ msgstr "אזהרות"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Highlighter"
+#~ msgstr "הדגשה"
+
+#~ msgctxt "shortcuts window"
+#~ msgid "Quit"
+#~ msgstr "יציאה"
+
+#~ msgid "Show the possible values for each cell"
+#~ msgstr "Show the possible values for each cell"
 
 #~ msgid "_More Options"
 #~ msgstr "א_פשרויות נוספות"
