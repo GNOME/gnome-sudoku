@@ -494,7 +494,7 @@ private class SudokuCell : Widget
             if (game.board.broken_coords.contains (Coord (row, col)))
                 error = true;
 
-            else if (!view.simple_warnings && game.mode == GameMode.PLAY)
+            else if (view.solution_warnings && game.mode == GameMode.PLAY)
             {
                 int solution = game.board.get_solution (row, col);
                 if (solution != 0)

@@ -29,7 +29,7 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
     [GtkChild] public unowned Adw.SwitchRow show_timer;
     [GtkChild] public unowned Adw.SwitchRow number_picker_second_click;
     [GtkChild] public unowned Adw.SwitchRow show_earmark_warnings;
-    [GtkChild] public unowned Adw.SwitchRow simple_warnings;
+    [GtkChild] public unowned Adw.SwitchRow solution_warnings;
     [GtkChild] public unowned Adw.SwitchRow highlight_numbers;
     [GtkChild] public unowned Adw.SwitchRow highlight_block;
     [GtkChild] public unowned Adw.SwitchRow highlight_row_column;
@@ -44,7 +44,7 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
         show_earmark_warnings.set_active (window.settings.get_boolean ("show-earmark-warnings"));
         show_possibilities.set_active (window.settings.get_boolean ("show-possibilities"));
         number_picker_second_click.set_active (window.settings.get_boolean ("number-picker-second-click"));
-        simple_warnings.set_active (!window.settings.get_boolean ("simple-warnings"));
+        solution_warnings.set_active (window.settings.get_boolean ("solution-warnings"));
         autoclean_earmarks.set_active (window.settings.get_boolean ("autoclean-earmarks"));
         highlight_row_column.set_active (window.settings.get_boolean ("highlight-row-column"));
         highlight_block.set_active (window.settings.get_boolean ("highlight-block"));
@@ -78,11 +78,11 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
                 this.window.view.number_picker_second_click = value;
         });
 
-        simple_warnings.notify["active"].connect (() => {
-            bool value = !simple_warnings.get_active ();
-            this.window.settings.set_boolean ("simple-warnings",  value);
+        solution_warnings.notify["active"].connect (() => {
+            bool value = solution_warnings.get_active ();
+            this.window.settings.set_boolean ("solution-warnings",  value);
             if (this.window.view != null)
-                this.window.view.simple_warnings = value;
+                this.window.view.solution_warnings = value;
         });
 
         show_timer.notify["active"].connect (() => {
