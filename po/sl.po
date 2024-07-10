@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-06-28 15:51+0000\n"
-"PO-Revision-Date: 2024-06-30 12:21+0200\n"
+"POT-Creation-Date: 2024-07-10 19:43+0000\n"
+"PO-Revision-Date: 2024-07-10 23:06+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -94,8 +94,8 @@ msgid "Toggle timer and pause buttons"
 msgstr "Preklopi med gumbi časovnika in za začasno ustavitev"
 
 #: data/org.gnome.Sudoku.gschema.xml:46
-msgid "Check cells only against duplicates in row, column and block"
-msgstr "Preveri celice le za dvojnike v vrstici, stolpcu in bloku"
+msgid "Additionally check against the solution for warnings"
+msgstr "Dodatno preveri glede na rešitev za opozorila"
 
 #: data/org.gnome.Sudoku.gschema.xml:50
 msgid "Automatically clear related earmarks on new number insertion"
@@ -591,6 +591,10 @@ msgstr "Počisti"
 #: src/sudoku-printer.vala:45
 msgid "Error printing file:"
 msgstr "Napaka med tiskanjem datoteke:"
+
+#: src/sudoku-view.vala:91
+msgid "Paused"
+msgstr "Začasno ustavljeno"
 
 #: src/sudoku-window.vala:284
 msgid "Select Difficulty"
