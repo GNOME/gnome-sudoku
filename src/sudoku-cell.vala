@@ -211,9 +211,6 @@ private class SudokuCell : Widget
 
     public void set_earmark_highlight (int val, bool enabled)
     {
-        if (!game.board.is_earmark_enabled (row, col, val))
-            return;
-
         var earmark = earmark_labels[val-1];
         if (enabled && !earmark.has_css_class ("error"))
             earmark.add_css_class ("highlight-number");
