@@ -128,6 +128,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         button_controller = new GestureClick ();
         button_controller.set_button (0 /* all buttons */);
         button_controller.released.connect (button_released_cb);
+        button_controller.pressed.connect (button_pressed_cb);
         ((Widget)this).add_controller (this.button_controller);
 
         long_press_controller = new GestureLongPress ();
@@ -391,6 +392,30 @@ public class SudokuWindow : Adw.ApplicationWindow
         view?.dismiss_popovers ();
         gesture.set_state (EventSequenceState.CLAIMED);
     }
+
+    private void button_pressed_cb (GestureClick gesture,
+                                    int          n_press,
+                                    double       x,
+                                    double       y)
+    {
+        const int MOUSE_BACKWARD = 8;
+        const int MOUSE_FORWARD = 9;
+        if (current_screen != SudokuWindowScreen.MENU)
+        {
+            if (gesture.get_current_button () == MOUSE_BACKWARD
+                && !game.is_undostack_null ())
+            {
+                game.undo ();
+                gesture.set_state (EventSequenceState.CLAIMED);
+            }
+            else if (gesture.get_current_button () == MOUSE_FORWARD
+                     && !game.is_redostack_null ())
+            {
+                game.redo ();
+                gesture.set_state (EventSequenceState.CLAIMED);
+            }
+        }
+   }
 
     private void long_press_cb (GestureLongPress gesture,
                                 double           x,
