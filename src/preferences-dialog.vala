@@ -31,7 +31,6 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
     [GtkChild] public unowned Adw.SwitchRow show_earmark_warnings;
     [GtkChild] public unowned Adw.SwitchRow solution_warnings;
     [GtkChild] public unowned Adw.SwitchRow highlight_numbers;
-    [GtkChild] public unowned Adw.SwitchRow highlight_block;
     [GtkChild] public unowned Adw.SwitchRow highlight_row_column;
 
     private SudokuWindow window;
@@ -47,7 +46,6 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
         solution_warnings.set_active (window.settings.get_boolean ("solution-warnings"));
         autoclean_earmarks.set_active (window.settings.get_boolean ("autoclean-earmarks"));
         highlight_row_column.set_active (window.settings.get_boolean ("highlight-row-column"));
-        highlight_block.set_active (window.settings.get_boolean ("highlight-block"));
         highlight_numbers.set_active (window.settings.get_boolean ("highlight-numbers"));
 
         show_earmark_warnings.notify["active"].connect (() => {
@@ -96,13 +94,6 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
             this.window.settings.set_boolean ("highlight-row-column",  value);
             if (this.window.view != null)
                 this.window.view.highlight_row_column = value;
-        });
-
-        highlight_block.notify["active"].connect (() => {
-            bool value = highlight_block.get_active ();
-            this.window.settings.set_boolean ("highlight-block", value);
-            if (this.window.view != null)
-                this.window.view.highlight_block = value;
         });
 
         highlight_numbers.notify["active"].connect (() => {

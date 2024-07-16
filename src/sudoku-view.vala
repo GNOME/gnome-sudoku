@@ -34,7 +34,6 @@ public class SudokuView : Adw.Bin
     public bool autoclean_earmarks;
     public bool number_picker_second_click;
     public bool highlight_row_column;
-    public bool highlight_block;
     public bool highlight_numbers;
 
     public int selected_row { get; private set; default = 0; }
@@ -61,7 +60,6 @@ public class SudokuView : Adw.Bin
         this.number_picker_second_click = settings.get_boolean ("number-picker-second-click");
         this.autoclean_earmarks = settings.get_boolean ("autoclean-earmarks");
         this.highlight_row_column = settings.get_boolean ("highlight-row-column");
-        this.highlight_block = settings.get_boolean ("highlight-block");
         this.highlight_numbers = settings.get_boolean ("highlight-numbers");
 
         var overlay = new Overlay ();
@@ -302,10 +300,7 @@ public class SudokuView : Adw.Bin
                 }
 
                 if (!cell_tmp.is_fixed &&
-                   ((highlight_row_column && (row_tmp == row || col_tmp == col)) ||
-                   (highlight_block &&
-                   row_tmp / game.board.block_cols == row / game.board.block_cols &&
-                   col_tmp / game.board.block_rows == col / game.board.block_rows)))
+                    highlight_row_column && (row_tmp == row || col_tmp == col))
                 {
                     cell_tmp.highlight_coord = enabled;
                 }
