@@ -19,19 +19,24 @@
                 <property name="use_underline">True</property>
               </object>
             </child>
+         </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes" context="Preferences Dialog">Game</property>
             <child>
               <object class="AdwSwitchRow" id="autoclean_earmarks">
-                <property name="title" translatable="yes" context="General Preferences">Automatically _Clean Earmarks</property>
+                <property name="title" translatable="yes" context="Game Preferences">Automatically _Clean Earmarks</property>
                 <property name="use_underline">True</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="show_possibilities">
-                <property name="title" translatable="yes" context="General Preferences">Show Earmark _Possibilities</property>
+                <property name="title" translatable="yes" context="Game Preferences">Show Earmark _Possibilities</property>
                 <property name="use_underline">True</property>
               </object>
             </child>
-          </object>
+         </object>
         </child>
         <child>
           <object class="AdwPreferencesGroup">
