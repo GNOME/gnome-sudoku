@@ -152,7 +152,7 @@
                 <property name="icon-name">media-playback-pause-symbolic</property>
               </object>
             </child>
-            <child type="start">
+            <child type="end">
               <object class="GtkButton" id="play_custom_game_button">
                 <property name="visible">False</property>
                 <property name="sensitive">False</property>
@@ -162,6 +162,9 @@
                 <property name="focus-on-click">False</property>
                 <property name="action-name">app.play-custom-game</property>
                 <property name="icon-name">emblem-ok-symbolic</property>
+                <style>
+                  <class name="success"/>
+                </style>
               </object>
             </child>
             <child type="end">
