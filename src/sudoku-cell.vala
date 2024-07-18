@@ -110,6 +110,7 @@ private class SudokuCell : Widget
 
             earmark_picker = new NumberPicker (game, true);
             earmark_picker.earmark_state_changed.connect (earmark_picked_cb);
+            earmark_picker.value_picked.connect (value_picked_cb);
         }
     }
 
@@ -258,7 +259,7 @@ private class SudokuCell : Widget
             {
                 value = key;
             }
-            else if (game.mode == GameMode.PLAY && this.value == 0)
+            else if (game.mode == GameMode.PLAY)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, key);
                 if (popover.child != null && ((NumberPicker)this.popover.child).is_earmark_picker)
@@ -331,14 +332,14 @@ private class SudokuCell : Widget
         {
             if (!want_earmark)
                 show_value_picker ();
-            else if (game.mode == GameMode.PLAY && this.value == 0)
+            else if (game.mode == GameMode.PLAY)
                 show_earmark_picker ();
         }
         else if (gesture.get_current_button () == BUTTON_SECONDARY)
         {
             if (want_earmark)
                 show_value_picker ();
-            else if (game.mode == GameMode.PLAY && this.value == 0)
+            else if (game.mode == GameMode.PLAY)
                 show_earmark_picker ();
         }
     }
@@ -447,7 +448,6 @@ private class SudokuCell : Widget
     }
 
     private void show_earmark_picker ()
-        requires (this.value == 0)
     {
         if (popover.visible)
         {
@@ -457,10 +457,11 @@ private class SudokuCell : Widget
                 return;
         }
 
-        earmark_picker.set_clear_button_visibility (true);
         earmark_picker.set_earmark_buttons (row, col);
-        if (!game.board.has_earmarks (row, col))
-            earmark_picker.set_clear_button_enabled (false);
+        earmark_picker.set_clear_button_visibility (true);
+        earmark_picker.set_earmark_buttons_sensitive (value == 0);
+        bool clear_button_enabled = value != 0 || game.board.has_earmarks (row, col);
+        earmark_picker.set_clear_button_enabled (clear_button_enabled);
 
         popover.set_child (earmark_picker);
         popover.popup ();
