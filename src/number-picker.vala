@@ -69,7 +69,10 @@ private class NumberPicker : Grid
                 {
                     value_buttons[n - 1] = button;
                     button.clicked.connect ((this_button) => {
-                        value_picked (this_button.get_data<int> ("number-contained"));
+                        int val = this_button.get_data<int> ("number-contained");
+                        value_picked (val);
+                        if (val == 0)
+                            set_clear_button_visibility (false);
                     });
                 }
                 else
@@ -100,15 +103,13 @@ private class NumberPicker : Grid
         clear_button.clicked.connect ((this_button) => {
             value_picked (0);
 
-            if (is_earmark_picker)
-            {
-                for (var i = 0; i < 9; i++)
-                    earmark_buttons[i].set_active (false);
-                this.set_clear_button_enabled (false);
-            }
-            else
-                this.set_clear_button_visibility (false);
+            foreach (var button in earmark_buttons)
+                button.active = false;
 
+            if (is_earmark_picker)
+                set_earmark_buttons_sensitive (true);
+            else
+                set_clear_button_visibility (false);
         });
 
         this.valign = Align.CENTER;
@@ -129,6 +130,12 @@ private class NumberPicker : Grid
     public void set_clear_button_enabled (bool enabled)
     {
         clear_button.sensitive = enabled;
+    }
+
+    public void set_earmark_buttons_sensitive (bool enabled)
+    {
+        foreach (var button in earmark_buttons)
+            button.set_sensitive (enabled);
     }
 
     public void set_earmark_buttons (int row, int col)
