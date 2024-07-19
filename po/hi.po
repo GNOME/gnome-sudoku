@@ -1,8 +1,6 @@
-# Translation of gnome-sudoku to Hindi
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-#
-#
+# Hindi translation for gnome-sudoku.
+# Copyright (C) 2024 gnome-sudoku's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-sudoku package.
 # G Karunakar <karunakar@freedomink.org>, 2003.
 # Ravishankar Shrivastava <raviratlami@yahoo.com>, 2004.
 # Rajesh Ranjan <rranjan@redhat.com>, 2005, 2006, 2007.
@@ -12,10 +10,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-sudoku-master\n"
+"Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-06-24 10:26+0000\n"
-"PO-Revision-Date: 2024-06-26 20:37+0530\n"
+"POT-Creation-Date: 2024-07-10 19:43+0000\n"
+"PO-Revision-Date: 2024-07-13 19:39+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
 "Language: hi\n"
@@ -92,8 +90,8 @@ msgid "Toggle timer and pause buttons"
 msgstr "टाइमर और विराम बटन टॉगल करें"
 
 #: data/org.gnome.Sudoku.gschema.xml:46
-msgid "Check cells only against duplicates in row, column and block"
-msgstr "केवल पंक्ति, स्तंभ और ब्लॉक में डुप्लिकेट के विरुद्ध कक्षों की जाँच करें"
+msgid "Additionally check against the solution for warnings"
+msgstr "इसके अलावा चेतावनियों के लिए समाधान जांचें"
 
 #: data/org.gnome.Sudoku.gschema.xml:50
 msgid "Automatically clear related earmarks on new number insertion"
@@ -125,19 +123,19 @@ msgstr "पहेली की कठिनाई"
 
 #: data/org.gnome.Sudoku.gschema.xml:78
 msgid "Width of the window in pixels"
-msgstr "खिड़की की चौड़ाई पिक्सल में"
+msgstr "विंडो की चौड़ाई पिक्सल में"
 
 #: data/org.gnome.Sudoku.gschema.xml:82
 msgid "Height of the window in pixels"
-msgstr "खिड़की की ऊंचाई पिक्सल में"
+msgstr "विंडो की ऊंचाई पिक्सल में"
 
 #: data/org.gnome.Sudoku.gschema.xml:86
 msgid "true if the window is maximized"
-msgstr "सही, यदि खिड़की अधिकतम है"
+msgstr "सही, यदि विंडो अधिकतम है"
 
 #: data/org.gnome.Sudoku.gschema.xml:90
 msgid "true if the window is fullscreen"
-msgstr "सही, यदि खिड़की फ़ुलस्क्रीन है"
+msgstr "सही, यदि विंडो फ़ुलस्क्रीन है"
 
 #: data/org.gnome.Sudoku.metainfo.xml.in:7
 msgid "GNOME Sudoku"
@@ -334,7 +332,7 @@ msgstr "चिह्न चयनकर्ता"
 #: data/shortcuts-window.ui:76
 msgctxt "Shortcuts Window"
 msgid "Window"
-msgstr "खिड़की"
+msgstr "विंडो"
 
 #: data/shortcuts-window.ui:80
 msgctxt "Shortcuts Window"
@@ -374,7 +372,7 @@ msgstr "कीबोर्ड शॉर्टकट"
 #: data/shortcuts-window.ui:122
 msgctxt "Shortcuts Window"
 msgid "Quit"
-msgstr "छोड़ें"
+msgstr "बंद करें"
 
 #: data/shortcuts-window.ui:128
 msgctxt "Shortcuts Window"
@@ -516,58 +514,53 @@ msgstr "तदनुकूल पहेली"
 msgid "Show release version"
 msgstr "रिलीज संस्करण दिखायें"
 
-#. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:87
-msgid "Show the possible values for each cell"
-msgstr "प्रत्येक कक्ष के लिए संभावित मान दिखाएं"
-
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:234
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "आपके द्वारा दर्ज की गई पहेली मान्य सुडोकू नहीं है।"
 
-#: src/gnome-sudoku.vala:238
+#: src/gnome-sudoku.vala:234
 msgid "Please enter a valid puzzle."
 msgstr "कृपया एक मान्य पहेली दर्ज करें।"
 
-#: src/gnome-sudoku.vala:239 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:235 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "बंद करें"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:243
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "आपने जो पहेली दर्ज की है उसके अनेक समाधान हैं।"
 
-#: src/gnome-sudoku.vala:247
+#: src/gnome-sudoku.vala:243
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "मान्य सुडोकू पहेलियों का एक ही समाधान है।"
 
-#: src/gnome-sudoku.vala:248
+#: src/gnome-sudoku.vala:244
 msgid "_Back"
 msgstr "पीछे (_B)"
 
-#: src/gnome-sudoku.vala:249
+#: src/gnome-sudoku.vala:245
 msgid "Play _Anyway"
 msgstr "फिर भी खेलें (_A)"
 
-#: src/gnome-sudoku.vala:290
+#: src/gnome-sudoku.vala:286
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "शाबाश, आपने पहेली %d मिनट में पूरी कर ली!"
 msgstr[1] "शाबाश, आपने पहेली %d मिनटों में पूरी कर ली!"
 
-#: src/gnome-sudoku.vala:298
+#: src/gnome-sudoku.vala:294
 msgid "Quit"
-msgstr "छोड़ें"
+msgstr "बंद करें"
 
-#: src/gnome-sudoku.vala:299
+#: src/gnome-sudoku.vala:295
 msgid "Play _Again"
 msgstr "फिर से खेलें (_A)"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:530
+#: src/gnome-sudoku.vala:526
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -579,7 +572,7 @@ msgstr ""
 "QQwing %s द्वारा उत्पन्न पहेलियां"
 
 #  Translator credits
-#: src/gnome-sudoku.vala:538
+#: src/gnome-sudoku.vala:534
 msgid "translator-credits"
 msgstr ""
 "रविशंकर श्रीवास्तव (raviratlami@yahoo.com)\n"
@@ -594,6 +587,10 @@ msgstr "साफ करें"
 #: src/sudoku-printer.vala:45
 msgid "Error printing file:"
 msgstr "फाइल छापने में त्रुटि:"
+
+#: src/sudoku-view.vala:91
+msgid "Paused"
+msgstr "विरामित"
 
 #: src/sudoku-window.vala:284
 msgid "Select Difficulty"
@@ -610,3 +607,9 @@ msgstr "खेलें"
 #: src/sudoku-window.vala:367
 msgid "Pause"
 msgstr "विराम"
+
+#~ msgid "Check cells only against duplicates in row, column and block"
+#~ msgstr "केवल पंक्ति, स्तंभ और ब्लॉक में डुप्लिकेट के विरुद्ध कक्षों की जाँच करें"
+
+#~ msgid "Show the possible values for each cell"
+#~ msgstr "प्रत्येक कक्ष के लिए संभावित मान दिखाएं"
