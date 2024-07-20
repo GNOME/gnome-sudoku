@@ -261,11 +261,10 @@ public class SudokuView : Adw.Bin
 
     public void set_selected (int cell_row, int cell_col)
     {
-        if (selected_row == cell_row && selected_col == cell_col)
+        if (cells[cell_row, cell_col].selected == true)
             return;
 
-        if (selected_row >= 0 && selected_col >= 0)
-            cells[selected_row, selected_col].selected = false;
+        cells[selected_row, selected_col].selected = false;
 
         var old_row = selected_row;
         var old_col = selected_col;
@@ -275,8 +274,7 @@ public class SudokuView : Adw.Bin
 
         selection_changed(old_row, old_col, selected_row, selected_col);
 
-        if (selected_row >= 0 && selected_col >= 0)
-            cells[selected_row, selected_col].selected = true;
+        cells[selected_row, selected_col].selected = true;
     }
 
     private void set_cell_highlighter (int row, int col, bool enabled)
