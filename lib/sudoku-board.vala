@@ -82,7 +82,10 @@ public class SudokuBoard : Object
         for (var r = 0; r < rows; r++)
             for (var c = 0; c < cols; c++)
                 if (cells[r, c] > 0)
+                {
                     is_fixed[r, c] = true;
+                    fixed++;
+                }
     }
 
     public bool complete
