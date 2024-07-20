@@ -117,10 +117,7 @@ public class SudokuGame : Object
 
     public bool is_empty ()
     {
-        if (mode == GameMode.CREATE)
-            return board.filled == 0;
-        else
-            return board.is_empty ();
+        return board.is_empty ();
     }
 
     public void undo ()
