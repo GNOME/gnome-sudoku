@@ -140,7 +140,7 @@ public class SudokuView : Adw.Bin
             }
         }
 
-        this.game.board.cell_changed.connect (cell_changed_cb);
+        this.game.board.value_changed.connect (value_changed_cb);
         this.game.board.earmark_changed.connect (earmark_changed_cb);
         this.selection_changed.connect (selection_changed_cb);
 
@@ -225,14 +225,14 @@ public class SudokuView : Adw.Bin
         cells[old_row, old_col].dismiss_popover ();
     }
 
-    private void cell_changed_cb (int row, int col, int old_val, int new_val)
+    private void value_changed_cb (int row, int col, int old_val, int new_val)
     {
         var action = game.get_current_stack_action ();
 
         cells[row, col].update_value ();
         update_warnings ();
 
-        if (!action.is_multi_value_step ())
+        if (action.is_single_value_change ())
             cells[row, col].grab_focus ();
 
         //makes sure the highlighter works correctly with clear board
@@ -244,14 +244,14 @@ public class SudokuView : Adw.Bin
         else
         {
             set_unselected_value_highlighter (row, col, old_val, false);
-            set_unselected_value_highlighter (row, col, new_val, false);
+            set_unselected_value_highlighter (row, col, new_val, true);
         }
     }
 
     private void earmark_changed_cb (int row, int col, int num, bool enabled)
     {
         var action = game.get_current_stack_action ();
-        if (!action.is_multi_step ())
+        if (action.is_single_earmarks_change ())
             cells[row, col].grab_focus ();
 
         cells[row, col].get_visible_earmark (num);

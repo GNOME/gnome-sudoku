@@ -410,25 +410,26 @@ public enum StackAction
     ENABLE_ALL_EARMARK_POSSIBILITIES,
     CLEAR_BOARD;
 
-    public bool is_multi_step ()
+    public bool is_single_value_change ()
     {
         switch (this)
         {
-            case DISABLE_ALL_EARMARKS:
-            case INSERT_AND_DISABLE_RELATED_EARMARKS:
-            case CLEAR_BOARD:
             case INSERT:
-            case ENABLE_ALL_EARMARK_POSSIBILITIES:
+            case REMOVE:
+            case INSERT_AND_DISABLE_RELATED_EARMARKS:
                 return true;
             default:
                 return false;
         }
     }
-    public bool is_multi_value_step ()
+
+    public bool is_single_earmarks_change ()
     {
-        switch (this)
+         switch (this)
         {
-            case CLEAR_BOARD:
+            case ENABLE_EARMARK:
+            case DISABLE_EARMARK:
+            case DISABLE_ALL_EARMARKS:
                 return true;
             default:
                 return false;
