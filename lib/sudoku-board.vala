@@ -105,7 +105,7 @@ public class SudokuBoard : Object
 
     public signal void completed ();
     public signal void earmark_changed (int row, int col, int num, bool enabled);
-    public signal void cell_changed (int row, int col, int old_val, int new_val);
+    public signal void value_changed (int row, int col, int old_val, int new_val);
 
     /* The set of coordinates on the board which are invalid */
     public Gee.Set<Coord?> broken_coords { get; private set; }
@@ -312,7 +312,7 @@ public class SudokuBoard : Object
 
         if (complete)
             completed();
-        cell_changed (row, col, old_val, val);
+        value_changed (row, col, old_val, val);
     }
 
     public void remove (int row, int col)
@@ -323,7 +323,7 @@ public class SudokuBoard : Object
         cells[row, col] = 0;
         filled--;
         update_old_breakages (row, col, old_val);
-        cell_changed (row, col, old_val, 0);
+        value_changed (row, col, old_val, 0);
     }
 
     public new int get (int row, int col)
