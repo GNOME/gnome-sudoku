@@ -297,7 +297,7 @@ public class Sudoku : Adw.Application
 
         dialog.response.connect ((response_id) => {
             if (response_id == "play-again")
-                show_menu_screen ();
+                start_game_async ();
             else if (response_id == "close")
                 quit ();
             dialog.destroy ();
@@ -309,7 +309,6 @@ public class Sudoku : Adw.Application
     private void start_custom_game (SudokuBoard board)
     {
         game.board.set_all_is_fixed ();
-        play_difficulty = DifficultyCategory.CUSTOM;
         game.stop_clock ();
         start_game (board, GameMode.PLAY);
     }
@@ -319,6 +318,7 @@ public class Sudoku : Adw.Application
         if (mode == GameMode.PLAY)
             board.solve ();
 
+        window.will_start_game ();
         game = new SudokuGame (board);
         game.mode = mode;
 
@@ -358,34 +358,30 @@ public class Sudoku : Adw.Application
 
     private void create_game_cb ()
     {
-        SudokuGenerator.generate_boards_async.begin (1, DifficultyCategory.CUSTOM, null, (obj, res) => {
-            try
-            {
-                var gen_boards = SudokuGenerator.generate_boards_async.end (res);
-                start_game (gen_boards[0], GameMode.CREATE);
-            }
-            catch (Error e)
-            {
-                error ("Error: %s", e.message);
-            }
-        });
+        play_difficulty = DifficultyCategory.CUSTOM;
+        start_game_async ();
     }
 
     private void start_game_cb (SimpleAction action, Variant? difficulty)
     {
-        window.will_start_game ();
-
         // Since we cannot have enums in .ui file, the 'action-target' property
         // of new game buttons in data/gnome-sudoku.ui
         // has been set to integers corresponding to the enums.
         // Following line converts those ints to their DifficultyCategory
         play_difficulty = (DifficultyCategory) difficulty.get_int32 ();
+        start_game_async ();
+    }
 
+    private void start_game_async ()
+    {
         SudokuGenerator.generate_boards_async.begin (1, play_difficulty, null, (obj, res) => {
             try
             {
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);
-                start_game (gen_boards[0], GameMode.PLAY);
+                if (play_difficulty != DifficultyCategory.CUSTOM)
+                    start_game (gen_boards[0], GameMode.PLAY);
+                else
+                    start_game (gen_boards[0], GameMode.CREATE);
             }
             catch (Error e)
             {
