@@ -32,6 +32,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     [GtkChild] private unowned Box start_box;
     [GtkChild] private unowned Button start_button;
+    [GtkChild] private unowned CheckButton custom_check;
     [GtkChild] private unowned CheckButton easy_check;
     [GtkChild] private unowned CheckButton medium_check;
     [GtkChild] private unowned CheckButton hard_check;
@@ -207,6 +208,8 @@ public class SudokuWindow : Adw.ApplicationWindow
             (this as Widget)?.activate_action ("app.start-game", "i", 3);
         else if (this.very_hard_check.active)
             (this as Widget)?.activate_action ("app.start-game", "i", 4);
+        else if (this.custom_check.active)
+            (this as Widget)?.activate_action ("app.start-game", "i", 5);
     }
 
     private void window_width_is_big_cb ()
@@ -310,7 +313,7 @@ public class SudokuWindow : Adw.ApplicationWindow
                 very_hard_check.activate ();
                 return;
             case DifficultyCategory.CUSTOM:
-                easy_check.activate ();
+                custom_check.activate ();
                 return;
             default:
                 assert_not_reached ();
