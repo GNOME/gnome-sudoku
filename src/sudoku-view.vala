@@ -35,26 +35,6 @@ public class SudokuView : Adw.Bin
 
     public signal void selection_changed (int old_row, int old_col, int new_row, int new_col);
 
-    public void set_selected (int cell_row, int cell_col)
-    {
-        if (selected_row == cell_row && selected_col == cell_col)
-            return;
-
-        if (selected_row >= 0 && selected_col >= 0)
-            cells[selected_row, selected_col].selected = false;
-
-        var old_row = selected_row;
-        var old_col = selected_col;
-
-        selected_row = cell_row;
-        selected_col = cell_col;
-
-        selection_changed(old_row, old_col, selected_row, selected_col);
-
-        if (selected_row >= 0 && selected_col >= 0)
-            cells[selected_row, selected_col].selected = true;
-    }
-
     public SudokuView (SudokuGame game, GLib.Settings settings)
     {
         this.game = game;
@@ -250,6 +230,24 @@ public class SudokuView : Adw.Bin
         cells[row, col].update_earmark (num);
         if (enabled)
             cells[row, col].check_earmark_warnings (num);
+    }
+
+    public void set_selected (int cell_row, int cell_col)
+    {
+        if (cells[cell_row, cell_col].selected == true)
+            return;
+
+        cells[selected_row, selected_col].selected = false;
+
+        var old_row = selected_row;
+        var old_col = selected_col;
+
+        selected_row = cell_row;
+        selected_col = cell_col;
+
+        selection_changed(old_row, old_col, selected_row, selected_col);
+
+        cells[selected_row, selected_col].selected = true;
     }
 
     private void set_cell_highlighter (int row, int col, bool enabled)
