@@ -157,8 +157,6 @@ public class Sudoku : Adw.Application
             var mode = savegame.board.fixed == 0 ? GameMode.CREATE : GameMode.PLAY;
             start_game (savegame.board, mode);
         }
-        else if (play_difficulty == DifficultyCategory.CUSTOM)
-            create_game_cb ();
         else
             show_menu_screen ();
     }
