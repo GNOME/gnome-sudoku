@@ -330,7 +330,6 @@ public class Sudoku : Adw.Application
         redo_action.set_enabled (!game.is_redostack_null ());
         new_game_action.set_enabled (true);
         earmark_mode_action.set_enabled (mode == GameMode.PLAY);
-
         clear_action.set_enabled (!game.is_empty ());
         play_custom_game_action.set_enabled (!game.is_empty ());
 
@@ -344,6 +343,8 @@ public class Sudoku : Adw.Application
             game.stop_clock ();
 
         print_action.set_enabled (false);
+        new_game_action.set_enabled (false);
+        clear_action.set_enabled (false);
 
         window.show_menu_screen ();
         window.activate_difficulty_checkbutton (play_difficulty);
@@ -401,6 +402,8 @@ public class Sudoku : Adw.Application
             game.resume_clock ();
 
         print_action.set_enabled (true);
+        new_game_action.set_enabled (true);
+        clear_action.set_enabled (!game.is_empty ());
     }
 
     private void undo_cb ()
