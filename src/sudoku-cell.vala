@@ -23,8 +23,6 @@ using Gdk;
 
 private class SudokuCell : Widget
 {
-    const int size_ratio = 2;
-
     private int row;
     private int col;
     private SudokuGame game;
@@ -541,21 +539,18 @@ private class SudokuCell : Widget
     {
         this.popover?.present ();
 
-        int value_width, value_height;
-        value_width = value_height = int.min (width, height);
+        int zoomed_size = (int) (height * view.value_zoom_multiplier);
+        set_font_size (value_label, zoomed_size);
 
-        set_font_size (value_label, height / size_ratio);
-
-        Gtk.Requisition min_size;
+        Requisition min_size;
         value_label.get_preferred_size (out min_size, null);
-        value_width = int.max (value_width, min_size.width);
-        value_height = int.max (value_height, min_size.height);
 
-        Gsk.Transform center = new Gsk.Transform ().translate (Graphene.Point ().init (
-            (width - value_width) / 2,
-            (height - value_height) / 2
-        ));
-        this.value_label.allocate (value_width, value_height, baseline, center);
+        int value_width, value_height;
+        value_width = int.max (width, min_size.width);
+        value_height = int.max (height, min_size.height);
+
+        Allocation value_allocation = {0, 0, value_width, value_height};
+        value_label.allocate_size (value_allocation, baseline);
 
         int earmark_width, earmark_height;
         earmark_width = width / game.board.block_cols;
@@ -568,17 +563,15 @@ private class SudokuCell : Widget
             {
                 num++;
 
-                set_font_size (earmark_labels[num - 1], height / size_ratio / 2);
+                set_font_size (earmark_labels[num - 1], height / 4);
                 earmark_labels[num -1].get_preferred_size (out min_size, null);
                 earmark_width = int.max (earmark_width, min_size.width);
                 earmark_height = int.max (earmark_height, min_size.height);
 
-                Gsk.Transform earmark_position = new Gsk.Transform ().translate (Graphene.Point ().init (
-                    col_tmp * earmark_width,
-                    (game.board.block_rows - row_tmp - 1) * earmark_height
-                ));
-
-                earmark_labels[num - 1].allocate (earmark_width, earmark_height, baseline, earmark_position);
+                Allocation earmark_allocation = {col_tmp * earmark_width,
+                                                (game.board.block_rows - row_tmp - 1) * earmark_height,
+                                                 earmark_width, earmark_height};
+                earmark_labels[num - 1].allocate_size (earmark_allocation, baseline);
             }
         }
     }

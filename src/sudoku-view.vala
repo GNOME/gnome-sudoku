@@ -25,6 +25,7 @@ using Gdk;
 
 public class SudokuView : Adw.Bin
 {
+    private GLib.Settings settings;
     private SudokuGame game;
     private SudokuCell[,] cells;
     private SudokuFrame frame;
@@ -36,6 +37,8 @@ public class SudokuView : Adw.Bin
     public bool highlight_row_column;
     public bool highlight_block;
     public bool highlight_numbers;
+    public double value_zoom_multiplier;
+    public ZoomLevel zoom_level;
 
     public int selected_row { get; private set; default = 0; }
     public int selected_col { get; private set; default = 0; }
@@ -45,6 +48,7 @@ public class SudokuView : Adw.Bin
     public SudokuView (SudokuGame game, GLib.Settings settings)
     {
         this.game = game;
+        this.settings = settings;
 
         this.vexpand = true;
         this.focusable = true;
@@ -63,6 +67,9 @@ public class SudokuView : Adw.Bin
         this.highlight_row_column = settings.get_boolean ("highlight-row-column");
         this.highlight_block = settings.get_boolean ("highlight-block");
         this.highlight_numbers = settings.get_boolean ("highlight-numbers");
+        this.zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
+
+        this.update_zoom ();
 
         var overlay = new Overlay ();
         frame = new SudokuFrame (overlay);
@@ -351,6 +358,25 @@ public class SudokuView : Adw.Bin
         changed_cell.highlight_number = enabled;
     }
 
+    public void update_zoom (ZoomLevel level = zoom_level)
+    {
+        zoom_level = level;
+        switch (level)
+        {
+            case SMALL:
+                value_zoom_multiplier = 0.4;
+                break;
+            case MEDIUM:
+                value_zoom_multiplier = 0.5;
+                break;
+            case LARGE:
+                value_zoom_multiplier = 0.6;
+                break;
+        }
+        foreach (var cell in cells)
+            cell.queue_allocate ();
+    }
+
     private void update_warnings ()
     {
         if (!show_warnings)
@@ -476,3 +502,67 @@ public class SudokuView : Adw.Bin
     }
 }
 
+public enum ZoomLevel
+{
+    SMALL = 1,
+    MEDIUM = 2,
+    LARGE = 3;
+
+    public bool is_fully_zoomed_out ()
+    {
+        switch (this)
+        {
+            case SMALL:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public bool is_fully_zoomed_in ()
+    {
+        switch (this)
+        {
+            case LARGE:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public ZoomLevel zoom_in ()
+    {
+        switch (this)
+        {
+            case SMALL:
+                return MEDIUM;
+            case MEDIUM:
+                return LARGE;
+            case LARGE:
+            {
+                warning ("ZOOM already at maximum");
+                return LARGE;
+            }
+            default:
+                assert_not_reached ();
+        }
+    }
+
+    public ZoomLevel zoom_out ()
+    {
+        switch (this)
+        {
+            case LARGE:
+                return MEDIUM;
+            case MEDIUM:
+                return SMALL;
+            case SMALL:
+            {
+                warning ("ZOOM already at minimum");
+                return SMALL;
+            }
+            default:
+                assert_not_reached ();
+        }
+    }
+}

@@ -69,11 +69,41 @@
                 <property name="title" translatable="yes" context="Shortcuts Window">Earmark Picker</property>
               </object>
             </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;n</property>
+                <property name="title" translatable="yes" context="Shortcuts Window">New Game</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;r</property>
+                <property name="title" translatable="yes" context="Shortcuts Window">Reset</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>
           <object class="GtkShortcutsGroup">
             <property name="title" translatable="yes" context="Shortcuts Window">Window</property>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;plus</property>
+                <property name="title" translatable="yes" context="Shortcuts Window">Zoom In</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;minus</property>
+                <property name="title" translatable="yes" context="Shortcuts Window">Zoom Out</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;0</property>
+                <property name="title" translatable="yes" context="Shortcuts Window">Zoom Reset</property>
+              </object>
+            </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;ctrl&gt;w</property>
@@ -84,18 +114,6 @@
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;ctrl&gt;h</property>
                 <property name="title" translatable="yes" context="Shortcuts Window">Highlighter</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;r</property>
-                <property name="title" translatable="yes" context="Shortcuts Window">Reset</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;n</property>
-                <property name="title" translatable="yes" context="Shortcuts Window">New Game</property>
               </object>
             </child>
             <child>

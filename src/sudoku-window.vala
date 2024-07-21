@@ -46,6 +46,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Button unfullscreen_button;
     [GtkChild] private unowned Button play_custom_game_button;
     [GtkChild] private unowned Button play_pause_button;
+    [GtkChild] private unowned Button toggle_fullscreen_button;
 
     [GtkChild] private unowned Box clock_box;
     [GtkChild] private unowned Label clock_label;
@@ -98,11 +99,15 @@ public class SudokuWindow : Adw.ApplicationWindow
             if (window_is_fullscreen)
             {
                 headerbar.set_decoration_layout (":close");
+                toggle_fullscreen_button.set_icon_name ("view-restore-symbolic");
+                toggle_fullscreen_button.set_tooltip_text (_("Leave Fullscreen"));
                 unfullscreen_button.visible = true;
             }
             else
             {
                 headerbar.set_decoration_layout (null);
+                toggle_fullscreen_button.set_icon_name ("view-fullscreen-symbolic");
+                toggle_fullscreen_button.set_tooltip_text (_("Fullscreen"));
                 unfullscreen_button.visible = false;
                 if (window_is_maximized)
                 {
@@ -152,10 +157,19 @@ public class SudokuWindow : Adw.ApplicationWindow
         add_binding_action (Gdk.Key.e, Gdk.ModifierType.NO_MODIFIER_MASK, "app.earmark-mode", null);
         add_binding_action (Gdk.Key.question, Gdk.ModifierType.CONTROL_MASK, "app.shortcuts-window", null);
         add_binding_action (Gdk.Key.comma, Gdk.ModifierType.CONTROL_MASK, "app.preferences-dialog", null);
-        add_binding_action (Gdk.Key.f, Gdk.ModifierType.NO_MODIFIER_MASK, "app.fullscreen", null);
-        add_binding_action (Gdk.Key.F11, Gdk.ModifierType.NO_MODIFIER_MASK, "app.fullscreen", null);
+        add_binding_action (Gdk.Key.f, Gdk.ModifierType.NO_MODIFIER_MASK, "app.toggle-fullscreen", null);
+        add_binding_action (Gdk.Key.F11, Gdk.ModifierType.NO_MODIFIER_MASK, "app.toggle-fullscreen", null);
         add_binding_action (Gdk.Key.h, Gdk.ModifierType.CONTROL_MASK, "app.highlighter", null);
         add_binding_action (Gdk.Key.w, Gdk.ModifierType.CONTROL_MASK, "app.show-warnings", null);
+        add_binding_action (Gdk.Key.@0, Gdk.ModifierType.CONTROL_MASK, "app.zoom-reset", null);
+        add_binding_action (Gdk.Key.KP_0, Gdk.ModifierType.CONTROL_MASK, "app.zoom-reset", null);
+        add_binding_action (Gdk.Key.plus, Gdk.ModifierType.CONTROL_MASK, "app.zoom-in", null);
+        add_binding_action (Gdk.Key.equal, Gdk.ModifierType.CONTROL_MASK, "app.zoom-in", null);
+        add_binding_action (Gdk.Key.KP_Add, Gdk.ModifierType.CONTROL_MASK, "app.zoom-in", null);
+        add_binding_action (Gdk.Key.ZoomIn, Gdk.ModifierType.NO_MODIFIER_MASK, "app.zoom-in", null);
+        add_binding_action (Gdk.Key.minus, Gdk.ModifierType.CONTROL_MASK, "app.zoom-out", null);
+        add_binding_action (Gdk.Key.KP_Subtract, Gdk.ModifierType.CONTROL_MASK, "app.zoom-out", null);
+        add_binding_action (Gdk.Key.ZoomOut, Gdk.ModifierType.NO_MODIFIER_MASK, "app.zoom-out", null);
     }
 
     private void construct_window_parameters ()
@@ -418,7 +432,7 @@ public class SudokuWindow : Adw.ApplicationWindow
                 gesture.set_state (EventSequenceState.CLAIMED);
             }
         }
-   }
+    }
 
     private void long_press_cb (GestureLongPress gesture,
                                 double           x,
