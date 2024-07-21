@@ -26,6 +26,19 @@
           </item>
         </section>
       </submenu>
+      <section> <!-- nest zoom to make it appear in the same section -->
+        <attribute name="label" translatable="yes">Zoom</attribute>
+        <attribute name="display-hint">inline-buttons</attribute>
+        <item>
+          <attribute name="custom">zoom-out</attribute>
+        </item>
+        <item>
+          <attribute name="custom">zoom-in</attribute>
+        </item>
+        <item>
+          <attribute name="custom">toggle-fullscreen</attribute>
+        </item>
+      </section>
     </section>
     <section>
       <item>
@@ -122,8 +135,8 @@
                 <property name="can-focus">True</property>
                 <property name="tooltip-text" translatable="yes">Leave Fullscreen</property>
                 <property name="focus-on-click">False</property>
-                <property name="action-name">app.fullscreen</property>
-                <property name="icon-name">view-fullscreen-symbolic</property>
+                <property name="action-name">app.toggle-fullscreen</property>
+                <property name="icon-name">view-restore-symbolic</property>
                 <style>
                   <class name="circular"/>
                 </style>
@@ -132,9 +145,46 @@
             <child type="end">
               <object class="GtkMenuButton" id="main_menu">
                 <property name="icon-name">open-menu-symbolic</property>
-                <property name="menu-model">primary-menu</property>
                 <property name="primary">True</property>
                 <property name="tooltip-text" translatable="yes">Main Menu</property>
+                <property name="popover">
+                  <object class="GtkPopoverMenu">
+                    <property name="menu-model">primary-menu</property>
+                    <child type="zoom-out">
+                      <object class="GtkButton" id="zoom_out_button">
+                        <property name="icon-name">zoom-out-symbolic</property>
+                        <property name="action-name">app.zoom-out</property>
+                        <property name="tooltip-text" translatable="yes">Zoom Out</property>
+                        <style>
+                          <class name="flat"/>
+                          <class name="circular"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child type="zoom-in">
+                      <object class="GtkButton" id="zoom_in_button">
+                        <property name="icon-name">zoom-in-symbolic</property>
+                        <property name="action-name">app.zoom-in</property>
+                        <property name="tooltip-text" translatable="yes">Zoom In</property>
+                        <style>
+                          <class name="flat"/>
+                          <class name="circular"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child type="toggle-fullscreen">
+                      <object class="GtkButton" id ="toggle_fullscreen_button">
+                        <property name="icon-name">view-fullscreen-symbolic</property>
+                        <property name="action-name">app.toggle-fullscreen</property>
+                        <property name="tooltip-text" translatable="yes">Fullscreen</property>
+                        <style>
+                          <class name="flat"/>
+                          <class name="circular"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </property>
               </object>
             </child>
             <child type="start">

@@ -25,6 +25,7 @@ using Gdk;
 
 public class SudokuView : Adw.Bin
 {
+    private GLib.Settings settings;
     private SudokuGame game;
     private SudokuCell[,] cells;
     private SudokuFrame frame;
@@ -35,15 +36,17 @@ public class SudokuView : Adw.Bin
     public bool number_picker_second_click;
     public bool highlight_row_column;
     public bool highlight_numbers;
+    public ZoomLevel zoom_level;
 
-    public int selected_row { get; private set; default = 0; }
-    public int selected_col { get; private set; default = 0; }
+    public int selected_row { get; private set; default = 4; }
+    public int selected_col { get; private set; default = 4; }
 
     public signal void selection_changed (int old_row, int old_col, int new_row, int new_col);
 
     public SudokuView (SudokuGame game, GLib.Settings settings)
     {
         this.game = game;
+        this.settings = settings;
 
         this.vexpand = true;
         this.focusable = true;
@@ -61,6 +64,8 @@ public class SudokuView : Adw.Bin
         this.autoclean_earmarks = settings.get_boolean ("autoclean-earmarks");
         this.highlight_row_column = settings.get_boolean ("highlight-row-column");
         this.highlight_numbers = settings.get_boolean ("highlight-numbers");
+
+        this.zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
 
         var overlay = new Overlay ();
         frame = new SudokuFrame (overlay);
@@ -471,3 +476,63 @@ public class SudokuView : Adw.Bin
     }
 }
 
+public enum ZoomLevel
+{
+    SMALL = 1,
+    MEDIUM = 2,
+    LARGE = 3;
+
+    public bool is_smallest ()
+    {
+        switch (this)
+        {
+            case SMALL:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public bool is_largest ()
+    {
+        switch (this)
+        {
+            case LARGE:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public ZoomLevel zoom_in ()
+    {
+        switch (this)
+        {
+            case SMALL:
+                return MEDIUM;
+            case MEDIUM:
+                return LARGE;
+            default:
+            {
+                warning ("ZOOM already at largest");
+                return MEDIUM;
+            }
+        }
+    }
+
+    public ZoomLevel zoom_out ()
+    {
+        switch (this)
+        {
+            case LARGE:
+                return MEDIUM;
+            case MEDIUM:
+                return SMALL;
+            default:
+            {
+                warning ("ZOOM already at smallest");
+                return MEDIUM;
+            }
+        }
+    }
+}

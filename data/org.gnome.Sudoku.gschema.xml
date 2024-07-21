@@ -6,6 +6,11 @@
     <value nick="very_hard" value="4"  />
     <value nick="custom" value="5"  />
   </enum>
+  <enum id="org.gnome.Sudoku.zoom-level">
+    <value nick="small" value="1" />
+    <value nick="medium" value="2" />
+    <value nick="large" value="3"  />
+  </enum>
   <schema id="org.gnome.Sudoku" path="/org/gnome/Sudoku/" gettext-domain="gnome-sudoku">
     <key name="print-multiple-sudoku-difficulty" enum="org.gnome.Sudoku.play-difficulty">
       <default>"easy"</default>
@@ -68,6 +73,10 @@
     <key name="play-difficulty" enum="org.gnome.Sudoku.play-difficulty">
       <default>"easy"</default>
       <summary>The puzzle's difficulty</summary>
+    </key>
+    <key name="zoom-level" enum="org.gnome.Sudoku.zoom-level">
+      <default>"medium"</default>
+      <summary>Zoom level</summary>
     </key>
     <key name="window-width" type="i">
       <default>730</default>

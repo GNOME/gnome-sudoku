@@ -51,6 +51,8 @@ public class Sudoku : Adw.Application
     private SimpleAction play_custom_game_action;
     private SimpleAction new_game_action;
     private SimpleAction earmark_mode_action;
+    private SimpleAction zoom_in_action;
+    private SimpleAction zoom_out_action;
 
     private DifficultyCategory play_difficulty;
 
@@ -69,7 +71,10 @@ public class Sudoku : Adw.Application
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
-        {"fullscreen", fullscreen_cb                                },
+        {"toggle-fullscreen", toggle_fullscreen_cb                  },
+        {"zoom-in", zoom_in_cb, null, "false"                       },
+        {"zoom-out", zoom_out_cb, null, "false"                     },
+        {"zoom-reset", zoom_reset_cb                                },
         {"earmark-mode", earmark_mode_cb, null, "false"             },
         {"shortcuts-window", shortcuts_window_cb                    },
         {"preferences-dialog", preferences_dialog_cb                },
@@ -142,6 +147,8 @@ public class Sudoku : Adw.Application
         print_multiple_action = (SimpleAction) lookup_action ("print-multiple");
         pause_action = (SimpleAction) lookup_action ("pause");
         play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
+        zoom_in_action = (SimpleAction) lookup_action ("zoom-in");
+        zoom_out_action = (SimpleAction) lookup_action ("zoom-out");
 
         play_difficulty = (DifficultyCategory) settings.get_enum ("play-difficulty");
 
@@ -532,12 +539,50 @@ public class Sudoku : Adw.Application
         about_dialog.present (window);
     }
 
-    private void fullscreen_cb ()
+    private void toggle_fullscreen_cb ()
     {
         if (window.is_fullscreen ())
             window.unfullscreen ();
         else
             window.fullscreen ();
+    }
+
+    private void zoom_in_cb ()
+    {
+        ZoomLevel zoom_level;
+        zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
+        zoom_level = zoom_level.zoom_in ();
+        settings.set_enum ("zoom-level", zoom_level);
+        print ("Zoom Level%i\n", (int) zoom_level);
+        if (zoom_level.is_largest ())
+            zoom_in_action.set_enabled (false);
+        zoom_out_action.set_enabled (true);
+    }
+
+    private void zoom_out_cb ()
+    {
+        ZoomLevel zoom_level;
+        zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
+        zoom_level = zoom_level.zoom_out ();
+        settings.set_enum ("zoom-level", zoom_level);
+        if (view != null)
+            view.zoom_level = zoom_level;
+        if (zoom_level.is_smallest ())
+            zoom_out_action.set_enabled (false);
+        print ("Zoom Level%i\n", (int) zoom_level);
+        zoom_in_action.set_enabled (true);
+    }
+
+    private void zoom_reset_cb ()
+    {
+        settings.reset ("zoom-level");
+        ZoomLevel zoom_level;
+        zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
+        if (view != null)
+            view.zoom_level = zoom_level;
+        print ("Zoom Level%i\n", (int) zoom_level);
+        zoom_in_action.set_enabled (true);
+        zoom_out_action.set_enabled (true);
     }
 
     public static int main (string[] args)
