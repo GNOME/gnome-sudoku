@@ -1,8 +1,20 @@
-47.beta - DEVEL
+47.beta - August 2, 2024
 ==========================
 
 - Add accent color support (!91)
+- Add zoom feature, supported by new buttons and the standard bindings
+- Move create custom game to the start menu
+- Add mouse button bindings for undo and redo
+- Allow earmark picker in filled cells
+- Adjust play again to skip the start menu
+- Give play custom game success style to make it more visible and move
+  it next to the primary menu
+- Disable "New Puzzle" and "Clear Board" while in start menu
+- Fix cell[0, 0] not being selectable on game start
 - Fix highlighter bugs with undo/redo and clear board
+- Fix fixed cells not being counted in custom games
+- Fix clear button adding individual actions to the undo/redo stack
+- Fix disable_all_earmarks not grabbing focus on undo/redo
 - Port Message Dialogs to Alert Dialogs
 - Updated translations
 
@@ -10,22 +22,36 @@
 47.alpha - June 28, 2024
 ==========================
 
-- Add preferences dialog with the previously hidden settings aswell as new customizations for warnings and the highlighter (!87)
+- Add preferences dialog with the previously hidden settings aswell as
+  new customizations for warnings and the highlighter (!87)
 - Add earmark mode button (shortcut e) to toggle earmark input (!89)
-- Change warnings to additionally check against the solution by default to prevent getting stuck (#101 and !78)
+- Change warnings to additionally check against the solution by default
+  to prevent getting stuck (#101 and !78)
 - Add autoclean earmarks feature toggleable in preferences (!83)
-- Add number picker on second click feature toggleable in preferences (!90, Tanmay Patil)
+- Add number picker on second click feature toggleable in
+  preferences (!90, Tanmay Patil)
 - Add keyboard shortcuts window (!85)
 - Change the headerbar and error color to follow adwaita's theme (!88)
 - Port AboutDialog and PrintDialog to Adw.Dialog
 - Restore the difficulty in the headerbar as a subtitle (!80)
-- Reduce margin sizes and hide the clock when the window gets too small (!80)
+- Reduce margin sizes and hide the clock when the window gets too
+  small (!80)
 - Move the paused button to the left side (!79)
 - Disable most Sudoku shortcuts in dialogs
-- Change dark mode's highlighter to be more subtle and its earmark highlight easier to read
-- Remove Clear Board confirmation, with the stack rework it can now be undone with "undo" (!83)
+- Change dark mode's highlighter to be more subtle and its earmark
+  highlight easier to read
+- Remove Clear Board confirmation, with the stack rework it can now be
+  undone with "undo" (!83)
 - Remove showing 'X' as warnings
+- Includes changes from 46.1, 46.2, 46.3
 - Updated translations
+
+46.4 - August 2, 2024
+==========================
+
+- Fix cell[0, 0] not being selectable on game start
+- Fix highlighter bugs with undo/redo
+- Fix fixed cells not being counted in custom games
 
 46.3 - June 28, 2024
 ==========================
