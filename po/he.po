@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-07-20 06:15+0000\n"
-"PO-Revision-Date: 2024-07-21 10:26+0300\n"
+"POT-Creation-Date: 2024-08-02 14:09+0000\n"
+"PO-Revision-Date: 2024-08-04 00:03+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -27,8 +27,8 @@ msgstr ""
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
 
-#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:60
-#: data/sudoku-window.ui:69
+#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:73
+#: data/sudoku-window.ui:82
 msgid "Sudoku"
 msgstr "סודוקו"
 
@@ -41,11 +41,11 @@ msgstr "בחינת כישורי ההיגיון שלך באמצעות משחק ל
 msgid "magic;square;"
 msgstr "קסם;ריבוע;סודוקו;"
 
-#: data/org.gnome.Sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Difficulty level of sudokus to be printed"
 
-#: data/org.gnome.Sudoku.gschema.xml:13
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -53,31 +53,31 @@ msgstr ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 
-#: data/org.gnome.Sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:23
 msgid "Number of Sudokus to print"
 msgstr "Number of Sudokus to print"
 
-#: data/org.gnome.Sudoku.gschema.xml:19
+#: data/org.gnome.Sudoku.gschema.xml:24
 msgid "Set the number of sudokus you want to print"
 msgstr "Set the number of sudokus you want to print"
 
-#: data/org.gnome.Sudoku.gschema.xml:24
+#: data/org.gnome.Sudoku.gschema.xml:29
 msgid "Number of Sudokus to print per page"
 msgstr "Number of Sudokus to print per page"
 
-#: data/org.gnome.Sudoku.gschema.xml:25
+#: data/org.gnome.Sudoku.gschema.xml:30
 msgid "Set the number of sudokus you want to print per page"
 msgstr "Set the number of sudokus you want to print per page"
 
-#: data/org.gnome.Sudoku.gschema.xml:29
+#: data/org.gnome.Sudoku.gschema.xml:34
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Initialize the earmarks with the possible values for each cell"
 
-#: data/org.gnome.Sudoku.gschema.xml:33
+#: data/org.gnome.Sudoku.gschema.xml:38
 msgid "Color mistakes and duplicate numbers in red"
 msgstr "Color mistakes and duplicate numbers in red"
 
-#: data/org.gnome.Sudoku.gschema.xml:34
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -85,59 +85,63 @@ msgstr ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
 
-#: data/org.gnome.Sudoku.gschema.xml:38
+#: data/org.gnome.Sudoku.gschema.xml:43
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr "Check earmarks against duplicates in row, column and block"
 
-#: data/org.gnome.Sudoku.gschema.xml:42
+#: data/org.gnome.Sudoku.gschema.xml:47
 msgid "Toggle timer and pause buttons"
 msgstr "Toggle timer and pause buttons"
 
-#: data/org.gnome.Sudoku.gschema.xml:46
+#: data/org.gnome.Sudoku.gschema.xml:51
 msgid "Additionally check against the solution for warnings"
 msgstr "Additionally check against the solution for warnings"
 
-#: data/org.gnome.Sudoku.gschema.xml:50
+#: data/org.gnome.Sudoku.gschema.xml:55
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr "Automatically clear related earmarks on new number insertion"
 
-#: data/org.gnome.Sudoku.gschema.xml:54
+#: data/org.gnome.Sudoku.gschema.xml:59
 msgid "Display number picker on second click"
 msgstr "Display number picker on second click"
 
-#: data/org.gnome.Sudoku.gschema.xml:58
+#: data/org.gnome.Sudoku.gschema.xml:63
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Highlight row, column and square that contain the selected cell"
 
-#: data/org.gnome.Sudoku.gschema.xml:62
+#: data/org.gnome.Sudoku.gschema.xml:67
 msgid "Highlight the selected cell's row and column"
 msgstr "Highlight the selected cell's row and column"
 
-#: data/org.gnome.Sudoku.gschema.xml:66
+#: data/org.gnome.Sudoku.gschema.xml:71
 msgid "Highlight the selected cell's block"
 msgstr "Highlight the selected cell's block"
 
-#: data/org.gnome.Sudoku.gschema.xml:70
+#: data/org.gnome.Sudoku.gschema.xml:75
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Highlight the selected cell's matching numbers"
 
-#: data/org.gnome.Sudoku.gschema.xml:74
+#: data/org.gnome.Sudoku.gschema.xml:79
 msgid "The puzzle's difficulty"
 msgstr "The puzzle's difficulty"
 
-#: data/org.gnome.Sudoku.gschema.xml:78
+#: data/org.gnome.Sudoku.gschema.xml:83
+msgid "Zoom level"
+msgstr "רמת תקריב"
+
+#: data/org.gnome.Sudoku.gschema.xml:87
 msgid "Width of the window in pixels"
 msgstr "Width of the window in pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:82
+#: data/org.gnome.Sudoku.gschema.xml:91
 msgid "Height of the window in pixels"
 msgstr "Height of the window in pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:86
+#: data/org.gnome.Sudoku.gschema.xml:95
 msgid "true if the window is maximized"
 msgstr "true if the window is maximized"
 
-#: data/org.gnome.Sudoku.gschema.xml:90
+#: data/org.gnome.Sudoku.gschema.xml:99
 msgid "true if the window is fullscreen"
 msgstr "true if the window is fullscreen"
 
@@ -351,72 +355,88 @@ msgid "Earmark Picker"
 msgstr "בחירת מספרים אפשריים"
 
 # msgctxt "shortcuts window"
-#: data/shortcuts-window.ui:76
-msgctxt "Shortcuts Window"
-msgid "Window"
-msgstr "חלון"
-
-# msgctxt "preferences dialog"
-#: data/shortcuts-window.ui:80
-msgctxt "Shortcuts Window"
-msgid "Warnings"
-msgstr "אזהרות"
-
-# msgctxt "preferences dialog"
-#: data/shortcuts-window.ui:86
-msgctxt "Shortcuts Window"
-msgid "Highlighter"
-msgstr "הדגשה"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.ui:92
-msgctxt "Shortcuts Window"
-msgid "Reset"
-msgstr "איפוס"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.ui:98
+#: data/shortcuts-window.ui:75
 msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "משחק חדש"
 
 # msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:81
+msgctxt "Shortcuts Window"
+msgid "Reset"
+msgstr "איפוס"
+
+# msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:88
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "חלון"
+
+#: data/shortcuts-window.ui:92
+msgctxt "Shortcuts Window"
+msgid "Zoom In"
+msgstr "התקרבות"
+
+#: data/shortcuts-window.ui:98
+msgctxt "Shortcuts Window"
+msgid "Zoom Out"
+msgstr "התרחקות"
+
+# msgctxt "shortcuts window"
 #: data/shortcuts-window.ui:104
+msgctxt "Shortcuts Window"
+msgid "Zoom Reset"
+msgstr "איפוס התקריב"
+
+# msgctxt "preferences dialog"
+#: data/shortcuts-window.ui:110
+msgctxt "Shortcuts Window"
+msgid "Warnings"
+msgstr "אזהרות"
+
+# msgctxt "preferences dialog"
+#: data/shortcuts-window.ui:116
+msgctxt "Shortcuts Window"
+msgid "Highlighter"
+msgstr "הדגשה"
+
+# msgctxt "shortcuts window"
+#: data/shortcuts-window.ui:122
 msgctxt "Shortcuts Window"
 msgid "Print"
 msgstr "הדפסה"
 
 # msgctxt "shortcuts window"
-#: data/shortcuts-window.ui:110
+#: data/shortcuts-window.ui:128
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "העדפות"
 
 # msgctxt "shortcuts window"
-#: data/shortcuts-window.ui:116
+#: data/shortcuts-window.ui:134
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "צירופי מקשים"
 
-#: data/shortcuts-window.ui:122
+#: data/shortcuts-window.ui:140
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "יציאה"
 
 # msgctxt "shortcuts window"
-#: data/shortcuts-window.ui:128
+#: data/shortcuts-window.ui:146
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "עזרה"
 
 # msgctxt "shortcuts window"
-#: data/shortcuts-window.ui:134
+#: data/shortcuts-window.ui:152
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "תפריט"
 
 # msgctxt "shortcuts window"
-#: data/shortcuts-window.ui:140
+#: data/shortcuts-window.ui:158
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "מסך מלא"
@@ -437,90 +457,109 @@ msgstr "הדפסת ה_לוח הנוכחי…"
 msgid "Print _Multiple Puzzles…"
 msgstr "הדפסת מס_פר לוחות…"
 
-#: data/sudoku-window.ui:32
+#. nest zoom to make it appear in the same section
+#: data/sudoku-window.ui:30
+msgid "Zoom"
+msgstr "תקריב"
+
+#: data/sudoku-window.ui:45
 msgid "_Highlighter"
 msgstr "ה_דגשה"
 
-#: data/sudoku-window.ui:36
+#: data/sudoku-window.ui:49
 msgid "_Warnings"
 msgstr "_אזהרות"
 
-#: data/sudoku-window.ui:42
+#: data/sudoku-window.ui:55
 msgid "_Preferences"
 msgstr "_העדפות"
 
-#: data/sudoku-window.ui:46
+#: data/sudoku-window.ui:59
 msgid "_Keyboard Shortcuts"
 msgstr "_צירופי מקשים"
 
-#: data/sudoku-window.ui:50
+#: data/sudoku-window.ui:63
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: data/sudoku-window.ui:54
+#: data/sudoku-window.ui:67
 msgid "_About Sudoku"
 msgstr "_על אודות סודוקו"
 
-#: data/sudoku-window.ui:77
+#: data/sudoku-window.ui:90
 msgid "Undo Action"
 msgstr "ביטול הפעולה האחרונה"
 
-#: data/sudoku-window.ui:89
+#: data/sudoku-window.ui:102
 msgid "Redo Action"
 msgstr "חזרה על פעולה שבוטלה"
 
-#: data/sudoku-window.ui:101
+#: data/sudoku-window.ui:114
 msgid "Back"
 msgstr "חזרה"
 
 # msgctxt "shortcuts window"
-#: data/sudoku-window.ui:113
 # msgctxt "Shortcuts Window"
+#: data/sudoku-window.ui:126
 msgid "Earmark Mode"
 msgstr "מצב סימון אפשרויות"
 
-#: data/sudoku-window.ui:123
+#: data/sudoku-window.ui:136 src/sudoku-window.vala:103
 msgid "Leave Fullscreen"
 msgstr "יציאה ממצב מסך מלא"
 
-#: data/sudoku-window.ui:137
+#: data/sudoku-window.ui:149
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: data/sudoku-window.ui:156
+#: data/sudoku-window.ui:157
+msgid "Zoom Out"
+msgstr "התרחקות"
+
+#: data/sudoku-window.ui:168
+msgid "Zoom In"
+msgstr "התקרבות"
+
+# msgctxt "shortcuts window"
+#: data/sudoku-window.ui:179 src/sudoku-window.vala:110
+# msgctxt "Shortcuts Window"
+msgid "Fullscreen"
+msgstr "מסך מלא"
+
+#: data/sudoku-window.ui:206
 msgid "Play Custom Puzzle"
 msgstr "לשחק בלוח מותאם"
 
-#: data/sudoku-window.ui:204
+#: data/sudoku-window.ui:254
 msgid "Select Game Difficulty"
 msgstr "בחירת רמת קושי למשחק"
 
-#: data/sudoku-window.ui:222
+#: data/sudoku-window.ui:272
 msgctxt "Difficulty"
 msgid "_Custom"
 msgstr "ה_תאמה אישית"
 
-#: data/sudoku-window.ui:239
+#: data/sudoku-window.ui:289
 msgctxt "Difficulty"
 msgid "_Easy"
 msgstr "_קל"
 
-#: data/sudoku-window.ui:253
+#: data/sudoku-window.ui:303
 msgctxt "Difficulty"
 msgid "_Medium"
 msgstr "_בינוני"
 
-#: data/sudoku-window.ui:267
+#: data/sudoku-window.ui:317
 msgctxt "Difficulty"
 msgid "_Hard"
 msgstr "ק_שה"
 
-#: data/sudoku-window.ui:281
+#: data/sudoku-window.ui:331
 msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "_קשה מאד"
 
-#: data/sudoku-window.ui:292
+#: data/sudoku-window.ui:342
 msgid "_Start Game"
 msgstr "ה_תחלת משחק"
 
@@ -549,41 +588,41 @@ msgid "Custom Puzzle"
 msgstr "לוח מותאם"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:83
+#: src/gnome-sudoku.vala:88
 msgid "Show release version"
 msgstr "Show release version"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:243
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "הלוח שהזנת אינו סודוקו תקף."
 
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:243
 msgid "Please enter a valid puzzle."
 msgstr "נא להכניס לוח תקף."
 
-#: src/gnome-sudoku.vala:233 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:244 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "סגירה"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:252
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "ללוח שהזנת יש מספר פתרונות אפשריים."
 
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:252
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "לסודוקו תקף יש בדיוק פתרון אפשרי אחד."
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:253
 msgid "_Back"
 msgstr "_חזרה"
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:254
 msgid "Play _Anyway"
 msgstr "לשחק _בכל מקרה"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:295
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -591,16 +630,16 @@ msgstr[0] "כל הכבוד, השלמת את הלוח בדקה אחת!"
 msgstr[1] "כל הכבוד, השלמת את הלוח ב־%d דקות!"
 msgstr[2] "כל הכבוד, השלמת את הלוח בשתי דקות!"
 
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:303
 msgid "Quit"
 msgstr "יציאה"
 
-#: src/gnome-sudoku.vala:293
+#: src/gnome-sudoku.vala:304
 msgid "Play _Again"
 msgstr "לשחק _שוב"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:520
+#: src/gnome-sudoku.vala:534
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -611,7 +650,7 @@ msgstr ""
 "\n"
 "הלוחות נוצרות על ידי QQwing %s"
 
-#: src/gnome-sudoku.vala:528
+#: src/gnome-sudoku.vala:542
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -634,23 +673,23 @@ msgstr "ניקוי"
 msgid "Error printing file:"
 msgstr "שגיאה בהדפסת קובץ:"
 
-#: src/sudoku-view.vala:71
+#: src/sudoku-view.vala:78
 msgid "Paused"
 msgstr "הושהה"
 
-#: src/sudoku-window.vala:288
+#: src/sudoku-window.vala:302
 msgid "Select Difficulty"
 msgstr "בחירת רמת קושי"
 
-#: src/sudoku-window.vala:358
+#: src/sudoku-window.vala:372
 msgid "Create Puzzle"
 msgstr "יצירת לוח"
 
-#: src/sudoku-window.vala:371
+#: src/sudoku-window.vala:385
 msgid "Play"
 msgstr "לשחק"
 
-#: src/sudoku-window.vala:371
+#: src/sudoku-window.vala:385
 msgid "Pause"
 msgstr "השהייה"
 
