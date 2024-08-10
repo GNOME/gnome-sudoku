@@ -51,6 +51,7 @@ conf = configuration_data()
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('LOCALEDIR', join_paths(prefix, localedir))
 conf.set_quoted('VERSION', meson.project_version())
+conf.set_quoted('APP_ID', application_id)
 
 configure_file(output: 'config.h',
   configuration: conf

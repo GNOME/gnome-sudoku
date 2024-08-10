@@ -1,5 +1,5 @@
 gnome_sudoku_vala_args = [
-  '--gresources', resource_files,
+  '--gresources', resource_files.full_path(),
   '--pkg', 'posix'
 ]
 

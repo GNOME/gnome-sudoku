@@ -97,7 +97,7 @@ public class Sudoku : Adw.Application
         Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         Intl.textdomain (GETTEXT_PACKAGE);
 
-        Object (application_id: "org.gnome.Sudoku", flags: ApplicationFlags.DEFAULT_FLAGS);
+        Object (application_id: APP_ID, flags: ApplicationFlags.DEFAULT_FLAGS, resource_base_path: "/org/gnome/Sudoku");
         add_main_option_entries (option_entries);
     }
 
@@ -156,7 +156,7 @@ public class Sudoku : Adw.Application
 
         play_difficulty = (DifficultyCategory) settings.get_enum ("play-difficulty");
 
-        Window.set_default_icon_name ("org.gnome.Sudoku");
+        Window.set_default_icon_name (APP_ID);
 
         window = new SudokuWindow (settings);
         add_window (window);
