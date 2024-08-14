@@ -11,15 +11,15 @@
 # Gökhan Gurbetoğlu <ggurbet@gmail.com>, 2014.
 # Çağatay Yiğit Şahin <cyigitsahin@outlook.com>, 2017.
 # Muhammet Kara <muhammetk@gmail.com>, 2011, 2014, 2015, 2018.
-# Sabri Ünal <libreajans@gmail.com>, 2021, 2023, 2024.
+# Sabri Ünal <yakushabb@gmail.com>, 2021, 2023, 2024.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2019, 2022-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-07-20 06:15+0000\n"
-"PO-Revision-Date: 2024-06-27 08:16+0300\n"
+"POT-Creation-Date: 2024-08-02 14:09+0000\n"
+"PO-Revision-Date: 2024-08-11 04:02+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -29,8 +29,8 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.4.3\n"
 
-#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:60
-#: data/sudoku-window.ui:69
+#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:73
+#: data/sudoku-window.ui:82
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -43,11 +43,11 @@ msgstr "Bu rakam yerleştirme bulmacasında mantıksal yeteneklerinizi sınayın
 msgid "magic;square;"
 msgstr "sudoku;magic;square;sihir;büyü;kare;"
 
-#: data/org.gnome.Sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:17
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Yazdırılacak sudoku zorluk düzeyi"
 
-#: data/org.gnome.Sudoku.gschema.xml:13
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -55,31 +55,31 @@ msgstr ""
 "Yazdırmak istediğiniz sudoku zorluk düzeyini ayarlayın. Olası değerler: "
 "“easy” (kolay), “medium” (orta), “hard” (zor), “very_hard” (çok zor)"
 
-#: data/org.gnome.Sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:23
 msgid "Number of Sudokus to print"
 msgstr "Yazdırılacak olan sudoku sayısı"
 
-#: data/org.gnome.Sudoku.gschema.xml:19
+#: data/org.gnome.Sudoku.gschema.xml:24
 msgid "Set the number of sudokus you want to print"
 msgstr "Yazdırılacak olan sudoku sayısını ayarla"
 
-#: data/org.gnome.Sudoku.gschema.xml:24
+#: data/org.gnome.Sudoku.gschema.xml:29
 msgid "Number of Sudokus to print per page"
 msgstr "Sayfa başına yazdırılacak olan sudoku sayısı"
 
-#: data/org.gnome.Sudoku.gschema.xml:25
+#: data/org.gnome.Sudoku.gschema.xml:30
 msgid "Set the number of sudokus you want to print per page"
 msgstr "Sayfa başına yazdırılacak olan sudoku sayısını ayarla"
 
-#: data/org.gnome.Sudoku.gschema.xml:29
+#: data/org.gnome.Sudoku.gschema.xml:34
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Ayraçları her hücre için olası değerlerle başlat"
 
-#: data/org.gnome.Sudoku.gschema.xml:33
+#: data/org.gnome.Sudoku.gschema.xml:38
 msgid "Color mistakes and duplicate numbers in red"
 msgstr "Hataları ve yineleyen sayıları kırmızıyla renklendir"
 
-#: data/org.gnome.Sudoku.gschema.xml:34
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -87,59 +87,63 @@ msgstr ""
 "Eğer karenin herhangi bir sayıyla doldurulması olanaksızsa içinde büyük "
 "kırmızı X görülür ve yineleyen sayılar kırmızıyla vurgulanır"
 
-#: data/org.gnome.Sudoku.gschema.xml:38
+#: data/org.gnome.Sudoku.gschema.xml:43
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr "Ayraçları satır, sütun ve bloktaki yinelemelere karşı denetle"
 
-#: data/org.gnome.Sudoku.gschema.xml:42
+#: data/org.gnome.Sudoku.gschema.xml:47
 msgid "Toggle timer and pause buttons"
 msgstr "Zamanlayıcı ve duraklatma düğmelerini değiştir"
 
-#: data/org.gnome.Sudoku.gschema.xml:46
+#: data/org.gnome.Sudoku.gschema.xml:51
 msgid "Additionally check against the solution for warnings"
 msgstr "Ek olarak çözümü uyarılara karşı gözden geçir"
 
-#: data/org.gnome.Sudoku.gschema.xml:50
+#: data/org.gnome.Sudoku.gschema.xml:55
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr "Yeni numara eklendiğinde ilgili ayraçları kendiliğinden temizle"
 
-#: data/org.gnome.Sudoku.gschema.xml:54
+#: data/org.gnome.Sudoku.gschema.xml:59
 msgid "Display number picker on second click"
 msgstr "İkinci tıklamada sayı seçiciyi görüntüle"
 
-#: data/org.gnome.Sudoku.gschema.xml:58
+#: data/org.gnome.Sudoku.gschema.xml:63
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Seçili hücreyi içeren satır, sütun ve kareyi vurgula"
 
-#: data/org.gnome.Sudoku.gschema.xml:62
+#: data/org.gnome.Sudoku.gschema.xml:67
 msgid "Highlight the selected cell's row and column"
 msgstr "Seçili hücrenin satırını ve sütununu vurgula"
 
-#: data/org.gnome.Sudoku.gschema.xml:66
+#: data/org.gnome.Sudoku.gschema.xml:71
 msgid "Highlight the selected cell's block"
 msgstr "Seçili hücrenin bloğunu vurgula"
 
-#: data/org.gnome.Sudoku.gschema.xml:70
+#: data/org.gnome.Sudoku.gschema.xml:75
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Seçilen hücrenin eşleşen sayılarını vurgula"
 
-#: data/org.gnome.Sudoku.gschema.xml:74
+#: data/org.gnome.Sudoku.gschema.xml:79
 msgid "The puzzle's difficulty"
 msgstr "Bulmacanın zorluğu"
 
-#: data/org.gnome.Sudoku.gschema.xml:78
+#: data/org.gnome.Sudoku.gschema.xml:83
+msgid "Zoom level"
+msgstr "Yakınlaştırma düzeyi"
+
+#: data/org.gnome.Sudoku.gschema.xml:87
 msgid "Width of the window in pixels"
 msgstr "Pencerenin piksel türünden genişliği"
 
-#: data/org.gnome.Sudoku.gschema.xml:82
+#: data/org.gnome.Sudoku.gschema.xml:91
 msgid "Height of the window in pixels"
 msgstr "Pencerenin piksel türünden yüksekliği"
 
-#: data/org.gnome.Sudoku.gschema.xml:86
+#: data/org.gnome.Sudoku.gschema.xml:95
 msgid "true if the window is maximized"
 msgstr "pencere ekranı kaplamışsa doğru (true)"
 
-#: data/org.gnome.Sudoku.gschema.xml:90
+#: data/org.gnome.Sudoku.gschema.xml:99
 msgid "true if the window is fullscreen"
 msgstr "pencere tam ekranken doğru (true)"
 
@@ -335,62 +339,77 @@ msgctxt "Shortcuts Window"
 msgid "Earmark Picker"
 msgstr "Ayraç Seçici"
 
-#: data/shortcuts-window.ui:76
-msgctxt "Shortcuts Window"
-msgid "Window"
-msgstr "Pencere"
-
-#: data/shortcuts-window.ui:80
-msgctxt "Shortcuts Window"
-msgid "Warnings"
-msgstr "Uyarılar"
-
-#: data/shortcuts-window.ui:86
-msgctxt "Shortcuts Window"
-msgid "Highlighter"
-msgstr "Vurgulayıcı"
-
-#: data/shortcuts-window.ui:92
-msgctxt "Shortcuts Window"
-msgid "Reset"
-msgstr "Sıfırla"
-
-#: data/shortcuts-window.ui:98
+#: data/shortcuts-window.ui:75
 msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "Yeni Oyun"
 
+#: data/shortcuts-window.ui:81
+msgctxt "Shortcuts Window"
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: data/shortcuts-window.ui:88
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "Pencere"
+
+#: data/shortcuts-window.ui:92
+msgctxt "Shortcuts Window"
+msgid "Zoom In"
+msgstr "Yaklaştır"
+
+#: data/shortcuts-window.ui:98
+msgctxt "Shortcuts Window"
+msgid "Zoom Out"
+msgstr "Uzaklaştır"
+
 #: data/shortcuts-window.ui:104
+msgctxt "Shortcuts Window"
+msgid "Zoom Reset"
+msgstr "Yakınlaştırmayı Sıfırla"
+
+#: data/shortcuts-window.ui:110
+msgctxt "Shortcuts Window"
+msgid "Warnings"
+msgstr "Uyarılar"
+
+#: data/shortcuts-window.ui:116
+msgctxt "Shortcuts Window"
+msgid "Highlighter"
+msgstr "Vurgulayıcı"
+
+#: data/shortcuts-window.ui:122
 msgctxt "Shortcuts Window"
 msgid "Print"
 msgstr "Yazdır"
 
-#: data/shortcuts-window.ui:110
+#: data/shortcuts-window.ui:128
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: data/shortcuts-window.ui:116
+#: data/shortcuts-window.ui:134
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
-#: data/shortcuts-window.ui:122
+#: data/shortcuts-window.ui:140
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Çık"
 
-#: data/shortcuts-window.ui:128
+#: data/shortcuts-window.ui:146
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Yardım"
 
-#: data/shortcuts-window.ui:134
+#: data/shortcuts-window.ui:152
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Menü"
 
-#: data/shortcuts-window.ui:140
+#: data/shortcuts-window.ui:158
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Tam Ekran"
@@ -409,90 +428,107 @@ msgstr "Ş_imdiki Bulmacayı Yazdır…"
 
 #: data/sudoku-window.ui:24
 msgid "Print _Multiple Puzzles…"
-msgstr "Ço_klu Bulmaca Yazdır..."
+msgstr "Ço_klu Bulmaca Yazdır…"
 
-#: data/sudoku-window.ui:32
+#. nest zoom to make it appear in the same section
+#: data/sudoku-window.ui:30
+msgid "Zoom"
+msgstr "Yaklaştırma"
+
+#: data/sudoku-window.ui:45
 msgid "_Highlighter"
 msgstr "_Vurgulayıcı"
 
-#: data/sudoku-window.ui:36
+#: data/sudoku-window.ui:49
 msgid "_Warnings"
 msgstr "_Uyarılar"
 
-#: data/sudoku-window.ui:42
+#: data/sudoku-window.ui:55
 msgid "_Preferences"
 msgstr "_Tercihler"
 
-#: data/sudoku-window.ui:46
+#: data/sudoku-window.ui:59
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: data/sudoku-window.ui:50
+#: data/sudoku-window.ui:63
 msgid "_Help"
 msgstr "_Yardım"
 
-#: data/sudoku-window.ui:54
+#: data/sudoku-window.ui:67
 msgid "_About Sudoku"
 msgstr "Sudoku _Hakkında"
 
-#: data/sudoku-window.ui:77
+#: data/sudoku-window.ui:90
 msgid "Undo Action"
 msgstr "İşlemi Geri Al"
 
-#: data/sudoku-window.ui:89
+#: data/sudoku-window.ui:102
 msgid "Redo Action"
 msgstr "İşlemi Yinele"
 
-#: data/sudoku-window.ui:101
+#: data/sudoku-window.ui:114
 msgid "Back"
 msgstr "Geri"
 
-#: data/sudoku-window.ui:113
+#: data/sudoku-window.ui:126
 msgid "Earmark Mode"
 msgstr "Ayraç Kipi"
 
-#: data/sudoku-window.ui:123
+#: data/sudoku-window.ui:136 src/sudoku-window.vala:103
 msgid "Leave Fullscreen"
 msgstr "Tam Ekrandan Çık"
 
-#: data/sudoku-window.ui:137
+#: data/sudoku-window.ui:149
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: data/sudoku-window.ui:156
+#: data/sudoku-window.ui:157
+msgid "Zoom Out"
+msgstr "Uzaklaştır"
+
+#: data/sudoku-window.ui:168
+msgid "Zoom In"
+msgstr "Yaklaştır"
+
+#: data/sudoku-window.ui:179 src/sudoku-window.vala:110
+msgid "Fullscreen"
+msgstr "Tam Ekran"
+
+#: data/sudoku-window.ui:206
 msgid "Play Custom Puzzle"
 msgstr "Özel Bulmaca Oyna"
 
-#: data/sudoku-window.ui:204
+#: data/sudoku-window.ui:254
 msgid "Select Game Difficulty"
 msgstr "Oyun Zorluğu Seç"
 
-#: data/sudoku-window.ui:222
+#: data/sudoku-window.ui:272
 msgctxt "Difficulty"
 msgid "_Custom"
 msgstr "_Özel"
 
-#: data/sudoku-window.ui:239
+#: data/sudoku-window.ui:289
 msgctxt "Difficulty"
 msgid "_Easy"
 msgstr "_Kolay"
 
-#: data/sudoku-window.ui:253
+#: data/sudoku-window.ui:303
 msgctxt "Difficulty"
 msgid "_Medium"
 msgstr "_Orta"
 
-#: data/sudoku-window.ui:267
+#: data/sudoku-window.ui:317
 msgctxt "Difficulty"
 msgid "_Hard"
 msgstr "_Zor"
 
-#: data/sudoku-window.ui:281
+#: data/sudoku-window.ui:331
 msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "Ç_ok Zor"
 
-#: data/sudoku-window.ui:292
+#: data/sudoku-window.ui:342
 msgid "_Start Game"
 msgstr "Oyunu _Başlat"
 
@@ -521,56 +557,56 @@ msgid "Custom Puzzle"
 msgstr "Özel Bulmaca"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:83
+#: src/gnome-sudoku.vala:88
 msgid "Show release version"
 msgstr "Yayım sürümünü göster"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:243
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Girmiş olduğunuz bulmaca geçerli bir Sudoku değildir."
 
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:243
 msgid "Please enter a valid puzzle."
 msgstr "Lütfen geçerli bulmaca girin."
 
-#: src/gnome-sudoku.vala:233 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:244 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "Kapat"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:252
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Girmiş olduğunuz bulmacanın birden çok çözümü var."
 
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:252
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Geçerli Sudoku bulmacalarının tek çözümü olur."
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:253
 msgid "_Back"
 msgstr "_Geri"
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:254
 msgid "Play _Anyway"
 msgstr "_Yine De Oyna"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:295
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Aferin! Bulmacayı %d dakika içinde tamamladınız!"
 
-#: src/gnome-sudoku.vala:292
+#: src/gnome-sudoku.vala:303
 msgid "Quit"
 msgstr "Çık"
 
-#: src/gnome-sudoku.vala:293
+#: src/gnome-sudoku.vala:304
 msgid "Play _Again"
 msgstr "_Yeniden Oyna"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:520
+#: src/gnome-sudoku.vala:534
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -581,7 +617,7 @@ msgstr ""
 "\n"
 "Bulmacalar QQwing %s tarafından oluşturulur"
 
-#: src/gnome-sudoku.vala:528
+#: src/gnome-sudoku.vala:542
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <yakushabb@gmail.com>\n"
@@ -599,64 +635,22 @@ msgstr "Temizle"
 msgid "Error printing file:"
 msgstr "Dosya yazdırılırken hata:"
 
-#: src/sudoku-view.vala:71
+#: src/sudoku-view.vala:78
 msgid "Paused"
 msgstr "Duraklatıldı"
 
-#: src/sudoku-window.vala:288
+#: src/sudoku-window.vala:302
 msgid "Select Difficulty"
 msgstr "Zorluk Seç"
 
-#: src/sudoku-window.vala:358
+#: src/sudoku-window.vala:372
 msgid "Create Puzzle"
 msgstr "Bulmaca Oluştur"
 
-#: src/sudoku-window.vala:371
+#: src/sudoku-window.vala:385
 msgid "Play"
 msgstr "Oyna"
 
-#: src/sudoku-window.vala:371
+#: src/sudoku-window.vala:385
 msgid "Pause"
 msgstr "Duraklat"
-
-#~ msgid "Check cells only against duplicates in row, column and block"
-#~ msgstr ""
-#~ "Hücreleri yalnızca satır, sütun ve bloktaki yinelemelere karşı denetle"
-
-#~ msgid "_Create Custom Game…"
-#~ msgstr "Özel Oyun _Oluştur…"
-
-#~ msgid "Earmark mode"
-#~ msgstr "Ayraç kipi"
-
-#~ msgid "Show the possible values for each cell"
-#~ msgstr "Her hücre için olası değerleri göster"
-
-#~ msgctxt "general preferences"
-#~ msgid "Show timer and pause buttons"
-#~ msgstr "Zamanlayıcı ve duraklatma düğmelerini göster"
-
-#~ msgctxt "shortcuts window"
-#~ msgid "Pause"
-#~ msgstr "Duraklat"
-
-#~ msgctxt "shortcuts window"
-#~ msgid "Warnings"
-#~ msgstr "Uyarılar"
-
-#~ msgctxt "shortcuts window"
-#~ msgid "Highlighter"
-#~ msgstr "Vurgulayıcı"
-
-#~ msgctxt "shortcuts window"
-#~ msgid "Quit"
-#~ msgstr "Çık"
-
-#~ msgid "_More Options"
-#~ msgstr "_Daha Çok Seçenek"
-
-#~ msgid "Show _Timer"
-#~ msgstr "_Zamanlayıcıyı Göster"
-
-#~ msgid "Simple _Warnings Mode"
-#~ msgstr "Basit _Uyarılar Kipi"
