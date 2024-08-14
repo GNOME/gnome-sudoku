@@ -537,7 +537,7 @@ public class Sudoku : Adw.Application
         add_transient_hooks (about_dialog);
         about_dialog.set_version (VERSION);
         about_dialog.set_comments (localized_comments_format.printf (SudokuGenerator.qqwing_version ()));
-        about_dialog.set_copyright ("Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha\nCopyright © 2023 Jamie Murphy");
+        about_dialog.set_copyright ("Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha\nCopyright © 2023 Jamie Murphy\nCopyright © 2024 Johan Gay");
         about_dialog.set_developers (authors);
         about_dialog.set_translator_credits (_("translator-credits"));
         about_dialog.present (window);
