@@ -73,6 +73,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     private GestureClick button_controller;
     private GestureLongPress long_press_controller;
+    private EventControllerScroll scroll_controller;
 
     public GLib.Settings settings { get; private set;}
     public SudokuView? view { get; private set; default = null;}
@@ -136,6 +137,12 @@ public class SudokuWindow : Adw.ApplicationWindow
         button_controller.released.connect (button_released_cb);
         button_controller.pressed.connect (button_pressed_cb);
         ((Widget)this).add_controller (this.button_controller);
+
+        scroll_controller = new EventControllerScroll (EventControllerScrollFlags.VERTICAL);
+        scroll_controller.scroll.connect (scroll_cb);
+        scroll_controller.scroll_begin.connect (scroll_begin_cb);
+        scroll_controller.scroll_end.connect (scroll_end_cb);
+        ((Widget)this).add_controller (this.scroll_controller);
 
         long_press_controller = new GestureLongPress ();
         long_press_controller.pressed.connect (long_press_cb);
@@ -439,6 +446,45 @@ public class SudokuWindow : Adw.ApplicationWindow
                                 double           y)
     {
         gesture.set_state (EventSequenceState.CLAIMED);
+    }
+
+    private bool scroll_cb (EventControllerScroll event,
+                            double                dx,
+                            double                dy)
+    {
+        ModifierType state;
+        state = event.get_current_event_state ();
+        if (state == Gdk.ModifierType.CONTROL_MASK)
+        {
+            if (dy <= -1)
+            {
+                ((Widget)this).activate_action ("app.zoom-in", null);
+                return Gdk.EVENT_STOP;
+            }
+            else if (dy >= 1)
+            {
+                ((Widget)this).activate_action ("app.zoom-out", null);
+                return Gdk.EVENT_STOP;
+            }
+        }
+
+        return Gdk.EVENT_PROPAGATE;
+    }
+
+    private void scroll_begin_cb (EventControllerScroll event)
+    {
+        ModifierType state;
+        state = event.get_current_event_state ();
+        if (state == Gdk.ModifierType.CONTROL_MASK)
+        {
+            event.set_flags (EventControllerScrollFlags.VERTICAL |
+                             EventControllerScrollFlags.DISCRETE);
+        }
+    }
+
+    private void scroll_end_cb (EventControllerScroll event)
+    {
+        event.set_flags (EventControllerScrollFlags.VERTICAL);
     }
 
     private double normalize (int val, int min, int max)
