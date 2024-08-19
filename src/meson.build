@@ -1,7 +1,4 @@
-gnome_sudoku_vala_args = [
-  '--gresources', resource_files,
-  '--pkg', 'posix'
-]
+gnome_sudoku_vala_args = [ '--pkg=posix' ]
 
 gnome_sudoku_sources = [
   'config.vapi',

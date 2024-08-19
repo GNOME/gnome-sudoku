@@ -1,12 +1,12 @@
 desktop_conf = configuration_data()
-desktop_conf.set('icon', application_id)
+desktop_conf.set('icon', app_id)
 desktop_file = i18n.merge_file(
   input: configure_file(
-    input: 'org.gnome.Sudoku.desktop.in.in',
+    input: '@0@.desktop.in.in'.format(base_id),
     output: '@BASENAME@',
     configuration: desktop_conf
   ),
-  output: '@0@.desktop'.format(application_id),
+  output: '@0@.desktop'.format(app_id),
   install: true,
   install_dir: join_paths(datadir, 'applications'),
   po_dir: '../po',
@@ -27,14 +27,14 @@ if desktop_file_validate.found()
 endif
 
 metainfo_conf = configuration_data()
-metainfo_conf.set('app-id', application_id)
+metainfo_conf.set('app-id', app_id)
 metainfo_file = i18n.merge_file(
   input: configure_file(
-    input: 'org.gnome.Sudoku.metainfo.xml.in.in',
+    input: '@0@.metainfo.xml.in.in'.format(base_id),
     output: '@BASENAME@',
     configuration: metainfo_conf
   ),
-  output: '@0@.metainfo.xml'.format(application_id),
+  output: '@0@.metainfo.xml'.format(app_id),
   install: true,
   install_dir: join_paths(datadir, 'metainfo'),
   po_dir: '../po'
@@ -52,12 +52,13 @@ if appstreamcli.found()
   )
 endif
 
-install_data('org.gnome.Sudoku.gschema.xml',
+install_data('@0@.gschema.xml'.format(base_id),
   install_dir: join_paths(datadir, 'glib-2.0', 'schemas')
 )
 
 resource_conf = configuration_data()
-resource_conf.set('app-id', application_id)
+resource_conf.set('app-id', app_id)
+resource_conf.set('base-id-slashed', '/' + base_id.replace('.', '/'))
 resource_files = configure_file(
   input: 'gnome-sudoku.gresource.xml.in',
   output: '@BASENAME@',
@@ -73,25 +74,25 @@ install_man('@0@.6'.format(meson.project_name()))
 
 icondir = join_paths(datadir, 'icons', 'hicolor')
 
-install_data('icons/hicolor/scalable/@0@.svg'.format(application_id),
+install_data('icons/hicolor/scalable/@0@.svg'.format(app_id),
   install_dir: join_paths(icondir, 'scalable', 'apps')
 )
 
-install_data('icons/hicolor/symbolic/org.gnome.Sudoku-symbolic.svg',
+install_data('icons/hicolor/symbolic/@0@-symbolic.svg'.format(base_id),
   install_dir: join_paths(icondir, 'symbolic', 'apps'),
-  rename: '@0@-symbolic.svg'.format(application_id)
+  rename: '@0@-symbolic.svg'.format(app_id)
 )
 
 # Make D-Bus activatable
 service_conf = configuration_data()
 service_conf.set('bindir', join_paths(prefix, bindir))
-service_conf.set('app-id', application_id)
+service_conf.set('app-id', app_id)
 
-service = 'org.gnome.Sudoku.service'
+service = '@0@.service'.format(base_id)
 
 configure_file (
   input: service + '.in',
-  output: '@0@.service'.format(application_id),
+  output: '@0@.service'.format(app_id),
   install: true,
   install_dir: join_paths(prefix, datadir, 'dbus-1', 'services'),
   configuration: service_conf

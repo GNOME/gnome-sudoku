@@ -28,9 +28,10 @@ prefix      = get_option('prefix')
 bindir      = get_option('bindir')
 profile     = get_option('profile')
 
-application_id = 'org.gnome.Sudoku'
+base_id = 'org.gnome.Sudoku'
+app_id = base_id
 if profile != ''
-  application_id = 'org.gnome.Sudoku.' + profile
+  app_id += '.' + profile
 endif
 
 glib_version = '2.40.0'
@@ -51,7 +52,7 @@ conf = configuration_data()
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('LOCALEDIR', join_paths(prefix, localedir))
 conf.set_quoted('VERSION', meson.project_version())
-conf.set_quoted('APP_ID', application_id)
+conf.set_quoted('APP_ID', app_id)
 
 configure_file(output: 'config.h',
   configuration: conf
