@@ -4,12 +4,12 @@
   <menu id="primary-menu">
     <section id="controls-menu">
       <item>
-        <attribute name="label" translatable="yes">_New Puzzle…</attribute>
+        <attribute name="label" translatable="yes">_New Game…</attribute>
         <attribute name="action">app.new-game</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">_Clear Board</attribute>
-        <attribute name="action">app.reset</attribute>
+        <attribute name="label" translatable="yes">_Reset Puzzle</attribute>
+        <attribute name="action">app.reset-board</attribute>
       </item>
     </section>
     <section>
@@ -18,7 +18,7 @@
         <section>
           <item>
             <attribute name="label" translatable="yes">Print _Current Puzzle…</attribute>
-            <attribute name="action">app.print</attribute>
+            <attribute name="action">app.print-current-board</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">Print _Multiple Puzzles…</attribute>
@@ -203,7 +203,7 @@
                 <property name="visible">False</property>
                 <property name="sensitive">False</property>
                 <property name="valign">center</property>
-                <property name="tooltip-text" translatable="yes">Play Custom Puzzle</property>
+                <property name="tooltip-text" translatable="yes">Play Custom Game</property>
                 <property name="can-focus">True</property>
                 <property name="focus-on-click">False</property>
                 <property name="action-name">app.play-custom-game</property>
@@ -251,7 +251,7 @@
                 <property name="valign">center</property>
                 <child>
                   <object class="AdwStatusPage">
-                    <property name="title" translatable="yes">Select Game Difficulty</property>
+                    <property name="title" translatable="yes">Select Puzzle Difficulty</property>
                     <property name="child">
                       <object class="AdwClamp">
                         <property name="maximum-size">400</property>
