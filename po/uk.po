@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-08-02 14:09+0000\n"
-"PO-Revision-Date: 2024-08-03 21:34+0300\n"
+"POT-Creation-Date: 2024-08-21 18:50+0000\n"
+"PO-Revision-Date: 2024-08-22 20:11+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -23,17 +23,17 @@ msgstr ""
 "X-Generator: Lokalize 23.04.3\n"
 "X-Project-Style: gnome\n"
 
-#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:73
+#: data/org.gnome.Sudoku.desktop.in.in:3 data/sudoku-window.ui:73
 #: data/sudoku-window.ui:82
 msgid "Sudoku"
 msgstr "Судоку"
 
-#: data/org.gnome.Sudoku.desktop.in:4
+#: data/org.gnome.Sudoku.desktop.in.in:4
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "Перевірте логічні здібності у цій числовій головоломці"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in.in:6
 msgid "magic;square;"
 msgstr "магія;площа;"
 
@@ -141,15 +141,15 @@ msgstr "встановлено, якщо вікно розгорнуто"
 msgid "true if the window is fullscreen"
 msgstr "встановлено, якщо вікно розгорнуто на увесь екран"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:7
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:7
 msgid "GNOME Sudoku"
 msgstr "Судоку GNOME"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:8
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
 msgid "Test yourself in this classic puzzle"
 msgstr "Перевірте себе за допомогою цієї класичної головоломки"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:10
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:10
 msgid ""
 "GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
 "Japanese game, it comes with a simple interface that makes playing Sudoku "
@@ -159,7 +159,7 @@ msgstr ""
 "засновано на популярній японській грі. Передбачено простий інтерфейс, який "
 "дає змогу відчути задоволення від гри гравцям будь-якого рівня."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:15
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:15
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as challenging as you want it to be."
@@ -168,7 +168,7 @@ msgstr ""
 "сайтах. Тому ваша гра буде такою легкою або такою складною, як ви того "
 "захочете."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:19
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:19
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -179,11 +179,11 @@ msgstr ""
 "рівень складності: як наслідок: «Судоку GNOME» може поновлюваною книгу з "
 "судоку."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:29
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:29
 msgid "A GNOME sudoku game preview"
 msgstr "Перегляд гри Судоку"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:33
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:33
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Гра судоку для GNOME у темному режимі з позначками і попередженнями"
 
@@ -339,9 +339,10 @@ msgid "New Game"
 msgstr "Нова гра"
 
 #: data/shortcuts-window.ui:81
+#| msgid "Custom Puzzle"
 msgctxt "Shortcuts Window"
-msgid "Reset"
-msgstr "Скинути"
+msgid "Reset Puzzle"
+msgstr "Відновити початковий стан головоломки"
 
 #: data/shortcuts-window.ui:88
 msgctxt "Shortcuts Window"
@@ -359,8 +360,6 @@ msgid "Zoom Out"
 msgstr "Зменшити"
 
 #: data/shortcuts-window.ui:104
-#| msgctxt "Shortcuts Window"
-#| msgid "Reset"
 msgctxt "Shortcuts Window"
 msgid "Zoom Reset"
 msgstr "Скинути масштаб"
@@ -376,9 +375,10 @@ msgid "Highlighter"
 msgstr "Підсвічування"
 
 #: data/shortcuts-window.ui:122
+#| msgid "Print _Current Puzzle…"
 msgctxt "Shortcuts Window"
-msgid "Print"
-msgstr "Надрукувати"
+msgid "Print Current Puzzle"
+msgstr "Надрукувати поточну головоломку"
 
 #: data/shortcuts-window.ui:128
 msgctxt "Shortcuts Window"
@@ -411,12 +411,15 @@ msgid "Fullscreen"
 msgstr "Повноекранний режим"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle…"
-msgstr "_Нова головоломка…"
+#| msgctxt "Shortcuts Window"
+#| msgid "New Game"
+msgid "_New Game…"
+msgstr "_Нова гра…"
 
 #: data/sudoku-window.ui:11
-msgid "_Clear Board"
-msgstr "_Очистити дошку"
+#| msgid "Custom Puzzle"
+msgid "_Reset Puzzle"
+msgstr "_Скинути головоломку"
 
 #: data/sudoku-window.ui:20
 msgid "Print _Current Puzzle…"
@@ -471,7 +474,7 @@ msgstr "Назад"
 msgid "Earmark Mode"
 msgstr "Режим позначок"
 
-#: data/sudoku-window.ui:136 src/sudoku-window.vala:103
+#: data/sudoku-window.ui:136 src/sudoku-window.vala:104
 msgid "Leave Fullscreen"
 msgstr "Вийти з повноекранного режиму"
 
@@ -487,19 +490,19 @@ msgstr "Зменшити"
 msgid "Zoom In"
 msgstr "Збільшити"
 
-#: data/sudoku-window.ui:179 src/sudoku-window.vala:110
-#| msgctxt "Shortcuts Window"
-#| msgid "Fullscreen"
+#: data/sudoku-window.ui:179 src/sudoku-window.vala:111
 msgid "Fullscreen"
 msgstr "На увесь екран"
 
 #: data/sudoku-window.ui:206
-msgid "Play Custom Puzzle"
-msgstr "Грати у власну головоломку"
+#| msgid "Play Custom Puzzle"
+msgid "Play Custom Game"
+msgstr "Грати у власну гру"
 
 #: data/sudoku-window.ui:254
-msgid "Select Game Difficulty"
-msgstr "Виберіть складність гри"
+#| msgid "Select Difficulty"
+msgid "Select Puzzle Difficulty"
+msgstr "Виберіть складність головоломки"
 
 #: data/sudoku-window.ui:272
 msgctxt "Difficulty"
@@ -639,21 +642,38 @@ msgstr "Помилка друкування файла:"
 msgid "Paused"
 msgstr "Призупинено"
 
-#: src/sudoku-window.vala:302
+#: src/sudoku-window.vala:309
 msgid "Select Difficulty"
 msgstr "Виберіть складність"
 
-#: src/sudoku-window.vala:372
+#: src/sudoku-window.vala:379
 msgid "Create Puzzle"
 msgstr "Створити головоломку"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Play"
 msgstr "Грати"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Pause"
 msgstr "Пауза"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Reset"
+#~ msgstr "Скинути"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Print"
+#~ msgstr "Надрукувати"
+
+#~ msgid "_New Puzzle…"
+#~ msgstr "_Нова головоломка…"
+
+#~ msgid "_Clear Board"
+#~ msgstr "_Очистити дошку"
+
+#~ msgid "Select Game Difficulty"
+#~ msgstr "Виберіть складність гри"
 
 #~ msgid "_Create Custom Game…"
 #~ msgstr "Створити _нетипову гру…"
