@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-08-02 14:09+0000\n"
-"PO-Revision-Date: 2024-08-02 18:29+0200\n"
+"POT-Creation-Date: 2024-08-21 18:50+0000\n"
+"PO-Revision-Date: 2024-08-22 12:11+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -24,17 +24,17 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: Poedit 2.2.1\n"
 
-#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:73
+#: data/org.gnome.Sudoku.desktop.in.in:3 data/sudoku-window.ui:73
 #: data/sudoku-window.ui:82
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/org.gnome.Sudoku.desktop.in:4
+#: data/org.gnome.Sudoku.desktop.in.in:4
 msgid "Test your logic skills in this number grid puzzle"
 msgstr "Preverite svoje logično razmišljanje z reševanjem mrežne uganke."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in.in:6
 msgid "magic;square;"
 msgstr ""
 "magic;square;sudoku;mrežna igra;kvadrat;števila;mreža;plošča;tabla;ploščice;"
@@ -145,15 +145,15 @@ msgstr "PRAV, če je okno razpeto"
 msgid "true if the window is fullscreen"
 msgstr "Res (true), če je okno celozaslonsko"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:7
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:7
 msgid "GNOME Sudoku"
 msgstr "Sudoku GNOME"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:8
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
 msgid "Test yourself in this classic puzzle"
 msgstr "Preverite se z reševanjem te klasične uganke."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:10
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:10
 msgid ""
 "GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
 "Japanese game, it comes with a simple interface that makes playing Sudoku "
@@ -163,7 +163,7 @@ msgstr ""
 "priljubljeni japonski igri in je na voljo s preprostim vmesnikom, zaradi "
 "katerega je igranje ugank sudoku zabavno za igralce vseh stopenj spretnosti."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:15
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:15
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as challenging as you want it to be."
@@ -171,7 +171,7 @@ msgstr ""
 "Vsaki uganki je določena težavnost, podobno kot to velja za različice v "
 "časopisih in na spletu. Težavnost je tako prilagojena vašim željam."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:19
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:19
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
@@ -181,11 +181,11 @@ msgstr ""
 "Pred tiskanjem je treba izbrati število iger, ki naj se natisnejo na vsako "
 "stran lista. Na ta način si lahko ustvarite tudi knjižico ugank za na pot."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:29
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:29
 msgid "A GNOME sudoku game preview"
 msgstr "Predogled uganke Sudoku GNOME"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:33
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:33
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Igra sudoku za GNOME v temnem načinu z ušesci in opozorili"
 
@@ -342,8 +342,8 @@ msgstr "Nova igra"
 
 #: data/shortcuts-window.ui:81
 msgctxt "Shortcuts Window"
-msgid "Reset"
-msgstr "Ponastavi"
+msgid "Reset Puzzle"
+msgstr "Ponastavi uganko"
 
 #: data/shortcuts-window.ui:88
 msgctxt "Shortcuts Window"
@@ -377,8 +377,8 @@ msgstr "Poudarjalnik"
 
 #: data/shortcuts-window.ui:122
 msgctxt "Shortcuts Window"
-msgid "Print"
-msgstr "Natisni"
+msgid "Print Current Puzzle"
+msgstr "Natisni trenutno uganko"
 
 #: data/shortcuts-window.ui:128
 msgctxt "Shortcuts Window"
@@ -411,12 +411,12 @@ msgid "Fullscreen"
 msgstr "Celozaslonski način"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle…"
-msgstr "_Nova uganka …"
+msgid "_New Game…"
+msgstr "_Nova igra …"
 
 #: data/sudoku-window.ui:11
-msgid "_Clear Board"
-msgstr "Po_čisti igralno ploščo"
+msgid "_Reset Puzzle"
+msgstr "_Ponastavi uganko"
 
 #: data/sudoku-window.ui:20
 msgid "Print _Current Puzzle…"
@@ -471,7 +471,7 @@ msgstr "Nazaj"
 msgid "Earmark Mode"
 msgstr "Način ušesc"
 
-#: data/sudoku-window.ui:136 src/sudoku-window.vala:103
+#: data/sudoku-window.ui:136 src/sudoku-window.vala:104
 msgid "Leave Fullscreen"
 msgstr "Zapusti celozaslonski način"
 
@@ -487,16 +487,16 @@ msgstr "Oddalji"
 msgid "Zoom In"
 msgstr "Približaj"
 
-#: data/sudoku-window.ui:179 src/sudoku-window.vala:110
+#: data/sudoku-window.ui:179 src/sudoku-window.vala:111
 msgid "Fullscreen"
 msgstr "Celozaslonski način"
 
 #: data/sudoku-window.ui:206
-msgid "Play Custom Puzzle"
+msgid "Play Custom Game"
 msgstr "Igraj uganko po meri"
 
 #: data/sudoku-window.ui:254
-msgid "Select Game Difficulty"
+msgid "Select Puzzle Difficulty"
 msgstr "Izberite zahtevnost uganke"
 
 #: data/sudoku-window.ui:272
@@ -637,18 +637,18 @@ msgstr "Napaka med tiskanjem datoteke:"
 msgid "Paused"
 msgstr "Začasno ustavljeno"
 
-#: src/sudoku-window.vala:302
+#: src/sudoku-window.vala:309
 msgid "Select Difficulty"
 msgstr "Izbor zahtevnosti uganke"
 
-#: src/sudoku-window.vala:372
+#: src/sudoku-window.vala:379
 msgid "Create Puzzle"
 msgstr "Ustvari uganko"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Play"
 msgstr "Igraj"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Pause"
 msgstr "Premor"
