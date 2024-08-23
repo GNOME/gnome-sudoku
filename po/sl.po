@@ -6,13 +6,14 @@
 # Tadej Janež <tadej_janez@email.si>, 2003.
 # Matic Žgur <mr.zgur@gmail.com>, 2006-2007.
 # Matej Urbančič <mateju@src.gnome.org>, + 2007–2023.
+# Martin Srebotnjak <miles@filmsi.net>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-08-21 18:50+0000\n"
-"PO-Revision-Date: 2024-08-22 12:11+0200\n"
+"POT-Creation-Date: 2024-08-23 16:13+0000\n"
+"PO-Revision-Date: 2024-08-23 19:23+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -30,8 +31,9 @@ msgid "Sudoku"
 msgstr "Sudoku"
 
 #: data/org.gnome.Sudoku.desktop.in.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Preverite svoje logično razmišljanje z reševanjem mrežne uganke."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
+msgid "Test yourself in the classic puzzle"
+msgstr "Preizkusite se v klasični uganki"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Sudoku.desktop.in.in:6
@@ -149,10 +151,6 @@ msgstr "Res (true), če je okno celozaslonsko"
 msgid "GNOME Sudoku"
 msgstr "Sudoku GNOME"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
-msgid "Test yourself in this classic puzzle"
-msgstr "Preverite se z reševanjem te klasične uganke."
-
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:10
 msgid ""
 "GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
@@ -164,28 +162,54 @@ msgstr ""
 "katerega je igranje ugank sudoku zabavno za igralce vseh stopenj spretnosti."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as challenging as you want it to be."
-msgstr ""
-"Vsaki uganki je določena težavnost, podobno kot to velja za različice v "
-"časopisih in na spletu. Težavnost je tako prilagojena vašim željam."
+msgid "Features:"
+msgstr "Funkcionalnosti:"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:17
+msgid "Automatically save and restore your session."
+msgstr "Samodejno shranite in obnovite sejo."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:18
+msgid "Generate an infinite amount of new puzzles with qqwing."
+msgstr "Ustvarite neskončno količino novih ugank s qqwing."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:19
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"Če vam je ljubše uganke reševati na papirju, je te mogoče tudi natisniti. "
-"Pred tiskanjem je treba izbrati število iger, ki naj se natisnejo na vsako "
-"stran lista. Na ta način si lahko ustvarite tudi knjižico ugank za na pot."
+msgid "Create and solve custom puzzles from scratch."
+msgstr "Ustvarite in rešite uganke po meri iz nič."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in.in:29
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:20
+msgid "Adjust a scalable grid to your preferences."
+msgstr "Prilagodite razširljivo mrežo svojim željam."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:21
+msgid "Use the mouse, keyboard or touch to complete the puzzle."
+msgstr "Uporabite miško, tipkovnico ali dotik, da dokončate uganko."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:22
+msgid "Set up advanced strategies like X-Wings with earmarks."
+msgstr "Nastavite napredne strategije, kot so X-Wings z oznakami."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:23
+msgid "Take advantage of the highlighter to narrow down possibilities."
+msgstr "Izkoristite poudarjevalnik, da zožite možnosti."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:24
+msgid "Get help with the built-in warnings."
+msgstr "V pomoč so vam vgrajena opozorila."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:25
+msgid "Time yourself to keep track of your progression."
+msgstr "Merite svoj čas, da spremljate svoj napredek."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:26
+msgid "Print puzzles to play Sudoku on the go."
+msgstr "Natisnite uganke za reševanje Sudokuja na poti."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:32
 msgid "A GNOME sudoku game preview"
 msgstr "Predogled uganke Sudoku GNOME"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in.in:33
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:36
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Igra sudoku za GNOME v temnem načinu z ušesci in opozorili"
 
