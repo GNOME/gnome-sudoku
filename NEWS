@@ -1,13 +1,15 @@
 47.0 - DEVEL
 ==========================
 
-- Fix number picker not updating on undo/redo (#106)
-- Switch back all keyboard input to KeyPress.
+- Switch back all keyboard input to KeyPress
 - The number picker buttons will no longer grab the focus which was
   blocking movement keys and shortcuts
+- Let mouse shortcuts be used in the number picker
 - Always dismiss the picker on number input from the keyboard
-- Add Enter shortcut interaction with earmark mode.
+- Add Enter shortcut interaction with earmark mode
 - A lot of backend changes with the number picker
+- Fix number picker not updating on undo/redo (#106)
+- Fix undo and redo being usable in pause
 - Updated translations:
   Daniel Rusek (cs); Jiri Grönroos (fi); Yosef Or Boczko (he); Balázs
   Úr (hu); Sergej A. (ru).
