@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-08-02 14:09+0000\n"
-"PO-Revision-Date: 2024-08-12 06:34+0200\n"
+"POT-Creation-Date: 2024-08-21 18:50+0000\n"
+"PO-Revision-Date: 2024-08-23 06:52+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:73
+#: data/org.gnome.Sudoku.desktop.in.in:3 data/sudoku-window.ui:73
 #: data/sudoku-window.ui:82
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/org.gnome.Sudoku.desktop.in:4
+#: data/org.gnome.Sudoku.desktop.in.in:4
 msgid "Test your logic skills in this number grid puzzle"
 msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in.in:6
 msgid "magic;square;"
 msgstr ""
 
@@ -132,39 +132,39 @@ msgstr "ჭეშმარიტია, თუ ფანჯარა მთე�
 msgid "true if the window is fullscreen"
 msgstr "ჭეშმარიტია, თუ ფანჯარა სრულ ეკრანზეა"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:7
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:7
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:8
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
 msgid "Test yourself in this classic puzzle"
 msgstr ""
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:10
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:10
 msgid ""
 "GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
 "Japanese game, it comes with a simple interface that makes playing Sudoku "
 "fun for players of all skill level."
 msgstr ""
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:15
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:15
 msgid ""
 "Each game is assigned a difficulty similar to those given by newspapers and "
 "websites, so your game will be as challenging as you want it to be."
 msgstr ""
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:19
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:19
 msgid ""
 "If you like to play on paper, you can print games out. You can choose how "
 "many games you want to print per page and what difficulty of games you want "
 "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
 msgstr ""
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:29
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:29
 msgid "A GNOME sudoku game preview"
 msgstr ""
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:33
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:33
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr ""
 
@@ -321,8 +321,8 @@ msgstr "ახალი თამაში"
 
 #: data/shortcuts-window.ui:81
 msgctxt "Shortcuts Window"
-msgid "Reset"
-msgstr "ჩამოყრა"
+msgid "Reset Puzzle"
+msgstr "პაზლის ჩამოყრა"
 
 #: data/shortcuts-window.ui:88
 msgctxt "Shortcuts Window"
@@ -356,8 +356,8 @@ msgstr "გამომკვეთი"
 
 #: data/shortcuts-window.ui:122
 msgctxt "Shortcuts Window"
-msgid "Print"
-msgstr "დაბეჭდვა"
+msgid "Print Current Puzzle"
+msgstr "მიმდინარე პაზლის დაბეჭდვა"
 
 #: data/shortcuts-window.ui:128
 msgctxt "Shortcuts Window"
@@ -390,12 +390,12 @@ msgid "Fullscreen"
 msgstr "სრულ ეკრანზე"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle…"
-msgstr ""
+msgid "_New Game…"
+msgstr "_ახალი თამაში…"
 
 #: data/sudoku-window.ui:11
-msgid "_Clear Board"
-msgstr ""
+msgid "_Reset Puzzle"
+msgstr "პაზლის ჩამოყ_რა"
 
 #: data/sudoku-window.ui:20
 msgid "Print _Current Puzzle…"
@@ -450,7 +450,7 @@ msgstr "უკან"
 msgid "Earmark Mode"
 msgstr ""
 
-#: data/sudoku-window.ui:136 src/sudoku-window.vala:103
+#: data/sudoku-window.ui:136 src/sudoku-window.vala:104
 msgid "Leave Fullscreen"
 msgstr "სრული ეკრანიდან გასვლა"
 
@@ -466,17 +466,17 @@ msgstr ""
 msgid "Zoom In"
 msgstr ""
 
-#: data/sudoku-window.ui:179 src/sudoku-window.vala:110
+#: data/sudoku-window.ui:179 src/sudoku-window.vala:111
 msgid "Fullscreen"
 msgstr "სრულ ეკრანზე"
 
 #: data/sudoku-window.ui:206
-msgid "Play Custom Puzzle"
+msgid "Play Custom Game"
 msgstr ""
 
 #: data/sudoku-window.ui:254
-msgid "Select Game Difficulty"
-msgstr "აირჩიეთ თქვენი სირთულე"
+msgid "Select Puzzle Difficulty"
+msgstr "აირჩიეთ პაზლის სირთულე"
 
 #: data/sudoku-window.ui:272
 msgctxt "Difficulty"
@@ -607,21 +607,32 @@ msgstr "ფაილის დაბეჭდვის შეცდომა:"
 msgid "Paused"
 msgstr "შეჩერებულია"
 
-#: src/sudoku-window.vala:302
+#: src/sudoku-window.vala:309
 msgid "Select Difficulty"
 msgstr "აირჩიეთ სირთულე"
 
-#: src/sudoku-window.vala:372
+#: src/sudoku-window.vala:379
 msgid "Create Puzzle"
 msgstr "პაზლის შექმნა"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Play"
 msgstr "თამაში"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Pause"
 msgstr "შეჩერება"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Reset"
+#~ msgstr "ჩამოყრა"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Print"
+#~ msgstr "დაბეჭდვა"
+
+#~ msgid "Select Game Difficulty"
+#~ msgstr "აირჩიეთ თქვენი სირთულე"
 
 #~ msgctxt "shortcuts window"
 #~ msgid "Pause"
