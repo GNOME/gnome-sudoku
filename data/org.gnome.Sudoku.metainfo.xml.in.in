@@ -48,6 +48,23 @@
   <provides>
     <id>gnome-sudoku.desktop</id>
   </provides>
+  <branding>
+    <color type="primary" scheme_preference="light">#8ff0a4</color>
+    <color type="primary" scheme_preference="dark">#305237</color>
+  </branding>
+  <translation type="gettext">gnome-sudoku</translation>
+  <developer id="gnome.org">
+    <name>The GNOME Project</name>
+  </developer>
+  <content_rating type="oars-1.1" />
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </recommends>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
   <releases>
     <release version="47~beta" date="2024-08-02"/>
     <release version="47~alpha" date="2024-06-28"/>
@@ -88,17 +105,4 @@
     <release version="3.33.4" date="2019-07-14" />
     <release version="3.32.0" date="2019-03-11" />
   </releases>
-  <translation type="gettext">gnome-sudoku</translation>
-  <developer id="gnome.org">
-    <name>The GNOME Project</name>
-  </developer>
-  <content_rating type="oars-1.1" />
-  <recommends>
-    <control>keyboard</control>
-    <control>pointing</control>
-    <control>touch</control>
-  </recommends>
-  <requires>
-    <display_length compare="ge">360</display_length>
-  </requires>
 </component>
