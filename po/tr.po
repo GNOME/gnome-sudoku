@@ -18,9 +18,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-08-02 14:09+0000\n"
-"PO-Revision-Date: 2024-08-11 04:02+0300\n"
-"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+"POT-Creation-Date: 2024-08-24 15:18+0000\n"
+"PO-Revision-Date: 2024-09-01 08:00+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -29,17 +29,18 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.4.3\n"
 
-#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:73
+#: data/org.gnome.Sudoku.desktop.in.in:3 data/sudoku-window.ui:73
 #: data/sudoku-window.ui:82
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/org.gnome.Sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Bu rakam yerleştirme bulmacasında mantıksal yeteneklerinizi sınayın"
+#: data/org.gnome.Sudoku.desktop.in.in:4
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
+msgid "Test yourself in the classic puzzle"
+msgstr "Klasik bulmacada kendinizi sınayın"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in.in:6
 msgid "magic;square;"
 msgstr "sudoku;magic;square;sihir;büyü;kare;"
 
@@ -147,15 +148,11 @@ msgstr "pencere ekranı kaplamışsa doğru (true)"
 msgid "true if the window is fullscreen"
 msgstr "pencere tam ekranken doğru (true)"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:7
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:7
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:8
-msgid "Test yourself in this classic puzzle"
-msgstr "Bu klasik bulmacada kendinizi sınayın"
-
-#: data/org.gnome.Sudoku.metainfo.xml.in:10
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:10
 msgid ""
 "GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
 "Japanese game, it comes with a simple interface that makes playing Sudoku "
@@ -166,30 +163,55 @@ msgstr ""
 "düzeyindeki oyuncu için Sudoku oynamayı eğlenceli yapan kolay ve gösterişsiz "
 "arayüzüyle gelir."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as challenging as you want it to be."
-msgstr ""
-"Her oyun gazetelerde ve web sitelerinde verildiği gibi zorluk düzeylerine "
-"göre atanmıştır, böylece oyununuz dilediğinizce zor olacaktır."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "Özellikler:"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:19
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"Eğer kağıtta oynamayı sevenlerdenseniz, oyunları yazdırabilirsiniz. Sayfa "
-"başına kaç ve hangi zorlukta oyun yazdırmak istediğinizi seçebilirsiniz: "
-"sonuç olarak, GNOME Sudoku sizin için yenilenebilir Sudoku kitabı işlevi "
-"görebilir."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:17
+msgid "Automatically save and restore your session."
+msgstr "Oturumunuzu kendiliğinden kaydedin ve geri yükleyin."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:29
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:18
+msgid "Generate an infinite amount of new puzzles with qqwing."
+msgstr "Qqwing ile sonsuz sayıda yeni bulmaca oluşturun."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:19
+msgid "Create and solve custom puzzles from scratch."
+msgstr "En baştan özel bulmacalar oluşturun ve çözün."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:20
+msgid "Adjust a scalable grid to your preferences."
+msgstr "Ölçeklenebilir ızgarayı tercihlerinize göre ayarlayın."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:21
+msgid "Use the mouse, keyboard or touch to complete the puzzle."
+msgstr "Bulmacayı tamamlamak için fare, klavye ya da dokunmayı kullanın."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:22
+msgid "Set up advanced strategies like X-Wings with earmarks."
+msgstr "X-Wing gibi gelişmiş stratejileri işaretlerle kullanın."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:23
+msgid "Take advantage of the highlighter to narrow down possibilities."
+msgstr "Olasılıkları daraltmak için vurgulayıcıdan yararlanın."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:24
+msgid "Get help with the built-in warnings."
+msgstr "Yerleşik uyarılarla yardım alın."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:25
+msgid "Time yourself to keep track of your progression."
+msgstr "İlerlemenizi izlemek için zaman tutun."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:26
+msgid "Print puzzles to play Sudoku on the go."
+msgstr "Hareketliyken Sudoku oynamak için bulmacaları yazdırın."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:32
 msgid "A GNOME sudoku game preview"
 msgstr "GNOME sudoku oyunu ön izlemesi"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:33
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:36
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Ayraçlar ve uyarılar içeren koyu kipte sudoku oyunu"
 
@@ -346,8 +368,8 @@ msgstr "Yeni Oyun"
 
 #: data/shortcuts-window.ui:81
 msgctxt "Shortcuts Window"
-msgid "Reset"
-msgstr "Sıfırla"
+msgid "Reset Puzzle"
+msgstr "Bulmacayı Sıfırla"
 
 #: data/shortcuts-window.ui:88
 msgctxt "Shortcuts Window"
@@ -381,8 +403,8 @@ msgstr "Vurgulayıcı"
 
 #: data/shortcuts-window.ui:122
 msgctxt "Shortcuts Window"
-msgid "Print"
-msgstr "Yazdır"
+msgid "Print Current Puzzle"
+msgstr "Geçerli Bulmacayı Yazdır"
 
 #: data/shortcuts-window.ui:128
 msgctxt "Shortcuts Window"
@@ -415,12 +437,12 @@ msgid "Fullscreen"
 msgstr "Tam Ekran"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle…"
-msgstr "Ye_ni Bulmaca…"
+msgid "_New Game…"
+msgstr "_Yeni Oyun"
 
 #: data/sudoku-window.ui:11
-msgid "_Clear Board"
-msgstr "Tahtayı _Temizle"
+msgid "_Reset Puzzle"
+msgstr "Bulmacayı _Sıfırla"
 
 #: data/sudoku-window.ui:20
 msgid "Print _Current Puzzle…"
@@ -475,7 +497,7 @@ msgstr "Geri"
 msgid "Earmark Mode"
 msgstr "Ayraç Kipi"
 
-#: data/sudoku-window.ui:136 src/sudoku-window.vala:103
+#: data/sudoku-window.ui:136 src/sudoku-window.vala:104
 msgid "Leave Fullscreen"
 msgstr "Tam Ekrandan Çık"
 
@@ -491,17 +513,17 @@ msgstr "Uzaklaştır"
 msgid "Zoom In"
 msgstr "Yaklaştır"
 
-#: data/sudoku-window.ui:179 src/sudoku-window.vala:110
+#: data/sudoku-window.ui:179 src/sudoku-window.vala:111
 msgid "Fullscreen"
 msgstr "Tam Ekran"
 
 #: data/sudoku-window.ui:206
-msgid "Play Custom Puzzle"
-msgstr "Özel Bulmaca Oyna"
+msgid "Play Custom Game"
+msgstr "Özel Oyun Oyna"
 
 #: data/sudoku-window.ui:254
-msgid "Select Game Difficulty"
-msgstr "Oyun Zorluğu Seç"
+msgid "Select Puzzle Difficulty"
+msgstr "Bulmaca Zorluğunu Seç"
 
 #: data/sudoku-window.ui:272
 msgctxt "Difficulty"
@@ -639,18 +661,18 @@ msgstr "Dosya yazdırılırken hata:"
 msgid "Paused"
 msgstr "Duraklatıldı"
 
-#: src/sudoku-window.vala:302
+#: src/sudoku-window.vala:309
 msgid "Select Difficulty"
 msgstr "Zorluk Seç"
 
-#: src/sudoku-window.vala:372
+#: src/sudoku-window.vala:379
 msgid "Create Puzzle"
 msgstr "Bulmaca Oluştur"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Play"
 msgstr "Oyna"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Pause"
 msgstr "Duraklat"
