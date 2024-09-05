@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-08-14 14:12+0000\n"
-"PO-Revision-Date: 2024-08-14 20:27+0200\n"
+"POT-Creation-Date: 2024-08-23 16:13+0000\n"
+"PO-Revision-Date: 2024-09-05 21:41+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -29,8 +29,9 @@ msgid "Sudoku"
 msgstr "Sudoku"
 
 #: data/org.gnome.Sudoku.desktop.in.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Testa dina logiska färdigheter i det här sifferpusslet"
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
+msgid "Test yourself in the classic puzzle"
+msgstr "Testa dig själv i det klassiska pusslet"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Sudoku.desktop.in.in:6
@@ -145,10 +146,6 @@ msgstr "true (sant) om fönstret är i helskärmsläge"
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
-msgid "Test yourself in this classic puzzle"
-msgstr "Testa dig själv i det här klassiska pusslet"
-
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:10
 msgid ""
 "GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
@@ -160,29 +157,54 @@ msgstr ""
 "sudoku för spelare på alla skicklighetsnivåer."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as challenging as you want it to be."
-msgstr ""
-"Varje spel tilldelas en svårighet som den som ges av dagstidningar och "
-"webbplatser, så ditt spel kommer vara så utmanande som du vill."
+msgid "Features:"
+msgstr "Funktioner:"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:17
+msgid "Automatically save and restore your session."
+msgstr "Spara automatiskt och återställ din session."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:18
+msgid "Generate an infinite amount of new puzzles with qqwing."
+msgstr "Generera en oändlig mängd nya pussel med qqwing."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:19
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"Om du vill spela på papper kan du skriva ut spel. Du kan välja hur många "
-"spel du vill skriva ut per sida och vilken svårighetsgrad du vill skriva ut. "
-"Som en följd av detta kan du använda GNOME Sudoku som en förnyelsebar sudoku-"
-"bok."
+msgid "Create and solve custom puzzles from scratch."
+msgstr "Skapa och lös anpassade pussel från grunden."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in.in:29
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:20
+msgid "Adjust a scalable grid to your preferences."
+msgstr "Justera ett skalbart rutnät enligt dina önskemål."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:21
+msgid "Use the mouse, keyboard or touch to complete the puzzle."
+msgstr "Använd musen, tangentbordet eller peta för att slutföra pusslet."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:22
+msgid "Set up advanced strategies like X-Wings with earmarks."
+msgstr "Iordningställ avancerade strategier som X-vingar med öronmärken."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:23
+msgid "Take advantage of the highlighter to narrow down possibilities."
+msgstr "Dra nytta av märkpennan för att begränsa möjligheterna."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:24
+msgid "Get help with the built-in warnings."
+msgstr "Få hjälp av de inbyggda varningarna."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:25
+msgid "Time yourself to keep track of your progression."
+msgstr "Ta tid på dig själv och följ dina framsteg."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:26
+msgid "Print puzzles to play Sudoku on the go."
+msgstr "Skriv ut pussel för att spela sudoku på resan."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:32
 msgid "A GNOME sudoku game preview"
 msgstr "En förhandsvisning av GNOME Sudoku"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in.in:33
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:36
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr ""
 "En spelomgång av GNOME Sudoku i mörkt läge med öronmärken och varningar"
@@ -340,8 +362,8 @@ msgstr "Nytt spel"
 
 #: data/shortcuts-window.ui:81
 msgctxt "Shortcuts Window"
-msgid "Reset"
-msgstr "Återställ"
+msgid "Reset Puzzle"
+msgstr "Återställ pussel"
 
 #: data/shortcuts-window.ui:88
 msgctxt "Shortcuts Window"
@@ -375,8 +397,8 @@ msgstr "Märkpenna"
 
 #: data/shortcuts-window.ui:122
 msgctxt "Shortcuts Window"
-msgid "Print"
-msgstr "Skriv ut"
+msgid "Print Current Puzzle"
+msgstr "Skriv ut aktuellt pussel"
 
 #: data/shortcuts-window.ui:128
 msgctxt "Shortcuts Window"
@@ -409,12 +431,12 @@ msgid "Fullscreen"
 msgstr "Helskärm"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle…"
-msgstr "_Nytt pussel…"
+msgid "_New Game…"
+msgstr "_Nytt spel…"
 
 #: data/sudoku-window.ui:11
-msgid "_Clear Board"
-msgstr "_Töm bräde"
+msgid "_Reset Puzzle"
+msgstr "Åte_rställ pussel"
 
 #: data/sudoku-window.ui:20
 msgid "Print _Current Puzzle…"
@@ -469,7 +491,7 @@ msgstr "Bakåt"
 msgid "Earmark Mode"
 msgstr "Öronmärkesläge"
 
-#: data/sudoku-window.ui:136 src/sudoku-window.vala:103
+#: data/sudoku-window.ui:136 src/sudoku-window.vala:104
 msgid "Leave Fullscreen"
 msgstr "Lämna helskärmsläge"
 
@@ -485,17 +507,17 @@ msgstr "Zooma ut"
 msgid "Zoom In"
 msgstr "Zooma in"
 
-#: data/sudoku-window.ui:179 src/sudoku-window.vala:110
+#: data/sudoku-window.ui:179 src/sudoku-window.vala:111
 msgid "Fullscreen"
 msgstr "Helskärm"
 
 #: data/sudoku-window.ui:206
-msgid "Play Custom Puzzle"
-msgstr "Spela anpassat pussel"
+msgid "Play Custom Game"
+msgstr "Spela anpassat spel"
 
 #: data/sudoku-window.ui:254
-msgid "Select Game Difficulty"
-msgstr "Välj svårighetsgrad på spelet"
+msgid "Select Puzzle Difficulty"
+msgstr "Välj svårighetsgrad på pussel"
 
 #: data/sudoku-window.ui:272
 msgctxt "Difficulty"
@@ -639,21 +661,59 @@ msgstr "Fel vid utskrift av fil:"
 msgid "Paused"
 msgstr "Pausad"
 
-#: src/sudoku-window.vala:302
+#: src/sudoku-window.vala:309
 msgid "Select Difficulty"
 msgstr "Välj svårighetsgrad"
 
-#: src/sudoku-window.vala:372
+#: src/sudoku-window.vala:379
 msgid "Create Puzzle"
 msgstr "Skapa pussel"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Play"
 msgstr "Spela"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Pause"
 msgstr "Pausa"
+
+#~ msgid "Test your logic skills in this number grid puzzle"
+#~ msgstr "Testa dina logiska färdigheter i det här sifferpusslet"
+
+#~ msgid ""
+#~ "Each game is assigned a difficulty similar to those given by newspapers "
+#~ "and websites, so your game will be as challenging as you want it to be."
+#~ msgstr ""
+#~ "Varje spel tilldelas en svårighet som den som ges av dagstidningar och "
+#~ "webbplatser, så ditt spel kommer vara så utmanande som du vill."
+
+#~ msgid ""
+#~ "If you like to play on paper, you can print games out. You can choose how "
+#~ "many games you want to print per page and what difficulty of games you "
+#~ "want to print: as a result, GNOME Sudoku can act a renewable Sudoku book "
+#~ "for you."
+#~ msgstr ""
+#~ "Om du vill spela på papper kan du skriva ut spel. Du kan välja hur många "
+#~ "spel du vill skriva ut per sida och vilken svårighetsgrad du vill skriva "
+#~ "ut. Som en följd av detta kan du använda GNOME Sudoku som en förnyelsebar "
+#~ "sudoku-bok."
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Reset"
+#~ msgstr "Återställ"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Print"
+#~ msgstr "Skriv ut"
+
+#~ msgid "_New Puzzle…"
+#~ msgstr "_Nytt pussel…"
+
+#~ msgid "_Clear Board"
+#~ msgstr "_Töm bräde"
+
+#~ msgid "Select Game Difficulty"
+#~ msgstr "Välj svårighetsgrad på spelet"
 
 #~ msgid "_Create Custom Game…"
 #~ msgstr "S_kapa anpassat spel…"
@@ -721,6 +781,3 @@ msgstr "Pausa"
 
 #~ msgid "Go back to the current game"
 #~ msgstr "Återvänd till aktuellt spel"
-
-#~ msgid "Start playing the custom puzzle you have created"
-#~ msgstr "Börja spela det anpassade pusslet som du har skapat"
