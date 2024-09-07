@@ -202,7 +202,7 @@ public class SudokuView : Adw.Bin
                 return EVENT_STOP;
 
             case Key.Escape:
-                number_picker.dismiss ();
+                number_picker.popdown ();
                 return EVENT_STOP;
 
             case Key.@0: case Key.KP_0: case Key.BackSpace : case Key.Delete:
@@ -268,7 +268,7 @@ public class SudokuView : Adw.Bin
     {
         set_cell_highlighter (old_row, old_col, false);
         set_cell_highlighter (new_row, new_col, true);
-        number_picker.dismiss ();
+        number_picker.popdown ();
     }
 
     private void value_changed_cb (int row, int col, int old_val, int new_val)
@@ -521,7 +521,7 @@ public class SudokuView : Adw.Bin
             if (has_selection)
                 cell.grab_focus ();
             else
-                number_picker.dismiss ();
+                number_picker.popdown ();
 
             set_cell_highlighter (selected_row, selected_col, has_selection);
         }
@@ -556,9 +556,9 @@ public class SudokuView : Adw.Bin
         }
     }
 
-    public void dismiss_popovers ()
+    public void dismiss_picker ()
     {
-        number_picker.dismiss ();
+        number_picker.popdown ();
     }
 
     public override void dispose ()

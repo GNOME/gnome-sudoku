@@ -413,7 +413,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             gesture.get_current_button () != BUTTON_SECONDARY)
             return;
 
-        view?.dismiss_popovers ();
+        view?.dismiss_picker ();
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 

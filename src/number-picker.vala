@@ -32,6 +32,7 @@ public class NumberPicker : Popover
     {
         value_picker = new Picker(game, this);
         earmark_picker = new Picker(game, this, true);
+        set_autohide (false);
     }
 
     public void show_earmark_picker (SudokuCell cell)
@@ -39,13 +40,13 @@ public class NumberPicker : Popover
         if (visible)
         {
             NumberPickerState old_state = state;
-            dismiss ();
+            popdown ();
             if (old_state == NumberPickerState.EARMARK_PICKER)
                 return;
         }
 
         state = NumberPickerState.EARMARK_PICKER;
-        earmark_picker.set_cell (cell);
+        earmark_picker.connect_picker (cell);
 
         if (parent == null)
             set_parent (cell);
@@ -59,12 +60,12 @@ public class NumberPicker : Popover
         if (visible)
         {
             NumberPickerState old_state = state;
-            dismiss ();
+            popdown ();
             if (old_state == NumberPickerState.VALUE_PICKER)
                 return;
         }
         state = NumberPickerState.VALUE_PICKER;
-        value_picker.set_cell (cell);
+        value_picker.connect_picker (cell);
 
         if (parent == null)
             set_parent (cell);
@@ -73,9 +74,12 @@ public class NumberPicker : Popover
         popup ();
     }
 
-    public void dismiss ()
+    public override void closed ()
     {
-        popdown ();
+        if (state == NumberPickerState.VALUE_PICKER)
+            value_picker.disconnect_picker ();
+        else if (state == NumberPickerState.EARMARK_PICKER)
+            earmark_picker.disconnect_picker ();
         state = NumberPickerState.NONE;
         unparent ();
         child = null;
@@ -141,6 +145,9 @@ public class Picker : Grid
         }
 
         clear_button = new Button ();
+        clear_button.clicked.connect (() => {
+            cell.value = 0;
+        });
         clear_button.focus_on_click = false;
         this.attach (clear_button, 0, 4, 3, 1);
 
@@ -148,8 +155,6 @@ public class Picker : Grid
         label.use_markup = true;
         clear_button.set_child (label);
 
-        this.game.board.earmark_changed.connect (earmark_changed_cb);
-        this.game.board.value_changed.connect (value_changed_cb);
 
         this.valign = Align.CENTER;
         this.halign = Align.CENTER;
@@ -161,7 +166,7 @@ public class Picker : Grid
         this.column_spacing = 3;
     }
 
-    public void set_cell (SudokuCell cell)
+    public void connect_picker (SudokuCell cell)
     {
         this.cell = cell;
         if (!is_earmark_picker)
@@ -174,6 +179,15 @@ public class Picker : Grid
             bool clear_button_enabled = cell.value != 0 || game.board.has_earmarks (cell.row, cell.col);
             set_clear_button_enabled (clear_button_enabled);
         }
+
+        this.game.board.earmark_changed.connect (earmark_changed_cb);
+        this.game.board.value_changed.connect (value_changed_cb);
+    }
+
+    public void disconnect_picker ()
+    {
+        this.game.board.earmark_changed.disconnect (earmark_changed_cb);
+        this.game.board.value_changed.disconnect (value_changed_cb);
     }
 
     private void value_picked_cb (Button button)
@@ -182,7 +196,7 @@ public class Picker : Grid
         if (val == 0)
             set_clear_button_visibility (false);
         else
-            number_picker.dismiss ();
+            number_picker.popdown ();
 
         cell.value = val;
     }
@@ -203,27 +217,25 @@ public class Picker : Grid
 
     private void value_changed_cb (int row, int col, int old_val, int new_val)
     {
-        if (cell != null)
+        if (is_earmark_picker)
+        {
+            set_earmark_buttons_sensitive (cell.value == 0);
+            clear_button.set_sensitive (cell.value != 0);
+        }
+        else
         {
             set_clear_button_visibility (new_val != 0);
-            if (is_earmark_picker)
-            {
-                set_earmark_buttons_sensitive (cell.value == 0);
-                clear_button.set_sensitive (cell.value != 0);
-            }
+            number_picker.present ();
         }
     }
 
     private void earmark_changed_cb (int row, int col, int num, bool enabled)
     {
-        if (cell != null)
-        {
-            clear_button.set_sensitive (game.board.has_earmarks (cell.row, cell.col));
-            if (!is_earmark_picker)
-                set_clear_button_visibility (cell.value > 0 || game.board.has_earmarks (cell.row, cell.col));
-            else
-                set_earmark_button (num, enabled);
-        }
+        clear_button.set_sensitive (game.board.has_earmarks (cell.row, cell.col));
+        if (!is_earmark_picker)
+            set_clear_button_visibility (cell.value > 0 || game.board.has_earmarks (cell.row, cell.col));
+        else
+            set_earmark_button (num, enabled);
     }
 
     private void set_clear_button_visibility (bool visible)
