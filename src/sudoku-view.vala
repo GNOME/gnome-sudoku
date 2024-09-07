@@ -26,6 +26,7 @@ using Gdk;
 public class SudokuView : Adw.Bin
 {
     private GLib.Settings settings;
+    private EventControllerKey key_controller;
     private SudokuGame game;
     private SudokuCell[,] cells;
     private SudokuFrame frame;
@@ -155,78 +156,112 @@ public class SudokuView : Adw.Bin
         this.game.board.earmark_changed.connect (earmark_changed_cb);
         this.selection_changed.connect (selection_changed_cb);
 
+        key_controller = new EventControllerKey ();
+        key_controller.key_pressed.connect (key_pressed_cb);
+        key_controller.key_released.connect (key_released_cb);
+        add_controller (key_controller);
+
         if (show_possibilities && game.mode != GameMode.CREATE && game.board.previous_played_time == 0.0)
             game.enable_all_earmark_possibilities ();
 
         update_warnings ();
     }
 
-    static construct {
-        ShortcutFunc up_func = (self) => {
-            var view = (SudokuView) self;
+    private bool key_pressed_cb (uint         keyval,
+                                 uint         keycode,
+                                 ModifierType state)
+    {
+        switch (keyval)
+        {
+            case Key.Up : case Key.w : case Key.KP_Up:
+                if (selected_row == 0)
+                    cells[8, selected_col].grab_focus ();
+                else
+                    cells[selected_row - 1, selected_col].grab_focus ();
+                return EVENT_STOP;
 
-            if (view.selected_row == -1 || view.selected_col == -1)
-                return Gdk.EVENT_PROPAGATE;
+            case Key.Down : case Key.s : case Key.KP_Down:
+                if (selected_row == 8)
+                    cells[0, selected_col].grab_focus ();
+                else
+                    cells[selected_row + 1, selected_col].grab_focus ();
+                return EVENT_STOP;
 
-            if (view.selected_row == 0)
-                view.cells[8, view.selected_col].grab_focus ();
-            else
-                view.cells[view.selected_row - 1, view.selected_col].grab_focus ();
+            case Key.Left : case Key.a : case Key.KP_Left:
+                if (selected_col == 0)
+                    cells[selected_row, 8].grab_focus ();
+                else
+                    cells[selected_row, selected_col - 1].grab_focus ();
+                return EVENT_STOP;
 
-            return Gdk.EVENT_STOP;
-        };
-        ShortcutFunc down_func = (self) => {
-            var view = (SudokuView) self;
+            case Key.Right : case Key.d : case Key.KP_Right:
+                if (selected_col == 8)
+                    cells[selected_row, 0].grab_focus ();
+                else
+                    cells[selected_row, selected_col + 1].grab_focus ();
+                return EVENT_STOP;
 
-            if (view.selected_row == -1 || view.selected_col == -1)
-                return Gdk.EVENT_PROPAGATE;
+            case Key.Escape:
+                number_picker.dismiss ();
+                return EVENT_STOP;
 
-            if (view.selected_row == 8)
-                view.cells[0, view.selected_col].grab_focus ();
-            else
-                view.cells[view.selected_row + 1, view.selected_col].grab_focus ();
+            case Key.@0: case Key.KP_0: case Key.BackSpace : case Key.Delete:
+                if (!cells[selected_row, selected_col].is_fixed && !game.paused)
+                    cells[selected_row, selected_col].value = 0;
+                return EVENT_STOP;
 
-            return Gdk.EVENT_STOP;
-        };
-        ShortcutFunc left_func = (self) => {
-            var view = (SudokuView) self;
+            default:
+                return EVENT_PROPAGATE;
+        }
+    }
 
-            if (view.selected_row == -1 || view.selected_col == -1)
-                return Gdk.EVENT_PROPAGATE;
+    private void key_released_cb (uint         keyval,
+                                  uint         keycode,
+                                  ModifierType state)
+    {
+        if (cells[selected_row, selected_col].is_fixed || game.paused)
+            return;
 
-            if (view.selected_col == 0)
-                view.cells[view.selected_row, 8].grab_focus ();
-            else
-                view.cells[view.selected_row, view.selected_col - 1].grab_focus ();
+        switch (keyval)
+        {
+            case Gdk.Key.@1: case Gdk.Key.KP_1: case Gdk.Key.@2: case Gdk.Key.KP_2:
+            case Gdk.Key.@3: case Gdk.Key.KP_3: case Gdk.Key.@4: case Gdk.Key.KP_4:
+            case Gdk.Key.@5: case Gdk.Key.KP_5: case Gdk.Key.@6: case Gdk.Key.KP_6:
+            case Gdk.Key.@7: case Gdk.Key.KP_7: case Gdk.Key.@8: case Gdk.Key.KP_8:
+            case Gdk.Key.@9: case Gdk.Key.KP_9:
+                int key = get_key_number (keyval);
+                bool wants_value = state != ModifierType.CONTROL_MASK;
+                if (earmark_mode)
+                    wants_value = !wants_value;
 
-            return Gdk.EVENT_STOP;
-        };
-        ShortcutFunc right_func = (self) => {
-            var view = (SudokuView) self;
+                if (wants_value)
+                {
+                    cells[selected_row, selected_col].value = key;
+                }
+                else if (game.mode == GameMode.PLAY && cells[selected_row, selected_col].value == 0)
+                {
+                    var new_state = !game.board.is_earmark_enabled (selected_row, selected_col, key);
+                    if (new_state)
+                        game.enable_earmark (selected_row, selected_col, key);
+                    else
+                        game.disable_earmark (selected_row, selected_col, key);
+                }
+                return;
 
-            if (view.selected_row == -1 || view.selected_col == -1)
-                return Gdk.EVENT_PROPAGATE;
+            case Key.space : case Key.Return : case Key.KP_Enter:
+                bool wants_value = state != ModifierType.CONTROL_MASK;
+                if (earmark_mode)
+                    wants_value = !wants_value;
 
-            if (view.selected_col == 8)
-                view.cells[view.selected_row, 0].grab_focus ();
-            else
-                view.cells[view.selected_row, view.selected_col + 1].grab_focus ();
+                if (wants_value)
+                    number_picker.show_value_picker (cells[selected_row, selected_col]);
+                else
+                    number_picker.show_earmark_picker (cells[selected_row, selected_col]);
+                return;
 
-            return Gdk.EVENT_STOP;
-        };
-
-        add_binding (Gdk.Key.Up, 0, up_func, null);
-        add_binding (Gdk.Key.KP_Up, 0, up_func, null);
-        add_binding (Gdk.Key.w, 0, up_func, null);
-        add_binding (Gdk.Key.Down, 0, down_func, null);
-        add_binding (Gdk.Key.KP_Down, 0, down_func, null);
-        add_binding (Gdk.Key.s, 0, down_func, null);
-        add_binding (Gdk.Key.Left, 0, left_func, null);
-        add_binding (Gdk.Key.KP_Left, 0, left_func, null);
-        add_binding (Gdk.Key.a, 0, left_func, null);
-        add_binding (Gdk.Key.Right, 0, right_func, null);
-        add_binding (Gdk.Key.KP_Right, 0, right_func, null);
-        add_binding (Gdk.Key.d, 0, right_func, null);
+            default:
+                return;
+        }
     }
 
     private void selection_changed_cb (int old_row, int old_col, int new_row, int new_col)
@@ -489,6 +524,35 @@ public class SudokuView : Adw.Bin
                 number_picker.dismiss ();
 
             set_cell_highlighter (selected_row, selected_col, has_selection);
+        }
+    }
+
+    private int get_key_number (uint keyval)
+    {
+        switch (keyval)
+        {
+            case Gdk.Key.@0: case Gdk.Key.KP_0:
+                return 0;
+            case Gdk.Key.@1: case Gdk.Key.KP_1:
+                return 1;
+            case Gdk.Key.@2: case Gdk.Key.KP_2:
+                return 2;
+            case Gdk.Key.@3: case Gdk.Key.KP_3:
+                return 3;
+            case Gdk.Key.@4: case Gdk.Key.KP_4:
+                return 4;
+            case Gdk.Key.@5: case Gdk.Key.KP_5:
+                return 5;
+            case Gdk.Key.@6: case Gdk.Key.KP_6:
+                return 6;
+            case Gdk.Key.@7: case Gdk.Key.KP_7:
+                return 7;
+            case Gdk.Key.@8: case Gdk.Key.KP_8:
+                return 8;
+            case Gdk.Key.@9: case Gdk.Key.KP_9:
+                return 9;
+            default:
+                return -1;
         }
     }
 

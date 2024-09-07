@@ -31,12 +31,6 @@ public class SudokuCell : Widget
     private GestureClick button_controller;
     private GestureLongPress long_press_controller;
 
-    //Only initialized when the cell is not fixed
-    private bool control_key_pressed;
-    private EventControllerKey key_controller;
-    private EventControllerKey popover_controller;
-    public NumberPicker number_picker;
-
     private Label value_label;
     private Label[] earmark_labels;
 
@@ -83,24 +77,6 @@ public class SudokuCell : Widget
                 earmark_labels[num - 1].set_parent (this);
                 earmark_labels[num - 1].add_css_class ("earmark");
             }
-        }
-
-        if (!is_fixed)
-        {
-            key_controller = new EventControllerKey  ();
-            add_controller (this.key_controller);
-            key_controller.key_pressed.connect (key_pressed_cb);
-            key_controller.key_released.connect (key_released_cb);
-
-            /*
-            popover_controller = new EventControllerKey ();
-            popover_controller.key_pressed.connect (key_pressed_cb);
-            popover_controller.key_released.connect (key_released_cb);
-            (popover as Widget)?.add_controller (popover_controller);
-            */
-
-            number_picker = new NumberPicker (game);
-            number_picker.set_parent (this);
         }
     }
 
@@ -216,76 +192,6 @@ public class SudokuCell : Widget
         get_visible_earmarks ();
     }
 
-    private bool key_pressed_cb (uint         keyval,
-                                 uint         keycode,
-                                 ModifierType state)
-    {
-        if (keyval == Key.Control_L || keyval == Key.Control_R)
-            control_key_pressed = true;
-
-        // This must return false to pass the key control to the view as well,
-        // for navigation and other related things
-        return EVENT_PROPAGATE;
-    }
-
-    private void key_released_cb (uint         keyval,
-                                  uint         keycode,
-                                  ModifierType state)
-    {
-        if (game.paused)
-            return;
-
-        if (keyval == Key.Control_L || keyval == Key.Control_R)
-            control_key_pressed = false;
-
-        int key = get_key_number (keyval);
-        if (key >= 1 && key <= 9)
-        {
-            bool want_earmark = control_key_pressed;
-            if (view.earmark_mode)
-                want_earmark = !want_earmark;
-
-            if (!want_earmark)
-            {
-                value = key;
-            }
-            else if (game.mode == GameMode.PLAY)
-            {
-                var new_state = !game.board.is_earmark_enabled (row, col, key);
-                if (new_state)
-                    game.enable_earmark (row, col, key);
-                else
-                    game.disable_earmark (row, col, key);
-            }
-            return;
-        }
-
-        if (key == 0 ||
-            keyval == Gdk.Key.BackSpace ||
-            keyval == Gdk.Key.Delete)
-        {
-            value = 0;
-            return;
-        }
-
-        if (keyval == Gdk.Key.space ||
-            keyval == Gdk.Key.Return ||
-            keyval == Gdk.Key.KP_Enter)
-        {
-            if (!view.earmark_mode)
-                view.number_picker.show_value_picker (this);
-            else if (this.value == 0)
-                view.number_picker.show_earmark_picker (this);
-            return;
-        }
-
-        if (keyval == Gdk.Key.Escape)
-        {
-            view.number_picker.popdown ();
-            return;
-        }
-    }
-
     private void button_released_cb (GestureClick gesture,
                                      int          n_press,
                                      double       x,
@@ -306,20 +212,23 @@ public class SudokuCell : Widget
 
         grab_focus ();
 
-        bool want_earmark = control_key_pressed;
+        ModifierType state;
+        state = gesture.get_current_event_state ();
+
+        bool wants_value = !(bool)(state & Gdk.ModifierType.CONTROL_MASK);
         if (view.earmark_mode)
-            want_earmark = !want_earmark;
+            wants_value = !wants_value;
 
         if (gesture.get_current_button () == BUTTON_PRIMARY)
         {
-            if (!want_earmark)
+            if (wants_value)
                 view.number_picker.show_value_picker (this);
             else if (game.mode == GameMode.PLAY)
                 view.number_picker.show_earmark_picker (this);
         }
         else if (gesture.get_current_button () == BUTTON_SECONDARY)
         {
-            if (want_earmark)
+            if (!wants_value)
                 view.number_picker.show_value_picker (this);
             else if (game.mode == GameMode.PLAY)
                 view.number_picker.show_earmark_picker (this);
@@ -338,7 +247,7 @@ public class SudokuCell : Widget
 
         if (game.mode == GameMode.CREATE || view.earmark_mode)
             view.number_picker.show_value_picker (this);
-        else if (this.value == 0)
+        else
             view.number_picker.show_earmark_picker (this);
     }
 
@@ -351,44 +260,6 @@ public class SudokuCell : Widget
             view.set_selected (row, col);
     }
 
-    private int get_key_number (uint keyval)
-    {
-        switch (keyval)
-        {
-            case Gdk.Key.@0:
-            case Gdk.Key.KP_0:
-                return 0;
-            case Gdk.Key.@1:
-            case Gdk.Key.KP_1:
-                return 1;
-            case Gdk.Key.@2:
-            case Gdk.Key.KP_2:
-                return 2;
-            case Gdk.Key.@3:
-            case Gdk.Key.KP_3:
-                return 3;
-            case Gdk.Key.@4:
-            case Gdk.Key.KP_4:
-                return 4;
-            case Gdk.Key.@5:
-            case Gdk.Key.KP_5:
-                return 5;
-            case Gdk.Key.@6:
-            case Gdk.Key.KP_6:
-                return 6;
-            case Gdk.Key.@7:
-            case Gdk.Key.KP_7:
-                return 7;
-            case Gdk.Key.@8:
-            case Gdk.Key.KP_8:
-                return 8;
-            case Gdk.Key.@9:
-            case Gdk.Key.KP_9:
-                return 9;
-            default:
-                return -1;
-        }
-    }
 
     public void get_visible_earmarks ()
     {
