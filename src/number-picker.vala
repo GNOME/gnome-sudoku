@@ -23,15 +23,15 @@ using Gtk;
 
 public class NumberPicker : Popover
 {
-    private Picker value_picker;
-    private Picker earmark_picker;
+    private ValuePicker value_picker;
+    private EarmarkPicker earmark_picker;
 
     public NumberPickerState state;
 
     public NumberPicker (SudokuGame game)
     {
-        value_picker = new Picker(game, this);
-        earmark_picker = new Picker(game, this, true);
+        value_picker = new ValuePicker(game, this);
+        earmark_picker = new EarmarkPicker(game, this);
         set_autohide (false);
     }
 
@@ -86,29 +86,71 @@ public class NumberPicker : Popover
     }
 }
 
-public class Picker : Grid
+public abstract class Picker : Grid
 {
-    private SudokuGame game;
+    protected unowned NumberPicker number_picker;
 
-    private Button clear_button;
-    private Button[] value_buttons;
-    private ToggleButton[] earmark_buttons;
-    private SudokuCell cell;
+    protected SudokuCell cell;
+    protected SudokuGame game;
 
-    private unowned NumberPicker number_picker;
+    protected Button clear_button;
 
-    public bool is_earmark_picker { get; private set; }
-
-    public Picker (SudokuGame game, NumberPicker number_picker, bool for_earmarks = false)
+    Picker (SudokuGame game, NumberPicker number_picker)
     {
         this.game = game;
         this.number_picker = number_picker;
-        is_earmark_picker = for_earmarks;
 
-        if (is_earmark_picker)
-            earmark_buttons = new ToggleButton [game.board.block_cols * game.board.block_rows];
-        else
-            value_buttons = new Button [game.board.block_cols * game.board.block_rows];
+        clear_button = new Button ();
+        clear_button.clicked.connect (() => {
+            cell.value = 0;
+        });
+        attach (clear_button, 0, 4, 3, 1);
+
+        var label = new Label ("<big>%s</big>".printf (_("Clear")));
+        label.use_markup = true;
+        clear_button.set_child (label);
+
+        valign = Align.CENTER;
+        halign = Align.CENTER;
+        margin_top = 2;
+        margin_bottom = 2;
+        margin_start = 2;
+        margin_end = 2;
+        row_spacing = 3;
+        column_spacing = 3;
+    }
+
+    public override void dispose ()
+    {
+        base.dispose ();
+        clear_button.unparent ();
+    }
+
+    protected abstract void value_changed_cb (int row, int col, int old_val, int new_val);
+    protected abstract void earmark_changed_cb (int row, int col, int num, bool enabled);
+    public virtual void connect_picker (SudokuCell cell)
+    {
+        this.cell = cell;
+        game.board.earmark_changed.connect (earmark_changed_cb);
+        game.board.value_changed.connect (value_changed_cb);
+    }
+
+    public virtual void disconnect_picker ()
+    {
+        cell = null;
+        game.board.earmark_changed.disconnect (earmark_changed_cb);
+        game.board.value_changed.disconnect (value_changed_cb);
+    }
+}
+
+private class ValuePicker : Picker
+{
+    private Button[] value_buttons;
+
+    public ValuePicker (SudokuGame game, NumberPicker number_picker)
+    {
+        base (game, number_picker);
+        value_buttons = new Button [game.board.block_cols * game.board.block_rows];
 
         for (var col = 0; col < game.board.block_cols; col++)
         {
@@ -116,89 +158,114 @@ public class Picker : Grid
             {
                 int n = col + ((game.board.block_rows - 1) - row) * game.board.block_cols + 1;
 
-                var button = for_earmarks ? new ToggleButton () : new Button ();
-                button.focus_on_click = false;
-                this.attach (button, col, row, 1, 1);
+                var button = new Button ();
+                attach (button, col, row, 1, 1);
 
                 var label = new Label ("<big>%d</big>".printf (n));
                 label.use_markup = true;
-                label.margin_start = for_earmarks ? 0 : 8;
-                label.margin_end = for_earmarks ? 16 : 8;
-                label.margin_top = for_earmarks ? 0 : 4;
-                label.margin_bottom = for_earmarks ? 8 : 4;
+                label.margin_start = 8;
+                label.margin_end = 8;
+                label.margin_top = 4;
+                label.margin_bottom = 4;
                 button.set_child (label);
 
                 //workaround to avoid lambda capture and memory leak
                 button.set_data<int> ("number-contained", n);
 
-                if (!for_earmarks)
-                {
-                    value_buttons[n - 1] = button;
-                    value_buttons[n - 1].clicked.connect (value_picked_cb);
-                }
-                else
-                {
-                    earmark_buttons[n - 1] = (ToggleButton) button;
-                    earmark_buttons[n - 1].toggled.connect (earmark_picked_cb);
-                }
-           }
+                value_buttons[n - 1] = button;
+                value_buttons[n - 1].clicked.connect (value_picked_cb);
+            }
         }
-
-        clear_button = new Button ();
-        clear_button.clicked.connect (() => {
-            cell.value = 0;
-        });
-        clear_button.focus_on_click = false;
-        this.attach (clear_button, 0, 4, 3, 1);
-
-        var label = new Label ("<big>%s</big>".printf (_("Clear")));
-        label.use_markup = true;
-        clear_button.set_child (label);
-
-
-        this.valign = Align.CENTER;
-        this.halign = Align.CENTER;
-        this.margin_top = 2;
-        this.margin_bottom = 2;
-        this.margin_start = 2;
-        this.margin_end = 2;
-        this.row_spacing = 3;
-        this.column_spacing = 3;
     }
 
-    public void connect_picker (SudokuCell cell)
+    public override void connect_picker (SudokuCell cell)
     {
-        this.cell = cell;
-        if (!is_earmark_picker)
-            set_clear_button_visibility (cell.value > 0 || game.board.has_earmarks (cell.row, cell.col));
-        else
-        {
-            set_earmark_buttons (cell.row, cell.col);
-            set_clear_button_visibility (true);
-            set_earmark_buttons_sensitive (cell.value == 0);
-            bool clear_button_enabled = cell.value != 0 || game.board.has_earmarks (cell.row, cell.col);
-            set_clear_button_enabled (clear_button_enabled);
-        }
-
-        this.game.board.earmark_changed.connect (earmark_changed_cb);
-        this.game.board.value_changed.connect (value_changed_cb);
-    }
-
-    public void disconnect_picker ()
-    {
-        this.game.board.earmark_changed.disconnect (earmark_changed_cb);
-        this.game.board.value_changed.disconnect (value_changed_cb);
+        base.connect_picker (cell);
+        clear_button.visible = cell.value > 0 || game.board.has_earmarks (cell.row, cell.col);
+        clear_button.set_sensitive (game.board.has_earmarks (cell.row, cell.col) || cell.value > 0);
     }
 
     private void value_picked_cb (Button button)
     {
         int val = button.get_data<int> ("number-contained");
+        cell.value = val;
         if (val == 0)
-            set_clear_button_visibility (false);
+            clear_button.visible = false;
         else
             number_picker.popdown ();
+    }
 
-        cell.value = val;
+    protected override void value_changed_cb (int row, int col, int old_val, int new_val)
+    {
+        clear_button.visible =  new_val != 0;
+        number_picker.present ();
+    }
+
+    protected override void earmark_changed_cb (int row, int col, int num, bool enabled)
+    {
+        clear_button.set_sensitive (game.board.has_earmarks (cell.row, cell.col));
+        clear_button.visible = cell.value > 0 || game.board.has_earmarks (cell.row, cell.col);
+        number_picker.present ();
+    }
+
+    public override void dispose ()
+    {
+        base.dispose ();
+        foreach (var button in value_buttons)
+            button.unparent ();
+    }
+}
+
+private class EarmarkPicker : Picker
+{
+    private ToggleButton[] earmark_buttons;
+
+    public EarmarkPicker (SudokuGame game, NumberPicker number_picker)
+    {
+        base (game, number_picker);
+        earmark_buttons = new ToggleButton [game.board.block_cols * game.board.block_rows];
+
+        for (var col = 0; col < game.board.block_cols; col++)
+        {
+            for (var row = 0; row < game.board.block_rows; row++)
+            {
+                int n = col + ((game.board.block_rows - 1) - row) * game.board.block_cols + 1;
+
+                var button = new ToggleButton ();
+                attach (button, col, row, 1, 1);
+
+                var label = new Label ("<big>%d</big>".printf (n));
+                label.use_markup = true;
+                label.margin_start = 0;
+                label.margin_end = 16;
+                label.margin_top = 0;
+                label.margin_bottom = 8;
+                button.set_child (label);
+
+                //workaround to avoid lambda capture and memory leak
+                button.set_data<int> ("number-contained", n);
+
+                earmark_buttons[n - 1] = (ToggleButton) button;
+           }
+        }
+    }
+
+    public override void connect_picker (SudokuCell cell)
+    {
+        base.connect_picker (cell);
+        set_buttons_active (cell.row, cell.col);
+        clear_button.visible = true;
+        set_buttons_sensitive (cell.value == 0);
+        clear_button.sensitive = cell.value != 0 || game.board.has_earmarks (cell.row, cell.col);
+        foreach (var button in earmark_buttons)
+            button.toggled.connect (earmark_picked_cb);
+    }
+
+    public override void disconnect_picker ()
+    {
+        base.disconnect_picker ();
+        foreach (var button in earmark_buttons)
+            button.toggled.disconnect (earmark_picked_cb);
     }
 
     private void earmark_picked_cb (ToggleButton button)
@@ -215,64 +282,34 @@ public class Picker : Grid
         }
     }
 
-    private void value_changed_cb (int row, int col, int old_val, int new_val)
+    protected override void value_changed_cb (int row, int col, int old_val, int new_val)
     {
-        if (is_earmark_picker)
-        {
-            set_earmark_buttons_sensitive (cell.value == 0);
-            clear_button.set_sensitive (cell.value != 0);
-        }
-        else
-        {
-            set_clear_button_visibility (new_val != 0);
-            number_picker.present ();
-        }
+        set_buttons_sensitive (cell.value == 0);
+        clear_button.set_sensitive (cell.value != 0);
     }
 
-    private void earmark_changed_cb (int row, int col, int num, bool enabled)
+    protected override void earmark_changed_cb (int row, int col, int num, bool enabled)
     {
         clear_button.set_sensitive (game.board.has_earmarks (cell.row, cell.col));
-        if (!is_earmark_picker)
-            set_clear_button_visibility (cell.value > 0 || game.board.has_earmarks (cell.row, cell.col));
-        else
-            set_earmark_button (num, enabled);
+        earmark_buttons[num - 1].set_active (enabled);
     }
 
-    private void set_clear_button_visibility (bool visible)
-    {
-        clear_button.visible = visible;
-    }
-
-    private void set_clear_button_enabled (bool enabled)
-    {
-        clear_button.sensitive = enabled;
-    }
-
-    private void set_earmark_buttons_sensitive (bool enabled)
+    private void set_buttons_sensitive (bool enabled)
     {
         foreach (var button in earmark_buttons)
             button.set_sensitive (enabled);
     }
 
-    private void set_earmark_buttons (int row, int col)
-        requires (is_earmark_picker)
+    private void set_buttons_active (int row, int col)
     {
         for (var i = 1; i <= game.board.max_val; i++)
-            set_earmark_button (i, game.board.is_earmark_enabled (row, col, i));
-    }
-
-    private void set_earmark_button (int num, bool state)
-        requires (is_earmark_picker)
-    {
-        earmark_buttons[num - 1].set_active (state);
+            earmark_buttons[i - 1].set_active (game.board.is_earmark_enabled (row, col, i));
     }
 
     public override void dispose ()
     {
-        clear_button.unparent ();
+        base.dispose ();
         foreach (var button in earmark_buttons)
-            button.unparent ();
-        foreach (var button in value_buttons)
             button.unparent ();
     }
 }
