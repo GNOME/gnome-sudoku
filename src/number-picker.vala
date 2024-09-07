@@ -21,7 +21,61 @@
 
 using Gtk;
 
-private class NumberPicker : Grid
+private class NumberPicker : Popover
+{
+    private Picker value_picker;
+    private Picker earmark_picker;
+
+    public NumberPickerState state;
+
+    public NumberPicker (SudokuGame game)
+    {
+        value_picker = new Picker(game, this);
+        earmark_picker = new Picker(game, this, true);
+    }
+
+    public void show_earmark_picker (SudokuCell cell)
+    {
+        if (visible)
+        {
+            NumberPickerState old_state = state;
+            dismiss ();
+            if (old_state == NumberPickerState.EARMARK_PICKER)
+                return;
+        }
+
+        state = NumberPickerState.EARMARK_PICKER;
+        earmark_picker.set_cell (cell);
+
+        set_child (earmark_picker);
+        popup ();
+    }
+
+    public void show_value_picker (SudokuCell cell)
+    {
+        if (visible)
+        {
+            NumberPickerState old_state = state;
+            dismiss ();
+            if (old_state == NumberPickerState.VALUE_PICKER)
+                return;
+        }
+        state = NumberPickerState.VALUE_PICKER;
+        value_picker.set_cell (cell);
+
+        set_child (value_picker);
+        popup ();
+    }
+
+    public void dismiss ()
+    {
+        popdown ();
+        state = NumberPickerState.NONE;
+        child = null;
+    }
+}
+
+private class Picker : Grid
 {
     private SudokuGame game;
 
@@ -30,11 +84,14 @@ private class NumberPicker : Grid
     private ToggleButton[] earmark_buttons;
     private SudokuCell cell;
 
+    private unowned NumberPicker number_picker;
+
     public bool is_earmark_picker { get; private set; }
 
-    public NumberPicker (SudokuGame game, bool for_earmarks = false)
+    public Picker (SudokuGame game, NumberPicker number_picker, bool for_earmarks = false)
     {
         this.game = game;
+        this.number_picker = number_picker;
         is_earmark_picker = for_earmarks;
 
         if (is_earmark_picker)
@@ -73,7 +130,6 @@ private class NumberPicker : Grid
                     earmark_buttons[n - 1] = (ToggleButton) button;
                     earmark_buttons[n - 1].toggled.connect (earmark_picked_cb);
                 }
-
            }
         }
 
@@ -85,11 +141,8 @@ private class NumberPicker : Grid
         label.use_markup = true;
         clear_button.set_child (label);
 
-        game.board.value_changed.connect (value_changed_cb);
-        game.board.earmark_changed.connect (earmark_changed_cb);
-        clear_button.clicked.connect ((this_button) => {
-            cell.value = 0;
-        });
+        this.game.board.earmark_changed.connect (earmark_changed_cb);
+        this.game.board.value_changed.connect (value_changed_cb);
 
         this.valign = Align.CENTER;
         this.halign = Align.CENTER;
@@ -122,7 +175,7 @@ private class NumberPicker : Grid
         if (val == 0)
             set_clear_button_visibility (false);
         else
-            ((Popover)parent).popdown ();
+            number_picker.dismiss ();
 
         cell.value = val;
     }
@@ -147,40 +200,39 @@ private class NumberPicker : Grid
             set_clear_button_visibility (new_val != 0);
     }
 
-
     private void earmark_changed_cb (int row, int col, int num, bool enabled)
     {
         if (cell != null && row == cell.row && col == cell.col)
         {
-            set_clear_button_enabled (game.board.has_earmarks (cell.row, cell.col));
-            earmark_buttons[num - 1].set_active (enabled);
+            clear_button.set_sensitive (game.board.has_earmarks (cell.row, cell.col));
+            set_earmark_button (num, enabled);
         }
     }
 
-    public void set_clear_button_visibility (bool visible)
+    private void set_clear_button_visibility (bool visible)
     {
         clear_button.visible = visible;
     }
 
-    public void set_clear_button_enabled (bool enabled)
+    private void set_clear_button_enabled (bool enabled)
     {
         clear_button.sensitive = enabled;
     }
 
-    public void set_earmark_buttons_sensitive (bool enabled)
+    private void set_earmark_buttons_sensitive (bool enabled)
     {
         foreach (var button in earmark_buttons)
             button.set_sensitive (enabled);
     }
 
-    public void set_earmark_buttons (int row, int col)
+    private void set_earmark_buttons (int row, int col)
         requires (is_earmark_picker)
     {
         for (var i = 1; i <= game.board.max_val; i++)
             set_earmark_button (i, game.board.is_earmark_enabled (row, col, i));
     }
 
-    public void set_earmark_button (int num, bool state)
+    private void set_earmark_button (int num, bool state)
         requires (is_earmark_picker)
     {
         earmark_buttons[num - 1].set_active (state);
@@ -194,4 +246,11 @@ private class NumberPicker : Grid
         foreach (var button in value_buttons)
             button.unparent ();
     }
+}
+
+public enum NumberPickerState
+{
+    NONE,
+    VALUE_PICKER,
+    EARMARK_PICKER;
 }

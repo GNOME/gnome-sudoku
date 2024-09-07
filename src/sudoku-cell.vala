@@ -33,11 +33,9 @@ private class SudokuCell : Widget
 
     //Only initialized when the cell is not fixed
     private bool control_key_pressed;
-    private Popover popover;
     private EventControllerKey key_controller;
     private EventControllerKey popover_controller;
-    private NumberPicker earmark_picker;
-    private NumberPicker value_picker;
+    public NumberPicker number_picker;
 
     private Label value_label;
     private Label[] earmark_labels;
@@ -94,17 +92,15 @@ private class SudokuCell : Widget
             key_controller.key_pressed.connect (key_pressed_cb);
             key_controller.key_released.connect (key_released_cb);
 
-            popover = new Popover ();
-            popover.set_autohide (false);
-            popover.set_parent (this);
-
+            /*
             popover_controller = new EventControllerKey ();
             popover_controller.key_pressed.connect (key_pressed_cb);
             popover_controller.key_released.connect (key_released_cb);
             (popover as Widget)?.add_controller (popover_controller);
+            */
 
-            value_picker = new NumberPicker (game, false);
-            earmark_picker = new NumberPicker (game, true);
+            number_picker = new NumberPicker (game);
+            number_picker.set_parent (this);
         }
     }
 
@@ -256,17 +252,10 @@ private class SudokuCell : Widget
             else if (game.mode == GameMode.PLAY)
             {
                 var new_state = !game.board.is_earmark_enabled (row, col, key);
-                if (popover.child != null && ((NumberPicker)this.popover.child).is_earmark_picker)
-                {
-                    earmark_picker.set_earmark_button (key, new_state);
-                }
+                if (new_state)
+                    game.enable_earmark (row, col, key);
                 else
-                {
-                    if (new_state)
-                        game.enable_earmark (row, col, key);
-                    else
-                        game.disable_earmark (row, col, key);
-                }
+                    game.disable_earmark (row, col, key);
             }
             return;
         }
@@ -284,16 +273,15 @@ private class SudokuCell : Widget
             keyval == Gdk.Key.KP_Enter)
         {
             if (!view.earmark_mode)
-                show_value_picker ();
+                number_picker.show_value_picker (this);
             else if (this.value == 0)
-                show_earmark_picker ();
+                number_picker.show_earmark_picker (this);
             return;
         }
 
         if (keyval == Gdk.Key.Escape)
         {
-            if (popover.visible)
-                popover.popdown ();
+            number_picker.popdown ();
             return;
         }
     }
@@ -325,16 +313,16 @@ private class SudokuCell : Widget
         if (gesture.get_current_button () == BUTTON_PRIMARY)
         {
             if (!want_earmark)
-                show_value_picker ();
+                number_picker.show_value_picker (this);
             else if (game.mode == GameMode.PLAY)
-                show_earmark_picker ();
+                number_picker.show_earmark_picker (this);
         }
         else if (gesture.get_current_button () == BUTTON_SECONDARY)
         {
             if (want_earmark)
-                show_value_picker ();
+                number_picker.show_value_picker (this);
             else if (game.mode == GameMode.PLAY)
-                show_earmark_picker ();
+                number_picker.show_earmark_picker (this);
         }
     }
 
@@ -349,9 +337,9 @@ private class SudokuCell : Widget
             return;
 
         if (game.mode == GameMode.CREATE || view.earmark_mode)
-            show_value_picker ();
+            number_picker.show_value_picker (this);
         else if (this.value == 0)
-            show_earmark_picker ();
+            number_picker.show_earmark_picker (this);
     }
 
     private void focus_changed_cb ()
@@ -416,39 +404,6 @@ private class SudokuCell : Widget
             earmark_labels[num - 1].set_visible (game.board.is_earmark_enabled(row, col, num));
     }
 
-    private void show_earmark_picker ()
-    {
-        if (popover.visible)
-        {
-            bool is_earmark_picker = ((NumberPicker)popover.child).is_earmark_picker;
-            dismiss_popover ();
-            if (is_earmark_picker)
-                return;
-        }
-
-        earmark_picker.set_cell (this);
-
-        popover.set_child (earmark_picker);
-        popover.popup ();
-    }
-
-    private void show_value_picker ()
-    {
-        if (popover.visible)
-        {
-            bool is_earmark_picker = ((NumberPicker)popover.child).is_earmark_picker;
-            dismiss_popover ();
-            if (!is_earmark_picker)
-                return;
-        }
-
-        value_picker.set_cell (this);
-
-        popover.set_child (value_picker);
-        value_picker.set_parent (popover);
-        popover.popup ();
-    }
-
     public void check_value_warnings ()
     {
         bool error = false;
@@ -505,7 +460,7 @@ private class SudokuCell : Widget
                                         int height,
                                         int baseline)
     {
-        this.popover?.present ();
+        number_picker?.present ();
 
         int zoomed_size = (int) (height * view.value_zoom_multiplier);
         set_font_size (value_label, zoomed_size);
@@ -544,6 +499,14 @@ private class SudokuCell : Widget
         }
     }
 
+    public void dismiss_popover ()
+    {
+        if (number_picker != null)
+        {
+            number_picker.dismiss ();
+        }
+    }
+
     private void set_font_size (Label label, int font_size)
     {
         var attr_list = label.get_attributes ();
@@ -557,21 +520,12 @@ private class SudokuCell : Widget
         label.set_attributes (attr_list);
     }
 
-    public void dismiss_popover ()
-    {
-        if (popover != null)
-        {
-            popover.popdown ();
-            popover.child = null;
-        }
-    }
-
     public override void dispose ()
     {
         this.value_label.unparent ();
         foreach (Label earmark in earmark_labels)
             earmark.unparent ();
-        popover?.unparent ();
+        number_picker?.unparent ();
         base.dispose ();
     }
 }
