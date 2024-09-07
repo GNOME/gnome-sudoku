@@ -234,6 +234,7 @@ public class SudokuView : Adw.Bin
             case Gdk.Key.@5: case Gdk.Key.KP_5: case Gdk.Key.@6: case Gdk.Key.KP_6:
             case Gdk.Key.@7: case Gdk.Key.KP_7: case Gdk.Key.@8: case Gdk.Key.KP_8:
             case Gdk.Key.@9: case Gdk.Key.KP_9:
+                number_picker.popdown ();
                 int key = get_key_number (keyval);
                 bool wants_value = state != ModifierType.CONTROL_MASK;
                 if (earmark_mode)
