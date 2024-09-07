@@ -33,6 +33,7 @@ public class NumberPicker : Popover
         value_picker = new ValuePicker(game, this);
         earmark_picker = new EarmarkPicker(game, this);
         set_autohide (false);
+        can_focus = false;
     }
 
     public void show_earmark_picker (SudokuCell cell)
