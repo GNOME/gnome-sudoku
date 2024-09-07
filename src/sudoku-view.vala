@@ -163,7 +163,6 @@ public class SudokuView : Adw.Bin
 
         key_controller = new EventControllerKey ();
         key_controller.key_pressed.connect (key_pressed_cb);
-        key_controller.key_released.connect (key_released_cb);
         add_controller (key_controller);
 
         if (show_possibilities && game.mode != GameMode.CREATE && game.board.previous_played_time == 0.0)
@@ -176,6 +175,10 @@ public class SudokuView : Adw.Bin
                                  uint         keycode,
                                  ModifierType state)
     {
+
+        if (game.paused)
+            return EVENT_PROPAGATE;
+
         switch (keyval)
         {
             case Key.Up : case Key.w : case Key.KP_Up:
@@ -206,26 +209,12 @@ public class SudokuView : Adw.Bin
                     cells[selected_row, selected_col + 1].grab_focus ();
                 return EVENT_STOP;
 
-            case Key.Escape:
-                number_picker.popdown ();
-                return EVENT_STOP;
-
-            case Key.@0: case Key.KP_0: case Key.BackSpace : case Key.Delete:
-                if (!selected_cell.is_fixed && !game.paused)
-                    selected_cell.value = 0;
-                return EVENT_STOP;
-
             default:
-                return EVENT_PROPAGATE;
+                break;
         }
-    }
 
-    private void key_released_cb (uint         keyval,
-                                  uint         keycode,
-                                  ModifierType state)
-    {
-        if (selected_cell.is_fixed || game.paused)
-            return;
+        if (selected_cell.is_fixed)
+            return EVENT_PROPAGATE;
 
         switch (keyval)
         {
@@ -252,7 +241,14 @@ public class SudokuView : Adw.Bin
                     else
                         game.disable_earmark (selected_row, selected_col, key);
                 }
-                return;
+                return EVENT_STOP;
+
+            case Key.Escape:
+                number_picker.popdown ();
+                return EVENT_STOP;
+
+            case Key.@0: case Key.KP_0: case Key.BackSpace : case Key.Delete:
+                return EVENT_STOP;
 
             case Key.space : case Key.Return : case Key.KP_Enter:
                 bool wants_value = state != ModifierType.CONTROL_MASK;
@@ -263,10 +259,9 @@ public class SudokuView : Adw.Bin
                     number_picker.show_value_picker (selected_cell);
                 else
                     number_picker.show_earmark_picker (selected_cell);
-                return;
-
+                return EVENT_STOP;
             default:
-                return;
+                return EVENT_PROPAGATE;
         }
     }
 
