@@ -40,6 +40,8 @@ public class SudokuView : Adw.Bin
     public double value_zoom_multiplier;
     public ZoomLevel zoom_level;
 
+    public NumberPicker number_picker;
+
     public int selected_row { get; private set; default = 0; }
     public int selected_col { get; private set; default = 0; }
 
@@ -79,6 +81,8 @@ public class SudokuView : Adw.Bin
         paused_label.set_visible (false);
         overlay.add_overlay (paused_label);
         overlay.add_css_class ("paused");
+
+        number_picker = new NumberPicker (game);
 
         this.game.paused_changed.connect(() => {
             // Set Font Size
@@ -229,7 +233,7 @@ public class SudokuView : Adw.Bin
     {
         set_cell_highlighter (old_row, old_col, false);
         set_cell_highlighter (new_row, new_col, true);
-        cells[old_row, old_col].dismiss_popover ();
+        number_picker.dismiss ();
     }
 
     private void value_changed_cb (int row, int col, int old_val, int new_val)
@@ -482,7 +486,7 @@ public class SudokuView : Adw.Bin
             if (has_selection)
                 cell.grab_focus ();
             else
-                cell.dismiss_popover ();
+                number_picker.dismiss ();
 
             set_cell_highlighter (selected_row, selected_col, has_selection);
         }
@@ -490,14 +494,13 @@ public class SudokuView : Adw.Bin
 
     public void dismiss_popovers ()
     {
-        for (var i = 0; i < game.board.rows; i++)
-            for (var j = 0; j < game.board.cols; j++)
-                cells[i,j].dismiss_popover ();
+        number_picker.dismiss ();
     }
 
     public override void dispose ()
     {
         frame.unparent ();
+        number_picker.unparent ();
         base.dispose ();
     }
 }

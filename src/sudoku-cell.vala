@@ -21,7 +21,7 @@
 using Gtk;
 using Gdk;
 
-private class SudokuCell : Widget
+public class SudokuCell : Widget
 {
     public int row { get; private set; }
     public int col { get; private set; }
@@ -273,15 +273,15 @@ private class SudokuCell : Widget
             keyval == Gdk.Key.KP_Enter)
         {
             if (!view.earmark_mode)
-                number_picker.show_value_picker (this);
+                view.number_picker.show_value_picker (this);
             else if (this.value == 0)
-                number_picker.show_earmark_picker (this);
+                view.number_picker.show_earmark_picker (this);
             return;
         }
 
         if (keyval == Gdk.Key.Escape)
         {
-            number_picker.popdown ();
+            view.number_picker.popdown ();
             return;
         }
     }
@@ -313,16 +313,16 @@ private class SudokuCell : Widget
         if (gesture.get_current_button () == BUTTON_PRIMARY)
         {
             if (!want_earmark)
-                number_picker.show_value_picker (this);
+                view.number_picker.show_value_picker (this);
             else if (game.mode == GameMode.PLAY)
-                number_picker.show_earmark_picker (this);
+                view.number_picker.show_earmark_picker (this);
         }
         else if (gesture.get_current_button () == BUTTON_SECONDARY)
         {
             if (want_earmark)
-                number_picker.show_value_picker (this);
+                view.number_picker.show_value_picker (this);
             else if (game.mode == GameMode.PLAY)
-                number_picker.show_earmark_picker (this);
+                view.number_picker.show_earmark_picker (this);
         }
     }
 
@@ -337,9 +337,9 @@ private class SudokuCell : Widget
             return;
 
         if (game.mode == GameMode.CREATE || view.earmark_mode)
-            number_picker.show_value_picker (this);
+            view.number_picker.show_value_picker (this);
         else if (this.value == 0)
-            number_picker.show_earmark_picker (this);
+            view.number_picker.show_earmark_picker (this);
     }
 
     private void focus_changed_cb ()
@@ -460,8 +460,6 @@ private class SudokuCell : Widget
                                         int height,
                                         int baseline)
     {
-        number_picker?.present ();
-
         int zoomed_size = (int) (height * view.value_zoom_multiplier);
         set_font_size (value_label, zoomed_size);
 
@@ -499,14 +497,6 @@ private class SudokuCell : Widget
         }
     }
 
-    public void dismiss_popover ()
-    {
-        if (number_picker != null)
-        {
-            number_picker.dismiss ();
-        }
-    }
-
     private void set_font_size (Label label, int font_size)
     {
         var attr_list = label.get_attributes ();
@@ -525,7 +515,6 @@ private class SudokuCell : Widget
         this.value_label.unparent ();
         foreach (Label earmark in earmark_labels)
             earmark.unparent ();
-        number_picker?.unparent ();
         base.dispose ();
     }
 }

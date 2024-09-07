@@ -21,7 +21,7 @@
 
 using Gtk;
 
-private class NumberPicker : Popover
+public class NumberPicker : Popover
 {
     private Picker value_picker;
     private Picker earmark_picker;
@@ -47,6 +47,9 @@ private class NumberPicker : Popover
         state = NumberPickerState.EARMARK_PICKER;
         earmark_picker.set_cell (cell);
 
+        if (parent == null)
+            set_parent (cell);
+
         set_child (earmark_picker);
         popup ();
     }
@@ -63,6 +66,9 @@ private class NumberPicker : Popover
         state = NumberPickerState.VALUE_PICKER;
         value_picker.set_cell (cell);
 
+        if (parent == null)
+            set_parent (cell);
+
         set_child (value_picker);
         popup ();
     }
@@ -71,11 +77,12 @@ private class NumberPicker : Popover
     {
         popdown ();
         state = NumberPickerState.NONE;
+        unparent ();
         child = null;
     }
 }
 
-private class Picker : Grid
+public class Picker : Grid
 {
     private SudokuGame game;
 
@@ -196,16 +203,26 @@ private class Picker : Grid
 
     private void value_changed_cb (int row, int col, int old_val, int new_val)
     {
-        if (cell != null && row == cell.row && col == cell.col)
+        if (cell != null)
+        {
             set_clear_button_visibility (new_val != 0);
+            if (is_earmark_picker)
+            {
+                set_earmark_buttons_sensitive (cell.value == 0);
+                clear_button.set_sensitive (cell.value != 0);
+            }
+        }
     }
 
     private void earmark_changed_cb (int row, int col, int num, bool enabled)
     {
-        if (cell != null && row == cell.row && col == cell.col)
+        if (cell != null)
         {
             clear_button.set_sensitive (game.board.has_earmarks (cell.row, cell.col));
-            set_earmark_button (num, enabled);
+            if (!is_earmark_picker)
+                set_clear_button_visibility (cell.value > 0 || game.board.has_earmarks (cell.row, cell.col));
+            else
+                set_earmark_button (num, enabled);
         }
     }
 
