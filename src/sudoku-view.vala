@@ -46,6 +46,11 @@ public class SudokuView : Adw.Bin
     public int selected_row { get; private set; default = 0; }
     public int selected_col { get; private set; default = 0; }
 
+    private SudokuCell selected_cell
+    {
+        get { return cells[selected_row, selected_col]; }
+    }
+
     public signal void selection_changed (int old_row, int old_col, int new_row, int new_col);
 
     public SudokuView (SudokuGame game, GLib.Settings settings)
@@ -206,8 +211,8 @@ public class SudokuView : Adw.Bin
                 return EVENT_STOP;
 
             case Key.@0: case Key.KP_0: case Key.BackSpace : case Key.Delete:
-                if (!cells[selected_row, selected_col].is_fixed && !game.paused)
-                    cells[selected_row, selected_col].value = 0;
+                if (!selected_cell.is_fixed && !game.paused)
+                    selected_cell.value = 0;
                 return EVENT_STOP;
 
             default:
@@ -219,7 +224,7 @@ public class SudokuView : Adw.Bin
                                   uint         keycode,
                                   ModifierType state)
     {
-        if (cells[selected_row, selected_col].is_fixed || game.paused)
+        if (selected_cell.is_fixed || game.paused)
             return;
 
         switch (keyval)
@@ -236,9 +241,9 @@ public class SudokuView : Adw.Bin
 
                 if (wants_value)
                 {
-                    cells[selected_row, selected_col].value = key;
+                    selected_cell.value = key;
                 }
-                else if (game.mode == GameMode.PLAY && cells[selected_row, selected_col].value == 0)
+                else if (game.mode == GameMode.PLAY && selected_cell.value == 0)
                 {
                     var new_state = !game.board.is_earmark_enabled (selected_row, selected_col, key);
                     if (new_state)
@@ -254,9 +259,9 @@ public class SudokuView : Adw.Bin
                     wants_value = !wants_value;
 
                 if (wants_value)
-                    number_picker.show_value_picker (cells[selected_row, selected_col]);
+                    number_picker.show_value_picker (selected_cell);
                 else
-                    number_picker.show_earmark_picker (cells[selected_row, selected_col]);
+                    number_picker.show_earmark_picker (selected_cell);
                 return;
 
             default:
@@ -310,7 +315,7 @@ public class SudokuView : Adw.Bin
         if (cells[cell_row, cell_col].selected == true)
             return;
 
-        cells[selected_row, selected_col].selected = false;
+        selected_cell.selected = false;
 
         var old_row = selected_row;
         var old_col = selected_col;
@@ -320,7 +325,7 @@ public class SudokuView : Adw.Bin
 
         selection_changed(old_row, old_col, selected_row, selected_col);
 
-        cells[selected_row, selected_col].selected = true;
+        selected_cell.selected = true;
     }
 
     private void set_cell_highlighter (int row, int col, bool enabled)
@@ -364,15 +369,13 @@ public class SudokuView : Adw.Bin
         if (!highlighter || val == 0 || !highlight_numbers)
             return;
 
-        var cell = cells[selected_row, selected_col];
-
         for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
         {
             for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
             {
                 var cell_tmp = cells[row_tmp, col_tmp];
 
-                if (cell == cell_tmp)
+                if (selected_cell == cell_tmp)
                     continue;
 
                 if (val == cell_tmp.value)
@@ -388,9 +391,7 @@ public class SudokuView : Adw.Bin
         if (!highlighter || val == 0 || !highlight_numbers)
             return;
 
-        var cell = cells[selected_row, selected_col];
-
-        if (val != cell.value)
+        if (val != selected_cell.value)
             return;
 
         var changed_cell = cells[row, col];
@@ -516,10 +517,9 @@ public class SudokuView : Adw.Bin
         get { return _has_selection; }
         set {
             _has_selection = value;
-            var cell = cells[selected_row, selected_col];
-            cell.selected = has_selection;
+            selected_cell.selected = has_selection;
             if (has_selection)
-                cell.grab_focus ();
+                selected_cell.grab_focus ();
             else
                 number_picker.popdown ();
 
