@@ -23,32 +23,30 @@ using Gtk;
 
 private class NumberPicker : Grid
 {
-    private SudokuBoard board;
-
-    public signal void value_picked (int val);
-    public signal void earmark_state_changed (int num, bool active);
+    private SudokuGame game;
 
     private Button clear_button;
     private Button[] value_buttons;
     private ToggleButton[] earmark_buttons;
+    private SudokuCell cell;
 
     public bool is_earmark_picker { get; private set; }
 
     public NumberPicker (SudokuGame game, bool for_earmarks = false)
     {
-        board = game.board;
+        this.game = game;
         is_earmark_picker = for_earmarks;
 
         if (is_earmark_picker)
-            earmark_buttons = new ToggleButton [board.block_cols * board.block_rows];
+            earmark_buttons = new ToggleButton [game.board.block_cols * game.board.block_rows];
         else
-            value_buttons = new Button [board.block_cols * board.block_rows];
+            value_buttons = new Button [game.board.block_cols * game.board.block_rows];
 
-        for (var col = 0; col < board.block_cols; col++)
+        for (var col = 0; col < game.board.block_cols; col++)
         {
-            for (var row = 0; row < board.block_rows; row++)
+            for (var row = 0; row < game.board.block_rows; row++)
             {
-                int n = col + ((board.block_rows - 1) - row) * board.block_cols + 1;
+                int n = col + ((game.board.block_rows - 1) - row) * game.board.block_cols + 1;
 
                 var button = for_earmarks ? new ToggleButton () : new Button ();
                 button.focus_on_click = false;
@@ -68,28 +66,15 @@ private class NumberPicker : Grid
                 if (!for_earmarks)
                 {
                     value_buttons[n - 1] = button;
-                    button.clicked.connect ((this_button) => {
-                        int val = this_button.get_data<int> ("number-contained");
-                        value_picked (val);
-                        if (val == 0)
-                            set_clear_button_visibility (false);
-                    });
+                    value_buttons[n - 1].clicked.connect (value_picked_cb);
                 }
                 else
                 {
                     earmark_buttons[n - 1] = (ToggleButton) button;
-                    earmark_buttons[n - 1].toggled.connect ((this_button) => {
-                        int number_contained = this_button.get_data<int> ("number-contained");
-                        var toggle_active = this_button.get_active ();
-                        earmark_state_changed (number_contained, toggle_active);
-                    });
+                    earmark_buttons[n - 1].toggled.connect (earmark_picked_cb);
                 }
 
-                if (n == 5)
-                    button.realize.connect ((this_button) => {
-                        this_button.grab_focus ();
-                    });
-            }
+           }
         }
 
         clear_button = new Button ();
@@ -100,16 +85,10 @@ private class NumberPicker : Grid
         label.use_markup = true;
         clear_button.set_child (label);
 
+        game.board.value_changed.connect (value_changed_cb);
+        game.board.earmark_changed.connect (earmark_changed_cb);
         clear_button.clicked.connect ((this_button) => {
-            value_picked (0);
-
-            foreach (var button in earmark_buttons)
-                button.active = false;
-
-            if (is_earmark_picker)
-                set_earmark_buttons_sensitive (true);
-            else
-                set_clear_button_visibility (false);
+            cell.value = 0;
         });
 
         this.valign = Align.CENTER;
@@ -120,6 +99,62 @@ private class NumberPicker : Grid
         this.margin_end = 2;
         this.row_spacing = 3;
         this.column_spacing = 3;
+    }
+
+    public void set_cell (SudokuCell cell)
+    {
+        this.cell = cell;
+        if (!is_earmark_picker)
+            set_clear_button_visibility (cell.value > 0 || game.board.has_earmarks (cell.row, cell.col));
+        else
+        {
+            set_earmark_buttons (cell.row, cell.col);
+            set_clear_button_visibility (true);
+            set_earmark_buttons_sensitive (cell.value == 0);
+            bool clear_button_enabled = cell.value != 0 || game.board.has_earmarks (cell.row, cell.col);
+            set_clear_button_enabled (clear_button_enabled);
+        }
+    }
+
+    private void value_picked_cb (Button button)
+    {
+        int val = button.get_data<int> ("number-contained");
+        if (val == 0)
+            set_clear_button_visibility (false);
+        else
+            ((Popover)parent).popdown ();
+
+        cell.value = val;
+    }
+
+    private void earmark_picked_cb (ToggleButton button)
+    {
+        int number_picked = button.get_data<int> ("number-contained");
+        if (button.get_active())
+        {
+            if (!game.board.is_earmark_enabled (cell.row, cell.col, number_picked))
+                game.enable_earmark (cell.row, cell.col, number_picked);
+        }
+        else if (game.board.is_earmark_enabled (cell.row, cell.col, number_picked))
+        {
+            game.disable_earmark (cell.row, cell.col, number_picked);
+        }
+    }
+
+    private void value_changed_cb (int row, int col, int old_val, int new_val)
+    {
+        if (cell != null && row == cell.row && col == cell.col)
+            set_clear_button_visibility (new_val != 0);
+    }
+
+
+    private void earmark_changed_cb (int row, int col, int num, bool enabled)
+    {
+        if (cell != null && row == cell.row && col == cell.col)
+        {
+            set_clear_button_enabled (game.board.has_earmarks (cell.row, cell.col));
+            earmark_buttons[num - 1].set_active (enabled);
+        }
     }
 
     public void set_clear_button_visibility (bool visible)
@@ -141,8 +176,8 @@ private class NumberPicker : Grid
     public void set_earmark_buttons (int row, int col)
         requires (is_earmark_picker)
     {
-        for (var i = 1; i <= board.max_val; i++)
-            set_earmark_button (i, board.is_earmark_enabled (row, col, i));
+        for (var i = 1; i <= game.board.max_val; i++)
+            set_earmark_button (i, game.board.is_earmark_enabled (row, col, i));
     }
 
     public void set_earmark_button (int num, bool state)

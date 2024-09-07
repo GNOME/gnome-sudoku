@@ -93,24 +93,24 @@ public class SudokuGame : Object
         stack = new ArrayList<stack_item?>();
     }
 
-    public void enable_earmark (int row, int col, int k_no)
+    public void enable_earmark (int row, int col, int num)
     {
         var new_stack_item = new stack_item (StackAction.ENABLE_EARMARK);
         add_to_stack (new_stack_item);
 
-        add_earmark_step (new_stack_item, row, col, k_no, true);
-        board.enable_earmark (row, col, k_no);
+        add_earmark_step (new_stack_item, row, col, num, true);
+        board.enable_earmark (row, col, num);
 
         action_completed (new_stack_item.action);
     }
 
-    public void disable_earmark (int row, int col, int k_no)
+    public void disable_earmark (int row, int col, int num)
     {
         var new_stack_item = new stack_item (StackAction.DISABLE_EARMARK);
         add_to_stack (new_stack_item);
 
-        add_earmark_step (new_stack_item, row, col, k_no, false);
-        board.disable_earmark (row, col, k_no);
+        add_earmark_step (new_stack_item, row, col, num, false);
+        board.disable_earmark (row, col, num);
 
         action_completed (new_stack_item.action);
     }
