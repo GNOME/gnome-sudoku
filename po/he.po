@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-08-02 14:09+0000\n"
-"PO-Revision-Date: 2024-08-04 00:03+0300\n"
+"POT-Creation-Date: 2024-08-23 16:13+0000\n"
+"PO-Revision-Date: 2024-09-08 23:11+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -27,17 +27,18 @@ msgstr ""
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
 
-#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:73
+#: data/org.gnome.Sudoku.desktop.in.in:3 data/sudoku-window.ui:73
 #: data/sudoku-window.ui:82
 msgid "Sudoku"
 msgstr "סודוקו"
 
-#: data/org.gnome.Sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "בחינת כישורי ההיגיון שלך באמצעות משחק לוח מספרים זה"
+#: data/org.gnome.Sudoku.desktop.in.in:4
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
+msgid "Test yourself in the classic puzzle"
+msgstr "בחינת ההיגיון שלך באמצעות תצרף המספרים הקלסי"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in.in:6
 msgid "magic;square;"
 msgstr "קסם;ריבוע;סודוקו;"
 
@@ -145,15 +146,11 @@ msgstr "true if the window is maximized"
 msgid "true if the window is fullscreen"
 msgstr "true if the window is fullscreen"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:7
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:7
 msgid "GNOME Sudoku"
 msgstr "סודוקו GNOME"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:8
-msgid "Test yourself in this classic puzzle"
-msgstr "בחינת ההיגיון שלך באמצעות תצרף המספרים הקלסי הזה"
-
-#: data/org.gnome.Sudoku.metainfo.xml.in:10
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:10
 msgid ""
 "GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
 "Japanese game, it comes with a simple interface that makes playing Sudoku "
@@ -163,29 +160,55 @@ msgstr ""
 "הפופולרי, הוא מגיע עם ממשק פשוט שעושה את משחק הסודוקו מהנה עבור שחקנים בכל "
 "רמת מיומנות.משחק החשיבה היפני הפופולרי"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as challenging as you want it to be."
-msgstr ""
-"רמות הקושי של המשחק תואמות את אלה בעיתונים ובאתרי אינטרנט, כך שהמשחק יאתגר "
-"אותך כפי שהיית רוצה."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "תכונות:"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:19
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"אם ברצונך לשחק על נייר, ניתן להדפיס את המשחק. ניתן לבחור כמה משחקים להדפיס "
-"בכל דף ומה רמת הקושי של המשחק שברצונך להדפיס: מכך GNOME סודוקו יכול לשמש ספר "
-"סודוקו מתחדש בשבילך."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:17
+msgid "Automatically save and restore your session."
+msgstr "שמירה אוטומטית ושחזור ההפעלה שלך."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:29
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:18
+msgid "Generate an infinite amount of new puzzles with qqwing."
+msgstr "יצירת אינסוף לוחות חדשים באמצעות qqwing."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:19
+msgid "Create and solve custom puzzles from scratch."
+msgstr "יצירה ופתרון לוחות מותאמים מאפס."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:20
+msgid "Adjust a scalable grid to your preferences."
+msgstr "התאמת גודל הלוח להעדפות שלך."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:21
+msgid "Use the mouse, keyboard or touch to complete the puzzle."
+msgstr "שימוש בעכבר, מקלדת או משטח מגע להשלמת הלוח."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:22
+msgid "Set up advanced strategies like X-Wings with earmarks."
+msgstr "הגדרת אסטרטגיות מתקדמות כמו X-Wings באמצעות סימון מספרים אפשריים."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:23
+msgid "Take advantage of the highlighter to narrow down possibilities."
+msgstr "ניצול ההדגשות על מנת לצמצמם אפשרויות."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:24
+msgid "Get help with the built-in warnings."
+msgstr "קבלת עזרה באמצעות אזהרות מובנות."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:25
+msgid "Time yourself to keep track of your progression."
+msgstr "מדידת זמן על מנת לעקוב אחר ההתקדמות שלך."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:26
+msgid "Print puzzles to play Sudoku on the go."
+msgstr "הדפסת לוחות כדי לשחק סודוקו בדרך."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:32
 msgid "A GNOME sudoku game preview"
 msgstr "תצוגה של משחק GNOME סודוקו"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:33
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:36
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "סודוקו GNOME במצב כהה מציג את תכונת סימוני מספרים אפשריים ואזהרות"
 
@@ -360,11 +383,10 @@ msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "משחק חדש"
 
-# msgctxt "shortcuts window"
 #: data/shortcuts-window.ui:81
 msgctxt "Shortcuts Window"
-msgid "Reset"
-msgstr "איפוס"
+msgid "Reset Puzzle"
+msgstr "איפוס הלוח"
 
 # msgctxt "shortcuts window"
 #: data/shortcuts-window.ui:88
@@ -400,11 +422,10 @@ msgctxt "Shortcuts Window"
 msgid "Highlighter"
 msgstr "הדגשה"
 
-# msgctxt "shortcuts window"
 #: data/shortcuts-window.ui:122
 msgctxt "Shortcuts Window"
-msgid "Print"
-msgstr "הדפסה"
+msgid "Print Current Puzzle"
+msgstr "הדפסת הלוח הנוכחי"
 
 # msgctxt "shortcuts window"
 #: data/shortcuts-window.ui:128
@@ -441,13 +462,15 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "מסך מלא"
 
+# msgctxt "shortcuts window"
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle…"
-msgstr "לוח _חדש…"
+# msgctxt "Shortcuts Window"
+msgid "_New Game…"
+msgstr "_משחק חדש…"
 
 #: data/sudoku-window.ui:11
-msgid "_Clear Board"
-msgstr "_ניקוי הלוח"
+msgid "_Reset Puzzle"
+msgstr "_איפוס הלוח"
 
 #: data/sudoku-window.ui:20
 msgid "Print _Current Puzzle…"
@@ -504,7 +527,7 @@ msgstr "חזרה"
 msgid "Earmark Mode"
 msgstr "מצב סימון אפשרויות"
 
-#: data/sudoku-window.ui:136 src/sudoku-window.vala:103
+#: data/sudoku-window.ui:136 src/sudoku-window.vala:104
 msgid "Leave Fullscreen"
 msgstr "יציאה ממצב מסך מלא"
 
@@ -521,18 +544,18 @@ msgid "Zoom In"
 msgstr "התקרבות"
 
 # msgctxt "shortcuts window"
-#: data/sudoku-window.ui:179 src/sudoku-window.vala:110
 # msgctxt "Shortcuts Window"
+#: data/sudoku-window.ui:179 src/sudoku-window.vala:111
 msgid "Fullscreen"
 msgstr "מסך מלא"
 
 #: data/sudoku-window.ui:206
-msgid "Play Custom Puzzle"
-msgstr "לשחק בלוח מותאם"
+msgid "Play Custom Game"
+msgstr "לשחק לוח מותאם"
 
 #: data/sudoku-window.ui:254
-msgid "Select Game Difficulty"
-msgstr "בחירת רמת קושי למשחק"
+msgid "Select Puzzle Difficulty"
+msgstr "בחירת רמת קושי"
 
 #: data/sudoku-window.ui:272
 msgctxt "Difficulty"
@@ -661,7 +684,6 @@ msgstr ""
 "‏dod_basim https://launchpad.net/~yoav-prat\n"
 "ירון שהרבני <sh.yaron@gmail.com>\n"
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
-"\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
 #: src/number-picker.vala:99
@@ -677,21 +699,60 @@ msgstr "שגיאה בהדפסת קובץ:"
 msgid "Paused"
 msgstr "הושהה"
 
-#: src/sudoku-window.vala:302
+#: src/sudoku-window.vala:309
 msgid "Select Difficulty"
 msgstr "בחירת רמת קושי"
 
-#: src/sudoku-window.vala:372
+#: src/sudoku-window.vala:379
 msgid "Create Puzzle"
 msgstr "יצירת לוח"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Play"
 msgstr "לשחק"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Pause"
 msgstr "השהייה"
+
+#~ msgid "Test your logic skills in this number grid puzzle"
+#~ msgstr "בחינת כישורי ההיגיון שלך באמצעות משחק לוח מספרים זה"
+
+#~ msgid ""
+#~ "Each game is assigned a difficulty similar to those given by newspapers "
+#~ "and websites, so your game will be as challenging as you want it to be."
+#~ msgstr ""
+#~ "רמות הקושי של המשחק תואמות את אלה בעיתונים ובאתרי אינטרנט, כך שהמשחק "
+#~ "יאתגר אותך כפי שהיית רוצה."
+
+#~ msgid ""
+#~ "If you like to play on paper, you can print games out. You can choose how "
+#~ "many games you want to print per page and what difficulty of games you "
+#~ "want to print: as a result, GNOME Sudoku can act a renewable Sudoku book "
+#~ "for you."
+#~ msgstr ""
+#~ "אם ברצונך לשחק על נייר, ניתן להדפיס את המשחק. ניתן לבחור כמה משחקים "
+#~ "להדפיס בכל דף ומה רמת הקושי של המשחק שברצונך להדפיס: מכך GNOME סודוקו "
+#~ "יכול לשמש ספר סודוקו מתחדש בשבילך."
+
+# msgctxt "shortcuts window"
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Reset"
+#~ msgstr "איפוס"
+
+# msgctxt "shortcuts window"
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Print"
+#~ msgstr "הדפסה"
+
+#~ msgid "_New Puzzle…"
+#~ msgstr "לוח _חדש…"
+
+#~ msgid "_Clear Board"
+#~ msgstr "_ניקוי הלוח"
+
+#~ msgid "Select Game Difficulty"
+#~ msgstr "בחירת רמת קושי למשחק"
 
 #~ msgid "_Create Custom Game…"
 #~ msgstr "י_צירת משחק מותאם…"
@@ -754,9 +815,6 @@ msgstr "השהייה"
 
 #~ msgid "Go back to the current game"
 #~ msgstr "חזרה למשחק הנוכחי"
-
-#~ msgid "Start playing the custom puzzle you have created"
-#~ msgstr "להתחיל לשחק את הלוח המותאם שיצרת"
 
 #~ msgid "The GNOME Project"
 #~ msgstr "מיזם GNOME"
