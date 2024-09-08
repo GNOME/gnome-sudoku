@@ -248,6 +248,7 @@ public class SudokuView : Adw.Bin
                 return EVENT_STOP;
 
             case Key.@0: case Key.KP_0: case Key.BackSpace : case Key.Delete:
+                selected_cell.value = 0;
                 return EVENT_STOP;
 
             case Key.space : case Key.Return : case Key.KP_Enter:
