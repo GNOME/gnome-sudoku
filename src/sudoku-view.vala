@@ -175,7 +175,6 @@ public class SudokuView : Adw.Bin
                                  uint         keycode,
                                  ModifierType state)
     {
-
         if (game.paused)
             return EVENT_PROPAGATE;
 
@@ -218,37 +217,39 @@ public class SudokuView : Adw.Bin
 
         switch (keyval)
         {
-            case Gdk.Key.@1: case Gdk.Key.KP_1: case Gdk.Key.@2: case Gdk.Key.KP_2:
-            case Gdk.Key.@3: case Gdk.Key.KP_3: case Gdk.Key.@4: case Gdk.Key.KP_4:
-            case Gdk.Key.@5: case Gdk.Key.KP_5: case Gdk.Key.@6: case Gdk.Key.KP_6:
-            case Gdk.Key.@7: case Gdk.Key.KP_7: case Gdk.Key.@8: case Gdk.Key.KP_8:
+            case Key.@0: case Key.KP_0: case Key.BackSpace : case Key.Delete:
+                selected_cell.value = 0;
+                return EVENT_STOP;
+            case Gdk.Key.@1: case Gdk.Key.KP_1:
+                insert_key  (1, state);
+                return EVENT_STOP;
+            case Gdk.Key.@2: case Gdk.Key.KP_2:
+                insert_key  (2, state);
+                return EVENT_STOP;
+            case Gdk.Key.@3: case Gdk.Key.KP_3:
+                insert_key  (3, state);
+                return EVENT_STOP;
+            case Gdk.Key.@4: case Gdk.Key.KP_4:
+                insert_key  (4, state);
+                return EVENT_STOP;
+            case Gdk.Key.@5: case Gdk.Key.KP_5:
+                insert_key  (5, state);
+                return EVENT_STOP;
+            case Gdk.Key.@6: case Gdk.Key.KP_6:
+                insert_key  (6, state);
+                return EVENT_STOP;
+            case Gdk.Key.@7: case Gdk.Key.KP_7:
+                insert_key  (7, state);
+                return EVENT_STOP;
+            case Gdk.Key.@8: case Gdk.Key.KP_8:
+                insert_key  (8, state);
+                return EVENT_STOP;
             case Gdk.Key.@9: case Gdk.Key.KP_9:
-                number_picker.popdown ();
-                int key = get_key_number (keyval);
-                bool wants_value = state != ModifierType.CONTROL_MASK;
-                if (earmark_mode)
-                    wants_value = !wants_value;
-
-                if (wants_value)
-                {
-                    selected_cell.value = key;
-                }
-                else if (game.mode == GameMode.PLAY && selected_cell.value == 0)
-                {
-                    var new_state = !game.board.is_earmark_enabled (selected_row, selected_col, key);
-                    if (new_state)
-                        game.enable_earmark (selected_row, selected_col, key);
-                    else
-                        game.disable_earmark (selected_row, selected_col, key);
-                }
+                insert_key  (9, state);
                 return EVENT_STOP;
 
             case Key.Escape:
                 number_picker.popdown ();
-                return EVENT_STOP;
-
-            case Key.@0: case Key.KP_0: case Key.BackSpace : case Key.Delete:
-                selected_cell.value = 0;
                 return EVENT_STOP;
 
             case Key.space : case Key.Return : case Key.KP_Enter:
@@ -260,7 +261,9 @@ public class SudokuView : Adw.Bin
                     number_picker.show_value_picker (selected_cell);
                 else
                     number_picker.show_earmark_picker (selected_cell);
+
                 return EVENT_STOP;
+
             default:
                 return EVENT_PROPAGATE;
         }
@@ -524,32 +527,24 @@ public class SudokuView : Adw.Bin
         }
     }
 
-    private int get_key_number (uint keyval)
+    private void insert_key (int key, ModifierType state)
     {
-        switch (keyval)
+        number_picker.popdown ();
+        bool wants_value = state != ModifierType.CONTROL_MASK;
+        if (earmark_mode)
+            wants_value = !wants_value;
+
+        if (wants_value)
         {
-            case Gdk.Key.@0: case Gdk.Key.KP_0:
-                return 0;
-            case Gdk.Key.@1: case Gdk.Key.KP_1:
-                return 1;
-            case Gdk.Key.@2: case Gdk.Key.KP_2:
-                return 2;
-            case Gdk.Key.@3: case Gdk.Key.KP_3:
-                return 3;
-            case Gdk.Key.@4: case Gdk.Key.KP_4:
-                return 4;
-            case Gdk.Key.@5: case Gdk.Key.KP_5:
-                return 5;
-            case Gdk.Key.@6: case Gdk.Key.KP_6:
-                return 6;
-            case Gdk.Key.@7: case Gdk.Key.KP_7:
-                return 7;
-            case Gdk.Key.@8: case Gdk.Key.KP_8:
-                return 8;
-            case Gdk.Key.@9: case Gdk.Key.KP_9:
-                return 9;
-            default:
-                return -1;
+            selected_cell.value = key;
+        }
+        else if (game.mode == GameMode.PLAY && selected_cell.value == 0)
+        {
+            var enabled = game.board.is_earmark_enabled (selected_row, selected_col, key);
+            if (!enabled)
+                game.enable_earmark (selected_row, selected_col, key);
+            else
+                game.disable_earmark (selected_row, selected_col, key);
         }
     }
 
