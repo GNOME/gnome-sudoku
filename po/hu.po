@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-08-02 14:09+0000\n"
-"PO-Revision-Date: 2024-08-06 15:52+0200\n"
+"POT-Creation-Date: 2024-08-23 16:13+0000\n"
+"PO-Revision-Date: 2024-09-09 08:37+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -25,17 +25,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.08.4\n"
 
-#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:73
+#: data/org.gnome.Sudoku.desktop.in.in:3 data/sudoku-window.ui:73
 #: data/sudoku-window.ui:82
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/org.gnome.Sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Próbálja ki logikai képességeit ezzel a számrács-feladvánnyal"
+#: data/org.gnome.Sudoku.desktop.in.in:4
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
+#| msgid "Test yourself in this classic puzzle"
+msgid "Test yourself in the classic puzzle"
+msgstr "Próbálja ki magát a klasszikus feladványban"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in.in:6
 msgid "magic;square;"
 msgstr "bűvös;négyzet;"
 
@@ -143,63 +145,75 @@ msgid "true if the window is maximized"
 msgstr "igaz, ha az ablak teljes méretű"
 
 #: data/org.gnome.Sudoku.gschema.xml:99
-#| msgid "true if the window is maximized"
 msgid "true if the window is fullscreen"
 msgstr "igaz, ha az ablak teljes képernyős"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:7
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:7
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:8
-#| msgid "Test your logic skills in this number grid puzzle"
-msgid "Test yourself in this classic puzzle"
-msgstr "Próbálja ki magát ebben a klasszikus feladványban"
-
-#: data/org.gnome.Sudoku.metainfo.xml.in:10
-#| msgid ""
-#| "Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
-#| "Sudoku lovers, with a simple, unobtrusive interface that makes playing "
-#| "Sudoku fun for players of any skill level."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:10
 msgid ""
 "GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
 "Japanese game, it comes with a simple interface that makes playing Sudoku "
 "fun for players of all skill level."
 msgstr ""
-"A GNOME Sudoku kötelezően telepítendő a feladványok szerelmeseinek. A"
-" népszerű japán játékon alapul, és egyszerű kezelőfelülettel rendelkezik,"
-" amely a Sudoku játékot szórakoztatóvá teszi minden tudásszintű játékos"
-" számára."
+"A GNOME Sudoku kötelezően telepítendő a feladványok szerelmeseinek. A "
+"népszerű japán játékon alapul, és egyszerű kezelőfelülettel rendelkezik, "
+"amely a Sudoku játékot szórakoztatóvá teszi minden tudásszintű játékos "
+"számára."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:15
-#| msgid ""
-#| "Each game is assigned a difficulty similar to those given by newspapers "
-#| "and websites, so your game will be as easy or as difficult as you want it "
-#| "to be."
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as challenging as you want it to be."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "Funkciók:"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:17
+#| msgid "Automatically clear related earmarks on new number insertion"
+msgid "Automatically save and restore your session."
+msgstr "A munkamenet automatikus mentése és helyreállítása."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:18
+msgid "Generate an infinite amount of new puzzles with qqwing."
+msgstr "Végtelen mennyiségű új feladvány előállítása a qqwing használatával."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:19
+msgid "Create and solve custom puzzles from scratch."
+msgstr "Egyéni feladványok létrehozása és megoldása a semmiből."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:20
+msgid "Adjust a scalable grid to your preferences."
+msgstr "Méretezhető rács beállítása a tetszése szerint."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:21
+msgid "Use the mouse, keyboard or touch to complete the puzzle."
 msgstr ""
-"Minden játszma különböző nehézségi fokon játszható, hasonlóan az újságok és a"
-" webhelyek feladványaihoz, így a játék olyan kihívást jelent, amilyet csak"
-" szeretne."
+"Az egér, a billentyűzet vagy érintés használata a feladvány befejezéséhez."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:19
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"A játszmák kinyomtathatók, ha papíron szeretne játszani. A nyomtatásnál "
-"beállítható, hogy oldalanként hány játszmát és milyen nehézségi fokon "
-"szeretne nyomtatni; melynek eredményeként a GNOME Sudoku újrafelhasználható "
-"feladványkötetként használható."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:22
+msgid "Set up advanced strategies like X-Wings with earmarks."
+msgstr "Speciális stratégiák beállítása, mint például X-szárnyak füljelzőkkel."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:29
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:23
+msgid "Take advantage of the highlighter to narrow down possibilities."
+msgstr "A kiemelő előnyeinek kihasználása a lehetőségek leszűkítéséhez."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:24
+msgid "Get help with the built-in warnings."
+msgstr "Segítség kérése a beépített figyelmeztetésekkel."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:25
+msgid "Time yourself to keep track of your progression."
+msgstr "Önmaga idejének mérése a fejlődés nyomon követéséhez."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:26
+msgid "Print puzzles to play Sudoku on the go."
+msgstr "Feladványok nyomtatása, hogy útközben is játszhasson Sudokut."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:32
 msgid "A GNOME sudoku game preview"
 msgstr "Egy GNOME sudoku játékelőnézet"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:33
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:36
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "GNOME sudoku játék sötét módban, füljelzőkkel és figyelmeztetésekkel"
 
@@ -209,7 +223,6 @@ msgid "General"
 msgstr "Általános"
 
 #: data/preferences-dialog.ui:12
-#| msgid "Toggle timer and pause buttons"
 msgctxt "General Preferences"
 msgid "_Timer and Pause Buttons"
 msgstr "_Időzítő és szüneteltetés gombok"
@@ -225,13 +238,11 @@ msgid "Automatically _Clean Earmarks"
 msgstr "Füljelzők automatikus _törlése"
 
 #: data/preferences-dialog.ui:30
-#| msgid "Show _Possibilities"
 msgctxt "General Preferences"
 msgid "Show Earmark _Possibilities"
 msgstr "Füljelző _lehetőségeinek megjelenítése"
 
 #: data/preferences-dialog.ui:38
-#| msgid "_Warnings"
 msgctxt "Preferences Dialog"
 msgid "Warnings"
 msgstr "Figyelmeztetések"
@@ -242,13 +253,11 @@ msgid "Check _Against Solution"
 msgstr "_Ellenőrzés a megoldással"
 
 #: data/preferences-dialog.ui:47
-#| msgid "Simple _Earmark Warnings"
 msgctxt "Warning Preferences"
 msgid "_Earmark Warnings"
 msgstr "_Füljelző figyelmeztetések"
 
 #: data/preferences-dialog.ui:55
-#| msgid "High_lighter"
 msgctxt "Preferences Dialog"
 msgid "Highlighter"
 msgstr "Kiemelő"
@@ -264,7 +273,6 @@ msgid "Highlight _Row and Column"
 msgstr "_Sor és oszlop kiemelése"
 
 #: data/preferences-dialog.ui:70
-#| msgid "High_lighter"
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "_Blokk kiemelése"
@@ -321,7 +329,6 @@ msgid "Earmarks"
 msgstr "Füljegyzők"
 
 #: data/shortcuts-window.ui:33
-#| msgid "Clear"
 msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "Cella törlése"
@@ -337,7 +344,6 @@ msgid "Redo"
 msgstr "Újra"
 
 #: data/shortcuts-window.ui:51
-#| msgid "Pause"
 msgctxt "Shortcuts Window"
 msgid "Pause"
 msgstr "Szüneteltetés"
@@ -348,7 +354,6 @@ msgid "Earmark Mode"
 msgstr "Füljelző mód"
 
 #: data/shortcuts-window.ui:63
-#| msgid "Number of Puzzles"
 msgctxt "Shortcuts Window"
 msgid "Number Picker"
 msgstr "Számválasztó"
@@ -364,9 +369,10 @@ msgid "New Game"
 msgstr "Új játék"
 
 #: data/shortcuts-window.ui:81
+#| msgid "Custom Puzzle"
 msgctxt "Shortcuts Window"
-msgid "Reset"
-msgstr "Visszaállítás"
+msgid "Reset Puzzle"
+msgstr "Feladvány visszaállítása"
 
 #: data/shortcuts-window.ui:88
 msgctxt "Shortcuts Window"
@@ -389,22 +395,20 @@ msgid "Zoom Reset"
 msgstr "Nagyítás visszaállítása"
 
 #: data/shortcuts-window.ui:110
-#| msgid "_Warnings"
 msgctxt "Shortcuts Window"
 msgid "Warnings"
 msgstr "Figyelmeztetések"
 
 #: data/shortcuts-window.ui:116
-#| msgid "High_lighter"
 msgctxt "Shortcuts Window"
 msgid "Highlighter"
 msgstr "Kiemelő"
 
 #: data/shortcuts-window.ui:122
-#| msgid "_Print"
+#| msgid "Print _Current Puzzle…"
 msgctxt "Shortcuts Window"
-msgid "Print"
-msgstr "Nyomtatás"
+msgid "Print Current Puzzle"
+msgstr "Jelenlegi feladvány nyomtatása"
 
 #: data/shortcuts-window.ui:128
 msgctxt "Shortcuts Window"
@@ -417,19 +421,16 @@ msgid "Keyboard Shortcuts"
 msgstr "Gyorsbillentyűk"
 
 #: data/shortcuts-window.ui:140
-#| msgid "Quit"
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Kilépés"
 
 #: data/shortcuts-window.ui:146
-#| msgid "_Help"
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Súgó"
 
 #: data/shortcuts-window.ui:152
-#| msgid "Main Menu"
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Menü"
@@ -440,13 +441,15 @@ msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle…"
-msgstr "Új _feladvány…"
+#| msgctxt "Shortcuts Window"
+#| msgid "New Game"
+msgid "_New Game…"
+msgstr "Ú_j játék…"
 
 #: data/sudoku-window.ui:11
-#| msgid "_Clear Board…"
-msgid "_Clear Board"
-msgstr "_Tábla törlése"
+#| msgid "Custom Puzzle"
+msgid "_Reset Puzzle"
+msgstr "Feladvány _visszaállítása"
 
 #: data/sudoku-window.ui:20
 msgid "Print _Current Puzzle…"
@@ -462,7 +465,6 @@ msgid "Zoom"
 msgstr "Nagyítás"
 
 #: data/sudoku-window.ui:45
-#| msgid "High_lighter"
 msgid "_Highlighter"
 msgstr "_Kiemelő"
 
@@ -502,7 +504,7 @@ msgstr "Vissza"
 msgid "Earmark Mode"
 msgstr "Füljelző mód"
 
-#: data/sudoku-window.ui:136 src/sudoku-window.vala:103
+#: data/sudoku-window.ui:136 src/sudoku-window.vala:104
 msgid "Leave Fullscreen"
 msgstr "Teljes képernyő elhagyása"
 
@@ -518,44 +520,41 @@ msgstr "Kicsinyítés"
 msgid "Zoom In"
 msgstr "Nagyítás"
 
-#: data/sudoku-window.ui:179 src/sudoku-window.vala:110
+#: data/sudoku-window.ui:179 src/sudoku-window.vala:111
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
 #: data/sudoku-window.ui:206
-msgid "Play Custom Puzzle"
-msgstr "Egyéni feladvány indítása"
+#| msgid "Play Custom Puzzle"
+msgid "Play Custom Game"
+msgstr "Egyéni játék indítása"
 
 #: data/sudoku-window.ui:254
-msgid "Select Game Difficulty"
-msgstr "Játék nehézségének kiválasztása"
+#| msgid "Select Difficulty"
+msgid "Select Puzzle Difficulty"
+msgstr "Feladvány nehézségének kiválasztása"
 
 #: data/sudoku-window.ui:272
-#| msgid "Custom Puzzle"
 msgctxt "Difficulty"
 msgid "_Custom"
 msgstr "_Egyéni"
 
 #: data/sudoku-window.ui:289
-#| msgid "_Easy"
 msgctxt "Difficulty"
 msgid "_Easy"
 msgstr "_Könnyű"
 
 #: data/sudoku-window.ui:303
-#| msgid "_Medium"
 msgctxt "Difficulty"
 msgid "_Medium"
 msgstr "Kö_zepes"
 
 #: data/sudoku-window.ui:317
-#| msgid "_Hard"
 msgctxt "Difficulty"
 msgid "_Hard"
 msgstr "_Nehéz"
 
 #: data/sudoku-window.ui:331
-#| msgid "_Very Hard"
 msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "N_agyon nehéz"
@@ -673,22 +672,21 @@ msgid "Error printing file:"
 msgstr "Hiba a fájl nyomtatása közben:"
 
 #: src/sudoku-view.vala:78
-#| msgid "Pause"
 msgid "Paused"
 msgstr "Szüneteltetve"
 
-#: src/sudoku-window.vala:302
+#: src/sudoku-window.vala:309
 msgid "Select Difficulty"
 msgstr "Nehézség kiválasztása"
 
-#: src/sudoku-window.vala:372
+#: src/sudoku-window.vala:379
 msgid "Create Puzzle"
 msgstr "Feladvány létrehozása"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Play"
 msgstr "Játszás"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Pause"
 msgstr "Szüneteltetés"
