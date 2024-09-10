@@ -424,20 +424,15 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         const int MOUSE_BACKWARD = 8;
         const int MOUSE_FORWARD = 9;
-        if (current_screen != SudokuWindowScreen.MENU)
+        if (gesture.get_current_button () == MOUSE_BACKWARD
         {
-            if (gesture.get_current_button () == MOUSE_BACKWARD
-                && !game.is_undostack_null ())
-            {
-                game.undo ();
-                gesture.set_state (EventSequenceState.CLAIMED);
-            }
-            else if (gesture.get_current_button () == MOUSE_FORWARD
-                     && !game.is_redostack_null ())
-            {
-                game.redo ();
-                gesture.set_state (EventSequenceState.CLAIMED);
-            }
+            ((Widget)this).activate_action ("app.undo", null);
+            gesture.set_state (EventSequenceState.CLAIMED);
+        }
+        else if (gesture.get_current_button () == MOUSE_FORWARD)
+        {
+            ((Widget)this).activate_action ("app.undo", null);
+            gesture.set_state (EventSequenceState.CLAIMED);
         }
     }
 
