@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-08-02 14:09+0000\n"
-"PO-Revision-Date: 2024-08-04 15:12+1000\n"
+"POT-Creation-Date: 2024-08-23 16:13+0000\n"
+"PO-Revision-Date: 2024-08-30 14:21+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -31,17 +31,18 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: data/org.gnome.Sudoku.desktop.in:3 data/sudoku-window.ui:73
+#: data/org.gnome.Sudoku.desktop.in.in:3 data/sudoku-window.ui:73
 #: data/sudoku-window.ui:82
 msgid "Sudoku"
 msgstr "Судоку"
 
-#: data/org.gnome.Sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Проверьте логические способности в этой головоломке расстановки чисел"
+#: data/org.gnome.Sudoku.desktop.in.in:4
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
+msgid "Test yourself in the classic puzzle"
+msgstr "Проверьте свои силы в классической головоломке"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in.in:6
 msgid "magic;square;"
 msgstr "magic;square;магический;квадрат;"
 
@@ -151,15 +152,11 @@ msgstr "«true», если окно имеет максимальный разм
 msgid "true if the window is fullscreen"
 msgstr "«true», если окно развёрнуто во весь экран"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:7
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:7
 msgid "GNOME Sudoku"
 msgstr "Судоку GNOME"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:8
-msgid "Test yourself in this classic puzzle"
-msgstr "Проверьте себя в этой классической головоломке"
-
-#: data/org.gnome.Sudoku.metainfo.xml.in:10
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:10
 msgid ""
 "GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
 "Japanese game, it comes with a simple interface that makes playing Sudoku "
@@ -169,30 +166,56 @@ msgstr ""
 "японской игре, она имеет простой интерфейс, который делает игру "
 "увлекательной для игроков с любым уровнем мастерства."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as challenging as you want it to be."
-msgstr ""
-"Каждой игре задаётся уровень сложности по аналогии с уровнем головоломок, "
-"публикуемых в газетах и на веб-сайтах. Вы можете управлять тем, насколько "
-"простой или сложной будет головоломка."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "Возможности:"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:19
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"Если вам нравится бумажный вариант игры, вы можете распечатать игру. Вы "
-"можете выбрать, сколько игр и какой сложности нужно распечатать на странице. "
-"Судоку GNOME может служить вам бесконечной книгой Судоку."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:17
+msgid "Automatically save and restore your session."
+msgstr "Автоматическое сохранение и восстановление сеанса."
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:29
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:18
+msgid "Generate an infinite amount of new puzzles with qqwing."
+msgstr "Создание бесконечного количества новых головоломок с помощью qqwing."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:19
+msgid "Create and solve custom puzzles from scratch."
+msgstr "Создание с нуля и решение собственных головоломок."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:20
+msgid "Adjust a scalable grid to your preferences."
+msgstr "Настройка по своему вкусу масштабируемой сетки."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:21
+msgid "Use the mouse, keyboard or touch to complete the puzzle."
+msgstr ""
+"Использование мыши, клавиатуры и сенсорной панели для решения головоломки."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:22
+msgid "Set up advanced strategies like X-Wings with earmarks."
+msgstr "Использование сложных стратегий, таких как Х-крыло с отметками."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:23
+msgid "Take advantage of the highlighter to narrow down possibilities."
+msgstr "Использование подсвечивания для сужения круга возможностей."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:24
+msgid "Get help with the built-in warnings."
+msgstr "Получение помощи на основе встроенных предупреждений."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:25
+msgid "Time yourself to keep track of your progression."
+msgstr "Контроль времени для отслеживания своего прогресса."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:26
+msgid "Print puzzles to play Sudoku on the go."
+msgstr "Печать головоломок для игры в дороге."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:32
 msgid "A GNOME sudoku game preview"
 msgstr "Предварительный просмотр игры судоку GNOME"
 
-#: data/org.gnome.Sudoku.metainfo.xml.in:33
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:36
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Игра Судоку GNOME в тёмном стиле с метками и предупреждениями"
 
@@ -349,8 +372,8 @@ msgstr "Новая игра"
 
 #: data/shortcuts-window.ui:81
 msgctxt "Shortcuts Window"
-msgid "Reset"
-msgstr "Сбросить"
+msgid "Reset Puzzle"
+msgstr "Сбросить головоломку"
 
 #: data/shortcuts-window.ui:88
 msgctxt "Shortcuts Window"
@@ -384,8 +407,8 @@ msgstr "Подсвечивание"
 
 #: data/shortcuts-window.ui:122
 msgctxt "Shortcuts Window"
-msgid "Print"
-msgstr "Печать"
+msgid "Print Current Puzzle"
+msgstr "Печать текущей головоломки"
 
 #: data/shortcuts-window.ui:128
 msgctxt "Shortcuts Window"
@@ -418,12 +441,12 @@ msgid "Fullscreen"
 msgstr "Во весь экран"
 
 #: data/sudoku-window.ui:7
-msgid "_New Puzzle…"
-msgstr "_Новая головоломка…"
+msgid "_New Game…"
+msgstr "_Новая игра…"
 
 #: data/sudoku-window.ui:11
-msgid "_Clear Board"
-msgstr "_Очистить доску"
+msgid "_Reset Puzzle"
+msgstr "С_бросить головоломку"
 
 #: data/sudoku-window.ui:20
 msgid "Print _Current Puzzle…"
@@ -478,7 +501,7 @@ msgstr "Назад"
 msgid "Earmark Mode"
 msgstr "Режим меток"
 
-#: data/sudoku-window.ui:136 src/sudoku-window.vala:103
+#: data/sudoku-window.ui:136 src/sudoku-window.vala:104
 msgid "Leave Fullscreen"
 msgstr "Покинуть полноэкранный режим"
 
@@ -494,17 +517,17 @@ msgstr "Уменьшить"
 msgid "Zoom In"
 msgstr "Увеличить"
 
-#: data/sudoku-window.ui:179 src/sudoku-window.vala:110
+#: data/sudoku-window.ui:179 src/sudoku-window.vala:111
 msgid "Fullscreen"
 msgstr "Во весь экран"
 
 #: data/sudoku-window.ui:206
-msgid "Play Custom Puzzle"
-msgstr "Решить свою головоломку"
+msgid "Play Custom Game"
+msgstr "Играть в свою игру"
 
 #: data/sudoku-window.ui:254
-msgid "Select Game Difficulty"
-msgstr "Выберите сложность игры"
+msgid "Select Puzzle Difficulty"
+msgstr "Выберите сложность головоломки"
 
 #: data/sudoku-window.ui:272
 msgctxt "Difficulty"
@@ -642,21 +665,60 @@ msgstr "Ошибка печати в файл:"
 msgid "Paused"
 msgstr "Приостановлено"
 
-#: src/sudoku-window.vala:302
+#: src/sudoku-window.vala:309
 msgid "Select Difficulty"
 msgstr "Выберите сложность"
 
-#: src/sudoku-window.vala:372
+#: src/sudoku-window.vala:379
 msgid "Create Puzzle"
 msgstr "Создание головоломки"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Play"
 msgstr "Играть"
 
-#: src/sudoku-window.vala:385
+#: src/sudoku-window.vala:392
 msgid "Pause"
 msgstr "Пауза"
+
+#~ msgid "Test your logic skills in this number grid puzzle"
+#~ msgstr ""
+#~ "Проверьте логические способности в этой головоломке расстановки чисел"
+
+#~ msgid ""
+#~ "Each game is assigned a difficulty similar to those given by newspapers "
+#~ "and websites, so your game will be as challenging as you want it to be."
+#~ msgstr ""
+#~ "Каждой игре задаётся уровень сложности по аналогии с уровнем головоломок, "
+#~ "публикуемых в газетах и на веб-сайтах. Вы можете управлять тем, насколько "
+#~ "простой или сложной будет головоломка."
+
+#~ msgid ""
+#~ "If you like to play on paper, you can print games out. You can choose how "
+#~ "many games you want to print per page and what difficulty of games you "
+#~ "want to print: as a result, GNOME Sudoku can act a renewable Sudoku book "
+#~ "for you."
+#~ msgstr ""
+#~ "Если вам нравится бумажный вариант игры, вы можете распечатать игру. Вы "
+#~ "можете выбрать, сколько игр и какой сложности нужно распечатать на "
+#~ "странице. Судоку GNOME может служить вам бесконечной книгой Судоку."
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Reset"
+#~ msgstr "Сбросить"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Print"
+#~ msgstr "Печать"
+
+#~ msgid "_New Puzzle…"
+#~ msgstr "_Новая головоломка…"
+
+#~ msgid "_Clear Board"
+#~ msgstr "_Очистить доску"
+
+#~ msgid "Select Game Difficulty"
+#~ msgstr "Выберите сложность игры"
 
 #~ msgid "_Create Custom Game…"
 #~ msgstr "_Создать свою игру…"
@@ -727,9 +789,6 @@ msgstr "Пауза"
 
 #~ msgid "Go back to the current game"
 #~ msgstr "Вернуться к текущей игре"
-
-#~ msgid "Start playing the custom puzzle you have created"
-#~ msgstr "Начать игру в созданную вами головоломку"
 
 #~ msgid "_Create your own puzzle"
 #~ msgstr "Со_здать свою головоломку"
