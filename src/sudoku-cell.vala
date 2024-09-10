@@ -56,13 +56,12 @@ public class SudokuCell : Widget
 
         button_controller = new GestureClick ();
         button_controller.set_button (0 /* all buttons */);
+        button_controller.released.connect (button_released_cb);
         add_controller (this.button_controller);
 
         long_press_controller = new GestureLongPress ();
-        add_controller (this.long_press_controller);
-
         long_press_controller.pressed.connect (long_press_cb);
-        button_controller.released.connect (button_released_cb);
+        add_controller (this.long_press_controller);
 
         int num = 0;
         earmark_labels = new Label[9];
@@ -239,6 +238,10 @@ public class SudokuCell : Widget
                                 double           x,
                                 double           y)
     {
+        if (gesture.get_current_button () != BUTTON_PRIMARY &&
+            gesture.get_current_button () != BUTTON_SECONDARY)
+            return;
+
         gesture.set_state (EventSequenceState.CLAIMED);
         grab_focus ();
 
