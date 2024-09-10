@@ -16,9 +16,7 @@ You can find out more about the project at the [wiki's homepage](https://gitlab.
 
 - [Building Gnome Sudoku](https://gitlab.gnome.org/GNOME/gnome-sudoku/-/wikis/build).
 
-## Useful links
-
-- [Tarballs](https://download.gnome.org/sources/gnome-sudoku/)
+# Contributing to Gnome Sudoku
 
 - [Report issues](https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/)
 
