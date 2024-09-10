@@ -72,7 +72,8 @@ public class SudokuWindow : Adw.ApplicationWindow
     private SudokuGame? game = null;
 
     private GestureClick button_controller;
-    private GestureLongPress long_press_controller;
+    private GestureClick backwards_controller;
+    private GestureClick forwards_controller;
     private EventControllerScroll scroll_controller;
 
     public GLib.Settings settings { get; private set;}
@@ -89,13 +90,13 @@ public class SudokuWindow : Adw.ApplicationWindow
         small_window_breakpoint = new Adw.Breakpoint (small_window_condition);
         small_window_breakpoint.unapply.connect (window_width_is_big_cb);
         small_window_breakpoint.apply.connect (window_width_is_small_cb);
-        this.add_breakpoint (small_window_breakpoint);
+        add_breakpoint (small_window_breakpoint);
 
-        this.notify["maximized"].connect(() => {
+        notify["maximized"].connect(() => {
             window_is_maximized = !window_is_maximized;
         });
 
-        this.notify["fullscreened"].connect(() => {
+        notify["fullscreened"].connect(() => {
             window_is_fullscreen = !window_is_fullscreen;
             if (window_is_fullscreen)
             {
@@ -123,32 +124,41 @@ public class SudokuWindow : Adw.ApplicationWindow
                 view.has_selection = !main_menu.active;
         });
 
-        if (this.window_is_fullscreen)
+        if (window_is_fullscreen)
             fullscreen ();
-        else if (this.window_is_maximized)
+        else if (window_is_maximized)
             maximize ();
         else
         {
             set_gamebox_width_margins (window_width);
             set_gamebox_height_margins (window_height);
         }
+
         button_controller = new GestureClick ();
         button_controller.set_button (0 /* all buttons */);
         button_controller.released.connect (button_released_cb);
-        button_controller.pressed.connect (button_pressed_cb);
         ((Widget)this).add_controller (this.button_controller);
+
+        backwards_controller = new GestureClick ();
+        backwards_controller.set_button (8 /* backward button */);
+        backwards_controller.pressed.connect (backwards_pressed_cb);
+        backwards_controller.set_propagation_limit (PropagationLimit.NONE);
+        ((Widget)this).add_controller (backwards_controller);
+
+        forwards_controller = new GestureClick ();
+        forwards_controller.set_button (9 /* forward button */);
+        forwards_controller.pressed.connect (forwards_pressed_cb);
+        forwards_controller.set_propagation_limit (PropagationLimit.NONE);
+        ((Widget)this).add_controller (forwards_controller);
 
         scroll_controller = new EventControllerScroll (EventControllerScrollFlags.VERTICAL);
         scroll_controller.scroll.connect (scroll_cb);
         scroll_controller.scroll_begin.connect (scroll_begin_cb);
         scroll_controller.scroll_end.connect (scroll_end_cb);
-        ((Widget)this).add_controller (this.scroll_controller);
+        scroll_controller.set_propagation_limit (PropagationLimit.NONE);
+        ((Widget)this).add_controller (scroll_controller);
 
-        long_press_controller = new GestureLongPress ();
-        long_press_controller.pressed.connect (long_press_cb);
-        ((Widget)this).add_controller (this.long_press_controller);
-
-        this.close_request.connect (close_cb);
+        close_request.connect (close_cb);
     }
 
     static construct
@@ -413,33 +423,28 @@ public class SudokuWindow : Adw.ApplicationWindow
             gesture.get_current_button () != BUTTON_SECONDARY)
             return;
 
-        view?.dismiss_picker ();
+        if (current_screen != SudokuWindowScreen.MENU)
+            view.dismiss_picker ();
+
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 
-    private void button_pressed_cb (GestureClick gesture,
-                                    int          n_press,
-                                    double       x,
-                                    double       y)
+
+    private void backwards_pressed_cb (GestureClick gesture,
+                                      int          n_press,
+                                      double       x,
+                                      double       y)
     {
-        const int MOUSE_BACKWARD = 8;
-        const int MOUSE_FORWARD = 9;
-        if (gesture.get_current_button () == MOUSE_BACKWARD)
-        {
-            ((Widget)this).activate_action ("app.undo", null);
-            gesture.set_state (EventSequenceState.CLAIMED);
-        }
-        else if (gesture.get_current_button () == MOUSE_FORWARD)
-        {
-            ((Widget)this).activate_action ("app.redo", null);
-            gesture.set_state (EventSequenceState.CLAIMED);
-        }
+        ((Widget)this).activate_action ("app.undo", null);
+        gesture.set_state (EventSequenceState.CLAIMED);
     }
 
-    private void long_press_cb (GestureLongPress gesture,
-                                double           x,
-                                double           y)
+    private void forwards_pressed_cb (GestureClick gesture,
+                                      int          n_press,
+                                      double       x,
+                                      double       y)
     {
+        ((Widget)this).activate_action ("app.redo", null);
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 

@@ -58,10 +58,6 @@ public class SudokuView : Adw.Bin
         this.game = game;
         this.settings = settings;
 
-        this.vexpand = true;
-        this.focusable = true;
-        this.can_focus = true;
-
         if (game.mode == GameMode.CREATE)
             this._show_warnings = true;
         else
@@ -76,6 +72,7 @@ public class SudokuView : Adw.Bin
         this.highlight_block = settings.get_boolean ("highlight-block");
         this.highlight_numbers = settings.get_boolean ("highlight-numbers");
         this.zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
+        this.vexpand = true;
 
         this.update_zoom ();
 
