@@ -252,11 +252,6 @@ public class SudokuBoard : Object
                 && occurrences_in_block[row / block_cols, col / block_rows, val - 1] == 0);
     }
 
-    public int count_possibilities (int row, int col)
-    {
-        return get_possibilities(row, col).length;
-    }
-
     public int[] get_possibilities (int row, int col)
     {
         if (cells [row, col] != 0)
@@ -284,11 +279,6 @@ public class SudokuBoard : Object
             possibilities[l - 1] = is_possible (row, col, l);
 
         return possibilities;
-    }
-
-    public Coord get_block_for(int row, int col)
-    {
-        return Coord(row / block_rows, col / block_cols);
     }
 
     public void insert (int row, int col, int val, bool is_fixed = false)
@@ -441,21 +431,6 @@ public class SudokuBoard : Object
         return occurrences;
     }
 
-    public bool row_contains (int row, int val)
-    {
-        return occurrences_in_row[row, val - 1] > 0;
-    }
-
-    public bool col_contains (int col, int val)
-    {
-        return occurrences_in_col[col, val - 1] > 0;
-    }
-
-    public bool block_contains (int row_block, int col_block, int val)
-    {
-        return occurrences_in_block[row_block, col_block, val - 1] > 0;
-    }
-
     private void remove_breakages_for (Gee.List<Coord?> coords, int val)
     {
         foreach (Coord coord in coords)
@@ -475,14 +450,6 @@ public class SudokuBoard : Object
         Set<Coord?> occurrences = get_occurrences (coords, val);
         if (occurrences.size != 1)
             broken_coords.add_all (occurrences);
-    }
-
-    public void to_initial_state ()
-    {
-        for (var l1 = 0; l1 < rows; l1++)
-            for (var l2 = 0; l2 < cols; l2++)
-                if (!is_fixed[l1, l2])
-                    remove (l1, l2);
     }
 
     public void print (int indent = 0)
@@ -628,13 +595,6 @@ public class SudokuBoard : Object
     }
 }
 
-public enum House
-{
-    ROW,
-    COLUMN,
-    BLOCK
-}
-
 public struct Coord
 {
     public int row;
@@ -654,28 +614,6 @@ public struct Coord
     public static bool equal (Coord a, Coord b)
     {
         return ((a.row == b.row) && (a.col == b.col));
-    }
-}
-
-public struct Cell
-{
-    public Coord coord;
-    public int val;
-
-    public Cell(Coord coord, int val)
-    {
-        this.coord = coord;
-        this.val = val;
-    }
-
-    public static int hash (Cell cell)
-    {
-        return (Coord.hash(cell.coord) * 33) ^ cell.val;
-    }
-
-    public static bool equal (Cell a, Cell b)
-    {
-        return (Coord.equal(a.coord, b.coord) && (a.val == b.val));
     }
 }
 
