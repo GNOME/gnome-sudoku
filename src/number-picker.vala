@@ -21,14 +21,14 @@
 
 using Gtk;
 
-public class NumberPicker : Popover
+public class SudokuNumberPicker : Popover
 {
     private ValuePicker value_picker;
     private EarmarkPicker earmark_picker;
 
     public NumberPickerState state;
 
-    public NumberPicker (SudokuGame game)
+    public SudokuNumberPicker (SudokuGame game)
     {
         value_picker = new ValuePicker(game, this);
         earmark_picker = new EarmarkPicker(game, this);
@@ -87,16 +87,16 @@ public class NumberPicker : Popover
     }
 }
 
-public abstract class Picker : Grid
+public abstract class PickerBase : Grid
 {
-    protected unowned NumberPicker number_picker;
+    protected unowned SudokuNumberPicker number_picker;
 
     protected SudokuCell cell;
     protected SudokuGame game;
 
     protected Button clear_button;
 
-    Picker (SudokuGame game, NumberPicker number_picker)
+    PickerBase (SudokuGame game, SudokuNumberPicker number_picker)
     {
         this.game = game;
         this.number_picker = number_picker;
@@ -144,11 +144,11 @@ public abstract class Picker : Grid
     }
 }
 
-private class ValuePicker : Picker
+private class ValuePicker : PickerBase
 {
     private Button[] value_buttons;
 
-    public ValuePicker (SudokuGame game, NumberPicker number_picker)
+    public ValuePicker (SudokuGame game, SudokuNumberPicker number_picker)
     {
         base (game, number_picker);
         value_buttons = new Button [game.board.block_cols * game.board.block_rows];
@@ -217,11 +217,11 @@ private class ValuePicker : Picker
     }
 }
 
-private class EarmarkPicker : Picker
+private class EarmarkPicker : PickerBase
 {
     private ToggleButton[] earmark_buttons;
 
-    public EarmarkPicker (SudokuGame game, NumberPicker number_picker)
+    public EarmarkPicker (SudokuGame game, SudokuNumberPicker number_picker)
     {
         base (game, number_picker);
         earmark_buttons = new ToggleButton [game.board.block_cols * game.board.block_rows];

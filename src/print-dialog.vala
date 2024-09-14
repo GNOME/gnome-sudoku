@@ -22,7 +22,7 @@
 using Gtk;
 
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/print-dialog.ui")]
-public class PrintDialog : Adw.Dialog
+public class SudokuPrintDialog : Adw.Dialog
 {
     private SudokuSaver saver;
     private GLib.Settings settings;
@@ -39,7 +39,7 @@ public class PrintDialog : Adw.Dialog
     private const string DIFFICULTY_KEY_NAME = "print-multiple-sudoku-difficulty";
     private const int MAX_PUZZLES_PER_PAGE = 15;
 
-    public PrintDialog (SudokuSaver saver, SudokuWindow window)
+    public SudokuPrintDialog (SudokuSaver saver, SudokuWindow window)
     {
         this.window = window;
         this.saver = saver;

@@ -476,7 +476,7 @@ public class Sudoku : Adw.Application
 
     private void print_multiple_cb ()
     {
-        var print_dialog = new PrintDialog (saver, window);
+        var print_dialog = new SudokuPrintDialog (saver, window);
         add_transient_hooks (print_dialog);
         print_dialog.present (window);
     }

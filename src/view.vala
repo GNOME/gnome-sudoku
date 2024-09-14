@@ -41,7 +41,7 @@ public class SudokuView : Adw.Bin
     public double value_zoom_multiplier;
     public ZoomLevel zoom_level;
 
-    public NumberPicker number_picker;
+    public SudokuNumberPicker number_picker;
 
     public int selected_row { get; private set; default = 0; }
     public int selected_col { get; private set; default = 0; }
@@ -85,7 +85,7 @@ public class SudokuView : Adw.Bin
         overlay.add_overlay (paused_label);
         overlay.add_css_class ("paused");
 
-        number_picker = new NumberPicker (game);
+        number_picker = new SudokuNumberPicker (game);
 
         this.game.paused_changed.connect(() => {
             // Set Font Size
