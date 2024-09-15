@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-02-10 22:42+0000\n"
-"PO-Revision-Date: 2024-02-25 11:33+0100\n"
+"POT-Creation-Date: 2024-09-15 15:08+0000\n"
+"PO-Revision-Date: 2024-09-15 17:37+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/sudoku-window.ui:7
 msgid "_New Puzzle…"
@@ -35,7 +35,7 @@ msgstr "Skapa anpassat spel…"
 msgid "_Clear Board…"
 msgstr "_Töm bräde…"
 
-#: data/sudoku-window.ui:21 data/print-dialog.ui:77
+#: data/sudoku-window.ui:21 data/print-dialog.ui:71
 msgid "_Print"
 msgstr "Skriv _ut"
 
@@ -68,8 +68,8 @@ msgid "_About Sudoku"
 msgstr "_Om Sudoku"
 
 #: data/sudoku-window.ui:60 data/sudoku-window.ui:68
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:535
-#: src/sudoku-window.vala:276
+#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:524
+#: src/sudoku-window.vala:286
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -85,35 +85,39 @@ msgstr "Gör om åtgärd"
 msgid "Back"
 msgstr "Bakåt"
 
-#: data/sudoku-window.ui:111
+#: data/sudoku-window.ui:112
+msgid "Leave Fullscreen"
+msgstr "Lämna helskärmsläge"
+
+#: data/sudoku-window.ui:126
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: data/sudoku-window.ui:130
+#: data/sudoku-window.ui:145
 msgid "Play Custom Puzzle"
 msgstr "Spela anpassat pussel"
 
-#: data/sudoku-window.ui:156
+#: data/sudoku-window.ui:171
 msgid "Select Game Difficulty"
 msgstr "Välj svårighetsgrad på spelet"
 
-#: data/sudoku-window.ui:171
+#: data/sudoku-window.ui:188
 msgid "_Easy"
 msgstr "_Enkel"
 
-#: data/sudoku-window.ui:183
+#: data/sudoku-window.ui:202
 msgid "_Medium"
 msgstr "_Medel"
 
-#: data/sudoku-window.ui:195
+#: data/sudoku-window.ui:216
 msgid "_Hard"
 msgstr "S_vår"
 
-#: data/sudoku-window.ui:207
+#: data/sudoku-window.ui:230
 msgid "_Very Hard"
 msgstr "M_ycket svår"
 
-#: data/sudoku-window.ui:218
+#: data/sudoku-window.ui:241
 msgid "_Start Game"
 msgstr "_Starta spel"
 
@@ -157,6 +161,10 @@ msgstr ""
 #: data/org.gnome.Sudoku.appdata.xml.in:30
 msgid "A GNOME sudoku game preview"
 msgstr "En förhandsvisning av GNOME Sudoku"
+
+#: data/org.gnome.Sudoku.appdata.xml.in:34
+msgid "A GNOME sudoku game preview in dark mode"
+msgstr "En förhandsvisning i mörkt läge av GNOME Sudoku"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Sudoku.desktop.in:6
@@ -204,10 +212,14 @@ msgstr ""
 "dubblerade nummer markeras i rött"
 
 #: data/org.gnome.Sudoku.gschema.xml:33
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr "Initiera öronmärkningen med möjliga värden för varje ruta"
+
+#: data/org.gnome.Sudoku.gschema.xml:37
 msgid "Additionally warn when correct solution is violated or not earmarked"
 msgstr "Varna dessutom när rätt lösning bryts eller inte är öronmärkt"
 
-#: data/org.gnome.Sudoku.gschema.xml:34
+#: data/org.gnome.Sudoku.gschema.xml:38
 msgid ""
 "Changes the background color of a square to red if the value does not match "
 "puzzle solution, or if no earmark matches the puzzle solution"
@@ -216,33 +228,33 @@ msgstr ""
 "pussellösningen eller om det inte finns något öronmärke som matchar "
 "pussellösningen"
 
-#: data/org.gnome.Sudoku.gschema.xml:38
+#: data/org.gnome.Sudoku.gschema.xml:42
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Markera rad, kolumn och kvadrat som innehåller den valda rutan"
 
-#: data/org.gnome.Sudoku.gschema.xml:42
+#: data/org.gnome.Sudoku.gschema.xml:46
 msgid "The puzzle's difficulty"
 msgstr "Pusslets svårighetsgrad"
 
-#: data/org.gnome.Sudoku.gschema.xml:46
+#: data/org.gnome.Sudoku.gschema.xml:50
 msgid "Toggle timer and pause buttons"
 msgstr "Visa/dölj tidtagar- och pausknappar"
 
-#: data/org.gnome.Sudoku.gschema.xml:50
+#: data/org.gnome.Sudoku.gschema.xml:54
 msgid "Width of the window in pixels"
 msgstr "Bredden på fönstret i bildpunkter"
 
-#: data/org.gnome.Sudoku.gschema.xml:54
+#: data/org.gnome.Sudoku.gschema.xml:58
 msgid "Height of the window in pixels"
 msgstr "Höjden på fönstret i bildpunkter"
 
-#: data/org.gnome.Sudoku.gschema.xml:58
+#: data/org.gnome.Sudoku.gschema.xml:62
 msgid "true if the window is maximized"
 msgstr "sant om fönstret är maximerat"
 
-#: data/org.gnome.Sudoku.gschema.xml:62
-msgid "Initialize the earmarks with the possible values for each cell"
-msgstr "Initiera öronmärkningen med möjliga värden för varje ruta"
+#: data/org.gnome.Sudoku.gschema.xml:66
+msgid "true if the window is fullscreen"
+msgstr "sant om fönstret är i helskärmsläge"
 
 #: data/print-dialog.ui:5
 msgid "Print Multiple Puzzles"
@@ -276,99 +288,94 @@ msgstr "Svår"
 msgid "Very Hard"
 msgstr "Mycket svår"
 
-#: lib/sudoku-board.vala:694
+#: lib/sudoku-board.vala:691
 msgid "Unknown Difficulty"
 msgstr "Okänd svårighetsgrad"
 
-#: lib/sudoku-board.vala:696
+#: lib/sudoku-board.vala:693
 msgid "Easy Difficulty"
 msgstr "Enkel svårighetsgrad"
 
-#: lib/sudoku-board.vala:698
+#: lib/sudoku-board.vala:695
 msgid "Medium Difficulty"
 msgstr "Medelsvår svårighetsgrad"
 
-#: lib/sudoku-board.vala:700
+#: lib/sudoku-board.vala:697
 msgid "Hard Difficulty"
 msgstr "Svår svårighetsgrad"
 
-#: lib/sudoku-board.vala:702
+#: lib/sudoku-board.vala:699
 msgid "Very Hard Difficulty"
 msgstr "Mycket svår svårighetsgrad"
 
-#: lib/sudoku-board.vala:704
+#: lib/sudoku-board.vala:701
 msgid "Custom Puzzle"
 msgstr "Anpassat pussel"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:81
+#: src/gnome-sudoku.vala:82
 msgid "Show release version"
 msgstr "Visa utgåvans version"
 
-#. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:85
-msgid "Show the possible values for each cell"
-msgstr "Visa möjliga värden för varje ruta"
-
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:265
+#: src/gnome-sudoku.vala:267
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Pusslet som du har angivit är inte ett giltigt Sudoku."
 
-#: src/gnome-sudoku.vala:265
+#: src/gnome-sudoku.vala:267
 msgid "Please enter a valid puzzle."
 msgstr "Ange ett giltigt pussel."
 
-#: src/gnome-sudoku.vala:266 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:268 src/sudoku-printer.vala:46
 msgid "Close"
 msgstr "Stäng"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:274
+#: src/gnome-sudoku.vala:276
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Pusslet som du har angivit har flera lösningar."
 
-#: src/gnome-sudoku.vala:274
+#: src/gnome-sudoku.vala:276
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Giltiga Sudokupussel har exakt en lösning."
 
-#: src/gnome-sudoku.vala:275
+#: src/gnome-sudoku.vala:277
 msgid "_Back"
 msgstr "_Bakåt"
 
-#: src/gnome-sudoku.vala:276
+#: src/gnome-sudoku.vala:278
 msgid "Play _Anyway"
 msgstr "Spela i _alla fall"
 
-#: src/gnome-sudoku.vala:329
+#: src/gnome-sudoku.vala:328
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Bra gjort, du lade pusslet på %d minut!"
 msgstr[1] "Bra gjort, du lade pusslet på %d minuter!"
 
-#: src/gnome-sudoku.vala:337
+#: src/gnome-sudoku.vala:336
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/gnome-sudoku.vala:338
+#: src/gnome-sudoku.vala:337
 msgid "Play _Again"
 msgstr "S_pela igen"
 
-#: src/gnome-sudoku.vala:452
+#: src/gnome-sudoku.vala:443
 msgid "Reset the board to its original state?"
 msgstr "Återställ brädet till dess ursprungliga tillstånd?"
 
-#: src/gnome-sudoku.vala:453
+#: src/gnome-sudoku.vala:444
 msgid "No"
 msgstr "Nej"
 
-#: src/gnome-sudoku.vala:454
+#: src/gnome-sudoku.vala:445
 msgid "Yes"
 msgstr "Ja"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:532
+#: src/gnome-sudoku.vala:521
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -379,7 +386,7 @@ msgstr ""
 "\n"
 "Pussel genererade av QQwing %s"
 
-#: src/gnome-sudoku.vala:542
+#: src/gnome-sudoku.vala:531
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -393,7 +400,7 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/number-picker.vala:87
+#: src/number-picker.vala:98
 msgid "Clear"
 msgstr "Rensa"
 
@@ -402,21 +409,24 @@ msgstr "Rensa"
 msgid "Error printing file:"
 msgstr "Fel vid utskrift av fil:"
 
-#: src/sudoku-window.vala:194
+#: src/sudoku-window.vala:204
 msgid "Select Difficulty"
 msgstr "Välj svårighetsgrad"
 
-#: src/sudoku-window.vala:278
+#: src/sudoku-window.vala:288
 msgid "Create Puzzle"
 msgstr "Skapa pussel"
 
-#: src/sudoku-window.vala:285
+#: src/sudoku-window.vala:295
 msgid "Play"
 msgstr "Spela"
 
-#: src/sudoku-window.vala:285
+#: src/sudoku-window.vala:295
 msgid "Pause"
 msgstr "Pausa"
+
+#~ msgid "Show the possible values for each cell"
+#~ msgstr "Visa möjliga värden för varje ruta"
 
 #~ msgid "The GNOME Project"
 #~ msgstr "GNOME-projektet"
