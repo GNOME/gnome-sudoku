@@ -1,14 +1,14 @@
 # Hungarian translation for gnome-sudoku help.
-# Copyright (C) 2013, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2023 Free Software Foundation, Inc.
+# Copyright (C) 2013, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-sudoku package.
 #
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2014, 2015, 2017.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2014, 2015, 2018, 2019, 2020, 2021, 2023.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2014, 2015, 2018, 2019, 2020, 2021, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
-"POT-Creation-Date: 2023-09-15 00:57+0000\n"
-"PO-Revision-Date: 2023-09-19 21:13+0200\n"
+"POT-Creation-Date: 2024-09-15 16:50+0000\n"
+"PO-Revision-Date: 2024-09-16 13:24+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -16,14 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
 "Kelemen Gábor <kelemeng at gnome dot hu>, 2013.\n"
-"Úr Balázs <ur.balazs at fsf dot hu>, 2014, 2015, 2018, 2019, 2020, 2023."
+"Úr Balázs <ur.balazs at fsf dot hu>, 2014, 2015, 2018, 2019, 2020, 2023, 2024."
 
 #. (itstool) path: credit/name
 #: C/basics.page:9 C/earmarks.page:14 C/keyboard-shortcuts.page:10
@@ -470,76 +470,88 @@ msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/keyboard-shortcuts.page:35
+#| msgid "Reset game"
+msgid "Pause game"
+msgstr "Játék szüneteltetése"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:36
+#| msgid "<key>F1</key>"
+msgid "<key>P</key>"
+msgstr "<key>P</key>"
+
+#. (itstool) path: td/p
+#: C/keyboard-shortcuts.page:39
 msgid "Reset game"
 msgstr "Játék visszaállítása"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:36
+#: C/keyboard-shortcuts.page:40
 msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:39
+#: C/keyboard-shortcuts.page:43
 msgid "Close the sudoku window"
 msgstr "A Sudoku ablak bezárása"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:40
+#: C/keyboard-shortcuts.page:44
 msgid "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 
 #. (itstool) path: section/title
-#: C/keyboard-shortcuts.page:45
+#: C/keyboard-shortcuts.page:49
 msgid "Other"
 msgstr "Egyéb"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:48
+#: C/keyboard-shortcuts.page:52
 msgid "Print displayed puzzle"
 msgstr "A megjelenített feladvány kinyomtatása"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:49
+#: C/keyboard-shortcuts.page:53
 msgid "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:52
+#: C/keyboard-shortcuts.page:56
 msgid "Undo"
 msgstr "Visszavonás"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:53
+#: C/keyboard-shortcuts.page:57
 msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:56
+#: C/keyboard-shortcuts.page:60
 msgid "Redo"
 msgstr "Mégis"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:57
+#: C/keyboard-shortcuts.page:61
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:60
+#: C/keyboard-shortcuts.page:64
 msgid "Add a number to the earmarks of a cell"
 msgstr "Szám hozzáadása a cella számjegyzetéhez"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:61
+#: C/keyboard-shortcuts.page:65
 msgid "<keyseq><key>Ctrl</key><key>1-9</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>1-9</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:64
+#: C/keyboard-shortcuts.page:68
 msgid "Open Help"
 msgstr "Súgó megnyitása"
 
 #. (itstool) path: td/p
-#: C/keyboard-shortcuts.page:65
+#: C/keyboard-shortcuts.page:69
 msgid "<key>F1</key>"
 msgstr "<key>F1</key>"
 
@@ -1017,3 +1029,4 @@ msgid ""
 msgstr ""
 "Ennek alternatívájaként megkeresheti a nemzetközi fordítócsapatot a <link "
 "href=\"https://discourse.gnome.org/tag/i18n\">GNOME Discourse</link> fórumon."
+
