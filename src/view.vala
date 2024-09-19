@@ -251,8 +251,7 @@ public class SudokuView : Adw.Bin
 
             case Key.space : case Key.Return : case Key.KP_Enter:
                 bool wants_value = state != ModifierType.CONTROL_MASK;
-                if (earmark_mode)
-                    wants_value = !wants_value;
+                wants_value = wants_value ^ earmark_mode;
 
                 if (wants_value)
                     number_picker.show_value_picker (selected_cell);
@@ -528,8 +527,7 @@ public class SudokuView : Adw.Bin
     {
         number_picker.popdown ();
         bool wants_value = state != ModifierType.CONTROL_MASK;
-        if (earmark_mode)
-            wants_value = !wants_value;
+        wants_value = wants_value ^ earmark_mode;
 
         if (wants_value)
         {

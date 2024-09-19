@@ -215,8 +215,7 @@ public class SudokuCell : Widget
         state = gesture.get_current_event_state ();
 
         bool wants_value = !(bool)(state & Gdk.ModifierType.CONTROL_MASK);
-        if (view.earmark_mode)
-            wants_value = !wants_value;
+        wants_value = wants_value ^ view.earmark_mode;
 
         if (gesture.get_current_button () == BUTTON_PRIMARY)
         {
