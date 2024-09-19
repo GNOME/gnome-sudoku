@@ -13,16 +13,16 @@ sudokucell {
   background: shade(var(--sudoku-dark-grey), 0.59);
 }
 sudokucell.highlight-coord {
-  background: shade(var(--sudoku-dark-grey), 0.72);
+  background: color-mix(in oklab, var(--accent-bg-color) 10%, var(--sudoku-dark-grey), 0.59));
 }
 sudokucell.selected {
-  background: shade(@accent_bg_color, 0.7);
+  background: oklch(from var(--accent-bg-color) calc(l * 0.7) calc(c * 0.5) h);
+}
+sudokucell.highlight-number {
+  background: oklch(from var(--accent-bg-color) calc(l * 0.6) calc(c * 0.25) h);
 }
 sudokucell.fixed {
   background: shade(var(--sudoku-dark-grey), 0.45);
-}
-sudokucell.highlight-number {
-  background: shade(@accent_bg_color, 0.5);
 }
 sudokucell.paused {
   background: shade(var(--sudoku-dark-grey), 0.59);

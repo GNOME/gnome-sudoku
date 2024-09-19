@@ -12,14 +12,14 @@ sudokucell {
 label {
   color: @view_fg_color;
 }
-sudokucell.selected {
-  background: shade(@accent_bg_color, 1.3);
-}
 sudokucell.highlight-coord {
-  background: #EDEDED;
+  background: color-mix(in oklab, var(--accent-bg-color) 10%, var(--view-bg-color));
+}
+sudokucell.selected {
+  background: oklch(from var(--accent-bg-color) calc(l * 1.3) c h);
 }
 sudokucell.highlight-number {
-  background: shade(@accent_bg_color, 1.5);
+  background: oklch(from var(--accent-bg-color) calc(l * 1.4) calc(c * 0.5) h);
 }
 label.earmark.highlight-number {
   /* reduce red to diffentiate from warnings */
