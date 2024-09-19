@@ -1,19 +1,19 @@
 /*contains styles only used when AdwStyleManager:dark is TRUE.*/
 :root {
-  --sudoku-dark-grey: #747474;
+  --sudoku-dark-grey: oklch(39% 0 0);
 }
 grid.board {
   border: none;
-  background: var(--sudoku-dark-grey);
+  background: oklch(56% 0 0);
 }
 grid.block {
-  background: shade(var(--sudoku-dark-grey), 0.79);
+  background: oklch(47% 0 0);
 }
 sudokucell {
-  background: shade(var(--sudoku-dark-grey), 0.59);
+  background: var(--sudoku-dark-grey);
 }
 sudokucell.highlight-coord {
-  background: color-mix(in oklab, var(--accent-bg-color) 10%, var(--sudoku-dark-grey), 0.59));
+  background: color-mix(in oklab, var(--accent-bg-color) 10%, var(--sudoku-dark-grey));
 }
 sudokucell.selected {
   background: oklch(from var(--accent-bg-color) calc(l * 0.7) calc(c * 0.5) h);
@@ -22,8 +22,8 @@ sudokucell.highlight-number {
   background: oklch(from var(--accent-bg-color) calc(l * 0.6) calc(c * 0.25) h);
 }
 sudokucell.fixed {
-  background: shade(var(--sudoku-dark-grey), 0.45);
+  background: oklch(32% 0 0);
 }
 sudokucell.paused {
-  background: shade(var(--sudoku-dark-grey), 0.59);
+  background: var(--sudoku-dark-grey);
 }
