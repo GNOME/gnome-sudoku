@@ -4,7 +4,7 @@ Gnome Sudoku is a digitalized version of [Sudoku](https://en.wikipedia.org/wiki/
 
 You can find out more about the project at the [wiki's homepage](https://gitlab.gnome.org/GNOME/gnome-sudoku/-/wikis/home).
 
-# Getting Gnome Sudoku
+# Getting GNOME Sudoku
 
 - Gnome Sudoku is available in most distributions' repositories as `gnome-sudoku`.
 
@@ -16,10 +16,12 @@ You can find out more about the project at the [wiki's homepage](https://gitlab.
 
 - [Building Gnome Sudoku](https://gitlab.gnome.org/GNOME/gnome-sudoku/-/wikis/build).
 
-# Contributing to Gnome Sudoku
+# Contributing to GNOME Sudoku
 
 - [Report issues](https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/)
 
 - [Translate](https://l10n.gnome.org/module/gnome-sudoku/)
+
+- [Contribute Code](https://gitlab.gnome.org/GNOME/gnome-sudoku/-/wikis/code)
 
 - [Donate](https://www.gnome.org/donate/)
