@@ -73,6 +73,7 @@ public class SudokuView : Adw.Bin
         this.highlight_numbers = settings.get_boolean ("highlight-numbers");
         this.zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
         this.vexpand = true;
+        this.focusable = true;
 
         this.update_zoom ();
 
