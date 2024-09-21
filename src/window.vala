@@ -195,7 +195,8 @@ public class SudokuWindow : Adw.ApplicationWindow
         window_height = settings.get_int ("window-height");
         window_is_maximized = settings.get_boolean ("window-is-maximized");
         window_is_fullscreen = settings.get_boolean ("window-is-fullscreen");
-        show_timer = settings.get_boolean ("show-timer");
+
+        settings.bind ("show-timer", this, "show-timer", SettingsBindFlags.GET);
 
         int headerbar_natural_height;
         headerbar.measure (Orientation.VERTICAL, -1, null, out headerbar_natural_height, null, null);

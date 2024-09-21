@@ -122,17 +122,9 @@ public class Sudoku : Adw.Application
 
         settings = new GLib.Settings ("org.gnome.Sudoku");
         var action = settings.create_action ("show-warnings");
-        action.notify["state"].connect (() => {
-            if (view != null && game.mode == GameMode.PLAY)
-                view.show_warnings = settings.get_boolean ("show-warnings");
-        });
         add_action (action);
 
         action = settings.create_action ("highlighter");
-        action.notify["state"].connect (() => {
-            if (view != null)
-                view.highlighter = settings.get_boolean ("highlighter");
-        });
         add_action (action);
 
         set_accels_for_action ("app.quit", {"<Primary>q"});
@@ -557,8 +549,6 @@ public class Sudoku : Adw.Application
         zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
         zoom_level = zoom_level.zoom_in ();
         settings.set_enum ("zoom-level", zoom_level);
-        if (view != null)
-            view.update_zoom (zoom_level);
         if (zoom_level.is_fully_zoomed_in ())
             zoom_in_action.set_enabled (false);
 
@@ -571,8 +561,6 @@ public class Sudoku : Adw.Application
         zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
         zoom_level = zoom_level.zoom_out ();
         settings.set_enum ("zoom-level", zoom_level);
-        if (view != null)
-            view.update_zoom (zoom_level);
         if (zoom_level.is_fully_zoomed_out ())
             zoom_out_action.set_enabled (false);
 
@@ -584,9 +572,6 @@ public class Sudoku : Adw.Application
         settings.reset ("zoom-level");
         ZoomLevel zoom_level;
         zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
-        if (view != null)
-            view.update_zoom (zoom_level);
-
         zoom_in_action.set_enabled (true);
         zoom_out_action.set_enabled (true);
     }

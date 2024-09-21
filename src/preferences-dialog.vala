@@ -40,76 +40,20 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
     {
         this.window = window;
 
-        show_timer.set_active (window.settings.get_boolean ("show-timer"));
-        show_earmark_warnings.set_active (window.settings.get_boolean ("show-earmark-warnings"));
-        show_possibilities.set_active (window.settings.get_boolean ("show-possibilities"));
-        number_picker_second_click.set_active (window.settings.get_boolean ("number-picker-second-click"));
-        solution_warnings.set_active (window.settings.get_boolean ("solution-warnings"));
-        autoclean_earmarks.set_active (window.settings.get_boolean ("autoclean-earmarks"));
-        highlight_row_column.set_active (window.settings.get_boolean ("highlight-row-column"));
-        highlight_block.set_active (window.settings.get_boolean ("highlight-block"));
-        highlight_numbers.set_active (window.settings.get_boolean ("highlight-numbers"));
-
-        show_earmark_warnings.notify["active"].connect (() => {
-            bool value = show_earmark_warnings.get_active ();
-            this.window.settings.set_boolean ("show-earmark-warnings",  value);
-            if (this.window.view != null)
-                this.window.view.show_earmark_warnings = value;
-        });
+        this.window.settings.bind ("show-timer", show_timer, "active", SettingsBindFlags.DEFAULT);
+        this.window.settings.bind ("show-earmark-warnings", show_earmark_warnings, "active", SettingsBindFlags.DEFAULT);
+        this.window.settings.bind ("show-possibilities", show_possibilities, "active", SettingsBindFlags.DEFAULT);
+        this.window.settings.bind ("number-picker-second-click", number_picker_second_click, "active", SettingsBindFlags.DEFAULT);
+        this.window.settings.bind ("solution-warnings", solution_warnings, "active", SettingsBindFlags.DEFAULT);
+        this.window.settings.bind ("autoclean-earmarks", autoclean_earmarks, "active", SettingsBindFlags.DEFAULT);
+        this.window.settings.bind ("highlight-row-column", highlight_row_column, "active", SettingsBindFlags.DEFAULT);
+        this.window.settings.bind ("highlight-block", highlight_block, "active", SettingsBindFlags.DEFAULT);
+        this.window.settings.bind ("highlight-numbers", highlight_numbers, "active", SettingsBindFlags.DEFAULT);
 
         show_possibilities.notify["active"].connect (() => {
             bool value = show_possibilities.get_active ();
-            this.window.settings.set_boolean ("show-possibilities",  value);
             if (this.window.view != null)
                 this.window.view.show_possibilities = value;
-        });
-
-        autoclean_earmarks.notify["active"].connect (() => {
-            bool value = autoclean_earmarks.get_active ();
-            this.window.settings.set_boolean ("autoclean-earmarks",  value);
-            if (this.window.view != null)
-                this.window.view.autoclean_earmarks = value;
-        });
-
-        number_picker_second_click.notify["active"].connect (() => {
-            bool value = number_picker_second_click.get_active ();
-            this.window.settings.set_boolean ("number-picker-second-click",  value);
-            if (this.window.view != null)
-                this.window.view.number_picker_second_click = value;
-        });
-
-        solution_warnings.notify["active"].connect (() => {
-            bool value = solution_warnings.get_active ();
-            this.window.settings.set_boolean ("solution-warnings",  value);
-            if (this.window.view != null)
-                this.window.view.solution_warnings = value;
-        });
-
-        show_timer.notify["active"].connect (() => {
-            bool value = show_timer.get_active ();
-            this.window.settings.set_boolean ("show-timer", value);
-            this.window.show_timer = value;
-        });
-
-        highlight_row_column.notify["active"].connect (() => {
-            bool value = highlight_row_column.get_active ();
-            this.window.settings.set_boolean ("highlight-row-column",  value);
-            if (this.window.view != null)
-                this.window.view.highlight_row_column = value;
-        });
-
-        highlight_block.notify["active"].connect (() => {
-            bool value = highlight_block.get_active ();
-            this.window.settings.set_boolean ("highlight-block", value);
-            if (this.window.view != null)
-                this.window.view.highlight_block = value;
-        });
-
-        highlight_numbers.notify["active"].connect (() => {
-            bool value = highlight_numbers.get_active ();
-            this.window.settings.set_boolean ("highlight-numbers", value);
-            if (this.window.view != null)
-                this.window.view.highlight_numbers = value;
         });
     }
 

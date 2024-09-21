@@ -32,16 +32,15 @@ public class SudokuView : Adw.Bin
     private SudokuFrame frame;
     private Label paused_label;
 
-    public bool earmark_mode = false;
-    public bool autoclean_earmarks;
-    public bool number_picker_second_click;
-    public bool highlight_row_column;
-    public bool highlight_block;
-    public bool highlight_numbers;
-    public double value_zoom_multiplier;
-    public ZoomLevel zoom_level;
-
     public SudokuNumberPicker number_picker;
+
+    public bool earmark_mode { get; set; default = false; }
+    public bool autoclean_earmarks { get; set; }
+    public bool number_picker_second_click { get; set; }
+    public bool highlight_row_column { get; set; }
+    public bool highlight_block { get; set; }
+    public bool highlight_numbers { get; set; }
+    public double value_zoom_multiplier { get; private set; }
 
     public int selected_row { get; private set; default = 0; }
     public int selected_col { get; private set; default = 0; }
@@ -61,21 +60,21 @@ public class SudokuView : Adw.Bin
         if (game.mode == GameMode.CREATE)
             this._show_warnings = true;
         else
-            this._show_warnings = settings.get_boolean ("show-warnings");
-        this._show_possibilities = settings.get_boolean ("show-possibilities");
-        this._solution_warnings = settings.get_boolean ("solution-warnings");
-        this._show_earmark_warnings = settings.get_boolean ("show-earmark-warnings");
-        this._highlighter = settings.get_boolean ("highlighter");
-        this.number_picker_second_click = settings.get_boolean ("number-picker-second-click");
-        this.autoclean_earmarks = settings.get_boolean ("autoclean-earmarks");
-        this.highlight_row_column = settings.get_boolean ("highlight-row-column");
-        this.highlight_block = settings.get_boolean ("highlight-block");
-        this.highlight_numbers = settings.get_boolean ("highlight-numbers");
-        this.zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
+            settings.bind ("show-warnings", this, "show-warnings", SettingsBindFlags.GET);
+
+        settings.bind ("solution-warnings", this, "solution-warnings", SettingsBindFlags.GET);
+        settings.bind ("show-earmark-warnings", this, "show-earmark-warnings", SettingsBindFlags.GET);
+        settings.bind ("autoclean-earmarks", this, "autoclean-earmarks", SettingsBindFlags.GET);
+        settings.bind ("number-picker-second-click", this, "number-picker-second-click", SettingsBindFlags.GET);
+        settings.bind ("highlighter", this, "highlighter", SettingsBindFlags.GET);
+        settings.bind ("highlight-row-column", this, "highlight-row-column", SettingsBindFlags.GET);
+        settings.bind ("highlight-block", this, "highlight-block", SettingsBindFlags.GET);
+        settings.bind ("highlight-numbers", this, "highlight-numbers", SettingsBindFlags.GET);
+        settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.GET);
+        settings.bind ("show-possibilities", this, "show-possibilities", SettingsBindFlags.GET);
+
         this.vexpand = true;
         this.focusable = true;
-
-        this.update_zoom ();
 
         var overlay = new Overlay ();
         frame = new SudokuFrame (overlay);
@@ -101,16 +100,7 @@ public class SudokuView : Adw.Bin
             paused_label.set_attributes (attr_list);
             paused_label.set_visible (this.game.paused);
 
-            if (this.game.paused)
-            {
-                mask_view ();
-                clear_all_warnings ();
-            }
-            else
-            {
-                unmask_view ();
-                update_warnings ();
-            }
+            masked = !masked;
 
             has_selection = !this.game.paused;
         });
@@ -162,9 +152,6 @@ public class SudokuView : Adw.Bin
         key_controller = new EventControllerKey ();
         key_controller.key_pressed.connect (key_pressed_cb);
         add_controller (key_controller);
-
-        if (show_possibilities && game.mode != GameMode.CREATE && game.board.previous_played_time == 0.0)
-            game.enable_all_earmark_possibilities ();
 
         update_warnings ();
     }
@@ -331,33 +318,28 @@ public class SudokuView : Adw.Bin
         if (!highlighter)
             return;
 
-        var cell = cells[row, col];
+        var target_cell = cells?[row, col];
 
-        for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
+        foreach (var cell in cells)
         {
-            for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
+            if (cell == target_cell)
+                continue;
+
+            if (target_cell.value > 0 && highlight_numbers)
             {
-                var cell_tmp = cells[row_tmp, col_tmp];
+                if (target_cell.value == cell.value)
+                    cell.highlight_number = enabled;
+                else if (cell.value == 0)
+                    cell.set_earmark_highlight (target_cell.value, enabled);
+            }
 
-                if (cell == cell_tmp)
-                    continue;
-
-                if (cell.value > 0 && highlight_numbers)
-                {
-                    if (cell.value == cell_tmp.value)
-                        cell_tmp.highlight_number = enabled;
-                    else if (cell_tmp.value == 0)
-                        cell_tmp.set_earmark_highlight (cell.value, enabled);
-                }
-
-                if (!cell_tmp.is_fixed &&
-                   ((highlight_row_column && (row_tmp == row || col_tmp == col)) ||
-                   (highlight_block &&
-                   row_tmp / game.board.block_cols == row / game.board.block_cols &&
-                   col_tmp / game.board.block_rows == col / game.board.block_rows)))
-                {
-                    cell_tmp.highlight_coord = enabled;
-                }
+            if (!cell.is_fixed &&
+               ((highlight_row_column && (cell.row == row || cell.col == col)) ||
+               (highlight_block &&
+               cell.row / game.board.block_cols == row / game.board.block_cols &&
+               cell.col / game.board.block_rows == col / game.board.block_rows)))
+            {
+                cell.highlight_coord = enabled;
             }
         }
     }
@@ -396,57 +378,39 @@ public class SudokuView : Adw.Bin
         changed_cell.highlight_number = enabled;
     }
 
-    public void update_zoom (ZoomLevel level = zoom_level)
-    {
-        zoom_level = level;
-        switch (level)
-        {
-            case SMALL:
-                value_zoom_multiplier = 0.4;
-                break;
-            case MEDIUM:
-                value_zoom_multiplier = 0.5;
-                break;
-            case LARGE:
-                value_zoom_multiplier = 0.6;
-                break;
-        }
-        foreach (var cell in cells)
-            cell.queue_allocate ();
-    }
 
     private void update_warnings ()
     {
         if (!show_warnings)
             return;
 
-        for (var col = 0; col < game.board.cols; col++)
-            for (var row = 0; row < game.board.rows; row++)
-            {
-                cells[row, col].check_value_warnings ();
-                cells[row, col].check_earmarks_warnings ();
-            }
+        foreach (var cell in cells)
+        {
+            cell.check_value_warnings ();
+            cell.check_earmarks_warnings ();
+        }
     }
 
     private void clear_all_warnings ()
     {
-        for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
-            for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
-                cells[row_tmp, col_tmp].clear_warnings ();
+        foreach (var cell in cells)
+            cell.clear_warnings ();
     }
 
-    private void mask_view ()
+    private bool _masked = false;
+    private bool masked
     {
-        for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
-            for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
-                cells[row_tmp, col_tmp].paused = true;
-    }
+        get { return _masked; }
+        set {
+            _masked = value;
+            foreach (var cell in cells)
+                cell.paused = masked;
 
-    private void unmask_view ()
-    {
-        for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
-            for (var row_tmp = 0; row_tmp < game.board.rows; row_tmp++)
-                cells[row_tmp, col_tmp].paused = false;
+            if (value)
+                clear_all_warnings ();
+            else
+                update_warnings ();
+        }
     }
 
     private bool _show_warnings;
@@ -460,8 +424,6 @@ public class SudokuView : Adw.Bin
                 update_warnings ();
             else
                 clear_all_warnings ();
-            //refresh css rules
-            set_cell_highlighter (selected_row, selected_col, true);
          }
     }
 
@@ -491,7 +453,7 @@ public class SudokuView : Adw.Bin
         get { return _show_possibilities; }
         set {
             _show_possibilities = value;
-            if (show_possibilities && game.mode != GameMode.CREATE)
+            if (show_possibilities && game.mode != GameMode.CREATE && game.board.previous_played_time == 0.0)
                 game.enable_all_earmark_possibilities ();
             else if (game.get_current_stack_action () == StackAction.ENABLE_ALL_EARMARK_POSSIBILITIES)
                 game.undo ();
@@ -522,6 +484,32 @@ public class SudokuView : Adw.Bin
                 number_picker.popdown ();
 
             set_cell_highlighter (selected_row, selected_col, has_selection);
+        }
+    }
+
+    private ZoomLevel _zoom_level;
+    public ZoomLevel zoom_level
+    {
+        get { return _zoom_level;}
+        set {
+            _zoom_level = value;
+            switch (zoom_level)
+            {
+                case SMALL:
+                    value_zoom_multiplier = 0.4;
+                    break;
+                case MEDIUM:
+                    value_zoom_multiplier = 0.5;
+                    break;
+                case LARGE:
+                    value_zoom_multiplier = 0.6;
+                    break;
+                default:
+                    assert_not_reached ();
+            }
+
+            foreach (var cell in cells)
+                cell.queue_allocate ();
         }
     }
 
@@ -560,6 +548,7 @@ public class SudokuView : Adw.Bin
 
 public enum ZoomLevel
 {
+    NONE = 0,
     SMALL = 1,
     MEDIUM = 2,
     LARGE = 3;
