@@ -288,6 +288,7 @@ public class SudokuView : Adw.Bin
         {
             set_selected_value_highlighter (old_val, false);
             set_selected_value_highlighter (new_val, true);
+            selected_cell.highlight_number = false;
         }
         else
         {
