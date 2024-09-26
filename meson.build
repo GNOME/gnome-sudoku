@@ -44,6 +44,7 @@ adw = dependency('libadwaita-1', version: '>= 1.6')
 json_glib = dependency('json-glib-1.0')
 qqwing = dependency('qqwing', version: '>= 1.3.4')
 threads = dependency('threads')
+blueprintc = dependency('blueprint-compiler')
 
 config_include_dir = include_directories('.')
 

@@ -1,0 +1,63 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $SudokuPreferencesDialog: Adw.PreferencesDialog {
+  Adw.PreferencesPage {
+    Adw.PreferencesGroup {
+      title: C_("preferences dialog", "General");
+
+      Adw.SwitchRow show_timer {
+        title: C_("General Preferences", "_Timer and Pause Buttons");
+        use-underline: true;
+      }
+
+      Adw.SwitchRow number_picker_second_click {
+        title: C_("General Preferences", "Number Picker on _Second Click");
+        use-underline: true;
+      }
+
+      Adw.SwitchRow autoclean_earmarks {
+        title: C_("General Preferences", "Automatically _Clean Earmarks");
+        use-underline: true;
+      }
+
+      Adw.SwitchRow show_possibilities {
+        title: C_("General Preferences", "Show Earmark _Possibilities");
+        use-underline: true;
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: C_("Preferences Dialog", "Warnings");
+
+      Adw.SwitchRow solution_warnings {
+        title: C_("Warning Preferences", "Check _Against Solution");
+        use-underline: true;
+      }
+
+      Adw.SwitchRow show_earmark_warnings {
+        title: C_("Warning Preferences", "_Earmark Warnings");
+        use-underline: true;
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: C_("Preferences Dialog", "Highlighter");
+
+      Adw.SwitchRow highlight_numbers {
+        title: C_("Highlighter Preferences", "Highlight Matching _Numbers");
+        use-underline: true;
+      }
+
+      Adw.SwitchRow highlight_row_column {
+        title: C_("Highlighter Preferences", "Highlight _Row and Column");
+        use-underline: true;
+      }
+
+      Adw.SwitchRow highlight_block {
+        title: C_("Highlighter Preferences", "Highlight _Block");
+        use-underline: true;
+      }
+    }
+  }
+}

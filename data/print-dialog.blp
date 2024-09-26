@@ -1,0 +1,75 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $SudokuPrintDialog: Adw.Dialog {
+  title: _("Print Multiple Puzzles");
+  width-request: 460;
+  default-widget: print_button;
+  focus-widget: print_button;
+
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {}
+
+    content: Adw.Clamp {
+      maximum-size: 400;
+      margin-top: 12;
+      margin-bottom: 12;
+
+      Box {
+        orientation: vertical;
+
+        Adw.PreferencesGroup options_group {
+          Adw.SpinRow n_puzzles {
+            title: _("Number of Puzzles");
+
+            adjustment: Adjustment {
+              lower: 1;
+              upper: 100;
+              step-increment: 1;
+              page-increment: 10;
+            };
+          }
+
+          Adw.SpinRow n_puzzles_per_page {
+            title: _("Number of puzzles per page");
+
+            adjustment: Adjustment {
+              lower: 1;
+              upper: 100;
+              step-increment: 1;
+              page-increment: 1;
+            };
+          }
+
+          Adw.ComboRow difficulty {
+            title: _("Difficulty");
+
+            model: StringList {
+              strings [
+                _("Easy"),
+                _("Medium"),
+                _("Hard"),
+                _("Very Hard"),
+              ]
+            };
+          }
+        }
+      }
+    };
+
+    [bottom]
+    ActionBar {
+      [end]
+      Button print_button {
+        label: _("_Print");
+        receives-default: false;
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+  }
+}

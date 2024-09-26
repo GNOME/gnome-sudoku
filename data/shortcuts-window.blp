@@ -1,0 +1,138 @@
+using Gtk 4.0;
+
+ShortcutsWindow shortcuts-window {
+  modal: true;
+
+  ShortcutsSection {
+    section-name: "shortcuts";
+    max-height: 12;
+
+    ShortcutsGroup {
+      title: C_("Shortcuts Window", "Game");
+
+      ShortcutsShortcut {
+        accelerator: "w a s d";
+        title: C_("Shortcuts Window", "Move");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "Up Left Down Right";
+        title: C_("Shortcuts Window", "Move");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>1...9";
+        title: C_("Shortcuts Window", "Earmarks");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "0 BackSpace Delete";
+        title: C_("Shortcuts Window", "Clear Cell");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "u <ctrl>z";
+        title: C_("Shortcuts Window", "Undo");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "r <shift><ctrl>z";
+        title: C_("Shortcuts Window", "Redo");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "p";
+        title: C_("Shortcuts Window", "Pause");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "e";
+        title: C_("Shortcuts Window", "Earmark Mode");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "Return space";
+        title: C_("Shortcuts Window", "Number Picker");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>Return...space";
+        title: C_("Shortcuts Window", "Earmark Picker");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>n";
+        title: C_("Shortcuts Window", "New Game");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>r";
+        title: C_("Shortcuts Window", "Reset Puzzle");
+      }
+    }
+
+    ShortcutsGroup {
+      title: C_("Shortcuts Window", "Window");
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>plus";
+        title: C_("Shortcuts Window", "Zoom In");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>minus";
+        title: C_("Shortcuts Window", "Zoom Out");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>0";
+        title: C_("Shortcuts Window", "Zoom Reset");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>w";
+        title: C_("Shortcuts Window", "Warnings");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>h";
+        title: C_("Shortcuts Window", "Highlighter");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>p";
+        title: C_("Shortcuts Window", "Print Current Puzzle");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>comma";
+        title: C_("Shortcuts Window", "Preferences");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>question";
+        title: C_("Shortcuts Window", "Keyboard Shortcuts");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "<ctrl>q";
+        title: C_("Shortcuts Window", "Quit");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "F1";
+        title: C_("Shortcuts Window", "Help");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "F10";
+        title: C_("Shortcuts Window", "Menu");
+      }
+
+      ShortcutsShortcut {
+        accelerator: "F11 f";
+        title: C_("Shortcuts Window", "Fullscreen");
+      }
+    }
+  }
+}
