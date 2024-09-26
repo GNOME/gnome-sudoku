@@ -64,9 +64,22 @@ resource_files = configure_file(
   output: '@BASENAME@',
   configuration: resource_conf
 )
+
+blueprints = custom_target('blueprints',
+  input: files(
+    'preferences-dialog.blp',
+    'print-dialog.blp',
+    'shortcuts-window.blp',
+    'sudoku-window.blp',
+  ),
+  output: '.',
+  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
+  depends: metainfo_file,
+)
+
 resources = gnome.compile_resources('gnome-sudoku',
   resource_files,
-  dependencies: metainfo_file,
+  dependencies: blueprints,
   source_dir: meson.current_source_dir()
 )
 
