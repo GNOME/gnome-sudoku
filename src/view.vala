@@ -216,8 +216,13 @@ public class SudokuView : Adw.Bin
         switch (keyval)
         {
             case Key.@0: case Key.KP_0: case Key.BackSpace : case Key.Delete:
-                selected_cell.value = 0;
-                return EVENT_STOP;
+                if (state == ModifierType.CONTROL_MASK)
+                    return EVENT_PROPAGATE;
+                else
+                {
+                    selected_cell.value = 0;
+                    return EVENT_STOP;
+                }
             case Gdk.Key.@1: case Gdk.Key.KP_1:
                 insert_key  (1, state);
                 return EVENT_STOP;
