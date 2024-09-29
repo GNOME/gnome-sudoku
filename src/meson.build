@@ -1,4 +1,4 @@
-gnome_sudoku_vala_args = [ '--pkg=posix' ]
+gnome_sudoku_vala_args = ['--pkg=posix']
 
 gnome_sudoku_sources = [
   'config.vapi',
@@ -16,7 +16,9 @@ gnome_sudoku_sources = [
 
 gnome_sudoku_dependencies = [gtk, libsudoku_dep, adw]
 
-gnome_sudoku = executable(meson.project_name(), gnome_sudoku_sources,
+gnome_sudoku = executable(
+  meson.project_name(),
+  gnome_sudoku_sources,
   vala_args: gnome_sudoku_vala_args,
   c_args: '-w',
   dependencies: gnome_sudoku_dependencies,

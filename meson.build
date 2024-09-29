@@ -1,21 +1,19 @@
-project('gnome-sudoku', ['c', 'cpp', 'vala'],
-  default_options: [
-    'cpp_std=c++11'
-  ],
+project(
+  'gnome-sudoku',
+  ['c', 'cpp', 'vala'],
+  default_options: 'cpp_std=c++11',
   license: 'GPL3+',
   meson_version: '>= 1.4',
   version: '48.alpha'
 )
 
-add_project_arguments([
-    '-include', 'config.h'
-  ],
+add_project_arguments(
+  ['-include', 'config.h'],
   language: 'c'
 )
 
-add_project_arguments([
-    '--vapidir', join_paths(meson.current_source_dir(), 'lib')
-  ],
+add_project_arguments(
+  ['--vapidir', join_paths(meson.current_source_dir(), 'lib')],
   language: 'vala'
 )
 
