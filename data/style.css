@@ -9,7 +9,7 @@ grid.block {
 sudokucell {
   background: @view_bg_color;
 }
-label {
+sudokucell > label {
   color: @view_fg_color;
 }
 sudokucell.selected {
@@ -21,12 +21,12 @@ sudokucell.highlight-coord {
 sudokucell.highlight-number {
   background: shade(@accent_bg_color, 1.5);
 }
-label.earmark.highlight-number {
+sudokucell > label.earmark.highlight-number {
   /* reduce red to diffentiate from warnings */
   color: oklab(from @accent_color l min(a, 0.1) b);
   font-weight: bold;
 }
-label.error {
+sudokucell > label.error {
   color: @error_color;
   font-weight: bold;
 }
