@@ -32,7 +32,7 @@ if profile != ''
   app_id += '.' + profile
 endif
 
-glib_version = '2.40.0'
+glib_version = '2.76.0'
 
 gee = dependency('gee-0.8')
 gio = dependency('gio-2.0', version: '>= @0@'.format(glib_version))
@@ -53,7 +53,8 @@ conf.set_quoted('LOCALEDIR', join_paths(prefix, localedir))
 conf.set_quoted('VERSION', meson.project_version())
 conf.set_quoted('APP_ID', app_id)
 
-configure_file(output: 'config.h',
+configure_file(
+  output: 'config.h',
   configuration: conf
 )
 
