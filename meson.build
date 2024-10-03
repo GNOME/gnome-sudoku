@@ -34,7 +34,7 @@ if profile != ''
   app_id += '.' + profile
 endif
 
-glib_version = '2.40.0'
+glib_version = '2.76.0'
 
 gee = dependency('gee-0.8')
 gio = dependency('gio-2.0', version: '>= @0@'.format(glib_version))
