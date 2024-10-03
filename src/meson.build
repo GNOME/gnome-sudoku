@@ -21,7 +21,7 @@ gnome_sudoku = executable(
   gnome_sudoku_sources,
   vala_args: gnome_sudoku_vala_args,
   c_args: '-w',
-  dependencies: gnome_sudoku_dependencies,
+  dependencies: [gnome_sudoku_dependencies, threads],
   link_with: libsudoku,
   install: true
 )
