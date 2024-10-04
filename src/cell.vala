@@ -26,7 +26,7 @@ public class SudokuCell : Widget
     public int row { get; private set; }
     public int col { get; private set; }
     private SudokuGame game;
-    private unowned SudokuView view;
+    public unowned SudokuView view;
 
     private GestureClick button_controller;
     private GestureLongPress long_press_controller;
@@ -335,6 +335,8 @@ public class SudokuCell : Widget
     {
         int zoomed_size = (int) (height * view.value_zoom_multiplier);
         set_font_size (value_label, zoomed_size);
+        if (get_last_child () == view.number_picker)
+            view.number_picker.present ();
 
         Requisition min_size;
         value_label.get_preferred_size (out min_size, null);

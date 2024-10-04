@@ -87,7 +87,7 @@ public class SudokuView : Adw.Bin
 
         number_picker = new SudokuNumberPicker (game);
 
-        this.game.paused_changed.connect(() => {
+        this.game.paused_changed.connect((paused) => {
             // Set Font Size
             var attr_list = paused_label.get_attributes ();
             if (attr_list == null)
@@ -102,7 +102,7 @@ public class SudokuView : Adw.Bin
 
             masked = !masked;
 
-            has_selection = !this.game.paused;
+            has_selection = !paused;
         });
 
         var grid = new Grid () {

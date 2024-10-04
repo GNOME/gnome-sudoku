@@ -47,7 +47,7 @@ public class Sudoku : Adw.Application
     private SimpleAction reset_board_action;
     private SimpleAction print_current_board_action;
     private SimpleAction print_multiple_action;
-    private SimpleAction pause_action;
+    private SimpleAction toggle_pause_action;
     private SimpleAction play_custom_game_action;
     private SimpleAction new_game_action;
     private SimpleAction earmark_mode_action;
@@ -67,7 +67,7 @@ public class Sudoku : Adw.Application
         {"redo", redo_cb                                            },
         {"print-current-board", print_current_board_cb              },
         {"play-custom-game", play_custom_game_cb                    },
-        {"pause", toggle_pause_cb                                   },
+        {"toggle-pause", toggle_pause_cb                            },
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
@@ -137,7 +137,7 @@ public class Sudoku : Adw.Application
         reset_board_action = (SimpleAction) lookup_action ("reset-board");
         print_current_board_action = (SimpleAction) lookup_action ("print-current-board");
         print_multiple_action = (SimpleAction) lookup_action ("print-multiple");
-        pause_action = (SimpleAction) lookup_action ("pause");
+        toggle_pause_action = (SimpleAction) lookup_action ("toggle-pause");
         play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
         zoom_in_action = (SimpleAction) lookup_action ("zoom-in");
         zoom_out_action = (SimpleAction) lookup_action ("zoom-out");
@@ -201,9 +201,9 @@ public class Sudoku : Adw.Application
         base.shutdown ();
     }
 
-    private void paused_changed_cb ()
+    private void paused_changed_cb (bool paused)
     {
-        if (game.paused)
+        if (paused)
         {
             reset_board_action.set_enabled (false);
             undo_action.set_enabled (false);
@@ -220,7 +220,6 @@ public class Sudoku : Adw.Application
             game.resume_clock ();
         }
 
-        window.display_pause_button ();
         view.queue_draw ();
     }
 

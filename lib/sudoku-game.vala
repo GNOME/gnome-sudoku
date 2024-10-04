@@ -29,7 +29,7 @@ public class SudokuGame : Object
     private uint clock_timeout;
 
     public signal void tick ();
-    public signal void paused_changed ();
+    public signal void paused_changed (bool paused);
     public signal void action_completed (StackAction action);
 
     private bool _paused = false;
@@ -38,7 +38,7 @@ public class SudokuGame : Object
         public set
         {
             _paused = value;
-            paused_changed ();
+            paused_changed (value);
         }
         get { return _paused; }
     }

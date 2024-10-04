@@ -25,6 +25,7 @@ public class SudokuNumberPicker : Popover
 {
     private ValuePicker value_picker;
     private EarmarkPicker earmark_picker;
+    private Stack picker_stack;
 
     public NumberPickerState state;
 
@@ -32,46 +33,63 @@ public class SudokuNumberPicker : Popover
     {
         value_picker = new ValuePicker(game, this);
         earmark_picker = new EarmarkPicker(game, this);
+        picker_stack = new Stack();
+        picker_stack.add_child (value_picker);
+        picker_stack.add_child (earmark_picker);
+        picker_stack.set_vhomogeneous (false);
+        picker_stack.set_interpolate_size (true);
+        set_child (picker_stack);
         set_autohide (false);
         can_focus = false;
     }
 
     public void show_earmark_picker (SudokuCell cell)
     {
-        if (visible)
+        if (state == NumberPickerState.EARMARK_PICKER)
         {
-            NumberPickerState old_state = state;
             popdown ();
-            if (old_state == NumberPickerState.EARMARK_PICKER)
-                return;
+            return;
         }
+        else if (state == NumberPickerState.VALUE_PICKER)
+            value_picker.disconnect_picker ();
+        else
+            set_parent (cell);
 
         state = NumberPickerState.EARMARK_PICKER;
         earmark_picker.connect_picker (cell);
 
-        if (parent == null)
-            set_parent (cell);
+        if (!cell.view.earmark_mode)
+            picker_stack.set_transition_type (StackTransitionType.SLIDE_LEFT);
+        else
+            picker_stack.set_transition_type (StackTransitionType.SLIDE_RIGHT);
 
-        set_child (earmark_picker);
+        picker_stack.set_visible_child (earmark_picker);
+
         popup ();
     }
 
     public void show_value_picker (SudokuCell cell)
     {
-        if (visible)
+        if (state == NumberPickerState.VALUE_PICKER)
         {
-            NumberPickerState old_state = state;
             popdown ();
-            if (old_state == NumberPickerState.VALUE_PICKER)
-                return;
+            return;
         }
+        else if (state == NumberPickerState.EARMARK_PICKER)
+            earmark_picker.disconnect_picker ();
+        else
+            set_parent (cell);
+
         state = NumberPickerState.VALUE_PICKER;
         value_picker.connect_picker (cell);
 
-        if (parent == null)
-            set_parent (cell);
+        if (!cell.view.earmark_mode)
+            picker_stack.set_transition_type (StackTransitionType.SLIDE_RIGHT);
+        else
+            picker_stack.set_transition_type (StackTransitionType.SLIDE_LEFT);
 
-        set_child (value_picker);
+        picker_stack.set_visible_child (value_picker);
+
         popup ();
     }
 
@@ -81,9 +99,9 @@ public class SudokuNumberPicker : Popover
             value_picker.disconnect_picker ();
         else if (state == NumberPickerState.EARMARK_PICKER)
             earmark_picker.disconnect_picker ();
+
         state = NumberPickerState.NONE;
         unparent ();
-        child = null;
     }
 }
 

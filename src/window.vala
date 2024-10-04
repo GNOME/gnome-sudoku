@@ -38,15 +38,19 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned CheckButton hard_check;
     [GtkChild] private unowned CheckButton very_hard_check;
 
+    [GtkChild] private unowned Stack menu_fullscreen_stack;
+    [GtkChild] private unowned Stack play_pause_stack;
     [GtkChild] private unowned MenuButton main_menu;
     [GtkChild] private unowned ToggleButton earmark_mode_button;
     [GtkChild] private unowned Button undo_button;
     [GtkChild] private unowned Button redo_button;
     [GtkChild] private unowned Button back_button;
     [GtkChild] private unowned Button unfullscreen_button;
+    [GtkChild] private unowned Button menu_unfullscreen_button;
+    [GtkChild] private unowned Button menu_fullscreen_button;
     [GtkChild] private unowned Button play_custom_game_button;
-    [GtkChild] private unowned Button play_pause_button;
-    [GtkChild] private unowned Button toggle_fullscreen_button;
+    [GtkChild] private unowned Button pause_button;
+    [GtkChild] private unowned Button play_button;
 
     [GtkChild] private unowned Box clock_box;
     [GtkChild] private unowned Label clock_label;
@@ -101,16 +105,14 @@ public class SudokuWindow : Adw.ApplicationWindow
             if (window_is_fullscreen)
             {
                 headerbar.set_decoration_layout (":close");
-                toggle_fullscreen_button.set_icon_name ("view-restore-symbolic");
-                toggle_fullscreen_button.set_tooltip_text (_("Leave Fullscreen"));
                 unfullscreen_button.visible = true;
+                menu_fullscreen_stack.set_visible_child (menu_unfullscreen_button);
             }
             else
             {
                 headerbar.set_decoration_layout (null);
-                toggle_fullscreen_button.set_icon_name ("view-fullscreen-symbolic");
-                toggle_fullscreen_button.set_tooltip_text (_("Fullscreen"));
                 unfullscreen_button.visible = false;
+                menu_fullscreen_stack.set_visible_child (menu_fullscreen_button);
                 if (window_is_maximized)
                 {
                     this.maximize ();
@@ -278,13 +280,13 @@ public class SudokuWindow : Adw.ApplicationWindow
                 {
                     earmark_mode_button.visible = !window_width_is_small;
                     clock_box.visible = !window_width_is_small;
-                    display_pause_button ();
+                    play_pause_stack.visible = true;
                 }
                 else
                 {
                     clock_box.visible = false;
                     earmark_mode_button.visible = true;
-                    play_pause_button.visible = false;
+                    play_pause_stack.visible = false;
                 }
             }
          }
@@ -299,6 +301,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         this.game = game;
         game.tick.connect (tick_cb);
+        game.paused_changed.connect (paused_changed_cb);
         game.start_clock ();
 
         if (view != null)
@@ -324,7 +327,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         undo_button.visible = false;
         redo_button.visible = false;
         clock_box.visible = false;
-        play_pause_button.visible = false;
+        play_pause_stack.visible = false;
         start_button.grab_focus ();
     }
 
@@ -376,7 +379,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         if (game.mode == GameMode.PLAY)
         {
             play_custom_game_button.visible = false;
-            play_pause_button.visible = show_timer;
+            play_pause_stack.visible = show_timer;
             clock_box.visible = show_timer && !window_width_is_small;
             earmark_mode_button.visible = !window_width_is_small || !show_timer;
             windowtitle.subtitle = game.board.difficulty_category.to_string ();
@@ -386,7 +389,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             earmark_mode_button.visible = false;
             clock_box.visible = false;
             play_custom_game_button.visible = true;
-            play_pause_button.visible = false;
+            play_pause_stack.visible = false;
             windowtitle.subtitle = _("Create Puzzle");
         }
     }
@@ -394,13 +397,6 @@ public class SudokuWindow : Adw.ApplicationWindow
     public void board_completed ()
     {
         play_custom_game_button.visible = false;
-    }
-
-    public void display_pause_button ()
-    {
-        play_pause_button.visible = true;
-        play_pause_button.icon_name = game.paused ? "media-playback-start-symbolic" : "media-playback-pause-symbolic";
-        play_pause_button.tooltip_text = game.paused ? _("Play") : _("Pause");
     }
 
     private void tick_cb ()
@@ -413,6 +409,14 @@ public class SudokuWindow : Adw.ApplicationWindow
             clock_label.set_text ("%02d∶\xE2\x80\x8E%02d∶\xE2\x80\x8E%02d".printf (hours, minutes, seconds));
         else
             clock_label.set_text ("%02d∶\xE2\x80\x8E%02d".printf (minutes, seconds));
+    }
+
+    private void paused_changed_cb (bool paused)
+    {
+        if (paused)
+            play_pause_stack.set_visible_child (play_button);
+        else
+            play_pause_stack.set_visible_child (pause_button);
     }
 
     private void button_released_cb (GestureClick gesture,

@@ -44,7 +44,7 @@ menu primary-menu {
       }
 
       item {
-        custom: "toggle-fullscreen";
+        custom: "menu-fullscreen";
       }
     }
   }
@@ -190,29 +190,59 @@ template $SudokuWindow: Adw.ApplicationWindow {
             ]
           }
 
-          [toggle-fullscreen]
-          Button toggle_fullscreen_button {
-            icon-name: "view-fullscreen-symbolic";
-            action-name: "app.toggle-fullscreen";
-            tooltip-text: _("Fullscreen");
+          [menu-fullscreen]
+          Stack menu_fullscreen_stack {
+            transition-type: crossfade;
 
-            styles [
-              "flat",
-              "circular",
-            ]
+            Button menu_fullscreen_button {
+              icon-name: "view-fullscreen-symbolic";
+              action-name: "app.toggle-fullscreen";
+              tooltip-text: _("Fullscreen");
+
+              styles [
+                "flat",
+                "circular",
+              ]
+            }
+
+            Button menu_unfullscreen_button {
+              icon-name: "view-restore-symbolic";
+              action-name: "app.toggle-fullscreen";
+              tooltip-text: _("Leave Fullscreen");
+
+              styles [
+                "flat",
+                "circular",
+              ]
+            }
           }
         };
       }
 
-      [start]
-      Button play_pause_button {
-        visible: true;
-        sensitive: false;
-        valign: center;
-        can-focus: true;
-        focus-on-click: false;
-        action-name: "app.pause";
-        icon-name: "media-playback-pause-symbolic";
+      Stack play_pause_stack {
+        transition-type: crossfade;
+
+        Button pause_button {
+          visible: true;
+          sensitive: false;
+          valign: center;
+          can-focus: true;
+          focus-on-click: false;
+          action-name: "app.toggle-pause";
+          tooltip-text: _("Pause");
+          icon-name: "media-playback-pause-symbolic";
+        }
+
+        Button play_button {
+          visible: true;
+          sensitive: false;
+          valign: center;
+          can-focus: true;
+          focus-on-click: false;
+          tooltip-text: _("Play");
+          action-name: "app.toggle-pause";
+          icon-name: "media-playback-start-symbolic";
+        }
       }
 
       [end]
