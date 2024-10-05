@@ -399,7 +399,11 @@ public class Sudoku : Adw.Application
 
     private void back_cb ()
     {
+        if (window.current_screen != SudokuWindowScreen.MENU || game == null)
+            return;
+
         window.show_game_view ();
+        window.view.grab_focus ();
         if (game.mode != GameMode.CREATE)
             game.resume_clock ();
 

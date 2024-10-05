@@ -189,6 +189,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         add_binding_action (Gdk.Key.minus, Gdk.ModifierType.CONTROL_MASK, "app.zoom-out", null);
         add_binding_action (Gdk.Key.KP_Subtract, Gdk.ModifierType.CONTROL_MASK, "app.zoom-out", null);
         add_binding_action (Gdk.Key.ZoomOut, Gdk.ModifierType.NO_MODIFIER_MASK, "app.zoom-out", null);
+        add_binding_action (Gdk.Key.Left, Gdk.ModifierType.ALT_MASK, "app.back", null);
     }
 
     private void construct_window_parameters ()
