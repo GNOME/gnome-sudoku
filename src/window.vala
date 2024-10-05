@@ -375,10 +375,19 @@ public class SudokuWindow : Adw.ApplicationWindow
         if (game.mode == GameMode.PLAY)
         {
             play_custom_game_button.visible = false;
-            play_pause_button.visible = show_timer;
-            clock_box.visible = show_timer && !window_width_is_small;
             earmark_mode_button.visible = !window_width_is_small || !show_timer;
             windowtitle.subtitle = game.board.difficulty_category.to_string ();
+
+            if (show_timer)
+            {
+                display_pause_button ();
+                clock_box.visible = !window_width_is_small;
+            }
+            else
+            {
+                play_pause_button.visible = false;
+                clock_box.visible = false;
+            }
         }
         else
         {
