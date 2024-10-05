@@ -55,23 +55,23 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Box clock_box;
     [GtkChild] private unowned Label clock_label;
 
-    private bool window_is_maximized;
-    private bool window_is_fullscreen;
-    private int window_width;
-    private int window_height;
+    private int window_width { get; private set;}
+    private int window_height { get; private set;}
+    private bool window_width_is_small { get; private set;}
+    private bool window_height_is_small { get; private set;}
 
-    private const int small_window_width = 600;
-    private const int smallest_possible_width = 360;
+    private const int SMALL_WINDOW_WIDTH = 360;
+    private const int MEDIUM_WINDOW_WIDTH = 600;
+
     private int small_window_height;
-    private int smallest_possible_height;
-    private bool window_width_is_small;
-    private bool window_height_is_small;
+    private int medium_window_height;
+
     private Adw.Breakpoint small_window_breakpoint;
     private Adw.BreakpointCondition small_window_condition;
 
-    private const int margin_default_size = 25;
-    private const int margin_small_size = 10;
-    private const int margin_size_diff = margin_default_size - margin_small_size;
+    private const int MARGIN_DEFAULT_SIZE = 25;
+    private const int MARGIN_SMALL_SIZE = 10;
+    private const int MARGIN_SIZE_DIFF = MARGIN_DEFAULT_SIZE - MARGIN_SMALL_SIZE;
 
     private SudokuGame? game = null;
 
@@ -90,51 +90,23 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         construct_window_parameters ();
 
-        small_window_condition = new Adw.BreakpointCondition.length (Adw.BreakpointConditionLengthType.MAX_WIDTH, small_window_width, Adw.LengthUnit.PX);
+        small_window_condition = new Adw.BreakpointCondition.length (Adw.BreakpointConditionLengthType.MAX_WIDTH, MEDIUM_WINDOW_WIDTH, Adw.LengthUnit.PX);
         small_window_breakpoint = new Adw.Breakpoint (small_window_condition);
-        small_window_breakpoint.unapply.connect (window_width_is_big_cb);
+        small_window_breakpoint.unapply.connect (window_width_is_medium_cb);
         small_window_breakpoint.apply.connect (window_width_is_small_cb);
         add_breakpoint (small_window_breakpoint);
 
-        notify["maximized"].connect(() => {
-            window_is_maximized = !window_is_maximized;
-        });
+        notify["fullscreened"].connect(fullscreen_cb);
 
-        notify["fullscreened"].connect(() => {
-            window_is_fullscreen = !window_is_fullscreen;
-            if (window_is_fullscreen)
-            {
-                headerbar.set_decoration_layout (":close");
-                unfullscreen_button.visible = true;
-                menu_fullscreen_stack.set_visible_child (menu_unfullscreen_button);
-            }
-            else
-            {
-                headerbar.set_decoration_layout (null);
-                unfullscreen_button.visible = false;
-                menu_fullscreen_stack.set_visible_child (menu_fullscreen_button);
-                if (window_is_maximized)
-                {
-                    this.maximize ();
-                    return;
-                }
-            }
-        });
+        fullscreened = settings.get_boolean ("window-is-fullscreen");
+        maximized = settings.get_boolean ("window-is-maximized");
+        set_gamebox_width_margins (window_width);
+        set_gamebox_height_margins (window_height);
 
         main_menu.notify["active"].connect(() => {
             if (view != null)
                 view.has_selection = !main_menu.active;
         });
-
-        if (window_is_fullscreen)
-            fullscreen ();
-        else if (window_is_maximized)
-            maximize ();
-        else
-        {
-            set_gamebox_width_margins (window_width);
-            set_gamebox_height_margins (window_height);
-        }
 
         button_controller = new GestureClick ();
         button_controller.set_button (0 /* all buttons */);
@@ -196,21 +168,19 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         window_width = settings.get_int ("window-width");
         window_height = settings.get_int ("window-height");
-        window_is_maximized = settings.get_boolean ("window-is-maximized");
-        window_is_fullscreen = settings.get_boolean ("window-is-fullscreen");
 
         settings.bind ("show-timer", this, "show-timer", SettingsBindFlags.GET);
 
         int headerbar_natural_height;
         headerbar.measure (Orientation.VERTICAL, -1, null, out headerbar_natural_height, null, null);
 
-        small_window_height = small_window_width + headerbar_natural_height;
-        smallest_possible_height = smallest_possible_width + headerbar_natural_height;
+        small_window_height = SMALL_WINDOW_WIDTH + headerbar_natural_height;
+        medium_window_height = MEDIUM_WINDOW_WIDTH + headerbar_natural_height;
 
-        window_width_is_small = window_width <= small_window_width;
-        window_height_is_small = window_height <= small_window_height;
+        window_width_is_small = window_width <= MEDIUM_WINDOW_WIDTH;
+        window_height_is_small = window_height <= medium_window_height;
 
-        set_size_request (smallest_possible_width, smallest_possible_height);
+        set_size_request (SMALL_WINDOW_WIDTH, small_window_height);
         set_default_size (window_width, window_height);
 
         Label title_label = (Label) windowtitle.get_first_child ().get_first_child ();
@@ -226,8 +196,8 @@ public class SudokuWindow : Adw.ApplicationWindow
         this.get_default_size (out default_width, out default_height);
         settings.set_int ("window-width", default_width);
         settings.set_int ("window-height", default_height);
-        settings.set_boolean ("window-is-maximized", window_is_maximized);
-        settings.set_boolean ("window-is-fullscreen", window_is_fullscreen);
+        settings.set_boolean ("window-is-maximized", maximized);
+        settings.set_boolean ("window-is-fullscreen", fullscreened);
         settings.apply ();
         return EVENT_PROPAGATE;
     }
@@ -247,7 +217,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             (this as Widget)?.activate_action ("app.start-game", "i", 5);
     }
 
-    private void window_width_is_big_cb ()
+    private void window_width_is_medium_cb ()
     {
         window_width_is_small = false;
         if (current_screen == SudokuWindowScreen.PLAY)
@@ -435,6 +405,21 @@ public class SudokuWindow : Adw.ApplicationWindow
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 
+    private void fullscreen_cb ()
+    {
+        if (fullscreened)
+        {
+            headerbar.set_decoration_layout (":close");
+            unfullscreen_button.visible = true;
+            menu_fullscreen_stack.set_visible_child (menu_unfullscreen_button);
+        }
+        else
+        {
+            headerbar.set_decoration_layout (null);
+            unfullscreen_button.visible = false;
+            menu_fullscreen_stack.set_visible_child (menu_fullscreen_button);
+        }
+    }
 
     private void backwards_pressed_cb (GestureClick gesture,
                                       int          n_press,
@@ -501,16 +486,16 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     private void set_gamebox_width_margins (int width)
     {
-        double factor =  normalize (width, smallest_possible_width, small_window_width);
-        int margin_size = margin_small_size + (int) (margin_size_diff * factor);
+        double factor = normalize (width, SMALL_WINDOW_WIDTH, MEDIUM_WINDOW_WIDTH);
+        int margin_size = MARGIN_SMALL_SIZE + (int) (MARGIN_SIZE_DIFF * factor);
         game_box.margin_start = margin_size;
         game_box.margin_end = margin_size;
     }
 
     private void set_gamebox_height_margins (int height)
     {
-        double factor =  normalize (height, smallest_possible_height, small_window_height);
-        int margin_size = margin_small_size + (int) (margin_size_diff * factor);
+        double factor =  normalize (height, small_window_height, medium_window_height);
+        int margin_size = MARGIN_SMALL_SIZE + (int) (MARGIN_SIZE_DIFF * factor);
         game_box.margin_top = margin_size;
         game_box.margin_bottom = margin_size;
     }
