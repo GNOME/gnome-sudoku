@@ -139,7 +139,6 @@ public class SudokuView : Adw.Bin
             for (var col = 0; col < game.board.cols; col++)
             {
                 var cell = new SudokuCell (row, col, game, this);
-                cell.get_visible_earmarks ();
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
                 cells[row, col] = cell;
             }
@@ -268,25 +267,13 @@ public class SudokuView : Adw.Bin
     private void value_changed_cb (int row, int col, int old_val, int new_val)
     {
         var action = game.get_current_stack_action ();
-
-        cells[row, col].update_value ();
-        update_warnings ();
-
         if (action.is_single_value_change ())
             cells[row, col].grab_focus ();
 
-        //makes sure the highlighter works correctly with clear board
-        if (row == selected_row && col == selected_col)
-        {
-            set_selected_value_highlighter (old_val, false);
-            set_selected_value_highlighter (new_val, true);
-            selected_cell.highlight_number = false;
-        }
-        else
-        {
-            set_unselected_value_highlighter (row, col, old_val, false);
-            set_unselected_value_highlighter (row, col, new_val, true);
-        }
+        cells[row, col].update_content_visibility ();
+
+        update_warnings ();
+        update_value_highlighter (row, col, old_val, new_val);
     }
 
     private void earmark_changed_cb (int row, int col, int num, bool enabled)
@@ -295,9 +282,9 @@ public class SudokuView : Adw.Bin
         if (action.is_single_earmarks_change ())
             cells[row, col].grab_focus ();
 
-        cells[row, col].get_visible_earmark (num);
-        if (show_warnings && enabled)
-            cells[row, col].check_earmark_warnings (num);
+        cells[row, col].update_earmark_visibility (num);
+        if (show_warnings)
+            cells[row, col].update_earmark_warnings (num);
     }
 
     public void set_selected (int cell_row, int cell_col)
@@ -349,10 +336,19 @@ public class SudokuView : Adw.Bin
         }
     }
 
-    private void set_selected_value_highlighter (int val, bool enabled)
+    private void update_value_highlighter (int row, int col, int old_val, int new_val)
     {
-        if (!highlighter || val == 0 || !highlight_numbers)
+        if (!highlighter || !highlight_numbers)
             return;
+
+        if (row != selected_row || col != selected_col)
+        {
+            if (old_val == selected_cell.value)
+                cells[row, col].highlight_number = false;
+            else if (new_val == selected_cell.value && new_val != 0)
+                cells[row, col].highlight_number = true;
+            return;
+        }
 
         for (var col_tmp = 0; col_tmp < game.board.cols; col_tmp++)
         {
@@ -363,26 +359,18 @@ public class SudokuView : Adw.Bin
                 if (selected_cell == cell_tmp)
                     continue;
 
-                if (val == cell_tmp.value)
-                    cell_tmp.highlight_number = enabled;
-                else if (cell_tmp.value == 0)
-                    cell_tmp.set_earmark_highlight (val, enabled);
+                if (cell_tmp.value == 0)
+                {
+                    cell_tmp.set_earmark_highlight (old_val, false);
+                    cell_tmp.set_earmark_highlight (new_val, true);
+                }
+                else if (new_val == cell_tmp.value)
+                    cell_tmp.highlight_number = true;
+                else if (old_val == cell_tmp.value)
+                    cell_tmp.highlight_number = false;
             }
         }
     }
-
-    private void set_unselected_value_highlighter (int row, int col, int val, bool enabled)
-    {
-        if (!highlighter || val == 0 || !highlight_numbers)
-            return;
-
-        if (val != selected_cell.value)
-            return;
-
-        var changed_cell = cells[row, col];
-        changed_cell.highlight_number = enabled;
-    }
-
 
     private void update_warnings ()
     {
@@ -391,8 +379,8 @@ public class SudokuView : Adw.Bin
 
         foreach (var cell in cells)
         {
-            cell.check_value_warnings ();
-            cell.check_earmarks_warnings ();
+            cell.update_value_warnings ();
+            cell.update_all_earmark_warnings ();
         }
     }
 

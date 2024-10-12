@@ -63,19 +63,13 @@ public class SudokuCell : Widget
         long_press_controller.pressed.connect (long_press_cb);
         add_controller (this.long_press_controller);
 
-        int num = 0;
         earmark_labels = new Label[9];
-        for (int row_tmp = 0; row_tmp < game.board.block_rows; row_tmp++)
+        for (int num = 1; num < 10; num++)
         {
-            for (int col_tmp = 0; col_tmp < game.board.block_cols; col_tmp++)
-            {
-                num++;
-
-                earmark_labels[num - 1] = new Label (num.to_string ());
-                earmark_labels[num - 1].visible = false;
-                earmark_labels[num - 1].set_parent (this);
-                earmark_labels[num - 1].add_css_class ("earmark");
-            }
+            earmark_labels[num - 1] = new Label (num.to_string ());
+            earmark_labels[num - 1].visible = game.board.is_earmark_enabled(row, col, num);
+            earmark_labels[num - 1].set_parent (this);
+            earmark_labels[num - 1].add_css_class ("earmark");
         }
     }
 
@@ -184,11 +178,12 @@ public class SudokuCell : Widget
             earmark.remove_css_class ("highlight-number");
     }
 
-    public void update_value ()
+    public void update_content_visibility ()
     {
         value_label.set_label (this.value.to_string ());
         value_label.visible = value != 0;
-        get_visible_earmarks ();
+        for (int num = 1; num <= 9; num ++)
+            update_earmark_visibility (num);
     }
 
     private void button_released_cb (GestureClick gesture,
@@ -262,22 +257,12 @@ public class SudokuCell : Widget
             view.set_selected (row, col);
     }
 
-
-    public void get_visible_earmarks ()
+    public void update_earmark_visibility (int num)
     {
-        for (int num = 1; num <= 9; num ++)
-            get_visible_earmark (num);
+        earmark_labels[num - 1].set_visible (game.board.is_earmark_enabled(row, col, num));
     }
 
-    public void get_visible_earmark (int num)
-    {
-        if (value != 0)
-            earmark_labels[num - 1].set_visible (false);
-        else
-            earmark_labels[num - 1].set_visible (game.board.is_earmark_enabled(row, col, num));
-    }
-
-    public void check_value_warnings ()
+    public void update_value_warnings ()
     {
         bool error = false;
 
@@ -300,7 +285,7 @@ public class SudokuCell : Widget
             value_label.remove_css_class ("error");
     }
 
-    public void check_earmarks_warnings ()
+    public void update_all_earmark_warnings ()
     {
         if (this.value != 0 || game.mode == GameMode.CREATE)
             return;
@@ -309,11 +294,11 @@ public class SudokuCell : Widget
         for (int num = 1; num <= marks.length; num++)
         {
             if (marks[num - 1])
-                check_earmark_warnings (num);
+                update_earmark_warnings (num);
         }
     }
 
-    public void check_earmark_warnings (int num)
+    public void update_earmark_warnings (int num)
     {
         if (!game.board.is_possible (row, col, num) && view.show_earmark_warnings)
             earmark_labels[num - 1].add_css_class ("error");
