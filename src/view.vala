@@ -361,8 +361,10 @@ public class SudokuView : Adw.Bin
 
                 if (cell_tmp.value == 0)
                 {
-                    cell_tmp.set_earmark_highlight (old_val, false);
-                    cell_tmp.set_earmark_highlight (new_val, true);
+                    if (old_val > 0)
+                        cell_tmp.set_earmark_highlight (old_val, false);
+                    if (new_val > 0)
+                        cell_tmp.set_earmark_highlight (new_val, true);
                 }
                 else if (new_val == cell_tmp.value)
                     cell_tmp.highlight_number = true;
