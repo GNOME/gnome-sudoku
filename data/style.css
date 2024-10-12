@@ -7,27 +7,27 @@ grid.block {
   background: #999;
 }
 sudokucell {
-  background: @view_bg_color;
+  background: var(--view-bg-color);
 }
 sudokucell > label {
-  color: @view_fg_color;
+  color: var(--view-fg-color);
 }
 sudokucell.selected {
-  background: shade(@accent_bg_color, 1.3);
+  background: shade(var(--accent-bg-color), 1.3);
 }
 sudokucell.highlight-coord {
   background: #EDEDED;
 }
 sudokucell.highlight-number {
-  background: shade(@accent_bg_color, 1.5);
+  background: shade(var(--accent-bg-color), 1.5);
 }
 sudokucell > label.earmark.highlight-number {
   /* reduce red to diffentiate from warnings */
-  color: oklab(from @accent_color l min(a, 0.1) b);
+  color: oklab(from var(--accent-color) l min(a, 0.1) b);
   font-weight: bold;
 }
 sudokucell > label.error {
-  color: @error_color;
+  color: var(--error-color);
   font-weight: bold;
 }
 sudokucell.fixed {
