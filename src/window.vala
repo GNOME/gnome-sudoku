@@ -427,6 +427,7 @@ public class SudokuWindow : Adw.ApplicationWindow
                                       double       y)
     {
         ((Widget)this).activate_action ("app.undo", null);
+        ((Widget)this).activate_action ("app.back", null);
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 
