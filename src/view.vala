@@ -162,39 +162,40 @@ public class SudokuView : Adw.Bin
         if (game.paused)
             return EVENT_PROPAGATE;
 
-        switch (keyval)
-        {
-            case Key.Up : case Key.w : case Key.KP_Up:
-                if (selected_row == 0)
-                    cells[8, selected_col].grab_focus ();
-                else
-                    cells[selected_row - 1, selected_col].grab_focus ();
-                return EVENT_STOP;
+        if (state != ModifierType.CONTROL_MASK)
+            switch (keyval)
+            {
+                case Key.Up : case Key.w : case Key.KP_Up:
+                    if (selected_row == 0)
+                        cells[8, selected_col].grab_focus ();
+                    else
+                        cells[selected_row - 1, selected_col].grab_focus ();
+                    return EVENT_STOP;
 
-            case Key.Down : case Key.s : case Key.KP_Down:
-                if (selected_row == 8)
-                    cells[0, selected_col].grab_focus ();
-                else
-                    cells[selected_row + 1, selected_col].grab_focus ();
-                return EVENT_STOP;
+                case Key.Down : case Key.s : case Key.KP_Down:
+                    if (selected_row == 8)
+                        cells[0, selected_col].grab_focus ();
+                    else
+                        cells[selected_row + 1, selected_col].grab_focus ();
+                    return EVENT_STOP;
 
-            case Key.Left : case Key.a : case Key.KP_Left:
-                if (selected_col == 0)
-                    cells[selected_row, 8].grab_focus ();
-                else
-                    cells[selected_row, selected_col - 1].grab_focus ();
-                return EVENT_STOP;
+                case Key.Left : case Key.a : case Key.KP_Left:
+                    if (selected_col == 0)
+                        cells[selected_row, 8].grab_focus ();
+                    else
+                        cells[selected_row, selected_col - 1].grab_focus ();
+                    return EVENT_STOP;
 
-            case Key.Right : case Key.d : case Key.KP_Right:
-                if (selected_col == 8)
-                    cells[selected_row, 0].grab_focus ();
-                else
-                    cells[selected_row, selected_col + 1].grab_focus ();
-                return EVENT_STOP;
+                case Key.Right : case Key.d : case Key.KP_Right:
+                    if (selected_col == 8)
+                        cells[selected_row, 0].grab_focus ();
+                    else
+                        cells[selected_row, selected_col + 1].grab_focus ();
+                    return EVENT_STOP;
 
-            default:
-                break;
-        }
+                default:
+                    break;
+            }
 
         if (selected_cell.is_fixed)
             return EVENT_PROPAGATE;
