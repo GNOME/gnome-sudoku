@@ -63,11 +63,11 @@ public class SudokuSaver : Object
         create_file_for_game (game, savegame_file);
     }
 
-    public void add_game_to_finished (SudokuGame game, bool delete_savegame = false)
+    public void add_game_to_finished (SudokuGame game, bool delete_savegame = false, bool save_timer = true)
     {
         var file_name = game.board.to_string (true) + ".save";
         var file_path = Path.build_path (Path.DIR_SEPARATOR_S, finishgame_dir, file_name);
-        create_file_for_game (game, file_path);
+        create_file_for_game (game, file_path, save_timer);
 
         if (delete_savegame)
         {
@@ -87,9 +87,9 @@ public class SudokuSaver : Object
         }
     }
 
-    private void create_file_for_game (SudokuGame game, string file_name)
+    private void create_file_for_game (SudokuGame game, string file_name, bool save_timer = true)
     {
-        var json_str = serialize_game_to_json (game);
+        var json_str = serialize_game_to_json (game, save_timer);
 
         try
         {
@@ -101,7 +101,7 @@ public class SudokuSaver : Object
         }
     }
 
-    private string serialize_game_to_json (SudokuGame game)
+    private string serialize_game_to_json (SudokuGame game, bool save_timer = true)
     {
         var board = game.board;
         var board_cells = board.get_cells ();
@@ -114,8 +114,10 @@ public class SudokuSaver : Object
         builder.set_member_name ("time_elapsed");
         if (game.mode == GameMode.CREATE)
             builder.add_double_value (0);
-        else
+        else if (save_timer)
             builder.add_double_value (game.get_total_time_played ());
+        else
+            builder.add_double_value (-1);
 
         builder.set_member_name ("cells");
         builder.begin_array ();

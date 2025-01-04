@@ -276,7 +276,7 @@ public class Sudoku : Adw.Application
 
         view.can_focus = false;
 
-        saver.add_game_to_finished (game, true);
+        saver.add_game_to_finished (game, true, window.show_timer);
 
         /* Text in dialog that displays when the game is over. */
         string win_str;
