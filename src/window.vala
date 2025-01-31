@@ -68,6 +68,8 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     private Adw.Breakpoint small_window_breakpoint;
     private Adw.BreakpointCondition small_window_condition;
+    private CssProvider accent_provider;
+    private Adw.StyleManager style_manager;
 
     private const int MARGIN_DEFAULT_SIZE = 25;
     private const int MARGIN_SMALL_SIZE = 10;
@@ -132,6 +134,15 @@ public class SudokuWindow : Adw.ApplicationWindow
         scroll_controller.set_propagation_limit (PropagationLimit.NONE);
         ((Widget)this).add_controller (scroll_controller);
 
+        accent_provider = new CssProvider();
+        StyleContext.add_provider_for_display (get_display (), accent_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+        style_manager = Adw.StyleManager.get_default ();
+        set_accent_color (style_manager.get_accent_color ());
+        style_manager.notify["accent-color"].connect(() => {
+            set_accent_color (style_manager.get_accent_color ());
+        });
+
         close_request.connect (close_cb);
     }
 
@@ -162,6 +173,46 @@ public class SudokuWindow : Adw.ApplicationWindow
         add_binding_action (Gdk.Key.KP_Subtract, Gdk.ModifierType.CONTROL_MASK, "app.zoom-out", null);
         add_binding_action (Gdk.Key.ZoomOut, Gdk.ModifierType.NO_MODIFIER_MASK, "app.zoom-out", null);
         add_binding_action (Gdk.Key.Left, Gdk.ModifierType.ALT_MASK, "app.back", null);
+    }
+
+    void set_accent_color (Adw.AccentColor color)
+    {
+        string css_color;
+        switch (color)
+        {
+            case BLUE:
+                css_color = "blue";
+                break;
+            case TEAL:
+                css_color = "teal";
+                break;
+            case GREEN:
+                css_color = "green";
+                break;
+            case YELLOW:
+                css_color = "yellow";
+                break;
+            case ORANGE:
+                css_color = "orange";
+                break;
+            case RED:
+                css_color = "red";
+                break;
+            case PINK:
+                css_color = "pink";
+                break;
+            case PURPLE:
+                css_color = "purple";
+                break;
+            case SLATE:
+                css_color = "slate";
+                break;
+            default:
+                css_color = "blue";
+                break;
+        }
+        string s = ":root {--sudoku-accent-color: var(--sudoku-accent-" + css_color + ");}";
+        accent_provider.load_from_string(s);
     }
 
     private void construct_window_parameters ()

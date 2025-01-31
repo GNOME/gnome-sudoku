@@ -1,6 +1,15 @@
 /*contains styles only used when AdwStyleManager:dark is TRUE.*/
 :root {
   --sudoku-dark-grey: oklch(39% 0 0);
+  --sudoku-accent-blue: oklch(0.35 0.1 230);
+  --sudoku-accent-teal: oklch(0.35 0.1 215);
+  --sudoku-accent-green: oklch(0.35 0.1 145);
+  --sudoku-accent-yellow: oklch(0.35 0.1 100);
+  --sudoku-accent-orange: oklch(0.35 0.1 60);
+  --sudoku-accent-red: oklch(0.35 0.1 30);
+  --sudoku-accent-pink: oklch(0.35 0.1 345);
+  --sudoku-accent-purple: oklch(0.35 0.1 310);
+  --sudoku-accent-slate: oklch(0.35 0.03 250);
 }
 grid.board {
   border: none;
@@ -13,16 +22,16 @@ sudokucell {
   background: var(--sudoku-dark-grey);
 }
 sudokucell.highlight-coord {
-  background: oklch(45% 0 0);
+  background: oklch(from var(--sudoku-accent-color) l calc(c * 0.25) h);
 }
 sudokucell.selected {
-  background: shade(var(--accent-bg-color), 0.7);
+  background: var(--sudoku-accent-color);
 }
 sudokucell.fixed {
   background: oklch(32% 0 0);
 }
 sudokucell.highlight-number {
-  background: shade(var(--accent-bg-color), 0.5);
+  background: oklch(from var(--sudoku-accent-color) 0.3 calc(c * 0.7) h);
 }
 sudokucell.paused {
   background: var(--sudoku-dark-grey);
