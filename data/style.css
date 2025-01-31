@@ -1,4 +1,15 @@
 /*contains styles that are always present.*/
+:root {
+  --sudoku-accent-blue: oklch(0.85 0.25 270);
+  --sudoku-accent-teal: oklch(0.85 0.25 215);
+  --sudoku-accent-green: oklch(0.85 0.25 145);
+  --sudoku-accent-yellow: oklch(0.85 0.25 100);
+  --sudoku-accent-orange: oklch(0.85 0.25 60);
+  --sudoku-accent-red: oklch(0.85 0.25 20);
+  --sudoku-accent-pink: oklch(0.85 0.25 345);
+  --sudoku-accent-purple: oklch(0.85 0.25 300);
+  --sudoku-accent-slate: oklch(0.85 0.05 250);
+}
 grid.board {
   border: 2px solid #333;
   background: #333;
@@ -13,13 +24,13 @@ sudokucell > label {
   color: var(--view-fg-color);
 }
 sudokucell.selected {
-  background: shade(var(--accent-bg-color), 1.3);
+  background: var(--sudoku-accent-color);
 }
 sudokucell.highlight-coord {
-  background: #EDEDED;
+  background: oklch(from var(--sudoku-accent-color) 0.9 calc(c * 0.25) h);
 }
 sudokucell.highlight-number {
-  background: shade(var(--accent-bg-color), 1.5);
+  background: oklch(from var(--sudoku-accent-color) 0.75 c h);
 }
 sudokucell > label.earmark.highlight-number {
   /* reduce red to diffentiate from warnings */
