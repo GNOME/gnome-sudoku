@@ -38,7 +38,9 @@ sudokucell > label.earmark.highlight-number {
 }
 sudokucell > label.error {
   color: var(--error-color);
-  font-weight: bold;
+}
+sudokucell > label.error.earmark {
+  text-decoration: line-through;
 }
 sudokucell.fixed {
   background: #CCC;
