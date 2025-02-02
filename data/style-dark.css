@@ -24,6 +24,10 @@ sudokucell {
 sudokucell.highlight-coord {
   background: oklch(from var(--sudoku-accent-color) l calc(c * 0.25) h);
 }
+sudokucell > label.earmark.highlight-number {
+  color: oklab(from var(--sudoku-accent-color) 0.85 a b);
+  font-weight: bold;
+}
 sudokucell.selected {
   background: var(--sudoku-accent-color);
 }
