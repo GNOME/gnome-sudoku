@@ -33,8 +33,7 @@ sudokucell.highlight-number {
   background: oklch(from var(--sudoku-accent-color) 0.75 c h);
 }
 sudokucell > label.earmark.highlight-number {
-  /* reduce red to diffentiate from warnings */
-  color: oklab(from var(--accent-color) l min(a, 0.1) b);
+  color: oklab(from var(--sudoku-accent-color) 0.5 a b);
   font-weight: bold;
 }
 sudokucell > label.error {
