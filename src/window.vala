@@ -137,6 +137,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             set_accent_color (style_manager.get_accent_color ());
         });
 
+        notify["visible-dialog"].connect (visible_dialog_cb);
         close_request.connect (close_cb);
     }
 
@@ -167,6 +168,29 @@ public class SudokuWindow : Adw.ApplicationWindow
         add_binding_action (Gdk.Key.KP_Subtract, Gdk.ModifierType.CONTROL_MASK, "app.zoom-out", null);
         add_binding_action (Gdk.Key.ZoomOut, Gdk.ModifierType.NO_MODIFIER_MASK, "app.zoom-out", null);
         add_binding_action (Gdk.Key.Left, Gdk.ModifierType.ALT_MASK, "app.back", null);
+    }
+
+    private void construct_window_parameters ()
+    {
+        window_width = settings.get_int ("window-width");
+        window_height = settings.get_int ("window-height");
+
+        settings.bind ("show-timer", this, "show-timer", SettingsBindFlags.GET);
+
+        int headerbar_natural_height;
+        headerbar.measure (Orientation.VERTICAL, -1, null, out headerbar_natural_height, null, null);
+
+        small_window_height = SMALL_WINDOW_WIDTH + headerbar_natural_height;
+        medium_window_height = MEDIUM_WINDOW_WIDTH + headerbar_natural_height;
+
+        window_width_is_small = window_width <= MEDIUM_WINDOW_WIDTH;
+        window_height_is_small = window_height <= medium_window_height;
+
+        set_size_request (SMALL_WINDOW_WIDTH, small_window_height);
+        set_default_size (window_width, window_height);
+
+        Label title_label = (Label) windowtitle.get_first_child ().get_first_child ();
+        title_label.set_property ("ellipsize", false);
     }
 
     void set_accent_color (Adw.AccentColor color)
@@ -207,29 +231,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         }
         string s = ":root {--sudoku-accent-color: var(--sudoku-accent-" + css_color + ");}";
         accent_provider.load_from_string(s);
-    }
-
-    private void construct_window_parameters ()
-    {
-        window_width = settings.get_int ("window-width");
-        window_height = settings.get_int ("window-height");
-
-        settings.bind ("show-timer", this, "show-timer", SettingsBindFlags.GET);
-
-        int headerbar_natural_height;
-        headerbar.measure (Orientation.VERTICAL, -1, null, out headerbar_natural_height, null, null);
-
-        small_window_height = SMALL_WINDOW_WIDTH + headerbar_natural_height;
-        medium_window_height = MEDIUM_WINDOW_WIDTH + headerbar_natural_height;
-
-        window_width_is_small = window_width <= MEDIUM_WINDOW_WIDTH;
-        window_height_is_small = window_height <= medium_window_height;
-
-        set_size_request (SMALL_WINDOW_WIDTH, small_window_height);
-        set_default_size (window_width, window_height);
-
-        Label title_label = (Label) windowtitle.get_first_child ().get_first_child ();
-        title_label.set_property ("ellipsize", false);
     }
 
     private bool close_cb ()
@@ -413,6 +414,27 @@ public class SudokuWindow : Adw.ApplicationWindow
     public void board_completed ()
     {
         play_custom_game_button.visible = false;
+    }
+
+    private void visible_dialog_cb ()
+    {
+        if (current_screen == SudokuWindowScreen.MENU)
+            return;
+
+        if (visible_dialog != null)
+        {
+            if (!game.paused)
+                game.stop_clock ();
+
+            view.has_selection = false;
+        }
+        else
+        {
+            if (!game.paused)
+                game.resume_clock ();
+
+            view.has_selection = true;
+        }
     }
 
     private void tick_cb ()
