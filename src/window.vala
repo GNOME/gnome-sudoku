@@ -40,7 +40,6 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     [GtkChild] private unowned Stack menu_fullscreen_stack;
     [GtkChild] private unowned Stack play_pause_stack;
-    [GtkChild] private unowned MenuButton main_menu;
     [GtkChild] private unowned ToggleButton earmark_mode_button;
     [GtkChild] private unowned Button undo_button;
     [GtkChild] private unowned Button redo_button;
@@ -104,11 +103,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         maximized = settings.get_boolean ("window-is-maximized");
         set_gamebox_width_margins (window_width);
         set_gamebox_height_margins (window_height);
-
-        main_menu.notify["active"].connect(() => {
-            if (view != null)
-                view.has_selection = !main_menu.active;
-        });
 
         button_controller = new GestureClick ();
         button_controller.set_button (0 /* all buttons */);

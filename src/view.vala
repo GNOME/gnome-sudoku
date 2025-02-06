@@ -27,6 +27,7 @@ public class SudokuView : Adw.Bin
 {
     private GLib.Settings settings;
     private EventControllerKey key_controller;
+    private EventControllerFocus focus_controller;
     private SudokuGame game;
     private SudokuCell[,] cells;
     private SudokuFrame frame;
@@ -151,6 +152,12 @@ public class SudokuView : Adw.Bin
         key_controller = new EventControllerKey ();
         key_controller.key_pressed.connect (key_pressed_cb);
         add_controller (key_controller);
+
+        focus_controller = new EventControllerFocus ();
+        focus_controller.leave.connect (() => {
+            has_selection = false;
+        });
+        add_controller (focus_controller);
 
         update_warnings ();
     }
@@ -461,9 +468,11 @@ public class SudokuView : Adw.Bin
     {
         get { return _highlighter; }
         set {
-            set_cell_highlighter (selected_row, selected_col, false);
+            if (has_selection)
+                set_cell_highlighter (selected_row, selected_col, false);
             _highlighter = value;
-            set_cell_highlighter (selected_row, selected_col, true);
+            if (has_selection)
+                set_cell_highlighter (selected_row, selected_col, true);
         }
     }
 
