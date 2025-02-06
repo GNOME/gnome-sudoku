@@ -264,7 +264,8 @@ private class EarmarkPicker : PickerBase
                 //workaround to avoid lambda capture and memory leak
                 button.set_data<int> ("number-contained", n);
 
-                earmark_buttons[n - 1] = (ToggleButton) button;
+                earmark_buttons[n - 1] = button;
+                earmark_buttons[n - 1].update_property (AccessibleProperty.LABEL, n.to_string ());
            }
         }
     }
