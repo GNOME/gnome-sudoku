@@ -213,7 +213,6 @@ public class SudokuGame : Object
 
     public void reset ()
     {
-        board.previous_played_time = 0;
         var cells = board.get_cells ();
         var new_stack_item = new stack_item (StackAction.CLEAR_BOARD);
         add_to_stack (new_stack_item);
@@ -229,6 +228,10 @@ public class SudokuGame : Object
                     add_disable_earmarks_step (new_stack_item, row, col);
                 board.set (row, col, 0);
             }
+
+        board.previous_played_time = 0;
+        timer.start ();
+
         action_completed (new_stack_item.action);
     }
 
