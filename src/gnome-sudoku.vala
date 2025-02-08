@@ -403,7 +403,7 @@ public class Sudoku : Adw.Application
             return;
 
         window.show_game_view ();
-        window.view.grab_focus ();
+        window.view.has_selection = true;
         if (game.mode != GameMode.CREATE)
             game.resume_clock ();
 
