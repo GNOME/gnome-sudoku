@@ -229,9 +229,6 @@ public class SudokuGame : Object
                 board.set (row, col, 0);
             }
 
-        board.previous_played_time = 0;
-        timer.start ();
-
         action_completed (new_stack_item.action);
     }
 
