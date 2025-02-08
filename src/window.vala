@@ -65,8 +65,6 @@ public class SudokuWindow : Adw.ApplicationWindow
     private int small_window_height;
     private int medium_window_height;
 
-    private Adw.Breakpoint small_window_breakpoint;
-    private Adw.BreakpointCondition small_window_condition;
     private CssProvider accent_provider;
     private Adw.StyleManager style_manager;
 
@@ -90,12 +88,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         this.settings = settings;
 
         construct_window_parameters ();
-
-        small_window_condition = new Adw.BreakpointCondition.length (Adw.BreakpointConditionLengthType.MAX_WIDTH, MEDIUM_WINDOW_WIDTH, Adw.LengthUnit.PX);
-        small_window_breakpoint = new Adw.Breakpoint (small_window_condition);
-        small_window_breakpoint.unapply.connect (window_width_is_medium_cb);
-        small_window_breakpoint.apply.connect (window_width_is_small_cb);
-        add_breakpoint (small_window_breakpoint);
 
         notify["fullscreened"].connect(fullscreen_cb);
 
@@ -570,6 +562,11 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public override void size_allocate (int width, int height, int baseline)
     {
+        if (width < MEDIUM_WINDOW_WIDTH && !window_width_is_small)
+            window_width_is_small_cb ();
+        else if (width >= MEDIUM_WINDOW_WIDTH && window_width_is_small)
+            window_width_is_medium_cb ();
+
         if (window_width != width || window_height != height)
         {
             set_gamebox_width_margins (width);
