@@ -62,8 +62,6 @@ public class SudokuWindow : Adw.ApplicationWindow
     private int smallest_possible_height;
     private bool window_width_is_small;
     private bool window_height_is_small;
-    private Adw.Breakpoint small_window_breakpoint;
-    private Adw.BreakpointCondition small_window_condition;
 
     private const int margin_default_size = 25;
     private const int margin_small_size = 10;
@@ -85,12 +83,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         this.settings = settings;
 
         construct_window_parameters ();
-
-        small_window_condition = new Adw.BreakpointCondition.length (Adw.BreakpointConditionLengthType.MAX_WIDTH, small_window_width, Adw.LengthUnit.PX);
-        small_window_breakpoint = new Adw.Breakpoint (small_window_condition);
-        small_window_breakpoint.unapply.connect (window_width_is_big_cb);
-        small_window_breakpoint.apply.connect (window_width_is_small_cb);
-        add_breakpoint (small_window_breakpoint);
 
         notify["maximized"].connect(() => {
             window_is_maximized = !window_is_maximized;
@@ -520,6 +512,11 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public override void size_allocate (int width, int height, int baseline)
     {
+        if (width < small_window_width && !window_width_is_small)
+            window_width_is_small_cb ();
+        else if (width >= small_window_width && window_width_is_small)
+            window_width_is_big_cb ();
+
         if (window_width != width || window_height != height)
         {
             set_gamebox_width_margins (width);
