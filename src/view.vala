@@ -456,8 +456,11 @@ public class SudokuView : Adw.Bin
         get { return _show_possibilities; }
         set {
             _show_possibilities = value;
-            if (show_possibilities && game.mode != GameMode.CREATE && game.board.previous_played_time == 0.0)
+            if (show_possibilities && game.mode != GameMode.CREATE
+            && (game.board.previous_played_time == 0.0 || game.get_elapsed_time () > 3.0))
+            {
                 game.enable_all_earmark_possibilities ();
+            }
             else if (game.get_current_stack_action () == StackAction.ENABLE_ALL_EARMARK_POSSIBILITIES)
                 game.undo ();
         }

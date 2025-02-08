@@ -49,12 +49,6 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
         this.window.settings.bind ("highlight-row-column", highlight_row_column, "active", SettingsBindFlags.DEFAULT);
         this.window.settings.bind ("highlight-block", highlight_block, "active", SettingsBindFlags.DEFAULT);
         this.window.settings.bind ("highlight-numbers", highlight_numbers, "active", SettingsBindFlags.DEFAULT);
-
-        show_possibilities.notify["active"].connect (() => {
-            bool value = show_possibilities.get_active ();
-            if (this.window.view != null)
-                this.window.view.show_possibilities = value;
-        });
     }
 
     public override void dispose ()

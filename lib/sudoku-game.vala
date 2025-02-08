@@ -357,6 +357,11 @@ public class SudokuGame : Object
         return board.previous_played_time + timer.elapsed ();
     }
 
+    public double get_elapsed_time ()
+    {
+        return timer.elapsed ();
+    }
+
     private bool timeout_cb ()
     {
         clock_timeout = Timeout.add_seconds (1, timeout_cb);

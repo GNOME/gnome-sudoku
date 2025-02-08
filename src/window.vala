@@ -311,7 +311,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         this.game = game;
         game.tick.connect (tick_cb);
         game.paused_changed.connect (paused_changed_cb);
-        game.start_clock ();
 
         if (view != null)
             game_box.remove (view);
@@ -322,6 +321,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         game_box.prepend (view);
         view.grab_focus ();
+        game.start_clock ();
 
         back_button.sensitive = true;
     }
