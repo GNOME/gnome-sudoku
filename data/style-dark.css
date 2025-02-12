@@ -33,6 +33,9 @@ sudokucell.fixed {
 sudokucell.highlight-number {
   background: oklch(from var(--sudoku-accent-color) 0.3 calc(c * 0.7) h);
 }
+@keyframes paused_cell {
+  to {background-color:var(--sudoku-dark-grey);}
+}
 sudokucell.paused {
-  background: var(--sudoku-dark-grey);
+  animation: paused_cell 2s forwards;
 }

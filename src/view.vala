@@ -31,6 +31,7 @@ public class SudokuView : Adw.Bin
     private SudokuGame game;
     private SudokuCell[,] cells;
     private SudokuFrame frame;
+    private Overlay overlay;
     private Label paused_label;
 
     public SudokuNumberPicker number_picker;
@@ -77,15 +78,11 @@ public class SudokuView : Adw.Bin
         this.vexpand = true;
         this.focusable = true;
 
-        var overlay = new Overlay ();
+        overlay = new Overlay ();
         frame = new SudokuFrame (overlay);
         this.set_child (frame);
 
         paused_label = new Label (_("Paused"));
-        paused_label.set_visible (false);
-        overlay.add_overlay (paused_label);
-        overlay.add_css_class ("paused");
-
         number_picker = new SudokuNumberPicker (game);
 
         this.game.paused_changed.connect((paused) => {
@@ -99,10 +96,19 @@ public class SudokuView : Adw.Bin
             );
 
             paused_label.set_attributes (attr_list);
-            paused_label.set_visible (this.game.paused);
+
+            if (paused)
+            {
+                overlay.add_overlay (paused_label);
+                overlay.add_css_class ("paused");
+            }
+            else
+            {
+                overlay.remove_overlay (paused_label);
+                overlay.remove_css_class ("paused");
+            }
 
             masked = !masked;
-
             has_selection = !paused;
         });
 
