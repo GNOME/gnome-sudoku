@@ -45,14 +45,27 @@ sudokucell > label.error.earmark {
 sudokucell.fixed {
   background: #CCC;
 }
+@keyframes paused_overlay {
+  from {opacity: 0;}
+  to {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.75);
+  }
+}
 overlay.paused > label {
-  background: rgba(0, 0, 0, 0.75);
   font-weight: bold;
   color: #FFF;
+  animation: paused_overlay 2s forwards;
 }
-sudokucell.paused {
-  background: #FFF;
+@keyframes hide {
+  to {opacity: 0;}
 }
 sudokucell.paused > label {
-  color: transparent;
+  animation: hide 2s forwards;
+}
+@keyframes paused_cell {
+  to {background: #FFF;}
+}
+sudokucell.paused {
+  animation: paused_cell 2s forwards;
 }
