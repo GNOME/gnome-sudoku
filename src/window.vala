@@ -137,7 +137,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         add_binding_action (Gdk.Key.n, Gdk.ModifierType.CONTROL_MASK, "app.new-game", null);
         add_binding_action (Gdk.Key.p, Gdk.ModifierType.CONTROL_MASK, "app.print-current-board", null);
-        add_binding_action (Gdk.Key.p, Gdk.ModifierType.NO_MODIFIER_MASK, "app.pause", null);
+        add_binding_action (Gdk.Key.p, Gdk.ModifierType.NO_MODIFIER_MASK, "app.toggle-pause", null);
         add_binding_action (Gdk.Key.r, Gdk.ModifierType.CONTROL_MASK, "app.reset-board", null);
         add_binding_action (Gdk.Key.u, Gdk.ModifierType.NO_MODIFIER_MASK, "app.undo", null);
         add_binding_action (Gdk.Key.z, Gdk.ModifierType.CONTROL_MASK, "app.undo", null);
