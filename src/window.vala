@@ -29,6 +29,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Adw.HeaderBar headerbar;
 
     [GtkChild] private unowned Box game_box; // Holds the view
+    [GtkChild] private unowned PopoverMenu main_menu;
 
     [GtkChild] private unowned Box start_box;
     [GtkChild] private unowned Button start_button;
@@ -127,6 +128,10 @@ public class SudokuWindow : Adw.ApplicationWindow
         set_accent_color (style_manager.get_accent_color ());
         style_manager.notify["accent-color"].connect(() => {
             set_accent_color (style_manager.get_accent_color ());
+        });
+
+        main_menu.closed.connect(() => {
+            view.has_selection = true;
         });
 
         notify["visible-dialog"].connect (visible_dialog_cb);
