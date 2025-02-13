@@ -155,7 +155,9 @@ public class SudokuView : Adw.Bin
 
         focus_controller = new EventControllerFocus ();
         focus_controller.leave.connect (() => {
-            has_selection = false;
+            Window window = get_root () as Window;
+            if (window.is_active)
+                has_selection = false;
         });
         add_controller (focus_controller);
 
