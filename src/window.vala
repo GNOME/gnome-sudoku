@@ -131,7 +131,10 @@ public class SudokuWindow : Adw.ApplicationWindow
         });
 
         main_menu.closed.connect(() => {
-            view.has_selection = true;
+            if (current_screen != SudokuWindowScreen.MENU)
+                view.has_selection = true;
+            else
+                start_button.grab_focus ();
         });
 
         notify["visible-dialog"].connect (visible_dialog_cb);
