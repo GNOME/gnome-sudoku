@@ -196,17 +196,21 @@ public class SudokuSaver : Object
             reader.read_element (0);
             return_val_if_fail (reader.is_value (), null);
             var row = (int) reader.get_int_value ();
+            return_val_if_fail (row >= 0 && row < 9, null);
+
             reader.end_element ();
 
             reader.read_element (1);
             return_val_if_fail (reader.is_value (), null);
             var col = (int) reader.get_int_value ();
+            return_val_if_fail (col >= 0 && col < 9, null);
             reader.end_element ();
             reader.end_member ();
 
             reader.read_member ("value");
             return_val_if_fail (reader.is_value (), null);
             var val = (int) reader.get_int_value ();
+            return_val_if_fail (val >= 0 && val < 10, null);
             reader.end_member ();
 
             reader.read_member ("fixed");
@@ -223,7 +227,11 @@ public class SudokuSaver : Object
             {
                 reader.read_element (k);
                 return_val_if_fail (reader.is_value (), null);
-                board.enable_earmark (row, col, (int) reader.get_int_value ());
+                var earmark = (int) reader.get_int_value ();
+                return_val_if_fail (earmark > 0 && earmark < 10
+                                    && !board.is_earmark_enabled (row, col, earmark),
+                                    null);
+                board.enable_earmark (row, col, earmark);
                 reader.end_element ();
             }
             reader.end_member ();
@@ -235,11 +243,13 @@ public class SudokuSaver : Object
         reader.read_member ("time_elapsed");
         return_val_if_fail (reader.is_value (), null);
         board.previous_played_time = reader.get_double_value ();
+        return_val_if_fail (board.previous_played_time >= 0, null);
         reader.end_member ();
 
         reader.read_member ("difficulty_category");
         return_val_if_fail (reader.is_value (), null);
         board.difficulty_category = DifficultyCategory.from_string (reader.get_string_value ());
+        return_val_if_fail (board.difficulty_category != DifficultyCategory.UNKNOWN, null);
         reader.end_member ();
 
         return new SudokuGame (board);
