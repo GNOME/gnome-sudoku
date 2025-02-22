@@ -180,20 +180,7 @@ public class Sudoku : Adw.Application
             if (!game.is_empty ())
                 saver.save_game (game);
             else
-            {
-                var file = File.new_for_path (SudokuSaver.savegame_file);
-                if (file.query_exists ())
-                {
-                    try
-                    {
-                        file.delete ();
-                    }
-                    catch (Error e)
-                    {
-                        warning ("Failed to delete saved game: %s", e.message);
-                    }
-                }
-            }
+                saver.delete_save ();
         }
 
         window.close ();

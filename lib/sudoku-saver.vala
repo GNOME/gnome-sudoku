@@ -63,6 +63,23 @@ public class SudokuSaver : Object
         create_file_for_game (game, savegame_file);
     }
 
+    public void delete_save ()
+    {
+        var file = File.new_for_path (savegame_file);
+        if (file.query_exists ())
+        {
+            try
+            {
+                file.delete ();
+            }
+            catch (GLib.Error e)
+            {
+                warning ("Failed to delete %s: %s", file.get_uri (), e.message);
+            }
+        }
+
+    }
+
     public void add_game_to_finished (SudokuGame game, bool delete_savegame = false, bool save_timer = true)
     {
         var file_name = game.board.to_string (true) + ".save";
@@ -70,21 +87,7 @@ public class SudokuSaver : Object
         create_file_for_game (game, file_path, save_timer);
 
         if (delete_savegame)
-        {
-            // Delete savegame file
-            var file = File.new_for_path (savegame_file);
-            if (file.query_exists ())
-            {
-                try
-                {
-                    file.delete ();
-                }
-                catch (GLib.Error e)
-                {
-                    warning ("Failed to delete %s: %s", file.get_uri (), e.message);
-                }
-            }
-        }
+            delete_save ();
     }
 
     private void create_file_for_game (SudokuGame game, string file_name, bool save_timer = true)
