@@ -179,20 +179,21 @@ public class Sudoku : Adw.Application
             //Source timer holds a game ref
             game.stop_clock ();
 
-            if (!game.is_empty () && !game.board.complete)
+            if (!game.is_empty ())
                 saver.save_game (game);
-
-            if (game.is_empty () && saver.get_savedgame () != null)
+            else
             {
                 var file = File.new_for_path (SudokuSaver.savegame_file);
-
-                try
+                if (file.query_exists ())
                 {
-                    file.delete ();
-                }
-                catch (Error e)
-                {
-                    warning ("Failed to delete saved game: %s", e.message);
+                    try
+                    {
+                        file.delete ();
+                    }
+                    catch (Error e)
+                    {
+                        warning ("Failed to delete saved game: %s", e.message);
+                    }
                 }
             }
         }
