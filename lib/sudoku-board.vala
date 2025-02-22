@@ -619,12 +619,12 @@ public struct Coord
 
 public enum DifficultyCategory
 {
-    UNKNOWN,
-    EASY,
-    MEDIUM,
-    HARD,
-    VERY_HARD,
-    CUSTOM;
+    UNKNOWN = 0,
+    EASY = 1,
+    MEDIUM = 2,
+    HARD = 3,
+    VERY_HARD = 4,
+    CUSTOM = 5;
 
     public string to_string ()
     {

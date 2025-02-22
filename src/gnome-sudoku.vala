@@ -54,7 +54,8 @@ public class Sudoku : Adw.Application
     private SimpleAction zoom_in_action;
     private SimpleAction zoom_out_action;
 
-    private DifficultyCategory play_difficulty;
+    public DifficultyCategory play_difficulty { get; set;}
+    public ZoomLevel zoom_level { get; set;}
 
     private const GLib.ActionEntry action_entries[] =
     {
@@ -142,11 +143,11 @@ public class Sudoku : Adw.Application
         zoom_in_action = (SimpleAction) lookup_action ("zoom-in");
         zoom_out_action = (SimpleAction) lookup_action ("zoom-out");
 
-        ZoomLevel zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
+        settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
         zoom_in_action.set_enabled (!zoom_level.is_fully_zoomed_in ());
         zoom_out_action.set_enabled (!zoom_level.is_fully_zoomed_out ());
 
-        play_difficulty = (DifficultyCategory) settings.get_enum ("play-difficulty");
+        settings.bind ("play-difficulty", this, "play-difficulty", SettingsBindFlags.DEFAULT);
 
         Window.set_default_icon_name (APP_ID);
 
@@ -171,9 +172,6 @@ public class Sudoku : Adw.Application
 
     protected override void shutdown ()
     {
-        settings.set_enum ("play-difficulty", play_difficulty);
-        settings.apply ();
-
         if (game != null)
         {
             //Source timer holds a game ref
@@ -526,10 +524,7 @@ public class Sudoku : Adw.Application
 
     private void zoom_in_cb ()
     {
-        ZoomLevel zoom_level;
-        zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
         zoom_level = zoom_level.zoom_in ();
-        settings.set_enum ("zoom-level", zoom_level);
         if (zoom_level.is_fully_zoomed_in ())
             zoom_in_action.set_enabled (false);
 
@@ -538,10 +533,7 @@ public class Sudoku : Adw.Application
 
     private void zoom_out_cb ()
     {
-        ZoomLevel zoom_level;
-        zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
         zoom_level = zoom_level.zoom_out ();
-        settings.set_enum ("zoom-level", zoom_level);
         if (zoom_level.is_fully_zoomed_out ())
             zoom_out_action.set_enabled (false);
 
@@ -551,8 +543,6 @@ public class Sudoku : Adw.Application
     private void zoom_reset_cb ()
     {
         settings.reset ("zoom-level");
-        ZoomLevel zoom_level;
-        zoom_level = (ZoomLevel) settings.get_enum ("zoom-level");
         zoom_in_action.set_enabled (true);
         zoom_out_action.set_enabled (true);
     }
