@@ -88,24 +88,6 @@ public class SudokuView : Adw.Bin
 
         number_picker = new SudokuNumberPicker (game);
 
-        this.game.paused_changed.connect((paused) => {
-            // Set Font Size
-            var attr_list = paused_label.get_attributes ();
-            if (attr_list == null)
-                attr_list = new Pango.AttrList ();
-
-            attr_list.change (
-                Pango.AttrSize.new_absolute ((int) (this.get_width () * 0.125) * Pango.SCALE)
-            );
-
-            paused_label.set_attributes (attr_list);
-            paused_label.set_visible (this.game.paused);
-
-            masked = !masked;
-
-            has_selection = !paused;
-        });
-
         var grid = new Grid () {
             row_spacing = 2,
             column_spacing = 2,
@@ -148,6 +130,7 @@ public class SudokuView : Adw.Bin
         this.game.board.value_changed.connect (value_changed_cb);
         this.game.board.earmark_changed.connect (earmark_changed_cb);
         this.selection_changed.connect (selection_changed_cb);
+        game.notify["paused"].connect(paused_cb);
 
         key_controller = new EventControllerKey ();
         key_controller.key_pressed.connect (key_pressed_cb);
@@ -297,6 +280,28 @@ public class SudokuView : Adw.Bin
             cells[row, col].update_earmark_warnings (num);
     }
 
+    private void paused_cb ()
+    {
+        // Set Font Size
+        var attr_list = paused_label.get_attributes ();
+        if (attr_list == null)
+            attr_list = new Pango.AttrList ();
+
+        attr_list.change (
+            Pango.AttrSize.new_absolute ((int) (this.get_width () * 0.125) * Pango.SCALE)
+        );
+
+        paused_label.set_attributes (attr_list);
+        paused_label.set_visible (this.game.paused);
+
+        has_selection = !game.paused;
+
+        if (game.paused)
+            clear_all_warnings ();
+        else
+            update_warnings ();
+    }
+
     public void set_selected (int cell_row, int cell_col)
     {
         if (cells[cell_row, cell_col].selected == true)
@@ -400,22 +405,6 @@ public class SudokuView : Adw.Bin
     {
         foreach (var cell in cells)
             cell.clear_warnings ();
-    }
-
-    private bool _masked = false;
-    private bool masked
-    {
-        get { return _masked; }
-        set {
-            _masked = value;
-            foreach (var cell in cells)
-                cell.paused = masked;
-
-            if (value)
-                clear_all_warnings ();
-            else
-                update_warnings ();
-        }
     }
 
     private bool _show_warnings;

@@ -55,10 +55,10 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Box clock_box;
     [GtkChild] private unowned Label clock_label;
 
-    private int window_width { get; private set;}
-    private int window_height { get; private set;}
-    private bool window_width_is_small { get; private set;}
-    private bool window_height_is_small { get; private set;}
+    private int window_width { get; private set; }
+    private int window_height { get; private set; }
+    private bool window_width_is_small { get; private set; }
+    private bool window_height_is_small { get; private set; }
 
     private const int SMALL_WINDOW_WIDTH = 360;
     private const int MEDIUM_WINDOW_WIDTH = 600;
@@ -73,16 +73,16 @@ public class SudokuWindow : Adw.ApplicationWindow
     private const int MARGIN_SMALL_SIZE = 10;
     private const int MARGIN_SIZE_DIFF = MARGIN_DEFAULT_SIZE - MARGIN_SMALL_SIZE;
 
-    private SudokuGame? game = null;
+    private SudokuGame game = null;
 
     private GestureClick button_controller;
     private GestureClick backwards_controller;
     private GestureClick forwards_controller;
     private EventControllerScroll scroll_controller;
 
-    public GLib.Settings settings { get; private set;}
-    public SudokuView? view { get; private set; default = null;}
-    public SudokuWindowScreen current_screen { get; private set; default = SudokuWindowScreen.NONE;}
+    public GLib.Settings settings { get; private set; }
+    public SudokuView view { get; private set; default = null; }
+    public SudokuWindowScreen current_screen { get; private set; default = SudokuWindowScreen.NONE; }
 
     public SudokuWindow (GLib.Settings settings)
     {
@@ -318,7 +318,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         this.game = game;
         game.tick.connect (tick_cb);
-        game.paused_changed.connect (paused_changed_cb);
+        game.notify["paused"].connect (paused_cb);
 
         if (view != null)
             game_box.remove (view);
@@ -449,9 +449,9 @@ public class SudokuWindow : Adw.ApplicationWindow
             clock_label.set_text ("%02d∶\xE2\x80\x8E%02d".printf (minutes, seconds));
     }
 
-    private void paused_changed_cb (bool paused)
+    private void paused_cb ()
     {
-        if (paused)
+        if (game.paused)
             play_pause_stack.set_visible_child (play_button);
         else
             play_pause_stack.set_visible_child (pause_button);

@@ -30,7 +30,6 @@ public class SudokuSaver : Object
     {
         try
         {
-
             var config_dir = Environment.get_user_data_dir ();
             var sudoku_data_dir = Path.build_path (Path.DIR_SEPARATOR_S, config_dir, "gnome-sudoku");
             savegame_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "savefile");
@@ -77,7 +76,6 @@ public class SudokuSaver : Object
                 warning ("Failed to delete %s: %s", file.get_uri (), e.message);
             }
         }
-
     }
 
     public void add_game_to_finished (SudokuGame game, bool delete_savegame = false, bool save_timer = true)

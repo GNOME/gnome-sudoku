@@ -51,6 +51,7 @@ public class SudokuCell : Widget
         focusable = true;
         can_focus = true;
         notify["has-focus"].connect (focus_changed_cb);
+        game.notify["paused"].connect(paused_cb);
 
         set_fixed_css (true);
 
@@ -156,19 +157,6 @@ public class SudokuCell : Widget
         }
     }
 
-    private bool _paused = false;
-    public bool paused {
-        get { return _paused; }
-        set
-        {
-            _paused = value;
-            if (value)
-                this.add_css_class ("paused");
-            else
-                this.remove_css_class ("paused");
-        }
-    }
-
     public void set_earmark_highlight (int val, bool enabled)
     {
         var earmark = earmark_labels[val-1];
@@ -255,6 +243,14 @@ public class SudokuCell : Widget
 
         if (this.has_focus)
             view.set_selected (row, col);
+    }
+
+    private void paused_cb ()
+    {
+        if (game.paused)
+            add_css_class ("paused");
+        else
+            remove_css_class ("paused");
     }
 
     public void update_earmark_visibility (int num)

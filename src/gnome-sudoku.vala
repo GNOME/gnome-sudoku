@@ -33,7 +33,7 @@ public class Sudoku : Adw.Application
 
     private SudokuWindow window;
 
-    private SudokuGame? game = null;
+    private SudokuGame game = null;
 
     private SudokuView view
     {
@@ -54,8 +54,8 @@ public class Sudoku : Adw.Application
     private SimpleAction zoom_in_action;
     private SimpleAction zoom_out_action;
 
-    public DifficultyCategory play_difficulty { get; set;}
-    public ZoomLevel zoom_level { get; set;}
+    public DifficultyCategory play_difficulty { get; set; }
+    public ZoomLevel zoom_level { get; set; }
 
     private const GLib.ActionEntry action_entries[] =
     {
@@ -187,9 +187,9 @@ public class Sudoku : Adw.Application
         base.shutdown ();
     }
 
-    private void paused_changed_cb (bool paused)
+    private void paused_cb ()
     {
-        if (paused)
+        if (game.paused)
         {
             reset_board_action.set_enabled (false);
             undo_action.set_enabled (false);
@@ -308,7 +308,7 @@ public class Sudoku : Adw.Application
         game = new SudokuGame (board);
         game.mode = mode;
 
-        game.paused_changed.connect (paused_changed_cb);
+        game.notify["paused"].connect (paused_cb);
         game.action_completed.connect (action_completed_cb);
 
         window.start_game (game);

@@ -24,24 +24,13 @@ using Gee;
 public class SudokuGame : Object
 {
     public SudokuBoard board { get; private set; }
-    public GameMode mode { get; set; }
+    public GameMode mode { get; set; default = NONE; }
+    public bool paused { get; set; default = false; }
     private GLib.Timer timer;
     private uint clock_timeout;
 
     public signal void tick ();
-    public signal void paused_changed (bool paused);
     public signal void action_completed (StackAction action);
-
-    private bool _paused = false;
-    public bool paused
-    {
-        public set
-        {
-            _paused = value;
-            paused_changed (value);
-        }
-        get { return _paused; }
-    }
 
     private struct earmark_change
     {
@@ -88,7 +77,6 @@ public class SudokuGame : Object
     public SudokuGame (SudokuBoard board)
     {
         this.board = board;
-        this.mode = GameMode.NONE;
         timer = new Timer();
         stack = new ArrayList<stack_item?>();
     }
