@@ -310,6 +310,11 @@ public class SudokuCell : Widget
             earmark_labels[num-1].remove_css_class ("error");
     }
 
+    public override bool focus (DirectionType direction)
+    {
+        return view.move_cell_focus (direction);
+    }
+
     public override void size_allocate (int width,
                                         int height,
                                         int baseline)

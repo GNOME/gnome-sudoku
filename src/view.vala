@@ -147,6 +147,78 @@ public class SudokuView : Adw.Bin
         update_warnings ();
     }
 
+    public bool move_cell_focus (DirectionType direction)
+    {
+        switch (direction)
+        {
+            case DirectionType.TAB_FORWARD:
+                //this lets us control the focus when it comes from the headerbar
+                if (!focus_controller.contains_focus)
+                {
+                    cells[0, 0].grab_focus ();
+                    return EVENT_STOP;
+                }
+                else if (selected_col == 8)
+                {
+                    //propagate the event so that the focus moves to the headerbar
+                    if (selected_row == 8)
+                        return EVENT_PROPAGATE;
+
+                    cells[selected_row + 1, 0].grab_focus ();
+                }
+                else
+                    cells[selected_row, selected_col + 1].grab_focus ();
+                return EVENT_STOP;
+
+            case DirectionType.TAB_BACKWARD:
+                if (!focus_controller.contains_focus)
+                {
+                    cells[8, 8].grab_focus ();
+                    return EVENT_STOP;
+                }
+                else if (selected_col == 0)
+                {
+                    if (selected_row == 0)
+                        return EVENT_PROPAGATE;
+
+                    cells[selected_row - 1, 8].grab_focus ();
+                }
+                else
+                    cells[selected_row, selected_col - 1].grab_focus ();
+                return EVENT_STOP;
+
+            case DirectionType.UP:
+                if (selected_row == 0)
+                    cells[8, selected_col].grab_focus ();
+                else
+                    cells[selected_row - 1, selected_col].grab_focus ();
+                return EVENT_STOP;
+
+            case DirectionType.DOWN:
+                if (selected_row == 8)
+                    cells[0, selected_col].grab_focus ();
+                else
+                    cells[selected_row + 1, selected_col].grab_focus ();
+                return EVENT_STOP;
+
+            case DirectionType.LEFT:
+                if (selected_col == 0)
+                    cells[selected_row, 8].grab_focus ();
+                else
+                    cells[selected_row, selected_col - 1].grab_focus ();
+                return EVENT_STOP;
+
+            case DirectionType.RIGHT:
+                if (selected_col == 8)
+                    cells[selected_row, 0].grab_focus ();
+                else
+                    cells[selected_row, selected_col + 1].grab_focus ();
+                return EVENT_STOP;
+        }
+
+        return EVENT_STOP;
+    }
+
     private bool key_pressed_cb (uint         keyval,
                                  uint         keycode,
                                  ModifierType state)
@@ -157,33 +229,17 @@ public class SudokuView : Adw.Bin
         if (state != ModifierType.CONTROL_MASK)
             switch (keyval)
             {
-                case Key.Up : case Key.w : case Key.KP_Up:
-                    if (selected_row == 0)
-                        cells[8, selected_col].grab_focus ();
-                    else
-                        cells[selected_row - 1, selected_col].grab_focus ();
-                    return EVENT_STOP;
+                case Key.w :
+                    return move_cell_focus (DirectionType.UP);
 
-                case Key.Down : case Key.s : case Key.KP_Down:
-                    if (selected_row == 8)
-                        cells[0, selected_col].grab_focus ();
-                    else
-                        cells[selected_row + 1, selected_col].grab_focus ();
-                    return EVENT_STOP;
+                case Key.s :
+                    return move_cell_focus (DirectionType.DOWN);
 
-                case Key.Left : case Key.a : case Key.KP_Left:
-                    if (selected_col == 0)
-                        cells[selected_row, 8].grab_focus ();
-                    else
-                        cells[selected_row, selected_col - 1].grab_focus ();
-                    return EVENT_STOP;
+                case Key.a :
+                    return move_cell_focus (DirectionType.LEFT);
 
-                case Key.Right : case Key.d : case Key.KP_Right:
-                    if (selected_col == 8)
-                        cells[selected_row, 0].grab_focus ();
-                    else
-                        cells[selected_row, selected_col + 1].grab_focus ();
-                    return EVENT_STOP;
+                case Key.d :
+                    return move_cell_focus (DirectionType.RIGHT);
 
                 default:
                     break;
