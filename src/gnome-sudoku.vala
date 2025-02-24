@@ -91,8 +91,10 @@ public class Sudoku : Adw.Application
         Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         Intl.textdomain (GETTEXT_PACKAGE);
 
-        Object (application_id: APP_ID, flags: ApplicationFlags.DEFAULT_FLAGS, resource_base_path: "/org/gnome/Sudoku");
+        Object (application_id: "org.gnome.Sudoku", flags: ApplicationFlags.FLAGS_NONE);
         add_main_option_entries (option_entries);
+
+        typeof (SudokuMainMenuItem).ensure ();
     }
 
     protected override int handle_local_options (GLib.VariantDict options)
