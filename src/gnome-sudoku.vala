@@ -177,7 +177,7 @@ public class Sudoku : Adw.Application
             //Source timer holds a game ref
             game.stop_clock ();
 
-            if (!game.is_empty ())
+            if (!game.is_empty () && !game.board.complete)
                 saver.save_game (game);
             else
                 saver.delete_save ();
