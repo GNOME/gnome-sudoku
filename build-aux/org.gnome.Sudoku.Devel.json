@@ -1,23 +1,16 @@
 {
-    "app-id": "org.gnome.Sudoku",
+    "app-id": "org.gnome.Sudoku.Devel",
     "runtime": "org.gnome.Platform",
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
-    "sdk-extensions": [ "org.freedesktop.Sdk.Extension.vala-nightly" ],
     "command": "gnome-sudoku",
     "tags": ["nightly"],
-    "desktop-file-name-prefix": "(Nightly) ",
     "finish-args": [
         "--device=dri",
         "--share=ipc",
         "--socket=fallback-x11",
-        "--socket=wayland",
-        "--metadata=X-DConf=migrate-path=/org/gnome/Sudoku/"
+        "--socket=wayland"
     ],
-    "build-options": {
-        "prepend-path": "/usr/lib/sdk/vala-nightly/bin/",
-        "prepend-ld-library-path": "/usr/lib/sdk/vala-nightly/lib"
-    },
     "modules": [
         {
             "name": "qqwing",
@@ -30,6 +23,9 @@
         {
             "name": "gnome-sudoku",
             "buildsystem": "meson",
+            "config-opts": [
+                "-Dprofile=Devel"
+            ],
             "sources": [{
                 "type": "git",
                 "url": "https://gitlab.gnome.org/GNOME/gnome-sudoku.git"
