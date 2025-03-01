@@ -33,11 +33,14 @@ public class Sudoku : Adw.Application
 
     private SudokuWindow window;
 
-    private SudokuGame game = null;
-
     private SudokuView view
     {
         get { return window.view; }
+    }
+
+    private SudokuGame game
+    {
+        get { return view.game; }
     }
 
     private SudokuSaver saver;
@@ -54,8 +57,22 @@ public class Sudoku : Adw.Application
     private SimpleAction zoom_in_action;
     private SimpleAction zoom_out_action;
 
+    public static Sudoku app;
+
     public DifficultyCategory play_difficulty { get; set; }
     public ZoomLevel zoom_level { get; set; }
+    public bool show_timer { get; set; }
+    public bool earmark_mode { get; set; default = false; }
+    public bool show_possibilities { get; set; }
+    public bool highlighter { get; set; }
+    public bool highlight_row_column { get; set; default = false; }
+    public bool highlight_block { get; set; }
+    public bool highlight_numbers { get; set; }
+    public bool show_warnings { get; set; }
+    public bool solution_warnings { get; set; }
+    public bool earmark_warnings { get; set; }
+    public bool autoclean_earmarks { get; set; }
+    public bool number_picker_second_click { get; set; }
 
     private const GLib.ActionEntry action_entries[] =
     {
@@ -117,14 +134,31 @@ public class Sudoku : Adw.Application
 
     protected override void startup ()
     {
+        app = this;
+
         base.startup ();
+
+        settings = new GLib.Settings ("org.gnome.Sudoku");
+
+        settings.bind ("play-difficulty", this, "play-difficulty", SettingsBindFlags.DEFAULT);
+        settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
+
+        settings.bind ("show-timer", this, "show-timer", SettingsBindFlags.GET);
+        settings.bind ("show-possibilities", this, "show-possibilities", SettingsBindFlags.GET);
+        settings.bind ("highlighter", this, "highlighter", SettingsBindFlags.GET);
+        settings.bind ("highlight-row-column", this, "highlight-row-column", SettingsBindFlags.GET);
+        settings.bind ("highlight-block", this, "highlight-block", SettingsBindFlags.GET);
+        settings.bind ("highlight-numbers", this, "highlight-numbers", SettingsBindFlags.GET);
+        settings.bind ("show-warnings", this, "show-warnings", SettingsBindFlags.GET);
+        settings.bind ("solution-warnings", this, "solution-warnings", SettingsBindFlags.GET);
+        settings.bind ("earmark-warnings", this, "earmark-warnings", SettingsBindFlags.GET);
+        settings.bind ("autoclean-earmarks", this, "autoclean-earmarks", SettingsBindFlags.GET);
+        settings.bind ("number-picker-second-click", this, "number-picker-second-click", SettingsBindFlags.GET);
 
         add_action_entries (action_entries, this);
 
-        settings = new GLib.Settings ("org.gnome.Sudoku");
         var action = settings.create_action ("show-warnings");
         add_action (action);
-
         action = settings.create_action ("highlighter");
         add_action (action);
 
@@ -142,12 +176,8 @@ public class Sudoku : Adw.Application
         play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
         zoom_in_action = (SimpleAction) lookup_action ("zoom-in");
         zoom_out_action = (SimpleAction) lookup_action ("zoom-out");
-
-        settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
         zoom_in_action.set_enabled (!zoom_level.is_fully_zoomed_in ());
         zoom_out_action.set_enabled (!zoom_level.is_fully_zoomed_out ());
-
-        settings.bind ("play-difficulty", this, "play-difficulty", SettingsBindFlags.DEFAULT);
 
         Window.set_default_icon_name (APP_ID);
 
@@ -157,10 +187,7 @@ public class Sudoku : Adw.Application
         saver = new SudokuSaver ();
         var savegame = saver.get_savedgame ();
         if (savegame != null)
-        {
-            var mode = savegame.board.fixed == 0 ? GameMode.CREATE : GameMode.PLAY;
-            start_game (savegame.board, mode);
-        }
+            start_game (savegame.board);
         else
             show_menu_screen ();
     }
@@ -172,11 +199,8 @@ public class Sudoku : Adw.Application
 
     protected override void shutdown ()
     {
-        if (game != null)
+        if (view != null)
         {
-            //Source timer holds a game ref
-            game.stop_clock ();
-
             if (!game.is_empty () && !game.board.complete)
                 saver.save_game (game);
             else
@@ -242,7 +266,7 @@ public class Sudoku : Adw.Application
 
     private void toggle_pause_cb ()
     {
-        if (window.current_screen == SudokuWindowScreen.PLAY && window.show_timer)
+        if (window.current_screen == SudokuWindowScreen.PLAY && show_timer)
             game.paused = !game.paused;
     }
 
@@ -256,17 +280,15 @@ public class Sudoku : Adw.Application
 
     private void board_completed_cb ()
     {
-        window.board_completed ();
-
         game.stop_clock ();
 
         view.can_focus = false;
 
-        saver.add_game_to_finished (game, true, window.show_timer);
+        saver.add_game_to_finished (game, true, show_timer);
 
         /* Text in dialog that displays when the game is over. */
         string win_str;
-        if (window.show_timer)
+        if (show_timer)
         {
             var minutes = int.max (1, (int) game.get_total_time_played () / 60);
             win_str = ngettext ("Well done, you completed the puzzle in %d minute!",
@@ -294,30 +316,22 @@ public class Sudoku : Adw.Application
 
     private void start_custom_game (SudokuBoard board)
     {
-        game.board.set_all_is_fixed ();
-        game.stop_clock ();
-        start_game (board, GameMode.PLAY);
+        board.set_all_is_fixed ();
+        start_game (board);
     }
 
-    private void start_game (SudokuBoard board, GameMode mode)
+    private void start_game (SudokuBoard board)
     {
-        if (mode == GameMode.PLAY)
-            board.solve ();
-
-        window.will_start_game ();
-        game = new SudokuGame (board);
-        game.mode = mode;
+        window.start_game (board);
 
         game.notify["paused"].connect (paused_cb);
         game.action_completed.connect (action_completed_cb);
-
-        window.start_game (game);
 
         print_current_board_action.set_enabled (true);
         undo_action.set_enabled (!game.is_undostack_null ());
         redo_action.set_enabled (!game.is_redostack_null ());
         new_game_action.set_enabled (true);
-        earmark_mode_action.set_enabled (mode == GameMode.PLAY);
+        earmark_mode_action.set_enabled (game.mode == GameMode.PLAY);
         reset_board_action.set_enabled (!game.is_empty ());
         play_custom_game_action.set_enabled (!game.is_empty ());
 
@@ -327,7 +341,7 @@ public class Sudoku : Adw.Application
 
     private void show_menu_screen ()
     {
-        if (game != null)
+        if (view != null)
             game.stop_clock ();
 
         print_current_board_action.set_enabled (false);
@@ -365,10 +379,7 @@ public class Sudoku : Adw.Application
             try
             {
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);
-                if (play_difficulty != DifficultyCategory.CUSTOM)
-                    start_game (gen_boards[0], GameMode.PLAY);
-                else
-                    start_game (gen_boards[0], GameMode.CREATE);
+                start_game (gen_boards[0]);
             }
             catch (Error e)
             {
@@ -385,12 +396,12 @@ public class Sudoku : Adw.Application
 
     private void back_cb ()
     {
-        if (window.current_screen != SudokuWindowScreen.MENU || game == null)
+        if (window.current_screen != SudokuWindowScreen.MENU)
             return;
 
         window.show_game_view ();
         window.view.has_selection = true;
-        if (game.mode != GameMode.CREATE)
+        if (window.current_screen == SudokuWindowScreen.PLAY)
             game.resume_clock ();
 
         print_current_board_action.set_enabled (true);
@@ -414,8 +425,8 @@ public class Sudoku : Adw.Application
     {
         if (window.current_screen == SudokuWindowScreen.PLAY)
         {
-            window.view.earmark_mode = !window.view.earmark_mode;
-            earmark_mode_action.set_state (window.view.earmark_mode);
+            earmark_mode = !earmark_mode;
+            earmark_mode_action.set_state (earmark_mode);
         }
     }
 
@@ -443,7 +454,7 @@ public class Sudoku : Adw.Application
 
     private void preferences_dialog_cb ()
     {
-        var preferences_dialog = new SudokuPreferencesDialog (this.window);
+        var preferences_dialog = new SudokuPreferencesDialog ();
         preferences_dialog.present (window);
     }
 

@@ -77,7 +77,15 @@ public class SudokuGame : Object
     public SudokuGame (SudokuBoard board)
     {
         this.board = board;
-        timer = new Timer();
+        if (board.fixed != 0)
+        {
+            mode = GameMode.PLAY;
+            board.solve ();
+        }
+        else
+            mode = GameMode.CREATE;
+
+        start_clock ();
         stack = new ArrayList<stack_item?>();
     }
 
