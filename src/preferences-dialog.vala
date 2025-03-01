@@ -28,27 +28,23 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
     [GtkChild] public unowned Adw.SwitchRow show_possibilities;
     [GtkChild] public unowned Adw.SwitchRow show_timer;
     [GtkChild] public unowned Adw.SwitchRow number_picker_second_click;
-    [GtkChild] public unowned Adw.SwitchRow show_earmark_warnings;
+    [GtkChild] public unowned Adw.SwitchRow earmark_warnings;
     [GtkChild] public unowned Adw.SwitchRow solution_warnings;
     [GtkChild] public unowned Adw.SwitchRow highlight_numbers;
     [GtkChild] public unowned Adw.SwitchRow highlight_block;
     [GtkChild] public unowned Adw.SwitchRow highlight_row_column;
 
-    private SudokuWindow window;
-
-    public SudokuPreferencesDialog (SudokuWindow window)
+    public SudokuPreferencesDialog ()
     {
-        this.window = window;
-
-        this.window.settings.bind ("show-timer", show_timer, "active", SettingsBindFlags.DEFAULT);
-        this.window.settings.bind ("show-earmark-warnings", show_earmark_warnings, "active", SettingsBindFlags.DEFAULT);
-        this.window.settings.bind ("show-possibilities", show_possibilities, "active", SettingsBindFlags.DEFAULT);
-        this.window.settings.bind ("number-picker-second-click", number_picker_second_click, "active", SettingsBindFlags.DEFAULT);
-        this.window.settings.bind ("solution-warnings", solution_warnings, "active", SettingsBindFlags.DEFAULT);
-        this.window.settings.bind ("autoclean-earmarks", autoclean_earmarks, "active", SettingsBindFlags.DEFAULT);
-        this.window.settings.bind ("highlight-row-column", highlight_row_column, "active", SettingsBindFlags.DEFAULT);
-        this.window.settings.bind ("highlight-block", highlight_block, "active", SettingsBindFlags.DEFAULT);
-        this.window.settings.bind ("highlight-numbers", highlight_numbers, "active", SettingsBindFlags.DEFAULT);
+        Sudoku.app.bind_property ("show-timer", show_timer, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("earmark-warnings", earmark_warnings, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("show-possibilities", show_possibilities, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("number_picker-second_click", number_picker_second_click, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("solution-warnings", solution_warnings, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("autoclean-earmarks", autoclean_earmarks, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("highlight-row-column", highlight_row_column, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("highlight-block", highlight_block, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("highlight-numbers", highlight_numbers, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
     }
 
     public override void dispose ()

@@ -92,7 +92,7 @@ public class SudokuCell : Widget
             }
             else if (value != game.board [row, col])
             {
-                if (view.autoclean_earmarks && game.mode == GameMode.PLAY)
+                if (Sudoku.app.autoclean_earmarks && game.mode == GameMode.PLAY)
                     game.insert_and_disable_related_earmarks (row, col, value);
                 else
                     game.insert (row, col, value);
@@ -185,7 +185,7 @@ public class SudokuCell : Widget
 
         gesture.set_state (EventSequenceState.CLAIMED);
 
-        if ((this.view.number_picker_second_click && !selected) ||
+        if ((Sudoku.app.number_picker_second_click && !selected) ||
             is_fixed || game.paused)
         {
             grab_focus ();
@@ -198,7 +198,7 @@ public class SudokuCell : Widget
         state = gesture.get_current_event_state ();
 
         bool wants_value = !(bool)(state & Gdk.ModifierType.CONTROL_MASK);
-        wants_value = wants_value ^ view.earmark_mode;
+        wants_value = wants_value ^ Sudoku.app.earmark_mode;
 
         if (gesture.get_current_button () == BUTTON_PRIMARY)
         {
@@ -230,7 +230,7 @@ public class SudokuCell : Widget
         if (is_fixed || game.paused)
             return;
 
-        if (game.mode == GameMode.CREATE || view.earmark_mode)
+        if (game.mode == GameMode.CREATE || Sudoku.app.earmark_mode)
             view.number_picker.show_value_picker (this);
         else
             view.number_picker.show_earmark_picker (this);
@@ -258,16 +258,19 @@ public class SudokuCell : Widget
         earmark_labels[num - 1].set_visible (game.board.is_earmark_enabled(row, col, num));
     }
 
-    public void update_value_warnings ()
+    public void add_value_warnings ()
     {
+        if (game.mode == GameMode.CREATE)
+            return;
+
         bool error = false;
 
-        if (this.value != 0) 
+        if (this.value != 0)
         {
             if (game.board.broken_coords.contains (Coord (row, col)))
                 error = true;
 
-            else if (view.solution_warnings && game.mode == GameMode.PLAY)
+            else if (Sudoku.app.solution_warnings && game.mode == GameMode.PLAY)
             {
                 int solution = game.board.get_solution (row, col);
                 if (solution != 0)
@@ -283,20 +286,20 @@ public class SudokuCell : Widget
 
     public void update_all_earmark_warnings ()
     {
-        if (this.value != 0 || game.mode == GameMode.CREATE)
+        if (this.value != 0 || !Sudoku.app.earmark_warnings)
             return;
 
         var marks = game.board.get_earmarks (row, col);
         for (int num = 1; num <= marks.length; num++)
         {
             if (marks[num - 1])
-                update_earmark_warnings (num);
+                add_earmark_warnings (num);
         }
     }
 
-    public void update_earmark_warnings (int num)
+    public void add_earmark_warnings (int num)
     {
-        if (!game.board.is_possible (row, col, num) && view.show_earmark_warnings)
+        if (!game.board.is_possible (row, col, num))
             earmark_labels[num - 1].add_css_class ("error");
         else
             earmark_labels[num - 1].remove_css_class ("error");
@@ -321,8 +324,15 @@ public class SudokuCell : Widget
     {
         int zoomed_size = (int) (height * view.value_zoom_multiplier);
         set_font_size (value_label, zoomed_size);
-        if (get_last_child () == view.number_picker)
-            view.number_picker.present ();
+
+        Widget child = get_first_child ();
+        while (child != null)
+        {
+            if (child == view.number_picker)
+                view.number_picker.present ();
+
+            child = child.get_next_sibling ();
+        }
 
         Requisition min_size;
         value_label.get_preferred_size (out min_size, null);

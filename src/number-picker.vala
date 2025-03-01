@@ -58,7 +58,7 @@ public class SudokuNumberPicker : Popover
         state = NumberPickerState.EARMARK_PICKER;
         earmark_picker.connect_picker (cell);
 
-        if (!cell.view.earmark_mode)
+        if (!Sudoku.app.earmark_mode)
             picker_stack.set_transition_type (StackTransitionType.SLIDE_LEFT);
         else
             picker_stack.set_transition_type (StackTransitionType.SLIDE_RIGHT);
@@ -83,7 +83,7 @@ public class SudokuNumberPicker : Popover
         state = NumberPickerState.VALUE_PICKER;
         value_picker.connect_picker (cell);
 
-        if (!cell.view.earmark_mode)
+        if (!Sudoku.app.earmark_mode)
             picker_stack.set_transition_type (StackTransitionType.SLIDE_RIGHT);
         else
             picker_stack.set_transition_type (StackTransitionType.SLIDE_LEFT);
