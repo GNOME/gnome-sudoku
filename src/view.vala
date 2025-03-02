@@ -23,7 +23,7 @@
 using Gtk;
 using Gdk;
 
-public class SudokuView : Adw.Bin
+public class SudokuGameView : Adw.Bin
 {
     private EventControllerKey key_controller;
     private EventControllerFocus focus_controller;
@@ -47,7 +47,7 @@ public class SudokuView : Adw.Bin
 
     public signal void selection_changed (int old_row, int old_col, int new_row, int new_col);
 
-    public SudokuView (SudokuBoard board)
+    public SudokuGameView (SudokuBoard board)
     {
         game = new SudokuGame (board);
 
@@ -107,7 +107,7 @@ public class SudokuView : Adw.Bin
         {
             for (var col = 0; col < game.board.cols; col++)
             {
-                var cell = new SudokuCell (row, col, game, this);
+                var cell = new SudokuCell (row, col, this);
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
                 cells[row, col] = cell;
             }
@@ -117,6 +117,7 @@ public class SudokuView : Adw.Bin
         this.game.board.earmark_changed.connect (earmark_changed_cb);
         this.selection_changed.connect (selection_changed_cb);
         game.notify["paused"].connect(paused_cb);
+        game.notify["board"].connect(board_changed_cb);
 
         key_controller = new EventControllerKey ();
         key_controller.key_pressed.connect (key_pressed_cb);
@@ -441,6 +442,18 @@ public class SudokuView : Adw.Bin
         else
             foreach (var cell in cells)
                 cell.clear_warnings ();
+    }
+
+    public void board_changed_cb ()
+    {
+        update_warnings ();
+        game.board.value_changed.connect (value_changed_cb);
+        game.board.earmark_changed.connect (earmark_changed_cb);
+        foreach (var cell in cells)
+        {
+            cell.update_content_visibility ();
+            cell.update_fixed_css ();
+        }
     }
 
     private void update_highlighter (int old_row, int old_col)

@@ -25,8 +25,12 @@ public class SudokuCell : Widget
 {
     public int row { get; private set; }
     public int col { get; private set; }
-    private SudokuGame game;
-    public unowned SudokuView view;
+
+    private unowned SudokuGameView view;
+    private SudokuGame game
+    {
+        get { return view.game; }
+    }
 
     private GestureClick button_controller;
     private GestureLongPress long_press_controller;
@@ -34,13 +38,12 @@ public class SudokuCell : Widget
     private Label value_label;
     private Label[] earmark_labels;
 
-    public SudokuCell (int row, int col, SudokuGame game, SudokuView view)
+    public SudokuCell (int row, int col, SudokuGameView view)
     {
         this.set_accessible_role (AccessibleRole.BUTTON);
 
         this.row = row;
         this.col = col;
-        this.game = game;
         this.view = view;
 
         value_label = new Label (this.value.to_string ());
@@ -53,7 +56,7 @@ public class SudokuCell : Widget
         notify["has-focus"].connect (focus_changed_cb);
         game.notify["paused"].connect(paused_cb);
 
-        set_fixed_css (true);
+        update_fixed_css ();
 
         button_controller = new GestureClick ();
         button_controller.set_button (0 /* all buttons */);
@@ -109,6 +112,14 @@ public class SudokuCell : Widget
             else
                 this.remove_css_class ("fixed");
         }
+    }
+
+    public void update_fixed_css ()
+    {
+        if (is_fixed)
+            this.add_css_class ("fixed");
+        else
+            this.remove_css_class ("fixed");
     }
 
     public bool is_fixed

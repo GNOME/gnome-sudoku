@@ -79,7 +79,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     private GestureClick forwards_controller;
     private EventControllerScroll scroll_controller;
 
-    public SudokuView view { get; private set; default = null; }
+    public SudokuGameView view { get; private set; default = null; }
     public SudokuWindowScreen current_screen { get; private set; default = SudokuWindowScreen.NONE; }
 
     public SudokuWindow (GLib.Settings settings)
@@ -248,17 +248,13 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         back_button.sensitive = false;
 
-        if (view != null)
-            game_box.remove (view);
-
-        view = new SudokuView (board);
-        show_game_view ();
-
+        view = new SudokuGameView (board);
         view.game.tick.connect (tick_cb);
         view.game.notify["paused"].connect (paused_cb);
+        view.game.notify["board"].connect(show_game_view);
 
         game_box.prepend (view);
-        view.grab_focus ();
+        show_game_view ();
 
         back_button.sensitive = true;
     }
@@ -335,6 +331,8 @@ public class SudokuWindow : Adw.ApplicationWindow
             play_pause_stack.visible = false;
             windowtitle.subtitle = _("Create Puzzle");
         }
+
+        view.grab_focus ();
     }
 
     private void visible_dialog_cb ()

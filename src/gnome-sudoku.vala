@@ -33,7 +33,7 @@ public class Sudoku : Adw.Application
 
     private SudokuWindow window;
 
-    private SudokuView view
+    private SudokuGameView view
     {
         get { return window.view; }
     }
@@ -236,7 +236,7 @@ public class Sudoku : Adw.Application
     {
         int solutions = game.board.count_solutions_limited ();
         if (solutions == 1)
-            start_custom_game (game.board);
+            start_custom_game ();
         else if (solutions == 0)
         {
             // Error dialog shown when starting a custom game that is not valid.
@@ -255,7 +255,7 @@ public class Sudoku : Adw.Application
             dialog.set_response_appearance ("continue", Adw.ResponseAppearance.DESTRUCTIVE);
 
             dialog.response["continue"].connect (() => {
-                start_custom_game (game.board);
+                start_custom_game ();
                 dialog.destroy ();
             });
 
@@ -313,18 +313,22 @@ public class Sudoku : Adw.Application
         dialog.present (window);
     }
 
-    private void start_custom_game (SudokuBoard board)
+    private void start_custom_game ()
     {
-        board.set_all_is_fixed ();
-        start_game (board);
+        game.board.set_all_is_fixed ();
+        start_game (game.board);
     }
 
     private void start_game (SudokuBoard board)
     {
-        window.start_game (board);
-
-        game.notify["paused"].connect (paused_cb);
-        game.action_completed.connect (action_completed_cb);
+        if (view == null)
+        {
+            window.start_game (board);
+            game.action_completed.connect (action_completed_cb);
+            game.notify["paused"].connect (paused_cb);
+        }
+        else
+            game.change_board (board);
 
         print_current_board_action.set_enabled (true);
         undo_action.set_enabled (!game.is_undostack_null ());
@@ -336,6 +340,8 @@ public class Sudoku : Adw.Application
 
         if (game.mode != GameMode.CREATE)
             game.board.completed.connect (board_completed_cb);
+        else
+            game.board.completed.disconnect (board_completed_cb);
     }
 
     private void show_menu_screen ()
