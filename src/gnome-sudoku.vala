@@ -65,7 +65,7 @@ public class Sudoku : Adw.Application
     public bool earmark_mode { get; set; default = false; }
     public bool show_possibilities { get; set; }
     public bool highlighter { get; set; }
-    public bool highlight_row_column { get; set; default = false; }
+    public bool highlight_row_column { get; set; }
     public bool highlight_block { get; set; }
     public bool highlight_numbers { get; set; }
     public bool show_warnings { get; set; }
@@ -142,18 +142,17 @@ public class Sudoku : Adw.Application
 
         settings.bind ("play-difficulty", this, "play-difficulty", SettingsBindFlags.DEFAULT);
         settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
-
-        settings.bind ("show-timer", this, "show-timer", SettingsBindFlags.GET);
-        settings.bind ("show-possibilities", this, "show-possibilities", SettingsBindFlags.GET);
-        settings.bind ("highlighter", this, "highlighter", SettingsBindFlags.GET);
-        settings.bind ("highlight-row-column", this, "highlight-row-column", SettingsBindFlags.GET);
-        settings.bind ("highlight-block", this, "highlight-block", SettingsBindFlags.GET);
-        settings.bind ("highlight-numbers", this, "highlight-numbers", SettingsBindFlags.GET);
-        settings.bind ("show-warnings", this, "show-warnings", SettingsBindFlags.GET);
-        settings.bind ("solution-warnings", this, "solution-warnings", SettingsBindFlags.GET);
-        settings.bind ("earmark-warnings", this, "earmark-warnings", SettingsBindFlags.GET);
-        settings.bind ("autoclean-earmarks", this, "autoclean-earmarks", SettingsBindFlags.GET);
-        settings.bind ("number-picker-second-click", this, "number-picker-second-click", SettingsBindFlags.GET);
+        settings.bind ("show-timer", this, "show-timer", SettingsBindFlags.DEFAULT);
+        settings.bind ("show-possibilities", this, "show-possibilities", SettingsBindFlags.DEFAULT);
+        settings.bind ("highlighter", this, "highlighter", SettingsBindFlags.DEFAULT);
+        settings.bind ("highlight-row-column", this, "highlight-row-column", SettingsBindFlags.DEFAULT);
+        settings.bind ("highlight-block", this, "highlight-block", SettingsBindFlags.DEFAULT);
+        settings.bind ("highlight-numbers", this, "highlight-numbers", SettingsBindFlags.DEFAULT);
+        settings.bind ("show-warnings", this, "show-warnings", SettingsBindFlags.DEFAULT);
+        settings.bind ("solution-warnings", this, "solution-warnings", SettingsBindFlags.DEFAULT);
+        settings.bind ("earmark-warnings", this, "earmark-warnings", SettingsBindFlags.DEFAULT);
+        settings.bind ("autoclean-earmarks", this, "autoclean-earmarks", SettingsBindFlags.DEFAULT);
+        settings.bind ("number-picker-second-click", this, "number-picker-second-click", SettingsBindFlags.DEFAULT);
 
         add_action_entries (action_entries, this);
 
