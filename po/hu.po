@@ -1,5 +1,5 @@
 # Hungarian translation for gnome-sudoku.
-# Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024 Free Software Foundation, Inc.
+# Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-sudoku package.
 #
 # Szabolcs Ban <shooby at gnome dot hu>, 1999, 2000, 2001.
@@ -9,13 +9,13 @@
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Szabolcs Varga <shirokuma at shirokuma dot hu>, 2005.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-08-23 16:13+0000\n"
-"PO-Revision-Date: 2024-09-09 08:37+0200\n"
+"POT-Creation-Date: 2025-03-01 14:46+0000\n"
+"PO-Revision-Date: 2025-03-02 21:19+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -23,16 +23,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:3 data/sudoku-window.ui:73
-#: data/sudoku-window.ui:82
+#: data/org.gnome.Sudoku.desktop.in.in:3 data/sudoku-window.blp:88
+#: data/sudoku-window.blp:96
 msgid "Sudoku"
 msgstr "Sudoku"
 
 #: data/org.gnome.Sudoku.desktop.in.in:4
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:8
-#| msgid "Test yourself in this classic puzzle"
 msgid "Test yourself in the classic puzzle"
 msgstr "Próbálja ki magát a klasszikus feladványban"
 
@@ -41,11 +40,11 @@ msgstr "Próbálja ki magát a klasszikus feladványban"
 msgid "magic;square;"
 msgstr "bűvös;négyzet;"
 
-#: data/org.gnome.Sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Difficulty level of sudokus to be printed"
 msgstr "_Nyomtatandó sudokuk nehézségi szintje"
 
-#: data/org.gnome.Sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:19
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -54,31 +53,31 @@ msgstr ""
 "értékek: „easy” (egyszerű), „medium” (közepes), „hard” (nehéz), „very_hard” "
 "(nagyon nehéz)"
 
-#: data/org.gnome.Sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:24
 msgid "Number of Sudokus to print"
 msgstr "Nyomtatandó sudokuk száma"
 
-#: data/org.gnome.Sudoku.gschema.xml:24
+#: data/org.gnome.Sudoku.gschema.xml:25
 msgid "Set the number of sudokus you want to print"
 msgstr "A nyomtatandó sudokuk számának beállítása"
 
-#: data/org.gnome.Sudoku.gschema.xml:29
+#: data/org.gnome.Sudoku.gschema.xml:30
 msgid "Number of Sudokus to print per page"
 msgstr "Oldalanként nyomtatandó sudokuk száma"
 
-#: data/org.gnome.Sudoku.gschema.xml:30
+#: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Set the number of sudokus you want to print per page"
 msgstr "Az oldalanként nyomtatandó sudokuk számának beállítása"
 
-#: data/org.gnome.Sudoku.gschema.xml:34
+#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "A füljelzők előkészítése az egyes cellák lehetséges értékeivel"
 
-#: data/org.gnome.Sudoku.gschema.xml:38
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid "Color mistakes and duplicate numbers in red"
 msgstr "Hibák és kettőzött számok pirossal történő színezése"
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:40
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -86,65 +85,65 @@ msgstr ""
 "Egy nagy piros X-et jelenít meg, ha egy négyzetet egyetlen számmal se lehet "
 "kitölteni, és a többször szereplő számok pirossal lesznek kiemelve"
 
-#: data/org.gnome.Sudoku.gschema.xml:43
+#: data/org.gnome.Sudoku.gschema.xml:44
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr ""
 "Füljelzők kettőzöttségének ellenőrzése a sorban, az oszlopban és a blokkban"
 
-#: data/org.gnome.Sudoku.gschema.xml:47
+#: data/org.gnome.Sudoku.gschema.xml:48
 msgid "Toggle timer and pause buttons"
 msgstr "Időzítő és szüneteltetés gombok be- és kikapcsolása"
 
-#: data/org.gnome.Sudoku.gschema.xml:51
+#: data/org.gnome.Sudoku.gschema.xml:52
 msgid "Additionally check against the solution for warnings"
 msgstr "További ellenőrzés a megoldással szemben a figyelmeztetésekért"
 
-#: data/org.gnome.Sudoku.gschema.xml:55
+#: data/org.gnome.Sudoku.gschema.xml:56
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr "A kapcsolódó füljelzők automatikus törlése új szám behelyezésekor"
 
-#: data/org.gnome.Sudoku.gschema.xml:59
+#: data/org.gnome.Sudoku.gschema.xml:60
 msgid "Display number picker on second click"
 msgstr "Számválasztó megjelenítése a második kattintásra"
 
-#: data/org.gnome.Sudoku.gschema.xml:63
+#: data/org.gnome.Sudoku.gschema.xml:64
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr ""
 "Sor, oszlop és négyzet kiemelése, amelyek tartalmazzák a kijelölt cellát"
 
-#: data/org.gnome.Sudoku.gschema.xml:67
+#: data/org.gnome.Sudoku.gschema.xml:68
 msgid "Highlight the selected cell's row and column"
 msgstr "A kijelölt cella sorának és oszlopának kiemelése"
 
-#: data/org.gnome.Sudoku.gschema.xml:71
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Highlight the selected cell's block"
 msgstr "A kijelölt cella blokkjának kiemelése"
 
-#: data/org.gnome.Sudoku.gschema.xml:75
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "Highlight the selected cell's matching numbers"
 msgstr "A kijelölt cellával egyező számok kiemelése"
 
-#: data/org.gnome.Sudoku.gschema.xml:79
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "The puzzle's difficulty"
 msgstr "A feladvány nehézsége"
 
-#: data/org.gnome.Sudoku.gschema.xml:83
+#: data/org.gnome.Sudoku.gschema.xml:84
 msgid "Zoom level"
 msgstr "Nagyítási szint"
 
-#: data/org.gnome.Sudoku.gschema.xml:87
+#: data/org.gnome.Sudoku.gschema.xml:88
 msgid "Width of the window in pixels"
 msgstr "Az ablak szélessége képpontokban"
 
-#: data/org.gnome.Sudoku.gschema.xml:91
+#: data/org.gnome.Sudoku.gschema.xml:92
 msgid "Height of the window in pixels"
 msgstr "Az ablak magassága képpontokban"
 
-#: data/org.gnome.Sudoku.gschema.xml:95
+#: data/org.gnome.Sudoku.gschema.xml:96
 msgid "true if the window is maximized"
 msgstr "igaz, ha az ablak teljes méretű"
 
-#: data/org.gnome.Sudoku.gschema.xml:99
+#: data/org.gnome.Sudoku.gschema.xml:100
 msgid "true if the window is fullscreen"
 msgstr "igaz, ha az ablak teljes képernyős"
 
@@ -168,7 +167,6 @@ msgid "Features:"
 msgstr "Funkciók:"
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:17
-#| msgid "Automatically clear related earmarks on new number insertion"
 msgid "Automatically save and restore your session."
 msgstr "A munkamenet automatikus mentése és helyreállítása."
 
@@ -185,9 +183,10 @@ msgid "Adjust a scalable grid to your preferences."
 msgstr "Méretezhető rács beállítása a tetszése szerint."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:21
-msgid "Use the mouse, keyboard or touch to complete the puzzle."
+#| msgid "Use the mouse, keyboard or touch to complete the puzzle."
+msgid "Use the mouse, keyboard or touch to complete the puzzles."
 msgstr ""
-"Az egér, a billentyűzet vagy érintés használata a feladvány befejezéséhez."
+"Az egér, a billentyűzet vagy érintés használata a feladványok befejezéséhez."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:22
 msgid "Set up advanced strategies like X-Wings with earmarks."
@@ -217,428 +216,434 @@ msgstr "Egy GNOME sudoku játékelőnézet"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "GNOME sudoku játék sötét módban, füljelzőkkel és figyelmeztetésekkel"
 
-#: data/preferences-dialog.ui:9
+#: data/preferences-dialog.blp:7
 msgctxt "preferences dialog"
 msgid "General"
 msgstr "Általános"
 
-#: data/preferences-dialog.ui:12
+#: data/preferences-dialog.blp:10
 msgctxt "General Preferences"
 msgid "_Timer and Pause Buttons"
 msgstr "_Időzítő és szüneteltetés gombok"
 
-#: data/preferences-dialog.ui:18
+#: data/preferences-dialog.blp:15
 msgctxt "General Preferences"
 msgid "Number Picker on _Second Click"
 msgstr "Számválasztó a _második kattintásra"
 
-#: data/preferences-dialog.ui:24
+#: data/preferences-dialog.blp:20
 msgctxt "General Preferences"
 msgid "Automatically _Clean Earmarks"
 msgstr "Füljelzők automatikus _törlése"
 
-#: data/preferences-dialog.ui:30
+#: data/preferences-dialog.blp:25
 msgctxt "General Preferences"
 msgid "Show Earmark _Possibilities"
 msgstr "Füljelző _lehetőségeinek megjelenítése"
 
-#: data/preferences-dialog.ui:38
+#: data/preferences-dialog.blp:31
 msgctxt "Preferences Dialog"
 msgid "Warnings"
 msgstr "Figyelmeztetések"
 
-#: data/preferences-dialog.ui:41
+#: data/preferences-dialog.blp:34
 msgctxt "Warning Preferences"
 msgid "Check _Against Solution"
 msgstr "_Ellenőrzés a megoldással"
 
-#: data/preferences-dialog.ui:47
+#: data/preferences-dialog.blp:39
 msgctxt "Warning Preferences"
 msgid "_Earmark Warnings"
 msgstr "_Füljelző figyelmeztetések"
 
-#: data/preferences-dialog.ui:55
+#: data/preferences-dialog.blp:45
 msgctxt "Preferences Dialog"
 msgid "Highlighter"
 msgstr "Kiemelő"
 
-#: data/preferences-dialog.ui:58
+#: data/preferences-dialog.blp:48
 msgctxt "Highlighter Preferences"
 msgid "Highlight Matching _Numbers"
 msgstr "Egyező _számok kiemelése"
 
-#: data/preferences-dialog.ui:64
+#: data/preferences-dialog.blp:53
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Row and Column"
 msgstr "_Sor és oszlop kiemelése"
 
-#: data/preferences-dialog.ui:70
+#: data/preferences-dialog.blp:58
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "_Blokk kiemelése"
 
-#: data/print-dialog.ui:5
+#: data/print-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "Több feladvány nyomtatása"
 
-#: data/print-dialog.ui:26
+#: data/print-dialog.blp:24
 msgid "Number of Puzzles"
 msgstr "Feladványok száma"
 
-#: data/print-dialog.ui:39
+#: data/print-dialog.blp:35
 msgid "Number of puzzles per page"
 msgstr "Feladványok száma oldalanként"
 
-#: data/print-dialog.ui:52
+#: data/print-dialog.blp:46
 msgid "Difficulty"
 msgstr "Nehézség"
 
-#: data/print-dialog.ui:56
+#: data/print-dialog.blp:50
 msgid "Easy"
 msgstr "Könnyű"
 
-#: data/print-dialog.ui:57
+#: data/print-dialog.blp:51
 msgid "Medium"
 msgstr "Közepes"
 
-#: data/print-dialog.ui:58
+#: data/print-dialog.blp:52
 msgid "Hard"
 msgstr "Nehéz"
 
-#: data/print-dialog.ui:59
+#: data/print-dialog.blp:53
 msgid "Very Hard"
 msgstr "Nagyon nehéz"
 
-#: data/print-dialog.ui:75 data/sudoku-window.ui:17
+#: data/print-dialog.blp:65 data/sudoku-window.blp:19
 msgid "_Print"
 msgstr "_Nyomtatás"
 
-#: data/shortcuts-window.ui:11
+#: data/shortcuts-window.blp:11
 msgctxt "Shortcuts Window"
 msgid "Game"
 msgstr "Játék"
 
-#: data/shortcuts-window.ui:15 data/shortcuts-window.ui:21
+#: data/shortcuts-window.blp:15 data/shortcuts-window.blp:20
 msgctxt "Shortcuts Window"
 msgid "Move"
 msgstr "Lépés"
 
-#: data/shortcuts-window.ui:27
+#: data/shortcuts-window.blp:25
 msgctxt "Shortcuts Window"
 msgid "Earmarks"
 msgstr "Füljegyzők"
 
-#: data/shortcuts-window.ui:33
+#: data/shortcuts-window.blp:30
 msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "Cella törlése"
 
-#: data/shortcuts-window.ui:39
+#: data/shortcuts-window.blp:35
 msgctxt "Shortcuts Window"
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: data/shortcuts-window.ui:45
+#: data/shortcuts-window.blp:40
 msgctxt "Shortcuts Window"
 msgid "Redo"
 msgstr "Újra"
 
-#: data/shortcuts-window.ui:51
+#: data/shortcuts-window.blp:45
 msgctxt "Shortcuts Window"
 msgid "Pause"
 msgstr "Szüneteltetés"
 
-#: data/shortcuts-window.ui:57
+#: data/shortcuts-window.blp:50
 msgctxt "Shortcuts Window"
 msgid "Earmark Mode"
 msgstr "Füljelző mód"
 
-#: data/shortcuts-window.ui:63
+#: data/shortcuts-window.blp:55
 msgctxt "Shortcuts Window"
 msgid "Number Picker"
 msgstr "Számválasztó"
 
-#: data/shortcuts-window.ui:69
+#: data/shortcuts-window.blp:60
 msgctxt "Shortcuts Window"
 msgid "Earmark Picker"
 msgstr "Füljelzőválasztó"
 
-#: data/shortcuts-window.ui:75
+#: data/shortcuts-window.blp:65
 msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "Új játék"
 
-#: data/shortcuts-window.ui:81
-#| msgid "Custom Puzzle"
+#: data/shortcuts-window.blp:70
 msgctxt "Shortcuts Window"
 msgid "Reset Puzzle"
 msgstr "Feladvány visszaállítása"
 
-#: data/shortcuts-window.ui:88
+#: data/shortcuts-window.blp:75
 msgctxt "Shortcuts Window"
 msgid "Window"
 msgstr "Ablak"
 
-#: data/shortcuts-window.ui:92
+#: data/shortcuts-window.blp:79
+#| msgid "Back"
+msgctxt "Shortcuts Window"
+msgid "Go Back"
+msgstr "Vissza"
+
+#: data/shortcuts-window.blp:84
 msgctxt "Shortcuts Window"
 msgid "Zoom In"
 msgstr "Nagyítás"
 
-#: data/shortcuts-window.ui:98
+#: data/shortcuts-window.blp:89
 msgctxt "Shortcuts Window"
 msgid "Zoom Out"
 msgstr "Kicsinyítés"
 
-#: data/shortcuts-window.ui:104
+#: data/shortcuts-window.blp:94
 msgctxt "Shortcuts Window"
 msgid "Zoom Reset"
 msgstr "Nagyítás visszaállítása"
 
-#: data/shortcuts-window.ui:110
+#: data/shortcuts-window.blp:99
 msgctxt "Shortcuts Window"
 msgid "Warnings"
 msgstr "Figyelmeztetések"
 
-#: data/shortcuts-window.ui:116
+#: data/shortcuts-window.blp:104
 msgctxt "Shortcuts Window"
 msgid "Highlighter"
 msgstr "Kiemelő"
 
-#: data/shortcuts-window.ui:122
-#| msgid "Print _Current Puzzle…"
+#: data/shortcuts-window.blp:109
 msgctxt "Shortcuts Window"
 msgid "Print Current Puzzle"
 msgstr "Jelenlegi feladvány nyomtatása"
 
-#: data/shortcuts-window.ui:128
+#: data/shortcuts-window.blp:114
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Beállítások"
 
-#: data/shortcuts-window.ui:134
+#: data/shortcuts-window.blp:119
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Gyorsbillentyűk"
 
-#: data/shortcuts-window.ui:140
+#: data/shortcuts-window.blp:124
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Kilépés"
 
-#: data/shortcuts-window.ui:146
+#: data/shortcuts-window.blp:129
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Súgó"
 
-#: data/shortcuts-window.ui:152
+#: data/shortcuts-window.blp:134
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Menü"
 
-#: data/shortcuts-window.ui:158
+#: data/shortcuts-window.blp:139
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
-#: data/sudoku-window.ui:7
-#| msgctxt "Shortcuts Window"
-#| msgid "New Game"
+#: data/sudoku-window.blp:7
 msgid "_New Game…"
 msgstr "Ú_j játék…"
 
-#: data/sudoku-window.ui:11
-#| msgid "Custom Puzzle"
+#: data/sudoku-window.blp:12
 msgid "_Reset Puzzle"
 msgstr "Feladvány _visszaállítása"
 
-#: data/sudoku-window.ui:20
+#: data/sudoku-window.blp:23
 msgid "Print _Current Puzzle…"
 msgstr "Jelenlegi feladvány _nyomtatása…"
 
-#: data/sudoku-window.ui:24
+#: data/sudoku-window.blp:28
 msgid "Print _Multiple Puzzles…"
 msgstr "_Több feladvány nyomtatása…"
 
-#. nest zoom to make it appear in the same section
-#: data/sudoku-window.ui:30
+#: data/sudoku-window.blp:35
 msgid "Zoom"
 msgstr "Nagyítás"
 
-#: data/sudoku-window.ui:45
+#: data/sudoku-window.blp:54
 msgid "_Highlighter"
 msgstr "_Kiemelő"
 
-#: data/sudoku-window.ui:49
+#: data/sudoku-window.blp:59
 msgid "_Warnings"
 msgstr "_Figyelmeztetések"
 
-#: data/sudoku-window.ui:55
+#: data/sudoku-window.blp:66
 msgid "_Preferences"
 msgstr "_Beállítások"
 
-#: data/sudoku-window.ui:59
+#: data/sudoku-window.blp:71
 msgid "_Keyboard Shortcuts"
 msgstr "_Gyorsbillentyűk"
 
-#: data/sudoku-window.ui:63
+#: data/sudoku-window.blp:76
 msgid "_Help"
 msgstr "_Súgó"
 
-#: data/sudoku-window.ui:67
+#: data/sudoku-window.blp:81
 msgid "_About Sudoku"
 msgstr "A Sudoku _névjegye"
 
-#: data/sudoku-window.ui:90
+#: data/sudoku-window.blp:104
 msgid "Undo Action"
 msgstr "Művelet visszavonása"
 
-#: data/sudoku-window.ui:102
+#: data/sudoku-window.blp:116
 msgid "Redo Action"
 msgstr "Művelet ismétlése"
 
-#: data/sudoku-window.ui:114
+#: data/sudoku-window.blp:128
 msgid "Back"
 msgstr "Vissza"
 
-#: data/sudoku-window.ui:126
+#: data/sudoku-window.blp:141
 msgid "Earmark Mode"
 msgstr "Füljelző mód"
 
-#: data/sudoku-window.ui:136 src/sudoku-window.vala:104
+#: data/sudoku-window.blp:151 data/sudoku-window.blp:212
 msgid "Leave Fullscreen"
 msgstr "Teljes képernyő elhagyása"
 
-#: data/sudoku-window.ui:149
+#: data/sudoku-window.blp:165
 msgid "Main Menu"
 msgstr "Főmenü"
 
-#: data/sudoku-window.ui:157
+#: data/sudoku-window.blp:174
 msgid "Zoom Out"
 msgstr "Kicsinyítés"
 
-#: data/sudoku-window.ui:168
+#: data/sudoku-window.blp:186
 msgid "Zoom In"
 msgstr "Nagyítás"
 
-#: data/sudoku-window.ui:179 src/sudoku-window.vala:111
+#: data/sudoku-window.blp:201
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
-#: data/sudoku-window.ui:206
-#| msgid "Play Custom Puzzle"
+#: data/sudoku-window.blp:233
+msgid "Pause"
+msgstr "Szüneteltetés"
+
+#: data/sudoku-window.blp:243
+msgid "Play"
+msgstr "Játszás"
+
+#: data/sudoku-window.blp:254
 msgid "Play Custom Game"
 msgstr "Egyéni játék indítása"
 
-#: data/sudoku-window.ui:254
-#| msgid "Select Difficulty"
+#: data/sudoku-window.blp:299
 msgid "Select Puzzle Difficulty"
 msgstr "Feladvány nehézségének kiválasztása"
 
-#: data/sudoku-window.ui:272
+#: data/sudoku-window.blp:316
 msgctxt "Difficulty"
 msgid "_Custom"
 msgstr "_Egyéni"
 
-#: data/sudoku-window.ui:289
+#: data/sudoku-window.blp:330
 msgctxt "Difficulty"
 msgid "_Easy"
 msgstr "_Könnyű"
 
-#: data/sudoku-window.ui:303
+#: data/sudoku-window.blp:343
 msgctxt "Difficulty"
 msgid "_Medium"
 msgstr "Kö_zepes"
 
-#: data/sudoku-window.ui:317
+#: data/sudoku-window.blp:356
 msgctxt "Difficulty"
 msgid "_Hard"
 msgstr "_Nehéz"
 
-#: data/sudoku-window.ui:331
+#: data/sudoku-window.blp:369
 msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "N_agyon nehéz"
 
-#: data/sudoku-window.ui:342
+#: data/sudoku-window.blp:378
 msgid "_Start Game"
 msgstr "Játék _indítása"
 
-#: lib/sudoku-board.vala:696
+#: lib/sudoku-board.vala:634
 msgid "Unknown Difficulty"
 msgstr "Ismeretlen nehézség"
 
-#: lib/sudoku-board.vala:698
+#: lib/sudoku-board.vala:636
 msgid "Easy Difficulty"
 msgstr "Egyszerű nehézség"
 
-#: lib/sudoku-board.vala:700
+#: lib/sudoku-board.vala:638
 msgid "Medium Difficulty"
 msgstr "Közepes nehézség"
 
-#: lib/sudoku-board.vala:702
+#: lib/sudoku-board.vala:640
 msgid "Hard Difficulty"
 msgstr "Magas nehézség"
 
-#: lib/sudoku-board.vala:704
+#: lib/sudoku-board.vala:642
 msgid "Very Hard Difficulty"
 msgstr "Nagyon magas nehézség"
 
-#: lib/sudoku-board.vala:706
+#: lib/sudoku-board.vala:644
 msgid "Custom Puzzle"
 msgstr "Egyéni feladvány"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:88
+#: src/gnome-sudoku.vala:89
 msgid "Show release version"
 msgstr "Verziószám megjelenítése"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:220
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "A megadott feladvány nem érvényes Sudoku."
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:220
 msgid "Please enter a valid puzzle."
 msgstr "Érvényes feladványt adjon meg."
 
-#: src/gnome-sudoku.vala:244 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:221 src/printer.vala:46
 msgid "Close"
 msgstr "Bezárás"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:252
+#: src/gnome-sudoku.vala:229
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "A megadott feladványnak több megoldása van."
 
-#: src/gnome-sudoku.vala:252
+#: src/gnome-sudoku.vala:229
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Az érvényes Sudoku feladványoknak pontosan egy megoldása van."
 
-#: src/gnome-sudoku.vala:253
+#: src/gnome-sudoku.vala:230
 msgid "_Back"
 msgstr "_Vissza"
 
-#: src/gnome-sudoku.vala:254
+#: src/gnome-sudoku.vala:231
 msgid "Play _Anyway"
 msgstr "Játszás _mindenképp"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:272
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Szép munka, a feladványt %d perc alatt oldotta meg!"
 msgstr[1] "Szép munka, a feladványt %d perc alatt oldotta meg!"
 
-#: src/gnome-sudoku.vala:303
+#: src/gnome-sudoku.vala:280
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/gnome-sudoku.vala:304
+#: src/gnome-sudoku.vala:281
 msgid "Play _Again"
 msgstr "Játék új_ra"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:534
+#: src/gnome-sudoku.vala:493
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -649,7 +654,7 @@ msgstr ""
 "\n"
 "A feladványokat a QQwing %s állítja elő"
 
-#: src/gnome-sudoku.vala:542
+#: src/gnome-sudoku.vala:500
 msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby at gnome dot hu>\n"
@@ -662,31 +667,24 @@ msgstr ""
 "Úr Balázs <ur.balazs at fsf dot hu>\n"
 "Varga Szabolcs <shirokuma at shirokuma dot hu>"
 
-#: src/number-picker.vala:99
+#: src/number-picker.vala:128
 msgid "Clear"
 msgstr "Törlés"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:45
+#: src/printer.vala:45
 msgid "Error printing file:"
 msgstr "Hiba a fájl nyomtatása közben:"
 
-#: src/sudoku-view.vala:78
+#: src/view.vala:84
 msgid "Paused"
 msgstr "Szüneteltetve"
 
-#: src/sudoku-window.vala:309
+#: src/window.vala:340
 msgid "Select Difficulty"
 msgstr "Nehézség kiválasztása"
 
-#: src/sudoku-window.vala:379
+#: src/window.vala:410
 msgid "Create Puzzle"
 msgstr "Feladvány létrehozása"
 
-#: src/sudoku-window.vala:392
-msgid "Play"
-msgstr "Játszás"
-
-#: src/sudoku-window.vala:392
-msgid "Pause"
-msgstr "Szüneteltetés"
