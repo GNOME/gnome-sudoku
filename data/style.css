@@ -1,5 +1,7 @@
 /*contains styles that are always present.*/
 :root {
+  --sudoku-cell-bg: var(--view-bg-color);
+
   --sudoku-accent-blue: oklch(0.85 0.25 270);
   --sudoku-accent-teal: oklch(0.85 0.25 215);
   --sudoku-accent-green: oklch(0.85 0.25 145);
@@ -17,38 +19,38 @@ grid.board {
 grid.block {
   background: #999;
 }
-sudokucell {
-  background: var(--view-bg-color);
+sudoku-cell {
+  background: var(--sudoku-cell-bg);
 }
-sudokucell > label {
+sudoku-cell > label {
   color: var(--view-fg-color);
 }
-sudokucell.selected {
+sudoku-cell.selected {
   background: var(--sudoku-accent-color);
 }
-sudokucell.highlight-coord {
+sudoku-cell.highlight-coord {
   background: oklch(from var(--sudoku-accent-color) 0.9 calc(c * 0.25) h);
 }
-sudokucell.highlight-number {
+sudoku-cell.highlight-number {
   background: oklch(from var(--sudoku-accent-color) 0.75 c h);
 }
-sudokucell > label.earmark.highlight-number {
+sudoku-cell > label.earmark.highlight-number {
   color: oklab(from var(--sudoku-accent-color) 0.5 a b);
   font-weight: bold;
 }
-sudokucell > label.error {
+sudoku-cell > label.error {
   color: var(--error-color);
 }
-sudokucell > label.error.earmark {
+sudoku-cell > label.error.earmark {
   text-decoration: line-through;
 }
-sudokucell > label.error.value {
+sudoku-cell > label.error.value {
   font-weight: bold;
 }
-sudokucell.fixed {
+sudoku-cell.fixed {
   background: #CCC;
 }
-@keyframes paused_overlay {
+@keyframes paused-overlay {
   from {opacity: 0;}
   to {
     opacity: 1;
@@ -58,17 +60,17 @@ sudokucell.fixed {
 overlay.paused > label {
   font-weight: bold;
   color: #FFF;
-  animation: paused_overlay 2s forwards;
+  animation: paused-overlay 2s forwards;
 }
 @keyframes hide {
   to {opacity: 0;}
 }
-sudokucell.paused > label {
+sudoku-cell.paused > label {
   animation: hide 2s forwards;
 }
-@keyframes paused_cell {
-  to {background: #FFF;}
+@keyframes paused-cell {
+  to {background: var(--sudoku-cell-bg);}
 }
-sudokucell.paused {
-  animation: paused_cell 2s forwards;
+sudoku-cell.paused {
+  animation: paused-cell 2s forwards;
 }

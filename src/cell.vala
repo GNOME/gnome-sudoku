@@ -79,7 +79,7 @@ public class SudokuCell : Widget
 
     static construct
     {
-        set_css_name ("sudokucell");
+        set_css_name ("sudoku-cell");
     }
 
     public int value

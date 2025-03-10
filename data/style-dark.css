@@ -1,6 +1,8 @@
 /*contains styles only used when AdwStyleManager:dark is TRUE.*/
 :root {
   --sudoku-dark-grey: oklch(39% 0 0);
+  --sudoku-cell-bg: var(--sudoku-dark-grey);
+
   --sudoku-accent-blue: oklch(0.35 0.1 230);
   --sudoku-accent-teal: oklch(0.35 0.1 215);
   --sudoku-accent-green: oklch(0.35 0.1 145);
@@ -18,28 +20,22 @@ grid.board {
 grid.block {
   background: oklch(47% 0 0);
 }
-sudokucell {
+sudoku-cell {
   background: var(--sudoku-dark-grey);
 }
-sudokucell.highlight-coord {
+sudoku-cell.highlight-coord {
   background: oklch(from var(--sudoku-accent-color) l calc(c * 0.25) h);
 }
-sudokucell > label.earmark.highlight-number {
+sudoku-cell > label.earmark.highlight-number {
   color: oklab(from var(--sudoku-accent-color) 0.85 a b);
   font-weight: bold;
 }
-sudokucell.selected {
+sudoku-cell.selected {
   background: var(--sudoku-accent-color);
 }
-sudokucell.fixed {
+sudoku-cell.fixed {
   background: oklch(32% 0 0);
 }
-sudokucell.highlight-number {
+sudoku-cell.highlight-number {
   background: oklch(from var(--sudoku-accent-color) 0.3 calc(c * 0.7) h);
-}
-@keyframes paused_cell {
-  to {background-color:var(--sudoku-dark-grey);}
-}
-sudokucell.paused {
-  animation: paused_cell 2s forwards;
 }
