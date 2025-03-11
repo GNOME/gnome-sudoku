@@ -1,8 +1,6 @@
 /*contains styles only used when AdwStyleManager:dark is TRUE.*/
 :root {
   --sudoku-dark-grey: oklch(39% 0 0);
-  --sudoku-cell-bg: var(--sudoku-dark-grey);
-
   --sudoku-accent-blue: oklch(0.35 0.1 230);
   --sudoku-accent-teal: oklch(0.35 0.1 215);
   --sudoku-accent-green: oklch(0.35 0.1 145);
@@ -38,4 +36,8 @@ sudoku-cell.fixed {
 }
 sudoku-cell.highlight-number {
   background: oklch(from var(--sudoku-accent-color) 0.3 calc(c * 0.7) h);
+}
+sudoku-cell.paused {
+  background: var(--sudoku-dark-grey);
+  transition: background 2s;
 }

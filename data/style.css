@@ -1,7 +1,5 @@
 /*contains styles that are always present.*/
 :root {
-  --sudoku-cell-bg: var(--view-bg-color);
-
   --sudoku-accent-blue: oklch(0.85 0.25 270);
   --sudoku-accent-teal: oklch(0.85 0.25 215);
   --sudoku-accent-green: oklch(0.85 0.25 145);
@@ -20,7 +18,7 @@ grid.block {
   background: #999;
 }
 sudoku-cell {
-  background: var(--sudoku-cell-bg);
+  background: var(--view-bg-color);
 }
 sudoku-cell > label {
   color: var(--view-fg-color);
@@ -50,27 +48,22 @@ sudoku-cell > label.error.value {
 sudoku-cell.fixed {
   background: #CCC;
 }
-@keyframes paused-overlay {
+@keyframes slow-appear {
   from {opacity: 0;}
-  to {
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.75);
-  }
+  to {opacity: 1;}
 }
 overlay.paused > label {
   font-weight: bold;
   color: #FFF;
-  animation: paused-overlay 2s forwards;
-}
-@keyframes hide {
-  to {opacity: 0;}
+  background: rgba(0, 0, 0, 0.75);
+  transition: background 2s;
+  animation: slow-appear 2s forwards;
 }
 sudoku-cell.paused > label {
-  animation: hide 2s forwards;
-}
-@keyframes paused-cell {
-  to {background: var(--sudoku-cell-bg);}
+  opacity: 0%;
+  transition: opacity 2s;
 }
 sudoku-cell.paused {
-  animation: paused-cell 2s forwards;
+  background: var(--view-bg-color);
+  transition: background 2s;
 }
