@@ -56,13 +56,10 @@ public class SudokuGameView : Adw.Bin
         Sudoku.app.notify["solution-warnings"].connect (warnings_cb);
         Sudoku.app.notify["highlighter"].connect (highlighter_cb);
         Sudoku.app.notify["zoom-level"].connect (update_zoom);
-
         Sudoku.app.notify["show-possibilities"].connect (show_possibilities_cb);
-        if (Sudoku.app.show_possibilities && game.board.previous_played_time == 0.0
-            && game.mode != GameMode.CREATE)
-        {
-            game.enable_all_earmark_possibilities ();
-        }
+
+        if (game.board.previous_played_time == 0.0)
+            add_earmark_possibilities ();
 
         this.vexpand = true;
         this.focusable = true;
@@ -416,11 +413,10 @@ public class SudokuGameView : Adw.Bin
 
     private void show_possibilities_cb ()
     {
-        if (Sudoku.app.show_possibilities && game.mode != GameMode.CREATE)
-            game.enable_all_earmark_possibilities ();
-
-        else if (game.get_current_stack_action () == StackAction.ENABLE_ALL_EARMARK_POSSIBILITIES)
+        if (game.get_current_stack_action () == StackAction.ENABLE_ALL_EARMARK_POSSIBILITIES)
             game.undo ();
+        else
+            add_earmark_possibilities ();
     }
 
     private void highlighter_cb ()
@@ -446,6 +442,7 @@ public class SudokuGameView : Adw.Bin
 
     public void board_changed_cb ()
     {
+        add_earmark_possibilities ();
         update_warnings ();
         game.board.value_changed.connect (value_changed_cb);
         game.board.earmark_changed.connect (earmark_changed_cb);
@@ -532,6 +529,12 @@ public class SudokuGameView : Adw.Bin
 
         foreach (var cell in cells)
             cell.queue_allocate ();
+    }
+
+    private void add_earmark_possibilities ()
+    {
+        if (Sudoku.app.show_possibilities && game.mode != GameMode.CREATE)
+            game.enable_all_earmark_possibilities ();
     }
 
     private void insert_key (int key, ModifierType state)
