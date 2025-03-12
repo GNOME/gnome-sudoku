@@ -57,7 +57,7 @@ public class Sudoku : Adw.Application
     private SimpleAction zoom_in_action;
     private SimpleAction zoom_out_action;
 
-    public static Sudoku app;
+    public static unowned Sudoku app;
 
     public DifficultyCategory play_difficulty { get; set; }
     public ZoomLevel zoom_level { get; set; }
