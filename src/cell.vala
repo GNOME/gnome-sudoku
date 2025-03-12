@@ -103,17 +103,6 @@ public class SudokuCell : Widget
         }
     }
 
-    private void set_fixed_css (bool enabled)
-    {
-        if (is_fixed)
-        {
-            if (enabled)
-                this.add_css_class ("fixed");
-            else
-                this.remove_css_class ("fixed");
-        }
-    }
-
     public void update_fixed_css ()
     {
         if (is_fixed)
@@ -133,7 +122,6 @@ public class SudokuCell : Widget
         set
         {
             _selected = value;
-            set_fixed_css (!value);
             if (value)
                 this.add_css_class ("selected");
             else
@@ -160,7 +148,6 @@ public class SudokuCell : Widget
         set
         {
             _highlight_number = value;
-            set_fixed_css (!value);
             if (value)
                 this.add_css_class ("highlight-number");
             else

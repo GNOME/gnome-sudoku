@@ -28,14 +28,14 @@ sudoku-cell > label.earmark.highlight-number {
   color: oklab(from var(--sudoku-accent-color) 0.85 a b);
   font-weight: bold;
 }
-sudoku-cell.selected {
-  background: var(--sudoku-accent-color);
-}
 sudoku-cell.fixed {
   background: oklch(32% 0 0);
 }
 sudoku-cell.highlight-number {
   background: oklch(from var(--sudoku-accent-color) 0.3 calc(c * 0.7) h);
+}
+sudoku-cell.selected {
+  background: var(--sudoku-accent-color);
 }
 sudoku-cell.paused {
   background: var(--sudoku-dark-grey);

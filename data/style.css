@@ -23,9 +23,6 @@ sudoku-cell {
 sudoku-cell > label {
   color: var(--view-fg-color);
 }
-sudoku-cell.selected {
-  background: var(--sudoku-accent-color);
-}
 sudoku-cell.highlight-coord {
   background: oklch(from var(--sudoku-accent-color) 0.9 calc(c * 0.25) h);
 }
@@ -51,6 +48,9 @@ sudoku-cell.fixed {
 @keyframes slow-appear {
   from {opacity: 0;}
   to {opacity: 1;}
+}
+sudoku-cell.selected {
+  background: var(--sudoku-accent-color);
 }
 overlay.paused > label {
   font-weight: bold;
