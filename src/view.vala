@@ -334,6 +334,7 @@ public class SudokuGameView : Adw.Bin
         paused_label.set_attributes (attr_list);
         paused_label.set_visible (this.game.paused);
 
+        can_focus = !game.paused;
         has_selection = !game.paused;
 
         if (game.paused)
