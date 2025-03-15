@@ -81,11 +81,11 @@ public class SudokuGame : Object
         {
             mode = GameMode.PLAY;
             board.solve ();
+            start_clock ();
         }
         else
             mode = GameMode.CREATE;
 
-        start_clock ();
         stack = new ArrayList<stack_item?>();
     }
 
@@ -97,11 +97,14 @@ public class SudokuGame : Object
         {
             mode = GameMode.PLAY;
             board.solve ();
+            start_clock ();
         }
         else
+        {
             mode = GameMode.CREATE;
-
-        start_clock ();
+            if (timer == null)
+                stop_clock ();
+        }
 
         if (this.board == board)
             notify_property ("board"); //for custom game creation
