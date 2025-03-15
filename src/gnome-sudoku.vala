@@ -281,8 +281,6 @@ public class Sudoku : Adw.Application
     {
         game.stop_clock ();
 
-        view.can_focus = false;
-
         saver.add_game_to_finished (game, true, show_timer);
 
         /* Text in dialog that displays when the game is over. */
