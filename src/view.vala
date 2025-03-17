@@ -36,6 +36,7 @@ public class SudokuGameView : Adw.Bin
     public SudokuGame game;
 
     public double value_zoom_multiplier { get; private set; }
+    public bool keep_focus { get; set; default = true; }
 
     public int selected_row { get; private set; default = 4; }
     public int selected_col { get; private set; default = 4; }
@@ -121,7 +122,7 @@ public class SudokuGameView : Adw.Bin
         focus_controller.leave.connect (() => {
             Window window = get_root () as Window;
             if (window.is_active)
-                has_selection = false;
+                unselect ();
         });
         add_controller (focus_controller);
 
@@ -150,6 +151,11 @@ public class SudokuGameView : Adw.Bin
 
                 case Key.d :
                     return focus (DirectionType.RIGHT);
+
+                case Key.Escape:
+                    unselect ();
+                    keep_focus = true;
+                    return EVENT_STOP;
 
                 default:
                     break;
@@ -196,11 +202,8 @@ public class SudokuGameView : Adw.Bin
                 insert_key  (9, state);
                 return EVENT_STOP;
 
-            case Key.Escape:
-                number_picker.popdown ();
-                return EVENT_STOP;
-
             case Key.space : case Key.Return : case Key.KP_Enter:
+                selected_cell.grab_focus ();
                 bool wants_value = state != ModifierType.CONTROL_MASK;
                 wants_value = wants_value ^ Sudoku.app.earmark_mode;
 
@@ -254,18 +257,18 @@ public class SudokuGameView : Adw.Bin
         paused_label.set_visible (this.game.paused);
 
         can_focus = !game.paused;
-        has_selection = !game.paused;
 
         if (game.paused)
         {
             overlay.add_overlay (paused_label);
             overlay.add_css_class ("paused");
-            number_picker.popdown ();
+            unselect ();
         }
         else
         {
             overlay.remove_overlay (paused_label);
             overlay.remove_css_class ("paused");
+            grab_focus ();
         }
     }
 
@@ -273,6 +276,8 @@ public class SudokuGameView : Adw.Bin
     {
         if (cells[cell_row, cell_col].selected)
             return;
+
+        keep_focus = false;
 
         var old_row = selected_row;
         var old_col = selected_col;
@@ -286,20 +291,12 @@ public class SudokuGameView : Adw.Bin
         update_highlighter (old_row, old_col);
     }
 
-    private bool _has_selection = true;
-    public bool has_selection
+    public void unselect ()
     {
-        get { return _has_selection; }
-        set {
-            _has_selection = value;
-            if (has_selection)
-                selected_cell.grab_focus ();
-            else
-                number_picker.popdown ();
-
-            if (Sudoku.app.highlighter)
-                set_cell_highlighter (selected_row, selected_col, has_selection);
-        }
+        number_picker.popdown ();
+        selected_cell.selected = false;
+        if (Sudoku.app.highlighter)
+            set_cell_highlighter (selected_row, selected_col, false);
     }
 
     private void set_cell_highlighter (int row, int col, bool enabled)
@@ -340,9 +337,11 @@ public class SudokuGameView : Adw.Bin
 
     private void highlighter_cb ()
     {
+        selected_cell.grab_focus ();
+
         if (!Sudoku.app.highlighter)
             set_cell_highlighter (selected_row, selected_col, false);
-        else if (has_selection)
+        else if (focus_controller.contains_focus)
             set_cell_highlighter (selected_row, selected_col, true);
     }
 
@@ -479,6 +478,14 @@ public class SudokuGameView : Adw.Bin
     public void dismiss_picker ()
     {
         number_picker.popdown ();
+    }
+
+    public override bool grab_focus ()
+    {
+        if (keep_focus)
+            return base.grab_focus ();
+        else
+            return selected_cell.grab_focus ();
     }
 
     public override bool focus (DirectionType direction)

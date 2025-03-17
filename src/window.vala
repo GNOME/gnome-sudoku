@@ -130,7 +130,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         main_menu.closed.connect(() => {
             if (current_screen != SudokuWindowScreen.MENU)
-                view.has_selection = true;
+                view.grab_focus ();
             else
                 start_button.grab_focus ();
         });
@@ -345,14 +345,14 @@ public class SudokuWindow : Adw.ApplicationWindow
             if (!view.game.paused)
                 view.game.stop_clock ();
 
-            view.has_selection = false;
+            view.unselect ();
         }
         else
         {
             if (!view.game.paused)
                 view.game.resume_clock ();
 
-            view.has_selection = true;
+            view.grab_focus ();
         }
     }
 
@@ -416,21 +416,6 @@ public class SudokuWindow : Adw.ApplicationWindow
             play_pause_stack.set_visible_child (pause_button);
     }
 
-    private void button_released_cb (GestureClick gesture,
-                                     int          n_press,
-                                     double       x,
-                                     double       y)
-    {
-        if (gesture.get_current_button () != BUTTON_PRIMARY &&
-            gesture.get_current_button () != BUTTON_SECONDARY)
-            return;
-
-        if (current_screen != SudokuWindowScreen.MENU)
-            view.dismiss_picker ();
-
-        gesture.set_state (EventSequenceState.CLAIMED);
-    }
-
     private void fullscreen_cb ()
     {
         if (fullscreened)
@@ -445,6 +430,24 @@ public class SudokuWindow : Adw.ApplicationWindow
             unfullscreen_button.visible = false;
             menu_fullscreen_stack.set_visible_child (menu_fullscreen_button);
         }
+    }
+
+    private void button_released_cb (GestureClick gesture,
+                                     int          n_press,
+                                     double       x,
+                                     double       y)
+    {
+        if (gesture.get_current_button () != BUTTON_PRIMARY &&
+            gesture.get_current_button () != BUTTON_SECONDARY)
+            return;
+
+        if (current_screen != SudokuWindowScreen.MENU && !view.game.paused)
+        {
+            view.unselect ();
+            view.keep_focus = true;
+        }
+
+        gesture.set_state (EventSequenceState.CLAIMED);
     }
 
     private void backwards_pressed_cb (GestureClick gesture,

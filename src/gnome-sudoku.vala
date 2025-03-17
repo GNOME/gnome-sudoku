@@ -403,7 +403,6 @@ public class Sudoku : Adw.Application
             return;
 
         window.show_game_view ();
-        window.view.has_selection = true;
         if (window.current_screen == SudokuWindowScreen.PLAY)
             game.resume_clock ();
 
@@ -472,14 +471,14 @@ public class Sudoku : Adw.Application
                 game.stop_clock ();
 
             if (window.view != null)
-                window.view.has_selection = false;
+                window.view.unselect ();
 
             shortcuts_window.close_request.connect(() => {
                 if (!game.paused)
                     game.resume_clock ();
 
                 if (window.view != null)
-                    window.view.has_selection = true;
+                    window.view.grab_focus ();
                 return Gdk.EVENT_PROPAGATE;
             });
         }
