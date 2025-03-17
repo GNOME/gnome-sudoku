@@ -53,7 +53,6 @@ public class SudokuCell : Widget
 
         focusable = true;
         can_focus = true;
-        notify["has-focus"].connect (focus_changed_cb);
         game.notify["paused"].connect(paused_cb);
 
         update_fixed_css ();
@@ -184,7 +183,7 @@ public class SudokuCell : Widget
         gesture.set_state (EventSequenceState.CLAIMED);
 
         if ((Sudoku.app.number_picker_second_click && !selected) ||
-            is_fixed || game.paused)
+            is_fixed)
         {
             grab_focus ();
             return;
@@ -225,22 +224,13 @@ public class SudokuCell : Widget
         gesture.set_state (EventSequenceState.CLAIMED);
         grab_focus ();
 
-        if (is_fixed || game.paused)
+        if (is_fixed)
             return;
 
         if (game.mode == GameMode.CREATE || Sudoku.app.earmark_mode)
             view.number_picker.show_value_picker (this);
         else
             view.number_picker.show_earmark_picker (this);
-    }
-
-    private void focus_changed_cb ()
-    {
-        if (game.paused)
-            return;
-
-        if (this.has_focus)
-            view.set_selected (row, col);
     }
 
     private void paused_cb ()
@@ -311,9 +301,16 @@ public class SudokuCell : Widget
             earmark_labels[num-1].remove_css_class ("error");
     }
 
+    public override bool grab_focus ()
+    {
+        view.set_selected (row, col);
+        return base.grab_focus ();
+    }
+
     public override bool focus (DirectionType direction)
     {
-        return view.move_cell_focus (direction);
+        view.set_selected (row, col);
+        return base.focus (direction);
     }
 
     public override void size_allocate (int width,

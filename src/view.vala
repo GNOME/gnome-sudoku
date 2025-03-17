@@ -45,8 +45,6 @@ public class SudokuGameView : Adw.Bin
         get { return cells[selected_row, selected_col]; }
     }
 
-    public signal void selection_changed (int old_row, int old_col, int new_row, int new_col);
-
     public SudokuGameView (SudokuBoard board)
     {
         game = new SudokuGame (board);
@@ -112,7 +110,6 @@ public class SudokuGameView : Adw.Bin
 
         this.game.board.value_changed.connect (value_changed_cb);
         this.game.board.earmark_changed.connect (earmark_changed_cb);
-        this.selection_changed.connect (selection_changed_cb);
         game.notify["paused"].connect(paused_cb);
         game.notify["board"].connect(board_changed_cb);
 
@@ -132,78 +129,6 @@ public class SudokuGameView : Adw.Bin
         update_warnings ();
     }
 
-    public bool move_cell_focus (DirectionType direction)
-    {
-        switch (direction)
-        {
-            case DirectionType.TAB_FORWARD:
-                //this lets us control the focus when it comes from the headerbar
-                if (!focus_controller.contains_focus)
-                {
-                    cells[0, 0].grab_focus ();
-                    return EVENT_STOP;
-                }
-                else if (selected_col == 8)
-                {
-                    //propagate the event so that the focus moves to the headerbar
-                    if (selected_row == 8)
-                        return EVENT_PROPAGATE;
-
-                    cells[selected_row + 1, 0].grab_focus ();
-                }
-                else
-                    cells[selected_row, selected_col + 1].grab_focus ();
-                return EVENT_STOP;
-
-            case DirectionType.TAB_BACKWARD:
-                if (!focus_controller.contains_focus)
-                {
-                    cells[8, 8].grab_focus ();
-                    return EVENT_STOP;
-                }
-                else if (selected_col == 0)
-                {
-                    if (selected_row == 0)
-                        return EVENT_PROPAGATE;
-
-                    cells[selected_row - 1, 8].grab_focus ();
-                }
-                else
-                    cells[selected_row, selected_col - 1].grab_focus ();
-                return EVENT_STOP;
-
-            case DirectionType.UP:
-                if (selected_row == 0)
-                    cells[8, selected_col].grab_focus ();
-                else
-                    cells[selected_row - 1, selected_col].grab_focus ();
-                return EVENT_STOP;
-
-            case DirectionType.DOWN:
-                if (selected_row == 8)
-                    cells[0, selected_col].grab_focus ();
-                else
-                    cells[selected_row + 1, selected_col].grab_focus ();
-                return EVENT_STOP;
-
-            case DirectionType.LEFT:
-                if (selected_col == 0)
-                    cells[selected_row, 8].grab_focus ();
-                else
-                    cells[selected_row, selected_col - 1].grab_focus ();
-                return EVENT_STOP;
-
-            case DirectionType.RIGHT:
-                if (selected_col == 8)
-                    cells[selected_row, 0].grab_focus ();
-                else
-                    cells[selected_row, selected_col + 1].grab_focus ();
-                return EVENT_STOP;
-        }
-
-        return EVENT_STOP;
-    }
-
     private bool key_pressed_cb (uint         keyval,
                                  uint         keycode,
                                  ModifierType state)
@@ -215,16 +140,16 @@ public class SudokuGameView : Adw.Bin
             switch (keyval)
             {
                 case Key.w :
-                    return move_cell_focus (DirectionType.UP);
+                    return focus (DirectionType.UP);
 
                 case Key.s :
-                    return move_cell_focus (DirectionType.DOWN);
+                    return focus (DirectionType.DOWN);
 
                 case Key.a :
-                    return move_cell_focus (DirectionType.LEFT);
+                    return focus (DirectionType.LEFT);
 
                 case Key.d :
-                    return move_cell_focus (DirectionType.RIGHT);
+                    return focus (DirectionType.RIGHT);
 
                 default:
                     break;
@@ -291,12 +216,6 @@ public class SudokuGameView : Adw.Bin
         }
     }
 
-    private void selection_changed_cb (int old_row, int old_col, int new_row, int new_col)
-    {
-        number_picker.popdown ();
-        update_highlighter (old_row, old_col);
-    }
-
     private void value_changed_cb (int row, int col, int old_val, int new_val)
     {
         var action = game.get_current_stack_action ();
@@ -352,19 +271,19 @@ public class SudokuGameView : Adw.Bin
 
     public void set_selected (int cell_row, int cell_col)
     {
-        if (cells[cell_row, cell_col].selected == true)
+        if (cells[cell_row, cell_col].selected)
             return;
-
-        selected_cell.selected = false;
 
         var old_row = selected_row;
         var old_col = selected_col;
 
+        selected_cell.selected = false;
         selected_row = cell_row;
         selected_col = cell_col;
         selected_cell.selected = true;
 
-        selection_changed(old_row, old_col, selected_row, selected_col);
+        dismiss_picker ();
+        update_highlighter (old_row, old_col);
     }
 
     private bool _has_selection = true;
@@ -373,7 +292,6 @@ public class SudokuGameView : Adw.Bin
         get { return _has_selection; }
         set {
             _has_selection = value;
-            selected_cell.selected = has_selection;
             if (has_selection)
                 selected_cell.grab_focus ();
             else
@@ -561,6 +479,70 @@ public class SudokuGameView : Adw.Bin
     public void dismiss_picker ()
     {
         number_picker.popdown ();
+    }
+
+    public override bool focus (DirectionType direction)
+    {
+        switch (direction)
+        {
+            case DirectionType.TAB_FORWARD:
+                //this lets us control the focus when it comes from the headerbar
+                if (!focus_controller.contains_focus)
+                {
+                    return cells[0, 0].focus (direction);
+                }
+                else if (selected_col == 8)
+                {
+                    //propagate the event so that the focus moves to the headerbar
+                    if (selected_row == 8)
+                        return EVENT_PROPAGATE;
+                    else
+                        return cells[selected_row + 1, 0].focus (direction);
+                }
+                else
+                    return cells[selected_row, selected_col + 1].focus (direction);
+
+            case DirectionType.TAB_BACKWARD:
+                if (!focus_controller.contains_focus)
+                {
+                    return cells[8, 8].focus (direction);
+                }
+                else if (selected_col == 0)
+                {
+                    if (selected_row == 0)
+                        return EVENT_PROPAGATE;
+                    else
+                        return cells[selected_row - 1, 8].focus (direction);
+                }
+                else
+                    return cells[selected_row, selected_col - 1].focus (direction);
+
+            case DirectionType.UP:
+                if (selected_row == 0)
+                    return cells[8, selected_col].focus (direction);
+                else
+                    return cells[selected_row - 1, selected_col].focus (direction);
+
+            case DirectionType.DOWN:
+                if (selected_row == 8)
+                    return cells[0, selected_col].focus (direction);
+                else
+                    return cells[selected_row + 1, selected_col].focus (direction);
+
+            case DirectionType.LEFT:
+                if (selected_col == 0)
+                    return cells[selected_row, 8].focus (direction);
+                else
+                    return cells[selected_row, selected_col - 1].focus (direction);
+
+            case DirectionType.RIGHT:
+                if (selected_col == 8)
+                    return cells[selected_row, 0].focus (direction);
+                else
+                    return cells[selected_row, selected_col + 1].focus (direction);
+            default:
+                assert_not_reached ();
+        }
     }
 
     public override void dispose ()
