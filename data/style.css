@@ -23,6 +23,9 @@ sudoku-cell {
 sudoku-cell > label {
   color: var(--view-fg-color);
 }
+sudoku-cell.fixed {
+  background: #CCC;
+}
 sudoku-cell.highlight-coord {
   background: oklch(from var(--sudoku-accent-color) 0.9 calc(c * 0.25) h);
 }
@@ -41,9 +44,6 @@ sudoku-cell > label.error.earmark {
 }
 sudoku-cell > label.error.value {
   font-weight: bold;
-}
-sudoku-cell.fixed {
-  background: #CCC;
 }
 @keyframes slow-appear {
   from {opacity: 0;}
