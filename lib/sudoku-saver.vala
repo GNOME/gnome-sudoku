@@ -28,24 +28,13 @@ public class SudokuSaver : Object
 
     public SudokuSaver()
     {
-        try
-        {
-            var config_dir = Environment.get_user_data_dir ();
-            var sudoku_data_dir = Path.build_path (Path.DIR_SEPARATOR_S, config_dir, "gnome-sudoku");
-            savegame_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "savefile");
-            finishgame_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "finished");
-            var file = File.new_for_path (sudoku_data_dir);
-            if (!file.query_exists ())
-                file.make_directory ();
+        var config_dir = Environment.get_user_data_dir ();
+        var sudoku_data_dir = Path.build_path (Path.DIR_SEPARATOR_S, config_dir, "gnome-sudoku");
+        finishgame_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "finished");
+        savegame_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "savefile");
 
-            file = File.new_for_path (finishgame_dir);
-            if (!file.query_exists ())
-                file.make_directory ();
-        }
-        catch (Error e)
-        {
-            warning ("%s", e.message);
-        }
+        if (DirUtils.create_with_parents (finishgame_dir, 0755) == -1)
+            warning ("Failed to create saver directory: %s", strerror (errno));
     }
 
     public SudokuGame? get_savedgame ()
