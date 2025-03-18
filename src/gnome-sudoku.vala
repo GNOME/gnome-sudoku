@@ -465,13 +465,12 @@ public class Sudoku : Adw.Application
         var builder = new Gtk.Builder.from_resource ("/org/gnome/Sudoku/ui/shortcuts-window.ui");
         var shortcuts_window = builder.get_object ("shortcuts-window") as ShortcutsWindow;
 
-        if (game != null)
+        if (view != null)
         {
             if (!game.paused)
                 game.stop_clock ();
 
-            if (window.view != null)
-                window.view.unselect ();
+            window.view.unselect ();
 
             shortcuts_window.close_request.connect(() => {
                 if (!game.paused)
