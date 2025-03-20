@@ -495,34 +495,16 @@ public class SudokuGameView : Adw.Bin
             case DirectionType.TAB_FORWARD:
                 //this lets us control the focus when it comes from the headerbar
                 if (!focus_controller.contains_focus)
-                {
-                    return cells[0, 0].focus (direction);
-                }
-                else if (selected_col == 8)
-                {
-                    //propagate the event so that the focus moves to the headerbar
-                    if (selected_row == 8)
-                        return EVENT_PROPAGATE;
-                    else
-                        return cells[selected_row + 1, 0].focus (direction);
-                }
+                    return selected_cell.focus (direction);
+                //propagate the event so that the focus moves to the headerbar
                 else
-                    return cells[selected_row, selected_col + 1].focus (direction);
+                    return EVENT_PROPAGATE;
 
             case DirectionType.TAB_BACKWARD:
                 if (!focus_controller.contains_focus)
-                {
-                    return cells[8, 8].focus (direction);
-                }
-                else if (selected_col == 0)
-                {
-                    if (selected_row == 0)
-                        return EVENT_PROPAGATE;
-                    else
-                        return cells[selected_row - 1, 8].focus (direction);
-                }
+                    return selected_cell.focus (direction);
                 else
-                    return cells[selected_row, selected_col - 1].focus (direction);
+                    return EVENT_PROPAGATE;
 
             case DirectionType.UP:
                 if (selected_row == 0)
