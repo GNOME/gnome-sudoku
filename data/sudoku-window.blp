@@ -289,111 +289,14 @@ template $SudokuWindow: Adw.ApplicationWindow {
       transition-type: crossfade;
       interpolate-size: true;
 
-      Box start_box {
-        visible: true;
-        orientation: vertical;
-        halign: fill;
-        valign: center;
-
-        Adw.StatusPage {
-          title: _("Select Puzzle Difficulty");
-
-          child: Adw.Clamp {
-            maximum-size: 400;
-
-            Box {
-              orientation: vertical;
-
-              Adw.PreferencesGroup {
-                Adw.ActionRow {
-                  [prefix]
-                  CheckButton custom_check {
-                    group: easy_check;
-                    can-focus: false;
-                    can-target: false;
-                  }
-
-                  title: C_("Difficulty", "_Custom");
-                  use-underline: true;
-                  activatable-widget: custom_check;
-                }
-              }
-
-              Adw.PreferencesGroup {
-                Adw.ActionRow {
-                  [prefix]
-                  CheckButton easy_check {
-                    can-focus: false;
-                    can-target: false;
-                  }
-
-                  title: C_("Difficulty", "_Easy");
-                  use-underline: true;
-                  activatable-widget: easy_check;
-                }
-
-                Adw.ActionRow {
-                  [prefix]
-                  CheckButton medium_check {
-                    group: easy_check;
-                    can-focus: false;
-                    can-target: false;
-                  }
-
-                  title: C_("Difficulty", "_Medium");
-                  use-underline: true;
-                  activatable-widget: medium_check;
-                }
-
-                Adw.ActionRow {
-                  [prefix]
-                  CheckButton hard_check {
-                    group: easy_check;
-                    can-focus: false;
-                    can-target: false;
-                  }
-
-                  title: C_("Difficulty", "_Hard");
-                  use-underline: true;
-                  activatable-widget: hard_check;
-                }
-
-                Adw.ActionRow {
-                  [prefix]
-                  CheckButton very_hard_check {
-                    group: easy_check;
-                    can-focus: false;
-                    can-target: false;
-                  }
-
-                  title: C_("Difficulty", "_Very Hard");
-                  use-underline: true;
-                  activatable-widget: very_hard_check;
-                }
-              }
-
-              Button start_button {
-                margin-top: 12;
-                halign: center;
-                label: _("_Start Game");
-                use-underline: true;
-                clicked => $start_game_cb();
-
-                styles [
-                  "pill",
-                  "suggested-action",
-                ]
-              }
-            }
-          };
-        }
-      }
 
       Box game_box {
         visible: true;
         spacing: 25;
         orientation: vertical;
       }
+
+      $SudokuStartMenu start_menu {}
     }
   }
 }

@@ -352,7 +352,6 @@ public class Sudoku : Adw.Application
         reset_board_action.set_enabled (false);
 
         window.show_menu_screen ();
-        window.activate_difficulty_checkbutton (play_difficulty);
     }
 
     private void new_game_cb ()

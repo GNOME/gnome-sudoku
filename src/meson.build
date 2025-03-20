@@ -9,6 +9,7 @@ gnome_sudoku_sources = [
   'print-dialog.vala',
   'cell.vala',
   'printer.vala',
+  'start-menu.vala',
   'view.vala',
   'window.vala',
   resources

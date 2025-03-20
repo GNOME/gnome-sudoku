@@ -31,13 +31,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Box game_box; // Holds the view
     [GtkChild] private unowned PopoverMenu main_menu;
 
-    [GtkChild] private unowned Box start_box;
-    [GtkChild] private unowned Button start_button;
-    [GtkChild] private unowned CheckButton custom_check;
-    [GtkChild] private unowned CheckButton easy_check;
-    [GtkChild] private unowned CheckButton medium_check;
-    [GtkChild] private unowned CheckButton hard_check;
-    [GtkChild] private unowned CheckButton very_hard_check;
+    [GtkChild] private unowned SudokuStartMenu start_menu;
 
     [GtkChild] private unowned Stack menu_fullscreen_stack;
     [GtkChild] private unowned Stack play_pause_stack;
@@ -132,7 +126,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             if (current_screen != SudokuWindowScreen.MENU)
                 view.grab_focus ();
             else
-                start_button.grab_focus ();
+                start_menu.grab_focus ();
         });
     }
 
@@ -229,21 +223,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         accent_provider.load_from_string(s);
     }
 
-    [GtkCallback]
-    private void start_game_cb (Button btn)
-    {
-        if (this.easy_check.active)
-            (this as Widget)?.activate_action ("app.start-game", "i", 1);
-        else if (this.medium_check.active)
-            (this as Widget)?.activate_action ("app.start-game", "i", 2);
-        else if (this.hard_check.active)
-            (this as Widget)?.activate_action ("app.start-game", "i", 3);
-        else if (this.very_hard_check.active)
-            (this as Widget)?.activate_action ("app.start-game", "i", 4);
-        else if (this.custom_check.active)
-            (this as Widget)?.activate_action ("app.start-game", "i", 5);
-    }
-
     public void start_game (SudokuBoard board)
     {
         back_button.sensitive = false;
@@ -270,36 +249,11 @@ public class SudokuWindow : Adw.ApplicationWindow
         redo_button.visible = false;
         clock_box.visible = false;
         play_pause_stack.visible = false;
-        start_button.grab_focus ();
-    }
-
-    public void activate_difficulty_checkbutton (DifficultyCategory difficulty)
-    {
-        switch (difficulty)
-        {
-            case DifficultyCategory.EASY:
-                easy_check.activate ();
-                return;
-            case DifficultyCategory.MEDIUM:
-                medium_check.activate ();
-                return;
-            case DifficultyCategory.HARD:
-                hard_check.activate ();
-                return;
-            case DifficultyCategory.VERY_HARD:
-                very_hard_check.activate ();
-                return;
-            case DifficultyCategory.CUSTOM:
-                custom_check.activate ();
-                return;
-            default:
-                assert_not_reached ();
-        }
     }
 
     public void set_board_visible (bool visible)
     {
-        start_box.visible = !visible;
+        start_menu.visible = !visible;
         game_box.visible = visible;
         play_custom_game_button.visible = current_screen == SudokuWindowScreen.CREATE;
     }

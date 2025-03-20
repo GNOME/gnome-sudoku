@@ -62,6 +62,7 @@ blueprints = custom_target(
     'preferences-dialog.blp',
     'print-dialog.blp',
     'shortcuts-window.blp',
+    'start-menu.blp',
     'sudoku-window.blp',
   ),
   output: '.',
