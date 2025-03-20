@@ -284,14 +284,10 @@ template $SudokuWindow: Adw.ApplicationWindow {
       }
     }
 
-    Stack {
-      visible: true;
-      transition-type: crossfade;
-      interpolate-size: true;
-
+    Adw.ViewStack view_stack {
+      enable-transitions: true;
 
       Box game_box {
-        visible: true;
         spacing: 25;
         orientation: vertical;
       }

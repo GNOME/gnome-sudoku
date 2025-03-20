@@ -433,8 +433,6 @@ public class Sudoku : Adw.Application
 
     private void print_current_board_cb ()
     {
-        if (!window.is_board_visible ())
-            return;
         print_current_board_action.set_enabled (false);
         print_multiple_action.set_enabled (false);
 

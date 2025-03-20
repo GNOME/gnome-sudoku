@@ -28,10 +28,11 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Adw.WindowTitle windowtitle;
     [GtkChild] private unowned Adw.HeaderBar headerbar;
 
-    [GtkChild] private unowned Box game_box; // Holds the view
-    [GtkChild] private unowned PopoverMenu main_menu;
-
+    [GtkChild] private unowned Adw.ViewStack view_stack; //contains game_box and start_menu
+    [GtkChild] private unowned Box game_box;
     [GtkChild] private unowned SudokuStartMenu start_menu;
+
+    [GtkChild] private unowned PopoverMenu main_menu;
 
     [GtkChild] private unowned Stack menu_fullscreen_stack;
     [GtkChild] private unowned Stack play_pause_stack;
@@ -241,8 +242,8 @@ public class SudokuWindow : Adw.ApplicationWindow
     public void show_menu_screen ()
     {
         current_screen = SudokuWindowScreen.MENU;
+        view_stack.set_visible_child (start_menu);
         windowtitle.subtitle = _("Select Difficulty");
-        set_board_visible (false);
         back_button.visible = view != null;
         earmark_mode_button.visible = false;
         undo_button.visible = false;
@@ -251,22 +252,10 @@ public class SudokuWindow : Adw.ApplicationWindow
         play_pause_stack.visible = false;
     }
 
-    public void set_board_visible (bool visible)
-    {
-        start_menu.visible = !visible;
-        game_box.visible = visible;
-        play_custom_game_button.visible = current_screen == SudokuWindowScreen.CREATE;
-    }
-
-    public bool is_board_visible ()
-    {
-        return game_box.visible;
-    }
-
     public void show_game_view ()
     {
         current_screen = (SudokuWindowScreen) view.game.mode;
-        set_board_visible (true);
+        view_stack.set_visible_child (game_box);
         back_button.visible = false;
         undo_button.visible = true;
         redo_button.visible = true;
@@ -276,17 +265,17 @@ public class SudokuWindow : Adw.ApplicationWindow
             play_pause_stack.visible = Sudoku.app.show_timer;
             clock_box.visible = Sudoku.app.show_timer && !window_width_is_small;
             earmark_mode_button.visible = !window_width_is_small || !Sudoku.app.show_timer;
+            play_custom_game_button.visible = false;
             windowtitle.subtitle = view.game.board.difficulty_category.to_string ();
         }
         else
         {
-            earmark_mode_button.visible = false;
-            clock_box.visible = false;
             play_pause_stack.visible = false;
+            clock_box.visible = false;
+            earmark_mode_button.visible = false;
+            play_custom_game_button.visible = true;
             windowtitle.subtitle = _("Create Puzzle");
         }
-
-        view.grab_focus ();
     }
 
     private void visible_dialog_cb ()
