@@ -163,7 +163,7 @@ public class Sudoku : Adw.Application
 
         set_accels_for_action ("app.new-game", {"<Primary>n"});
         set_accels_for_action ("app.print-current-board", {"<Primary>p"});
-        set_accels_for_action ("app.pause", {"p"});
+        set_accels_for_action ("app.toggle-pause", {"p"});
         set_accels_for_action ("app.earmark-mode", {"e"});
         set_accels_for_action ("app.quit", {"<Primary>q"});
         set_accels_for_action ("app.reset-board", {"<Primary>r"});
