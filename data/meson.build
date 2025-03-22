@@ -56,28 +56,6 @@ resource_files = configure_file(
   configuration: resource_conf
 )
 
-blueprints = custom_target(
-  'blueprints',
-  input: files(
-    'preferences-dialog.blp',
-    'print-dialog.blp',
-    'shortcuts-window.blp',
-    'start-menu.blp',
-    'game-view.blp',
-    'window.blp',
-  ),
-  output: '.',
-  command: [blueprintc, 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
-  depends: metainfo_file,
-)
-
-resources = gnome.compile_resources(
-  'gnome-sudoku',
-  resource_files,
-  dependencies: blueprints,
-  source_dir: meson.current_source_dir()
-)
-
 install_data(
   '@0@.gschema.xml'.format(base_id),
   install_dir: join_paths(datadir, 'glib-2.0', 'schemas')

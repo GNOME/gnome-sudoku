@@ -1,3 +1,30 @@
+blueprints = custom_target(
+  'blueprints',
+  input: files(
+    'blueprints/start-menu.blp',
+    'blueprints/game-view.blp',
+    'blueprints/preferences-dialog.blp',
+    'blueprints/print-dialog.blp',
+    'blueprints/shortcuts-window.blp',
+    'blueprints/window.blp',
+  ),
+  output: '.',
+  install_dir: '@CURRENT_SOURCE_DIR@',
+  command: [blueprintc, 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
+  depends: metainfo_file,
+)
+
+resources = gnome.compile_resources(
+  'gnome-sudoku',
+  resource_files,
+  dependencies: blueprints,
+  source_dir: [
+    join_paths(meson.project_build_root(), 'data'), #metainfo
+    join_paths(meson.project_source_root(), 'data'), #styles
+    join_paths(meson.current_build_dir(), 'blueprints') #blueprints
+  ]
+)
+
 gnome_sudoku_vala_args = ['--pkg=posix']
 
 gnome_sudoku_sources = [
@@ -16,7 +43,6 @@ gnome_sudoku_sources = [
 ]
 
 gnome_sudoku_dependencies = [gtk, libsudoku_dep, adw]
-
 gnome_sudoku = executable(
   meson.project_name(),
   gnome_sudoku_sources,

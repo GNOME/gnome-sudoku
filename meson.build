@@ -44,8 +44,6 @@ qqwing = dependency('qqwing', version: '>= 1.3.4')
 threads = dependency('threads')
 blueprintc = find_program('blueprint-compiler', version: '>= 0.16')
 
-config_include_dir = include_directories('.')
-
 conf = configuration_data()
 
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
