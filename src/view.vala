@@ -28,7 +28,6 @@ public class SudokuGameView : Adw.Bin
     private EventControllerKey key_controller;
     private EventControllerFocus focus_controller;
     private SudokuCell[,] cells;
-    private SudokuFrame frame;
     private Overlay overlay;
     private Label paused_label;
 
@@ -64,8 +63,6 @@ public class SudokuGameView : Adw.Bin
         this.focusable = true;
 
         overlay = new Overlay ();
-        frame = new SudokuFrame (overlay);
-        this.set_child (frame);
 
         paused_label = new Label (_("Paused"));
         number_picker = new SudokuNumberPicker (game);
@@ -78,8 +75,12 @@ public class SudokuGameView : Adw.Bin
             vexpand = true,
             hexpand = true
         };
+
+        child = overlay;
+        layout_manager = new SudokuGameViewLayoutManager ();
+
+        overlay.child = grid;
         grid.add_css_class ("board");
-        overlay.set_child (grid);
 
         var blocks = new Grid[game.board.block_rows, game.board.block_cols];
         for (var block_row = 0; block_row < game.board.block_rows; block_row++)
@@ -539,7 +540,6 @@ public class SudokuGameView : Adw.Bin
         if (!game.paused)
             game.stop_clock ();
 
-        frame.unparent ();
         number_picker.unparent ();
         base.dispose ();
     }

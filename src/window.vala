@@ -29,7 +29,6 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Adw.HeaderBar headerbar;
 
     [GtkChild] private unowned Adw.ViewStack view_stack; //contains game_box and start_menu
-    [GtkChild] private unowned Box game_box;
     [GtkChild] private unowned SudokuStartMenu start_menu;
 
     [GtkChild] private unowned PopoverMenu main_menu;
@@ -54,20 +53,12 @@ public class SudokuWindow : Adw.ApplicationWindow
     public int window_height { get; private set; }
 
     private bool window_width_is_small { get; private set; }
-    private bool window_height_is_small { get; private set; }
 
-    private const int SMALL_WINDOW_WIDTH = 360;
-    private const int MEDIUM_WINDOW_WIDTH = 600;
-
-    private int small_window_height;
-    private int medium_window_height;
+    public const int SMALL_WINDOW_WIDTH = 360;
+    public const int MEDIUM_WINDOW_WIDTH = 600;
 
     private CssProvider accent_provider;
     private Adw.StyleManager style_manager;
-
-    private const int MARGIN_DEFAULT_SIZE = 25;
-    private const int MARGIN_SMALL_SIZE = 10;
-    private const int MARGIN_SIZE_DIFF = MARGIN_DEFAULT_SIZE - MARGIN_SMALL_SIZE;
 
     private GestureClick button_controller;
     private GestureClick backwards_controller;
@@ -168,20 +159,15 @@ public class SudokuWindow : Adw.ApplicationWindow
         int headerbar_natural_height;
         headerbar.measure (Orientation.VERTICAL, -1, null, out headerbar_natural_height, null, null);
 
-        small_window_height = SMALL_WINDOW_WIDTH + headerbar_natural_height;
-        medium_window_height = MEDIUM_WINDOW_WIDTH + headerbar_natural_height;
+        int small_window_height = SMALL_WINDOW_WIDTH + headerbar_natural_height;
 
         window_width_is_small = window_width <= MEDIUM_WINDOW_WIDTH;
-        window_height_is_small = window_height <= medium_window_height;
 
         set_size_request (SMALL_WINDOW_WIDTH, small_window_height);
         set_default_size (window_width, window_height);
 
         Label title_label = (Label) windowtitle.get_first_child ().get_first_child ();
         title_label.set_property ("ellipsize", false);
-
-        set_gamebox_width_margins (window_width);
-        set_gamebox_height_margins (window_height);
     }
 
     void set_accent_color (Adw.AccentColor color)
@@ -229,11 +215,11 @@ public class SudokuWindow : Adw.ApplicationWindow
         back_button.sensitive = false;
 
         view = new SudokuGameView (board);
+        view_stack.add (view);
         view.game.tick.connect (tick_cb);
         view.game.notify["paused"].connect (paused_cb);
         view.game.notify["board"].connect(show_game_view);
 
-        game_box.prepend (view);
         show_game_view ();
 
         back_button.sensitive = true;
@@ -255,7 +241,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     public void show_game_view ()
     {
         current_screen = (SudokuWindowScreen) view.game.mode;
-        view_stack.set_visible_child (game_box);
+        view_stack.set_visible_child (view);
         back_button.visible = false;
         undo_button.visible = true;
         redo_button.visible = true;
@@ -297,24 +283,6 @@ public class SudokuWindow : Adw.ApplicationWindow
 
             view.grab_focus ();
         }
-    }
-
-    private void window_width_is_medium_cb ()
-    {
-        window_width_is_small = false;
-        if (current_screen == SudokuWindowScreen.PLAY)
-        {
-            clock_box.visible = Sudoku.app.show_timer;
-            earmark_mode_button.visible = true;
-        }
-    }
-
-    private void window_width_is_small_cb ()
-    {
-        window_width_is_small = true;
-        clock_box.visible = false;
-        if (current_screen == SudokuWindowScreen.PLAY)
-            earmark_mode_button.visible = !Sudoku.app.show_timer;
     }
 
     private void show_timer_cb ()
@@ -451,49 +419,33 @@ public class SudokuWindow : Adw.ApplicationWindow
         event.set_flags (EventControllerScrollFlags.VERTICAL);
     }
 
-    private double normalize (int val, int min, int max)
+    private void window_width_is_medium_cb ()
     {
-        val.clamp (min, max);
-        return (val - min) / (double) (max - min);
+        window_width_is_small = false;
+        if (current_screen == SudokuWindowScreen.PLAY)
+        {
+            clock_box.visible = Sudoku.app.show_timer;
+            earmark_mode_button.visible = true;
+        }
     }
 
-    private void set_gamebox_width_margins (int width)
+    private void window_width_is_small_cb ()
     {
-        double factor = normalize (width, SMALL_WINDOW_WIDTH, MEDIUM_WINDOW_WIDTH);
-        int margin_size = MARGIN_SMALL_SIZE + (int) (MARGIN_SIZE_DIFF * factor);
-        game_box.margin_start = margin_size;
-        game_box.margin_end = margin_size;
+        window_width_is_small = true;
+        clock_box.visible = false;
+        if (current_screen == SudokuWindowScreen.PLAY)
+            earmark_mode_button.visible = !Sudoku.app.show_timer;
     }
 
-    private void set_gamebox_height_margins (int height)
-    {
-        double factor =  normalize (height, small_window_height, medium_window_height);
-        int margin_size = MARGIN_SMALL_SIZE + (int) (MARGIN_SIZE_DIFF * factor);
-        game_box.margin_top = margin_size;
-        game_box.margin_bottom = margin_size;
-    }
 
     public override void size_allocate (int width, int height, int baseline)
     {
-        if (window_width != width || window_height != height)
-        {
-            set_gamebox_width_margins (width);
-            set_gamebox_height_margins (height);
-
-            Gtk.Requisition min_size;
-            this.get_preferred_size (out min_size, null);
-            window_width = width = int.max (min_size.width, width);
-            window_height = height = int.max (min_size.height, height);
-        }
-
         if (width < MEDIUM_WINDOW_WIDTH && !window_width_is_small)
             window_width_is_small_cb ();
         else if (width >= MEDIUM_WINDOW_WIDTH && window_width_is_small)
             window_width_is_medium_cb ();
-
         base.size_allocate (width, height, baseline);
     }
-
     public override void dispose ()
     {
         //Vala calls init_template but doesn't call dispose_template

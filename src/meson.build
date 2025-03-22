@@ -2,7 +2,6 @@ gnome_sudoku_vala_args = ['--pkg=posix']
 
 gnome_sudoku_sources = [
   'config.vapi',
-  'aspect-frame.vala',
   'gnome-sudoku.vala',
   'number-picker.vala',
   'preferences-dialog.vala',
@@ -11,6 +10,7 @@ gnome_sudoku_sources = [
   'printer.vala',
   'start-menu.vala',
   'view.vala',
+  'view-layout.vala',
   'window.vala',
   resources
 ]
