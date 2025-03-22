@@ -320,47 +320,44 @@ public class SudokuCell : Widget
         int zoomed_size = (int) (height * view.value_zoom_multiplier);
         set_font_size (value_label, zoomed_size);
 
-        Widget child = get_first_child ();
+        Widget child = get_last_child ();
         while (child != null)
         {
             if (child == view.number_picker)
+            {
                 view.number_picker.present ();
+                break;
+            }
 
-            child = child.get_next_sibling ();
+            child = child.get_prev_sibling ();
         }
 
-        Requisition min_size;
-        value_label.get_preferred_size (out min_size, null);
+        Requisition nat;
+        value_label.get_preferred_size (null, out nat);
+        int value_width = int.min (nat.width, width);
+        int value_height = int.min (nat.height, height);
 
-        int value_width, value_height;
-        value_width = int.max (width, min_size.width);
-        value_height = int.max (height, min_size.height);
-
-        Allocation value_allocation = {0, 0, value_width, value_height};
+        Allocation value_allocation = {(width - value_width) / 2, (height - value_height) / 2, nat.width, nat.height};
         value_label.allocate_size (value_allocation, baseline);
 
         int earmark_width, earmark_height;
-        earmark_width = width / game.board.block_cols;
-        earmark_height = height / game.board.block_rows;
-
+        int max_earmark_size = width / 3; //3 earmarks per row and per column
         int num = 0;
-        for (int row_tmp = 0; row_tmp < game.board.block_rows; row_tmp++)
-        {
-            for (int col_tmp = 0; col_tmp < game.board.block_cols; col_tmp++)
+        for (int row_tmp = 2; row_tmp >= 0; row_tmp--)
+            for (int col_tmp = 0; col_tmp < 3; col_tmp++)
             {
-                num++;
+                set_font_size (earmark_labels[num], height / 4);
+                earmark_labels[num].get_preferred_size (null, out nat);
+                earmark_width = int.min (max_earmark_size, nat.width);
+                earmark_height = int.min (max_earmark_size, nat.height);
 
-                set_font_size (earmark_labels[num - 1], height / 4);
-                earmark_labels[num -1].get_preferred_size (out min_size, null);
-                earmark_width = int.max (earmark_width, min_size.width);
-                earmark_height = int.max (earmark_height, min_size.height);
-
-                Allocation earmark_allocation = {col_tmp * earmark_width,
-                                                (game.board.block_rows - row_tmp - 1) * earmark_height,
+                Allocation earmark_allocation = {col_tmp * max_earmark_size + (max_earmark_size - earmark_width) / 2,
+                                                 row_tmp * max_earmark_size + (max_earmark_size - earmark_height) / 2,
                                                  earmark_width, earmark_height};
-                earmark_labels[num - 1].allocate_size (earmark_allocation, baseline);
+                earmark_labels[num].allocate_size (earmark_allocation, baseline);
+
+                num++;
             }
-        }
     }
 
     private void set_font_size (Label label, int font_size)
