@@ -202,6 +202,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         view_stack.set_visible_child (start_menu);
         windowtitle.subtitle = _("Select Difficulty");
         back_button.visible = view != null;
+        play_custom_game_button.visible = false;
         earmark_mode_button.visible = false;
         undo_button.visible = false;
         redo_button.visible = false;
@@ -408,7 +409,6 @@ public class SudokuWindow : Adw.ApplicationWindow
             earmark_mode_button.visible = !Sudoku.app.show_timer;
     }
 
-
     public override void size_allocate (int width, int height, int baseline)
     {
         if (width < MEDIUM_WINDOW_WIDTH && !window_width_is_small)
@@ -417,6 +417,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             window_width_is_medium_cb ();
         base.size_allocate (width, height, baseline);
     }
+
     public override void dispose ()
     {
         //Vala calls init_template but doesn't call dispose_template
