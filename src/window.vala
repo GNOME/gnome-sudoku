@@ -22,7 +22,7 @@
 using Gtk;
 using Gdk;
 
-[GtkTemplate (ui = "/org/gnome/Sudoku/ui/sudoku-window.ui")]
+[GtkTemplate (ui = "/org/gnome/Sudoku/ui/window.ui")]
 public class SudokuWindow : Adw.ApplicationWindow
 {
     [GtkChild] private unowned Adw.WindowTitle windowtitle;

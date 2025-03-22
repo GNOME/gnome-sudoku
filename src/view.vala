@@ -23,13 +23,17 @@
 using Gtk;
 using Gdk;
 
+
+[GtkTemplate (ui = "/org/gnome/Sudoku/ui/game-view.ui")]
 public class SudokuGameView : Adw.Bin
 {
+    [GtkChild] private unowned Label paused_label;
+    [GtkChild] private unowned Overlay overlay;
+    [GtkChild] private unowned Grid grid;
+
     private EventControllerKey key_controller;
     private EventControllerFocus focus_controller;
     private SudokuCell[,] cells;
-    private Overlay overlay;
-    private Label paused_label;
 
     public SudokuNumberPicker number_picker;
     public SudokuGame game;
@@ -62,25 +66,8 @@ public class SudokuGameView : Adw.Bin
         this.vexpand = true;
         this.focusable = true;
 
-        overlay = new Overlay ();
-
-        paused_label = new Label (_("Paused"));
         number_picker = new SudokuNumberPicker (game);
-
-        var grid = new Grid () {
-            row_spacing = 2,
-            column_spacing = 2,
-            column_homogeneous = true,
-            row_homogeneous = true,
-            vexpand = true,
-            hexpand = true
-        };
-
-        child = overlay;
         layout_manager = new SudokuGameViewLayoutManager ();
-
-        overlay.child = grid;
-        grid.add_css_class ("board");
 
         var blocks = new Grid[game.board.block_rows, game.board.block_cols];
         for (var block_row = 0; block_row < game.board.block_rows; block_row++)

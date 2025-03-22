@@ -467,14 +467,14 @@ public class Sudoku : Adw.Application
             if (!game.paused)
                 game.stop_clock ();
 
-            window.view.unselect ();
+            view.unselect ();
 
             shortcuts_window.close_request.connect(() => {
                 if (!game.paused)
                     game.resume_clock ();
 
-                if (window.view != null)
-                    window.view.grab_focus ();
+                if (view != null)
+                    view.grab_focus ();
                 return Gdk.EVENT_PROPAGATE;
             });
         }

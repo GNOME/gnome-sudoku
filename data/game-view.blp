@@ -1,0 +1,20 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $SudokuGameView : Adw.Bin {
+  Label paused_label{
+    label: _("Paused");
+  }
+
+  child: Gtk.Overlay overlay {
+    child: Gtk.Grid grid {
+      row-spacing: 2;
+      column-spacing: 2;
+      column-homogeneous: true;
+      row-homogeneous: true;
+      vexpand: true;
+      hexpand: true;
+      css-classes: ["board"];
+    };
+  };
+}
