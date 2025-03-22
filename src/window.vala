@@ -122,35 +122,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         });
     }
 
-    static construct
-    {
-        add_binding_action (Gdk.Key.n, Gdk.ModifierType.CONTROL_MASK, "app.new-game", null);
-        add_binding_action (Gdk.Key.p, Gdk.ModifierType.CONTROL_MASK, "app.print-current-board", null);
-        add_binding_action (Gdk.Key.p, Gdk.ModifierType.NO_MODIFIER_MASK, "app.toggle-pause", null);
-        add_binding_action (Gdk.Key.r, Gdk.ModifierType.CONTROL_MASK, "app.reset-board", null);
-        add_binding_action (Gdk.Key.u, Gdk.ModifierType.NO_MODIFIER_MASK, "app.undo", null);
-        add_binding_action (Gdk.Key.z, Gdk.ModifierType.CONTROL_MASK, "app.undo", null);
-        add_binding_action (Gdk.Key.r, Gdk.ModifierType.NO_MODIFIER_MASK, "app.redo", null);
-        add_binding_action (Gdk.Key.z, Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK, "app.redo", null);
-        add_binding_action (Gdk.Key.e, Gdk.ModifierType.NO_MODIFIER_MASK, "app.earmark-mode", null);
-        add_binding_action (Gdk.Key.question, Gdk.ModifierType.CONTROL_MASK, "app.shortcuts-window", null);
-        add_binding_action (Gdk.Key.comma, Gdk.ModifierType.CONTROL_MASK, "app.preferences-dialog", null);
-        add_binding_action (Gdk.Key.f, Gdk.ModifierType.NO_MODIFIER_MASK, "app.toggle-fullscreen", null);
-        add_binding_action (Gdk.Key.F11, Gdk.ModifierType.NO_MODIFIER_MASK, "app.toggle-fullscreen", null);
-        add_binding_action (Gdk.Key.h, Gdk.ModifierType.CONTROL_MASK, "app.highlighter", null);
-        add_binding_action (Gdk.Key.w, Gdk.ModifierType.CONTROL_MASK, "app.show-warnings", null);
-        add_binding_action (Gdk.Key.@0, Gdk.ModifierType.CONTROL_MASK, "app.zoom-reset", null);
-        add_binding_action (Gdk.Key.KP_0, Gdk.ModifierType.CONTROL_MASK, "app.zoom-reset", null);
-        add_binding_action (Gdk.Key.plus, Gdk.ModifierType.CONTROL_MASK, "app.zoom-in", null);
-        add_binding_action (Gdk.Key.equal, Gdk.ModifierType.CONTROL_MASK, "app.zoom-in", null);
-        add_binding_action (Gdk.Key.KP_Add, Gdk.ModifierType.CONTROL_MASK, "app.zoom-in", null);
-        add_binding_action (Gdk.Key.ZoomIn, Gdk.ModifierType.NO_MODIFIER_MASK, "app.zoom-in", null);
-        add_binding_action (Gdk.Key.minus, Gdk.ModifierType.CONTROL_MASK, "app.zoom-out", null);
-        add_binding_action (Gdk.Key.KP_Subtract, Gdk.ModifierType.CONTROL_MASK, "app.zoom-out", null);
-        add_binding_action (Gdk.Key.ZoomOut, Gdk.ModifierType.NO_MODIFIER_MASK, "app.zoom-out", null);
-        add_binding_action (Gdk.Key.Left, Gdk.ModifierType.ALT_MASK, "app.back", null);
-    }
-
     private void construct_window_parameters ()
     {
         window_width = default_width;

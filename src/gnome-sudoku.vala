@@ -161,8 +161,23 @@ public class Sudoku : Adw.Application
         action = settings.create_action ("highlighter");
         add_action (action);
 
+        set_accels_for_action ("app.new-game", {"<Primary>n"});
+        set_accels_for_action ("app.print-current-board", {"<Primary>p"});
+        set_accels_for_action ("app.pause", {"p"});
+        set_accels_for_action ("app.earmark-mode", {"e"});
         set_accels_for_action ("app.quit", {"<Primary>q"});
+        set_accels_for_action ("app.reset-board", {"<Primary>r"});
+        set_accels_for_action ("app.show-warnings", {"<Primary>w"});
+        set_accels_for_action ("app.undo", {"<Primary>z", "u"});
+        set_accels_for_action ("app.redo", {"<Primary><Shift>z", "r"});
         set_accels_for_action ("app.help", {"F1"});
+        set_accels_for_action ("app.shortcuts-window", {"<Primary>question"});
+        set_accels_for_action ("app.preferences-dialog", {"<Primary>comma"});
+        set_accels_for_action ("app.fullscreen", {"F11", "f"});
+        set_accels_for_action ("app.highlighter", {"<Primary>h"});
+        set_accels_for_action ("app.zoom-in", {"<Primary>plus", "<Primary>equal", "ZoomIn", "<Primary>KP_Add"});
+        set_accels_for_action ("app.zoom-out", {"<Primary>minus", "ZoomOut", "<Primary>KP_Subtract"});
+        set_accels_for_action ("app.zoom-reset", {"<Primary>0", "<Primary>KP_0"});
 
         undo_action = (SimpleAction) lookup_action ("undo");
         redo_action = (SimpleAction) lookup_action ("redo");
