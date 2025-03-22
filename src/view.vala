@@ -33,6 +33,8 @@ public class SudokuGameView : Adw.Bin
 
     private EventControllerKey key_controller;
     private EventControllerFocus focus_controller;
+    private GestureClick grid_button_controller;
+
     private SudokuCell[,] cells;
 
     public SudokuNumberPicker number_picker;
@@ -113,6 +115,12 @@ public class SudokuGameView : Adw.Bin
                 unselect ();
         });
         add_controller (focus_controller);
+
+        //grid controller handles input between cells
+        grid_button_controller = new GestureClick ();
+        grid_button_controller.set_button (0 /* all buttons */);
+        grid_button_controller.released.connect (grid_button_released_cb);
+        grid.add_controller (grid_button_controller);
 
         update_zoom ();
         update_warnings ();
@@ -461,6 +469,18 @@ public class SudokuGameView : Adw.Bin
             else
                 game.disable_earmark (selected_row, selected_col, key);
         }
+    }
+
+    private void grid_button_released_cb (GestureClick gesture,
+                                     int          n_press,
+                                     double       x,
+                                     double       y)
+    {
+        if (gesture.get_current_button () != BUTTON_PRIMARY &&
+            gesture.get_current_button () != BUTTON_SECONDARY)
+            return;
+
+        gesture.set_state (EventSequenceState.CLAIMED);
     }
 
     public void dismiss_picker ()
