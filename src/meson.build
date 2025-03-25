@@ -34,6 +34,7 @@ gnome_sudoku_sources = [
   'preferences-dialog.vala',
   'print-dialog.vala',
   'cell.vala',
+  'earmark.vala',
   'printer.vala',
   'start-view.vala',
   'view.vala',

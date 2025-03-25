@@ -231,9 +231,18 @@ public class SudokuGameView : Adw.Bin
     {
         var action = game.get_current_stack_action ();
         if (action.is_single_earmarks_change ())
+        {
             cells[row, col].grab_focus ();
+            cells[row, col].update_earmark_visibility (num);
+        }
+        else
+        {
+            if (!enabled && action == StackAction.INSERT_AND_DISABLE_RELATED_EARMARKS)
+                cells[row, col].animate_earmark_removal (num);
+            else
+                cells[row, col].update_earmark_visibility (num);
+        }
 
-        cells[row, col].update_earmark_visibility (num);
         if (Sudoku.app.show_warnings && Sudoku.app.earmark_warnings)
             cells[row, col].add_earmark_warnings (num);
     }

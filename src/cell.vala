@@ -36,7 +36,7 @@ public class SudokuCell : Widget
     private GestureLongPress long_press_controller;
 
     private Label value_label;
-    private Label[] earmark_labels;
+    private SudokuEarmark[] earmarks;
 
     public SudokuCell (int row, int col, SudokuGameView view)
     {
@@ -66,13 +66,13 @@ public class SudokuCell : Widget
         long_press_controller.pressed.connect (long_press_cb);
         add_controller (this.long_press_controller);
 
-        earmark_labels = new Label[9];
+        earmarks = new SudokuEarmark[9];
         for (int num = 1; num < 10; num++)
         {
-            earmark_labels[num - 1] = new Label (num.to_string ());
-            earmark_labels[num - 1].visible = game.board.is_earmark_enabled(row, col, num);
-            earmark_labels[num - 1].set_parent (this);
-            earmark_labels[num - 1].add_css_class ("earmark");
+            earmarks[num - 1] = new SudokuEarmark (num.to_string ());
+            earmarks[num - 1].visible = game.board.is_earmark_enabled(row, col, num);
+            earmarks[num - 1].set_parent (this);
+            earmarks[num - 1].add_css_class ("earmark");
         }
     }
 
@@ -154,13 +154,18 @@ public class SudokuCell : Widget
         }
     }
 
-    public void set_earmark_highlight (int val, bool enabled)
+    public void set_earmark_highlight (int num, bool enabled)
     {
-        var earmark = earmark_labels[val-1];
+        var earmark = earmarks[num - 1];
         if (enabled && !earmark.has_css_class ("error"))
             earmark.add_css_class ("highlight-number");
         else
             earmark.remove_css_class ("highlight-number");
+    }
+
+    public void animate_earmark_removal (int num)
+    {
+        earmarks[num - 1].play_hide_animation ();
     }
 
     public void update_content_visibility ()
@@ -243,7 +248,8 @@ public class SudokuCell : Widget
 
     public void update_earmark_visibility (int num)
     {
-        earmark_labels[num - 1].set_visible (game.board.is_earmark_enabled(row, col, num));
+        earmarks[num - 1].skip_animation ();
+        earmarks[num - 1].set_visible (game.board.is_earmark_enabled(row, col, num));
     }
 
     public void add_value_warnings ()
@@ -288,9 +294,9 @@ public class SudokuCell : Widget
     public void add_earmark_warnings (int num)
     {
         if (!game.board.is_possible (row, col, num))
-            earmark_labels[num - 1].add_css_class ("error");
+            earmarks[num - 1].add_css_class ("error");
         else
-            earmark_labels[num - 1].remove_css_class ("error");
+            earmarks[num - 1].remove_css_class ("error");
     }
 
     public void clear_warnings ()
@@ -298,7 +304,7 @@ public class SudokuCell : Widget
         var marks = game.board.get_earmarks (row, col);
         value_label.remove_css_class ("error");
         for (int num = 1; num <= marks.length; num++)
-            earmark_labels[num-1].remove_css_class ("error");
+            earmarks[num - 1].remove_css_class ("error");
     }
 
     public override bool grab_focus ()
@@ -346,15 +352,15 @@ public class SudokuCell : Widget
         for (int row_tmp = 2; row_tmp >= 0; row_tmp--)
             for (int col_tmp = 0; col_tmp < 3; col_tmp++)
             {
-                set_font_size (earmark_labels[num], height / 4);
-                earmark_labels[num].get_preferred_size (null, out nat);
+                set_font_size (earmarks[num].label, height / 4);
+                earmarks[num].get_preferred_size (null, out nat);
                 earmark_width = int.min (max_earmark_size, nat.width);
                 earmark_height = int.min (max_earmark_size, nat.height);
 
                 Allocation earmark_allocation = {col_tmp * max_earmark_size + (max_earmark_size - earmark_width) / 2,
                                                  row_tmp * max_earmark_size + (max_earmark_size - earmark_height) / 2,
                                                  earmark_width, earmark_height};
-                earmark_labels[num].allocate_size (earmark_allocation, baseline);
+                earmarks[num].allocate_size (earmark_allocation, baseline);
 
                 num++;
             }
@@ -376,7 +382,7 @@ public class SudokuCell : Widget
     public override void dispose ()
     {
         this.value_label.unparent ();
-        foreach (Label earmark in earmark_labels)
+        foreach (var earmark in earmarks)
             earmark.unparent ();
         base.dispose ();
     }
