@@ -41,7 +41,7 @@ public class SudokuGameView : Adw.Bin
     public SudokuGame game;
 
     public double value_zoom_multiplier { get; private set; }
-    public bool keep_focus { get; set; default = true; }
+    public bool keep_focus { get; set; default = false; }
 
     public int selected_row { get; private set; default = 4; }
     public int selected_col { get; private set; default = 4; }

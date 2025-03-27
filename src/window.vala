@@ -208,6 +208,8 @@ public class SudokuWindow : Adw.ApplicationWindow
         redo_button.visible = false;
         clock_box.visible = false;
         play_pause_stack.visible = false;
+
+        start_view.grab_focus ();
     }
 
     public void show_game_view ()
@@ -234,6 +236,8 @@ public class SudokuWindow : Adw.ApplicationWindow
             play_custom_game_button.visible = true;
             windowtitle.subtitle = _("Create Puzzle");
         }
+
+        view.grab_focus ();
     }
 
     private void visible_dialog_cb ()
