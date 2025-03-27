@@ -21,8 +21,8 @@
 using Gtk;
 using Gdk;
 
-[GtkTemplate (ui = "/org/gnome/Sudoku/ui/start-menu.ui")]
-public class SudokuStartMenu : Box
+[GtkTemplate (ui = "/org/gnome/Sudoku/ui/start-view.ui")]
+public class SudokuStartView : Box
 {
     [GtkChild] private unowned CheckButton custom_check;
     [GtkChild] private unowned CheckButton easy_check;

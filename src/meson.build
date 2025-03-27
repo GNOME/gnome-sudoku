@@ -1,7 +1,7 @@
 blueprints = custom_target(
   'blueprints',
   input: files(
-    'blueprints/start-menu.blp',
+    'blueprints/start-view.blp',
     'blueprints/game-view.blp',
     'blueprints/preferences-dialog.blp',
     'blueprints/print-dialog.blp',
@@ -35,7 +35,7 @@ gnome_sudoku_sources = [
   'print-dialog.vala',
   'cell.vala',
   'printer.vala',
-  'start-menu.vala',
+  'start-view.vala',
   'view.vala',
   'view-layout.vala',
   'window.vala',

@@ -203,7 +203,7 @@ public class Sudoku : Adw.Application
         if (savegame != null)
             start_game (savegame.board);
         else
-            show_menu_screen ();
+            show_start_view ();
     }
 
     protected override void activate ()
@@ -357,7 +357,7 @@ public class Sudoku : Adw.Application
             game.board.completed.disconnect (board_completed_cb);
     }
 
-    private void show_menu_screen ()
+    private void show_start_view ()
     {
         if (view != null)
             game.stop_clock ();
@@ -366,12 +366,12 @@ public class Sudoku : Adw.Application
         new_game_action.set_enabled (false);
         reset_board_action.set_enabled (false);
 
-        window.show_menu_screen ();
+        window.show_start_view ();
     }
 
     private void new_game_cb ()
     {
-        show_menu_screen ();
+        show_start_view ();
     }
 
     private void create_game_cb ()
@@ -407,13 +407,13 @@ public class Sudoku : Adw.Application
 
     private void reset_board_cb ()
     {
-        if (window.current_screen != SudokuWindowScreen.MENU)
+        if (window.current_screen != SudokuWindowScreen.START)
             game.reset ();
     }
 
     private void back_cb ()
     {
-        if (window.current_screen != SudokuWindowScreen.MENU)
+        if (window.current_screen != SudokuWindowScreen.START)
             return;
 
         window.show_game_view ();
@@ -427,13 +427,13 @@ public class Sudoku : Adw.Application
 
     private void undo_cb ()
     {
-        if (window.current_screen != SudokuWindowScreen.MENU)
+        if (window.current_screen != SudokuWindowScreen.START)
             game.undo ();
     }
 
     private void redo_cb ()
     {
-        if (window.current_screen != SudokuWindowScreen.MENU)
+        if (window.current_screen != SudokuWindowScreen.START)
             game.redo ();
     }
 

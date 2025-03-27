@@ -28,8 +28,8 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Adw.WindowTitle windowtitle;
     [GtkChild] private unowned Adw.HeaderBar headerbar;
 
-    [GtkChild] private unowned Adw.ViewStack view_stack; //contains game_box and start_menu
-    [GtkChild] private unowned SudokuStartMenu start_menu;
+    [GtkChild] private unowned Adw.ViewStack view_stack; //contains game_box and start_view
+    [GtkChild] private unowned SudokuStartView start_view;
 
     [GtkChild] private unowned PopoverMenu main_menu;
 
@@ -115,10 +115,10 @@ public class SudokuWindow : Adw.ApplicationWindow
         });
 
         main_menu.closed.connect(() => {
-            if (current_screen != SudokuWindowScreen.MENU)
+            if (current_screen != SudokuWindowScreen.START)
                 view.grab_focus ();
             else
-                start_menu.grab_focus ();
+                start_view.grab_focus ();
         });
     }
 
@@ -196,10 +196,10 @@ public class SudokuWindow : Adw.ApplicationWindow
         back_button.sensitive = true;
     }
 
-    public void show_menu_screen ()
+    public void show_start_view ()
     {
-        current_screen = SudokuWindowScreen.MENU;
-        view_stack.set_visible_child (start_menu);
+        current_screen = SudokuWindowScreen.START;
+        view_stack.set_visible_child (start_view);
         windowtitle.subtitle = _("Select Difficulty");
         back_button.visible = view != null;
         play_custom_game_button.visible = false;
@@ -238,7 +238,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     private void visible_dialog_cb ()
     {
-        if (current_screen == SudokuWindowScreen.MENU)
+        if (current_screen == SudokuWindowScreen.START)
             return;
 
         if (visible_dialog != null)
@@ -324,7 +324,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             gesture.get_current_button () != BUTTON_SECONDARY)
             return;
 
-        if (current_screen != SudokuWindowScreen.MENU && !view.game.paused)
+        if (current_screen != SudokuWindowScreen.START && !view.game.paused)
         {
             view.unselect ();
             view.keep_focus = true;
@@ -433,5 +433,5 @@ public enum SudokuWindowScreen
     NONE,
     PLAY,
     CREATE,
-    MENU;
+    START;
 }
