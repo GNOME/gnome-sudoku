@@ -234,7 +234,7 @@ public class SudokuGameView : Adw.Bin
             cells[row, col].grab_focus ();
 
         cells[row, col].update_earmark_visibility (num);
-        if (Sudoku.app.earmark_warnings)
+        if (Sudoku.app.show_warnings && Sudoku.app.earmark_warnings)
             cells[row, col].add_earmark_warnings (num);
     }
 
