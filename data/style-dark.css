@@ -21,15 +21,15 @@ grid.block {
 sudoku-cell {
   background: var(--sudoku-dark-grey);
 }
+sudoku-cell.fixed {
+  background: oklch(32% 0 0);
+}
 sudoku-cell.highlight-coord {
   background: oklch(from var(--sudoku-accent-color) l calc(c * 0.25) h);
 }
-sudoku-cell > label.earmark.highlight-number {
+sudoku-cell .earmark.highlight-number {
   color: oklab(from var(--sudoku-accent-color) 0.85 a b);
   font-weight: bold;
-}
-sudoku-cell.fixed {
-  background: oklch(32% 0 0);
 }
 sudoku-cell.highlight-number {
   background: oklch(from var(--sudoku-accent-color) 0.3 calc(c * 0.7) h);

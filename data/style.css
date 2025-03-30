@@ -20,7 +20,7 @@ grid.block {
 sudoku-cell {
   background: var(--view-bg-color);
 }
-sudoku-cell > label {
+sudoku-cell label {
   color: var(--view-fg-color);
 }
 sudoku-cell.fixed {
@@ -32,17 +32,17 @@ sudoku-cell.highlight-coord {
 sudoku-cell.highlight-number {
   background: oklch(from var(--sudoku-accent-color) 0.75 c h);
 }
-sudoku-cell > label.earmark.highlight-number {
+sudoku-cell .earmark.highlight-number {
   color: oklab(from var(--sudoku-accent-color) 0.5 a b);
   font-weight: bold;
 }
-sudoku-cell > label.error {
+sudoku-cell .error {
   color: var(--error-color);
 }
-sudoku-cell > label.error.earmark {
+sudoku-cell .error.earmark {
   text-decoration: line-through;
 }
-sudoku-cell > label.error.value {
+sudoku-cell .error.value {
   font-weight: bold;
 }
 @keyframes slow-appear {

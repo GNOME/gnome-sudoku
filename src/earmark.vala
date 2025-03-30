@@ -29,8 +29,8 @@ public class SudokuEarmark : Adw.Bin
     public SudokuEarmark (string? str)
     {
         label = new Label(str);
-        label.add_css_class ("earmark");
         set_child (label);
+        label.add_css_class ("earmark");
         var anim_target = new Adw.PropertyAnimationTarget (label, "opacity");
         hide_animation = new Adw.TimedAnimation (label, 1, 0, 1000, anim_target);
         hide_animation.done.connect (hide_animation_done);
@@ -51,5 +51,31 @@ public class SudokuEarmark : Adw.Bin
     {
         if (hide_animation.state == Adw.AnimationState.PLAYING)
             hide_animation.skip ();
+    }
+
+    private bool _highlight = false;
+    public bool highlight {
+        get { return _highlight; }
+        set
+        {
+            _highlight = value;
+            if (value && !error)
+                label.add_css_class ("highlight-number");
+            else
+                label.remove_css_class ("highlight-number");
+        }
+    }
+
+    private bool _error = false;
+    public bool error {
+        get { return _error; }
+        set
+        {
+            _error = value;
+            if (value)
+                label.add_css_class ("error");
+            else
+                label.remove_css_class ("error");
+        }
     }
 }

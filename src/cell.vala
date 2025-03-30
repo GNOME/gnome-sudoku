@@ -72,7 +72,6 @@ public class SudokuCell : Widget
             earmarks[num - 1] = new SudokuEarmark (num.to_string ());
             earmarks[num - 1].visible = game.board.is_earmark_enabled(row, col, num);
             earmarks[num - 1].set_parent (this);
-            earmarks[num - 1].add_css_class ("earmark");
         }
     }
 
@@ -156,11 +155,7 @@ public class SudokuCell : Widget
 
     public void set_earmark_highlight (int num, bool enabled)
     {
-        var earmark = earmarks[num - 1];
-        if (enabled && !earmark.has_css_class ("error"))
-            earmark.add_css_class ("highlight-number");
-        else
-            earmark.remove_css_class ("highlight-number");
+        earmarks[num - 1].highlight = enabled;
     }
 
     public void animate_earmark_removal (int num)
@@ -293,18 +288,14 @@ public class SudokuCell : Widget
 
     public void add_earmark_warnings (int num)
     {
-        if (!game.board.is_possible (row, col, num))
-            earmarks[num - 1].add_css_class ("error");
-        else
-            earmarks[num - 1].remove_css_class ("error");
+        earmarks[num - 1].error = !game.board.is_possible (row, col, num);
     }
 
     public void clear_warnings ()
     {
-        var marks = game.board.get_earmarks (row, col);
         value_label.remove_css_class ("error");
-        for (int num = 1; num <= marks.length; num++)
-            earmarks[num - 1].remove_css_class ("error");
+        foreach (var earmark in earmarks)
+            earmark.error = false;
     }
 
     public override bool grab_focus ()
