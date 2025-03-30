@@ -123,7 +123,6 @@ public abstract class PickerBase : Grid
         clear_button.clicked.connect (() => {
             cell.value = 0;
         });
-        attach (clear_button, 0, 4, 3, 1);
 
         var label = new Label ("<big>%s</big>".printf (_("Clear")));
         label.use_markup = true;
@@ -170,6 +169,7 @@ private class ValuePicker : PickerBase
     {
         base (game, number_picker);
         value_buttons = new Button [game.board.block_cols * game.board.block_rows];
+        attach (clear_button, 0, 4, 3, 1);
 
         for (var col = 0; col < game.board.block_cols; col++)
         {
@@ -238,11 +238,19 @@ private class ValuePicker : PickerBase
 private class EarmarkPicker : PickerBase
 {
     private ToggleButton[] earmark_buttons;
+    private ToggleButton lock_button;
 
     public EarmarkPicker (SudokuGame game, SudokuNumberPicker number_picker)
     {
         base (game, number_picker);
         earmark_buttons = new ToggleButton [game.board.block_cols * game.board.block_rows];
+        lock_button = new ToggleButton ();
+        lock_button.set_icon_name ("lock-symbolic");
+        lock_button.toggled.connect (update_lock_tooltip);
+        update_lock_tooltip ();
+
+        attach (clear_button, 0, 4, 2, 1);
+        attach (lock_button, 2, 4, 1, 1);
 
         for (var col = 0; col < game.board.block_cols; col++)
         {
@@ -270,6 +278,14 @@ private class EarmarkPicker : PickerBase
         }
     }
 
+    private void update_lock_tooltip ()
+    {
+        if (lock_button.active)
+            lock_button.set_tooltip_text ("Unlock");
+        else
+            lock_button.set_tooltip_text ("Lock");
+    }
+
     public override void connect_picker (SudokuCell cell)
     {
         base.connect_picker (cell);
@@ -294,11 +310,17 @@ private class EarmarkPicker : PickerBase
         if (button.get_active())
         {
             if (!game.board.is_earmark_enabled (cell.row, cell.col, number_picked))
+            {
                 game.enable_earmark (cell.row, cell.col, number_picked);
+                if (!lock_button.active)
+                    number_picker.popdown ();
+            }
         }
         else if (game.board.is_earmark_enabled (cell.row, cell.col, number_picked))
         {
             game.disable_earmark (cell.row, cell.col, number_picked);
+            if (!lock_button.active)
+                number_picker.popdown ();
         }
     }
 
