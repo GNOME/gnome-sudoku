@@ -43,8 +43,10 @@ public class SudokuGameView : Adw.Bin
     public double value_zoom_multiplier { get; private set; }
     public bool keep_focus { get; set; default = false; }
 
-    public int selected_row { get; private set; default = 4; }
-    public int selected_col { get; private set; default = 4; }
+    private const Coord START = {4, 4};
+
+    public int selected_row { get; private set; default = START.row; }
+    public int selected_col { get; private set; default = START.col; }
 
     private SudokuCell selected_cell
     {
@@ -369,6 +371,7 @@ public class SudokuGameView : Adw.Bin
         update_warnings ();
         game.board.value_changed.connect (value_changed_cb);
         game.board.earmark_changed.connect (earmark_changed_cb);
+        cells[START.row, START.col].grab_focus ();
         foreach (var cell in cells)
         {
             cell.update_content_visibility ();
