@@ -192,9 +192,10 @@ public class SudokuCell : Widget
         grab_focus ();
 
         ModifierType state;
-        state = gesture.get_current_event_state ();
 
-        bool wants_value = !(bool)(state & Gdk.ModifierType.CONTROL_MASK);
+        state = gesture.get_current_event_state ();
+        bool control_pressed = (bool) (state & ModifierType.CONTROL_MASK);
+        bool wants_value = !control_pressed;
         wants_value = wants_value ^ Sudoku.app.earmark_mode;
 
         if (gesture.get_current_button () == BUTTON_PRIMARY)

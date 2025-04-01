@@ -135,7 +135,9 @@ public class SudokuGameView : Adw.Bin
         if (game.paused)
             return EVENT_PROPAGATE;
 
-        if (state != ModifierType.CONTROL_MASK)
+        bool control_pressed = (bool) (state & ModifierType.CONTROL_MASK);
+
+        if (!control_pressed)
             switch (keyval)
             {
                 case Key.w :
@@ -165,7 +167,7 @@ public class SudokuGameView : Adw.Bin
         switch (keyval)
         {
             case Key.@0: case Key.KP_0: case Key.BackSpace : case Key.Delete:
-                if (state == ModifierType.CONTROL_MASK)
+                if (control_pressed)
                     return EVENT_PROPAGATE;
                 else
                 {
@@ -173,36 +175,36 @@ public class SudokuGameView : Adw.Bin
                     return EVENT_STOP;
                 }
             case Gdk.Key.@1: case Gdk.Key.KP_1:
-                insert_key  (1, state);
+                insert_key  (1, control_pressed);
                 return EVENT_STOP;
             case Gdk.Key.@2: case Gdk.Key.KP_2:
-                insert_key  (2, state);
+                insert_key  (2, control_pressed);
                 return EVENT_STOP;
             case Gdk.Key.@3: case Gdk.Key.KP_3:
-                insert_key  (3, state);
+                insert_key  (3, control_pressed);
                 return EVENT_STOP;
             case Gdk.Key.@4: case Gdk.Key.KP_4:
-                insert_key  (4, state);
+                insert_key  (4, control_pressed);
                 return EVENT_STOP;
             case Gdk.Key.@5: case Gdk.Key.KP_5:
-                insert_key  (5, state);
+                insert_key  (5, control_pressed);
                 return EVENT_STOP;
             case Gdk.Key.@6: case Gdk.Key.KP_6:
-                insert_key  (6, state);
+                insert_key  (6, control_pressed);
                 return EVENT_STOP;
             case Gdk.Key.@7: case Gdk.Key.KP_7:
-                insert_key  (7, state);
+                insert_key  (7, control_pressed);
                 return EVENT_STOP;
             case Gdk.Key.@8: case Gdk.Key.KP_8:
-                insert_key  (8, state);
+                insert_key  (8, control_pressed);
                 return EVENT_STOP;
             case Gdk.Key.@9: case Gdk.Key.KP_9:
-                insert_key  (9, state);
+                insert_key  (9, control_pressed);
                 return EVENT_STOP;
 
             case Key.space : case Key.Return : case Key.KP_Enter:
                 selected_cell.grab_focus ();
-                bool wants_value = state != ModifierType.CONTROL_MASK;
+                bool wants_value = !control_pressed;
                 wants_value = wants_value ^ Sudoku.app.earmark_mode;
 
                 if (wants_value)
@@ -463,10 +465,11 @@ public class SudokuGameView : Adw.Bin
             game.enable_all_earmark_possibilities ();
     }
 
-    private void insert_key (int key, ModifierType state)
+
+    private void insert_key (int key, bool control_pressed)
     {
         number_picker.popdown ();
-        bool wants_value = state != ModifierType.CONTROL_MASK;
+        bool wants_value = !control_pressed;
         wants_value = wants_value ^ Sudoku.app.earmark_mode;
 
         if (wants_value)

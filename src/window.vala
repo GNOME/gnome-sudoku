@@ -362,7 +362,8 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         ModifierType state;
         state = event.get_current_event_state ();
-        if (state == Gdk.ModifierType.CONTROL_MASK)
+        bool control_pressed = (bool) (state & ModifierType.CONTROL_MASK);
+        if (control_pressed)
         {
             if (dy <= -1)
             {
@@ -383,7 +384,8 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         ModifierType state;
         state = event.get_current_event_state ();
-        if (state == Gdk.ModifierType.CONTROL_MASK)
+        bool control_pressed = (bool) (state & ModifierType.CONTROL_MASK);
+        if (control_pressed)
         {
             event.set_flags (EventControllerScrollFlags.VERTICAL |
                              EventControllerScrollFlags.DISCRETE);
