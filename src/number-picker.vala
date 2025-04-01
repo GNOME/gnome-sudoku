@@ -168,9 +168,11 @@ private class ValuePicker : PickerBase
     public ValuePicker (SudokuGame game, SudokuNumberPicker number_picker)
     {
         base (game, number_picker);
-        value_buttons = new Button [game.board.block_cols * game.board.block_rows];
+
+        clear_button.clicked.connect (number_picker.popdown);
         attach (clear_button, 0, 4, 3, 1);
 
+        value_buttons = new Button [game.board.block_cols * game.board.block_rows];
         for (var col = 0; col < game.board.block_cols; col++)
         {
             for (var row = 0; row < game.board.block_rows; row++)
@@ -208,10 +210,7 @@ private class ValuePicker : PickerBase
     {
         int val = button.get_data<int> ("number-contained");
         cell.value = val;
-        if (val == 0)
-            clear_button.visible = false;
-        else
-            number_picker.popdown ();
+        number_picker.popdown ();
     }
 
     protected override void value_changed_cb (int row, int col, int old_val, int new_val)
@@ -243,15 +242,20 @@ private class EarmarkPicker : PickerBase
     public EarmarkPicker (SudokuGame game, SudokuNumberPicker number_picker)
     {
         base (game, number_picker);
-        earmark_buttons = new ToggleButton [game.board.block_cols * game.board.block_rows];
+
         lock_button = new ToggleButton ();
         lock_button.set_icon_name ("lock-symbolic");
         lock_button.toggled.connect (update_lock_tooltip);
         update_lock_tooltip ();
-
-        attach (clear_button, 0, 4, 2, 1);
         attach (lock_button, 2, 4, 1, 1);
 
+        clear_button.clicked.connect (() => {
+            if (!lock_button.active)
+                number_picker.popdown ();
+        });
+        attach (clear_button, 0, 4, 2, 1);
+
+        earmark_buttons = new ToggleButton [game.board.block_cols * game.board.block_rows];
         for (var col = 0; col < game.board.block_cols; col++)
         {
             for (var row = 0; row < game.board.block_rows; row++)
@@ -290,8 +294,8 @@ private class EarmarkPicker : PickerBase
     {
         base.connect_picker (cell);
         set_buttons_active (cell.row, cell.col);
-        clear_button.visible = true;
         set_buttons_sensitive (cell.value == 0);
+        clear_button.visible = true;
         clear_button.sensitive = cell.value != 0 || game.board.has_earmarks (cell.row, cell.col);
         foreach (var button in earmark_buttons)
             button.toggled.connect (earmark_picked_cb);
@@ -351,6 +355,7 @@ private class EarmarkPicker : PickerBase
     public override void dispose ()
     {
         base.dispose ();
+        lock_button.unparent ();
         foreach (var button in earmark_buttons)
             button.unparent ();
     }
