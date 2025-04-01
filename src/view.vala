@@ -492,6 +492,7 @@ public class SudokuGameView : Adw.Bin
             gesture.get_current_button () != BUTTON_SECONDARY)
             return;
 
+        number_picker.popdown ();
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 
