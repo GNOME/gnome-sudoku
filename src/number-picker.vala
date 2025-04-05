@@ -291,9 +291,9 @@ private class EarmarkPicker : PickerBase
     private void update_lock_tooltip ()
     {
         if (lock_button.active)
-            lock_button.set_tooltip_text ("Unlock");
+            lock_button.set_tooltip_text (_("Unlock"));
         else
-            lock_button.set_tooltip_text ("Lock");
+            lock_button.set_tooltip_text (_("Lock"));
     }
 
     public override void connect_picker (SudokuCell cell)
