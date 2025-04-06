@@ -31,8 +31,8 @@ public class SudokuEarmark : Adw.Bin
         label = new Label(str);
         set_child (label);
         label.add_css_class ("earmark");
-        var anim_target = new Adw.PropertyAnimationTarget (label, "opacity");
-        hide_animation = new Adw.TimedAnimation (label, 1, 0, 1000, anim_target);
+        var anim_target = new Adw.PropertyAnimationTarget (this, "opacity");
+        hide_animation = new Adw.TimedAnimation (this, 1, 0, 1000, anim_target);
         hide_animation.done.connect (hide_animation_done);
     }
 
