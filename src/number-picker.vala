@@ -251,8 +251,9 @@ private class EarmarkPicker : PickerBase
 
         lock_button = new ToggleButton ();
         lock_button.set_icon_name ("lock-symbolic");
-        lock_button.toggled.connect (update_lock_tooltip);
-        update_lock_tooltip ();
+        lock_button.set_tooltip_text (_("Unlock"));
+        lock_button.toggled.connect (lock_button_toggled_cb);
+
         attach (lock_button, 2, 4, 1, 1);
 
         clear_button.clicked.connect (() => {
@@ -286,14 +287,6 @@ private class EarmarkPicker : PickerBase
                 earmark_buttons[n - 1].update_property (AccessibleProperty.LABEL, n.to_string ());
            }
         }
-    }
-
-    private void update_lock_tooltip ()
-    {
-        if (lock_button.active)
-            lock_button.set_tooltip_text (_("Unlock"));
-        else
-            lock_button.set_tooltip_text (_("Lock"));
     }
 
     public override void connect_picker (SudokuCell cell)
@@ -331,6 +324,17 @@ private class EarmarkPicker : PickerBase
             game.disable_earmark (cell.row, cell.col, number_picked);
             if (!lock_button.active)
                 number_picker.popdown ();
+        }
+    }
+
+    private void lock_button_toggled_cb ()
+    {
+        if (lock_button.active)
+            lock_button.set_tooltip_text (_("Unlock"));
+        else
+        {
+            lock_button.set_tooltip_text (_("Lock"));
+            number_picker.popdown ();
         }
     }
 
