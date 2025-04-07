@@ -175,6 +175,7 @@ public class Sudoku : Adw.Application
         set_accels_for_action ("app.preferences-dialog", {"<Primary>comma"});
         set_accels_for_action ("app.fullscreen", {"F11", "f"});
         set_accels_for_action ("app.highlighter", {"<Primary>h"});
+        set_accels_for_action ("app.back", {"<Alt>KP_Left", "<Alt>Left"});
         set_accels_for_action ("app.zoom-in", {"<Primary>plus", "<Primary>equal", "ZoomIn", "<Primary>KP_Add"});
         set_accels_for_action ("app.zoom-out", {"<Primary>minus", "ZoomOut", "<Primary>KP_Subtract"});
         set_accels_for_action ("app.zoom-reset", {"<Primary>0", "<Primary>KP_0"});
