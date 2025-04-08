@@ -195,34 +195,41 @@ public class Sudoku : Adw.Application
         zoom_out_action.set_enabled (!zoom_level.is_fully_zoomed_out ());
 
         Window.set_default_icon_name (APP_ID);
-
-        window = new SudokuWindow (settings);
-        add_window (window);
-
-        saver = new SudokuSaver ();
-        var savegame = saver.get_savedgame ();
-        if (savegame != null)
-            start_game (savegame.board);
-        else
-            show_start_view ();
     }
 
     protected override void activate ()
     {
+        if (window == null)
+        {
+            window = new SudokuWindow (settings);
+            add_window (window);
+
+            saver = new SudokuSaver ();
+            var savegame = saver.get_savedgame ();
+            if (savegame != null)
+                start_game (savegame.board);
+            else
+                show_start_view ();
+        }
+
         window.present ();
     }
 
     protected override void shutdown ()
     {
-        if (view != null)
+        if (window != null)
         {
-            if (!game.is_empty () && !game.board.complete)
-                saver.save_game (game);
-            else
-                saver.delete_save ();
+            if (view != null)
+            {
+                if (!game.is_empty () && !game.board.complete)
+                    saver.save_game (game);
+                else
+                    saver.delete_save ();
+            }
+
+            window.close ();
         }
 
-        window.close ();
         base.shutdown ();
     }
 
