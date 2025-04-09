@@ -251,7 +251,7 @@ private class EarmarkPicker : PickerBase
 
         lock_button = new ToggleButton ();
         lock_button.set_icon_name ("lock-symbolic");
-        lock_button.set_tooltip_text (_("Unlock"));
+        lock_button.set_tooltip_text (_("Lock"));
         lock_button.toggled.connect (lock_button_toggled_cb);
 
         attach (lock_button, 2, 4, 1, 1);
