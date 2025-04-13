@@ -204,9 +204,6 @@ private class ValuePicker : PickerBase
         base.connect_picker (cell);
         clear_button.visible = cell.value > 0 || game.board.has_earmarks (cell.row, cell.col);
         clear_button.set_sensitive (game.board.has_earmarks (cell.row, cell.col) || cell.value > 0);
-
-        for (int i = 0; i < 9; i++)
-            value_buttons[i].set_sensitive (cell.value != i + 1);
     }
 
     private void value_picked_cb (Button button)
@@ -219,9 +216,6 @@ private class ValuePicker : PickerBase
     protected override void value_changed_cb (int row, int col, int old_val, int new_val)
     {
         clear_button.visible =  new_val != 0;
-        for (int i = 0; i < 9; i++)
-            value_buttons[i].set_sensitive (cell.value != i + 1);
-
         number_picker.present ();
     }
 
