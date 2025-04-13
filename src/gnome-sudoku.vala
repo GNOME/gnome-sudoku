@@ -33,14 +33,14 @@ public class Sudoku : Adw.Application
 
     private SudokuWindow window;
 
-    private SudokuGameView view
+    private SudokuGameView game_view
     {
-        get { return window.view; }
+        get { return window.game_view; }
     }
 
     private SudokuGame game
     {
-        get { return view.game; }
+        get { return game_view.game; }
     }
 
     private SudokuSaver saver;
@@ -219,7 +219,7 @@ public class Sudoku : Adw.Application
     {
         if (window != null)
         {
-            if (view != null)
+            if (game_view != null)
             {
                 if (!game.is_empty () && !game.board.complete)
                     saver.save_game (game);
@@ -252,7 +252,7 @@ public class Sudoku : Adw.Application
             game.resume_clock ();
         }
 
-        view.queue_draw ();
+        game_view.queue_draw ();
     }
 
     private void play_custom_game_cb ()
@@ -342,7 +342,7 @@ public class Sudoku : Adw.Application
 
     private void start_game (SudokuBoard board)
     {
-        if (view == null)
+        if (game_view == null)
         {
             window.start_game (board);
             game.action_completed.connect (action_completed_cb);
@@ -367,7 +367,7 @@ public class Sudoku : Adw.Application
 
     private void show_start_view ()
     {
-        if (view != null)
+        if (game_view != null)
             game.stop_clock ();
 
         print_current_board_action.set_enabled (false);
@@ -485,19 +485,19 @@ public class Sudoku : Adw.Application
         var builder = new Gtk.Builder.from_resource ("/org/gnome/Sudoku/ui/shortcuts-window.ui");
         var shortcuts_window = builder.get_object ("shortcuts-window") as ShortcutsWindow;
 
-        if (view != null)
+        if (game_view != null)
         {
             if (!game.paused)
                 game.stop_clock ();
 
-            view.unselect ();
+            game_view.unselect ();
 
             shortcuts_window.close_request.connect(() => {
                 if (!game.paused)
                     game.resume_clock ();
 
-                if (view != null)
-                    view.grab_focus ();
+                if (game_view != null)
+                    game_view.grab_focus ();
                 return Gdk.EVENT_PROPAGATE;
             });
         }

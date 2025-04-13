@@ -65,7 +65,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     private GestureClick forwards_controller;
     private EventControllerScroll scroll_controller;
 
-    public SudokuGameView view { get; private set; default = null; }
+    public SudokuGameView game_view { get; private set; default = null; }
     public SudokuWindowScreen current_screen { get; private set; default = SudokuWindowScreen.NONE; }
 
     public SudokuWindow (GLib.Settings settings)
@@ -116,7 +116,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         main_menu.closed.connect(() => {
             if (current_screen != SudokuWindowScreen.START)
-                view.grab_focus ();
+                game_view.grab_focus ();
             else
                 start_view.grab_focus ();
         });
@@ -185,11 +185,11 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         back_button.sensitive = false;
 
-        view = new SudokuGameView (board);
-        view_stack.add (view);
-        view.game.tick.connect (tick_cb);
-        view.game.notify["paused"].connect (paused_cb);
-        view.game.notify["board"].connect(show_game_view);
+        game_view = new SudokuGameView (board);
+        view_stack.add (game_view);
+        game_view.game.tick.connect (tick_cb);
+        game_view.game.notify["paused"].connect (paused_cb);
+        game_view.game.notify["board"].connect(show_game_view);
 
         show_game_view ();
 
@@ -201,7 +201,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         current_screen = SudokuWindowScreen.START;
         view_stack.set_visible_child (start_view);
         windowtitle.subtitle = _("Select Difficulty");
-        back_button.visible = view != null;
+        back_button.visible = game_view != null;
         play_custom_game_button.visible = false;
         earmark_mode_button.visible = false;
         undo_button.visible = false;
@@ -214,8 +214,8 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public void show_game_view ()
     {
-        current_screen = (SudokuWindowScreen) view.game.mode;
-        view_stack.set_visible_child (view);
+        current_screen = (SudokuWindowScreen)game_view.game.mode;
+        view_stack.set_visible_child (game_view);
         back_button.visible = false;
         undo_button.visible = true;
         redo_button.visible = true;
@@ -226,7 +226,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             clock_box.visible = Sudoku.app.show_timer && !window_width_is_small;
             earmark_mode_button.visible = !window_width_is_small || !Sudoku.app.show_timer;
             play_custom_game_button.visible = false;
-            windowtitle.subtitle = view.game.board.difficulty_category.to_string ();
+            windowtitle.subtitle =game_view.game.board.difficulty_category.to_string ();
         }
         else
         {
@@ -237,7 +237,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             windowtitle.subtitle = _("Create Puzzle");
         }
 
-        view.grab_focus ();
+        game_view.grab_focus ();
     }
 
     private void visible_dialog_cb ()
@@ -247,17 +247,17 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         if (visible_dialog != null)
         {
-            if (!view.game.paused)
-                view.game.stop_clock ();
+            if (!game_view.game.paused)
+                game_view.game.stop_clock ();
 
-            view.unselect ();
+            game_view.unselect ();
         }
         else
         {
-            if (!view.game.paused)
-                view.game.resume_clock ();
+            if (!game_view.game.paused)
+                game_view.game.resume_clock ();
 
-            view.grab_focus ();
+            game_view.grab_focus ();
         }
     }
 
@@ -271,8 +271,8 @@ public class SudokuWindow : Adw.ApplicationWindow
                 clock_box.visible = !window_width_is_small;
                 play_pause_stack.visible = true;
 
-                if (view.game.paused)
-                    view.game.paused = false;
+                if (game_view.game.paused)
+                    game_view.game.paused = false;
             }
             else
             {
@@ -285,7 +285,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     private void tick_cb ()
     {
-        var elapsed_time = (int) view.game.get_total_time_played ();
+        var elapsed_time = (int) game_view.game.get_total_time_played ();
         var hours = elapsed_time / 3600;
         var minutes = (elapsed_time - hours * 3600) / 60;
         var seconds = elapsed_time - hours * 3600 - minutes * 60;
@@ -297,7 +297,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     private void paused_cb ()
     {
-        if (view.game.paused)
+        if (game_view.game.paused)
             play_pause_stack.set_visible_child (play_button);
         else
             play_pause_stack.set_visible_child (pause_button);
@@ -328,10 +328,10 @@ public class SudokuWindow : Adw.ApplicationWindow
             gesture.get_current_button () != BUTTON_SECONDARY)
             return;
 
-        if (current_screen != SudokuWindowScreen.START && !view.game.paused)
+        if (current_screen != SudokuWindowScreen.START && !game_view.game.paused)
         {
-            view.unselect ();
-            view.keep_focus = true;
+            game_view.unselect ();
+            game_view.keep_focus = true;
         }
 
         gesture.set_state (EventSequenceState.CLAIMED);

@@ -37,8 +37,8 @@ gnome_sudoku_sources = [
   'earmark.vala',
   'printer.vala',
   'start-view.vala',
-  'view.vala',
-  'view-layout.vala',
+  'game-view.vala',
+  'game-view-layout.vala',
   'window.vala',
   resources
 ]
