@@ -22,19 +22,17 @@ using Gtk;
 
 private class SudokuGameViewLayoutManager : LayoutManager
 {
-    private const int SMALL_WIDGET_SIZE = 360;
-    private const int MEDIUM_WIDGET_SIZE = 600;
     private const int MARGIN_DEFAULT_SIZE = 25;
     private const int MARGIN_SMALL_SIZE = 10;
     private const int MARGIN_SIZE_DIFF = MARGIN_DEFAULT_SIZE - MARGIN_SMALL_SIZE;
 
     private int get_align (int size)
     {
-        if (size > 600)
+        if (size > SudokuWindow.MEDIUM_WINDOW_WIDTH)
             return MARGIN_DEFAULT_SIZE;
         else
         {
-            double factor = normalize (size, SMALL_WIDGET_SIZE, MEDIUM_WIDGET_SIZE);
+            double factor = normalize (size, SudokuWindow.SMALL_WINDOW_WIDTH, SudokuWindow.MEDIUM_WINDOW_WIDTH);
             return MARGIN_SMALL_SIZE + (int) (MARGIN_SIZE_DIFF * factor);
         }
     }
