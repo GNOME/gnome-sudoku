@@ -373,12 +373,13 @@ public class SudokuGameView : Adw.Bin
         update_warnings ();
         game.board.value_changed.connect (value_changed_cb);
         game.board.earmark_changed.connect (earmark_changed_cb);
-        cells[START.row, START.col].grab_focus ();
         foreach (var cell in cells)
         {
             cell.update_content_visibility ();
             cell.update_fixed_css ();
         }
+
+        can_focus = true;
     }
 
     private void update_highlighter (int old_row, int old_col)

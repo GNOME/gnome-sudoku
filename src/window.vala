@@ -214,7 +214,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public void show_game_view ()
     {
-        current_screen = (SudokuWindowScreen)game_view.game.mode;
+        current_screen = (SudokuWindowScreen) game_view.game.mode;
         view_stack.set_visible_child (game_view);
         back_button.visible = false;
         undo_button.visible = true;
@@ -226,7 +226,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             clock_box.visible = Sudoku.app.show_timer && !window_width_is_small;
             earmark_mode_button.visible = !window_width_is_small || !Sudoku.app.show_timer;
             play_custom_game_button.visible = false;
-            windowtitle.subtitle =game_view.game.board.difficulty_category.to_string ();
+            windowtitle.subtitle = game_view.game.board.difficulty_category.to_string ();
         }
         else
         {

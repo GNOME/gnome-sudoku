@@ -302,7 +302,7 @@ public class Sudoku : Adw.Application
 
     private void board_completed_cb ()
     {
-        game.stop_clock ();
+        game_view.can_focus = false;
 
         saver.add_game_to_finished (game, true, show_timer);
 
