@@ -102,8 +102,7 @@ public class SudokuGame : Object
         else
         {
             mode = GameMode.CREATE;
-            if (timer == null)
-                stop_clock ();
+            stop_clock ();
         }
 
         if (this.board == board)
@@ -392,24 +391,35 @@ public class SudokuGame : Object
     public void start_clock ()
     {
         if (timer == null)
+        {
             timer = new Timer ();
-        timer.start ();
-        timeout_cb ();
+            timer.start ();
+            timeout_cb ();
+        }
+        else
+        {
+            resume_clock ();
+            return;
+        }
+
     }
 
     public void stop_clock ()
-        requires (timer != null)
     {
-        if (clock_timeout != 0)
-            Source.remove (clock_timeout);
+        if (timer == null || clock_timeout == 0)
+            return;
+
+        Source.remove (clock_timeout);
         clock_timeout = 0;
         timer.stop ();
         tick ();
     }
 
     public void resume_clock ()
-        requires (timer != null && clock_timeout == 0)
     {
+        if (timer == null || clock_timeout != 0)
+            return;
+
         timer.continue ();
         timeout_cb ();
     }
