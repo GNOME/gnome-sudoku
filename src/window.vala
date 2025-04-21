@@ -49,9 +49,6 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] private unowned Box clock_box;
     [GtkChild] private unowned Label clock_label;
 
-    public int window_width { get; private set; }
-    public int window_height { get; private set; }
-
     private bool window_width_is_small { get; private set; }
 
     public const int SMALL_WINDOW_WIDTH = 360;
@@ -124,18 +121,15 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     private void construct_window_parameters ()
     {
-        window_width = default_width;
-        window_height = default_height;
-
         int headerbar_natural_height;
         headerbar.measure (Orientation.VERTICAL, -1, null, out headerbar_natural_height, null, null);
 
         int small_window_height = SMALL_WINDOW_WIDTH + headerbar_natural_height;
 
-        window_width_is_small = window_width <= MEDIUM_WINDOW_WIDTH;
+        window_width_is_small = default_width <= MEDIUM_WINDOW_WIDTH;
 
         set_size_request (SMALL_WINDOW_WIDTH, small_window_height);
-        set_default_size (window_width, window_height);
+        set_default_size (default_width, default_height);
 
         Label title_label = (Label) windowtitle.get_first_child ().get_first_child ();
         title_label.set_property ("ellipsize", false);
