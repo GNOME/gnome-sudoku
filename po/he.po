@@ -4,22 +4,22 @@
 # Copyright (C) 2005 THE PACKAGE'S COPYRIGHT HOLDER
 # Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2002,2003
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2010.
-# Yosef Or Boczko <yoseforb@gmail.com>, 2014-2024.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2014-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-11-07 19:36+0000\n"
-"PO-Revision-Date: 2024-11-07 21:39+0200\n"
-"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"POT-Creation-Date: 2025-04-13 07:35+0000\n"
+"PO-Revision-Date: 2025-04-22 22:01+0300\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n>2||n==0) ? 1 : 2;\n"
-"X-Generator: Poedit 3.4.2\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n>2||n==0) ? 1 : 2\n"
+"X-Generator: Gtranslator 48.0\n"
 "X-Launchpad-Export-Date: 2008-01-13 04:36+0000\n"
 "X-DL-Lang: he\n"
 "X-DL-Module: gnome-sudoku\n"
@@ -27,8 +27,8 @@ msgstr ""
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:3 data/sudoku-window.blp:88
-#: data/sudoku-window.blp:96
+#: data/org.gnome.Sudoku.desktop.in.in:3 src/blueprints/window.blp:88
+#: src/blueprints/window.blp:96
 msgid "Sudoku"
 msgstr "סודוקו"
 
@@ -42,11 +42,11 @@ msgstr "בחינת ההיגיון שלך באמצעות תצרף המספרים 
 msgid "magic;square;"
 msgstr "קסם;ריבוע;סודוקו;"
 
-#: data/org.gnome.Sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Difficulty level of sudokus to be printed"
 
-#: data/org.gnome.Sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:19
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -54,31 +54,31 @@ msgstr ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 
-#: data/org.gnome.Sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:24
 msgid "Number of Sudokus to print"
 msgstr "Number of Sudokus to print"
 
-#: data/org.gnome.Sudoku.gschema.xml:24
+#: data/org.gnome.Sudoku.gschema.xml:25
 msgid "Set the number of sudokus you want to print"
 msgstr "Set the number of sudokus you want to print"
 
-#: data/org.gnome.Sudoku.gschema.xml:29
+#: data/org.gnome.Sudoku.gschema.xml:30
 msgid "Number of Sudokus to print per page"
 msgstr "Number of Sudokus to print per page"
 
-#: data/org.gnome.Sudoku.gschema.xml:30
+#: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Set the number of sudokus you want to print per page"
 msgstr "Set the number of sudokus you want to print per page"
 
-#: data/org.gnome.Sudoku.gschema.xml:34
+#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Initialize the earmarks with the possible values for each cell"
 
-#: data/org.gnome.Sudoku.gschema.xml:38
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid "Color mistakes and duplicate numbers in red"
 msgstr "Color mistakes and duplicate numbers in red"
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:40
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
@@ -86,63 +86,63 @@ msgstr ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
 
-#: data/org.gnome.Sudoku.gschema.xml:43
+#: data/org.gnome.Sudoku.gschema.xml:44
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr "Check earmarks against duplicates in row, column and block"
 
-#: data/org.gnome.Sudoku.gschema.xml:47
+#: data/org.gnome.Sudoku.gschema.xml:48
 msgid "Toggle timer and pause buttons"
 msgstr "Toggle timer and pause buttons"
 
-#: data/org.gnome.Sudoku.gschema.xml:51
+#: data/org.gnome.Sudoku.gschema.xml:52
 msgid "Additionally check against the solution for warnings"
 msgstr "Additionally check against the solution for warnings"
 
-#: data/org.gnome.Sudoku.gschema.xml:55
+#: data/org.gnome.Sudoku.gschema.xml:56
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr "Automatically clear related earmarks on new number insertion"
 
-#: data/org.gnome.Sudoku.gschema.xml:59
+#: data/org.gnome.Sudoku.gschema.xml:60
 msgid "Display number picker on second click"
 msgstr "Display number picker on second click"
 
-#: data/org.gnome.Sudoku.gschema.xml:63
+#: data/org.gnome.Sudoku.gschema.xml:64
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Highlight row, column and square that contain the selected cell"
 
-#: data/org.gnome.Sudoku.gschema.xml:67
+#: data/org.gnome.Sudoku.gschema.xml:68
 msgid "Highlight the selected cell's row and column"
 msgstr "Highlight the selected cell's row and column"
 
-#: data/org.gnome.Sudoku.gschema.xml:71
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Highlight the selected cell's block"
 msgstr "Highlight the selected cell's block"
 
-#: data/org.gnome.Sudoku.gschema.xml:75
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Highlight the selected cell's matching numbers"
 
-#: data/org.gnome.Sudoku.gschema.xml:79
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "The puzzle's difficulty"
 msgstr "The puzzle's difficulty"
 
-#: data/org.gnome.Sudoku.gschema.xml:83
+#: data/org.gnome.Sudoku.gschema.xml:84
 msgid "Zoom level"
 msgstr "רמת תקריב"
 
-#: data/org.gnome.Sudoku.gschema.xml:87
+#: data/org.gnome.Sudoku.gschema.xml:88
 msgid "Width of the window in pixels"
 msgstr "Width of the window in pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:91
+#: data/org.gnome.Sudoku.gschema.xml:92
 msgid "Height of the window in pixels"
 msgstr "Height of the window in pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:95
+#: data/org.gnome.Sudoku.gschema.xml:96
 msgid "true if the window is maximized"
 msgstr "true if the window is maximized"
 
-#: data/org.gnome.Sudoku.gschema.xml:99
+#: data/org.gnome.Sudoku.gschema.xml:100
 msgid "true if the window is fullscreen"
 msgstr "true if the window is fullscreen"
 
@@ -212,392 +212,6 @@ msgstr "תצוגה של משחק GNOME סודוקו"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "סודוקו GNOME במצב כהה מציג את תכונת סימוני מספרים אפשריים ואזהרות"
 
-#: data/preferences-dialog.blp:7
-msgctxt "preferences dialog"
-msgid "General"
-msgstr "כללי"
-
-#: data/preferences-dialog.blp:10
-msgctxt "General Preferences"
-msgid "_Timer and Pause Buttons"
-msgstr "כפתורי _קוצב זמן והשהיה"
-
-# msgctxt "shortcuts window"
-#: data/preferences-dialog.blp:15
-msgctxt "General Preferences"
-msgid "Number Picker on _Second Click"
-msgstr "בחירת מספר ב_לחיצה משנית"
-
-# msgctxt "general preferences"
-#: data/preferences-dialog.blp:20
-msgctxt "General Preferences"
-msgid "Automatically _Clean Earmarks"
-msgstr "_ניקוי אוטומטי של מספרים שהיו אפשריים ואינם עוד"
-
-# msgctxt "general preferences"
-#: data/preferences-dialog.blp:25
-msgctxt "General Preferences"
-msgid "Show Earmark _Possibilities"
-msgstr "הצגת מספרים _אפשריים"
-
-# msgctxt "preferences dialog"
-#: data/preferences-dialog.blp:31
-msgctxt "Preferences Dialog"
-msgid "Warnings"
-msgstr "אזהרות"
-
-# msgctxt "warning preferences"
-#: data/preferences-dialog.blp:34
-msgctxt "Warning Preferences"
-msgid "Check _Against Solution"
-msgstr "בדיקה _למול הפתרון"
-
-# msgctxt "warning preferences"
-#: data/preferences-dialog.blp:39
-msgctxt "Warning Preferences"
-msgid "_Earmark Warnings"
-msgstr "הצגת אזהרות במספרים שסומנו כ_אפשריים"
-
-# msgctxt "preferences dialog"
-#: data/preferences-dialog.blp:45
-msgctxt "Preferences Dialog"
-msgid "Highlighter"
-msgstr "הדגשה"
-
-# msgctxt "highlighter preferences"
-#: data/preferences-dialog.blp:48
-msgctxt "Highlighter Preferences"
-msgid "Highlight Matching _Numbers"
-msgstr "הדגשת _מספרים מתאימים"
-
-# msgctxt "highlighter preferences"
-#: data/preferences-dialog.blp:53
-msgctxt "Highlighter Preferences"
-msgid "Highlight _Row and Column"
-msgstr "הדגשת _שורה ועמודה"
-
-# msgctxt "highlighter preferences"
-#: data/preferences-dialog.blp:58
-msgctxt "Highlighter Preferences"
-msgid "Highlight _Block"
-msgstr "הדגשת _בלוק"
-
-#: data/print-dialog.blp:5
-msgid "Print Multiple Puzzles"
-msgstr "הדפסת מספר לוחות סודוקו"
-
-#: data/print-dialog.blp:24
-msgid "Number of Puzzles"
-msgstr "מספר לוחות"
-
-#: data/print-dialog.blp:35
-msgid "Number of puzzles per page"
-msgstr "מספר לוחות בכל עמוד"
-
-#: data/print-dialog.blp:46
-msgid "Difficulty"
-msgstr "רמת קושי"
-
-#: data/print-dialog.blp:50
-msgid "Easy"
-msgstr "קל"
-
-#: data/print-dialog.blp:51
-msgid "Medium"
-msgstr "בינוני"
-
-#: data/print-dialog.blp:52
-msgid "Hard"
-msgstr "קשה"
-
-#: data/print-dialog.blp:53
-msgid "Very Hard"
-msgstr "קשה מאד"
-
-#: data/print-dialog.blp:65 data/sudoku-window.blp:19
-msgid "_Print"
-msgstr "ה_דפסה"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:11
-msgctxt "Shortcuts Window"
-msgid "Game"
-msgstr "משחק"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:15 data/shortcuts-window.blp:20
-msgctxt "Shortcuts Window"
-msgid "Move"
-msgstr "הזזה"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:25
-msgctxt "Shortcuts Window"
-msgid "Earmarks"
-msgstr "סימון אפשרות"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:30
-msgctxt "Shortcuts Window"
-msgid "Clear Cell"
-msgstr "ניקוי תא"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:35
-msgctxt "Shortcuts Window"
-msgid "Undo"
-msgstr "ביטול"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:40
-msgctxt "Shortcuts Window"
-msgid "Redo"
-msgstr "ביצוע חוזר"
-
-#: data/shortcuts-window.blp:45
-msgctxt "Shortcuts Window"
-msgid "Pause"
-msgstr "השהיה"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:50
-msgctxt "Shortcuts Window"
-msgid "Earmark Mode"
-msgstr "מצב סימון אפשרות"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:55
-msgctxt "Shortcuts Window"
-msgid "Number Picker"
-msgstr "בחירת מספר"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:60
-msgctxt "Shortcuts Window"
-msgid "Earmark Picker"
-msgstr "בחירת מספרים אפשריים"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:65
-msgctxt "Shortcuts Window"
-msgid "New Game"
-msgstr "משחק חדש"
-
-#: data/shortcuts-window.blp:70
-msgctxt "Shortcuts Window"
-msgid "Reset Puzzle"
-msgstr "איפוס הלוח"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:75
-msgctxt "Shortcuts Window"
-msgid "Window"
-msgstr "חלון"
-
-#: data/shortcuts-window.blp:79
-msgctxt "Shortcuts Window"
-msgid "Go Back"
-msgstr "חזרה"
-
-#: data/shortcuts-window.blp:84
-msgctxt "Shortcuts Window"
-msgid "Zoom In"
-msgstr "התקרבות"
-
-#: data/shortcuts-window.blp:89
-msgctxt "Shortcuts Window"
-msgid "Zoom Out"
-msgstr "התרחקות"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:94
-msgctxt "Shortcuts Window"
-msgid "Zoom Reset"
-msgstr "איפוס התקריב"
-
-# msgctxt "preferences dialog"
-#: data/shortcuts-window.blp:99
-msgctxt "Shortcuts Window"
-msgid "Warnings"
-msgstr "אזהרות"
-
-# msgctxt "preferences dialog"
-#: data/shortcuts-window.blp:104
-msgctxt "Shortcuts Window"
-msgid "Highlighter"
-msgstr "הדגשה"
-
-#: data/shortcuts-window.blp:109
-msgctxt "Shortcuts Window"
-msgid "Print Current Puzzle"
-msgstr "הדפסת הלוח הנוכחי"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:114
-msgctxt "Shortcuts Window"
-msgid "Preferences"
-msgstr "העדפות"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:119
-msgctxt "Shortcuts Window"
-msgid "Keyboard Shortcuts"
-msgstr "צירופי מקשים"
-
-#: data/shortcuts-window.blp:124
-msgctxt "Shortcuts Window"
-msgid "Quit"
-msgstr "יציאה"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:129
-msgctxt "Shortcuts Window"
-msgid "Help"
-msgstr "עזרה"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:134
-msgctxt "Shortcuts Window"
-msgid "Menu"
-msgstr "תפריט"
-
-# msgctxt "shortcuts window"
-#: data/shortcuts-window.blp:139
-msgctxt "Shortcuts Window"
-msgid "Fullscreen"
-msgstr "מסך מלא"
-
-# msgctxt "shortcuts window"
-# msgctxt "Shortcuts Window"
-#: data/sudoku-window.blp:7
-msgid "_New Game…"
-msgstr "_משחק חדש…"
-
-#: data/sudoku-window.blp:12
-msgid "_Reset Puzzle"
-msgstr "_איפוס הלוח"
-
-#: data/sudoku-window.blp:23
-msgid "Print _Current Puzzle…"
-msgstr "הדפסת ה_לוח הנוכחי…"
-
-#: data/sudoku-window.blp:28
-msgid "Print _Multiple Puzzles…"
-msgstr "הדפסת מס_פר לוחות…"
-
-#: data/sudoku-window.blp:35
-msgid "Zoom"
-msgstr "תקריב"
-
-#: data/sudoku-window.blp:54
-msgid "_Highlighter"
-msgstr "ה_דגשה"
-
-#: data/sudoku-window.blp:59
-msgid "_Warnings"
-msgstr "_אזהרות"
-
-#: data/sudoku-window.blp:66
-msgid "_Preferences"
-msgstr "_העדפות"
-
-#: data/sudoku-window.blp:71
-msgid "_Keyboard Shortcuts"
-msgstr "_צירופי מקשים"
-
-#: data/sudoku-window.blp:76
-msgid "_Help"
-msgstr "ע_זרה"
-
-#: data/sudoku-window.blp:81
-msgid "_About Sudoku"
-msgstr "_על אודות סודוקו"
-
-#: data/sudoku-window.blp:104
-msgid "Undo Action"
-msgstr "ביטול הפעולה האחרונה"
-
-#: data/sudoku-window.blp:116
-msgid "Redo Action"
-msgstr "חזרה על פעולה שבוטלה"
-
-#: data/sudoku-window.blp:128
-msgid "Back"
-msgstr "חזרה"
-
-# msgctxt "shortcuts window"
-# msgctxt "Shortcuts Window"
-#: data/sudoku-window.blp:140
-msgid "Earmark Mode"
-msgstr "מצב סימון אפשרויות"
-
-#: data/sudoku-window.blp:150 data/sudoku-window.blp:211
-msgid "Leave Fullscreen"
-msgstr "יציאה ממצב מסך מלא"
-
-#: data/sudoku-window.blp:164
-msgid "Main Menu"
-msgstr "תפריט ראשי"
-
-#: data/sudoku-window.blp:173
-msgid "Zoom Out"
-msgstr "התרחקות"
-
-#: data/sudoku-window.blp:185
-msgid "Zoom In"
-msgstr "התקרבות"
-
-# msgctxt "shortcuts window"
-# msgctxt "Shortcuts Window"
-#: data/sudoku-window.blp:200
-msgid "Fullscreen"
-msgstr "מסך מלא"
-
-#: data/sudoku-window.blp:232
-msgid "Pause"
-msgstr "השהייה"
-
-#: data/sudoku-window.blp:242
-msgid "Play"
-msgstr "לשחק"
-
-#: data/sudoku-window.blp:253
-msgid "Play Custom Game"
-msgstr "לשחק לוח מותאם"
-
-#: data/sudoku-window.blp:298
-msgid "Select Puzzle Difficulty"
-msgstr "בחירת רמת קושי"
-
-#: data/sudoku-window.blp:315
-msgctxt "Difficulty"
-msgid "_Custom"
-msgstr "ה_תאמה אישית"
-
-#: data/sudoku-window.blp:329
-msgctxt "Difficulty"
-msgid "_Easy"
-msgstr "_קל"
-
-#: data/sudoku-window.blp:342
-msgctxt "Difficulty"
-msgid "_Medium"
-msgstr "_בינוני"
-
-#: data/sudoku-window.blp:355
-msgctxt "Difficulty"
-msgid "_Hard"
-msgstr "ק_שה"
-
-#: data/sudoku-window.blp:368
-msgctxt "Difficulty"
-msgid "_Very Hard"
-msgstr "_קשה מאד"
-
-#: data/sudoku-window.blp:377
-msgid "_Start Game"
-msgstr "ה_תחלת משחק"
-
 #: lib/sudoku-board.vala:634
 msgid "Unknown Difficulty"
 msgstr "רמת קושי לא ידועה"
@@ -622,42 +236,433 @@ msgstr "רמה קשה מאוד"
 msgid "Custom Puzzle"
 msgstr "לוח מותאם"
 
+#: src/blueprints/game-view.blp:6
+msgid "Paused"
+msgstr "הושהה"
+
+#: src/blueprints/preferences-dialog.blp:7
+msgctxt "preferences dialog"
+msgid "General"
+msgstr "כללי"
+
+#: src/blueprints/preferences-dialog.blp:10
+msgctxt "General Preferences"
+msgid "_Timer and Pause Buttons"
+msgstr "כפתורי _קוצב זמן והשהיה"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/preferences-dialog.blp:15
+msgctxt "General Preferences"
+msgid "Number Picker on _Second Click"
+msgstr "בחירת מספר ב_לחיצה משנית"
+
+# msgctxt "general preferences"
+#: src/blueprints/preferences-dialog.blp:20
+msgctxt "General Preferences"
+msgid "Automatically _Clean Earmarks"
+msgstr "_ניקוי אוטומטי של מספרים שהיו אפשריים ואינם עוד"
+
+# msgctxt "general preferences"
+#: src/blueprints/preferences-dialog.blp:25
+msgctxt "General Preferences"
+msgid "Show Earmark _Possibilities"
+msgstr "הצגת מספרים _אפשריים"
+
+# msgctxt "preferences dialog"
+#: src/blueprints/preferences-dialog.blp:31
+msgctxt "Preferences Dialog"
+msgid "Warnings"
+msgstr "אזהרות"
+
+# msgctxt "warning preferences"
+#: src/blueprints/preferences-dialog.blp:34
+msgctxt "Warning Preferences"
+msgid "Check _Against Solution"
+msgstr "בדיקה _למול הפתרון"
+
+# msgctxt "warning preferences"
+#: src/blueprints/preferences-dialog.blp:39
+msgctxt "Warning Preferences"
+msgid "_Earmark Warnings"
+msgstr "הצגת אזהרות במספרים שסומנו כ_אפשריים"
+
+# msgctxt "preferences dialog"
+#: src/blueprints/preferences-dialog.blp:45
+msgctxt "Preferences Dialog"
+msgid "Highlighter"
+msgstr "הדגשה"
+
+# msgctxt "highlighter preferences"
+#: src/blueprints/preferences-dialog.blp:48
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "הדגשת _מספרים מתאימים"
+
+# msgctxt "highlighter preferences"
+#: src/blueprints/preferences-dialog.blp:53
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Row and Column"
+msgstr "הדגשת _שורה ועמודה"
+
+# msgctxt "highlighter preferences"
+#: src/blueprints/preferences-dialog.blp:58
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Block"
+msgstr "הדגשת _בלוק"
+
+#: src/blueprints/print-dialog.blp:5
+msgid "Print Multiple Puzzles"
+msgstr "הדפסת מספר לוחות סודוקו"
+
+#: src/blueprints/print-dialog.blp:24
+msgid "Number of Puzzles"
+msgstr "מספר לוחות"
+
+#: src/blueprints/print-dialog.blp:35
+msgid "Number of puzzles per page"
+msgstr "מספר לוחות בכל עמוד"
+
+#: src/blueprints/print-dialog.blp:46
+msgid "Difficulty"
+msgstr "רמת קושי"
+
+#: src/blueprints/print-dialog.blp:50
+msgid "Easy"
+msgstr "קל"
+
+#: src/blueprints/print-dialog.blp:51
+msgid "Medium"
+msgstr "בינוני"
+
+#: src/blueprints/print-dialog.blp:52
+msgid "Hard"
+msgstr "קשה"
+
+#: src/blueprints/print-dialog.blp:53
+msgid "Very Hard"
+msgstr "קשה מאד"
+
+#: src/blueprints/print-dialog.blp:65 src/blueprints/window.blp:19
+msgid "_Print"
+msgstr "ה_דפסה"
+
+#: src/blueprints/start-view.blp:10
+msgid "Select Puzzle Difficulty"
+msgstr "בחירת רמת קושי"
+
+#: src/blueprints/start-view.blp:27
+msgctxt "Difficulty"
+msgid "_Custom"
+msgstr "ה_תאמה אישית"
+
+#: src/blueprints/start-view.blp:41
+msgctxt "Difficulty"
+msgid "_Easy"
+msgstr "_קל"
+
+#: src/blueprints/start-view.blp:54
+msgctxt "Difficulty"
+msgid "_Medium"
+msgstr "_בינוני"
+
+#: src/blueprints/start-view.blp:67
+msgctxt "Difficulty"
+msgid "_Hard"
+msgstr "ק_שה"
+
+#: src/blueprints/start-view.blp:80
+msgctxt "Difficulty"
+msgid "_Very Hard"
+msgstr "_קשה מאד"
+
+#: src/blueprints/start-view.blp:89
+msgid "_Start Game"
+msgstr "ה_תחלת משחק"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:11
+msgctxt "Shortcuts Window"
+msgid "Game"
+msgstr "משחק"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:15
+#: src/blueprints/shortcuts-window.blp:20
+msgctxt "Shortcuts Window"
+msgid "Move"
+msgstr "הזזה"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:25
+msgctxt "Shortcuts Window"
+msgid "Earmarks"
+msgstr "סימון אפשרות"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:30
+msgctxt "Shortcuts Window"
+msgid "Clear Cell"
+msgstr "ניקוי תא"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:35
+msgctxt "Shortcuts Window"
+msgid "Undo"
+msgstr "ביטול"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:40
+msgctxt "Shortcuts Window"
+msgid "Redo"
+msgstr "ביצוע חוזר"
+
+#: src/blueprints/shortcuts-window.blp:45
+msgctxt "Shortcuts Window"
+msgid "Pause"
+msgstr "השהיה"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:50
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
+msgstr "מצב סימון אפשרות"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:55
+msgctxt "Shortcuts Window"
+msgid "Number Picker"
+msgstr "בחירת מספר"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:60
+msgctxt "Shortcuts Window"
+msgid "Earmark Picker"
+msgstr "בחירת מספרים אפשריים"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:65
+msgctxt "Shortcuts Window"
+msgid "New Game"
+msgstr "משחק חדש"
+
+#: src/blueprints/shortcuts-window.blp:70
+msgctxt "Shortcuts Window"
+msgid "Reset Puzzle"
+msgstr "איפוס הלוח"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:75
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "חלון"
+
+#: src/blueprints/shortcuts-window.blp:79
+msgctxt "Shortcuts Window"
+msgid "Go Back"
+msgstr "חזרה"
+
+#: src/blueprints/shortcuts-window.blp:84
+msgctxt "Shortcuts Window"
+msgid "Zoom In"
+msgstr "התקרבות"
+
+#: src/blueprints/shortcuts-window.blp:89
+msgctxt "Shortcuts Window"
+msgid "Zoom Out"
+msgstr "התרחקות"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:94
+msgctxt "Shortcuts Window"
+msgid "Zoom Reset"
+msgstr "איפוס התקריב"
+
+# msgctxt "preferences dialog"
+#: src/blueprints/shortcuts-window.blp:99
+msgctxt "Shortcuts Window"
+msgid "Warnings"
+msgstr "אזהרות"
+
+# msgctxt "preferences dialog"
+#: src/blueprints/shortcuts-window.blp:104
+msgctxt "Shortcuts Window"
+msgid "Highlighter"
+msgstr "הדגשה"
+
+#: src/blueprints/shortcuts-window.blp:109
+msgctxt "Shortcuts Window"
+msgid "Print Current Puzzle"
+msgstr "הדפסת הלוח הנוכחי"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:114
+msgctxt "Shortcuts Window"
+msgid "Preferences"
+msgstr "העדפות"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:119
+msgctxt "Shortcuts Window"
+msgid "Keyboard Shortcuts"
+msgstr "צירופי מקשים"
+
+#: src/blueprints/shortcuts-window.blp:124
+msgctxt "Shortcuts Window"
+msgid "Quit"
+msgstr "יציאה"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:129
+msgctxt "Shortcuts Window"
+msgid "Help"
+msgstr "עזרה"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:134
+msgctxt "Shortcuts Window"
+msgid "Menu"
+msgstr "תפריט"
+
+# msgctxt "shortcuts window"
+#: src/blueprints/shortcuts-window.blp:139
+msgctxt "Shortcuts Window"
+msgid "Fullscreen"
+msgstr "מסך מלא"
+
+# msgctxt "shortcuts window"
+# msgctxt "Shortcuts Window"
+#: src/blueprints/window.blp:7
+msgid "_New Game…"
+msgstr "_משחק חדש…"
+
+#: src/blueprints/window.blp:12
+msgid "_Reset Puzzle"
+msgstr "_איפוס הלוח"
+
+#: src/blueprints/window.blp:23
+msgid "Print _Current Puzzle…"
+msgstr "הדפסת ה_לוח הנוכחי…"
+
+#: src/blueprints/window.blp:28
+msgid "Print _Multiple Puzzles…"
+msgstr "הדפסת מס_פר לוחות…"
+
+#: src/blueprints/window.blp:35
+msgid "Zoom"
+msgstr "תקריב"
+
+#: src/blueprints/window.blp:54
+msgid "_Highlighter"
+msgstr "ה_דגשה"
+
+#: src/blueprints/window.blp:59
+msgid "_Warnings"
+msgstr "_אזהרות"
+
+#: src/blueprints/window.blp:66
+msgid "_Preferences"
+msgstr "_העדפות"
+
+#: src/blueprints/window.blp:71
+msgid "_Keyboard Shortcuts"
+msgstr "_צירופי מקשים"
+
+#: src/blueprints/window.blp:76
+msgid "_Help"
+msgstr "ע_זרה"
+
+#: src/blueprints/window.blp:81
+msgid "_About Sudoku"
+msgstr "_על אודות סודוקו"
+
+#: src/blueprints/window.blp:104
+msgid "Undo Action"
+msgstr "ביטול הפעולה האחרונה"
+
+#: src/blueprints/window.blp:116
+msgid "Redo Action"
+msgstr "חזרה על פעולה שבוטלה"
+
+#: src/blueprints/window.blp:128
+msgid "Back"
+msgstr "חזרה"
+
+# msgctxt "shortcuts window"
+# msgctxt "Shortcuts Window"
+#: src/blueprints/window.blp:141
+msgid "Earmark Mode"
+msgstr "מצב סימון אפשרויות"
+
+#: src/blueprints/window.blp:151 src/blueprints/window.blp:212
+msgid "Leave Fullscreen"
+msgstr "יציאה ממצב מסך מלא"
+
+#: src/blueprints/window.blp:165
+msgid "Main Menu"
+msgstr "תפריט ראשי"
+
+#: src/blueprints/window.blp:174
+msgid "Zoom Out"
+msgstr "התרחקות"
+
+#: src/blueprints/window.blp:186
+msgid "Zoom In"
+msgstr "התקרבות"
+
+# msgctxt "shortcuts window"
+# msgctxt "Shortcuts Window"
+#: src/blueprints/window.blp:201
+msgid "Fullscreen"
+msgstr "מסך מלא"
+
+#: src/blueprints/window.blp:233
+msgid "Pause"
+msgstr "השהייה"
+
+#: src/blueprints/window.blp:243
+msgid "Play"
+msgstr "לשחק"
+
+#: src/blueprints/window.blp:254
+msgid "Play Custom Game"
+msgstr "לשחק לוח מותאם"
+
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:88
+#: src/gnome-sudoku.vala:106
 msgid "Show release version"
 msgstr "Show release version"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:234
+#: src/gnome-sudoku.vala:266
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "הלוח שהזנת אינו סודוקו תקף."
 
-#: src/gnome-sudoku.vala:234
+#: src/gnome-sudoku.vala:266
 msgid "Please enter a valid puzzle."
 msgstr "נא להכניס לוח תקף."
 
-#: src/gnome-sudoku.vala:235 src/printer.vala:46
+#: src/gnome-sudoku.vala:267 src/printer.vala:46
 msgid "Close"
 msgstr "סגירה"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:275
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "ללוח שהזנת יש מספר פתרונות אפשריים."
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:275
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "לסודוקו תקף יש בדיוק פתרון אפשרי אחד."
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:276
 msgid "_Back"
 msgstr "_חזרה"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:277
 msgid "Play _Anyway"
 msgstr "לשחק _בכל מקרה"
 
-#: src/gnome-sudoku.vala:286
+#: src/gnome-sudoku.vala:314
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
@@ -665,16 +670,16 @@ msgstr[0] "כל הכבוד, השלמת את הלוח בדקה אחת!"
 msgstr[1] "כל הכבוד, השלמת את הלוח ב־%d דקות!"
 msgstr[2] "כל הכבוד, השלמת את הלוח בשתי דקות!"
 
-#: src/gnome-sudoku.vala:294
+#: src/gnome-sudoku.vala:322
 msgid "Quit"
 msgstr "יציאה"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:323
 msgid "Play _Again"
 msgstr "לשחק _שוב"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:529
+#: src/gnome-sudoku.vala:525
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -685,7 +690,7 @@ msgstr ""
 "\n"
 "הלוחות נוצרות על ידי QQwing %s"
 
-#: src/gnome-sudoku.vala:537
+#: src/gnome-sudoku.vala:531
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -698,24 +703,28 @@ msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: src/number-picker.vala:128
+#: src/number-picker.vala:127
 msgid "Clear"
 msgstr "ניקוי"
+
+#: src/number-picker.vala:248 src/number-picker.vala:330
+msgid "Lock"
+msgstr "נעילה"
+
+#: src/number-picker.vala:327
+msgid "Unlock"
+msgstr "שחרור"
 
 #. Error message if printing fails
 #: src/printer.vala:45
 msgid "Error printing file:"
 msgstr "שגיאה בהדפסת קובץ:"
 
-#: src/view.vala:83
-msgid "Paused"
-msgstr "הושהה"
-
-#: src/window.vala:294
+#: src/window.vala:203
 msgid "Select Difficulty"
 msgstr "בחירת רמת קושי"
 
-#: src/window.vala:364
+#: src/window.vala:237
 msgid "Create Puzzle"
 msgstr "יצירת לוח"
 
