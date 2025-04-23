@@ -398,7 +398,9 @@ public class SudokuGame : Object
         }
         else
         {
-            resume_clock ();
+            stop_clock ();
+            timer.start ();
+            timeout_cb ();
             return;
         }
 
