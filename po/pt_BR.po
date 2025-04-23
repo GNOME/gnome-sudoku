@@ -25,16 +25,16 @@
 # Felipe Braga <fbobraga@gmail.com>, 2015.
 # Enrico Nicoletto <liverig@gmail.com>, 2014, 2016, 2022.
 # Leônidas Araújo <leorusvellt@hotmail.com>, 2022-2023.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2014-2024.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2024-2025.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2014-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-04-05 09:56+0000\n"
-"PO-Revision-Date: 2025-04-05 09:34-0300\n"
-"Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
+"POT-Creation-Date: 2025-04-23 15:15+0000\n"
+"PO-Revision-Date: 2025-04-23 14:11-0300\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -223,8 +223,8 @@ msgid "Get help with the built-in warnings."
 msgstr "Obtenha ajuda com os avisos integrados."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:25
-msgid "Time yourself to keep track of your progression."
-msgstr "Cronometre-se para acompanhar seu progresso."
+msgid "Keep track of your progression with highscores and a timer."
+msgstr "Acompanhe seu progresso com pontuações e um temporizador."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:26
 msgid "Print puzzles to play Sudoku on the go."
@@ -273,18 +273,18 @@ msgstr "Geral"
 
 #: src/blueprints/preferences-dialog.blp:10
 msgctxt "General Preferences"
-msgid "_Timer and Pause Buttons"
-msgstr "Botões de _temporizador e pausa"
+msgid "_Timer and Highscores"
+msgstr "_Temporizador e pontuações"
 
 #: src/blueprints/preferences-dialog.blp:15
 msgctxt "General Preferences"
-msgid "Number Picker on _Second Click"
-msgstr "Seletor de número no _segundo clique"
+msgid "Automatically _Clean Earmarks"
+msgstr "Limpar automaticamente marcações"
 
 #: src/blueprints/preferences-dialog.blp:20
 msgctxt "General Preferences"
-msgid "Automatically _Clean Earmarks"
-msgstr "Limpar automaticamente marcações"
+msgid "Number Picker on _Second Click"
+msgstr "Seletor de número no _segundo clique"
 
 #: src/blueprints/preferences-dialog.blp:25
 msgctxt "General Preferences"
@@ -624,52 +624,59 @@ msgid "Show release version"
 msgstr "Mostrar versão de lançamento"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:258
+#: src/gnome-sudoku.vala:266
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "O jogo que você entrou não é um jogo de Sudoku válido."
 
-#: src/gnome-sudoku.vala:258
+#: src/gnome-sudoku.vala:266
 msgid "Please enter a valid puzzle."
 msgstr "Por favor entre com um jogo válido."
 
-#: src/gnome-sudoku.vala:259 src/printer.vala:46
+#: src/gnome-sudoku.vala:267 src/printer.vala:46
 msgid "Close"
 msgstr "Fechar"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:267
+#: src/gnome-sudoku.vala:275
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "O jogo que você entrou tem múltiplas soluções."
 
-#: src/gnome-sudoku.vala:267
+#: src/gnome-sudoku.vala:275
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Jogos de Sudoku válidos têm apenas uma solução."
 
-#: src/gnome-sudoku.vala:268
+#: src/gnome-sudoku.vala:276
 msgid "_Back"
 msgstr "_Voltar"
 
-#: src/gnome-sudoku.vala:269
+#: src/gnome-sudoku.vala:277
 msgid "Play _Anyway"
 msgstr "Jogar _assim mesmo"
 
-#: src/gnome-sudoku.vala:306
+#: src/gnome-sudoku.vala:317
 #, c-format
-msgid "Well done, you completed the puzzle in %d minute!"
-msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "Parabéns, você concluiu o jogo em %d minuto!"
-msgstr[1] "Parabéns, você concluiu o jogo em %d minutos!"
+msgid ""
+"Well done, you completed the puzzle in %d minutes and set a new personal "
+"best!"
+msgstr ""
+"Parabéns, você completou o jogo em %d minutos e estabeleceu um novo recorde "
+"pessoal!"
 
-#: src/gnome-sudoku.vala:314
+#: src/gnome-sudoku.vala:321
+#, c-format
+msgid "Well done, you completed the puzzle in %d minutes!"
+msgstr "Parabéns, você concluiu o jogo em %d minutos!"
+
+#: src/gnome-sudoku.vala:327
 msgid "Quit"
 msgstr "Sair"
 
-#: src/gnome-sudoku.vala:315
+#: src/gnome-sudoku.vala:328
 msgid "Play _Again"
 msgstr "Jogar _novamente"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:517
+#: src/gnome-sudoku.vala:531
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -680,7 +687,7 @@ msgstr ""
 "\n"
 "Jogos criados pelo QQwing %s"
 
-#: src/gnome-sudoku.vala:523
+#: src/gnome-sudoku.vala:537
 msgid "translator-credits"
 msgstr ""
 "Sandro Nunes Henrique <sandro@conectiva.com.br>\n"
@@ -708,26 +715,29 @@ msgstr ""
 msgid "Clear"
 msgstr "Limpar"
 
-#: src/number-picker.vala:294
-msgid "Unlock"
-msgstr "Desbloquear"
-
-#: src/number-picker.vala:296
+#: src/number-picker.vala:248 src/number-picker.vala:330
 msgid "Lock"
 msgstr "Bloquear"
+
+#: src/number-picker.vala:327
+msgid "Unlock"
+msgstr "Desbloquear"
 
 #. Error message if printing fails
 #: src/printer.vala:45
 msgid "Error printing file:"
 msgstr "Erro ao imprimir arquivo:"
 
-#: src/window.vala:203
+#: src/window.vala:208
 msgid "Select Difficulty"
 msgstr "Selecionar a dificuldade"
 
-#: src/window.vala:237
+#: src/window.vala:242
 msgid "Create Puzzle"
 msgstr "Criar jogo"
+
+#~ msgid "Time yourself to keep track of your progression."
+#~ msgstr "Cronometre-se para acompanhar seu progresso."
 
 #~ msgid "Create Custom Game…"
 #~ msgstr "Criar jogo customizado…"
