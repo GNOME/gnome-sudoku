@@ -105,10 +105,7 @@ public class SudokuGame : Object
             stop_clock ();
         }
 
-        if (this.board == board)
-            notify_property ("board"); //for custom game creation
-        else
-            this.board = board;
+        this.board = board;
     }
 
     public void enable_earmark (int row, int col, int num)

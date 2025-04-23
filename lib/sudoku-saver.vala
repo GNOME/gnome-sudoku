@@ -25,6 +25,9 @@ public class SudokuSaver : Object
 {
     public static string savegame_file { get; private set; default = ""; }
     public static string finishgame_dir { get; private set; default = ""; }
+    public static string highscores_file { get; private set; default = ""; }
+
+    private HashMap<DifficultyCategory, double?> highscores;
 
     public SudokuSaver()
     {
@@ -32,9 +35,84 @@ public class SudokuSaver : Object
         var sudoku_data_dir = Path.build_path (Path.DIR_SEPARATOR_S, config_dir, "gnome-sudoku");
         finishgame_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "finished");
         savegame_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "savefile");
+        highscores_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "highscores");
 
         if (DirUtils.create_with_parents (finishgame_dir, 0755) == -1)
             warning ("Failed to create saver directory: %s", strerror (errno));
+
+        highscores = new HashMap<DifficultyCategory, double?>();
+        get_highscores ();
+    }
+
+    public double? get_highscore (DifficultyCategory difficulty)
+    {
+        return highscores.get (difficulty);
+    }
+
+    private void get_highscores ()
+    {
+        var file = File.new_for_path (highscores_file);
+        if (!file.query_exists ())
+            return;
+
+        Json.Parser parser = new Json.Parser ();
+        try
+        {
+            parser.load_from_file (highscores_file);
+        }
+        catch (Error e)
+        {
+            return;
+        }
+
+        Json.Node node = parser.get_root ();
+        Json.Reader reader = new Json.Reader (node);
+
+        read_difficulty (reader, DifficultyCategory.EASY);
+        read_difficulty (reader, DifficultyCategory.MEDIUM);
+        read_difficulty (reader, DifficultyCategory.HARD);
+        read_difficulty (reader, DifficultyCategory.VERY_HARD);
+    }
+
+    private void read_difficulty (Json.Reader reader, DifficultyCategory diff)
+    {
+        reader.read_member (diff.to_untranslated_string ());
+        if (reader.is_value ())
+            highscores.set (diff, reader.get_double_value ());
+        reader.end_member ();
+    }
+
+    public void save_highscore (DifficultyCategory difficulty, double time_elapsed)
+    {
+        highscores.set (difficulty, time_elapsed);
+        save_highscores ();
+    }
+
+    private void save_highscores ()
+    {
+        Json.Builder builder = new Json.Builder ();
+
+        builder.begin_object ();
+        foreach (var highscore in highscores)
+        {
+            builder.set_member_name (highscore.key.to_untranslated_string ());
+            builder.add_double_value (highscore.value);
+        }
+        builder.end_object ();
+
+        Json.Generator generator = new Json.Generator ();
+        generator.set_pretty (true);
+        Json.Node root = builder.get_root ();
+        generator.set_root (root);
+
+        try
+        {
+            generator.to_file (highscores_file);
+        }
+        catch (Error e)
+        {
+            warning ("%s", e.message);
+        }
     }
 
     public SudokuGame? get_savedgame ()

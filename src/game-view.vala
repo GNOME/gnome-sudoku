@@ -40,6 +40,7 @@ public class SudokuGameView : Adw.Bin
     public SudokuNumberPicker number_picker;
     public SudokuGame game;
 
+    public double? highscore;
     public double value_zoom_multiplier { get; private set; }
     public bool keep_focus { get; set; default = false; }
 
@@ -53,9 +54,10 @@ public class SudokuGameView : Adw.Bin
         get { return cells[selected_row, selected_col]; }
     }
 
-    public SudokuGameView (SudokuBoard board)
+    public SudokuGameView (SudokuBoard board, double? highscore)
     {
         game = new SudokuGame (board);
+        this.highscore = highscore;
 
         Sudoku.app.notify["show-warnings"].connect (warnings_cb);
         Sudoku.app.notify["earmark-warnings"].connect (warnings_cb);
@@ -104,7 +106,6 @@ public class SudokuGameView : Adw.Bin
         this.game.board.value_changed.connect (value_changed_cb);
         this.game.board.earmark_changed.connect (earmark_changed_cb);
         game.notify["paused"].connect(paused_cb);
-        game.notify["board"].connect(board_changed_cb);
 
         key_controller = new EventControllerKey ();
         key_controller.key_pressed.connect (key_pressed_cb);
@@ -367,8 +368,11 @@ public class SudokuGameView : Adw.Bin
                 cell.clear_warnings ();
     }
 
-    public void board_changed_cb ()
+    public void change_board (SudokuBoard board, double? highscore)
     {
+        this.highscore = highscore;
+        game.change_board (board);
+
         add_earmark_possibilities ();
         update_warnings ();
         game.board.value_changed.connect (value_changed_cb);
@@ -380,6 +384,7 @@ public class SudokuGameView : Adw.Bin
         }
 
         can_focus = true;
+        cells[START.row, START.col].grab_focus ();
     }
 
     private void update_highlighter (int old_row, int old_col)

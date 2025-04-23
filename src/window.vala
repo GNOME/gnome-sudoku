@@ -175,19 +175,30 @@ public class SudokuWindow : Adw.ApplicationWindow
         accent_provider.load_from_string(s);
     }
 
-    public void start_game (SudokuBoard board)
+    public void start_game (SudokuBoard board, double? highscore)
     {
         back_button.sensitive = false;
 
-        game_view = new SudokuGameView (board);
+        game_view = new SudokuGameView (board, highscore);
         view_stack.add (game_view);
         game_view.game.tick.connect (tick_cb);
         game_view.game.notify["paused"].connect (paused_cb);
-        game_view.game.notify["board"].connect(show_game_view);
 
         show_game_view ();
 
+        if (game_view.highscore != null)
+            clock_label.set_css_classes ({"success"});
+
         back_button.sensitive = true;
+    }
+
+    public void change_board (SudokuBoard board, double? highscore)
+    {
+        game_view.change_board (board, highscore);
+        show_game_view ();
+
+        if (game_view.highscore != null)
+            clock_label.set_css_classes ({"success"});
     }
 
     public void show_start_view ()
@@ -280,9 +291,20 @@ public class SudokuWindow : Adw.ApplicationWindow
     private void tick_cb ()
     {
         var elapsed_time = (int) game_view.game.get_total_time_played ();
+
+        if (game_view.highscore != null)
+        {
+            if (elapsed_time > game_view.highscore && clock_label.has_css_class ("warning"))
+                clock_label.remove_css_class ("warning");
+
+            else if (elapsed_time > game_view.highscore - 60 && clock_label.has_css_class ("success"))
+                clock_label.set_css_classes ({"warning"});
+        }
+
         var hours = elapsed_time / 3600;
         var minutes = (elapsed_time - hours * 3600) / 60;
         var seconds = elapsed_time - hours * 3600 - minutes * 60;
+
         if (hours > 0)
             clock_label.set_text ("%02d∶\xE2\x80\x8E%02d∶\xE2\x80\x8E%02d".printf (hours, minutes, seconds));
         else

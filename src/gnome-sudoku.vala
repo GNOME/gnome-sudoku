@@ -310,10 +310,15 @@ public class Sudoku : Adw.Application
         string win_str;
         if (show_timer)
         {
-            var minutes = int.max (1, (int) game.get_total_time_played () / 60);
-            win_str = ngettext ("Well done, you completed the puzzle in %d minute!",
-                                "Well done, you completed the puzzle in %d minutes!",
-                                minutes).printf (minutes);
+            var minutes = (int) game.get_total_time_played () / 60;
+
+            if (game_view.highscore == null || (game_view.highscore != null && game.get_total_time_played () < game_view.highscore))
+            {
+                win_str = _("Well done, you completed the puzzle in %d minutes and set a new personal best!").printf(minutes);
+                saver.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
+            }
+            else
+                win_str = _("Well done, you completed the puzzle in %d minutes!").printf(minutes);
         }
         else
             win_str = gettext ("Well done, you completed the puzzle!");
@@ -342,14 +347,15 @@ public class Sudoku : Adw.Application
 
     private void start_game (SudokuBoard board)
     {
+        var highscore = saver.get_highscore (board.difficulty_category);
         if (game_view == null)
         {
-            window.start_game (board);
+            window.start_game (board, highscore);
             game.action_completed.connect (action_completed_cb);
             game.notify["paused"].connect (paused_cb);
         }
         else
-            game.change_board (board);
+            window.change_board (board, highscore);
 
         print_current_board_action.set_enabled (true);
         undo_action.set_enabled (!game.is_undostack_null ());
