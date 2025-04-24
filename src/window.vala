@@ -181,13 +181,10 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         game_view = new SudokuGameView (board, highscore);
         view_stack.add (game_view);
-        game_view.game.tick.connect (tick_cb);
         game_view.game.notify["paused"].connect (paused_cb);
 
         show_game_view ();
-
-        if (game_view.highscore != null)
-            clock_label.set_css_classes ({"success"});
+        initialize_clock_label ();
 
         back_button.sensitive = true;
     }
@@ -196,9 +193,29 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         game_view.change_board (board, highscore);
         show_game_view ();
+        initialize_clock_label ();
+    }
+
+    private void initialize_clock_label ()
+    {
+        if (game_view.game.mode == GameMode.CREATE || !Sudoku.app.show_timer)
+            return;
+
+        game_view.game.tick.connect (tick_cb);
+
+        var elapsed_time = (int) game_view.game.get_total_time_played ();
 
         if (game_view.highscore != null)
-            clock_label.set_css_classes ({"success"});
+        {
+            if (elapsed_time > game_view.highscore)
+                clock_label.set_css_classes ({});
+            else if (elapsed_time > game_view.highscore - 60)
+                clock_label.set_css_classes ({"warning"});
+            else
+                clock_label.set_css_classes ({"success"});
+        }
+
+        set_clock_label_text (elapsed_time);
     }
 
     public void show_start_view ()
@@ -272,6 +289,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         {
             if (Sudoku.app.show_timer)
             {
+                initialize_clock_label ();
                 earmark_mode_button.visible = !window_width_is_small;
                 clock_box.visible = !window_width_is_small;
                 play_pause_stack.visible = true;
@@ -281,6 +299,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             }
             else
             {
+                game_view.game.tick.disconnect (tick_cb);
                 clock_box.visible = false;
                 earmark_mode_button.visible = true;
                 play_pause_stack.visible = false;
@@ -301,6 +320,11 @@ public class SudokuWindow : Adw.ApplicationWindow
                 clock_label.set_css_classes ({"warning"});
         }
 
+        set_clock_label_text (elapsed_time);
+    }
+
+    private void set_clock_label_text (int elapsed_time)
+    {
         var hours = elapsed_time / 3600;
         var minutes = (elapsed_time - hours * 3600) / 60;
         var seconds = elapsed_time - hours * 3600 - minutes * 60;
