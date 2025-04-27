@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-04-05 09:56+0000\n"
-"PO-Revision-Date: 2025-04-05 18:28+0200\n"
+"POT-Creation-Date: 2025-04-24 17:25+0000\n"
+"PO-Revision-Date: 2025-04-27 09:51+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -198,8 +198,8 @@ msgid "Get help with the built-in warnings."
 msgstr "V pomoč so vam vgrajena opozorila."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:25
-msgid "Time yourself to keep track of your progression."
-msgstr "Merite svoj čas, da spremljate svoj napredek."
+msgid "Keep track of your progression with highscores and a timer."
+msgstr "Spremljajte svoj napredek z najboljšimi rezultati in časovnikom."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:26
 msgid "Print puzzles to play Sudoku on the go."
@@ -248,18 +248,18 @@ msgstr "Splošno"
 
 #: src/blueprints/preferences-dialog.blp:10
 msgctxt "General Preferences"
-msgid "_Timer and Pause Buttons"
-msgstr "_Gumba časovnika in za začasno ustavitev"
+msgid "_Timer and Highscores"
+msgstr "_Časovnik in najboljši rezultati"
 
 #: src/blueprints/preferences-dialog.blp:15
 msgctxt "General Preferences"
-msgid "Number Picker on _Second Click"
-msgstr "Pokaži izbirnik številk ob _drugem kliku"
+msgid "Automatically _Clean Earmarks"
+msgstr "Samodejno po_čisti ušesca"
 
 #: src/blueprints/preferences-dialog.blp:20
 msgctxt "General Preferences"
-msgid "Automatically _Clean Earmarks"
-msgstr "Samodejno po_čisti ušesca"
+msgid "Number Picker on _Second Click"
+msgstr "Pokaži izbirnik številk ob _drugem kliku"
 
 #: src/blueprints/preferences-dialog.blp:25
 msgctxt "General Preferences"
@@ -599,54 +599,59 @@ msgid "Show release version"
 msgstr "Pokaži podrobnosti različice"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:258
+#: src/gnome-sudoku.vala:266
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Izbrana uganka ni veljavna uganka sudoku."
 
-#: src/gnome-sudoku.vala:258
+#: src/gnome-sudoku.vala:266
 msgid "Please enter a valid puzzle."
 msgstr "Vnesite veljavno številko uganke."
 
-#: src/gnome-sudoku.vala:259 src/printer.vala:46
+#: src/gnome-sudoku.vala:267 src/printer.vala:46
 msgid "Close"
 msgstr "Zapri"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:267
+#: src/gnome-sudoku.vala:275
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Izbrana uganka ima več možnih rešitev."
 
-#: src/gnome-sudoku.vala:267
+#: src/gnome-sudoku.vala:275
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Veljavne uganke sudoku imajo natanko eno rešitev."
 
-#: src/gnome-sudoku.vala:268
+#: src/gnome-sudoku.vala:276
 msgid "_Back"
 msgstr "_Nazaj"
 
-#: src/gnome-sudoku.vala:269
+#: src/gnome-sudoku.vala:277
 msgid "Play _Anyway"
 msgstr "Vseeno _pokaži"
 
-#: src/gnome-sudoku.vala:306
+#: src/gnome-sudoku.vala:317
 #, c-format
-msgid "Well done, you completed the puzzle in %d minute!"
-msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "Za reševanje uganke ste potrebovali %d minut!"
-msgstr[1] "Za reševanje uganke ste potrebovali %d minuto!"
-msgstr[2] "Za reševanje uganke ste potrebovali %d minuti!"
-msgstr[3] "Za reševanje uganke ste potrebovali %d minute!"
+msgid ""
+"Well done, you completed the puzzle in %d minutes and set a new personal "
+"best!"
+msgstr ""
+"Dobro opravljeno, sestavljanko ste dokončali v %d minutah in postavili nov "
+"osebni rekord!"
 
-#: src/gnome-sudoku.vala:314
+#: src/gnome-sudoku.vala:321
+#, c-format
+msgid "Well done, you completed the puzzle in %d minutes!"
+msgstr "Dobro opravljeno, sestavljanko ste dokončali v %d minutah!"
+
+#: src/gnome-sudoku.vala:327
 msgid "Quit"
 msgstr "Izhod"
 
-#: src/gnome-sudoku.vala:315
+#: src/gnome-sudoku.vala:328
 msgid "Play _Again"
 msgstr "_Igraj znova"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:517
+#: src/gnome-sudoku.vala:531
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -657,7 +662,7 @@ msgstr ""
 "\n"
 "Uganka je zasnovana z ustvarjalnikom ugank QQwing %s"
 
-#: src/gnome-sudoku.vala:523
+#: src/gnome-sudoku.vala:537
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
@@ -669,23 +674,23 @@ msgstr ""
 msgid "Clear"
 msgstr "Počisti"
 
-#: src/number-picker.vala:294
-msgid "Unlock"
-msgstr "Odkleni"
-
-#: src/number-picker.vala:296
+#: src/number-picker.vala:248 src/number-picker.vala:330
 msgid "Lock"
 msgstr "Zakleni"
+
+#: src/number-picker.vala:327
+msgid "Unlock"
+msgstr "Odkleni"
 
 #. Error message if printing fails
 #: src/printer.vala:45
 msgid "Error printing file:"
 msgstr "Napaka med tiskanjem datoteke:"
 
-#: src/window.vala:203
+#: src/window.vala:225
 msgid "Select Difficulty"
 msgstr "Izbor zahtevnosti uganke"
 
-#: src/window.vala:237
+#: src/window.vala:259
 msgid "Create Puzzle"
 msgstr "Ustvari uganko"
