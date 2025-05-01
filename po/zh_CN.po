@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-04-05 09:56+0000\n"
-"PO-Revision-Date: 2025-04-06 11:25+0800\n"
+"POT-Creation-Date: 2025-04-24 17:25+0000\n"
+"PO-Revision-Date: 2025-05-02 06:51+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -190,8 +190,8 @@ msgid "Get help with the built-in warnings."
 msgstr "通过内置警告来获取帮助。"
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:25
-msgid "Time yourself to keep track of your progression."
-msgstr "通过计时来保持对游戏进度的追踪。"
+msgid "Keep track of your progression with highscores and a timer."
+msgstr "通过高分榜和计时器追踪您的进展。"
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:26
 msgid "Print puzzles to play Sudoku on the go."
@@ -240,18 +240,18 @@ msgstr "常规"
 
 #: src/blueprints/preferences-dialog.blp:10
 msgctxt "General Preferences"
-msgid "_Timer and Pause Buttons"
-msgstr "计时器和暂停按钮(_T)"
+msgid "_Timer and Highscores"
+msgstr "计时器和高分榜(_T)"
 
 #: src/blueprints/preferences-dialog.blp:15
 msgctxt "General Preferences"
-msgid "Number Picker on _Second Click"
-msgstr "第二次点击显示数字拾取器(_S)"
+msgid "Automatically _Clean Earmarks"
+msgstr "自动清理耳标(_C)"
 
 #: src/blueprints/preferences-dialog.blp:20
 msgctxt "General Preferences"
-msgid "Automatically _Clean Earmarks"
-msgstr "自动清理耳标(_C)"
+msgid "Number Picker on _Second Click"
+msgstr "第二次点击显示数字拾取器(_S)"
 
 #: src/blueprints/preferences-dialog.blp:25
 msgctxt "General Preferences"
@@ -591,51 +591,57 @@ msgid "Show release version"
 msgstr "显示发行版本"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:258
+#: src/gnome-sudoku.vala:266
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "您输入的谜题不是有效的数独。"
 
-#: src/gnome-sudoku.vala:258
+#: src/gnome-sudoku.vala:266
 msgid "Please enter a valid puzzle."
 msgstr "请输入一个有效的谜题。"
 
-#: src/gnome-sudoku.vala:259 src/printer.vala:46
+#: src/gnome-sudoku.vala:267 src/printer.vala:46
 msgid "Close"
 msgstr "关闭"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:267
+#: src/gnome-sudoku.vala:275
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "你输入的谜题有多种解法。"
 
-#: src/gnome-sudoku.vala:267
+#: src/gnome-sudoku.vala:275
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "有效的数独谜题有且仅有一种解法。"
 
-#: src/gnome-sudoku.vala:268
+#: src/gnome-sudoku.vala:276
 msgid "_Back"
 msgstr "返回(_B)"
 
-#: src/gnome-sudoku.vala:269
+#: src/gnome-sudoku.vala:277
 msgid "Play _Anyway"
 msgstr "仍然游玩(_A)"
 
-#: src/gnome-sudoku.vala:306
+#: src/gnome-sudoku.vala:317
 #, c-format
-msgid "Well done, you completed the puzzle in %d minute!"
-msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "做得好，您在 %d 分钟内完成了谜题！"
+msgid ""
+"Well done, you completed the puzzle in %d minutes and set a new personal "
+"best!"
+msgstr "做得好，您在 %d 分钟内完成了谜题并取得了新的个人最佳成绩！"
 
-#: src/gnome-sudoku.vala:314
+#: src/gnome-sudoku.vala:321
+#, c-format
+msgid "Well done, you completed the puzzle in %d minutes!"
+msgstr "做得好，您在 %d 分钟内完成了谜题！"
+
+#: src/gnome-sudoku.vala:327
 msgid "Quit"
 msgstr "退出"
 
-#: src/gnome-sudoku.vala:315
+#: src/gnome-sudoku.vala:328
 msgid "Play _Again"
 msgstr "再玩一次(_A)"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:517
+#: src/gnome-sudoku.vala:531
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -646,7 +652,7 @@ msgstr ""
 "\n"
 "谜题由 QQwing %s 生成"
 
-#: src/gnome-sudoku.vala:523
+#: src/gnome-sudoku.vala:537
 msgid "translator-credits"
 msgstr ""
 "Yang Zhang <zyangmath@gmail.com>, 2007\n"
@@ -662,26 +668,29 @@ msgstr ""
 msgid "Clear"
 msgstr "清除"
 
-#: src/number-picker.vala:294
-msgid "Unlock"
-msgstr "解锁"
-
-#: src/number-picker.vala:296
+#: src/number-picker.vala:248 src/number-picker.vala:330
 msgid "Lock"
 msgstr "锁定"
+
+#: src/number-picker.vala:327
+msgid "Unlock"
+msgstr "解锁"
 
 #. Error message if printing fails
 #: src/printer.vala:45
 msgid "Error printing file:"
 msgstr "打印文件出错："
 
-#: src/window.vala:203
+#: src/window.vala:225
 msgid "Select Difficulty"
 msgstr "选择难度"
 
-#: src/window.vala:237
+#: src/window.vala:259
 msgid "Create Puzzle"
 msgstr "创建谜题"
+
+#~ msgid "Time yourself to keep track of your progression."
+#~ msgstr "通过计时来保持对游戏进度的追踪。"
 
 #~ msgid "Create Custom Game…"
 #~ msgstr "创建自定义游戏…"
