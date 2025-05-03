@@ -30,7 +30,7 @@ sudoku-cell.highlight-coord {
   background: oklch(from var(--sudoku-accent-color) 0.9 calc(c * 0.25) h);
 }
 sudoku-cell.highlight-number {
-  background: oklch(from var(--sudoku-accent-color) 0.75 c h);
+  background: oklch(from var(--sudoku-accent-color) l calc(c * 0.5) h);
 }
 sudoku-cell .earmark.highlight-number {
   color: oklab(from var(--sudoku-accent-color) 0.5 a b);

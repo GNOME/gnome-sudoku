@@ -32,7 +32,7 @@ sudoku-cell .earmark.highlight-number {
   font-weight: bold;
 }
 sudoku-cell.highlight-number {
-  background: oklch(from var(--sudoku-accent-color) 0.3 calc(c * 0.7) h);
+  background: oklch(from var(--sudoku-accent-color) l calc(c * 0.5) h);
 }
 sudoku-cell.selected {
   background: var(--sudoku-accent-color);
