@@ -512,9 +512,9 @@ public class SudokuGameView : Adw.Bin
         var window = root as SudokuWindow;
 
         if (window.keyboard_pressed_last)
-            return selected_cell.grab_selection ();
-        else
             return selected_cell.grab_focus ();
+        else
+            return selected_cell.grab_selection ();
     }
 
     public override bool focus (DirectionType direction)
