@@ -42,7 +42,6 @@ public class SudokuGameView : Adw.Bin
 
     public double? highscore;
     public double value_zoom_multiplier { get; private set; }
-    public bool keep_focus { get; set; default = false; }
 
     private const Coord START = {4, 4};
 
@@ -155,7 +154,6 @@ public class SudokuGameView : Adw.Bin
 
                 case Key.Escape:
                     unselect ();
-                    keep_focus = true;
                     return EVENT_STOP;
 
                 default:
@@ -204,7 +202,7 @@ public class SudokuGameView : Adw.Bin
                 return EVENT_STOP;
 
             case Key.space : case Key.Return : case Key.KP_Enter:
-                selected_cell.grab_focus ();
+                selected_cell.grab_selection ();
                 bool wants_value = !control_pressed;
                 wants_value = wants_value ^ Sudoku.app.earmark_mode;
 
@@ -224,7 +222,7 @@ public class SudokuGameView : Adw.Bin
     {
         var action = game.get_current_stack_action ();
         if (action.is_single_value_change ())
-            cells[row, col].grab_focus ();
+            cells[row, col].grab_selection ();
 
         cells[row, col].update_content_visibility ();
 
@@ -237,7 +235,7 @@ public class SudokuGameView : Adw.Bin
         var action = game.get_current_stack_action ();
         if (action.is_single_earmarks_change ())
         {
-            cells[row, col].grab_focus ();
+            cells[row, col].grab_selection ();
             cells[row, col].update_earmark_visibility (num);
         }
         else
@@ -286,8 +284,6 @@ public class SudokuGameView : Adw.Bin
     {
         if (cells[cell_row, cell_col].selected)
             return;
-
-        keep_focus = false;
 
         var old_row = selected_row;
         var old_col = selected_col;
@@ -384,7 +380,9 @@ public class SudokuGameView : Adw.Bin
         }
 
         can_focus = true;
-        cells[START.row, START.col].grab_focus ();
+        selected_col = START.col;
+        selected_row = START.row;
+        focus (TAB_FORWARD);
     }
 
     private void update_highlighter (int old_row, int old_col)
@@ -471,7 +469,6 @@ public class SudokuGameView : Adw.Bin
             game.enable_all_earmark_possibilities ();
     }
 
-
     private void insert_key (int key, bool control_pressed)
     {
         number_picker.popdown ();
@@ -512,8 +509,10 @@ public class SudokuGameView : Adw.Bin
 
     public override bool grab_focus ()
     {
-        if (keep_focus)
-            return base.grab_focus ();
+        var window = root as SudokuWindow;
+
+        if (window.keyboard_pressed_last)
+            return selected_cell.grab_selection ();
         else
             return selected_cell.grab_focus ();
     }
@@ -523,16 +522,15 @@ public class SudokuGameView : Adw.Bin
         switch (direction)
         {
             case DirectionType.TAB_FORWARD:
-                //this lets us control the focus when it comes from the headerbar
+                //this lets us control the focus when it comes from the headerbar and gtk/adwaita
                 if (!focus_controller.contains_focus)
-                    return selected_cell.focus (direction);
-                //propagate the event so that the focus moves to the headerbar
+                    return grab_focus ();
                 else
-                    return EVENT_PROPAGATE;
+                    return EVENT_PROPAGATE; //propagate the event so that the focus moves to the headerbar
 
             case DirectionType.TAB_BACKWARD:
                 if (!focus_controller.contains_focus)
-                    return selected_cell.focus (direction);
+                    return grab_focus ();
                 else
                     return EVENT_PROPAGATE;
 

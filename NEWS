@@ -4,7 +4,9 @@
 - Add a simple highscore implementation (#3)
 - Add a lock button to the earmark picker and change the default
   behavior of the number picker buttons to popdown the picker
-- Start the focus at the center of the grid and show it from the get-go
+- Always show the selected cell for keyboard users, and show it to
+  mouse and touch users only when the cell is clicked
+- Start the focus at the center of the grid
 - Let the grid be unselected by pressing escape or clicking outside
 - Update ctrl+keys to cycle through cells linearly (#5)
 - Update tab behavior to cycle through the grid only once (#5)
@@ -12,11 +14,12 @@
 - Add strike-through for earmark warnings
 - Add pause animation
 - Add short animation to autoclean earmarks
-- Cap grid margin size at 25
+- Cap grid margin size at 25 and top offset at 40
 - Updated translations:
   Juliano de Souza Camargo (pt_BR); Martin (sl); Anders Jonsson (sv);
   Yuri Chornoivan (uk); Luming Zh (zh_CN). Yosef Or Boczko (he); Sergej
-  A. (ru); Muhammet Kara (tr).
+  A. (ru); Muhammet Kara (tr). Rafael Fontenelle (pt_BR); Martin (sl);
+  Sabri Ünal (tr); Baxrom Raxmatov (uz);
 
 48.0 - March 14, 2025
 ==========================

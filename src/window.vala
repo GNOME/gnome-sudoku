@@ -62,6 +62,11 @@ public class SudokuWindow : Adw.ApplicationWindow
     private GestureClick forwards_controller;
     private EventControllerScroll scroll_controller;
 
+    private GestureClick capture_button_controller;
+    private EventControllerKey capture_key_controller;
+
+    public bool keyboard_pressed_last { get; private set; }
+
     public SudokuGameView game_view { get; private set; default = null; }
     public SudokuWindowScreen current_screen { get; private set; default = SudokuWindowScreen.NONE; }
 
@@ -101,6 +106,17 @@ public class SudokuWindow : Adw.ApplicationWindow
         scroll_controller.scroll_end.connect (scroll_end_cb);
         scroll_controller.set_propagation_limit (PropagationLimit.NONE);
         ((Widget)this).add_controller (scroll_controller);
+
+        capture_key_controller = new EventControllerKey ();
+        capture_key_controller.set_propagation_phase (PropagationPhase.CAPTURE);
+        capture_key_controller.key_pressed.connect (capture_key_pressed_cb);
+        ((Widget)this).add_controller (capture_key_controller);
+
+        capture_button_controller = new GestureClick ();
+        capture_button_controller.set_button (0 /* all buttons */);
+        capture_button_controller.set_propagation_phase (PropagationPhase.CAPTURE);
+        capture_button_controller.pressed.connect (capture_button_released_cb);
+        ((Widget)this).add_controller (capture_button_controller);
 
         accent_provider = new CssProvider();
         StyleContext.add_provider_for_display (get_display (), accent_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
@@ -369,10 +385,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             return;
 
         if (current_screen != SudokuWindowScreen.START && !game_view.game.paused)
-        {
             game_view.unselect ();
-            game_view.keep_focus = true;
-        }
 
         gesture.set_state (EventSequenceState.CLAIMED);
     }
@@ -435,6 +448,22 @@ public class SudokuWindow : Adw.ApplicationWindow
     private void scroll_end_cb (EventControllerScroll event)
     {
         event.set_flags (EventControllerScrollFlags.VERTICAL);
+    }
+
+    private bool capture_key_pressed_cb (uint         keyval,
+                                         uint         keycode,
+                                         Gdk.ModifierType state)
+    {
+        keyboard_pressed_last = false;
+        return Gdk.EVENT_PROPAGATE;
+    }
+
+    private void capture_button_released_cb (GestureClick gesture,
+                                             int          n_press,
+                                             double       x,
+                                             double       y)
+    {
+        keyboard_pressed_last = true;
     }
 
     private void window_width_is_medium_cb ()

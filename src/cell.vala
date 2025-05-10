@@ -171,6 +171,12 @@ public class SudokuCell : Widget
             update_earmark_visibility (num);
     }
 
+    public bool grab_selection ()
+    {
+        view.set_selected (row, col);
+        return grab_focus ();
+    }
+
     private void button_released_cb (GestureClick gesture,
                                      int          n_press,
                                      double       x,
@@ -185,11 +191,11 @@ public class SudokuCell : Widget
         if ((Sudoku.app.number_picker_second_click && !selected) ||
             is_fixed)
         {
-            grab_focus ();
+            grab_selection ();
             return;
         }
 
-        grab_focus ();
+        grab_selection ();
 
         ModifierType state;
 
@@ -223,7 +229,7 @@ public class SudokuCell : Widget
             return;
 
         gesture.set_state (EventSequenceState.CLAIMED);
-        grab_focus ();
+        grab_selection ();
 
         if (is_fixed)
             return;
@@ -297,12 +303,6 @@ public class SudokuCell : Widget
         value_label.remove_css_class ("error");
         foreach (var earmark in earmarks)
             earmark.error = false;
-    }
-
-    public override bool grab_focus ()
-    {
-        view.set_selected (row, col);
-        return base.grab_focus ();
     }
 
     public override bool focus (DirectionType direction)
