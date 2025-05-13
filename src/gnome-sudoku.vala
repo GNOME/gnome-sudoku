@@ -311,17 +311,24 @@ public class Sudoku : Adw.Application
         if (show_timer)
         {
             var minutes = (int) game.get_total_time_played () / 60;
+            string localized_time =  ngettext ("%d minute", "%d minutes", minutes).printf (minutes);
 
             if (game_view.highscore == null || (game_view.highscore != null && game.get_total_time_played () < game_view.highscore))
             {
-                win_str = _("Well done, you completed the puzzle in %d minutes and set a new personal best!").printf(minutes);
+                win_str = _(//TRANSLATORS: %s is a localized time string in minute(s)
+                            "Well done, you completed the puzzle in %s and set a new personal best!")
+                            .printf(localized_time);
                 saver.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
             }
             else
-                win_str = _("Well done, you completed the puzzle in %d minutes!").printf(minutes);
+            {
+                win_str = _(//TRANSLATORS: %s is a localized time string in minute(s)
+                            "Well done, you completed the puzzle in %s!")
+                            .printf(localized_time);
+            }
         }
         else
-            win_str = gettext ("Well done, you completed the puzzle!");
+            win_str = _("Well done, you completed the puzzle!");
 
         var dialog = new Adw.AlertDialog (win_str, null);
         dialog.add_response ("close", _("Quit"));
