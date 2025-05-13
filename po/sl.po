@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-04-24 17:25+0000\n"
-"PO-Revision-Date: 2025-04-27 09:51+0200\n"
+"POT-Creation-Date: 2025-05-13 03:37+0000\n"
+"PO-Revision-Date: 2025-05-13 07:38+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -628,30 +628,43 @@ msgstr "_Nazaj"
 msgid "Play _Anyway"
 msgstr "Vseeno _pokaži"
 
-#: src/gnome-sudoku.vala:317
+#: src/gnome-sudoku.vala:314
 #, c-format
-msgid ""
-"Well done, you completed the puzzle in %d minutes and set a new personal "
-"best!"
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minutah"
+msgstr[1] "%d minuti"
+msgstr[2] "%d minutah"
+msgstr[3] "%d minutah"
+
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:319
+#, c-format
+msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
-"Dobro opravljeno, sestavljanko ste dokončali v %d minutah in postavili nov "
-"osebni rekord!"
+"Dobro opravljeno, sestavljanko ste dokončali v %s in postavili nov osebni "
+"rekord!"
 
-#: src/gnome-sudoku.vala:321
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:326
 #, c-format
-msgid "Well done, you completed the puzzle in %d minutes!"
-msgstr "Dobro opravljeno, sestavljanko ste dokončali v %d minutah!"
+msgid "Well done, you completed the puzzle in %s!"
+msgstr "Dobro opravljeno, sestavljanko ste dokončali v %s!"
 
-#: src/gnome-sudoku.vala:327
+#: src/gnome-sudoku.vala:331
+msgid "Well done, you completed the puzzle!"
+msgstr "Dobro opravljeno, sestavljanko ste dokončali!"
+
+#: src/gnome-sudoku.vala:334
 msgid "Quit"
 msgstr "Izhod"
 
-#: src/gnome-sudoku.vala:328
+#: src/gnome-sudoku.vala:335
 msgid "Play _Again"
 msgstr "_Igraj znova"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:531
+#: src/gnome-sudoku.vala:538
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -662,7 +675,7 @@ msgstr ""
 "\n"
 "Uganka je zasnovana z ustvarjalnikom ugank QQwing %s"
 
-#: src/gnome-sudoku.vala:537
+#: src/gnome-sudoku.vala:544
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
@@ -687,10 +700,10 @@ msgstr "Odkleni"
 msgid "Error printing file:"
 msgstr "Napaka med tiskanjem datoteke:"
 
-#: src/window.vala:225
+#: src/window.vala:241
 msgid "Select Difficulty"
 msgstr "Izbor zahtevnosti uganke"
 
-#: src/window.vala:259
+#: src/window.vala:275
 msgid "Create Puzzle"
 msgstr "Ustvari uganko"
