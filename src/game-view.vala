@@ -343,7 +343,7 @@ public class SudokuGameView : Adw.Bin
 
     private void highlighter_cb ()
     {
-        selected_cell.grab_focus ();
+        selected_cell.grab_selection ();
 
         if (!Sudoku.app.highlighter)
             set_cell_highlighter (selected_row, selected_col, false);
