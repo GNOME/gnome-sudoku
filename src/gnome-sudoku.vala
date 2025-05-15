@@ -54,6 +54,7 @@ public class Sudoku : Adw.Application
     private SimpleAction play_custom_game_action;
     private SimpleAction new_game_action;
     private SimpleAction earmark_mode_action;
+    private SimpleAction back_action;
     private SimpleAction zoom_in_action;
     private SimpleAction zoom_out_action;
 
@@ -190,6 +191,7 @@ public class Sudoku : Adw.Application
         toggle_pause_action = (SimpleAction) lookup_action ("toggle-pause");
         play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
         zoom_in_action = (SimpleAction) lookup_action ("zoom-in");
+        back_action = (SimpleAction) lookup_action ("back");
         zoom_out_action = (SimpleAction) lookup_action ("zoom-out");
         zoom_in_action.set_enabled (!zoom_level.is_fully_zoomed_in ());
         zoom_out_action.set_enabled (!zoom_level.is_fully_zoomed_out ());
@@ -288,8 +290,7 @@ public class Sudoku : Adw.Application
 
     private void toggle_pause_cb ()
     {
-        if (window.current_screen == SudokuWindowScreen.PLAY && show_timer)
-            game.paused = !game.paused;
+        game.paused = !game.paused;
     }
 
     private void action_completed_cb ()
@@ -364,13 +365,7 @@ public class Sudoku : Adw.Application
         else
             window.change_board (board, highscore);
 
-        print_current_board_action.set_enabled (true);
-        undo_action.set_enabled (!game.is_undostack_null ());
-        redo_action.set_enabled (!game.is_redostack_null ());
-        new_game_action.set_enabled (true);
-        earmark_mode_action.set_enabled (game.mode == GameMode.PLAY);
-        reset_board_action.set_enabled (!game.is_empty ());
-        play_custom_game_action.set_enabled (!game.is_empty ());
+        show_game_view ();
 
         if (game.mode != GameMode.CREATE)
             game.board.completed.connect (board_completed_cb);
@@ -380,14 +375,35 @@ public class Sudoku : Adw.Application
 
     private void show_start_view ()
     {
-        if (game_view != null)
+        if (game_view != null && game_view.game.board.complete != true)
             game.stop_clock ();
 
         print_current_board_action.set_enabled (false);
-        new_game_action.set_enabled (false);
+        undo_action.set_enabled (false);
+        redo_action.set_enabled (false);
         reset_board_action.set_enabled (false);
+        new_game_action.set_enabled (false);
+        back_action.set_enabled (game_view != null && game_view.game.board.complete != true);
+        earmark_mode_action.set_enabled (false);
+        toggle_pause_action.set_enabled (false);
+        play_custom_game_action.set_enabled (false);
 
         window.show_start_view ();
+    }
+
+    private void show_game_view ()
+    {
+        print_current_board_action.set_enabled (true);
+        undo_action.set_enabled (!game.is_undostack_null ());
+        redo_action.set_enabled (!game.is_redostack_null ());
+        reset_board_action.set_enabled (!game.is_empty ());
+        new_game_action.set_enabled (true);
+        back_action.set_enabled (false);
+        earmark_mode_action.set_enabled (game.mode == GameMode.PLAY);
+        toggle_pause_action.set_enabled (game.mode == GameMode.PLAY && show_timer);
+        play_custom_game_action.set_enabled (!game.is_empty ());
+
+        window.show_game_view ();
     }
 
     private void new_game_cb ()
@@ -428,43 +444,33 @@ public class Sudoku : Adw.Application
 
     private void reset_board_cb ()
     {
-        if (window.current_screen != SudokuWindowScreen.START)
-            game.reset ();
+        game.reset ();
     }
 
     private void back_cb ()
     {
-        if (window.current_screen != SudokuWindowScreen.START)
-            return;
+        show_game_view ();
 
-        window.show_game_view ();
         if (window.current_screen == SudokuWindowScreen.PLAY)
             game.resume_clock ();
-
-        print_current_board_action.set_enabled (true);
-        new_game_action.set_enabled (true);
-        reset_board_action.set_enabled (!game.is_empty ());
     }
 
     private void undo_cb ()
     {
-        if (window.current_screen != SudokuWindowScreen.START)
-            game.undo ();
+        game.undo ();
+        undo_action.set_enabled (!game.is_undostack_null ());
     }
 
     private void redo_cb ()
     {
-        if (window.current_screen != SudokuWindowScreen.START)
-            game.redo ();
+        game.redo ();
+        redo_action.set_enabled (!game.is_redostack_null ());
     }
 
     private void earmark_mode_cb ()
     {
-        if (window.current_screen == SudokuWindowScreen.PLAY)
-        {
-            earmark_mode = !earmark_mode;
-            earmark_mode_action.set_state (earmark_mode);
-        }
+        earmark_mode = !earmark_mode;
+        earmark_mode_action.set_state (earmark_mode);
     }
 
     private void print_current_board_cb ()
