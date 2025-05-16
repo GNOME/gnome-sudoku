@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-04-24 17:25+0000\n"
-"PO-Revision-Date: 2025-05-02 06:51+0800\n"
+"POT-Creation-Date: 2025-05-15 15:58+0000\n"
+"PO-Revision-Date: 2025-05-16 17:10+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -586,62 +586,72 @@ msgid "Play Custom Game"
 msgstr "游玩自定义游戏"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:106
+#: src/gnome-sudoku.vala:107
 msgid "Show release version"
 msgstr "显示发行版本"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:266
+#: src/gnome-sudoku.vala:268
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "您输入的谜题不是有效的数独。"
 
-#: src/gnome-sudoku.vala:266
+#: src/gnome-sudoku.vala:268
 msgid "Please enter a valid puzzle."
 msgstr "请输入一个有效的谜题。"
 
-#: src/gnome-sudoku.vala:267 src/printer.vala:46
+#: src/gnome-sudoku.vala:269 src/printer.vala:46
 msgid "Close"
 msgstr "关闭"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:275
+#: src/gnome-sudoku.vala:277
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "你输入的谜题有多种解法。"
 
-#: src/gnome-sudoku.vala:275
+#: src/gnome-sudoku.vala:277
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "有效的数独谜题有且仅有一种解法。"
 
-#: src/gnome-sudoku.vala:276
+#: src/gnome-sudoku.vala:278
 msgid "_Back"
 msgstr "返回(_B)"
 
-#: src/gnome-sudoku.vala:277
+#: src/gnome-sudoku.vala:279
 msgid "Play _Anyway"
 msgstr "仍然游玩(_A)"
 
-#: src/gnome-sudoku.vala:317
+#: src/gnome-sudoku.vala:315
 #, c-format
-msgid ""
-"Well done, you completed the puzzle in %d minutes and set a new personal "
-"best!"
-msgstr "做得好，您在 %d 分钟内完成了谜题并取得了新的个人最佳成绩！"
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d 分钟"
 
-#: src/gnome-sudoku.vala:321
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:320
 #, c-format
-msgid "Well done, you completed the puzzle in %d minutes!"
-msgstr "做得好，您在 %d 分钟内完成了谜题！"
+msgid "Well done, you completed the puzzle in %s and set a new personal best!"
+msgstr "做得好，您在 %s 内完成了该谜题并取得了新的个人最佳成绩！"
 
+#. TRANSLATORS: %s is a localized time string in minute(s)
 #: src/gnome-sudoku.vala:327
+#, c-format
+msgid "Well done, you completed the puzzle in %s!"
+msgstr "做得好，您在 %s 内完成了该谜题！"
+
+#: src/gnome-sudoku.vala:332
+msgid "Well done, you completed the puzzle!"
+msgstr "做得好，您完成了该谜题！"
+
+#: src/gnome-sudoku.vala:335
 msgid "Quit"
 msgstr "退出"
 
-#: src/gnome-sudoku.vala:328
+#: src/gnome-sudoku.vala:336
 msgid "Play _Again"
 msgstr "再玩一次(_A)"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:531
+#: src/gnome-sudoku.vala:544
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -652,7 +662,7 @@ msgstr ""
 "\n"
 "谜题由 QQwing %s 生成"
 
-#: src/gnome-sudoku.vala:537
+#: src/gnome-sudoku.vala:550
 msgid "translator-credits"
 msgstr ""
 "Yang Zhang <zyangmath@gmail.com>, 2007\n"
@@ -681,11 +691,11 @@ msgstr "解锁"
 msgid "Error printing file:"
 msgstr "打印文件出错："
 
-#: src/window.vala:225
+#: src/window.vala:241
 msgid "Select Difficulty"
 msgstr "选择难度"
 
-#: src/window.vala:259
+#: src/window.vala:275
 msgid "Create Puzzle"
 msgstr "创建谜题"
 
