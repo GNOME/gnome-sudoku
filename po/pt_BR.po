@@ -27,15 +27,16 @@
 # Leônidas Araújo <leorusvellt@hotmail.com>, 2022-2023.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2024-2025.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2014-2025.
+# Álvaro Burns <>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-04-23 15:15+0000\n"
-"PO-Revision-Date: 2025-04-23 14:11-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
-"Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
+"POT-Creation-Date: 2025-05-13 03:37+0000\n"
+"PO-Revision-Date: 2025-05-15 07:33-0300\n"
+"Last-Translator: Álvaro Burns <>\n"
+"Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -653,30 +654,40 @@ msgstr "_Voltar"
 msgid "Play _Anyway"
 msgstr "Jogar _assim mesmo"
 
-#: src/gnome-sudoku.vala:317
+#: src/gnome-sudoku.vala:314
 #, c-format
-msgid ""
-"Well done, you completed the puzzle in %d minutes and set a new personal "
-"best!"
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minuto"
+msgstr[1] "%d minutos"
+
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:319
+#, c-format
+msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
-"Parabéns, você completou o jogo em %d minutos e estabeleceu um novo recorde "
-"pessoal!"
+"Parabéns, você completou o jogo em %s e estabeleceu um novo recorde pessoal!"
 
-#: src/gnome-sudoku.vala:321
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:326
 #, c-format
-msgid "Well done, you completed the puzzle in %d minutes!"
-msgstr "Parabéns, você concluiu o jogo em %d minutos!"
+msgid "Well done, you completed the puzzle in %s!"
+msgstr "Parabéns, você concluiu o jogo em %s!"
 
-#: src/gnome-sudoku.vala:327
+#: src/gnome-sudoku.vala:331
+msgid "Well done, you completed the puzzle!"
+msgstr "Parabéns, você concluiu o jogo!"
+
+#: src/gnome-sudoku.vala:334
 msgid "Quit"
 msgstr "Sair"
 
-#: src/gnome-sudoku.vala:328
+#: src/gnome-sudoku.vala:335
 msgid "Play _Again"
 msgstr "Jogar _novamente"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:531
+#: src/gnome-sudoku.vala:538
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -687,7 +698,7 @@ msgstr ""
 "\n"
 "Jogos criados pelo QQwing %s"
 
-#: src/gnome-sudoku.vala:537
+#: src/gnome-sudoku.vala:544
 msgid "translator-credits"
 msgstr ""
 "Sandro Nunes Henrique <sandro@conectiva.com.br>\n"
@@ -728,11 +739,11 @@ msgstr "Desbloquear"
 msgid "Error printing file:"
 msgstr "Erro ao imprimir arquivo:"
 
-#: src/window.vala:208
+#: src/window.vala:241
 msgid "Select Difficulty"
 msgstr "Selecionar a dificuldade"
 
-#: src/window.vala:242
+#: src/window.vala:275
 msgid "Create Puzzle"
 msgstr "Criar jogo"
 
