@@ -349,7 +349,7 @@ public class Sudoku : Adw.Application
 
     private void start_custom_game ()
     {
-        game.board.set_all_is_fixed ();
+        game.board.set_all_fixed ();
         start_game (game.board);
     }
 
