@@ -124,24 +124,25 @@ public class SudokuBoard : Object
                 cells[row, col].solution = 0;
                 cells[row, col].fixed = false;
                 cells[row, col].earmarks = new bool[max_val];
-                foreach (var earmark in cells[row, col].earmarks)
-                    earmark = false;
+                for (int num = 0; num < max_val; num++)
+                    cells[row, col].earmarks[num] = false;
             }
 
         digits = new DigitOccurences[max_val];
         for (int i = 0; i < max_val; i++)
         {
             digits[i].occurrences_in_row = new int[rows];
-            foreach (var occurrences in digits[i].occurrences_in_row)
-                occurrences = 0;
+            for (var row = 0; row < rows; row ++)
+                digits[i].occurrences_in_row[row] = 0;
 
             digits[i].occurrences_in_col = new int[cols];
-            foreach (var occurrences in digits[i].occurrences_in_col)
-                occurrences = 0;
+            for (var col = 0; col < cols; col ++)
+                digits[i].occurrences_in_row[col] = 0;
 
             digits[i].occurrences_in_block = new int[block_rows, block_cols];
-            foreach (var occurrences in digits[i].occurrences_in_block)
-                occurrences = 0;
+            for (var block_row = 0; block_row < block_rows; block_row++)
+                for (var block_col = 0; block_col < block_cols; block_col++)
+                    digits[i].occurrences_in_block[block_row, block_col] = 0;
         }
 
         broken_coords = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
@@ -198,22 +199,22 @@ public class SudokuBoard : Object
         return board;
     }
 
-    public new unowned int get (int row, int col)
+    public new int get (int row, int col)
     {
         return cells[row, col].value;
     }
 
-    public unowned bool[] get_earmarks (int row, int col)
+    public bool[] get_earmarks (int row, int col)
     {
         return cells[row, col].earmarks;
     }
 
-    public unowned bool get_is_fixed (int row, int col)
+    public bool get_is_fixed (int row, int col)
     {
         return cells[row, col].fixed;
     }
 
-    public unowned int get_solution (int row, int col)
+    public int get_solution (int row, int col)
     {
         return cells[row, col].solution;
     }
