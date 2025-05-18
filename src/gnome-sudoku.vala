@@ -458,13 +458,11 @@ public class Sudoku : Adw.Application
     private void undo_cb ()
     {
         game.undo ();
-        undo_action.set_enabled (!game.is_undostack_null ());
     }
 
     private void redo_cb ()
     {
         game.redo ();
-        redo_action.set_enabled (!game.is_redostack_null ());
     }
 
     private void earmark_mode_cb ()
