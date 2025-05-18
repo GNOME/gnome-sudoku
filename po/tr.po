@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-04-27 07:52+0000\n"
-"PO-Revision-Date: 2025-04-30 22:48+0300\n"
+"POT-Creation-Date: 2025-05-15 15:58+0000\n"
+"PO-Revision-Date: 2025-05-16 22:43+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -596,64 +596,74 @@ msgid "Play Custom Game"
 msgstr "Özel Oyun Oyna"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:106
+#: src/gnome-sudoku.vala:107
 msgid "Show release version"
 msgstr "Yayım sürümünü göster"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:266
+#: src/gnome-sudoku.vala:268
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Girmiş olduğunuz bulmaca geçerli bir Sudoku değildir."
 
-#: src/gnome-sudoku.vala:266
+#: src/gnome-sudoku.vala:268
 msgid "Please enter a valid puzzle."
 msgstr "Lütfen geçerli bulmaca girin."
 
-#: src/gnome-sudoku.vala:267 src/printer.vala:46
+#: src/gnome-sudoku.vala:269 src/printer.vala:46
 msgid "Close"
 msgstr "Kapat"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:275
+#: src/gnome-sudoku.vala:277
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Girmiş olduğunuz bulmacanın birden çok çözümü var."
 
-#: src/gnome-sudoku.vala:275
+#: src/gnome-sudoku.vala:277
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Geçerli Sudoku bulmacalarının tek çözümü olur."
 
-#: src/gnome-sudoku.vala:276
+#: src/gnome-sudoku.vala:278
 msgid "_Back"
 msgstr "_Geri"
 
-#: src/gnome-sudoku.vala:277
+#: src/gnome-sudoku.vala:279
 msgid "Play _Anyway"
 msgstr "_Yine De Oyna"
 
-#: src/gnome-sudoku.vala:317
+#: src/gnome-sudoku.vala:315
 #, c-format
-msgid ""
-"Well done, you completed the puzzle in %d minutes and set a new personal "
-"best!"
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d dakika"
+
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:320
+#, c-format
+msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
-"Aferin! Bulmacayı %d dakika içinde tamamladınız ve yeni kişisel rekor "
+"Aferin! Bulmacayı %s dakika içinde tamamladınız ve yeni kişisel rekor "
 "kırdınız!"
 
-#: src/gnome-sudoku.vala:321
-#, c-format
-msgid "Well done, you completed the puzzle in %d minutes!"
-msgstr "Aferin! Bulmacayı %d dakika içinde tamamladınız!"
-
+#. TRANSLATORS: %s is a localized time string in minute(s)
 #: src/gnome-sudoku.vala:327
+#, c-format
+msgid "Well done, you completed the puzzle in %s!"
+msgstr "Aferin! Bulmacayı %s dakika içinde tamamladınız!"
+
+#: src/gnome-sudoku.vala:332
+msgid "Well done, you completed the puzzle!"
+msgstr "Aferin! Bulmacayı tamamladınız!"
+
+#: src/gnome-sudoku.vala:335
 msgid "Quit"
 msgstr "Çık"
 
-#: src/gnome-sudoku.vala:328
+#: src/gnome-sudoku.vala:336
 msgid "Play _Again"
 msgstr "_Yeniden Oyna"
 
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:531
+#: src/gnome-sudoku.vala:544
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -664,7 +674,7 @@ msgstr ""
 "\n"
 "Bulmacalar QQwing %s tarafından oluşturulur"
 
-#: src/gnome-sudoku.vala:537
+#: src/gnome-sudoku.vala:550
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <yakushabb@gmail.com>\n"
@@ -690,11 +700,11 @@ msgstr "Kilidi Aç"
 msgid "Error printing file:"
 msgstr "Dosya yazdırılırken hata:"
 
-#: src/window.vala:225
+#: src/window.vala:241
 msgid "Select Difficulty"
 msgstr "Zorluk Seç"
 
-#: src/window.vala:259
+#: src/window.vala:275
 msgid "Create Puzzle"
 msgstr "Bulmaca Oluştur"
 
