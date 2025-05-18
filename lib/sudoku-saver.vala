@@ -147,7 +147,7 @@ public class SudokuSaver : Object
 
     public void add_game_to_finished (SudokuGame game, bool delete_savegame = false, bool save_timer = true)
     {
-        var file_name = game.board.to_string (true) + ".save";
+        var file_name = game.board.to_string ()+ ".save";
         var file_path = Path.build_path (Path.DIR_SEPARATOR_S, finishgame_dir, file_name);
         create_file_for_game (game, file_path, save_timer);
 

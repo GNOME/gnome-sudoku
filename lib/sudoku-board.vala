@@ -23,69 +23,68 @@ using Gee;
 
 public class SudokuBoard : Object
 {
-    /* Implemented in such a way that it can be extended for other sizes ( like 2x3 sudoku or 4x4 sudoku ) instead of normal 3x3 sudoku. */
+    // Implemented in such a way that it can be extended for other sizes ( like 2x3 sudoku or 4x4 sudoku ) instead of normal 3x3 sudoku.
 
     private struct Cell
     {
         int value;
         int solution;
-        //format is [number - 1]
+        // Format is [number - 1]
         bool[] earmarks;
         bool fixed;
     }
-    //format is [row, col]
+    // Format is [row, col]
     private Cell[,] cells;
 
-    private struct Occurences
+    private struct DigitOccurences
     {
         int[] occurrences_in_row;
         int[] occurrences_in_col;
         int[,] occurrences_in_block;
     }
-
-    //format is [value - 1]
-    private Occurences[] digits;
+    // Format is [value - 1]
+    private DigitOccurences[] digits;
 
     private bool has_solution = false;
 
-    private int n_earmarks;                     /* The number of earmarks on the board */
+    // The sum of earmarks on the board
+    private int n_earmarks;
 
-    public double previous_played_time { set; get; default = 0; }
+    public double previous_played_time { get; set; default = 0; }
 
-    public DifficultyCategory difficulty_category { set; get; default = DifficultyCategory.UNKNOWN; }
+    public DifficultyCategory difficulty_category { get; set; default = DifficultyCategory.UNKNOWN; }
 
-    /* Number of rows in one block */
+    // Number of rows in one block
     public int block_rows { get; private set; default = 3;}
 
-    /* Number of columns in one block */
+    // Number of columns in one block
     public int block_cols { get; private set; default = 3; }
 
-    /* Number of rows in board */
+    // Number of rows on the board */
     public int rows { get; private set; default = 9; }
 
-    /* Number of columns in board */
+    // Number of columns on the board */
     public int cols { get; private set; default = 9; }
 
-    /* Maximum possible val on board. 9 for 3x3 sudoku*/
+    // Maximum possible value on the board. 9 for 3x3 sudoku
     public int max_val
     {
         get { return block_rows * block_cols; }
     }
 
-    public bool broken
-    {
-        get { return broken_coords.size != 0; }
-    }
-
-    /* the number of filled squares on the board */
+    // The sum of filled cells on the board
     public int filled { get; private set; }
 
-    /* the number of fixed squares on the board */
+    // The sum of fixed cells on the board
     public int fixed { get; private set; }
 
     public bool complete
     {
-        get { return filled == cols * rows && !broken; }
+        get
+        {
+            bool broken = broken_coords.size != 0;
+            return filled == cols * rows && !broken;
+        }
     }
 
     public bool is_empty ()
@@ -102,16 +101,16 @@ public class SudokuBoard : Object
     public signal void earmark_changed (int row, int col, int num, bool enabled);
     public signal void value_changed (int row, int col, int old_val, int new_val);
 
-    /* The set of coordinates on the board which are invalid */
+    // The set of coordinates on the board which are invalid
     public Gee.Set<Coord?> broken_coords { get; private set; }
 
-    /* The list of coordinates for each col on the board */
+    // The list of coordinates for each col on the board
     public Gee.List<Gee.List<Coord?>> coords_for_col { get; private set; }
 
-    /* The list of coordinates for each row on the board */
+    // The list of coordinates for each row on the board
     public Gee.List<Gee.List<Coord?>> coords_for_row { get; private set; }
 
-    /* The map from the coordinate of a box, to the list of coordinates in that box, for each box on the board */
+    // The map from the coordinate of a box, to the list of coordinates in that box, for each box on the board
     public Map<Coord?, Gee.List<Coord?>> coords_for_block { get; private set; }
 
     public SudokuBoard ()
@@ -129,20 +128,20 @@ public class SudokuBoard : Object
                     earmark = false;
             }
 
-        digits = new Occurences[max_val];
+        digits = new DigitOccurences[max_val];
         for (int i = 0; i < max_val; i++)
         {
             digits[i].occurrences_in_row = new int[rows];
-            foreach (var occurrence in digits[i].occurrences_in_row)
-                occurrence = 0;
+            foreach (var occurrences in digits[i].occurrences_in_row)
+                occurrences = 0;
 
             digits[i].occurrences_in_col = new int[cols];
-            foreach (var occurrence in digits[i].occurrences_in_col)
-                occurrence = 0;
+            foreach (var occurrences in digits[i].occurrences_in_col)
+                occurrences = 0;
 
             digits[i].occurrences_in_block = new int[block_rows, block_cols];
-            foreach (var occurrence in digits[i].occurrences_in_block)
-                occurrence = 0;
+            foreach (var occurrences in digits[i].occurrences_in_block)
+                occurrences = 0;
         }
 
         broken_coords = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
@@ -199,6 +198,26 @@ public class SudokuBoard : Object
         return board;
     }
 
+    public new unowned int get (int row, int col)
+    {
+        return cells[row, col].value;
+    }
+
+    public unowned bool[] get_earmarks (int row, int col)
+    {
+        return cells[row, col].earmarks;
+    }
+
+    public unowned bool get_is_fixed (int row, int col)
+    {
+        return cells[row, col].fixed;
+    }
+
+    public unowned int get_solution (int row, int col)
+    {
+        return cells[row, col].solution;
+    }
+
     public int[,] get_cells ()
     {
         var ret = new int[rows, cols];
@@ -209,21 +228,75 @@ public class SudokuBoard : Object
         return ret;
     }
 
-    public bool get_is_fixed (int row, int col)
+    private int[,] get_fixed_cells ()
     {
-        return cells[row, col].fixed;
+        int[,] ret = new int[rows, cols];
+
+        for (int row = 0; row < rows; row++)
+        {
+            for (int col = 0; col < cols; col++)
+            {
+                if (cells[row, col].fixed)
+                    ret[row, col] = cells[row, col].value;
+                else
+                    ret[row, col] = 0;
+            }
+        }
+
+        return ret;
+    }
+
+    public int[] get_possibilities (int row, int col)
+    {
+        if (cells[row, col].value != 0)
+            return new int[0];
+
+        var possibilities = new int[9];
+        var count = 0;
+
+        for (var l = 1; l <= max_val; l++)
+            if (is_possible (row, col, l))
+            {
+                possibilities[count] = l;
+                count++;
+            }
+
+        return possibilities[0:count];
+    }
+
+    public bool[] get_possibilities_as_bool_array (int row, int col)
+    {
+        var possibilities = new bool[max_val];
+
+        for (var l = 1; l <= max_val; l++)
+            possibilities[l - 1] = is_possible (row, col, l);
+
+        return possibilities;
+    }
+
+    public new void set (int row, int col, int val)
+    {
+        var old_val = get (row, col);
+        if (old_val == 0)
+            disable_all_earmarks (row, col);
+
+        if (old_val == val)
+            return;
+
+        if (val == 0)
+            remove (row, col);
+        else
+            insert (row, col, val);
     }
 
     public void set_all_fixed ()
     {
         foreach (var cell in cells)
-        {
             if (cell.value > 0)
             {
                 cell.fixed = true;
                 fixed++;
             }
-        }
     }
 
     public void enable_earmark (int row, int col, int num)
@@ -264,35 +337,6 @@ public class SudokuBoard : Object
                 digit.occurrences_in_block[row / block_rows, col / block_cols] == 0);
     }
 
-    public int[] get_possibilities (int row, int col)
-    {
-        if (cells[row, col].value != 0)
-            return new int[0];
-
-        var possibilities = new int[9];
-        var count = 0;
-
-        for (var l = 1; l <= max_val; l++)
-        {
-            if (is_possible (row, col, l))
-            {
-                possibilities[count] = l;
-                count++;
-            }
-        }
-        return possibilities[0:count];
-    }
-
-    public bool[] get_possibilities_as_bool_array (int row, int col)
-    {
-        var possibilities = new bool[max_val];
-
-        for (var l = 1; l <= max_val; l++)
-            possibilities[l - 1] = is_possible (row, col, l);
-
-        return possibilities;
-    }
-
     public void insert (int row, int col, int val, bool is_fixed = false)
         requires (val > 0 && val <= max_val)
         requires (!cells[row, col].fixed)
@@ -309,8 +353,8 @@ public class SudokuBoard : Object
         else
             filled++;
 
-        mark_breakages (row, col, val);
         add_to_occurrences (row, col, val, 1);
+        mark_breakages (row, col, val);
 
         if (complete)
             completed();
@@ -326,26 +370,6 @@ public class SudokuBoard : Object
         filled--;
         update_old_breakages (row, col, old_val);
         value_changed (row, col, old_val, 0);
-    }
-
-    public new int get (int row, int col)
-    {
-        return cells[row, col].value;
-    }
-
-    public new void set (int row, int col, int val)
-    {
-        var old_val = get (row, col);
-        if (old_val == 0)
-            disable_all_earmarks (row, col);
-
-        if (old_val == val)
-            return;
-
-        if (val == 0)
-            remove (row, col);
-        else
-            insert (row, col, val);
     }
 
     private void update_old_breakages (int row, int col, int val)
@@ -364,58 +388,28 @@ public class SudokuBoard : Object
 
     private void add_to_occurrences (int row, int col, int val, int add)
     {
-        var digit = digits[val - 1];
-        digit.occurrences_in_row[row] += add;
-        digit.occurrences_in_col[col] += add;
-        digit.occurrences_in_block[row / block_rows, col / block_cols] += add;
+        digits[val - 1].occurrences_in_row[row] += add;
+        digits[val - 1].occurrences_in_col[col] += add;
+        digits[val - 1].occurrences_in_block[row / block_rows, col / block_cols] += add;
     }
 
     private void mark_breakages (int row, int col, int val)
     {
         var digit = digits[val - 1];
 
-        if (digit.occurrences_in_row[row] > 0)
+        if (digit.occurrences_in_row[row] > 1)
             mark_breakages_for (coords_for_row[row], val);
 
-        if (digit.occurrences_in_col[col] > 0)
+        if (digit.occurrences_in_col[col] > 1)
             mark_breakages_for (coords_for_col[col], val);
 
-        if (digit.occurrences_in_block[row / block_rows, col / block_cols] > 0)
+        if (digit.occurrences_in_block[row / block_rows, col / block_cols] > 1)
             mark_breakages_for (coords_for_block[Coord(row / block_rows, col / block_cols)], val);
-    }
-
-    public void set_solution (int row, int col, int val)
-        requires (has_solution)
-    {
-        cells[row, col].solution = val;
-    }
-
-    public int get_solution (int row, int col)
-    {
-        return cells[row, col].solution;
-    }
-
-    private int[,] fixed_cells_only ()
-    {
-        int[,] ret = new int[rows, cols];
-
-        for (int row = 0; row < rows; row++)
-        {
-            for (int col = 0; col < cols; col++)
-            {
-                if (cells[row, col].fixed)
-                    ret[row, col] = cells[row, col].value;
-                else
-                    ret[row, col] = 0;
-            }
-        }
-
-        return ret;
     }
 
     public void solve ()
     {
-        int[,] fixed_cells = fixed_cells_only ();
+        int[,] fixed_cells = get_fixed_cells ();
         int[] solution_1d = convert_2d_to_1d (fixed_cells);
 
         if (QQwing.solve_puzzle (solution_1d))
@@ -433,7 +427,7 @@ public class SudokuBoard : Object
             has_solution = false;
     }
 
-    public bool solved ()
+    public unowned bool solved ()
     {
         return has_solution;
     }
@@ -443,16 +437,6 @@ public class SudokuBoard : Object
         int[] cells_1d = convert_2d_to_1d (get_cells ());
 
         return QQwing.count_solutions_limited (cells_1d);
-    }
-
-    public Set<Coord?> get_occurrences(Gee.List<Coord?> coords, int val)
-    {
-        Set<Coord?> occurrences = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
-        foreach (Coord coord in coords)
-            if (cells[coord.row, coord.col].value == val)
-                occurrences.add (coord);
-
-        return occurrences;
     }
 
     private void remove_breakages_for (Gee.List<Coord?> coords, int val)
@@ -469,59 +453,44 @@ public class SudokuBoard : Object
                 }
     }
 
-    /* returns if val is possible in coords */
     private void mark_breakages_for (Gee.List<Coord?> coords, int val)
     {
-        Set<Coord?> occurrences = get_occurrences (coords, val);
-        if (occurrences.size != 1)
-            broken_coords.add_all (occurrences);
+        foreach (Coord coord in coords)
+            if (cells[coord.row, coord.col].value == val)
+                broken_coords.add (coord);
     }
 
-    public string to_string (bool get_original_state = false)
+    public string to_string ()
     {
         var board_string = "";
         for (var row = 0; row < rows; row++)
-        {
             for (var col = 0; col < cols; col++)
             {
                 if (cells[row, col].fixed)
                     board_string += cells[row, col].value.to_string ();
                 else
-                    board_string += get_original_state ? "0" : cells[row, col].value.to_string ();
+                    board_string += "0";
             }
-        }
+
         return board_string;
     }
 
-
     public bool is_finished ()
     {
-        var board_string = this.to_string (true) + ".save";
+        var board_string = this.to_string () + ".save";
         var finishgame_file = Path.build_path (Path.DIR_SEPARATOR_S, SudokuSaver.finishgame_dir, board_string);
         var file = File.new_for_path (finishgame_file);
 
         return file.query_exists ();
     }
 
-    public bool[] get_earmarks (int row, int col)
-    {
-        bool[] earmarks = new bool[max_val];
-        for (var num = 1; num <= max_val; num++)
-            earmarks[num - 1] = cells[row, col].earmarks[num - 1];
-        return earmarks;
-    }
-
     public bool has_earmarks (int row, int col)
     {
-        bool[] current_earmarks = this.get_earmarks (row, col);
-        bool has_earmarks = false;
         for (int i = 0; i < 9; i++)
-            if (current_earmarks [i])
-            {
-                has_earmarks = true;
-                break;
-            }
-        return has_earmarks;
+            if (cells[row, col].earmarks[i])
+                return true;
+
+        return false;
     }
 
     // Convert a 2D array to a 1D array. The 2D array is assumed to have
