@@ -24,6 +24,8 @@ using Gdk;
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/start-view.ui")]
 public class SudokuStartView : Box
 {
+    [GtkChild] public unowned Adw.HeaderBar headerbar;
+
     [GtkChild] private unowned CheckButton custom_check;
     [GtkChild] private unowned CheckButton easy_check;
     [GtkChild] private unowned CheckButton medium_check;
@@ -31,6 +33,11 @@ public class SudokuStartView : Box
     [GtkChild] private unowned CheckButton very_hard_check;
 
     [GtkChild] private unowned Button start_button;
+    [GtkChild] private unowned Button back_button;
+
+    static construct {
+        typeof (SudokuMenuButton).ensure ();
+    }
 
     [GtkCallback]
     private void start_game_cb (Button btn)
@@ -45,6 +52,11 @@ public class SudokuStartView : Box
             (this as Widget)?.activate_action ("app.start-game", "i", 4);
         else if (this.custom_check.active)
             (this as Widget)?.activate_action ("app.start-game", "i", 5);
+    }
+
+    public void set_back_button_visible (bool enabled)
+    {
+        back_button.visible = enabled;
     }
 
     public void activate_difficulty_checkbutton ()

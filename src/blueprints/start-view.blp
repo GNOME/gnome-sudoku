@@ -2,9 +2,29 @@ using Gtk 4.0;
 using Adw 1;
 
 template $SudokuStartView : Box {
-  visible: true;
   orientation: vertical;
-  halign: fill;
+
+  Adw.HeaderBar headerbar {
+    centering-policy: strict;
+    title-widget: Adw.WindowTitle windowtitle {
+      title: _("Sudoku");
+      subtitle: _("Select Difficulty");
+    };
+
+    [start]
+    Button back_button {
+      visible: false;
+      halign: center;
+      valign: center;
+      tooltip-text: _("Back");
+      use-underline: true;
+      action-name: "app.back";
+      icon-name: "go-previous-symbolic";
+    }
+
+    [end]
+    $SudokuMenuButton menu_button {}
+  }
 
   Adw.StatusPage {
     title: _("Select Puzzle Difficulty");

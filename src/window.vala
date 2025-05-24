@@ -25,31 +25,11 @@ using Gdk;
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/window.ui")]
 public class SudokuWindow : Adw.ApplicationWindow
 {
-    [GtkChild] private unowned Adw.WindowTitle windowtitle;
-    [GtkChild] private unowned Adw.HeaderBar headerbar;
-
     [GtkChild] private unowned Adw.ViewStack view_stack; //contains game_box and start_view
-    [GtkChild] private unowned SudokuStartView start_view;
+    [GtkChild] public unowned SudokuStartView start_view;
+    [GtkChild] public unowned SudokuGameView game_view;
 
-    [GtkChild] private unowned PopoverMenu main_menu;
-
-    [GtkChild] private unowned Stack menu_fullscreen_stack;
-    [GtkChild] private unowned Stack play_pause_stack;
-    [GtkChild] private unowned ToggleButton earmark_mode_button;
-    [GtkChild] private unowned Button undo_button;
-    [GtkChild] private unowned Button redo_button;
-    [GtkChild] private unowned Button back_button;
-    [GtkChild] private unowned Button unfullscreen_button;
-    [GtkChild] private unowned Button menu_unfullscreen_button;
-    [GtkChild] private unowned Button menu_fullscreen_button;
-    [GtkChild] private unowned Button play_custom_game_button;
-    [GtkChild] private unowned Button pause_button;
-    [GtkChild] private unowned Button play_button;
-
-    [GtkChild] private unowned Box clock_box;
-    [GtkChild] private unowned Label clock_label;
-
-    private bool window_width_is_small { get; private set; }
+    public bool width_is_small { get; private set; }
 
     public const int SMALL_WINDOW_WIDTH = 360;
     public const int MEDIUM_WINDOW_WIDTH = 600;
@@ -57,7 +37,6 @@ public class SudokuWindow : Adw.ApplicationWindow
     private CssProvider accent_provider;
     private Adw.StyleManager style_manager;
 
-    private GestureClick button_controller;
     private GestureClick backwards_controller;
     private GestureClick forwards_controller;
     private EventControllerScroll scroll_controller;
@@ -67,13 +46,10 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public bool keyboard_pressed_last { get; private set; }
 
-    public SudokuGameView game_view { get; private set; default = null; }
     public SudokuWindowScreen current_screen { get; private set; default = SudokuWindowScreen.NONE; }
 
     public SudokuWindow (GLib.Settings settings)
     {
-        Sudoku.app.notify["show-timer"].connect (show_timer_cb);
-        notify["fullscreened"].connect(fullscreen_cb);
         notify["visible-dialog"].connect (visible_dialog_cb);
 
         settings.bind ("window-is-fullscreen", this, "fullscreened", SettingsBindFlags.DEFAULT);
@@ -82,11 +58,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         settings.bind ("default-height", this, "default-height", SettingsBindFlags.DEFAULT);
 
         construct_window_parameters ();
-
-        button_controller = new GestureClick ();
-        button_controller.set_button (0 /* all buttons */);
-        button_controller.released.connect (button_released_cb);
-        ((Widget)this).add_controller (this.button_controller);
 
         backwards_controller = new GestureClick ();
         backwards_controller.set_button (8 /* backward button */);
@@ -126,29 +97,19 @@ public class SudokuWindow : Adw.ApplicationWindow
         style_manager.notify["accent-color"].connect(() => {
             set_accent_color (style_manager.get_accent_color ());
         });
-
-        main_menu.closed.connect(() => {
-            if (current_screen != SudokuWindowScreen.START)
-                game_view.grab_focus ();
-            else
-                start_view.grab_focus ();
-        });
     }
 
     private void construct_window_parameters ()
     {
         int headerbar_natural_height;
-        headerbar.measure (Orientation.VERTICAL, -1, null, out headerbar_natural_height, null, null);
+        start_view.headerbar.measure (Orientation.VERTICAL, -1, null, out headerbar_natural_height, null, null);
 
         int small_window_height = SMALL_WINDOW_WIDTH + headerbar_natural_height;
 
-        window_width_is_small = default_width <= MEDIUM_WINDOW_WIDTH;
+        width_is_small = default_width <= MEDIUM_WINDOW_WIDTH;
 
         set_size_request (SMALL_WINDOW_WIDTH, small_window_height);
         set_default_size (default_width, default_height);
-
-        Label title_label = (Label) windowtitle.get_first_child ().get_first_child ();
-        title_label.set_property ("ellipsize", false);
     }
 
     void set_accent_color (Adw.AccentColor color)
@@ -193,59 +154,22 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public void start_game (SudokuBoard board, double? highscore)
     {
-        back_button.sensitive = false;
-
-        game_view = new SudokuGameView (board, highscore);
-        view_stack.add (game_view);
-        game_view.game.notify["paused"].connect (paused_cb);
-
+        game_view.init (board, highscore, this);
         show_game_view ();
-        initialize_clock_label ();
-
-        back_button.sensitive = true;
     }
 
     public void change_board (SudokuBoard board, double? highscore)
     {
         game_view.change_board (board, highscore);
         show_game_view ();
-        initialize_clock_label ();
-    }
-
-    private void initialize_clock_label ()
-    {
-        if (game_view.game.mode == GameMode.CREATE || !Sudoku.app.show_timer)
-            return;
-
-        game_view.game.tick.connect (tick_cb);
-
-        var elapsed_time = (int) game_view.game.get_total_time_played ();
-
-        if (game_view.highscore != null)
-        {
-            if (elapsed_time > game_view.highscore)
-                clock_label.set_css_classes ({});
-            else if (elapsed_time > game_view.highscore - 60)
-                clock_label.set_css_classes ({"warning"});
-            else
-                clock_label.set_css_classes ({"success"});
-        }
-
-        set_clock_label_text (elapsed_time);
     }
 
     public void show_start_view ()
     {
         current_screen = SudokuWindowScreen.START;
+
+        start_view.set_back_button_visible (game_view != null && game_view.game != null);
         view_stack.set_visible_child (start_view);
-        windowtitle.subtitle = _("Select Difficulty");
-        back_button.visible = game_view != null;
-        play_custom_game_button.visible = false;
-        earmark_mode_button.visible = false;
-        undo_button.visible = false;
-        redo_button.visible = false;
-        clock_box.visible = false;
-        play_pause_stack.visible = false;
 
         start_view.grab_focus ();
     }
@@ -253,42 +177,19 @@ public class SudokuWindow : Adw.ApplicationWindow
     public void show_game_view ()
     {
         current_screen = (SudokuWindowScreen) game_view.game.mode;
+
         view_stack.set_visible_child (game_view);
-        back_button.visible = false;
-        undo_button.visible = true;
-        redo_button.visible = true;
-
-        if (current_screen == SudokuWindowScreen.PLAY)
-        {
-            play_pause_stack.visible = Sudoku.app.show_timer;
-            clock_box.visible = Sudoku.app.show_timer && !window_width_is_small;
-            earmark_mode_button.visible = !window_width_is_small || !Sudoku.app.show_timer;
-            play_custom_game_button.visible = false;
-            windowtitle.subtitle = game_view.game.board.difficulty_category.to_string ();
-        }
-        else
-        {
-            play_pause_stack.visible = false;
-            clock_box.visible = false;
-            earmark_mode_button.visible = false;
-            play_custom_game_button.visible = true;
-            windowtitle.subtitle = _("Create Puzzle");
-        }
-
         game_view.grab_focus ();
     }
 
     private void visible_dialog_cb ()
     {
-        if (current_screen == SudokuWindowScreen.START)
-            return;
-
         if (visible_dialog != null)
         {
             if (!game_view.game.paused)
                 game_view.game.stop_clock ();
 
-            game_view.unselect ();
+            game_view.grid.unselect ();
         }
         else
         {
@@ -297,97 +198,6 @@ public class SudokuWindow : Adw.ApplicationWindow
 
             game_view.grab_focus ();
         }
-    }
-
-    private void show_timer_cb ()
-    {
-        if (current_screen == SudokuWindowScreen.PLAY)
-        {
-            if (Sudoku.app.show_timer)
-            {
-                initialize_clock_label ();
-                earmark_mode_button.visible = !window_width_is_small;
-                clock_box.visible = !window_width_is_small;
-                play_pause_stack.visible = true;
-
-                if (game_view.game.paused)
-                    game_view.game.paused = false;
-            }
-            else
-            {
-                game_view.game.tick.disconnect (tick_cb);
-                clock_box.visible = false;
-                earmark_mode_button.visible = true;
-                play_pause_stack.visible = false;
-            }
-        }
-    }
-
-    private void tick_cb ()
-    {
-        var elapsed_time = (int) game_view.game.get_total_time_played ();
-
-        if (game_view.highscore != null)
-        {
-            if (elapsed_time > game_view.highscore && clock_label.has_css_class ("warning"))
-                clock_label.remove_css_class ("warning");
-
-            else if (elapsed_time > game_view.highscore - 60 && clock_label.has_css_class ("success"))
-                clock_label.set_css_classes ({"warning"});
-        }
-
-        set_clock_label_text (elapsed_time);
-    }
-
-    private void set_clock_label_text (int elapsed_time)
-    {
-        var hours = elapsed_time / 3600;
-        var minutes = (elapsed_time - hours * 3600) / 60;
-        var seconds = elapsed_time - hours * 3600 - minutes * 60;
-
-        if (hours > 0)
-            clock_label.set_text ("%02d∶\xE2\x80\x8E%02d∶\xE2\x80\x8E%02d".printf (hours, minutes, seconds));
-        else
-            clock_label.set_text ("%02d∶\xE2\x80\x8E%02d".printf (minutes, seconds));
-    }
-
-    private void paused_cb ()
-    {
-        if (game_view.game.paused)
-            play_pause_stack.set_visible_child (play_button);
-        else
-            play_pause_stack.set_visible_child (pause_button);
-    }
-
-    private void fullscreen_cb ()
-    {
-        if (fullscreened)
-        {
-            headerbar.set_decoration_layout (":close");
-            unfullscreen_button.visible = true;
-            menu_fullscreen_stack.set_visible_child (menu_unfullscreen_button);
-        }
-        else
-        {
-            headerbar.set_decoration_layout (null);
-            unfullscreen_button.visible = false;
-            menu_fullscreen_stack.set_visible_child (menu_fullscreen_button);
-        }
-    }
-
-    private void button_released_cb (GestureClick gesture,
-                                     int          n_press,
-                                     double       x,
-                                     double       y)
-    {
-        if (gesture.get_current_button () != BUTTON_PRIMARY &&
-            gesture.get_current_button () != BUTTON_SECONDARY)
-            return;
-
-        if (current_screen != SudokuWindowScreen.START && !game_view.game.paused)
-            game_view.unselect ();
-
-        gesture.set_state (EventSequenceState.CLAIMED);
     }
 
     private void backwards_pressed_cb (GestureClick gesture,
@@ -466,30 +276,22 @@ public class SudokuWindow : Adw.ApplicationWindow
         keyboard_pressed_last = true;
     }
 
-    private void window_width_is_medium_cb ()
+    private void width_is_medium_cb ()
     {
-        window_width_is_small = false;
-        if (current_screen == SudokuWindowScreen.PLAY)
-        {
-            clock_box.visible = Sudoku.app.show_timer;
-            earmark_mode_button.visible = true;
-        }
+        width_is_small = false;
     }
 
-    private void window_width_is_small_cb ()
+    private void width_is_small_cb ()
     {
-        window_width_is_small = true;
-        clock_box.visible = false;
-        if (current_screen == SudokuWindowScreen.PLAY)
-            earmark_mode_button.visible = !Sudoku.app.show_timer;
+        width_is_small = true;
     }
 
     public override void size_allocate (int width, int height, int baseline)
     {
-        if (width < MEDIUM_WINDOW_WIDTH && !window_width_is_small)
-            window_width_is_small_cb ();
-        else if (width >= MEDIUM_WINDOW_WIDTH && window_width_is_small)
-            window_width_is_medium_cb ();
+        if (width < MEDIUM_WINDOW_WIDTH && !width_is_small)
+            width_is_small_cb ();
+        else if (width >= MEDIUM_WINDOW_WIDTH && width_is_small)
+            width_is_medium_cb ();
         base.size_allocate (width, height, baseline);
     }
 

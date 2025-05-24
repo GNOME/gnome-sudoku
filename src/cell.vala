@@ -26,25 +26,23 @@ public class SudokuCell : Widget
     public int row { get; private set; }
     public int col { get; private set; }
 
-    private unowned SudokuGameView view;
-    private SudokuGame game
-    {
-        get { return view.game; }
-    }
-
     private GestureClick button_controller;
     private GestureLongPress long_press_controller;
 
     private Label value_label;
     private SudokuEarmark[] earmarks;
 
-    public SudokuCell (int row, int col, SudokuGameView view)
+    private SudokuGame game;
+    private unowned SudokuGrid grid;
+
+    public SudokuCell (int row, int col, SudokuGame game, SudokuGrid grid)
     {
+        this.game = game;
+        this.grid = grid;
         this.set_accessible_role (AccessibleRole.BUTTON);
 
         this.row = row;
         this.col = col;
-        this.view = view;
 
         value_label = new Label (this.value.to_string ());
         value_label.visible = value != 0;
@@ -58,7 +56,7 @@ public class SudokuCell : Widget
         update_fixed_css ();
 
         button_controller = new GestureClick ();
-        button_controller.set_button (0 /* all buttons */);
+        button_controller.set_button (0 /* all buttons */ );
         button_controller.released.connect (button_released_cb);
         add_controller (this.button_controller);
 
@@ -173,7 +171,7 @@ public class SudokuCell : Widget
 
     public bool grab_selection ()
     {
-        view.set_selected (row, col);
+        grid.set_selected (row, col);
         return grab_focus ();
     }
 
@@ -207,16 +205,16 @@ public class SudokuCell : Widget
         if (gesture.get_current_button () == BUTTON_PRIMARY)
         {
             if (wants_value)
-                view.number_picker.show_value_picker (this);
+                grid.number_picker.show_value_picker (this);
             else if (game.mode == GameMode.PLAY)
-                view.number_picker.show_earmark_picker (this);
+                grid.number_picker.show_earmark_picker (this);
         }
         else if (gesture.get_current_button () == BUTTON_SECONDARY)
         {
             if (!wants_value)
-                view.number_picker.show_value_picker (this);
+                grid.number_picker.show_value_picker (this);
             else if (game.mode == GameMode.PLAY)
-                view.number_picker.show_earmark_picker (this);
+                grid.number_picker.show_earmark_picker (this);
         }
     }
 
@@ -235,9 +233,9 @@ public class SudokuCell : Widget
             return;
 
         if (game.mode == GameMode.CREATE || Sudoku.app.earmark_mode)
-            view.number_picker.show_value_picker (this);
+            grid.number_picker.show_value_picker (this);
         else
-            view.number_picker.show_earmark_picker (this);
+            grid.number_picker.show_earmark_picker (this);
     }
 
     private void paused_cb ()
@@ -307,7 +305,7 @@ public class SudokuCell : Widget
 
     public override bool focus (DirectionType direction)
     {
-        view.set_selected (row, col);
+        grid.set_selected (row, col);
         return base.focus (direction);
     }
 
@@ -315,15 +313,15 @@ public class SudokuCell : Widget
                                         int height,
                                         int baseline)
     {
-        int zoomed_size = (int) (height * view.value_zoom_multiplier);
+        int zoomed_size = (int) (height * 0.5);
         set_font_size (value_label, zoomed_size);
 
         Widget child = get_last_child ();
         while (child != null)
         {
-            if (child == view.number_picker)
+            if (child == grid.number_picker)
             {
-                view.number_picker.present ();
+                grid.number_picker.present ();
                 break;
             }
 

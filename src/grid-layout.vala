@@ -20,7 +20,7 @@
 
 using Gtk;
 
-private class SudokuGameViewLayoutManager : LayoutManager
+private class SudokuGridLayoutManager : LayoutManager
 {
     private const int MARGIN_DEFAULT_SIZE = 25;
     private const int MARGIN_SMALL_SIZE = 10;

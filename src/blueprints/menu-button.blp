@@ -1,0 +1,149 @@
+using Gtk 4.0;
+using Adw 1;
+
+menu primary-menu {
+  section controls-menu {
+    item {
+      label: _("_New Game…");
+      action: "app.new-game";
+    }
+
+    item {
+      label: _("_Reset Puzzle");
+      action: "app.reset-board";
+    }
+  }
+
+  section {
+    submenu {
+      label: _("_Print");
+
+      section {
+        item {
+          label: _("Print _Current Puzzle…");
+          action: "app.print-current-board";
+        }
+
+        item {
+          label: _("Print _Multiple Puzzles…");
+          action: "app.print-multiple";
+        }
+      }
+    }
+
+    section {
+      label: _("Zoom");
+      display-hint: "inline-buttons";
+
+      item {
+        custom: "zoom-out";
+      }
+
+      item {
+        custom: "zoom-in";
+      }
+
+      item {
+        custom: "menu-fullscreen";
+      }
+    }
+  }
+
+  section {
+    item {
+      label: _("_Highlighter");
+      action: "app.highlighter";
+    }
+
+    item {
+      label: _("_Warnings");
+      action: "app.show-warnings";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Preferences");
+      action: "app.preferences-dialog";
+    }
+
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "app.shortcuts-window";
+    }
+
+    item {
+      label: _("_Help");
+      action: "app.help";
+    }
+
+    item {
+      label: _("_About Sudoku");
+      action: "app.about";
+    }
+  }
+}
+
+template $SudokuMenuButton : Adw.Bin {
+
+  MenuButton {
+    icon-name: "open-menu-symbolic";
+    primary: true;
+    tooltip-text: _("Main Menu");
+
+    popover: PopoverMenu main_menu {
+      menu-model: primary-menu;
+
+      [zoom-out]
+      Button zoom_out_button {
+        icon-name: "zoom-out-symbolic";
+        action-name: "app.zoom-out";
+        tooltip-text: _("Zoom Out");
+
+        styles [
+          "flat",
+          "circular",
+        ]
+      }
+
+      [zoom-in]
+      Button zoom_in_button {
+        icon-name: "zoom-in-symbolic";
+        action-name: "app.zoom-in";
+        tooltip-text: _("Zoom In");
+
+        styles [
+          "flat",
+          "circular",
+        ]
+      }
+
+      [menu-fullscreen]
+      Stack menu_fullscreen_stack {
+        transition-type: crossfade;
+
+        Button menu_fullscreen_button {
+          icon-name: "view-fullscreen-symbolic";
+          action-name: "app.toggle-fullscreen";
+          tooltip-text: _("Fullscreen");
+
+          styles [
+            "flat",
+            "circular",
+          ]
+        }
+
+        Button menu_unfullscreen_button {
+          icon-name: "view-restore-symbolic";
+          action-name: "app.toggle-fullscreen";
+          tooltip-text: _("Leave Fullscreen");
+
+          styles [
+            "flat",
+            "circular",
+          ]
+        }
+      }
+    };
+  }
+}

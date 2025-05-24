@@ -1,11 +1,12 @@
 blueprints = custom_target(
   'blueprints',
   input: files(
-    'blueprints/start-view.blp',
     'blueprints/game-view.blp',
+    'blueprints/menu-button.blp',
     'blueprints/preferences-dialog.blp',
     'blueprints/print-dialog.blp',
     'blueprints/shortcuts-window.blp',
+    'blueprints/start-view.blp',
     'blueprints/window.blp',
   ),
   output: '.',
@@ -29,16 +30,18 @@ gnome_sudoku_vala_args = ['--pkg=posix']
 
 gnome_sudoku_sources = [
   'config.vapi',
+  'cell.vala',
+  'earmark.vala',
+  'game-view.vala',
   'gnome-sudoku.vala',
+  'grid.vala',
+  'grid-layout.vala',
+  'menu-button.vala',
   'number-picker.vala',
   'preferences-dialog.vala',
   'print-dialog.vala',
-  'cell.vala',
-  'earmark.vala',
   'printer.vala',
   'start-view.vala',
-  'game-view.vala',
-  'game-view-layout.vala',
   'window.vala',
   resources
 ]

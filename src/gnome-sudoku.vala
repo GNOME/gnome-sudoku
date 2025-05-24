@@ -221,7 +221,7 @@ public class Sudoku : Adw.Application
     {
         if (window != null)
         {
-            if (game_view != null)
+            if (game != null)
             {
                 if (!game.is_empty () && !game.board.complete)
                     saver.save_game (game);
@@ -356,7 +356,7 @@ public class Sudoku : Adw.Application
     private void start_game (SudokuBoard board)
     {
         var highscore = saver.get_highscore (board.difficulty_category);
-        if (game_view == null)
+        if (game == null)
         {
             window.start_game (board, highscore);
             game.action_completed.connect (action_completed_cb);
@@ -375,7 +375,7 @@ public class Sudoku : Adw.Application
 
     private void show_start_view ()
     {
-        if (game_view != null && game_view.game.board.complete != true)
+        if (game != null && game.board.complete != true)
             game.stop_clock ();
 
         print_current_board_action.set_enabled (false);
@@ -383,7 +383,7 @@ public class Sudoku : Adw.Application
         redo_action.set_enabled (false);
         reset_board_action.set_enabled (false);
         new_game_action.set_enabled (false);
-        back_action.set_enabled (game_view != null && game_view.game.board.complete != true);
+        back_action.set_enabled (game != null && game.board.complete != true);
         earmark_mode_action.set_enabled (false);
         toggle_pause_action.set_enabled (false);
         play_custom_game_action.set_enabled (false);
@@ -502,19 +502,22 @@ public class Sudoku : Adw.Application
         var builder = new Gtk.Builder.from_resource ("/org/gnome/Sudoku/ui/shortcuts-window.ui");
         var shortcuts_window = builder.get_object ("shortcuts-window") as ShortcutsWindow;
 
-        if (game_view != null)
+        if (game != null)
         {
             if (!game.paused)
                 game.stop_clock ();
 
-            game_view.unselect ();
+            game_view.grid.unselect ();
 
             shortcuts_window.close_request.connect(() => {
-                if (!game.paused)
-                    game.resume_clock ();
+                if (window.current_screen != SudokuWindowScreen.START)
+                {
+                    if (game.paused)
+                        game.resume_clock ();
 
-                if (game_view != null)
                     game_view.grab_focus ();
+                }
+
                 return Gdk.EVENT_PROPAGATE;
             });
         }
@@ -543,7 +546,7 @@ public class Sudoku : Adw.Application
         var about_dialog = new Adw.AboutDialog.from_appdata ("/org/gnome/Sudoku/metainfo.xml", VERSION);
         about_dialog.set_version (VERSION);
         about_dialog.set_comments (localized_comments_format.printf (SudokuGenerator.qqwing_version ()));
-        about_dialog.set_copyright ("Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha\nCopyright © 2023 Jamie Murphy\nCopyright © 2024 Johan Gay");
+        about_dialog.set_copyright ("Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha\nCopyright © 2023 Jamie Murphy\nCopyright © 2024-2025 Johan Gay");
         about_dialog.set_developers (authors);
         about_dialog.set_translator_credits (_("translator-credits"));
         about_dialog.present (window);
