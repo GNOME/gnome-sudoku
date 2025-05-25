@@ -184,6 +184,9 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     private void visible_dialog_cb ()
     {
+        if (current_screen == SudokuWindowScreen.START)
+            return;
+
         if (visible_dialog != null)
         {
             if (!game_view.game.paused)
