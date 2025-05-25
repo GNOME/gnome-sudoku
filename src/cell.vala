@@ -33,12 +33,15 @@ public class SudokuCell : Widget
     private SudokuEarmark[] earmarks;
 
     private SudokuGame game;
-    private unowned SudokuGrid grid;
 
-    public SudokuCell (int row, int col, SudokuGame game, SudokuGrid grid)
+    private unowned SudokuGrid grid;
+    private unowned double? zoom_multiplier;
+
+    public SudokuCell (SudokuGame game, SudokuGrid grid, ref double zoom_multiplier, int row, int col)
     {
         this.game = game;
         this.grid = grid;
+        this.zoom_multiplier = zoom_multiplier;
         this.set_accessible_role (AccessibleRole.BUTTON);
 
         this.row = row;
@@ -313,7 +316,7 @@ public class SudokuCell : Widget
                                         int height,
                                         int baseline)
     {
-        int zoomed_size = (int) (height * 0.5);
+        int zoomed_size = (int) (height * zoom_multiplier);
         set_font_size (value_label, zoomed_size);
 
         Widget child = get_last_child ();

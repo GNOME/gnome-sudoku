@@ -62,6 +62,7 @@ public class SudokuGameView : Box
         Sudoku.app.notify["show-warnings"].connect (warnings_cb);
         Sudoku.app.notify["earmark-warnings"].connect (warnings_cb);
         Sudoku.app.notify["solution-warnings"].connect (warnings_cb);
+        Sudoku.app.notify["zoom-level"].connect (zoom_cb);
 
         menu_button.main_menu.closed.connect (() => {
             grab_focus ();
@@ -229,6 +230,11 @@ public class SudokuGameView : Box
     private void warnings_cb ()
     {
         grid.update_warnings ();
+    }
+
+    private void zoom_cb ()
+    {
+        grid.update_zoom ();
     }
 
     private void show_timer_cb ()

@@ -29,7 +29,7 @@ public class SudokuGrid : Grid
 
     public int selected_row { get; private set; default = START.row; }
     public int selected_col { get; private set; default = START.col; }
-    public double value_zoom_multiplier { get; private set; }
+    public double zoom_multiplier;
 
     private GestureClick button_controller;
     private SudokuGame game;
@@ -58,6 +58,7 @@ public class SudokuGrid : Grid
         add_controller (button_controller);
 
         number_picker = new SudokuNumberPicker (game);
+        update_zoom ();
 
         var blocks = new Grid[game.board.block_rows, game.board.block_cols];
         for (var block_row = 0; block_row < game.board.block_rows; block_row++)
@@ -81,7 +82,7 @@ public class SudokuGrid : Grid
         {
             for (var col = 0; col < game.board.cols; col++)
             {
-                var cell = new SudokuCell (row, col, game, this);
+                var cell = new SudokuCell (game, this, ref zoom_multiplier, row, col);
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
                 cells[row, col] = cell;
             }
@@ -102,7 +103,6 @@ public class SudokuGrid : Grid
         this.game.board.value_changed.connect (value_changed_cb);
         this.game.board.earmark_changed.connect (earmark_changed_cb);
 
-        update_zoom ();
         update_warnings ();
     }
 
@@ -194,18 +194,18 @@ public class SudokuGrid : Grid
         }
     }
 
-    private void update_zoom ()
+    public void update_zoom ()
     {
         switch (Sudoku.app.zoom_level)
         {
             case SMALL:
-                value_zoom_multiplier = 0.4;
+                zoom_multiplier = 0.4;
                 break;
             case MEDIUM:
-                value_zoom_multiplier = 0.5;
+                zoom_multiplier = 0.5;
                 break;
             case LARGE:
-                value_zoom_multiplier = 0.6;
+                zoom_multiplier = 0.6;
                 break;
             default:
                 assert_not_reached ();
@@ -471,5 +471,4 @@ public class SudokuGrid : Grid
                 assert_not_reached ();
         }
     }
-
 }
