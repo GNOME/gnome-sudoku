@@ -35,13 +35,15 @@ public class SudokuCell : Widget
     private SudokuGame game;
 
     private unowned SudokuGrid grid;
-    private unowned double? zoom_multiplier;
+    private unowned double? zoom_value_multiplier;
+    private unowned double? zoom_earmark_multiplier;
 
-    public SudokuCell (SudokuGame game, SudokuGrid grid, ref double zoom_multiplier, int row, int col)
+    public SudokuCell (SudokuGame game, SudokuGrid grid, ref double zoom_value_multiplier, ref double zoom_earmark_multiplier, int row, int col)
     {
         this.game = game;
         this.grid = grid;
-        this.zoom_multiplier = zoom_multiplier;
+        this.zoom_value_multiplier = zoom_value_multiplier;
+        this.zoom_earmark_multiplier = zoom_earmark_multiplier;
         this.set_accessible_role (AccessibleRole.BUTTON);
 
         this.row = row;
@@ -316,7 +318,7 @@ public class SudokuCell : Widget
                                         int height,
                                         int baseline)
     {
-        int zoomed_size = (int) (height * zoom_multiplier);
+        int zoomed_size = (int) (height * zoom_value_multiplier);
         set_font_size (value_label, zoomed_size);
 
         Widget child = get_last_child ();
@@ -342,10 +344,12 @@ public class SudokuCell : Widget
         int earmark_width, earmark_height;
         int max_earmark_size = width / 3; //3 earmarks per row and per column
         int num = 0;
+
+        zoomed_size = (int) (height * zoom_earmark_multiplier);
         for (int row_tmp = 2; row_tmp >= 0; row_tmp--)
             for (int col_tmp = 0; col_tmp < 3; col_tmp++)
             {
-                set_font_size (earmarks[num].label, height / 4);
+                set_font_size (earmarks[num].label, zoomed_size);
                 earmarks[num].get_preferred_size (null, out nat);
                 earmark_width = int.min (max_earmark_size, nat.width);
                 earmark_height = int.min (max_earmark_size, nat.height);

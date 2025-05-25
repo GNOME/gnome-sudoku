@@ -29,7 +29,9 @@ public class SudokuGrid : Grid
 
     public int selected_row { get; private set; default = START.row; }
     public int selected_col { get; private set; default = START.col; }
-    public double zoom_multiplier;
+
+    private double zoom_value_multiplier;
+    private double zoom_earmark_multiplier;
 
     private GestureClick button_controller;
     private SudokuGame game;
@@ -82,7 +84,7 @@ public class SudokuGrid : Grid
         {
             for (var col = 0; col < game.board.cols; col++)
             {
-                var cell = new SudokuCell (game, this, ref zoom_multiplier, row, col);
+                var cell = new SudokuCell (game, this, ref zoom_value_multiplier, ref zoom_earmark_multiplier, row, col);
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
                 cells[row, col] = cell;
             }
@@ -199,13 +201,16 @@ public class SudokuGrid : Grid
         switch (Sudoku.app.zoom_level)
         {
             case SMALL:
-                zoom_multiplier = 0.4;
+                zoom_value_multiplier = 0.4;
+                zoom_earmark_multiplier = 0.25;
                 break;
             case MEDIUM:
-                zoom_multiplier = 0.5;
+                zoom_value_multiplier = 0.5;
+                zoom_earmark_multiplier = 0.25;
                 break;
             case LARGE:
-                zoom_multiplier = 0.6;
+                zoom_value_multiplier = 0.6;
+                zoom_earmark_multiplier = 0.3;
                 break;
             default:
                 assert_not_reached ();
