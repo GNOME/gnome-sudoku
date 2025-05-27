@@ -116,33 +116,16 @@ public class SudokuBoard : Object
     public SudokuBoard ()
     {
         cells = new Cell[rows, cols];
-
         for (int row = 0; row < rows; row++)
             for (int col = 0; col < cols; col++)
-            {
-                cells[row, col].value = 0;
-                cells[row, col].solution = 0;
-                cells[row, col].fixed = false;
                 cells[row, col].earmarks = new bool[max_val];
-                for (int num = 0; num < max_val; num++)
-                    cells[row, col].earmarks[num] = false;
-            }
 
         digits = new DigitOccurences[max_val];
         for (int i = 0; i < max_val; i++)
         {
             digits[i].occurrences_in_row = new int[rows];
-            for (var row = 0; row < rows; row ++)
-                digits[i].occurrences_in_row[row] = 0;
-
             digits[i].occurrences_in_col = new int[cols];
-            for (var col = 0; col < cols; col ++)
-                digits[i].occurrences_in_row[col] = 0;
-
             digits[i].occurrences_in_block = new int[block_rows, block_cols];
-            for (var block_row = 0; block_row < block_rows; block_row++)
-                for (var block_col = 0; block_col < block_cols; block_col++)
-                    digits[i].occurrences_in_block[block_row, block_col] = 0;
         }
 
         broken_coords = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
