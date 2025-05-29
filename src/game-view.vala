@@ -289,7 +289,7 @@ public class SudokuGameView : Box
         if (game != null && !game.paused)
             game.stop_clock ();
 
-        grid.unparent ();
+        grid?.unparent ();
         base.dispose ();
     }
 }
