@@ -119,6 +119,9 @@ public class SudokuGrid : Grid
         }
 
         update_warnings ();
+
+        game.board.value_changed.connect (value_changed_cb);
+        game.board.earmark_changed.connect (earmark_changed_cb);
     }
 
     private void update_highlighter (int old_row, int old_col)
