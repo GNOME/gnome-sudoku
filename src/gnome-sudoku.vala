@@ -155,6 +155,8 @@ public class Sudoku : Adw.Application
         settings.bind ("autoclean-earmarks", this, "autoclean-earmarks", SettingsBindFlags.DEFAULT);
         settings.bind ("number-picker-second-click", this, "number-picker-second-click", SettingsBindFlags.DEFAULT);
 
+        notify["show-timer"].connect (timer_cb);
+
         add_action_entries (action_entries, this);
 
         var action = settings.create_action ("show-warnings");
@@ -440,6 +442,11 @@ public class Sudoku : Adw.Application
                 error ("Error: %s", e.message);
             }
         });
+    }
+
+    private void timer_cb ()
+    {
+        toggle_pause_action.set_enabled (show_timer && window.current_screen == SudokuWindowScreen.PLAY);
     }
 
     private void reset_board_cb ()
