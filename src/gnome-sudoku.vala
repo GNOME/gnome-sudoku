@@ -155,7 +155,7 @@ public class Sudoku : Adw.Application
         settings.bind ("autoclean-earmarks", this, "autoclean-earmarks", SettingsBindFlags.DEFAULT);
         settings.bind ("number-picker-second-click", this, "number-picker-second-click", SettingsBindFlags.DEFAULT);
 
-        notify["show-timer"].connect (timer_cb);
+        notify["show-timer"].connect (show_timer_cb);
 
         add_action_entries (action_entries, this);
 
@@ -444,7 +444,7 @@ public class Sudoku : Adw.Application
         });
     }
 
-    private void timer_cb ()
+    private void show_timer_cb ()
     {
         toggle_pause_action.set_enabled (show_timer && window.current_screen == SudokuWindowScreen.PLAY);
     }

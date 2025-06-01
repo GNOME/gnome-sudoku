@@ -247,9 +247,6 @@ public class SudokuGameView : Box
                 earmark_mode_button.visible = !window.width_is_small;
                 clock_box.visible = !window.width_is_small;
                 play_pause_stack.visible = true;
-
-                if (game.paused)
-                    game.paused = false;
             }
             else
             {
@@ -257,6 +254,9 @@ public class SudokuGameView : Box
                 clock_box.visible = false;
                 earmark_mode_button.visible = true;
                 play_pause_stack.visible = false;
+
+                if (game.paused)
+                    game.paused = false;
             }
         }
     }
