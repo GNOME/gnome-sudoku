@@ -191,8 +191,10 @@ public class SudokuCell : Widget
 
         gesture.set_state (EventSequenceState.CLAIMED);
 
-        if ((Sudoku.app.number_picker_second_click && !selected) ||
-            is_fixed)
+        bool double_click_wanted = Sudoku.app.number_picker_second_click ||
+                                   (Sudoku.app.highlighter && Sudoku.app.highlight_numbers && value != 0);
+
+        if (is_fixed || (!selected && double_click_wanted))
         {
             grab_selection ();
             return;
