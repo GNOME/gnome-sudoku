@@ -340,9 +340,10 @@ public class SudokuBoard : Object
         add_to_occurrences (row, col, val, 1);
         mark_breakages (row, col, val);
 
+        value_changed (row, col, old_val, val);
+
         if (complete)
             completed();
-        value_changed (row, col, old_val, val);
     }
 
     public void remove (int row, int col)
