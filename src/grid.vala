@@ -479,4 +479,10 @@ public class SudokuGrid : Grid
                 assert_not_reached ();
         }
     }
+
+    public override void dispose ()
+    {
+        number_picker.unparent ();
+        base.dispose ();
+    }
 }

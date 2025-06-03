@@ -63,16 +63,10 @@ public class SudokuGameView : Box
         Sudoku.app.notify["earmark-warnings"].connect (warnings_cb);
         Sudoku.app.notify["solution-warnings"].connect (warnings_cb);
         Sudoku.app.notify["zoom-level"].connect (zoom_cb);
+        this.window.notify["width-is-small"].connect (window_width_is_small_cb);
 
         menu_button.main_menu.closed.connect (() => {
             grab_focus ();
-        });
-
-        this.window.notify["width-is-small"].connect (() => {
-            clock_box.visible = Sudoku.app.show_timer && !this.window.width_is_small && game.mode == GameMode.PLAY;
-            earmark_mode_button.visible = game.mode == GameMode.PLAY &&
-                                          (!Sudoku.app.show_timer ||
-                                          (Sudoku.app.show_timer && !window.width_is_small));
         });
 
         button_controller = new GestureClick ();
@@ -182,6 +176,14 @@ public class SudokuGameView : Box
         }
 
         set_clock_label_text (elapsed_time);
+    }
+
+    private void window_width_is_small_cb ()
+    {
+        clock_box.visible = Sudoku.app.show_timer && !this.window.width_is_small && game.mode == GameMode.PLAY;
+        earmark_mode_button.visible = game.mode == GameMode.PLAY &&
+                                                   (!Sudoku.app.show_timer ||
+                                                   (Sudoku.app.show_timer && !window.width_is_small));
     }
 
     private void paused_cb ()
