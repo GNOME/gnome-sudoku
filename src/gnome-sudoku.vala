@@ -57,6 +57,7 @@ public class Sudoku : Adw.Application
     private SimpleAction back_action;
     private SimpleAction zoom_in_action;
     private SimpleAction zoom_out_action;
+    private uint autosave_timeout;
 
     public static unowned Sudoku app;
 
@@ -224,12 +225,7 @@ public class Sudoku : Adw.Application
         if (window != null)
         {
             if (game != null)
-            {
-                if (!game.is_empty () && !game.board.complete)
-                    saver.save_game (game);
-                else
-                    saver.delete_save ();
-            }
+                save_game ();
 
             window.close ();
         }
@@ -355,6 +351,14 @@ public class Sudoku : Adw.Application
         start_game (game.board);
     }
 
+    private void save_game ()
+    {
+        if (!game.is_empty () && !game.board.complete)
+            saver.save_game (game);
+        else
+            saver.delete_save ();
+    }
+
     private void start_game (SudokuBoard board)
     {
         var highscore = saver.get_highscore (board.difficulty_category);
@@ -368,6 +372,7 @@ public class Sudoku : Adw.Application
             window.change_board (board, highscore);
 
         show_game_view ();
+        start_autosave ();
 
         if (game.mode != GameMode.CREATE)
             game.board.completed.connect (board_completed_cb);
@@ -411,6 +416,24 @@ public class Sudoku : Adw.Application
     private void new_game_cb ()
     {
         show_start_view ();
+    }
+
+    private void start_autosave ()
+    {
+        if (autosave_timeout != 0)
+            Source.remove (autosave_timeout);
+
+        autosave_timeout = Timeout.add_seconds_once (300, () => {
+            autosave ();
+        });
+    }
+
+    private bool autosave ()
+    {
+        save_game ();
+        autosave_timeout = Timeout.add_seconds (300, autosave);
+        Source.set_name_by_id (autosave_timeout, "[gnome-sudoku] autosave");
+        return false;
     }
 
     private void create_game_cb ()
