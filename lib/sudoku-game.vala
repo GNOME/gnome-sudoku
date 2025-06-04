@@ -388,18 +388,12 @@ public class SudokuGame : Object
     public void start_clock ()
     {
         if (timer == null)
-        {
             timer = new Timer ();
-            timer.start ();
-            timeout_cb ();
-        }
         else
-        {
             stop_clock ();
-            timer.start ();
-            timeout_cb ();
-            return;
-        }
+
+        timer.start ();
+        timeout_cb ();
 
     }
 
