@@ -382,7 +382,7 @@ public class SudokuGame : Object
         clock_timeout = Timeout.add_seconds (1, timeout_cb);
         Source.set_name_by_id (clock_timeout, "[gnome-sudoku] timeout_cb");
         tick ();
-        return false;
+        return Source.CONTINUE;
     }
 
     public void start_clock ()

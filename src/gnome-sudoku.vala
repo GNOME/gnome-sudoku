@@ -433,7 +433,7 @@ public class Sudoku : Adw.Application
         save_game ();
         autosave_timeout = Timeout.add_seconds (300, autosave);
         Source.set_name_by_id (autosave_timeout, "[gnome-sudoku] autosave");
-        return false;
+        return Source.CONTINUE;
     }
 
     private void create_game_cb ()
