@@ -423,17 +423,12 @@ public class Sudoku : Adw.Application
         if (autosave_timeout != 0)
             Source.remove (autosave_timeout);
 
-        autosave_timeout = Timeout.add_seconds_once (300, () => {
-            autosave ();
+        autosave_timeout = Timeout.add_seconds (300, () => {
+            save_game ();
+            return Source.CONTINUE;
         });
-    }
 
-    private bool autosave ()
-    {
-        save_game ();
-        autosave_timeout = Timeout.add_seconds (300, autosave);
         Source.set_name_by_id (autosave_timeout, "[gnome-sudoku] autosave");
-        return Source.CONTINUE;
     }
 
     private void create_game_cb ()

@@ -27,7 +27,7 @@ public class SudokuGame : Object
     public GameMode mode { get; set; default = NONE; }
     public bool paused { get; set; default = false; }
     private GLib.Timer timer;
-    private uint clock_timeout;
+    private uint clock_tick_timeout;
 
     public signal void tick ();
     public signal void action_completed (StackAction action);
@@ -377,14 +377,6 @@ public class SudokuGame : Object
         return timer.elapsed ();
     }
 
-    private bool timeout_cb ()
-    {
-        clock_timeout = Timeout.add_seconds (1, timeout_cb);
-        Source.set_name_by_id (clock_timeout, "[gnome-sudoku] timeout_cb");
-        tick ();
-        return Source.CONTINUE;
-    }
-
     public void start_clock ()
     {
         if (timer == null)
@@ -393,28 +385,37 @@ public class SudokuGame : Object
             stop_clock ();
 
         timer.start ();
-        timeout_cb ();
-
+        start_clock_tick ();
     }
 
     public void stop_clock ()
     {
-        if (timer == null || clock_timeout == 0)
+        if (timer == null || clock_tick_timeout == 0)
             return;
 
-        Source.remove (clock_timeout);
-        clock_timeout = 0;
         timer.stop ();
+        Source.remove (clock_tick_timeout);
+        clock_tick_timeout = 0;
         tick ();
     }
 
     public void resume_clock ()
     {
-        if (timer == null || clock_timeout != 0)
+        if (timer == null || clock_tick_timeout != 0)
             return;
 
         timer.continue ();
-        timeout_cb ();
+        start_clock_tick ();
+    }
+
+    private void start_clock_tick ()
+    {
+        clock_tick_timeout = Timeout.add_seconds (1, () => {
+            tick ();
+            return Source.CONTINUE;
+        });
+
+        Source.set_name_by_id (clock_tick_timeout, "[gnome-sudoku] clock_tick");
     }
 }
 
