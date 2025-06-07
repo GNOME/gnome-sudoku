@@ -53,6 +53,7 @@ public class SudokuCell : Widget
         value_label.visible = value != 0;
         value_label.set_parent (this);
         value_label.add_css_class ("value");
+        value_label.add_css_class ("numeric");
 
         focusable = true;
         can_focus = true;
