@@ -43,6 +43,7 @@ public class SudokuGameView : Box
 
     private Label paused_label;
     private GestureClick button_controller;
+    private ulong tick_handle;
 
     public SudokuGame game;
     public SudokuGrid grid;
@@ -63,6 +64,7 @@ public class SudokuGameView : Box
         Sudoku.app.notify["earmark-warnings"].connect (warnings_cb);
         Sudoku.app.notify["solution-warnings"].connect (warnings_cb);
         Sudoku.app.notify["zoom-level"].connect (zoom_cb);
+        Sudoku.app.notify["show-timer"].connect (show_timer_cb);
         this.window.notify["width-is-small"].connect (window_width_is_small_cb);
 
         menu_button.main_menu.closed.connect (() => {
@@ -76,14 +78,9 @@ public class SudokuGameView : Box
 
         paused_label= new Label(_("Paused"));
 
-        if (game.mode == GameMode.PLAY)
-        {
-            game.tick.connect (tick_cb);
-            Sudoku.app.notify["show-timer"].connect (show_timer_cb);
-        }
-
         initialize_clock_label ();
         initialize_buttons ();
+        update_tick_connection ();
 
         if (game.board.previous_played_time == 0.0)
             add_earmark_possibilities ();
@@ -92,7 +89,6 @@ public class SudokuGameView : Box
         this.focusable = true;
 
         game.notify["paused"].connect(paused_cb);
-        game.tick.connect (tick_cb);
 
         grid = new SudokuGrid (game);
         var grid_layout = new SudokuGridLayoutManager ();
@@ -110,6 +106,7 @@ public class SudokuGameView : Box
         grid.change_board ();
 
         initialize_clock_label ();
+        update_tick_connection ();
         windowtitle.subtitle = board.difficulty_category.to_string ();
 
         can_focus = true;
@@ -162,6 +159,17 @@ public class SudokuGameView : Box
     {
         if (Sudoku.app.show_possibilities && game.mode != GameMode.CREATE)
             game.enable_all_earmark_possibilities ();
+    }
+
+    private void update_tick_connection ()
+    {
+        if (tick_handle == 0 && game.mode != GameMode.CREATE && Sudoku.app.show_timer)
+            tick_handle = game.tick.connect (tick_cb);
+        else if (tick_handle != 0 && (game.mode == GameMode.CREATE || !Sudoku.app.show_timer))
+        {
+            game.disconnect (tick_handle);
+            tick_handle = 0;
+        }
     }
 
     private void tick_cb ()
@@ -248,14 +256,15 @@ public class SudokuGameView : Box
             if (Sudoku.app.show_timer)
             {
                 initialize_clock_label ();
+                update_tick_connection ();
                 earmark_mode_button.visible = !window.width_is_small;
                 clock_box.visible = !window.width_is_small;
                 play_pause_stack.visible = true;
             }
             else
             {
-                game.tick.disconnect (tick_cb);
                 clock_box.visible = false;
+                update_tick_connection ();
                 earmark_mode_button.visible = true;
                 play_pause_stack.visible = false;
 
