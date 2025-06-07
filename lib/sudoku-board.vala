@@ -275,12 +275,13 @@ public class SudokuBoard : Object
 
     public void set_all_fixed ()
     {
-        foreach (var cell in cells)
-            if (cell.value > 0)
-            {
-                cell.fixed = true;
-                fixed++;
-            }
+        for (int row = 0; row < rows; row++)
+            for (int col = 0; col < cols; col++)
+                if (cells[row, col].value > 0)
+                {
+                    cells[row, col].fixed = true;
+                    fixed++;
+                }
     }
 
     public void enable_earmark (int row, int col, int num)
