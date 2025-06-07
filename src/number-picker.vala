@@ -188,6 +188,7 @@ private class ValuePicker : PickerBase
                 label.margin_end = 8;
                 label.margin_top = 4;
                 label.margin_bottom = 4;
+                label.add_css_class ("numeric");
                 button.set_child (label);
 
                 //workaround to avoid lambda capture and memory leak
@@ -272,6 +273,7 @@ private class EarmarkPicker : PickerBase
                 label.margin_end = 16;
                 label.margin_top = 0;
                 label.margin_bottom = 8;
+                label.add_css_class ("numeric");
                 button.set_child (label);
 
                 //workaround to avoid lambda capture and memory leak
