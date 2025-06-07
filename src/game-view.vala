@@ -92,6 +92,7 @@ public class SudokuGameView : Box
         this.focusable = true;
 
         game.notify["paused"].connect(paused_cb);
+        game.tick.connect (tick_cb);
 
         grid = new SudokuGrid (game);
         var grid_layout = new SudokuGridLayoutManager ();
@@ -107,6 +108,9 @@ public class SudokuGameView : Box
         initialize_buttons ();
         add_earmark_possibilities ();
         grid.change_board ();
+
+        initialize_clock_label ();
+        windowtitle.subtitle = board.difficulty_category.to_string ();
 
         can_focus = true;
         focus (TAB_FORWARD);
@@ -126,8 +130,6 @@ public class SudokuGameView : Box
     {
         if (game.mode == GameMode.CREATE || !Sudoku.app.show_timer)
             return;
-
-        game.tick.connect (tick_cb);
 
         var elapsed_time = (int) game.get_total_time_played ();
 
