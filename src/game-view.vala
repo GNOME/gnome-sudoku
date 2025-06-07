@@ -134,11 +134,11 @@ public class SudokuGameView : Box
         if (highscore != null)
         {
             if (elapsed_time > highscore)
-                clock_label.set_css_classes ({});
+                clock_label.set_css_classes ({"numeric"});
             else if (elapsed_time > highscore - 60)
-                clock_label.set_css_classes ({"warning"});
+                clock_label.set_css_classes ({"numeric", "warning"});
             else
-                clock_label.set_css_classes ({"success"});
+                clock_label.set_css_classes ({"numeric", "success"});
         }
 
         set_clock_label_text (elapsed_time);
