@@ -177,7 +177,7 @@ public class Sudoku : Adw.Application
         set_accels_for_action ("app.help", {"F1"});
         set_accels_for_action ("app.shortcuts-window", {"<Primary>question"});
         set_accels_for_action ("app.preferences-dialog", {"<Primary>comma"});
-        set_accels_for_action ("app.fullscreen", {"F11", "f"});
+        set_accels_for_action ("app.toggle-fullscreen", {"F11", "f"});
         set_accels_for_action ("app.highlighter", {"<Primary>h"});
         set_accels_for_action ("app.back", {"<Alt>KP_Left", "<Alt>Left"});
         set_accels_for_action ("app.zoom-in", {"<Primary>plus", "<Primary>equal", "ZoomIn", "<Primary>KP_Add"});
@@ -579,7 +579,7 @@ public class Sudoku : Adw.Application
 
     private void toggle_fullscreen_cb ()
     {
-        if (window.is_fullscreen ())
+        if (window.fullscreened)
             window.unfullscreen ();
         else
             window.fullscreen ();
