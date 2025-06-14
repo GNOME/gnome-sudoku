@@ -24,7 +24,7 @@ using Gtk;
 using Gdk;
 
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/game-view.ui")]
-public class SudokuGameView : Box
+public class SudokuGameView : Adw.Bin
 {
     [GtkChild] private unowned Overlay grid_overlay;
     [GtkChild] private unowned Adw.Bin grid_bin;

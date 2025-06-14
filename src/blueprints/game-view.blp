@@ -1,115 +1,119 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $SudokuGameView : Box {
-  orientation: vertical;
+template $SudokuGameView : Adw.Bin {
+  Adw.ToolbarView {
+    top-bar-style: raised;
 
-  Adw.HeaderBar headerbar {
-    centering-policy: strict;
-    title-widget: Adw.WindowTitle windowtitle {
-      title: _("Sudoku");
-    };
+    [top]
+    Adw.HeaderBar headerbar {
+      centering-policy: strict;
+      title-widget: Adw.WindowTitle windowtitle {
+        title: _("Sudoku");
+      };
 
-    [end]
-    $SudokuMenuButton menu_button{}
+      [end]
+      $SudokuMenuButton menu_button{}
 
-    [start]
-    Button undo_button {
-      sensitive: false;
-      valign: center;
-      tooltip-text: _("Undo Action");
-      can-focus: true;
-      focus-on-click: false;
-      action-name: "app.undo";
-      icon-name: "edit-undo-symbolic";
-    }
-
-    [start]
-    Button redo_button {
-      sensitive: false;
-      valign: center;
-      tooltip-text: _("Redo Action");
-      can-focus: true;
-      focus-on-click: false;
-      action-name: "app.redo";
-      icon-name: "edit-redo-symbolic";
-    }
-
-    [start]
-    ToggleButton earmark_mode_button {
-      halign: center;
-      valign: center;
-      focus-on-click: false;
-      action-name: "app.earmark-mode";
-      tooltip-text: _("Earmark Mode");
-      icon-name: "pencil-symbolic";
-    }
-
-    Stack play_pause_stack {
-      transition-type: crossfade;
-
-      Button pause_button {
+      [start]
+      Button undo_button {
         sensitive: false;
         valign: center;
+        tooltip-text: _("Undo Action");
         can-focus: true;
         focus-on-click: false;
-        action-name: "app.toggle-pause";
-        tooltip-text: _("Pause");
-        icon-name: "media-playback-pause-symbolic";
+        action-name: "app.undo";
+        icon-name: "edit-undo-symbolic";
       }
 
-      Button play_button {
+      [start]
+      Button redo_button {
         sensitive: false;
         valign: center;
+        tooltip-text: _("Redo Action");
         can-focus: true;
         focus-on-click: false;
-        tooltip-text: _("Play");
-        action-name: "app.toggle-pause";
-        icon-name: "media-playback-start-symbolic";
-      }
-    }
-
-    [end]
-    Button play_custom_game_button {
-      sensitive: false;
-      valign: center;
-      tooltip-text: _("Play Custom Game");
-      can-focus: true;
-      focus-on-click: false;
-      action-name: "app.play-custom-game";
-      icon-name: "checkmark-symbolic";
-
-      styles [
-        "success",
-      ]
-    }
-
-    [end]
-    Box clock_box {
-      can-focus: false;
-      spacing: 6;
-      halign: center;
-
-      Image clock_image {
-        can-focus: false;
-        icon-name: "preferences-system-time-symbolic";
-        icon-size: normal;
+        action-name: "app.redo";
+        icon-name: "edit-redo-symbolic";
       }
 
-      Label clock_label {
-        can-focus: false;
+      [start]
+      ToggleButton earmark_mode_button {
         halign: center;
+        valign: center;
+        focus-on-click: false;
+        action-name: "app.earmark-mode";
+        tooltip-text: _("Earmark Mode");
+        icon-name: "pencil-symbolic";
+      }
+
+      Stack play_pause_stack {
+        transition-type: crossfade;
+
+        Button pause_button {
+          sensitive: false;
+          valign: center;
+          can-focus: true;
+          focus-on-click: false;
+          action-name: "app.toggle-pause";
+          tooltip-text: _("Pause");
+          icon-name: "media-playback-pause-symbolic";
+        }
+
+        Button play_button {
+          sensitive: false;
+          valign: center;
+          can-focus: true;
+          focus-on-click: false;
+          tooltip-text: _("Play");
+          action-name: "app.toggle-pause";
+          icon-name: "media-playback-start-symbolic";
+        }
+      }
+
+      [end]
+      Button play_custom_game_button {
+        sensitive: false;
+        valign: center;
+        tooltip-text: _("Play Custom Game");
+        can-focus: true;
+        focus-on-click: false;
+        action-name: "app.play-custom-game";
+        icon-name: "checkmark-symbolic";
+
         styles [
-          "numeric",
+          "success",
         ]
       }
+
+      [end]
+      Box clock_box {
+        can-focus: false;
+        spacing: 6;
+        halign: center;
+
+        Image clock_image {
+          can-focus: false;
+          icon-name: "preferences-system-time-symbolic";
+          icon-size: normal;
+        }
+
+        Label clock_label {
+          can-focus: false;
+          halign: center;
+          styles [
+            "numeric",
+          ]
+        }
+      }
     }
-  }
-  Adw.Bin grid_bin {
-    Overlay grid_overlay {
-      hexpand: true;
-      vexpand: true;
-      visible: true;
-    }
+
+    content: Adw.Bin grid_bin {
+      Overlay grid_overlay {
+        hexpand: true;
+        vexpand: true;
+        visible: true;
+      }
+    };
   }
 }

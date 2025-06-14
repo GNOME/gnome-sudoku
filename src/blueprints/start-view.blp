@@ -1,121 +1,125 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $SudokuStartView : Box {
-  orientation: vertical;
+template $SudokuStartView : Adw.Bin {
+  Adw.ToolbarView {
+    top-bar-style: raised;
 
-  Adw.HeaderBar headerbar {
-    centering-policy: strict;
-    title-widget: Adw.WindowTitle windowtitle {
-      title: _("Sudoku");
-      subtitle: _("Select Difficulty");
-    };
+    [top]
+    Adw.HeaderBar headerbar {
+      centering-policy: strict;
+      title-widget: Adw.WindowTitle windowtitle {
+        title: _("Sudoku");
+        subtitle: _("Select Difficulty");
+      };
 
-    [start]
-    Button back_button {
-      visible: false;
-      halign: center;
-      valign: center;
-      tooltip-text: _("Back");
-      use-underline: true;
-      action-name: "app.back";
-      icon-name: "go-previous-symbolic";
+      [start]
+      Button back_button {
+        visible: false;
+        halign: center;
+        valign: center;
+        tooltip-text: _("Back");
+        use-underline: true;
+        action-name: "app.back";
+        icon-name: "go-previous-symbolic";
+      }
+
+      [end]
+      $SudokuMenuButton menu_button {}
     }
 
-    [end]
-    $SudokuMenuButton menu_button {}
-  }
+    content: Adw.StatusPage {
+      title: _("Select Puzzle Difficulty");
+      valign: start;
 
-  Adw.StatusPage {
-    title: _("Select Puzzle Difficulty");
+      child: Adw.Clamp {
+        maximum-size: 400;
 
-    child: Adw.Clamp {
-      maximum-size: 400;
+        Box {
+          orientation: vertical;
 
-      Box {
-        orientation: vertical;
+          Adw.PreferencesGroup {
+            Adw.ActionRow {
+              [prefix]
+              CheckButton custom_check {
+                group: easy_check;
+                can-focus: false;
+                can-target: false;
+              }
 
-        Adw.PreferencesGroup {
-          Adw.ActionRow {
-            [prefix]
-            CheckButton custom_check {
-              group: easy_check;
-              can-focus: false;
-              can-target: false;
+              title: C_("Difficulty", "_Custom");
+              use-underline: true;
+              activatable-widget: custom_check;
+            }
+          }
+
+          Adw.PreferencesGroup {
+            Adw.ActionRow {
+              [prefix]
+              CheckButton easy_check {
+                can-focus: false;
+                can-target: false;
+              }
+
+              title: C_("Difficulty", "_Easy");
+              use-underline: true;
+              activatable-widget: easy_check;
             }
 
-            title: C_("Difficulty", "_Custom");
+            Adw.ActionRow {
+              [prefix]
+              CheckButton medium_check {
+                group: easy_check;
+                can-focus: false;
+                can-target: false;
+              }
+
+              title: C_("Difficulty", "_Medium");
+              use-underline: true;
+              activatable-widget: medium_check;
+            }
+
+            Adw.ActionRow {
+              [prefix]
+              CheckButton hard_check {
+                group: easy_check;
+                can-focus: false;
+                can-target: false;
+              }
+
+              title: C_("Difficulty", "_Hard");
+              use-underline: true;
+              activatable-widget: hard_check;
+            }
+
+            Adw.ActionRow {
+              [prefix]
+              CheckButton very_hard_check {
+                group: easy_check;
+                can-focus: false;
+                can-target: false;
+              }
+
+              title: C_("Difficulty", "_Very Hard");
+              use-underline: true;
+              activatable-widget: very_hard_check;
+            }
+          }
+
+          Button start_button {
+            margin-top: 12;
+            halign: center;
+            label: _("_Start Game");
             use-underline: true;
-            activatable-widget: custom_check;
+            clicked => $start_game_cb();
+
+            styles [
+              "pill",
+              "suggested-action",
+            ]
           }
         }
-
-        Adw.PreferencesGroup {
-          Adw.ActionRow {
-            [prefix]
-            CheckButton easy_check {
-              can-focus: false;
-              can-target: false;
-            }
-
-            title: C_("Difficulty", "_Easy");
-            use-underline: true;
-            activatable-widget: easy_check;
-          }
-
-          Adw.ActionRow {
-            [prefix]
-            CheckButton medium_check {
-              group: easy_check;
-              can-focus: false;
-              can-target: false;
-            }
-
-            title: C_("Difficulty", "_Medium");
-            use-underline: true;
-            activatable-widget: medium_check;
-          }
-
-          Adw.ActionRow {
-            [prefix]
-            CheckButton hard_check {
-              group: easy_check;
-              can-focus: false;
-              can-target: false;
-            }
-
-            title: C_("Difficulty", "_Hard");
-            use-underline: true;
-            activatable-widget: hard_check;
-          }
-
-          Adw.ActionRow {
-            [prefix]
-            CheckButton very_hard_check {
-              group: easy_check;
-              can-focus: false;
-              can-target: false;
-            }
-
-            title: C_("Difficulty", "_Very Hard");
-            use-underline: true;
-            activatable-widget: very_hard_check;
-          }
-        }
-
-        Button start_button {
-          margin-top: 12;
-          halign: center;
-          label: _("_Start Game");
-          use-underline: true;
-          clicked => $start_game_cb();
-
-          styles [
-            "pill",
-            "suggested-action",
-          ]
-        }
-      }
+      };
     };
   }
 }

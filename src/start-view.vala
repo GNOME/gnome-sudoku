@@ -22,7 +22,7 @@ using Gtk;
 using Gdk;
 
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/start-view.ui")]
-public class SudokuStartView : Box
+public class SudokuStartView : Adw.Bin
 {
     [GtkChild] public unowned Adw.HeaderBar headerbar;
 
