@@ -503,8 +503,8 @@ public class Sudoku : Adw.Application
 
         var list = new Gee.ArrayList<SudokuBoard> ();
         list.add (game.board.clone ());
-        var printer = new SudokuPrinter (list, 1, window);
-        printer.print_sudoku ();
+        var printer = new SudokuPrinter (list, 1);
+        printer.print_sudoku (window);
 
         print_current_board_action.set_enabled (true);
         print_multiple_action.set_enabled (true);

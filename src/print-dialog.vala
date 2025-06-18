@@ -96,8 +96,8 @@ public class SudokuPrintDialog : Adw.Dialog
             {
                 var boards = SudokuGenerator.generate_boards_async.end (res);
 
-                var printer = new SudokuPrinter (boards, npuzzles_per_page, window);
-                if (printer.print_sudoku () == PrintOperationResult.APPLY)
+                var printer = new SudokuPrinter (boards, npuzzles_per_page);
+                if (printer.print_sudoku (window) == PrintOperationResult.APPLY)
                 {
                     foreach (SudokuBoard board in boards)
                         saver.add_game_to_finished (new SudokuGame (board));

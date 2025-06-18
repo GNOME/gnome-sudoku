@@ -24,7 +24,6 @@ using Gtk;
 public class SudokuPrinter : GLib.Object {
 
     private Gee.List<SudokuBoard> boards;
-    private Window window;
 
     private int margin;
     private int n_sudokus;
@@ -32,7 +31,7 @@ public class SudokuPrinter : GLib.Object {
 
     private PrintOperation print_op;
 
-    public PrintOperationResult print_sudoku ()
+    public PrintOperationResult print_sudoku (Window window)
     {
         try
         {
@@ -50,10 +49,9 @@ public class SudokuPrinter : GLib.Object {
         return PrintOperationResult.ERROR;
     }
 
-    public SudokuPrinter (Gee.List<SudokuBoard> boards, int sudokus_per_page, Window window)
+    public SudokuPrinter (Gee.List<SudokuBoard> boards, int sudokus_per_page)
     {
         this.boards = boards;
-        this.window = window;
         this.margin = 25;
         this.n_sudokus = boards.size;
         this.sudokus_per_page = sudokus_per_page;
@@ -93,16 +91,13 @@ public class SudokuPrinter : GLib.Object {
 
         uint index = 0;
 
-        var pango_context = Pango.cairo_create_context (cr);
-        Pango.cairo_context_set_font_options (pango_context, window.get_font_options ());
-
         foreach (SudokuBoard sudoku in sudokus_on_page)
         {
             double left = margin_x + (index % n_across) * (best_square_size + margin_x);
             double top = margin_y + label_extents.height + (index / n_across) * (best_square_size + margin_y + label_extents.height);
 
             var label = sudoku.difficulty_category.to_string ();
-            var layout = new Pango.Layout (pango_context);
+            var layout = Pango.cairo_create_layout (cr);
             layout.set_font_description (Pango.FontDescription.from_string ("Sans Bold 9"));
             layout.set_text (label, -1);
 
