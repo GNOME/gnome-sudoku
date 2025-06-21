@@ -49,6 +49,7 @@ template $SudokuGameView : Adw.Bin {
 
       Stack play_pause_stack {
         transition-type: crossfade;
+        visible: false;
 
         Button pause_button {
           sensitive: false;
@@ -76,6 +77,7 @@ template $SudokuGameView : Adw.Bin {
         sensitive: false;
         valign: center;
         tooltip-text: _("Play Custom Game");
+        visible: false;
         can-focus: true;
         focus-on-click: false;
         action-name: "app.play-custom-game";
@@ -91,6 +93,7 @@ template $SudokuGameView : Adw.Bin {
         can-focus: false;
         spacing: 6;
         halign: center;
+        visible: false;
 
         Image clock_image {
           can-focus: false;
