@@ -438,10 +438,10 @@ public class SudokuGrid : Grid
     {
         var window = root as SudokuWindow;
 
-        if (window.keyboard_pressed_last)
-            return selected_cell.grab_focus ();
-        else
+        if (window.keyboard_pressed_recently)
             return selected_cell.grab_selection ();
+        else
+            return selected_cell.grab_focus ();
     }
 
     public override bool focus (DirectionType direction)

@@ -41,10 +41,10 @@ public class SudokuWindow : Adw.ApplicationWindow
     private GestureClick forwards_controller;
     private EventControllerScroll scroll_controller;
 
-    private GestureClick capture_button_controller;
     private EventControllerKey capture_key_controller;
 
-    public bool keyboard_pressed_last { get; private set; }
+    public bool keyboard_pressed_recently { get; private set; }
+    private uint keyboard_pressed_timeout;
 
     public SudokuWindowScreen current_screen { get; private set; default = SudokuWindowScreen.NONE; }
 
@@ -82,12 +82,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         capture_key_controller.set_propagation_phase (PropagationPhase.CAPTURE);
         capture_key_controller.key_pressed.connect (capture_key_pressed_cb);
         ((Widget)this).add_controller (capture_key_controller);
-
-        capture_button_controller = new GestureClick ();
-        capture_button_controller.set_button (0 /* all buttons */);
-        capture_button_controller.set_propagation_phase (PropagationPhase.CAPTURE);
-        capture_button_controller.pressed.connect (capture_button_released_cb);
-        ((Widget)this).add_controller (capture_button_controller);
 
         accent_provider = new CssProvider();
         StyleContext.add_provider_for_display (get_display (), accent_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
@@ -267,16 +261,21 @@ public class SudokuWindow : Adw.ApplicationWindow
                                          uint         keycode,
                                          Gdk.ModifierType state)
     {
-        keyboard_pressed_last = false;
-        return Gdk.EVENT_PROPAGATE;
-    }
 
-    private void capture_button_released_cb (GestureClick gesture,
-                                             int          n_press,
-                                             double       x,
-                                             double       y)
-    {
-        keyboard_pressed_last = true;
+        keyboard_pressed_recently = true;
+        if (keyboard_pressed_timeout != 0)
+        {
+            Source.remove (keyboard_pressed_timeout);
+            keyboard_pressed_timeout = 0;
+        }
+
+        keyboard_pressed_timeout = Timeout.add_seconds (5, () => {
+            keyboard_pressed_recently = false;
+            keyboard_pressed_timeout = 0;
+            return Source.REMOVE;
+        });
+
+        return Gdk.EVENT_PROPAGATE;
     }
 
     private void width_is_medium_cb ()
