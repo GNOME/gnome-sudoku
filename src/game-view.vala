@@ -291,10 +291,7 @@ public class SudokuGameView : Adw.Bin
 
     public override bool grab_focus ()
     {
-        if (window.keyboard_pressed_last)
-            return grid.selected_cell.grab_focus ();
-        else
-            return grid.selected_cell.grab_selection ();
+        return grid.grab_focus ();
     }
 
     public override void dispose ()
