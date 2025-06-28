@@ -48,6 +48,7 @@ public class SudokuGrid : Grid
     public SudokuGrid (SudokuGame game)
     {
         this.game = game;
+        this.game.notify["paused"].connect (paused_cb);
         row_spacing = 2;
         column_spacing = 2;
         column_homogeneous = true;
@@ -423,6 +424,14 @@ public class SudokuGrid : Grid
 
         if (Sudoku.app.show_warnings && Sudoku.app.earmark_warnings)
             cells[row, col].add_earmark_warnings (num);
+    }
+
+    private void paused_cb ()
+    {
+        if (game.paused)
+            unselect ();
+        else
+            grab_focus ();
     }
 
     public override bool grab_focus ()
