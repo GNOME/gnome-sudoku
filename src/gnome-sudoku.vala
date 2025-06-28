@@ -536,7 +536,7 @@ public class Sudoku : Adw.Application
             shortcuts_window.close_request.connect(() => {
                 if (window.current_screen != SudokuWindowScreen.START)
                 {
-                    if (game.paused)
+                    if (!game.paused)
                         game.resume_clock ();
 
                     game_view.grab_focus ();
