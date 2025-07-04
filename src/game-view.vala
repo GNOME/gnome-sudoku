@@ -49,7 +49,41 @@ public class SudokuGameView : Adw.Bin
     public SudokuGrid grid;
     public unowned SudokuWindow window;
 
+    private SimpleAction toggle_pause_action;
+    private SimpleAction earmark_mode_action;
+    private SimpleAction undo_action;
+    private SimpleAction redo_action;
+    private SimpleAction reset_board_action;
+
     public double? highscore;
+
+    static construct
+    {
+        var action = new NamedAction ("game-view.earmark-mode");
+        var trigger = ShortcutTrigger.parse_string ("e") as KeyvalTrigger;
+        var shortcut = new Shortcut (trigger, action);
+        add_shortcut (shortcut);
+
+        action = new NamedAction ("game-view.toggle-pause");
+        trigger = ShortcutTrigger.parse_string ("p") as KeyvalTrigger;
+        shortcut = new Shortcut (trigger, action);
+        add_shortcut (shortcut);
+
+        action = new NamedAction ("game-view.reset-board");
+        trigger = ShortcutTrigger.parse_string ("<Primary>r") as KeyvalTrigger;
+        shortcut = new Shortcut (trigger, action);
+        add_shortcut (shortcut);
+
+        action = new NamedAction ("game-view.undo");
+        AlternativeTrigger alt_trigger = ShortcutTrigger.parse_string ("u|<Primary>z") as AlternativeTrigger;
+        shortcut = new Shortcut (alt_trigger, action);
+        add_shortcut (shortcut);
+
+        action = new NamedAction ("game-view.redo");
+        alt_trigger = ShortcutTrigger.parse_string ("r|<Primary><Shift>z") as AlternativeTrigger;
+        shortcut = new Shortcut (alt_trigger, action);
+        add_shortcut (shortcut);
+    }
 
     public void init (SudokuBoard board, double? highscore, SudokuWindow window)
     {
@@ -57,6 +91,35 @@ public class SudokuGameView : Adw.Bin
         this.highscore = highscore;
         this.window = window;
         windowtitle.subtitle = game.board.difficulty_category.to_string ();
+
+        var action_group = new SimpleActionGroup ();
+
+        earmark_mode_action = new SimpleAction.stateful ("earmark-mode", null, false);
+        earmark_mode_action.activate.connect (earmark_mode_cb);
+        earmark_mode_action.set_enabled (game.mode != GameMode.CREATE);
+        action_group.add_action (earmark_mode_action);
+
+        toggle_pause_action = new SimpleAction.stateful ("toggle-pause", null, false);
+        toggle_pause_action.activate.connect (toggle_pause_cb);
+        toggle_pause_action.set_enabled (game.mode == GameMode.PLAY && Sudoku.app.show_timer);
+        action_group.add_action (toggle_pause_action);
+
+        reset_board_action = new SimpleAction ("reset-board", null);
+        reset_board_action.activate.connect (game.reset);
+        reset_board_action.set_enabled (!game.is_empty ());
+        action_group.add_action (reset_board_action);
+
+        undo_action = new SimpleAction ("undo", null);
+        undo_action.activate.connect (game.undo);
+        undo_action.set_enabled (!game.is_undostack_null ());
+        action_group.add_action (undo_action);
+
+        redo_action = new SimpleAction ("redo", null);
+        redo_action.activate.connect (game.redo);
+        redo_action.set_enabled (!game.is_redostack_null ());
+        action_group.add_action (redo_action);
+
+        insert_action_group ("game-view", action_group);
 
         Sudoku.app.notify["highlighter"].connect (highlighter_cb);
         Sudoku.app.notify["show-possibilities"].connect (show_possibilities_cb);
@@ -89,6 +152,7 @@ public class SudokuGameView : Adw.Bin
         this.focusable = true;
 
         game.notify["paused"].connect(paused_cb);
+        game.action_completed.connect (action_completed_cb);
 
         grid = new SudokuGrid (game);
         var grid_layout = new SudokuGridLayoutManager ();
@@ -98,6 +162,9 @@ public class SudokuGameView : Adw.Bin
 
     public void change_board (SudokuBoard board, double? highscore)
     {
+        earmark_mode_action.set_enabled (game.mode == GameMode.PLAY);
+        toggle_pause_action.set_enabled (game.mode == GameMode.PLAY && Sudoku.app.show_timer);
+
         this.highscore = highscore;
         game.change_board (board);
 
@@ -121,6 +188,8 @@ public class SudokuGameView : Adw.Bin
         earmark_mode_button.visible = game.mode == GameMode.PLAY &&
                                       (!Sudoku.app.show_timer ||
                                       (Sudoku.app.show_timer && !window.width_is_small));
+
+        play_custom_game_button.set_sensitive (!game.is_empty () && !game.board.is_fully_filled ());
     }
 
     private void initialize_clock_label ()
@@ -196,6 +265,14 @@ public class SudokuGameView : Adw.Bin
                                                    (Sudoku.app.show_timer && !window.width_is_small));
     }
 
+    private void action_completed_cb ()
+    {
+        undo_action.set_enabled (!game.is_undostack_null ());
+        redo_action.set_enabled (!game.is_redostack_null ());
+        reset_board_action.set_enabled (!game.is_empty ());
+        play_custom_game_button.set_sensitive (!game.is_empty () && !game.board.is_fully_filled ());
+    }
+
     private void paused_cb ()
     {
         // Set Font Size
@@ -215,14 +292,18 @@ public class SudokuGameView : Adw.Bin
         if (game.paused)
         {
             play_pause_stack.set_visible_child (play_button);
+            reset_board_action.set_enabled (false);
             grid_overlay.add_overlay (paused_label);
             grid_overlay.add_css_class ("paused");
+            game.stop_clock ();
         }
         else
         {
             play_pause_stack.set_visible_child (pause_button);
+            reset_board_action.set_enabled (!game.is_empty ());
             grid_overlay.remove_overlay (paused_label);
             grid_overlay.remove_css_class ("paused");
+            game.resume_clock ();
         }
     }
 
@@ -259,6 +340,7 @@ public class SudokuGameView : Adw.Bin
                 update_tick_connection ();
                 earmark_mode_button.visible = !window.width_is_small;
                 clock_box.visible = !window.width_is_small;
+                toggle_pause_action.set_enabled (true);
                 play_pause_stack.visible = true;
             }
             else
@@ -267,6 +349,7 @@ public class SudokuGameView : Adw.Bin
                 update_tick_connection ();
                 earmark_mode_button.visible = true;
                 play_pause_stack.visible = false;
+                toggle_pause_action.set_enabled (false);
 
                 if (game.paused)
                     game.paused = false;
@@ -287,6 +370,17 @@ public class SudokuGameView : Adw.Bin
             grid.unselect ();
 
         gesture.set_state (EventSequenceState.CLAIMED);
+    }
+
+    private void earmark_mode_cb ()
+    {
+        Sudoku.app.earmark_mode = !Sudoku.app.earmark_mode;
+        earmark_mode_button.set_active (Sudoku.app.earmark_mode);
+    }
+
+    private void toggle_pause_cb ()
+    {
+        game.paused = !game.paused;
     }
 
     public override bool grab_focus ()

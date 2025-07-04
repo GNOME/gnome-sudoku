@@ -45,15 +45,9 @@ public class Sudoku : Adw.Application
 
     private SudokuSaver saver;
 
-    private SimpleAction undo_action;
-    private SimpleAction redo_action;
-    private SimpleAction reset_board_action;
     private SimpleAction print_current_board_action;
     private SimpleAction print_multiple_action;
-    private SimpleAction toggle_pause_action;
-    private SimpleAction play_custom_game_action;
     private SimpleAction new_game_action;
-    private SimpleAction earmark_mode_action;
     private SimpleAction back_action;
     private SimpleAction zoom_in_action;
     private SimpleAction zoom_out_action;
@@ -81,13 +75,9 @@ public class Sudoku : Adw.Application
         {"new-game", new_game_cb                                    },
         {"start-game", start_game_cb, "i"                           },
         {"create-game", create_game_cb                              },
-        {"reset-board", reset_board_cb                              },
         {"back", back_cb                                            },
-        {"undo", undo_cb                                            },
-        {"redo", redo_cb                                            },
         {"print-current-board", print_current_board_cb              },
         {"play-custom-game", play_custom_game_cb                    },
-        {"toggle-pause", toggle_pause_cb                            },
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
@@ -95,7 +85,6 @@ public class Sudoku : Adw.Application
         {"zoom-in", zoom_in_cb, null, "false"                       },
         {"zoom-out", zoom_out_cb, null, "false"                     },
         {"zoom-reset", zoom_reset_cb                                },
-        {"earmark-mode", earmark_mode_cb, null, "false"             },
         {"shortcuts-window", shortcuts_window_cb                    },
         {"preferences-dialog", preferences_dialog_cb                },
         {"quit", quit                                               }
@@ -155,8 +144,6 @@ public class Sudoku : Adw.Application
         settings.bind ("autoclean-earmarks", this, "autoclean-earmarks", SettingsBindFlags.DEFAULT);
         settings.bind ("number-picker-second-click", this, "number-picker-second-click", SettingsBindFlags.DEFAULT);
 
-        notify["show-timer"].connect (show_timer_cb);
-
         add_action_entries (action_entries, this);
 
         var action = settings.create_action ("show-warnings");
@@ -166,35 +153,23 @@ public class Sudoku : Adw.Application
 
         set_accels_for_action ("app.new-game", {"<Primary>n"});
         set_accels_for_action ("app.print-current-board", {"<Primary>p"});
-        set_accels_for_action ("app.toggle-pause", {"p"});
-        set_accels_for_action ("app.earmark-mode", {"e"});
         set_accels_for_action ("app.quit", {"<Primary>q"});
-        set_accels_for_action ("app.reset-board", {"<Primary>r"});
         set_accels_for_action ("app.show-warnings", {"<Primary>w"});
-        set_accels_for_action ("app.undo", {"<Primary>z", "u"});
-        set_accels_for_action ("app.redo", {"<Primary><Shift>z", "r"});
         set_accels_for_action ("app.help", {"F1"});
         set_accels_for_action ("app.shortcuts-window", {"<Primary>question"});
         set_accels_for_action ("app.preferences-dialog", {"<Primary>comma"});
         set_accels_for_action ("app.toggle-fullscreen", {"F11", "f"});
         set_accels_for_action ("app.highlighter", {"<Primary>h"});
-        set_accels_for_action ("app.back", {"<Alt>KP_Left", "<Alt>Left"});
         set_accels_for_action ("app.zoom-in", {"<Primary>plus", "<Primary>equal", "ZoomIn", "<Primary>KP_Add"});
         set_accels_for_action ("app.zoom-out", {"<Primary>minus", "ZoomOut", "<Primary>KP_Subtract"});
         set_accels_for_action ("app.zoom-reset", {"<Primary>0", "<Primary>KP_0"});
 
-        undo_action = (SimpleAction) lookup_action ("undo");
-        redo_action = (SimpleAction) lookup_action ("redo");
-        earmark_mode_action = (SimpleAction) lookup_action ("earmark-mode");
-        new_game_action = (SimpleAction) lookup_action ("new-game");
-        reset_board_action = (SimpleAction) lookup_action ("reset-board");
-        print_current_board_action = (SimpleAction) lookup_action ("print-current-board");
-        print_multiple_action = (SimpleAction) lookup_action ("print-multiple");
-        toggle_pause_action = (SimpleAction) lookup_action ("toggle-pause");
-        play_custom_game_action = (SimpleAction) lookup_action ("play-custom-game");
-        zoom_in_action = (SimpleAction) lookup_action ("zoom-in");
-        back_action = (SimpleAction) lookup_action ("back");
-        zoom_out_action = (SimpleAction) lookup_action ("zoom-out");
+        new_game_action = lookup_action ("new-game") as SimpleAction;
+        print_current_board_action = lookup_action ("print-current-board") as SimpleAction;
+        print_multiple_action = lookup_action ("print-multiple") as SimpleAction;
+        zoom_in_action = lookup_action ("zoom-in") as SimpleAction;
+        back_action = lookup_action ("back") as SimpleAction;
+        zoom_out_action = lookup_action ("zoom-out") as SimpleAction;
         zoom_in_action.set_enabled (!zoom_level.is_fully_zoomed_in ());
         zoom_out_action.set_enabled (!zoom_level.is_fully_zoomed_out ());
 
@@ -235,21 +210,9 @@ public class Sudoku : Adw.Application
     private void paused_cb ()
     {
         if (game.paused)
-        {
-            reset_board_action.set_enabled (false);
-            undo_action.set_enabled (false);
-            redo_action.set_enabled (false);
             new_game_action.set_enabled (false);
-            game.stop_clock ();
-        }
         else
-        {
-            reset_board_action.set_enabled (!game.is_empty ());
-            undo_action.set_enabled (!game.is_undostack_null ());
-            redo_action.set_enabled (!game.is_redostack_null ());
             new_game_action.set_enabled (true);
-            game.resume_clock ();
-        }
 
         game_view.queue_draw ();
     }
@@ -283,19 +246,6 @@ public class Sudoku : Adw.Application
 
             dialog.present (window);
         }
-    }
-
-    private void toggle_pause_cb ()
-    {
-        game.paused = !game.paused;
-    }
-
-    private void action_completed_cb ()
-    {
-        undo_action.set_enabled (!game.is_undostack_null ());
-        redo_action.set_enabled (!game.is_redostack_null ());
-        reset_board_action.set_enabled (!game.is_empty ());
-        play_custom_game_action.set_enabled (!game.is_empty () && !game.board.is_fully_filled ());
     }
 
     private void board_completed_cb ()
@@ -364,7 +314,6 @@ public class Sudoku : Adw.Application
         if (game == null)
         {
             window.start_game (board, highscore);
-            game.action_completed.connect (action_completed_cb);
             game.notify["paused"].connect (paused_cb);
         }
         else
@@ -385,29 +334,14 @@ public class Sudoku : Adw.Application
             game.stop_clock ();
 
         print_current_board_action.set_enabled (false);
-        undo_action.set_enabled (false);
-        redo_action.set_enabled (false);
-        reset_board_action.set_enabled (false);
         new_game_action.set_enabled (false);
-        back_action.set_enabled (game != null && game.board.complete != true);
-        earmark_mode_action.set_enabled (false);
-        toggle_pause_action.set_enabled (false);
-        play_custom_game_action.set_enabled (false);
-
         window.show_start_view ();
     }
 
     private void show_game_view ()
     {
         print_current_board_action.set_enabled (true);
-        undo_action.set_enabled (!game.is_undostack_null ());
-        redo_action.set_enabled (!game.is_redostack_null ());
-        reset_board_action.set_enabled (!game.is_empty ());
         new_game_action.set_enabled (true);
-        back_action.set_enabled (false);
-        earmark_mode_action.set_enabled (game.mode == GameMode.PLAY);
-        toggle_pause_action.set_enabled (game.mode == GameMode.PLAY && show_timer);
-        play_custom_game_action.set_enabled (!game.is_empty ());
 
         window.show_game_view ();
     }
@@ -461,38 +395,15 @@ public class Sudoku : Adw.Application
         });
     }
 
-    private void show_timer_cb ()
-    {
-        toggle_pause_action.set_enabled (show_timer && window.current_screen == SudokuWindowScreen.PLAY);
-    }
-
-    private void reset_board_cb ()
-    {
-        game.reset ();
-    }
-
     private void back_cb ()
     {
+        if (game == null || game.board.complete == true)
+            return;
+
         show_game_view ();
 
         if (window.current_screen == SudokuWindowScreen.PLAY)
             game.resume_clock ();
-    }
-
-    private void undo_cb ()
-    {
-        game.undo ();
-    }
-
-    private void redo_cb ()
-    {
-        game.redo ();
-    }
-
-    private void earmark_mode_cb ()
-    {
-        earmark_mode = !earmark_mode;
-        earmark_mode_action.set_state (earmark_mode);
     }
 
     private void print_current_board_cb ()

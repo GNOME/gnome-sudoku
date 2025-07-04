@@ -202,8 +202,11 @@ public class SudokuWindow : Adw.ApplicationWindow
                                       double       x,
                                       double       y)
     {
-        ((Widget)this).activate_action ("app.undo", null);
-        ((Widget)this).activate_action ("app.back", null);
+        if (current_screen == SudokuWindowScreen.START)
+            ((Widget)this).activate_action ("app.back", null);
+        else
+            game_view.activate_action ("game-view.undo", null);
+
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 
@@ -212,7 +215,9 @@ public class SudokuWindow : Adw.ApplicationWindow
                                       double       x,
                                       double       y)
     {
-        ((Widget)this).activate_action ("app.redo", null);
+        if (current_screen != SudokuWindowScreen.START)
+            game_view.activate_action ("game-view.redo", null);
+
         gesture.set_state (EventSequenceState.CLAIMED);
     }
 

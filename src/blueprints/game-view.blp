@@ -22,7 +22,7 @@ template $SudokuGameView : Adw.Bin {
         tooltip-text: _("Undo Action");
         can-focus: true;
         focus-on-click: false;
-        action-name: "app.undo";
+        action-name: "game-view.undo";
         icon-name: "edit-undo-symbolic";
       }
 
@@ -33,7 +33,7 @@ template $SudokuGameView : Adw.Bin {
         tooltip-text: _("Redo Action");
         can-focus: true;
         focus-on-click: false;
-        action-name: "app.redo";
+        action-name: "game-view.redo";
         icon-name: "edit-redo-symbolic";
       }
 
@@ -42,7 +42,7 @@ template $SudokuGameView : Adw.Bin {
         halign: center;
         valign: center;
         focus-on-click: false;
-        action-name: "app.earmark-mode";
+        action-name: "game-view.earmark-mode";
         tooltip-text: _("Earmark Mode");
         icon-name: "pencil-symbolic";
       }
@@ -56,7 +56,7 @@ template $SudokuGameView : Adw.Bin {
           valign: center;
           can-focus: true;
           focus-on-click: false;
-          action-name: "app.toggle-pause";
+          action-name: "game-view.toggle-pause";
           tooltip-text: _("Pause");
           icon-name: "media-playback-pause-symbolic";
         }
@@ -67,7 +67,7 @@ template $SudokuGameView : Adw.Bin {
           can-focus: true;
           focus-on-click: false;
           tooltip-text: _("Play");
-          action-name: "app.toggle-pause";
+          action-name: "game-view.toggle-pause";
           icon-name: "media-playback-start-symbolic";
         }
       }
