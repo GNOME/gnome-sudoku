@@ -100,7 +100,7 @@ public class SudokuGameView : Adw.Bin
         action_group.add_action (earmark_mode_action);
 
         toggle_pause_action = new SimpleAction.stateful ("toggle-pause", null, false);
-        toggle_pause_action.activate.connect (toggle_pause_cb);
+        toggle_pause_action.activate.connect (game.toggle_pause);
         toggle_pause_action.set_enabled (game.mode == GameMode.PLAY && Sudoku.app.show_timer);
         action_group.add_action (toggle_pause_action);
 
@@ -295,7 +295,6 @@ public class SudokuGameView : Adw.Bin
             reset_board_action.set_enabled (false);
             grid_overlay.add_overlay (paused_label);
             grid_overlay.add_css_class ("paused");
-            game.stop_clock ();
         }
         else
         {
@@ -303,7 +302,6 @@ public class SudokuGameView : Adw.Bin
             reset_board_action.set_enabled (!game.is_empty ());
             grid_overlay.remove_overlay (paused_label);
             grid_overlay.remove_css_class ("paused");
-            game.resume_clock ();
         }
     }
 
@@ -352,7 +350,7 @@ public class SudokuGameView : Adw.Bin
                 toggle_pause_action.set_enabled (false);
 
                 if (game.paused)
-                    game.paused = false;
+                    game.toggle_pause ();
             }
         }
     }
@@ -376,11 +374,6 @@ public class SudokuGameView : Adw.Bin
     {
         Sudoku.app.earmark_mode = !Sudoku.app.earmark_mode;
         earmark_mode_button.set_active (Sudoku.app.earmark_mode);
-    }
-
-    private void toggle_pause_cb ()
-    {
-        game.paused = !game.paused;
     }
 
     public override bool grab_focus ()

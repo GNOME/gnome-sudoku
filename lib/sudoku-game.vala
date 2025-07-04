@@ -25,7 +25,7 @@ public class SudokuGame : Object
 {
     public SudokuBoard board { get; private set; }
     public GameMode mode { get; set; default = NONE; }
-    public bool paused { get; set; default = false; }
+    public bool paused { get; private set; default = false; }
     private GLib.Timer timer;
     private uint clock_tick_timeout;
 
@@ -219,6 +219,16 @@ public class SudokuGame : Object
         stack_slice ();
         stack.add (item);
         stack_head_index = stack.size - 1;
+    }
+
+    public void toggle_pause ()
+    {
+        paused = !paused;
+
+        if (paused)
+            stop_clock ();
+        else
+            resume_clock ();
     }
 
     public bool is_empty ()
