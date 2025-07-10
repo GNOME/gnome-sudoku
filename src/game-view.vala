@@ -59,29 +59,18 @@ public class SudokuGameView : Adw.Bin
 
     static construct
     {
-        var action = new NamedAction ("game-view.earmark-mode");
-        var trigger = ShortcutTrigger.parse_string ("e") as KeyvalTrigger;
+        new_shortcut ("game-view.earmark-mode", "e");
+        new_shortcut ("game-view.toggle-pause", "p");
+        new_shortcut ("game-view.reset-board", "<Primary>r");
+        new_shortcut ("game-view.undo", "u|<Primary>z");
+        new_shortcut ("game-view.redo", "r|<Primary><Shift>z");
+    }
+
+    private class void new_shortcut (string name, string accelerator)
+    {
+        var action = new NamedAction (name);
+        var trigger = ShortcutTrigger.parse_string (accelerator);
         var shortcut = new Shortcut (trigger, action);
-        add_shortcut (shortcut);
-
-        action = new NamedAction ("game-view.toggle-pause");
-        trigger = ShortcutTrigger.parse_string ("p") as KeyvalTrigger;
-        shortcut = new Shortcut (trigger, action);
-        add_shortcut (shortcut);
-
-        action = new NamedAction ("game-view.reset-board");
-        trigger = ShortcutTrigger.parse_string ("<Primary>r") as KeyvalTrigger;
-        shortcut = new Shortcut (trigger, action);
-        add_shortcut (shortcut);
-
-        action = new NamedAction ("game-view.undo");
-        AlternativeTrigger alt_trigger = ShortcutTrigger.parse_string ("u|<Primary>z") as AlternativeTrigger;
-        shortcut = new Shortcut (alt_trigger, action);
-        add_shortcut (shortcut);
-
-        action = new NamedAction ("game-view.redo");
-        alt_trigger = ShortcutTrigger.parse_string ("r|<Primary><Shift>z") as AlternativeTrigger;
-        shortcut = new Shortcut (alt_trigger, action);
         add_shortcut (shortcut);
     }
 
@@ -91,6 +80,24 @@ public class SudokuGameView : Adw.Bin
         this.highscore = highscore;
         this.window = window;
         windowtitle.subtitle = game.board.difficulty_category.to_string ();
+
+        Sudoku.app.notify["highlighter"].connect (highlighter_cb);
+        Sudoku.app.notify["show-possibilities"].connect (show_possibilities_cb);
+        Sudoku.app.notify["show-warnings"].connect (warnings_cb);
+        Sudoku.app.notify["earmark-warnings"].connect (warnings_cb);
+        Sudoku.app.notify["solution-warnings"].connect (warnings_cb);
+        Sudoku.app.notify["zoom-level"].connect (zoom_cb);
+        Sudoku.app.notify["show-timer"].connect (show_timer_cb);
+        this.window.notify["width-is-small"].connect (window_width_is_small_cb);
+
+        menu_button.main_menu.closed.connect (() => {
+            grab_focus ();
+        });
+
+        button_controller = new GestureClick ();
+        button_controller.set_button (0 /* all buttons */);
+        button_controller.released.connect (button_released_cb);
+        ((Widget)this).add_controller (this.button_controller);
 
         var action_group = new SimpleActionGroup ();
 
@@ -121,26 +128,7 @@ public class SudokuGameView : Adw.Bin
 
         insert_action_group ("game-view", action_group);
 
-        Sudoku.app.notify["highlighter"].connect (highlighter_cb);
-        Sudoku.app.notify["show-possibilities"].connect (show_possibilities_cb);
-        Sudoku.app.notify["show-warnings"].connect (warnings_cb);
-        Sudoku.app.notify["earmark-warnings"].connect (warnings_cb);
-        Sudoku.app.notify["solution-warnings"].connect (warnings_cb);
-        Sudoku.app.notify["zoom-level"].connect (zoom_cb);
-        Sudoku.app.notify["show-timer"].connect (show_timer_cb);
-        this.window.notify["width-is-small"].connect (window_width_is_small_cb);
-
-        menu_button.main_menu.closed.connect (() => {
-            grab_focus ();
-        });
-
-        button_controller = new GestureClick ();
-        button_controller.set_button (0 /* all buttons */);
-        button_controller.released.connect (button_released_cb);
-        ((Widget)this).add_controller (this.button_controller);
-
         paused_label= new Label(_("Paused"));
-
         initialize_clock_label ();
         initialize_buttons ();
         update_tick_connection ();
