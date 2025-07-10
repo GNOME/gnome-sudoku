@@ -4,11 +4,11 @@ using Adw 1;
 template $SudokuWindow: Adw.ApplicationWindow {
   title: _("Sudoku");
 
-  Adw.ViewStack view_stack {
+  content: Adw.ViewStack view_stack {
     enable-transitions: true;
 
     $SudokuStartView start_view {}
 
     $SudokuGameView game_view {}
-  }
+  };
 }
