@@ -39,13 +39,8 @@ public class SudokuStartView : Adw.Bin
         typeof (SudokuMenuButton).ensure ();
 
         var action = new NamedAction ("app.back");
-
-        var trigger = new KeyvalTrigger (Gdk.Key.Left, Gdk.ModifierType.ALT_MASK);
-        var shortcut = new Shortcut (trigger, action);
-        add_shortcut (shortcut);
-
-        trigger = new KeyvalTrigger (Gdk.Key.KP_Left, Gdk.ModifierType.ALT_MASK);
-        shortcut = new Shortcut (trigger, action);
+        var alt_trigger = ShortcutTrigger.parse_string ("<Alt>Left|<Alt>KP_Left");
+        var shortcut = new Shortcut (alt_trigger, action);
         add_shortcut (shortcut);
     }
 
