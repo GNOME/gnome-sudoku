@@ -36,13 +36,34 @@ public class SudokuGrid : Grid
     private GestureClick button_controller;
     private SudokuGame game;
     private EventControllerFocus focus_controller;
-    private EventControllerKey key_controller;
 
     public SudokuNumberPicker number_picker;
+
+    private SimpleActionGroup action_group;
+    private SimpleAction move_up_action;
+    private SimpleAction move_down_action;
+    private SimpleAction move_left_action;
+    private SimpleAction move_right_action;
 
     public SudokuCell selected_cell
     {
         get { return cells[selected_row, selected_col]; }
+    }
+
+    static construct
+    {
+        new_move_shortcut ("grid.move-up", "w", DirectionType.UP);
+        new_move_shortcut ("grid.move-left", "a", DirectionType.LEFT);
+        new_move_shortcut ("grid.move-down", "s", DirectionType.DOWN);
+        new_move_shortcut ("grid.move-right", "d", DirectionType.RIGHT);
+    }
+
+    private class void new_move_shortcut (string name, string accelerator, DirectionType dir)
+    {
+        var action = new NamedAction (name);
+        var trigger = ShortcutTrigger.parse_string (accelerator);
+        var shortcut = new Shortcut.with_arguments (trigger, action, "i", dir);
+        add_shortcut (shortcut);
     }
 
     public SudokuGrid (SudokuGame game)
@@ -99,14 +120,26 @@ public class SudokuGrid : Grid
         });
         add_controller (focus_controller);
 
-        key_controller = new EventControllerKey ();
-        key_controller.key_pressed.connect (key_pressed_cb);
-        add_controller (key_controller);
-
         this.game.board.value_changed.connect (value_changed_cb);
         this.game.board.earmark_changed.connect (earmark_changed_cb);
 
         update_warnings ();
+
+        action_group = new SimpleActionGroup ();
+
+        new_move_action ("move-up", out move_up_action);
+        new_move_action ("move-down", out move_down_action);
+        new_move_action ("move-right", out move_right_action);
+        new_move_action ("move-left", out move_left_action);
+
+        insert_action_group ("grid", action_group);
+    }
+
+    private void new_move_action (string name, out SimpleAction action)
+    {
+        action = new SimpleAction (name, VariantType.INT32);
+        action.activate.connect (move);
+        action_group.add_action (action);
     }
 
     public void change_board ()
@@ -116,7 +149,7 @@ public class SudokuGrid : Grid
         foreach (var cell in cells)
         {
             cell.update_content_visibility ();
-            cell.update_fixed_css ();
+            cell.update_fixed ();
         }
 
         update_warnings ();
@@ -271,24 +304,11 @@ public class SudokuGrid : Grid
         if (Sudoku.app.highlighter)
             set_cell_highlighter (selected_row, selected_col, false);
     }
-    private void insert_key (int key, bool control_pressed)
-    {
-        number_picker.popdown ();
-        bool wants_value = !control_pressed;
-        wants_value = wants_value ^ Sudoku.app.earmark_mode;
 
-        if (wants_value)
-        {
-            selected_cell.value = key;
-        }
-        else if (game.mode == GameMode.PLAY && selected_cell.value == 0)
-        {
-            var enabled = game.board.is_earmark_enabled (selected_row, selected_col, key);
-            if (!enabled)
-                game.enable_earmark (selected_row, selected_col, key);
-            else
-                game.disable_earmark (selected_row, selected_col, key);
-        }
+    private void move (Variant? variant)
+    {
+        var dir = (DirectionType) variant.get_int32 ();
+        focus (dir);
     }
 
     private void button_released_cb (GestureClick gesture,
@@ -302,96 +322,6 @@ public class SudokuGrid : Grid
 
         number_picker.popdown ();
         gesture.set_state (EventSequenceState.CLAIMED);
-    }
-
-    private bool key_pressed_cb (uint         keyval,
-                                 uint         keycode,
-                                 ModifierType state)
-    {
-        if (game.paused)
-            return EVENT_PROPAGATE;
-
-        bool control_pressed = (bool) (state & ModifierType.CONTROL_MASK);
-
-        if (!control_pressed)
-            switch (keyval)
-            {
-                case Key.w :
-                    return focus (DirectionType.UP);
-
-                case Key.s :
-                    return focus (DirectionType.DOWN);
-
-                case Key.a :
-                    return focus (DirectionType.LEFT);
-
-                case Key.d :
-                    return focus (DirectionType.RIGHT);
-
-                case Key.Escape:
-                    unselect ();
-                    return EVENT_STOP;
-
-                default:
-                    break;
-            }
-
-        if (selected_cell.is_fixed)
-            return EVENT_PROPAGATE;
-
-        switch (keyval)
-        {
-            case Key.@0: case Key.KP_0: case Key.BackSpace : case Key.Delete:
-                if (control_pressed)
-                    return EVENT_PROPAGATE;
-                else
-                {
-                    selected_cell.value = 0;
-                    return EVENT_STOP;
-                }
-            case Gdk.Key.@1: case Gdk.Key.KP_1:
-                insert_key  (1, control_pressed);
-                return EVENT_STOP;
-            case Gdk.Key.@2: case Gdk.Key.KP_2:
-                insert_key  (2, control_pressed);
-                return EVENT_STOP;
-            case Gdk.Key.@3: case Gdk.Key.KP_3:
-                insert_key  (3, control_pressed);
-                return EVENT_STOP;
-            case Gdk.Key.@4: case Gdk.Key.KP_4:
-                insert_key  (4, control_pressed);
-                return EVENT_STOP;
-            case Gdk.Key.@5: case Gdk.Key.KP_5:
-                insert_key  (5, control_pressed);
-                return EVENT_STOP;
-            case Gdk.Key.@6: case Gdk.Key.KP_6:
-                insert_key  (6, control_pressed);
-                return EVENT_STOP;
-            case Gdk.Key.@7: case Gdk.Key.KP_7:
-                insert_key  (7, control_pressed);
-                return EVENT_STOP;
-            case Gdk.Key.@8: case Gdk.Key.KP_8:
-                insert_key  (8, control_pressed);
-                return EVENT_STOP;
-            case Gdk.Key.@9: case Gdk.Key.KP_9:
-                insert_key  (9, control_pressed);
-                return EVENT_STOP;
-
-            case Key.space : case Key.Return : case Key.KP_Enter:
-                selected_cell.grab_selection ();
-                bool wants_value = !control_pressed;
-                wants_value = wants_value ^ Sudoku.app.earmark_mode;
-
-                if (wants_value)
-                    number_picker.show_value_picker (selected_cell);
-                else
-                    number_picker.show_earmark_picker (selected_cell);
-
-                return EVENT_STOP;
-
-            default:
-                return EVENT_PROPAGATE;
-        }
     }
 
     private void value_changed_cb (int row, int col, int old_val, int new_val)

@@ -38,6 +38,68 @@ public class SudokuCell : Widget
     private unowned double? zoom_value_multiplier;
     private unowned double? zoom_earmark_multiplier;
 
+    private SimpleAction insert_earmark_action;
+    private SimpleAction insert_value_action;
+    private SimpleAction show_picker_action;
+
+    static Shortcut earmark_shortcuts[9];
+    static Shortcut value_shortcuts[9];
+
+    static construct
+    {
+        set_css_name ("sudoku-cell");
+
+        var action = new NamedAction ("cell.show-picker");
+        var alt_trigger = ShortcutTrigger.parse_string ("Return|KP_Enter|space");
+        var shortcut = new Shortcut.with_arguments (alt_trigger, action, "b", true);
+        add_shortcut (shortcut);
+        alt_trigger = ShortcutTrigger.parse_string ("<Primary>Return|<Primary>space|<Primary>KP_Enter");
+        shortcut = new Shortcut.with_arguments (alt_trigger, action, "b", false);
+        add_shortcut (shortcut);
+
+        new_shortcut ("cell.insert-value", "Delete|BackSpace|KP_0|0", 0);
+        for (int i = 1; i < 10; i++)
+        {
+            string accel = i.to_string ();
+            accel = accel + "|KP_" + accel;
+            value_shortcuts[i - 1] = new_shortcut ("cell.insert-value", accel, i);
+
+            accel = i.to_string ();
+            accel = "<Primary>" + accel + "|<Primary>KP_" + accel;
+            earmark_shortcuts[i - 1] = new_shortcut ("cell.insert-earmark", accel, i);
+        }
+    }
+
+    private class Shortcut new_shortcut (string name, string accelerator, int val)
+    {
+        var action = new NamedAction (name);
+        var trigger = ShortcutTrigger.parse_string (accelerator);
+        var shortcut = new Shortcut.with_arguments (trigger, action, "i", val);
+        add_shortcut (shortcut);
+        return shortcut;
+    }
+
+    private void insert_value (Variant? variant)
+    {
+        grid.number_picker.popdown ();
+        value = variant.get_int32 ();
+    }
+
+    private void insert_earmark (Variant? variant)
+    {
+        grid.number_picker.popdown ();
+        var key = variant.get_int32 ();
+
+        if (game.mode == GameMode.PLAY && value == 0)
+        {
+            var enabled = game.board.is_earmark_enabled (row, col, key);
+            if (!enabled)
+                game.enable_earmark (row, col, key);
+            else
+                game.disable_earmark (row, col, key);
+        }
+    }
+
     public SudokuCell (SudokuGame game, SudokuGrid grid, ref double zoom_value_multiplier, ref double zoom_earmark_multiplier, int row, int col)
     {
         this.game = game;
@@ -58,8 +120,7 @@ public class SudokuCell : Widget
         focusable = true;
         can_focus = true;
         game.notify["paused"].connect(paused_cb);
-
-        update_fixed_css ();
+        Sudoku.app.notify["earmark-mode"].connect(flip_shortcuts);
 
         button_controller = new GestureClick ();
         button_controller.set_button (0 /* all buttons */ );
@@ -77,11 +138,24 @@ public class SudokuCell : Widget
             earmarks[num - 1].visible = game.board.is_earmark_enabled(row, col, num);
             earmarks[num - 1].set_parent (this);
         }
-    }
 
-    static construct
-    {
-        set_css_name ("sudoku-cell");
+        var action_group = new SimpleActionGroup ();
+
+        insert_value_action = new SimpleAction ("insert-value", VariantType.INT32);
+        insert_value_action.activate.connect (insert_value);
+        action_group.add_action (insert_value_action);
+
+        insert_earmark_action = new SimpleAction ("insert-earmark", VariantType.INT32);
+        insert_earmark_action.activate.connect (insert_earmark);
+        action_group.add_action (insert_earmark_action);
+
+        show_picker_action = new SimpleAction ("show-picker", VariantType.BOOLEAN);
+        show_picker_action.activate.connect (show_picker);
+        action_group.add_action (show_picker_action);
+
+        insert_action_group ("cell", action_group);
+
+        update_fixed ();
     }
 
     public int value
@@ -105,8 +179,9 @@ public class SudokuCell : Widget
         }
     }
 
-    public void update_fixed_css ()
+    public void update_fixed ()
     {
+        set_actions (!is_fixed);
         if (is_fixed)
             this.add_css_class ("fixed");
         else
@@ -195,34 +270,25 @@ public class SudokuCell : Widget
         bool double_click_wanted = Sudoku.app.number_picker_second_click ||
                                    (Sudoku.app.highlighter && Sudoku.app.highlight_numbers && value != 0);
 
-        if (is_fixed || (!selected && double_click_wanted))
+        if (!selected && double_click_wanted)
         {
             grab_selection ();
             return;
         }
 
-        grab_selection ();
-
         ModifierType state;
-
         state = gesture.get_current_event_state ();
         bool control_pressed = (bool) (state & ModifierType.CONTROL_MASK);
-        bool wants_value = !control_pressed;
-        wants_value = wants_value ^ Sudoku.app.earmark_mode;
 
         if (gesture.get_current_button () == BUTTON_PRIMARY)
         {
-            if (wants_value)
-                grid.number_picker.show_value_picker (this);
-            else if (game.mode == GameMode.PLAY)
-                grid.number_picker.show_earmark_picker (this);
+            var wants_value = new Variant.boolean (!control_pressed);
+            show_picker (wants_value);
         }
         else if (gesture.get_current_button () == BUTTON_SECONDARY)
         {
-            if (!wants_value)
-                grid.number_picker.show_value_picker (this);
-            else if (game.mode == GameMode.PLAY)
-                grid.number_picker.show_earmark_picker (this);
+            var wants_value = new Variant.boolean (control_pressed);
+            show_picker (wants_value);
         }
     }
 
@@ -235,23 +301,52 @@ public class SudokuCell : Widget
             return;
 
         gesture.set_state (EventSequenceState.CLAIMED);
+
+        var wants_value = new Variant.boolean (false);
+        show_picker (wants_value);
+    }
+
+    private void show_picker (Variant? wants_value)
+    {
         grab_selection ();
 
-        if (is_fixed)
-            return;
+        bool value_picker = wants_value.get_boolean() ^ Sudoku.app.earmark_mode;
 
-        if (game.mode == GameMode.CREATE || Sudoku.app.earmark_mode)
+        if (value_picker)
             grid.number_picker.show_value_picker (this);
-        else
+        else if (game.mode == GameMode.PLAY)
             grid.number_picker.show_earmark_picker (this);
+    }
+
+    private void flip_shortcuts ()
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            var copy = earmark_shortcuts[i].get_trigger ();
+            earmark_shortcuts[i].set_trigger (value_shortcuts[i].get_trigger ());
+            value_shortcuts[i].set_trigger (copy);
+        }
+    }
+
+    private void set_actions (bool enabled)
+    {
+        insert_value_action.set_enabled (enabled);
+        insert_earmark_action.set_enabled (enabled);
+        show_picker_action.set_enabled (enabled);
     }
 
     private void paused_cb ()
     {
         if (game.paused)
+        {
             add_css_class ("paused");
+            set_actions (false);
+        }
         else
+        {
             remove_css_class ("paused");
+            set_actions (!is_fixed);
+        }
     }
 
     public void update_earmark_visibility (int num)
