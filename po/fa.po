@@ -6,14 +6,14 @@
 # Meelad Zakaria <meelad@farsiweb.info>, 2005.
 # Farzaneh Sarafraz <farzaneh@farsiweb.info>, 2006.
 # Arash Mousavi <mousavi.arash@gmail.com>, 2012-2013, 2016.
-# Danial Behzadi <dani.behzi@gmail.com>, 2012, 2017-2024.
+# Danial Behzadi <dani.behzi@gmail.com>, 2017-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-10-19 08:20+0000\n"
-"PO-Revision-Date: 2024-10-27 12:37+0330\n"
+"POT-Creation-Date: 2025-07-04 18:04+0000\n"
+"PO-Revision-Date: 2025-07-29 16:10+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -22,10 +22,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:3 data/sudoku-window.blp:88
-#: data/sudoku-window.blp:96
+#: data/org.gnome.Sudoku.desktop.in.in:3 src/blueprints/game-view.blp:12
+#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "سودوکو"
 
@@ -38,11 +38,11 @@ msgstr "آزمودن خودتان در معّمای کلاسیک"
 msgid "magic;square;"
 msgstr "magic;square;جادو;خانه;سودوکو;"
 
-#: data/org.gnome.Sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Difficulty level of sudokus to be printed"
 msgstr "سطح سختی سودوکوها برای چاپ"
 
-#: data/org.gnome.Sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:19
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values are: "
 "\"easy\", \"medium\", \"hard\", \"very_hard\""
@@ -50,31 +50,31 @@ msgstr ""
 "تنظیم سطح سختی سودوکویی که می‌خواهید چاپ شود. مقدارهای ممکن عبارتند از «easy»، "
 "«medium»، «hard» و «very_hard»"
 
-#: data/org.gnome.Sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:24
 msgid "Number of Sudokus to print"
 msgstr "تعداد سودوکوها برای چاپ"
 
-#: data/org.gnome.Sudoku.gschema.xml:24
+#: data/org.gnome.Sudoku.gschema.xml:25
 msgid "Set the number of sudokus you want to print"
 msgstr "تنظیم تعداد سودوکوهایی که میخواهید چاپ کنید"
 
-#: data/org.gnome.Sudoku.gschema.xml:29
+#: data/org.gnome.Sudoku.gschema.xml:30
 msgid "Number of Sudokus to print per page"
 msgstr "تعداد سودوکوها در صفحه برای چاپ"
 
-#: data/org.gnome.Sudoku.gschema.xml:30
+#: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Set the number of sudokus you want to print per page"
 msgstr "تنظیم تعداد سودوکوهایی که میخواهید در هر صفحه چاپ کنید"
 
-#: data/org.gnome.Sudoku.gschema.xml:34
+#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "مقدار دهی نخستین نشانه‌گذاری‌ها با مقدارهای ممکن برای هر خانه"
 
-#: data/org.gnome.Sudoku.gschema.xml:38
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid "Color mistakes and duplicate numbers in red"
 msgstr "قرمز کردن اشتباه‌ها و عددهای تکراری"
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:40
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any number and "
 "duplicate numbers are highlighted in red"
@@ -82,63 +82,63 @@ msgstr ""
 "نمایش یک X قرمز بزرگ در خانه اگر نتوان آن را با هیچ عددی پر کرد و عددهای تکراری به "
 "رنگ قرمز برجسته شوند"
 
-#: data/org.gnome.Sudoku.gschema.xml:43
+#: data/org.gnome.Sudoku.gschema.xml:44
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr "بررسی نشانه‌ها برای تکرار در ردیف، ستون و مربّع"
 
-#: data/org.gnome.Sudoku.gschema.xml:47
+#: data/org.gnome.Sudoku.gschema.xml:48
 msgid "Toggle timer and pause buttons"
 msgstr "تغییر حالت دکمه‌ّای شمارشگر و مکث"
 
-#: data/org.gnome.Sudoku.gschema.xml:51
+#: data/org.gnome.Sudoku.gschema.xml:52
 msgid "Additionally check against the solution for warnings"
 msgstr "بررسی اضافی با راه‌حل برای هشدارها"
 
-#: data/org.gnome.Sudoku.gschema.xml:55
+#: data/org.gnome.Sudoku.gschema.xml:56
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr "پاک کردن خودکار نشانه‌ّای مربوط با درج عدد جدید"
 
-#: data/org.gnome.Sudoku.gschema.xml:59
+#: data/org.gnome.Sudoku.gschema.xml:60
 msgid "Display number picker on second click"
 msgstr "نمایش عددگزین در کلیک دوم"
 
-#: data/org.gnome.Sudoku.gschema.xml:63
+#: data/org.gnome.Sudoku.gschema.xml:64
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "برجسته کردن ردیف، ستون و جایگاهی که خانهٔ انتخاب شده در آن است"
 
-#: data/org.gnome.Sudoku.gschema.xml:67
+#: data/org.gnome.Sudoku.gschema.xml:68
 msgid "Highlight the selected cell's row and column"
 msgstr "برجسته کردن ردیف و ستون خانهٔ گزیده"
 
-#: data/org.gnome.Sudoku.gschema.xml:71
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Highlight the selected cell's block"
 msgstr "برجسته کردن مربّع گزیده"
 
-#: data/org.gnome.Sudoku.gschema.xml:75
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "Highlight the selected cell's matching numbers"
 msgstr "برجسته کردن عددهای مطابق با خانهٔ گزیده"
 
-#: data/org.gnome.Sudoku.gschema.xml:79
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "The puzzle's difficulty"
 msgstr "دشواری معمّا"
 
-#: data/org.gnome.Sudoku.gschema.xml:83
+#: data/org.gnome.Sudoku.gschema.xml:84
 msgid "Zoom level"
 msgstr "سطح بزرگ‌نمایی"
 
-#: data/org.gnome.Sudoku.gschema.xml:87
+#: data/org.gnome.Sudoku.gschema.xml:88
 msgid "Width of the window in pixels"
 msgstr "عرض پنجره به پیکسل"
 
-#: data/org.gnome.Sudoku.gschema.xml:91
+#: data/org.gnome.Sudoku.gschema.xml:92
 msgid "Height of the window in pixels"
 msgstr "ارتفاع پنجره به پیکسل"
 
-#: data/org.gnome.Sudoku.gschema.xml:95
+#: data/org.gnome.Sudoku.gschema.xml:96
 msgid "true if the window is maximized"
 msgstr "درست اگر پنجره بیشینه باشد"
 
-#: data/org.gnome.Sudoku.gschema.xml:99
+#: data/org.gnome.Sudoku.gschema.xml:100
 msgid "true if the window is fullscreen"
 msgstr "درست اگر پنجره تمام‌صفحه باشد"
 
@@ -192,8 +192,8 @@ msgid "Get help with the built-in warnings."
 msgstr "کمک گرفتن از هشدارهای توکار."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:25
-msgid "Time yourself to keep track of your progression."
-msgstr "زمان‌گیری خوتان برای ردیابی پیشرفتتان."
+msgid "Keep track of your progression with highscores and a timer."
+msgstr "نگه داشتن آمار پیشرفتتان با رکوردها و زمان‌سنج."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:26
 msgid "Print puzzles to play Sudoku on the go."
@@ -207,469 +207,492 @@ msgstr "یک پیش‌نمایش بازی سودوکوی گنوم"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "بازی سودوکوی گنوم در حالت تیره با نمایش نشانه‌ها و هشدارها"
 
-#: data/preferences-dialog.blp:7
+#: lib/sudoku-board.vala:531
+msgid "Unknown Difficulty"
+msgstr "سختی ناشناس"
+
+#: lib/sudoku-board.vala:533
+msgid "Easy Difficulty"
+msgstr "ساده"
+
+#: lib/sudoku-board.vala:535
+msgid "Medium Difficulty"
+msgstr "معمولی"
+
+#: lib/sudoku-board.vala:537
+msgid "Hard Difficulty"
+msgstr "سخت"
+
+#: lib/sudoku-board.vala:539
+msgid "Very Hard Difficulty"
+msgstr "خیلی سخت"
+
+#: lib/sudoku-board.vala:541
+msgid "Custom Puzzle"
+msgstr "معمّای سفارشی"
+
+#: src/blueprints/game-view.blp:22
+msgid "Undo Action"
+msgstr "برگردان کنش"
+
+#: src/blueprints/game-view.blp:33
+msgid "Redo Action"
+msgstr "انجام دوبارهٔ کنش"
+
+#: src/blueprints/game-view.blp:46
+msgid "Earmark Mode"
+msgstr "حالت نشانه"
+
+#: src/blueprints/game-view.blp:60
+msgid "Pause"
+msgstr "مکث"
+
+#: src/blueprints/game-view.blp:69
+msgid "Play"
+msgstr "بازی"
+
+#: src/blueprints/game-view.blp:79
+msgid "Play Custom Game"
+msgstr "بازی سفارشی"
+
+#: src/blueprints/menu-button.blp:7
+msgid "_New Game…"
+msgstr "بازی _جدید…"
+
+#: src/blueprints/menu-button.blp:12
+msgid "_Reset Puzzle"
+msgstr "_بازنشانی معمّا"
+
+#: src/blueprints/menu-button.blp:19 src/blueprints/print-dialog.blp:65
+msgid "_Print"
+msgstr "_چاپ"
+
+#: src/blueprints/menu-button.blp:23
+msgid "Print _Current Puzzle…"
+msgstr "چاپ معمّای _کنونی…"
+
+#: src/blueprints/menu-button.blp:28
+msgid "Print _Multiple Puzzles…"
+msgstr "چاپ چند _معمّا…"
+
+#: src/blueprints/menu-button.blp:35
+msgid "Zoom"
+msgstr "بزرگنمایی"
+
+#: src/blueprints/menu-button.blp:54
+msgid "_Highlighter"
+msgstr "_برجسته‌ساز"
+
+#: src/blueprints/menu-button.blp:59
+msgid "_Warnings"
+msgstr "_هشدارها"
+
+#: src/blueprints/menu-button.blp:66
+msgid "_Preferences"
+msgstr "_ترجیحات"
+
+#: src/blueprints/menu-button.blp:71
+msgid "_Keyboard Shortcuts"
+msgstr "_میان‌برهای صفحه‌کلید"
+
+#: src/blueprints/menu-button.blp:76
+msgid "_Help"
+msgstr "_راهنما"
+
+#: src/blueprints/menu-button.blp:81
+msgid "_About Sudoku"
+msgstr "_دربارهٔ سودوکو"
+
+#: src/blueprints/menu-button.blp:92
+msgid "Main Menu"
+msgstr "فهرست اصلی"
+
+#: src/blueprints/menu-button.blp:101
+msgid "Zoom Out"
+msgstr "کوچک‌نمایی"
+
+#: src/blueprints/menu-button.blp:113
+msgid "Zoom In"
+msgstr "بزرگ‌نمایی"
+
+#: src/blueprints/menu-button.blp:128
+msgid "Fullscreen"
+msgstr "تمام‌صفحه"
+
+#: src/blueprints/menu-button.blp:139
+msgid "Leave Fullscreen"
+msgstr "خروج از تمام‌صفحه"
+
+#: src/blueprints/preferences-dialog.blp:7
 msgctxt "preferences dialog"
 msgid "General"
 msgstr "عمومی"
 
-#: data/preferences-dialog.blp:10
+#: src/blueprints/preferences-dialog.blp:10
 msgctxt "General Preferences"
-msgid "_Timer and Pause Buttons"
-msgstr "دکمه‌های _زمان‌سنج و مکث"
+msgid "_Timer and Highscores"
+msgstr "_زمان‌سنج و رکوردها"
 
-#: data/preferences-dialog.blp:15
-msgctxt "General Preferences"
-msgid "Number Picker on _Second Click"
-msgstr "عددگزین در کلیک _دوم"
-
-#: data/preferences-dialog.blp:20
+#: src/blueprints/preferences-dialog.blp:15
 msgctxt "General Preferences"
 msgid "Automatically _Clean Earmarks"
 msgstr "_پاک کردن خودکار نشانه‌ها"
 
-#: data/preferences-dialog.blp:25
+#: src/blueprints/preferences-dialog.blp:20
+msgctxt "General Preferences"
+msgid "Number Picker on _Second Click"
+msgstr "عددگزین در کلیک _دوم"
+
+#: src/blueprints/preferences-dialog.blp:25
 msgctxt "General Preferences"
 msgid "Show Earmark _Possibilities"
 msgstr "نمایش نشانه‌های _ممکن"
 
-#: data/preferences-dialog.blp:31
+#: src/blueprints/preferences-dialog.blp:31
 msgctxt "Preferences Dialog"
 msgid "Warnings"
 msgstr "هشدارها"
 
-#: data/preferences-dialog.blp:34
+#: src/blueprints/preferences-dialog.blp:34
 msgctxt "Warning Preferences"
 msgid "Check _Against Solution"
 msgstr "_بررسی با راه‌حل"
 
-#: data/preferences-dialog.blp:39
+#: src/blueprints/preferences-dialog.blp:39
 msgctxt "Warning Preferences"
 msgid "_Earmark Warnings"
 msgstr "هشدار _نشنه"
 
-#: data/preferences-dialog.blp:45
+#: src/blueprints/preferences-dialog.blp:45
 msgctxt "Preferences Dialog"
 msgid "Highlighter"
 msgstr "برجسته‌ساز"
 
-#: data/preferences-dialog.blp:48
+#: src/blueprints/preferences-dialog.blp:48
 msgctxt "Highlighter Preferences"
 msgid "Highlight Matching _Numbers"
 msgstr "برجسته کردن _عددهای مطابق"
 
-#: data/preferences-dialog.blp:53
+#: src/blueprints/preferences-dialog.blp:53
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Row and Column"
 msgstr "برجسته کردن _ردیف و ستون"
 
-#: data/preferences-dialog.blp:58
+#: src/blueprints/preferences-dialog.blp:58
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "برجسته کردن _مربّع"
 
-#: data/print-dialog.blp:5
+#: src/blueprints/print-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "چاپ چند سودوکو"
 
-#: data/print-dialog.blp:24
+#: src/blueprints/print-dialog.blp:24
 msgid "Number of Puzzles"
 msgstr "تعداد معمّا‌ها"
 
-#: data/print-dialog.blp:35
+#: src/blueprints/print-dialog.blp:35
 msgid "Number of puzzles per page"
 msgstr "تعداد معمّا‌ها در صفحه"
 
-#: data/print-dialog.blp:46
+#: src/blueprints/print-dialog.blp:46
 msgid "Difficulty"
 msgstr "سختی"
 
-#: data/print-dialog.blp:50
+#: src/blueprints/print-dialog.blp:50
 msgid "Easy"
 msgstr "آسان"
 
-#: data/print-dialog.blp:51
+#: src/blueprints/print-dialog.blp:51
 msgid "Medium"
 msgstr "متوسّط"
 
-#: data/print-dialog.blp:52
+#: src/blueprints/print-dialog.blp:52
 msgid "Hard"
 msgstr "سخت"
 
-#: data/print-dialog.blp:53
+#: src/blueprints/print-dialog.blp:53
 msgid "Very Hard"
 msgstr "خیلی سخت"
 
-#: data/print-dialog.blp:65 data/sudoku-window.blp:19
-msgid "_Print"
-msgstr "_چاپ"
+#: src/blueprints/start-view.blp:13
+msgid "Select Difficulty"
+msgstr "گزینش سختی"
 
-#: data/shortcuts-window.blp:11
-msgctxt "Shortcuts Window"
-msgid "Game"
-msgstr "بازی"
-
-#: data/shortcuts-window.blp:15 data/shortcuts-window.blp:20
-msgctxt "Shortcuts Window"
-msgid "Move"
-msgstr "جابه‌جایی"
-
-#: data/shortcuts-window.blp:25
-msgctxt "Shortcuts Window"
-msgid "Earmarks"
-msgstr "نشانه‌ها"
-
-#: data/shortcuts-window.blp:30
-msgctxt "Shortcuts Window"
-msgid "Clear Cell"
-msgstr "پاک‌سازی خانه"
-
-#: data/shortcuts-window.blp:35
-msgctxt "Shortcuts Window"
-msgid "Undo"
-msgstr "برگردان"
-
-#: data/shortcuts-window.blp:40
-msgctxt "Shortcuts Window"
-msgid "Redo"
-msgstr "انجام دوباره"
-
-#: data/shortcuts-window.blp:45
-msgctxt "Shortcuts Window"
-msgid "Pause"
-msgstr "مکث"
-
-#: data/shortcuts-window.blp:50
-msgctxt "Shortcuts Window"
-msgid "Earmark Mode"
-msgstr "حالت نشانه"
-
-#: data/shortcuts-window.blp:55
-msgctxt "Shortcuts Window"
-msgid "Number Picker"
-msgstr "عددگزین"
-
-#: data/shortcuts-window.blp:60
-msgctxt "Shortcuts Window"
-msgid "Earmark Picker"
-msgstr "نشانه‌گزین"
-
-#: data/shortcuts-window.blp:65
-msgctxt "Shortcuts Window"
-msgid "New Game"
-msgstr "بازی جدید"
-
-#: data/shortcuts-window.blp:70
-msgctxt "Shortcuts Window"
-msgid "Reset Puzzle"
-msgstr "بازنشانی معمّا"
-
-#: data/shortcuts-window.blp:75
-msgctxt "Shortcuts Window"
-msgid "Window"
-msgstr "پنجره"
-
-#: data/shortcuts-window.blp:79
-msgctxt "Shortcuts Window"
-msgid "Go Back"
-msgstr "پس‌روی"
-
-#: data/shortcuts-window.blp:84
-msgctxt "Shortcuts Window"
-msgid "Zoom In"
-msgstr "بزرگ‌نمایی"
-
-#: data/shortcuts-window.blp:89
-msgctxt "Shortcuts Window"
-msgid "Zoom Out"
-msgstr "کوچک‌نمایی"
-
-#: data/shortcuts-window.blp:94
-msgctxt "Shortcuts Window"
-msgid "Zoom Reset"
-msgstr "بازنشانی بزرگنمایی"
-
-#: data/shortcuts-window.blp:99
-msgctxt "Shortcuts Window"
-msgid "Warnings"
-msgstr "هشدارها"
-
-#: data/shortcuts-window.blp:104
-msgctxt "Shortcuts Window"
-msgid "Highlighter"
-msgstr "برجسته‌ساز"
-
-#: data/shortcuts-window.blp:109
-msgctxt "Shortcuts Window"
-msgid "Print Current Puzzle"
-msgstr "چاپ معمّای کنونی"
-
-#: data/shortcuts-window.blp:114
-msgctxt "Shortcuts Window"
-msgid "Preferences"
-msgstr "ترجیحات"
-
-#: data/shortcuts-window.blp:119
-msgctxt "Shortcuts Window"
-msgid "Keyboard Shortcuts"
-msgstr "میان‌برهای صفحه‌کلید"
-
-#: data/shortcuts-window.blp:124
-msgctxt "Shortcuts Window"
-msgid "Quit"
-msgstr "خروج"
-
-#: data/shortcuts-window.blp:129
-msgctxt "Shortcuts Window"
-msgid "Help"
-msgstr "راهنما"
-
-#: data/shortcuts-window.blp:134
-msgctxt "Shortcuts Window"
-msgid "Menu"
-msgstr "فهرست"
-
-#: data/shortcuts-window.blp:139
-msgctxt "Shortcuts Window"
-msgid "Fullscreen"
-msgstr "تمام‌صفحه"
-
-#: data/sudoku-window.blp:7
-msgid "_New Game…"
-msgstr "بازی _جدید…"
-
-#: data/sudoku-window.blp:12
-msgid "_Reset Puzzle"
-msgstr "_بازنشانی معمّا"
-
-#: data/sudoku-window.blp:23
-msgid "Print _Current Puzzle…"
-msgstr "چاپ معمّای _کنونی…"
-
-#: data/sudoku-window.blp:28
-msgid "Print _Multiple Puzzles…"
-msgstr "چاپ چند _معمّا…"
-
-#: data/sudoku-window.blp:35
-msgid "Zoom"
-msgstr "بزرگنمایی"
-
-#: data/sudoku-window.blp:54
-msgid "_Highlighter"
-msgstr "_برجسته‌ساز"
-
-#: data/sudoku-window.blp:59
-msgid "_Warnings"
-msgstr "_هشدارها"
-
-#: data/sudoku-window.blp:66
-msgid "_Preferences"
-msgstr "_ترجیحات"
-
-#: data/sudoku-window.blp:71
-msgid "_Keyboard Shortcuts"
-msgstr "_میان‌برهای صفحه‌کلید"
-
-#: data/sudoku-window.blp:76
-msgid "_Help"
-msgstr "_راهنما"
-
-#: data/sudoku-window.blp:81
-msgid "_About Sudoku"
-msgstr "_دربارهٔ سودوکو"
-
-#: data/sudoku-window.blp:104
-msgid "Undo Action"
-msgstr "برگردان کنش"
-
-#: data/sudoku-window.blp:116
-msgid "Redo Action"
-msgstr "انجام دوبارهٔ کنش"
-
-#: data/sudoku-window.blp:128
+#: src/blueprints/start-view.blp:21
 msgid "Back"
 msgstr "بازگشت"
 
-#: data/sudoku-window.blp:140
-msgid "Earmark Mode"
-msgstr "حالت نشانه"
-
-#: data/sudoku-window.blp:150 data/sudoku-window.blp:211
-msgid "Leave Fullscreen"
-msgstr "خروج از تمام‌صفحه"
-
-#: data/sudoku-window.blp:164
-msgid "Main Menu"
-msgstr "فهرست اصلی"
-
-#: data/sudoku-window.blp:173
-msgid "Zoom Out"
-msgstr "کوچک‌نمایی"
-
-#: data/sudoku-window.blp:185
-msgid "Zoom In"
-msgstr "بزرگ‌نمایی"
-
-#: data/sudoku-window.blp:200
-msgid "Fullscreen"
-msgstr "تمام‌صفحه"
-
-#: data/sudoku-window.blp:232
-msgid "Pause"
-msgstr "مکث"
-
-#: data/sudoku-window.blp:242
-msgid "Play"
-msgstr "بازی"
-
-#: data/sudoku-window.blp:253
-msgid "Play Custom Game"
-msgstr "بازی سفارشی"
-
-#: data/sudoku-window.blp:298
+#: src/blueprints/start-view.blp:32
 msgid "Select Puzzle Difficulty"
 msgstr "گزینش دشواری معمّا"
 
-#: data/sudoku-window.blp:315
+#: src/blueprints/start-view.blp:50
 msgctxt "Difficulty"
 msgid "_Custom"
 msgstr "_سفارشی"
 
-#: data/sudoku-window.blp:329
+#: src/blueprints/start-view.blp:64
 msgctxt "Difficulty"
 msgid "_Easy"
 msgstr "_آسان"
 
-#: data/sudoku-window.blp:342
+#: src/blueprints/start-view.blp:77
 msgctxt "Difficulty"
 msgid "_Medium"
 msgstr "_متوسط"
 
-#: data/sudoku-window.blp:355
+#: src/blueprints/start-view.blp:90
 msgctxt "Difficulty"
 msgid "_Hard"
 msgstr "_سخت"
 
-#: data/sudoku-window.blp:368
+#: src/blueprints/start-view.blp:103
 msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "_خیلی سخت"
 
-#: data/sudoku-window.blp:377
+#: src/blueprints/start-view.blp:112
 msgid "_Start Game"
 msgstr "_شروع بازی"
 
-#: lib/sudoku-board.vala:634
-msgid "Unknown Difficulty"
-msgstr "سختی ناشناس"
+#: src/blueprints/shortcuts-window.blp:11
+msgctxt "Shortcuts Window"
+msgid "Game"
+msgstr "بازی"
 
-#: lib/sudoku-board.vala:636
-msgid "Easy Difficulty"
-msgstr "ساده"
+#: src/blueprints/shortcuts-window.blp:15 src/blueprints/shortcuts-window.blp:20
+msgctxt "Shortcuts Window"
+msgid "Move"
+msgstr "جابه‌جایی"
 
-#: lib/sudoku-board.vala:638
-msgid "Medium Difficulty"
-msgstr "معمولی"
+#: src/blueprints/shortcuts-window.blp:25
+msgctxt "Shortcuts Window"
+msgid "Earmarks"
+msgstr "نشانه‌ها"
 
-#: lib/sudoku-board.vala:640
-msgid "Hard Difficulty"
-msgstr "سخت"
+#: src/blueprints/shortcuts-window.blp:30
+msgctxt "Shortcuts Window"
+msgid "Clear Cell"
+msgstr "پاک‌سازی خانه"
 
-#: lib/sudoku-board.vala:642
-msgid "Very Hard Difficulty"
-msgstr "خیلی سخت"
+#: src/blueprints/shortcuts-window.blp:35
+msgctxt "Shortcuts Window"
+msgid "Undo"
+msgstr "برگردان"
 
-#: lib/sudoku-board.vala:644
-msgid "Custom Puzzle"
-msgstr "معمّای سفارشی"
+#: src/blueprints/shortcuts-window.blp:40
+msgctxt "Shortcuts Window"
+msgid "Redo"
+msgstr "انجام دوباره"
+
+#: src/blueprints/shortcuts-window.blp:45
+msgctxt "Shortcuts Window"
+msgid "Pause"
+msgstr "مکث"
+
+#: src/blueprints/shortcuts-window.blp:50
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
+msgstr "حالت نشانه"
+
+#: src/blueprints/shortcuts-window.blp:55
+msgctxt "Shortcuts Window"
+msgid "Number Picker"
+msgstr "عددگزین"
+
+#: src/blueprints/shortcuts-window.blp:60
+msgctxt "Shortcuts Window"
+msgid "Earmark Picker"
+msgstr "نشانه‌گزین"
+
+#: src/blueprints/shortcuts-window.blp:65
+msgctxt "Shortcuts Window"
+msgid "New Game"
+msgstr "بازی جدید"
+
+#: src/blueprints/shortcuts-window.blp:70
+msgctxt "Shortcuts Window"
+msgid "Reset Puzzle"
+msgstr "بازنشانی معمّا"
+
+#: src/blueprints/shortcuts-window.blp:75
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "پنجره"
+
+#: src/blueprints/shortcuts-window.blp:79
+msgctxt "Shortcuts Window"
+msgid "Go Back"
+msgstr "پس‌روی"
+
+#: src/blueprints/shortcuts-window.blp:84
+msgctxt "Shortcuts Window"
+msgid "Zoom In"
+msgstr "بزرگ‌نمایی"
+
+#: src/blueprints/shortcuts-window.blp:89
+msgctxt "Shortcuts Window"
+msgid "Zoom Out"
+msgstr "کوچک‌نمایی"
+
+#: src/blueprints/shortcuts-window.blp:94
+msgctxt "Shortcuts Window"
+msgid "Zoom Reset"
+msgstr "بازنشانی بزرگنمایی"
+
+#: src/blueprints/shortcuts-window.blp:99
+msgctxt "Shortcuts Window"
+msgid "Warnings"
+msgstr "هشدارها"
+
+#: src/blueprints/shortcuts-window.blp:104
+msgctxt "Shortcuts Window"
+msgid "Highlighter"
+msgstr "برجسته‌ساز"
+
+#: src/blueprints/shortcuts-window.blp:109
+msgctxt "Shortcuts Window"
+msgid "Print Current Puzzle"
+msgstr "چاپ معمّای کنونی"
+
+#: src/blueprints/shortcuts-window.blp:114
+msgctxt "Shortcuts Window"
+msgid "Preferences"
+msgstr "ترجیحات"
+
+#: src/blueprints/shortcuts-window.blp:119
+msgctxt "Shortcuts Window"
+msgid "Keyboard Shortcuts"
+msgstr "میان‌برهای صفحه‌کلید"
+
+#: src/blueprints/shortcuts-window.blp:124
+msgctxt "Shortcuts Window"
+msgid "Quit"
+msgstr "خروج"
+
+#: src/blueprints/shortcuts-window.blp:129
+msgctxt "Shortcuts Window"
+msgid "Help"
+msgstr "راهنما"
+
+#: src/blueprints/shortcuts-window.blp:134
+msgctxt "Shortcuts Window"
+msgid "Menu"
+msgstr "فهرست"
+
+#: src/blueprints/shortcuts-window.blp:139
+msgctxt "Shortcuts Window"
+msgid "Fullscreen"
+msgstr "تمام‌صفحه"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:88
+#: src/gnome-sudoku.vala:97
 msgid "Show release version"
 msgstr "نمایش نگارش ارائه"
 
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:234
+#: src/gnome-sudoku.vala:228
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "معمّایی که وارد کرده‌اید یک معمّای معتبر نیست."
 
-#: src/gnome-sudoku.vala:234
+#: src/gnome-sudoku.vala:228
 msgid "Please enter a valid puzzle."
 msgstr "لطفا معمّایی معتبر وارد کنید."
 
-#: src/gnome-sudoku.vala:235 src/printer.vala:46
+#: src/gnome-sudoku.vala:229 src/printer.vala:45
 msgid "Close"
 msgstr "بستن"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:237
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "معمّایی که وارد کرده‌اید بیش از یک راه‌حل دارد."
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:237
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "معمّا‌های معتبر سودوکو تنها یک راه حل دارند."
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:238
 msgid "_Back"
 msgstr "_بازگشت"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:239
 msgid "Play _Anyway"
 msgstr "به هر حال بازی _شود"
 
-#: src/gnome-sudoku.vala:286
+#: src/gnome-sudoku.vala:262
 #, c-format
-msgid "Well done, you completed the puzzle in %d minute!"
-msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "آفرین… معمّا را در %Id دقیقه حل کردید!"
-msgstr[1] "آفرین… معمّا را در %Id دقیقه حل کردید!"
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%Id دقیقه"
+msgstr[1] "%Id دقیقه"
 
-#: src/gnome-sudoku.vala:294
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:267
+#, c-format
+msgid "Well done, you completed the puzzle in %s and set a new personal best!"
+msgstr "آفرین… معمّا را در %s حل کرده و رکورد شخصی جدیدی زدید!"
+
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:274
+#, c-format
+msgid "Well done, you completed the puzzle in %s!"
+msgstr "آفرین… معمّا را در %s حل کردید!"
+
+#: src/gnome-sudoku.vala:279
+msgid "Well done, you completed the puzzle!"
+msgstr "آفرین… معمّا را حل کردید!"
+
+#: src/gnome-sudoku.vala:282
 msgid "Quit"
 msgstr "خروج"
 
-#: src/gnome-sudoku.vala:295
+#: src/gnome-sudoku.vala:283
 msgid "Play _Again"
 msgstr "بازی _دوباره"
 
-#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:529
-#, c-format
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"Puzzles generated by QQwing %s"
-msgstr ""
-"معمّای منطقی ژاپنی معروف\n"
-"\n"
-"معمّا‌ها به دست QQwing منتشر شده‌اند %s"
-
-#: src/gnome-sudoku.vala:537
+#: src/gnome-sudoku.vala:483
 msgid "translator-credits"
 msgstr ""
 "آرش موسوی <mousavi.arash@gmail.com>\n"
 "دانیال بهزادی <dani.behzi@gmail.com>"
 
-#: src/number-picker.vala:128
+#: src/number-picker.vala:127
 msgid "Clear"
 msgstr "پاک‌سازی"
 
+#: src/number-picker.vala:249 src/number-picker.vala:332
+msgid "Lock"
+msgstr "قفل"
+
+#: src/number-picker.vala:329
+msgid "Unlock"
+msgstr "قفل‌گشایی"
+
 #. Error message if printing fails
-#: src/printer.vala:45
+#: src/printer.vala:44
 msgid "Error printing file:"
 msgstr "خطا در چاپ پرونده:"
 
-#: src/view.vala:83
-msgid "Paused"
-msgstr "مکث شده"
+#~ msgid "Time yourself to keep track of your progression."
+#~ msgstr "زمان‌گیری خوتان برای ردیابی پیشرفتتان."
 
-#: src/window.vala:294
-msgid "Select Difficulty"
-msgstr "گزینش سختی"
+#, c-format
+#~ msgid ""
+#~ "The popular Japanese logic puzzle\n"
+#~ "\n"
+#~ "Puzzles generated by QQwing %s"
+#~ msgstr ""
+#~ "معمّای منطقی ژاپنی معروف\n"
+#~ "\n"
+#~ "معمّا‌ها به دست QQwing منتشر شده‌اند %s"
 
-#: src/window.vala:364
-msgid "Create Puzzle"
-msgstr "ایجاد معمّا"
+#~ msgid "Paused"
+#~ msgstr "مکث شده"
+
+#~ msgid "Create Puzzle"
+#~ msgstr "ایجاد معمّا"
 
 #~ msgid "Create Custom Game…"
 #~ msgstr "ایجاد بازی سفارشی…"
