@@ -296,7 +296,10 @@ public class SudokuCell : Widget
 
         gesture.set_state (EventSequenceState.CLAIMED);
 
-        activate_action_variant ("cell.show-picker", false);
+        if (game.mode == GameMode.CREATE || Sudoku.app.earmark_mode)
+            activate_action_variant ("cell.show-picker", true);
+        else
+            activate_action_variant ("cell.show-picker", false);
     }
 
     private void show_picker (Variant? wants_value)
