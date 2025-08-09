@@ -270,7 +270,7 @@ public class SudokuCell : Widget
         bool double_click_wanted = Sudoku.app.number_picker_second_click ||
                                    (Sudoku.app.highlighter && Sudoku.app.highlight_numbers && value != 0);
 
-        if (!selected && double_click_wanted)
+        if (is_fixed || (!selected && double_click_wanted))
         {
             grab_selection ();
             return;
@@ -281,15 +281,9 @@ public class SudokuCell : Widget
         bool control_pressed = (bool) (state & ModifierType.CONTROL_MASK);
 
         if (gesture.get_current_button () == BUTTON_PRIMARY)
-        {
-            var wants_value = new Variant.boolean (!control_pressed);
-            show_picker (wants_value);
-        }
+            activate_action_variant ("cell.show-picker", !control_pressed);
         else if (gesture.get_current_button () == BUTTON_SECONDARY)
-        {
-            var wants_value = new Variant.boolean (control_pressed);
-            show_picker (wants_value);
-        }
+            activate_action_variant ("cell.show-picker", control_pressed);
     }
 
     private void long_press_cb (GestureLongPress gesture,
@@ -302,8 +296,7 @@ public class SudokuCell : Widget
 
         gesture.set_state (EventSequenceState.CLAIMED);
 
-        var wants_value = new Variant.boolean (false);
-        show_picker (wants_value);
+        activate_action_variant ("cell.show-picker", false);
     }
 
     private void show_picker (Variant? wants_value)
