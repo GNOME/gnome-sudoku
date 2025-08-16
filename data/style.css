@@ -64,3 +64,8 @@ sudoku-cell.paused {
   background: var(--view-bg-color);
   transition: background 2s;
 }
+/*GTK 4.19.2+ workaround */
+.sudoku-picker-button.text-button {
+  padding-left: 10px;
+  padding-right: 10px;
+}

@@ -127,6 +127,7 @@ public abstract class PickerBase : Grid
         var label = new Label ("<big>%s</big>".printf (_("Clear")));
         label.use_markup = true;
         clear_button.set_child (label);
+        clear_button.add_css_class ("sudoku-picker-button");
 
         valign = Align.CENTER;
         halign = Align.CENTER;
@@ -193,6 +194,7 @@ private class ValuePicker : PickerBase
 
                 //workaround to avoid lambda capture and memory leak
                 button.set_data<int> ("number-contained", n);
+                button.add_css_class ("sudoku-picker-button");
 
                 value_buttons[n - 1] = button;
                 value_buttons[n - 1].clicked.connect (value_picked_cb);
@@ -274,6 +276,7 @@ private class EarmarkPicker : PickerBase
                 label.margin_top = 0;
                 label.margin_bottom = 8;
                 label.add_css_class ("numeric");
+                button.add_css_class ("sudoku-picker-button");
                 button.set_child (label);
 
                 //workaround to avoid lambda capture and memory leak
