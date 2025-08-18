@@ -124,14 +124,10 @@ public abstract class PickerBase : Grid
         this.game = game;
         this.number_picker = number_picker;
 
-        clear_button = new Button ();
+        clear_button = new Button.with_label (_("Clear"));
         clear_button.clicked.connect (() => {
             cell.value = 0;
         });
-
-        var label = new Label ("<big>%s</big>".printf (_("Clear")));
-        label.use_markup = true;
-        clear_button.set_child (label);
 
         valign = Align.CENTER;
         halign = Align.CENTER;
@@ -180,11 +176,10 @@ private class ValuePicker : PickerBase
             {
                 int n = col + ((game.board.block_rows - 1) - row) * game.board.block_cols + 1;
 
-                var button = new Button.with_label ("<big>%d</big>".printf (n));
+                var button = new Button.with_label (n.to_string ());
                 attach (button, col, row, 1, 1);
 
                 var label = button.child as Label;
-                label.use_markup = true;
                 label.add_css_class ("numeric");
                 label.add_css_class ("value");
 
@@ -203,8 +198,7 @@ private class ValuePicker : PickerBase
 
     private void value_picked_cb (Button button)
     {
-        var label = button.child as Label;
-        cell.value = int.parse (label.get_text());
+        cell.value = int.parse (button.label);
         number_picker.popdown ();
     }
 
@@ -258,11 +252,10 @@ private class EarmarkPicker : PickerBase
             {
                 int n = col + ((game.board.block_rows - 1) - row) * game.board.block_cols + 1;
 
-                var button = new ToggleButton.with_label ("<big>%d</big>".printf (n));
+                var button = new ToggleButton.with_label (n.to_string ());
                 attach (button, col, row, 1, 1);
 
                 var label = button.child as Label;
-                label.use_markup = true;
                 label.add_css_class ("numeric");
                 label.add_css_class ("earmark");
                 button.set_child (label);
@@ -292,8 +285,7 @@ private class EarmarkPicker : PickerBase
 
     private void earmark_picked_cb (ToggleButton button)
     {
-        var label = button.child as Label;
-        int number_picked = int.parse (label.get_text());
+        int number_picked = int.parse (button.label);
         if (button.get_active())
         {
             if (!game.board.is_earmark_enabled (cell.row, cell.col, number_picked))

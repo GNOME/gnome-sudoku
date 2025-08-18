@@ -77,8 +77,10 @@ sudoku-picker .value {
   margin-top: 4px;
   margin-bottom: 4px;
 }
-/*GTK 4.19.2+ workaround */
 sudoku-picker .text-button {
+  /*Overrides the default text-button padding*/
   padding-left: 10px;
   padding-right: 10px;
+
+  font-size: larger;
 }
