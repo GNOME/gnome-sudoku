@@ -180,14 +180,12 @@ private class ValuePicker : PickerBase
             {
                 int n = col + ((game.board.block_rows - 1) - row) * game.board.block_cols + 1;
 
-                var button = new Button ();
+                var button = new Button.with_label ("<big>%d</big>".printf (n));
                 attach (button, col, row, 1, 1);
 
-                var label = new Label ("<big>%d</big>".printf (n));
+                var label = button.child as Label;
                 label.use_markup = true;
                 label.add_css_class ("numeric");
-                button.set_child (label);
-
                 label.add_css_class ("value");
 
                 value_buttons[n - 1] = button;
@@ -260,17 +258,16 @@ private class EarmarkPicker : PickerBase
             {
                 int n = col + ((game.board.block_rows - 1) - row) * game.board.block_cols + 1;
 
-                var button = new ToggleButton ();
+                var button = new ToggleButton.with_label ("<big>%d</big>".printf (n));
                 attach (button, col, row, 1, 1);
 
-                var label = new Label ("<big>%d</big>".printf (n));
+                var label = button.child as Label;
                 label.use_markup = true;
                 label.add_css_class ("numeric");
                 label.add_css_class ("earmark");
                 button.set_child (label);
 
                 earmark_buttons[n - 1] = button;
-                earmark_buttons[n - 1].update_property (AccessibleProperty.LABEL, n.to_string ());
            }
         }
     }
