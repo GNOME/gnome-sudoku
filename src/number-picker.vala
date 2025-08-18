@@ -218,7 +218,7 @@ private class ValuePicker : PickerBase
 
     protected override void value_changed_cb (int row, int col, int old_val, int new_val)
     {
-        clear_button.visible =  new_val != 0;
+        clear_button.sensitive = clear_button.visible =  new_val != 0;
         number_picker.present ();
     }
 
