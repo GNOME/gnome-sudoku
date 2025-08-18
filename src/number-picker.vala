@@ -188,8 +188,6 @@ private class ValuePicker : PickerBase
                 label.add_css_class ("numeric");
                 button.set_child (label);
 
-                //workaround to avoid lambda capture and memory leak
-                button.set_data<int> ("number-contained", n);
                 label.add_css_class ("value");
 
                 value_buttons[n - 1] = button;
@@ -207,8 +205,8 @@ private class ValuePicker : PickerBase
 
     private void value_picked_cb (Button button)
     {
-        int val = button.get_data<int> ("number-contained");
-        cell.value = val;
+        var label = button.child as Label;
+        cell.value = int.parse (label.get_text());
         number_picker.popdown ();
     }
 
@@ -271,9 +269,6 @@ private class EarmarkPicker : PickerBase
                 label.add_css_class ("earmark");
                 button.set_child (label);
 
-                //workaround to avoid lambda capture and memory leak
-                button.set_data<int> ("number-contained", n);
-
                 earmark_buttons[n - 1] = button;
                 earmark_buttons[n - 1].update_property (AccessibleProperty.LABEL, n.to_string ());
            }
@@ -300,7 +295,8 @@ private class EarmarkPicker : PickerBase
 
     private void earmark_picked_cb (ToggleButton button)
     {
-        int number_picked = button.get_data<int> ("number-contained");
+        var label = button.child as Label;
+        int number_picked = int.parse (label.get_text());
         if (button.get_active())
         {
             if (!game.board.is_earmark_enabled (cell.row, cell.col, number_picked))
