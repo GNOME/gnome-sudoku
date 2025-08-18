@@ -114,6 +114,11 @@ public abstract class PickerBase : Grid
 
     protected Button clear_button;
 
+    static construct
+    {
+        set_css_name ("sudoku-picker");
+    }
+
     PickerBase (SudokuGame game, SudokuNumberPicker number_picker)
     {
         this.game = game;
@@ -127,14 +132,9 @@ public abstract class PickerBase : Grid
         var label = new Label ("<big>%s</big>".printf (_("Clear")));
         label.use_markup = true;
         clear_button.set_child (label);
-        clear_button.add_css_class ("sudoku-picker-button");
 
         valign = Align.CENTER;
         halign = Align.CENTER;
-        margin_top = 2;
-        margin_bottom = 2;
-        margin_start = 2;
-        margin_end = 2;
         row_spacing = 3;
         column_spacing = 3;
     }
@@ -185,16 +185,12 @@ private class ValuePicker : PickerBase
 
                 var label = new Label ("<big>%d</big>".printf (n));
                 label.use_markup = true;
-                label.margin_start = 8;
-                label.margin_end = 8;
-                label.margin_top = 4;
-                label.margin_bottom = 4;
                 label.add_css_class ("numeric");
                 button.set_child (label);
 
                 //workaround to avoid lambda capture and memory leak
                 button.set_data<int> ("number-contained", n);
-                button.add_css_class ("sudoku-picker-button");
+                label.add_css_class ("value");
 
                 value_buttons[n - 1] = button;
                 value_buttons[n - 1].clicked.connect (value_picked_cb);
@@ -271,12 +267,8 @@ private class EarmarkPicker : PickerBase
 
                 var label = new Label ("<big>%d</big>".printf (n));
                 label.use_markup = true;
-                label.margin_start = 0;
-                label.margin_end = 16;
-                label.margin_top = 0;
-                label.margin_bottom = 8;
                 label.add_css_class ("numeric");
-                button.add_css_class ("sudoku-picker-button");
+                label.add_css_class ("earmark");
                 button.set_child (label);
 
                 //workaround to avoid lambda capture and memory leak
