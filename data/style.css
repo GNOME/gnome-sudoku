@@ -9,6 +9,7 @@
   --sudoku-accent-pink: oklch(0.92 0.25 5);
   --sudoku-accent-purple: oklch(0.92 0.25 300);
   --sudoku-accent-slate: oklch(0.92 0.05 250);
+  --sudoku-pause-delay: 2s;
 }
 grid.board {
   border: 2px solid #333;
@@ -53,16 +54,16 @@ overlay.paused > label {
   font-weight: bold;
   color: #FFF;
   background: rgba(0, 0, 0, 0.75);
-  transition: background 2s;
-  animation: slow-appear 2s forwards;
+  transition: background var(--sudoku-pause-delay);
+  animation: slow-appear var(--sudoku-pause-delay) forwards;
 }
 sudoku-cell.paused label {
   opacity: 0%;
-  transition: opacity 2s;
+  transition: opacity var(--sudoku-pause-delay);
 }
 sudoku-cell.paused {
   background: var(--view-bg-color);
-  transition: background 2s;
+  transition: background var(--sudoku-pause-delay);
 }
 sudoku-picker {
   margin: 2px;
