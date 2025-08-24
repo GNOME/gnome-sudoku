@@ -1,6 +1,6 @@
 /*contains styles only used when AdwStyleManager:dark is TRUE.*/
 :root {
-  --sudoku-dark-grey: oklch(39% 0 0);
+  --sudoku-dark-grey: oklch(0.39 0 0);
   --sudoku-accent-blue: oklch(0.35 0.1 230);
   --sudoku-accent-teal: oklch(0.35 0.1 205);
   --sudoku-accent-green: oklch(0.35 0.1 145);
@@ -13,16 +13,16 @@
 }
 grid.board {
   border: none;
-  background: oklch(56% 0 0);
+  background: oklch(0.56 0 0);
 }
 grid.block {
-  background: oklch(47% 0 0);
+  background: oklch(0.47 0 0);
 }
 sudoku-cell {
   background: var(--sudoku-dark-grey);
 }
 sudoku-cell.fixed {
-  background: oklch(32% 0 0);
+  background: oklch(0.32 0 0);
 }
 sudoku-cell.highlight-coord {
   background: oklch(from var(--sudoku-accent-color) l calc(c * 0.25) h);
