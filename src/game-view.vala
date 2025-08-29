@@ -164,7 +164,7 @@ public class SudokuGameView : Adw.Bin
         update_tick_connection ();
         windowtitle.subtitle = board.difficulty_category.to_string ();
 
-        can_focus = true;
+        grid.can_focus = true;
         focus (TAB_FORWARD);
     }
 
@@ -275,7 +275,7 @@ public class SudokuGameView : Adw.Bin
         paused_label.set_attributes (attr_list);
         paused_label.set_visible (this.game.paused);
 
-        can_focus = !game.paused;
+        grid.can_focus = !game.paused;
 
         if (game.paused)
         {
