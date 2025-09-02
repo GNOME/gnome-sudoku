@@ -87,10 +87,8 @@ public class SudokuWindow : Adw.ApplicationWindow
         StyleContext.add_provider_for_display (get_display (), accent_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         style_manager = Adw.StyleManager.get_default ();
-        set_accent_color (style_manager.get_accent_color ());
-        style_manager.notify["accent-color"].connect(() => {
-            set_accent_color (style_manager.get_accent_color ());
-        });
+        set_accent_color ();
+        style_manager.notify["accent-color"].connect (set_accent_color);
     }
 
     private void construct_window_parameters ()
@@ -106,9 +104,11 @@ public class SudokuWindow : Adw.ApplicationWindow
         set_default_size (default_width, default_height);
     }
 
-    void set_accent_color (Adw.AccentColor color)
+    void set_accent_color ()
     {
+        var color = style_manager.get_accent_color ();
         string css_color;
+
         switch (color)
         {
             case BLUE:
