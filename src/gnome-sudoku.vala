@@ -133,7 +133,7 @@ public class Sudoku : Adw.Application
         settings.bind ("show-possibilities", this, "show-possibilities", SettingsBindFlags.DEFAULT);
         settings.bind ("autoclean-earmarks", this, "autoclean-earmarks", SettingsBindFlags.DEFAULT);
         settings.bind ("number-picker-second-click", this, "number-picker-second-click", SettingsBindFlags.DEFAULT);
-        settings.bind ("duplicate-warnings", this, "solution-warnings", SettingsBindFlags.DEFAULT);
+        settings.bind ("duplicate-warnings", this, "duplicate-warnings", SettingsBindFlags.DEFAULT);
         settings.bind ("solution-warnings", this, "solution-warnings", SettingsBindFlags.DEFAULT);
         settings.bind ("earmark-warnings", this, "earmark-warnings", SettingsBindFlags.DEFAULT);
         settings.bind ("highlight-row-column", this, "highlight-row-column", SettingsBindFlags.DEFAULT);
