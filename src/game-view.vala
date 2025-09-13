@@ -80,9 +80,7 @@ public class SudokuGameView : Adw.Bin
         this.window = window;
         windowtitle.subtitle = game.board.difficulty_category.to_string ();
 
-        Sudoku.app.notify["highlighter"].connect (highlighter_cb);
         Sudoku.app.notify["show-possibilities"].connect (show_possibilities_cb);
-        Sudoku.app.notify["show-warnings"].connect (warnings_cb);
         Sudoku.app.notify["earmark-warnings"].connect (warnings_cb);
         Sudoku.app.notify["solution-warnings"].connect (warnings_cb);
         Sudoku.app.notify["zoom-level"].connect (zoom_cb);
@@ -292,11 +290,6 @@ public class SudokuGameView : Adw.Bin
             game.undo ();
         else
             add_earmark_possibilities ();
-    }
-
-    private void highlighter_cb ()
-    {
-        grid.toggle_highlighter ();
     }
 
     private void warnings_cb ()

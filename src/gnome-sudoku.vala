@@ -60,11 +60,9 @@ public class Sudoku : Adw.Application
     public bool show_timer { get; set; }
     public bool earmark_mode { get; set; default = false; }
     public bool show_possibilities { get; set; }
-    public bool highlighter { get; set; }
     public bool highlight_row_column { get; set; }
     public bool highlight_block { get; set; }
     public bool highlight_numbers { get; set; }
-    public bool show_warnings { get; set; }
     public bool solution_warnings { get; set; }
     public bool earmark_warnings { get; set; }
     public bool autoclean_earmarks { get; set; }
@@ -132,11 +130,9 @@ public class Sudoku : Adw.Application
         settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
         settings.bind ("show-timer", this, "show-timer", SettingsBindFlags.DEFAULT);
         settings.bind ("show-possibilities", this, "show-possibilities", SettingsBindFlags.DEFAULT);
-        settings.bind ("highlighter", this, "highlighter", SettingsBindFlags.DEFAULT);
         settings.bind ("highlight-row-column", this, "highlight-row-column", SettingsBindFlags.DEFAULT);
         settings.bind ("highlight-block", this, "highlight-block", SettingsBindFlags.DEFAULT);
         settings.bind ("highlight-numbers", this, "highlight-numbers", SettingsBindFlags.DEFAULT);
-        settings.bind ("show-warnings", this, "show-warnings", SettingsBindFlags.DEFAULT);
         settings.bind ("solution-warnings", this, "solution-warnings", SettingsBindFlags.DEFAULT);
         settings.bind ("earmark-warnings", this, "earmark-warnings", SettingsBindFlags.DEFAULT);
         settings.bind ("autoclean-earmarks", this, "autoclean-earmarks", SettingsBindFlags.DEFAULT);
@@ -144,20 +140,13 @@ public class Sudoku : Adw.Application
 
         add_action_entries (action_entries, this);
 
-        var action = settings.create_action ("show-warnings");
-        add_action (action);
-        action = settings.create_action ("highlighter");
-        add_action (action);
-
         set_accels_for_action ("app.new-game", {"<Primary>n"});
         set_accels_for_action ("app.print-current-board", {"<Primary>p"});
         set_accels_for_action ("app.quit", {"<Primary>q"});
-        set_accels_for_action ("app.show-warnings", {"<Primary>w"});
         set_accels_for_action ("app.help", {"F1"});
         set_accels_for_action ("app.shortcuts-window", {"<Primary>question"});
         set_accels_for_action ("app.preferences-dialog", {"<Primary>comma"});
         set_accels_for_action ("app.toggle-fullscreen", {"F11", "f"});
-        set_accels_for_action ("app.highlighter", {"<Primary>h"});
         set_accels_for_action ("app.zoom-in", {"<Primary>plus", "<Primary>equal", "ZoomIn", "<Primary>KP_Add"});
         set_accels_for_action ("app.zoom-out", {"<Primary>minus", "ZoomOut", "<Primary>KP_Subtract"});
         set_accels_for_action ("app.zoom-reset", {"<Primary>0", "<Primary>KP_0"});

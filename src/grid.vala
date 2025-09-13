@@ -160,16 +160,13 @@ public class SudokuGrid : Grid
 
     private void update_highlighter (int old_row, int old_col)
     {
-        if (Sudoku.app.highlighter)
-        {
-            set_cell_highlighter (old_row, old_col, false);
-            set_cell_highlighter (selected_row, selected_col, true);
-        }
+        set_cell_highlighter (old_row, old_col, false);
+        set_cell_highlighter (selected_row, selected_col, true);
     }
 
     private void update_value_highlighter (int row, int col, int old_val, int new_val)
     {
-        if (!Sudoku.app.highlighter || !Sudoku.app.highlight_numbers)
+        if (!Sudoku.app.highlight_numbers)
             return;
 
         if (row != selected_row || col != selected_col)
@@ -259,24 +256,19 @@ public class SudokuGrid : Grid
 
     public void toggle_highlighter ()
     {
-        if (!Sudoku.app.highlighter)
-            set_cell_highlighter (selected_row, selected_col, false);
-        else if (focus_controller.contains_focus)
+        if (focus_controller.contains_focus)
             set_cell_highlighter (selected_row, selected_col, true);
     }
 
     public void update_warnings ()
     {
-        if (Sudoku.app.show_warnings)
-            foreach (var cell in cells)
-            {
-                cell.add_value_warnings ();
-                cell.update_all_earmark_warnings ();
-            }
-        else
+        foreach (var cell in cells)
+            cell.clear_warnings ();
+
+        foreach (var cell in cells)
         {
-            foreach (var cell in cells)
-                cell.clear_warnings ();
+            cell.add_value_warnings ();
+            cell.update_all_earmark_warnings ();
         }
     }
 
@@ -301,8 +293,7 @@ public class SudokuGrid : Grid
     {
         number_picker.popdown ();
         selected_cell.selected = false;
-        if (Sudoku.app.highlighter)
-            set_cell_highlighter (selected_row, selected_col, false);
+        set_cell_highlighter (selected_row, selected_col, false);
     }
 
     private void move (Variant? variant)
@@ -352,7 +343,7 @@ public class SudokuGrid : Grid
                 cells[row, col].update_earmark_visibility (num);
         }
 
-        if (Sudoku.app.show_warnings && Sudoku.app.earmark_warnings)
+        if (Sudoku.app.earmark_warnings)
             cells[row, col].add_earmark_warnings (num);
     }
 
