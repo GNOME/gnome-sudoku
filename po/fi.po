@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-09-10 19:03+0000\n"
-"PO-Revision-Date: 2025-09-11 10:53+0300\n"
+"POT-Creation-Date: 2025-09-13 14:29+0000\n"
+"PO-Revision-Date: 2025-09-13 20:23+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -75,77 +75,65 @@ msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Alusta muistiinpanot sisältäen jokaisen solun mahdolliset arvot"
 
 #: data/org.gnome.Sudoku.gschema.xml:39
-msgid "Color mistakes and duplicate numbers in red"
-msgstr "Osoita punaisella värillä virheet ja tuplanumerot"
+msgid "Check for duplicates in row, column and block"
+msgstr "Tarkista kaksoiskappaleet rivistä, sarakkeesta ja lohkosta"
 
-#: data/org.gnome.Sudoku.gschema.xml:40
-msgid ""
-"Displays a big red X in a square if it cannot possibly be filled by any "
-"number and duplicate numbers are highlighted in red"
-msgstr ""
-"Näyttää ison punaisen X-merkin ruuduissa, joita ei voi täyttää millään "
-"numeroilla. Tuplanumerot merkitään punaisella värillä"
-
-#: data/org.gnome.Sudoku.gschema.xml:44
+#: data/org.gnome.Sudoku.gschema.xml:43
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr ""
 "Tarkista muistiinpano rivissä, sarakkeessa ja lohkossa olevien "
 "tuplanumeroiden varalta"
 
-#: data/org.gnome.Sudoku.gschema.xml:48
+#: data/org.gnome.Sudoku.gschema.xml:47
 msgid "Toggle timer and pause buttons"
 msgstr "Vaihda ajastin- ja keskeytyspainikkeita"
 
-#: data/org.gnome.Sudoku.gschema.xml:52
+#: data/org.gnome.Sudoku.gschema.xml:51
 msgid "Additionally check against the solution for warnings"
 msgstr "Tarkista valinnaisesti ratkaisu varoituksia vasten"
 
-#: data/org.gnome.Sudoku.gschema.xml:56
+#: data/org.gnome.Sudoku.gschema.xml:55
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr ""
 "Tyhjennä muistiinpanot automaattisesti uuden numeron syöttämisen yhteydessä"
 
-#: data/org.gnome.Sudoku.gschema.xml:60
+#: data/org.gnome.Sudoku.gschema.xml:59
 msgid "Display number picker on second click"
 msgstr "Näytä numerovalitsin toisella napsautuksella"
 
-#: data/org.gnome.Sudoku.gschema.xml:64
-msgid "Highlight row, column and square that contain the selected cell"
-msgstr "Korosta valitun solun sisältävä rivi, sarake ja neliö"
-
-#: data/org.gnome.Sudoku.gschema.xml:68
+#: data/org.gnome.Sudoku.gschema.xml:63
 msgid "Highlight the selected cell's row and column"
 msgstr "Korosta valitun solun rivi ja sarake"
 
-#: data/org.gnome.Sudoku.gschema.xml:72
+#: data/org.gnome.Sudoku.gschema.xml:67
 msgid "Highlight the selected cell's block"
 msgstr "Korosta valitun solun lohko"
 
-#: data/org.gnome.Sudoku.gschema.xml:76
+#: data/org.gnome.Sudoku.gschema.xml:71
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Korosta valitun solun vastaavat numerot"
 
-#: data/org.gnome.Sudoku.gschema.xml:80
+#: data/org.gnome.Sudoku.gschema.xml:75
 msgid "The puzzle's difficulty"
 msgstr "Pulman vaikeustaso"
 
-#: data/org.gnome.Sudoku.gschema.xml:84
+#: data/org.gnome.Sudoku.gschema.xml:79
 msgid "Zoom level"
 msgstr "Suurennustaso"
 
-#: data/org.gnome.Sudoku.gschema.xml:88
+#: data/org.gnome.Sudoku.gschema.xml:83
 msgid "Width of the window in pixels"
 msgstr "Ikkunan leveys kuvapisteinä"
 
-#: data/org.gnome.Sudoku.gschema.xml:92
+#: data/org.gnome.Sudoku.gschema.xml:87
 msgid "Height of the window in pixels"
 msgstr "Ikkunan korkeus kuvapisteinä"
 
-#: data/org.gnome.Sudoku.gschema.xml:96
+#: data/org.gnome.Sudoku.gschema.xml:91
 msgid "true if the window is maximized"
 msgstr "tosi jos ikkuna on suurennettu"
 
-#: data/org.gnome.Sudoku.gschema.xml:100
+#: data/org.gnome.Sudoku.gschema.xml:95
 msgid "true if the window is fullscreen"
 msgstr "tosi jos ikkuna on koko näytön tilassa"
 
@@ -215,27 +203,27 @@ msgstr "Gnome Sudoku -pelin esikatselu"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Sudokupeli, tumma tyyli, muistiinpanot ja varoitukset"
 
-#: lib/sudoku-board.vala:531
+#: lib/sudoku-board.vala:551
 msgid "Unknown Difficulty"
 msgstr "Tuntematon vaikeustaso"
 
-#: lib/sudoku-board.vala:533
+#: lib/sudoku-board.vala:553
 msgid "Easy Difficulty"
 msgstr "Helppo vaikeustaso"
 
-#: lib/sudoku-board.vala:535
+#: lib/sudoku-board.vala:555
 msgid "Medium Difficulty"
 msgstr "Keskinkertainen vaikeustaso"
 
-#: lib/sudoku-board.vala:537
+#: lib/sudoku-board.vala:557
 msgid "Hard Difficulty"
 msgstr "Vaikea vaikeustaso"
 
-#: lib/sudoku-board.vala:539
+#: lib/sudoku-board.vala:559
 msgid "Very Hard Difficulty"
 msgstr "Erittäin vaikea vaikeustaso"
 
-#: lib/sudoku-board.vala:541
+#: lib/sudoku-board.vala:561
 msgid "Custom Puzzle"
 msgstr "Oma pulma"
 
@@ -258,10 +246,6 @@ msgstr "Keskeytä"
 #: src/blueprints/game-view.blp:69
 msgid "Play"
 msgstr "Pelaa"
-
-#: src/blueprints/game-view.blp:79
-msgid "Play Custom Game"
-msgstr "Pelaa mukautettua pulmaa"
 
 #: src/blueprints/menu-button.blp:7
 msgid "_New Game…"
@@ -288,46 +272,38 @@ msgid "Zoom"
 msgstr "Suurennus"
 
 #: src/blueprints/menu-button.blp:54
-msgid "_Highlighter"
-msgstr "_Korostus"
-
-#: src/blueprints/menu-button.blp:59
-msgid "_Warnings"
-msgstr "_Varoitukset"
-
-#: src/blueprints/menu-button.blp:66
 msgid "_Preferences"
 msgstr "_Asetukset"
 
-#: src/blueprints/menu-button.blp:71
+#: src/blueprints/menu-button.blp:59
 msgid "_Keyboard Shortcuts"
 msgstr "_Pikanäppäimet"
 
-#: src/blueprints/menu-button.blp:76
+#: src/blueprints/menu-button.blp:64
 msgid "_Help"
 msgstr "_Ohje"
 
-#: src/blueprints/menu-button.blp:81
+#: src/blueprints/menu-button.blp:69
 msgid "_About Sudoku"
 msgstr "_Tietoja - Sudoku"
 
-#: src/blueprints/menu-button.blp:92
+#: src/blueprints/menu-button.blp:80
 msgid "Main Menu"
 msgstr "Päävalikko"
 
-#: src/blueprints/menu-button.blp:101
+#: src/blueprints/menu-button.blp:89
 msgid "Zoom Out"
 msgstr "Loitonna"
 
-#: src/blueprints/menu-button.blp:113
+#: src/blueprints/menu-button.blp:101
 msgid "Zoom In"
 msgstr "Lähennä"
 
-#: src/blueprints/menu-button.blp:128
+#: src/blueprints/menu-button.blp:116
 msgid "Fullscreen"
 msgstr "Koko näyttö"
 
-#: src/blueprints/menu-button.blp:139
+#: src/blueprints/menu-button.blp:127
 msgid "Leave Fullscreen"
 msgstr "Poistu koko näytön tilasta"
 
@@ -361,32 +337,37 @@ msgctxt "Preferences Dialog"
 msgid "Warnings"
 msgstr "Varoitukset"
 
-#: src/blueprints/preferences-dialog.blp:34
+#: src/blueprints/preferences-dialog.blp:33
 msgctxt "Warning Preferences"
-msgid "Check _Against Solution"
-msgstr "Tarkista _ratkaisua vasten"
+msgid "_Duplicate Warnings"
+msgstr "_Kaksoiskappaleiden varoitukset"
 
-#: src/blueprints/preferences-dialog.blp:39
+#: src/blueprints/preferences-dialog.blp:38
+msgctxt "Warning Preferences"
+msgid "S_olution Warnings"
+msgstr "_Ratkaisuvaroitukset"
+
+#: src/blueprints/preferences-dialog.blp:43
 msgctxt "Warning Preferences"
 msgid "_Earmark Warnings"
 msgstr "_Muistiinpanovaroitukset"
 
-#: src/blueprints/preferences-dialog.blp:45
+#: src/blueprints/preferences-dialog.blp:49
 msgctxt "Preferences Dialog"
 msgid "Highlighter"
 msgstr "Korostus"
 
-#: src/blueprints/preferences-dialog.blp:48
+#: src/blueprints/preferences-dialog.blp:52
 msgctxt "Highlighter Preferences"
 msgid "Highlight Matching _Numbers"
 msgstr "Korosta vastaavat _numerot"
 
-#: src/blueprints/preferences-dialog.blp:53
+#: src/blueprints/preferences-dialog.blp:57
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Row and Column"
 msgstr "Korosta _rivi ja sarake"
 
-#: src/blueprints/preferences-dialog.blp:58
+#: src/blueprints/preferences-dialog.blp:62
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "Korosta lohko"
@@ -552,85 +533,45 @@ msgstr "Nollaa suurennustaso"
 
 #: src/blueprints/shortcuts-window.blp:99
 msgctxt "Shortcuts Window"
-msgid "Warnings"
-msgstr "Varoitukset"
-
-#: src/blueprints/shortcuts-window.blp:104
-msgctxt "Shortcuts Window"
-msgid "Highlighter"
-msgstr "Korostus"
-
-#: src/blueprints/shortcuts-window.blp:109
-msgctxt "Shortcuts Window"
 msgid "Print Current Puzzle"
 msgstr "Tulosta nykyinen pulma"
 
-#: src/blueprints/shortcuts-window.blp:114
+#: src/blueprints/shortcuts-window.blp:104
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Asetukset"
 
-#: src/blueprints/shortcuts-window.blp:119
+#: src/blueprints/shortcuts-window.blp:109
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Pikanäppäimet"
 
-#: src/blueprints/shortcuts-window.blp:124
+#: src/blueprints/shortcuts-window.blp:114
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Lopeta"
 
-#: src/blueprints/shortcuts-window.blp:129
+#: src/blueprints/shortcuts-window.blp:119
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Ohje"
 
-#: src/blueprints/shortcuts-window.blp:134
+#: src/blueprints/shortcuts-window.blp:124
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Valikko"
 
-#: src/blueprints/shortcuts-window.blp:139
+#: src/blueprints/shortcuts-window.blp:129
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Koko näyttö"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:97
+#: src/gnome-sudoku.vala:94
 msgid "Show release version"
 msgstr "Näytä julkaisuversio"
 
-#. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:228
-msgid "The puzzle you have entered is not a valid Sudoku."
-msgstr "Antamasi pulma ei ole kelvollinen sudoku."
-
-#: src/gnome-sudoku.vala:228
-msgid "Please enter a valid puzzle."
-msgstr "Anna kelvollinen pulma."
-
-#: src/gnome-sudoku.vala:229 src/printer.vala:45
-msgid "Close"
-msgstr "Sulje"
-
-#. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:237
-msgid "The puzzle you have entered has multiple solutions."
-msgstr "Antamallasi pulmalla on lukuisia ratkaisuja."
-
-#: src/gnome-sudoku.vala:237
-msgid "Valid Sudoku puzzles have exactly one solution."
-msgstr "Kelvolliset sudokupulmat omaavat vain yhden ratkaisun."
-
-#: src/gnome-sudoku.vala:238
-msgid "_Back"
-msgstr "_Takaisin"
-
-#: src/gnome-sudoku.vala:239
-msgid "Play _Anyway"
-msgstr "Pelaa _silti"
-
-#: src/gnome-sudoku.vala:262
+#: src/gnome-sudoku.vala:220
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -638,31 +579,31 @@ msgstr[0] "%d minuutissa"
 msgstr[1] "%d minuutissa"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:267
+#: src/gnome-sudoku.vala:225
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 "Onnittelut, ratkaisit pulman %s, ja se on henkilökohtainen ennätyksesi!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:274
+#: src/gnome-sudoku.vala:232
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Onnittelut, ratkaisit pulman %s!"
 
-#: src/gnome-sudoku.vala:279
+#: src/gnome-sudoku.vala:237
 msgid "Well done, you completed the puzzle!"
 msgstr "Onnittelut, ratkaisit pulman!"
 
-#: src/gnome-sudoku.vala:282
+#: src/gnome-sudoku.vala:240
 msgid "Quit"
 msgstr "Lopeta"
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:241
 msgid "Play _Again"
 msgstr "_Pelaa uudelleen"
 
-#: src/gnome-sudoku.vala:483
+#: src/gnome-sudoku.vala:427
 msgid "translator-credits"
 msgstr ""
 "Jiri Grönroos, 2012-2025\n"
@@ -699,6 +640,59 @@ msgstr "Avaa lukitus"
 #: src/printer.vala:44
 msgid "Error printing file:"
 msgstr "Virhe tulostaessa tiedostoa:"
+
+#: src/printer.vala:45
+msgid "Close"
+msgstr "Sulje"
+
+#~ msgid "Color mistakes and duplicate numbers in red"
+#~ msgstr "Osoita punaisella värillä virheet ja tuplanumerot"
+
+#~ msgid ""
+#~ "Displays a big red X in a square if it cannot possibly be filled by any "
+#~ "number and duplicate numbers are highlighted in red"
+#~ msgstr ""
+#~ "Näyttää ison punaisen X-merkin ruuduissa, joita ei voi täyttää millään "
+#~ "numeroilla. Tuplanumerot merkitään punaisella värillä"
+
+#~ msgid "Highlight row, column and square that contain the selected cell"
+#~ msgstr "Korosta valitun solun sisältävä rivi, sarake ja neliö"
+
+#~ msgid "Play Custom Game"
+#~ msgstr "Pelaa mukautettua pulmaa"
+
+#~ msgid "_Highlighter"
+#~ msgstr "_Korostus"
+
+#~ msgctxt "Warning Preferences"
+#~ msgid "Check _Against Solution"
+#~ msgstr "Tarkista _ratkaisua vasten"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Warnings"
+#~ msgstr "Varoitukset"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Highlighter"
+#~ msgstr "Korostus"
+
+#~ msgid "The puzzle you have entered is not a valid Sudoku."
+#~ msgstr "Antamasi pulma ei ole kelvollinen sudoku."
+
+#~ msgid "Please enter a valid puzzle."
+#~ msgstr "Anna kelvollinen pulma."
+
+#~ msgid "The puzzle you have entered has multiple solutions."
+#~ msgstr "Antamallasi pulmalla on lukuisia ratkaisuja."
+
+#~ msgid "Valid Sudoku puzzles have exactly one solution."
+#~ msgstr "Kelvolliset sudokupulmat omaavat vain yhden ratkaisun."
+
+#~ msgid "_Back"
+#~ msgstr "_Takaisin"
+
+#~ msgid "Play _Anyway"
+#~ msgstr "Pelaa _silti"
 
 #~ msgid "Time yourself to keep track of your progression."
 #~ msgstr "Seuraa peliesi kestoa ja edistymistäsi."
