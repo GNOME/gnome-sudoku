@@ -123,7 +123,7 @@ public class SudokuGrid : Grid
         this.game.board.value_changed.connect (value_changed_cb);
         this.game.board.earmark_changed.connect (earmark_changed_cb);
 
-        add_warnings ();
+        update_warnings ();
 
         action_group = new SimpleActionGroup ();
 
