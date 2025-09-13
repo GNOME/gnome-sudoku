@@ -263,17 +263,18 @@ public class SudokuGrid : Grid
     public void update_warnings ()
     {
         foreach (var cell in cells)
-            cell.clear_warnings ();
-
-        add_warnings ();
-    }
-
-    public void add_warnings ()
-    {
-        foreach (var cell in cells)
         {
             cell.update_value_warnings ();
             cell.update_all_earmark_warnings ();
+        }
+    }
+
+    public void update_cell_warnings (int row, int col)
+    {
+        foreach (var coord in game.board.aligned_coords_for_cell[row, col])
+        {
+            cells[coord.row, coord.col].update_value_warnings ();
+            cells[coord.row, coord.col].update_all_earmark_warnings ();
         }
     }
 

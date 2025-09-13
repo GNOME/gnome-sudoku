@@ -113,6 +113,10 @@ public class SudokuBoard : Object
     // The map from the coordinate of a box, to the list of coordinates in that box, for each box on the board
     public Map<Coord?, Gee.List<Coord?>> coords_for_block { get; private set; }
 
+    // The list of coordinates that are on the same block, row and column for each cell
+    // format is [row][col]
+    public Set<Coord?> [,] aligned_coords_for_cell { get; private set; }
+
     public SudokuBoard ()
     {
         cells = new Cell[rows, cols];
@@ -166,6 +170,25 @@ public class SudokuBoard : Object
                 coords_for_block[Coord(row, col)] = coords_for_block[Coord(row, col)].read_only_view;
 
         coords_for_block = coords_for_block.read_only_view;
+
+        aligned_coords_for_cell = new Set<Coord?> [rows, cols];
+        for (int row = 0; row < rows; row++)
+            for (int col = 0; col < cols; col++)
+            {
+                aligned_coords_for_cell[row, col] = new HashSet<Coord?>((HashDataFunc<Coord>) Coord.hash, (EqualDataFunc<Coord>) Coord.equal);
+
+                for (int i = 0; i < 9; i++)
+                {
+                    aligned_coords_for_cell[row, col].add (Coord(row, i));
+                    aligned_coords_for_cell[row, col].add (Coord(i, col));
+                }
+
+                int row_block = row / 3;
+                int row_col = col / 3;
+                for (int i = row_block * 3; i < (row_block + 1) * 3; i++)
+                    for (int j = row_col * 3; j < (row_col + 1) * 3; j++)
+                        aligned_coords_for_cell[row, col].add (Coord(i, j));
+            }
     }
 
     public SudokuBoard clone ()
@@ -365,10 +388,7 @@ public class SudokuBoard : Object
         if (broken_coords.contains (Coord(row, col)))
         {
             broken_coords.remove (Coord(row, col));
-            //remove all the related breakages in the related sets of cells
-            remove_breakages_for (coords_for_row[row], val);
-            remove_breakages_for (coords_for_col[col], val);
-            remove_breakages_for (coords_for_block[Coord(row / block_rows, col / block_cols)], val);
+            remove_breakages_for (aligned_coords_for_cell[row, col], val);
         }
     }
 
@@ -391,6 +411,13 @@ public class SudokuBoard : Object
 
         if (digit.occurrences_in_block[row / block_rows, col / block_cols] > 1)
             mark_breakages_for (coords_for_block[Coord(row / block_rows, col / block_cols)], val);
+    }
+
+    private void mark_breakages_for (Gee.List<Coord?> coords, int val)
+    {
+        foreach (Coord coord in coords)
+            if (cells[coord.row, coord.col].value == val)
+                broken_coords.add (coord);
     }
 
     public void solve ()
@@ -425,7 +452,7 @@ public class SudokuBoard : Object
         return QQwing.count_solutions_limited (cells_1d);
     }
 
-    private void remove_breakages_for (Gee.List<Coord?> coords, int val)
+    private void remove_breakages_for (Gee.Set<Coord?> coords, int val)
     {
         var digit = digits[val - 1];
         foreach (Coord coord in coords)
@@ -437,13 +464,6 @@ public class SudokuBoard : Object
                 {
                     broken_coords.remove (coord);
                 }
-    }
-
-    private void mark_breakages_for (Gee.List<Coord?> coords, int val)
-    {
-        foreach (Coord coord in coords)
-            if (cells[coord.row, coord.col].value == val)
-                broken_coords.add (coord);
     }
 
     public string to_string ()
