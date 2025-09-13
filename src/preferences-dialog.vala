@@ -24,12 +24,15 @@ using Gdk;
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/preferences-dialog.ui")]
 public class SudokuPreferencesDialog : Adw.PreferencesDialog
 {
-    [GtkChild] public unowned Adw.SwitchRow autoclean_earmarks;
-    [GtkChild] public unowned Adw.SwitchRow show_possibilities;
     [GtkChild] public unowned Adw.SwitchRow show_timer;
+    [GtkChild] public unowned Adw.SwitchRow autoclean_earmarks;
     [GtkChild] public unowned Adw.SwitchRow number_picker_second_click;
+    [GtkChild] public unowned Adw.SwitchRow show_possibilities;
+
     [GtkChild] public unowned Adw.SwitchRow earmark_warnings;
     [GtkChild] public unowned Adw.SwitchRow solution_warnings;
+    [GtkChild] public unowned Adw.SwitchRow duplicate_warnings;
+
     [GtkChild] public unowned Adw.SwitchRow highlight_numbers;
     [GtkChild] public unowned Adw.SwitchRow highlight_block;
     [GtkChild] public unowned Adw.SwitchRow highlight_row_column;
@@ -37,11 +40,14 @@ public class SudokuPreferencesDialog : Adw.PreferencesDialog
     public SudokuPreferencesDialog ()
     {
         Sudoku.app.bind_property ("show-timer", show_timer, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
-        Sudoku.app.bind_property ("earmark-warnings", earmark_warnings, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
-        Sudoku.app.bind_property ("show-possibilities", show_possibilities, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
-        Sudoku.app.bind_property ("number_picker-second_click", number_picker_second_click, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
-        Sudoku.app.bind_property ("solution-warnings", solution_warnings, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
         Sudoku.app.bind_property ("autoclean-earmarks", autoclean_earmarks, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("number_picker-second_click", number_picker_second_click, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("show-possibilities", show_possibilities, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+
+        Sudoku.app.bind_property ("duplicate_warnings", duplicate_warnings, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("solution-warnings", solution_warnings, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Sudoku.app.bind_property ("earmark-warnings", earmark_warnings, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+
         Sudoku.app.bind_property ("highlight-row-column", highlight_row_column, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
         Sudoku.app.bind_property ("highlight-block", highlight_block, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
         Sudoku.app.bind_property ("highlight-numbers", highlight_numbers, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);

@@ -29,6 +29,10 @@ template $SudokuPreferencesDialog: Adw.PreferencesDialog {
 
     Adw.PreferencesGroup {
       title: C_("Preferences Dialog", "Warnings");
+      Adw.SwitchRow duplicate_warnings {
+        title: C_("Warning Preferences", "_Duplicate Warnings");
+        use-underline: true;
+      }
 
       Adw.SwitchRow solution_warnings {
         title: C_("Warning Preferences", "S_olution Warnings");

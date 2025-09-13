@@ -81,8 +81,9 @@ public class SudokuGameView : Adw.Bin
         windowtitle.subtitle = game.board.difficulty_category.to_string ();
 
         Sudoku.app.notify["show-possibilities"].connect (show_possibilities_cb);
-        Sudoku.app.notify["earmark-warnings"].connect (warnings_cb);
+        Sudoku.app.notify["duplicate-warnings"].connect (warnings_cb);
         Sudoku.app.notify["solution-warnings"].connect (warnings_cb);
+        Sudoku.app.notify["earmark-warnings"].connect (warnings_cb);
         Sudoku.app.notify["zoom-level"].connect (zoom_cb);
         Sudoku.app.notify["show-timer"].connect (show_timer_cb);
         this.window.notify["width-is-small"].connect (window_width_is_small_cb);

@@ -351,13 +351,13 @@ public class SudokuCell : Widget
         earmarks[num - 1].set_visible (game.board.is_earmark_enabled(row, col, num));
     }
 
-    public void add_value_warnings ()
+    public void update_value_warnings ()
     {
         bool error = false;
 
         if (this.value != 0)
         {
-            if (game.board.broken_coords.contains (Coord (row, col)))
+            if (Sudoku.app.duplicate_warnings && game.board.broken_coords.contains (Coord (row, col)))
                 error = true;
 
             else if (Sudoku.app.solution_warnings)

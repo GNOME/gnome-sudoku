@@ -63,6 +63,7 @@ public class Sudoku : Adw.Application
     public bool highlight_row_column { get; set; }
     public bool highlight_block { get; set; }
     public bool highlight_numbers { get; set; }
+    public bool duplicate_warnings { get; set; }
     public bool solution_warnings { get; set; }
     public bool earmark_warnings { get; set; }
     public bool autoclean_earmarks { get; set; }
@@ -130,13 +131,14 @@ public class Sudoku : Adw.Application
         settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
         settings.bind ("show-timer", this, "show-timer", SettingsBindFlags.DEFAULT);
         settings.bind ("show-possibilities", this, "show-possibilities", SettingsBindFlags.DEFAULT);
+        settings.bind ("autoclean-earmarks", this, "autoclean-earmarks", SettingsBindFlags.DEFAULT);
+        settings.bind ("number-picker-second-click", this, "number-picker-second-click", SettingsBindFlags.DEFAULT);
+        settings.bind ("duplicate-warnings", this, "solution-warnings", SettingsBindFlags.DEFAULT);
+        settings.bind ("solution-warnings", this, "solution-warnings", SettingsBindFlags.DEFAULT);
+        settings.bind ("earmark-warnings", this, "earmark-warnings", SettingsBindFlags.DEFAULT);
         settings.bind ("highlight-row-column", this, "highlight-row-column", SettingsBindFlags.DEFAULT);
         settings.bind ("highlight-block", this, "highlight-block", SettingsBindFlags.DEFAULT);
         settings.bind ("highlight-numbers", this, "highlight-numbers", SettingsBindFlags.DEFAULT);
-        settings.bind ("solution-warnings", this, "solution-warnings", SettingsBindFlags.DEFAULT);
-        settings.bind ("earmark-warnings", this, "earmark-warnings", SettingsBindFlags.DEFAULT);
-        settings.bind ("autoclean-earmarks", this, "autoclean-earmarks", SettingsBindFlags.DEFAULT);
-        settings.bind ("number-picker-second-click", this, "number-picker-second-click", SettingsBindFlags.DEFAULT);
 
         add_action_entries (action_entries, this);
 

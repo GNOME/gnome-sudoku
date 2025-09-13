@@ -123,7 +123,7 @@ public class SudokuGrid : Grid
         this.game.board.value_changed.connect (value_changed_cb);
         this.game.board.earmark_changed.connect (earmark_changed_cb);
 
-        update_warnings ();
+        add_warnings ();
 
         action_group = new SimpleActionGroup ();
 
@@ -265,9 +265,14 @@ public class SudokuGrid : Grid
         foreach (var cell in cells)
             cell.clear_warnings ();
 
+        add_warnings ();
+    }
+
+    public void add_warnings ()
+    {
         foreach (var cell in cells)
         {
-            cell.add_value_warnings ();
+            cell.update_value_warnings ();
             cell.update_all_earmark_warnings ();
         }
     }
