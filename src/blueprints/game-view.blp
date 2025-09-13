@@ -73,22 +73,6 @@ template $SudokuGameView : Adw.Bin {
       }
 
       [end]
-      Button play_custom_game_button {
-        sensitive: false;
-        valign: center;
-        tooltip-text: _("Play Custom Game");
-        visible: false;
-        can-focus: true;
-        focus-on-click: false;
-        action-name: "app.play-custom-game";
-        icon-name: "checkmark-symbolic";
-
-        styles [
-          "success",
-        ]
-      }
-
-      [end]
       Box clock_box {
         can-focus: false;
         spacing: 6;

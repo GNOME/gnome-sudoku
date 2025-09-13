@@ -90,7 +90,7 @@ public class SudokuCell : Widget
         grid.number_picker.popdown ();
         var key = variant.get_int32 ();
 
-        if (game.mode == GameMode.PLAY && value == 0)
+        if (value == 0)
         {
             var enabled = game.board.is_earmark_enabled (row, col, key);
             if (!enabled)
@@ -171,7 +171,7 @@ public class SudokuCell : Widget
             }
             else if (value != game.board [row, col])
             {
-                if (Sudoku.app.autoclean_earmarks && game.mode == GameMode.PLAY)
+                if (Sudoku.app.autoclean_earmarks)
                     game.insert_and_disable_related_earmarks (row, col, value);
                 else
                     game.insert (row, col, value);
@@ -296,7 +296,7 @@ public class SudokuCell : Widget
 
         gesture.set_state (EventSequenceState.CLAIMED);
 
-        if (game.mode == GameMode.CREATE || Sudoku.app.earmark_mode)
+        if (Sudoku.app.earmark_mode)
             activate_action_variant ("cell.show-picker", true);
         else
             activate_action_variant ("cell.show-picker", false);
@@ -310,7 +310,7 @@ public class SudokuCell : Widget
 
         if (value_picker)
             grid.number_picker.show_value_picker (this);
-        else if (game.mode == GameMode.PLAY)
+        else
             grid.number_picker.show_earmark_picker (this);
     }
 
@@ -353,9 +353,6 @@ public class SudokuCell : Widget
 
     public void add_value_warnings ()
     {
-        if (game.mode == GameMode.CREATE)
-            return;
-
         bool error = false;
 
         if (this.value != 0)
@@ -363,7 +360,7 @@ public class SudokuCell : Widget
             if (game.board.broken_coords.contains (Coord (row, col)))
                 error = true;
 
-            else if (Sudoku.app.solution_warnings && game.mode == GameMode.PLAY)
+            else if (Sudoku.app.solution_warnings)
             {
                 int solution = game.board.get_solution (row, col);
                 if (solution != 0)

@@ -170,7 +170,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public void show_game_view ()
     {
-        current_screen = (SudokuWindowScreen) game_view.game.mode;
+        current_screen = SudokuWindowScreen.PLAY;
 
         view_stack.set_visible_child (game_view);
         game_view.grab_focus ();
@@ -316,6 +316,5 @@ public enum SudokuWindowScreen
 {
     NONE,
     PLAY,
-    CREATE,
     START;
 }

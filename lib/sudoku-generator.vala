@@ -64,8 +64,7 @@ namespace SudokuGenerator
     {
         var board = new SudokuBoard ();
         int[] puzzle = new int[board.rows * board.cols];
-        if (category != DifficultyCategory.CUSTOM)
-            puzzle = QQwing.generate_puzzle ((int) category);
+        puzzle = QQwing.generate_puzzle ((int) category);
 
         for (var row = 0; row < board.rows; row++)
             for (var col = 0; col < board.cols; col++)

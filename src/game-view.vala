@@ -30,7 +30,6 @@ public class SudokuGameView : Adw.Bin
     [GtkChild] private unowned Adw.Bin grid_bin;
     [GtkChild] private unowned Box clock_box;
     [GtkChild] private unowned Label clock_label;
-    [GtkChild] private unowned Button play_custom_game_button;
     [GtkChild] private unowned ToggleButton earmark_mode_button;
 
     [GtkChild] private unowned Adw.WindowTitle windowtitle;
@@ -103,12 +102,12 @@ public class SudokuGameView : Adw.Bin
 
         earmark_mode_action = new SimpleAction.stateful ("earmark-mode", null, false);
         earmark_mode_action.activate.connect (earmark_mode_cb);
-        earmark_mode_action.set_enabled (game.mode != GameMode.CREATE);
+        earmark_mode_action.set_enabled (true);
         action_group.add_action (earmark_mode_action);
 
         toggle_pause_action = new SimpleAction.stateful ("toggle-pause", null, false);
         toggle_pause_action.activate.connect (game.toggle_pause);
-        toggle_pause_action.set_enabled (game.mode == GameMode.PLAY && Sudoku.app.show_timer);
+        toggle_pause_action.set_enabled (Sudoku.app.show_timer);
         action_group.add_action (toggle_pause_action);
 
         reset_board_action = new SimpleAction ("reset-board", null);
@@ -150,8 +149,8 @@ public class SudokuGameView : Adw.Bin
 
     public void change_board (SudokuBoard board, double? highscore)
     {
-        earmark_mode_action.set_enabled (game.mode == GameMode.PLAY);
-        toggle_pause_action.set_enabled (game.mode == GameMode.PLAY && Sudoku.app.show_timer);
+        earmark_mode_action.set_enabled (true);
+        toggle_pause_action.set_enabled (Sudoku.app.show_timer);
 
         this.highscore = highscore;
         game.change_board (board);
@@ -170,19 +169,15 @@ public class SudokuGameView : Adw.Bin
 
     private void initialize_buttons ()
     {
-        clock_box.visible = Sudoku.app.show_timer && game.mode == GameMode.PLAY && !window.width_is_small;
-        play_pause_stack.visible = Sudoku.app.show_timer && game.mode == GameMode.PLAY;
-        play_custom_game_button.visible = game.mode == GameMode.CREATE;
-        earmark_mode_button.visible = game.mode == GameMode.PLAY &&
-                                      (!Sudoku.app.show_timer ||
+        clock_box.visible = Sudoku.app.show_timer && !window.width_is_small;
+        play_pause_stack.visible = Sudoku.app.show_timer;
+        earmark_mode_button.visible = (!Sudoku.app.show_timer ||
                                       (Sudoku.app.show_timer && !window.width_is_small));
-
-        play_custom_game_button.set_sensitive (!game.is_empty () && !game.board.is_fully_filled ());
     }
 
     private void initialize_clock_label ()
     {
-        if (game.mode == GameMode.CREATE || !Sudoku.app.show_timer)
+        if (!Sudoku.app.show_timer)
             return;
 
         var elapsed_time = (int) game.get_total_time_played ();
@@ -214,15 +209,15 @@ public class SudokuGameView : Adw.Bin
 
     private void add_earmark_possibilities ()
     {
-        if (Sudoku.app.show_possibilities && game.mode != GameMode.CREATE)
+        if (Sudoku.app.show_possibilities)
             game.enable_all_earmark_possibilities ();
     }
 
     private void update_tick_connection ()
     {
-        if (tick_handle == 0 && game.mode != GameMode.CREATE && Sudoku.app.show_timer)
+        if (tick_handle == 0 && Sudoku.app.show_timer)
             tick_handle = game.tick.connect (tick_cb);
-        else if (tick_handle != 0 && (game.mode == GameMode.CREATE || !Sudoku.app.show_timer))
+        else if (tick_handle != 0 && (!Sudoku.app.show_timer))
         {
             game.disconnect (tick_handle);
             tick_handle = 0;
@@ -247,10 +242,9 @@ public class SudokuGameView : Adw.Bin
 
     private void window_width_is_small_cb ()
     {
-        clock_box.visible = Sudoku.app.show_timer && !this.window.width_is_small && game.mode == GameMode.PLAY;
-        earmark_mode_button.visible = game.mode == GameMode.PLAY &&
-                                                   (!Sudoku.app.show_timer ||
-                                                   (Sudoku.app.show_timer && !window.width_is_small));
+        clock_box.visible = Sudoku.app.show_timer && !this.window.width_is_small;
+        earmark_mode_button.visible = (!Sudoku.app.show_timer ||
+                                      (Sudoku.app.show_timer && !window.width_is_small));
     }
 
     private void action_completed_cb ()
@@ -258,7 +252,6 @@ public class SudokuGameView : Adw.Bin
         undo_action.set_enabled (!game.is_undostack_null ());
         redo_action.set_enabled (!game.is_redostack_null ());
         reset_board_action.set_enabled (!game.is_empty ());
-        play_custom_game_button.set_sensitive (!game.is_empty () && !game.board.is_fully_filled ());
     }
 
     private void paused_cb ()
@@ -318,28 +311,25 @@ public class SudokuGameView : Adw.Bin
 
     private void show_timer_cb ()
     {
-        if (game.mode == GameMode.PLAY)
+        if (Sudoku.app.show_timer)
         {
-            if (Sudoku.app.show_timer)
-            {
-                initialize_clock_label ();
-                update_tick_connection ();
-                earmark_mode_button.visible = !window.width_is_small;
-                clock_box.visible = !window.width_is_small;
-                toggle_pause_action.set_enabled (true);
-                play_pause_stack.visible = true;
-            }
-            else
-            {
-                clock_box.visible = false;
-                update_tick_connection ();
-                earmark_mode_button.visible = true;
-                play_pause_stack.visible = false;
-                toggle_pause_action.set_enabled (false);
+            initialize_clock_label ();
+            update_tick_connection ();
+            earmark_mode_button.visible = !window.width_is_small;
+            clock_box.visible = !window.width_is_small;
+            toggle_pause_action.set_enabled (true);
+            play_pause_stack.visible = true;
+        }
+        else
+        {
+            clock_box.visible = false;
+            update_tick_connection ();
+            earmark_mode_button.visible = true;
+            play_pause_stack.visible = false;
+            toggle_pause_action.set_enabled (false);
 
-                if (game.paused)
-                    game.toggle_pause ();
-            }
+            if (game.paused)
+                game.toggle_pause ();
         }
     }
 

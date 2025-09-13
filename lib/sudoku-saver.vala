@@ -180,9 +180,7 @@ public class SudokuSaver : Object
         builder.add_string_value (board.difficulty_category.to_untranslated_string ());
 
         builder.set_member_name ("time_elapsed");
-        if (game.mode == GameMode.CREATE)
-            builder.add_double_value (0);
-        else if (save_timer)
+        if (save_timer)
             builder.add_double_value (game.get_total_time_played ());
         else
             builder.add_double_value (-1);

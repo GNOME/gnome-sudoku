@@ -74,10 +74,8 @@ public class Sudoku : Adw.Application
     {
         {"new-game", new_game_cb                                    },
         {"start-game", start_game_cb, "i"                           },
-        {"create-game", create_game_cb                              },
         {"back", back_cb                                            },
         {"print-current-board", print_current_board_cb              },
-        {"play-custom-game", play_custom_game_cb                    },
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
@@ -217,37 +215,6 @@ public class Sudoku : Adw.Application
         game_view.queue_draw ();
     }
 
-    private void play_custom_game_cb ()
-    {
-        int solutions = game.board.count_solutions_limited ();
-        if (solutions == 1)
-            start_custom_game ();
-        else if (solutions == 0)
-        {
-            // Error dialog shown when starting a custom game that is not valid.
-            var dialog = new Adw.AlertDialog (_("The puzzle you have entered is not a valid Sudoku."), _("Please enter a valid puzzle."));
-            dialog.add_response ("close", _("Close"));
-
-            dialog.response.connect (() => dialog.destroy ());
-            dialog.present (window);
-        }
-        else
-        {
-            // Warning dialog shown when starting a custom game that has multiple solutions.
-            var dialog = new Adw.AlertDialog (_("The puzzle you have entered has multiple solutions."), _("Valid Sudoku puzzles have exactly one solution."));
-            dialog.add_response ("close", _("_Back"));
-            dialog.add_response ("continue", _("Play _Anyway"));
-            dialog.set_response_appearance ("continue", Adw.ResponseAppearance.DESTRUCTIVE);
-
-            dialog.response["continue"].connect (() => {
-                start_custom_game ();
-                dialog.destroy ();
-            });
-
-            dialog.present (window);
-        }
-    }
-
     private void board_completed_cb ()
     {
         game_view.can_focus = false;
@@ -294,12 +261,6 @@ public class Sudoku : Adw.Application
         dialog.present (window);
     }
 
-    private void start_custom_game ()
-    {
-        game.board.set_all_fixed ();
-        start_game (game.board);
-    }
-
     private void save_game ()
     {
         if (!game.is_empty () && !game.board.complete)
@@ -322,10 +283,7 @@ public class Sudoku : Adw.Application
         show_game_view ();
         start_autosave ();
 
-        if (game.mode != GameMode.CREATE)
-            game.board.completed.connect (board_completed_cb);
-        else
-            game.board.completed.disconnect (board_completed_cb);
+        game.board.completed.connect (board_completed_cb);
     }
 
     private void show_start_view ()
@@ -364,12 +322,6 @@ public class Sudoku : Adw.Application
         Source.set_name_by_id (autosave_timeout, "[gnome-sudoku] autosave");
     }
 
-    private void create_game_cb ()
-    {
-        play_difficulty = DifficultyCategory.CUSTOM;
-        start_game_async ();
-    }
-
     private void start_game_cb (SimpleAction action, Variant? difficulty)
     {
         // Since we cannot have enums in .ui file, the 'action-target' property
@@ -377,6 +329,7 @@ public class Sudoku : Adw.Application
         // has been set to integers corresponding to the enums.
         // Following line converts those ints to their DifficultyCategory
         play_difficulty = (DifficultyCategory) difficulty.get_int32 ();
+
         start_game_async ();
     }
 

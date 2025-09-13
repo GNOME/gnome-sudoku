@@ -24,8 +24,7 @@ using Gee;
 public class SudokuGame : Object
 {
     public SudokuBoard board { get; private set; }
-    public GameMode mode { get; set; default = NONE; }
-    public bool paused { get; private set; default = false; }
+    public bool paused { get; set; default = false; }
     private GLib.Timer timer;
     private uint clock_tick_timeout;
 
@@ -77,14 +76,8 @@ public class SudokuGame : Object
     public SudokuGame (SudokuBoard board)
     {
         this.board = board;
-        if (board.fixed != 0)
-        {
-            mode = GameMode.PLAY;
-            board.solve ();
-            start_clock ();
-        }
-        else
-            mode = GameMode.CREATE;
+        board.solve ();
+        start_clock ();
 
         stack = new ArrayList<stack_item?>();
     }
@@ -93,17 +86,8 @@ public class SudokuGame : Object
     {
         stack.clear ();
         stack_head_index = -1;
-        if (board.fixed != 0)
-        {
-            mode = GameMode.PLAY;
-            board.solve ();
-            start_clock ();
-        }
-        else
-        {
-            mode = GameMode.CREATE;
-            stop_clock ();
-        }
+        board.solve ();
+        start_clock ();
 
         this.board = board;
     }
@@ -427,13 +411,6 @@ public class SudokuGame : Object
 
         Source.set_name_by_id (clock_tick_timeout, "[gnome-sudoku] clock_tick");
     }
-}
-
-public enum GameMode
-{
-    NONE,
-    PLAY,
-    CREATE;
 }
 
 public enum StackAction
