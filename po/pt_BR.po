@@ -33,7 +33,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-05-13 03:37+0000\n"
+"POT-Creation-Date: 2025-09-13 13:07+0000\n"
 "PO-Revision-Date: 2025-05-15 07:33-0300\n"
 "Last-Translator: Álvaro Burns <>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao/>\n"
@@ -51,18 +51,18 @@ msgstr ""
 "X-DL-State: Translating\n"
 "X-DL-Lang: pt_BR\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:3 src/blueprints/window.blp:88
-#: src/blueprints/window.blp:96
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/org.gnome.Sudoku.desktop.in.in:4
+#: data/org.gnome.Sudoku.desktop.in.in:3
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:8
 msgid "Test yourself in the classic puzzle"
 msgstr "Teste suas habilidades quebra-cabeça clássico"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in.in:6
+#: data/org.gnome.Sudoku.desktop.in.in:5
 msgid "magic;square;"
 msgstr "mágico;quadrado;"
 
@@ -99,77 +99,65 @@ msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Inicializar as marcas com os valores possíveis para cada célula"
 
 #: data/org.gnome.Sudoku.gschema.xml:39
-msgid "Color mistakes and duplicate numbers in red"
-msgstr "Colorizar erros e números duplicados em vermelho"
-
-#: data/org.gnome.Sudoku.gschema.xml:40
-msgid ""
-"Displays a big red X in a square if it cannot possibly be filled by any "
-"number and duplicate numbers are highlighted in red"
+msgid "Check for duplicates in row, column and block"
 msgstr ""
-"Exibe um grande X vermelho em um quadrado se ele possivelmente não puder ser "
-"preenchido por qualquer número e os números duplicados são destacados em "
-"vermelho"
+"Verificar por duplicatas em linha, coluna e bloco"
 
-#: data/org.gnome.Sudoku.gschema.xml:44
+#: data/org.gnome.Sudoku.gschema.xml:43
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr ""
 "Verificar as marcações em relação a duplicatas em linha, coluna e bloco"
 
-#: data/org.gnome.Sudoku.gschema.xml:48
+#: data/org.gnome.Sudoku.gschema.xml:47
 msgid "Toggle timer and pause buttons"
 msgstr "Alternar temporizador e botões de pausa"
 
-#: data/org.gnome.Sudoku.gschema.xml:52
+#: data/org.gnome.Sudoku.gschema.xml:51
 msgid "Additionally check against the solution for warnings"
 msgstr "Além disso, verifique se há avisos na solução"
 
-#: data/org.gnome.Sudoku.gschema.xml:56
+#: data/org.gnome.Sudoku.gschema.xml:55
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr ""
 "Limpar automaticamente marcações relacionadas em nova inserção de número"
 
-#: data/org.gnome.Sudoku.gschema.xml:60
+#: data/org.gnome.Sudoku.gschema.xml:59
 msgid "Display number picker on second click"
 msgstr "Exibir seletor de número no segundo clique"
 
-#: data/org.gnome.Sudoku.gschema.xml:64
-msgid "Highlight row, column and square that contain the selected cell"
-msgstr "Realçar a linha, a coluna e o quadrado que contêm a célula selecionada"
-
-#: data/org.gnome.Sudoku.gschema.xml:68
+#: data/org.gnome.Sudoku.gschema.xml:63
 msgid "Highlight the selected cell's row and column"
 msgstr "Realçar a linha e coluna da célula selecionada"
 
-#: data/org.gnome.Sudoku.gschema.xml:72
+#: data/org.gnome.Sudoku.gschema.xml:67
 msgid "Highlight the selected cell's block"
 msgstr "Realçar o bloco da célula selecionada"
 
-#: data/org.gnome.Sudoku.gschema.xml:76
+#: data/org.gnome.Sudoku.gschema.xml:71
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Realçar os números correspondentes da célula selecionada"
 
-#: data/org.gnome.Sudoku.gschema.xml:80
+#: data/org.gnome.Sudoku.gschema.xml:75
 msgid "The puzzle's difficulty"
 msgstr "A dificuldade do jogo"
 
-#: data/org.gnome.Sudoku.gschema.xml:84
+#: data/org.gnome.Sudoku.gschema.xml:79
 msgid "Zoom level"
 msgstr "Nível de ampliação"
 
-#: data/org.gnome.Sudoku.gschema.xml:88
+#: data/org.gnome.Sudoku.gschema.xml:83
 msgid "Width of the window in pixels"
 msgstr "A largura da janela em pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:92
+#: data/org.gnome.Sudoku.gschema.xml:87
 msgid "Height of the window in pixels"
 msgstr "A altura da janela em pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:96
+#: data/org.gnome.Sudoku.gschema.xml:91
 msgid "true if the window is maximized"
 msgstr "verdadeiro se a janela estiver maximizada"
 
-#: data/org.gnome.Sudoku.gschema.xml:100
+#: data/org.gnome.Sudoku.gschema.xml:95
 msgid "true if the window is fullscreen"
 msgstr "verdadeiro se a janela estiver em tela inteira"
 
@@ -239,33 +227,109 @@ msgstr "Uma prévia do GNOME para o jogo sudoku"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Um jogo de sudoku do GNOME no modo escuro com marcações e avisos"
 
-#: lib/sudoku-board.vala:634
+#: lib/sudoku-board.vala:551
 msgid "Unknown Difficulty"
 msgstr "Dificuldade desconhecida"
 
-#: lib/sudoku-board.vala:636
+#: lib/sudoku-board.vala:553
 msgid "Easy Difficulty"
 msgstr "Dificuldade fácil"
 
-#: lib/sudoku-board.vala:638
+#: lib/sudoku-board.vala:555
 msgid "Medium Difficulty"
 msgstr "Dificuldade média"
 
-#: lib/sudoku-board.vala:640
+#: lib/sudoku-board.vala:557
 msgid "Hard Difficulty"
 msgstr "Dificuldade alta"
 
-#: lib/sudoku-board.vala:642
+#: lib/sudoku-board.vala:559
 msgid "Very Hard Difficulty"
 msgstr "Dificuldade muito alta"
 
-#: lib/sudoku-board.vala:644
+#: lib/sudoku-board.vala:561
 msgid "Custom Puzzle"
 msgstr "Jogo customizado"
 
-#: src/blueprints/game-view.blp:6
-msgid "Paused"
-msgstr "Pausado"
+#: src/blueprints/game-view.blp:22
+msgid "Undo Action"
+msgstr "Desfaz sua última ação"
+
+#: src/blueprints/game-view.blp:33
+msgid "Redo Action"
+msgstr "Refaz sua última ação\t"
+
+#: src/blueprints/game-view.blp:46
+msgid "Earmark Mode"
+msgstr "Modo de marcação"
+
+#: src/blueprints/game-view.blp:60
+msgid "Pause"
+msgstr "Pausar"
+
+#: src/blueprints/game-view.blp:69
+msgid "Play"
+msgstr "Jogar"
+
+#: src/blueprints/menu-button.blp:7
+msgid "_New Game…"
+msgstr "_Novo jogo…"
+
+#: src/blueprints/menu-button.blp:12
+msgid "_Reset Puzzle"
+msgstr "_Redefinir jogo"
+
+#: src/blueprints/menu-button.blp:19 src/blueprints/print-dialog.blp:65
+msgid "_Print"
+msgstr "Im_primir"
+
+#: src/blueprints/menu-button.blp:23
+msgid "Print _Current Puzzle…"
+msgstr "Imprimir jogo _atual…"
+
+#: src/blueprints/menu-button.blp:28
+msgid "Print _Multiple Puzzles…"
+msgstr "Imprimir _múltiplos jogos…"
+
+#: src/blueprints/menu-button.blp:35
+msgid "Zoom"
+msgstr "Ampliar"
+
+#: src/blueprints/menu-button.blp:54
+msgid "_Preferences"
+msgstr "_Preferências"
+
+#: src/blueprints/menu-button.blp:59
+msgid "_Keyboard Shortcuts"
+msgstr "Atalhos de _teclado"
+
+#: src/blueprints/menu-button.blp:64
+msgid "_Help"
+msgstr "Aj_uda"
+
+#: src/blueprints/menu-button.blp:69
+msgid "_About Sudoku"
+msgstr "_Sobre o Sudoku"
+
+#: src/blueprints/menu-button.blp:80
+msgid "Main Menu"
+msgstr "Menu principal"
+
+#: src/blueprints/menu-button.blp:89
+msgid "Zoom Out"
+msgstr "Reduzi a ampliação"
+
+#: src/blueprints/menu-button.blp:101
+msgid "Zoom In"
+msgstr "Aumenta a ampliação"
+
+#: src/blueprints/menu-button.blp:116
+msgid "Fullscreen"
+msgstr "Tela cheia"
+
+#: src/blueprints/menu-button.blp:127
+msgid "Leave Fullscreen"
+msgstr "Sai da tela cheia"
 
 #: src/blueprints/preferences-dialog.blp:7
 msgctxt "preferences dialog"
@@ -297,32 +361,37 @@ msgctxt "Preferences Dialog"
 msgid "Warnings"
 msgstr "Avisos"
 
-#: src/blueprints/preferences-dialog.blp:34
+#: src/blueprints/preferences-dialog.blp:33
 msgctxt "Warning Preferences"
-msgid "Check _Against Solution"
-msgstr "_Verificar solução"
+msgid "_Duplicate Warnings"
+msgstr "_Avisos de duplicatas"
 
-#: src/blueprints/preferences-dialog.blp:39
+#: src/blueprints/preferences-dialog.blp:38
+msgctxt "Warning Preferences"
+msgid "S_olution Warnings"
+msgstr "_Avisos de soluções"
+
+#: src/blueprints/preferences-dialog.blp:43
 msgctxt "Warning Preferences"
 msgid "_Earmark Warnings"
 msgstr "_Avisos de marcações"
 
-#: src/blueprints/preferences-dialog.blp:45
+#: src/blueprints/preferences-dialog.blp:49
 msgctxt "Preferences Dialog"
 msgid "Highlighter"
 msgstr "Realçador"
 
-#: src/blueprints/preferences-dialog.blp:48
+#: src/blueprints/preferences-dialog.blp:52
 msgctxt "Highlighter Preferences"
 msgid "Highlight Matching _Numbers"
 msgstr "Realçar _números de correspondência"
 
-#: src/blueprints/preferences-dialog.blp:53
+#: src/blueprints/preferences-dialog.blp:57
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Row and Column"
 msgstr "Realçar _linha e coluna"
 
-#: src/blueprints/preferences-dialog.blp:58
+#: src/blueprints/preferences-dialog.blp:62
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "Realçar _bloco"
@@ -359,40 +428,44 @@ msgstr "Difícil"
 msgid "Very Hard"
 msgstr "Muito difícil"
 
-#: src/blueprints/print-dialog.blp:65 src/blueprints/window.blp:19
-msgid "_Print"
-msgstr "Im_primir"
+#: src/blueprints/start-view.blp:13
+msgid "Select Difficulty"
+msgstr "Selecionar a dificuldade"
 
-#: src/blueprints/start-view.blp:10
+#: src/blueprints/start-view.blp:21
+msgid "Back"
+msgstr "Voltar"
+
+#: src/blueprints/start-view.blp:32
 msgid "Select Puzzle Difficulty"
 msgstr "Selecionar a dificuldade do jogo"
 
-#: src/blueprints/start-view.blp:27
+#: src/blueprints/start-view.blp:50
 msgctxt "Difficulty"
 msgid "_Custom"
 msgstr "_Personalizada"
 
-#: src/blueprints/start-view.blp:41
+#: src/blueprints/start-view.blp:64
 msgctxt "Difficulty"
 msgid "_Easy"
 msgstr "_Fácil"
 
-#: src/blueprints/start-view.blp:54
+#: src/blueprints/start-view.blp:77
 msgctxt "Difficulty"
 msgid "_Medium"
 msgstr "_Médio"
 
-#: src/blueprints/start-view.blp:67
+#: src/blueprints/start-view.blp:90
 msgctxt "Difficulty"
 msgid "_Hard"
 msgstr "_Difícil"
 
-#: src/blueprints/start-view.blp:80
+#: src/blueprints/start-view.blp:103
 msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "Mui_to difícil "
 
-#: src/blueprints/start-view.blp:89
+#: src/blueprints/start-view.blp:112
 msgid "_Start Game"
 msgstr "_Iniciar o jogo"
 
@@ -484,177 +557,45 @@ msgstr "Redefine a ampliação"
 
 #: src/blueprints/shortcuts-window.blp:99
 msgctxt "Shortcuts Window"
-msgid "Warnings"
-msgstr "Avisos"
-
-#: src/blueprints/shortcuts-window.blp:104
-msgctxt "Shortcuts Window"
-msgid "Highlighter"
-msgstr "Realçador"
-
-#: src/blueprints/shortcuts-window.blp:109
-msgctxt "Shortcuts Window"
 msgid "Print Current Puzzle"
 msgstr "Imprime o jogo atual"
 
-#: src/blueprints/shortcuts-window.blp:114
+#: src/blueprints/shortcuts-window.blp:104
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/blueprints/shortcuts-window.blp:119
+#: src/blueprints/shortcuts-window.blp:109
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de teclado"
 
-#: src/blueprints/shortcuts-window.blp:124
+#: src/blueprints/shortcuts-window.blp:114
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Sai"
 
-#: src/blueprints/shortcuts-window.blp:129
+#: src/blueprints/shortcuts-window.blp:119
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/blueprints/shortcuts-window.blp:134
+#: src/blueprints/shortcuts-window.blp:124
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Menu"
 
-#: src/blueprints/shortcuts-window.blp:139
+#: src/blueprints/shortcuts-window.blp:129
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Tela cheia"
 
-#: src/blueprints/window.blp:7
-msgid "_New Game…"
-msgstr "_Novo jogo…"
-
-#: src/blueprints/window.blp:12
-msgid "_Reset Puzzle"
-msgstr "_Redefinir jogo"
-
-#: src/blueprints/window.blp:23
-msgid "Print _Current Puzzle…"
-msgstr "Imprimir jogo _atual…"
-
-#: src/blueprints/window.blp:28
-msgid "Print _Multiple Puzzles…"
-msgstr "Imprimir _múltiplos jogos…"
-
-#: src/blueprints/window.blp:35
-msgid "Zoom"
-msgstr "Ampliar"
-
-#: src/blueprints/window.blp:54
-msgid "_Highlighter"
-msgstr "_Realçador"
-
-#: src/blueprints/window.blp:59
-msgid "_Warnings"
-msgstr "_Avisos"
-
-#: src/blueprints/window.blp:66
-msgid "_Preferences"
-msgstr "_Preferências"
-
-#: src/blueprints/window.blp:71
-msgid "_Keyboard Shortcuts"
-msgstr "Atalhos de _teclado"
-
-#: src/blueprints/window.blp:76
-msgid "_Help"
-msgstr "Aj_uda"
-
-#: src/blueprints/window.blp:81
-msgid "_About Sudoku"
-msgstr "_Sobre o Sudoku"
-
-#: src/blueprints/window.blp:104
-msgid "Undo Action"
-msgstr "Desfaz sua última ação"
-
-#: src/blueprints/window.blp:116
-msgid "Redo Action"
-msgstr "Refaz sua última ação\t"
-
-#: src/blueprints/window.blp:128
-msgid "Back"
-msgstr "Voltar"
-
-#: src/blueprints/window.blp:141
-msgid "Earmark Mode"
-msgstr "Modo de marcação"
-
-#: src/blueprints/window.blp:151 src/blueprints/window.blp:212
-msgid "Leave Fullscreen"
-msgstr "Sai da tela cheia"
-
-#: src/blueprints/window.blp:165
-msgid "Main Menu"
-msgstr "Menu principal"
-
-#: src/blueprints/window.blp:174
-msgid "Zoom Out"
-msgstr "Reduzi a ampliação"
-
-#: src/blueprints/window.blp:186
-msgid "Zoom In"
-msgstr "Aumenta a ampliação"
-
-#: src/blueprints/window.blp:201
-msgid "Fullscreen"
-msgstr "Tela cheia"
-
-#: src/blueprints/window.blp:233
-msgid "Pause"
-msgstr "Pausar"
-
-#: src/blueprints/window.blp:243
-msgid "Play"
-msgstr "Jogar"
-
-#: src/blueprints/window.blp:254
-msgid "Play Custom Game"
-msgstr "Joga um jogo personalizado"
-
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:106
+#: src/gnome-sudoku.vala:94
 msgid "Show release version"
 msgstr "Mostrar versão de lançamento"
 
-#. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:266
-msgid "The puzzle you have entered is not a valid Sudoku."
-msgstr "O jogo que você entrou não é um jogo de Sudoku válido."
-
-#: src/gnome-sudoku.vala:266
-msgid "Please enter a valid puzzle."
-msgstr "Por favor entre com um jogo válido."
-
-#: src/gnome-sudoku.vala:267 src/printer.vala:46
-msgid "Close"
-msgstr "Fechar"
-
-#. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:275
-msgid "The puzzle you have entered has multiple solutions."
-msgstr "O jogo que você entrou tem múltiplas soluções."
-
-#: src/gnome-sudoku.vala:275
-msgid "Valid Sudoku puzzles have exactly one solution."
-msgstr "Jogos de Sudoku válidos têm apenas uma solução."
-
-#: src/gnome-sudoku.vala:276
-msgid "_Back"
-msgstr "_Voltar"
-
-#: src/gnome-sudoku.vala:277
-msgid "Play _Anyway"
-msgstr "Jogar _assim mesmo"
-
-#: src/gnome-sudoku.vala:314
+#: src/gnome-sudoku.vala:220
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -662,43 +603,31 @@ msgstr[0] "%d minuto"
 msgstr[1] "%d minutos"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:319
+#: src/gnome-sudoku.vala:225
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 "Parabéns, você completou o jogo em %s e estabeleceu um novo recorde pessoal!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:326
+#: src/gnome-sudoku.vala:232
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Parabéns, você concluiu o jogo em %s!"
 
-#: src/gnome-sudoku.vala:331
+#: src/gnome-sudoku.vala:237
 msgid "Well done, you completed the puzzle!"
 msgstr "Parabéns, você concluiu o jogo!"
 
-#: src/gnome-sudoku.vala:334
+#: src/gnome-sudoku.vala:240
 msgid "Quit"
 msgstr "Sair"
 
-#: src/gnome-sudoku.vala:335
+#: src/gnome-sudoku.vala:241
 msgid "Play _Again"
 msgstr "Jogar _novamente"
 
-#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:538
-#, c-format
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"Puzzles generated by QQwing %s"
-msgstr ""
-"O popular jogo japonês de lógica\n"
-"\n"
-"Jogos criados pelo QQwing %s"
-
-#: src/gnome-sudoku.vala:544
+#: src/gnome-sudoku.vala:427
 msgid "translator-credits"
 msgstr ""
 "Sandro Nunes Henrique <sandro@conectiva.com.br>\n"
@@ -726,26 +655,89 @@ msgstr ""
 msgid "Clear"
 msgstr "Limpar"
 
-#: src/number-picker.vala:248 src/number-picker.vala:330
+#: src/number-picker.vala:237 src/number-picker.vala:312
 msgid "Lock"
 msgstr "Bloquear"
 
-#: src/number-picker.vala:327
+#: src/number-picker.vala:309
 msgid "Unlock"
 msgstr "Desbloquear"
 
 #. Error message if printing fails
-#: src/printer.vala:45
+#: src/printer.vala:44
 msgid "Error printing file:"
 msgstr "Erro ao imprimir arquivo:"
 
-#: src/window.vala:241
-msgid "Select Difficulty"
-msgstr "Selecionar a dificuldade"
+#: src/printer.vala:45
+msgid "Close"
+msgstr "Fechar"
 
-#: src/window.vala:275
-msgid "Create Puzzle"
-msgstr "Criar jogo"
+#~ msgid "Color mistakes and duplicate numbers in red"
+#~ msgstr "Colorizar erros e números duplicados em vermelho"
+
+#~ msgid ""
+#~ "Displays a big red X in a square if it cannot possibly be filled by any "
+#~ "number and duplicate numbers are highlighted in red"
+#~ msgstr ""
+#~ "Exibe um grande X vermelho em um quadrado se ele possivelmente não puder "
+#~ "ser preenchido por qualquer número e os números duplicados são destacados "
+#~ "em vermelho"
+
+#~ msgid "Highlight row, column and square that contain the selected cell"
+#~ msgstr ""
+#~ "Realçar a linha, a coluna e o quadrado que contêm a célula selecionada"
+
+#~ msgid "Paused"
+#~ msgstr "Pausado"
+
+#~ msgctxt "Warning Preferences"
+#~ msgid "Check _Against Solution"
+#~ msgstr "_Verificar solução"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Warnings"
+#~ msgstr "Avisos"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Highlighter"
+#~ msgstr "Realçador"
+
+#~ msgid "_Highlighter"
+#~ msgstr "_Realçador"
+
+#~ msgid "Play Custom Game"
+#~ msgstr "Joga um jogo personalizado"
+
+#~ msgid "The puzzle you have entered is not a valid Sudoku."
+#~ msgstr "O jogo que você entrou não é um jogo de Sudoku válido."
+
+#~ msgid "Please enter a valid puzzle."
+#~ msgstr "Por favor entre com um jogo válido."
+
+#~ msgid "The puzzle you have entered has multiple solutions."
+#~ msgstr "O jogo que você entrou tem múltiplas soluções."
+
+#~ msgid "Valid Sudoku puzzles have exactly one solution."
+#~ msgstr "Jogos de Sudoku válidos têm apenas uma solução."
+
+#~ msgid "_Back"
+#~ msgstr "_Voltar"
+
+#~ msgid "Play _Anyway"
+#~ msgstr "Jogar _assim mesmo"
+
+#, c-format
+#~ msgid ""
+#~ "The popular Japanese logic puzzle\n"
+#~ "\n"
+#~ "Puzzles generated by QQwing %s"
+#~ msgstr ""
+#~ "O popular jogo japonês de lógica\n"
+#~ "\n"
+#~ "Jogos criados pelo QQwing %s"
+
+#~ msgid "Create Puzzle"
+#~ msgstr "Criar jogo"
 
 #~ msgid "Time yourself to keep track of your progression."
 #~ msgstr "Cronometre-se para acompanhar seu progresso."
