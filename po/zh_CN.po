@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-05-15 15:58+0000\n"
-"PO-Revision-Date: 2025-05-16 17:10+0800\n"
+"POT-Creation-Date: 2025-09-13 17:24+0000\n"
+"PO-Revision-Date: 2025-09-14 08:50+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -24,18 +24,18 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 48.0\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:3 src/blueprints/window.blp:88
-#: src/blueprints/window.blp:96
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "数独"
 
-#: data/org.gnome.Sudoku.desktop.in.in:4
+#: data/org.gnome.Sudoku.desktop.in.in:3
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:8
 msgid "Test yourself in the classic puzzle"
 msgstr "通过这个经典解谜游戏测试您的逻辑能力"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in.in:6
+#: data/org.gnome.Sudoku.desktop.in.in:5
 msgid "magic;square;"
 msgstr "magic;square;方块;魔法;游戏;"
 
@@ -70,73 +70,62 @@ msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "用每个单元格可能的数值初始化耳标"
 
 #: data/org.gnome.Sudoku.gschema.xml:39
-msgid "Color mistakes and duplicate numbers in red"
-msgstr "将错误和重复数字着色为红色"
+msgid "Check for duplicates in row, column and block"
+msgstr "在行、列和区块内检查重复数字"
 
-#: data/org.gnome.Sudoku.gschema.xml:40
-msgid ""
-"Displays a big red X in a square if it cannot possibly be filled by any "
-"number and duplicate numbers are highlighted in red"
-msgstr ""
-"当不能填充任何数字和红色高亮的重复数字的时候，方块内会显示一个红色的大 X"
-
-#: data/org.gnome.Sudoku.gschema.xml:44
+#: data/org.gnome.Sudoku.gschema.xml:43
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr "在行、列和区块内针对重复数字的检查耳标"
 
-#: data/org.gnome.Sudoku.gschema.xml:48
+#: data/org.gnome.Sudoku.gschema.xml:47
 msgid "Toggle timer and pause buttons"
 msgstr "切换计时和暂停按钮"
 
-#: data/org.gnome.Sudoku.gschema.xml:52
+#: data/org.gnome.Sudoku.gschema.xml:51
 msgid "Additionally check against the solution for warnings"
 msgstr "针对警告解法的额外检查"
 
-#: data/org.gnome.Sudoku.gschema.xml:56
+#: data/org.gnome.Sudoku.gschema.xml:55
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr "插入新数字时自动清除相关耳标"
 
-#: data/org.gnome.Sudoku.gschema.xml:60
+#: data/org.gnome.Sudoku.gschema.xml:59
 msgid "Display number picker on second click"
 msgstr "第二次点击时显示数字拾取器"
 
-#: data/org.gnome.Sudoku.gschema.xml:64
-msgid "Highlight row, column and square that contain the selected cell"
-msgstr "高亮选中方格所在的行、列和区块"
-
-#: data/org.gnome.Sudoku.gschema.xml:68
+#: data/org.gnome.Sudoku.gschema.xml:63
 msgid "Highlight the selected cell's row and column"
 msgstr "高亮选中单元格的行和列"
 
-#: data/org.gnome.Sudoku.gschema.xml:72
+#: data/org.gnome.Sudoku.gschema.xml:67
 msgid "Highlight the selected cell's block"
 msgstr "高亮选中单元格的区块"
 
-#: data/org.gnome.Sudoku.gschema.xml:76
+#: data/org.gnome.Sudoku.gschema.xml:71
 msgid "Highlight the selected cell's matching numbers"
 msgstr "高亮单元格的匹配数字"
 
-#: data/org.gnome.Sudoku.gschema.xml:80
+#: data/org.gnome.Sudoku.gschema.xml:75
 msgid "The puzzle's difficulty"
 msgstr "谜题难度"
 
-#: data/org.gnome.Sudoku.gschema.xml:84
+#: data/org.gnome.Sudoku.gschema.xml:79
 msgid "Zoom level"
 msgstr "缩放级别"
 
-#: data/org.gnome.Sudoku.gschema.xml:88
+#: data/org.gnome.Sudoku.gschema.xml:83
 msgid "Width of the window in pixels"
 msgstr "窗口的宽度（像素）"
 
-#: data/org.gnome.Sudoku.gschema.xml:92
+#: data/org.gnome.Sudoku.gschema.xml:87
 msgid "Height of the window in pixels"
 msgstr "窗口的高度（像素）"
 
-#: data/org.gnome.Sudoku.gschema.xml:96
+#: data/org.gnome.Sudoku.gschema.xml:91
 msgid "true if the window is maximized"
 msgstr "若窗口已经最大化则为 true"
 
-#: data/org.gnome.Sudoku.gschema.xml:100
+#: data/org.gnome.Sudoku.gschema.xml:95
 msgid "true if the window is fullscreen"
 msgstr "若窗口已经全屏则为 true"
 
@@ -205,33 +194,109 @@ msgstr "GNOME 数独游戏预览"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "具有耳标和警告功能的暗色模式 GNOME 数独游戏"
 
-#: lib/sudoku-board.vala:634
+#: lib/sudoku-board.vala:551
 msgid "Unknown Difficulty"
 msgstr "未知难度"
 
-#: lib/sudoku-board.vala:636
+#: lib/sudoku-board.vala:553
 msgid "Easy Difficulty"
 msgstr "简易难度"
 
-#: lib/sudoku-board.vala:638
+#: lib/sudoku-board.vala:555
 msgid "Medium Difficulty"
 msgstr "中等难度"
 
-#: lib/sudoku-board.vala:640
+#: lib/sudoku-board.vala:557
 msgid "Hard Difficulty"
 msgstr "困难难度"
 
-#: lib/sudoku-board.vala:642
+#: lib/sudoku-board.vala:559
 msgid "Very Hard Difficulty"
 msgstr "非常困难难度"
 
-#: lib/sudoku-board.vala:644
+#: lib/sudoku-board.vala:561
 msgid "Custom Puzzle"
 msgstr "自定义谜题"
 
-#: src/blueprints/game-view.blp:6
-msgid "Paused"
-msgstr "已暂停"
+#: src/blueprints/game-view.blp:22
+msgid "Undo Action"
+msgstr "撤消动作"
+
+#: src/blueprints/game-view.blp:33
+msgid "Redo Action"
+msgstr "重做动作"
+
+#: src/blueprints/game-view.blp:46
+msgid "Earmark Mode"
+msgstr "耳标模式"
+
+#: src/blueprints/game-view.blp:60
+msgid "Pause"
+msgstr "暂停"
+
+#: src/blueprints/game-view.blp:69
+msgid "Play"
+msgstr "游玩"
+
+#: src/blueprints/menu-button.blp:7
+msgid "_New Game…"
+msgstr "新建游戏(_N)…"
+
+#: src/blueprints/menu-button.blp:12
+msgid "_Reset Puzzle"
+msgstr "重置谜题(_R)"
+
+#: src/blueprints/menu-button.blp:19 src/blueprints/print-dialog.blp:65
+msgid "_Print"
+msgstr "打印(_P)"
+
+#: src/blueprints/menu-button.blp:23
+msgid "Print _Current Puzzle…"
+msgstr "打印当前谜题(_C)…"
+
+#: src/blueprints/menu-button.blp:28
+msgid "Print _Multiple Puzzles…"
+msgstr "打印多个谜题(_M)…"
+
+#: src/blueprints/menu-button.blp:35
+msgid "Zoom"
+msgstr "缩放"
+
+#: src/blueprints/menu-button.blp:54
+msgid "_Preferences"
+msgstr "首选项(_P)"
+
+#: src/blueprints/menu-button.blp:59
+msgid "_Keyboard Shortcuts"
+msgstr "键盘快捷键(_K)"
+
+#: src/blueprints/menu-button.blp:64
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: src/blueprints/menu-button.blp:69
+msgid "_About Sudoku"
+msgstr "关于数独(_A)"
+
+#: src/blueprints/menu-button.blp:80
+msgid "Main Menu"
+msgstr "主菜单"
+
+#: src/blueprints/menu-button.blp:89
+msgid "Zoom Out"
+msgstr "缩小"
+
+#: src/blueprints/menu-button.blp:101
+msgid "Zoom In"
+msgstr "放大"
+
+#: src/blueprints/menu-button.blp:116
+msgid "Fullscreen"
+msgstr "全屏"
+
+#: src/blueprints/menu-button.blp:127
+msgid "Leave Fullscreen"
+msgstr "退出全屏"
 
 #: src/blueprints/preferences-dialog.blp:7
 msgctxt "preferences dialog"
@@ -263,32 +328,37 @@ msgctxt "Preferences Dialog"
 msgid "Warnings"
 msgstr "警告"
 
-#: src/blueprints/preferences-dialog.blp:34
+#: src/blueprints/preferences-dialog.blp:33
 msgctxt "Warning Preferences"
-msgid "Check _Against Solution"
-msgstr "针对解法检查(_A)"
+msgid "_Duplicate Warnings"
+msgstr "重复警告(_D)"
 
-#: src/blueprints/preferences-dialog.blp:39
+#: src/blueprints/preferences-dialog.blp:38
+msgctxt "Warning Preferences"
+msgid "S_olution Warnings"
+msgstr "解法警告(_O)"
+
+#: src/blueprints/preferences-dialog.blp:43
 msgctxt "Warning Preferences"
 msgid "_Earmark Warnings"
 msgstr "耳标警告(_E)"
 
-#: src/blueprints/preferences-dialog.blp:45
+#: src/blueprints/preferences-dialog.blp:49
 msgctxt "Preferences Dialog"
 msgid "Highlighter"
 msgstr "高亮"
 
-#: src/blueprints/preferences-dialog.blp:48
+#: src/blueprints/preferences-dialog.blp:52
 msgctxt "Highlighter Preferences"
 msgid "Highlight Matching _Numbers"
 msgstr "高亮匹配数字(_N)"
 
-#: src/blueprints/preferences-dialog.blp:53
+#: src/blueprints/preferences-dialog.blp:57
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Row and Column"
 msgstr "高亮行和列(_R)"
 
-#: src/blueprints/preferences-dialog.blp:58
+#: src/blueprints/preferences-dialog.blp:62
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "高亮区块(_B)"
@@ -325,40 +395,44 @@ msgstr "困难"
 msgid "Very Hard"
 msgstr "非常困难"
 
-#: src/blueprints/print-dialog.blp:65 src/blueprints/window.blp:19
-msgid "_Print"
-msgstr "打印(_P)"
+#: src/blueprints/start-view.blp:13
+msgid "Select Difficulty"
+msgstr "选择难度"
 
-#: src/blueprints/start-view.blp:10
+#: src/blueprints/start-view.blp:21
+msgid "Back"
+msgstr "返回"
+
+#: src/blueprints/start-view.blp:32
 msgid "Select Puzzle Difficulty"
 msgstr "选择谜题难度"
 
-#: src/blueprints/start-view.blp:27
+#: src/blueprints/start-view.blp:50
 msgctxt "Difficulty"
 msgid "_Custom"
 msgstr "自定义(_C)"
 
-#: src/blueprints/start-view.blp:41
+#: src/blueprints/start-view.blp:64
 msgctxt "Difficulty"
 msgid "_Easy"
 msgstr "简单(_E)"
 
-#: src/blueprints/start-view.blp:54
+#: src/blueprints/start-view.blp:77
 msgctxt "Difficulty"
 msgid "_Medium"
 msgstr "中等(_M)"
 
-#: src/blueprints/start-view.blp:67
+#: src/blueprints/start-view.blp:90
 msgctxt "Difficulty"
 msgid "_Hard"
 msgstr "困难(_H)"
 
-#: src/blueprints/start-view.blp:80
+#: src/blueprints/start-view.blp:103
 msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "非常困难(_V)"
 
-#: src/blueprints/start-view.blp:89
+#: src/blueprints/start-view.blp:112
 msgid "_Start Game"
 msgstr "开始游戏(_S)"
 
@@ -450,219 +524,75 @@ msgstr "重置缩放"
 
 #: src/blueprints/shortcuts-window.blp:99
 msgctxt "Shortcuts Window"
-msgid "Warnings"
-msgstr "警告"
-
-#: src/blueprints/shortcuts-window.blp:104
-msgctxt "Shortcuts Window"
-msgid "Highlighter"
-msgstr "高亮"
-
-#: src/blueprints/shortcuts-window.blp:109
-msgctxt "Shortcuts Window"
 msgid "Print Current Puzzle"
 msgstr "打印当前谜题"
 
-#: src/blueprints/shortcuts-window.blp:114
+#: src/blueprints/shortcuts-window.blp:104
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/blueprints/shortcuts-window.blp:119
+#: src/blueprints/shortcuts-window.blp:109
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "键盘快捷键"
 
-#: src/blueprints/shortcuts-window.blp:124
+#: src/blueprints/shortcuts-window.blp:114
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "退出"
 
-#: src/blueprints/shortcuts-window.blp:129
+#: src/blueprints/shortcuts-window.blp:119
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "帮助"
 
-#: src/blueprints/shortcuts-window.blp:134
+#: src/blueprints/shortcuts-window.blp:124
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "菜单"
 
-#: src/blueprints/shortcuts-window.blp:139
+#: src/blueprints/shortcuts-window.blp:129
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "全屏"
 
-#: src/blueprints/window.blp:7
-msgid "_New Game…"
-msgstr "新建游戏(_N)…"
-
-#: src/blueprints/window.blp:12
-msgid "_Reset Puzzle"
-msgstr "重置谜题(_R)"
-
-#: src/blueprints/window.blp:23
-msgid "Print _Current Puzzle…"
-msgstr "打印当前谜题(_C)…"
-
-#: src/blueprints/window.blp:28
-msgid "Print _Multiple Puzzles…"
-msgstr "打印多个谜题(_M)…"
-
-#: src/blueprints/window.blp:35
-msgid "Zoom"
-msgstr "缩放"
-
-#: src/blueprints/window.blp:54
-msgid "_Highlighter"
-msgstr "高亮(_H)"
-
-#: src/blueprints/window.blp:59
-msgid "_Warnings"
-msgstr "警告(_W)"
-
-#: src/blueprints/window.blp:66
-msgid "_Preferences"
-msgstr "首选项(_P)"
-
-#: src/blueprints/window.blp:71
-msgid "_Keyboard Shortcuts"
-msgstr "键盘快捷键(_K)"
-
-#: src/blueprints/window.blp:76
-msgid "_Help"
-msgstr "帮助(_H)"
-
-#: src/blueprints/window.blp:81
-msgid "_About Sudoku"
-msgstr "关于数独(_A)"
-
-#: src/blueprints/window.blp:104
-msgid "Undo Action"
-msgstr "撤消动作"
-
-#: src/blueprints/window.blp:116
-msgid "Redo Action"
-msgstr "重做动作"
-
-#: src/blueprints/window.blp:128
-msgid "Back"
-msgstr "返回"
-
-#: src/blueprints/window.blp:141
-msgid "Earmark Mode"
-msgstr "耳标模式"
-
-#: src/blueprints/window.blp:151 src/blueprints/window.blp:212
-msgid "Leave Fullscreen"
-msgstr "退出全屏"
-
-#: src/blueprints/window.blp:165
-msgid "Main Menu"
-msgstr "主菜单"
-
-#: src/blueprints/window.blp:174
-msgid "Zoom Out"
-msgstr "缩小"
-
-#: src/blueprints/window.blp:186
-msgid "Zoom In"
-msgstr "放大"
-
-#: src/blueprints/window.blp:201
-msgid "Fullscreen"
-msgstr "全屏"
-
-#: src/blueprints/window.blp:233
-msgid "Pause"
-msgstr "暂停"
-
-#: src/blueprints/window.blp:243
-msgid "Play"
-msgstr "游玩"
-
-#: src/blueprints/window.blp:254
-msgid "Play Custom Game"
-msgstr "游玩自定义游戏"
-
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:107
+#: src/gnome-sudoku.vala:94
 msgid "Show release version"
 msgstr "显示发行版本"
 
-#. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:268
-msgid "The puzzle you have entered is not a valid Sudoku."
-msgstr "您输入的谜题不是有效的数独。"
-
-#: src/gnome-sudoku.vala:268
-msgid "Please enter a valid puzzle."
-msgstr "请输入一个有效的谜题。"
-
-#: src/gnome-sudoku.vala:269 src/printer.vala:46
-msgid "Close"
-msgstr "关闭"
-
-#. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:277
-msgid "The puzzle you have entered has multiple solutions."
-msgstr "你输入的谜题有多种解法。"
-
-#: src/gnome-sudoku.vala:277
-msgid "Valid Sudoku puzzles have exactly one solution."
-msgstr "有效的数独谜题有且仅有一种解法。"
-
-#: src/gnome-sudoku.vala:278
-msgid "_Back"
-msgstr "返回(_B)"
-
-#: src/gnome-sudoku.vala:279
-msgid "Play _Anyway"
-msgstr "仍然游玩(_A)"
-
-#: src/gnome-sudoku.vala:315
+#: src/gnome-sudoku.vala:220
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d 分钟"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:320
+#: src/gnome-sudoku.vala:225
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr "做得好，您在 %s 内完成了该谜题并取得了新的个人最佳成绩！"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:327
+#: src/gnome-sudoku.vala:232
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "做得好，您在 %s 内完成了该谜题！"
 
-#: src/gnome-sudoku.vala:332
+#: src/gnome-sudoku.vala:237
 msgid "Well done, you completed the puzzle!"
 msgstr "做得好，您完成了该谜题！"
 
-#: src/gnome-sudoku.vala:335
+#: src/gnome-sudoku.vala:240
 msgid "Quit"
 msgstr "退出"
 
-#: src/gnome-sudoku.vala:336
+#: src/gnome-sudoku.vala:241
 msgid "Play _Again"
 msgstr "再玩一次(_A)"
 
-#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:544
-#, c-format
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"Puzzles generated by QQwing %s"
-msgstr ""
-"数独是一种流行的日本逻辑游戏\n"
-"\n"
-"谜题由 QQwing %s 生成"
-
-#: src/gnome-sudoku.vala:550
+#: src/gnome-sudoku.vala:427
 msgid "translator-credits"
 msgstr ""
 "Yang Zhang <zyangmath@gmail.com>, 2007\n"
@@ -678,26 +608,86 @@ msgstr ""
 msgid "Clear"
 msgstr "清除"
 
-#: src/number-picker.vala:248 src/number-picker.vala:330
+#: src/number-picker.vala:237 src/number-picker.vala:312
 msgid "Lock"
 msgstr "锁定"
 
-#: src/number-picker.vala:327
+#: src/number-picker.vala:309
 msgid "Unlock"
 msgstr "解锁"
 
 #. Error message if printing fails
-#: src/printer.vala:45
+#: src/printer.vala:44
 msgid "Error printing file:"
 msgstr "打印文件出错："
 
-#: src/window.vala:241
-msgid "Select Difficulty"
-msgstr "选择难度"
+#: src/printer.vala:45
+msgid "Close"
+msgstr "关闭"
 
-#: src/window.vala:275
-msgid "Create Puzzle"
-msgstr "创建谜题"
+#~ msgid "Color mistakes and duplicate numbers in red"
+#~ msgstr "将错误和重复数字着色为红色"
+
+#~ msgid ""
+#~ "Displays a big red X in a square if it cannot possibly be filled by any "
+#~ "number and duplicate numbers are highlighted in red"
+#~ msgstr ""
+#~ "当不能填充任何数字和红色高亮的重复数字的时候，方块内会显示一个红色的大 X"
+
+#~ msgid "Highlight row, column and square that contain the selected cell"
+#~ msgstr "高亮选中方格所在的行、列和区块"
+
+#~ msgid "Paused"
+#~ msgstr "已暂停"
+
+#~ msgctxt "Warning Preferences"
+#~ msgid "Check _Against Solution"
+#~ msgstr "针对解法检查(_A)"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Warnings"
+#~ msgstr "警告"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Highlighter"
+#~ msgstr "高亮"
+
+#~ msgid "_Highlighter"
+#~ msgstr "高亮(_H)"
+
+#~ msgid "Play Custom Game"
+#~ msgstr "游玩自定义游戏"
+
+#~ msgid "The puzzle you have entered is not a valid Sudoku."
+#~ msgstr "您输入的谜题不是有效的数独。"
+
+#~ msgid "Please enter a valid puzzle."
+#~ msgstr "请输入一个有效的谜题。"
+
+#~ msgid "The puzzle you have entered has multiple solutions."
+#~ msgstr "你输入的谜题有多种解法。"
+
+#~ msgid "Valid Sudoku puzzles have exactly one solution."
+#~ msgstr "有效的数独谜题有且仅有一种解法。"
+
+#~ msgid "_Back"
+#~ msgstr "返回(_B)"
+
+#~ msgid "Play _Anyway"
+#~ msgstr "仍然游玩(_A)"
+
+#, c-format
+#~ msgid ""
+#~ "The popular Japanese logic puzzle\n"
+#~ "\n"
+#~ "Puzzles generated by QQwing %s"
+#~ msgstr ""
+#~ "数独是一种流行的日本逻辑游戏\n"
+#~ "\n"
+#~ "谜题由 QQwing %s 生成"
+
+#~ msgid "Create Puzzle"
+#~ msgstr "创建谜题"
 
 #~ msgid "Time yourself to keep track of your progression."
 #~ msgstr "通过计时来保持对游戏进度的追踪。"
