@@ -379,7 +379,7 @@ public class SudokuCell : Widget
 
     public void update_all_earmark_warnings ()
     {
-        if (this.value != 0 || !Sudoku.app.earmark_warnings)
+        if (this.value != 0)
             return;
 
         var marks = game.board.get_earmarks (row, col);
@@ -392,7 +392,7 @@ public class SudokuCell : Widget
 
     public void add_earmark_warnings (int num)
     {
-        earmarks[num - 1].error = !game.board.is_possible (row, col, num);
+        earmarks[num - 1].error =  Sudoku.app.earmark_warnings && !game.board.is_possible (row, col, num);
     }
 
     public void clear_warnings ()
