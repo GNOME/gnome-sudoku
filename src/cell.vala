@@ -353,19 +353,19 @@ public class SudokuCell : Widget
 
     public void update_value_warnings ()
     {
+        if (value == 0)
+            return;
+
         bool error = false;
 
-        if (this.value != 0)
-        {
-            if (Sudoku.app.duplicate_warnings && game.board.broken_coords.contains (Coord (row, col)))
-                error = true;
+        if (Sudoku.app.duplicate_warnings && game.board.broken_coords.contains (Coord (row, col)))
+            error = true;
 
-            else if (Sudoku.app.solution_warnings)
-            {
-                int solution = game.board.get_solution (row, col);
-                if (solution != 0)
-                    error = this.value != solution;
-            }
+        else if (Sudoku.app.solution_warnings)
+        {
+            int solution = game.board.get_solution (row, col);
+            if (solution != 0)
+                error = this.value != solution;
         }
 
         if (error)
@@ -376,27 +376,18 @@ public class SudokuCell : Widget
 
     public void update_all_earmark_warnings ()
     {
-        if (this.value != 0)
+        if (value != 0)
             return;
 
         var marks = game.board.get_earmarks (row, col);
         for (int num = 1; num <= marks.length; num++)
-        {
             if (marks[num - 1])
-                add_earmark_warnings (num);
-        }
+                update_earmark_warning (num);
     }
 
-    public void add_earmark_warnings (int num)
+    public void update_earmark_warning (int num)
     {
         earmarks[num - 1].error =  Sudoku.app.earmark_warnings && !game.board.is_possible (row, col, num);
-    }
-
-    public void clear_warnings ()
-    {
-        value_label.remove_css_class ("error");
-        foreach (var earmark in earmarks)
-            earmark.error = false;
     }
 
     public override bool focus (DirectionType direction)

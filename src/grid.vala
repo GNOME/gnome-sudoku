@@ -329,7 +329,7 @@ public class SudokuGrid : Grid
 
         cells[row, col].update_content_visibility ();
 
-        update_warnings ();
+        update_cell_warnings (row, col);
         update_value_highlighter (row, col, old_val, new_val);
     }
 
@@ -349,8 +349,7 @@ public class SudokuGrid : Grid
                 cells[row, col].update_earmark_visibility (num);
         }
 
-        if (Sudoku.app.earmark_warnings)
-            cells[row, col].add_earmark_warnings (num);
+        cells[row, col].update_earmark_warning (num);
     }
 
     private void paused_cb ()
