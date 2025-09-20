@@ -53,6 +53,7 @@ public class SudokuGameView : Adw.Bin
     private SimpleAction undo_action;
     private SimpleAction redo_action;
     private SimpleAction reset_board_action;
+    private SimpleAction print_puzzle_action;
 
     public double? highscore;
 
@@ -63,6 +64,7 @@ public class SudokuGameView : Adw.Bin
         new_shortcut ("game-view.reset-board", "<Primary>r");
         new_shortcut ("game-view.undo", "u|<Primary>z");
         new_shortcut ("game-view.redo", "r|<Primary><Shift>z");
+        new_shortcut ("game-view.print-puzzle", "<Primary>p");
     }
 
     private class void new_shortcut (string name, string accelerator)
@@ -113,6 +115,11 @@ public class SudokuGameView : Adw.Bin
         reset_board_action.activate.connect (game.reset);
         reset_board_action.set_enabled (!game.is_empty ());
         action_group.add_action (reset_board_action);
+
+        print_puzzle_action = new SimpleAction ("print-puzzle", null);
+        print_puzzle_action.activate.connect (print_puzzle_cb);
+        print_puzzle_action.set_enabled (!game.is_empty ());
+        action_group.add_action (print_puzzle_action);
 
         undo_action = new SimpleAction ("undo", null);
         undo_action.activate.connect (game.undo);
@@ -301,6 +308,14 @@ public class SudokuGameView : Adw.Bin
     private void zoom_cb ()
     {
         grid.update_zoom ();
+    }
+
+    private void print_puzzle_cb ()
+    {
+        var list = new Gee.ArrayList<SudokuBoard> ();
+        list.add (game.board.clone ());
+        var printer = new SudokuPrinter (list, 1);
+        printer.print_sudoku (window);
     }
 
     private void show_timer_cb ()

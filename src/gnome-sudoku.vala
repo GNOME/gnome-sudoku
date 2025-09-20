@@ -45,7 +45,6 @@ public class Sudoku : Adw.Application
 
     private SudokuSaver saver;
 
-    private SimpleAction print_current_board_action;
     private SimpleAction print_multiple_action;
     private SimpleAction new_game_action;
     private SimpleAction back_action;
@@ -74,7 +73,6 @@ public class Sudoku : Adw.Application
         {"new-game", new_game_cb                                    },
         {"start-game", start_game_cb, "i"                           },
         {"back", back_cb                                            },
-        {"print-current-board", print_current_board_cb              },
         {"print-multiple", print_multiple_cb                        },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
@@ -143,7 +141,6 @@ public class Sudoku : Adw.Application
         add_action_entries (action_entries, this);
 
         set_accels_for_action ("app.new-game", {"<Primary>n"});
-        set_accels_for_action ("app.print-current-board", {"<Primary>p"});
         set_accels_for_action ("app.quit", {"<Primary>q"});
         set_accels_for_action ("app.help", {"F1"});
         set_accels_for_action ("app.shortcuts-window", {"<Primary>question"});
@@ -154,7 +151,6 @@ public class Sudoku : Adw.Application
         set_accels_for_action ("app.zoom-reset", {"<Primary>0", "<Primary>KP_0"});
 
         new_game_action = lookup_action ("new-game") as SimpleAction;
-        print_current_board_action = lookup_action ("print-current-board") as SimpleAction;
         print_multiple_action = lookup_action ("print-multiple") as SimpleAction;
         zoom_in_action = lookup_action ("zoom-in") as SimpleAction;
         back_action = lookup_action ("back") as SimpleAction;
@@ -282,16 +278,13 @@ public class Sudoku : Adw.Application
         if (game != null && game.board.complete != true)
             game.stop_clock ();
 
-        print_current_board_action.set_enabled (false);
         new_game_action.set_enabled (false);
         window.show_start_view ();
     }
 
     private void show_game_view ()
     {
-        print_current_board_action.set_enabled (true);
         new_game_action.set_enabled (true);
-
         window.show_game_view ();
     }
 
@@ -348,20 +341,6 @@ public class Sudoku : Adw.Application
 
         if (window.current_screen == SudokuWindowScreen.PLAY)
             game.resume_clock ();
-    }
-
-    private void print_current_board_cb ()
-    {
-        print_current_board_action.set_enabled (false);
-        print_multiple_action.set_enabled (false);
-
-        var list = new Gee.ArrayList<SudokuBoard> ();
-        list.add (game.board.clone ());
-        var printer = new SudokuPrinter (list, 1);
-        printer.print_sudoku (window);
-
-        print_current_board_action.set_enabled (true);
-        print_multiple_action.set_enabled (true);
     }
 
     private void print_multiple_cb ()
