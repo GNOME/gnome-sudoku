@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-09-13 10:46+0000\n"
-"PO-Revision-Date: 2025-09-13 15:07+0200\n"
+"POT-Creation-Date: 2025-09-20 17:01+0000\n"
+"PO-Revision-Date: 2025-09-21 00:08+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -253,7 +253,8 @@ msgstr "_Nova igra …"
 msgid "_Reset Puzzle"
 msgstr "_Ponastavi uganko"
 
-#: src/blueprints/menu-button.blp:19 src/blueprints/print-dialog.blp:65
+#: src/blueprints/menu-button.blp:19
+#: src/blueprints/print-multiple-dialog.blp:65
 msgid "_Print"
 msgstr "_Natisni"
 
@@ -370,35 +371,35 @@ msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "Poudari _blok"
 
-#: src/blueprints/print-dialog.blp:5
+#: src/blueprints/print-multiple-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "Natisni več ugank sudoku"
 
-#: src/blueprints/print-dialog.blp:24
+#: src/blueprints/print-multiple-dialog.blp:24
 msgid "Number of Puzzles"
 msgstr "Število ugank"
 
-#: src/blueprints/print-dialog.blp:35
-msgid "Number of puzzles per page"
+#: src/blueprints/print-multiple-dialog.blp:35
+msgid "Number of Puzzles per Page"
 msgstr "Število ugank na stran"
 
-#: src/blueprints/print-dialog.blp:46
+#: src/blueprints/print-multiple-dialog.blp:46
 msgid "Difficulty"
 msgstr "Zahtevnost"
 
-#: src/blueprints/print-dialog.blp:50
+#: src/blueprints/print-multiple-dialog.blp:50
 msgid "Easy"
 msgstr "Enostavno"
 
-#: src/blueprints/print-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:51
 msgid "Medium"
 msgstr "Srednje"
 
-#: src/blueprints/print-dialog.blp:52
+#: src/blueprints/print-multiple-dialog.blp:52
 msgid "Hard"
 msgstr "Zahtevno"
 
-#: src/blueprints/print-dialog.blp:53
+#: src/blueprints/print-multiple-dialog.blp:53
 msgid "Very Hard"
 msgstr "Zelo zahtevno"
 
@@ -565,11 +566,11 @@ msgid "Fullscreen"
 msgstr "Celozaslonski način"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:94
+#: src/gnome-sudoku.vala:92
 msgid "Show release version"
 msgstr "Pokaži podrobnosti različice"
 
-#: src/gnome-sudoku.vala:220
+#: src/gnome-sudoku.vala:216
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -579,7 +580,7 @@ msgstr[2] "%d minutah"
 msgstr[3] "%d minutah"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:225
+#: src/gnome-sudoku.vala:221
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
@@ -587,24 +588,24 @@ msgstr ""
 "rekord!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:228
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Dobro opravljeno, sestavljanko ste dokončali v %s!"
 
-#: src/gnome-sudoku.vala:237
+#: src/gnome-sudoku.vala:233
 msgid "Well done, you completed the puzzle!"
 msgstr "Dobro opravljeno, sestavljanko ste dokončali!"
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:236
 msgid "Quit"
 msgstr "Izhod"
 
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:237
 msgid "Play _Again"
 msgstr "_Igraj znova"
 
-#: src/gnome-sudoku.vala:427
+#: src/gnome-sudoku.vala:406
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
