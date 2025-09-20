@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-09-13 13:44+0000\n"
-"PO-Revision-Date: 2025-09-13 17:21+0300\n"
+"POT-Creation-Date: 2025-09-20 13:10+0000\n"
+"PO-Revision-Date: 2025-09-20 20:00+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -71,7 +71,6 @@ msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Спочатку показувати можливі значення для кожної клітинки"
 
 #: data/org.gnome.Sudoku.gschema.xml:39
-#| msgid "Check earmarks against duplicates in row, column and block"
 msgid "Check for duplicates in row, column and block"
 msgstr "Перевіряти на дублікати у рядку, стовпчику та блоці"
 
@@ -251,7 +250,8 @@ msgstr "_Нова гра…"
 msgid "_Reset Puzzle"
 msgstr "_Скинути головоломку"
 
-#: src/blueprints/menu-button.blp:19 src/blueprints/print-dialog.blp:65
+#: src/blueprints/menu-button.blp:19
+#: src/blueprints/print-multiple-dialog.blp:65
 msgid "_Print"
 msgstr "На_друкувати…"
 
@@ -334,13 +334,11 @@ msgid "Warnings"
 msgstr "Попередження"
 
 #: src/blueprints/preferences-dialog.blp:33
-#| msgid "_Warnings"
 msgctxt "Warning Preferences"
 msgid "_Duplicate Warnings"
 msgstr "_Попередження щодо дублювання"
 
 #: src/blueprints/preferences-dialog.blp:38
-#| msgid "_Warnings"
 msgctxt "Warning Preferences"
 msgid "S_olution Warnings"
 msgstr "П_опередження щодо розв'язку"
@@ -370,35 +368,36 @@ msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "Підсвітити _блок"
 
-#: src/blueprints/print-dialog.blp:5
+#: src/blueprints/print-multiple-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "Надрукувати декілька головоломок"
 
-#: src/blueprints/print-dialog.blp:24
+#: src/blueprints/print-multiple-dialog.blp:24
 msgid "Number of Puzzles"
 msgstr "Кількість головоломок"
 
-#: src/blueprints/print-dialog.blp:35
-msgid "Number of puzzles per page"
+#: src/blueprints/print-multiple-dialog.blp:35
+#| msgid "Number of puzzles per page"
+msgid "Number of Puzzles per Page"
 msgstr "Кількість головоломок на сторінку"
 
-#: src/blueprints/print-dialog.blp:46
+#: src/blueprints/print-multiple-dialog.blp:46
 msgid "Difficulty"
 msgstr "Складність"
 
-#: src/blueprints/print-dialog.blp:50
+#: src/blueprints/print-multiple-dialog.blp:50
 msgid "Easy"
 msgstr "Проста"
 
-#: src/blueprints/print-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:51
 msgid "Medium"
 msgstr "Середня"
 
-#: src/blueprints/print-dialog.blp:52
+#: src/blueprints/print-multiple-dialog.blp:52
 msgid "Hard"
 msgstr "Складна"
 
-#: src/blueprints/print-dialog.blp:53
+#: src/blueprints/print-multiple-dialog.blp:53
 msgid "Very Hard"
 msgstr "Дуже складна"
 
@@ -565,11 +564,11 @@ msgid "Fullscreen"
 msgstr "Повноекранний режим"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:94
+#: src/gnome-sudoku.vala:92
 msgid "Show release version"
 msgstr "Показати версію випуску"
 
-#: src/gnome-sudoku.vala:220
+#: src/gnome-sudoku.vala:216
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -578,31 +577,31 @@ msgstr[1] "%d хвилини"
 msgstr[2] "%d хвилин"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:225
+#: src/gnome-sudoku.vala:221
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 "Чудово! Ви розв'язали головоломку за %s і встановили новий особистий рекорд!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:228
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Чудово! Ви розв'язали головоломку за %s!"
 
-#: src/gnome-sudoku.vala:237
+#: src/gnome-sudoku.vala:233
 msgid "Well done, you completed the puzzle!"
 msgstr "Чудово! Ви розв'язали головоломку!"
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:236
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:237
 msgid "Play _Again"
 msgstr "Зіграти _ще раз"
 
-#: src/gnome-sudoku.vala:427
+#: src/gnome-sudoku.vala:406
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота\n"
