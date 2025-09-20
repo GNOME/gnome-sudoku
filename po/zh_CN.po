@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-09-13 17:24+0000\n"
-"PO-Revision-Date: 2025-09-14 08:50+0800\n"
+"POT-Creation-Date: 2025-09-20 22:10+0000\n"
+"PO-Revision-Date: 2025-09-21 07:45+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Gtranslator 49.0\n"
 
 #: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
@@ -246,7 +246,8 @@ msgstr "新建游戏(_N)…"
 msgid "_Reset Puzzle"
 msgstr "重置谜题(_R)"
 
-#: src/blueprints/menu-button.blp:19 src/blueprints/print-dialog.blp:65
+#: src/blueprints/menu-button.blp:19
+#: src/blueprints/print-multiple-dialog.blp:65
 msgid "_Print"
 msgstr "打印(_P)"
 
@@ -363,35 +364,35 @@ msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "高亮区块(_B)"
 
-#: src/blueprints/print-dialog.blp:5
+#: src/blueprints/print-multiple-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "打印多个数独"
 
-#: src/blueprints/print-dialog.blp:24
+#: src/blueprints/print-multiple-dialog.blp:24
 msgid "Number of Puzzles"
 msgstr "谜题数量"
 
-#: src/blueprints/print-dialog.blp:35
-msgid "Number of puzzles per page"
+#: src/blueprints/print-multiple-dialog.blp:35
+msgid "Number of Puzzles per Page"
 msgstr "每页谜题数量"
 
-#: src/blueprints/print-dialog.blp:46
+#: src/blueprints/print-multiple-dialog.blp:46
 msgid "Difficulty"
 msgstr "难度"
 
-#: src/blueprints/print-dialog.blp:50
+#: src/blueprints/print-multiple-dialog.blp:50
 msgid "Easy"
 msgstr "简单"
 
-#: src/blueprints/print-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:51
 msgid "Medium"
 msgstr "中等"
 
-#: src/blueprints/print-dialog.blp:52
+#: src/blueprints/print-multiple-dialog.blp:52
 msgid "Hard"
 msgstr "困难"
 
-#: src/blueprints/print-dialog.blp:53
+#: src/blueprints/print-multiple-dialog.blp:53
 msgid "Very Hard"
 msgstr "非常困难"
 
@@ -558,41 +559,41 @@ msgid "Fullscreen"
 msgstr "全屏"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:94
+#: src/gnome-sudoku.vala:92
 msgid "Show release version"
 msgstr "显示发行版本"
 
-#: src/gnome-sudoku.vala:220
+#: src/gnome-sudoku.vala:216
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d 分钟"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:225
+#: src/gnome-sudoku.vala:221
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr "做得好，您在 %s 内完成了该谜题并取得了新的个人最佳成绩！"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:228
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "做得好，您在 %s 内完成了该谜题！"
 
-#: src/gnome-sudoku.vala:237
+#: src/gnome-sudoku.vala:233
 msgid "Well done, you completed the puzzle!"
 msgstr "做得好，您完成了该谜题！"
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:236
 msgid "Quit"
 msgstr "退出"
 
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:237
 msgid "Play _Again"
 msgstr "再玩一次(_A)"
 
-#: src/gnome-sudoku.vala:427
+#: src/gnome-sudoku.vala:406
 msgid "translator-credits"
 msgstr ""
 "Yang Zhang <zyangmath@gmail.com>, 2007\n"
