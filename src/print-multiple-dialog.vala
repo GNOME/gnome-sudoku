@@ -21,7 +21,7 @@
 
 using Gtk;
 
-[GtkTemplate (ui = "/org/gnome/Sudoku/ui/print-dialog.ui")]
+[GtkTemplate (ui = "/org/gnome/Sudoku/ui/print-multiple-dialog.ui")]
 public class SudokuPrintDialog : Adw.Dialog
 {
     private SudokuSaver saver;
