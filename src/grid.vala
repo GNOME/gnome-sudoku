@@ -400,16 +400,37 @@ public class SudokuGrid : Grid
                     return cells[selected_row + 1, selected_col].focus (direction);
 
             case DirectionType.LEFT:
-                if (selected_col == 0)
-                    return cells[selected_row, 8].focus (direction);
+                if (get_direction () == TextDirection.RTL)
+                {
+                    if (selected_col == 8)
+                        return cells[selected_row, 0].focus (direction);
+                    else
+                        return cells[selected_row, selected_col + 1].focus (direction);
+                }
                 else
-                    return cells[selected_row, selected_col - 1].focus (direction);
+                {
+                    if (selected_col == 0)
+                        return cells[selected_row, 8].focus (direction);
+                    else
+                        return cells[selected_row, selected_col - 1].focus (direction);
+                }
 
             case DirectionType.RIGHT:
-                if (selected_col == 8)
-                    return cells[selected_row, 0].focus (direction);
+                if (get_direction () == TextDirection.RTL)
+                {
+                    if (selected_col == 0)
+                        return cells[selected_row, 8].focus (direction);
+                    else
+                        return cells[selected_row, selected_col - 1].focus (direction);
+                }
+
                 else
-                    return cells[selected_row, selected_col + 1].focus (direction);
+                {
+                    if (selected_col == 8)
+                        return cells[selected_row, 0].focus (direction);
+                    else
+                        return cells[selected_row, selected_col + 1].focus (direction);
+                }
             default:
                 assert_not_reached ();
         }
