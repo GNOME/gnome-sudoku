@@ -114,8 +114,8 @@ public class SudokuBoard : Object
     public Map<Coord?, Gee.List<Coord?>> coords_for_block { get; private set; }
 
     // The list of coordinates that are on the same block, row and column for each cell
-    // format is [row][col]
-    public Set<Coord?> [,] aligned_coords_for_cell { get; private set; }
+    // Format is [row][col]
+    public Set<Coord?> [,] aligned_coords_for_cell;
 
     public SudokuBoard ()
     {
