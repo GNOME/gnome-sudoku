@@ -80,7 +80,7 @@ public class Sudoku : Adw.Application
         {"zoom-in", zoom_in_cb, null, "false"                       },
         {"zoom-out", zoom_out_cb, null, "false"                     },
         {"zoom-reset", zoom_reset_cb                                },
-        {"shortcuts-window", shortcuts_window_cb                    },
+        {"shortcuts-dialog", shortcuts_dialog_cb                    },
         {"preferences-dialog", preferences_dialog_cb                },
         {"quit", quit                                               }
     };
@@ -143,7 +143,7 @@ public class Sudoku : Adw.Application
         set_accels_for_action ("app.new-game", {"<Primary>n"});
         set_accels_for_action ("app.quit", {"<Primary>q"});
         set_accels_for_action ("app.help", {"F1"});
-        set_accels_for_action ("app.shortcuts-window", {"<Primary>question"});
+        set_accels_for_action ("app.shortcuts-dialog", {"<Primary>question"});
         set_accels_for_action ("app.preferences-dialog", {"<Primary>comma"});
         set_accels_for_action ("app.toggle-fullscreen", {"F11", "f"});
         set_accels_for_action ("app.zoom-in", {"<Primary>plus", "<Primary>equal", "ZoomIn", "<Primary>KP_Add"});
@@ -355,33 +355,11 @@ public class Sudoku : Adw.Application
         preferences_dialog.present (window);
     }
 
-    private void shortcuts_window_cb ()
+    private void shortcuts_dialog_cb ()
     {
-        var builder = new Gtk.Builder.from_resource ("/org/gnome/Sudoku/ui/shortcuts-window.ui");
-        var shortcuts_window = builder.get_object ("shortcuts-window") as ShortcutsWindow;
-
-        if (game != null)
-        {
-            if (!game.paused)
-                game.stop_clock ();
-
-            game_view.grid.unselect ();
-
-            shortcuts_window.close_request.connect(() => {
-                if (window.current_screen != SudokuWindowScreen.START)
-                {
-                    if (!game.paused)
-                        game.resume_clock ();
-
-                    game_view.grab_focus ();
-                }
-
-                return Gdk.EVENT_PROPAGATE;
-            });
-        }
-
-        shortcuts_window.set_transient_for (window);
-        shortcuts_window.present ();
+        var builder = new Gtk.Builder.from_resource ("/org/gnome/Sudoku/ui/shortcuts-dialog.ui");
+        var shortcuts_dialog = builder.get_object ("SudokuShortcutsDialog") as Adw.ShortcutsDialog;
+        shortcuts_dialog.present (window);
     }
 
     private void help_cb ()

@@ -5,7 +5,7 @@ blueprints = custom_target(
     'blueprints/menu-button.blp',
     'blueprints/preferences-dialog.blp',
     'blueprints/print-multiple-dialog.blp',
-    'blueprints/shortcuts-window.blp',
+    'blueprints/shortcuts-dialog.blp',
     'blueprints/start-view.blp',
     'blueprints/window.blp',
   ),
