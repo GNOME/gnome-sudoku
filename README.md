@@ -8,10 +8,10 @@ You can find out more about the project at the [wiki's homepage](https://gitlab.
 
 - GNOME Sudoku is available in most distributions' repositories as `gnome-sudoku`.
 
-- The latest stable version is available on [Flathub](https://flathub.org/apps/org.gnome.Sudoku).  
+- The latest stable version is available on [Flathub](https://flathub.org/apps/org.gnome.Sudoku):  
 `flatpak install flathub org.gnome.Sudoku`
 
-- The latest development version is available on [GNOME Nightly](https://nightly.gnome.org/).  
+- The latest development version is available on [GNOME Nightly](https://nightly.gnome.org/):  
 `flatpak install gnome-nightly org.gnome.Sudoku.Devel`
 
 - [Building GNOME Sudoku](https://gitlab.gnome.org/GNOME/gnome-sudoku/-/wikis/build).
