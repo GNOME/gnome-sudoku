@@ -1,38 +1,6 @@
-/*contains styles that are always present.*/
+/*Styles in common for both light mode and dark mode*/
 :root {
-  --sudoku-accent-blue: oklch(0.92 0.25 270);
-  --sudoku-accent-teal: oklch(0.92 0.25 205);
-  --sudoku-accent-green: oklch(0.92 0.25 145);
-  --sudoku-accent-yellow: oklch(0.92 0.25 100);
-  --sudoku-accent-orange: oklch(0.92 0.25 60);
-  --sudoku-accent-red: oklch(0.92 0.25 20);
-  --sudoku-accent-pink: oklch(0.92 0.25 5);
-  --sudoku-accent-purple: oklch(0.92 0.25 300);
-  --sudoku-accent-slate: oklch(0.92 0.05 250);
   --sudoku-pause-delay: 2s;
-}
-grid.board {
-  border: 2px solid #333;
-  background: #333;
-}
-grid.block {
-  background: #999;
-}
-sudoku-cell {
-  background: var(--view-bg-color);
-}
-sudoku-cell.fixed {
-  background: #CCC;
-}
-sudoku-cell.highlight-coord {
-  background: oklch(from var(--sudoku-accent-color) 0.9 calc(c * 0.25) h);
-}
-sudoku-cell.highlight-number {
-  background: oklch(from var(--sudoku-accent-color) 0.85 c h);
-}
-sudoku-cell .earmark.highlight-number {
-  color: oklab(from var(--sudoku-accent-color) 0.5 a b);
-  font-weight: bold;
 }
 sudoku-cell .error {
   color: var(--error-color);
@@ -47,9 +15,6 @@ sudoku-cell .error.value {
   from {opacity: 0;}
   to {opacity: 1;}
 }
-sudoku-cell.selected {
-  background: var(--sudoku-accent-color);
-}
 overlay.paused > label {
   font-weight: bold;
   color: #FFF;
@@ -60,10 +25,6 @@ overlay.paused > label {
 sudoku-cell.paused label {
   opacity: 0;
   transition: opacity var(--sudoku-pause-delay);
-}
-sudoku-cell.paused {
-  background: var(--view-bg-color);
-  transition: background var(--sudoku-pause-delay);
 }
 sudoku-picker {
   margin: 2px;
@@ -79,9 +40,96 @@ sudoku-picker .value {
   margin-bottom: 4px;
 }
 sudoku-picker .text-button {
+  font-size: larger;
   /*Overrides the default text-button padding*/
   padding-left: 10px;
   padding-right: 10px;
+}
 
-  font-size: larger;
+@media (prefers-color-scheme: light) {
+  :root {
+    --sudoku-accent-blue: oklch(0.92 0.25 270);
+    --sudoku-accent-teal: oklch(0.92 0.25 205);
+    --sudoku-accent-green: oklch(0.92 0.25 145);
+    --sudoku-accent-yellow: oklch(0.92 0.25 100);
+    --sudoku-accent-orange: oklch(0.92 0.25 60);
+    --sudoku-accent-red: oklch(0.92 0.25 20);
+    --sudoku-accent-pink: oklch(0.92 0.25 5);
+    --sudoku-accent-purple: oklch(0.92 0.25 300);
+    --sudoku-accent-slate: oklch(0.92 0.05 250);
+  }
+  grid.board {
+    border: 2px solid #333;
+    background: #333;
+  }
+  grid.block {
+    background: #999;
+  }
+  sudoku-cell {
+    background: var(--view-bg-color);
+  }
+  sudoku-cell.fixed {
+    background: #CCC;
+  }
+  sudoku-cell.highlight-coord {
+    background: oklch(from var(--sudoku-accent-color) 0.9 calc(c * 0.25) h);
+  }
+  sudoku-cell.highlight-number {
+    background: oklch(from var(--sudoku-accent-color) 0.85 c h);
+  }
+  sudoku-cell .earmark.highlight-number {
+    color: oklab(from var(--sudoku-accent-color) 0.5 a b);
+    font-weight: bold;
+  }
+  sudoku-cell.selected {
+    background: var(--sudoku-accent-color);
+  }
+  sudoku-cell.paused {
+    background: var(--view-bg-color);
+    transition: background var(--sudoku-pause-delay);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sudoku-dark-grey: oklch(0.39 0 0);
+    --sudoku-accent-blue: oklch(0.35 0.1 230);
+    --sudoku-accent-teal: oklch(0.35 0.1 205);
+    --sudoku-accent-green: oklch(0.35 0.1 145);
+    --sudoku-accent-yellow: oklch(0.35 0.1 100);
+    --sudoku-accent-orange: oklch(0.35 0.1 60);
+    --sudoku-accent-red: oklch(0.35 0.1 30);
+    --sudoku-accent-pink: oklch(0.35 0.1 345);
+    --sudoku-accent-purple: oklch(0.35 0.1 310);
+    --sudoku-accent-slate: oklch(0.35 0.03 250);
+  }
+  grid.board {
+    background: oklch(0.56 0 0);
+  }
+  grid.block {
+    background: oklch(0.47 0 0);
+  }
+  sudoku-cell {
+    background: var(--sudoku-dark-grey);
+  }
+  sudoku-cell.fixed {
+    background: oklch(0.32 0 0);
+  }
+  sudoku-cell.highlight-coord {
+    background: oklch(from var(--sudoku-accent-color) l calc(c * 0.25) h);
+  }
+  sudoku-cell .earmark.highlight-number {
+    color: oklab(from var(--sudoku-accent-color) 0.85 a b);
+    font-weight: bold;
+  }
+  sudoku-cell.highlight-number {
+    background: oklch(from var(--sudoku-accent-color) 0.32 calc(c * 0.7) h);
+  }
+  sudoku-cell.selected {
+    background: var(--sudoku-accent-color);
+  }
+  sudoku-cell.paused {
+    background: var(--sudoku-dark-grey);
+    transition: background var(--sudoku-pause-delay);
+  }
 }
