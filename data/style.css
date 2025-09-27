@@ -22,6 +22,9 @@ overlay.paused > label {
   transition: background var(--sudoku-pause-delay);
   animation: slow-appear var(--sudoku-pause-delay) forwards;
 }
+sudoku-cell.selected {
+  background: var(--sudoku-accent-color);
+}
 sudoku-cell.paused label {
   opacity: 0;
   transition: opacity var(--sudoku-pause-delay);
@@ -81,9 +84,6 @@ sudoku-picker .text-button {
     color: oklab(from var(--sudoku-accent-color) 0.5 a b);
     font-weight: bold;
   }
-  sudoku-cell.selected {
-    background: var(--sudoku-accent-color);
-  }
   sudoku-cell.paused {
     background: var(--view-bg-color);
     transition: background var(--sudoku-pause-delay);
@@ -124,9 +124,6 @@ sudoku-picker .text-button {
   }
   sudoku-cell.highlight-number {
     background: oklch(from var(--sudoku-accent-color) 0.32 calc(c * 0.7) h);
-  }
-  sudoku-cell.selected {
-    background: var(--sudoku-accent-color);
   }
   sudoku-cell.paused {
     background: var(--sudoku-dark-grey);
