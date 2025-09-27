@@ -1,54 +1,3 @@
-/*Styles in common for both light mode and dark mode*/
-:root {
-  --sudoku-pause-delay: 2s;
-}
-sudoku-cell .error {
-  color: var(--error-color);
-}
-sudoku-cell .error.earmark {
-  text-decoration: line-through;
-}
-sudoku-cell .error.value {
-  font-weight: bold;
-}
-@keyframes slow-appear {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-overlay.paused > label {
-  font-weight: bold;
-  color: #FFF;
-  background: rgba(0, 0, 0, 0.75);
-  transition: background var(--sudoku-pause-delay);
-  animation: slow-appear var(--sudoku-pause-delay) forwards;
-}
-sudoku-cell.selected {
-  background: var(--sudoku-accent-color);
-}
-sudoku-cell.paused label {
-  opacity: 0;
-  transition: opacity var(--sudoku-pause-delay);
-}
-sudoku-picker {
-  margin: 2px;
-}
-sudoku-picker .earmark {
-  margin-right: 16px;
-  margin-bottom: 8px;
-}
-sudoku-picker .value {
-  margin-right: 8px;
-  margin-left: 8px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
-sudoku-picker .text-button {
-  font-size: larger;
-  /*Overrides the default text-button padding*/
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     --sudoku-accent-blue: oklch(0.92 0.25 270);
@@ -129,4 +78,55 @@ sudoku-picker .text-button {
     background: var(--sudoku-dark-grey);
     transition: background var(--sudoku-pause-delay);
   }
+}
+
+/*Styles in common for both light mode and dark mode*/
+:root {
+  --sudoku-pause-delay: 2s;
+}
+sudoku-cell .error {
+  color: var(--error-color);
+}
+sudoku-cell .error.earmark {
+  text-decoration: line-through;
+}
+sudoku-cell .error.value {
+  font-weight: bold;
+}
+@keyframes slow-appear {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+overlay.paused > label {
+  font-weight: bold;
+  color: #FFF;
+  background: rgba(0, 0, 0, 0.75);
+  transition: background var(--sudoku-pause-delay);
+  animation: slow-appear var(--sudoku-pause-delay) forwards;
+}
+sudoku-cell.paused label {
+  opacity: 0;
+  transition: opacity var(--sudoku-pause-delay);
+}
+sudoku-cell.selected {
+  background: var(--sudoku-accent-color);
+}
+sudoku-picker {
+  margin: 2px;
+}
+sudoku-picker .earmark {
+  margin-right: 16px;
+  margin-bottom: 8px;
+}
+sudoku-picker .value {
+  margin-right: 8px;
+  margin-left: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+sudoku-picker .text-button {
+  font-size: larger;
+  /*Overrides the default text-button padding*/
+  padding-left: 10px;
+  padding-right: 10px;
 }
