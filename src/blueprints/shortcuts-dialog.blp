@@ -15,7 +15,6 @@ Adw.ShortcutsDialog SudokuShortcutsDialog {
       accelerator: "Up Left Down Right";
       title: C_("Shortcuts Window", "Move");
     }
-
     Adw.ShortcutsItem {
       accelerator: "<ctrl>1...9";
       title: C_("Shortcuts Window", "Earmarks");
@@ -25,7 +24,21 @@ Adw.ShortcutsDialog SudokuShortcutsDialog {
       accelerator: "0 BackSpace Delete";
       title: C_("Shortcuts Window", "Clear Cell");
     }
+  }
 
+  Adw.ShortcutsSection {
+    Adw.ShortcutsItem {
+      accelerator: "e";
+      title: C_("Shortcuts Window", "Earmark Mode");
+    }
+
+    Adw.ShortcutsItem {
+      accelerator: "p";
+      title: C_("Shortcuts Window", "Pause");
+    }
+  }
+
+  Adw.ShortcutsSection {
     Adw.ShortcutsItem {
       accelerator: "u <ctrl>z";
       title: C_("Shortcuts Window", "Undo");
@@ -35,27 +48,9 @@ Adw.ShortcutsDialog SudokuShortcutsDialog {
       accelerator: "r <shift><ctrl>z";
       title: C_("Shortcuts Window", "Redo");
     }
+  }
 
-    Adw.ShortcutsItem {
-      accelerator: "p";
-      title: C_("Shortcuts Window", "Pause");
-    }
-
-    Adw.ShortcutsItem {
-      accelerator: "e";
-      title: C_("Shortcuts Window", "Earmark Mode");
-    }
-
-    Adw.ShortcutsItem {
-      accelerator: "Return space";
-      title: C_("Shortcuts Window", "Number Picker");
-    }
-
-    Adw.ShortcutsItem {
-      accelerator: "<ctrl>Return...space";
-      title: C_("Shortcuts Window", "Earmark Picker");
-    }
-
+  Adw.ShortcutsSection {
     Adw.ShortcutsItem {
       accelerator: "<ctrl>n";
       title: C_("Shortcuts Window", "New Game");
@@ -68,26 +63,23 @@ Adw.ShortcutsDialog SudokuShortcutsDialog {
   }
 
   Adw.ShortcutsSection {
+    Adw.ShortcutsItem {
+      accelerator: "Return space";
+      title: C_("Shortcuts Window", "Number Picker");
+    }
+
+    Adw.ShortcutsItem {
+      accelerator: "<ctrl>Return...space";
+      title: C_("Shortcuts Window", "Earmark Picker");
+    }
+  }
+
+  Adw.ShortcutsSection {
     title: C_("Shortcuts Window", "Window");
 
     Adw.ShortcutsItem {
       accelerator: "<Alt>Left";
       title: C_("Shortcuts Window", "Go Back");
-    }
-
-    Adw.ShortcutsItem {
-      accelerator: "<ctrl>plus";
-      title: C_("Shortcuts Window", "Zoom In");
-    }
-
-    Adw.ShortcutsItem {
-      accelerator: "<ctrl>minus";
-      title: C_("Shortcuts Window", "Zoom Out");
-    }
-
-    Adw.ShortcutsItem {
-      accelerator: "<ctrl>0";
-      title: C_("Shortcuts Window", "Zoom Reset");
     }
 
     Adw.ShortcutsItem {
@@ -123,6 +115,23 @@ Adw.ShortcutsDialog SudokuShortcutsDialog {
     Adw.ShortcutsItem {
       accelerator: "F11 f";
       title: C_("Shortcuts Window", "Fullscreen");
+    }
+  }
+
+  Adw.ShortcutsSection {
+    Adw.ShortcutsItem {
+      accelerator: "<ctrl>plus";
+      title: C_("Shortcuts Window", "Zoom In");
+    }
+
+    Adw.ShortcutsItem {
+      accelerator: "<ctrl>minus";
+      title: C_("Shortcuts Window", "Zoom Out");
+    }
+
+    Adw.ShortcutsItem {
+      accelerator: "<ctrl>0";
+      title: C_("Shortcuts Window", "Zoom Reset");
     }
   }
 }
