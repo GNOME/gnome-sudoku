@@ -138,6 +138,16 @@ public class Sudoku : Adw.Application
         settings.bind ("highlight-block", this, "highlight-block", SettingsBindFlags.DEFAULT);
         settings.bind ("highlight-numbers", this, "highlight-numbers", SettingsBindFlags.DEFAULT);
 
+        //backwards compatibility for versions <= v49
+        var old_warnings_state = settings.get_boolean ("show-warnings");
+        if (!old_warnings_state)
+        {
+            settings.reset ("show-warnings");
+            duplicate_warnings = false;
+            solution_warnings = false;
+            earmark_warnings = false;
+        }
+
         add_action_entries (action_entries, this);
 
         set_accels_for_action ("app.new-game", {"<Primary>n"});
