@@ -25,24 +25,24 @@
 # Felipe Braga <fbobraga@gmail.com>, 2015.
 # Enrico Nicoletto <liverig@gmail.com>, 2014, 2016, 2022.
 # Leônidas Araújo <leorusvellt@hotmail.com>, 2022-2023.
-# Juliano de Souza Camargo <julianosc@pm.me>, 2024-2025.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2014-2025.
 # Álvaro Burns <>, 2025.
+# Juliano de Souza Camargo <julianosc@pm.me>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-09-13 13:07+0000\n"
-"PO-Revision-Date: 2025-05-15 07:33-0300\n"
-"Last-Translator: Álvaro Burns <>\n"
+"POT-Creation-Date: 2025-10-09 15:57+0000\n"
+"PO-Revision-Date: 2025-10-10 10:14-0300\n"
+"Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Gtranslator 49.0\n"
 "X-Project-Style: gnome\n"
 "X-DL-Team: pt_BR\n"
 "X-DL-Module: gnome-sudoku\n"
@@ -98,66 +98,65 @@ msgstr "Define o número de sudokus que você deseja imprimir por página"
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Inicializar as marcas com os valores possíveis para cada célula"
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:42
 msgid "Check for duplicates in row, column and block"
-msgstr ""
-"Verificar por duplicatas em linha, coluna e bloco"
+msgstr "Verificar por duplicatas em linha, coluna e bloco"
 
-#: data/org.gnome.Sudoku.gschema.xml:43
+#: data/org.gnome.Sudoku.gschema.xml:46
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr ""
 "Verificar as marcações em relação a duplicatas em linha, coluna e bloco"
 
-#: data/org.gnome.Sudoku.gschema.xml:47
+#: data/org.gnome.Sudoku.gschema.xml:50
 msgid "Toggle timer and pause buttons"
 msgstr "Alternar temporizador e botões de pausa"
 
-#: data/org.gnome.Sudoku.gschema.xml:51
+#: data/org.gnome.Sudoku.gschema.xml:54
 msgid "Additionally check against the solution for warnings"
 msgstr "Além disso, verifique se há avisos na solução"
 
-#: data/org.gnome.Sudoku.gschema.xml:55
+#: data/org.gnome.Sudoku.gschema.xml:58
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr ""
 "Limpar automaticamente marcações relacionadas em nova inserção de número"
 
-#: data/org.gnome.Sudoku.gschema.xml:59
+#: data/org.gnome.Sudoku.gschema.xml:62
 msgid "Display number picker on second click"
 msgstr "Exibir seletor de número no segundo clique"
 
-#: data/org.gnome.Sudoku.gschema.xml:63
+#: data/org.gnome.Sudoku.gschema.xml:66
 msgid "Highlight the selected cell's row and column"
 msgstr "Realçar a linha e coluna da célula selecionada"
 
-#: data/org.gnome.Sudoku.gschema.xml:67
+#: data/org.gnome.Sudoku.gschema.xml:70
 msgid "Highlight the selected cell's block"
 msgstr "Realçar o bloco da célula selecionada"
 
-#: data/org.gnome.Sudoku.gschema.xml:71
+#: data/org.gnome.Sudoku.gschema.xml:74
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Realçar os números correspondentes da célula selecionada"
 
-#: data/org.gnome.Sudoku.gschema.xml:75
+#: data/org.gnome.Sudoku.gschema.xml:78
 msgid "The puzzle's difficulty"
 msgstr "A dificuldade do jogo"
 
-#: data/org.gnome.Sudoku.gschema.xml:79
+#: data/org.gnome.Sudoku.gschema.xml:82
 msgid "Zoom level"
 msgstr "Nível de ampliação"
 
-#: data/org.gnome.Sudoku.gschema.xml:83
+#: data/org.gnome.Sudoku.gschema.xml:86
 msgid "Width of the window in pixels"
 msgstr "A largura da janela em pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:87
+#: data/org.gnome.Sudoku.gschema.xml:90
 msgid "Height of the window in pixels"
 msgstr "A altura da janela em pixels"
 
-#: data/org.gnome.Sudoku.gschema.xml:91
+#: data/org.gnome.Sudoku.gschema.xml:94
 msgid "true if the window is maximized"
 msgstr "verdadeiro se a janela estiver maximizada"
 
-#: data/org.gnome.Sudoku.gschema.xml:95
+#: data/org.gnome.Sudoku.gschema.xml:98
 msgid "true if the window is fullscreen"
 msgstr "verdadeiro se a janela estiver em tela inteira"
 
@@ -279,7 +278,8 @@ msgstr "_Novo jogo…"
 msgid "_Reset Puzzle"
 msgstr "_Redefinir jogo"
 
-#: src/blueprints/menu-button.blp:19 src/blueprints/print-dialog.blp:65
+#: src/blueprints/menu-button.blp:19
+#: src/blueprints/print-multiple-dialog.blp:65
 msgid "_Print"
 msgstr "Im_primir"
 
@@ -396,35 +396,35 @@ msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "Realçar _bloco"
 
-#: src/blueprints/print-dialog.blp:5
+#: src/blueprints/print-multiple-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "Imprimir múltiplos jogos"
 
-#: src/blueprints/print-dialog.blp:24
+#: src/blueprints/print-multiple-dialog.blp:24
 msgid "Number of Puzzles"
 msgstr "Número de jogos"
 
-#: src/blueprints/print-dialog.blp:35
-msgid "Number of puzzles per page"
+#: src/blueprints/print-multiple-dialog.blp:35
+msgid "Number of Puzzles per Page"
 msgstr "Número de jogos por página"
 
-#: src/blueprints/print-dialog.blp:46
+#: src/blueprints/print-multiple-dialog.blp:46
 msgid "Difficulty"
 msgstr "Dificuldade"
 
-#: src/blueprints/print-dialog.blp:50
+#: src/blueprints/print-multiple-dialog.blp:50
 msgid "Easy"
 msgstr "Fácil"
 
-#: src/blueprints/print-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:51
 msgid "Medium"
 msgstr "Médio"
 
-#: src/blueprints/print-dialog.blp:52
+#: src/blueprints/print-multiple-dialog.blp:52
 msgid "Hard"
 msgstr "Difícil"
 
-#: src/blueprints/print-dialog.blp:53
+#: src/blueprints/print-multiple-dialog.blp:53
 msgid "Very Hard"
 msgstr "Muito difícil"
 
@@ -469,133 +469,133 @@ msgstr "Mui_to difícil "
 msgid "_Start Game"
 msgstr "_Iniciar o jogo"
 
-#: src/blueprints/shortcuts-window.blp:11
+#: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
 msgid "Game"
 msgstr "Jogo"
 
-#: src/blueprints/shortcuts-window.blp:15
-#: src/blueprints/shortcuts-window.blp:20
+#: src/blueprints/shortcuts-dialog.blp:11
+#: src/blueprints/shortcuts-dialog.blp:16
 msgctxt "Shortcuts Window"
 msgid "Move"
 msgstr "Move"
 
-#: src/blueprints/shortcuts-window.blp:25
+#: src/blueprints/shortcuts-dialog.blp:20
 msgctxt "Shortcuts Window"
 msgid "Earmarks"
 msgstr "Marcações"
 
-#: src/blueprints/shortcuts-window.blp:30
+#: src/blueprints/shortcuts-dialog.blp:25
 msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "Limpas célula"
 
-#: src/blueprints/shortcuts-window.blp:35
-msgctxt "Shortcuts Window"
-msgid "Undo"
-msgstr "Desfaz"
-
-#: src/blueprints/shortcuts-window.blp:40
-msgctxt "Shortcuts Window"
-msgid "Redo"
-msgstr "Refaz"
-
-#: src/blueprints/shortcuts-window.blp:45
-msgctxt "Shortcuts Window"
-msgid "Pause"
-msgstr "Pausa"
-
-#: src/blueprints/shortcuts-window.blp:50
+#: src/blueprints/shortcuts-dialog.blp:32
 msgctxt "Shortcuts Window"
 msgid "Earmark Mode"
 msgstr "Modo de marcações"
 
-#: src/blueprints/shortcuts-window.blp:55
+#: src/blueprints/shortcuts-dialog.blp:37
 msgctxt "Shortcuts Window"
-msgid "Number Picker"
-msgstr "Seletor de número"
+msgid "Pause"
+msgstr "Pausa"
 
-#: src/blueprints/shortcuts-window.blp:60
+#: src/blueprints/shortcuts-dialog.blp:44
 msgctxt "Shortcuts Window"
-msgid "Earmark Picker"
-msgstr "Seletor de marcação"
+msgid "Undo"
+msgstr "Desfaz"
 
-#: src/blueprints/shortcuts-window.blp:65
+#: src/blueprints/shortcuts-dialog.blp:49
+msgctxt "Shortcuts Window"
+msgid "Redo"
+msgstr "Refaz"
+
+#: src/blueprints/shortcuts-dialog.blp:56
 msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "Novo jogo"
 
-#: src/blueprints/shortcuts-window.blp:70
+#: src/blueprints/shortcuts-dialog.blp:61
 msgctxt "Shortcuts Window"
 msgid "Reset Puzzle"
 msgstr "Redefine o jogo"
 
-#: src/blueprints/shortcuts-window.blp:75
+#: src/blueprints/shortcuts-dialog.blp:68
+msgctxt "Shortcuts Window"
+msgid "Number Picker"
+msgstr "Seletor de número"
+
+#: src/blueprints/shortcuts-dialog.blp:73
+msgctxt "Shortcuts Window"
+msgid "Earmark Picker"
+msgstr "Seletor de marcação"
+
+#: src/blueprints/shortcuts-dialog.blp:78
 msgctxt "Shortcuts Window"
 msgid "Window"
 msgstr "Janela"
 
-#: src/blueprints/shortcuts-window.blp:79
+#: src/blueprints/shortcuts-dialog.blp:82
 msgctxt "Shortcuts Window"
 msgid "Go Back"
 msgstr "Volta"
 
-#: src/blueprints/shortcuts-window.blp:84
-msgctxt "Shortcuts Window"
-msgid "Zoom In"
-msgstr "Aumenta a ampliação"
-
-#: src/blueprints/shortcuts-window.blp:89
-msgctxt "Shortcuts Window"
-msgid "Zoom Out"
-msgstr "Reduz a ampliação"
-
-#: src/blueprints/shortcuts-window.blp:94
-msgctxt "Shortcuts Window"
-msgid "Zoom Reset"
-msgstr "Redefine a ampliação"
-
-#: src/blueprints/shortcuts-window.blp:99
+#: src/blueprints/shortcuts-dialog.blp:87
 msgctxt "Shortcuts Window"
 msgid "Print Current Puzzle"
 msgstr "Imprime o jogo atual"
 
-#: src/blueprints/shortcuts-window.blp:104
+#: src/blueprints/shortcuts-dialog.blp:92
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/blueprints/shortcuts-window.blp:109
+#: src/blueprints/shortcuts-dialog.blp:97
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de teclado"
 
-#: src/blueprints/shortcuts-window.blp:114
+#: src/blueprints/shortcuts-dialog.blp:102
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Sai"
 
-#: src/blueprints/shortcuts-window.blp:119
+#: src/blueprints/shortcuts-dialog.blp:107
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/blueprints/shortcuts-window.blp:124
+#: src/blueprints/shortcuts-dialog.blp:112
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Menu"
 
-#: src/blueprints/shortcuts-window.blp:129
+#: src/blueprints/shortcuts-dialog.blp:117
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Tela cheia"
 
+#: src/blueprints/shortcuts-dialog.blp:124
+msgctxt "Shortcuts Window"
+msgid "Zoom In"
+msgstr "Aumenta a ampliação"
+
+#: src/blueprints/shortcuts-dialog.blp:129
+msgctxt "Shortcuts Window"
+msgid "Zoom Out"
+msgstr "Reduz a ampliação"
+
+#: src/blueprints/shortcuts-dialog.blp:134
+msgctxt "Shortcuts Window"
+msgid "Zoom Reset"
+msgstr "Redefine a ampliação"
+
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:94
+#: src/gnome-sudoku.vala:92
 msgid "Show release version"
 msgstr "Mostrar versão de lançamento"
 
-#: src/gnome-sudoku.vala:220
+#: src/gnome-sudoku.vala:226
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -603,31 +603,31 @@ msgstr[0] "%d minuto"
 msgstr[1] "%d minutos"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:225
+#: src/gnome-sudoku.vala:231
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 "Parabéns, você completou o jogo em %s e estabeleceu um novo recorde pessoal!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:238
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Parabéns, você concluiu o jogo em %s!"
 
-#: src/gnome-sudoku.vala:237
+#: src/gnome-sudoku.vala:243
 msgid "Well done, you completed the puzzle!"
 msgstr "Parabéns, você concluiu o jogo!"
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:246
 msgid "Quit"
 msgstr "Sair"
 
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:247
 msgid "Play _Again"
 msgstr "Jogar _novamente"
 
-#: src/gnome-sudoku.vala:427
+#: src/gnome-sudoku.vala:394
 msgid "translator-credits"
 msgstr ""
 "Sandro Nunes Henrique <sandro@conectiva.com.br>\n"
