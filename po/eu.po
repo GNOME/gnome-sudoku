@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2008-2017.
-# Asier Sarasua Garmendia  <asiersarasua@ni.eus>, 2019, 2021, 2022, 2023, 2024.
+# Asier Saratsua Garmendia  <asiersarasua@ni.eus>, 2019, 2021, 2022, 2023, 2024, 2025.
 #
 msgid ""
 msgstr "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-03-06 11:02+0000\n"
-"PO-Revision-Date: 2024-03-09 10:00+0100\n"
-"Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
+"POT-Creation-Date: 2025-10-10 22:38+0000\n"
+"PO-Revision-Date: 2025-10-11 10:00+0100\n"
+"Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -18,349 +18,611 @@ msgstr "Project-Id-Version: gnome-sudoku master\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/sudoku-window.ui:7
-msgid "_New Puzzle…"
-msgstr "Puzzle _berria…"
-
-#: data/sudoku-window.ui:11
-msgid "Create Custom Game…"
-msgstr "Sortu joko pertsonalizatua…"
-
-#: data/sudoku-window.ui:15
-msgid "_Clear Board…"
-msgstr "_Garbitu taula…"
-
-#: data/sudoku-window.ui:21 data/print-dialog.ui:77
-msgid "_Print"
-msgstr "I_nprimatu"
-
-#: data/sudoku-window.ui:24
-msgid "Print _Current Puzzle…"
-msgstr "Inprimatu _uneko puzzle…"
-
-#: data/sudoku-window.ui:28
-msgid "Print _Multiple Puzzles…"
-msgstr "Inprimatu _hainbat puzzle..."
-
-#: data/sudoku-window.ui:36
-msgid "High_lighter"
-msgstr "_Nabarmentzailea"
-
-#: data/sudoku-window.ui:40
-msgid "_Warnings"
-msgstr "_Abisuak"
-
-#: data/sudoku-window.ui:44
-msgid "_More Options"
-msgstr "A_ukera gehiago"
-
-#: data/sudoku-window.ui:47
-msgid "Show _Timer"
-msgstr "Erakutsi _kronometroa"
-
-#: data/sudoku-window.ui:51
-msgid "Show _Possibilities"
-msgstr "Erakutsi auk_erak"
-
-#: data/sudoku-window.ui:57
-msgid "Simple _Earmark Warnings"
-msgstr "O_hartxo sinpleak"
-
-#: data/sudoku-window.ui:61
-msgid "Simple _Warnings Mode"
-msgstr "A_bisu sinpleen modua"
-
-#: data/sudoku-window.ui:69
-msgid "_Help"
-msgstr "_Laguntza"
-
-#: data/sudoku-window.ui:73
-msgid "_About Sudoku"
-msgstr "Sudoku jokoari _buruz"
-
-#: data/sudoku-window.ui:79 data/sudoku-window.ui:88
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:530
+#: data/org.gnome.Sudoku.desktop.in.in:2 data/sudoku-window.blp:88
+#: data/sudoku-window.blp:96
 msgid "Sudoku"
 msgstr "Sudoku"
 
-#: data/sudoku-window.ui:96
-msgid "Undo Action"
-msgstr "Desegin ekintza"
-
-#: data/sudoku-window.ui:108
-msgid "Redo Action"
-msgstr "Berregin ekintza"
-
-#: data/sudoku-window.ui:120
-msgid "Back"
-msgstr "Atzera"
-
-#: data/sudoku-window.ui:131
-msgid "Main Menu"
-msgstr "Menu nagusia"
-
-#: data/sudoku-window.ui:150
-msgid "Play Custom Puzzle"
-msgstr "Jokatu puzzle pertsonalizatua"
-
-#: data/sudoku-window.ui:199
-msgid "Select Game Difficulty"
-msgstr "Hautatu jokoaren zailtasuna"
-
-#: data/sudoku-window.ui:216
-msgid "_Easy"
-msgstr "_Erraza"
-
-#: data/sudoku-window.ui:230
-msgid "_Medium"
-msgstr "Ta_rtekoa"
-
-#: data/sudoku-window.ui:244
-msgid "_Hard"
-msgstr "_Zaila"
-
-#: data/sudoku-window.ui:258
-msgid "_Very Hard"
-msgstr "_Oso zaila"
-
-#: data/sudoku-window.ui:269
-msgid "_Start Game"
-msgstr "_Hasi jokoa"
-
-#: data/org.gnome.Sudoku.appdata.xml.in:7
-msgid "GNOME Sudoku"
-msgstr "GNOME Sudokua"
-
-#: data/org.gnome.Sudoku.appdata.xml.in:8 data/org.gnome.Sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Probatu zure logika-gaitasuna zenbaki-sare honetan"
-
-#: data/org.gnome.Sudoku.appdata.xml.in:10
-msgid ""
-"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
-"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
-"Sudoku fun for players of any skill level."
-msgstr "Jokatu logikako joko japoniar ospetsua. Sudoku-zaleek GNOME Sudoku instalatuta eduki beharko lukete. Interfaze xumekoa (eta trabarik egiten ez duena) edozer mailatan trebetasuna duten jokalarientzako prestatuta dago."
-
-#: data/org.gnome.Sudoku.appdata.xml.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as easy or as difficult as you want it to be."
-msgstr "Joko bakoitzaren zailtasun-maila  egunkarietan eta webguneetan ematen dietenaren antzekoa da. Jokoa zuk nahi duzun bezain erraza edo zaila izango da."
-
-#: data/org.gnome.Sudoku.appdata.xml.in:20
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr "Paperean jokatzea gustuko baduzu, jokoak inprimatu ditzakezu. Orrialdeko zenbat joko inprimatzea nahi dituzun aukera dezakezu, baita jokoen zailtasun-maila ere. Ondorioz, Sudoku liburu berriztagarri gisa erabil dezakezu GNOME Sudoku."
-
-#: data/org.gnome.Sudoku.appdata.xml.in:30
-msgid "A GNOME sudoku game preview"
-msgstr "GNOME sudoku jokoaren aurrebista"
+#: data/org.gnome.Sudoku.desktop.in.in:3
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
+msgid "Test yourself in the classic puzzle"
+msgstr "Bota erronka zeure buruari puzzle klasiko honetan"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in.in:5
 msgid "magic;square;"
 msgstr "magikoa;karratua;"
 
-#: data/org.gnome.Sudoku.gschema.xml:11
+#: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Difficulty level of sudokus to be printed"
 msgstr "Inprimatuko diren sudokuen zailtasun maila"
 
-#: data/org.gnome.Sudoku.gschema.xml:12
+#: data/org.gnome.Sudoku.gschema.xml:19
 msgid ""
 "Set the difficulty level of the sudokus you want to print. Possible values "
 "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
 msgstr "Ezarri inprimatu nahi dituzun sudokuen zailtasun maila. Balio erabilgarriak: \"easy\" (erraza), \"medium\" (tartekoa), \"hard\" (zaila), \"very_hard\" (oso zaila)"
 
-#: data/org.gnome.Sudoku.gschema.xml:17
+#: data/org.gnome.Sudoku.gschema.xml:24
 msgid "Number of Sudokus to print"
 msgstr "Inprimatuko den sudoku kopurua"
 
-#: data/org.gnome.Sudoku.gschema.xml:18
+#: data/org.gnome.Sudoku.gschema.xml:25
 msgid "Set the number of sudokus you want to print"
 msgstr "Ezarri inprimatuko den sudoku kopurua"
 
-#: data/org.gnome.Sudoku.gschema.xml:23
+#: data/org.gnome.Sudoku.gschema.xml:30
 msgid "Number of Sudokus to print per page"
 msgstr "Orrialdeko inprimatuko den sudoku kopurua"
 
-#: data/org.gnome.Sudoku.gschema.xml:24
+#: data/org.gnome.Sudoku.gschema.xml:31
 msgid "Set the number of sudokus you want to print per page"
 msgstr "Ezarri orrialdeko inprimatuko den sudoku kopurua"
 
-#: data/org.gnome.Sudoku.gschema.xml:28
+#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Hasieratu ohartxoak gelaxka bakoitzeko balio posibleekin"
 
-#: data/org.gnome.Sudoku.gschema.xml:32
+#: data/org.gnome.Sudoku.gschema.xml:39
 msgid "Color mistakes and duplicate numbers in red"
 msgstr "Koloreztatu okerrak eta zenbaki bikoiztuak gorriz"
 
-#: data/org.gnome.Sudoku.gschema.xml:33
+#: data/org.gnome.Sudoku.gschema.xml:40
 msgid ""
 "Displays a big red X in a square if it cannot possibly be filled by any "
 "number and duplicate numbers are highlighted in red"
 msgstr "Bistaratu X gorri handia karratu batean ezin bada edozer zenbakirekin bete eta bikoiztutako zenbakiak gorriz nabarmentzen dira"
 
-#: data/org.gnome.Sudoku.gschema.xml:37
+#: data/org.gnome.Sudoku.gschema.xml:44
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr "Egiaztatu ohartxoak bikoiztuekin errenkada, zutabe eta blokean"
 
-#: data/org.gnome.Sudoku.gschema.xml:41
+#: data/org.gnome.Sudoku.gschema.xml:48
 msgid "Toggle timer and pause buttons"
 msgstr "Txandakatu tenporizadorea eta pausatze-botoiak"
 
-#: data/org.gnome.Sudoku.gschema.xml:45
-msgid "Check cells only against duplicates in row, column and block"
-msgstr "Egiaztatu gelaxkak bikoiztuekin errenkada, zutabe eta blokean soilik"
+#: data/org.gnome.Sudoku.gschema.xml:52
+msgid "Additionally check against the solution for warnings"
+msgstr "Begiratu ebazpena abisuak jasotzeko"
 
-#: data/org.gnome.Sudoku.gschema.xml:49
+#: data/org.gnome.Sudoku.gschema.xml:56
+msgid "Automatically clear related earmarks on new number insertion"
+msgstr "Automatikoki garbitu ohartxo erlazionatuak zenbakiak txertatzean"
+
+#: data/org.gnome.Sudoku.gschema.xml:60
+msgid "Display number picker on second click"
+msgstr "Bistaratu zenbaki-aukeratzailea bigarren klik egitean"
+
+#: data/org.gnome.Sudoku.gschema.xml:64
 msgid "Highlight row, column and square that contain the selected cell"
 msgstr "Nabarmendu hautatutako gelaxka duen errenkada, zutabea eta karratua"
 
-#: data/org.gnome.Sudoku.gschema.xml:53
+#: data/org.gnome.Sudoku.gschema.xml:68
+msgid "Highlight the selected cell's row and column"
+msgstr "Nabarmendu hautatutako gelaxkaren errenkada eta zutabea"
+
+#: data/org.gnome.Sudoku.gschema.xml:72
+msgid "Highlight the selected cell's block"
+msgstr "Nabarmendu hautatutako gelaxkaren blokea"
+
+#: data/org.gnome.Sudoku.gschema.xml:76
+msgid "Highlight the selected cell's matching numbers"
+msgstr "Nabarmendu hautatutako gelaxkarekin bat datozen zenbakiak"
+
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "The puzzle's difficulty"
 msgstr "Puzzlearen zailtasuna"
 
-#: data/org.gnome.Sudoku.gschema.xml:57
+#: data/org.gnome.Sudoku.gschema.xml:84
+msgid "Zoom level"
+msgstr "Zoomaren maila"
+
+#: data/org.gnome.Sudoku.gschema.xml:88
 msgid "Width of the window in pixels"
 msgstr "Leiho nagusiaren zabalera (pixeletan)"
 
-#: data/org.gnome.Sudoku.gschema.xml:61
+#: data/org.gnome.Sudoku.gschema.xml:92
 msgid "Height of the window in pixels"
 msgstr "Leiho nagusiaren altuera (pixeletan)"
 
-#: data/org.gnome.Sudoku.gschema.xml:65
+#: data/org.gnome.Sudoku.gschema.xml:96
 msgid "true if the window is maximized"
 msgstr "egia leihoa maximizatuta badago"
 
-#: data/print-dialog.ui:5
+#: data/org.gnome.Sudoku.gschema.xml:100
+msgid "true if the window is fullscreen"
+msgstr "egia leihoa pantaila osoan badago"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:7
+msgid "GNOME Sudoku"
+msgstr "GNOME Sudokua"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:10
+msgid ""
+"GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
+"Japanese game, it comes with a simple interface that makes playing Sudoku "
+"fun for players of all skill level."
+msgstr "Puzzleen zaleek GNOME Sudoku instalatuta eduki beharko lukete beti. Japoniako joko ezagunean oinarrituta, interfaze xumekoa da (trabarik egiten ez duena) eta edozer mailatan trebetasuna duten jokalarientzako prestatuta dago."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "Eginbideak:"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:17
+msgid "Automatically save and restore your session."
+msgstr "Automatikoki gorde eta leheneratu saioa."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:18
+msgid "Generate an infinite amount of new puzzles with qqwing."
+msgstr "Sortu puzzle berrien kopuru amaigabea qqwing erabiliz."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:19
+msgid "Create and solve custom puzzles from scratch."
+msgstr "Sortu eta ebatzi puzzle pertsonalizatuak hutsetik."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:20
+msgid "Adjust a scalable grid to your preferences."
+msgstr "Soitu saretaren eskala zure hobespenen arabera."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:21
+msgid "Use the mouse, keyboard or touch to complete the puzzles."
+msgstr "Erabili sagua, teklatua edo ukipena puzzleak osatzeko."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:22
+msgid "Set up advanced strategies like X-Wings with earmarks."
+msgstr "Konfiguratu estrategia aurreratuak, adibidez ohartxodun X-Wings."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:23
+msgid "Take advantage of the highlighter to narrow down possibilities."
+msgstr "Baliatu nabarmentzea balizko konponbideak mugatzeko."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:24
+msgid "Get help with the built-in warnings."
+msgstr "Eskuratu laguntza abisuen bidez."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:25
+msgid "Time yourself to keep track of your progression."
+msgstr "Neurtu denborak zure aurrerapenen jarraipena egiteko."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:26
+msgid "Print puzzles to play Sudoku on the go."
+msgstr "Inprimatu puzzleak paperean ere jokatzeko."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:32
+msgid "A GNOME sudoku game preview"
+msgstr "GNOME Sudoku jokoaren aurrebista"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:36
+msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
+msgstr "GNOME Sudoku modu ilunean, ohartxoak eta abisuak bistan dituela"
+
+#: data/preferences-dialog.blp:7
+msgctxt "preferences dialog"
+msgid "General"
+msgstr "Orokorra"
+
+#: data/preferences-dialog.blp:10
+msgctxt "General Preferences"
+msgid "_Timer and Pause Buttons"
+msgstr "_Tenporizadorea eta pausatze-botoiak"
+
+#: data/preferences-dialog.blp:15
+msgctxt "General Preferences"
+msgid "Number Picker on _Second Click"
+msgstr "Zanbaki-aukeratzailea _bigarren klik egitean"
+
+#: data/preferences-dialog.blp:20
+msgctxt "General Preferences"
+msgid "Automatically _Clean Earmarks"
+msgstr "Automatikoki _garbitu ohartxoak"
+
+#: data/preferences-dialog.blp:25
+msgctxt "General Preferences"
+msgid "Show Earmark _Possibilities"
+msgstr "Erakutsi ohartxoen _aukerak"
+
+#: data/preferences-dialog.blp:31
+msgctxt "Preferences Dialog"
+msgid "Warnings"
+msgstr "Abisuak"
+
+#: data/preferences-dialog.blp:34
+msgctxt "Warning Preferences"
+msgid "Check _Against Solution"
+msgstr "Egiaztatu _ebazpenarekin"
+
+#: data/preferences-dialog.blp:39
+msgctxt "Warning Preferences"
+msgid "_Earmark Warnings"
+msgstr "_Ohartxoen abisuak"
+
+#: data/preferences-dialog.blp:45
+msgctxt "Preferences Dialog"
+msgid "Highlighter"
+msgstr "Nabarmentzea"
+
+#: data/preferences-dialog.blp:48
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "Nabarmendu bat datozen _zenbakiak"
+
+#: data/preferences-dialog.blp:53
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Row and Column"
+msgstr "Nabarmendu _errenkada eta zutabea"
+
+#: data/preferences-dialog.blp:58
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Block"
+msgstr "Nabarmendu _blokea"
+
+#: data/print-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "Inprimatu hainbat puzzle"
 
-#: data/print-dialog.ui:28
+#: data/print-dialog.blp:24
 msgid "Number of Puzzles"
 msgstr "Puzzle kopurua"
 
-#: data/print-dialog.ui:41
+#: data/print-dialog.blp:35
 msgid "Number of puzzles per page"
 msgstr "Puzzle kopurua orrialdeko"
 
-#: data/print-dialog.ui:54
+#: data/print-dialog.blp:46
 msgid "Difficulty"
 msgstr "Zailtasuna"
 
-#: data/print-dialog.ui:58
+#: data/print-dialog.blp:50
 msgid "Easy"
 msgstr "Erraza"
 
-#: data/print-dialog.ui:59
+#: data/print-dialog.blp:51
 msgid "Medium"
 msgstr "Tartekoa"
 
-#: data/print-dialog.ui:60
+#: data/print-dialog.blp:52
 msgid "Hard"
 msgstr "Zaila"
 
-#: data/print-dialog.ui:61
+#: data/print-dialog.blp:53
 msgid "Very Hard"
 msgstr "Oso zaila"
 
-#: lib/sudoku-board.vala:687
+#: data/print-dialog.blp:65 data/sudoku-window.blp:19
+msgid "_Print"
+msgstr "I_nprimatu"
+
+#: data/shortcuts-window.blp:11
+msgctxt "Shortcuts Window"
+msgid "Game"
+msgstr "Jokoa"
+
+#: data/shortcuts-window.blp:15 data/shortcuts-window.blp:20
+msgctxt "Shortcuts Window"
+msgid "Move"
+msgstr "Mugitu"
+
+#: data/shortcuts-window.blp:25
+msgctxt "Shortcuts Window"
+msgid "Earmarks"
+msgstr "Ohartxoak"
+
+#: data/shortcuts-window.blp:30
+msgctxt "Shortcuts Window"
+msgid "Clear Cell"
+msgstr "Garbitu gelaxka"
+
+#: data/shortcuts-window.blp:35
+msgctxt "Shortcuts Window"
+msgid "Undo"
+msgstr "Desegin"
+
+#: data/shortcuts-window.blp:40
+msgctxt "Shortcuts Window"
+msgid "Redo"
+msgstr "Berregin"
+
+#: data/shortcuts-window.blp:45
+msgctxt "Shortcuts Window"
+msgid "Pause"
+msgstr "Pausatu"
+
+#: data/shortcuts-window.blp:50
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
+msgstr "Ohartxoen modua"
+
+#: data/shortcuts-window.blp:55
+msgctxt "Shortcuts Window"
+msgid "Number Picker"
+msgstr "Zenbaki-aukeratzailea"
+
+#: data/shortcuts-window.blp:60
+msgctxt "Shortcuts Window"
+msgid "Earmark Picker"
+msgstr "Ohartxo-aukeratzailea"
+
+#: data/shortcuts-window.blp:65
+msgctxt "Shortcuts Window"
+msgid "New Game"
+msgstr "Joko berria"
+
+#: data/shortcuts-window.blp:70
+msgctxt "Shortcuts Window"
+msgid "Reset Puzzle"
+msgstr "Berrezarri puzzlea"
+
+#: data/shortcuts-window.blp:75
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "Leihoa"
+
+#: data/shortcuts-window.blp:79
+msgctxt "Shortcuts Window"
+msgid "Go Back"
+msgstr "Joan atzera"
+
+#: data/shortcuts-window.blp:84
+msgctxt "Shortcuts Window"
+msgid "Zoom In"
+msgstr "Handiagotu"
+
+#: data/shortcuts-window.blp:89
+msgctxt "Shortcuts Window"
+msgid "Zoom Out"
+msgstr "Txikiagotu"
+
+#: data/shortcuts-window.blp:94
+msgctxt "Shortcuts Window"
+msgid "Zoom Reset"
+msgstr "Berrezarri zooma"
+
+#: data/shortcuts-window.blp:99
+msgctxt "Shortcuts Window"
+msgid "Warnings"
+msgstr "Abisuak"
+
+#: data/shortcuts-window.blp:104
+msgctxt "Shortcuts Window"
+msgid "Highlighter"
+msgstr "Nabarmentzea"
+
+#: data/shortcuts-window.blp:109
+msgctxt "Shortcuts Window"
+msgid "Print Current Puzzle"
+msgstr "Inprimatu uneko puzzlea"
+
+#: data/shortcuts-window.blp:114
+msgctxt "Shortcuts Window"
+msgid "Preferences"
+msgstr "Hobespenak"
+
+#: data/shortcuts-window.blp:119
+msgctxt "Shortcuts Window"
+msgid "Keyboard Shortcuts"
+msgstr "Laster-teklak"
+
+#: data/shortcuts-window.blp:124
+msgctxt "Shortcuts Window"
+msgid "Quit"
+msgstr "Irten"
+
+#: data/shortcuts-window.blp:129
+msgctxt "Shortcuts Window"
+msgid "Help"
+msgstr "Laguntza"
+
+#: data/shortcuts-window.blp:134
+msgctxt "Shortcuts Window"
+msgid "Menu"
+msgstr "Menua"
+
+#: data/shortcuts-window.blp:139
+msgctxt "Shortcuts Window"
+msgid "Fullscreen"
+msgstr "Pantaila osoa"
+
+#: data/sudoku-window.blp:7
+msgid "_New Game…"
+msgstr "_Joko berria…"
+
+#: data/sudoku-window.blp:12
+msgid "_Reset Puzzle"
+msgstr "_Berrezarri puzzlea"
+
+#: data/sudoku-window.blp:23
+msgid "Print _Current Puzzle…"
+msgstr "Inprimatu _uneko puzzle…"
+
+#: data/sudoku-window.blp:28
+msgid "Print _Multiple Puzzles…"
+msgstr "Inprimatu _hainbat puzzle..."
+
+#: data/sudoku-window.blp:35
+msgid "Zoom"
+msgstr "Zooma"
+
+#: data/sudoku-window.blp:54
+msgid "_Highlighter"
+msgstr "_Nabarmentzea"
+
+#: data/sudoku-window.blp:59
+msgid "_Warnings"
+msgstr "_Abisuak"
+
+#: data/sudoku-window.blp:66
+msgid "_Preferences"
+msgstr "_Hobespenak"
+
+#: data/sudoku-window.blp:71
+msgid "_Keyboard Shortcuts"
+msgstr "Las_ter-teklak"
+
+#: data/sudoku-window.blp:76
+msgid "_Help"
+msgstr "_Laguntza"
+
+#: data/sudoku-window.blp:81
+msgid "_About Sudoku"
+msgstr "Sudoku jokoari _buruz"
+
+#: data/sudoku-window.blp:104
+msgid "Undo Action"
+msgstr "Desegin ekintza"
+
+#: data/sudoku-window.blp:116
+msgid "Redo Action"
+msgstr "Berregin ekintza"
+
+#: data/sudoku-window.blp:128
+msgid "Back"
+msgstr "Atzera"
+
+#: data/sudoku-window.blp:141
+msgid "Earmark Mode"
+msgstr "Ohartxoen modua"
+
+#: data/sudoku-window.blp:151 data/sudoku-window.blp:212
+msgid "Leave Fullscreen"
+msgstr "Irten pantaila osotik"
+
+#: data/sudoku-window.blp:165
+msgid "Main Menu"
+msgstr "Menu nagusia"
+
+#: data/sudoku-window.blp:174
+msgid "Zoom Out"
+msgstr "Txikiagotu"
+
+#: data/sudoku-window.blp:186
+msgid "Zoom In"
+msgstr "Handiagotu"
+
+#: data/sudoku-window.blp:201
+msgid "Fullscreen"
+msgstr "Pantaila osoa"
+
+#: data/sudoku-window.blp:233
+msgid "Pause"
+msgstr "Pausatu"
+
+#: data/sudoku-window.blp:243
+msgid "Play"
+msgstr "Jokatu"
+
+#: data/sudoku-window.blp:254
+msgid "Play Custom Game"
+msgstr "Jokatu joko pertsonalizatua"
+
+#: data/sudoku-window.blp:299
+msgid "Select Puzzle Difficulty"
+msgstr "Hautatu puzzlearen zailtasuna"
+
+#: data/sudoku-window.blp:316
+msgctxt "Difficulty"
+msgid "_Custom"
+msgstr "_Pertsonalizatu"
+
+#: data/sudoku-window.blp:330
+msgctxt "Difficulty"
+msgid "_Easy"
+msgstr "_Erraza"
+
+#: data/sudoku-window.blp:343
+msgctxt "Difficulty"
+msgid "_Medium"
+msgstr "Ta_rtekoa"
+
+#: data/sudoku-window.blp:356
+msgctxt "Difficulty"
+msgid "_Hard"
+msgstr "_Zaila"
+
+#: data/sudoku-window.blp:369
+msgctxt "Difficulty"
+msgid "_Very Hard"
+msgstr "_Oso zaila"
+
+#: data/sudoku-window.blp:378
+msgid "_Start Game"
+msgstr "_Hasi jokoa"
+
+#: lib/sudoku-board.vala:634
 msgid "Unknown Difficulty"
 msgstr "Zailtasun ezezaguna"
 
-#: lib/sudoku-board.vala:689
+#: lib/sudoku-board.vala:636
 msgid "Easy Difficulty"
 msgstr "Zailtasun erraza"
 
-#: lib/sudoku-board.vala:691
+#: lib/sudoku-board.vala:638
 msgid "Medium Difficulty"
 msgstr "Tarteko zailtasuna"
 
-#: lib/sudoku-board.vala:693
+#: lib/sudoku-board.vala:640
 msgid "Hard Difficulty"
 msgstr "Zailtasun zaila"
 
-#: lib/sudoku-board.vala:695
+#: lib/sudoku-board.vala:642
 msgid "Very Hard Difficulty"
 msgstr "Zailtasun oso zaila"
 
-#: lib/sudoku-board.vala:697
+#: lib/sudoku-board.vala:644
 msgid "Custom Puzzle"
 msgstr "Puzzle pertsonalizatua"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:80
+#: src/gnome-sudoku.vala:89
 msgid "Show release version"
 msgstr "Erakutsi argitaratze-bertsioa"
 
-#. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:84
-msgid "Show the possible values for each cell"
-msgstr "Erakutsi gelaxka bakoitzeko balio posibleak"
-
 #. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:273
+#: src/gnome-sudoku.vala:220
 msgid "The puzzle you have entered is not a valid Sudoku."
 msgstr "Sartu duzun puzzlea ez da baliozko sudokua."
 
-#: src/gnome-sudoku.vala:273
+#: src/gnome-sudoku.vala:220
 msgid "Please enter a valid puzzle."
 msgstr "Sartu baliozko puzzlea."
 
-#: src/gnome-sudoku.vala:274 src/sudoku-printer.vala:46
+#: src/gnome-sudoku.vala:221 src/printer.vala:46
 msgid "Close"
 msgstr "Itxi"
 
 #. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:282
+#: src/gnome-sudoku.vala:229
 msgid "The puzzle you have entered has multiple solutions."
 msgstr "Sartu duzun puzzleak hainbat ebazpen ditu."
 
-#: src/gnome-sudoku.vala:282
+#: src/gnome-sudoku.vala:229
 msgid "Valid Sudoku puzzles have exactly one solution."
 msgstr "Baliozko sudoku puzzleek ebazpen bakarra daukate."
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:230
 msgid "_Back"
 msgstr "At_zera"
 
-#: src/gnome-sudoku.vala:284
+#: src/gnome-sudoku.vala:231
 msgid "Play _Anyway"
 msgstr "Jokatu _dena den"
 
-#: src/gnome-sudoku.vala:326
+#: src/gnome-sudoku.vala:272
 #, c-format
 msgid "Well done, you completed the puzzle in %d minute!"
 msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgstr[0] "Ongi eginda! Puzzlea minutu %d-ean osatuta!"
 msgstr[1] "Ongi eginda! Puzzlea %d minututan osatuta!"
 
-#: src/gnome-sudoku.vala:334
+#: src/gnome-sudoku.vala:280
 msgid "Quit"
 msgstr "Irten"
 
-#: src/gnome-sudoku.vala:335
+#: src/gnome-sudoku.vala:281
 msgid "Play _Again"
 msgstr "Jokatu _berriro"
 
-#: src/gnome-sudoku.vala:449
-msgid "Reset the board to its original state?"
-msgstr "Berrezarri taula bere jatorriko egoerara?"
-
-#: src/gnome-sudoku.vala:450
-msgid "No"
-msgstr "Ez"
-
-#: src/gnome-sudoku.vala:451
-msgid "Yes"
-msgstr "Bai"
-
 #. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:527
+#: src/gnome-sudoku.vala:493
 #, c-format
 msgid ""
 "The popular Japanese logic puzzle\n"
@@ -370,40 +632,87 @@ msgstr "Japoniako logika-puzzlea da.\n"
 "\n"
 "Puzzleak QQwing %s-(e)k sortuta"
 
-#: src/gnome-sudoku.vala:537
+#: src/gnome-sudoku.vala:499
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#: src/number-picker.vala:87
+#: src/number-picker.vala:128
 msgid "Clear"
 msgstr "Garbitu"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:45
+#: src/printer.vala:45
 msgid "Error printing file:"
 msgstr "Errorea fitxategia inprimatzean:"
 
-#: src/sudoku-window.vala:194
+#: src/view.vala:84
+msgid "Paused"
+msgstr "Pausatuta"
+
+#: src/window.vala:340
 msgid "Select Difficulty"
 msgstr "Hautatu zailtasuna"
 
-#: src/sudoku-window.vala:272
+#: src/window.vala:410
 msgid "Create Puzzle"
 msgstr "Sortu puzzlea"
 
-#: src/sudoku-window.vala:279
-msgid "Play"
-msgstr "Jokatu"
+#~ msgid "Create Custom Game…"
+#~ msgstr "Sortu joko pertsonalizatua…"
 
-#: src/sudoku-window.vala:279
-msgid "Pause"
-msgstr "Pausatu"
+#~ msgid "_Clear Board…"
+#~ msgstr "_Garbitu taula…"
+
+#~ msgid "_More Options"
+#~ msgstr "A_ukera gehiago"
+
+#~ msgid "Show _Timer"
+#~ msgstr "Erakutsi _kronometroa"
+
+#~ msgid "Simple _Warnings Mode"
+#~ msgstr "A_bisu sinpleen modua"
+
+#~ msgid "Select Game Difficulty"
+#~ msgstr "Hautatu jokoaren zailtasuna"
+
+#~ msgid ""
+#~ "Each game is assigned a difficulty similar to those given by newspapers "
+#~ "and websites, so your game will be as easy or as difficult as you want it "
+#~ "to be."
+#~ msgstr ""
+#~ "Joko bakoitzaren zailtasun-maila  egunkarietan eta webguneetan ematen "
+#~ "dietenaren antzekoa da. Jokoa zuk nahi duzun bezain erraza edo zaila "
+#~ "izango da."
+
+#~ msgid ""
+#~ "If you like to play on paper, you can print games out. You can choose how "
+#~ "many games you want to print per page and what difficulty of games you "
+#~ "want to print: as a result, GNOME Sudoku can act a renewable Sudoku book "
+#~ "for you."
+#~ msgstr ""
+#~ "Paperean jokatzea gustuko baduzu, jokoak inprimatu ditzakezu. Orrialdeko "
+#~ "zenbat joko inprimatzea nahi dituzun aukera dezakezu, baita jokoen "
+#~ "zailtasun-maila ere. Ondorioz, Sudoku liburu berriztagarri gisa erabil "
+#~ "dezakezu GNOME Sudoku."
+
+#~ msgid "Check cells only against duplicates in row, column and block"
+#~ msgstr ""
+#~ "Egiaztatu gelaxkak bikoiztuekin errenkada, zutabe eta blokean soilik"
+
+#~ msgid "Show the possible values for each cell"
+#~ msgstr "Erakutsi gelaxka bakoitzeko balio posibleak"
+
+#~ msgid "Reset the board to its original state?"
+#~ msgstr "Berrezarri taula bere jatorriko egoerara?"
+
+#~ msgid "No"
+#~ msgstr "Ez"
+
+#~ msgid "Yes"
+#~ msgstr "Bai"
 
 #~ msgid "Go back to the current game"
 #~ msgstr "Joan atzera uneko jokoan"
-
-#~ msgid "Start playing the custom puzzle you have created"
-#~ msgstr "Hasi sortu duzun puzzle pertsonalizatua jokatzen"
 
 #~ msgid "The GNOME Project"
 #~ msgstr "GNOME proiektua"
@@ -425,9 +734,6 @@ msgstr "Pausatu"
 
 #~ msgid "_Cancel"
 #~ msgstr "_Utzi"
-
-#~ msgid "Paused"
-#~ msgstr "Pausatuta"
 
 #~ msgid "Reset the board to its original state"
 #~ msgstr "Berrezarri taula bere jatorriko egoerara"
