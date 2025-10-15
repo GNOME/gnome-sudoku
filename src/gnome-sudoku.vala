@@ -197,14 +197,6 @@ public class Sudoku : Adw.Application
         base.shutdown ();
     }
 
-    private void paused_cb ()
-    {
-        if (game.paused)
-            new_game_action.set_enabled (false);
-        else
-            new_game_action.set_enabled (true);
-    }
-
     private void board_completed_cb ()
     {
         game_view.can_focus = false;
@@ -267,7 +259,7 @@ public class Sudoku : Adw.Application
         window.start_game ();
         show_game_view ();
 
-        game.notify["paused"].connect (paused_cb);
+        game.bind_property ("paused", new_game_action, "enabled", BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN);
         game.board.completed.connect (board_completed_cb);
     }
 
