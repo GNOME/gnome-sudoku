@@ -40,7 +40,7 @@ public class Sudoku : Adw.Application
 
     private SudokuGame game
     {
-        get { return game_view.game; }
+        get { return backend.game; }
     }
 
     private SudokuSaver saver;
@@ -50,9 +50,9 @@ public class Sudoku : Adw.Application
     private SimpleAction back_action;
     private SimpleAction zoom_in_action;
     private SimpleAction zoom_out_action;
-    private uint autosave_timeout;
 
     public static unowned Sudoku app;
+    private SudokuBackend backend;
 
     public DifficultyCategory play_difficulty { get; set; }
     public ZoomLevel zoom_level { get; set; }
@@ -119,6 +119,7 @@ public class Sudoku : Adw.Application
 
     protected override void startup ()
     {
+        backend = new SudokuBackend ();
         app = this;
 
         base.startup ();
@@ -175,13 +176,11 @@ public class Sudoku : Adw.Application
     {
         if (window == null)
         {
-            window = new SudokuWindow (settings);
+            window = new SudokuWindow (backend, settings);
             add_window (window);
 
-            saver = new SudokuSaver ();
-            var savegame = saver.get_savedgame ();
-            if (savegame != null)
-                start_game (savegame.board);
+            if (backend.game != null)
+                start_game ();
             else
                 show_start_view ();
         }
@@ -192,13 +191,9 @@ public class Sudoku : Adw.Application
     protected override void shutdown ()
     {
         if (window != null)
-        {
-            if (game != null)
-                save_game ();
-
             window.close ();
-        }
 
+        backend.save_game ();
         base.shutdown ();
     }
 
@@ -208,15 +203,11 @@ public class Sudoku : Adw.Application
             new_game_action.set_enabled (false);
         else
             new_game_action.set_enabled (true);
-
-        game_view.queue_draw ();
     }
 
     private void board_completed_cb ()
     {
         game_view.can_focus = false;
-
-        saver.add_game_to_finished (game, true, show_timer);
 
         /* Text in dialog that displays when the game is over. */
         string win_str;
@@ -225,7 +216,7 @@ public class Sudoku : Adw.Application
             var minutes = (int) game.get_total_time_played () / 60;
             string localized_time =  ngettext ("%d minute", "%d minutes", minutes).printf (minutes);
 
-            if (game_view.highscore == null || (game_view.highscore != null && game.get_total_time_played () < game_view.highscore))
+            if (backend.highscore == null || (backend.highscore != null && game.get_total_time_played () < backend.highscore))
             {
                 win_str = _(//TRANSLATORS: %s is a localized time string in minute(s)
                             "Well done, you completed the puzzle in %s and set a new personal best!")
@@ -249,7 +240,7 @@ public class Sudoku : Adw.Application
 
         dialog.response.connect ((response_id) => {
             if (response_id == "play-again")
-                start_game_async ();
+                create_game ();
             else if (response_id == "close")
                 quit ();
             dialog.destroy ();
@@ -258,28 +249,25 @@ public class Sudoku : Adw.Application
         dialog.present (window);
     }
 
-    private void save_game ()
+    private void create_game ()
     {
-        if (!game.is_empty () && !game.board.complete)
-            saver.save_game (game);
-        else
-            saver.delete_save ();
+        backend.generate_game (play_difficulty, (obj) => {
+            if (game_view == null)
+                start_game ();
+            else
+            {
+                game_view.change_board ();
+                show_game_view ();
+            }
+        });
     }
 
-    private void start_game (SudokuBoard board)
+    public void start_game ()
     {
-        var highscore = saver.get_highscore (board.difficulty_category);
-        if (game == null)
-        {
-            window.start_game (board, highscore);
-            game.notify["paused"].connect (paused_cb);
-        }
-        else
-            window.change_board (board, highscore);
-
+        window.start_game ();
         show_game_view ();
-        start_autosave ();
 
+        game.notify["paused"].connect (paused_cb);
         game.board.completed.connect (board_completed_cb);
     }
 
@@ -303,43 +291,14 @@ public class Sudoku : Adw.Application
         show_start_view ();
     }
 
-    private void start_autosave ()
-    {
-        if (autosave_timeout != 0)
-            Source.remove (autosave_timeout);
-
-        autosave_timeout = Timeout.add_seconds (300, () => {
-            save_game ();
-            return Source.CONTINUE;
-        });
-
-        Source.set_name_by_id (autosave_timeout, "[gnome-sudoku] autosave");
-    }
-
     private void start_game_cb (SimpleAction action, Variant? difficulty)
     {
         // Since we cannot have enums in .ui file, the 'action-target' property
-        // of new game buttons in data/gnome-sudoku.ui
+        // of new game buttons in blueprints/start-view.blp
         // has been set to integers corresponding to the enums.
         // Following line converts those ints to their DifficultyCategory
         play_difficulty = (DifficultyCategory) difficulty.get_int32 ();
-
-        start_game_async ();
-    }
-
-    private void start_game_async ()
-    {
-        SudokuGenerator.generate_boards_async.begin (1, play_difficulty, null, (obj, res) => {
-            try
-            {
-                var gen_boards = SudokuGenerator.generate_boards_async.end (res);
-                start_game (gen_boards[0]);
-            }
-            catch (Error e)
-            {
-                error ("Error: %s", e.message);
-            }
-        });
+        create_game ();
     }
 
     private void back_cb ()

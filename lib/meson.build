@@ -1,4 +1,5 @@
 libsudoku_sources = [
+  'sudoku-backend.vala',
   'sudoku-board.vala',
   'sudoku-game.vala',
   'sudoku-generator.vala',

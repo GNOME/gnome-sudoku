@@ -40,11 +40,12 @@ public class SudokuGameView : Adw.Bin
 
     [GtkChild] private unowned SudokuMenuButton menu_button;
 
+    private SudokuBackend backend;
+
     private Label paused_label;
     private GestureClick button_controller;
     private ulong tick_handle;
 
-    public SudokuGame game;
     public SudokuGrid grid;
     public unowned SudokuWindow window;
 
@@ -55,7 +56,10 @@ public class SudokuGameView : Adw.Bin
     private SimpleAction reset_board_action;
     private SimpleAction print_puzzle_action;
 
-    public double? highscore;
+    private SudokuGame game
+    {
+        get { return backend.game; }
+    }
 
     static construct
     {
@@ -75,10 +79,9 @@ public class SudokuGameView : Adw.Bin
         add_shortcut (shortcut);
     }
 
-    public void init (SudokuBoard board, double? highscore, SudokuWindow window)
+    public void init (SudokuBackend backend, SudokuWindow window)
     {
-        game = new SudokuGame (board);
-        this.highscore = highscore;
+        this.backend = backend;
         this.window = window;
         windowtitle.subtitle = game.board.difficulty_category.to_string ();
 
@@ -153,13 +156,10 @@ public class SudokuGameView : Adw.Bin
         grid_overlay.child = grid;
     }
 
-    public void change_board (SudokuBoard board, double? highscore)
+    public void change_board ()
     {
         earmark_mode_action.set_enabled (true);
         toggle_pause_action.set_enabled (Sudoku.app.show_timer);
-
-        this.highscore = highscore;
-        game.change_board (board);
 
         initialize_buttons ();
         add_earmark_possibilities ();
@@ -167,7 +167,7 @@ public class SudokuGameView : Adw.Bin
 
         initialize_clock_label ();
         update_tick_connection ();
-        windowtitle.subtitle = board.difficulty_category.to_string ();
+        windowtitle.subtitle = game.board.difficulty_category.to_string ();
 
         grid.can_focus = true;
         focus (TAB_FORWARD);
@@ -188,11 +188,11 @@ public class SudokuGameView : Adw.Bin
 
         var elapsed_time = (int) game.get_total_time_played ();
 
-        if (highscore != null)
+        if (backend.highscore != null)
         {
-            if (elapsed_time > highscore)
+            if (elapsed_time > backend.highscore)
                 clock_label.set_css_classes ({"numeric"});
-            else if (elapsed_time > highscore - 60)
+            else if (elapsed_time > backend.highscore - 60)
                 clock_label.set_css_classes ({"numeric", "warning"});
             else
                 clock_label.set_css_classes ({"numeric", "success"});
@@ -234,12 +234,12 @@ public class SudokuGameView : Adw.Bin
     {
         var elapsed_time = (int) game.get_total_time_played ();
 
-        if (highscore != null)
+        if (backend.highscore != null)
         {
-            if (elapsed_time > highscore && clock_label.has_css_class ("warning"))
+            if (elapsed_time > backend.highscore && clock_label.has_css_class ("warning"))
                 clock_label.remove_css_class ("warning");
 
-            else if (elapsed_time > highscore - 60 && clock_label.has_css_class ("success"))
+            else if (elapsed_time > backend.highscore - 60 && clock_label.has_css_class ("success"))
                 clock_label.set_css_classes ({"warning"});
         }
 

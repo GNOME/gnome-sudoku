@@ -29,6 +29,8 @@ public class SudokuWindow : Adw.ApplicationWindow
     [GtkChild] public unowned SudokuStartView start_view;
     [GtkChild] public unowned SudokuGameView game_view;
 
+    private SudokuBackend backend;
+
     public bool width_is_small { get; private set; }
 
     public const int SMALL_WINDOW_WIDTH = 360;
@@ -48,8 +50,9 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public SudokuWindowScreen current_screen { get; private set; default = SudokuWindowScreen.NONE; }
 
-    public SudokuWindow (GLib.Settings settings)
+    public SudokuWindow (SudokuBackend backend, GLib.Settings settings)
     {
+        this.backend = backend;
         notify["visible-dialog"].connect (visible_dialog_cb);
 
         settings.bind ("window-is-fullscreen", this, "fullscreened", SettingsBindFlags.DEFAULT);
@@ -146,15 +149,9 @@ public class SudokuWindow : Adw.ApplicationWindow
         accent_provider.load_from_string(s);
     }
 
-    public void start_game (SudokuBoard board, double? highscore)
+    public void start_game ()
     {
-        game_view.init (board, highscore, this);
-        show_game_view ();
-    }
-
-    public void change_board (SudokuBoard board, double? highscore)
-    {
-        game_view.change_board (board, highscore);
+        game_view.init (backend, this);
         show_game_view ();
     }
 
@@ -162,7 +159,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         current_screen = SudokuWindowScreen.START;
 
-        start_view.set_back_button_visible (game_view != null && game_view.game != null);
+        start_view.set_back_button_visible (game_view != null && backend.game != null);
         view_stack.set_visible_child (start_view);
 
         start_view.grab_focus ();
@@ -183,15 +180,15 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         if (visible_dialog != null)
         {
-            if (!game_view.game.paused)
-                game_view.game.stop_clock ();
+            if (!backend.game.paused)
+                backend.game.stop_clock ();
 
             game_view.grid.unselect ();
         }
         else
         {
-            if (!game_view.game.paused)
-                game_view.game.resume_clock ();
+            if (!backend.game.paused)
+                backend.game.resume_clock ();
 
             game_view.grab_focus ();
         }
