@@ -348,10 +348,7 @@ public class Sudoku : Adw.Application
 
     private void toggle_fullscreen_cb ()
     {
-        if (window.fullscreened)
-            window.unfullscreen ();
-        else
-            window.fullscreen ();
+        window.fullscreened = !window.fullscreened;
     }
 
     private void zoom_in_cb ()
