@@ -48,6 +48,7 @@ public class SudokuGameView : Adw.Bin
 
     public SudokuGrid grid;
     public unowned SudokuWindow window;
+    public bool initialized { get; private set; default = false; }
 
     private SimpleAction toggle_pause_action;
     private SimpleAction earmark_mode_action;
@@ -154,6 +155,7 @@ public class SudokuGameView : Adw.Bin
         var grid_layout = new SudokuGridLayoutManager ();
         grid_bin.layout_manager = grid_layout;
         grid_overlay.child = grid;
+        initialized = true;
     }
 
     public void change_board ()

@@ -149,7 +149,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         accent_provider.load_from_string(s);
     }
 
-    public void start_game ()
+    public void init_game_view ()
     {
         game_view.init (backend, this);
         show_game_view ();

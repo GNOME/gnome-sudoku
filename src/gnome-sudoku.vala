@@ -43,8 +43,6 @@ public class Sudoku : Adw.Application
         get { return backend.game; }
     }
 
-    private SudokuSaver saver;
-
     private SimpleAction print_multiple_action;
     private SimpleAction new_game_action;
     private SimpleAction back_action;
@@ -180,7 +178,7 @@ public class Sudoku : Adw.Application
             add_window (window);
 
             if (backend.game != null)
-                start_game ();
+                init_game_view ();
             else
                 show_start_view ();
         }
@@ -200,6 +198,7 @@ public class Sudoku : Adw.Application
     private void board_completed_cb ()
     {
         game_view.can_focus = false;
+        game.board.completed.disconnect (board_completed_cb);
 
         /* Text in dialog that displays when the game is over. */
         string win_str;
@@ -213,7 +212,7 @@ public class Sudoku : Adw.Application
                 win_str = _(//TRANSLATORS: %s is a localized time string in minute(s)
                             "Well done, you completed the puzzle in %s and set a new personal best!")
                             .printf(localized_time);
-                saver.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
+                backend.saver.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
             }
             else
             {
@@ -244,22 +243,24 @@ public class Sudoku : Adw.Application
     private void create_game ()
     {
         backend.generate_game (play_difficulty, (obj) => {
-            if (game_view == null)
-                start_game ();
+            if (!game_view.initialized)
+                init_game_view ();
             else
-            {
-                game_view.change_board ();
-                show_game_view ();
-            }
+                change_board ();
         });
     }
 
-    public void start_game ()
+    public void init_game_view ()
     {
-        window.start_game ();
-        show_game_view ();
-
+        window.init_game_view ();
         game.bind_property ("paused", new_game_action, "enabled", BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN);
+        game.board.completed.connect (board_completed_cb);
+    }
+
+    public void change_board ()
+    {
+        game_view.change_board ();
+        show_game_view ();
         game.board.completed.connect (board_completed_cb);
     }
 
@@ -306,7 +307,7 @@ public class Sudoku : Adw.Application
 
     private void print_multiple_cb ()
     {
-        var print_dialog = new SudokuPrintDialog (saver, window);
+        var print_dialog = new SudokuPrintDialog (backend.saver, window);
         print_dialog.present (window);
     }
 

@@ -34,8 +34,10 @@ public class SudokuBackend : Object
 
     public void save_game ()
     {
-        if (game != null)
+        if (game != null && !game.is_empty ())
             saver.save_game (game);
+        else
+            saver.delete_save ();
     }
 
     private void load_game ()
