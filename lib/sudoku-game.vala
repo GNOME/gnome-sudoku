@@ -411,6 +411,19 @@ public class SudokuGame : Object
 
         Source.set_name_by_id (clock_tick_timeout, "[gnome-sudoku] clock_tick");
     }
+
+    //testing function
+    public void auto_complete ()
+    {
+        var cells = board.get_cells ();
+        for (int row = 0; row < 9; row++)
+            for (int col = 0; col < 9; col++)
+            {
+                var solution = board.get_solution (row, col);
+                if (cells[row, col] != solution)
+                    insert (row, col, solution);
+            }
+    }
 }
 
 public enum StackAction
