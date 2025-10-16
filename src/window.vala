@@ -149,12 +149,6 @@ public class SudokuWindow : Adw.ApplicationWindow
         accent_provider.load_from_string(s);
     }
 
-    public void init_game_view ()
-    {
-        game_view.init (backend, this);
-        show_game_view ();
-    }
-
     public void show_start_view ()
     {
         current_screen = SudokuWindowScreen.START;

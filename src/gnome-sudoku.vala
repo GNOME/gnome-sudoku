@@ -251,9 +251,10 @@ public class Sudoku : Adw.Application
 
     public void init_game_view ()
     {
-        window.init_game_view ();
+        game_view.init (backend, window);
         game.bind_property ("paused", new_game_action, "enabled", BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN);
         game.board.completed.connect (board_completed_cb);
+        show_game_view ();
     }
 
     public void change_board ()
