@@ -171,7 +171,6 @@ public class SudokuGameView : Adw.Bin
         update_tick_connection ();
         windowtitle.subtitle = game.board.difficulty_category.to_string ();
 
-        grid.can_focus = true;
         focus (TAB_FORWARD);
     }
 

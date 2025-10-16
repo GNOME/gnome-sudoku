@@ -197,7 +197,6 @@ public class Sudoku : Adw.Application
 
     private void board_completed_cb ()
     {
-        game_view.can_focus = false;
         game.board.completed.disconnect (board_completed_cb);
 
         /* Text in dialog that displays when the game is over. */
