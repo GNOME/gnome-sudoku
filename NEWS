@@ -8,14 +8,22 @@
 - Add a backwards compatibility check that disables warning preferences
   if the warnings setting was disabled
 - Remove custom game creation
-- Fix earmark warnings not getting cleared up when disabling the setting
 - Fix capitalization in print multiple dialog
-- Fix right to left text direction for arrow keys (#121)
-- Fix the grid not being focusable after a new game
 - Update translations:
-  Jiri Grönroos (fi); Ekaterine Papava (ka); Juliano de Souza Camargo
-  (pt_BR); Sergej A. (ru); Martin (sl); Anders Jonsson (sv); Yuri
-  Chornoivan (uk); luming zh (zh_CN).
+  Jiri Grönroos (fi); Ekaterine Papava (ka); Pawan Chitrakar (ne);
+  Juliano de Souza Camargo (pt_BR); Sergej A. (ru); Martin (sl); Anders
+  Jonsson (sv); Yuri Chornoivan (uk); luming zh (zh_CN).
+
+49.2 - October 17, 2025
+==========================
+
+- Fix the grid not being keyboard focusable after the first game (#122)
+
+49.1 - October 10, 2025
+==========================
+
+- Fix arrow keys and WASD direction being reversed in RTL locales (#121)
+- Fix earmark warnings not getting cleared up when disabling the setting
 
 49.0 - September 12, 2025
 ==========================
@@ -80,6 +88,12 @@
   A. (ru); Muhammet Kara (tr). Rafael Fontenelle (pt_BR); Martin (sl);
   Sabri Ünal (tr); Baxrom Raxmatov (uz); Daniel Mustieles (es); Álvaro
   Burns (pt_BR); Peter Mráz (sk); Vasil Pupkin (be);
+
+48.1 - April 11, 2025
+==========================
+
+- Fix broken ctrl shortcuts on some setups (#116)
+- Fix trapped focus during pause
 
 48.0 - March 14, 2025
 ==========================
