@@ -109,6 +109,7 @@ public class SudokuGrid : Grid
                 var cell = new SudokuCell (game, this, ref zoom_value_multiplier, ref zoom_earmark_multiplier, row, col);
                 blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
                 cells[row, col] = cell;
+                cells[row, col].select.connect (update_selected);
             }
         }
 
@@ -278,17 +279,17 @@ public class SudokuGrid : Grid
         }
     }
 
-    public void set_selected (int cell_row, int cell_col)
+    public void update_selected (SudokuCell cell)
     {
-        if (cells[cell_row, cell_col].selected)
+        if (cell.selected)
             return;
 
         var old_row = selected_row;
         var old_col = selected_col;
 
         selected_cell.selected = false;
-        selected_row = cell_row;
-        selected_col = cell_col;
+        selected_row = cell.row;
+        selected_col = cell.col;
         selected_cell.selected = true;
 
         number_picker.popdown ();

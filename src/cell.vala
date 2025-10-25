@@ -252,9 +252,11 @@ public class SudokuCell : Widget
 
     public bool grab_selection ()
     {
-        grid.set_selected (row, col);
+        select ();
         return grab_focus ();
     }
+
+    public signal void select ();
 
     private void button_released_cb (GestureClick gesture,
                                      int          n_press,
@@ -392,7 +394,7 @@ public class SudokuCell : Widget
 
     public override bool focus (DirectionType direction)
     {
-        grid.set_selected (row, col);
+        select ();
         return base.focus (direction);
     }
 
