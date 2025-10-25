@@ -27,7 +27,7 @@
 G_BEGIN_DECLS
 
 int *qqwing_generate_puzzle(int difficulty);
-gboolean qqwing_solve_puzzle(int *puzzle);
+gboolean qqwing_solve_puzzle(int *puzzle, int *difficulty);
 int qqwing_count_solutions_limited(int *puzzle);
 void qqwing_print_stats(int *puzzle);
 char *qqwing_get_version(void);

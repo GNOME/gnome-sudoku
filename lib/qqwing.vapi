@@ -22,7 +22,7 @@
 [CCode (cheader_filename = "qqwing/qqwing-wrapper.h")]
 namespace QQwing {
     [CCode (array_length=false)] int[] generate_puzzle (int difficulty);
-    bool solve_puzzle([CCode (array_length = false)] int[] puzzle);
+    bool solve_puzzle([CCode (array_length = false)] int[] puzzle, out int difficulty);
     int count_solutions_limited ([CCode (array_length = false)] int[] puzzle);
     void print_stats ([CCode (array_length = false)] int[] puzzle);
     string get_version ();

@@ -74,9 +74,10 @@ int* qqwing_generate_puzzle(int difficulty)
  * Solve a given puzzle in place. If true is returned the puzzle will be solved.
  * If false is returned the puzzle will be unchanged.
  */
-gboolean qqwing_solve_puzzle(int* puzzle)
+gboolean qqwing_solve_puzzle(int* puzzle, int* difficulty)
 {
     qqwing::SudokuBoard board;
+    board.setRecordHistory(true);
 
     if (!board.setPuzzle(puzzle))
     {
@@ -100,6 +101,9 @@ gboolean qqwing_solve_puzzle(int* puzzle)
     // Valid. Copy and return true.
     const int* solution = board.getSolution();
     std::copy(solution, &solution[BOARD_SIZE], puzzle);
+
+    *difficulty = board.getDifficulty();
+
     return TRUE;
 }
 

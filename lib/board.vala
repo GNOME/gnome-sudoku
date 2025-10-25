@@ -424,8 +424,9 @@ public class SudokuBoard : Object
     {
         int[,] fixed_cells = get_fixed_cells ();
         int[] solution_1d = convert_2d_to_1d (fixed_cells);
+        int difficulty;
 
-        if (QQwing.solve_puzzle (solution_1d))
+        if (QQwing.solve_puzzle (solution_1d, out difficulty))
         {
             has_solution = true;
             int i = 0;
@@ -435,6 +436,7 @@ public class SudokuBoard : Object
                     cells[row, col].solution = solution_1d[i];
                     i++;
                 }
+            difficulty_category = (DifficultyCategory) difficulty;
         }
         else
             has_solution = false;
