@@ -75,6 +75,11 @@ public class SudokuBackend : Object
         });
     }
 
+    public void save_highscore ()
+    {
+        saver.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
+    }
+
     private void start_autosave ()
     {
         if (autosave_timeout != 0)

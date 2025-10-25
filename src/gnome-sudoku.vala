@@ -211,7 +211,7 @@ public class Sudoku : Adw.Application
                 win_str = _(//TRANSLATORS: %s is a localized time string in minute(s)
                             "Well done, you completed the puzzle in %s and set a new personal best!")
                             .printf(localized_time);
-                backend.saver.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
+                backend.save_highscore ();
             }
             else
             {
