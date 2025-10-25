@@ -19,7 +19,7 @@
  * along with GNOME Sudoku. If not, see <http://www.gnu.org/licenses/>.
  */
 
-[CCode (cheader_filename = "qqwing-wrapper.h")]
+[CCode (cheader_filename = "qqwing/qqwing-wrapper.h")]
 namespace QQwing {
     [CCode (array_length=false)] int[] generate_puzzle (int difficulty);
     bool solve_puzzle([CCode (array_length = false)] int[] puzzle);

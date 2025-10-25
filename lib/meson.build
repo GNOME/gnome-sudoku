@@ -1,11 +1,11 @@
 libsudoku_sources = [
-  'sudoku-backend.vala',
-  'sudoku-board.vala',
-  'sudoku-game.vala',
-  'sudoku-generator.vala',
-  'sudoku-saver.vala',
-  'qqwing-wrapper.cpp',
-  'qqwing-wrapper.h'
+  'backend.vala',
+  'board.vala',
+  'game.vala',
+  'generator.vala',
+  'saver.vala',
+  'qqwing/qqwing-wrapper.cpp',
+  'qqwing/qqwing-wrapper.h',
 ]
 
 libsudoku_dependencies = [
