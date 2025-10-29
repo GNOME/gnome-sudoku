@@ -31,7 +31,7 @@ public class Sudoku : Adw.Application
 {
     private GLib.Settings settings;
 
-    private SudokuWindow window;
+    private SudokuWindow? window;
 
     private SudokuGameView game_view
     {

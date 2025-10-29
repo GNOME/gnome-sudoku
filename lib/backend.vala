@@ -20,7 +20,7 @@
 
 public class SudokuBackend : Object
 {
-    public SudokuGame game;
+    public SudokuGame? game;
     public SudokuSaver saver;
     public double? highscore;
 
