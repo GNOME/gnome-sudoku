@@ -191,7 +191,6 @@ public class Sudoku : Adw.Application
         if (window != null)
             window.close ();
 
-        backend.save_game ();
         base.shutdown ();
     }
 

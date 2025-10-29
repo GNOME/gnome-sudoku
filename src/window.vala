@@ -259,20 +259,30 @@ public class SudokuWindow : Adw.ApplicationWindow
                                          Gdk.ModifierType state)
     {
 
+        stop_keyboard_timeout ();
         keyboard_pressed_recently = true;
+        start_keyboard_timeout (this);
+
+        return Gdk.EVENT_PROPAGATE;
+    }
+
+    //lambda capture workaround
+    private static void start_keyboard_timeout (SudokuWindow _this)
+    {
+        weak SudokuWindow weak_this = _this;
+        weak_this.keyboard_pressed_timeout = Timeout.add_seconds_once (5, () => {
+            weak_this.keyboard_pressed_recently = false;
+            weak_this.keyboard_pressed_timeout = 0;
+        });
+    }
+
+    private void stop_keyboard_timeout ()
+    {
         if (keyboard_pressed_timeout != 0)
         {
             Source.remove (keyboard_pressed_timeout);
             keyboard_pressed_timeout = 0;
         }
-
-        keyboard_pressed_timeout = Timeout.add_seconds (5, () => {
-            keyboard_pressed_recently = false;
-            keyboard_pressed_timeout = 0;
-            return Source.REMOVE;
-        });
-
-        return Gdk.EVENT_PROPAGATE;
     }
 
     private void width_is_medium_cb ()
@@ -296,6 +306,7 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     public override void dispose ()
     {
+        stop_keyboard_timeout ();
         //Vala calls init_template but doesn't call dispose_template
         //see https://gitlab.gnome.org/GNOME/vala/-/issues/1515
         dispose_template (this.get_type ());

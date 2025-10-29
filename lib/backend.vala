@@ -47,7 +47,7 @@ public class SudokuBackend : Object
         {
             game = saver.get_savedgame ();
             highscore = saver.get_highscore (game.board.difficulty_category);
-            start_autosave ();
+            start_autosave (this);
         }
     }
 
@@ -65,7 +65,7 @@ public class SudokuBackend : Object
                     game = new SudokuGame (gen_boards[0]);
 
                 highscore = saver.get_highscore (difficulty);
-                start_autosave ();
+                start_autosave (this);
                 callback (obj);
             }
             catch (Error e)
@@ -80,25 +80,33 @@ public class SudokuBackend : Object
         saver.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
     }
 
-    private void start_autosave ()
+    //lambda capture workaround
+    private static void start_autosave (SudokuBackend _this)
     {
-        if (autosave_timeout != 0)
-            Source.remove (autosave_timeout);
+        weak SudokuBackend weak_this = _this;
+        weak_this.stop_autosave ();
 
-        autosave_timeout = Timeout.add_seconds (300, () => {
-            save_game ();
+        weak_this.autosave_timeout = Timeout.add_seconds (300, () =>
+        {
+            weak_this.save_game ();
             return Source.CONTINUE;
         });
 
-        Source.set_name_by_id (autosave_timeout, "[gnome-sudoku] autosave");
+        Source.set_name_by_id (weak_this.autosave_timeout, "[gnome-sudoku] autosave");
     }
 
-    //FIXME dispose doesn't get called
-    public override void dispose ()
+    private void stop_autosave ()
     {
         if (autosave_timeout != 0)
+        {
             Source.remove (autosave_timeout);
+            autosave_timeout = 0;
+        }
+    }
 
+    public override void dispose ()
+    {
+        stop_autosave ();
         save_game ();
         base.dispose ();
     }

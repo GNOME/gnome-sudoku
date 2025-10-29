@@ -79,4 +79,10 @@ public class SudokuEarmark : Adw.Bin
                 label.remove_css_class ("error");
         }
     }
+
+    public override void dispose ()
+    {
+        label.unparent ();
+        base.dispose ();
+    }
 }
