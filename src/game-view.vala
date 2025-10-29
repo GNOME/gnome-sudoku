@@ -371,10 +371,15 @@ public class SudokuGameView : Adw.Bin
 
     public override void dispose ()
     {
-        if (game != null && !game.paused)
-            game.stop_clock ();
+        if (backend != null)
+        {
+            if (!game.paused)
+                game.stop_clock ();
 
-        grid?.unparent ();
+            grid.unparent ();
+        }
+
+        dispose_template (this.get_type ());
         base.dispose ();
     }
 }
