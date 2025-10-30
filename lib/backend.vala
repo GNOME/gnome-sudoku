@@ -110,6 +110,12 @@ public class SudokuBackend : Object
         }
     }
 
+    public void add_game_to_finished (bool save_timer)
+    {
+        stop_autosave ();
+        saver.add_game_to_finished (game, true, save_timer);
+    }
+
     public override void dispose ()
     {
         stop_autosave ();

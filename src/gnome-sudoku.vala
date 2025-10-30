@@ -197,6 +197,7 @@ public class Sudoku : Adw.Application
     private void board_completed_cb ()
     {
         game.board.completed.disconnect (board_completed_cb);
+        backend.add_game_to_finished (Sudoku.app.show_timer);
 
         /* Text in dialog that displays when the game is over. */
         string win_str;
