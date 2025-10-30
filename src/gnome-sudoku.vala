@@ -205,12 +205,11 @@ public class Sudoku : Adw.Application
             var minutes = (int) game.get_total_time_played () / 60;
             string localized_time =  ngettext ("%d minute", "%d minutes", minutes).printf (minutes);
 
-            if (backend.highscore == null || (backend.highscore != null && game.get_total_time_played () < backend.highscore))
+            if (backend.save_highscore ())
             {
                 win_str = _(//TRANSLATORS: %s is a localized time string in minute(s)
                             "Well done, you completed the puzzle in %s and set a new personal best!")
                             .printf(localized_time);
-                backend.save_highscore ();
             }
             else
             {

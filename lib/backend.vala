@@ -75,9 +75,15 @@ public class SudokuBackend : Object
         });
     }
 
-    public void save_highscore ()
+    public bool save_highscore ()
     {
-        saver.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
+        if (highscore == null || (highscore != null && game.get_total_time_played () < highscore))
+        {
+            saver.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
+            return true;
+        }
+
+        return false;
     }
 
     //lambda capture workaround
