@@ -270,10 +270,14 @@ public class SudokuWindow : Adw.ApplicationWindow
     private static void start_keyboard_timeout (SudokuWindow _this)
     {
         weak SudokuWindow weak_this = _this;
-        weak_this.keyboard_pressed_timeout = Timeout.add_seconds_once (5, () => {
-            weak_this.keyboard_pressed_recently = false;
-            weak_this.keyboard_pressed_timeout = 0;
-        });
+        weak_this.keyboard_pressed_recently = true;
+        weak_this.keyboard_pressed_timeout = Timeout.add_seconds_once (5, weak_this.keyboard_timeout_cb);
+    }
+
+    public void keyboard_timeout_cb ()
+    {
+        keyboard_pressed_recently = false;
+        keyboard_pressed_timeout = 0;
     }
 
     private void stop_keyboard_timeout ()
