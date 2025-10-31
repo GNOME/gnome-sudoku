@@ -260,7 +260,6 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
 
         stop_keyboard_timeout ();
-        keyboard_pressed_recently = true;
         start_keyboard_timeout (this);
 
         return Gdk.EVENT_PROPAGATE;
