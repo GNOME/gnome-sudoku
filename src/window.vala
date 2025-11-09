@@ -317,7 +317,6 @@ public class SudokuWindow : Adw.ApplicationWindow
     }
 }
 
-//must be aligned with GameMode
 public enum SudokuWindowScreen
 {
     NONE,
