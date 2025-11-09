@@ -229,7 +229,12 @@ public class Sudoku : Adw.Application
 
         dialog.response.connect ((response_id) => {
             if (response_id == "play-again")
-                create_game ();
+            {
+                if (play_difficulty == DifficultyCategory.CUSTOM)
+                    show_start_view ();
+                else
+                    create_game ();
+            }
             else if (response_id == "close")
                 quit ();
             dialog.destroy ();

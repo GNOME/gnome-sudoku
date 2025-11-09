@@ -560,7 +560,8 @@ public enum DifficultyCategory
             case VERY_HARD:
                 return _("Very Hard Difficulty");
             case CUSTOM:
-                return _("Custom Puzzle");
+                warning ("Custom difficulty is no longer supported");
+                return _("Unknown Difficulty");
             default:
                 assert_not_reached ();
         }
@@ -581,7 +582,8 @@ public enum DifficultyCategory
             case VERY_HARD:
                 return "Very Hard Difficulty";
             case CUSTOM:
-                return "Custom Puzzle";
+                warning ("Custom difficulty is no longer supported");
+                return "Unknown Difficulty";
             default:
                 assert_not_reached ();
         }
@@ -602,10 +604,11 @@ public enum DifficultyCategory
             case "Very Hard Difficulty":
                 return VERY_HARD;
             case "Custom Puzzle":
-                return CUSTOM;
+                warning ("Custom difficulty is no longer supported");
+                return UNKNOWN;
             default:
-                warning ("Could not parse difficulty level. Falling back to Easy difficulty");
-                return EASY;
+                warning ("Difficulty is not valid");
+                return UNKNOWN;
         }
     }
 }
