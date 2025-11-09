@@ -22,10 +22,12 @@ template $SudokuPrintDialog: Adw.Dialog {
         Adw.PreferencesGroup options_group {
           Adw.SpinRow n_puzzles {
             title: _("Number of Puzzles");
+            numeric: true;
 
             adjustment: Adjustment {
               lower: 1;
               upper: 100;
+              value: 2;
               step-increment: 1;
               page-increment: 10;
             };
@@ -33,10 +35,12 @@ template $SudokuPrintDialog: Adw.Dialog {
 
           Adw.SpinRow n_puzzles_per_page {
             title: _("Number of Puzzles per Page");
+            numeric: true;
 
             adjustment: Adjustment {
               lower: 1;
-              upper: 100;
+              upper: 4;
+              value: 1;
               step-increment: 1;
               page-increment: 1;
             };
@@ -53,6 +57,8 @@ template $SudokuPrintDialog: Adw.Dialog {
                 _("Very Hard"),
               ]
             };
+
+            selected: 1;
           }
         }
       }
@@ -65,6 +71,7 @@ template $SudokuPrintDialog: Adw.Dialog {
         label: _("_Print");
         receives-default: false;
         use-underline: true;
+        clicked => $print();
 
         styles [
           "suggested-action",

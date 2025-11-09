@@ -13,23 +13,6 @@
     <value nick="large" value="3"  />
   </enum>
   <schema id="org.gnome.Sudoku" path="/org/gnome/Sudoku/" gettext-domain="gnome-sudoku">
-    <key name="print-multiple-sudoku-difficulty" enum="org.gnome.Sudoku.play-difficulty">
-      <default>"easy"</default>
-      <summary>Difficulty level of sudokus to be printed</summary>
-      <description>Set the difficulty level of the sudokus you want to print. Possible values are: "easy", "medium", "hard", "very_hard"</description>
-    </key>
-    <key name="print-multiple-sudokus-to-print" type="i">
-      <default>4</default>
-      <range min="1" max="100" />
-      <summary>Number of Sudokus to print</summary>
-      <description>Set the number of sudokus you want to print</description>
-    </key>
-    <key name="print-multiple-sudokus-to-print-per-page" type="i">
-      <default>2</default>
-      <range min="1" max="100" />
-      <summary>Number of Sudokus to print per page</summary>
-      <description>Set the number of sudokus you want to print per page</description>
-    </key>
     <key name="show-possibilities" type="b">
       <default>false</default>
       <summary>Initialize the earmarks with the possible values for each cell</summary>
