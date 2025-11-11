@@ -74,9 +74,13 @@ public class SudokuGame : Object
     }
 
     public SudokuGame (SudokuBoard board)
+        throws IOError
     {
         this.board = board;
         board.solve ();
+        if (!board.solved ())
+            throw new IOError.INVALID_DATA ("The puzzle has more than one solution");
+
         start_clock ();
 
         stack = new ArrayList<stack_item?>();

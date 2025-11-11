@@ -33,7 +33,18 @@ public class SudokuStartView : Adw.Bin
     [GtkChild] private unowned CheckButton very_hard_check;
 
     [GtkChild] private unowned Button start_button;
+    [GtkChild] private unowned Button open_button_pill;
     [GtkChild] private unowned Button back_button;
+    [GtkChild] private unowned Stack start_open_stack;
+
+    [GtkChild] private unowned Box open_and_shared_box;
+
+    private SudokuBackend backend;
+    private uint clipboard_timeout;
+    private ulong clipboard_handle = 0;
+    private Cancellable clipboard_cancellable;
+    private string? clipboard_string;
+    public Clipboard clipboard;
 
     static construct {
         typeof (SudokuMenuButton).ensure ();
@@ -44,9 +55,18 @@ public class SudokuStartView : Adw.Bin
         add_shortcut (shortcut);
     }
 
-    public void init ()
+    public void init (SudokuBackend backend, Clipboard clipboard)
     {
+        this.backend = backend;
+        this.clipboard = clipboard;
         activate_difficulty_checkbutton ();
+
+        this.backend.notify["tgame"].connect (() => {
+            if (backend.tgame == null)
+                start_open_stack.set_visible_child (open_button_pill);
+            else if (custom_check.active == true)
+                start_open_stack.set_visible_child (open_and_shared_box);
+        });
     }
 
     [GtkCallback]
@@ -60,8 +80,45 @@ public class SudokuStartView : Adw.Bin
             (this as Widget)?.activate_action ("app.start-game", "i", 3);
         else if (this.very_hard_check.active)
             (this as Widget)?.activate_action ("app.start-game", "i", 4);
-        else if (this.custom_check.active)
-            (this as Widget)?.activate_action ("app.start-game", "i", 5);
+    }
+
+    [GtkCallback]
+    private void open_file_cb ()
+    {
+        ((Widget)this).activate_action ("app.open-file", null);
+    }
+
+    [GtkCallback]
+    private void custom_checkbutton_activated_cb ()
+    {
+        if (clipboard_handle == 0)
+        {
+            clipboard_handle = clipboard.changed.connect (clipboard_cb);
+            clipboard_cb ();
+        }
+
+        if (backend.tgame == null)
+            start_open_stack.set_visible_child (open_button_pill);
+        else
+            start_open_stack.set_visible_child (open_and_shared_box);
+    }
+
+    [GtkCallback]
+    private void difficulty_checkbutton_activated_cb ()
+    {
+        start_open_stack.set_visible_child (start_button);
+        if (clipboard_handle != 0)
+        {
+            clipboard.changed.disconnect (clipboard_cb);
+            clipboard_handle = 0;
+        }
+    }
+
+    [GtkCallback]
+    private void start_shared_game_cb ()
+    {
+        backend.start_shared_game ();
+        clipboard_string = null;
     }
 
     public void set_back_button_visible (bool enabled)
@@ -74,27 +131,82 @@ public class SudokuStartView : Adw.Bin
         switch (Sudoku.app.start_button_selected)
         {
             case DifficultyCategory.EASY:
-                easy_check.activate ();
+                easy_check.active = true;
+                start_open_stack.set_visible_child (start_button);
                 return;
             case DifficultyCategory.MEDIUM:
-                medium_check.activate ();
+                medium_check.active = true;
+                start_open_stack.set_visible_child (start_button);
                 return;
             case DifficultyCategory.HARD:
-                hard_check.activate ();
+                hard_check.active = true;
+                start_open_stack.set_visible_child (start_button);
                 return;
             case DifficultyCategory.VERY_HARD:
-                very_hard_check.activate ();
+                very_hard_check.active = true;
+                start_open_stack.set_visible_child (start_button);
                 return;
             case DifficultyCategory.CUSTOM:
-                custom_check.activate ();
+                start_open_stack.set_visible_child (open_button_pill);
+                custom_check.active = true;
                 return;
             default:
                 assert_not_reached ();
         }
     }
 
+    public void disconnect_clipboard ()
+    {
+        if (clipboard_handle != 0)
+        {
+            clipboard.changed.disconnect (clipboard_cb);
+            clipboard_handle = 0;
+        }
+    }
+
+    public void connect_clipboard ()
+    {
+        if (clipboard_handle == 0 && custom_check.active)
+        {
+            clipboard_handle = clipboard.changed.connect (clipboard_cb);
+            clipboard_cb ();
+        }
+    }
+
+    private void clipboard_cb ()
+    {
+        clipboard_cancellable = new Cancellable ();
+
+        clipboard_timeout = Timeout.add_once (200, () => {
+            clipboard_cancellable.cancel ();
+        });
+
+        clipboard.read_text_async.begin (clipboard_cancellable, (obj, res) =>{
+            try
+            {
+                var string = clipboard.read_text_async.end (res);
+                if (clipboard_timeout != 0)
+                {
+                    Source.remove (clipboard_timeout);
+                    clipboard_timeout = 0;
+                }
+                if (clipboard_string == null || clipboard_string != string)
+                {
+                    backend.check_clipboard (string);
+                    clipboard_string = string;
+                }
+            }
+            catch (Error e)
+            {
+                print ("%s", e.message);
+                /* if (e.code != IOError.NOT_FOUND && e.code != IOError.NOT_SUPPORTED)
+                    warning ("Error: %s, %s, dom:%s", e.message, e.code.to_string (), e.domain.to_string ()); */
+            }
+        });
+    }
+
     public override bool grab_focus ()
     {
-        return start_button.grab_focus ();
+        return start_open_stack.visible_child.grab_focus ();
     }
 }

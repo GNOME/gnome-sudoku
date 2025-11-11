@@ -8,18 +8,43 @@ menu primary-menu {
       action: "app.new-game";
     }
 
-    item {
-      label: _("_Reset Puzzle");
-      action: "game-view.reset-board";
+    submenu {
+      label: _("_Puzzle");
+
+      section {
+        item {
+          label: _("_Reset");
+          action: "game-view.reset-puzzle";
+        }
+      }
+
+      section {
+        item {
+          label: _("_Share");
+          action: "game-view.share-puzzle-to-clipboard";
+        }
+
+        item {
+          label: _("_Save As…");
+          action: "game-view.save-game-as";
+        }
+
+        item {
+          label: _("_Export…");
+          action: "game-view.export-puzzle-to-filesystem";
+        }
+      }
+
+      section {
+        item {
+          label: _("Print _Generator");
+          action: "app.print-generator";
+        }
+      }
     }
   }
 
   section {
-    item {
-      label: _("Print _Generator");
-      action: "app.print-generator";
-    }
-
     section {
       label: _("Zoom");
       display-hint: "inline-buttons";

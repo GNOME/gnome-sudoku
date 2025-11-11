@@ -191,6 +191,94 @@ public class SudokuBoard : Object
             }
     }
 
+    public SudokuBoard.from_string (string s)
+        throws IOError
+    {
+        if (s.length > 100 || s.length < 81)
+            throw new IOError.INVALID_DATA ("Failed to construct");
+
+        this ();
+        int row = 0;
+        int col = 0;
+        for (int i = 0; i < s.length; i++)
+        {
+            char c = s[i];
+            if (c == '\n')
+                continue;
+
+            if (c.isdigit ())
+                cells[row, col].value = c.digit_value ();
+            else if (c == '.' || c == ' ' || c == '-')
+                cells[row, col].value = 0;
+            else
+                continue;
+
+            if (row == 8 && col == 8)
+            {
+                set_all_fixed ();
+                return;
+            }
+
+            else if (col == 8)
+            {
+                row++;
+                col = 0;
+                continue;
+            }
+            else
+                col++;
+        }
+
+        throw new IOError.INVALID_DATA ("Failed to construct");
+    }
+
+    public SudokuBoard.from_short_string (string s)
+        throws IOError
+    {
+        if (s[0] != '#')
+            throw new IOError.INVALID_DATA ("Failed to construct");
+
+        this ();
+        ArrayList<int> sizes = new ArrayList<int>();
+        for (int i = 0; i < 5; i++)
+        {
+            int[] sizes_array = from_printable_ascii (s[i + 1]);
+            sizes.add (sizes_array[0]);
+            if (i != 4)
+              sizes.add (sizes_array[1]);
+        }
+
+        int string_sum = 6;
+        foreach (var size in sizes)
+            string_sum += size;
+
+        if (string_sum != s.length)
+            throw new IOError.INVALID_DATA ("Failed to construct");
+
+        var rows_cols = s.slice (6, s.length);
+        int count = 0;
+        int current_number = 0;
+        for (int i = 0; i < rows_cols.length; i++)
+        {
+            while (count >= sizes[current_number])
+            {
+                count = 0;
+                current_number++;
+            }
+
+            int val = current_number + 1;
+            var coords = from_printable_ascii (rows_cols[i]);
+            int row = coords[0];
+            int col = coords[1];
+            cells[row, col].value = val;
+
+            if (count < sizes[current_number])
+                count++;
+        }
+
+        set_all_fixed ();
+    }
+
     public SudokuBoard clone ()
     {
         SudokuBoard board = new SudokuBoard ();
@@ -235,19 +323,19 @@ public class SudokuBoard : Object
         return ret;
     }
 
-    private int[,] get_fixed_cells ()
+    private int[] get_fixed_cells ()
     {
-        int[,] ret = new int[rows, cols];
+        int[] ret = new int[rows * cols];
 
-        for (int row = 0; row < rows; row++)
+        int i = 0;
+        foreach (var cell in cells)
         {
-            for (int col = 0; col < cols; col++)
-            {
-                if (cells[row, col].fixed)
-                    ret[row, col] = cells[row, col].value;
-                else
-                    ret[row, col] = 0;
-            }
+            if (cell.fixed)
+                ret[i] = cell.value;
+            else
+                ret[i] = 0;
+
+            i++;
         }
 
         return ret;
@@ -422,20 +510,20 @@ public class SudokuBoard : Object
 
     public void solve ()
     {
-        int[,] fixed_cells = get_fixed_cells ();
-        int[] solution_1d = convert_2d_to_1d (fixed_cells);
+        int[] fixed_cells = get_fixed_cells ();
         int difficulty;
 
-        if (QQwing.solve_puzzle (solution_1d, out difficulty))
+        if (QQwing.solve_puzzle (fixed_cells, out difficulty))
         {
             has_solution = true;
             int i = 0;
-            for (int row = 0; row < rows; row++)
-                for (int col = 0; col < cols; col++)
+            for (var row = 0; row < rows; row++)
+                for (var col = 0; col < cols; col++)
                 {
-                    cells[row, col].solution = solution_1d[i];
+                    cells[row, col].solution = fixed_cells[i];
                     i++;
                 }
+
             difficulty_category = (DifficultyCategory) difficulty;
         }
         else
@@ -445,13 +533,6 @@ public class SudokuBoard : Object
     public unowned bool solved ()
     {
         return has_solution;
-    }
-
-    public int count_solutions_limited ()
-    {
-        int[] cells_1d = convert_2d_to_1d (get_cells ());
-
-        return QQwing.count_solutions_limited (cells_1d);
     }
 
     private void remove_breakages_for (Gee.Set<Coord?> coords, int val)
@@ -468,19 +549,102 @@ public class SudokuBoard : Object
                 }
     }
 
-    public string to_string ()
+    public string fixed_to_string_pretty ()
     {
-        var board_string = "";
+        var ret = "";
         for (var row = 0; row < rows; row++)
             for (var col = 0; col < cols; col++)
             {
                 if (cells[row, col].fixed)
-                    board_string += cells[row, col].value.to_string ();
-                else
-                    board_string += "0";
+                    ret += cells[row, col].value.to_string ();
+
+                if (ret.length >= 9)
+                    return ret;
             }
 
-        return board_string;
+        return ret;
+    }
+
+    public string to_string ()
+    {
+        var ret = "";
+        for (var row = 0; row < rows; row++)
+            for (var col = 0; col < cols; col++)
+            {
+                if (cells[row, col].fixed)
+                    ret += cells[row, col].value.to_string ();
+                else
+                    ret += "0";
+            }
+
+        return ret;
+    }
+
+    public string to_string_pretty ()
+    {
+        var ret = "";
+        for (var row = 0; row < rows; row++)
+        {
+            for (var col = 0; col < cols; col++)
+            {
+                if (cells[row, col].fixed)
+                    ret += cells[row, col].value.to_string ();
+                else
+                    ret += ".";
+            }
+            ret += "\n";
+        }
+
+        return ret;
+    }
+
+    public string fixed_to_short_string ()
+    {
+        var ret = "#";
+        ArrayList<int>[] array = new ArrayList<int>[9];
+        for (int i = 0; i < 9; i++)
+            array[i] = new ArrayList<int>();
+
+        for (int row = 0; row < 9; row++)
+            for (int col = 0; col < 9; col++)
+            {
+                var cell = cells[row, col];
+                if (cell.value != 0 && cell.fixed == true)
+                    array[cell.value - 1].add (to_printable_ascii (row, col));
+            }
+
+        for (int i = 0; i < 5; i++)
+        {
+            int size1 = array[i * 2].size;
+            int size2 = 0;
+            if (i != 4)
+                size2 = array[i * 2 + 1].size;
+
+            char c = (char) to_printable_ascii (size1, size2);
+            ret += c.to_string ();
+        }
+
+        foreach (var list in array)
+            foreach (var row_col in list)
+            {
+                char c = (char) row_col;
+                ret += c.to_string ();
+            }
+
+        return ret;
+    }
+
+    private int to_printable_ascii (int val1, int val2)
+    {
+        return val1 + 33 + val2 * 9;
+    }
+
+    private int[] from_printable_ascii (int val)
+    {
+        var ret = new int[2];
+        ret[0] = (val - 33) % 9;
+        ret[1] = (val - 33) / 9;
+        return ret;
     }
 
     public bool has_earmarks (int row, int col)
@@ -490,18 +654,6 @@ public class SudokuBoard : Object
                 return true;
 
         return false;
-    }
-
-    // Convert a 2D array to a 1D array. The 2D array is assumed to have
-    // dimensions rows, cols.
-    private int[] convert_2d_to_1d(int[,] ints_2d)
-    {
-        int[] ints_1d = new int[rows * cols];
-        int i = 0;
-        for (int row = 0; row < rows; row++)
-            for (int col = 0; col < cols; col++)
-                ints_1d[i++] = ints_2d[row, col];
-        return ints_1d;
     }
 }
 

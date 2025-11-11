@@ -50,11 +50,12 @@ template $SudokuStartView : Adw.Bin {
               title: C_("Difficulty", "_Custom");
               use-underline: true;
               activatable-widget: custom_check;
+              activated => $custom_checkbutton_activated_cb();
             }
           }
 
           Adw.PreferencesGroup {
-            Adw.ActionRow {
+            Adw.ActionRow custom_difficulty_action_row {
               [prefix]
               CheckButton easy_check {
                 can-focus: false;
@@ -64,6 +65,7 @@ template $SudokuStartView : Adw.Bin {
               title: C_("Difficulty", "_Easy");
               use-underline: true;
               activatable-widget: easy_check;
+              activated => $difficulty_checkbutton_activated_cb();
             }
 
             Adw.ActionRow {
@@ -77,6 +79,7 @@ template $SudokuStartView : Adw.Bin {
               title: C_("Difficulty", "_Medium");
               use-underline: true;
               activatable-widget: medium_check;
+              activated => $difficulty_checkbutton_activated_cb();
             }
 
             Adw.ActionRow {
@@ -90,6 +93,7 @@ template $SudokuStartView : Adw.Bin {
               title: C_("Difficulty", "_Hard");
               use-underline: true;
               activatable-widget: hard_check;
+              activated => $difficulty_checkbutton_activated_cb();
             }
 
             Adw.ActionRow {
@@ -103,20 +107,67 @@ template $SudokuStartView : Adw.Bin {
               title: C_("Difficulty", "_Very Hard");
               use-underline: true;
               activatable-widget: very_hard_check;
+              activated => $difficulty_checkbutton_activated_cb();
             }
           }
 
-          Button start_button {
-            margin-top: 12;
-            halign: center;
-            label: _("_Start Game");
-            use-underline: true;
-            clicked => $start_game_cb();
+          Stack start_open_stack {
+            transition-type: crossfade;
 
-            styles [
-              "pill",
-              "suggested-action",
-            ]
+            Button start_button {
+              margin-top: 12;
+              halign: center;
+              label: _("_Start Game");
+              use-underline: true;
+              clicked => $start_game_cb();
+
+              styles [
+                "pill",
+                "suggested-action",
+              ]
+            }
+
+            Box open_and_shared_box {
+              margin-top: 12;
+              spacing: 12;
+              homogeneous: true;
+
+              Button open_button_round {
+                hexpand: true;
+                label: _("_Open...");
+                use-underline: true;
+                clicked => $open_file_cb();
+
+                styles [
+                  "round"
+                ]
+              }
+
+              Button start_shared_button {
+                label: _("_Start Shared Game");
+                hexpand: true;
+                use-underline: true;
+                clicked => $start_shared_game_cb();
+
+                styles [
+                  "round",
+                  "suggested-action"
+                ]
+              }
+            }
+
+            Button open_button_pill {
+              margin-top: 12;
+              halign: center;
+              label: _("_Open...");
+              use-underline: true;
+              clicked => $open_file_cb();
+
+              styles [
+                "pill",
+                "suggested-action"
+              ]
+            }
           }
         }
       };

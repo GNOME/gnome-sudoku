@@ -27,6 +27,7 @@ using Gdk;
 public class SudokuGameView : Adw.Bin
 {
     [GtkChild] private unowned Overlay grid_overlay;
+    [GtkChild] private unowned Adw.ToastOverlay toast_overlay;
     [GtkChild] private unowned Adw.Bin grid_bin;
     [GtkChild] private unowned Box clock_box;
     [GtkChild] private unowned Label clock_label;
@@ -56,6 +57,9 @@ public class SudokuGameView : Adw.Bin
     private SimpleAction undo_action;
     private SimpleAction redo_action;
     private SimpleAction reset_board_action;
+    private SimpleAction save_game_as_action;
+    private SimpleAction share_puzzle_to_clipboard_action;
+    private SimpleAction export_puzzle_to_filesystem_action;
 
     private SudokuGame game
     {
@@ -69,6 +73,9 @@ public class SudokuGameView : Adw.Bin
         new_shortcut ("game-view.reset-board", "<Primary>r");
         new_shortcut ("game-view.undo", "u|<Primary>z");
         new_shortcut ("game-view.redo", "r|<Primary><Shift>z");
+        new_shortcut ("game-view.save-game-as", "<Primary>s");
+        new_shortcut ("game-view.share-puzzle-to-clipboard", "<Primary>c");
+        new_shortcut ("game-view.export-puzzle-to-filesystem", "<Primary>e");
     }
 
     private class void new_shortcut (string name, string accelerator)
@@ -124,6 +131,18 @@ public class SudokuGameView : Adw.Bin
         redo_action = new SimpleAction ("redo", null);
         redo_action.set_enabled (!game.is_redostack_null ());
         action_group.add_action (redo_action);
+
+        share_puzzle_to_clipboard_action = new SimpleAction ("share-puzzle-to-clipboard", null);
+        share_puzzle_to_clipboard_action.activate.connect (share_puzzle_to_clipboard_cb);
+        action_group.add_action (share_puzzle_to_clipboard_action);
+
+        export_puzzle_to_filesystem_action = new SimpleAction ("export-puzzle-to-filesystem", null);
+        export_puzzle_to_filesystem_action.activate.connect (export_puzzle_to_filesystem_cb);
+        action_group.add_action (export_puzzle_to_filesystem_action);
+
+        save_game_as_action = new SimpleAction ("save-game-as", null);
+        save_game_as_action.activate.connect (save_game_as_cb);
+        action_group.add_action (save_game_as_action);
 
         insert_action_group ("game-view", action_group);
 
@@ -360,6 +379,55 @@ public class SudokuGameView : Adw.Bin
             grid.unselect ();
 
         gesture.set_state (EventSequenceState.CLAIMED);
+    }
+
+    public void save_game_as_cb ()
+    {
+        var file_dialog = new FileDialog ();
+        var name = game.board.fixed_to_string_pretty () + ".save";
+        file_dialog.set_initial_name (name);
+        var dir = File.new_for_path (SudokuSaver.saved_dir);
+        DirUtils.create (SudokuSaver.saved_dir, 0755);
+        file_dialog.set_initial_folder (dir);
+        file_dialog.save.begin (window, null, (obj, res) => {
+            try
+            {
+                var file = file_dialog.save.end (res);
+                backend.save_game_as (file.get_path ());
+            }
+            catch (Error e)
+            {
+                if (e.domain == DialogError.FAILED)
+                    warning ("Error: %s", e.message);
+            }
+        });
+    }
+
+    public void export_puzzle_to_filesystem_cb ()
+    {
+        var file_dialog = new FileDialog ();
+        file_dialog.set_initial_name (_("Sudoku puzzle.skp"));
+        file_dialog.save.begin (window, null, (obj, res) => {
+            try
+            {
+                var file = file_dialog.save.end (res);
+                backend.export_puzzle (file.get_path ());
+            }
+            catch (Error e)
+            {
+                if (e.domain == DialogError.FAILED)
+                    warning ("Error: %s", e.message);
+            }
+        });
+    }
+
+    public void share_puzzle_to_clipboard_cb ()
+    {
+        var clipboard = get_clipboard ();
+        clipboard.set_text (backend.get_short_puzzle ());
+        var toast = new Adw.Toast ("Puzzle copied to clipboard");
+        toast.timeout = 3;
+        toast_overlay.add_toast (toast);
     }
 
     private void earmark_mode_cb ()

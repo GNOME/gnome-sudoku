@@ -94,7 +94,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         set_accent_color ();
         style_manager.notify["accent-color"].connect (set_accent_color);
 
-        start_view.init ();
+        start_view.init (backend, get_primary_clipboard ());
     }
 
     private void construct_window_parameters ()
@@ -157,15 +157,15 @@ public class SudokuWindow : Adw.ApplicationWindow
         current_screen = SudokuWindowScreen.START;
 
         start_view.set_back_button_visible (game_view != null && backend.game != null && !backend.game.board.complete);
+        start_view.connect_clipboard ();
         view_stack.set_visible_child (start_view);
-
         start_view.grab_focus ();
     }
 
     public void show_game_view ()
     {
         current_screen = SudokuWindowScreen.PLAY;
-
+        start_view.disconnect_clipboard ();
         view_stack.set_visible_child (game_view);
         game_view.grab_focus ();
     }

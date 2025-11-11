@@ -95,11 +95,9 @@ template $SudokuGameView : Adw.Bin {
       }
     }
 
-    content: Adw.Bin grid_bin {
-      Overlay grid_overlay {
-        hexpand: true;
-        vexpand: true;
-        visible: true;
+    content: Adw.ToastOverlay toast_overlay {
+      Adw.Bin grid_bin {
+        Overlay grid_overlay {}
       }
     };
   }

@@ -28,6 +28,7 @@ public class SudokuSaver : Object
     public static string sudoku_data_dir { get; private set; default = ""; }
     public static string printed_dir { get; private set; default = ""; }
     public static string finished_dir { get; private set; default = ""; }
+    public static string saved_dir { get; private set; default = ""; }
 
     private HashMap<DifficultyCategory, double?> highscores;
 
@@ -38,6 +39,7 @@ public class SudokuSaver : Object
         highscores_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "highscores");
         printed_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "printed");
         finished_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "finished");
+        saved_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "saved");
     }
 
     public SudokuSaver()
@@ -90,6 +92,19 @@ public class SudokuSaver : Object
         save_highscores ();
     }
 
+    public void export_to_string (SudokuBoard board, string path)
+    {
+        string content = board.to_string_pretty ();
+        try
+        {
+            FileUtils.set_contents (path, content);
+        }
+        catch (Error e)
+        {
+            warning ("%s", e.message);
+        }
+    }
+
     private void save_highscores ()
     {
         Json.Builder builder = new Json.Builder ();
@@ -127,6 +142,11 @@ public class SudokuSaver : Object
         create_file_for_game (game, active_save_file, true);
     }
 
+    public void save_game_as (SudokuGame game, string path)
+    {
+        create_file_for_game (game, path, true);
+    }
+
     public void delete_save ()
     {
         var file = File.new_for_path (active_save_file);
@@ -145,7 +165,7 @@ public class SudokuSaver : Object
     {
         var file_name = game.board.to_string ()+ ".save";
         var file_path = Path.build_path (Path.DIR_SEPARATOR_S, dir_path, file_name);
-        if (DirUtils.create_with_parents (dir_path, 0755) == -1)
+        if (DirUtils.create (dir_path, 0755) == -1)
             warning ("Failed to archive the game: %s", strerror (errno));
 
         create_file_for_game (game, file_path, save_timer);
@@ -230,7 +250,7 @@ public class SudokuSaver : Object
         return generator.to_data (null);
     }
 
-    private SudokuGame? parse_json_to_game (string file_path)
+    public SudokuGame? parse_json_to_game (string file_path)
     {
         Json.Parser parser = new Json.Parser ();
         try
@@ -314,6 +334,15 @@ public class SudokuSaver : Object
         return_val_if_fail (board.difficulty_category != DifficultyCategory.UNKNOWN, null);
         reader.end_member ();
 
-        return new SudokuGame (board);
+        try
+        {
+            var game = new SudokuGame (board);
+            return game;
+        }
+        catch (Error e)
+        {
+            print ("%s", e.message);
+            return null;
+        }
     }
 }

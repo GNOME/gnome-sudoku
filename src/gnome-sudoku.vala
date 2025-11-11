@@ -70,6 +70,7 @@ public class Sudoku : Adw.Application
     {
         {"new-game", new_game_cb                                    },
         {"start-game", start_game_cb, "i"                           },
+        {"open-file", open_file_cb                                  },
         {"back", back_cb                                            },
         {"print-generator", print_multiple_cb                       },
         {"help", help_cb                                            },
@@ -166,6 +167,7 @@ public class Sudoku : Adw.Application
         set_accels_for_action ("app.zoom-out", {"<Primary>minus", "ZoomOut", "<Primary>KP_Subtract"});
         set_accels_for_action ("app.zoom-reset", {"<Primary>0", "<Primary>KP_0"});
         set_accels_for_action ("app.print-generator", {"<Primary>P"});
+        set_accels_for_action ("app.open-file", {"<Primary>o"});
 
         new_game_action = lookup_action ("new-game") as SimpleAction;
         print_multiple_action = lookup_action ("print-multiple") as SimpleAction;
@@ -318,6 +320,58 @@ public class Sudoku : Adw.Application
         // Following line converts those ints to their DifficultyCategory
         start_button_selected = (DifficultyCategory) difficulty;
         create_game ();
+    }
+
+    private void open_file_cb (SimpleAction action)
+    {
+        start_button_selected = DifficultyCategory.CUSTOM;
+        open_file ();
+    }
+
+    private void open_file ()
+    {
+        var file_dialog = new FileDialog ();
+        file_dialog.set_accept_label (_("_Start Game"));
+        var filter = file_dialog.get_default_filter ();
+        if (filter == null)
+        {
+            filter = new FileFilter ();
+            file_dialog.set_default_filter (filter);
+        }
+        filter.add_suffix ("skp");
+        filter.add_mime_type ("text/plain");
+        filter.add_suffix ("save");
+
+        var dir = File.new_for_path (SudokuSaver.saved_dir);
+        if (dir.query_exists ())
+            file_dialog.set_initial_folder (dir);
+
+        file_dialog.open.begin (window, null, (obj, res) => {
+            try
+            {
+                var file = file_dialog.open.end (res);
+                if (!backend.import_path (file.get_path ()))
+                    open_fail ();
+            }
+            catch (Error e)
+            {
+                if (e.domain == DialogError.FAILED)
+                    warning ("Error: %s", e.message);
+            }
+        });
+    }
+
+    private void open_fail ()
+    {
+        var dialog = new Adw.AlertDialog (_("Failed to import the puzzle, please enter a valid Sudoku puzzle"), null);
+        dialog.add_response ("close", _("_Cancel"));
+        dialog.add_response ("open", _("_Try Again"));
+        dialog.set_response_appearance ("open", Adw.ResponseAppearance.SUGGESTED);
+        dialog.response.connect ((response_id) => {
+            if (response_id == "open")
+                open_file ();
+        });
+        dialog.present (window);
     }
 
     private void back_cb ()

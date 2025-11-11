@@ -21,6 +21,7 @@
 public class SudokuBackend : Object
 {
     public SudokuGame game { get; private set; default = null; }
+    public SudokuGame tgame { get; private set; default = null; }
     public SudokuSaver saver;
     public double? highscore;
 
@@ -56,7 +57,60 @@ public class SudokuBackend : Object
     public void change_game (SudokuGame new_game)
     {
         this.game = new_game;
+        tgame = null;
         game_changed ();
+    }
+
+    public bool import_path (string path)
+    {
+        SudokuGame ngame;
+        ngame = saver.parse_json_to_game (path);
+
+        if (ngame != null)
+        {
+            change_game (ngame);
+            return true;
+        }
+
+        try
+        {
+            var file = File.new_for_path (path);
+            FileIOStream iostream = file.open_readwrite (null);
+            var istream = iostream.input_stream;
+            var bytes = istream.read_bytes (100).get_data ();
+            var board = new SudokuBoard.from_string ((string) bytes);
+            var new_game = new SudokuGame (board);
+
+            change_game (new_game);
+        }
+        catch (Error e)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public bool check_clipboard (string clipboard)
+    {
+        try
+        {
+            SudokuBoard board;
+            board = new SudokuBoard.from_short_string (clipboard);
+            var game = new SudokuGame (board);
+            tgame = game;
+            return true;
+        }
+        catch (Error e)
+        {
+            print ("%s", e.message);
+            return false;
+        };
+    }
+
+    public void start_shared_game ()
+    {
+        if (tgame != null)
+            change_game (tgame);
     }
 
     public delegate void BackendCallback (GLib.Object? source_object);
@@ -89,6 +143,21 @@ public class SudokuBackend : Object
         }
 
         return false;
+    }
+
+    public void save_game_as (string path)
+    {
+        saver.save_game_as (game, path);
+    }
+
+    public void export_puzzle (string path)
+    {
+        saver.export_to_string (game.board, path);
+    }
+
+    public string get_short_puzzle ()
+    {
+        return game.board.fixed_to_short_string ();
     }
 
     //lambda capture workaround
