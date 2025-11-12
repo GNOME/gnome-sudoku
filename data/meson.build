@@ -76,8 +76,12 @@ resources = gnome.compile_resources(
   source_dir: meson.current_source_dir()
 )
 
+schema_file = '@0@.gschema.xml'.format(base_id)
+if profile == 'Devel'
+  gnome.compile_schemas(depend_files: schema_file)
+endif
 install_data(
-  '@0@.gschema.xml'.format(base_id),
+  schema_file,
   install_dir: join_paths(datadir, 'glib-2.0', 'schemas')
 )
 
