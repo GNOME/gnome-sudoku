@@ -122,7 +122,6 @@ public class SudokuGameView : Adw.Bin
 
         print_puzzle_action = new SimpleAction ("print-puzzle", null);
         print_puzzle_action.activate.connect (print_puzzle_cb);
-        print_puzzle_action.set_enabled (!game.is_empty ());
         action_group.add_action (print_puzzle_action);
 
         undo_action = new SimpleAction ("undo", null);
