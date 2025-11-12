@@ -1,5 +1,5 @@
 <schemalist>
-  <enum id="org.gnome.Sudoku.play-difficulty">
+  <enum id="org.gnome.Sudoku.difficulty-category">
     <value nick="unknown" value="0" />
     <value nick="easy" value="1" />
     <value nick="medium" value="2" />
@@ -56,9 +56,12 @@
       <default>false</default>
       <summary>Highlight the selected cell's matching numbers</summary>
     </key>
-    <key name="play-difficulty" enum="org.gnome.Sudoku.play-difficulty">
+    <key name="start-button-selected" enum="org.gnome.Sudoku.difficulty-category">
       <default>"easy"</default>
       <summary>The puzzle's difficulty</summary>
+    </key>
+    <key name="play-difficulty" enum="org.gnome.Sudoku.difficulty-category">
+      <default>"easy"</default>
     </key>
     <key name="zoom-level" enum="org.gnome.Sudoku.zoom-level">
       <default>"medium"</default>

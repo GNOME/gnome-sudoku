@@ -38,8 +38,8 @@ public class SudokuPrintDialog : Adw.Dialog
         this.window = window;
         this.saver = saver;
 
-        if (Sudoku.app.play_difficulty != DifficultyCategory.CUSTOM)
-            difficulty.set_selected (((int) Sudoku.app.play_difficulty) - 1);
+        if (Sudoku.app.start_button_selected != DifficultyCategory.CUSTOM)
+            difficulty.set_selected (((int) Sudoku.app.start_button_selected) - 1);
     }
 
     [GtkCallback]

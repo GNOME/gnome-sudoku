@@ -69,9 +69,9 @@ public class SudokuStartView : Adw.Bin
         back_button.visible = enabled;
     }
 
-    private void activate_difficulty_checkbutton ()
+    public void activate_difficulty_checkbutton ()
     {
-        switch (Sudoku.app.play_difficulty)
+        switch (Sudoku.app.start_button_selected)
         {
             case DifficultyCategory.EASY:
                 easy_check.activate ();

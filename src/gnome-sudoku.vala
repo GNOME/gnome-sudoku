@@ -52,7 +52,7 @@ public class Sudoku : Adw.Application
     public static unowned Sudoku app;
     private SudokuBackend backend;
 
-    public DifficultyCategory play_difficulty { get; set; }
+    public DifficultyCategory start_button_selected { get; set; }
     public ZoomLevel zoom_level { get; set; }
     public bool show_timer { get; set; }
     public bool earmark_mode { get; set; default = false; }
@@ -124,7 +124,7 @@ public class Sudoku : Adw.Application
 
         settings = new GLib.Settings ("org.gnome.Sudoku");
 
-        settings.bind ("play-difficulty", this, "play-difficulty", SettingsBindFlags.DEFAULT);
+        settings.bind ("start-button-selected", this, "start-button-selected", SettingsBindFlags.DEFAULT);
         settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
         settings.bind ("show-timer", this, "show-timer", SettingsBindFlags.DEFAULT);
         settings.bind ("show-possibilities", this, "show-possibilities", SettingsBindFlags.DEFAULT);
@@ -138,13 +138,20 @@ public class Sudoku : Adw.Application
         settings.bind ("highlight-numbers", this, "highlight-numbers", SettingsBindFlags.DEFAULT);
 
         //backwards compatibility for versions <= v49
-        var old_warnings_state = settings.get_boolean ("show-warnings");
-        if (!old_warnings_state)
+        var old_warnings_enabled = settings.get_boolean ("show-warnings");
+        if (!old_warnings_enabled)
         {
             settings.reset ("show-warnings");
             duplicate_warnings = false;
             solution_warnings = false;
             earmark_warnings = false;
+        }
+
+        var old_selected_button = (DifficultyCategory) settings.get_enum ("play-difficulty");
+        if (old_selected_button != DifficultyCategory.EASY)
+        {
+            settings.reset ("play-difficulty");
+            start_button_selected = old_selected_button;
         }
 
         add_action_entries (action_entries, this);
@@ -161,9 +168,10 @@ public class Sudoku : Adw.Application
 
         new_game_action = lookup_action ("new-game") as SimpleAction;
         print_multiple_action = lookup_action ("print-multiple") as SimpleAction;
-        zoom_in_action = lookup_action ("zoom-in") as SimpleAction;
         back_action = lookup_action ("back") as SimpleAction;
+        zoom_in_action = lookup_action ("zoom-in") as SimpleAction;
         zoom_out_action = lookup_action ("zoom-out") as SimpleAction;
+
         zoom_in_action.set_enabled (!zoom_level.is_fully_zoomed_in ());
         zoom_out_action.set_enabled (!zoom_level.is_fully_zoomed_out ());
 
@@ -230,7 +238,7 @@ public class Sudoku : Adw.Application
         dialog.response.connect ((response_id) => {
             if (response_id == "play-again")
             {
-                if (play_difficulty == DifficultyCategory.CUSTOM)
+                if (start_button_selected == DifficultyCategory.CUSTOM)
                     show_start_view ();
                 else
                     create_game ();
@@ -245,7 +253,7 @@ public class Sudoku : Adw.Application
 
     private void create_game ()
     {
-        backend.generate_game (play_difficulty, (obj) => {
+        backend.generate_game (start_button_selected, (obj) => {
             if (!game_view.initialized)
                 init_game_view ();
             else
@@ -294,7 +302,7 @@ public class Sudoku : Adw.Application
         // of new game buttons in blueprints/start-view.blp
         // has been set to integers corresponding to the enums.
         // Following line converts those ints to their DifficultyCategory
-        play_difficulty = (DifficultyCategory) difficulty.get_int32 ();
+        start_button_selected = (DifficultyCategory) difficulty;
         create_game ();
     }
 
