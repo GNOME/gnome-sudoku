@@ -44,6 +44,11 @@ public class SudokuStartView : Adw.Bin
         add_shortcut (shortcut);
     }
 
+    public void init ()
+    {
+        activate_difficulty_checkbutton ();
+    }
+
     [GtkCallback]
     private void start_game_cb (Button btn)
     {
@@ -64,7 +69,7 @@ public class SudokuStartView : Adw.Bin
         back_button.visible = enabled;
     }
 
-    public void activate_difficulty_checkbutton ()
+    private void activate_difficulty_checkbutton ()
     {
         switch (Sudoku.app.play_difficulty)
         {
@@ -97,11 +102,5 @@ public class SudokuStartView : Adw.Bin
     {
         base.map ();
         start_button.grab_focus ();
-    }
-
-    public override void realize ()
-    {
-        base.realize ();
-        activate_difficulty_checkbutton ();
     }
 }
