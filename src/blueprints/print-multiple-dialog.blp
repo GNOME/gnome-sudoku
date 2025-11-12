@@ -4,7 +4,6 @@ using Adw 1;
 template $SudokuPrintDialog: Adw.Dialog {
   title: _("Print Multiple Puzzles");
   content-width: 460;
-  default-widget: print_button;
   focus-widget: print_button;
 
   Adw.ToolbarView {
@@ -69,7 +68,6 @@ template $SudokuPrintDialog: Adw.Dialog {
       [end]
       Button print_button {
         label: _("_Print");
-        receives-default: false;
         use-underline: true;
         clicked => $print();
 
