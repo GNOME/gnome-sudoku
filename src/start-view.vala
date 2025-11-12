@@ -97,10 +97,4 @@ public class SudokuStartView : Adw.Bin
     {
         return start_button.grab_focus ();
     }
-
-    public override void map ()
-    {
-        base.map ();
-        start_button.grab_focus ();
-    }
 }
