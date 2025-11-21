@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-09-13 10:45+0000\n"
-"PO-Revision-Date: 2025-09-14 16:36+0200\n"
+"POT-Creation-Date: 2025-11-12 17:09+0000\n"
+"PO-Revision-Date: 2025-11-21 23:48+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
 #: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
@@ -39,94 +39,66 @@ msgid "magic;square;"
 msgstr "magisk;kvadrat;"
 
 #: data/org.gnome.Sudoku.gschema.xml:18
-msgid "Difficulty level of sudokus to be printed"
-msgstr "Svårighetsnivå på sudokun att skriva ut"
-
-#: data/org.gnome.Sudoku.gschema.xml:19
-msgid ""
-"Set the difficulty level of the sudokus you want to print. Possible values "
-"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
-msgstr ""
-"Ange svårighetsgraden på de sudokun du vill skriva ut. Möjliga värden är: "
-"\"easy\" (enkel), \"medium\", \"hard\" (svår), \"very_hard\" (mycket svår)"
-
-#: data/org.gnome.Sudoku.gschema.xml:24
-msgid "Number of Sudokus to print"
-msgstr "Antal sudokun att skriva ut"
-
-#: data/org.gnome.Sudoku.gschema.xml:25
-msgid "Set the number of sudokus you want to print"
-msgstr "Ange antalet sudokun du vill skriva ut"
-
-#: data/org.gnome.Sudoku.gschema.xml:30
-msgid "Number of Sudokus to print per page"
-msgstr "Antal sudokun att skriva ut per sida"
-
-#: data/org.gnome.Sudoku.gschema.xml:31
-msgid "Set the number of sudokus you want to print per page"
-msgstr "Ange antalet sudokun du vill skriva ut per sida"
-
-#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Initiera öronmärkningen med möjliga värden för varje ruta"
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:25
 msgid "Check for duplicates in row, column and block"
 msgstr "Leta dubbletter i rad, kolumn och block"
 
-#: data/org.gnome.Sudoku.gschema.xml:43
+#: data/org.gnome.Sudoku.gschema.xml:29
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr "Kontrollera öronmärken mot dubbletter i rad, kolumn och block"
 
-#: data/org.gnome.Sudoku.gschema.xml:47
+#: data/org.gnome.Sudoku.gschema.xml:33
 msgid "Toggle timer and pause buttons"
 msgstr "Visa/dölj tidtagar- och pausknappar"
 
-#: data/org.gnome.Sudoku.gschema.xml:51
+#: data/org.gnome.Sudoku.gschema.xml:37
 msgid "Additionally check against the solution for warnings"
 msgstr "Kontrollera dessutom mot lösningen för varningar"
 
-#: data/org.gnome.Sudoku.gschema.xml:55
+#: data/org.gnome.Sudoku.gschema.xml:41
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr "Rensa automatiskt relaterade öronmärken då ny siffra matas in"
 
-#: data/org.gnome.Sudoku.gschema.xml:59
+#: data/org.gnome.Sudoku.gschema.xml:45
 msgid "Display number picker on second click"
 msgstr "Visa sifferväljare på andra klicket"
 
-#: data/org.gnome.Sudoku.gschema.xml:63
+#: data/org.gnome.Sudoku.gschema.xml:49
 msgid "Highlight the selected cell's row and column"
 msgstr "Färgmarkera den valda rutans rad och kolumn"
 
-#: data/org.gnome.Sudoku.gschema.xml:67
+#: data/org.gnome.Sudoku.gschema.xml:53
 msgid "Highlight the selected cell's block"
 msgstr "Färgmarkera den valda rutans block"
 
-#: data/org.gnome.Sudoku.gschema.xml:71
+#: data/org.gnome.Sudoku.gschema.xml:57
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Färgmarkera den valda rutans matchande siffror"
 
-#: data/org.gnome.Sudoku.gschema.xml:75
+#: data/org.gnome.Sudoku.gschema.xml:61
 msgid "The puzzle's difficulty"
 msgstr "Pusslets svårighetsgrad"
 
-#: data/org.gnome.Sudoku.gschema.xml:79
+#: data/org.gnome.Sudoku.gschema.xml:68
 msgid "Zoom level"
 msgstr "Zoomnivå"
 
-#: data/org.gnome.Sudoku.gschema.xml:83
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Width of the window in pixels"
 msgstr "Bredden på fönstret i bildpunkter"
 
-#: data/org.gnome.Sudoku.gschema.xml:87
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "Height of the window in pixels"
 msgstr "Höjden på fönstret i bildpunkter"
 
-#: data/org.gnome.Sudoku.gschema.xml:91
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "true if the window is maximized"
 msgstr "true (sant) om fönstret är maximerat"
 
-#: data/org.gnome.Sudoku.gschema.xml:95
+#: data/org.gnome.Sudoku.gschema.xml:84
 msgid "true if the window is fullscreen"
 msgstr "true (sant) om fönstret är i helskärmsläge"
 
@@ -197,29 +169,25 @@ msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr ""
 "En spelomgång av GNOME Sudoku i mörkt läge med öronmärken och varningar"
 
-#: lib/sudoku-board.vala:551
+#: lib/board.vala:553 lib/board.vala:564
 msgid "Unknown Difficulty"
 msgstr "Okänd svårighetsgrad"
 
-#: lib/sudoku-board.vala:553
+#: lib/board.vala:555
 msgid "Easy Difficulty"
 msgstr "Enkel svårighetsgrad"
 
-#: lib/sudoku-board.vala:555
+#: lib/board.vala:557
 msgid "Medium Difficulty"
 msgstr "Medelsvår svårighetsgrad"
 
-#: lib/sudoku-board.vala:557
+#: lib/board.vala:559
 msgid "Hard Difficulty"
 msgstr "Svår svårighetsgrad"
 
-#: lib/sudoku-board.vala:559
+#: lib/board.vala:561
 msgid "Very Hard Difficulty"
 msgstr "Mycket svår svårighetsgrad"
-
-#: lib/sudoku-board.vala:561
-msgid "Custom Puzzle"
-msgstr "Anpassat pussel"
 
 #: src/blueprints/game-view.blp:22
 msgid "Undo Action"
@@ -249,7 +217,8 @@ msgstr "_Nytt spel…"
 msgid "_Reset Puzzle"
 msgstr "Åte_rställ pussel"
 
-#: src/blueprints/menu-button.blp:19 src/blueprints/print-dialog.blp:65
+#: src/blueprints/menu-button.blp:19
+#: src/blueprints/print-multiple-dialog.blp:70
 msgid "_Print"
 msgstr "Skriv _ut"
 
@@ -366,35 +335,35 @@ msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "Färgmarkera _block"
 
-#: src/blueprints/print-dialog.blp:5
+#: src/blueprints/print-multiple-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "Skriv ut flera pussel"
 
-#: src/blueprints/print-dialog.blp:24
+#: src/blueprints/print-multiple-dialog.blp:23
 msgid "Number of Puzzles"
 msgstr "Antal pussel"
 
-#: src/blueprints/print-dialog.blp:35
-msgid "Number of puzzles per page"
+#: src/blueprints/print-multiple-dialog.blp:36
+msgid "Number of Puzzles per Page"
 msgstr "Antal pussel per sida"
 
-#: src/blueprints/print-dialog.blp:46
+#: src/blueprints/print-multiple-dialog.blp:49
 msgid "Difficulty"
 msgstr "Svårighetsgrad"
 
-#: src/blueprints/print-dialog.blp:50
+#: src/blueprints/print-multiple-dialog.blp:53
 msgid "Easy"
 msgstr "Enkel"
 
-#: src/blueprints/print-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:54
 msgid "Medium"
 msgstr "Medel"
 
-#: src/blueprints/print-dialog.blp:52
+#: src/blueprints/print-multiple-dialog.blp:55
 msgid "Hard"
 msgstr "Svår"
 
-#: src/blueprints/print-dialog.blp:53
+#: src/blueprints/print-multiple-dialog.blp:56
 msgid "Very Hard"
 msgstr "Mycket svår"
 
@@ -439,133 +408,133 @@ msgstr "M_ycket svår"
 msgid "_Start Game"
 msgstr "_Starta spel"
 
-#: src/blueprints/shortcuts-window.blp:11
+#: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
 msgid "Game"
 msgstr "Spel"
 
-#: src/blueprints/shortcuts-window.blp:15
-#: src/blueprints/shortcuts-window.blp:20
+#: src/blueprints/shortcuts-dialog.blp:11
+#: src/blueprints/shortcuts-dialog.blp:16
 msgctxt "Shortcuts Window"
 msgid "Move"
 msgstr "Flytta"
 
-#: src/blueprints/shortcuts-window.blp:25
+#: src/blueprints/shortcuts-dialog.blp:20
 msgctxt "Shortcuts Window"
 msgid "Earmarks"
 msgstr "Öronmärkning"
 
-#: src/blueprints/shortcuts-window.blp:30
+#: src/blueprints/shortcuts-dialog.blp:25
 msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "Rensa ruta"
 
-#: src/blueprints/shortcuts-window.blp:35
-msgctxt "Shortcuts Window"
-msgid "Undo"
-msgstr "Ångra"
-
-#: src/blueprints/shortcuts-window.blp:40
-msgctxt "Shortcuts Window"
-msgid "Redo"
-msgstr "Gör om"
-
-#: src/blueprints/shortcuts-window.blp:45
-msgctxt "Shortcuts Window"
-msgid "Pause"
-msgstr "Pausa"
-
-#: src/blueprints/shortcuts-window.blp:50
-msgctxt "Shortcuts Window"
-msgid "Earmark Mode"
-msgstr "Öronmärkesläge"
-
-#: src/blueprints/shortcuts-window.blp:55
+#: src/blueprints/shortcuts-dialog.blp:30
 msgctxt "Shortcuts Window"
 msgid "Number Picker"
 msgstr "Sifferväljare"
 
-#: src/blueprints/shortcuts-window.blp:60
+#: src/blueprints/shortcuts-dialog.blp:35
 msgctxt "Shortcuts Window"
 msgid "Earmark Picker"
 msgstr "Öronmärkesväljare"
 
-#: src/blueprints/shortcuts-window.blp:65
+#: src/blueprints/shortcuts-dialog.blp:42
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
+msgstr "Öronmärkesläge"
+
+#: src/blueprints/shortcuts-dialog.blp:47
+msgctxt "Shortcuts Window"
+msgid "Pause"
+msgstr "Pausa"
+
+#: src/blueprints/shortcuts-dialog.blp:52
+msgctxt "Shortcuts Window"
+msgid "Undo"
+msgstr "Ångra"
+
+#: src/blueprints/shortcuts-dialog.blp:57
+msgctxt "Shortcuts Window"
+msgid "Redo"
+msgstr "Gör om"
+
+#: src/blueprints/shortcuts-dialog.blp:64
 msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "Nytt spel"
 
-#: src/blueprints/shortcuts-window.blp:70
+#: src/blueprints/shortcuts-dialog.blp:69
 msgctxt "Shortcuts Window"
 msgid "Reset Puzzle"
 msgstr "Återställ pussel"
 
-#: src/blueprints/shortcuts-window.blp:75
-msgctxt "Shortcuts Window"
-msgid "Window"
-msgstr "Fönster"
-
-#: src/blueprints/shortcuts-window.blp:79
-msgctxt "Shortcuts Window"
-msgid "Go Back"
-msgstr "Gå tillbaka"
-
-#: src/blueprints/shortcuts-window.blp:84
+#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom In"
 msgstr "Zooma in"
 
-#: src/blueprints/shortcuts-window.blp:89
+#: src/blueprints/shortcuts-dialog.blp:79
 msgctxt "Shortcuts Window"
 msgid "Zoom Out"
 msgstr "Zooma ut"
 
-#: src/blueprints/shortcuts-window.blp:94
+#: src/blueprints/shortcuts-dialog.blp:84
 msgctxt "Shortcuts Window"
 msgid "Zoom Reset"
 msgstr "Återställ zoomnivå"
 
-#: src/blueprints/shortcuts-window.blp:99
+#: src/blueprints/shortcuts-dialog.blp:89
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "Fönster"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+msgctxt "Shortcuts Window"
+msgid "Go Back"
+msgstr "Gå tillbaka"
+
+#: src/blueprints/shortcuts-dialog.blp:98
 msgctxt "Shortcuts Window"
 msgid "Print Current Puzzle"
 msgstr "Skriv ut aktuellt pussel"
 
-#: src/blueprints/shortcuts-window.blp:104
+#: src/blueprints/shortcuts-dialog.blp:103
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: src/blueprints/shortcuts-window.blp:109
+#: src/blueprints/shortcuts-dialog.blp:108
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Tangentbordsgenvägar"
 
-#: src/blueprints/shortcuts-window.blp:114
+#: src/blueprints/shortcuts-dialog.blp:113
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/blueprints/shortcuts-window.blp:119
+#: src/blueprints/shortcuts-dialog.blp:118
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/blueprints/shortcuts-window.blp:124
+#: src/blueprints/shortcuts-dialog.blp:123
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Meny"
 
-#: src/blueprints/shortcuts-window.blp:129
+#: src/blueprints/shortcuts-dialog.blp:128
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Helskärm"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:94
+#: src/gnome-sudoku.vala:90
 msgid "Show release version"
 msgstr "Visa utgåvans version"
 
-#: src/gnome-sudoku.vala:220
+#: src/gnome-sudoku.vala:215
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -573,30 +542,30 @@ msgstr[0] "%d minut"
 msgstr[1] "%d minuter"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:225
+#: src/gnome-sudoku.vala:220
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr "Bra gjort, du lade pusslet på %s och fick ett nytt personbästa!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:226
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Bra gjort, du lade pusslet på %s!"
 
-#: src/gnome-sudoku.vala:237
+#: src/gnome-sudoku.vala:231
 msgid "Well done, you completed the puzzle!"
 msgstr "Bra gjort, du lade pusslet!"
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:234
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:235
 msgid "Play _Again"
 msgstr "S_pela igen"
 
-#: src/gnome-sudoku.vala:427
+#: src/gnome-sudoku.vala:358
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -630,6 +599,31 @@ msgstr "Fel vid utskrift av fil:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Stäng"
+
+#~ msgid "Difficulty level of sudokus to be printed"
+#~ msgstr "Svårighetsnivå på sudokun att skriva ut"
+
+#~ msgid ""
+#~ "Set the difficulty level of the sudokus you want to print. Possible "
+#~ "values are: \"easy\", \"medium\", \"hard\", \"very_hard\""
+#~ msgstr ""
+#~ "Ange svårighetsgraden på de sudokun du vill skriva ut. Möjliga värden är: "
+#~ "\"easy\" (enkel), \"medium\", \"hard\" (svår), \"very_hard\" (mycket svår)"
+
+#~ msgid "Number of Sudokus to print"
+#~ msgstr "Antal sudokun att skriva ut"
+
+#~ msgid "Set the number of sudokus you want to print"
+#~ msgstr "Ange antalet sudokun du vill skriva ut"
+
+#~ msgid "Number of Sudokus to print per page"
+#~ msgstr "Antal sudokun att skriva ut per sida"
+
+#~ msgid "Set the number of sudokus you want to print per page"
+#~ msgstr "Ange antalet sudokun du vill skriva ut per sida"
+
+#~ msgid "Custom Puzzle"
+#~ msgstr "Anpassat pussel"
 
 #~ msgid "Color mistakes and duplicate numbers in red"
 #~ msgstr "Färga misstag och dubblerade nummer röda"
