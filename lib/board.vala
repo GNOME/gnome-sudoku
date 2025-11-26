@@ -483,15 +483,6 @@ public class SudokuBoard : Object
         return board_string;
     }
 
-    public bool is_finished ()
-    {
-        var board_string = this.to_string () + ".save";
-        var finishgame_file = Path.build_path (Path.DIR_SEPARATOR_S, SudokuSaver.finishgame_dir, board_string);
-        var file = File.new_for_path (finishgame_file);
-
-        return file.query_exists ();
-    }
-
     public bool has_earmarks (int row, int col)
     {
         for (int i = 0; i < 9; i++)
