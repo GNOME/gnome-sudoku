@@ -315,7 +315,8 @@ public class SudokuGameView : Adw.Bin
         var list = new Gee.ArrayList<SudokuBoard> ();
         list.add (game.board.clone ());
         var printer = new SudokuPrinter (list, 1);
-        printer.print_sudoku (window);
+        if (printer.print_sudoku (window) == PrintOperationResult.APPLY)
+            backend.add_game_to_printed ();
     }
 
     private void show_timer_cb ()

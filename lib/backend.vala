@@ -122,6 +122,11 @@ public class SudokuBackend : Object
         saver.archive_game (SudokuSaver.printed_dir, new SudokuGame(board), false);
     }
 
+    public void add_game_to_printed ()
+    {
+        saver.archive_game (SudokuSaver.printed_dir, game, false);
+    }
+
     public override void dispose ()
     {
         stop_autosave ();

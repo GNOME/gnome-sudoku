@@ -4,16 +4,18 @@
 - Add support for running locally
 - Port Shortcuts Window to Shortcuts Dialog
 - Add duplicate warnings preference
-- Rename "Check against solution" preference to "Solution Warnings"
+- Rename "Check Against Solution" preference to "Solution Warnings"
 - Remove warnings and highlighter settings
 - Add a backwards compatibility check that disables warning preferences
   if the warnings setting was disabled
-- Remove custom game creation, if you have an ongoing custom
-  game make sure to finish it befor updating
-- Remove choice saving from print multiple dialog, it will instead rely
-  only on the latest played difficulty to preselect choices
-- Fix print multiple dialog allowing non numeric characters
-- Fix capitalization in print multiple dialog
+- Remove custom game creation, if you have an ongoing custom game make
+  sure to finish it before updating or you will lose it
+- Save printed games to their own folder
+- Save a copy of the puzzle when using "Print Current Puzzle"
+- In print multiple dialog:
+  Use only the latest played difficulty to preselect choices
+  Don't allow non numeric characters in the spin row
+  Fix capitalization
 - Update translations:
   Jiri Grönroos (fi); Ekaterine Papava (ka); Pawan Chitrakar (ne);
   Juliano de Souza Camargo (pt_BR); Sergej A. (ru); Martin (sl); Anders
