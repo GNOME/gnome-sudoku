@@ -31,12 +31,12 @@ public class SudokuPrintDialog : Adw.Dialog
     [GtkChild] private unowned Adw.ComboRow difficulty;
 
     private SudokuWindow window;
-    private SudokuSaver saver;
+    private SudokuBackend backend;
 
-    public SudokuPrintDialog (SudokuSaver saver, SudokuWindow window)
+    public SudokuPrintDialog (SudokuBackend backend, SudokuWindow window)
     {
         this.window = window;
-        this.saver = saver;
+        this.backend = backend;
 
         if (Sudoku.app.start_button_selected != DifficultyCategory.CUSTOM)
             difficulty.set_selected (((int) Sudoku.app.start_button_selected) - 1);
@@ -61,7 +61,7 @@ public class SudokuPrintDialog : Adw.Dialog
                 if (printer.print_sudoku (window) == PrintOperationResult.APPLY)
                 {
                     foreach (SudokuBoard board in boards)
-                        saver.add_game_to_finished (new SudokuGame (board));
+                        backend.add_board_to_printed (board);
                 }
             }
             catch (ThreadError e)

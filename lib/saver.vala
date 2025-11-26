@@ -23,21 +23,26 @@ using Gee;
 
 public class SudokuSaver : Object
 {
-    public static string savegame_file { get; private set; default = ""; }
-    public static string finishgame_dir { get; private set; default = ""; }
+    public static string active_save_file { get; private set; default = ""; }
     public static string highscores_file { get; private set; default = ""; }
+    public static string sudoku_data_dir { get; private set; default = ""; }
+    public static string printed_dir { get; private set; default = ""; }
+    public static string finished_dir { get; private set; default = ""; }
 
     private HashMap<DifficultyCategory, double?> highscores;
 
+    static construct {
+        var config_dir = Environment.get_user_data_dir ();
+        sudoku_data_dir = Path.build_path (Path.DIR_SEPARATOR_S, config_dir, "gnome-sudoku");
+        active_save_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "savefile");
+        highscores_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "highscores");
+        printed_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "printed");
+        finished_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "finished");
+    }
+
     public SudokuSaver()
     {
-        var config_dir = Environment.get_user_data_dir ();
-        var sudoku_data_dir = Path.build_path (Path.DIR_SEPARATOR_S, config_dir, "gnome-sudoku");
-        finishgame_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "finished");
-        savegame_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "savefile");
-        highscores_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "highscores");
-
-        if (DirUtils.create_with_parents (finishgame_dir, 0755) == -1)
+        if (DirUtils.create_with_parents (sudoku_data_dir, 0755) == -1)
             warning ("Failed to create saver directory: %s", strerror (errno));
 
         highscores = new HashMap<DifficultyCategory, double?>();
@@ -117,21 +122,21 @@ public class SudokuSaver : Object
 
     public SudokuGame? get_savedgame ()
     {
-        var file = File.new_for_path (savegame_file);
+        var file = File.new_for_path (active_save_file);
         if (!file.query_exists ())
             return null;
 
-        return parse_json_to_game (savegame_file);
+        return parse_json_to_game (active_save_file);
     }
 
     public void save_game (SudokuGame game)
     {
-        create_file_for_game (game, savegame_file);
+        create_file_for_game (game, active_save_file, true);
     }
 
     public void delete_save ()
     {
-        var file = File.new_for_path (savegame_file);
+        var file = File.new_for_path (active_save_file);
         if (file.query_exists ())
         {
             try
@@ -145,17 +150,17 @@ public class SudokuSaver : Object
         }
     }
 
-    public void add_game_to_finished (SudokuGame game, bool delete_savegame = false, bool save_timer = true)
+    public void archive_game (string dir_path, SudokuGame game, bool save_timer)
     {
         var file_name = game.board.to_string ()+ ".save";
-        var file_path = Path.build_path (Path.DIR_SEPARATOR_S, finishgame_dir, file_name);
-        create_file_for_game (game, file_path, save_timer);
+        var file_path = Path.build_path (Path.DIR_SEPARATOR_S, dir_path, file_name);
+        if (DirUtils.create_with_parents (dir_path, 0755) == -1)
+            warning ("Failed to archive the game: %s", strerror (errno));
 
-        if (delete_savegame)
-            delete_save ();
+        create_file_for_game (game, file_path, save_timer);
     }
 
-    private void create_file_for_game (SudokuGame game, string file_name, bool save_timer = true)
+    private void create_file_for_game (SudokuGame game, string file_name, bool save_timer)
     {
         var json_str = serialize_game_to_json (game, save_timer);
 

@@ -113,7 +113,13 @@ public class SudokuBackend : Object
     public void add_game_to_finished (bool save_timer)
     {
         stop_autosave ();
-        saver.add_game_to_finished (game, true, save_timer);
+        saver.archive_game (SudokuSaver.finished_dir, game, save_timer);
+        saver.delete_save ();
+    }
+
+    public void add_board_to_printed (SudokuBoard board)
+    {
+        saver.archive_game (SudokuSaver.printed_dir, new SudokuGame(board), false);
     }
 
     public override void dispose ()

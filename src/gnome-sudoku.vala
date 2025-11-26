@@ -319,7 +319,7 @@ public class Sudoku : Adw.Application
 
     private void print_multiple_cb ()
     {
-        var print_dialog = new SudokuPrintDialog (backend.saver, window);
+        var print_dialog = new SudokuPrintDialog (backend, window);
         print_dialog.present (window);
     }
 
