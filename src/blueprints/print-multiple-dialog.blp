@@ -63,21 +63,20 @@ template $SudokuPrintDialog: Adw.Dialog {
             selected: 1;
           }
         }
+
+        Button print_button {
+          margin-top: 24;
+          label: _("_Print");
+          halign: center;
+          use-underline: true;
+          clicked => $print();
+
+          styles [
+            "suggested-action",
+            "pill"
+          ]
+        }
       }
     };
-
-    [bottom]
-    ActionBar {
-      [end]
-      Button print_button {
-        label: _("_Print");
-        use-underline: true;
-        clicked => $print();
-
-        styles [
-          "suggested-action",
-        ]
-      }
-    }
   }
 }
