@@ -232,19 +232,32 @@ public class Sudoku : Adw.Application
 
         var dialog = new Adw.AlertDialog (win_str, null);
         dialog.add_response ("close", _("_Quit"));
-        dialog.add_response ("play-again", _("Play _Again"));
-        dialog.set_response_appearance ("play-again", Adw.ResponseAppearance.SUGGESTED);
+        if (start_button_selected != DifficultyCategory.CUSTOM)
+        {
+            dialog.add_response ("start-menu", _("_Change Difficulty"));
+            dialog.add_response ("play-again", _("_Play Again"));
+            dialog.set_response_appearance ("play-again", Adw.ResponseAppearance.SUGGESTED);
+        }
+        else
+        {
+            dialog.add_response ("start-menu", _("_New Game…"));
+            dialog.set_response_appearance ("start-menu", Adw.ResponseAppearance.SUGGESTED);
+        }
 
         dialog.response.connect ((response_id) => {
-            if (response_id == "play-again")
+            switch (response_id)
             {
-                if (start_button_selected == DifficultyCategory.CUSTOM)
+                case "start-menu":
                     show_start_view ();
-                else
+                    break;
+                case "play-again":
                     create_game ();
+                    break;
+                case "close":
+                    quit ();
+                    break;
             }
-            else if (response_id == "close")
-                quit ();
+
             dialog.destroy ();
         });
 
