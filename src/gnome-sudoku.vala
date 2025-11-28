@@ -209,7 +209,7 @@ public class Sudoku : Adw.Application
 
         /* Text in dialog that displays when the game is over. */
         string win_str;
-        if (show_timer)
+        if (show_timer && window.width_is_small)
         {
             var minutes = (int) game.get_total_time_played () / 60;
             string localized_time =  ngettext ("%d minute", "%d minutes", minutes).printf (minutes);
@@ -228,7 +228,7 @@ public class Sudoku : Adw.Application
             }
         }
         else
-            win_str = _("Well done, you completed the puzzle!");
+            win_str = _("Puzzle Completed!");
 
         var dialog = new Adw.AlertDialog (win_str, null);
         dialog.add_response ("close", _("_Quit"));

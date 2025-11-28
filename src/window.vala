@@ -155,7 +155,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     {
         current_screen = SudokuWindowScreen.START;
 
-        start_view.set_back_button_visible (game_view != null && backend.game != null);
+        start_view.set_back_button_visible (game_view != null && backend.game != null && !backend.game.board.complete);
         view_stack.set_visible_child (start_view);
 
         start_view.grab_focus ();
