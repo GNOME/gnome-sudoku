@@ -231,7 +231,7 @@ public class Sudoku : Adw.Application
             win_str = _("Puzzle Completed!");
 
         var dialog = new Adw.AlertDialog (win_str, null);
-        dialog.add_response ("close", _("_Quit"));
+        dialog.add_response ("quit", _("_Quit"));
         if (start_button_selected != DifficultyCategory.CUSTOM)
         {
             dialog.add_response ("start-menu", _("_Change Difficulty"));
@@ -253,8 +253,11 @@ public class Sudoku : Adw.Application
                 case "play-again":
                     create_game ();
                     break;
-                case "close":
+                case "quit":
                     quit ();
+                    break;
+                case "close":
+                    show_start_view ();
                     break;
             }
 
