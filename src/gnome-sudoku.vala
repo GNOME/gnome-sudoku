@@ -231,7 +231,7 @@ public class Sudoku : Adw.Application
             win_str = _("Well done, you completed the puzzle!");
 
         var dialog = new Adw.AlertDialog (win_str, null);
-        dialog.add_response ("close", _("Quit"));
+        dialog.add_response ("close", _("_Quit"));
         dialog.add_response ("play-again", _("Play _Again"));
         dialog.set_response_appearance ("play-again", Adw.ResponseAppearance.SUGGESTED);
 
