@@ -208,27 +208,30 @@ public class Sudoku : Adw.Application
         backend.add_game_to_finished (Sudoku.app.show_timer);
 
         /* Text in dialog that displays when the game is over. */
-        string win_str;
-        if (show_timer && window.width_is_small)
+        string win_str = _("Puzzle Completed!");
+        if (show_timer)
         {
-            var minutes = (int) game.get_total_time_played () / 60;
-            string localized_time =  ngettext ("%d minute", "%d minutes", minutes).printf (minutes);
+            var highscore_changed = backend.save_highscore ();
 
-            if (backend.save_highscore ())
+            if (window.width_is_small)
             {
-                win_str = _(//TRANSLATORS: %s is a localized time string in minute(s)
-                            "Well done, you completed the puzzle in %s and set a new personal best!")
-                            .printf(localized_time);
-            }
-            else
-            {
-                win_str = _(//TRANSLATORS: %s is a localized time string in minute(s)
-                            "Well done, you completed the puzzle in %s!")
-                            .printf(localized_time);
+                var minutes = (int) game.get_total_time_played () / 60;
+                string localized_time =  ngettext ("%d minute", "%d minutes", minutes).printf (minutes);
+
+                if (highscore_changed)
+                {
+                    win_str = _(//TRANSLATORS: %s is a localized time string in minute(s)
+                                "Well done, you completed the puzzle in %s and set a new personal best!")
+                                .printf(localized_time);
+                }
+                else
+                {
+                    win_str = _(//TRANSLATORS: %s is a localized time string in minute(s)
+                                "Well done, you completed the puzzle in %s!")
+                                .printf(localized_time);
+                }
             }
         }
-        else
-            win_str = _("Puzzle Completed!");
 
         var dialog = new Adw.AlertDialog (win_str, null);
         dialog.add_response ("quit", _("_Quit"));
