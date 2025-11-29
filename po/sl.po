@@ -12,18 +12,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-09-20 17:01+0000\n"
-"PO-Revision-Date: 2025-09-21 00:08+0200\n"
+"POT-Creation-Date: 2025-11-29 11:11+0000\n"
+"PO-Revision-Date: 2025-11-29 17:51+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
-"Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
+"Language-Team: Slovenian GNOME Translation Team <gnome-"
+"si@googlegroups.com>\n"
 "Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.8\n"
 
 #: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
@@ -39,99 +40,70 @@ msgstr "Preizkusite se v klasični uganki"
 #: data/org.gnome.Sudoku.desktop.in.in:5
 msgid "magic;square;"
 msgstr ""
-"magic;square;sudoku;mrežna igra;kvadrat;števila;mreža;plošča;tabla;ploščice;"
-"japonska;"
+"magic;square;sudoku;mrežna "
+"igra;kvadrat;števila;mreža;plošča;tabla;ploščice;japonska;"
 
 #: data/org.gnome.Sudoku.gschema.xml:18
-msgid "Difficulty level of sudokus to be printed"
-msgstr "Zahtevnost ugank sudoku za tiskanje"
-
-#: data/org.gnome.Sudoku.gschema.xml:19
-msgid ""
-"Set the difficulty level of the sudokus you want to print. Possible values "
-"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
-msgstr ""
-"Nastavitev ravni zahtevnosti ugank sudoku, ki naj se pripravijo za tiskanje. "
-"Izbirati je mogoče med možnostmi – »enostavne», »srednje zahtevne«, "
-"»zahtevne« in »zelo zahtevne«."
-
-#: data/org.gnome.Sudoku.gschema.xml:24
-msgid "Number of Sudokus to print"
-msgstr "Število ugank sudoku za tiskanje"
-
-#: data/org.gnome.Sudoku.gschema.xml:25
-msgid "Set the number of sudokus you want to print"
-msgstr "Nastavitev števila ugank za tiskanje"
-
-#: data/org.gnome.Sudoku.gschema.xml:30
-msgid "Number of Sudokus to print per page"
-msgstr "Število ugank sudoku za tiskanje na stran"
-
-#: data/org.gnome.Sudoku.gschema.xml:31
-msgid "Set the number of sudokus you want to print per page"
-msgstr "Nastavitev števila ugank za tiskanje na stran"
-
-#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Začni oznake z možnimi vrednostmi za vsako celico"
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:25
 msgid "Check for duplicates in row, column and block"
 msgstr "Preveri dvojnike v vrstici, stolpcu in bloku"
 
-#: data/org.gnome.Sudoku.gschema.xml:43
+#: data/org.gnome.Sudoku.gschema.xml:29
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr "Potrdi ušesca pred dvojniki v vrstici, stolpcu in bloku"
 
-#: data/org.gnome.Sudoku.gschema.xml:47
+#: data/org.gnome.Sudoku.gschema.xml:33
 msgid "Toggle timer and pause buttons"
 msgstr "Preklopi med gumbi časovnika in za začasno ustavitev"
 
-#: data/org.gnome.Sudoku.gschema.xml:51
+#: data/org.gnome.Sudoku.gschema.xml:37
 msgid "Additionally check against the solution for warnings"
 msgstr "Dodatno preveri glede na rešitev za opozorila"
 
-#: data/org.gnome.Sudoku.gschema.xml:55
+#: data/org.gnome.Sudoku.gschema.xml:41
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr "Samodejno počisti povezana ušesca ob novem vstavljanju številk"
 
-#: data/org.gnome.Sudoku.gschema.xml:59
+#: data/org.gnome.Sudoku.gschema.xml:45
 msgid "Display number picker on second click"
 msgstr "Izbirnik številk prikaži ob drugem kliku"
 
-#: data/org.gnome.Sudoku.gschema.xml:63
+#: data/org.gnome.Sudoku.gschema.xml:49
 msgid "Highlight the selected cell's row and column"
 msgstr "Poudari vrstico in stolpec izbrane celice"
 
-#: data/org.gnome.Sudoku.gschema.xml:67
+#: data/org.gnome.Sudoku.gschema.xml:53
 msgid "Highlight the selected cell's block"
 msgstr "Poudari blok izbrane celice"
 
-#: data/org.gnome.Sudoku.gschema.xml:71
+#: data/org.gnome.Sudoku.gschema.xml:57
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Poudari ujemajoče se številke izbrane celice"
 
-#: data/org.gnome.Sudoku.gschema.xml:75
+#: data/org.gnome.Sudoku.gschema.xml:61
 msgid "The puzzle's difficulty"
 msgstr "Zahtevnost sestavljanke"
 
-#: data/org.gnome.Sudoku.gschema.xml:79
+#: data/org.gnome.Sudoku.gschema.xml:68
 msgid "Zoom level"
 msgstr "Raven povečave"
 
-#: data/org.gnome.Sudoku.gschema.xml:83
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Width of the window in pixels"
 msgstr "Širina okna v točkah"
 
-#: data/org.gnome.Sudoku.gschema.xml:87
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "Height of the window in pixels"
 msgstr "Višina okna v točkah"
 
-#: data/org.gnome.Sudoku.gschema.xml:91
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "true if the window is maximized"
 msgstr "PRAV, če je okno razpeto"
 
-#: data/org.gnome.Sudoku.gschema.xml:95
+#: data/org.gnome.Sudoku.gschema.xml:84
 msgid "true if the window is fullscreen"
 msgstr "Res (true), če je okno celozaslonsko"
 
@@ -201,29 +173,25 @@ msgstr "Predogled uganke Sudoku GNOME"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Igra sudoku za GNOME v temnem načinu z ušesci in opozorili"
 
-#: lib/sudoku-board.vala:551
+#: lib/board.vala:544 lib/board.vala:555
 msgid "Unknown Difficulty"
 msgstr "Neznana zahtevnost"
 
-#: lib/sudoku-board.vala:553
+#: lib/board.vala:546
 msgid "Easy Difficulty"
 msgstr "Enostavna uganka"
 
-#: lib/sudoku-board.vala:555
+#: lib/board.vala:548
 msgid "Medium Difficulty"
 msgstr "Srednje zahtevna uganka"
 
-#: lib/sudoku-board.vala:557
+#: lib/board.vala:550
 msgid "Hard Difficulty"
 msgstr "Zahtevna uganka"
 
-#: lib/sudoku-board.vala:559
+#: lib/board.vala:552
 msgid "Very Hard Difficulty"
 msgstr "Zelo zahtevna uganka"
-
-#: lib/sudoku-board.vala:561
-msgid "Custom Puzzle"
-msgstr "Uganka po meri"
 
 #: src/blueprints/game-view.blp:22
 msgid "Undo Action"
@@ -245,7 +213,7 @@ msgstr "Premor"
 msgid "Play"
 msgstr "Igraj"
 
-#: src/blueprints/menu-button.blp:7
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:246
 msgid "_New Game…"
 msgstr "_Nova igra …"
 
@@ -254,7 +222,7 @@ msgid "_Reset Puzzle"
 msgstr "_Ponastavi uganko"
 
 #: src/blueprints/menu-button.blp:19
-#: src/blueprints/print-multiple-dialog.blp:65
+#: src/blueprints/print-multiple-dialog.blp:69
 msgid "_Print"
 msgstr "_Natisni"
 
@@ -375,31 +343,31 @@ msgstr "Poudari _blok"
 msgid "Print Multiple Puzzles"
 msgstr "Natisni več ugank sudoku"
 
-#: src/blueprints/print-multiple-dialog.blp:24
-msgid "Number of Puzzles"
-msgstr "Število ugank"
+#: src/blueprints/print-multiple-dialog.blp:23
+msgid "_Number of Puzzles"
+msgstr "_Število ugank"
 
-#: src/blueprints/print-multiple-dialog.blp:35
-msgid "Number of Puzzles per Page"
-msgstr "Število ugank na stran"
+#: src/blueprints/print-multiple-dialog.blp:37
+msgid "_Number of Puzzles per Page"
+msgstr "_Število ugank na stran"
 
-#: src/blueprints/print-multiple-dialog.blp:46
-msgid "Difficulty"
-msgstr "Zahtevnost"
+#: src/blueprints/print-multiple-dialog.blp:51
+msgid "_Difficulty"
+msgstr "Za_htevnost"
 
-#: src/blueprints/print-multiple-dialog.blp:50
+#: src/blueprints/print-multiple-dialog.blp:56
 msgid "Easy"
 msgstr "Enostavno"
 
-#: src/blueprints/print-multiple-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:57
 msgid "Medium"
 msgstr "Srednje"
 
-#: src/blueprints/print-multiple-dialog.blp:52
+#: src/blueprints/print-multiple-dialog.blp:58
 msgid "Hard"
 msgstr "Zahtevno"
 
-#: src/blueprints/print-multiple-dialog.blp:53
+#: src/blueprints/print-multiple-dialog.blp:59
 msgid "Very Hard"
 msgstr "Zelo zahtevno"
 
@@ -444,133 +412,138 @@ msgstr "_Zelo zahtevna"
 msgid "_Start Game"
 msgstr "_Začni igro"
 
-#: src/blueprints/shortcuts-window.blp:11
+#: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
 msgid "Game"
 msgstr "Igra"
 
-#: src/blueprints/shortcuts-window.blp:15
-#: src/blueprints/shortcuts-window.blp:20
+#: src/blueprints/shortcuts-dialog.blp:11
+#: src/blueprints/shortcuts-dialog.blp:16
 msgctxt "Shortcuts Window"
 msgid "Move"
 msgstr "Premakni"
 
-#: src/blueprints/shortcuts-window.blp:25
+#: src/blueprints/shortcuts-dialog.blp:20
 msgctxt "Shortcuts Window"
 msgid "Earmarks"
 msgstr "Ušesca"
 
-#: src/blueprints/shortcuts-window.blp:30
+#: src/blueprints/shortcuts-dialog.blp:25
 msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "Počisti celico"
 
-#: src/blueprints/shortcuts-window.blp:35
-msgctxt "Shortcuts Window"
-msgid "Undo"
-msgstr "Razveljavi"
-
-#: src/blueprints/shortcuts-window.blp:40
-msgctxt "Shortcuts Window"
-msgid "Redo"
-msgstr "Ponovi"
-
-#: src/blueprints/shortcuts-window.blp:45
-msgctxt "Shortcuts Window"
-msgid "Pause"
-msgstr "Premor"
-
-#: src/blueprints/shortcuts-window.blp:50
-msgctxt "Shortcuts Window"
-msgid "Earmark Mode"
-msgstr "Način ušesc"
-
-#: src/blueprints/shortcuts-window.blp:55
+#: src/blueprints/shortcuts-dialog.blp:30
 msgctxt "Shortcuts Window"
 msgid "Number Picker"
 msgstr "Izbirnik števil"
 
-#: src/blueprints/shortcuts-window.blp:60
+#: src/blueprints/shortcuts-dialog.blp:35
 msgctxt "Shortcuts Window"
 msgid "Earmark Picker"
 msgstr "Izbirnik ušesc"
 
-#: src/blueprints/shortcuts-window.blp:65
+#: src/blueprints/shortcuts-dialog.blp:42
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
+msgstr "Način ušesc"
+
+#: src/blueprints/shortcuts-dialog.blp:47
+msgctxt "Shortcuts Window"
+msgid "Pause"
+msgstr "Premor"
+
+#: src/blueprints/shortcuts-dialog.blp:52
+msgctxt "Shortcuts Window"
+msgid "Undo"
+msgstr "Razveljavi"
+
+#: src/blueprints/shortcuts-dialog.blp:57
+msgctxt "Shortcuts Window"
+msgid "Redo"
+msgstr "Ponovi"
+
+#: src/blueprints/shortcuts-dialog.blp:64
 msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "Nova igra"
 
-#: src/blueprints/shortcuts-window.blp:70
+#: src/blueprints/shortcuts-dialog.blp:69
 msgctxt "Shortcuts Window"
 msgid "Reset Puzzle"
 msgstr "Ponastavi uganko"
 
-#: src/blueprints/shortcuts-window.blp:75
-msgctxt "Shortcuts Window"
-msgid "Window"
-msgstr "Okno"
-
-#: src/blueprints/shortcuts-window.blp:79
-msgctxt "Shortcuts Window"
-msgid "Go Back"
-msgstr "Pojdi nazaj "
-
-#: src/blueprints/shortcuts-window.blp:84
+#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom In"
 msgstr "Približaj"
 
-#: src/blueprints/shortcuts-window.blp:89
+#: src/blueprints/shortcuts-dialog.blp:79
 msgctxt "Shortcuts Window"
 msgid "Zoom Out"
 msgstr "Oddalji"
 
-#: src/blueprints/shortcuts-window.blp:94
+#: src/blueprints/shortcuts-dialog.blp:84
 msgctxt "Shortcuts Window"
 msgid "Zoom Reset"
 msgstr "Ponastavi povečavo"
 
-#: src/blueprints/shortcuts-window.blp:99
+#: src/blueprints/shortcuts-dialog.blp:89
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "Okno"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+msgctxt "Shortcuts Window"
+msgid "Go Back"
+msgstr "Pojdi nazaj "
+
+#: src/blueprints/shortcuts-dialog.blp:98
 msgctxt "Shortcuts Window"
 msgid "Print Current Puzzle"
 msgstr "Natisni trenutno uganko"
 
-#: src/blueprints/shortcuts-window.blp:104
+#: src/blueprints/shortcuts-dialog.blp:103
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Nastavitve"
 
-#: src/blueprints/shortcuts-window.blp:109
+#: src/blueprints/shortcuts-dialog.blp:108
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Tipkovne bližnjice"
 
-#: src/blueprints/shortcuts-window.blp:114
+#: src/blueprints/shortcuts-dialog.blp:113
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Izhod"
 
-#: src/blueprints/shortcuts-window.blp:119
+#: src/blueprints/shortcuts-dialog.blp:118
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Pokaže pomoč"
 
-#: src/blueprints/shortcuts-window.blp:124
+#: src/blueprints/shortcuts-dialog.blp:123
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Meni"
 
-#: src/blueprints/shortcuts-window.blp:129
+#: src/blueprints/shortcuts-dialog.blp:128
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Celozaslonski način"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:92
+#: src/gnome-sudoku.vala:90
 msgid "Show release version"
 msgstr "Pokaži podrobnosti različice"
 
-#: src/gnome-sudoku.vala:216
+#. Text in dialog that displays when the game is over.
+#: src/gnome-sudoku.vala:211
+msgid "Puzzle Completed!"
+msgstr "Uganka rešena!"
+
+#: src/gnome-sudoku.vala:219
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -580,7 +553,7 @@ msgstr[2] "%d minutah"
 msgstr[3] "%d minutah"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:221
+#: src/gnome-sudoku.vala:224
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
@@ -588,24 +561,24 @@ msgstr ""
 "rekord!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:228
+#: src/gnome-sudoku.vala:230
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Dobro opravljeno, sestavljanko ste dokončali v %s!"
 
-#: src/gnome-sudoku.vala:233
-msgid "Well done, you completed the puzzle!"
-msgstr "Dobro opravljeno, sestavljanko ste dokončali!"
-
-#: src/gnome-sudoku.vala:236
-msgid "Quit"
-msgstr "Izhod"
-
 #: src/gnome-sudoku.vala:237
-msgid "Play _Again"
-msgstr "_Igraj znova"
+msgid "_Quit"
+msgstr "_Izhod"
 
-#: src/gnome-sudoku.vala:406
+#: src/gnome-sudoku.vala:240
+msgid "_Change Difficulty"
+msgstr "_Spremeni zahtevnost"
+
+#: src/gnome-sudoku.vala:241
+msgid "_Play Again"
+msgstr "_Nova igra"
+
+#: src/gnome-sudoku.vala:377
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
