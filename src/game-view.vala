@@ -195,6 +195,8 @@ public class SudokuGameView : Adw.Bin
             else
                 clock_label.set_css_classes ({"numeric", "success"});
         }
+        else
+            clock_label.set_css_classes ({"numeric"});
 
         set_clock_label_text (elapsed_time);
     }
