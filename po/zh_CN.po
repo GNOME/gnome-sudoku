@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-09-20 22:10+0000\n"
-"PO-Revision-Date: 2025-09-21 07:45+0800\n"
+"POT-Creation-Date: 2025-11-28 19:02+0000\n"
+"PO-Revision-Date: 2025-11-29 08:06+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -40,92 +40,66 @@ msgid "magic;square;"
 msgstr "magic;square;方块;魔法;游戏;"
 
 #: data/org.gnome.Sudoku.gschema.xml:18
-msgid "Difficulty level of sudokus to be printed"
-msgstr "待打印的数独难度等级"
-
-#: data/org.gnome.Sudoku.gschema.xml:19
-msgid ""
-"Set the difficulty level of the sudokus you want to print. Possible values "
-"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
-msgstr "设置数独的难度等级。可设置为“简单”，“中等”，“困难”或“非常困难”"
-
-#: data/org.gnome.Sudoku.gschema.xml:24
-msgid "Number of Sudokus to print"
-msgstr "待打印的数独数量"
-
-#: data/org.gnome.Sudoku.gschema.xml:25
-msgid "Set the number of sudokus you want to print"
-msgstr "设置你想打印的数独数量"
-
-#: data/org.gnome.Sudoku.gschema.xml:30
-msgid "Number of Sudokus to print per page"
-msgstr "每页待打印的数独数量"
-
-#: data/org.gnome.Sudoku.gschema.xml:31
-msgid "Set the number of sudokus you want to print per page"
-msgstr "设置你每页想打印的数独数量"
-
-#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "用每个单元格可能的数值初始化耳标"
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:25
 msgid "Check for duplicates in row, column and block"
 msgstr "在行、列和区块内检查重复数字"
 
-#: data/org.gnome.Sudoku.gschema.xml:43
+#: data/org.gnome.Sudoku.gschema.xml:29
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr "在行、列和区块内针对重复数字的检查耳标"
 
-#: data/org.gnome.Sudoku.gschema.xml:47
+#: data/org.gnome.Sudoku.gschema.xml:33
 msgid "Toggle timer and pause buttons"
 msgstr "切换计时和暂停按钮"
 
-#: data/org.gnome.Sudoku.gschema.xml:51
+#: data/org.gnome.Sudoku.gschema.xml:37
 msgid "Additionally check against the solution for warnings"
 msgstr "针对警告解法的额外检查"
 
-#: data/org.gnome.Sudoku.gschema.xml:55
+#: data/org.gnome.Sudoku.gschema.xml:41
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr "插入新数字时自动清除相关耳标"
 
-#: data/org.gnome.Sudoku.gschema.xml:59
+#: data/org.gnome.Sudoku.gschema.xml:45
 msgid "Display number picker on second click"
 msgstr "第二次点击时显示数字拾取器"
 
-#: data/org.gnome.Sudoku.gschema.xml:63
+#: data/org.gnome.Sudoku.gschema.xml:49
 msgid "Highlight the selected cell's row and column"
 msgstr "高亮选中单元格的行和列"
 
-#: data/org.gnome.Sudoku.gschema.xml:67
+#: data/org.gnome.Sudoku.gschema.xml:53
 msgid "Highlight the selected cell's block"
 msgstr "高亮选中单元格的区块"
 
-#: data/org.gnome.Sudoku.gschema.xml:71
+#: data/org.gnome.Sudoku.gschema.xml:57
 msgid "Highlight the selected cell's matching numbers"
 msgstr "高亮单元格的匹配数字"
 
-#: data/org.gnome.Sudoku.gschema.xml:75
+#: data/org.gnome.Sudoku.gschema.xml:61
 msgid "The puzzle's difficulty"
 msgstr "谜题难度"
 
-#: data/org.gnome.Sudoku.gschema.xml:79
+#: data/org.gnome.Sudoku.gschema.xml:68
 msgid "Zoom level"
 msgstr "缩放级别"
 
-#: data/org.gnome.Sudoku.gschema.xml:83
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Width of the window in pixels"
 msgstr "窗口的宽度（像素）"
 
-#: data/org.gnome.Sudoku.gschema.xml:87
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "Height of the window in pixels"
 msgstr "窗口的高度（像素）"
 
-#: data/org.gnome.Sudoku.gschema.xml:91
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "true if the window is maximized"
 msgstr "若窗口已经最大化则为 true"
 
-#: data/org.gnome.Sudoku.gschema.xml:95
+#: data/org.gnome.Sudoku.gschema.xml:84
 msgid "true if the window is fullscreen"
 msgstr "若窗口已经全屏则为 true"
 
@@ -194,29 +168,25 @@ msgstr "GNOME 数独游戏预览"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "具有耳标和警告功能的暗色模式 GNOME 数独游戏"
 
-#: lib/sudoku-board.vala:551
+#: lib/board.vala:544 lib/board.vala:555
 msgid "Unknown Difficulty"
 msgstr "未知难度"
 
-#: lib/sudoku-board.vala:553
+#: lib/board.vala:546
 msgid "Easy Difficulty"
 msgstr "简易难度"
 
-#: lib/sudoku-board.vala:555
+#: lib/board.vala:548
 msgid "Medium Difficulty"
 msgstr "中等难度"
 
-#: lib/sudoku-board.vala:557
+#: lib/board.vala:550
 msgid "Hard Difficulty"
 msgstr "困难难度"
 
-#: lib/sudoku-board.vala:559
+#: lib/board.vala:552
 msgid "Very Hard Difficulty"
 msgstr "非常困难难度"
-
-#: lib/sudoku-board.vala:561
-msgid "Custom Puzzle"
-msgstr "自定义谜题"
 
 #: src/blueprints/game-view.blp:22
 msgid "Undo Action"
@@ -238,7 +208,7 @@ msgstr "暂停"
 msgid "Play"
 msgstr "游玩"
 
-#: src/blueprints/menu-button.blp:7
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:243
 msgid "_New Game…"
 msgstr "新建游戏(_N)…"
 
@@ -247,7 +217,7 @@ msgid "_Reset Puzzle"
 msgstr "重置谜题(_R)"
 
 #: src/blueprints/menu-button.blp:19
-#: src/blueprints/print-multiple-dialog.blp:65
+#: src/blueprints/print-multiple-dialog.blp:69
 msgid "_Print"
 msgstr "打印(_P)"
 
@@ -368,31 +338,31 @@ msgstr "高亮区块(_B)"
 msgid "Print Multiple Puzzles"
 msgstr "打印多个数独"
 
-#: src/blueprints/print-multiple-dialog.blp:24
-msgid "Number of Puzzles"
-msgstr "谜题数量"
+#: src/blueprints/print-multiple-dialog.blp:23
+msgid "_Number of Puzzles"
+msgstr "谜题数量(_N)"
 
-#: src/blueprints/print-multiple-dialog.blp:35
-msgid "Number of Puzzles per Page"
-msgstr "每页谜题数量"
+#: src/blueprints/print-multiple-dialog.blp:37
+msgid "_Number of Puzzles per Page"
+msgstr "每页谜题数量(_N)"
 
-#: src/blueprints/print-multiple-dialog.blp:46
-msgid "Difficulty"
-msgstr "难度"
+#: src/blueprints/print-multiple-dialog.blp:51
+msgid "_Difficulty"
+msgstr "难度(_D)"
 
-#: src/blueprints/print-multiple-dialog.blp:50
+#: src/blueprints/print-multiple-dialog.blp:56
 msgid "Easy"
 msgstr "简单"
 
-#: src/blueprints/print-multiple-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:57
 msgid "Medium"
 msgstr "中等"
 
-#: src/blueprints/print-multiple-dialog.blp:52
+#: src/blueprints/print-multiple-dialog.blp:58
 msgid "Hard"
 msgstr "困难"
 
-#: src/blueprints/print-multiple-dialog.blp:53
+#: src/blueprints/print-multiple-dialog.blp:59
 msgid "Very Hard"
 msgstr "非常困难"
 
@@ -437,163 +407,167 @@ msgstr "非常困难(_V)"
 msgid "_Start Game"
 msgstr "开始游戏(_S)"
 
-#: src/blueprints/shortcuts-window.blp:11
+#: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
 msgid "Game"
 msgstr "游戏"
 
-#: src/blueprints/shortcuts-window.blp:15
-#: src/blueprints/shortcuts-window.blp:20
+#: src/blueprints/shortcuts-dialog.blp:11
+#: src/blueprints/shortcuts-dialog.blp:16
 msgctxt "Shortcuts Window"
 msgid "Move"
 msgstr "移动"
 
-#: src/blueprints/shortcuts-window.blp:25
+#: src/blueprints/shortcuts-dialog.blp:20
 msgctxt "Shortcuts Window"
 msgid "Earmarks"
 msgstr "耳标"
 
-#: src/blueprints/shortcuts-window.blp:30
+#: src/blueprints/shortcuts-dialog.blp:25
 msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "清除单元格"
 
-#: src/blueprints/shortcuts-window.blp:35
-msgctxt "Shortcuts Window"
-msgid "Undo"
-msgstr "撤消"
-
-#: src/blueprints/shortcuts-window.blp:40
-msgctxt "Shortcuts Window"
-msgid "Redo"
-msgstr "重做"
-
-#: src/blueprints/shortcuts-window.blp:45
-msgctxt "Shortcuts Window"
-msgid "Pause"
-msgstr "暂停"
-
-#: src/blueprints/shortcuts-window.blp:50
-msgctxt "Shortcuts Window"
-msgid "Earmark Mode"
-msgstr "耳标模式"
-
-#: src/blueprints/shortcuts-window.blp:55
+#: src/blueprints/shortcuts-dialog.blp:30
 msgctxt "Shortcuts Window"
 msgid "Number Picker"
 msgstr "数字拾取器"
 
-#: src/blueprints/shortcuts-window.blp:60
+#: src/blueprints/shortcuts-dialog.blp:35
 msgctxt "Shortcuts Window"
 msgid "Earmark Picker"
 msgstr "耳标拾取器"
 
-#: src/blueprints/shortcuts-window.blp:65
+#: src/blueprints/shortcuts-dialog.blp:42
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
+msgstr "耳标模式"
+
+#: src/blueprints/shortcuts-dialog.blp:47
+msgctxt "Shortcuts Window"
+msgid "Pause"
+msgstr "暂停"
+
+#: src/blueprints/shortcuts-dialog.blp:52
+msgctxt "Shortcuts Window"
+msgid "Undo"
+msgstr "撤消"
+
+#: src/blueprints/shortcuts-dialog.blp:57
+msgctxt "Shortcuts Window"
+msgid "Redo"
+msgstr "重做"
+
+#: src/blueprints/shortcuts-dialog.blp:64
 msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "新建游戏"
 
-#: src/blueprints/shortcuts-window.blp:70
+#: src/blueprints/shortcuts-dialog.blp:69
 msgctxt "Shortcuts Window"
 msgid "Reset Puzzle"
 msgstr "重置谜题"
 
-#: src/blueprints/shortcuts-window.blp:75
-msgctxt "Shortcuts Window"
-msgid "Window"
-msgstr "窗口"
-
-#: src/blueprints/shortcuts-window.blp:79
-msgctxt "Shortcuts Window"
-msgid "Go Back"
-msgstr "返回"
-
-#: src/blueprints/shortcuts-window.blp:84
+#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom In"
 msgstr "放大"
 
-#: src/blueprints/shortcuts-window.blp:89
+#: src/blueprints/shortcuts-dialog.blp:79
 msgctxt "Shortcuts Window"
 msgid "Zoom Out"
 msgstr "缩小"
 
-#: src/blueprints/shortcuts-window.blp:94
+#: src/blueprints/shortcuts-dialog.blp:84
 msgctxt "Shortcuts Window"
 msgid "Zoom Reset"
 msgstr "重置缩放"
 
-#: src/blueprints/shortcuts-window.blp:99
+#: src/blueprints/shortcuts-dialog.blp:89
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "窗口"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+msgctxt "Shortcuts Window"
+msgid "Go Back"
+msgstr "返回"
+
+#: src/blueprints/shortcuts-dialog.blp:98
 msgctxt "Shortcuts Window"
 msgid "Print Current Puzzle"
 msgstr "打印当前谜题"
 
-#: src/blueprints/shortcuts-window.blp:104
+#: src/blueprints/shortcuts-dialog.blp:103
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/blueprints/shortcuts-window.blp:109
+#: src/blueprints/shortcuts-dialog.blp:108
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "键盘快捷键"
 
-#: src/blueprints/shortcuts-window.blp:114
+#: src/blueprints/shortcuts-dialog.blp:113
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "退出"
 
-#: src/blueprints/shortcuts-window.blp:119
+#: src/blueprints/shortcuts-dialog.blp:118
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "帮助"
 
-#: src/blueprints/shortcuts-window.blp:124
+#: src/blueprints/shortcuts-dialog.blp:123
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "菜单"
 
-#: src/blueprints/shortcuts-window.blp:129
+#: src/blueprints/shortcuts-dialog.blp:128
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "全屏"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:92
+#: src/gnome-sudoku.vala:90
 msgid "Show release version"
 msgstr "显示发行版本"
 
-#: src/gnome-sudoku.vala:216
+#: src/gnome-sudoku.vala:215
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d 分钟"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:221
+#: src/gnome-sudoku.vala:220
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr "做得好，您在 %s 内完成了该谜题并取得了新的个人最佳成绩！"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:228
+#: src/gnome-sudoku.vala:226
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "做得好，您在 %s 内完成了该谜题！"
 
-#: src/gnome-sudoku.vala:233
-msgid "Well done, you completed the puzzle!"
-msgstr "做得好，您完成了该谜题！"
+#: src/gnome-sudoku.vala:231
+msgid "Puzzle Completed!"
+msgstr "谜题已解决！"
 
-#: src/gnome-sudoku.vala:236
-msgid "Quit"
-msgstr "退出"
+#: src/gnome-sudoku.vala:234
+msgid "_Quit"
+msgstr "退出(_Q)"
 
 #: src/gnome-sudoku.vala:237
-msgid "Play _Again"
-msgstr "再玩一次(_A)"
+msgid "_Change Difficulty"
+msgstr "更改难度(_C)"
 
-#: src/gnome-sudoku.vala:406
+#: src/gnome-sudoku.vala:238
+msgid "_Play Again"
+msgstr "再玩一遍(_P)"
+
+#: src/gnome-sudoku.vala:374
 msgid "translator-credits"
 msgstr ""
 "Yang Zhang <zyangmath@gmail.com>, 2007\n"
@@ -625,6 +599,32 @@ msgstr "打印文件出错："
 #: src/printer.vala:45
 msgid "Close"
 msgstr "关闭"
+
+#~ msgid "Difficulty level of sudokus to be printed"
+#~ msgstr "待打印的数独难度等级"
+
+#~ msgid ""
+#~ "Set the difficulty level of the sudokus you want to print. Possible "
+#~ "values are: \"easy\", \"medium\", \"hard\", \"very_hard\""
+#~ msgstr "设置数独的难度等级。可设置为“简单”，“中等”，“困难”或“非常困难”"
+
+#~ msgid "Number of Sudokus to print"
+#~ msgstr "待打印的数独数量"
+
+#~ msgid "Set the number of sudokus you want to print"
+#~ msgstr "设置你想打印的数独数量"
+
+#~ msgid "Number of Sudokus to print per page"
+#~ msgstr "每页待打印的数独数量"
+
+#~ msgid "Set the number of sudokus you want to print per page"
+#~ msgstr "设置你每页想打印的数独数量"
+
+#~ msgid "Custom Puzzle"
+#~ msgstr "自定义谜题"
+
+#~ msgid "Well done, you completed the puzzle!"
+#~ msgstr "做得好，您完成了该谜题！"
 
 #~ msgid "Color mistakes and duplicate numbers in red"
 #~ msgstr "将错误和重复数字着色为红色"
