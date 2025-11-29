@@ -187,9 +187,13 @@ public class SudokuGameView : Adw.Bin
             return;
 
         var elapsed_time = (int) game.get_total_time_played ();
+        var highscore = "";
 
         if (backend.highscore != null)
         {
+            highscore = "🥇" + create_timer_string ((int) backend.highscore);
+            clock_box.set_tooltip_markup (("<span font_features='tnum=1'>%s</span>").printf (highscore));
+
             if (elapsed_time > backend.highscore)
                 clock_label.set_css_classes ({"numeric"});
             else if (elapsed_time > backend.highscore - 60)
@@ -198,19 +202,23 @@ public class SudokuGameView : Adw.Bin
                 clock_label.set_css_classes ({"numeric", "success"});
         }
 
-        set_clock_label_text (elapsed_time);
+        clock_label.set_label (create_timer_string (elapsed_time));
+        clock_box.set_tooltip_text (highscore);
     }
 
-    private void set_clock_label_text (int elapsed_time)
+    private string create_timer_string (int elapsed_time)
     {
+        var ret = "";
         var hours = elapsed_time / 3600;
         var minutes = (elapsed_time - hours * 3600) / 60;
         var seconds = elapsed_time - hours * 3600 - minutes * 60;
 
         if (hours > 0)
-            clock_label.set_text ("%02d∶\xE2\x80\x8E%02d∶\xE2\x80\x8E%02d".printf (hours, minutes, seconds));
+            ret = ("%02d∶\xE2\x80\x8E%02d∶\xE2\x80\x8E%02d".printf (hours, minutes, seconds));
         else
-            clock_label.set_text ("%02d∶\xE2\x80\x8E%02d".printf (minutes, seconds));
+            ret = ("%02d∶\xE2\x80\x8E%02d".printf (minutes, seconds));
+
+        return ret;
     }
 
     private void add_earmark_possibilities ()
@@ -243,7 +251,7 @@ public class SudokuGameView : Adw.Bin
                 clock_label.set_css_classes ({"warning"});
         }
 
-        set_clock_label_text (elapsed_time);
+        clock_label.set_label (create_timer_string (elapsed_time));
     }
 
     private void window_width_is_small_cb ()
