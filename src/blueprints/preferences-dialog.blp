@@ -48,11 +48,6 @@ template $SudokuPreferencesDialog: Adw.PreferencesDialog {
     Adw.PreferencesGroup {
       title: C_("Preferences Dialog", "Highlighter");
 
-      Adw.SwitchRow highlight_numbers {
-        title: C_("Highlighter Preferences", "Highlight Matching _Numbers");
-        use-underline: true;
-      }
-
       Adw.SwitchRow highlight_row_column {
         title: C_("Highlighter Preferences", "Highlight _Row and Column");
         use-underline: true;
@@ -60,6 +55,11 @@ template $SudokuPreferencesDialog: Adw.PreferencesDialog {
 
       Adw.SwitchRow highlight_block {
         title: C_("Highlighter Preferences", "Highlight _Block");
+        use-underline: true;
+      }
+
+      Adw.SwitchRow highlight_numbers {
+        title: C_("Highlighter Preferences", "Highlight Matching _Numbers");
         use-underline: true;
       }
     }
