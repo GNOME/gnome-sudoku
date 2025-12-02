@@ -193,7 +193,7 @@ public class SudokuWindow : Adw.ApplicationWindow
             if (!game_view.game.paused)
                 game_view.game.resume_clock ();
 
-            if (!game_view.game.board.complete)
+            if (!game_view.game.board.complete && game_view.game.mode == GameMode.PLAY)
                 game_view.grab_focus ();
         }
     }
