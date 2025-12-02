@@ -295,6 +295,7 @@ public class Sudoku : Adw.Application
     private void start_custom_game ()
     {
         game.board.set_all_fixed ();
+        game.mode = GameMode.PLAY;
         start_game (game.board);
     }
 
