@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-09-14 00:51+0000\n"
-"PO-Revision-Date: 2025-09-14 15:34+0200\n"
+"POT-Creation-Date: 2025-12-02 16:42+0000\n"
+"PO-Revision-Date: 2025-12-03 00:40+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
 #: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
@@ -34,92 +34,66 @@ msgid "magic;square;"
 msgstr ""
 
 #: data/org.gnome.Sudoku.gschema.xml:18
-msgid "Difficulty level of sudokus to be printed"
-msgstr ""
-
-#: data/org.gnome.Sudoku.gschema.xml:19
-msgid ""
-"Set the difficulty level of the sudokus you want to print. Possible values "
-"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
-msgstr ""
-
-#: data/org.gnome.Sudoku.gschema.xml:24
-msgid "Number of Sudokus to print"
-msgstr ""
-
-#: data/org.gnome.Sudoku.gschema.xml:25
-msgid "Set the number of sudokus you want to print"
-msgstr ""
-
-#: data/org.gnome.Sudoku.gschema.xml:30
-msgid "Number of Sudokus to print per page"
-msgstr ""
-
-#: data/org.gnome.Sudoku.gschema.xml:31
-msgid "Set the number of sudokus you want to print per page"
-msgstr ""
-
-#: data/org.gnome.Sudoku.gschema.xml:35
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:39
+#: data/org.gnome.Sudoku.gschema.xml:25
 msgid "Check for duplicates in row, column and block"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:43
+#: data/org.gnome.Sudoku.gschema.xml:29
 msgid "Check earmarks against duplicates in row, column and block"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:47
+#: data/org.gnome.Sudoku.gschema.xml:33
 msgid "Toggle timer and pause buttons"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:51
+#: data/org.gnome.Sudoku.gschema.xml:37
 msgid "Additionally check against the solution for warnings"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:55
+#: data/org.gnome.Sudoku.gschema.xml:41
 msgid "Automatically clear related earmarks on new number insertion"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:59
+#: data/org.gnome.Sudoku.gschema.xml:45
 msgid "Display number picker on second click"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:63
+#: data/org.gnome.Sudoku.gschema.xml:49
 msgid "Highlight the selected cell's row and column"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:67
+#: data/org.gnome.Sudoku.gschema.xml:53
 msgid "Highlight the selected cell's block"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:71
+#: data/org.gnome.Sudoku.gschema.xml:57
 msgid "Highlight the selected cell's matching numbers"
 msgstr ""
 
-#: data/org.gnome.Sudoku.gschema.xml:75
+#: data/org.gnome.Sudoku.gschema.xml:61
 msgid "The puzzle's difficulty"
 msgstr "პაზლის სირთულე"
 
-#: data/org.gnome.Sudoku.gschema.xml:79
+#: data/org.gnome.Sudoku.gschema.xml:68
 msgid "Zoom level"
 msgstr "გადიდების დონე"
 
-#: data/org.gnome.Sudoku.gschema.xml:83
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Width of the window in pixels"
 msgstr "ფანჯრის სიგანე, პიქსელებში"
 
-#: data/org.gnome.Sudoku.gschema.xml:87
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "Height of the window in pixels"
 msgstr "ფანჯრის სიმაღლე, პიქსელებში"
 
-#: data/org.gnome.Sudoku.gschema.xml:91
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "true if the window is maximized"
 msgstr "ჭეშმარიტია, თუ ფანჯარა მთელ ეკრანზეა"
 
-#: data/org.gnome.Sudoku.gschema.xml:95
+#: data/org.gnome.Sudoku.gschema.xml:84
 msgid "true if the window is fullscreen"
 msgstr "ჭეშმარიტია, თუ ფანჯარა სრულ ეკრანზეა"
 
@@ -186,29 +160,25 @@ msgstr ""
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr ""
 
-#: lib/sudoku-board.vala:551
+#: lib/board.vala:544 lib/board.vala:555
 msgid "Unknown Difficulty"
 msgstr "უცნობი სირთულე"
 
-#: lib/sudoku-board.vala:553
+#: lib/board.vala:546
 msgid "Easy Difficulty"
 msgstr "მარტივი სირთულე"
 
-#: lib/sudoku-board.vala:555
+#: lib/board.vala:548
 msgid "Medium Difficulty"
 msgstr "საშუალო სირთულე"
 
-#: lib/sudoku-board.vala:557
+#: lib/board.vala:550
 msgid "Hard Difficulty"
 msgstr "რთული სირთულე"
 
-#: lib/sudoku-board.vala:559
+#: lib/board.vala:552
 msgid "Very Hard Difficulty"
 msgstr "ძალიან რთული სირთულე"
-
-#: lib/sudoku-board.vala:561
-msgid "Custom Puzzle"
-msgstr ""
 
 #: src/blueprints/game-view.blp:22
 msgid "Undo Action"
@@ -230,7 +200,7 @@ msgstr "შეჩერება"
 msgid "Play"
 msgstr "თამაში"
 
-#: src/blueprints/menu-button.blp:7
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:246
 msgid "_New Game…"
 msgstr "_ახალი თამაში…"
 
@@ -238,7 +208,8 @@ msgstr "_ახალი თამაში…"
 msgid "_Reset Puzzle"
 msgstr "პაზლის ჩამოყ_რა"
 
-#: src/blueprints/menu-button.blp:19 src/blueprints/print-dialog.blp:65
+#: src/blueprints/menu-button.blp:19
+#: src/blueprints/print-multiple-dialog.blp:69
 msgid "_Print"
 msgstr "_ბეჭდვა"
 
@@ -342,48 +313,48 @@ msgstr "გამომკვეთი"
 
 #: src/blueprints/preferences-dialog.blp:52
 msgctxt "Highlighter Preferences"
-msgid "Highlight Matching _Numbers"
+msgid "Highlight _Row and Column"
 msgstr ""
 
 #: src/blueprints/preferences-dialog.blp:57
 msgctxt "Highlighter Preferences"
-msgid "Highlight _Row and Column"
-msgstr ""
-
-#: src/blueprints/preferences-dialog.blp:62
-msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "_ბლოკის გამოკვეთა"
 
-#: src/blueprints/print-dialog.blp:5
+#: src/blueprints/preferences-dialog.blp:62
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr ""
+
+#: src/blueprints/print-multiple-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr ""
 
-#: src/blueprints/print-dialog.blp:24
-msgid "Number of Puzzles"
+#: src/blueprints/print-multiple-dialog.blp:23
+msgid "_Number of Puzzles"
 msgstr ""
 
-#: src/blueprints/print-dialog.blp:35
-msgid "Number of puzzles per page"
+#: src/blueprints/print-multiple-dialog.blp:37
+msgid "_Number of Puzzles per Page"
 msgstr ""
 
-#: src/blueprints/print-dialog.blp:46
-msgid "Difficulty"
-msgstr "სირთულე"
+#: src/blueprints/print-multiple-dialog.blp:51
+msgid "_Difficulty"
+msgstr "სირთუ_ლე"
 
-#: src/blueprints/print-dialog.blp:50
+#: src/blueprints/print-multiple-dialog.blp:56
 msgid "Easy"
 msgstr "ადვილი"
 
-#: src/blueprints/print-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:57
 msgid "Medium"
 msgstr "საშუალო"
 
-#: src/blueprints/print-dialog.blp:52
+#: src/blueprints/print-multiple-dialog.blp:58
 msgid "Hard"
 msgstr "ძნელი"
 
-#: src/blueprints/print-dialog.blp:53
+#: src/blueprints/print-multiple-dialog.blp:59
 msgid "Very Hard"
 msgstr "ძალიან ძნელი"
 
@@ -428,133 +399,138 @@ msgstr "ძ_ალიან ძნელი"
 msgid "_Start Game"
 msgstr "თამაშის _დაწყება"
 
-#: src/blueprints/shortcuts-window.blp:11
+#: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
 msgid "Game"
 msgstr "თამაში"
 
-#: src/blueprints/shortcuts-window.blp:15
-#: src/blueprints/shortcuts-window.blp:20
+#: src/blueprints/shortcuts-dialog.blp:11
+#: src/blueprints/shortcuts-dialog.blp:16
 msgctxt "Shortcuts Window"
 msgid "Move"
 msgstr "გადატანა"
 
-#: src/blueprints/shortcuts-window.blp:25
+#: src/blueprints/shortcuts-dialog.blp:20
 msgctxt "Shortcuts Window"
 msgid "Earmarks"
 msgstr ""
 
-#: src/blueprints/shortcuts-window.blp:30
+#: src/blueprints/shortcuts-dialog.blp:25
 msgctxt "Shortcuts Window"
 msgid "Clear Cell"
 msgstr "უჯრედის გასუფავება"
 
-#: src/blueprints/shortcuts-window.blp:35
-msgctxt "Shortcuts Window"
-msgid "Undo"
-msgstr "დაბრუნება"
-
-#: src/blueprints/shortcuts-window.blp:40
-msgctxt "Shortcuts Window"
-msgid "Redo"
-msgstr "გამეორება"
-
-#: src/blueprints/shortcuts-window.blp:45
-msgctxt "Shortcuts Window"
-msgid "Pause"
-msgstr "შეჩერება"
-
-#: src/blueprints/shortcuts-window.blp:50
-msgctxt "Shortcuts Window"
-msgid "Earmark Mode"
-msgstr ""
-
-#: src/blueprints/shortcuts-window.blp:55
+#: src/blueprints/shortcuts-dialog.blp:30
 msgctxt "Shortcuts Window"
 msgid "Number Picker"
 msgstr ""
 
-#: src/blueprints/shortcuts-window.blp:60
+#: src/blueprints/shortcuts-dialog.blp:35
 msgctxt "Shortcuts Window"
 msgid "Earmark Picker"
 msgstr ""
 
-#: src/blueprints/shortcuts-window.blp:65
+#: src/blueprints/shortcuts-dialog.blp:42
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
+msgstr ""
+
+#: src/blueprints/shortcuts-dialog.blp:47
+msgctxt "Shortcuts Window"
+msgid "Pause"
+msgstr "შეჩერება"
+
+#: src/blueprints/shortcuts-dialog.blp:52
+msgctxt "Shortcuts Window"
+msgid "Undo"
+msgstr "დაბრუნება"
+
+#: src/blueprints/shortcuts-dialog.blp:57
+msgctxt "Shortcuts Window"
+msgid "Redo"
+msgstr "გამეორება"
+
+#: src/blueprints/shortcuts-dialog.blp:64
 msgctxt "Shortcuts Window"
 msgid "New Game"
 msgstr "ახალი თამაში"
 
-#: src/blueprints/shortcuts-window.blp:70
+#: src/blueprints/shortcuts-dialog.blp:69
 msgctxt "Shortcuts Window"
 msgid "Reset Puzzle"
 msgstr "პაზლის ჩამოყრა"
 
-#: src/blueprints/shortcuts-window.blp:75
-msgctxt "Shortcuts Window"
-msgid "Window"
-msgstr "ფანჯარა"
-
-#: src/blueprints/shortcuts-window.blp:79
-msgctxt "Shortcuts Window"
-msgid "Go Back"
-msgstr "უკან დაბრუნება"
-
-#: src/blueprints/shortcuts-window.blp:84
+#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom In"
 msgstr "გადიდება"
 
-#: src/blueprints/shortcuts-window.blp:89
+#: src/blueprints/shortcuts-dialog.blp:79
 msgctxt "Shortcuts Window"
 msgid "Zoom Out"
 msgstr "დაპატარავება"
 
-#: src/blueprints/shortcuts-window.blp:94
+#: src/blueprints/shortcuts-dialog.blp:84
 msgctxt "Shortcuts Window"
 msgid "Zoom Reset"
 msgstr "გადიდების ჩამოყრა"
 
-#: src/blueprints/shortcuts-window.blp:99
+#: src/blueprints/shortcuts-dialog.blp:89
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "ფანჯარა"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+msgctxt "Shortcuts Window"
+msgid "Go Back"
+msgstr "უკან დაბრუნება"
+
+#: src/blueprints/shortcuts-dialog.blp:98
 msgctxt "Shortcuts Window"
 msgid "Print Current Puzzle"
 msgstr "მიმდინარე პაზლის დაბეჭდვა"
 
-#: src/blueprints/shortcuts-window.blp:104
+#: src/blueprints/shortcuts-dialog.blp:103
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "მორგება"
 
-#: src/blueprints/shortcuts-window.blp:109
+#: src/blueprints/shortcuts-dialog.blp:108
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "კლავიატურის მალსახმობები"
 
-#: src/blueprints/shortcuts-window.blp:114
+#: src/blueprints/shortcuts-dialog.blp:113
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "გასვლა"
 
-#: src/blueprints/shortcuts-window.blp:119
+#: src/blueprints/shortcuts-dialog.blp:118
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "დახმარება"
 
-#: src/blueprints/shortcuts-window.blp:124
+#: src/blueprints/shortcuts-dialog.blp:123
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "მენიუ"
 
-#: src/blueprints/shortcuts-window.blp:129
+#: src/blueprints/shortcuts-dialog.blp:128
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "სრულ ეკრანზე"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:94
+#: src/gnome-sudoku.vala:90
 msgid "Show release version"
 msgstr "ვერსიის ჩვენება"
 
-#: src/gnome-sudoku.vala:220
+#. Text in dialog that displays when the game is over.
+#: src/gnome-sudoku.vala:211
+msgid "Puzzle Completed!"
+msgstr ""
+
+#: src/gnome-sudoku.vala:219
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -562,30 +538,30 @@ msgstr[0] "%d წუთი"
 msgstr[1] "%d წუთი"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:225
+#: src/gnome-sudoku.vala:224
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:230
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr ""
 
 #: src/gnome-sudoku.vala:237
-msgid "Well done, you completed the puzzle!"
-msgstr ""
+msgid "_Quit"
+msgstr "გასვ_ლა"
 
 #: src/gnome-sudoku.vala:240
-msgid "Quit"
-msgstr "გასვლა"
+msgid "_Change Difficulty"
+msgstr "_სიძნელის შეცვლა"
 
 #: src/gnome-sudoku.vala:241
-msgid "Play _Again"
+msgid "_Play Again"
 msgstr "_თავიდან თამაში"
 
-#: src/gnome-sudoku.vala:427
+#: src/gnome-sudoku.vala:377
 msgid "translator-credits"
 msgstr "ეკატერინე პაპავა"
 
