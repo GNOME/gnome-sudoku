@@ -74,6 +74,7 @@ public class SudokuGrid : Grid
         column_spacing = 2;
         column_homogeneous = true;
         row_homogeneous = true;
+        set_direction (TextDirection.LTR);
         add_css_class("board");
 
         button_controller = new GestureClick ();
@@ -90,6 +91,7 @@ public class SudokuGrid : Grid
             for (var block_col = 0; block_col < game.board.block_cols; block_col++)
             {
                 var block_grid = new Grid ();
+                block_grid.set_direction (TextDirection.LTR);
                 block_grid.row_spacing = 1;
                 block_grid.column_spacing = 1;
                 block_grid.column_homogeneous = true;
@@ -401,37 +403,16 @@ public class SudokuGrid : Grid
                     return cells[selected_row + 1, selected_col].focus (direction);
 
             case DirectionType.LEFT:
-                if (get_direction () == TextDirection.RTL)
-                {
-                    if (selected_col == 8)
-                        return cells[selected_row, 0].focus (direction);
-                    else
-                        return cells[selected_row, selected_col + 1].focus (direction);
-                }
+                if (selected_col == 0)
+                    return cells[selected_row, 8].focus (direction);
                 else
-                {
-                    if (selected_col == 0)
-                        return cells[selected_row, 8].focus (direction);
-                    else
-                        return cells[selected_row, selected_col - 1].focus (direction);
-                }
+                    return cells[selected_row, selected_col - 1].focus (direction);
 
             case DirectionType.RIGHT:
-                if (get_direction () == TextDirection.RTL)
-                {
-                    if (selected_col == 0)
-                        return cells[selected_row, 8].focus (direction);
-                    else
-                        return cells[selected_row, selected_col - 1].focus (direction);
-                }
-
+                if (selected_col == 8)
+                    return cells[selected_row, 0].focus (direction);
                 else
-                {
-                    if (selected_col == 8)
-                        return cells[selected_row, 0].focus (direction);
-                    else
-                        return cells[selected_row, selected_col + 1].focus (direction);
-                }
+                    return cells[selected_row, selected_col + 1].focus (direction);
             default:
                 assert_not_reached ();
         }
