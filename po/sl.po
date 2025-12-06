@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-11-29 11:11+0000\n"
-"PO-Revision-Date: 2025-11-29 17:51+0100\n"
+"POT-Creation-Date: 2025-12-06 13:42+0000\n"
+"PO-Revision-Date: 2025-12-06 17:48+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-"
 "si@googlegroups.com>\n"
@@ -213,7 +213,7 @@ msgstr "Premor"
 msgid "Play"
 msgstr "Igraj"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:246
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:248
 msgid "_New Game…"
 msgstr "_Nova igra …"
 
@@ -222,7 +222,6 @@ msgid "_Reset Puzzle"
 msgstr "_Ponastavi uganko"
 
 #: src/blueprints/menu-button.blp:19
-#: src/blueprints/print-multiple-dialog.blp:69
 msgid "_Print"
 msgstr "_Natisni"
 
@@ -326,18 +325,18 @@ msgstr "Poudarjalnik"
 
 #: src/blueprints/preferences-dialog.blp:52
 msgctxt "Highlighter Preferences"
-msgid "Highlight Matching _Numbers"
-msgstr "Poudari ujemajoče se _številke"
-
-#: src/blueprints/preferences-dialog.blp:57
-msgctxt "Highlighter Preferences"
 msgid "Highlight _Row and Column"
 msgstr "Poudari _vrstico in stolpec"
 
-#: src/blueprints/preferences-dialog.blp:62
+#: src/blueprints/preferences-dialog.blp:57
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "Poudari _blok"
+
+#: src/blueprints/preferences-dialog.blp:62
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "Poudari ujemajoče se _številke"
 
 #: src/blueprints/print-multiple-dialog.blp:5
 msgid "Print Multiple Puzzles"
@@ -370,6 +369,10 @@ msgstr "Zahtevno"
 #: src/blueprints/print-multiple-dialog.blp:59
 msgid "Very Hard"
 msgstr "Zelo zahtevno"
+
+#: src/blueprints/print-multiple-dialog.blp:69
+msgid "_Print…"
+msgstr "_Natisni …"
 
 #: src/blueprints/start-view.blp:13
 msgid "Select Difficulty"
@@ -539,11 +542,11 @@ msgid "Show release version"
 msgstr "Pokaži podrobnosti različice"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:211
+#: src/gnome-sudoku.vala:213
 msgid "Puzzle Completed!"
 msgstr "Uganka rešena!"
 
-#: src/gnome-sudoku.vala:219
+#: src/gnome-sudoku.vala:221
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -553,7 +556,7 @@ msgstr[2] "%d minutah"
 msgstr[3] "%d minutah"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:226
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
@@ -561,24 +564,24 @@ msgstr ""
 "rekord!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:230
+#: src/gnome-sudoku.vala:232
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Dobro opravljeno, sestavljanko ste dokončali v %s!"
 
-#: src/gnome-sudoku.vala:237
+#: src/gnome-sudoku.vala:239
 msgid "_Quit"
 msgstr "_Izhod"
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:242
 msgid "_Change Difficulty"
 msgstr "_Spremeni zahtevnost"
 
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:243
 msgid "_Play Again"
 msgstr "_Nova igra"
 
-#: src/gnome-sudoku.vala:377
+#: src/gnome-sudoku.vala:371
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
@@ -586,15 +589,15 @@ msgstr ""
 "Matej Erman\n"
 "Tadej Janež"
 
-#: src/number-picker.vala:127
+#: src/number-picker.vala:134
 msgid "Clear"
 msgstr "Počisti"
 
-#: src/number-picker.vala:237 src/number-picker.vala:312
+#: src/number-picker.vala:231 src/number-picker.vala:306
 msgid "Lock"
 msgstr "Zakleni"
 
-#: src/number-picker.vala:309
+#: src/number-picker.vala:303
 msgid "Unlock"
 msgstr "Odkleni"
 
