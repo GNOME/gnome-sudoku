@@ -119,8 +119,8 @@ public class SudokuCell : Widget
 
         focusable = true;
         can_focus = true;
-        game.notify["paused"].connect(paused_cb);
-        Sudoku.app.notify["earmark-mode"].connect(flip_shortcuts);
+        game.notify["paused"].connect (paused_cb);
+        Sudoku.app.notify["earmark-mode"].connect (flip_shortcuts);
 
         button_controller = new GestureClick ();
         button_controller.set_button (0 /* all buttons */ );
@@ -396,6 +396,12 @@ public class SudokuCell : Widget
     {
         select ();
         return base.focus (direction);
+    }
+
+    public void change_game (SudokuGame new_game)
+    {
+        game = new_game;
+        game.notify["paused"].connect (paused_cb);
     }
 
     public override void size_allocate (int width,

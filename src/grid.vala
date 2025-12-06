@@ -23,6 +23,7 @@ using Gdk;
 
 public class SudokuGrid : Grid
 {
+    private SudokuGame game;
     private SudokuCell[,] cells;
 
     private const Coord START = {4, 4};
@@ -34,7 +35,6 @@ public class SudokuGrid : Grid
     private double zoom_earmark_multiplier;
 
     private GestureClick button_controller;
-    private SudokuGame game;
     private EventControllerFocus focus_controller;
 
     public SudokuNumberPicker number_picker;
@@ -69,7 +69,6 @@ public class SudokuGrid : Grid
     public SudokuGrid (SudokuGame game)
     {
         this.game = game;
-        this.game.notify["paused"].connect (paused_cb);
         row_spacing = 2;
         column_spacing = 2;
         column_homogeneous = true;
@@ -123,8 +122,7 @@ public class SudokuGrid : Grid
         });
         add_controller (focus_controller);
 
-        this.game.board.value_changed.connect (value_changed_cb);
-        this.game.board.earmark_changed.connect (earmark_changed_cb);
+        add_game_hooks ();
 
         update_warnings ();
 
@@ -145,18 +143,29 @@ public class SudokuGrid : Grid
         action_group.add_action (action);
     }
 
-    public void change_board ()
+    public void change_game (SudokuGame new_game)
     {
-        selected_col = START.col;
+        number_picker.change_game (new_game);
+        game = new_game;
+
         selected_row = START.row;
+        selected_col = START.col;
+
         foreach (var cell in cells)
         {
+            cell.change_game (new_game);
             cell.update_content_visibility ();
             cell.update_fixed ();
         }
 
         update_warnings ();
 
+        add_game_hooks ();
+    }
+
+    private void add_game_hooks ()
+    {
+        game.notify["paused"].connect (paused_cb);
         game.board.value_changed.connect (value_changed_cb);
         game.board.earmark_changed.connect (earmark_changed_cb);
     }

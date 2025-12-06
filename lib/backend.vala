@@ -20,7 +20,7 @@
 
 public class SudokuBackend : Object
 {
-    public SudokuGame? game;
+    public SudokuGame game { get; private set; default = null; }
     public SudokuSaver saver;
     public double? highscore;
 
@@ -48,25 +48,30 @@ public class SudokuBackend : Object
             game = saver.get_savedgame ();
             highscore = saver.get_highscore (game.board.difficulty_category);
             start_autosave (this);
+            game_changed ();
         }
+    }
+
+    public signal void game_changed ();
+    public void change_game (SudokuGame new_game)
+    {
+        this.game = new_game;
+        game_changed ();
     }
 
     public delegate void BackendCallback (GLib.Object? source_object);
 
-    public void generate_game (DifficultyCategory difficulty, BackendCallback callback)
+    public void generate_game (DifficultyCategory difficulty)
     {
         SudokuGenerator.generate_boards_async.begin (1, difficulty, null, (obj, res) => {
             try
             {
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);
-                if (game != null)
-                    game.change_board (gen_boards[0]);
-                else
-                    game = new SudokuGame (gen_boards[0]);
+                game = new SudokuGame (gen_boards[0]);
 
                 highscore = saver.get_highscore (difficulty);
                 start_autosave (this);
-                callback (obj);
+                game_changed ();
             }
             catch (Error e)
             {

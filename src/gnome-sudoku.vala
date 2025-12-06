@@ -186,9 +186,11 @@ public class Sudoku : Adw.Application
             add_window (window);
 
             if (backend.game != null)
-                init_game_view ();
+                change_game ();
             else
                 show_start_view ();
+
+            backend.game_changed.connect (change_game);
         }
 
         window.present ();
@@ -272,26 +274,18 @@ public class Sudoku : Adw.Application
 
     private void create_game ()
     {
-        backend.generate_game (start_button_selected, (obj) => {
-            if (!game_view.initialized)
-                init_game_view ();
-            else
-                change_board ();
-        });
+        backend.generate_game (start_button_selected);
     }
 
-    public void init_game_view ()
+    public void change_game ()
     {
-        game_view.init (backend, window);
+        if (!game_view.initialized)
+            game_view.init (backend, window);
+        else
+            game_view.change_game ();
+
+        show_game_view ();
         game.bind_property ("paused", new_game_action, "enabled", BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN);
-        game.board.completed.connect (board_completed_cb);
-        show_game_view ();
-    }
-
-    public void change_board ()
-    {
-        game_view.change_board ();
-        show_game_view ();
         game.board.completed.connect (board_completed_cb);
     }
 

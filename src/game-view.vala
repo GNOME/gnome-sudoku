@@ -44,6 +44,7 @@ public class SudokuGameView : Adw.Bin
 
     private Label paused_label;
     private GestureClick button_controller;
+
     private ulong tick_handle;
 
     public SudokuGrid grid;
@@ -106,17 +107,14 @@ public class SudokuGameView : Adw.Bin
         var action_group = new SimpleActionGroup ();
 
         earmark_mode_action = new SimpleAction.stateful ("earmark-mode", null, false);
-        earmark_mode_action.activate.connect (earmark_mode_cb);
         earmark_mode_action.set_enabled (true);
         action_group.add_action (earmark_mode_action);
 
         toggle_pause_action = new SimpleAction.stateful ("toggle-pause", null, false);
-        toggle_pause_action.activate.connect (game.toggle_pause);
         toggle_pause_action.set_enabled (Sudoku.app.show_timer);
         action_group.add_action (toggle_pause_action);
 
         reset_board_action = new SimpleAction ("reset-board", null);
-        reset_board_action.activate.connect (game.reset);
         reset_board_action.set_enabled (!game.is_empty ());
         action_group.add_action (reset_board_action);
 
@@ -125,12 +123,10 @@ public class SudokuGameView : Adw.Bin
         action_group.add_action (print_puzzle_action);
 
         undo_action = new SimpleAction ("undo", null);
-        undo_action.activate.connect (game.undo);
         undo_action.set_enabled (!game.is_undostack_null ());
         action_group.add_action (undo_action);
 
         redo_action = new SimpleAction ("redo", null);
-        redo_action.activate.connect (game.redo);
         redo_action.set_enabled (!game.is_redostack_null ());
         action_group.add_action (redo_action);
 
@@ -139,16 +135,13 @@ public class SudokuGameView : Adw.Bin
         paused_label= new Label(_("Paused"));
         initialize_clock_label ();
         initialize_buttons ();
-        update_tick_connection ();
+        add_game_hooks ();
 
         if (game.board.previous_played_time == 0.0)
             add_earmark_possibilities ();
 
         this.vexpand = true;
         this.focusable = true;
-
-        game.notify["paused"].connect(paused_cb);
-        game.action_completed.connect (action_completed_cb);
 
         grid = new SudokuGrid (game);
         var grid_layout = new SudokuGridLayoutManager ();
@@ -157,17 +150,18 @@ public class SudokuGameView : Adw.Bin
         initialized = true;
     }
 
-    public void change_board ()
+    public void change_game ()
     {
+        add_game_hooks ();
+
         earmark_mode_action.set_enabled (true);
         toggle_pause_action.set_enabled (Sudoku.app.show_timer);
 
         initialize_buttons ();
         add_earmark_possibilities ();
-        grid.change_board ();
+        grid.change_game (game);
 
         initialize_clock_label ();
-        update_tick_connection ();
         windowtitle.subtitle = game.board.difficulty_category.to_string ();
 
         focus (TAB_FORWARD);
@@ -229,6 +223,19 @@ public class SudokuGameView : Adw.Bin
     {
         if (Sudoku.app.show_possibilities)
             game.enable_all_earmark_possibilities ();
+    }
+
+    private void add_game_hooks ()
+    {
+        game.notify["paused"].connect (paused_cb);
+        game.action_completed.connect (action_completed_cb);
+        toggle_pause_action.activate.connect (game.toggle_pause);
+        earmark_mode_action.activate.connect (earmark_mode_cb);
+        reset_board_action.activate.connect (game.reset);
+        undo_action.activate.connect (game.undo);
+        redo_action.activate.connect (game.redo);
+        tick_handle = 0;
+        update_tick_connection ();
     }
 
     private void update_tick_connection ()

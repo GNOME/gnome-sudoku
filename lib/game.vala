@@ -82,16 +82,6 @@ public class SudokuGame : Object
         stack = new ArrayList<stack_item?>();
     }
 
-    public void change_board (SudokuBoard board)
-    {
-        stack.clear ();
-        stack_head_index = -1;
-        board.solve ();
-        start_clock ();
-
-        this.board = board;
-    }
-
     public void enable_earmark (int row, int col, int num)
     {
         var new_stack_item = new stack_item (StackAction.ENABLE_EARMARK);

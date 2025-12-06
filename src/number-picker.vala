@@ -105,6 +105,12 @@ public class SudokuNumberPicker : Popover
         state = NumberPickerState.NONE;
         unparent ();
     }
+
+    public void change_game (SudokuGame new_game)
+    {
+        earmark_picker.game = new_game;
+        value_picker.game = new_game;
+    }
 }
 
 public abstract class PickerBase : Grid
