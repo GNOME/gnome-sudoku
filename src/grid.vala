@@ -44,6 +44,7 @@ public class SudokuGrid : Grid
     private SimpleAction move_down_action;
     private SimpleAction move_left_action;
     private SimpleAction move_right_action;
+    private SimpleAction escape_action;
 
     public SudokuCell selected_cell
     {
@@ -56,6 +57,11 @@ public class SudokuGrid : Grid
         new_move_shortcut ("grid.move-left", "a", DirectionType.LEFT);
         new_move_shortcut ("grid.move-down", "s", DirectionType.DOWN);
         new_move_shortcut ("grid.move-right", "d", DirectionType.RIGHT);
+
+        var action = new NamedAction ("grid.escape");
+        var trigger = ShortcutTrigger.parse_string ("Escape");
+        var shortcut = new Shortcut (trigger, action);
+        add_shortcut (shortcut);
     }
 
     private class void new_move_shortcut (string name, string accelerator, DirectionType dir)
@@ -132,6 +138,11 @@ public class SudokuGrid : Grid
         new_move_action ("move-down", out move_down_action);
         new_move_action ("move-right", out move_right_action);
         new_move_action ("move-left", out move_left_action);
+
+        escape_action = new SimpleAction ("escape", null);
+        escape_action.set_enabled (true);
+        escape_action.activate.connect (number_picker.popdown);
+        action_group.add_action (escape_action);
 
         insert_action_group ("grid", action_group);
     }
