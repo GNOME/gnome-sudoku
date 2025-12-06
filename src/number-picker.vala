@@ -31,9 +31,11 @@ public class SudokuNumberPicker : Popover
 
     public SudokuNumberPicker (SudokuGame game)
     {
-        value_picker = new ValuePicker(game, this);
-        earmark_picker = new EarmarkPicker(game, this);
+        value_picker = new ValuePicker(game);
+        earmark_picker = new EarmarkPicker(game);
         picker_stack = new Stack();
+        earmark_picker.finished.connect (popdown);
+        value_picker.finished.connect (popdown);
         picker_stack.add_child (value_picker);
         picker_stack.add_child (earmark_picker);
         picker_stack.set_vhomogeneous (false);
@@ -107,10 +109,10 @@ public class SudokuNumberPicker : Popover
 
 public abstract class PickerBase : Grid
 {
-    protected unowned SudokuNumberPicker number_picker;
-
     protected SudokuCell cell;
-    protected SudokuGame game;
+    public SudokuGame game;
+
+    public signal void finished ();
 
     protected Button clear_button;
 
@@ -119,10 +121,9 @@ public abstract class PickerBase : Grid
         set_css_name ("sudoku-picker");
     }
 
-    PickerBase (SudokuGame game, SudokuNumberPicker number_picker)
+    PickerBase (SudokuGame game)
     {
         this.game = game;
-        this.number_picker = number_picker;
 
         clear_button = new Button.with_label (_("Clear"));
         clear_button.clicked.connect (() => {
@@ -133,12 +134,6 @@ public abstract class PickerBase : Grid
         halign = Align.CENTER;
         row_spacing = 3;
         column_spacing = 3;
-    }
-
-    public override void dispose ()
-    {
-        base.dispose ();
-        clear_button.unparent ();
     }
 
     protected abstract void value_changed_cb (int row, int col, int old_val, int new_val);
@@ -162,11 +157,13 @@ private class ValuePicker : PickerBase
 {
     private Button[] value_buttons;
 
-    public ValuePicker (SudokuGame game, SudokuNumberPicker number_picker)
+    public ValuePicker (SudokuGame game)
     {
-        base (game, number_picker);
+        base (game);
 
-        clear_button.clicked.connect (number_picker.popdown);
+        clear_button.clicked.connect (() => {
+            finished ();
+        });
         attach (clear_button, 0, 4, 3, 1);
 
         value_buttons = new Button [game.board.block_cols * game.board.block_rows];
@@ -199,27 +196,18 @@ private class ValuePicker : PickerBase
     private void value_picked_cb (Button button)
     {
         cell.value = int.parse (button.label);
-        number_picker.popdown ();
+        finished ();
     }
 
     protected override void value_changed_cb (int row, int col, int old_val, int new_val)
     {
         clear_button.sensitive = clear_button.visible =  new_val != 0;
-        number_picker.present ();
     }
 
     protected override void earmark_changed_cb (int row, int col, int num, bool enabled)
     {
         clear_button.set_sensitive (game.board.has_earmarks (cell.row, cell.col));
         clear_button.visible = cell.value > 0 || game.board.has_earmarks (cell.row, cell.col);
-        number_picker.present ();
-    }
-
-    public override void dispose ()
-    {
-        base.dispose ();
-        foreach (var button in value_buttons)
-            button.unparent ();
     }
 }
 
@@ -228,9 +216,9 @@ private class EarmarkPicker : PickerBase
     private ToggleButton[] earmark_buttons;
     private ToggleButton lock_button;
 
-    public EarmarkPicker (SudokuGame game, SudokuNumberPicker number_picker)
+    public EarmarkPicker (SudokuGame game)
     {
-        base (game, number_picker);
+        base (game);
 
         lock_button = new ToggleButton ();
         lock_button.set_icon_name ("lock-symbolic");
@@ -241,7 +229,7 @@ private class EarmarkPicker : PickerBase
 
         clear_button.clicked.connect (() => {
             if (!lock_button.active)
-                number_picker.popdown ();
+                finished ();
         });
         attach (clear_button, 0, 4, 2, 1);
 
@@ -292,14 +280,14 @@ private class EarmarkPicker : PickerBase
             {
                 game.enable_earmark (cell.row, cell.col, number_picked);
                 if (!lock_button.active)
-                    number_picker.popdown ();
+                    finished ();
             }
         }
         else if (game.board.is_earmark_enabled (cell.row, cell.col, number_picked))
         {
             game.disable_earmark (cell.row, cell.col, number_picked);
             if (!lock_button.active)
-                number_picker.popdown ();
+                finished ();
         }
     }
 
@@ -310,7 +298,7 @@ private class EarmarkPicker : PickerBase
         else
         {
             lock_button.set_tooltip_text (_("Lock"));
-            number_picker.popdown ();
+            finished ();
         }
     }
 
@@ -336,14 +324,6 @@ private class EarmarkPicker : PickerBase
     {
         for (var i = 1; i <= game.board.max_val; i++)
             earmark_buttons[i - 1].set_active (game.board.is_earmark_enabled (row, col, i));
-    }
-
-    public override void dispose ()
-    {
-        base.dispose ();
-        lock_button.unparent ();
-        foreach (var button in earmark_buttons)
-            button.unparent ();
     }
 }
 

@@ -379,7 +379,7 @@ public class SudokuGame : Object
             stop_clock ();
 
         timer.start ();
-        start_clock_tick ();
+        start_clock_tick (this);
     }
 
     public void stop_clock ()
@@ -399,17 +399,17 @@ public class SudokuGame : Object
             return;
 
         timer.continue ();
-        start_clock_tick ();
+        start_clock_tick (this);
     }
 
-    private void start_clock_tick ()
+    private static void start_clock_tick (SudokuGame _this)
     {
-        clock_tick_timeout = Timeout.add_seconds (1, () => {
-            tick ();
+        weak SudokuGame weak_this = _this;
+        weak_this.clock_tick_timeout = Timeout.add_seconds (1, () => {
+            weak_this.tick ();
             return Source.CONTINUE;
         });
-
-        Source.set_name_by_id (clock_tick_timeout, "[gnome-sudoku] clock_tick");
+        Source.set_name_by_id (weak_this.clock_tick_timeout, "[gnome-sudoku] clock_tick");
     }
 
     //testing function
@@ -423,6 +423,12 @@ public class SudokuGame : Object
                 if (cells[row, col] != solution)
                     insert (row, col, solution);
             }
+    }
+
+    public override void dispose ()
+    {
+        base.dispose ();
+        stop_clock ();
     }
 }
 
