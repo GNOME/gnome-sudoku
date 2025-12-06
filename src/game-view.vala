@@ -108,6 +108,7 @@ public class SudokuGameView : Adw.Bin
 
         earmark_mode_action = new SimpleAction.stateful ("earmark-mode", null, false);
         earmark_mode_action.set_enabled (true);
+        earmark_mode_action.activate.connect (earmark_mode_cb);
         action_group.add_action (earmark_mode_action);
 
         toggle_pause_action = new SimpleAction.stateful ("toggle-pause", null, false);
@@ -230,7 +231,6 @@ public class SudokuGameView : Adw.Bin
         game.notify["paused"].connect (paused_cb);
         game.action_completed.connect (action_completed_cb);
         toggle_pause_action.activate.connect (game.toggle_pause);
-        earmark_mode_action.activate.connect (earmark_mode_cb);
         reset_board_action.activate.connect (game.reset);
         undo_action.activate.connect (game.undo);
         redo_action.activate.connect (game.redo);
