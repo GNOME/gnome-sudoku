@@ -136,7 +136,8 @@ public class SudokuSaver : Object
         }
         catch (GLib.Error e)
         {
-            warning ("Failed to delete %s: %s", file.get_uri (), e.message);
+            if (e.code != IOError.NOT_FOUND)
+                warning ("Failed to delete %s: %s", file.get_uri (), e.message);
         }
     }
 
