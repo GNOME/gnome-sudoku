@@ -56,11 +56,8 @@ public class SudokuSaver : Object
 
     private void get_highscores ()
     {
-        var file = File.new_for_path (highscores_file);
-        if (!file.query_exists ())
-            return;
-
         Json.Parser parser = new Json.Parser ();
+
         try
         {
             parser.load_from_file (highscores_file);
@@ -122,10 +119,6 @@ public class SudokuSaver : Object
 
     public SudokuGame? get_savedgame ()
     {
-        var file = File.new_for_path (active_save_file);
-        if (!file.query_exists ())
-            return null;
-
         return parse_json_to_game (active_save_file);
     }
 
@@ -137,16 +130,13 @@ public class SudokuSaver : Object
     public void delete_save ()
     {
         var file = File.new_for_path (active_save_file);
-        if (file.query_exists ())
+        try
         {
-            try
-            {
-                file.delete ();
-            }
-            catch (GLib.Error e)
-            {
-                warning ("Failed to delete %s: %s", file.get_uri (), e.message);
-            }
+            file.delete ();
+        }
+        catch (GLib.Error e)
+        {
+            warning ("Failed to delete %s: %s", file.get_uri (), e.message);
         }
     }
 
