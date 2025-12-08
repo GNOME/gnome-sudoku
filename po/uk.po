@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-11-28 18:36+0000\n"
-"PO-Revision-Date: 2025-11-28 20:57+0200\n"
+"POT-Creation-Date: 2025-12-08 00:11+0000\n"
+"PO-Revision-Date: 2025-12-08 12:44+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -210,7 +210,7 @@ msgstr "Пауза"
 msgid "Play"
 msgstr "Грати"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:243
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:248
 msgid "_New Game…"
 msgstr "_Нова гра…"
 
@@ -219,7 +219,6 @@ msgid "_Reset Puzzle"
 msgstr "_Скинути головоломку"
 
 #: src/blueprints/menu-button.blp:19
-#: src/blueprints/print-multiple-dialog.blp:69
 msgid "_Print"
 msgstr "На_друкувати…"
 
@@ -323,35 +322,32 @@ msgstr "Підсвічування"
 
 #: src/blueprints/preferences-dialog.blp:52
 msgctxt "Highlighter Preferences"
-msgid "Highlight Matching _Numbers"
-msgstr "Підсвітити відповідні _числа"
-
-#: src/blueprints/preferences-dialog.blp:57
-msgctxt "Highlighter Preferences"
 msgid "Highlight _Row and Column"
 msgstr "Підсвітити _рядок і стовпчик"
 
-#: src/blueprints/preferences-dialog.blp:62
+#: src/blueprints/preferences-dialog.blp:57
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "Підсвітити _блок"
+
+#: src/blueprints/preferences-dialog.blp:62
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "Підсвітити відповідні _числа"
 
 #: src/blueprints/print-multiple-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "Надрукувати декілька головоломок"
 
 #: src/blueprints/print-multiple-dialog.blp:23
-#| msgid "Number of Puzzles"
 msgid "_Number of Puzzles"
 msgstr "_Кількість головоломок"
 
 #: src/blueprints/print-multiple-dialog.blp:37
-#| msgid "Number of Puzzles per Page"
 msgid "_Number of Puzzles per Page"
 msgstr "_Кількість головоломок на сторінку"
 
 #: src/blueprints/print-multiple-dialog.blp:51
-#| msgid "Difficulty"
 msgid "_Difficulty"
 msgstr "С_кладність"
 
@@ -370,6 +366,11 @@ msgstr "Складна"
 #: src/blueprints/print-multiple-dialog.blp:59
 msgid "Very Hard"
 msgstr "Дуже складна"
+
+#: src/blueprints/print-multiple-dialog.blp:69
+#| msgid "_Print"
+msgid "_Print…"
+msgstr "На_друкувати…"
 
 #: src/blueprints/start-view.blp:13
 msgid "Select Difficulty"
@@ -538,7 +539,12 @@ msgstr "Повноекранний режим"
 msgid "Show release version"
 msgstr "Показати версію випуску"
 
-#: src/gnome-sudoku.vala:215
+#. Text in dialog that displays when the game is over.
+#: src/gnome-sudoku.vala:213
+msgid "Puzzle Completed!"
+msgstr "Розв'язання завершено!"
+
+#: src/gnome-sudoku.vala:221
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -547,34 +553,27 @@ msgstr[1] "%d хвилини"
 msgstr[2] "%d хвилин"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:220
+#: src/gnome-sudoku.vala:226
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 "Чудово! Ви розв'язали головоломку за %s і встановили новий особистий рекорд!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:226
+#: src/gnome-sudoku.vala:232
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Чудово! Ви розв'язали головоломку за %s!"
 
-#: src/gnome-sudoku.vala:231
-msgid "Puzzle Completed!"
-msgstr "Розв'язання завершено!"
-
-#: src/gnome-sudoku.vala:234
-#| msgid "Quit"
+#: src/gnome-sudoku.vala:239
 msgid "_Quit"
 msgstr "Ви_йти"
 
-#: src/gnome-sudoku.vala:237
-#| msgid "Easy Difficulty"
+#: src/gnome-sudoku.vala:242
 msgid "_Change Difficulty"
 msgstr "З_мінити складність"
 
-#: src/gnome-sudoku.vala:238
-#| msgid "Play _Again"
+#: src/gnome-sudoku.vala:243
 msgid "_Play Again"
 msgstr "Зі_грати знову"
 
@@ -587,15 +586,15 @@ msgstr ""
 "Daniel Korostil <ted.korostiled@gmail.com>\n"
 "Назарій Ріттер <nazariy.ritter@gmail.com>, 2014"
 
-#: src/number-picker.vala:127
+#: src/number-picker.vala:134
 msgid "Clear"
 msgstr "Очистити"
 
-#: src/number-picker.vala:237 src/number-picker.vala:312
+#: src/number-picker.vala:231 src/number-picker.vala:306
 msgid "Lock"
 msgstr "Заблокувати"
 
-#: src/number-picker.vala:309
+#: src/number-picker.vala:303
 msgid "Unlock"
 msgstr "Розблокувати"
 
