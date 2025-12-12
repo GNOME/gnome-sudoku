@@ -15,20 +15,9 @@ menu primary-menu {
   }
 
   section {
-    submenu {
-      label: _("_Print");
-
-      section {
-        item {
-          label: _("Print _Current Puzzle…");
-          action: "game-view.print-puzzle";
-        }
-
-        item {
-          label: _("Print _Multiple Puzzles…");
-          action: "app.print-multiple";
-        }
-      }
+    item {
+      label: _("Print _Generator");
+      action: "app.print-generator";
     }
 
     section {

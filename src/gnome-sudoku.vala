@@ -71,7 +71,7 @@ public class Sudoku : Adw.Application
         {"new-game", new_game_cb                                    },
         {"start-game", start_game_cb, "i"                           },
         {"back", back_cb                                            },
-        {"print-multiple", print_multiple_cb                        },
+        {"print-generator", print_multiple_cb                       },
         {"help", help_cb                                            },
         {"about", about_cb                                          },
         {"toggle-fullscreen", toggle_fullscreen_cb                  },
@@ -165,6 +165,7 @@ public class Sudoku : Adw.Application
         set_accels_for_action ("app.zoom-in", {"<Primary>plus", "<Primary>equal", "ZoomIn", "<Primary>KP_Add"});
         set_accels_for_action ("app.zoom-out", {"<Primary>minus", "ZoomOut", "<Primary>KP_Subtract"});
         set_accels_for_action ("app.zoom-reset", {"<Primary>0", "<Primary>KP_0"});
+        set_accels_for_action ("app.print-generator", {"<Primary>P"});
 
         new_game_action = lookup_action ("new-game") as SimpleAction;
         print_multiple_action = lookup_action ("print-multiple") as SimpleAction;

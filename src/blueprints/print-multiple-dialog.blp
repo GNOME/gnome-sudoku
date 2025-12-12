@@ -19,7 +19,7 @@ template $SudokuPrintDialog: Adw.Dialog {
         orientation: vertical;
 
         Adw.PreferencesGroup options_group {
-          Adw.SpinRow n_puzzles {
+          Adw.SpinRow puzzles_row {
             title: _("_Number of Puzzles");
             use-underline: true;
             numeric: true;
@@ -33,7 +33,7 @@ template $SudokuPrintDialog: Adw.Dialog {
             };
           }
 
-          Adw.SpinRow n_puzzles_per_page {
+          Adw.SpinRow puzzles_per_page_row {
             title: _("_Number of Puzzles per Page");
             use-underline: true;
             numeric: true;
@@ -47,7 +47,7 @@ template $SudokuPrintDialog: Adw.Dialog {
             };
           }
 
-          Adw.ComboRow difficulty {
+          Adw.ComboRow difficulty_row {
             title: _("_Difficulty");
             use-underline: true;
 
@@ -61,6 +61,12 @@ template $SudokuPrintDialog: Adw.Dialog {
             };
 
             selected: 1;
+          }
+
+          Adw.SwitchRow print_current_puzzle_row {
+            title: _("Print _Current Puzzle");
+            use-underline: true;
+            visible: false;
           }
         }
 
