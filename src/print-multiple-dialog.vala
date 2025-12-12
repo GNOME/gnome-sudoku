@@ -31,6 +31,7 @@ public class SudokuPrintDialog : Adw.Dialog
 
     private SudokuWindow window;
     private SudokuBackend backend;
+    private Adjustment per_page_adjustment;
 
     public SudokuPrintDialog (SudokuBackend backend, SudokuWindow window)
     {
@@ -41,6 +42,15 @@ public class SudokuPrintDialog : Adw.Dialog
             difficulty_row.set_selected (((int) Sudoku.app.start_button_selected) - 1);
 
         print_current_puzzle_row.visible = backend.game != null;
+
+        per_page_adjustment = puzzles_per_page_row.get_adjustment ();
+        per_page_adjustment.value_changed.connect (() => {
+            var per_page = per_page_adjustment.value;
+            puzzles_row.adjustment.step_increment = per_page;
+            puzzles_row.adjustment.lower = per_page;
+            if (puzzles_row.adjustment.value % per_page != 0)
+                puzzles_row.adjustment.value += per_page - puzzles_row.adjustment.value % per_page;
+        });
     }
 
     [GtkCallback]
