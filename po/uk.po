@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-12-08 00:11+0000\n"
-"PO-Revision-Date: 2025-12-08 12:44+0200\n"
+"POT-Creation-Date: 2025-12-14 10:48+0000\n"
+"PO-Revision-Date: 2025-12-14 17:42+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -210,7 +210,7 @@ msgstr "Пауза"
 msgid "Play"
 msgstr "Грати"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:248
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:249
 msgid "_New Game…"
 msgstr "_Нова гра…"
 
@@ -219,54 +219,46 @@ msgid "_Reset Puzzle"
 msgstr "_Скинути головоломку"
 
 #: src/blueprints/menu-button.blp:19
-msgid "_Print"
-msgstr "На_друкувати…"
+msgid "Print _Generator"
+msgstr "Надрукувати с_творене"
 
-#: src/blueprints/menu-button.blp:23
-msgid "Print _Current Puzzle…"
-msgstr "Надрукувати _поточну головоломку…"
-
-#: src/blueprints/menu-button.blp:28
-msgid "Print _Multiple Puzzles…"
-msgstr "Друкувати де_кілька головоломок…"
-
-#: src/blueprints/menu-button.blp:35
+#: src/blueprints/menu-button.blp:24
 msgid "Zoom"
 msgstr "Масштаб"
 
-#: src/blueprints/menu-button.blp:54
+#: src/blueprints/menu-button.blp:43
 msgid "_Preferences"
 msgstr "_Налаштування"
 
-#: src/blueprints/menu-button.blp:59
+#: src/blueprints/menu-button.blp:48
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: src/blueprints/menu-button.blp:64
+#: src/blueprints/menu-button.blp:53
 msgid "_Help"
 msgstr "_Довідка"
 
-#: src/blueprints/menu-button.blp:69
+#: src/blueprints/menu-button.blp:58
 msgid "_About Sudoku"
 msgstr "_Про «Судоку»"
 
-#: src/blueprints/menu-button.blp:80
+#: src/blueprints/menu-button.blp:69
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: src/blueprints/menu-button.blp:89
+#: src/blueprints/menu-button.blp:78
 msgid "Zoom Out"
 msgstr "Зменшити"
 
-#: src/blueprints/menu-button.blp:101
+#: src/blueprints/menu-button.blp:90
 msgid "Zoom In"
 msgstr "Збільшити"
 
-#: src/blueprints/menu-button.blp:116
+#: src/blueprints/menu-button.blp:105
 msgid "Fullscreen"
 msgstr "На увесь екран"
 
-#: src/blueprints/menu-button.blp:127
+#: src/blueprints/menu-button.blp:116
 msgid "Leave Fullscreen"
 msgstr "Вийти з повноекранного режиму"
 
@@ -343,32 +335,37 @@ msgstr "Надрукувати декілька головоломок"
 msgid "_Number of Puzzles"
 msgstr "_Кількість головоломок"
 
-#: src/blueprints/print-multiple-dialog.blp:37
+#: src/blueprints/print-multiple-dialog.blp:38
 msgid "_Number of Puzzles per Page"
 msgstr "_Кількість головоломок на сторінку"
 
-#: src/blueprints/print-multiple-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:52
 msgid "_Difficulty"
 msgstr "С_кладність"
 
-#: src/blueprints/print-multiple-dialog.blp:56
+#: src/blueprints/print-multiple-dialog.blp:57
 msgid "Easy"
 msgstr "Проста"
 
-#: src/blueprints/print-multiple-dialog.blp:57
+#: src/blueprints/print-multiple-dialog.blp:58
 msgid "Medium"
 msgstr "Середня"
 
-#: src/blueprints/print-multiple-dialog.blp:58
+#: src/blueprints/print-multiple-dialog.blp:59
 msgid "Hard"
 msgstr "Складна"
 
-#: src/blueprints/print-multiple-dialog.blp:59
+#: src/blueprints/print-multiple-dialog.blp:60
 msgid "Very Hard"
 msgstr "Дуже складна"
 
-#: src/blueprints/print-multiple-dialog.blp:69
-#| msgid "_Print"
+#: src/blueprints/print-multiple-dialog.blp:68
+#| msgctxt "Shortcuts Window"
+#| msgid "Print Current Puzzle"
+msgid "Print _Current Puzzle"
+msgstr "Надрукувати _поточну головоломку"
+
+#: src/blueprints/print-multiple-dialog.blp:76
 msgid "_Print…"
 msgstr "На_друкувати…"
 
@@ -540,11 +537,11 @@ msgid "Show release version"
 msgstr "Показати версію випуску"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:213
+#: src/gnome-sudoku.vala:214
 msgid "Puzzle Completed!"
 msgstr "Розв'язання завершено!"
 
-#: src/gnome-sudoku.vala:221
+#: src/gnome-sudoku.vala:222
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -553,31 +550,31 @@ msgstr[1] "%d хвилини"
 msgstr[2] "%d хвилин"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:226
+#: src/gnome-sudoku.vala:227
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 "Чудово! Ви розв'язали головоломку за %s і встановили новий особистий рекорд!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:233
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Чудово! Ви розв'язали головоломку за %s!"
 
-#: src/gnome-sudoku.vala:239
+#: src/gnome-sudoku.vala:240
 msgid "_Quit"
 msgstr "Ви_йти"
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:243
 msgid "_Change Difficulty"
 msgstr "З_мінити складність"
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:244
 msgid "_Play Again"
 msgstr "Зі_грати знову"
 
-#: src/gnome-sudoku.vala:371
+#: src/gnome-sudoku.vala:372
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота\n"
@@ -606,6 +603,15 @@ msgstr "Помилка друкування файла:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Закрити"
+
+#~ msgid "_Print"
+#~ msgstr "На_друкувати…"
+
+#~ msgid "Print _Current Puzzle…"
+#~ msgstr "Надрукувати _поточну головоломку…"
+
+#~ msgid "Print _Multiple Puzzles…"
+#~ msgstr "Друкувати де_кілька головоломок…"
 
 #~ msgid "Difficulty level of sudokus to be printed"
 #~ msgstr "Рівень складності судоку на друкування"
