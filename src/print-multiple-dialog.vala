@@ -47,6 +47,7 @@ public class SudokuPrintDialog : Adw.Dialog
         per_page_adjustment.value_changed.connect (() => {
             var per_page = per_page_adjustment.value;
             puzzles_row.adjustment.step_increment = per_page;
+            puzzles_row.adjustment.page_increment = per_page * 5;
             puzzles_row.adjustment.lower = per_page;
             if (puzzles_row.adjustment.value % per_page != 0)
                 puzzles_row.adjustment.value += per_page - puzzles_row.adjustment.value % per_page;
