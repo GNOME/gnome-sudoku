@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-12-07 10:08+0000\n"
-"PO-Revision-Date: 2025-12-08 08:10+0800\n"
+"POT-Creation-Date: 2025-12-14 15:43+0000\n"
+"PO-Revision-Date: 2025-12-15 08:13+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -208,7 +208,7 @@ msgstr "暂停"
 msgid "Play"
 msgstr "游玩"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:248
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:249
 msgid "_New Game…"
 msgstr "新建游戏(_N)…"
 
@@ -217,54 +217,46 @@ msgid "_Reset Puzzle"
 msgstr "重置谜题(_R)"
 
 #: src/blueprints/menu-button.blp:19
-msgid "_Print"
-msgstr "打印(_P)"
+msgid "Print _Generator"
+msgstr "打印生成器(_G)"
 
-#: src/blueprints/menu-button.blp:23
-msgid "Print _Current Puzzle…"
-msgstr "打印当前谜题(_C)…"
-
-#: src/blueprints/menu-button.blp:28
-msgid "Print _Multiple Puzzles…"
-msgstr "打印多个谜题(_M)…"
-
-#: src/blueprints/menu-button.blp:35
+#: src/blueprints/menu-button.blp:24
 msgid "Zoom"
 msgstr "缩放"
 
-#: src/blueprints/menu-button.blp:54
+#: src/blueprints/menu-button.blp:43
 msgid "_Preferences"
 msgstr "首选项(_P)"
 
-#: src/blueprints/menu-button.blp:59
+#: src/blueprints/menu-button.blp:48
 msgid "_Keyboard Shortcuts"
 msgstr "键盘快捷键(_K)"
 
-#: src/blueprints/menu-button.blp:64
+#: src/blueprints/menu-button.blp:53
 msgid "_Help"
 msgstr "帮助(_H)"
 
-#: src/blueprints/menu-button.blp:69
+#: src/blueprints/menu-button.blp:58
 msgid "_About Sudoku"
 msgstr "关于数独(_A)"
 
-#: src/blueprints/menu-button.blp:80
+#: src/blueprints/menu-button.blp:69
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: src/blueprints/menu-button.blp:89
+#: src/blueprints/menu-button.blp:78
 msgid "Zoom Out"
 msgstr "缩小"
 
-#: src/blueprints/menu-button.blp:101
+#: src/blueprints/menu-button.blp:90
 msgid "Zoom In"
 msgstr "放大"
 
-#: src/blueprints/menu-button.blp:116
+#: src/blueprints/menu-button.blp:105
 msgid "Fullscreen"
 msgstr "全屏"
 
-#: src/blueprints/menu-button.blp:127
+#: src/blueprints/menu-button.blp:116
 msgid "Leave Fullscreen"
 msgstr "退出全屏"
 
@@ -341,31 +333,35 @@ msgstr "打印多个数独"
 msgid "_Number of Puzzles"
 msgstr "谜题数量(_N)"
 
-#: src/blueprints/print-multiple-dialog.blp:37
+#: src/blueprints/print-multiple-dialog.blp:38
 msgid "_Number of Puzzles per Page"
 msgstr "每页谜题数量(_N)"
 
-#: src/blueprints/print-multiple-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:52
 msgid "_Difficulty"
 msgstr "难度(_D)"
 
-#: src/blueprints/print-multiple-dialog.blp:56
+#: src/blueprints/print-multiple-dialog.blp:57
 msgid "Easy"
 msgstr "简单"
 
-#: src/blueprints/print-multiple-dialog.blp:57
+#: src/blueprints/print-multiple-dialog.blp:58
 msgid "Medium"
 msgstr "中等"
 
-#: src/blueprints/print-multiple-dialog.blp:58
+#: src/blueprints/print-multiple-dialog.blp:59
 msgid "Hard"
 msgstr "困难"
 
-#: src/blueprints/print-multiple-dialog.blp:59
+#: src/blueprints/print-multiple-dialog.blp:60
 msgid "Very Hard"
 msgstr "非常困难"
 
-#: src/blueprints/print-multiple-dialog.blp:69
+#: src/blueprints/print-multiple-dialog.blp:68
+msgid "Print _Current Puzzle"
+msgstr "打印当前谜题(_C)"
+
+#: src/blueprints/print-multiple-dialog.blp:76
 msgid "_Print…"
 msgstr "打印(_P)…"
 
@@ -537,41 +533,41 @@ msgid "Show release version"
 msgstr "显示发行版本"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:213
+#: src/gnome-sudoku.vala:214
 msgid "Puzzle Completed!"
 msgstr "谜题已解决！"
 
-#: src/gnome-sudoku.vala:221
+#: src/gnome-sudoku.vala:222
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d 分钟"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:226
+#: src/gnome-sudoku.vala:227
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr "做得好，您在 %s 内完成了该谜题并取得了新的个人最佳成绩！"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:233
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "做得好，您在 %s 内完成了该谜题！"
 
-#: src/gnome-sudoku.vala:239
+#: src/gnome-sudoku.vala:240
 msgid "_Quit"
 msgstr "退出(_Q)"
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:243
 msgid "_Change Difficulty"
 msgstr "更改难度(_C)"
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:244
 msgid "_Play Again"
 msgstr "再玩一遍(_P)"
 
-#: src/gnome-sudoku.vala:371
+#: src/gnome-sudoku.vala:372
 msgid "translator-credits"
 msgstr ""
 "Yang Zhang <zyangmath@gmail.com>, 2007\n"
@@ -603,6 +599,15 @@ msgstr "打印文件出错："
 #: src/printer.vala:45
 msgid "Close"
 msgstr "关闭"
+
+#~ msgid "_Print"
+#~ msgstr "打印(_P)"
+
+#~ msgid "Print _Current Puzzle…"
+#~ msgstr "打印当前谜题(_C)…"
+
+#~ msgid "Print _Multiple Puzzles…"
+#~ msgstr "打印多个谜题(_M)…"
 
 #~ msgid "Difficulty level of sudokus to be printed"
 #~ msgstr "待打印的数独难度等级"
