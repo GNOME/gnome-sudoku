@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-11-29 11:11+0000\n"
-"PO-Revision-Date: 2025-11-29 23:37+1000\n"
+"POT-Creation-Date: 2025-12-15 00:14+0000\n"
+"PO-Revision-Date: 2025-12-15 23:09+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -218,7 +218,7 @@ msgstr "Пауза"
 msgid "Play"
 msgstr "Играть"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:246
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:249
 msgid "_New Game…"
 msgstr "_Новая игра…"
 
@@ -227,55 +227,46 @@ msgid "_Reset Puzzle"
 msgstr "С_бросить головоломку"
 
 #: src/blueprints/menu-button.blp:19
-#: src/blueprints/print-multiple-dialog.blp:69
-msgid "_Print"
-msgstr "_Печать"
+msgid "Print _Generator"
+msgstr "_Генератор печати"
 
-#: src/blueprints/menu-button.blp:23
-msgid "Print _Current Puzzle…"
-msgstr "Печать _текущей головоломки…"
-
-#: src/blueprints/menu-button.blp:28
-msgid "Print _Multiple Puzzles…"
-msgstr "Печать _нескольких головоломок…"
-
-#: src/blueprints/menu-button.blp:35
+#: src/blueprints/menu-button.blp:24
 msgid "Zoom"
 msgstr "Масштаб"
 
-#: src/blueprints/menu-button.blp:54
+#: src/blueprints/menu-button.blp:43
 msgid "_Preferences"
 msgstr "Па_раметры"
 
-#: src/blueprints/menu-button.blp:59
+#: src/blueprints/menu-button.blp:48
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбинации клавиши"
 
-#: src/blueprints/menu-button.blp:64
+#: src/blueprints/menu-button.blp:53
 msgid "_Help"
 msgstr "_Справка"
 
-#: src/blueprints/menu-button.blp:69
+#: src/blueprints/menu-button.blp:58
 msgid "_About Sudoku"
 msgstr "_О приложении"
 
-#: src/blueprints/menu-button.blp:80
+#: src/blueprints/menu-button.blp:69
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: src/blueprints/menu-button.blp:89
+#: src/blueprints/menu-button.blp:78
 msgid "Zoom Out"
 msgstr "Уменьшить"
 
-#: src/blueprints/menu-button.blp:101
+#: src/blueprints/menu-button.blp:90
 msgid "Zoom In"
 msgstr "Увеличить"
 
-#: src/blueprints/menu-button.blp:116
+#: src/blueprints/menu-button.blp:105
 msgid "Fullscreen"
 msgstr "Во весь экран"
 
-#: src/blueprints/menu-button.blp:127
+#: src/blueprints/menu-button.blp:116
 msgid "Leave Fullscreen"
 msgstr "Покинуть полноэкранный режим"
 
@@ -331,18 +322,18 @@ msgstr "Подсвечивание"
 
 #: src/blueprints/preferences-dialog.blp:52
 msgctxt "Highlighter Preferences"
-msgid "Highlight Matching _Numbers"
-msgstr "Подсвечивать совпадающие числа"
-
-#: src/blueprints/preferences-dialog.blp:57
-msgctxt "Highlighter Preferences"
 msgid "Highlight _Row and Column"
 msgstr "Подсвечивать строку и столбик"
 
-#: src/blueprints/preferences-dialog.blp:62
+#: src/blueprints/preferences-dialog.blp:57
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "Подсвечивать блок"
+
+#: src/blueprints/preferences-dialog.blp:62
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "Подсвечивать совпадающие числа"
 
 #: src/blueprints/print-multiple-dialog.blp:5
 msgid "Print Multiple Puzzles"
@@ -352,29 +343,37 @@ msgstr "Печать нескольких головоломок"
 msgid "_Number of Puzzles"
 msgstr "_Количество головоломок"
 
-#: src/blueprints/print-multiple-dialog.blp:37
+#: src/blueprints/print-multiple-dialog.blp:38
 msgid "_Number of Puzzles per Page"
 msgstr "_Количество головоломок на странице"
 
-#: src/blueprints/print-multiple-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:52
 msgid "_Difficulty"
 msgstr "_Сложность"
 
-#: src/blueprints/print-multiple-dialog.blp:56
+#: src/blueprints/print-multiple-dialog.blp:57
 msgid "Easy"
 msgstr "Лёгкая"
 
-#: src/blueprints/print-multiple-dialog.blp:57
+#: src/blueprints/print-multiple-dialog.blp:58
 msgid "Medium"
 msgstr "Средняя"
 
-#: src/blueprints/print-multiple-dialog.blp:58
+#: src/blueprints/print-multiple-dialog.blp:59
 msgid "Hard"
 msgstr "Сложная"
 
-#: src/blueprints/print-multiple-dialog.blp:59
+#: src/blueprints/print-multiple-dialog.blp:60
 msgid "Very Hard"
 msgstr "Очень сложная"
+
+#: src/blueprints/print-multiple-dialog.blp:68
+msgid "Print _Current Puzzle"
+msgstr "Печать _текущей головоломки"
+
+#: src/blueprints/print-multiple-dialog.blp:76
+msgid "_Print…"
+msgstr "_Печать…"
 
 #: src/blueprints/start-view.blp:13
 msgid "Select Difficulty"
@@ -544,11 +543,11 @@ msgid "Show release version"
 msgstr "Показать номер версии"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:211
+#: src/gnome-sudoku.vala:214
 msgid "Puzzle Completed!"
 msgstr "Головоломка решена!"
 
-#: src/gnome-sudoku.vala:219
+#: src/gnome-sudoku.vala:222
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -557,46 +556,46 @@ msgstr[1] "%d минуты"
 msgstr[2] "%d минут"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:227
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 "Очень хорошо, вы решили головоломку за %s и установили новый личный рекорд!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:230
+#: src/gnome-sudoku.vala:233
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Очень хорошо, вы решили головоломку за %s минут!"
 
-#: src/gnome-sudoku.vala:237
+#: src/gnome-sudoku.vala:240
 msgid "_Quit"
 msgstr "_Выйти"
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:243
 msgid "_Change Difficulty"
 msgstr "_Изменить сложность"
 
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:244
 msgid "_Play Again"
 msgstr "Сыграть _ещё раз"
 
-#: src/gnome-sudoku.vala:377
+#: src/gnome-sudoku.vala:372
 msgid "translator-credits"
 msgstr ""
 "Stas Solovey <whats_up@tut.by>, 2015-2018.\n"
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2012-2015.\n"
 "Ser82-png <asvmail.as@gmail.com>, 2022-2025"
 
-#: src/number-picker.vala:127
+#: src/number-picker.vala:134
 msgid "Clear"
 msgstr "Очистить"
 
-#: src/number-picker.vala:237 src/number-picker.vala:312
+#: src/number-picker.vala:231 src/number-picker.vala:306
 msgid "Lock"
 msgstr "Заблокировать"
 
-#: src/number-picker.vala:309
+#: src/number-picker.vala:303
 msgid "Unlock"
 msgstr "Разблокировать"
 
@@ -608,6 +607,15 @@ msgstr "Ошибка печати в файл:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Закрыть"
+
+#~ msgid "_Print"
+#~ msgstr "_Печать"
+
+#~ msgid "Print _Current Puzzle…"
+#~ msgstr "Печать _текущей головоломки…"
+
+#~ msgid "Print _Multiple Puzzles…"
+#~ msgstr "Печать _нескольких головоломок…"
 
 #~ msgid "Difficulty level of sudokus to be printed"
 #~ msgstr "Уровень сложности печатаемых судоку"
