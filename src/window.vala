@@ -44,6 +44,7 @@ public class SudokuWindow : Adw.ApplicationWindow
     private EventControllerScroll scroll_controller;
 
     private EventControllerKey capture_key_controller;
+    private Type? visible_dialogue_type;
 
     public bool keyboard_pressed_recently { get; private set; }
     private uint keyboard_pressed_timeout;
@@ -176,6 +177,8 @@ public class SudokuWindow : Adw.ApplicationWindow
 
         if (visible_dialog != null)
         {
+            visible_dialogue_type = visible_dialog.get_type ();
+
             if (!backend.game.paused)
                 backend.game.stop_clock ();
 
@@ -186,8 +189,10 @@ public class SudokuWindow : Adw.ApplicationWindow
             if (!backend.game.paused)
                 backend.game.resume_clock ();
 
-            if (!backend.game.board.complete)
+            if (visible_dialogue_type != null && visible_dialogue_type != typeof(Adw.AlertDialog))
                 game_view.grab_focus ();
+
+            visible_dialogue_type = null;
         }
     }
 
