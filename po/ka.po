@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-12-10 18:12+0000\n"
-"PO-Revision-Date: 2025-12-11 19:59+0100\n"
+"POT-Creation-Date: 2025-12-17 13:09+0000\n"
+"PO-Revision-Date: 2025-12-20 08:57+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -31,7 +31,7 @@ msgstr ""
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Sudoku.desktop.in.in:5
 msgid "magic;square;"
-msgstr ""
+msgstr "magic;square;მაგია;კვადრატი;"
 
 #: data/org.gnome.Sudoku.gschema.xml:18
 msgid "Initialize the earmarks with the possible values for each cell"
@@ -200,7 +200,7 @@ msgstr "შეჩერება"
 msgid "Play"
 msgstr "თამაში"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:248
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:249
 msgid "_New Game…"
 msgstr "_ახალი თამაში…"
 
@@ -209,54 +209,46 @@ msgid "_Reset Puzzle"
 msgstr "პაზლის ჩამოყ_რა"
 
 #: src/blueprints/menu-button.blp:19
-msgid "_Print"
-msgstr "_ბეჭდვა"
-
-#: src/blueprints/menu-button.blp:23
-msgid "Print _Current Puzzle…"
+msgid "Print _Generator"
 msgstr ""
 
-#: src/blueprints/menu-button.blp:28
-msgid "Print _Multiple Puzzles…"
-msgstr ""
-
-#: src/blueprints/menu-button.blp:35
+#: src/blueprints/menu-button.blp:24
 msgid "Zoom"
 msgstr "მასშტაბი"
 
-#: src/blueprints/menu-button.blp:54
+#: src/blueprints/menu-button.blp:43
 msgid "_Preferences"
 msgstr "_მორგება"
 
-#: src/blueprints/menu-button.blp:59
+#: src/blueprints/menu-button.blp:48
 msgid "_Keyboard Shortcuts"
 msgstr "კლავიატურის მალსახმობები"
 
-#: src/blueprints/menu-button.blp:64
+#: src/blueprints/menu-button.blp:53
 msgid "_Help"
 msgstr "_დახმარება"
 
-#: src/blueprints/menu-button.blp:69
+#: src/blueprints/menu-button.blp:58
 msgid "_About Sudoku"
 msgstr ""
 
-#: src/blueprints/menu-button.blp:80
+#: src/blueprints/menu-button.blp:69
 msgid "Main Menu"
 msgstr "მთავარი მენიუ"
 
-#: src/blueprints/menu-button.blp:89
+#: src/blueprints/menu-button.blp:78
 msgid "Zoom Out"
 msgstr "დაპატარავება"
 
-#: src/blueprints/menu-button.blp:101
+#: src/blueprints/menu-button.blp:90
 msgid "Zoom In"
 msgstr "გადიდება"
 
-#: src/blueprints/menu-button.blp:116
+#: src/blueprints/menu-button.blp:105
 msgid "Fullscreen"
 msgstr "სრულ ეკრანზე"
 
-#: src/blueprints/menu-button.blp:127
+#: src/blueprints/menu-button.blp:116
 msgid "Leave Fullscreen"
 msgstr "სრული ეკრანიდან გასვლა"
 
@@ -333,31 +325,35 @@ msgstr ""
 msgid "_Number of Puzzles"
 msgstr ""
 
-#: src/blueprints/print-multiple-dialog.blp:37
+#: src/blueprints/print-multiple-dialog.blp:38
 msgid "_Number of Puzzles per Page"
 msgstr ""
 
-#: src/blueprints/print-multiple-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:52
 msgid "_Difficulty"
 msgstr "სირთუ_ლე"
 
-#: src/blueprints/print-multiple-dialog.blp:56
+#: src/blueprints/print-multiple-dialog.blp:57
 msgid "Easy"
 msgstr "ადვილი"
 
-#: src/blueprints/print-multiple-dialog.blp:57
+#: src/blueprints/print-multiple-dialog.blp:58
 msgid "Medium"
 msgstr "საშუალო"
 
-#: src/blueprints/print-multiple-dialog.blp:58
+#: src/blueprints/print-multiple-dialog.blp:59
 msgid "Hard"
 msgstr "ძნელი"
 
-#: src/blueprints/print-multiple-dialog.blp:59
+#: src/blueprints/print-multiple-dialog.blp:60
 msgid "Very Hard"
 msgstr "ძალიან ძნელი"
 
-#: src/blueprints/print-multiple-dialog.blp:69
+#: src/blueprints/print-multiple-dialog.blp:68
+msgid "Print _Current Puzzle"
+msgstr "მიმდინარე _პაზლის დაბეჭდვა"
+
+#: src/blueprints/print-multiple-dialog.blp:76
 msgid "_Print…"
 msgstr "ბეჭდვ_ა…"
 
@@ -529,11 +525,11 @@ msgid "Show release version"
 msgstr "ვერსიის ჩვენება"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:213
+#: src/gnome-sudoku.vala:214
 msgid "Puzzle Completed!"
 msgstr ""
 
-#: src/gnome-sudoku.vala:221
+#: src/gnome-sudoku.vala:222
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -541,30 +537,30 @@ msgstr[0] "%d წუთი"
 msgstr[1] "%d წუთი"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:226
+#: src/gnome-sudoku.vala:227
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:233
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr ""
 
-#: src/gnome-sudoku.vala:239
+#: src/gnome-sudoku.vala:240
 msgid "_Quit"
 msgstr "გასვ_ლა"
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:243
 msgid "_Change Difficulty"
 msgstr "_სიძნელის შეცვლა"
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:244
 msgid "_Play Again"
 msgstr "_თავიდან თამაში"
 
-#: src/gnome-sudoku.vala:371
+#: src/gnome-sudoku.vala:372
 msgid "translator-credits"
 msgstr "ეკატერინე პაპავა"
 
@@ -588,6 +584,9 @@ msgstr "ფაილის დაბეჭდვის შეცდომა:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "დახურვა"
+
+#~ msgid "_Print"
+#~ msgstr "_ბეჭდვა"
 
 #~ msgctxt "Shortcuts Window"
 #~ msgid "Warnings"
