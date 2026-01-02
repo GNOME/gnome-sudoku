@@ -1,7 +1,6 @@
-50.alpha - Devel
+50.alpha - January 2, 2026
 ==========================
 
-- Add support for running without installing
 - Port Shortcuts Window to Shortcuts Dialog
 - Add duplicate warnings preference
 - Rename "Check Against Solution" preference to "Solution Warnings"
@@ -9,10 +8,10 @@
 - Add a backwards compatibility check that disables warning preferences
   if the warnings setting was disabled
 - Add a new Puzzle submenu with 3 new buttons to share, save or export
-  games
+  games (!106)
 - Retire custom game creation, if you have an ongoing custom game make
-  sure to finish it before updating or you will lose it
-- Reuse custom game difficulty to load games for now
+  sure to finish it before updating or you will lose it (!106)
+- Reuse custom game difficulty to load games for now (!106)
 - Save printed games to their own folder
 - Add mnemonics to print multiple dialog and game completed dialog
 - Add current highscore to clock box tooltip
@@ -30,13 +29,11 @@
   Use only the latest played difficulty to preselect choices
   Don't allow non numeric characters in the spin row
   Fix capitalization
-- Fix timer color when changing difficulty
-- Fix cells being in the wrong order in RTL
 - Update translations:
-  Jiri Grönroos (fi); Ekaterine Papava (ka); Pawan Chitrakar (ne);
-  Juliano de Souza Camargo (pt_BR); Sergej A. (ru); Martin (sl); Anders
-  Jonsson (sv); Sabri Ünal (tr); Yuri Chornoivan (uk); luming zh
-  (zh_CN).
+  Jiri Grönroos (fi); Ekaterine Papava (ka); Aurimas Aurimas Černius
+  (lt); Pawan Chitrakar (ne); Juliano de Souza Camargo (pt_BR); Sergej
+  A. (ru); Martin (sl); Anders Jonsson (sv); Sabri Ünal (tr); Yuri
+  Chornoivan (uk); luming zh (zh_CN).
 
 49.2 - October 17, 2025
 ==========================
