@@ -62,7 +62,7 @@ public class SudokuStartView : Adw.Bin
         activate_difficulty_checkbutton ();
 
         this.backend.notify["tgame"].connect (() => {
-            if (backend.tgame == null)
+            if (this.backend.tgame == null)
                 start_open_stack.set_visible_child (open_button_pill);
             else if (custom_check.active == true)
                 start_open_stack.set_visible_child (open_and_shared_box);
