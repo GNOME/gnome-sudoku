@@ -217,7 +217,6 @@ public class SudokuBoard : Object
                 set_all_fixed ();
                 return;
             }
-
             else if (col == 8)
             {
                 row++;
@@ -279,7 +278,7 @@ public class SudokuBoard : Object
     public SudokuBoard.from_json (string path)
         throws IOError
     {
-        this();
+        this ();
         Json.Parser parser = new Json.Parser ();
         try
         {
@@ -293,30 +292,25 @@ public class SudokuBoard : Object
         Json.Node node = parser.get_root ();
         Json.Reader reader = new Json.Reader (node);
         reader.read_member ("cells");
-        ctor_err (!reader.is_array ());
+        ctor_err (!reader.is_array());
 
         for (var i = 0; i < reader.count_elements (); i++)
         {
             reader.read_element (i);	// Reading a cell
 
             reader.read_member ("position");
-            ctor_err (!reader.is_array () || reader.count_elements () != 2);
-
+            ctor_err (!reader.is_array() || reader.count_elements() != 2);
             reader.read_element (0);
             ctor_err (!reader.is_value());
-
             var row = (int) reader.get_int_value ();
             ctor_err (row < 0 || row > 9);
-
             reader.end_element ();
-
             reader.read_element (1);
             ctor_err (!reader.is_value());
             var col = (int) reader.get_int_value ();
             ctor_err (col < 0 || col > 9);
             reader.end_element ();
             reader.end_member ();
-
 
             reader.read_member ("value");
             ctor_err (!reader.is_value());
@@ -333,8 +327,7 @@ public class SudokuBoard : Object
                 insert (row, col, val, is_fixed);
 
             reader.read_member ("earmarks");
-            ctor_err (!reader.is_array ());
-
+            ctor_err (!reader.is_array());
             for (var k = 0; k < reader.count_elements (); k++)
             {
                 reader.read_element (k);
@@ -358,7 +351,7 @@ public class SudokuBoard : Object
 
         reader.read_member ("difficulty_category");
         ctor_err (!reader.is_value());
-        difficulty_category = DifficultyCategory.from_string (reader.get_string_value ());
+        difficulty_category = DifficultyCategory.from_string (reader.get_string_value());
         ctor_err (difficulty_category == DifficultyCategory.UNKNOWN);
         reader.end_member ();
     }
@@ -548,7 +541,7 @@ public class SudokuBoard : Object
         value_changed (row, col, old_val, val);
 
         if (complete)
-            completed();
+            completed ();
     }
 
     public void remove (int row, int col)
@@ -674,7 +667,6 @@ public class SudokuBoard : Object
 
         builder.set_member_name ("cells");
         builder.begin_array ();
-
         for (var i = 0; i < rows; i++)
         {
             for (var j = 0; j < cols; j++)
@@ -694,22 +686,24 @@ public class SudokuBoard : Object
                 builder.add_int_value (i);
                 builder.add_int_value (j);
                 builder.end_array ();
+
                 builder.set_member_name ("value");
                 builder.add_int_value (cells[i, j].value);
+
                 builder.set_member_name ("fixed");
                 builder.add_boolean_value (get_is_fixed (i, j));
+
                 builder.set_member_name ("earmarks");
                 builder.begin_array ();
-
                 foreach (int k in earmarks)
+                {
                     builder.add_int_value (k);
-
+                }
                 builder.end_array ();
 
                 builder.end_object ();
             }
         }
-
         builder.end_array ();
         builder.end_object ();
 
