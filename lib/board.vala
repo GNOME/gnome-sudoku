@@ -194,8 +194,7 @@ public class SudokuBoard : Object
     public SudokuBoard.from_string (string s)
         throws IOError
     {
-        if (s.length > 100 || s.length < 81)
-            throw new IOError.INVALID_DATA ("Failed to construct");
+        ctor_err (s.length > 100 || s.length < 81);
 
         this ();
         int row = 0;
@@ -229,14 +228,13 @@ public class SudokuBoard : Object
                 col++;
         }
 
-        throw new IOError.INVALID_DATA ("Failed to construct");
+        ctor_err (true);
     }
 
     public SudokuBoard.from_short_string (string s)
         throws IOError
     {
-        if (s[0] != '#')
-            throw new IOError.INVALID_DATA ("Failed to construct");
+        ctor_err (s[0] != '#');
 
         this ();
         ArrayList<int> sizes = new ArrayList<int>();
@@ -252,8 +250,7 @@ public class SudokuBoard : Object
         foreach (var size in sizes)
             string_sum += size;
 
-        if (string_sum != s.length)
-            throw new IOError.INVALID_DATA ("Failed to construct");
+        ctor_err (string_sum != s.length);
 
         var rows_cols = s.slice (6, s.length);
         int count = 0;
@@ -277,6 +274,102 @@ public class SudokuBoard : Object
         }
 
         set_all_fixed ();
+    }
+
+    public SudokuBoard.from_json (string path)
+        throws IOError
+    {
+        this();
+        Json.Parser parser = new Json.Parser ();
+        try
+        {
+            parser.load_from_file (path);
+        }
+        catch (Error e)
+        {
+            throw new IOError.NOT_FOUND ("Save file doesn't exist");
+        }
+
+        Json.Node node = parser.get_root ();
+        Json.Reader reader = new Json.Reader (node);
+        reader.read_member ("cells");
+        ctor_err (!reader.is_array ());
+
+        for (var i = 0; i < reader.count_elements (); i++)
+        {
+            reader.read_element (i);	// Reading a cell
+
+            reader.read_member ("position");
+            ctor_err (!reader.is_array () || reader.count_elements () != 2);
+
+            reader.read_element (0);
+            ctor_err (!reader.is_value());
+
+            var row = (int) reader.get_int_value ();
+            ctor_err (row < 0 || row > 9);
+
+            reader.end_element ();
+
+            reader.read_element (1);
+            ctor_err (!reader.is_value());
+            var col = (int) reader.get_int_value ();
+            ctor_err (col < 0 || col > 9);
+            reader.end_element ();
+            reader.end_member ();
+
+
+            reader.read_member ("value");
+            ctor_err (!reader.is_value());
+            var val = (int) reader.get_int_value ();
+            ctor_err (val < 0 || val > 9);
+            reader.end_member ();
+
+            reader.read_member ("fixed");
+            ctor_err (!reader.is_value());
+            var is_fixed = reader.get_boolean_value ();
+            reader.end_member ();
+
+            if (val != 0)
+                insert (row, col, val, is_fixed);
+
+            reader.read_member ("earmarks");
+            ctor_err (!reader.is_array ());
+
+            for (var k = 0; k < reader.count_elements (); k++)
+            {
+                reader.read_element (k);
+                ctor_err (!reader.is_value());
+                var earmark = (int) reader.get_int_value ();
+                ctor_err (earmark < 0 || earmark > 10 || is_earmark_enabled (row, col, earmark));
+                enable_earmark (row, col, earmark);
+                reader.end_element ();
+            }
+            reader.end_member ();
+
+            reader.end_element ();
+        }
+        reader.end_member ();
+
+        reader.read_member ("time_elapsed");
+        ctor_err (!reader.is_value());
+        previous_played_time = reader.get_double_value ();
+        ctor_err (previous_played_time < 0);
+        reader.end_member ();
+
+        reader.read_member ("difficulty_category");
+        ctor_err (!reader.is_value());
+        difficulty_category = DifficultyCategory.from_string (reader.get_string_value ());
+        ctor_err (difficulty_category == DifficultyCategory.UNKNOWN);
+        reader.end_member ();
+    }
+
+    private static void ctor_err (bool check)
+        throws IOError
+    {
+        if (!check)
+            return;
+        else
+            throw new IOError.NOT_FOUND ("Failed to construct the board");
     }
 
     public SudokuBoard clone ()
@@ -563,6 +656,69 @@ public class SudokuBoard : Object
             }
 
         return ret;
+    }
+
+    public string to_json (double? elapsed_time)
+    {
+        Json.Builder builder = new Json.Builder ();
+
+        builder.begin_object ();
+        builder.set_member_name ("difficulty_category");
+        builder.add_string_value (difficulty_category.to_untranslated_string ());
+
+        builder.set_member_name ("time_elapsed");
+        if (elapsed_time != null)
+            builder.add_double_value (elapsed_time);
+        else
+            builder.add_double_value (-1);
+
+        builder.set_member_name ("cells");
+        builder.begin_array ();
+
+        for (var i = 0; i < rows; i++)
+        {
+            for (var j = 0; j < cols; j++)
+            {
+                int[] earmarks = {};
+                for (var k = 1; k <= max_val; k++)
+                    if (is_earmark_enabled(i, j, k))
+                        earmarks += k;
+
+                if (cells[i, j].value == 0 && earmarks.length == 0)
+                    continue;
+
+                builder.begin_object ();
+
+                builder.set_member_name ("position");
+                builder.begin_array ();
+                builder.add_int_value (i);
+                builder.add_int_value (j);
+                builder.end_array ();
+                builder.set_member_name ("value");
+                builder.add_int_value (cells[i, j].value);
+                builder.set_member_name ("fixed");
+                builder.add_boolean_value (get_is_fixed (i, j));
+                builder.set_member_name ("earmarks");
+                builder.begin_array ();
+
+                foreach (int k in earmarks)
+                    builder.add_int_value (k);
+
+                builder.end_array ();
+
+                builder.end_object ();
+            }
+        }
+
+        builder.end_array ();
+        builder.end_object ();
+
+        Json.Generator generator = new Json.Generator ();
+        generator.set_pretty (true);
+        Json.Node root = builder.get_root ();
+        generator.set_root (root);
+
+        return generator.to_data (null);
     }
 
     public string to_string ()

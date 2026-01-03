@@ -342,7 +342,7 @@ public class Sudoku : Adw.Application
         filter.add_mime_type ("text/plain");
         filter.add_suffix ("save");
 
-        var dir = File.new_for_path (SudokuSaver.saved_dir);
+        var dir = File.new_for_path (SudokuBackend.saved_dir);
         if (dir.query_exists ())
             file_dialog.set_initial_folder (dir);
 
@@ -350,7 +350,7 @@ public class Sudoku : Adw.Application
             try
             {
                 var file = file_dialog.open.end (res);
-                if (!backend.import_path (file.get_path ()))
+                if (!backend.load_game_path (file.get_path ()))
                     open_fail ();
             }
             catch (Error e)

@@ -195,16 +195,17 @@ public class SudokuGameView : Adw.Bin
             return;
 
         var elapsed_time = (int) game.get_total_time_played ();
-        var highscore = "";
+        var highscore_string = "";
 
-        if (backend.highscore != null)
+        var highscore = backend.get_highscore ();
+        if (highscore != null)
         {
-            highscore = "🥇" + create_timer_string ((int) backend.highscore);
-            clock_box.set_tooltip_markup (("<span font_features='tnum=1'>%s</span>").printf (highscore));
+            highscore_string = "🥇" + create_timer_string ((int) highscore);
+            clock_box.set_tooltip_markup (("<span font_features='tnum=1'>%s</span>").printf (highscore_string));
 
-            if (elapsed_time > backend.highscore)
+            if (elapsed_time > highscore)
                 clock_label.set_css_classes ({"numeric"});
-            else if (elapsed_time > backend.highscore - 60)
+            else if (elapsed_time > highscore - 60)
                 clock_label.set_css_classes ({"numeric", "warning"});
             else
                 clock_label.set_css_classes ({"numeric", "success"});
@@ -212,7 +213,7 @@ public class SudokuGameView : Adw.Bin
         else
         {
             clock_label.set_css_classes ({"numeric"});
-            clock_box.set_tooltip_text (highscore);
+            clock_box.set_tooltip_text (highscore_string);
         }
 
         clock_label.set_label (create_timer_string (elapsed_time));
@@ -266,12 +267,13 @@ public class SudokuGameView : Adw.Bin
     {
         var elapsed_time = (int) game.get_total_time_played ();
 
-        if (backend.highscore != null)
+        var highscore = backend.get_highscore ();
+        if (highscore != null)
         {
-            if (elapsed_time > backend.highscore && clock_label.has_css_class ("warning"))
+            if (elapsed_time > highscore && clock_label.has_css_class ("warning"))
                 clock_label.remove_css_class ("warning");
 
-            else if (elapsed_time > backend.highscore - 60 && clock_label.has_css_class ("success"))
+            else if (elapsed_time > highscore - 60 && clock_label.has_css_class ("success"))
                 clock_label.set_css_classes ({"warning"});
         }
 
@@ -386,8 +388,8 @@ public class SudokuGameView : Adw.Bin
         var file_dialog = new FileDialog ();
         var name = game.board.fixed_to_string_pretty () + ".save";
         file_dialog.set_initial_name (name);
-        var dir = File.new_for_path (SudokuSaver.saved_dir);
-        DirUtils.create (SudokuSaver.saved_dir, 0755);
+        var dir = File.new_for_path (SudokuBackend.saved_dir);
+        DirUtils.create (SudokuBackend.saved_dir, 0755);
         file_dialog.set_initial_folder (dir);
         file_dialog.save.begin (window, null, (obj, res) => {
             try

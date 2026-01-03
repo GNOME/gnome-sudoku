@@ -20,37 +20,80 @@
 
 public class SudokuBackend : Object
 {
+    public static string active_save_file { get; private set; default = ""; }
+    public static string highscores_file { get; private set; default = ""; }
+    public static string sudoku_data_dir { get; private set; default = ""; }
+    public static string printed_dir { get; private set; default = ""; }
+    public static string finished_dir { get; private set; default = ""; }
+    public static string saved_dir { get; private set; default = ""; }
+
     public SudokuGame game { get; private set; default = null; }
     public SudokuGame tgame { get; private set; default = null; }
-    public SudokuSaver saver;
-    public double? highscore;
+
+    private Highscores highscores;
+    public double? get_highscore ()
+    {
+        if (game == null)
+            return null;
+        else
+            return highscores.get_highscore (game.board.difficulty_category);
+    }
 
     private uint autosave_timeout;
 
+    static construct {
+        var config_dir = Environment.get_user_data_dir ();
+        sudoku_data_dir = Path.build_path (Path.DIR_SEPARATOR_S, config_dir, "gnome-sudoku");
+        active_save_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "savefile");
+        highscores_file = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "highscores");
+        printed_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "printed");
+        finished_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "finished");
+        saved_dir = Path.build_path (Path.DIR_SEPARATOR_S, sudoku_data_dir, "saved");
+    }
+
     public SudokuBackend ()
     {
-        saver = new SudokuSaver ();
+        if (DirUtils.create_with_parents (sudoku_data_dir, 0755) == -1)
+            warning ("Failed to create saver directory: %s", strerror (errno));
+
+        highscores = new Highscores (highscores_file);
         load_game ();
     }
 
     public void save_game ()
     {
         if (game != null && !game.is_empty ())
-            saver.save_game (game);
+            create_file_for_game (game, active_save_file, true);
         else
-            saver.delete_save ();
+            delete_save ();
     }
 
     private void load_game ()
     {
-        var savedgame = saver.get_savedgame ();
-        if (savedgame != null)
+        try
         {
-            game = saver.get_savedgame ();
-            highscore = saver.get_highscore (game.board.difficulty_category);
+            var saved_board = new SudokuBoard.from_json (active_save_file);
+            var saved_game = new SudokuGame (saved_board);
+            game = saved_game;
             start_autosave (this);
             game_changed ();
         }
+        catch (Error e)
+        {
+            return;
+        }
+    }
+
+    public bool save_highscore ()
+    {
+        var highscore = highscores.get_highscore (game.board.difficulty_category);
+        if (highscore == null || (highscore != null && game.get_total_time_played () < highscore))
+        {
+            highscores.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
+            return true;
+        }
+
+        return false;
     }
 
     public signal void game_changed ();
@@ -61,15 +104,17 @@ public class SudokuBackend : Object
         game_changed ();
     }
 
-    public bool import_path (string path)
+    public bool load_game_path (string path)
     {
-        SudokuGame ngame;
-        ngame = saver.parse_json_to_game (path);
-
-        if (ngame != null)
+        try
         {
+            var ngame = new SudokuGame(new SudokuBoard.from_json(path));
             change_game (ngame);
             return true;
+        }
+        catch (Error e)
+        {
+            print (e.message);
         }
 
         try
@@ -123,7 +168,6 @@ public class SudokuBackend : Object
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);
                 game = new SudokuGame (gen_boards[0]);
 
-                highscore = saver.get_highscore (difficulty);
                 start_autosave (this);
                 game_changed ();
             }
@@ -134,25 +178,22 @@ public class SudokuBackend : Object
         });
     }
 
-    public bool save_highscore ()
-    {
-        if (highscore == null || (highscore != null && game.get_total_time_played () < highscore))
-        {
-            saver.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
-            return true;
-        }
-
-        return false;
-    }
-
     public void save_game_as (string path)
     {
-        saver.save_game_as (game, path);
+        create_file_for_game (game, path, true);
     }
 
     public void export_puzzle (string path)
     {
-        saver.export_to_string (game.board, path);
+        string content = game.board.to_string_pretty ();
+        try
+        {
+            FileUtils.set_contents (path, content);
+        }
+        catch (Error e)
+        {
+            warning ("%s", e.message);
+        }
     }
 
     public string get_short_puzzle ()
@@ -184,21 +225,73 @@ public class SudokuBackend : Object
         }
     }
 
+    public void archive_game (string dir_path, SudokuGame game, bool save_timer)
+    {
+        var file_name = game.board.to_string ()+ ".save";
+        var file_path = Path.build_path (Path.DIR_SEPARATOR_S, dir_path, file_name);
+        if (DirUtils.create (dir_path, 0755) == -1)
+            warning ("Failed to archive the game: %s", strerror (errno));
+
+        create_file_for_game (game, file_path, save_timer);
+    }
+
     public void add_game_to_finished (bool save_timer)
     {
         stop_autosave ();
-        saver.archive_game (SudokuSaver.finished_dir, game, save_timer);
-        saver.delete_save ();
+        archive_game (finished_dir, game, save_timer);
+        delete_save ();
     }
 
     public void add_board_to_printed (SudokuBoard board)
     {
-        saver.archive_game (SudokuSaver.printed_dir, new SudokuGame(board), false);
+        try
+        {
+            var ngame = new SudokuGame (board);
+            archive_game (printed_dir, ngame, false);
+        }
+        catch (Error e)
+        {
+            print (e.message);
+        }
     }
 
     public void add_game_to_printed ()
     {
-        saver.archive_game (SudokuSaver.printed_dir, game, false);
+        archive_game (printed_dir, game, false);
+    }
+
+    public void delete_save ()
+    {
+        var file = File.new_for_path (active_save_file);
+        try
+        {
+            file.delete ();
+        }
+        catch (GLib.Error e)
+        {
+            if (e.code != IOError.NOT_FOUND)
+                warning ("Failed to delete %s: %s", file.get_uri (), e.message);
+        }
+    }
+
+    private void create_file_for_game (SudokuGame game, string file_name, bool save_timer)
+    {
+        double? elapsed_time;
+        if (save_timer)
+            elapsed_time = game.get_elapsed_time ();
+        else
+            elapsed_time = null;
+
+        var json_str = game.board.to_json (elapsed_time);
+
+        try
+        {
+            FileUtils.set_contents (file_name, json_str);
+        }
+        catch (Error e)
+        {
+            warning ("%s", e.message);
+        }
     }
 
     public override void dispose ()

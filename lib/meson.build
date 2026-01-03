@@ -3,7 +3,7 @@ libsudoku_sources = [
   'board.vala',
   'game.vala',
   'generator.vala',
-  'saver.vala',
+  'highscores.vala',
   'qqwing/qqwing-wrapper.cpp',
   'qqwing/qqwing-wrapper.h',
 ]
