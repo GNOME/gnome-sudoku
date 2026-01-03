@@ -5,13 +5,13 @@
 # Wanderlust <wanderlust@ukr.net>, 2009.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
 # Daniel Korostil <ted.korostiled@gmail.com>, 2015, 2016, 2017.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-12-14 10:48+0000\n"
-"PO-Revision-Date: 2025-12-14 17:42+0200\n"
+"POT-Creation-Date: 2026-01-03 10:23+0000\n"
+"PO-Revision-Date: 2026-01-03 21:29+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -129,8 +129,10 @@ msgid "Generate an infinite amount of new puzzles with qqwing."
 msgstr "Створення нескінченної кількості головоломок за допомогою qqwing."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:19
-msgid "Create and solve custom puzzles from scratch."
-msgstr "Створення і розв'язування нетипових головоломок від початку."
+msgid "Easily share puzzles with friends, or save them for later."
+msgstr ""
+"Просте поширення судоку серед ваших друзів або збереження судоку для"
+" наступного розв'язування."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:20
 msgid "Adjust a scalable grid to your preferences."
@@ -170,23 +172,23 @@ msgstr "Перегляд гри Судоку"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Гра судоку для GNOME у темному режимі з позначками і попередженнями"
 
-#: lib/board.vala:544 lib/board.vala:555
+#: lib/board.vala:852 lib/board.vala:863
 msgid "Unknown Difficulty"
 msgstr "Невідома складність"
 
-#: lib/board.vala:546
+#: lib/board.vala:854
 msgid "Easy Difficulty"
 msgstr "Легка складність"
 
-#: lib/board.vala:548
+#: lib/board.vala:856
 msgid "Medium Difficulty"
 msgstr "Помірна складність"
 
-#: lib/board.vala:550
+#: lib/board.vala:858
 msgid "Hard Difficulty"
 msgstr "Складна складність"
 
-#: lib/board.vala:552
+#: lib/board.vala:860
 msgid "Very Hard Difficulty"
 msgstr "Дуже складна складність"
 
@@ -210,55 +212,74 @@ msgstr "Пауза"
 msgid "Play"
 msgstr "Грати"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:249
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:251
 msgid "_New Game…"
 msgstr "_Нова гра…"
 
 #: src/blueprints/menu-button.blp:12
-msgid "_Reset Puzzle"
-msgstr "_Скинути головоломку"
+#| msgid "_Reset Puzzle"
+msgid "_Puzzle"
+msgstr "_Головоломка"
 
-#: src/blueprints/menu-button.blp:19
+#: src/blueprints/menu-button.blp:16
+#| msgctxt "Shortcuts Window"
+#| msgid "Reset"
+msgid "_Reset"
+msgstr "С_кинути"
+
+#: src/blueprints/menu-button.blp:23
+msgid "_Share"
+msgstr "_Оприлюднити"
+
+#: src/blueprints/menu-button.blp:28
+msgid "_Save As…"
+msgstr "Зберегти _як…"
+
+#: src/blueprints/menu-button.blp:33
+msgid "_Export…"
+msgstr "_Експортувати…"
+
+#: src/blueprints/menu-button.blp:40
 msgid "Print _Generator"
 msgstr "Надрукувати с_творене"
 
-#: src/blueprints/menu-button.blp:24
+#: src/blueprints/menu-button.blp:49
 msgid "Zoom"
 msgstr "Масштаб"
 
-#: src/blueprints/menu-button.blp:43
+#: src/blueprints/menu-button.blp:68
 msgid "_Preferences"
 msgstr "_Налаштування"
 
-#: src/blueprints/menu-button.blp:48
+#: src/blueprints/menu-button.blp:73
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: src/blueprints/menu-button.blp:53
+#: src/blueprints/menu-button.blp:78
 msgid "_Help"
 msgstr "_Довідка"
 
-#: src/blueprints/menu-button.blp:58
+#: src/blueprints/menu-button.blp:83
 msgid "_About Sudoku"
 msgstr "_Про «Судоку»"
 
-#: src/blueprints/menu-button.blp:69
+#: src/blueprints/menu-button.blp:94
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: src/blueprints/menu-button.blp:78
+#: src/blueprints/menu-button.blp:103
 msgid "Zoom Out"
 msgstr "Зменшити"
 
-#: src/blueprints/menu-button.blp:90
+#: src/blueprints/menu-button.blp:115
 msgid "Zoom In"
 msgstr "Збільшити"
 
-#: src/blueprints/menu-button.blp:105
+#: src/blueprints/menu-button.blp:130
 msgid "Fullscreen"
 msgstr "На увесь екран"
 
-#: src/blueprints/menu-button.blp:116
+#: src/blueprints/menu-button.blp:141
 msgid "Leave Fullscreen"
 msgstr "Вийти з повноекранного режиму"
 
@@ -360,8 +381,6 @@ msgid "Very Hard"
 msgstr "Дуже складна"
 
 #: src/blueprints/print-multiple-dialog.blp:68
-#| msgctxt "Shortcuts Window"
-#| msgid "Print Current Puzzle"
 msgid "Print _Current Puzzle"
 msgstr "Надрукувати _поточну головоломку"
 
@@ -386,29 +405,38 @@ msgctxt "Difficulty"
 msgid "_Custom"
 msgstr "_Нетипова"
 
-#: src/blueprints/start-view.blp:64
+#: src/blueprints/start-view.blp:65
 msgctxt "Difficulty"
 msgid "_Easy"
 msgstr "_Проста"
 
-#: src/blueprints/start-view.blp:77
+#: src/blueprints/start-view.blp:79
 msgctxt "Difficulty"
 msgid "_Medium"
 msgstr "П_осередня"
 
-#: src/blueprints/start-view.blp:90
+#: src/blueprints/start-view.blp:93
 msgctxt "Difficulty"
 msgid "_Hard"
 msgstr "С_кладна"
 
-#: src/blueprints/start-view.blp:103
+#: src/blueprints/start-view.blp:107
 msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "Д_уже складна"
 
-#: src/blueprints/start-view.blp:112
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:334
 msgid "_Start Game"
 msgstr "_Почати гру"
+
+#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:162
+msgid "_Open..."
+msgstr "_Відкрити…"
+
+#: src/blueprints/start-view.blp:147
+#| msgid "_Start Game"
+msgid "_Start Shared Game"
+msgstr "_Почати оприлюднену гру"
 
 #: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
@@ -532,16 +560,16 @@ msgid "Fullscreen"
 msgstr "Повноекранний режим"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:90
+#: src/gnome-sudoku.vala:91
 msgid "Show release version"
 msgstr "Показати версію випуску"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:214
+#: src/gnome-sudoku.vala:216
 msgid "Puzzle Completed!"
 msgstr "Розв'язання завершено!"
 
-#: src/gnome-sudoku.vala:222
+#: src/gnome-sudoku.vala:224
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -550,31 +578,44 @@ msgstr[1] "%d хвилини"
 msgstr[2] "%d хвилин"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:227
+#: src/gnome-sudoku.vala:229
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 "Чудово! Ви розв'язали головоломку за %s і встановили новий особистий рекорд!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:233
+#: src/gnome-sudoku.vala:235
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Чудово! Ви розв'язали головоломку за %s!"
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:242
 msgid "_Quit"
 msgstr "Ви_йти"
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:245
 msgid "_Change Difficulty"
 msgstr "З_мінити складність"
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:246
 msgid "_Play Again"
 msgstr "Зі_грати знову"
 
-#: src/gnome-sudoku.vala:372
+#: src/gnome-sudoku.vala:366
+msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
+msgstr "Не вдалося імпортувати судоку. Будь ласка, вкажіть коректне судоку"
+
+#: src/gnome-sudoku.vala:367
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: src/gnome-sudoku.vala:368
+#| msgid "_Play Again"
+msgid "_Try Again"
+msgstr "_Спробувати знову"
+
+#: src/gnome-sudoku.vala:426
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота\n"
@@ -603,6 +644,9 @@ msgstr "Помилка друкування файла:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Закрити"
+
+#~ msgid "Create and solve custom puzzles from scratch."
+#~ msgstr "Створення і розв'язування нетипових головоломок від початку."
 
 #~ msgid "_Print"
 #~ msgstr "На_друкувати…"
@@ -733,10 +777,6 @@ msgstr "Закрити"
 #~ "судоку."
 
 #~ msgctxt "Shortcuts Window"
-#~ msgid "Reset"
-#~ msgstr "Скинути"
-
-#~ msgctxt "Shortcuts Window"
 #~ msgid "Print"
 #~ msgstr "Надрукувати"
 
@@ -819,9 +859,6 @@ msgstr "Закрити"
 
 #~ msgid "_Create your own puzzle"
 #~ msgstr "_Створити власну головоломки"
-
-#~ msgid "_Cancel"
-#~ msgstr "_Скасувати"
 
 #~ msgid "Reset the board to its original state"
 #~ msgstr "Скинути дошку до її початкового стану"
