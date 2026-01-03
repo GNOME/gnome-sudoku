@@ -408,7 +408,7 @@ public class SudokuGameView : Adw.Bin
     public void export_puzzle_to_filesystem_cb ()
     {
         var file_dialog = new FileDialog ();
-        file_dialog.set_initial_name (_("Sudoku puzzle.skp"));
+        file_dialog.set_initial_name (C_(".skp is a file extension", "Sudoku puzzle.skp"));
         file_dialog.save.begin (window, null, (obj, res) => {
             try
             {
@@ -427,7 +427,7 @@ public class SudokuGameView : Adw.Bin
     {
         var clipboard = get_clipboard ();
         clipboard.set_text (backend.get_short_puzzle ());
-        var toast = new Adw.Toast ("Puzzle copied to clipboard");
+        var toast = new Adw.Toast (_("Puzzle copied to clipboard"));
         toast.timeout = 3;
         toast_overlay.add_toast (toast);
     }
