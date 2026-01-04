@@ -346,7 +346,7 @@ public class SudokuBoard : Object
         reader.read_member ("time_elapsed");
         ctor_err (!reader.is_value());
         previous_played_time = reader.get_double_value ();
-        ctor_err (previous_played_time < 0);
+        ctor_err (previous_played_time < 0 && previous_played_time != -1);
         reader.end_member ();
 
         reader.read_member ("difficulty_category");
