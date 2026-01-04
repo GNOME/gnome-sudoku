@@ -227,11 +227,15 @@ public class SudokuBackend : Object
 
     public void archive_game (string dir_path, SudokuGame game, bool save_timer)
     {
+        if (DirUtils.create (dir_path, 0755) == -1)
+        {
+            var e = IOError.from_errno (errno);
+            if (e.code != IOError.EXISTS)
+                warning ("Failed to create the folder to archive the game: %s", e.message);
+        }
+
         var file_name = game.board.to_string ()+ ".save";
         var file_path = Path.build_path (Path.DIR_SEPARATOR_S, dir_path, file_name);
-        if (DirUtils.create (dir_path, 0755) == -1)
-            warning ("Failed to archive the game: %s", strerror (errno));
-
         create_file_for_game (game, file_path, save_timer);
     }
 
