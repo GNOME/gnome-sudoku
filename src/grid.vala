@@ -156,8 +156,6 @@ public class SudokuGrid : Grid
 
     public void change_game (SudokuGame new_game)
     {
-        unselect ();
-
         number_picker.change_game (new_game);
         game = new_game;
 

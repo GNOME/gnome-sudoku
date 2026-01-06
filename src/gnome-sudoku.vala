@@ -167,7 +167,6 @@ public class Sudoku : Adw.Application
         set_accels_for_action ("app.zoom-out", {"<Primary>minus", "ZoomOut", "<Primary>KP_Subtract"});
         set_accels_for_action ("app.zoom-reset", {"<Primary>0", "<Primary>KP_0"});
         set_accels_for_action ("app.print-generator", {"<Primary>P"});
-        set_accels_for_action ("app.open-file", {"<Primary>o"});
 
         new_game_action = lookup_action ("new-game") as SimpleAction;
         print_multiple_action = lookup_action ("print-multiple") as SimpleAction;
@@ -322,13 +321,7 @@ public class Sudoku : Adw.Application
         create_game ();
     }
 
-    private void open_file_cb (SimpleAction action)
-    {
-        start_button_selected = DifficultyCategory.CUSTOM;
-        open_file ();
-    }
-
-    private void open_file ()
+    private void open_file_cb ()
     {
         var file_dialog = new FileDialog ();
         file_dialog.set_accept_label (_("_Start Game"));
@@ -369,7 +362,7 @@ public class Sudoku : Adw.Application
         dialog.set_response_appearance ("open", Adw.ResponseAppearance.SUGGESTED);
         dialog.response.connect ((response_id) => {
             if (response_id == "open")
-                open_file ();
+                open_file_cb ();
         });
         dialog.present (window);
     }
