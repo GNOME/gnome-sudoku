@@ -146,6 +146,7 @@ public class SudokuGrid : Grid
 
     public void change_board ()
     {
+        unselect ();
         selected_col = START.col;
         selected_row = START.row;
         foreach (var cell in cells)
