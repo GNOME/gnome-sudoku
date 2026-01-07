@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-02 16:50+0000\n"
-"PO-Revision-Date: 2026-01-03 08:30+0800\n"
+"POT-Creation-Date: 2026-01-06 17:09+0000\n"
+"PO-Revision-Date: 2026-01-07 08:36+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -168,23 +168,23 @@ msgstr "GNOME 数独游戏预览"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "具有耳标和警告功能的暗色模式 GNOME 数独游戏"
 
-#: lib/board.vala:696 lib/board.vala:707
+#: lib/board.vala:846 lib/board.vala:857
 msgid "Unknown Difficulty"
 msgstr "未知难度"
 
-#: lib/board.vala:698
+#: lib/board.vala:848
 msgid "Easy Difficulty"
 msgstr "简易难度"
 
-#: lib/board.vala:700
+#: lib/board.vala:850
 msgid "Medium Difficulty"
 msgstr "中等难度"
 
-#: lib/board.vala:702
+#: lib/board.vala:852
 msgid "Hard Difficulty"
 msgstr "困难难度"
 
-#: lib/board.vala:704
+#: lib/board.vala:854
 msgid "Very Hard Difficulty"
 msgstr "非常困难难度"
 
@@ -208,7 +208,7 @@ msgstr "暂停"
 msgid "Play"
 msgstr "游玩"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:251
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
 msgid "_New Game…"
 msgstr "新建游戏(_N)…"
 
@@ -418,7 +418,7 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "非常困难(_V)"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:334
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
 msgid "_Start Game"
 msgstr "开始游戏(_S)"
 
@@ -483,73 +483,106 @@ msgstr "重做"
 
 #: src/blueprints/shortcuts-dialog.blp:64
 msgctxt "Shortcuts Window"
-msgid "New Game"
-msgstr "新建游戏"
+msgid "New Game…"
+msgstr "新建游戏…"
 
 #: src/blueprints/shortcuts-dialog.blp:69
-msgctxt "Shortcuts Window"
-msgid "Reset Puzzle"
-msgstr "重置谜题"
-
-#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom In"
 msgstr "放大"
 
-#: src/blueprints/shortcuts-dialog.blp:79
+#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom Out"
 msgstr "缩小"
 
-#: src/blueprints/shortcuts-dialog.blp:84
+#: src/blueprints/shortcuts-dialog.blp:79
 msgctxt "Shortcuts Window"
 msgid "Zoom Reset"
 msgstr "重置缩放"
 
-#: src/blueprints/shortcuts-dialog.blp:89
+#: src/blueprints/shortcuts-dialog.blp:84
+msgctxt "Shortcuts Window"
+msgid "Puzzle"
+msgstr "谜题"
+
+#: src/blueprints/shortcuts-dialog.blp:88
+msgctxt "Shortcuts Window"
+msgid "Reset"
+msgstr "重置"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+msgctxt "Shortcuts Window"
+msgid "Share"
+msgstr "分享"
+
+#: src/blueprints/shortcuts-dialog.blp:98
+msgctxt "Shortcuts Window"
+msgid "Save As…"
+msgstr "另存为…"
+
+#: src/blueprints/shortcuts-dialog.blp:103
+msgctxt "Shortcuts Window"
+msgid "Export…"
+msgstr "导出…"
+
+#: src/blueprints/shortcuts-dialog.blp:108
+msgctxt "Shortcuts Window"
+msgid "Print Generator"
+msgstr "打印生成器"
+
+#: src/blueprints/shortcuts-dialog.blp:113
 msgctxt "Shortcuts Window"
 msgid "Window"
 msgstr "窗口"
 
-#: src/blueprints/shortcuts-dialog.blp:93
+#: src/blueprints/shortcuts-dialog.blp:117
 msgctxt "Shortcuts Window"
 msgid "Go Back"
 msgstr "返回"
 
-#: src/blueprints/shortcuts-dialog.blp:98
-msgctxt "Shortcuts Window"
-msgid "Print Current Puzzle"
-msgstr "打印当前谜题"
-
-#: src/blueprints/shortcuts-dialog.blp:103
+#: src/blueprints/shortcuts-dialog.blp:122
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/blueprints/shortcuts-dialog.blp:108
+#: src/blueprints/shortcuts-dialog.blp:127
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "键盘快捷键"
 
-#: src/blueprints/shortcuts-dialog.blp:113
+#: src/blueprints/shortcuts-dialog.blp:132
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "退出"
 
-#: src/blueprints/shortcuts-dialog.blp:118
+#: src/blueprints/shortcuts-dialog.blp:137
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "帮助"
 
-#: src/blueprints/shortcuts-dialog.blp:123
+#: src/blueprints/shortcuts-dialog.blp:142
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "菜单"
 
-#: src/blueprints/shortcuts-dialog.blp:128
+#: src/blueprints/shortcuts-dialog.blp:147
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "全屏"
+
+#: src/game-view.vala:149
+msgid "Paused"
+msgstr "已暂停"
+
+#: src/game-view.vala:411
+msgctxt ".skp is a file extension"
+msgid "Sudoku puzzle.skp"
+msgstr "数独谜题.skp"
+
+#: src/game-view.vala:430
+msgid "Puzzle copied to clipboard"
+msgstr "谜题已复制到剪贴板"
 
 #. Help string for command line --version flag
 #: src/gnome-sudoku.vala:91
@@ -557,53 +590,53 @@ msgid "Show release version"
 msgstr "显示发行版本"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:216
+#: src/gnome-sudoku.vala:215
 msgid "Puzzle Completed!"
 msgstr "谜题已解决！"
 
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:223
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d 分钟"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:229
+#: src/gnome-sudoku.vala:228
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr "做得好，您在 %s 内完成了该谜题并取得了新的个人最佳成绩！"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:234
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "做得好，您在 %s 内完成了该谜题！"
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:241
 msgid "_Quit"
 msgstr "退出(_Q)"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:244
 msgid "_Change Difficulty"
 msgstr "更改难度(_C)"
 
-#: src/gnome-sudoku.vala:246
+#: src/gnome-sudoku.vala:245
 msgid "_Play Again"
 msgstr "再玩一遍(_P)"
 
-#: src/gnome-sudoku.vala:366
+#: src/gnome-sudoku.vala:359
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr "导入谜题失败，请输入有效的数独谜题"
 
-#: src/gnome-sudoku.vala:367
+#: src/gnome-sudoku.vala:360
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: src/gnome-sudoku.vala:368
+#: src/gnome-sudoku.vala:361
 msgid "_Try Again"
 msgstr "重试(_T)"
 
-#: src/gnome-sudoku.vala:426
+#: src/gnome-sudoku.vala:419
 msgid "translator-credits"
 msgstr ""
 "Yang Zhang <zyangmath@gmail.com>, 2007\n"
@@ -635,6 +668,18 @@ msgstr "打印文件出错："
 #: src/printer.vala:45
 msgid "Close"
 msgstr "关闭"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "New Game"
+#~ msgstr "新建游戏"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Reset Puzzle"
+#~ msgstr "重置谜题"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Print Current Puzzle"
+#~ msgstr "打印当前谜题"
 
 #~ msgid "Create and solve custom puzzles from scratch."
 #~ msgstr "从零创建并解决自定义谜题。"
@@ -685,9 +730,6 @@ msgstr "关闭"
 
 #~ msgid "Highlight row, column and square that contain the selected cell"
 #~ msgstr "高亮选中方格所在的行、列和区块"
-
-#~ msgid "Paused"
-#~ msgstr "已暂停"
 
 #~ msgctxt "Warning Preferences"
 #~ msgid "Check _Against Solution"
