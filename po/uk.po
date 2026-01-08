@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-03 10:23+0000\n"
-"PO-Revision-Date: 2026-01-03 21:29+0200\n"
+"POT-Creation-Date: 2026-01-06 17:09+0000\n"
+"PO-Revision-Date: 2026-01-08 15:07+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -131,8 +131,8 @@ msgstr "Створення нескінченної кількості голо�
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:19
 msgid "Easily share puzzles with friends, or save them for later."
 msgstr ""
-"Просте поширення судоку серед ваших друзів або збереження судоку для"
-" наступного розв'язування."
+"Просте поширення судоку серед ваших друзів або збереження судоку для "
+"наступного розв'язування."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:20
 msgid "Adjust a scalable grid to your preferences."
@@ -172,23 +172,23 @@ msgstr "Перегляд гри Судоку"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Гра судоку для GNOME у темному режимі з позначками і попередженнями"
 
-#: lib/board.vala:852 lib/board.vala:863
+#: lib/board.vala:846 lib/board.vala:857
 msgid "Unknown Difficulty"
 msgstr "Невідома складність"
 
-#: lib/board.vala:854
+#: lib/board.vala:848
 msgid "Easy Difficulty"
 msgstr "Легка складність"
 
-#: lib/board.vala:856
+#: lib/board.vala:850
 msgid "Medium Difficulty"
 msgstr "Помірна складність"
 
-#: lib/board.vala:858
+#: lib/board.vala:852
 msgid "Hard Difficulty"
 msgstr "Складна складність"
 
-#: lib/board.vala:860
+#: lib/board.vala:854
 msgid "Very Hard Difficulty"
 msgstr "Дуже складна складність"
 
@@ -212,18 +212,15 @@ msgstr "Пауза"
 msgid "Play"
 msgstr "Грати"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:251
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
 msgid "_New Game…"
 msgstr "_Нова гра…"
 
 #: src/blueprints/menu-button.blp:12
-#| msgid "_Reset Puzzle"
 msgid "_Puzzle"
 msgstr "_Головоломка"
 
 #: src/blueprints/menu-button.blp:16
-#| msgctxt "Shortcuts Window"
-#| msgid "Reset"
 msgid "_Reset"
 msgstr "С_кинути"
 
@@ -425,7 +422,7 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "Д_уже складна"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:334
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
 msgid "_Start Game"
 msgstr "_Почати гру"
 
@@ -434,7 +431,6 @@ msgid "_Open..."
 msgstr "_Відкрити…"
 
 #: src/blueprints/start-view.blp:147
-#| msgid "_Start Game"
 msgid "_Start Shared Game"
 msgstr "_Почати оприлюднену гру"
 
@@ -490,74 +486,114 @@ msgid "Redo"
 msgstr "Повторити"
 
 #: src/blueprints/shortcuts-dialog.blp:64
+#| msgid "_New Game…"
 msgctxt "Shortcuts Window"
-msgid "New Game"
-msgstr "Нова гра"
+msgid "New Game…"
+msgstr "Нова гра…"
 
 #: src/blueprints/shortcuts-dialog.blp:69
-msgctxt "Shortcuts Window"
-msgid "Reset Puzzle"
-msgstr "Відновити початковий стан головоломки"
-
-#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom In"
 msgstr "Збільшити"
 
-#: src/blueprints/shortcuts-dialog.blp:79
+#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom Out"
 msgstr "Зменшити"
 
-#: src/blueprints/shortcuts-dialog.blp:84
+#: src/blueprints/shortcuts-dialog.blp:79
 msgctxt "Shortcuts Window"
 msgid "Zoom Reset"
 msgstr "Скинути масштаб"
 
-#: src/blueprints/shortcuts-dialog.blp:89
+#: src/blueprints/shortcuts-dialog.blp:84
+#| msgid "_Puzzle"
+msgctxt "Shortcuts Window"
+msgid "Puzzle"
+msgstr "Головоломка"
+
+#: src/blueprints/shortcuts-dialog.blp:88
+#| msgid "_Reset"
+msgctxt "Shortcuts Window"
+msgid "Reset"
+msgstr "Скинути"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+#| msgid "_Share"
+msgctxt "Shortcuts Window"
+msgid "Share"
+msgstr "Оприлюднити"
+
+#: src/blueprints/shortcuts-dialog.blp:98
+#| msgid "_Save As…"
+msgctxt "Shortcuts Window"
+msgid "Save As…"
+msgstr "Зберегти як…"
+
+#: src/blueprints/shortcuts-dialog.blp:103
+#| msgid "_Export…"
+msgctxt "Shortcuts Window"
+msgid "Export…"
+msgstr "Експортувати…"
+
+#: src/blueprints/shortcuts-dialog.blp:108
+#| msgid "Print _Generator"
+msgctxt "Shortcuts Window"
+msgid "Print Generator"
+msgstr "Приготувати до друку"
+
+#: src/blueprints/shortcuts-dialog.blp:113
 msgctxt "Shortcuts Window"
 msgid "Window"
 msgstr "Вікно"
 
-#: src/blueprints/shortcuts-dialog.blp:93
+#: src/blueprints/shortcuts-dialog.blp:117
 msgctxt "Shortcuts Window"
 msgid "Go Back"
 msgstr "Назад"
 
-#: src/blueprints/shortcuts-dialog.blp:98
-msgctxt "Shortcuts Window"
-msgid "Print Current Puzzle"
-msgstr "Надрукувати поточну головоломку"
-
-#: src/blueprints/shortcuts-dialog.blp:103
+#: src/blueprints/shortcuts-dialog.blp:122
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Налаштування"
 
-#: src/blueprints/shortcuts-dialog.blp:108
+#: src/blueprints/shortcuts-dialog.blp:127
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Клавіатурні скорочення"
 
-#: src/blueprints/shortcuts-dialog.blp:113
+#: src/blueprints/shortcuts-dialog.blp:132
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/blueprints/shortcuts-dialog.blp:118
+#: src/blueprints/shortcuts-dialog.blp:137
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Довідка"
 
-#: src/blueprints/shortcuts-dialog.blp:123
+#: src/blueprints/shortcuts-dialog.blp:142
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Меню"
 
-#: src/blueprints/shortcuts-dialog.blp:128
+#: src/blueprints/shortcuts-dialog.blp:147
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Повноекранний режим"
+
+#: src/game-view.vala:149
+msgid "Paused"
+msgstr "Призупинено"
+
+#: src/game-view.vala:411
+msgctxt ".skp is a file extension"
+msgid "Sudoku puzzle.skp"
+msgstr "Судоку.skp"
+
+#: src/game-view.vala:430
+msgid "Puzzle copied to clipboard"
+msgstr "Головоломку скопійовано до буфера обміну"
 
 #. Help string for command line --version flag
 #: src/gnome-sudoku.vala:91
@@ -565,11 +601,11 @@ msgid "Show release version"
 msgstr "Показати версію випуску"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:216
+#: src/gnome-sudoku.vala:215
 msgid "Puzzle Completed!"
 msgstr "Розв'язання завершено!"
 
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:223
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -578,44 +614,43 @@ msgstr[1] "%d хвилини"
 msgstr[2] "%d хвилин"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:229
+#: src/gnome-sudoku.vala:228
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 "Чудово! Ви розв'язали головоломку за %s і встановили новий особистий рекорд!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:234
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Чудово! Ви розв'язали головоломку за %s!"
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:241
 msgid "_Quit"
 msgstr "Ви_йти"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:244
 msgid "_Change Difficulty"
 msgstr "З_мінити складність"
 
-#: src/gnome-sudoku.vala:246
+#: src/gnome-sudoku.vala:245
 msgid "_Play Again"
 msgstr "Зі_грати знову"
 
-#: src/gnome-sudoku.vala:366
+#: src/gnome-sudoku.vala:359
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr "Не вдалося імпортувати судоку. Будь ласка, вкажіть коректне судоку"
 
-#: src/gnome-sudoku.vala:367
+#: src/gnome-sudoku.vala:360
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: src/gnome-sudoku.vala:368
-#| msgid "_Play Again"
+#: src/gnome-sudoku.vala:361
 msgid "_Try Again"
 msgstr "_Спробувати знову"
 
-#: src/gnome-sudoku.vala:426
+#: src/gnome-sudoku.vala:419
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота\n"
@@ -644,6 +679,18 @@ msgstr "Помилка друкування файла:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Закрити"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "New Game"
+#~ msgstr "Нова гра"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Reset Puzzle"
+#~ msgstr "Відновити початковий стан головоломки"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Print Current Puzzle"
+#~ msgstr "Надрукувати поточну головоломку"
 
 #~ msgid "Create and solve custom puzzles from scratch."
 #~ msgstr "Створення і розв'язування нетипових головоломок від початку."
@@ -698,9 +745,6 @@ msgstr "Закрити"
 #~ msgid "Highlight row, column and square that contain the selected cell"
 #~ msgstr ""
 #~ "Підсвітити рядки, стовпці та квадрати, які містять вибранку клітинку"
-
-#~ msgid "Paused"
-#~ msgstr "Призупинено"
 
 #~ msgctxt "Warning Preferences"
 #~ msgid "Check _Against Solution"
