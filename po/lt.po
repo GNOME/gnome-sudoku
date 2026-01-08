@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-12-08 10:45+0000\n"
-"PO-Revision-Date: 2025-12-08 21:43+0200\n"
+"POT-Creation-Date: 2026-01-06 17:09+0000\n"
+"PO-Revision-Date: 2026-01-08 22:58+0200\n"
 "Last-Translator: Aurimas Černius <aurimas.cernius@mailo.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -132,8 +132,10 @@ msgid "Generate an infinite amount of new puzzles with qqwing."
 msgstr "Generuokite neribotą kiekį naujų galvosūkių su qqwing."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:19
-msgid "Create and solve custom puzzles from scratch."
-msgstr "Sukurkite ir išspręskite savo galvosūkius."
+msgid "Easily share puzzles with friends, or save them for later."
+msgstr ""
+"Lengvai dalinkitės galvosūkiais su draugais arba įrašykite juos vėlesniam "
+"laikui."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:20
 msgid "Adjust a scalable grid to your preferences."
@@ -171,23 +173,23 @@ msgstr "GNOME sudoku žaidimo peržiūra"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "GNOME sudoku tamsioje veiksenoje su užrašais ir įspėjimais"
 
-#: lib/board.vala:544 lib/board.vala:555
+#: lib/board.vala:846 lib/board.vala:857
 msgid "Unknown Difficulty"
 msgstr "Nežinomas sudėtingumas"
 
-#: lib/board.vala:546
+#: lib/board.vala:848
 msgid "Easy Difficulty"
 msgstr "Lengvas"
 
-#: lib/board.vala:548
+#: lib/board.vala:850
 msgid "Medium Difficulty"
 msgstr "Vidutinis sudėtingumas"
 
-#: lib/board.vala:550
+#: lib/board.vala:852
 msgid "Hard Difficulty"
 msgstr "Sunkus"
 
-#: lib/board.vala:552
+#: lib/board.vala:854
 msgid "Very Hard Difficulty"
 msgstr "Labai sunkus"
 
@@ -211,63 +213,71 @@ msgstr "Pauzė"
 msgid "Play"
 msgstr "Žaisti"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:248
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
 msgid "_New Game…"
 msgstr "_Naujas žaidimas…"
 
 #: src/blueprints/menu-button.blp:12
-msgid "_Reset Puzzle"
-msgstr "_Atstatyti galvosūkį"
+msgid "_Puzzle"
+msgstr "_Galvosūkis"
 
-#: src/blueprints/menu-button.blp:19
-msgid "_Print"
-msgstr "S_pausdinti"
+#: src/blueprints/menu-button.blp:16
+msgid "_Reset"
+msgstr "_Atstatyti"
 
 #: src/blueprints/menu-button.blp:23
-msgid "Print _Current Puzzle…"
-msgstr "Spausdinti dabartinį galvosūkį…"
+msgid "_Share"
+msgstr "_Dalintis"
 
 #: src/blueprints/menu-button.blp:28
-msgid "Print _Multiple Puzzles…"
-msgstr "Spausdinti _keletą galvosūkių…"
+msgid "_Save As…"
+msgstr "Į_rašyti taip…"
 
-#: src/blueprints/menu-button.blp:35
+#: src/blueprints/menu-button.blp:33
+msgid "_Export…"
+msgstr "_Eksportuoti…"
+
+#: src/blueprints/menu-button.blp:40
+msgid "Print _Generator"
+msgstr "Spausdinimo _generatorius"
+
+#: src/blueprints/menu-button.blp:49
 msgid "Zoom"
 msgstr "Mastelis"
 
-#: src/blueprints/menu-button.blp:54
+#: src/blueprints/menu-button.blp:68
 msgid "_Preferences"
 msgstr "_Nuostatos"
 
-#: src/blueprints/menu-button.blp:59
+#: src/blueprints/menu-button.blp:73
 msgid "_Keyboard Shortcuts"
 msgstr "_Klaviatūros trumpiniai"
 
-#: src/blueprints/menu-button.blp:64
+#: src/blueprints/menu-button.blp:78
 msgid "_Help"
 msgstr "Ž_inynas"
 
-#: src/blueprints/menu-button.blp:69
+#: src/blueprints/menu-button.blp:83
 msgid "_About Sudoku"
 msgstr "_Apie Sudoku"
 
-#: src/blueprints/menu-button.blp:80
+#: src/blueprints/menu-button.blp:94
 msgid "Main Menu"
 msgstr "Pagrindinis meniu"
 
-#: src/blueprints/menu-button.blp:89
+#: src/blueprints/menu-button.blp:103
 msgid "Zoom Out"
 msgstr "Atitolinti"
 
-#: src/blueprints/menu-button.blp:101
+#: src/blueprints/menu-button.blp:115
 msgid "Zoom In"
 msgstr "Pritraukti"
 
-#: src/blueprints/menu-button.blp:116
+#: src/blueprints/menu-button.blp:130
 msgid "Fullscreen"
 msgstr "Visame ekrane"
 
-#: src/blueprints/menu-button.blp:127
+#: src/blueprints/menu-button.blp:141
 msgid "Leave Fullscreen"
 msgstr "Išeiti iš viso ekrano"
 
@@ -344,31 +354,35 @@ msgstr "Spausdinti _keletą galvosūkių"
 msgid "_Number of Puzzles"
 msgstr "_Galvosūkių skaičius"
 
-#: src/blueprints/print-multiple-dialog.blp:37
+#: src/blueprints/print-multiple-dialog.blp:38
 msgid "_Number of Puzzles per Page"
 msgstr "_Galvosūkių skaičius puslapyje"
 
-#: src/blueprints/print-multiple-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:52
 msgid "_Difficulty"
 msgstr "Su_dėtingumas"
 
-#: src/blueprints/print-multiple-dialog.blp:56
+#: src/blueprints/print-multiple-dialog.blp:57
 msgid "Easy"
 msgstr "Lengvas"
 
-#: src/blueprints/print-multiple-dialog.blp:57
+#: src/blueprints/print-multiple-dialog.blp:58
 msgid "Medium"
 msgstr "Vidutinis"
 
-#: src/blueprints/print-multiple-dialog.blp:58
+#: src/blueprints/print-multiple-dialog.blp:59
 msgid "Hard"
 msgstr "Sunkus"
 
-#: src/blueprints/print-multiple-dialog.blp:59
+#: src/blueprints/print-multiple-dialog.blp:60
 msgid "Very Hard"
 msgstr "Labai sunkus"
 
-#: src/blueprints/print-multiple-dialog.blp:69
+#: src/blueprints/print-multiple-dialog.blp:68
+msgid "Print _Current Puzzle"
+msgstr "Spausdinti _dabartinį galvosūkį"
+
+#: src/blueprints/print-multiple-dialog.blp:76
 msgid "_Print…"
 msgstr "S_pausdinti…"
 
@@ -389,29 +403,37 @@ msgctxt "Difficulty"
 msgid "_Custom"
 msgstr "_Pasirinktinis"
 
-#: src/blueprints/start-view.blp:64
+#: src/blueprints/start-view.blp:65
 msgctxt "Difficulty"
 msgid "_Easy"
 msgstr "_Lengvas"
 
-#: src/blueprints/start-view.blp:77
+#: src/blueprints/start-view.blp:79
 msgctxt "Difficulty"
 msgid "_Medium"
 msgstr "_Vidutinis"
 
-#: src/blueprints/start-view.blp:90
+#: src/blueprints/start-view.blp:93
 msgctxt "Difficulty"
 msgid "_Hard"
 msgstr "_Sunkus"
 
-#: src/blueprints/start-view.blp:103
+#: src/blueprints/start-view.blp:107
 msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "L_abai sunkus"
 
-#: src/blueprints/start-view.blp:112
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
 msgid "_Start Game"
 msgstr "_Pradėti žaisti"
+
+#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:162
+msgid "_Open..."
+msgstr "_Atverti..."
+
+#: src/blueprints/start-view.blp:147
+msgid "_Start Shared Game"
+msgstr "_Pradėti pasidalintą žaidimą"
 
 #: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
@@ -466,85 +488,118 @@ msgstr "Pakartoti"
 
 #: src/blueprints/shortcuts-dialog.blp:64
 msgctxt "Shortcuts Window"
-msgid "New Game"
-msgstr "Naujas žaidimas"
+msgid "New Game…"
+msgstr "Naujas žaidimas…"
 
 #: src/blueprints/shortcuts-dialog.blp:69
-msgctxt "Shortcuts Window"
-msgid "Reset Puzzle"
-msgstr "Atstatyti galvosūkį"
-
-#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom In"
 msgstr "Pritraukti"
 
-#: src/blueprints/shortcuts-dialog.blp:79
+#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom Out"
 msgstr "Atitolinti"
 
-#: src/blueprints/shortcuts-dialog.blp:84
+#: src/blueprints/shortcuts-dialog.blp:79
 msgctxt "Shortcuts Window"
 msgid "Zoom Reset"
 msgstr "Atstatyti mastelį"
 
-#: src/blueprints/shortcuts-dialog.blp:89
+#: src/blueprints/shortcuts-dialog.blp:84
+msgctxt "Shortcuts Window"
+msgid "Puzzle"
+msgstr "Galvosūkis"
+
+#: src/blueprints/shortcuts-dialog.blp:88
+msgctxt "Shortcuts Window"
+msgid "Reset"
+msgstr "Atstatyti"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+msgctxt "Shortcuts Window"
+msgid "Share"
+msgstr "Dalintis"
+
+#: src/blueprints/shortcuts-dialog.blp:98
+msgctxt "Shortcuts Window"
+msgid "Save As…"
+msgstr "Įrašyti taip…"
+
+#: src/blueprints/shortcuts-dialog.blp:103
+msgctxt "Shortcuts Window"
+msgid "Export…"
+msgstr "Eksportuoti…"
+
+#: src/blueprints/shortcuts-dialog.blp:108
+msgctxt "Shortcuts Window"
+msgid "Print Generator"
+msgstr "Spausdinimo generatorius"
+
+#: src/blueprints/shortcuts-dialog.blp:113
 msgctxt "Shortcuts Window"
 msgid "Window"
 msgstr "Langas"
 
-#: src/blueprints/shortcuts-dialog.blp:93
+#: src/blueprints/shortcuts-dialog.blp:117
 msgctxt "Shortcuts Window"
 msgid "Go Back"
 msgstr "Grįžti"
 
-#: src/blueprints/shortcuts-dialog.blp:98
-msgctxt "Shortcuts Window"
-msgid "Print Current Puzzle"
-msgstr "Spausdinti dabartinį galvosūkį"
-
-#: src/blueprints/shortcuts-dialog.blp:103
+#: src/blueprints/shortcuts-dialog.blp:122
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Nuostatos"
 
-#: src/blueprints/shortcuts-dialog.blp:108
+#: src/blueprints/shortcuts-dialog.blp:127
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Klaviatūros trumpiniai"
 
-#: src/blueprints/shortcuts-dialog.blp:113
+#: src/blueprints/shortcuts-dialog.blp:132
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Išeiti"
 
-#: src/blueprints/shortcuts-dialog.blp:118
+#: src/blueprints/shortcuts-dialog.blp:137
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Žinynas"
 
-#: src/blueprints/shortcuts-dialog.blp:123
+#: src/blueprints/shortcuts-dialog.blp:142
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Meniu"
 
-#: src/blueprints/shortcuts-dialog.blp:128
+#: src/blueprints/shortcuts-dialog.blp:147
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Visame ekrane"
 
+#: src/game-view.vala:149
+msgid "Paused"
+msgstr "Pristabdyta"
+
+#: src/game-view.vala:411
+msgctxt ".skp is a file extension"
+msgid "Sudoku puzzle.skp"
+msgstr "Sudoku galvosūkis.skp"
+
+#: src/game-view.vala:430
+msgid "Puzzle copied to clipboard"
+msgstr "Galvosūkis nukopijuotas į iškarpinę"
+
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:90
+#: src/gnome-sudoku.vala:91
 msgid "Show release version"
 msgstr "Rodyti leidimo versiją"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:213
+#: src/gnome-sudoku.vala:215
 msgid "Puzzle Completed!"
 msgstr "Galvosūkis išspręstas!"
 
-#: src/gnome-sudoku.vala:221
+#: src/gnome-sudoku.vala:223
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -553,7 +608,7 @@ msgstr[1] "%d minutes"
 msgstr[2] "%d minučių"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:226
+#: src/gnome-sudoku.vala:228
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
@@ -561,24 +616,36 @@ msgstr ""
 "rezultatą!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:232
+#: src/gnome-sudoku.vala:234
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Šaunu, išsprendėte galvosūkį per %s!"
 
-#: src/gnome-sudoku.vala:239
+#: src/gnome-sudoku.vala:241
 msgid "_Quit"
 msgstr "Išeiti"
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:244
 msgid "_Change Difficulty"
 msgstr "_Keisti sudėtingumą"
 
-#: src/gnome-sudoku.vala:243
+#: src/gnome-sudoku.vala:245
 msgid "_Play Again"
 msgstr "Žaisti _dar kartą"
 
-#: src/gnome-sudoku.vala:371
+#: src/gnome-sudoku.vala:359
+msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
+msgstr "Nepavyko importuoti galvosūkio, įveskite tinkamą Sudoku galvosūkį"
+
+#: src/gnome-sudoku.vala:360
+msgid "_Cancel"
+msgstr "_Atsisakyti"
+
+#: src/gnome-sudoku.vala:361
+msgid "_Try Again"
+msgstr "Bandyti _dar kartą"
+
+#: src/gnome-sudoku.vala:419
 msgid "translator-credits"
 msgstr ""
 "Aurimas Černius <aurimas.cernius@mailo.com>\n"
@@ -608,6 +675,22 @@ msgstr "Klaida spausdinant failą:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Užverti"
+
+#~ msgid "Create and solve custom puzzles from scratch."
+#~ msgstr "Sukurkite ir išspręskite savo galvosūkius."
+
+#~ msgid "_Print"
+#~ msgstr "S_pausdinti"
+
+#~ msgid "Print _Current Puzzle…"
+#~ msgstr "Spausdinti dabartinį galvosūkį…"
+
+#~ msgid "Print _Multiple Puzzles…"
+#~ msgstr "Spausdinti _keletą galvosūkių…"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "New Game"
+#~ msgstr "Naujas žaidimas"
 
 #~ msgid "_Clear Board"
 #~ msgstr "Iš_valyti lentą"
@@ -689,9 +772,6 @@ msgstr "Užverti"
 #~ msgstr ""
 #~ "Paryškinti eilutę, stulpelį ir kvadratėlį, kuriame yra pažymėtas langelis"
 
-#~ msgid "_Cancel"
-#~ msgstr "_Atsisakyti"
-
 #~ msgid "Show the possible values for each cell"
 #~ msgstr "Rodyti galimas kiekvieno langelio vertes"
 
@@ -723,9 +803,6 @@ msgstr "Užverti"
 #~ "\n"
 #~ "Galvosūkius generuoja QQwing %s"
 
-#~ msgid "Paused"
-#~ msgstr "Pristabdyta"
-
 #~ msgid "Create Puzzle"
 #~ msgstr "Sukurti galvosūkį"
 
@@ -738,6 +815,3 @@ msgstr "Užverti"
 #~| msgid "gnome-sudoku"
 #~ msgid "org.gnome.Sudoku"
 #~ msgstr "org.gnome.Sudoku"
-
-#~ msgid "_Resume"
-#~ msgstr "_Tęsti"
