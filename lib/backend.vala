@@ -60,12 +60,45 @@ public class SudokuBackend : Object
         load_game ();
     }
 
+    public signal void game_changed ();
+    public void change_game (SudokuGame new_game)
+    {
+        this.game = new_game;
+        tgame = null;
+        game_changed ();
+    }
+
+    public void start_shared_game ()
+    {
+        if (tgame != null)
+            change_game (tgame);
+    }
+
     public void save_game ()
     {
         if (game != null && !game.is_empty ())
             create_file_for_game (game, active_save_file, true);
         else
             delete_save ();
+    }
+
+    public void save_game_as (string path)
+    {
+        create_file_for_game (game, path, true);
+    }
+
+    public void delete_save ()
+    {
+        var file = File.new_for_path (active_save_file);
+        try
+        {
+            file.delete ();
+        }
+        catch (GLib.Error e)
+        {
+            if (e.code != IOError.NOT_FOUND)
+                warning ("Failed to delete %s: %s", file.get_uri (), e.message);
+        }
     }
 
     private void load_game ()
@@ -82,26 +115,6 @@ public class SudokuBackend : Object
         {
             return;
         }
-    }
-
-    public bool save_highscore ()
-    {
-        var highscore = highscores.get_highscore (game.board.difficulty_category);
-        if (highscore == null || (highscore != null && game.get_total_time_played () < highscore))
-        {
-            highscores.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
-            return true;
-        }
-
-        return false;
-    }
-
-    public signal void game_changed ();
-    public void change_game (SudokuGame new_game)
-    {
-        this.game = new_game;
-        tgame = null;
-        game_changed ();
     }
 
     public bool load_game_path (string path)
@@ -135,6 +148,18 @@ public class SudokuBackend : Object
         return true;
     }
 
+    public bool save_highscore ()
+    {
+        var highscore = highscores.get_highscore (game.board.difficulty_category);
+        if (highscore == null || (highscore != null && game.get_total_time_played () < highscore))
+        {
+            highscores.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
+            return true;
+        }
+
+        return false;
+    }
+
     public bool check_clipboard (string clipboard)
     {
         try
@@ -150,12 +175,6 @@ public class SudokuBackend : Object
             print ("%s", e.message);
             return false;
         };
-    }
-
-    public void start_shared_game ()
-    {
-        if (tgame != null)
-            change_game (tgame);
     }
 
     public delegate void BackendCallback (GLib.Object? source_object);
@@ -176,11 +195,6 @@ public class SudokuBackend : Object
                 error ("Error: %s", e.message);
             }
         });
-    }
-
-    public void save_game_as (string path)
-    {
-        create_file_for_game (game, path, true);
     }
 
     public void export_puzzle (string path)
@@ -225,6 +239,26 @@ public class SudokuBackend : Object
         }
     }
 
+    private void create_file_for_game (SudokuGame game, string file_name, bool save_timer)
+    {
+        double? elapsed_time;
+        if (save_timer)
+            elapsed_time = game.get_elapsed_time ();
+        else
+            elapsed_time = null;
+
+        var json_str = game.board.to_json (elapsed_time);
+
+        try
+        {
+            FileUtils.set_contents (file_name, json_str);
+        }
+        catch (Error e)
+        {
+            warning ("%s", e.message);
+        }
+    }
+
     public void archive_game (string dir_path, SudokuGame game, bool save_timer)
     {
         if (DirUtils.create (dir_path, 0755) == -1)
@@ -237,13 +271,6 @@ public class SudokuBackend : Object
         var file_name = game.board.to_string ()+ ".save";
         var file_path = Path.build_path (Path.DIR_SEPARATOR_S, dir_path, file_name);
         create_file_for_game (game, file_path, save_timer);
-    }
-
-    public void add_game_to_finished (bool save_timer)
-    {
-        stop_autosave ();
-        archive_game (finished_dir, game, save_timer);
-        delete_save ();
     }
 
     public void add_board_to_printed (SudokuBoard board)
@@ -264,38 +291,11 @@ public class SudokuBackend : Object
         archive_game (printed_dir, game, false);
     }
 
-    public void delete_save ()
+    public void add_game_to_finished (bool save_timer)
     {
-        var file = File.new_for_path (active_save_file);
-        try
-        {
-            file.delete ();
-        }
-        catch (GLib.Error e)
-        {
-            if (e.code != IOError.NOT_FOUND)
-                warning ("Failed to delete %s: %s", file.get_uri (), e.message);
-        }
-    }
-
-    private void create_file_for_game (SudokuGame game, string file_name, bool save_timer)
-    {
-        double? elapsed_time;
-        if (save_timer)
-            elapsed_time = game.get_elapsed_time ();
-        else
-            elapsed_time = null;
-
-        var json_str = game.board.to_json (elapsed_time);
-
-        try
-        {
-            FileUtils.set_contents (file_name, json_str);
-        }
-        catch (Error e)
-        {
-            warning ("%s", e.message);
-        }
+        stop_autosave ();
+        archive_game (finished_dir, game, save_timer);
+        delete_save ();
     }
 
     public override void dispose ()
