@@ -198,9 +198,8 @@ public class SudokuStartView : Adw.Bin
             }
             catch (Error e)
             {
-                print ("%s", e.message);
-                /* if (e.code != IOError.NOT_FOUND && e.code != IOError.NOT_SUPPORTED)
-                    warning ("Error: %s, %s, dom:%s", e.message, e.code.to_string (), e.domain.to_string ()); */
+                if (e.code != IOError.NOT_FOUND)
+                    warning ("Error: %s", e.message);
             }
         });
     }

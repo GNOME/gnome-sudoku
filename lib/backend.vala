@@ -172,7 +172,6 @@ public class SudokuBackend : Object
         }
         catch (Error e)
         {
-            print ("%s", e.message);
             return false;
         };
     }

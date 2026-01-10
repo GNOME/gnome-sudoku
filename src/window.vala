@@ -94,7 +94,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         set_accent_color ();
         style_manager.notify["accent-color"].connect (set_accent_color);
 
-        start_view.init (backend, get_primary_clipboard ());
+        start_view.init (backend, get_clipboard ());
     }
 
     private void construct_window_parameters ()
