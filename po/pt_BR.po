@@ -1,5 +1,5 @@
 # Brazilian Portuguese translation of gnome-sudoku.
-# Copyright (C) 2022 gnome-sudoku's COPYRIGHT HOLDERS.
+# Copyright (C) 2026 gnome-sudoku's COPYRIGHT HOLDERS.
 # This file is distributed under the same license as the gnome-sudoku package.
 # Sandro Nunes Henrique <sandro@conectiva.com.br>, 1999.
 # Cândida Nunes da Silva <candida@zaz.com.br>, 2000-2001.
@@ -33,9 +33,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-04 10:07+0000\n"
-"PO-Revision-Date: 2026-01-06 11:22-0300\n"
-"Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
+"POT-Creation-Date: 2026-01-10 11:08+0000\n"
+"PO-Revision-Date: 2026-01-20 22:05-0300\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -225,7 +225,7 @@ msgstr "Desfaz sua última ação"
 
 #: src/blueprints/game-view.blp:33
 msgid "Redo Action"
-msgstr "Refaz sua última ação\t"
+msgstr "Refaz sua última ação"
 
 #: src/blueprints/game-view.blp:46
 msgid "Earmark Mode"
@@ -239,7 +239,7 @@ msgstr "Pausar"
 msgid "Play"
 msgstr "Jogar"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:251
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
 msgid "_New Game…"
 msgstr "_Novo jogo…"
 
@@ -449,7 +449,7 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "Mui_to difícil "
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:334
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
 msgid "_Start Game"
 msgstr "_Iniciar o jogo"
 
@@ -480,7 +480,7 @@ msgstr "Marcações"
 #: src/blueprints/shortcuts-dialog.blp:25
 msgctxt "Shortcuts Window"
 msgid "Clear Cell"
-msgstr "Limpas célula"
+msgstr "Limpa a célula"
 
 #: src/blueprints/shortcuts-dialog.blp:30
 msgctxt "Shortcuts Window"
@@ -514,73 +514,106 @@ msgstr "Refaz"
 
 #: src/blueprints/shortcuts-dialog.blp:64
 msgctxt "Shortcuts Window"
-msgid "New Game"
-msgstr "Novo jogo"
+msgid "New Game…"
+msgstr "Novo jogo…"
 
 #: src/blueprints/shortcuts-dialog.blp:69
-msgctxt "Shortcuts Window"
-msgid "Reset Puzzle"
-msgstr "Redefine o jogo"
-
-#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom In"
 msgstr "Aumenta a ampliação"
 
-#: src/blueprints/shortcuts-dialog.blp:79
+#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom Out"
 msgstr "Reduz a ampliação"
 
-#: src/blueprints/shortcuts-dialog.blp:84
+#: src/blueprints/shortcuts-dialog.blp:79
 msgctxt "Shortcuts Window"
 msgid "Zoom Reset"
 msgstr "Redefine a ampliação"
 
-#: src/blueprints/shortcuts-dialog.blp:89
+#: src/blueprints/shortcuts-dialog.blp:84
+msgctxt "Shortcuts Window"
+msgid "Puzzle"
+msgstr "Quebra-cabeça"
+
+#: src/blueprints/shortcuts-dialog.blp:88
+msgctxt "Shortcuts Window"
+msgid "Reset"
+msgstr "Redefine"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+msgctxt "Shortcuts Window"
+msgid "Share"
+msgstr "Compartilha"
+
+#: src/blueprints/shortcuts-dialog.blp:98
+msgctxt "Shortcuts Window"
+msgid "Save As…"
+msgstr "Salvar como…"
+
+#: src/blueprints/shortcuts-dialog.blp:103
+msgctxt "Shortcuts Window"
+msgid "Export…"
+msgstr "Exporta…"
+
+#: src/blueprints/shortcuts-dialog.blp:108
+msgctxt "Shortcuts Window"
+msgid "Print Generator"
+msgstr "Gerador de impressão"
+
+#: src/blueprints/shortcuts-dialog.blp:113
 msgctxt "Shortcuts Window"
 msgid "Window"
 msgstr "Janela"
 
-#: src/blueprints/shortcuts-dialog.blp:93
+#: src/blueprints/shortcuts-dialog.blp:117
 msgctxt "Shortcuts Window"
 msgid "Go Back"
 msgstr "Volta"
 
-#: src/blueprints/shortcuts-dialog.blp:98
-msgctxt "Shortcuts Window"
-msgid "Print Current Puzzle"
-msgstr "Imprime o jogo atual"
-
-#: src/blueprints/shortcuts-dialog.blp:103
+#: src/blueprints/shortcuts-dialog.blp:122
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/blueprints/shortcuts-dialog.blp:108
+#: src/blueprints/shortcuts-dialog.blp:127
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de teclado"
 
-#: src/blueprints/shortcuts-dialog.blp:113
+#: src/blueprints/shortcuts-dialog.blp:132
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Sai"
 
-#: src/blueprints/shortcuts-dialog.blp:118
+#: src/blueprints/shortcuts-dialog.blp:137
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/blueprints/shortcuts-dialog.blp:123
+#: src/blueprints/shortcuts-dialog.blp:142
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Menu"
 
-#: src/blueprints/shortcuts-dialog.blp:128
+#: src/blueprints/shortcuts-dialog.blp:147
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Tela cheia"
+
+#: src/game-view.vala:149
+msgid "Paused"
+msgstr "Pausado"
+
+#: src/game-view.vala:411
+msgctxt ".skp is a file extension"
+msgid "Sudoku puzzle.skp"
+msgstr "Quebra-cabeça de sudoku.skp"
+
+#: src/game-view.vala:430
+msgid "Puzzle copied to clipboard"
+msgstr "Quebra-cabeça copiado para a área de transferência"
 
 #. Help string for command line --version flag
 #: src/gnome-sudoku.vala:91
@@ -588,11 +621,11 @@ msgid "Show release version"
 msgstr "Mostrar versão de lançamento"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:216
+#: src/gnome-sudoku.vala:215
 msgid "Puzzle Completed!"
 msgstr "Jogo solucionado!"
 
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:223
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -600,45 +633,45 @@ msgstr[0] "%d minuto"
 msgstr[1] "%d minutos"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:229
+#: src/gnome-sudoku.vala:228
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
 "Parabéns, você completou o jogo em %s e estabeleceu um novo recorde pessoal!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:235
+#: src/gnome-sudoku.vala:234
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Parabéns, você concluiu o jogo em %s!"
 
-#: src/gnome-sudoku.vala:242
+#: src/gnome-sudoku.vala:241
 msgid "_Quit"
 msgstr "_Sair"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:244
 msgid "_Change Difficulty"
 msgstr "_Mudar a dificuldade"
 
-#: src/gnome-sudoku.vala:246
+#: src/gnome-sudoku.vala:245
 msgid "_Play Again"
 msgstr "Jogar _novamente"
 
-#: src/gnome-sudoku.vala:366
+#: src/gnome-sudoku.vala:359
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr ""
 "Falhou ao importar o quebra-cabeças, favor inserir um quebra-cabeças Sudoku "
 "válido"
 
-#: src/gnome-sudoku.vala:367
+#: src/gnome-sudoku.vala:360
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: src/gnome-sudoku.vala:368
+#: src/gnome-sudoku.vala:361
 msgid "_Try Again"
 msgstr "_Tentar novamente"
 
-#: src/gnome-sudoku.vala:426
+#: src/gnome-sudoku.vala:419
 msgid "translator-credits"
 msgstr ""
 "Sandro Nunes Henrique <sandro@conectiva.com.br>\n"
@@ -682,6 +715,18 @@ msgstr "Erro ao imprimir arquivo:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Fechar"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "New Game"
+#~ msgstr "Novo jogo"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Reset Puzzle"
+#~ msgstr "Redefine o jogo"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Print Current Puzzle"
+#~ msgstr "Imprime o jogo atual"
 
 #~ msgid "Create and solve custom puzzles from scratch."
 #~ msgstr "Cria e resolva jogos personalizados do zero."
@@ -737,9 +782,6 @@ msgstr "Fechar"
 #~ msgid "Highlight row, column and square that contain the selected cell"
 #~ msgstr ""
 #~ "Realçar a linha, a coluna e o quadrado que contêm a célula selecionada"
-
-#~ msgid "Paused"
-#~ msgstr "Pausado"
 
 #~ msgctxt "Warning Preferences"
 #~ msgid "Check _Against Solution"
