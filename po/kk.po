@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2024-03-06 11:02+0000\n"
-"PO-Revision-Date: 2024-03-08 10:04+0500\n"
+"POT-Creation-Date: 2026-01-10 11:08+0000\n"
+"PO-Revision-Date: 2026-01-26 20:20+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "Language: kk\n"
@@ -16,403 +16,769 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/sudoku-window.ui:7
-msgid "_New Puzzle…"
-msgstr "_Жаңа ойжұмбақ…"
-
-#: data/sudoku-window.ui:11
-msgid "Create Custom Game…"
-msgstr "Таңдауыңызша ойынды жасау…"
-
-#: data/sudoku-window.ui:15
-msgid "_Clear Board…"
-msgstr "Тақтаны та_зарту…"
-
-#: data/sudoku-window.ui:21 data/print-dialog.ui:77
-msgid "_Print"
-msgstr "Бас_паға шығару"
-
-#: data/sudoku-window.ui:24
-msgid "Print _Current Puzzle…"
-msgstr "Ағ_ымдағы судоку баспаға шығару…"
-
-#: data/sudoku-window.ui:28
-msgid "Print _Multiple Puzzles…"
-msgstr "_Бірнеше судоку баспаға шығару…"
-
-#: data/sudoku-window.ui:36
-msgid "High_lighter"
-msgstr "Тү_спен ерекшелеу"
-
-#: data/sudoku-window.ui:40
-msgid "_Warnings"
-msgstr "_Ескертулер"
-
-#: data/sudoku-window.ui:44
-msgid "_More Options"
-msgstr "Кө_бірек опциялар"
-
-#: data/sudoku-window.ui:47
-msgid "Show _Timer"
-msgstr "_Таймерді көрсету"
-
-#: data/sudoku-window.ui:51
-msgid "Show _Possibilities"
-msgstr "_Мүмкіндіктерді көрсету"
-
-#: data/sudoku-window.ui:57
-msgid "Simple _Earmark Warnings"
-msgstr "Қарапайым б_елгілер ескертулері"
-
-#: data/sudoku-window.ui:61
-msgid "Simple _Warnings Mode"
-msgstr "Қарапайым _ескертулер режимі"
-
-#: data/sudoku-window.ui:69
-msgid "_Help"
-msgstr "_Көмек"
-
-#: data/sudoku-window.ui:73
-msgid "_About Sudoku"
-msgstr "Судоку тур_алы"
-
-#: data/sudoku-window.ui:79 data/sudoku-window.ui:88
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:530
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "Судоку"
 
-#: data/sudoku-window.ui:96
-msgid "Undo Action"
-msgstr "Әрекетті болдырмау"
+#: data/org.gnome.Sudoku.desktop.in.in:3
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
+msgid "Test yourself in the classic puzzle"
+msgstr "Өзіңізді классикалық жұмбақ ойынында сынап көріңіз"
 
-#: data/sudoku-window.ui:108
-msgid "Redo Action"
-msgstr "Әрекетті қайталау"
-
-#: data/sudoku-window.ui:120
-msgid "Back"
-msgstr "Артқа"
-
-#: data/sudoku-window.ui:131
-msgid "Main Menu"
-msgstr "Басты мәзір"
-
-#: data/sudoku-window.ui:150
-msgid "Play Custom Puzzle"
-msgstr "Таңдауыңызша ойжұмбақты ойнау"
-
-#: data/sudoku-window.ui:199
-msgid "Select Game Difficulty"
-msgstr "Ойын қиындығын таңдау"
-
-#: data/sudoku-window.ui:216
-msgid "_Easy"
-msgstr "_Оңай"
-
-#: data/sudoku-window.ui:230
-msgid "_Medium"
-msgstr "О_рташа"
-
-#: data/sudoku-window.ui:244
-msgid "_Hard"
-msgstr "Қ_иын"
-
-#: data/sudoku-window.ui:258
-msgid "_Very Hard"
-msgstr "Өте қи_ын"
-
-#: data/sudoku-window.ui:269
-msgid "_Start Game"
-msgstr "Ойынды ба_стау"
-
-#: data/org.gnome.Sudoku.appdata.xml.in:7
-msgid "GNOME Sudoku"
-msgstr "GNOME судоку"
-
-#: data/org.gnome.Sudoku.appdata.xml.in:8 data/org.gnome.Sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Сандық тормен осы ойжұмбақта логикалық зеректігіңізді тексеріңіз"
-
-#: data/org.gnome.Sudoku.appdata.xml.in:10
-msgid ""
-"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
-"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
-"Sudoku fun for players of any skill level."
-msgstr ""
-"Танымал жапон логикалық ойынын ойнау. GNOME судоку - бұл судоку "
-"әуесқойларына ұнайтын қарапайым, кедергісіз интерфейсі бар қолданба, ол "
-"судоку ойынын кез-келген деңгейдегі ойыншыларға қызықты етеді."
-
-#: data/org.gnome.Sudoku.appdata.xml.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as easy or as difficult as you want it to be."
-msgstr ""
-"Әрбір ойынның өз қиындық деңгейі бар, ол ойыныңыз қаншалықты жеңіл немесе "
-"күрделі болатынына әсер етеді."
-
-#: data/org.gnome.Sudoku.appdata.xml.in:20
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"Егер сіз қағаз нұсқасында ойнауды ұнатсаңыз, ойындарды басып шығаруға "
-"болады. Әр парақта қанша ойын болатынын және ойын күрделілігін таңдауға "
-"болады: нәтижесінде GNOME судоку сіз үшін тауыспайтын судоку кітабы бола "
-"алады."
-
-#: data/org.gnome.Sudoku.appdata.xml.in:30
-msgid "A GNOME sudoku game preview"
-msgstr "GNOME судоку ойынын алдын ала қарау"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in:6
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Sudoku.desktop.in.in:5
 msgid "magic;square;"
 msgstr "magic;square;сиқырлы;шаршы;"
 
-#: data/org.gnome.Sudoku.gschema.xml:11
-msgid "Difficulty level of sudokus to be printed"
-msgstr "Баспа үшін судоку күрделілік деңгейі"
-
-#: data/org.gnome.Sudoku.gschema.xml:12
-msgid ""
-"Set the difficulty level of the sudokus you want to print. Possible values "
-"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
-msgstr ""
-"Баспаға шығарғыңыз келетін судоку қиындық деңгейін көрсетіңіз. Мүмкін "
-"мәндері: \"easy\", \"medium\", \"hard\", \"very_hard\""
-
-#: data/org.gnome.Sudoku.gschema.xml:17
-msgid "Number of Sudokus to print"
-msgstr "Баспаға шығарылатын судоку саны"
-
 #: data/org.gnome.Sudoku.gschema.xml:18
-msgid "Set the number of sudokus you want to print"
-msgstr "Басып шығарғыңыз келетін судоку санын көрсету"
-
-#: data/org.gnome.Sudoku.gschema.xml:23
-msgid "Number of Sudokus to print per page"
-msgstr "Баспаға шығарылатын бір беттегі судоку саны"
-
-#: data/org.gnome.Sudoku.gschema.xml:24
-msgid "Set the number of sudokus you want to print per page"
-msgstr "Басып шығарғыңыз келетін бір беттегі судоку санын көрсету"
-
-#: data/org.gnome.Sudoku.gschema.xml:28
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Әрбір ұяшық үшін мүмкін мәндері бар түсіндірмелерді іске қосу"
 
-#: data/org.gnome.Sudoku.gschema.xml:32
-msgid "Color mistakes and duplicate numbers in red"
-msgstr "Қателер мен қайталанатын сандарды қызыл түспен белгілеу"
+#: data/org.gnome.Sudoku.gschema.xml:25
+msgid "Check for duplicates in row, column and block"
+msgstr "Жолдағы, бағандағы және блоктағы қайталануларды тексеру"
+
+#: data/org.gnome.Sudoku.gschema.xml:29
+msgid "Check earmarks against duplicates in row, column and block"
+msgstr "Белгілерді тек қатардағы, бағандағы және блоктағы қайталауларға тексеру"
 
 #: data/org.gnome.Sudoku.gschema.xml:33
-msgid ""
-"Displays a big red X in a square if it cannot possibly be filled by any "
-"number and duplicate numbers are highlighted in red"
-msgstr ""
-"Егер шаршыны ешбір санмен толтыруға болмаса, онда үлкен қызыл X көрсетіледі, "
-"ал қосарланған сандар қызыл түспен ерекшеленеді"
-
-#: data/org.gnome.Sudoku.gschema.xml:37
-msgid "Check earmarks against duplicates in row, column and block"
-msgstr ""
-"Белгілерді тек қатардағы, бағандағы және блоктағы қайталауларға тексеру"
-
-#: data/org.gnome.Sudoku.gschema.xml:41
 msgid "Toggle timer and pause buttons"
 msgstr "Таймер мен аялдату батырмаларын ауыстырып отыру"
 
+#: data/org.gnome.Sudoku.gschema.xml:37
+msgid "Additionally check against the solution for warnings"
+msgstr "Ескертулерді шешіммен қосымша тексеру"
+
+#: data/org.gnome.Sudoku.gschema.xml:41
+msgid "Automatically clear related earmarks on new number insertion"
+msgstr "Жаңа сан кірістірілген кезде тиісті белгілерді автоматты түрде тазарту"
+
 #: data/org.gnome.Sudoku.gschema.xml:45
-msgid "Check cells only against duplicates in row, column and block"
-msgstr ""
-"Ұяшықтарды тек қатардағы, бағандағы және блоктағы қайталауларға тексеру"
+msgid "Display number picker on second click"
+msgstr "Екінші рет шерткенде сандарды таңдау терезесін көрсету"
 
 #: data/org.gnome.Sudoku.gschema.xml:49
-msgid "Highlight row, column and square that contain the selected cell"
-msgstr "Таңдалған ұяшық орналасқан жолды, бағанды және шаршыны бөлектеу"
+msgid "Highlight the selected cell's row and column"
+msgstr "Таңдалған ұяшықтың жолы мен бағанын жарықтандыру"
 
 #: data/org.gnome.Sudoku.gschema.xml:53
+msgid "Highlight the selected cell's block"
+msgstr "Таңдалған ұяшықтың блогын жарықтандыру"
+
+#: data/org.gnome.Sudoku.gschema.xml:57
+msgid "Highlight the selected cell's matching numbers"
+msgstr "Таңдалған ұяшықтың сәйкес сандарын жарықтандыру"
+
+#: data/org.gnome.Sudoku.gschema.xml:61
 msgid "The puzzle's difficulty"
 msgstr "Ойжұмбақ қиындығы"
 
-#: data/org.gnome.Sudoku.gschema.xml:57
+#: data/org.gnome.Sudoku.gschema.xml:68
+msgid "Zoom level"
+msgstr "Масштаб деңгейі"
+
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Width of the window in pixels"
 msgstr "Терезе ені, пиксельмен"
 
-#: data/org.gnome.Sudoku.gschema.xml:61
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "Height of the window in pixels"
 msgstr "Терезе биіктігі, пиксельмен"
 
-#: data/org.gnome.Sudoku.gschema.xml:65
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "true if the window is maximized"
 msgstr "терезе максималды болса, мәні true болады"
 
-#: data/print-dialog.ui:5
-msgid "Print Multiple Puzzles"
-msgstr "Бірнеше ойжұмбақты басып шығару"
+#: data/org.gnome.Sudoku.gschema.xml:84
+msgid "true if the window is fullscreen"
+msgstr "терезе толық экранды болса, ақиқат"
 
-#: data/print-dialog.ui:28
-msgid "Number of Puzzles"
-msgstr "Ойжұмбақтар саны"
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:7
+msgid "GNOME Sudoku"
+msgstr "GNOME судоку"
 
-#: data/print-dialog.ui:41
-msgid "Number of puzzles per page"
-msgstr "Бір беттегі ойжұмбақтар саны"
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:10
+msgid ""
+"GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
+"Japanese game, it comes with a simple interface that makes playing Sudoku fun "
+"for players of all skill level."
+msgstr ""
+"GNOME Судоку — жұмбақ ойындарын ұнататындар үшін таптырмас ойын. Танымал жапон "
+"ойынына негізделген, ол қарапайым интерфейспен қамтылған, бұл кез келген "
+"шеберлік деңгейіндегі ойыншылар үшін Судоку ойнауды қызықты етеді."
 
-#: data/print-dialog.ui:54
-msgid "Difficulty"
-msgstr "Қиындық"
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "Мүмкіндіктері:"
 
-#: data/print-dialog.ui:58
-msgid "Easy"
-msgstr "Оңай"
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:17
+msgid "Automatically save and restore your session."
+msgstr "Сеансыңызды автоматты түрде сақтау және қалпына келтіру."
 
-#: data/print-dialog.ui:59
-msgid "Medium"
-msgstr "Орташа"
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:18
+msgid "Generate an infinite amount of new puzzles with qqwing."
+msgstr "qqwing көмегімен шексіз мөлшерде жаңа жұмбақтарды жасау."
 
-#: data/print-dialog.ui:60
-msgid "Hard"
-msgstr "Қиын"
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:19
+msgid "Easily share puzzles with friends, or save them for later."
+msgstr "Жұмбақ ойындарын достарыңызбен оңай бөлісіңіз немесе кейінге сақтаңыз."
 
-#: data/print-dialog.ui:61
-msgid "Very Hard"
-msgstr "Өте қиын"
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:20
+msgid "Adjust a scalable grid to your preferences."
+msgstr "Масштабталатын торды өз қалауларыңызға қарай реттеңіз."
 
-#: lib/sudoku-board.vala:687
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:21
+msgid "Use the mouse, keyboard or touch to complete the puzzles."
+msgstr ""
+"Жұмбақ ойындарын шешу үшін тышқанды, пернетақтаны немесе сенсорды қолданыңыз."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:22
+msgid "Set up advanced strategies like X-Wings with earmarks."
+msgstr "Белгілер арқылы X-Wings сияқты күрделі стратегияларды орнатыңыз."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:23
+msgid "Take advantage of the highlighter to narrow down possibilities."
+msgstr "Мүмкіндіктерді азайту үшін жарықтандырғышты пайдаланыңыз."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:24
+msgid "Get help with the built-in warnings."
+msgstr "Кірістірілген ескертулердің көмегіне жүгініңіз."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:25
+msgid "Keep track of your progression with highscores and a timer."
+msgstr "Үздік нәтижелер мен таймер арқылы өз прогресіңізді бақылаңыз."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:26
+msgid "Print puzzles to play Sudoku on the go."
+msgstr "Жолда Судоку ойнау үшін басқатырғыштарды басып шығарыңыз."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:32
+msgid "A GNOME sudoku game preview"
+msgstr "GNOME судоку ойынын алдын ала қарау"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:36
+msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
+msgstr "Белгілері мен ескертулері бар, қараңғы режимдегі GNOME судоку ойыны"
+
+#: lib/board.vala:846 lib/board.vala:857
 msgid "Unknown Difficulty"
 msgstr "Белгісіз қиындық"
 
-#: lib/sudoku-board.vala:689
+#: lib/board.vala:848
 msgid "Easy Difficulty"
 msgstr "Оңай қиындық"
 
-#: lib/sudoku-board.vala:691
+#: lib/board.vala:850
 msgid "Medium Difficulty"
 msgstr "Орташа қиындық"
 
-#: lib/sudoku-board.vala:693
+#: lib/board.vala:852
 msgid "Hard Difficulty"
 msgstr "Жоғары қиындық"
 
-#: lib/sudoku-board.vala:695
+#: lib/board.vala:854
 msgid "Very Hard Difficulty"
 msgstr "Өте жоғары қиындық"
 
-#: lib/sudoku-board.vala:697
-msgid "Custom Puzzle"
-msgstr "Таңдауыңызша өлшем"
+#: src/blueprints/game-view.blp:22
+msgid "Undo Action"
+msgstr "Әрекетті болдырмау"
 
-#. Help string for command line --version flag
-#: src/gnome-sudoku.vala:80
-msgid "Show release version"
-msgstr "Шығарылым нұсқасын көрсету"
+#: src/blueprints/game-view.blp:33
+msgid "Redo Action"
+msgstr "Әрекетті қайталау"
 
-#. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:84
-msgid "Show the possible values for each cell"
-msgstr "Әрбір ұяшық үшін мүмкін мәндерді көрсету"
+#: src/blueprints/game-view.blp:46
+msgid "Earmark Mode"
+msgstr "Белгілеу режимі"
 
-#. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:273
-msgid "The puzzle you have entered is not a valid Sudoku."
-msgstr "Сіз енгізген ойжұмбақ жарамды судоку емес."
+#: src/blueprints/game-view.blp:60
+msgid "Pause"
+msgstr "Аялдату"
 
-#: src/gnome-sudoku.vala:273
-msgid "Please enter a valid puzzle."
-msgstr "Жарамды ойжұмбақты енгізіңіз."
-
-#: src/gnome-sudoku.vala:274 src/sudoku-printer.vala:46
-msgid "Close"
-msgstr "Жабу"
-
-#. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:282
-msgid "The puzzle you have entered has multiple solutions."
-msgstr "Сіз енгізген ойжұмбақтың бірнеше шешімі бар."
-
-#: src/gnome-sudoku.vala:282
-msgid "Valid Sudoku puzzles have exactly one solution."
-msgstr "Жарамды судоку ойжұмбақтарының тек бір шешімі бар."
-
-#: src/gnome-sudoku.vala:283
-msgid "_Back"
-msgstr "Ар_тқа"
-
-#: src/gnome-sudoku.vala:284
-msgid "Play _Anyway"
-msgstr "Со_нда да ойнау"
-
-#: src/gnome-sudoku.vala:326
-#, c-format
-msgid "Well done, you completed the puzzle in %d minute!"
-msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "Жарайсыз, сіз тапсырманы %d минутта орындадыңыз!"
-
-#: src/gnome-sudoku.vala:334
-msgid "Quit"
-msgstr "Шығу"
-
-#: src/gnome-sudoku.vala:335
-msgid "Play _Again"
-msgstr "Қ_айта ойнау"
-
-#: src/gnome-sudoku.vala:449
-msgid "Reset the board to its original state?"
-msgstr "Тақтаны бастапқы күйіне қалпына келтіру керек пе?"
-
-#: src/gnome-sudoku.vala:450
-msgid "No"
-msgstr "Жоқ"
-
-#: src/gnome-sudoku.vala:451
-msgid "Yes"
-msgstr "Иә"
-
-#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:527
-#, c-format
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"Puzzles generated by QQwing %s"
-msgstr ""
-"Танымал Жапондық логикалық ойжұмбақ ойыны\n"
-"\n"
-"Ойжұмбақтарды генерациялаған QQwing %s"
-
-#: src/gnome-sudoku.vala:537
-msgid "translator-credits"
-msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
-
-#: src/number-picker.vala:87
-msgid "Clear"
-msgstr "Тазарту"
-
-#. Error message if printing fails
-#: src/sudoku-printer.vala:45
-msgid "Error printing file:"
-msgstr "Файлды баспаға шығару қатесі:"
-
-#: src/sudoku-window.vala:194
-msgid "Select Difficulty"
-msgstr "Қиындықты таңдау"
-
-#: src/sudoku-window.vala:272
-msgid "Create Puzzle"
-msgstr "Ойжұмбақты жасау"
-
-#: src/sudoku-window.vala:279
+#: src/blueprints/game-view.blp:69
 msgid "Play"
 msgstr "Ойнау"
 
-#: src/sudoku-window.vala:279
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
+msgid "_New Game…"
+msgstr "_Жаңа ойын…"
+
+#: src/blueprints/menu-button.blp:12
+msgid "_Puzzle"
+msgstr "_Жұмбақ ойын"
+
+#: src/blueprints/menu-button.blp:16
+msgid "_Reset"
+msgstr "_Тастау"
+
+#: src/blueprints/menu-button.blp:23
+msgid "_Share"
+msgstr "_Бөлісу"
+
+#: src/blueprints/menu-button.blp:28
+msgid "_Save As…"
+msgstr "Қалай _сақтау…"
+
+#: src/blueprints/menu-button.blp:33
+msgid "_Export…"
+msgstr "_Экспорт…"
+
+#: src/blueprints/menu-button.blp:40
+msgid "Print _Generator"
+msgstr "Басып шығару _генераторы"
+
+#: src/blueprints/menu-button.blp:49
+msgid "Zoom"
+msgstr "Масштаб"
+
+#: src/blueprints/menu-button.blp:68
+msgid "_Preferences"
+msgstr "Қ_алаулар"
+
+#: src/blueprints/menu-button.blp:73
+msgid "_Keyboard Shortcuts"
+msgstr "_Пернетақта жарлықтары"
+
+#: src/blueprints/menu-button.blp:78
+msgid "_Help"
+msgstr "_Көмек"
+
+#: src/blueprints/menu-button.blp:83
+msgid "_About Sudoku"
+msgstr "Судоку тур_алы"
+
+#: src/blueprints/menu-button.blp:94
+msgid "Main Menu"
+msgstr "Басты мәзір"
+
+#: src/blueprints/menu-button.blp:103
+msgid "Zoom Out"
+msgstr "Масштабты кішірейту"
+
+#: src/blueprints/menu-button.blp:115
+msgid "Zoom In"
+msgstr "Масштабты үлкейту"
+
+#: src/blueprints/menu-button.blp:130
+msgid "Fullscreen"
+msgstr "Толық экран"
+
+#: src/blueprints/menu-button.blp:141
+msgid "Leave Fullscreen"
+msgstr "Толық экраннан шығу"
+
+#: src/blueprints/preferences-dialog.blp:7
+msgctxt "preferences dialog"
+msgid "General"
+msgstr "Жалпы"
+
+#: src/blueprints/preferences-dialog.blp:10
+msgctxt "General Preferences"
+msgid "_Timer and Highscores"
+msgstr "_Таймер және үздік нәтижелер"
+
+#: src/blueprints/preferences-dialog.blp:15
+msgctxt "General Preferences"
+msgid "Automatically _Clean Earmarks"
+msgstr "Белгілерді автоматты түрде _тазарту"
+
+#: src/blueprints/preferences-dialog.blp:20
+msgctxt "General Preferences"
+msgid "Number Picker on _Second Click"
+msgstr "_Екінші рет шерткенде сандар таңдау"
+
+#: src/blueprints/preferences-dialog.blp:25
+msgctxt "General Preferences"
+msgid "Show Earmark _Possibilities"
+msgstr "Белгілеу _мүмкіндіктерін көрсету"
+
+#: src/blueprints/preferences-dialog.blp:31
+msgctxt "Preferences Dialog"
+msgid "Warnings"
+msgstr "Ескертулер"
+
+#: src/blueprints/preferences-dialog.blp:33
+msgctxt "Warning Preferences"
+msgid "_Duplicate Warnings"
+msgstr "Қ_айталанулар туралы ескертулер"
+
+#: src/blueprints/preferences-dialog.blp:38
+msgctxt "Warning Preferences"
+msgid "S_olution Warnings"
+msgstr "Ш_ешім ескертулері"
+
+#: src/blueprints/preferences-dialog.blp:43
+msgctxt "Warning Preferences"
+msgid "_Earmark Warnings"
+msgstr "_Белгілеу ескертулері"
+
+#: src/blueprints/preferences-dialog.blp:49
+msgctxt "Preferences Dialog"
+msgid "Highlighter"
+msgstr "Жарықтандырғыш"
+
+#: src/blueprints/preferences-dialog.blp:52
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Row and Column"
+msgstr "_Жол мен бағанды жарықтандыру"
+
+#: src/blueprints/preferences-dialog.blp:57
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Block"
+msgstr "_Блокты жарықтандыру"
+
+#: src/blueprints/preferences-dialog.blp:62
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "Сәйкес _сандарды жарықтандыру"
+
+#: src/blueprints/print-multiple-dialog.blp:5
+msgid "Print Multiple Puzzles"
+msgstr "Бірнеше ойжұмбақты басып шығару"
+
+#: src/blueprints/print-multiple-dialog.blp:23
+msgid "_Number of Puzzles"
+msgstr "Жұмбақ ойындар _саны"
+
+#: src/blueprints/print-multiple-dialog.blp:38
+msgid "_Number of Puzzles per Page"
+msgstr "Бір беттегі жұмбақ ойындар _саны"
+
+#: src/blueprints/print-multiple-dialog.blp:52
+msgid "_Difficulty"
+msgstr "Қ_иындығы"
+
+#: src/blueprints/print-multiple-dialog.blp:57
+msgid "Easy"
+msgstr "Оңай"
+
+#: src/blueprints/print-multiple-dialog.blp:58
+msgid "Medium"
+msgstr "Орташа"
+
+#: src/blueprints/print-multiple-dialog.blp:59
+msgid "Hard"
+msgstr "Қиын"
+
+#: src/blueprints/print-multiple-dialog.blp:60
+msgid "Very Hard"
+msgstr "Өте қиын"
+
+#: src/blueprints/print-multiple-dialog.blp:68
+msgid "Print _Current Puzzle"
+msgstr "_Ағымдағы жұмбақ ойынын басып шығару"
+
+#: src/blueprints/print-multiple-dialog.blp:76
+msgid "_Print…"
+msgstr "_Басып шығару…"
+
+#: src/blueprints/start-view.blp:13
+msgid "Select Difficulty"
+msgstr "Қиындықты таңдау"
+
+#: src/blueprints/start-view.blp:21
+msgid "Back"
+msgstr "Артқа"
+
+#: src/blueprints/start-view.blp:32
+msgid "Select Puzzle Difficulty"
+msgstr "Жұмбақ ойынының қиындығын таңдаңыз"
+
+#: src/blueprints/start-view.blp:50
+msgctxt "Difficulty"
+msgid "_Custom"
+msgstr "_Таңдауыңызша"
+
+#: src/blueprints/start-view.blp:65
+msgctxt "Difficulty"
+msgid "_Easy"
+msgstr "_Оңай"
+
+#: src/blueprints/start-view.blp:79
+msgctxt "Difficulty"
+msgid "_Medium"
+msgstr "_Орташа"
+
+#: src/blueprints/start-view.blp:93
+msgctxt "Difficulty"
+msgid "_Hard"
+msgstr "Қ_иын"
+
+#: src/blueprints/start-view.blp:107
+msgctxt "Difficulty"
+msgid "_Very Hard"
+msgstr "Өт_е қиын"
+
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
+msgid "_Start Game"
+msgstr "Ойынды ба_стау"
+
+#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:162
+msgid "_Open..."
+msgstr "_Ашу..."
+
+#: src/blueprints/start-view.blp:147
+msgid "_Start Shared Game"
+msgstr "Ортақ ойынды _бастау"
+
+#: src/blueprints/shortcuts-dialog.blp:7
+msgctxt "Shortcuts Window"
+msgid "Game"
+msgstr "Ойын"
+
+#: src/blueprints/shortcuts-dialog.blp:11 src/blueprints/shortcuts-dialog.blp:16
+msgctxt "Shortcuts Window"
+msgid "Move"
+msgstr "Жүріс"
+
+#: src/blueprints/shortcuts-dialog.blp:20
+msgctxt "Shortcuts Window"
+msgid "Earmarks"
+msgstr "Белгілер"
+
+#: src/blueprints/shortcuts-dialog.blp:25
+msgctxt "Shortcuts Window"
+msgid "Clear Cell"
+msgstr "Ұяшықты тазарту"
+
+#: src/blueprints/shortcuts-dialog.blp:30
+msgctxt "Shortcuts Window"
+msgid "Number Picker"
+msgstr "Сандарды таңдау"
+
+#: src/blueprints/shortcuts-dialog.blp:35
+msgctxt "Shortcuts Window"
+msgid "Earmark Picker"
+msgstr "Белгілерді таңдау"
+
+#: src/blueprints/shortcuts-dialog.blp:42
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
+msgstr "Белгілеу режимі"
+
+#: src/blueprints/shortcuts-dialog.blp:47
+msgctxt "Shortcuts Window"
 msgid "Pause"
 msgstr "Аялдату"
+
+#: src/blueprints/shortcuts-dialog.blp:52
+msgctxt "Shortcuts Window"
+msgid "Undo"
+msgstr "Болдырмау"
+
+#: src/blueprints/shortcuts-dialog.blp:57
+msgctxt "Shortcuts Window"
+msgid "Redo"
+msgstr "Қайталау"
+
+#: src/blueprints/shortcuts-dialog.blp:64
+msgctxt "Shortcuts Window"
+msgid "New Game…"
+msgstr "Жаңа ойын…"
+
+#: src/blueprints/shortcuts-dialog.blp:69
+msgctxt "Shortcuts Window"
+msgid "Zoom In"
+msgstr "Масштабты үлкейту"
+
+#: src/blueprints/shortcuts-dialog.blp:74
+msgctxt "Shortcuts Window"
+msgid "Zoom Out"
+msgstr "Масштабты кішірейту"
+
+#: src/blueprints/shortcuts-dialog.blp:79
+msgctxt "Shortcuts Window"
+msgid "Zoom Reset"
+msgstr "Масштабты тастау"
+
+#: src/blueprints/shortcuts-dialog.blp:84
+msgctxt "Shortcuts Window"
+msgid "Puzzle"
+msgstr "Жұмбақ ойыны"
+
+#: src/blueprints/shortcuts-dialog.blp:88
+msgctxt "Shortcuts Window"
+msgid "Reset"
+msgstr "Тастау"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+msgctxt "Shortcuts Window"
+msgid "Share"
+msgstr "Бөлісу"
+
+#: src/blueprints/shortcuts-dialog.blp:98
+msgctxt "Shortcuts Window"
+msgid "Save As…"
+msgstr "Қалай сақтау…"
+
+#: src/blueprints/shortcuts-dialog.blp:103
+msgctxt "Shortcuts Window"
+msgid "Export…"
+msgstr "Экспорт…"
+
+#: src/blueprints/shortcuts-dialog.blp:108
+msgctxt "Shortcuts Window"
+msgid "Print Generator"
+msgstr "Басып шығару генераторы"
+
+#: src/blueprints/shortcuts-dialog.blp:113
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "Терезе"
+
+#: src/blueprints/shortcuts-dialog.blp:117
+msgctxt "Shortcuts Window"
+msgid "Go Back"
+msgstr "Артқа қайту"
+
+#: src/blueprints/shortcuts-dialog.blp:122
+msgctxt "Shortcuts Window"
+msgid "Preferences"
+msgstr "Баптаулар"
+
+#: src/blueprints/shortcuts-dialog.blp:127
+msgctxt "Shortcuts Window"
+msgid "Keyboard Shortcuts"
+msgstr "Пернетақта жарлықтары"
+
+#: src/blueprints/shortcuts-dialog.blp:132
+msgctxt "Shortcuts Window"
+msgid "Quit"
+msgstr "Шығу"
+
+#: src/blueprints/shortcuts-dialog.blp:137
+msgctxt "Shortcuts Window"
+msgid "Help"
+msgstr "Көмек"
+
+#: src/blueprints/shortcuts-dialog.blp:142
+msgctxt "Shortcuts Window"
+msgid "Menu"
+msgstr "Мәзір"
+
+#: src/blueprints/shortcuts-dialog.blp:147
+msgctxt "Shortcuts Window"
+msgid "Fullscreen"
+msgstr "Толық экран"
+
+#: src/game-view.vala:149
+msgid "Paused"
+msgstr "Аялдатылған"
+
+#: src/game-view.vala:411
+msgctxt ".skp is a file extension"
+msgid "Sudoku puzzle.skp"
+msgstr "Sudoku puzzle.skp"
+
+#: src/game-view.vala:430
+msgid "Puzzle copied to clipboard"
+msgstr "Жұмбақ ойыны алмасу буферіне көшірілді"
+
+#. Help string for command line --version flag
+#: src/gnome-sudoku.vala:91
+msgid "Show release version"
+msgstr "Шығарылым нұсқасын көрсету"
+
+#. Text in dialog that displays when the game is over.
+#: src/gnome-sudoku.vala:215
+msgid "Puzzle Completed!"
+msgstr "Жұмбақ ойыны аяқталды!"
+
+#: src/gnome-sudoku.vala:223
+#, c-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d минут"
+
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:228
+#, c-format
+msgid "Well done, you completed the puzzle in %s and set a new personal best!"
+msgstr "Жарайсыз, сіз ойынды %s ішінде аяқтап, жаңа жеке рекорд орнаттыңыз!"
+
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:234
+#, c-format
+msgid "Well done, you completed the puzzle in %s!"
+msgstr "Жарайсыз, сіз ойынды %s ішінде аяқтадыңыз!"
+
+#: src/gnome-sudoku.vala:241
+msgid "_Quit"
+msgstr "_Шығу"
+
+#: src/gnome-sudoku.vala:244
+msgid "_Change Difficulty"
+msgstr "Қиындықты өз_герту"
+
+#: src/gnome-sudoku.vala:245
+msgid "_Play Again"
+msgstr "Қ_айта ойнау"
+
+#: src/gnome-sudoku.vala:359
+msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
+msgstr "Жұмбақ ойынын импорттау сәтсіз аяқталды, жарамды Судоку ойынын енгізіңіз"
+
+#: src/gnome-sudoku.vala:360
+msgid "_Cancel"
+msgstr "Ба_с тарту"
+
+#: src/gnome-sudoku.vala:361
+msgid "_Try Again"
+msgstr "Қ_айта көру"
+
+#: src/gnome-sudoku.vala:419
+msgid "translator-credits"
+msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
+
+#: src/number-picker.vala:134
+msgid "Clear"
+msgstr "Тазарту"
+
+#: src/number-picker.vala:231 src/number-picker.vala:306
+msgid "Lock"
+msgstr "Құлыптау"
+
+#: src/number-picker.vala:303
+msgid "Unlock"
+msgstr "Құлпын ашу"
+
+#. Error message if printing fails
+#: src/printer.vala:44
+msgid "Error printing file:"
+msgstr "Файлды баспаға шығару қатесі:"
+
+#: src/printer.vala:45
+msgid "Close"
+msgstr "Жабу"
+
+#~ msgid "Create Custom Game…"
+#~ msgstr "Таңдауыңызша ойынды жасау…"
+
+#~ msgid "_Clear Board…"
+#~ msgstr "Тақтаны та_зарту…"
+
+#~ msgid "Print _Multiple Puzzles…"
+#~ msgstr "_Бірнеше судоку баспаға шығару…"
+
+#~ msgid "_More Options"
+#~ msgstr "Кө_бірек опциялар"
+
+#~ msgid "Show _Timer"
+#~ msgstr "_Таймерді көрсету"
+
+#~ msgid "Simple _Warnings Mode"
+#~ msgstr "Қарапайым _ескертулер режимі"
+
+#~ msgid "Play Custom Puzzle"
+#~ msgstr "Таңдауыңызша ойжұмбақты ойнау"
+
+#~ msgid "Select Game Difficulty"
+#~ msgstr "Ойын қиындығын таңдау"
+
+#~ msgid ""
+#~ "Each game is assigned a difficulty similar to those given by newspapers and "
+#~ "websites, so your game will be as easy or as difficult as you want it to be."
+#~ msgstr ""
+#~ "Әрбір ойынның өз қиындық деңгейі бар, ол ойыныңыз қаншалықты жеңіл немесе "
+#~ "күрделі болатынына әсер етеді."
+
+#~ msgid ""
+#~ "If you like to play on paper, you can print games out. You can choose how "
+#~ "many games you want to print per page and what difficulty of games you want "
+#~ "to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+#~ msgstr ""
+#~ "Егер сіз қағаз нұсқасында ойнауды ұнатсаңыз, ойындарды басып шығаруға "
+#~ "болады. Әр парақта қанша ойын болатынын және ойын күрделілігін таңдауға "
+#~ "болады: нәтижесінде GNOME судоку сіз үшін тауыспайтын судоку кітабы бола "
+#~ "алады."
+
+#~ msgid "Difficulty level of sudokus to be printed"
+#~ msgstr "Баспа үшін судоку күрделілік деңгейі"
+
+#~ msgid ""
+#~ "Set the difficulty level of the sudokus you want to print. Possible values "
+#~ "are: \"easy\", \"medium\", \"hard\", \"very_hard\""
+#~ msgstr ""
+#~ "Баспаға шығарғыңыз келетін судоку қиындық деңгейін көрсетіңіз. Мүмкін "
+#~ "мәндері: \"easy\", \"medium\", \"hard\", \"very_hard\""
+
+#~ msgid "Number of Sudokus to print"
+#~ msgstr "Баспаға шығарылатын судоку саны"
+
+#~ msgid "Set the number of sudokus you want to print"
+#~ msgstr "Басып шығарғыңыз келетін судоку санын көрсету"
+
+#~ msgid "Number of Sudokus to print per page"
+#~ msgstr "Баспаға шығарылатын бір беттегі судоку саны"
+
+#~ msgid "Set the number of sudokus you want to print per page"
+#~ msgstr "Басып шығарғыңыз келетін бір беттегі судоку санын көрсету"
+
+#~ msgid "Color mistakes and duplicate numbers in red"
+#~ msgstr "Қателер мен қайталанатын сандарды қызыл түспен белгілеу"
+
+#~ msgid ""
+#~ "Displays a big red X in a square if it cannot possibly be filled by any "
+#~ "number and duplicate numbers are highlighted in red"
+#~ msgstr ""
+#~ "Егер шаршыны ешбір санмен толтыруға болмаса, онда үлкен қызыл X "
+#~ "көрсетіледі, ал қосарланған сандар қызыл түспен ерекшеленеді"
+
+#~ msgid "Check cells only against duplicates in row, column and block"
+#~ msgstr ""
+#~ "Ұяшықтарды тек қатардағы, бағандағы және блоктағы қайталауларға тексеру"
+
+#~ msgid "Highlight row, column and square that contain the selected cell"
+#~ msgstr "Таңдалған ұяшық орналасқан жолды, бағанды және шаршыны бөлектеу"
+
+#~ msgid "Show the possible values for each cell"
+#~ msgstr "Әрбір ұяшық үшін мүмкін мәндерді көрсету"
+
+#~ msgid "The puzzle you have entered is not a valid Sudoku."
+#~ msgstr "Сіз енгізген ойжұмбақ жарамды судоку емес."
+
+#~ msgid "Please enter a valid puzzle."
+#~ msgstr "Жарамды ойжұмбақты енгізіңіз."
+
+#~ msgid "The puzzle you have entered has multiple solutions."
+#~ msgstr "Сіз енгізген ойжұмбақтың бірнеше шешімі бар."
+
+#~ msgid "Valid Sudoku puzzles have exactly one solution."
+#~ msgstr "Жарамды судоку ойжұмбақтарының тек бір шешімі бар."
+
+#~ msgid "_Back"
+#~ msgstr "Ар_тқа"
+
+#~ msgid "Play _Anyway"
+#~ msgstr "Со_нда да ойнау"
+
+#~ msgid "Reset the board to its original state?"
+#~ msgstr "Тақтаны бастапқы күйіне қалпына келтіру керек пе?"
+
+#~ msgid "No"
+#~ msgstr "Жоқ"
+
+#~ msgid "Yes"
+#~ msgstr "Иә"
+
+#, c-format
+#~ msgid ""
+#~ "The popular Japanese logic puzzle\n"
+#~ "\n"
+#~ "Puzzles generated by QQwing %s"
+#~ msgstr ""
+#~ "Танымал Жапондық логикалық ойжұмбақ ойыны\n"
+#~ "\n"
+#~ "Ойжұмбақтарды генерациялаған QQwing %s"
+
+#~ msgid "Create Puzzle"
+#~ msgstr "Ойжұмбақты жасау"
 
 #~ msgid "Go back to the current game"
 #~ msgstr "Ағымдағы ойынға қайтып оралу"
@@ -427,20 +793,14 @@ msgstr "Аялдату"
 #~ msgstr "Дұрыс шешім бұзылған немесе тағайындалмаған кезде қосымша ескерту"
 
 #~ msgid ""
-#~ "Changes the background color of a square to red if the value does not "
-#~ "match puzzle solution, or if no earmark matches the puzzle solution"
+#~ "Changes the background color of a square to red if the value does not match "
+#~ "puzzle solution, or if no earmark matches the puzzle solution"
 #~ msgstr ""
 #~ "Мән ойжұмбақ шешіміне сәйкес келмесе немесе ойжұмбақ шешіміне ешқандай "
 #~ "арнауыш сәйкес келмесе, шаршының фон түсін қызылға өзгертеді"
 
 #~ msgid "_Create your own puzzle"
 #~ msgstr "Өз ойжұмбағыңызды жа_сау"
-
-#~ msgid "_Cancel"
-#~ msgstr "Ба_с тарту"
-
-#~ msgid "Paused"
-#~ msgstr "Аялдатылған"
 
 #~ msgid "Reset the board to its original state"
 #~ msgstr "Тақтаны бастапқы күйіне қалпына келтіру"
@@ -450,9 +810,6 @@ msgstr "Аялдату"
 
 #~ msgid "_Start Playing"
 #~ msgstr "_Ойынды бастау"
-
-#~ msgid "_Resume"
-#~ msgstr "Жа_лғастыру"
 
 #~ msgid "_About"
 #~ msgstr "О_сы туралы"
