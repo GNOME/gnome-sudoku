@@ -10,17 +10,17 @@
 # Osman Karagöz <osmank3@gmail.com>, 2014.
 # Gökhan Gurbetoğlu <ggurbet@gmail.com>, 2014.
 # Çağatay Yiğit Şahin <cyigitsahin@outlook.com>, 2017.
-# Sabri Ünal <yakushabb@gmail.com>, 2021, 2023-2025.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2019, 2022-2025.
 # Muhammet Kara <muhammetk@gmail.com>, 2011-2025.
+# Sabri Ünal <yakushabb@gmail.com>, 2021, 2023-2025.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2019, 2022-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-11-29 16:52+0000\n"
-"PO-Revision-Date: 2025-11-29 23:22+0300\n"
-"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+"POT-Creation-Date: 2026-01-06 17:09+0000\n"
+"PO-Revision-Date: 2026-01-27 08:00+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -136,8 +136,8 @@ msgid "Generate an infinite amount of new puzzles with qqwing."
 msgstr "Qqwing ile sonsuz sayıda yeni bulmaca oluşturun."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:19
-msgid "Create and solve custom puzzles from scratch."
-msgstr "En baştan özel bulmacalar oluşturun ve çözün."
+msgid "Easily share puzzles with friends, or save them for later."
+msgstr "Bulmacaları kolayca arkadaşlarınızla paylaşın ya da sonrası için kaydedin."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:20
 msgid "Adjust a scalable grid to your preferences."
@@ -175,23 +175,23 @@ msgstr "GNOME sudoku oyunu ön izlemesi"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Ayraçlar ve uyarılar içeren koyu kipte sudoku oyunu"
 
-#: lib/board.vala:544 lib/board.vala:555
+#: lib/board.vala:846 lib/board.vala:857
 msgid "Unknown Difficulty"
 msgstr "Bilinmeyen Zorluk"
 
-#: lib/board.vala:546
+#: lib/board.vala:848
 msgid "Easy Difficulty"
 msgstr "Düşük Zorluk"
 
-#: lib/board.vala:548
+#: lib/board.vala:850
 msgid "Medium Difficulty"
 msgstr "Orta Zorluk"
 
-#: lib/board.vala:550
+#: lib/board.vala:852
 msgid "Hard Difficulty"
 msgstr "Yüksek Zorluk"
 
-#: lib/board.vala:552
+#: lib/board.vala:854
 msgid "Very Hard Difficulty"
 msgstr "Çok Yüksek Zorluk"
 
@@ -215,64 +215,71 @@ msgstr "Duraklat"
 msgid "Play"
 msgstr "Oyna"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:246
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
 msgid "_New Game…"
 msgstr "_Yeni Oyun…"
 
 #: src/blueprints/menu-button.blp:12
-msgid "_Reset Puzzle"
-msgstr "Bulmacayı _Sıfırla"
+msgid "_Puzzle"
+msgstr "_Bulmaca"
 
-#: src/blueprints/menu-button.blp:19
-#: src/blueprints/print-multiple-dialog.blp:69
-msgid "_Print"
-msgstr "_Yazdır"
+#: src/blueprints/menu-button.blp:16
+msgid "_Reset"
+msgstr "_Sıfırla"
 
 #: src/blueprints/menu-button.blp:23
-msgid "Print _Current Puzzle…"
-msgstr "Ş_imdiki Bulmacayı Yazdır…"
+msgid "_Share"
+msgstr "_Paylaş"
 
 #: src/blueprints/menu-button.blp:28
-msgid "Print _Multiple Puzzles…"
-msgstr "Ço_klu Bulmaca Yazdır…"
+msgid "_Save As…"
+msgstr "_Farklı Kaydet…"
 
-#: src/blueprints/menu-button.blp:35
+#: src/blueprints/menu-button.blp:33
+msgid "_Export…"
+msgstr "_Dışa Aktar…"
+
+#: src/blueprints/menu-button.blp:40
+msgid "Print _Generator"
+msgstr "Çıktı Ü_retici"
+
+#: src/blueprints/menu-button.blp:49
 msgid "Zoom"
 msgstr "Yaklaştırma"
 
-#: src/blueprints/menu-button.blp:54
+#: src/blueprints/menu-button.blp:68
 msgid "_Preferences"
 msgstr "_Tercihler"
 
-#: src/blueprints/menu-button.blp:59
+#: src/blueprints/menu-button.blp:73
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: src/blueprints/menu-button.blp:64
+#: src/blueprints/menu-button.blp:78
 msgid "_Help"
 msgstr "_Yardım"
 
-#: src/blueprints/menu-button.blp:69
+#: src/blueprints/menu-button.blp:83
 msgid "_About Sudoku"
 msgstr "Sudoku _Hakkında"
 
-#: src/blueprints/menu-button.blp:80
+#: src/blueprints/menu-button.blp:94
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: src/blueprints/menu-button.blp:89
+#: src/blueprints/menu-button.blp:103
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
-#: src/blueprints/menu-button.blp:101
+#: src/blueprints/menu-button.blp:115
 msgid "Zoom In"
 msgstr "Yaklaştır"
 
-#: src/blueprints/menu-button.blp:116
+#: src/blueprints/menu-button.blp:130
 msgid "Fullscreen"
 msgstr "Tam Ekran"
 
-#: src/blueprints/menu-button.blp:127
+#: src/blueprints/menu-button.blp:141
 msgid "Leave Fullscreen"
 msgstr "Tam Ekrandan Çık"
 
@@ -328,18 +335,18 @@ msgstr "Vurgulayıcı"
 
 #: src/blueprints/preferences-dialog.blp:52
 msgctxt "Highlighter Preferences"
-msgid "Highlight Matching _Numbers"
-msgstr "Eşleşen _Numaraları Vurgula"
-
-#: src/blueprints/preferences-dialog.blp:57
-msgctxt "Highlighter Preferences"
 msgid "Highlight _Row and Column"
 msgstr "_Satır ve Sütunu Vurgula"
 
-#: src/blueprints/preferences-dialog.blp:62
+#: src/blueprints/preferences-dialog.blp:57
 msgctxt "Highlighter Preferences"
 msgid "Highlight _Block"
 msgstr "_Bloğu Vurgula"
+
+#: src/blueprints/preferences-dialog.blp:62
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "Eşleşen _Numaraları Vurgula"
 
 #: src/blueprints/print-multiple-dialog.blp:5
 msgid "Print Multiple Puzzles"
@@ -349,29 +356,37 @@ msgstr "Çoklu Bulmaca Yazdır"
 msgid "_Number of Puzzles"
 msgstr "Bulmaca _Sayısı"
 
-#: src/blueprints/print-multiple-dialog.blp:37
+#: src/blueprints/print-multiple-dialog.blp:38
 msgid "_Number of Puzzles per Page"
 msgstr "Sayfa Başına Bulmaca _Sayısı"
 
-#: src/blueprints/print-multiple-dialog.blp:51
+#: src/blueprints/print-multiple-dialog.blp:52
 msgid "_Difficulty"
 msgstr "_Zorluk"
 
-#: src/blueprints/print-multiple-dialog.blp:56
+#: src/blueprints/print-multiple-dialog.blp:57
 msgid "Easy"
 msgstr "Kolay"
 
-#: src/blueprints/print-multiple-dialog.blp:57
+#: src/blueprints/print-multiple-dialog.blp:58
 msgid "Medium"
 msgstr "Orta"
 
-#: src/blueprints/print-multiple-dialog.blp:58
+#: src/blueprints/print-multiple-dialog.blp:59
 msgid "Hard"
 msgstr "Zor"
 
-#: src/blueprints/print-multiple-dialog.blp:59
+#: src/blueprints/print-multiple-dialog.blp:60
 msgid "Very Hard"
 msgstr "Çok Zor"
+
+#: src/blueprints/print-multiple-dialog.blp:68
+msgid "Print _Current Puzzle"
+msgstr "_Geçerli Bulmacayı Yazdır"
+
+#: src/blueprints/print-multiple-dialog.blp:76
+msgid "_Print…"
+msgstr "_Yazdır…"
 
 #: src/blueprints/start-view.blp:13
 msgid "Select Difficulty"
@@ -390,29 +405,37 @@ msgctxt "Difficulty"
 msgid "_Custom"
 msgstr "_Özel"
 
-#: src/blueprints/start-view.blp:64
+#: src/blueprints/start-view.blp:65
 msgctxt "Difficulty"
 msgid "_Easy"
 msgstr "_Kolay"
 
-#: src/blueprints/start-view.blp:77
+#: src/blueprints/start-view.blp:79
 msgctxt "Difficulty"
 msgid "_Medium"
 msgstr "_Orta"
 
-#: src/blueprints/start-view.blp:90
+#: src/blueprints/start-view.blp:93
 msgctxt "Difficulty"
 msgid "_Hard"
 msgstr "_Zor"
 
-#: src/blueprints/start-view.blp:103
+#: src/blueprints/start-view.blp:107
 msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "Ç_ok Zor"
 
-#: src/blueprints/start-view.blp:112
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
 msgid "_Start Game"
 msgstr "Oyunu _Başlat"
+
+#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:162
+msgid "_Open..."
+msgstr "_Aç…"
+
+#: src/blueprints/start-view.blp:147
+msgid "_Start Shared Game"
+msgstr "Paylaşılan Oyun _Başlat"
 
 #: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
@@ -467,92 +490,125 @@ msgstr "Yinele"
 
 #: src/blueprints/shortcuts-dialog.blp:64
 msgctxt "Shortcuts Window"
-msgid "New Game"
+msgid "New Game…"
 msgstr "Yeni Oyun"
 
 #: src/blueprints/shortcuts-dialog.blp:69
 msgctxt "Shortcuts Window"
-msgid "Reset Puzzle"
-msgstr "Bulmacayı Sıfırla"
-
-#: src/blueprints/shortcuts-dialog.blp:74
-msgctxt "Shortcuts Window"
 msgid "Zoom In"
 msgstr "Yaklaştır"
 
-#: src/blueprints/shortcuts-dialog.blp:79
+#: src/blueprints/shortcuts-dialog.blp:74
 msgctxt "Shortcuts Window"
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
-#: src/blueprints/shortcuts-dialog.blp:84
+#: src/blueprints/shortcuts-dialog.blp:79
 msgctxt "Shortcuts Window"
 msgid "Zoom Reset"
 msgstr "Yakınlaştırmayı Sıfırla"
 
-#: src/blueprints/shortcuts-dialog.blp:89
+#: src/blueprints/shortcuts-dialog.blp:84
+msgctxt "Shortcuts Window"
+msgid "Puzzle"
+msgstr "Bulmaca"
+
+#: src/blueprints/shortcuts-dialog.blp:88
+msgctxt "Shortcuts Window"
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+msgctxt "Shortcuts Window"
+msgid "Share"
+msgstr "Paylaş"
+
+#: src/blueprints/shortcuts-dialog.blp:98
+msgctxt "Shortcuts Window"
+msgid "Save As…"
+msgstr "Farklı Kaydet"
+
+#: src/blueprints/shortcuts-dialog.blp:103
+msgctxt "Shortcuts Window"
+msgid "Export…"
+msgstr "Dışa Aktar"
+
+#: src/blueprints/shortcuts-dialog.blp:108
+msgctxt "Shortcuts Window"
+msgid "Print Generator"
+msgstr "Çıktı Üretici"
+
+#: src/blueprints/shortcuts-dialog.blp:113
 msgctxt "Shortcuts Window"
 msgid "Window"
 msgstr "Pencere"
 
-#: src/blueprints/shortcuts-dialog.blp:93
+#: src/blueprints/shortcuts-dialog.blp:117
 msgctxt "Shortcuts Window"
 msgid "Go Back"
 msgstr "Geri Git"
 
-#: src/blueprints/shortcuts-dialog.blp:98
-msgctxt "Shortcuts Window"
-msgid "Print Current Puzzle"
-msgstr "Geçerli Bulmacayı Yazdır"
-
-#: src/blueprints/shortcuts-dialog.blp:103
+#: src/blueprints/shortcuts-dialog.blp:122
 msgctxt "Shortcuts Window"
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: src/blueprints/shortcuts-dialog.blp:108
+#: src/blueprints/shortcuts-dialog.blp:127
 msgctxt "Shortcuts Window"
 msgid "Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
-#: src/blueprints/shortcuts-dialog.blp:113
+#: src/blueprints/shortcuts-dialog.blp:132
 msgctxt "Shortcuts Window"
 msgid "Quit"
 msgstr "Çık"
 
-#: src/blueprints/shortcuts-dialog.blp:118
+#: src/blueprints/shortcuts-dialog.blp:137
 msgctxt "Shortcuts Window"
 msgid "Help"
 msgstr "Yardım"
 
-#: src/blueprints/shortcuts-dialog.blp:123
+#: src/blueprints/shortcuts-dialog.blp:142
 msgctxt "Shortcuts Window"
 msgid "Menu"
 msgstr "Menü"
 
-#: src/blueprints/shortcuts-dialog.blp:128
+#: src/blueprints/shortcuts-dialog.blp:147
 msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Tam Ekran"
 
+#: src/game-view.vala:149
+msgid "Paused"
+msgstr "Duraklatıldı"
+
+#: src/game-view.vala:411
+msgctxt ".skp is a file extension"
+msgid "Sudoku puzzle.skp"
+msgstr "Sudoku bulmacası.skp"
+
+#: src/game-view.vala:430
+msgid "Puzzle copied to clipboard"
+msgstr "Bulmaca panoya kopyalandı"
+
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:90
+#: src/gnome-sudoku.vala:91
 msgid "Show release version"
 msgstr "Yayım sürümünü göster"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:211
+#: src/gnome-sudoku.vala:215
 msgid "Puzzle Completed!"
 msgstr "Bulmaca Tamamlandı!"
 
-#: src/gnome-sudoku.vala:219
+#: src/gnome-sudoku.vala:223
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d dakika"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:224
+#: src/gnome-sudoku.vala:228
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
@@ -560,24 +616,36 @@ msgstr ""
 "kırdınız!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:230
+#: src/gnome-sudoku.vala:234
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Aferin! Bulmacayı %s dakika içinde tamamladınız!"
 
-#: src/gnome-sudoku.vala:237
+#: src/gnome-sudoku.vala:241
 msgid "_Quit"
 msgstr "Çı_k"
 
-#: src/gnome-sudoku.vala:240
+#: src/gnome-sudoku.vala:244
 msgid "_Change Difficulty"
 msgstr "Zorluğu _Değiştir"
 
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:245
 msgid "_Play Again"
 msgstr "Yeniden _Oyna"
 
-#: src/gnome-sudoku.vala:377
+#: src/gnome-sudoku.vala:359
+msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
+msgstr "Bulmaca içe aktarılamadı, lütfen geçerli Sudoku bulmacası girin"
+
+#: src/gnome-sudoku.vala:360
+msgid "_Cancel"
+msgstr "İ_ptal Et"
+
+#: src/gnome-sudoku.vala:361
+msgid "_Try Again"
+msgstr "Yeniden _Dene"
+
+#: src/gnome-sudoku.vala:419
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <yakushabb@gmail.com>\n"
@@ -586,15 +654,15 @@ msgstr ""
 "Muhammet Kara <muhammetk@gmail.com>\n"
 "Osman Karagöz <osmank3@gmail.com>"
 
-#: src/number-picker.vala:127
+#: src/number-picker.vala:134
 msgid "Clear"
 msgstr "Temizle"
 
-#: src/number-picker.vala:237 src/number-picker.vala:312
+#: src/number-picker.vala:231 src/number-picker.vala:306
 msgid "Lock"
 msgstr "Kilitle"
 
-#: src/number-picker.vala:309
+#: src/number-picker.vala:303
 msgid "Unlock"
 msgstr "Kilidi Aç"
 
@@ -606,6 +674,23 @@ msgstr "Dosya yazdırılırken hata:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Kapat"
+
+#~ msgid "Create and solve custom puzzles from scratch."
+#~ msgstr "En baştan özel bulmacalar oluşturun ve çözün."
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "New Game"
+#~ msgstr "Yeni Oyun"
+
+#~ msgctxt "Shortcuts Window"
+#~ msgid "Print Current Puzzle"
+#~ msgstr "Geçerli Bulmacayı Yazdır"
+
+#~ msgid "Print _Current Puzzle…"
+#~ msgstr "Ş_imdiki Bulmacayı Yazdır…"
+
+#~ msgid "Print _Multiple Puzzles…"
+#~ msgstr "Ço_klu Bulmaca Yazdır…"
 
 #~ msgid "Difficulty level of sudokus to be printed"
 #~ msgstr "Yazdırılacak sudoku zorluk düzeyi"
@@ -647,9 +732,6 @@ msgstr "Kapat"
 
 #~ msgid "Highlight row, column and square that contain the selected cell"
 #~ msgstr "Seçili hücreyi içeren satır, sütun ve kareyi vurgula"
-
-#~ msgid "Paused"
-#~ msgstr "Duraklatıldı"
 
 #~ msgctxt "Warning Preferences"
 #~ msgid "Check _Against Solution"
