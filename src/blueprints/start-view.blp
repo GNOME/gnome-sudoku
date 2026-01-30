@@ -135,6 +135,7 @@ template $SudokuStartView : Adw.Bin {
               Button open_button_round {
                 hexpand: true;
                 label: _("_Open...");
+                can-shrink: true;
                 use-underline: true;
                 clicked => $open_file_cb();
 
@@ -146,6 +147,7 @@ template $SudokuStartView : Adw.Bin {
               Button start_shared_button {
                 label: _("_Start Shared Game");
                 hexpand: true;
+                can-shrink: true;
                 use-underline: true;
                 clicked => $start_shared_game_cb();
 
