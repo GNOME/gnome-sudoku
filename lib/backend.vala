@@ -165,7 +165,7 @@ public class SudokuBackend : Object
         try
         {
             SudokuBoard board;
-            board = new SudokuBoard.from_short_string (clipboard);
+            board = new SudokuBoard.from_ascii_string (clipboard);
             var game = new SudokuGame (board);
             tgame = game;
             return true;
@@ -211,7 +211,7 @@ public class SudokuBackend : Object
 
     public string get_short_puzzle ()
     {
-        return game.board.fixed_to_short_string ();
+        return game.board.fixed_to_ascii_string ();
     }
 
     //lambda capture workaround

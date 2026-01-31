@@ -206,17 +206,12 @@ public class SudokuBoard : Object
                 continue;
 
             if (c.isdigit ())
-                cells[row, col].value = c.digit_value ();
-            else if (c == '.' || c == ' ' || c == '-')
-                cells[row, col].value = 0;
-            else
+                insert (row, col, c.digit_value (), true);
+            else if (c != '.' && c != ' ' && c != '-')
                 continue;
 
             if (row == 8 && col == 8)
-            {
-                set_all_fixed ();
                 return;
-            }
             else if (col == 8)
             {
                 row++;
@@ -230,7 +225,7 @@ public class SudokuBoard : Object
         ctor_err (true);
     }
 
-    public SudokuBoard.from_short_string (string s)
+    public SudokuBoard.from_ascii_string (string s)
         throws IOError
     {
         ctor_err (s[0] != '#');
@@ -266,13 +261,11 @@ public class SudokuBoard : Object
             var coords = from_printable_ascii (rows_cols[i]);
             int row = coords[0];
             int col = coords[1];
-            cells[row, col].value = val;
+            insert (row, col, val, true);
 
             if (count < sizes[current_number])
                 count++;
         }
-
-        set_all_fixed ();
     }
 
     public SudokuBoard.from_json (string path)
@@ -748,7 +741,7 @@ public class SudokuBoard : Object
         return ret;
     }
 
-    public string fixed_to_short_string ()
+    public string fixed_to_ascii_string ()
     {
         var ret = "#";
         ArrayList<int>[] array = new ArrayList<int>[9];
