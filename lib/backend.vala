@@ -63,6 +63,11 @@ public class SudokuBackend : Object
     public signal void game_changed ();
     public void change_game (SudokuGame new_game)
     {
+        start_autosave (this);
+
+        if (this.game != null)
+            delete_save ();
+
         this.game = new_game;
         tgame = null;
         game_changed ();
@@ -107,9 +112,7 @@ public class SudokuBackend : Object
         {
             var saved_board = new SudokuBoard.from_json (active_save_file);
             var saved_game = new SudokuGame (saved_board);
-            game = saved_game;
-            start_autosave (this);
-            game_changed ();
+            change_game (saved_game);
         }
         catch (Error e)
         {
@@ -184,10 +187,8 @@ public class SudokuBackend : Object
             try
             {
                 var gen_boards = SudokuGenerator.generate_boards_async.end (res);
-                game = new SudokuGame (gen_boards[0]);
-
-                start_autosave (this);
-                game_changed ();
+                var ngame = new SudokuGame (gen_boards[0]);
+                change_game (ngame);
             }
             catch (Error e)
             {
