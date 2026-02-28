@@ -235,6 +235,9 @@ public class Sudoku : Adw.Application
                                 .printf(localized_time);
                 }
             }
+
+            if (highscore_changed)
+                game_view.set_clock_medal ();
         }
 
         var dialog = new Adw.AlertDialog (win_str, null);

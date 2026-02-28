@@ -30,7 +30,6 @@ public class SudokuGameView : Adw.Bin
     [GtkChild] private unowned Adw.ToastOverlay toast_overlay;
     [GtkChild] private unowned Adw.Bin grid_bin;
     [GtkChild] private unowned Box clock_box;
-    [GtkChild] private unowned Label clock_label;
     [GtkChild] private unowned ToggleButton earmark_mode_button;
 
     [GtkChild] private unowned Adw.WindowTitle windowtitle;
@@ -40,6 +39,11 @@ public class SudokuGameView : Adw.Bin
     [GtkChild] private unowned Button play_button;
 
     [GtkChild] private unowned SudokuMenuButton menu_button;
+
+    [GtkChild] private unowned Stack clock_stack;
+    [GtkChild] private unowned Label clock_medal;
+    [GtkChild] private unowned Image clock_image;
+    [GtkChild] private unowned Label clock_label;
 
     private SudokuBackend backend;
 
@@ -194,6 +198,7 @@ public class SudokuGameView : Adw.Bin
         if (!Sudoku.app.show_timer)
             return;
 
+        clock_stack.set_visible_child (clock_image);
         var elapsed_time = (int) game.get_total_time_played ();
         var highscore_string = "";
 
@@ -217,6 +222,11 @@ public class SudokuGameView : Adw.Bin
         }
 
         clock_label.set_label (create_timer_string (elapsed_time));
+    }
+
+    public void set_clock_medal ()
+    {
+        clock_stack.set_visible_child (clock_medal);
     }
 
     private string create_timer_string (int elapsed_time)

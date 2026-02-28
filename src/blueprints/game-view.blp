@@ -79,10 +79,21 @@ template $SudokuGameView : Adw.Bin {
         halign: center;
         visible: false;
 
-        Image clock_image {
-          can-focus: false;
-          icon-name: "preferences-system-time-symbolic";
-          icon-size: normal;
+        Stack clock_stack {
+          Image clock_image {
+            can-focus: false;
+            icon-name: "preferences-system-time-symbolic";
+            icon-size: normal;
+          }
+
+          Label clock_medal {
+            label: "🥇";
+            can-focus: false;
+            halign: center;
+            styles [
+              "numeric",
+            ]
+          }
         }
 
         Label clock_label {
