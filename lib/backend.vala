@@ -230,7 +230,7 @@ public class SudokuBackend : Object
         Source.set_name_by_id (weak_this.autosave_timeout, "[gnome-sudoku] autosave");
     }
 
-    private void stop_autosave ()
+    public void stop_autosave ()
     {
         if (autosave_timeout != 0)
         {
@@ -300,8 +300,6 @@ public class SudokuBackend : Object
 
     public override void dispose ()
     {
-        stop_autosave ();
-        save_game ();
         base.dispose ();
     }
 }
