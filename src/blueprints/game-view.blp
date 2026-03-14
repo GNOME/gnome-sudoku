@@ -17,10 +17,7 @@ template $SudokuGameView : Adw.Bin {
 
       [start]
       Button undo_button {
-        sensitive: false;
-        valign: center;
         tooltip-text: _("Undo Action");
-        can-focus: true;
         focus-on-click: false;
         action-name: "game-view.undo";
         icon-name: "edit-undo-symbolic";
@@ -28,10 +25,7 @@ template $SudokuGameView : Adw.Bin {
 
       [start]
       Button redo_button {
-        sensitive: false;
-        valign: center;
         tooltip-text: _("Redo Action");
-        can-focus: true;
         focus-on-click: false;
         action-name: "game-view.redo";
         icon-name: "edit-redo-symbolic";
@@ -39,11 +33,9 @@ template $SudokuGameView : Adw.Bin {
 
       [start]
       ToggleButton earmark_mode_button {
-        halign: center;
-        valign: center;
+        tooltip-text: _("Earmark Mode");
         focus-on-click: false;
         action-name: "game-view.earmark-mode";
-        tooltip-text: _("Earmark Mode");
         icon-name: "pencil-symbolic";
       }
 
@@ -52,21 +44,15 @@ template $SudokuGameView : Adw.Bin {
         visible: false;
 
         Button pause_button {
-          sensitive: false;
-          valign: center;
-          can-focus: true;
+          tooltip-text: _("Pause");
           focus-on-click: false;
           action-name: "game-view.toggle-pause";
-          tooltip-text: _("Pause");
           icon-name: "media-playback-pause-symbolic";
         }
 
         Button play_button {
-          sensitive: false;
-          valign: center;
-          can-focus: true;
-          focus-on-click: false;
           tooltip-text: _("Play");
+          focus-on-click: false;
           action-name: "game-view.toggle-pause";
           icon-name: "media-playback-start-symbolic";
         }
@@ -89,16 +75,11 @@ template $SudokuGameView : Adw.Bin {
           Label clock_medal {
             label: "🥇";
             can-focus: false;
-            halign: center;
-            styles [
-              "numeric",
-            ]
           }
         }
 
         Label clock_label {
           can-focus: false;
-          halign: center;
           styles [
             "numeric",
           ]
