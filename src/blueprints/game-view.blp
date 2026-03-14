@@ -1,19 +1,17 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $SudokuGameView : Adw.Bin {
+template $SudokuGameView : Adw.BreakpointBin {
   Adw.ToolbarView {
     top-bar-style: raised;
+    bottom-bar-style: raised;
 
     [top]
-    Adw.HeaderBar headerbar {
+    Adw.HeaderBar top_headerbar {
       centering-policy: strict;
       title-widget: Adw.WindowTitle windowtitle {
         title: _("Sudoku");
       };
-
-      [end]
-      $SudokuMenuButton menu_button{}
 
       [start]
       Button undo_button {
@@ -39,6 +37,7 @@ template $SudokuGameView : Adw.Bin {
         icon-name: "pencil-symbolic";
       }
 
+      [start]
       Stack play_pause_stack {
         transition-type: crossfade;
         visible: false;
@@ -59,11 +58,14 @@ template $SudokuGameView : Adw.Bin {
       }
 
       [end]
+      $SudokuMenuButton menu_button{}
+
+      [end]
       Box clock_box {
         can-focus: false;
         spacing: 6;
-        halign: center;
-        visible: false;
+        //the margin is for vertical alignement with the bottom bar buttons
+        margin-start: 9;
 
         Stack clock_stack {
           Image clock_image {
@@ -85,6 +87,13 @@ template $SudokuGameView : Adw.Bin {
           ]
         }
       }
+    }
+
+    [bottom]
+    Adw.HeaderBar bottom_headerbar {
+      visible: false;
+      show-title: false;
+      decoration-layout: ":";
     }
 
     content: Adw.ToastOverlay toast_overlay {

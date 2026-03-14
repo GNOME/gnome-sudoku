@@ -24,26 +24,29 @@ using Gtk;
 using Gdk;
 
 [GtkTemplate (ui = "/org/gnome/Sudoku/ui/game-view.ui")]
-public class SudokuGameView : Adw.Bin
+public class SudokuGameView : Adw.BreakpointBin
 {
     [GtkChild] private unowned Overlay grid_overlay;
     [GtkChild] private unowned Adw.ToastOverlay toast_overlay;
     [GtkChild] private unowned Adw.Bin grid_bin;
-    [GtkChild] private unowned Box clock_box;
-    [GtkChild] private unowned ToggleButton earmark_mode_button;
 
     [GtkChild] private unowned Adw.WindowTitle windowtitle;
 
+    [GtkChild] private unowned Adw.HeaderBar bottom_headerbar;
+    [GtkChild] private unowned Adw.HeaderBar top_headerbar;
+    [GtkChild] private unowned SudokuMenuButton menu_button;
+    [GtkChild] private unowned Button undo_button;
+    [GtkChild] private unowned Button redo_button;
+    [GtkChild] private unowned ToggleButton earmark_mode_button;
     [GtkChild] private unowned Stack play_pause_stack;
     [GtkChild] private unowned Button pause_button;
     [GtkChild] private unowned Button play_button;
 
-    [GtkChild] private unowned SudokuMenuButton menu_button;
-
+    [GtkChild] private unowned Box clock_box;
+    [GtkChild] private unowned Label clock_label;
     [GtkChild] private unowned Stack clock_stack;
     [GtkChild] private unowned Label clock_medal;
     [GtkChild] private unowned Image clock_image;
-    [GtkChild] private unowned Label clock_label;
 
     private SudokuBackend backend;
 
@@ -96,13 +99,24 @@ public class SudokuGameView : Adw.Bin
         this.window = window;
         windowtitle.subtitle = game.board.difficulty_category.to_string ();
 
+        var condition1 = new Adw.BreakpointCondition.length (Adw.BreakpointConditionLengthType.MAX_WIDTH,
+                                                             SudokuWindow.MEDIUM_WINDOW_WIDTH,  Adw.LengthUnit.PX);
+        var condition2 = new Adw.BreakpointCondition.ratio (Adw.BreakpointConditionRatioType.MAX_ASPECT_RATIO, 3, 4);
+        var multicon = new Adw.BreakpointCondition.or ( (owned) condition1, (owned) condition2);
+        var breakpoint = new Adw.Breakpoint ((owned) multicon);
+        breakpoint.add_setter (bottom_headerbar, "visible", 1);
+        breakpoint.apply.connect (set_vertical_ui);
+        breakpoint.unapply.connect (set_wide_ui);
+        add_breakpoint (breakpoint);
+
+        set_size_request (window.width_request, window.height_request);
+
         Sudoku.app.notify["show-possibilities"].connect (show_possibilities_cb);
         Sudoku.app.notify["duplicate-warnings"].connect (warnings_cb);
         Sudoku.app.notify["solution-warnings"].connect (warnings_cb);
         Sudoku.app.notify["earmark-warnings"].connect (warnings_cb);
         Sudoku.app.notify["zoom-level"].connect (zoom_cb);
         Sudoku.app.notify["show-timer"].connect (show_timer_cb);
-        this.window.notify["width-is-small"].connect (window_width_is_small_cb);
 
         menu_button.main_menu.closed.connect (() => {
             grab_focus ();
@@ -187,10 +201,37 @@ public class SudokuGameView : Adw.Bin
 
     private void initialize_buttons ()
     {
-        clock_box.visible = Sudoku.app.show_timer && !window.width_is_small;
+        clock_box.visible = Sudoku.app.show_timer;
         play_pause_stack.visible = Sudoku.app.show_timer;
-        earmark_mode_button.visible = (!Sudoku.app.show_timer ||
-                                      (Sudoku.app.show_timer && !window.width_is_small));
+    }
+
+    private void set_wide_ui ()
+    {
+        unparent_buttons ();
+        top_headerbar.pack_start (undo_button);
+        top_headerbar.pack_start (redo_button);
+        top_headerbar.pack_start (earmark_mode_button);
+        top_headerbar.pack_start (play_pause_stack);
+        top_headerbar.pack_end (clock_box);
+    }
+
+    private void set_vertical_ui ()
+    {
+        unparent_buttons ();
+        bottom_headerbar.pack_end (earmark_mode_button);
+        bottom_headerbar.pack_end (play_pause_stack);
+        bottom_headerbar.pack_start (undo_button);
+        bottom_headerbar.pack_start (redo_button);
+        top_headerbar.pack_start (clock_box);
+    }
+
+    private void unparent_buttons ()
+    {
+        play_pause_stack.unparent ();
+        earmark_mode_button.unparent ();
+        undo_button.unparent ();
+        redo_button.unparent ();
+        clock_box.unparent ();
     }
 
     private void initialize_clock_label ()
@@ -224,11 +265,6 @@ public class SudokuGameView : Adw.Bin
         clock_label.set_label (create_timer_string (elapsed_time));
     }
 
-    public void set_clock_medal ()
-    {
-        clock_stack.set_visible_child (clock_medal);
-    }
-
     private string create_timer_string (int elapsed_time)
     {
         var ret = "";
@@ -242,6 +278,11 @@ public class SudokuGameView : Adw.Bin
             ret = ("%02d∶\xE2\x80\x8E%02d".printf (minutes, seconds));
 
         return ret;
+    }
+
+    public void set_clock_medal ()
+    {
+        clock_stack.set_visible_child (clock_medal);
     }
 
     private void add_earmark_possibilities ()
@@ -288,13 +329,6 @@ public class SudokuGameView : Adw.Bin
         }
 
         clock_label.set_label (create_timer_string (elapsed_time));
-    }
-
-    private void window_width_is_small_cb ()
-    {
-        clock_box.visible = Sudoku.app.show_timer && !this.window.width_is_small;
-        earmark_mode_button.visible = (!Sudoku.app.show_timer ||
-                                      (Sudoku.app.show_timer && !window.width_is_small));
     }
 
     private void action_completed_cb ()
@@ -356,22 +390,17 @@ public class SudokuGameView : Adw.Bin
 
     private void show_timer_cb ()
     {
+        clock_box.visible = Sudoku.app.show_timer;
+        toggle_pause_action.set_enabled (Sudoku.app.show_timer);
+        play_pause_stack.visible = Sudoku.app.show_timer;
         if (Sudoku.app.show_timer)
         {
             initialize_clock_label ();
             update_tick_connection ();
-            earmark_mode_button.visible = !window.width_is_small;
-            clock_box.visible = !window.width_is_small;
-            toggle_pause_action.set_enabled (true);
-            play_pause_stack.visible = true;
         }
         else
         {
-            clock_box.visible = false;
             update_tick_connection ();
-            earmark_mode_button.visible = true;
-            play_pause_stack.visible = false;
-            toggle_pause_action.set_enabled (false);
 
             if (game.paused)
                 game.toggle_pause ();

@@ -31,8 +31,6 @@ public class SudokuWindow : Adw.ApplicationWindow
 
     private SudokuBackend backend;
 
-    public bool width_is_small { get; private set; }
-
     public const int SMALL_WINDOW_WIDTH = 360;
     public const int MEDIUM_WINDOW_WIDTH = 600;
 
@@ -102,9 +100,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         int headerbar_natural_height;
         start_view.headerbar.measure (Orientation.VERTICAL, -1, null, out headerbar_natural_height, null, null);
 
-        int small_window_height = SMALL_WINDOW_WIDTH + headerbar_natural_height;
-
-        width_is_small = default_width <= MEDIUM_WINDOW_WIDTH;
+        int small_window_height = SMALL_WINDOW_WIDTH + headerbar_natural_height * 2;
 
         set_size_request (SMALL_WINDOW_WIDTH, small_window_height);
         set_default_size (default_width, default_height);
@@ -293,25 +289,6 @@ public class SudokuWindow : Adw.ApplicationWindow
             Source.remove (keyboard_pressed_timeout);
             keyboard_pressed_timeout = 0;
         }
-    }
-
-    private void width_is_medium_cb ()
-    {
-        width_is_small = false;
-    }
-
-    private void width_is_small_cb ()
-    {
-        width_is_small = true;
-    }
-
-    public override void size_allocate (int width, int height, int baseline)
-    {
-        if (width < MEDIUM_WINDOW_WIDTH && !width_is_small)
-            width_is_small_cb ();
-        else if (width >= MEDIUM_WINDOW_WIDTH && width_is_small)
-            width_is_medium_cb ();
-        base.size_allocate (width, height, baseline);
     }
 
     public override void dispose ()
