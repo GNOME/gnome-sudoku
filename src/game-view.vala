@@ -29,6 +29,7 @@ public class SudokuGameView : Adw.BreakpointBin
     [GtkChild] private unowned Overlay grid_overlay;
     [GtkChild] private unowned Adw.ToastOverlay toast_overlay;
     [GtkChild] private unowned Adw.Bin grid_bin;
+    [GtkChild] private unowned Adw.Breakpoint ui_breakpoint;
 
     [GtkChild] private unowned Adw.WindowTitle windowtitle;
 
@@ -99,15 +100,8 @@ public class SudokuGameView : Adw.BreakpointBin
         this.window = window;
         windowtitle.subtitle = game.board.difficulty_category.to_string ();
 
-        var condition1 = new Adw.BreakpointCondition.length (Adw.BreakpointConditionLengthType.MAX_WIDTH,
-                                                             SudokuWindow.MEDIUM_WINDOW_WIDTH,  Adw.LengthUnit.PX);
-        var condition2 = new Adw.BreakpointCondition.ratio (Adw.BreakpointConditionRatioType.MAX_ASPECT_RATIO, 3, 4);
-        var multicon = new Adw.BreakpointCondition.or ( (owned) condition1, (owned) condition2);
-        var breakpoint = new Adw.Breakpoint ((owned) multicon);
-        breakpoint.add_setter (bottom_headerbar, "visible", 1);
-        breakpoint.apply.connect (set_vertical_ui);
-        breakpoint.unapply.connect (set_wide_ui);
-        add_breakpoint (breakpoint);
+        ui_breakpoint.apply.connect (set_vertical_ui);
+        ui_breakpoint.unapply.connect (set_wide_ui);
 
         set_size_request (window.width_request, window.height_request);
 
