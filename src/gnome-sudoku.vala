@@ -477,7 +477,7 @@ public class Sudoku : Adw.Application
     {
         var about_dialog = new Adw.AboutDialog.from_appdata ("/org/gnome/Sudoku/metainfo.xml", VERSION);
         about_dialog.set_version (VERSION);
-        about_dialog.set_copyright ("Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha\nCopyright © 2023 Jamie Murphy\nCopyright © 2024-2025 Johan Gay");
+        about_dialog.set_copyright ("Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha\nCopyright © 2023 Jamie Murphy\nCopyright © 2024-2026 Johan Gay");
         about_dialog.set_developers (authors);
         about_dialog.set_translator_credits (_("translator-credits"));
         about_dialog.present (window);
