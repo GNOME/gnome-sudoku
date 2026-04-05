@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Гномове игре\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues\n"
-"POT-Creation-Date: 2022-09-24 18:57+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
+"POT-Creation-Date: 2026-03-29 06:36+0000\n"
 "PO-Revision-Date: 2022-10-03 06:35+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <српски <gnome-sr@googlegroups.org>>\n"
@@ -19,317 +19,624 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "X-Project-Style: gnome\n"
 
-#: data/sudoku-window.ui:7
-msgid "_New Puzzle"
-msgstr "_Нова слагалица"
-
-#: data/sudoku-window.ui:11
-msgid "_Clear Board"
-msgstr "_Очисти таблу"
-
-#: data/sudoku-window.ui:17 data/print-dialog.ui:38
-msgid "_Print"
-msgstr "_Штампај"
-
-#: data/sudoku-window.ui:20
-msgid "Print _Current Puzzle…"
-msgstr "Штампај _тренутну слагалицу…"
-
-#: data/sudoku-window.ui:24
-msgid "Print _Multiple Puzzles…"
-msgstr "Одштампај _више слагалица…"
-
-#: data/sudoku-window.ui:32
-msgid "High_lighter"
-msgstr "_Истицање"
-
-#: data/sudoku-window.ui:36
-msgid "_Warnings"
-msgstr "_Упозорења"
-
-#: data/sudoku-window.ui:42
-msgid "_Help"
-msgstr "По_моћ"
-
-#: data/sudoku-window.ui:46
-msgid "_About Sudoku"
-msgstr "_О Судокуу"
-
-#: data/sudoku-window.ui:52 data/sudoku-window.ui:57
-#: data/org.gnome.Sudoku.desktop.in:3 src/gnome-sudoku.vala:498
-#: src/sudoku-window.vala:213
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "Гном Судоку"
 
-#: data/sudoku-window.ui:73
-msgid "Undo your last action"
-msgstr "Опозовите последњу радњу"
-
-#: data/sudoku-window.ui:94
-msgid "Redo your last action"
-msgstr "Повратите последњу радњу"
-
-#: data/sudoku-window.ui:126
-msgid "Pause"
-msgstr "Заустави"
-
-#: data/sudoku-window.ui:147
-msgid "Start playing the custom puzzle you have created"
-msgstr "Почните са играњем слагалице коју сте направили"
-
-#: data/sudoku-window.ui:189
-msgid "Go back to the current game"
-msgstr "Вратите се на текућу игру"
-
-#: data/sudoku-window.ui:233 data/print-dialog.ui:157
-msgid "_Easy"
-msgstr "_Лако"
-
-#: data/sudoku-window.ui:241 data/print-dialog.ui:172
-msgid "_Medium"
-msgstr "_Средња"
-
-#: data/sudoku-window.ui:249 data/print-dialog.ui:188
-msgid "_Hard"
-msgstr "_Тешко"
-
-#: data/sudoku-window.ui:257 data/print-dialog.ui:204
-msgid "_Very Hard"
-msgstr "_Врло тешко"
-
-#: data/sudoku-window.ui:265
-msgid "_Create your own puzzle"
-msgstr "Направите сопствену слагали_цу"
-
-#: data/org.gnome.Sudoku.appdata.xml.in:7
-msgid "GNOME Sudoku"
-msgstr "Гномов судоку"
-
-#: data/org.gnome.Sudoku.appdata.xml.in:8 data/org.gnome.Sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "Опробајте ваше логичке способности у овој слагалици мреже бројева"
-
-#: data/org.gnome.Sudoku.appdata.xml.in:10
-msgid ""
-"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
-"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
-"Sudoku fun for players of any skill level."
-msgstr ""
-"Играјте популарну јапанску логичку игру. Гномов судоку је незаменљив за "
-"љубитеље Судокуа, са једноставним, ненаметљивим сучељем које чини играње "
-"Судокуа забавним за играче свих нивоа."
-
-#: data/org.gnome.Sudoku.appdata.xml.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as easy or as difficult as you want it to be."
-msgstr ""
-"Свакој игри је додељена тежина слично онима које дају новине и веб сајтови, "
-"тако да ће ваша игра бити лака или тешка онолико колико ви то будете желели."
-
-#: data/org.gnome.Sudoku.appdata.xml.in:20
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
-msgstr ""
-"Ако волите да играте на папиру, можете да отштампате игре. Можете изабрати "
-"колико игра ћете штампати на једној страници и коју тежину игре желите да "
-"играте. као резултат, Гномов судоку може деловати као обновљива књижица "
-"судокуа."
-
-#: data/org.gnome.Sudoku.appdata.xml.in:30
-msgid "A GNOME sudoku game preview"
-msgstr "Преглед игре Гномовог судокуа"
-
-#: data/org.gnome.Sudoku.appdata.xml.in:75
-msgid "The GNOME Project"
-msgstr "Гномов пројекат"
+#: data/org.gnome.Sudoku.desktop.in.in:3
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
+msgid "Test yourself in the classic puzzle"
+msgstr "Опробајте се у класичној слагалици"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Sudoku.desktop.in:6
+#: data/org.gnome.Sudoku.desktop.in.in:5
 msgid "magic;square;"
 msgstr "магија;чаролија;квадрат;"
 
-#: data/org.gnome.Sudoku.gschema.xml:11
-msgid "Difficulty level of sudokus to be printed"
-msgstr "Ниво тежине судокуа за штампање"
-
-#: data/org.gnome.Sudoku.gschema.xml:12
-msgid ""
-"Set the difficulty level of the sudokus you want to print. Possible values "
-"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
-msgstr ""
-"Подесите ниво тежине судокуа за штампање. Могуће вредности су: "
-"„easy“ (лако), „medium“ (средње), „hard“ (тешко), „very_hard“ (врло тешко)"
-
-#: data/org.gnome.Sudoku.gschema.xml:17
-msgid "Number of Sudokus to print"
-msgstr "Број судока за штампу"
-
 #: data/org.gnome.Sudoku.gschema.xml:18
-msgid "Set the number of sudokus you want to print"
-msgstr "Подесите број судокуа за штампање"
-
-#: data/org.gnome.Sudoku.gschema.xml:23
-msgid "Number of Sudokus to print per page"
-msgstr "Број судока по страни за штампу"
-
-#: data/org.gnome.Sudoku.gschema.xml:24
-msgid "Set the number of sudokus you want to print per page"
-msgstr "Подесите број судокуа по страни за штампање"
-
-#: data/org.gnome.Sudoku.gschema.xml:28
-msgid "Warn about unfillable squares and duplicate numbers"
-msgstr "Упозорава о непопуњивим квадратима и удвојеним бројевима"
-
-#: data/org.gnome.Sudoku.gschema.xml:29
-msgid ""
-"Displays a big red X in a square if it cannot possibly be filled by any "
-"number and duplicate numbers are highlighted in red"
-msgstr ""
-"Приказује велики црвени крстић (Х) у квадратићу ако не може бити попуњен "
-"ниједним бројем а удвојени бројеви се истичу црвеном бојом"
-
-#: data/org.gnome.Sudoku.gschema.xml:33
-msgid "Highlight row, column and square that contain the selected cell"
-msgstr "Означите ред, колону и поље које садржи изабрану ћелију"
-
-#: data/org.gnome.Sudoku.gschema.xml:37
-msgid "Width of the window in pixels"
-msgstr "Ширина прозора у тачкицама"
-
-#: data/org.gnome.Sudoku.gschema.xml:41
-msgid "Height of the window in pixels"
-msgstr "Висина прозора у тачкицама"
-
-#: data/org.gnome.Sudoku.gschema.xml:45
-msgid "true if the window is maximized"
-msgstr "изабрано ако је прозор увећан"
-
-#: data/org.gnome.Sudoku.gschema.xml:49
-#| msgid "Show the possible values for each cell"
 msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "Покреће обележја са могућим вредностима за сваку ћелију"
 
-#: data/print-dialog.ui:18
-msgid "Print Multiple Puzzles"
-msgstr "Одштампајте више слагалица"
+#: data/org.gnome.Sudoku.gschema.xml:25
+msgid "Check for duplicates in row, column and block"
+msgstr "Провери двојнике у реду, колони и блоку"
 
-#: data/print-dialog.ui:27
-msgid "_Cancel"
-msgstr "_Откажи"
+#: data/org.gnome.Sudoku.gschema.xml:29
+msgid "Check earmarks against duplicates in row, column and block"
+msgstr "Провери забелешке наспрам двојника у реду, колони и блоку"
 
-#: data/print-dialog.ui:65
-msgid "_Number of puzzles"
-msgstr "Број _слагалица"
+#: data/org.gnome.Sudoku.gschema.xml:33
+msgid "Toggle timer and pause buttons"
+msgstr "Прикажи/сакриј дугмад за одбројавач и паузу"
 
-#: data/print-dialog.ui:101
-msgid "_Number of puzzles per page"
-msgstr "Број _слагалица по страни"
+#: data/org.gnome.Sudoku.gschema.xml:37
+msgid "Additionally check against the solution for warnings"
+msgstr "Додатно провери наспрам решења за упозорења"
 
-#: data/print-dialog.ui:138
-msgid "Difficulty"
-msgstr "Тежина"
+#: data/org.gnome.Sudoku.gschema.xml:41
+msgid "Automatically clear related earmarks on new number insertion"
+msgstr "Аутоматски очисти повезане забелешке при уносу новог броја"
 
-#: lib/sudoku-board.vala:644
+#: data/org.gnome.Sudoku.gschema.xml:45
+msgid "Display number picker on second click"
+msgstr "Прикажи бирач бројева на други клик"
+
+#: data/org.gnome.Sudoku.gschema.xml:49
+msgid "Highlight the selected cell's row and column"
+msgstr "Истакни ред и колону изабране ћелије"
+
+#: data/org.gnome.Sudoku.gschema.xml:53
+msgid "Highlight the selected cell's block"
+msgstr "Истакни блок изабране ћелије"
+
+#: data/org.gnome.Sudoku.gschema.xml:57
+msgid "Highlight the selected cell's matching numbers"
+msgstr "Истакни подударне бројеве изабране ћелије"
+
+#: data/org.gnome.Sudoku.gschema.xml:61
+msgid "The puzzle's difficulty"
+msgstr "Тежина слагалице"
+
+#: data/org.gnome.Sudoku.gschema.xml:68
+msgid "Zoom level"
+msgstr "Ниво увећања"
+
+#: data/org.gnome.Sudoku.gschema.xml:72
+msgid "Width of the window in pixels"
+msgstr "Ширина прозора у тачкицама"
+
+#: data/org.gnome.Sudoku.gschema.xml:76
+msgid "Height of the window in pixels"
+msgstr "Висина прозора у тачкицама"
+
+#: data/org.gnome.Sudoku.gschema.xml:80
+msgid "true if the window is maximized"
+msgstr "изабрано ако је прозор увећан"
+
+#: data/org.gnome.Sudoku.gschema.xml:84
+msgid "true if the window is fullscreen"
+msgstr "тачно ако је прозор преко целог екрана"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:7
+msgid "GNOME Sudoku"
+msgstr "Гномов судоку"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:10
+msgid ""
+"GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
+"Japanese game, it comes with a simple interface that makes playing Sudoku "
+"fun for players of all skill level."
+msgstr "Гномов Судоку је обавезан програм за љубитеље слагалица. Заснован на популарној јапанској игри, долази са једноставним сучељем које чини играње Судокуа забавним за играче свих нивоа вештина."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "Могућности:"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:17
+msgid "Automatically save and restore your session."
+msgstr "Аутоматски сачувај и поврати своју сесију."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:18
+msgid "Generate an infinite amount of new puzzles with qqwing."
+msgstr "Направи бесконачан број нових слагалица помоћу qqwing-а."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:19
+msgid "Easily share puzzles with friends, or save them for later."
+msgstr "Лако делите слагалице са пријатељима или их сачувајте за касније."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:20
+msgid "Adjust a scalable grid to your preferences."
+msgstr "Прилагодите променљиву мрежу својим поставкама."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:21
+msgid "Use the mouse, keyboard or touch to complete the puzzles."
+msgstr "Користите миша, тастатуру или додир да завршите слагалице."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:22
+msgid "Set up advanced strategies like X-Wings with earmarks."
+msgstr "Поставите напредне стратегије као што је „X-Wings“ помоћу забелешки."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:23
+msgid "Take advantage of the highlighter to narrow down possibilities."
+msgstr "Искористите маркер да бисте смањили број могућности."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:24
+msgid "Get help with the built-in warnings."
+msgstr "Потражите помоћ уз уграђена упозорења."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:25
+msgid "Keep track of your progression with highscores and a timer."
+msgstr "Пратите свој напредак уз најбоље резултате и мерач времена."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:26
+msgid "Print puzzles to play Sudoku on the go."
+msgstr "Штампајте слагалице да бисте играли Судоку у покрету."
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:32
+msgid "A GNOME sudoku game preview"
+msgstr "Преглед игре Гномовог судокуа"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:36
+msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
+msgstr "Гномова судоку игра у тамном режиму са забелешкама и упозорењима"
+
+#: lib/board.vala:839 lib/board.vala:850
 msgid "Unknown Difficulty"
 msgstr "Непознато"
 
-#: lib/sudoku-board.vala:646
+#: lib/board.vala:841
 msgid "Easy Difficulty"
 msgstr "Лако"
 
-#: lib/sudoku-board.vala:648
+#: lib/board.vala:843
 msgid "Medium Difficulty"
 msgstr "Средње"
 
-#: lib/sudoku-board.vala:650
+#: lib/board.vala:845
 msgid "Hard Difficulty"
 msgstr "Тешко"
 
-#: lib/sudoku-board.vala:652
+#: lib/board.vala:847
 msgid "Very Hard Difficulty"
 msgstr "Врло тешко"
 
-#: lib/sudoku-board.vala:654
-msgid "Custom Puzzle"
-msgstr "Властита слагалица"
+#: src/blueprints/game-view.blp:22
+msgid "Undo Action"
+msgstr "Опозови радњу"
+
+#: src/blueprints/game-view.blp:33
+msgid "Redo Action"
+msgstr "Понови радњу"
+
+#: src/blueprints/game-view.blp:46
+msgid "Earmark Mode"
+msgstr "Режим забелешки"
+
+#: src/blueprints/game-view.blp:60
+msgid "Pause"
+msgstr "Заустави"
+
+#: src/blueprints/game-view.blp:69
+msgid "Play"
+msgstr "Играј"
+
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:254
+msgid "_New Game…"
+msgstr "_Нова игра…"
+
+#: src/blueprints/menu-button.blp:12
+msgid "_Puzzle"
+msgstr "_Слагалица"
+
+#: src/blueprints/menu-button.blp:16
+msgid "_Reset"
+msgstr "_Поново постави"
+
+#: src/blueprints/menu-button.blp:23
+msgid "_Share"
+msgstr "_Дели"
+
+#: src/blueprints/menu-button.blp:28
+msgid "_Save As…"
+msgstr "_Сачувај као…"
+
+#: src/blueprints/menu-button.blp:33
+msgid "_Export…"
+msgstr "_Извези…"
+
+#: src/blueprints/menu-button.blp:40
+msgid "Print _Generator"
+msgstr "Штампај _генератора"
+
+#: src/blueprints/menu-button.blp:49
+msgid "Zoom"
+msgstr "Увећање"
+
+#: src/blueprints/menu-button.blp:68
+msgid "_Preferences"
+msgstr "_Поставке"
+
+#: src/blueprints/menu-button.blp:73
+msgid "_Keyboard Shortcuts"
+msgstr "Пр_ечице на тастатури"
+
+#: src/blueprints/menu-button.blp:78
+msgid "_Help"
+msgstr "По_моћ"
+
+#: src/blueprints/menu-button.blp:83
+msgid "_About Sudoku"
+msgstr "_О Судокуу"
+
+#: src/blueprints/menu-button.blp:94
+msgid "Main Menu"
+msgstr "Главни мени"
+
+#: src/blueprints/menu-button.blp:103
+msgid "Zoom Out"
+msgstr "Умањи"
+
+#: src/blueprints/menu-button.blp:115
+msgid "Zoom In"
+msgstr "Увећај"
+
+#: src/blueprints/menu-button.blp:130
+msgid "Fullscreen"
+msgstr "Преко целог екрана"
+
+#: src/blueprints/menu-button.blp:141
+msgid "Leave Fullscreen"
+msgstr "Напусти цео екран"
+
+#: src/blueprints/preferences-dialog.blp:7
+msgctxt "preferences dialog"
+msgid "General"
+msgstr "Опште"
+
+#: src/blueprints/preferences-dialog.blp:10
+msgctxt "General Preferences"
+msgid "_Timer and Highscores"
+msgstr "_Мерач времена и најбољи резултати"
+
+#: src/blueprints/preferences-dialog.blp:15
+msgctxt "General Preferences"
+msgid "Automatically _Clean Earmarks"
+msgstr "_Самостално очисти забелешке"
+
+#: src/blueprints/preferences-dialog.blp:20
+msgctxt "General Preferences"
+msgid "Number Picker on _Second Click"
+msgstr "Бирач бројева на _други клик"
+
+#: src/blueprints/preferences-dialog.blp:25
+msgctxt "General Preferences"
+msgid "Show Earmark _Possibilities"
+msgstr "Прикажи _могућности забелешки"
+
+#: src/blueprints/preferences-dialog.blp:31
+msgctxt "Preferences Dialog"
+msgid "Warnings"
+msgstr "Упозорења"
+
+#: src/blueprints/preferences-dialog.blp:33
+msgctxt "Warning Preferences"
+msgid "_Duplicate Warnings"
+msgstr "Упозорења о _дупликатима"
+
+#: src/blueprints/preferences-dialog.blp:38
+msgctxt "Warning Preferences"
+msgid "S_olution Warnings"
+msgstr "Упозорења о _решењу"
+
+#: src/blueprints/preferences-dialog.blp:43
+msgctxt "Warning Preferences"
+msgid "_Earmark Warnings"
+msgstr "Упозорења о _забелешкама"
+
+#: src/blueprints/preferences-dialog.blp:49
+msgctxt "Preferences Dialog"
+msgid "Highlighter"
+msgstr "Маркер"
+
+#: src/blueprints/preferences-dialog.blp:52
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Row and Column"
+msgstr "Истакни _ред и колону"
+
+#: src/blueprints/preferences-dialog.blp:57
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Block"
+msgstr "Истакни _блок"
+
+#: src/blueprints/preferences-dialog.blp:62
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "Истакни подударне _бројеве"
+
+#: src/blueprints/print-multiple-dialog.blp:5
+msgid "Print Multiple Puzzles"
+msgstr "Одштампајте више слагалица"
+
+#: src/blueprints/print-multiple-dialog.blp:23
+msgid "_Number of Puzzles"
+msgstr "_Број слагалица"
+
+#: src/blueprints/print-multiple-dialog.blp:38
+msgid "_Number of Puzzles per Page"
+msgstr "_Број слагалица по страници"
+
+#: src/blueprints/print-multiple-dialog.blp:52
+msgid "_Difficulty"
+msgstr "_Тежина"
+
+#: src/blueprints/print-multiple-dialog.blp:57
+msgid "Easy"
+msgstr "Лако"
+
+#: src/blueprints/print-multiple-dialog.blp:58
+msgid "Medium"
+msgstr "Средње"
+
+#: src/blueprints/print-multiple-dialog.blp:59
+msgid "Hard"
+msgstr "Тешко"
+
+#: src/blueprints/print-multiple-dialog.blp:60
+msgid "Very Hard"
+msgstr "Веома тешко"
+
+#: src/blueprints/print-multiple-dialog.blp:68
+msgid "Print _Current Puzzle"
+msgstr "Штампај _тренутну слагалицу"
+
+#: src/blueprints/print-multiple-dialog.blp:76
+msgid "_Print…"
+msgstr "_Штампај…"
+
+#: src/blueprints/start-view.blp:13
+msgid "Select Difficulty"
+msgstr "Изаберите тежину"
+
+#: src/blueprints/start-view.blp:21
+msgid "Back"
+msgstr "Назад"
+
+#: src/blueprints/start-view.blp:32
+msgid "Select Puzzle Difficulty"
+msgstr "Изаберите тежину слагалице"
+
+#: src/blueprints/start-view.blp:50
+msgctxt "Difficulty"
+msgid "_Custom"
+msgstr "_Произвољно"
+
+#: src/blueprints/start-view.blp:65
+msgctxt "Difficulty"
+msgid "_Easy"
+msgstr "_Лако"
+
+#: src/blueprints/start-view.blp:79
+msgctxt "Difficulty"
+msgid "_Medium"
+msgstr "_Средње"
+
+#: src/blueprints/start-view.blp:93
+msgctxt "Difficulty"
+msgid "_Hard"
+msgstr "_Тешко"
+
+#: src/blueprints/start-view.blp:107
+msgctxt "Difficulty"
+msgid "_Very Hard"
+msgstr "_Врло тешко"
+
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:331
+msgid "_Start Game"
+msgstr "_Започни игру"
+
+#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:164
+msgid "_Open..."
+msgstr "_Отвори..."
+
+#: src/blueprints/start-view.blp:148
+msgid "_Start Shared Game"
+msgstr "_Започни дељену игру"
+
+#: src/blueprints/shortcuts-dialog.blp:7
+msgctxt "Shortcuts Window"
+msgid "Game"
+msgstr "Игра"
+
+#: src/blueprints/shortcuts-dialog.blp:11
+#: src/blueprints/shortcuts-dialog.blp:16
+msgctxt "Shortcuts Window"
+msgid "Move"
+msgstr "Померање"
+
+#: src/blueprints/shortcuts-dialog.blp:20
+msgctxt "Shortcuts Window"
+msgid "Earmarks"
+msgstr "Забелешке"
+
+#: src/blueprints/shortcuts-dialog.blp:25
+msgctxt "Shortcuts Window"
+msgid "Clear Cell"
+msgstr "Очисти поље"
+
+#: src/blueprints/shortcuts-dialog.blp:30
+msgctxt "Shortcuts Window"
+msgid "Number Picker"
+msgstr "Бирач бројева"
+
+#: src/blueprints/shortcuts-dialog.blp:35
+msgctxt "Shortcuts Window"
+msgid "Earmark Picker"
+msgstr "Бирач забелешки"
+
+#: src/blueprints/shortcuts-dialog.blp:42
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
+msgstr "Режим забелешки"
+
+#: src/blueprints/shortcuts-dialog.blp:47
+msgctxt "Shortcuts Window"
+msgid "Pause"
+msgstr "Паузирај"
+
+#: src/blueprints/shortcuts-dialog.blp:52
+msgctxt "Shortcuts Window"
+msgid "Undo"
+msgstr "Опозови"
+
+#: src/blueprints/shortcuts-dialog.blp:57
+msgctxt "Shortcuts Window"
+msgid "Redo"
+msgstr "Понови"
+
+#: src/blueprints/shortcuts-dialog.blp:64
+msgctxt "Shortcuts Window"
+msgid "New Game…"
+msgstr "Нова игра…"
+
+#: src/blueprints/shortcuts-dialog.blp:69
+msgctxt "Shortcuts Window"
+msgid "Zoom In"
+msgstr "Увећај"
+
+#: src/blueprints/shortcuts-dialog.blp:74
+msgctxt "Shortcuts Window"
+msgid "Zoom Out"
+msgstr "Умањи"
+
+#: src/blueprints/shortcuts-dialog.blp:79
+msgctxt "Shortcuts Window"
+msgid "Zoom Reset"
+msgstr "Врати увећање"
+
+#: src/blueprints/shortcuts-dialog.blp:84
+msgctxt "Shortcuts Window"
+msgid "Puzzle"
+msgstr "Слагалица"
+
+#: src/blueprints/shortcuts-dialog.blp:88
+msgctxt "Shortcuts Window"
+msgid "Reset"
+msgstr "Поново постави"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+msgctxt "Shortcuts Window"
+msgid "Share"
+msgstr "Подели"
+
+#: src/blueprints/shortcuts-dialog.blp:98
+msgctxt "Shortcuts Window"
+msgid "Save As…"
+msgstr "Сачувај као…"
+
+#: src/blueprints/shortcuts-dialog.blp:103
+msgctxt "Shortcuts Window"
+msgid "Export…"
+msgstr "Извези…"
+
+#: src/blueprints/shortcuts-dialog.blp:108
+msgctxt "Shortcuts Window"
+msgid "Print Generator"
+msgstr "Штампај генератора"
+
+#: src/blueprints/shortcuts-dialog.blp:113
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "Прозор"
+
+#: src/blueprints/shortcuts-dialog.blp:117
+msgctxt "Shortcuts Window"
+msgid "Go Back"
+msgstr "Иди назад"
+
+#: src/blueprints/shortcuts-dialog.blp:122
+msgctxt "Shortcuts Window"
+msgid "Preferences"
+msgstr "Поставке"
+
+#: src/blueprints/shortcuts-dialog.blp:127
+msgctxt "Shortcuts Window"
+msgid "Keyboard Shortcuts"
+msgstr "Пречице на тастатури"
+
+#: src/blueprints/shortcuts-dialog.blp:132
+msgctxt "Shortcuts Window"
+msgid "Quit"
+msgstr "Изађи"
+
+#: src/blueprints/shortcuts-dialog.blp:137
+msgctxt "Shortcuts Window"
+msgid "Help"
+msgstr "Помоћ"
+
+#: src/blueprints/shortcuts-dialog.blp:142
+msgctxt "Shortcuts Window"
+msgid "Menu"
+msgstr "Изборник"
+
+#: src/blueprints/shortcuts-dialog.blp:147
+msgctxt "Shortcuts Window"
+msgid "Fullscreen"
+msgstr "Преко целог екрана"
+
+#: src/game-view.vala:149
+msgid "Paused"
+msgstr "Заустављено"
+
+#: src/game-view.vala:411
+msgctxt ".skp is a file extension"
+msgid "Sudoku puzzle.skp"
+msgstr "Судоку слагалица.skp"
+
+#: src/game-view.vala:430
+msgid "Puzzle copied to clipboard"
+msgstr "Слагалица је копирана у оставу"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:72
+#: src/gnome-sudoku.vala:91
 msgid "Show release version"
 msgstr "Приказује издање програма"
 
-#. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:76
-msgid "Show the possible values for each cell"
-msgstr "Приказује могуће вредности за свако поље"
+#. Text in dialog that displays when the game is over.
+#: src/gnome-sudoku.vala:219
+msgid "Puzzle Completed!"
+msgstr "Слагалица је завршена!"
 
-#. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:231
-msgid "The puzzle you have entered is not a valid Sudoku."
-msgstr "Унета слагалица није исправна судоку слагалица."
-
-#: src/gnome-sudoku.vala:231
-msgid "Please enter a valid puzzle."
-msgstr "Унесите исправну слагалицу."
-
-#. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:240
-msgid "The puzzle you have entered has multiple solutions."
-msgstr "Унета слагалица се може решити на више начина."
-
-#: src/gnome-sudoku.vala:240
-msgid "Valid Sudoku puzzles have exactly one solution."
-msgstr "Исправне судоку слагалице се могу решити само на један начин."
-
-#: src/gnome-sudoku.vala:242
-msgid "_Back"
-msgstr "_Назад"
-
-#: src/gnome-sudoku.vala:243
-msgid "Play _Anyway"
-msgstr "Ип_ак играј"
-
-#: src/gnome-sudoku.vala:286
+#: src/gnome-sudoku.vala:227
 #, c-format
-msgid "Well done, you completed the puzzle in %d minute!"
-msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "Одлично, решили сте слагалицу за %d минут!"
-msgstr[1] "Одлично, решили сте слагалицу за %d минута!"
-msgstr[2] "Одлично, решили сте слагалицу за %d минута!"
-msgstr[3] "Одлично, решили сте слагалицу за један минут!"
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d минут"
+msgstr[1] "%d минута"
+msgstr[2] "%d минута"
+msgstr[3] "%d минута"
 
-#: src/gnome-sudoku.vala:290
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:232
+#, c-format
+msgid "Well done, you completed the puzzle in %s and set a new personal best!"
+msgstr "Браво, завршили сте слагалицу за %s и поставили нови лични рекорд!"
+
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:238
+#, c-format
+msgid "Well done, you completed the puzzle in %s!"
+msgstr "Браво, завршили сте слагалицу за %s!"
+
+#: src/gnome-sudoku.vala:245
 msgid "_Quit"
 msgstr "_Изађи"
 
-#: src/gnome-sudoku.vala:291
-msgid "Play _Again"
+#: src/gnome-sudoku.vala:248
+msgid "_Change Difficulty"
+msgstr "_Промени тежину"
+
+#: src/gnome-sudoku.vala:249
+msgid "_Play Again"
 msgstr "_Играј опет"
 
-#: src/gnome-sudoku.vala:400
-msgid "Reset the board to its original state?"
-msgstr "Да вратим стање табле на њено првобитно?"
+#: src/gnome-sudoku.vala:363
+msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
+msgstr "Нисам успео да увезем слагалицу, унесите исправну Судоку слагалицу"
 
-#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:495
-#, c-format
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"Puzzles generated by QQwing %s"
-msgstr ""
-"Популарна јапанска логичка слагалица.\n"
-"\n"
-"Слагалице је створио „QQwing %s“"
+#: src/gnome-sudoku.vala:364
+msgid "_Cancel"
+msgstr "_Откажи"
 
-#: src/gnome-sudoku.vala:506
+#: src/gnome-sudoku.vala:365
+msgid "_Try Again"
+msgstr "_Покушај опет"
+
+#: src/gnome-sudoku.vala:423
 msgid "translator-credits"
 msgstr ""
 "Душан Марјановић <madafaka@root.co.yu>\n"
@@ -340,27 +647,133 @@ msgstr ""
 "\n"
 "https://гном.срб — превод Гнома на српски језик"
 
-#: src/number-picker.vala:85
+#: src/number-picker.vala:134
 msgid "Clear"
 msgstr "Очисти"
 
+#: src/number-picker.vala:231 src/number-picker.vala:306
+msgid "Lock"
+msgstr "Закључај"
+
+#: src/number-picker.vala:303
+msgid "Unlock"
+msgstr "Откључај"
+
 #. Error message if printing fails
-#: src/sudoku-printer.vala:47
+#: src/printer.vala:44
 msgid "Error printing file:"
 msgstr "Грешка штампања датотеке:"
 
-#. Text on overlay when game is paused
-#: src/sudoku-view.vala:756
-msgid "Paused"
-msgstr "Заустављено"
+#: src/printer.vala:45
+msgid "Close"
+msgstr "Затвори"
 
-#: src/sudoku-window.vala:154
-msgid "Select Difficulty"
-msgstr "Изаберите тежину"
+#~ msgid "_Clear Board"
+#~ msgstr "_Очисти таблу"
 
-#: src/sudoku-window.vala:215
-msgid "Create Puzzle"
-msgstr "Направи слагалицу"
+#~ msgid "Print _Multiple Puzzles…"
+#~ msgstr "Одштампај _више слагалица…"
+
+#~ msgid "Start playing the custom puzzle you have created"
+#~ msgstr "Почните са играњем слагалице коју сте направили"
+
+#~ msgid "Go back to the current game"
+#~ msgstr "Вратите се на текућу игру"
+
+#~ msgid "_Create your own puzzle"
+#~ msgstr "Направите сопствену слагали_цу"
+
+#~ msgid ""
+#~ "Each game is assigned a difficulty similar to those given by newspapers "
+#~ "and websites, so your game will be as easy or as difficult as you want it "
+#~ "to be."
+#~ msgstr ""
+#~ "Свакој игри је додељена тежина слично онима које дају новине и веб "
+#~ "сајтови, тако да ће ваша игра бити лака или тешка онолико колико ви то "
+#~ "будете желели."
+
+#~ msgid ""
+#~ "If you like to play on paper, you can print games out. You can choose how "
+#~ "many games you want to print per page and what difficulty of games you "
+#~ "want to print: as a result, GNOME Sudoku can act a renewable Sudoku book "
+#~ "for you."
+#~ msgstr ""
+#~ "Ако волите да играте на папиру, можете да отштампате игре. Можете "
+#~ "изабрати колико игра ћете штампати на једној страници и коју тежину игре "
+#~ "желите да играте. као резултат, Гномов судоку може деловати као обновљива "
+#~ "књижица судокуа."
+
+#~ msgid "The GNOME Project"
+#~ msgstr "Гномов пројекат"
+
+#~ msgid "Difficulty level of sudokus to be printed"
+#~ msgstr "Ниво тежине судокуа за штампање"
+
+#~ msgid ""
+#~ "Set the difficulty level of the sudokus you want to print. Possible "
+#~ "values are: \"easy\", \"medium\", \"hard\", \"very_hard\""
+#~ msgstr ""
+#~ "Подесите ниво тежине судокуа за штампање. Могуће вредности су: „easy“ "
+#~ "(лако), „medium“ (средње), „hard“ (тешко), „very_hard“ (врло тешко)"
+
+#~ msgid "Number of Sudokus to print"
+#~ msgstr "Број судока за штампу"
+
+#~ msgid "Set the number of sudokus you want to print"
+#~ msgstr "Подесите број судокуа за штампање"
+
+#~ msgid "Number of Sudokus to print per page"
+#~ msgstr "Број судока по страни за штампу"
+
+#~ msgid "Set the number of sudokus you want to print per page"
+#~ msgstr "Подесите број судокуа по страни за штампање"
+
+#~ msgid "Warn about unfillable squares and duplicate numbers"
+#~ msgstr "Упозорава о непопуњивим квадратима и удвојеним бројевима"
+
+#~ msgid ""
+#~ "Displays a big red X in a square if it cannot possibly be filled by any "
+#~ "number and duplicate numbers are highlighted in red"
+#~ msgstr ""
+#~ "Приказује велики црвени крстић (Х) у квадратићу ако не може бити попуњен "
+#~ "ниједним бројем а удвојени бројеви се истичу црвеном бојом"
+
+#~ msgid "Highlight row, column and square that contain the selected cell"
+#~ msgstr "Означите ред, колону и поље које садржи изабрану ћелију"
+
+#~ msgid "Show the possible values for each cell"
+#~ msgstr "Приказује могуће вредности за свако поље"
+
+#~ msgid "The puzzle you have entered is not a valid Sudoku."
+#~ msgstr "Унета слагалица није исправна судоку слагалица."
+
+#~ msgid "Please enter a valid puzzle."
+#~ msgstr "Унесите исправну слагалицу."
+
+#~ msgid "The puzzle you have entered has multiple solutions."
+#~ msgstr "Унета слагалица се може решити на више начина."
+
+#~ msgid "Valid Sudoku puzzles have exactly one solution."
+#~ msgstr "Исправне судоку слагалице се могу решити само на један начин."
+
+#~ msgid "Play _Anyway"
+#~ msgstr "Ип_ак играј"
+
+#~ msgid "Reset the board to its original state?"
+#~ msgstr "Да вратим стање табле на њено првобитно?"
+
+#, c-format
+#~ msgid ""
+#~ "The popular Japanese logic puzzle\n"
+#~ "\n"
+#~ "Puzzles generated by QQwing %s"
+#~ msgstr ""
+#~ "Популарна јапанска логичка слагалица.\n"
+#~ "\n"
+#~ "Слагалице је створио „QQwing %s“"
+
+#~ msgid "Create Puzzle"
+#~ msgstr "Направи слагалицу"
 
 #~ msgid "Reset the board to its original state"
 #~ msgstr "Вратите стање табле на њено првобитно"
@@ -368,11 +781,5 @@ msgstr "Направи слагалицу"
 #~ msgid "Start a new puzzle"
 #~ msgstr "Започните нову слагалицу"
 
-#~ msgid "_Start Playing"
-#~ msgstr "На_стави са играњем"
-
 #~ msgid "org.gnome.Sudoku"
 #~ msgstr "org.gnome.Sudoku"
-
-#~ msgid "_Resume"
-#~ msgstr "_Настави"
