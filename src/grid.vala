@@ -90,33 +90,31 @@ public class SudokuGrid : Grid
         number_picker = new SudokuNumberPicker (game);
         update_zoom ();
 
-        var blocks = new Grid[game.board.block_rows, game.board.block_cols];
-        for (var block_row = 0; block_row < game.board.block_rows; block_row++)
+        for (var block_row = 0; block_row < 3; block_row++)
         {
-            for (var block_col = 0; block_col < game.board.block_cols; block_col++)
+            for (var block_col = 0; block_col < 3; block_col++)
             {
-                var block_grid = new Grid ();
-                block_grid.set_direction (TextDirection.LTR);
-                block_grid.row_spacing = 1;
-                block_grid.column_spacing = 1;
-                block_grid.column_homogeneous = true;
-                block_grid.row_homogeneous = true;
-                block_grid.add_css_class ("block");
-                attach (block_grid, block_col, block_row, 1, 1);
-
-                blocks[block_row, block_col] = block_grid;
+                var block = new Grid ();
+                block.set_direction (TextDirection.LTR);
+                block.row_spacing = 1;
+                block.column_spacing = 1;
+                block.column_homogeneous = true;
+                block.row_homogeneous = true;
+                block.add_css_class ("block");
+                attach (block, block_col, block_row, 1, 1);
             }
         }
 
-        cells = new SudokuCell[game.board.rows, game.board.cols];
-        for (var row = 0; row < game.board.rows; row++)
+        cells = new SudokuCell[9, 9];
+        for (var row = 0; row < 9; row++)
         {
-            for (var col = 0; col < game.board.cols; col++)
+            for (var col = 0; col < 9; col++)
             {
                 var cell = new SudokuCell (game, this, ref zoom_value_multiplier, ref zoom_earmark_multiplier, row, col);
-                blocks[row / game.board.block_rows, col / game.board.block_cols].attach (cell, col % game.board.block_cols, row % game.board.block_rows);
+                var block = get_child_at (row / 3, col / 3) as Grid;
+                block.attach (cell, col % 3, row % 3);
+                cell.select.connect (update_selected);
                 cells[row, col] = cell;
-                cells[row, col].select.connect (update_selected);
             }
         }
 
