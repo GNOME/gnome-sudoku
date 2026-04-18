@@ -10,11 +10,11 @@
     --sudoku-accent-purple: oklch(0.92 0.25 300);
     --sudoku-accent-slate: oklch(0.92 0.05 250);
   }
-  grid.board {
+  sudoku-grid {
     border: 2px solid #333;
     background: #333;
   }
-  grid.block {
+  sudoku-grid > .block {
     background: #999;
   }
   sudoku-cell {
@@ -52,10 +52,10 @@
     --sudoku-accent-purple: oklch(0.35 0.1 310);
     --sudoku-accent-slate: oklch(0.35 0.03 250);
   }
-  grid.board {
+  sudoku-grid {
     background: oklch(0.56 0 0);
   }
-  grid.block {
+  sudoku-grid > .block {
     background: oklch(0.47 0 0);
   }
   sudoku-cell {

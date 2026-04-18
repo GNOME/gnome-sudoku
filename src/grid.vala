@@ -53,6 +53,8 @@ public class SudokuGrid : Grid
 
     static construct
     {
+        set_css_name ("sudoku-grid");
+
         new_move_shortcut ("grid.move-up", "w", DirectionType.UP);
         new_move_shortcut ("grid.move-left", "a", DirectionType.LEFT);
         new_move_shortcut ("grid.move-down", "s", DirectionType.DOWN);
@@ -80,7 +82,6 @@ public class SudokuGrid : Grid
         column_homogeneous = true;
         row_homogeneous = true;
         set_direction (TextDirection.LTR);
-        add_css_class("board");
 
         button_controller = new GestureClick ();
         button_controller.set_button (0 /* all buttons */);
