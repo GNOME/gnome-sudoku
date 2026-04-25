@@ -112,7 +112,7 @@ public class SudokuGrid : Grid
             for (var col = 0; col < 9; col++)
             {
                 var cell = new SudokuCell (game, this, ref zoom_value_multiplier, ref zoom_earmark_multiplier, row, col);
-                var block = get_child_at (row / 3, col / 3) as Grid;
+                var block = get_child_at (col / 3, row / 3) as Grid;
                 block.attach (cell, col % 3, row % 3);
                 cell.select.connect (update_selected);
                 cells[row, col] = cell;
