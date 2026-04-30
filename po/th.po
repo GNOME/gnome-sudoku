@@ -8,10 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games.HEAD\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"sudoku&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-12-05 16:46+0000\n"
-"PO-Revision-Date: 2012-09-24 17:15+0700\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
+"POT-Creation-Date: 2026-04-10 15:26+0000\n"
+"PO-Revision-Date: 2026-04-30 23:35+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -19,357 +18,701 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
-#: data/gnome-sudoku-menu.ui:7 data/print-dialog.ui:32
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
+msgid "Sudoku"
+msgstr "ซูโดกุ"
+
+#: data/org.gnome.Sudoku.desktop.in.in:3
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:8
+msgid "Test yourself in the classic puzzle"
+msgstr "ทดสอบตัวคุณเองกับปริศนาสุดคลาสสิก"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Sudoku.desktop.in.in:5
+msgid "magic;square;"
+msgstr "สี่เหลี่ยม;มหัศจรรย์;magic;square;"
+
+#: data/org.gnome.Sudoku.gschema.xml:18
+msgid "Initialize the earmarks with the possible values for each cell"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:25
+msgid "Check for duplicates in row, column and block"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:29
+msgid "Check earmarks against duplicates in row, column and block"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:33
+msgid "Toggle timer and pause buttons"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:37
+msgid "Additionally check against the solution for warnings"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:41
+msgid "Automatically clear related earmarks on new number insertion"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:45
+msgid "Display number picker on second click"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:49
+msgid "Highlight the selected cell's row and column"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:53
+msgid "Highlight the selected cell's block"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:57
+msgid "Highlight the selected cell's matching numbers"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:61
 #, fuzzy
-msgid "_Print"
-msgstr "_พิมพ์..."
+msgid "The puzzle's difficulty"
+msgstr "ระดับความยาก"
 
-#: data/gnome-sudoku-menu.ui:10
+#: data/org.gnome.Sudoku.gschema.xml:68
+msgid "Zoom level"
+msgstr ""
+
+#: data/org.gnome.Sudoku.gschema.xml:72
+msgid "Width of the window in pixels"
+msgstr "ความกว้างของหน้าต่างเป็นนพิกเซล"
+
+#: data/org.gnome.Sudoku.gschema.xml:76
+msgid "Height of the window in pixels"
+msgstr "ความสูงหน้าต่างเป็นพิกเซล"
+
+#: data/org.gnome.Sudoku.gschema.xml:80
+msgid "true if the window is maximized"
+msgstr "เป็นค่าจริงถ้าหน้าต่างขยายแผ่"
+
+#: data/org.gnome.Sudoku.gschema.xml:84
 #, fuzzy
-msgid "Print _Current Puzzle…"
-msgstr "พิมพ์เกมปัจจุบัน"
+#| msgid "true if the window is maximized"
+msgid "true if the window is fullscreen"
+msgstr "เป็นค่าจริงถ้าหน้าต่างขยายแผ่"
 
-#: data/gnome-sudoku-menu.ui:14
-#, fuzzy
-msgid "Print _Multiple Puzzles…"
-msgstr "พิมพ์ Sudoku ทีละห_ลายเกม..."
-
-#: data/gnome-sudoku-menu.ui:22
-#, fuzzy
-msgid "High_lighter"
-msgstr "เ_น้นสี"
-
-#: data/gnome-sudoku-menu.ui:26
-#, fuzzy
-msgid "_Warnings"
-msgstr "คำเตือน"
-
-#: data/gnome-sudoku-menu.ui:32
-msgid "_Help"
-msgstr "_วิธีใช้"
-
-#: data/gnome-sudoku-menu.ui:36
-msgid "_About"
-msgstr "เ_กี่ยวกับ"
-
-#: data/gnome-sudoku-menu.ui:40 src/gnome-sudoku.vala:402
-msgid "_Quit"
-msgstr "_ออก"
-
-#: data/gnome-sudoku.appdata.xml.in:7
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:7
 msgid "GNOME Sudoku"
 msgstr "GNOME Sudoku"
 
-#: data/gnome-sudoku.appdata.xml.in:8 data/gnome-sudoku.desktop.in:4
-msgid "Test your logic skills in this number grid puzzle"
-msgstr "ทดสอบทักษะทางตรรกะของคุณกับปริศนาตารางตัวเลข"
-
-#: data/gnome-sudoku.appdata.xml.in:10
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:10
 msgid ""
-"Play the popular Japanese logic game. GNOME Sudoku is a must-install for "
-"Sudoku lovers, with a simple, unobtrusive interface that makes playing "
-"Sudoku fun for players of any skill level."
+"GNOME Sudoku is a must-install for puzzle lovers. Based on the popular "
+"Japanese game, it comes with a simple interface that makes playing Sudoku "
+"fun for players of all skill level."
 msgstr ""
 
-#: data/gnome-sudoku.appdata.xml.in:15
-msgid ""
-"Each game is assigned a difficulty similar to those given by newspapers and "
-"websites, so your game will be as easy or as difficult as you want it to be."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:15
+msgid "Features:"
 msgstr ""
 
-#: data/gnome-sudoku.appdata.xml.in:20
-msgid ""
-"If you like to play on paper, you can print games out. You can choose how "
-"many games you want to print per page and what difficulty of games you want "
-"to print: as a result, GNOME Sudoku can act a renewable Sudoku book for you."
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:17
+msgid "Automatically save and restore your session."
 msgstr ""
 
-#: data/gnome-sudoku.appdata.xml.in:30
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:18
+msgid "Generate an infinite amount of new puzzles with qqwing."
+msgstr ""
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:19
+msgid "Easily share puzzles with friends, or save them for later."
+msgstr ""
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:20
+msgid "Adjust a scalable grid to your preferences."
+msgstr ""
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:21
+msgid "Use the mouse, keyboard or touch to complete the puzzles."
+msgstr ""
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:22
+msgid "Set up advanced strategies like X-Wings with earmarks."
+msgstr ""
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:23
+msgid "Take advantage of the highlighter to narrow down possibilities."
+msgstr ""
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:24
+msgid "Get help with the built-in warnings."
+msgstr ""
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:25
+msgid "Keep track of your progression with highscores and a timer."
+msgstr ""
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:26
+msgid "Print puzzles to play Sudoku on the go."
+msgstr ""
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:32
 #, fuzzy
 msgid "A GNOME sudoku game preview"
 msgstr "ตัวอย่างเกม"
 
-#: data/gnome-sudoku.appdata.xml.in:47
-msgid "The GNOME Project"
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:36
+msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr ""
 
-#: data/gnome-sudoku.desktop.in:3 data/gnome-sudoku.ui:7
-#: data/gnome-sudoku.ui:108 src/gnome-sudoku.vala:605
-msgid "Sudoku"
-msgstr "ซูโดกุ"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/gnome-sudoku.desktop.in:6
-msgid "magic;square;"
-msgstr ""
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gnome-sudoku.desktop.in:9
-#, fuzzy
-msgid "gnome-sudoku"
-msgstr "คนแคระ"
-
-#: data/gnome-sudoku.ui:22
-#, fuzzy
-msgid "Undo your last action"
-msgstr "เรียกคืนการกระทำล่าสุด"
-
-#: data/gnome-sudoku.ui:43
-#, fuzzy
-msgid "Redo your last action"
-msgstr "ทำซ้ำการกระทำที่เรียกคืนใหม่"
-
-#: data/gnome-sudoku.ui:91
-#, fuzzy
-msgid "Go back to the current game"
-msgstr "ตั้งต้นเกมที่เล่นอยู่ใหม่"
-
-#: data/gnome-sudoku.ui:132 data/print-dialog.ui:130
-msgid "_Easy"
-msgstr "_ง่าย"
-
-#: data/gnome-sudoku.ui:146 data/print-dialog.ui:146
-msgid "_Medium"
-msgstr "_กลาง"
-
-#: data/gnome-sudoku.ui:160 data/print-dialog.ui:163
-msgid "_Hard"
-msgstr "_ยาก"
-
-#: data/gnome-sudoku.ui:174 data/print-dialog.ui:180
-msgid "_Very Hard"
-msgstr "ยาก_มาก"
-
-#: data/gnome-sudoku.ui:189
-#, fuzzy
-msgid "_Create your own puzzle"
-msgstr "_สร้างปริศนาใหม่"
-
-#: data/gnome-sudoku.ui:235 src/gnome-sudoku.vala:327
-msgid "_Pause"
-msgstr "_พัก"
-
-#: data/gnome-sudoku.ui:251
-#, fuzzy
-msgid "_Clear Board"
-msgstr "_ล้างชุดช่วยตาม"
-
-#: data/gnome-sudoku.ui:255
-msgid "Reset the board to its original state"
-msgstr ""
-
-#: data/gnome-sudoku.ui:269
-#, fuzzy
-msgid "_New Puzzle"
-msgstr "ปริศนาถัดไป"
-
-#: data/gnome-sudoku.ui:273
-#, fuzzy
-msgid "Start a new puzzle"
-msgstr "เปิดเกมใหม่"
-
-#: data/gnome-sudoku.ui:287
-#, fuzzy
-msgid "_Start Playing"
-msgstr "กำลังเล่น"
-
-#: data/gnome-sudoku.ui:291
-msgid "Start playing the custom puzzle you have created"
-msgstr ""
-
-#: data/org.gnome.sudoku.gschema.xml:11
-#, fuzzy
-msgid "Difficulty level of sudokus to be printed"
-msgstr "_จำนวนของ sudoku ที่จะพิมพ์: "
-
-#: data/org.gnome.sudoku.gschema.xml:12
-msgid ""
-"Set the difficulty level of the sudokus you want to print. Possible values "
-"are: \"easy\", \"medium\", \"hard\", \"very_hard\""
-msgstr ""
-
-#: data/org.gnome.sudoku.gschema.xml:17
-#, fuzzy
-msgid "Number of Sudokus to print"
-msgstr "_จำนวนของ sudoku ที่จะพิมพ์: "
-
-#: data/org.gnome.sudoku.gschema.xml:18
-#, fuzzy
-msgid "Set the number of sudokus you want to print"
-msgstr "_จำนวนของ sudoku ที่จะพิมพ์: "
-
-#: data/org.gnome.sudoku.gschema.xml:22
-#, fuzzy
-msgid "Warn about unfillable squares and duplicate numbers"
-msgstr "เตือนเมื่อเติมค่าในช่องไม่ได้"
-
-#: data/org.gnome.sudoku.gschema.xml:23
-msgid ""
-"Displays a big red X in a square if it cannot possibly be filled by any "
-"number and duplicate numbers are highlighted in red"
-msgstr ""
-
-#: data/org.gnome.sudoku.gschema.xml:27
-msgid "Highlight row, column and square that contain the selected cell"
-msgstr ""
-
-#: data/org.gnome.sudoku.gschema.xml:31
-msgid "Width of the window in pixels"
-msgstr "ความกว้างของหน้าต่างเป็นนพิกเซล"
-
-#: data/org.gnome.sudoku.gschema.xml:35
-msgid "Height of the window in pixels"
-msgstr "ความสูงหน้าต่างเป็นพิกเซล"
-
-#: data/org.gnome.sudoku.gschema.xml:39
-msgid "true if the window is maximized"
-msgstr "เป็นค่าจริงถ้าหน้าต่างขยายแผ่"
-
-#: data/print-dialog.ui:12
-#, fuzzy
-msgid "Print Multiple Puzzles"
-msgstr "พิมพ์ Sudoku ทีละห_ลายเกม..."
-
-#: data/print-dialog.ui:21
-msgid "_Cancel"
-msgstr "_ยกเลิก"
-
-#: data/print-dialog.ui:67
-#, fuzzy
-msgid "_Number of puzzles"
-msgstr "_จำนวนผู้เล่น:"
-
-#: data/print-dialog.ui:110
-msgid "Difficulty"
-msgstr "ระดับความยาก"
-
-#: lib/sudoku-board.vala:583
-#, fuzzy
+#: lib/board.vala:839 lib/board.vala:850
 msgid "Unknown Difficulty"
 msgstr "ระดับความยากไม่รู้จัก"
 
-#: lib/sudoku-board.vala:585
-#, fuzzy
+#: lib/board.vala:841
 msgid "Easy Difficulty"
-msgstr "ระดับความยาก"
+msgstr "ระดับง่าย"
 
-#: lib/sudoku-board.vala:587
-#, fuzzy
+#: lib/board.vala:843
 msgid "Medium Difficulty"
-msgstr "ความยาก_สูงสุด"
+msgstr "ระดับกลาง"
 
-#: lib/sudoku-board.vala:589
-#, fuzzy
+#: lib/board.vala:845
 msgid "Hard Difficulty"
-msgstr "ระดับความยาก"
+msgstr "ระดับยาก"
 
-#: lib/sudoku-board.vala:591
-#, fuzzy
+#: lib/board.vala:847
 msgid "Very Hard Difficulty"
-msgstr "ระดับความยาก"
+msgstr "ระดับยากมาก"
 
-#: lib/sudoku-board.vala:593
-#, fuzzy
-msgid "Custom Puzzle"
-msgstr "ขนาดกำหนดเอง"
+#: src/blueprints/game-view.blp:22
+msgid "Undo Action"
+msgstr "เรียกคืนการกระทำล่าสุด"
+
+#: src/blueprints/game-view.blp:33
+msgid "Redo Action"
+msgstr "ทำซ้ำการกระทำที่เรียกคืนใหม่"
+
+#: src/blueprints/game-view.blp:46
+msgid "Earmark Mode"
+msgstr "โหมดจดตัวเลข"
+
+#: src/blueprints/game-view.blp:60
+msgid "Pause"
+msgstr "พัก"
+
+#: src/blueprints/game-view.blp:69
+msgid "Play"
+msgstr "เล่น"
+
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:254
+msgid "_New Game…"
+msgstr "เ_ริ่มเกมใหม่…"
+
+#: src/blueprints/menu-button.blp:12
+msgid "_Puzzle"
+msgstr "_ปริศนา"
+
+#: src/blueprints/menu-button.blp:16
+msgid "_Reset"
+msgstr "_รีเซ็ต"
+
+#: src/blueprints/menu-button.blp:23
+msgid "_Share"
+msgstr "แ_บ่งปัน"
+
+#: src/blueprints/menu-button.blp:28
+msgid "_Save As…"
+msgstr "บั_นทึกเป็น…"
+
+#: src/blueprints/menu-button.blp:33
+msgid "_Export…"
+msgstr "_ส่งออก…"
+
+#: src/blueprints/menu-button.blp:40
+msgid "Print _Generator"
+msgstr "ตัวสร้างฉบับพิมพ์"
+
+#: src/blueprints/menu-button.blp:49
+msgid "Zoom"
+msgstr "ซูม"
+
+#: src/blueprints/menu-button.blp:68
+msgid "_Preferences"
+msgstr "ค่า_ปรับแต่ง"
+
+#: src/blueprints/menu-button.blp:73
+msgid "_Keyboard Shortcuts"
+msgstr "ปุ่_มลัดแป้นพิมพ์"
+
+#: src/blueprints/menu-button.blp:78
+msgid "_Help"
+msgstr "_วิธีใช้"
+
+#: src/blueprints/menu-button.blp:83
+msgid "_About Sudoku"
+msgstr "เ_กี่ยวกับ “ซูโดกุ”"
+
+#: src/blueprints/menu-button.blp:94
+msgid "Main Menu"
+msgstr "เมนูหลัก"
+
+#: src/blueprints/menu-button.blp:103
+msgid "Zoom Out"
+msgstr "ซูมออก"
+
+#: src/blueprints/menu-button.blp:115
+msgid "Zoom In"
+msgstr "ซูมเข้า"
+
+#: src/blueprints/menu-button.blp:130
+msgid "Fullscreen"
+msgstr "เต็มจอ"
+
+#: src/blueprints/menu-button.blp:141
+msgid "Leave Fullscreen"
+msgstr "ออกจากเต็มจอ"
+
+#: src/blueprints/preferences-dialog.blp:7
+msgctxt "preferences dialog"
+msgid "General"
+msgstr "ทั่วไป"
+
+#: src/blueprints/preferences-dialog.blp:10
+msgctxt "General Preferences"
+msgid "_Timer and Highscores"
+msgstr "_จับเวลาและนับคะแนนสูงสุด"
+
+#: src/blueprints/preferences-dialog.blp:15
+msgctxt "General Preferences"
+msgid "Automatically _Clean Earmarks"
+msgstr "_ล้างตัวเลขที่จดไว้โดยอัตโนมัติ"
+
+#: src/blueprints/preferences-dialog.blp:20
+msgctxt "General Preferences"
+msgid "Number Picker on _Second Click"
+msgstr "แ_สดงที่เลือกตัวเลขเมื่อคลิกครั้งที่สอง"
+
+#: src/blueprints/preferences-dialog.blp:25
+msgctxt "General Preferences"
+msgid "Show Earmark _Possibilities"
+msgstr "แสดงตัวเลขสำหรับจดที่เ_ป็นไปได้"
+
+#: src/blueprints/preferences-dialog.blp:31
+msgctxt "Preferences Dialog"
+msgid "Warnings"
+msgstr "คำเตือน"
+
+#: src/blueprints/preferences-dialog.blp:33
+msgctxt "Warning Preferences"
+msgid "_Duplicate Warnings"
+msgstr "เตือนเมื่อตัวเลข_ซ้ำ"
+
+#: src/blueprints/preferences-dialog.blp:38
+msgctxt "Warning Preferences"
+msgid "S_olution Warnings"
+msgstr "เตือนเมื่อ_ผิดกฎ"
+
+#: src/blueprints/preferences-dialog.blp:43
+msgctxt "Warning Preferences"
+msgid "_Earmark Warnings"
+msgstr "เตือนเมื่อมีตัวเลขที่_จดไว้"
+
+#: src/blueprints/preferences-dialog.blp:49
+msgctxt "Preferences Dialog"
+msgid "Highlighter"
+msgstr "เน้นสี"
+
+#: src/blueprints/preferences-dialog.blp:52
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Row and Column"
+msgstr "เน้นสีแ_ถวและคอลัมน์"
+
+#: src/blueprints/preferences-dialog.blp:57
+msgctxt "Highlighter Preferences"
+msgid "Highlight _Block"
+msgstr "เน้นสี_บล็อก"
+
+#: src/blueprints/preferences-dialog.blp:62
+msgctxt "Highlighter Preferences"
+msgid "Highlight Matching _Numbers"
+msgstr "เน้นสี_ตัวเลขที่ตรง"
+
+#: src/blueprints/print-multiple-dialog.blp:5
+msgid "Print Multiple Puzzles"
+msgstr "พิมพ์หลายเกม"
+
+#: src/blueprints/print-multiple-dialog.blp:23
+msgid "_Number of Puzzles"
+msgstr "_จำนวนเกม"
+
+#: src/blueprints/print-multiple-dialog.blp:38
+msgid "_Number of Puzzles per Page"
+msgstr "_จำนวนเกมต่อหน้า"
+
+#: src/blueprints/print-multiple-dialog.blp:52
+msgid "_Difficulty"
+msgstr "_ระดับความยาก"
+
+#: src/blueprints/print-multiple-dialog.blp:57
+msgid "Easy"
+msgstr "ง่าย"
+
+#: src/blueprints/print-multiple-dialog.blp:58
+msgid "Medium"
+msgstr "กลาง"
+
+#: src/blueprints/print-multiple-dialog.blp:59
+msgid "Hard"
+msgstr "ยาก"
+
+#: src/blueprints/print-multiple-dialog.blp:60
+msgid "Very Hard"
+msgstr "ยากมาก"
+
+#: src/blueprints/print-multiple-dialog.blp:68
+msgid "Print _Current Puzzle"
+msgstr "พิมพ์เกม_ปัจจุบัน"
+
+#: src/blueprints/print-multiple-dialog.blp:76
+msgid "_Print…"
+msgstr "_พิมพ์…"
+
+#: src/blueprints/start-view.blp:13
+msgid "Select Difficulty"
+msgstr "เลือกระดับความยาก"
+
+#: src/blueprints/start-view.blp:21
+msgid "Back"
+msgstr "ย้อนกลับ"
+
+#: src/blueprints/start-view.blp:32
+msgid "Select Puzzle Difficulty"
+msgstr "เลือกระดับความยากของเกม"
+
+#: src/blueprints/start-view.blp:50
+msgctxt "Difficulty"
+msgid "_Custom"
+msgstr "_กำหนดเอง"
+
+#: src/blueprints/start-view.blp:65
+msgctxt "Difficulty"
+msgid "_Easy"
+msgstr "_ง่าย"
+
+#: src/blueprints/start-view.blp:79
+msgctxt "Difficulty"
+msgid "_Medium"
+msgstr "_กลาง"
+
+#: src/blueprints/start-view.blp:93
+#| msgid "_Hard"
+msgctxt "Difficulty"
+msgid "_Hard"
+msgstr "_ยาก"
+
+#: src/blueprints/start-view.blp:107
+#| msgid "_Very Hard"
+msgctxt "Difficulty"
+msgid "_Very Hard"
+msgstr "ยาก_มาก"
+
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:331
+msgid "_Start Game"
+msgstr "เ_ริ่มเกม"
+
+#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:164
+msgid "_Open..."
+msgstr "เ_ปิด..."
+
+#: src/blueprints/start-view.blp:148
+msgid "_Start Shared Game"
+msgstr "เ_ริ่มเกมแบบเล่นร่วมกัน"
+
+#: src/blueprints/shortcuts-dialog.blp:7
+msgctxt "Shortcuts Window"
+msgid "Game"
+msgstr "เกม"
+
+#: src/blueprints/shortcuts-dialog.blp:11
+#: src/blueprints/shortcuts-dialog.blp:16
+msgctxt "Shortcuts Window"
+msgid "Move"
+msgstr "ย้าย"
+
+#: src/blueprints/shortcuts-dialog.blp:20
+msgctxt "Shortcuts Window"
+msgid "Earmarks"
+msgstr "การจดตัวเลข"
+
+#: src/blueprints/shortcuts-dialog.blp:25
+msgctxt "Shortcuts Window"
+msgid "Clear Cell"
+msgstr "ล้างเซลล์"
+
+#: src/blueprints/shortcuts-dialog.blp:30
+msgctxt "Shortcuts Window"
+msgid "Number Picker"
+msgstr "ที่เลือกตัวเลข"
+
+#: src/blueprints/shortcuts-dialog.blp:35
+msgctxt "Shortcuts Window"
+msgid "Earmark Picker"
+msgstr "ที่เลือกตัวเลขสำหรับจด"
+
+#: src/blueprints/shortcuts-dialog.blp:42
+msgctxt "Shortcuts Window"
+msgid "Earmark Mode"
+msgstr "โหมดจดตัวเลข"
+
+#: src/blueprints/shortcuts-dialog.blp:47
+msgctxt "Shortcuts Window"
+msgid "Pause"
+msgstr "พัก"
+
+#: src/blueprints/shortcuts-dialog.blp:52
+msgctxt "Shortcuts Window"
+msgid "Undo"
+msgstr "เรียกคืน"
+
+#: src/blueprints/shortcuts-dialog.blp:57
+msgctxt "Shortcuts Window"
+msgid "Redo"
+msgstr "ทำซ้ำ"
+
+#: src/blueprints/shortcuts-dialog.blp:64
+msgctxt "Shortcuts Window"
+msgid "New Game…"
+msgstr "เริ่มเกมใหม่…"
+
+#: src/blueprints/shortcuts-dialog.blp:69
+msgctxt "Shortcuts Window"
+msgid "Zoom In"
+msgstr "ซูมเข้า"
+
+#: src/blueprints/shortcuts-dialog.blp:74
+msgctxt "Shortcuts Window"
+msgid "Zoom Out"
+msgstr "ซูมออก"
+
+#: src/blueprints/shortcuts-dialog.blp:79
+msgctxt "Shortcuts Window"
+msgid "Zoom Reset"
+msgstr "ล้างค่าการซูม"
+
+#: src/blueprints/shortcuts-dialog.blp:84
+msgctxt "Shortcuts Window"
+msgid "Puzzle"
+msgstr "ปริศนา"
+
+#: src/blueprints/shortcuts-dialog.blp:88
+msgctxt "Shortcuts Window"
+msgid "Reset"
+msgstr "รีเซ็ต"
+
+#: src/blueprints/shortcuts-dialog.blp:93
+msgctxt "Shortcuts Window"
+msgid "Share"
+msgstr "แบ่งปัน"
+
+#: src/blueprints/shortcuts-dialog.blp:98
+msgctxt "Shortcuts Window"
+msgid "Save As…"
+msgstr "บันทึกเป็น…"
+
+#: src/blueprints/shortcuts-dialog.blp:103
+msgctxt "Shortcuts Window"
+msgid "Export…"
+msgstr "ส่งออก…"
+
+#: src/blueprints/shortcuts-dialog.blp:108
+msgctxt "Shortcuts Window"
+msgid "Print Generator"
+msgstr "ตัวสร้างฉบับพิมพ์"
+
+#: src/blueprints/shortcuts-dialog.blp:113
+msgctxt "Shortcuts Window"
+msgid "Window"
+msgstr "หน้าต่าง"
+
+#: src/blueprints/shortcuts-dialog.blp:117
+msgctxt "Shortcuts Window"
+msgid "Go Back"
+msgstr "ย้อนกลับ"
+
+#: src/blueprints/shortcuts-dialog.blp:122
+msgctxt "Shortcuts Window"
+msgid "Preferences"
+msgstr "ค่าปรับแต่ง"
+
+#: src/blueprints/shortcuts-dialog.blp:127
+msgctxt "Shortcuts Window"
+msgid "Keyboard Shortcuts"
+msgstr "ปุ่มลัดแป้นพิมพ์"
+
+#: src/blueprints/shortcuts-dialog.blp:132
+msgctxt "Shortcuts Window"
+msgid "Quit"
+msgstr "ออก"
+
+#: src/blueprints/shortcuts-dialog.blp:137
+msgctxt "Shortcuts Window"
+msgid "Help"
+msgstr "วิธีใช้"
+
+#: src/blueprints/shortcuts-dialog.blp:142
+msgctxt "Shortcuts Window"
+msgid "Menu"
+msgstr "เมนู"
+
+#: src/blueprints/shortcuts-dialog.blp:147
+msgctxt "Shortcuts Window"
+msgid "Fullscreen"
+msgstr "เต็มจอ"
+
+#: src/game-view.vala:149
+msgid "Paused"
+msgstr "พัก"
+
+#: src/game-view.vala:411
+msgctxt ".skp is a file extension"
+msgid "Sudoku puzzle.skp"
+msgstr "Sudoku puzzle.skp"
+
+#: src/game-view.vala:430
+msgid "Puzzle copied to clipboard"
+msgstr "คัดลอกเกมไปยังคลิปบอร์ดแล้ว"
 
 #. Help string for command line --version flag
-#: src/gnome-sudoku.vala:85
+#: src/gnome-sudoku.vala:91
 msgid "Show release version"
 msgstr "แสดงเลขรุ่น"
 
-#. Help string for command line --show-possible flag
-#: src/gnome-sudoku.vala:89
-msgid "Show the possible values for each cell"
-msgstr ""
+#. Text in dialog that displays when the game is over.
+#: src/gnome-sudoku.vala:219
+msgid "Puzzle Completed!"
+msgstr "แก้ปริศนาสำเร็จแล้ว!"
 
-#. Error dialog shown when starting a custom game that is not valid.
-#: src/gnome-sudoku.vala:279
-msgid "The puzzle you have entered is not a valid Sudoku."
-msgstr ""
-
-#: src/gnome-sudoku.vala:279
-#, fuzzy
-msgid "Please enter a valid puzzle."
-msgstr "กรุณาป้อนชื่อแฟ้ม"
-
-#. Warning dialog shown when starting a custom game that has multiple solutions.
-#: src/gnome-sudoku.vala:288
-msgid "The puzzle you have entered has multiple solutions."
-msgstr ""
-
-#: src/gnome-sudoku.vala:288
-msgid "Valid Sudoku puzzles have exactly one solution."
-msgstr ""
-
-#: src/gnome-sudoku.vala:290
-msgid "_Back"
-msgstr ""
-
-#: src/gnome-sudoku.vala:291
-#, fuzzy
-msgid "Play _Anyway"
-msgstr "เล่นเป็น:"
-
-#: src/gnome-sudoku.vala:333
-#, fuzzy
-msgid "_Resume"
-msgstr "_ล้าง"
-
-#: src/gnome-sudoku.vala:397
-#, fuzzy, c-format
-msgid "Well done, you completed the puzzle in %d minute!"
-msgid_plural "Well done, you completed the puzzle in %d minutes!"
-msgstr[0] "คุณแก้ปริศนาเสร็จภายใน %d วินาที"
-
-#: src/gnome-sudoku.vala:403
-#, fuzzy
-msgid "Play _Again"
-msgstr "เล่นแบบ_ออนไลน์"
-
-#: src/gnome-sudoku.vala:422
-#, fuzzy
-msgid "Select Difficulty"
-msgstr "ระดับความยาก"
-
-#: src/gnome-sudoku.vala:478
-msgid "Reset the board to its original state?"
-msgstr ""
-
-#: src/gnome-sudoku.vala:525
-#, fuzzy
-msgid "Create Puzzle"
-msgstr "ปริศนาถัดไป"
-
-#. Appears on the About dialog. %s is the version of the QQwing puzzle generator in use.
-#: src/gnome-sudoku.vala:602
+#: src/gnome-sudoku.vala:227
 #, c-format
-msgid ""
-"The popular Japanese logic puzzle\n"
-"\n"
-"Puzzles generated by QQwing %s"
-msgstr ""
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d นาที"
 
-#: src/gnome-sudoku.vala:613
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:232
+#, c-format
+msgid "Well done, you completed the puzzle in %s and set a new personal best!"
+msgstr "ยอดเยี่ยม คุณแก้ปริศนาเสร็จภายใน %s และทำสถิติคะแนนสูงสุดใหม่!"
+
+#. TRANSLATORS: %s is a localized time string in minute(s)
+#: src/gnome-sudoku.vala:238
+#, c-format
+msgid "Well done, you completed the puzzle in %s!"
+msgstr "ยอดเยี่ยม คุณแก้ปริศนาเสร็จภายใน %s!"
+
+#: src/gnome-sudoku.vala:245
+msgid "_Quit"
+msgstr "_ออก"
+
+#: src/gnome-sudoku.vala:248
+msgid "_Change Difficulty"
+msgstr "เ_ปลี่ยนระดับความยาก"
+
+#: src/gnome-sudoku.vala:249
+msgid "_Play Again"
+msgstr "เ_ล่นอีกครั้ง"
+
+#: src/gnome-sudoku.vala:363
+msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
+msgstr "นำเข้าเกมไม่สำเร็จ โปรดป้อนเกมซูโดกุที่ถูกต้อง"
+
+#: src/gnome-sudoku.vala:364
+msgid "_Cancel"
+msgstr "_ยกเลิก"
+
+#: src/gnome-sudoku.vala:365
+msgid "_Try Again"
+msgstr "ล_องอีกครั้ง"
+
+#: src/gnome-sudoku.vala:423
 msgid "translator-credits"
 msgstr ""
 "Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Supranee Thirawatthanasuk <supranee@opentle.org>\n"
-"Kitt Tientanopajai <kitty@kitty.in.th>"
+"Kitt Tientanopajai <kitty@kitty.in.th>\n"
+"Aefgh Threenine <aefgh39622@gmail.com>"
 
-#: src/number-picker.vala:90
-#, fuzzy
+#: src/number-picker.vala:134
 msgid "Clear"
-msgstr "_ล้างค่า"
+msgstr "ล้าง"
+
+#: src/number-picker.vala:231 src/number-picker.vala:306
+msgid "Lock"
+msgstr "ล็อก"
+
+#: src/number-picker.vala:303
+msgid "Unlock"
+msgstr "ปลดล็อก"
 
 #. Error message if printing fails
-#: src/sudoku-printer.vala:48
-#, fuzzy
+#: src/printer.vala:44
 msgid "Error printing file:"
-msgstr "เกิดข้อผิดพลาดขณะเข้าร่วมโต๊ะ: %s"
+msgstr "เกิดข้อผิดพลาดขณะพิมพ์ไฟล์:"
 
-#. Text on overlay when game is paused
-#: src/sudoku-view.vala:631
-msgid "Paused"
-msgstr "พัก"
+#: src/printer.vala:45
+msgid "Close"
+msgstr "ปิด"
+
+#, fuzzy
+#~ msgid "Print _Multiple Puzzles…"
+#~ msgstr "พิมพ์ Sudoku ทีละห_ลายเกม..."
+
+#, fuzzy
+#~ msgid "gnome-sudoku"
+#~ msgstr "คนแคระ"
+
+#, fuzzy
+#~ msgid "Go back to the current game"
+#~ msgstr "ตั้งต้นเกมที่เล่นอยู่ใหม่"
+
+#, fuzzy
+#~ msgid "_Create your own puzzle"
+#~ msgstr "_สร้างปริศนาใหม่"
+
+#, fuzzy
+#~ msgid "_Clear Board"
+#~ msgstr "_ล้างชุดช่วยตาม"
+
+#, fuzzy
+#~ msgid "Start a new puzzle"
+#~ msgstr "เปิดเกมใหม่"
+
+#, fuzzy
+#~ msgid "Difficulty level of sudokus to be printed"
+#~ msgstr "_จำนวนของ sudoku ที่จะพิมพ์: "
+
+#, fuzzy
+#~ msgid "Number of Sudokus to print"
+#~ msgstr "_จำนวนของ sudoku ที่จะพิมพ์: "
+
+#, fuzzy
+#~ msgid "Set the number of sudokus you want to print"
+#~ msgstr "_จำนวนของ sudoku ที่จะพิมพ์: "
+
+#, fuzzy
+#~ msgid "Warn about unfillable squares and duplicate numbers"
+#~ msgstr "เตือนเมื่อเติมค่าในช่องไม่ได้"
+
+#, fuzzy
+#~ msgid "Please enter a valid puzzle."
+#~ msgstr "กรุณาป้อนชื่อแฟ้ม"
+
+#, fuzzy
+#~ msgid "Play _Anyway"
+#~ msgstr "เล่นเป็น:"
+
+#, fuzzy
+#~ msgid "Create Puzzle"
+#~ msgstr "ปริศนาถัดไป"
