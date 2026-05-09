@@ -112,24 +112,19 @@ public class SudokuGameView : Adw.Bin
         var action_group = new SimpleActionGroup ();
 
         earmark_mode_action = new SimpleAction.stateful ("earmark-mode", null, false);
-        earmark_mode_action.set_enabled (true);
         earmark_mode_action.activate.connect (earmark_mode_cb);
         action_group.add_action (earmark_mode_action);
 
         toggle_pause_action = new SimpleAction.stateful ("toggle-pause", null, false);
-        toggle_pause_action.set_enabled (Sudoku.app.show_timer);
         action_group.add_action (toggle_pause_action);
 
         reset_board_action = new SimpleAction ("reset-board", null);
-        reset_board_action.set_enabled (!game.is_empty ());
         action_group.add_action (reset_board_action);
 
         undo_action = new SimpleAction ("undo", null);
-        undo_action.set_enabled (!game.is_undostack_null ());
         action_group.add_action (undo_action);
 
         redo_action = new SimpleAction ("redo", null);
-        redo_action.set_enabled (!game.is_redostack_null ());
         action_group.add_action (redo_action);
 
         share_puzzle_to_clipboard_action = new SimpleAction ("share-puzzle-to-clipboard", null);
@@ -168,9 +163,6 @@ public class SudokuGameView : Adw.Bin
     {
         add_game_hooks ();
 
-        earmark_mode_action.set_enabled (true);
-        toggle_pause_action.set_enabled (Sudoku.app.show_timer);
-
         initialize_buttons ();
         add_earmark_possibilities ();
         grid.change_game (game);
@@ -187,6 +179,12 @@ public class SudokuGameView : Adw.Bin
         play_pause_stack.visible = Sudoku.app.show_timer;
         earmark_mode_button.visible = (!Sudoku.app.show_timer ||
                                       (Sudoku.app.show_timer && !window.width_is_small));
+
+        undo_action.set_enabled (!game.is_undostack_null ());
+        redo_action.set_enabled (!game.is_redostack_null ());
+        earmark_mode_action.set_enabled (true);
+        toggle_pause_action.set_enabled (Sudoku.app.show_timer);
+        reset_board_action.set_enabled (!game.is_empty ());
     }
 
     private void initialize_clock_label ()
