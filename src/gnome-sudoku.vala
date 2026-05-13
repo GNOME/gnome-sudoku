@@ -223,11 +223,13 @@ public class Sudoku : Adw.Application
             dialog.add_response ("start-menu", _("_Change Difficulty"));
             dialog.add_response ("play-again", _("_Play Again"));
             dialog.set_response_appearance ("play-again", Adw.ResponseAppearance.SUGGESTED);
+            dialog.set_default_response ("play-again");
         }
         else
         {
             dialog.add_response ("start-menu", _("_New Game…"));
             dialog.set_response_appearance ("start-menu", Adw.ResponseAppearance.SUGGESTED);
+            dialog.set_default_response ("start-menu");
         }
 
         dialog.response.connect ((response_id) => {
@@ -339,6 +341,7 @@ public class Sudoku : Adw.Application
         dialog.add_response ("close", _("_Cancel"));
         dialog.add_response ("open", _("_Try Again"));
         dialog.set_response_appearance ("open", Adw.ResponseAppearance.SUGGESTED);
+        dialog.set_default_response ("open");
         dialog.response.connect ((response_id) => {
             if (response_id == "open")
                 open_file_cb ();
