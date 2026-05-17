@@ -279,7 +279,7 @@ public class SudokuBoard : Object
         }
         catch (Error e)
         {
-            throw new IOError.NOT_FOUND ("Save file doesn't exist");
+            throw new IOError.NOT_FOUND ("Failed to load as .save\n");
         }
 
         Json.Node node = parser.get_root ();
@@ -355,7 +355,7 @@ public class SudokuBoard : Object
         if (!check)
             return;
         else
-            throw new IOError.NOT_FOUND ("Failed to construct the board");
+            throw new IOError.NOT_FOUND ("Failed to construct the board\n");
     }
 
     public SudokuBoard clone ()
