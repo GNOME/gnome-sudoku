@@ -122,6 +122,7 @@ public class SudokuBackend : Object
 
     public bool load_game_path (string path)
     {
+        var errors = new Gee.ArrayList<Error>();
         try
         {
             var ngame = new SudokuGame(new SudokuBoard.from_json(path));
@@ -130,7 +131,7 @@ public class SudokuBackend : Object
         }
         catch (Error e)
         {
-            print (e.message);
+            errors.add (e);
         }
 
         try
@@ -143,12 +144,17 @@ public class SudokuBackend : Object
             var new_game = new SudokuGame (board);
 
             change_game (new_game);
+            return true;
         }
         catch (Error e)
         {
-            return false;
+            errors.add (e);
         }
-        return true;
+
+        foreach (var error in errors)
+            print (error.message);
+
+        return false;
     }
 
     public bool save_highscore ()
