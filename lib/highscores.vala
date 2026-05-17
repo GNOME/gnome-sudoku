@@ -66,13 +66,16 @@ public class Highscores : Object
         reader.end_member ();
     }
 
-    public void save_highscore (DifficultyCategory difficulty, double time_elapsed)
+    public bool save_highscore (DifficultyCategory difficulty, double time_elapsed)
     {
-        highscores.set (difficulty, time_elapsed);
-        save_highscores ();
+        bool save_successful = save_highscores ();
+        if (save_successful)
+            highscores.set (difficulty, time_elapsed);
+
+        return save_successful;
     }
 
-    private void save_highscores ()
+    private bool save_highscores ()
     {
         Json.Builder builder = new Json.Builder ();
 
@@ -91,11 +94,12 @@ public class Highscores : Object
 
         try
         {
-            generator.to_file (highscores_file);
+            return generator.to_file (highscores_file);
         }
         catch (Error e)
         {
             warning ("%s", e.message);
+            return false;
         }
     }
 }

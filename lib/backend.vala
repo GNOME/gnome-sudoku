@@ -156,8 +156,7 @@ public class SudokuBackend : Object
         var highscore = highscores.get_highscore (game.board.difficulty_category);
         if (highscore == null || (highscore != null && game.get_total_time_played () < highscore))
         {
-            highscores.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
-            return true;
+            return highscores.save_highscore (game.board.difficulty_category, game.get_total_time_played ());
         }
 
         return false;
