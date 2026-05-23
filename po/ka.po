@@ -6,9 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-06 17:09+0000\n"
-"PO-Revision-Date: 2026-01-10 03:12+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/"
+"issues/\n"
+"POT-Creation-Date: 2026-05-17 08:53+0000\n"
+"PO-Revision-Date: 2026-05-23 10:11+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -16,9 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:13
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "Sudoku"
@@ -160,47 +161,51 @@ msgstr ""
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr ""
 
-#: lib/board.vala:846 lib/board.vala:857
+#: lib/board.vala:839 lib/board.vala:850
 msgid "Unknown Difficulty"
 msgstr "უცნობი სირთულე"
 
-#: lib/board.vala:848
+#: lib/board.vala:841
 msgid "Easy Difficulty"
 msgstr "მარტივი სირთულე"
 
-#: lib/board.vala:850
+#: lib/board.vala:843
 msgid "Medium Difficulty"
 msgstr "საშუალო სირთულე"
 
-#: lib/board.vala:852
+#: lib/board.vala:845
 msgid "Hard Difficulty"
 msgstr "რთული სირთულე"
 
-#: lib/board.vala:854
+#: lib/board.vala:847
 msgid "Very Hard Difficulty"
 msgstr "ძალიან რთული სირთულე"
 
-#: src/blueprints/game-view.blp:22
+#: src/blueprints/game-view.blp:18
 msgid "Undo Action"
 msgstr "ქმედების გაუქმება"
 
-#: src/blueprints/game-view.blp:33
+#: src/blueprints/game-view.blp:26
 msgid "Redo Action"
 msgstr "ქმედების გამეორება"
 
-#: src/blueprints/game-view.blp:46
+#: src/blueprints/game-view.blp:34
 msgid "Earmark Mode"
 msgstr ""
 
-#: src/blueprints/game-view.blp:60
+#: src/blueprints/game-view.blp:46
 msgid "Pause"
 msgstr "შეჩერება"
 
-#: src/blueprints/game-view.blp:69
+#: src/blueprints/game-view.blp:53
 msgid "Play"
 msgstr "თამაში"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
+#: src/blueprints/game-view.blp:76
+msgid "Clock"
+msgstr "საათი"
+
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:230
 msgid "_New Game…"
 msgstr "_ახალი თამაში…"
 
@@ -410,15 +415,15 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "ძ_ალიან ძნელი"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:308
 msgid "_Start Game"
 msgstr "თამაშის _დაწყება"
 
-#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:162
+#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:164
 msgid "_Open..."
 msgstr "_გახსნა…"
 
-#: src/blueprints/start-view.blp:147
+#: src/blueprints/start-view.blp:148
 msgid "_Start Shared Game"
 msgstr "გაზიარებული სერვისის გაშვების შეცდომა"
 
@@ -563,16 +568,16 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "სრულ ეკრანზე"
 
-#: src/game-view.vala:149
+#: src/game-view.vala:156
 msgid "Paused"
 msgstr "შეჩერებულია"
 
-#: src/game-view.vala:411
+#: src/game-view.vala:442
 msgctxt ".skp is a file extension"
 msgid "Sudoku puzzle.skp"
 msgstr ""
 
-#: src/game-view.vala:430
+#: src/game-view.vala:461
 msgid "Puzzle copied to clipboard"
 msgstr ""
 
@@ -582,54 +587,35 @@ msgid "Show release version"
 msgstr "ვერსიის ჩვენება"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:215
+#: src/gnome-sudoku.vala:218
 msgid "Puzzle Completed!"
 msgstr ""
 
-#: src/gnome-sudoku.vala:223
-#, c-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d წუთი"
-msgstr[1] "%d წუთი"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:228
-#, c-format
-msgid "Well done, you completed the puzzle in %s and set a new personal best!"
-msgstr ""
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:234
-#, c-format
-msgid "Well done, you completed the puzzle in %s!"
-msgstr ""
-
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:220
 msgid "_Quit"
 msgstr "გასვ_ლა"
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:223
 msgid "_Change Difficulty"
 msgstr "_სიძნელის შეცვლა"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:224
 msgid "_Play Again"
 msgstr "_თავიდან თამაში"
 
-#: src/gnome-sudoku.vala:359
+#: src/gnome-sudoku.vala:340
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr ""
 
-#: src/gnome-sudoku.vala:360
+#: src/gnome-sudoku.vala:341
 msgid "_Cancel"
 msgstr "გაუქმება"
 
-#: src/gnome-sudoku.vala:361
+#: src/gnome-sudoku.vala:342
 msgid "_Try Again"
 msgstr "_თავიდან ცდა"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:401
 msgid "translator-credits"
 msgstr "ეკატერინე პაპავა"
 
@@ -653,6 +639,12 @@ msgstr "ფაილის დაბეჭდვის შეცდომა:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "დახურვა"
+
+#, c-format
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d წუთი"
+#~ msgstr[1] "%d წუთი"
 
 #~ msgctxt "Shortcuts Window"
 #~ msgid "New Game"
