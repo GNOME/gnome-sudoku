@@ -414,7 +414,7 @@ public class SudokuCell : Widget
         Widget child = get_last_child ();
         while (child != null)
         {
-            if (child == grid.number_picker)
+            if (child == grid.number_picker && grid.number_picker.visible)
             {
                 grid.number_picker.present ();
                 break;
@@ -424,12 +424,15 @@ public class SudokuCell : Widget
         }
 
         Requisition nat;
-        value_label.get_preferred_size (null, out nat);
-        int value_width = int.min (nat.width, width);
-        int value_height = int.min (nat.height, height);
+        if (value_label.visible)
+        {
+            value_label.get_preferred_size (null, out nat);
+            int value_width = int.min (nat.width, width);
+            int value_height = int.min (nat.height, height);
 
-        Allocation value_allocation = {(width - value_width) / 2, (height - value_height) / 2, nat.width, nat.height};
-        value_label.allocate_size (value_allocation, baseline);
+            Allocation value_allocation = {(width - value_width) / 2, (height - value_height) / 2, nat.width, nat.height};
+            value_label.allocate_size (value_allocation, baseline);
+        }
 
         int earmark_width, earmark_height;
         int max_earmark_size = width / 3; //3 earmarks per row and per column
@@ -439,19 +442,22 @@ public class SudokuCell : Widget
         for (int row = 2; row >= 0; row--)
             for (int col = 0; col < 3; col++)
             {
-                set_font_size (earmarks[num].label, zoomed_size);
-                earmarks[num].get_preferred_size (null, out nat);
-                earmark_width = int.min (max_earmark_size, nat.width);
-                earmark_height = int.min (max_earmark_size, nat.height);
+                if (earmarks[num].visible)
+                {
+                    set_font_size (earmarks[num].label, zoomed_size);
+                    earmarks[num].get_preferred_size (null, out nat);
+                    earmark_width = int.min (max_earmark_size, nat.width);
+                    earmark_height = int.min (max_earmark_size, nat.height);
 
-                var oriented_col = get_direction () == TextDirection.LTR ? col : 2 - col;
+                    var oriented_col = get_direction () == TextDirection.LTR ? col : 2 - col;
 
-                Allocation earmark_allocation = {oriented_col * max_earmark_size + (max_earmark_size - earmark_width) / 2,
-                                                 row * max_earmark_size + (max_earmark_size - earmark_height) / 2,
-                                                 earmark_width, earmark_height};
+                    Allocation earmark_allocation = {oriented_col * max_earmark_size + (max_earmark_size - earmark_width) / 2,
+                                                     row * max_earmark_size + (max_earmark_size - earmark_height) / 2,
+                                                     earmark_width, earmark_height};
 
-                earmarks[num].allocate_size (earmark_allocation, baseline);
+                    earmarks[num].allocate_size (earmark_allocation, baseline);
 
+                }
                 num++;
             }
     }
