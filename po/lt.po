@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-06 17:09+0000\n"
-"PO-Revision-Date: 2026-01-08 22:58+0200\n"
+"POT-Creation-Date: 2026-05-17 08:53+0000\n"
+"PO-Revision-Date: 2026-06-06 22:30+0300\n"
 "Last-Translator: Aurimas Černius <aurimas.cernius@mailo.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -24,9 +24,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:13
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "Sudoku"
@@ -173,47 +173,51 @@ msgstr "GNOME sudoku žaidimo peržiūra"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "GNOME sudoku tamsioje veiksenoje su užrašais ir įspėjimais"
 
-#: lib/board.vala:846 lib/board.vala:857
+#: lib/board.vala:839 lib/board.vala:850
 msgid "Unknown Difficulty"
 msgstr "Nežinomas sudėtingumas"
 
-#: lib/board.vala:848
+#: lib/board.vala:841
 msgid "Easy Difficulty"
 msgstr "Lengvas"
 
-#: lib/board.vala:850
+#: lib/board.vala:843
 msgid "Medium Difficulty"
 msgstr "Vidutinis sudėtingumas"
 
-#: lib/board.vala:852
+#: lib/board.vala:845
 msgid "Hard Difficulty"
 msgstr "Sunkus"
 
-#: lib/board.vala:854
+#: lib/board.vala:847
 msgid "Very Hard Difficulty"
 msgstr "Labai sunkus"
 
-#: src/blueprints/game-view.blp:22
+#: src/blueprints/game-view.blp:18
 msgid "Undo Action"
 msgstr "Atšaukti veiksmą"
 
-#: src/blueprints/game-view.blp:33
+#: src/blueprints/game-view.blp:26
 msgid "Redo Action"
 msgstr "Pakartoti veiksmą"
 
-#: src/blueprints/game-view.blp:46
+#: src/blueprints/game-view.blp:34
 msgid "Earmark Mode"
 msgstr "Užrašų veiksena"
 
-#: src/blueprints/game-view.blp:60
+#: src/blueprints/game-view.blp:46
 msgid "Pause"
 msgstr "Pauzė"
 
-#: src/blueprints/game-view.blp:69
+#: src/blueprints/game-view.blp:53
 msgid "Play"
 msgstr "Žaisti"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
+#: src/blueprints/game-view.blp:76
+msgid "Clock"
+msgstr "Laikrodis"
+
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:230
 msgid "_New Game…"
 msgstr "_Naujas žaidimas…"
 
@@ -423,15 +427,15 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "L_abai sunkus"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:308
 msgid "_Start Game"
 msgstr "_Pradėti žaisti"
 
-#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:162
+#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:164
 msgid "_Open..."
 msgstr "_Atverti..."
 
-#: src/blueprints/start-view.blp:147
+#: src/blueprints/start-view.blp:148
 msgid "_Start Shared Game"
 msgstr "_Pradėti pasidalintą žaidimą"
 
@@ -576,16 +580,16 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Visame ekrane"
 
-#: src/game-view.vala:149
+#: src/game-view.vala:156
 msgid "Paused"
 msgstr "Pristabdyta"
 
-#: src/game-view.vala:411
+#: src/game-view.vala:442
 msgctxt ".skp is a file extension"
 msgid "Sudoku puzzle.skp"
 msgstr "Sudoku galvosūkis.skp"
 
-#: src/game-view.vala:430
+#: src/game-view.vala:461
 msgid "Puzzle copied to clipboard"
 msgstr "Galvosūkis nukopijuotas į iškarpinę"
 
@@ -595,57 +599,35 @@ msgid "Show release version"
 msgstr "Rodyti leidimo versiją"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:215
+#: src/gnome-sudoku.vala:218
 msgid "Puzzle Completed!"
 msgstr "Galvosūkis išspręstas!"
 
-#: src/gnome-sudoku.vala:223
-#, c-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minutę"
-msgstr[1] "%d minutes"
-msgstr[2] "%d minučių"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:228
-#, c-format
-msgid "Well done, you completed the puzzle in %s and set a new personal best!"
-msgstr ""
-"Šaunu, išsprendėte galvosūkį per %s ir pasiekėte asmeninį geriausią "
-"rezultatą!"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:234
-#, c-format
-msgid "Well done, you completed the puzzle in %s!"
-msgstr "Šaunu, išsprendėte galvosūkį per %s!"
-
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:220
 msgid "_Quit"
 msgstr "Išeiti"
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:223
 msgid "_Change Difficulty"
 msgstr "_Keisti sudėtingumą"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:224
 msgid "_Play Again"
 msgstr "Žaisti _dar kartą"
 
-#: src/gnome-sudoku.vala:359
+#: src/gnome-sudoku.vala:340
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr "Nepavyko importuoti galvosūkio, įveskite tinkamą Sudoku galvosūkį"
 
-#: src/gnome-sudoku.vala:360
+#: src/gnome-sudoku.vala:341
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
-#: src/gnome-sudoku.vala:361
+#: src/gnome-sudoku.vala:342
 msgid "_Try Again"
 msgstr "Bandyti _dar kartą"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:401
 msgid "translator-credits"
 msgstr ""
 "Aurimas Černius <aurimas.cernius@mailo.com>\n"
@@ -675,6 +657,24 @@ msgstr "Klaida spausdinant failą:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Užverti"
+
+#, c-format
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d minutę"
+#~ msgstr[1] "%d minutes"
+#~ msgstr[2] "%d minučių"
+
+#, c-format
+#~ msgid ""
+#~ "Well done, you completed the puzzle in %s and set a new personal best!"
+#~ msgstr ""
+#~ "Šaunu, išsprendėte galvosūkį per %s ir pasiekėte asmeninį geriausią "
+#~ "rezultatą!"
+
+#, c-format
+#~ msgid "Well done, you completed the puzzle in %s!"
+#~ msgstr "Šaunu, išsprendėte galvosūkį per %s!"
 
 #~ msgid "Create and solve custom puzzles from scratch."
 #~ msgstr "Sukurkite ir išspręskite savo galvosūkius."
