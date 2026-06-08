@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-06 17:09+0000\n"
-"PO-Revision-Date: 2026-01-07 23:07+1000\n"
+"POT-Creation-Date: 2026-05-10 12:53+0000\n"
+"PO-Revision-Date: 2026-05-11 16:04+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -31,7 +31,7 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:13
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "Судоку"
@@ -180,47 +180,51 @@ msgstr "Предварительный просмотр игры судоку GN
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Игра Судоку GNOME в тёмном стиле с метками и предупреждениями"
 
-#: lib/board.vala:846 lib/board.vala:857
+#: lib/board.vala:839 lib/board.vala:850
 msgid "Unknown Difficulty"
 msgstr "Неизвестна"
 
-#: lib/board.vala:848
+#: lib/board.vala:841
 msgid "Easy Difficulty"
 msgstr "Лёгкая"
 
-#: lib/board.vala:850
+#: lib/board.vala:843
 msgid "Medium Difficulty"
 msgstr "Средняя"
 
-#: lib/board.vala:852
+#: lib/board.vala:845
 msgid "Hard Difficulty"
 msgstr "Сложная"
 
-#: lib/board.vala:854
+#: lib/board.vala:847
 msgid "Very Hard Difficulty"
 msgstr "Очень сложная"
 
-#: src/blueprints/game-view.blp:22
+#: src/blueprints/game-view.blp:18
 msgid "Undo Action"
 msgstr "Отменить действие"
 
-#: src/blueprints/game-view.blp:33
+#: src/blueprints/game-view.blp:26
 msgid "Redo Action"
 msgstr "Вернуть действие"
 
-#: src/blueprints/game-view.blp:46
+#: src/blueprints/game-view.blp:34
 msgid "Earmark Mode"
 msgstr "Режим меток"
 
-#: src/blueprints/game-view.blp:60
+#: src/blueprints/game-view.blp:46
 msgid "Pause"
 msgstr "Пауза"
 
-#: src/blueprints/game-view.blp:69
+#: src/blueprints/game-view.blp:53
 msgid "Play"
 msgstr "Играть"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
+#: src/blueprints/game-view.blp:76
+msgid "Clock"
+msgstr "Часы"
+
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:229
 msgid "_New Game…"
 msgstr "_Новая игра…"
 
@@ -430,15 +434,15 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "_Очень сложная"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:306
 msgid "_Start Game"
 msgstr "_Начать игру"
 
-#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:162
+#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:164
 msgid "_Open..."
 msgstr "_Открыть..."
 
-#: src/blueprints/start-view.blp:147
+#: src/blueprints/start-view.blp:148
 msgid "_Start Shared Game"
 msgstr "_Начать общедоступную игру"
 
@@ -583,16 +587,16 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Во весь экран"
 
-#: src/game-view.vala:149
+#: src/game-view.vala:156
 msgid "Paused"
 msgstr "Приостановлено"
 
-#: src/game-view.vala:411
+#: src/game-view.vala:442
 msgctxt ".skp is a file extension"
 msgid "Sudoku puzzle.skp"
 msgstr "Головоломка судоку.skp"
 
-#: src/game-view.vala:430
+#: src/game-view.vala:461
 msgid "Puzzle copied to clipboard"
 msgstr "Головоломка скопирована в буфер обмена"
 
@@ -602,58 +606,37 @@ msgid "Show release version"
 msgstr "Показать номер версии"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:215
+#: src/gnome-sudoku.vala:218
 msgid "Puzzle Completed!"
 msgstr "Головоломка решена!"
 
-#: src/gnome-sudoku.vala:223
-#, c-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d минута"
-msgstr[1] "%d минуты"
-msgstr[2] "%d минут"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:228
-#, c-format
-msgid "Well done, you completed the puzzle in %s and set a new personal best!"
-msgstr ""
-"Очень хорошо, вы решили головоломку за %s и установили новый личный рекорд!"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:234
-#, c-format
-msgid "Well done, you completed the puzzle in %s!"
-msgstr "Очень хорошо, вы решили головоломку за %s минут!"
-
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:220
 msgid "_Quit"
 msgstr "_Выйти"
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:223
 msgid "_Change Difficulty"
 msgstr "_Изменить сложность"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:224
 msgid "_Play Again"
 msgstr "Сыграть _ещё раз"
 
-#: src/gnome-sudoku.vala:359
+#: src/gnome-sudoku.vala:338
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr ""
 "Не удалось импортировать головоломку. Пожалуйста, укажите корректную "
 "головоломку судоку"
 
-#: src/gnome-sudoku.vala:360
+#: src/gnome-sudoku.vala:339
 msgid "_Cancel"
 msgstr "_Отменить"
 
-#: src/gnome-sudoku.vala:361
+#: src/gnome-sudoku.vala:340
 msgid "_Try Again"
 msgstr "_Попробовать ещё раз"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:398
 msgid "translator-credits"
 msgstr ""
 "Stas Solovey <whats_up@tut.by>, 2015-2018.\n"
@@ -680,6 +663,24 @@ msgstr "Ошибка печати в файл:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Закрыть"
+
+#, c-format
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d минута"
+#~ msgstr[1] "%d минуты"
+#~ msgstr[2] "%d минут"
+
+#, c-format
+#~ msgid ""
+#~ "Well done, you completed the puzzle in %s and set a new personal best!"
+#~ msgstr ""
+#~ "Очень хорошо, вы решили головоломку за %s и установили новый личный "
+#~ "рекорд!"
+
+#, c-format
+#~ msgid "Well done, you completed the puzzle in %s!"
+#~ msgstr "Очень хорошо, вы решили головоломку за %s минут!"
 
 #~ msgid "Create and solve custom puzzles from scratch."
 #~ msgstr "Создание с нуля и решение собственных головоломок."
