@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-31 10:39+0000\n"
-"PO-Revision-Date: 2026-02-08 22:12+0100\n"
+"POT-Creation-Date: 2026-05-17 08:53+0000\n"
+"PO-Revision-Date: 2026-06-14 13:32+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -21,9 +21,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:13
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "Sudoku"
@@ -189,27 +189,31 @@ msgstr "Svår svårighetsgrad"
 msgid "Very Hard Difficulty"
 msgstr "Mycket svår svårighetsgrad"
 
-#: src/blueprints/game-view.blp:22
+#: src/blueprints/game-view.blp:18
 msgid "Undo Action"
 msgstr "Ångra åtgärd"
 
-#: src/blueprints/game-view.blp:33
+#: src/blueprints/game-view.blp:26
 msgid "Redo Action"
 msgstr "Gör om åtgärd"
 
-#: src/blueprints/game-view.blp:46
+#: src/blueprints/game-view.blp:34
 msgid "Earmark Mode"
 msgstr "Öronmärkesläge"
 
-#: src/blueprints/game-view.blp:60
+#: src/blueprints/game-view.blp:46
 msgid "Pause"
 msgstr "Pausa"
 
-#: src/blueprints/game-view.blp:69
+#: src/blueprints/game-view.blp:53
 msgid "Play"
 msgstr "Spela"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
+#: src/blueprints/game-view.blp:76
+msgid "Clock"
+msgstr "Klocka"
+
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:230
 msgid "_New Game…"
 msgstr "_Nytt spel…"
 
@@ -419,7 +423,7 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "M_ycket svår"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:308
 msgid "_Start Game"
 msgstr "_Starta spel"
 
@@ -572,16 +576,16 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Helskärm"
 
-#: src/game-view.vala:149
+#: src/game-view.vala:156
 msgid "Paused"
 msgstr "Pausad"
 
-#: src/game-view.vala:411
+#: src/game-view.vala:442
 msgctxt ".skp is a file extension"
 msgid "Sudoku puzzle.skp"
 msgstr "Sudokupussel.skp"
 
-#: src/game-view.vala:430
+#: src/game-view.vala:461
 msgid "Puzzle copied to clipboard"
 msgstr "Pussel kopierat till urklipp"
 
@@ -591,54 +595,35 @@ msgid "Show release version"
 msgstr "Visa utgåvans version"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:215
+#: src/gnome-sudoku.vala:218
 msgid "Puzzle Completed!"
 msgstr "Pussel slutfört!"
 
-#: src/gnome-sudoku.vala:223
-#, c-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minut"
-msgstr[1] "%d minuter"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:228
-#, c-format
-msgid "Well done, you completed the puzzle in %s and set a new personal best!"
-msgstr "Bra gjort, du lade pusslet på %s och fick ett nytt personbästa!"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:234
-#, c-format
-msgid "Well done, you completed the puzzle in %s!"
-msgstr "Bra gjort, du lade pusslet på %s!"
-
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:220
 msgid "_Quit"
 msgstr "A_vsluta"
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:223
 msgid "_Change Difficulty"
 msgstr "Ä_ndra svårighetsgrad"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:224
 msgid "_Play Again"
 msgstr "S_pela igen"
 
-#: src/gnome-sudoku.vala:359
+#: src/gnome-sudoku.vala:340
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr "Misslyckades med att importera pusslet, ange ett giltigt sudokupussel"
 
-#: src/gnome-sudoku.vala:360
+#: src/gnome-sudoku.vala:341
 msgid "_Cancel"
 msgstr "A_vbryt"
 
-#: src/gnome-sudoku.vala:361
+#: src/gnome-sudoku.vala:342
 msgid "_Try Again"
 msgstr "_Försök igen"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:401
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -672,6 +657,21 @@ msgstr "Fel vid utskrift av fil:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Stäng"
+
+#, c-format
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d minut"
+#~ msgstr[1] "%d minuter"
+
+#, c-format
+#~ msgid ""
+#~ "Well done, you completed the puzzle in %s and set a new personal best!"
+#~ msgstr "Bra gjort, du lade pusslet på %s och fick ett nytt personbästa!"
+
+#, c-format
+#~ msgid "Well done, you completed the puzzle in %s!"
+#~ msgstr "Bra gjort, du lade pusslet på %s!"
 
 #~ msgctxt "Shortcuts Window"
 #~ msgid "New Game"
