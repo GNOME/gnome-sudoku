@@ -26,9 +26,6 @@ public class SudokuCell : Widget
     public int row { get; private set; }
     public int col { get; private set; }
 
-    private GestureClick button_controller;
-    private GestureLongPress long_press_controller;
-
     private Label value_label;
     private SudokuEarmark[] earmarks;
 
@@ -122,14 +119,15 @@ public class SudokuCell : Widget
         game.notify["paused"].connect (paused_cb);
         Sudoku.app.notify["earmark-mode"].connect (flip_shortcuts);
 
-        button_controller = new GestureClick ();
+        var button_controller = new GestureClick ();
         button_controller.set_button (0 /* all buttons */ );
         button_controller.released.connect (button_released_cb);
-        add_controller (this.button_controller);
+        add_controller (button_controller);
 
-        long_press_controller = new GestureLongPress ();
+        var long_press_controller = new GestureLongPress ();
+        long_press_controller.set_touch_only (true);
         long_press_controller.pressed.connect (long_press_cb);
-        add_controller (this.long_press_controller);
+        add_controller (long_press_controller);
 
         earmarks = new SudokuEarmark[9];
         for (int num = 1; num < 10; num++)
@@ -292,10 +290,6 @@ public class SudokuCell : Widget
                                 double           x,
                                 double           y)
     {
-        if (gesture.get_current_button () != BUTTON_PRIMARY &&
-            gesture.get_current_button () != BUTTON_SECONDARY)
-            return;
-
         gesture.set_state (EventSequenceState.CLAIMED);
 
         if (Sudoku.app.earmark_mode)
