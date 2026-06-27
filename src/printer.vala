@@ -42,7 +42,7 @@ public class SudokuPrinter : GLib.Object {
         {
             /* Error message if printing fails */
             var dialog = new Adw.AlertDialog ("%s\n%s".printf (_("Error printing file:"), e.message), null);
-            dialog.add_response ("close", _("Close"));
+            dialog.add_response ("close", _("_Close"));
             dialog.present (window);
         }
 
