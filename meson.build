@@ -4,7 +4,7 @@ project(
   default_options: 'cpp_std=c++11',
   license: 'GPL3+',
   meson_version: '>= 1.4',
-  version: '51.alpha'
+  version: '51.beta'
 )
 
 add_project_arguments(

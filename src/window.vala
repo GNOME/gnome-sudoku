@@ -100,7 +100,7 @@ public class SudokuWindow : Adw.ApplicationWindow
         int headerbar_natural_height;
         start_view.headerbar.measure (Orientation.VERTICAL, -1, null, out headerbar_natural_height, null, null);
 
-        int small_window_height = SMALL_WINDOW_WIDTH + headerbar_natural_height * 2;
+        int small_window_height = SMALL_WINDOW_WIDTH + headerbar_natural_height;
 
         set_size_request (SMALL_WINDOW_WIDTH, small_window_height);
         set_default_size (default_width, default_height);

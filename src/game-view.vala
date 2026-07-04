@@ -29,7 +29,7 @@ public class SudokuGameView : Adw.BreakpointBin
     [GtkChild] private unowned Overlay grid_overlay;
     [GtkChild] private unowned Adw.ToastOverlay toast_overlay;
     [GtkChild] private unowned Adw.Bin grid_bin;
-    [GtkChild] private unowned Adw.Breakpoint ui_breakpoint;
+    [GtkChild] public unowned Adw.Breakpoint ui_breakpoint;
 
     [GtkChild] private unowned Adw.WindowTitle windowtitle;
 
@@ -59,7 +59,8 @@ public class SudokuGameView : Adw.BreakpointBin
     public SudokuGrid grid;
     public unowned SudokuWindow window;
     public bool initialized { get; private set; default = false; }
-
+    public bool is_vertical { get; private set; default = false; }
+    public bool width_is_small { get; private set; default = false; }
     private SimpleAction toggle_pause_action;
     private SimpleAction earmark_mode_action;
     private SimpleAction undo_action;
@@ -187,7 +188,7 @@ public class SudokuGameView : Adw.BreakpointBin
 
     private void initialize_buttons ()
     {
-        clock_box.visible = Sudoku.app.show_timer;
+        update_buttons_visibility ();
         play_pause_stack.visible = Sudoku.app.show_timer;
 
         undo_action.set_enabled (!game.is_undostack_null ());
@@ -200,6 +201,8 @@ public class SudokuGameView : Adw.BreakpointBin
     private void set_wide_ui ()
     {
         unparent_buttons ();
+        is_vertical = false;
+        update_buttons_visibility ();
         top_headerbar.pack_start (undo_button);
         top_headerbar.pack_start (redo_button);
         top_headerbar.pack_start (earmark_mode_button);
@@ -207,9 +210,12 @@ public class SudokuGameView : Adw.BreakpointBin
         top_headerbar.pack_end (clock_box);
     }
 
+
     private void set_vertical_ui ()
     {
         unparent_buttons ();
+        is_vertical = true;
+        update_buttons_visibility ();
         bottom_headerbar.pack_end (earmark_mode_button);
         bottom_headerbar.pack_end (play_pause_stack);
         bottom_headerbar.pack_start (undo_button);
@@ -330,6 +336,12 @@ public class SudokuGameView : Adw.BreakpointBin
         reset_board_action.set_enabled (!game.is_empty ());
     }
 
+    private void update_buttons_visibility ()
+    {
+        clock_box.visible = Sudoku.app.show_timer && (!width_is_small || is_vertical);
+        redo_button.visible = !Sudoku.app.show_timer || !width_is_small || is_vertical;
+    }
+
     private void paused_cb ()
     {
         // Set Font Size
@@ -382,7 +394,7 @@ public class SudokuGameView : Adw.BreakpointBin
 
     private void show_timer_cb ()
     {
-        clock_box.visible = Sudoku.app.show_timer;
+        clock_box.visible = Sudoku.app.show_timer && (!width_is_small || is_vertical);
         toggle_pause_action.set_enabled (Sudoku.app.show_timer);
         play_pause_stack.visible = Sudoku.app.show_timer;
         if (Sudoku.app.show_timer)
@@ -467,6 +479,21 @@ public class SudokuGameView : Adw.BreakpointBin
     {
         Sudoku.app.earmark_mode = !Sudoku.app.earmark_mode;
         earmark_mode_button.set_active (Sudoku.app.earmark_mode);
+    }
+
+    public override void size_allocate (int width, int height, int baseline)
+    {
+        if (width < 600 && !width_is_small)
+        {
+            width_is_small = true;
+            update_buttons_visibility ();
+        }
+        else if (width >= 600 && width_is_small)
+        {
+            width_is_small = false;
+            update_buttons_visibility ();
+        }
+        base.size_allocate (width, height, baseline);
     }
 
     public override bool grab_focus ()
