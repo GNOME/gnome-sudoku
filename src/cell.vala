@@ -32,8 +32,6 @@ public class SudokuCell : Widget
     private SudokuGame game;
 
     private unowned SudokuGrid grid;
-    private unowned double? zoom_value_multiplier;
-    private unowned double? zoom_earmark_multiplier;
 
     private SimpleAction insert_earmark_action;
     private SimpleAction insert_value_action;
@@ -97,12 +95,10 @@ public class SudokuCell : Widget
         }
     }
 
-    public SudokuCell (SudokuGame game, SudokuGrid grid, ref double zoom_value_multiplier, ref double zoom_earmark_multiplier, int row, int col)
+    public SudokuCell (SudokuGame game, SudokuGrid grid, int row, int col)
     {
         this.game = game;
         this.grid = grid;
-        this.zoom_value_multiplier = zoom_value_multiplier;
-        this.zoom_earmark_multiplier = zoom_earmark_multiplier;
         this.set_accessible_role (AccessibleRole.BUTTON);
 
         this.row = row;
@@ -451,7 +447,7 @@ public class SudokuCell : Widget
             }
     }
 
-    public void set_font_sizes (int height)
+    public void set_font_sizes (int height, double zoom_value_multiplier, double zoom_earmark_multiplier)
     {
         if (value_label.visible){
             int zoomed_size = (int) (height * zoom_value_multiplier);

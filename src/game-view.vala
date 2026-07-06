@@ -58,6 +58,7 @@ public class SudokuGameView : Adw.BreakpointBin
 
     public SudokuGrid grid;
     public unowned SudokuWindow window;
+    private SudokuGridLayoutManager grid_layout;
     public bool initialized { get; private set; default = false; }
     public bool is_vertical { get; private set; default = false; }
     public bool width_is_small { get; private set; default = false; }
@@ -166,7 +167,7 @@ public class SudokuGameView : Adw.BreakpointBin
         this.focusable = true;
 
         grid = new SudokuGrid (game);
-        var grid_layout = new SudokuGridLayoutManager (grid);
+        grid_layout = new SudokuGridLayoutManager (grid);
         grid_bin.layout_manager = grid_layout;
         grid_overlay.child = grid;
         initialized = true;
@@ -389,7 +390,7 @@ public class SudokuGameView : Adw.BreakpointBin
 
     private void zoom_cb ()
     {
-        grid.update_zoom ();
+        grid_layout.update_zoom ();
     }
 
     private void show_timer_cb ()

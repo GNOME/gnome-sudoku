@@ -27,6 +27,8 @@ private class SudokuGridLayoutManager : LayoutManager
     private const int MARGIN_SIZE_DIFF = MARGIN_DEFAULT_SIZE - MARGIN_SMALL_SIZE;
 
     public SudokuGrid grid;
+    private double zoom_value_multiplier;
+    private double zoom_earmark_multiplier;
 
     private int get_align (int size)
     {
@@ -49,6 +51,30 @@ private class SudokuGridLayoutManager : LayoutManager
     public SudokuGridLayoutManager (SudokuGrid grid)
     {
         this.grid = grid;
+        update_zoom ();
+    }
+
+    public void update_zoom ()
+    {
+        switch (Sudoku.app.zoom_level)
+        {
+            case SMALL:
+                zoom_value_multiplier = 0.4;
+                zoom_earmark_multiplier = 0.25;
+                break;
+            case MEDIUM:
+                zoom_value_multiplier = 0.5;
+                zoom_earmark_multiplier = 0.25;
+                break;
+            case LARGE:
+                zoom_value_multiplier = 0.6;
+                zoom_earmark_multiplier = 0.3;
+                break;
+            default:
+                assert_not_reached ();
+        }
+
+        layout_changed ();
     }
 
     public override void measure (Widget widget,
@@ -98,7 +124,7 @@ private class SudokuGridLayoutManager : LayoutManager
         int maximum_top_offset = 40; //align with the start menu
         top = int.min (top, maximum_top_offset);
 
-        grid.set_font_sizes (height);
+        grid.set_font_sizes (height, zoom_value_multiplier, zoom_earmark_multiplier);
 
         Allocation child_allocation = {start, top, child_width, child_height};
         child.allocate_size (child_allocation, baseline);

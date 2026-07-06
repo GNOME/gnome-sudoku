@@ -31,9 +31,6 @@ public class SudokuGrid : Grid
     public int selected_row { get; private set; default = START.row; }
     public int selected_col { get; private set; default = START.col; }
 
-    private double zoom_value_multiplier;
-    private double zoom_earmark_multiplier;
-
     private GestureClick button_controller;
     private EventControllerFocus focus_controller;
 
@@ -89,7 +86,6 @@ public class SudokuGrid : Grid
         add_controller (button_controller);
 
         number_picker = new SudokuNumberPicker (game);
-        update_zoom ();
 
         for (var block_row = 0; block_row < 3; block_row++)
         {
@@ -111,7 +107,7 @@ public class SudokuGrid : Grid
         {
             for (var col = 0; col < 9; col++)
             {
-                var cell = new SudokuCell (game, this, ref zoom_value_multiplier, ref zoom_earmark_multiplier, row, col);
+                var cell = new SudokuCell (game, this, row, col);
                 var block = get_child_at (col / 3, row / 3) as Grid;
                 block.attach (cell, col % 3, row % 3);
                 cell.select.connect (update_selected);
@@ -252,36 +248,12 @@ public class SudokuGrid : Grid
         }
     }
 
-    public void set_font_sizes (int height)
+    public void set_font_sizes (int height, double zoom_value_multiplier, double zoom_earmark_multiplier)
     {
         foreach (var cell in cells)
         {
-            cell.set_font_sizes (height / 9);
+            cell.set_font_sizes (height / 9, zoom_value_multiplier, zoom_earmark_multiplier);
         }
-    }
-
-    public void update_zoom ()
-    {
-        switch (Sudoku.app.zoom_level)
-        {
-            case SMALL:
-                zoom_value_multiplier = 0.4;
-                zoom_earmark_multiplier = 0.25;
-                break;
-            case MEDIUM:
-                zoom_value_multiplier = 0.5;
-                zoom_earmark_multiplier = 0.25;
-                break;
-            case LARGE:
-                zoom_value_multiplier = 0.6;
-                zoom_earmark_multiplier = 0.3;
-                break;
-            default:
-                assert_not_reached ();
-        }
-
-        foreach (var cell in cells)
-            cell.queue_allocate ();
     }
 
     public void toggle_highlighter ()
