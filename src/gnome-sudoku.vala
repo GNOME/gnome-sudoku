@@ -201,7 +201,12 @@ public class Sudoku : Adw.Application
     protected override void shutdown ()
     {
         if (window != null)
+        {
             window.close ();
+        }
+
+        backend.stop_autosave ();
+        backend.save_game ();
 
         base.shutdown ();
     }
