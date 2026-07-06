@@ -26,6 +26,8 @@ private class SudokuGridLayoutManager : LayoutManager
     private const int MARGIN_SMALL_SIZE = 10;
     private const int MARGIN_SIZE_DIFF = MARGIN_DEFAULT_SIZE - MARGIN_SMALL_SIZE;
 
+    public SudokuGrid grid;
+
     private int get_align (int size)
     {
         if (size > SudokuWindow.MEDIUM_WINDOW_WIDTH)
@@ -41,6 +43,12 @@ private class SudokuGridLayoutManager : LayoutManager
     {
         val.clamp (min, max);
         return (val - min) / (double) (max - min);
+    }
+
+
+    public SudokuGridLayoutManager (SudokuGrid grid)
+    {
+        this.grid = grid;
     }
 
     public override void measure (Widget widget,
@@ -89,6 +97,8 @@ private class SudokuGridLayoutManager : LayoutManager
 
         int maximum_top_offset = 40; //align with the start menu
         top = int.min (top, maximum_top_offset);
+
+        grid.set_font_sizes (height);
 
         Allocation child_allocation = {start, top, child_width, child_height};
         child.allocate_size (child_allocation, baseline);

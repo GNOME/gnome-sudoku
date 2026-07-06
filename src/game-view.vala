@@ -166,7 +166,7 @@ public class SudokuGameView : Adw.BreakpointBin
         this.focusable = true;
 
         grid = new SudokuGrid (game);
-        var grid_layout = new SudokuGridLayoutManager ();
+        var grid_layout = new SudokuGridLayoutManager (grid);
         grid_bin.layout_manager = grid_layout;
         grid_overlay.child = grid;
         initialized = true;

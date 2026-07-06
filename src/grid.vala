@@ -252,6 +252,14 @@ public class SudokuGrid : Grid
         }
     }
 
+    public void set_font_sizes (int height)
+    {
+        foreach (var cell in cells)
+        {
+            cell.set_font_sizes (height / 9);
+        }
+    }
+
     public void update_zoom ()
     {
         switch (Sudoku.app.zoom_level)

@@ -402,9 +402,6 @@ public class SudokuCell : Widget
                                         int height,
                                         int baseline)
     {
-        int zoomed_size = (int) (height * zoom_value_multiplier);
-        set_font_size (value_label, zoomed_size);
-
         Widget child = get_last_child ();
         while (child != null)
         {
@@ -432,13 +429,11 @@ public class SudokuCell : Widget
         int max_earmark_size = width / 3; //3 earmarks per row and per column
         int num = 0;
 
-        zoomed_size = (int) (height * zoom_earmark_multiplier);
         for (int row = 2; row >= 0; row--)
             for (int col = 0; col < 3; col++)
             {
                 if (earmarks[num].visible)
                 {
-                    set_font_size (earmarks[num].label, zoomed_size);
                     earmarks[num].get_preferred_size (null, out nat);
                     earmark_width = int.min (max_earmark_size, nat.width);
                     earmark_height = int.min (max_earmark_size, nat.height);
@@ -454,6 +449,23 @@ public class SudokuCell : Widget
                 }
                 num++;
             }
+    }
+
+    public void set_font_sizes (int height)
+    {
+        if (value_label.visible){
+            int zoomed_size = (int) (height * zoom_value_multiplier);
+            set_font_size (value_label, zoomed_size);
+        }
+
+        var zoomed_size = (int) (height * zoom_earmark_multiplier);
+        foreach (var earmark in earmarks)
+        {
+            if (earmark.visible)
+            {
+                set_font_size (earmark.label, zoomed_size);
+            }
+        }
     }
 
     private void set_font_size (Label label, int font_size)
