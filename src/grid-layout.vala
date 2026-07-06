@@ -124,7 +124,7 @@ private class SudokuGridLayoutManager : LayoutManager
         int maximum_top_offset = 40; //align with the start menu
         top = int.min (top, maximum_top_offset);
 
-        grid.set_font_sizes (height, zoom_value_multiplier, zoom_earmark_multiplier);
+        grid.set_font_sizes (child_height, zoom_value_multiplier, zoom_earmark_multiplier);
 
         Allocation child_allocation = {start, top, child_width, child_height};
         child.allocate_size (child_allocation, baseline);
