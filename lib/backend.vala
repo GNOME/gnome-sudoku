@@ -81,7 +81,7 @@ public class SudokuBackend : Object
 
     public void save_game ()
     {
-        if (game != null && !game.is_empty ())
+        if (game != null && !game.is_empty () && !game.board.complete)
             create_file_for_game (game, active_save_file, true);
         else
             delete_save ();
