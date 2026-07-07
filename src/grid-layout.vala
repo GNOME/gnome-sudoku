@@ -121,6 +121,12 @@ private class SudokuGridLayoutManager : LayoutManager
         int start = int.max (halign, (width - child_width) / 2);
         int top = int.max (valign, (height - child_height) / 2);
 
+        //expand from top left
+        int bottom = height - child_height - top;
+        top = int.max (top, bottom);
+        int end = width - child_width - start;
+        start = int.max (start, end);
+
         int maximum_top_offset = 40; //align with the start menu
         top = int.min (top, maximum_top_offset);
 
