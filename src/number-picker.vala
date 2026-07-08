@@ -227,7 +227,7 @@ private class EarmarkPicker : PickerBase
         base (game);
 
         lock_button = new ToggleButton ();
-        lock_button.set_icon_name ("lock-symbolic");
+        lock_button.set_icon_name ("sudoku-lock-symbolic");
         lock_button.set_tooltip_text (_("Lock"));
         lock_button.toggled.connect (lock_button_toggled_cb);
 

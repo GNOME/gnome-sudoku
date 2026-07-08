@@ -69,12 +69,12 @@ install_man('@0@.6'.format(meson.project_name()))
 
 icondir = join_paths(datadir, 'icons', 'hicolor')
 install_data(
-  'icons/hicolor/scalable/@0@.svg'.format(app_id),
+  'application-icons/hicolor/scalable/@0@.svg'.format(app_id),
   install_dir: join_paths(icondir, 'scalable', 'apps')
 )
 
 install_data(
-  'icons/hicolor/symbolic/@0@-symbolic.svg'.format(base_id),
+  'application-icons/hicolor/symbolic/@0@-symbolic.svg'.format(base_id),
   install_dir: join_paths(icondir, 'symbolic', 'apps'),
   rename: '@0@-symbolic.svg'.format(app_id)
 )

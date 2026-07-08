@@ -14,7 +14,10 @@
     <file preprocess="xml-stripblanks">window.ui</file>
   </gresource>
   <gresource prefix="@base-id-slashed@/icons/scalable/actions/">
-    <file preprocess="xml-stripblanks">pencil-symbolic.svg</file>
-    <file preprocess="xml-stripblanks">lock-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="sudoku-pencil-symbolic.svg">icons/pencil-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="sudoku-play-symbolic.svg">icons/play-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="sudoku-pause-symbolic.svg">icons/pause-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="sudoku-lock-symbolic.svg">icons/lock-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="sudoku-clock-symbolic.svg">icons/clock-symbolic.svg</file>
   </gresource>
 </gresources>

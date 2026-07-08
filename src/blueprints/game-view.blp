@@ -34,7 +34,7 @@ template $SudokuGameView : Adw.BreakpointBin {
         tooltip-text: _("Earmark Mode");
         focus-on-click: false;
         action-name: "game-view.earmark-mode";
-        icon-name: "pencil-symbolic";
+        icon-name: "sudoku-pencil-symbolic";
       }
 
       [start]
@@ -46,14 +46,14 @@ template $SudokuGameView : Adw.BreakpointBin {
           tooltip-text: _("Pause");
           focus-on-click: false;
           action-name: "game-view.toggle-pause";
-          icon-name: "media-playback-pause-symbolic";
+          icon-name: "sudoku-pause-symbolic";
         }
 
         Button play_button {
           tooltip-text: _("Play");
           focus-on-click: false;
           action-name: "game-view.toggle-pause";
-          icon-name: "media-playback-start-symbolic";
+          icon-name: "sudoku-play-symbolic";
         }
       }
 
@@ -70,7 +70,7 @@ template $SudokuGameView : Adw.BreakpointBin {
         Stack clock_stack {
           Image clock_image {
             can-focus: false;
-            icon-name: "preferences-system-time-symbolic";
+            icon-name: "sudoku-clock-symbolic";
             icon-size: normal;
             accessibility {
               label : _("Clock");
