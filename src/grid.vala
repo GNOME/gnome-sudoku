@@ -289,6 +289,7 @@ public class SudokuGrid : Grid
         {
             cell.update_value_warnings ();
             cell.update_all_earmark_warnings ();
+            cell.queue_resize ();
         }
     }
 
