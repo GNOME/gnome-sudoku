@@ -250,6 +250,8 @@ public class SudokuGrid : Grid
 
     public void set_font_sizes (int height, double zoom_value_multiplier, double zoom_earmark_multiplier)
     {
+        var grid_padding = 10; //for size consistency with <= v50
+        height = height - grid_padding;
         foreach (var cell in cells)
         {
             cell.set_font_sizes (height / 9, zoom_value_multiplier, zoom_earmark_multiplier);
