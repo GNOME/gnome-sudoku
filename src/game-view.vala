@@ -343,7 +343,7 @@ public class SudokuGameView : Adw.BreakpointBin
         redo_button.visible = !Sudoku.app.show_timer || !width_is_small || is_vertical;
     }
 
-    private void paused_cb ()
+    private void update_paused_label_size (int width, int height)
     {
         // Set Font Size
         var attr_list = paused_label.get_attributes ();
@@ -351,16 +351,20 @@ public class SudokuGameView : Adw.BreakpointBin
             attr_list = new Pango.AttrList ();
 
         attr_list.change (
-            Pango.AttrSize.new_absolute ((int) (this.get_width () * 0.125) * Pango.SCALE)
+            Pango.AttrSize.new_absolute ((int) (int.min(width, height) * 0.125) * Pango.SCALE)
         );
 
         paused_label.set_attributes (attr_list);
         paused_label.set_visible (this.game.paused);
+    }
 
+    private void paused_cb ()
+    {
         grid.can_focus = !game.paused;
 
         if (game.paused)
         {
+            update_paused_label_size (get_width (), get_height ());
             play_pause_stack.set_visible_child (play_button);
             reset_board_action.set_enabled (false);
             grid_overlay.add_overlay (paused_label);
@@ -494,6 +498,9 @@ public class SudokuGameView : Adw.BreakpointBin
             width_is_small = false;
             update_buttons_visibility ();
         }
+        if (paused_label.visible)
+            update_paused_label_size (width, height);
+
         base.size_allocate (width, height, baseline);
     }
 
