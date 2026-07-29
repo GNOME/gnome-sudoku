@@ -22,8 +22,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-31 10:39+0000\n"
-"PO-Revision-Date: 2026-02-06 00:14+0100\n"
+"POT-Creation-Date: 2026-07-27 17:35+0000\n"
+"PO-Revision-Date: 2026-07-29 17:32+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -31,10 +31,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Project-Style: gnome\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:13
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "Sudoku"
@@ -179,6 +179,10 @@ msgstr "Ukázka hry Sudoku GNOME"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Sudoku v prostředí GNOME v tmavém režimu s oušky a upozorněními"
 
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:57
+msgid "The GNOME Project"
+msgstr "Projekt GNOME"
+
 #: lib/board.vala:839 lib/board.vala:850
 msgid "Unknown Difficulty"
 msgstr "Neznámá obtížnost"
@@ -199,27 +203,31 @@ msgstr "Vysoká obtížnost"
 msgid "Very Hard Difficulty"
 msgstr "Velmi vysoká obtížnost"
 
-#: src/blueprints/game-view.blp:22
+#: src/blueprints/game-view.blp:18
 msgid "Undo Action"
 msgstr "Vrátit akci zpět"
 
-#: src/blueprints/game-view.blp:33
+#: src/blueprints/game-view.blp:26
 msgid "Redo Action"
 msgstr "Znovu provést akci"
 
-#: src/blueprints/game-view.blp:46
+#: src/blueprints/game-view.blp:34
 msgid "Earmark Mode"
 msgstr "Režim oušek"
 
-#: src/blueprints/game-view.blp:60
+#: src/blueprints/game-view.blp:46
 msgid "Pause"
 msgstr "Pozastavit"
 
-#: src/blueprints/game-view.blp:69
+#: src/blueprints/game-view.blp:53
 msgid "Play"
 msgstr "Hrát"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
+#: src/blueprints/game-view.blp:76
+msgid "Clock"
+msgstr "Hodiny"
+
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:235
 msgid "_New Game…"
 msgstr "_Nová hra…"
 
@@ -429,7 +437,7 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "_Velmi těžká"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:313
 msgid "_Start Game"
 msgstr "_Začít hru"
 
@@ -582,16 +590,16 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
-#: src/game-view.vala:149
+#: src/game-view.vala:158
 msgid "Paused"
 msgstr "Pozastaveno"
 
-#: src/game-view.vala:411
+#: src/game-view.vala:459
 msgctxt ".skp is a file extension"
 msgid "Sudoku puzzle.skp"
 msgstr "Sudoku puzzle.skp"
 
-#: src/game-view.vala:430
+#: src/game-view.vala:478
 msgid "Puzzle copied to clipboard"
 msgstr "Sudoku zkopírováno do schránky"
 
@@ -601,57 +609,35 @@ msgid "Show release version"
 msgstr "Zobrazit verzi vydání"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:215
+#: src/gnome-sudoku.vala:223
 msgid "Puzzle Completed!"
 msgstr "Sudoku dokončeno!"
 
-#: src/gnome-sudoku.vala:223
-#, c-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minutu"
-msgstr[1] "%d minuty"
-msgstr[2] "%d minut"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:228
-#, c-format
-msgid "Well done, you completed the puzzle in %s and set a new personal best!"
-msgstr ""
-"Úspěšně hotovo, sudoku jste vyřešili za %s a dosáhli jste nového osobního "
-"rekordu!"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:234
-#, c-format
-msgid "Well done, you completed the puzzle in %s!"
-msgstr "Úspěšně hotovo, sudoku jste vyřešili za %s!"
-
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:225
 msgid "_Quit"
 msgstr "U_končit"
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:228
 msgid "_Change Difficulty"
 msgstr "_Změnit obtížnost"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:229
 msgid "_Play Again"
 msgstr "Hrát znov_u"
 
-#: src/gnome-sudoku.vala:359
+#: src/gnome-sudoku.vala:345
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr "Import sudoku se nezdařil, zadejte prosím platné Sudoku puzzle"
 
-#: src/gnome-sudoku.vala:360
+#: src/gnome-sudoku.vala:346
 msgid "_Cancel"
 msgstr "_Zrušit"
 
-#: src/gnome-sudoku.vala:361
+#: src/gnome-sudoku.vala:347
 msgid "_Try Again"
 msgstr "Zkusi_t znovu"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:406
 msgid "translator-credits"
 msgstr ""
 "Jirka Lébl\n"
@@ -686,8 +672,26 @@ msgid "Error printing file:"
 msgstr "Chyba při tisku souboru:"
 
 #: src/printer.vala:45
-msgid "Close"
-msgstr "Zavřít"
+msgid "_Close"
+msgstr "Za_vřít"
+
+#, c-format
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d minutu"
+#~ msgstr[1] "%d minuty"
+#~ msgstr[2] "%d minut"
+
+#, c-format
+#~ msgid ""
+#~ "Well done, you completed the puzzle in %s and set a new personal best!"
+#~ msgstr ""
+#~ "Úspěšně hotovo, sudoku jste vyřešili za %s a dosáhli jste nového osobního "
+#~ "rekordu!"
+
+#, c-format
+#~ msgid "Well done, you completed the puzzle in %s!"
+#~ msgstr "Úspěšně hotovo, sudoku jste vyřešili za %s!"
 
 #~ msgid "Difficulty level of sudokus to be printed"
 #~ msgstr "Úroveň obtížnosti tisknutých sudoku"
@@ -890,9 +894,6 @@ msgstr "Zavřít"
 
 #~ msgid "Go back to the current game"
 #~ msgstr "Vrátit se do současné hry"
-
-#~ msgid "The GNOME Project"
-#~ msgstr "Projekt GNOME"
 
 #~ msgid "_Create your own puzzle"
 #~ msgstr "_Vytvořit svůj vlastní hlavolam"
