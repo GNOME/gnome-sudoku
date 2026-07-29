@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-10 11:08+0000\n"
-"PO-Revision-Date: 2026-01-26 20:20+0500\n"
+"POT-Creation-Date: 2026-07-27 17:35+0000\n"
+"PO-Revision-Date: 2026-07-29 11:43+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "Language: kk\n"
@@ -16,9 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:13
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "Судоку"
@@ -165,47 +165,55 @@ msgstr "GNOME судоку ойынын алдын ала қарау"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Белгілері мен ескертулері бар, қараңғы режимдегі GNOME судоку ойыны"
 
-#: lib/board.vala:846 lib/board.vala:857
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:57
+msgid "The GNOME Project"
+msgstr "GNOME жобасы"
+
+#: lib/board.vala:839 lib/board.vala:850
 msgid "Unknown Difficulty"
 msgstr "Белгісіз қиындық"
 
-#: lib/board.vala:848
+#: lib/board.vala:841
 msgid "Easy Difficulty"
 msgstr "Оңай қиындық"
 
-#: lib/board.vala:850
+#: lib/board.vala:843
 msgid "Medium Difficulty"
 msgstr "Орташа қиындық"
 
-#: lib/board.vala:852
+#: lib/board.vala:845
 msgid "Hard Difficulty"
 msgstr "Жоғары қиындық"
 
-#: lib/board.vala:854
+#: lib/board.vala:847
 msgid "Very Hard Difficulty"
 msgstr "Өте жоғары қиындық"
 
-#: src/blueprints/game-view.blp:22
+#: src/blueprints/game-view.blp:18
 msgid "Undo Action"
 msgstr "Әрекетті болдырмау"
 
-#: src/blueprints/game-view.blp:33
+#: src/blueprints/game-view.blp:26
 msgid "Redo Action"
 msgstr "Әрекетті қайталау"
 
-#: src/blueprints/game-view.blp:46
+#: src/blueprints/game-view.blp:34
 msgid "Earmark Mode"
 msgstr "Белгілеу режимі"
 
-#: src/blueprints/game-view.blp:60
+#: src/blueprints/game-view.blp:46
 msgid "Pause"
 msgstr "Аялдату"
 
-#: src/blueprints/game-view.blp:69
+#: src/blueprints/game-view.blp:53
 msgid "Play"
 msgstr "Ойнау"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
+#: src/blueprints/game-view.blp:76
+msgid "Clock"
+msgstr "Сағат"
+
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:235
 msgid "_New Game…"
 msgstr "_Жаңа ойын…"
 
@@ -415,15 +423,15 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "Өт_е қиын"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:313
 msgid "_Start Game"
 msgstr "Ойынды ба_стау"
 
-#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:162
+#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:164
 msgid "_Open..."
 msgstr "_Ашу..."
 
-#: src/blueprints/start-view.blp:147
+#: src/blueprints/start-view.blp:148
 msgid "_Start Shared Game"
 msgstr "Ортақ ойынды _бастау"
 
@@ -567,16 +575,16 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Толық экран"
 
-#: src/game-view.vala:149
+#: src/game-view.vala:158
 msgid "Paused"
 msgstr "Аялдатылған"
 
-#: src/game-view.vala:411
+#: src/game-view.vala:459
 msgctxt ".skp is a file extension"
 msgid "Sudoku puzzle.skp"
 msgstr "Sudoku puzzle.skp"
 
-#: src/game-view.vala:430
+#: src/game-view.vala:478
 msgid "Puzzle copied to clipboard"
 msgstr "Жұмбақ ойыны алмасу буферіне көшірілді"
 
@@ -586,53 +594,35 @@ msgid "Show release version"
 msgstr "Шығарылым нұсқасын көрсету"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:215
+#: src/gnome-sudoku.vala:223
 msgid "Puzzle Completed!"
 msgstr "Жұмбақ ойыны аяқталды!"
 
-#: src/gnome-sudoku.vala:223
-#, c-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d минут"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:228
-#, c-format
-msgid "Well done, you completed the puzzle in %s and set a new personal best!"
-msgstr "Жарайсыз, сіз ойынды %s ішінде аяқтап, жаңа жеке рекорд орнаттыңыз!"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:234
-#, c-format
-msgid "Well done, you completed the puzzle in %s!"
-msgstr "Жарайсыз, сіз ойынды %s ішінде аяқтадыңыз!"
-
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:225
 msgid "_Quit"
 msgstr "_Шығу"
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:228
 msgid "_Change Difficulty"
 msgstr "Қиындықты өз_герту"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:229
 msgid "_Play Again"
 msgstr "Қ_айта ойнау"
 
-#: src/gnome-sudoku.vala:359
+#: src/gnome-sudoku.vala:345
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr "Жұмбақ ойынын импорттау сәтсіз аяқталды, жарамды Судоку ойынын енгізіңіз"
 
-#: src/gnome-sudoku.vala:360
+#: src/gnome-sudoku.vala:346
 msgid "_Cancel"
 msgstr "Ба_с тарту"
 
-#: src/gnome-sudoku.vala:361
+#: src/gnome-sudoku.vala:347
 msgid "_Try Again"
 msgstr "Қ_айта көру"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:406
 msgid "translator-credits"
 msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 
@@ -654,8 +644,21 @@ msgid "Error printing file:"
 msgstr "Файлды баспаға шығару қатесі:"
 
 #: src/printer.vala:45
-msgid "Close"
-msgstr "Жабу"
+msgid "_Close"
+msgstr "_Жабу"
+
+#, c-format
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d минут"
+
+#, c-format
+#~ msgid "Well done, you completed the puzzle in %s and set a new personal best!"
+#~ msgstr "Жарайсыз, сіз ойынды %s ішінде аяқтап, жаңа жеке рекорд орнаттыңыз!"
+
+#, c-format
+#~ msgid "Well done, you completed the puzzle in %s!"
+#~ msgstr "Жарайсыз, сіз ойынды %s ішінде аяқтадыңыз!"
 
 #~ msgid "Create Custom Game…"
 #~ msgstr "Таңдауыңызша ойынды жасау…"
@@ -785,9 +788,6 @@ msgstr "Жабу"
 
 #~ msgid "Start playing the custom puzzle you have created"
 #~ msgstr "Сіз жасаған таңдауыңызша ойжұмбақпен ойынды бастау"
-
-#~ msgid "The GNOME Project"
-#~ msgstr "GNOME жобасы"
 
 #~ msgid "Additionally warn when correct solution is violated or not earmarked"
 #~ msgstr "Дұрыс шешім бұзылған немесе тағайындалмаған кезде қосымша ескерту"
