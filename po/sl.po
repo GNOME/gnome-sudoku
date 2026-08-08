@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-06 17:09+0000\n"
-"PO-Revision-Date: 2026-01-06 21:11+0100\n"
+"POT-Creation-Date: 2026-08-08 08:48+0000\n"
+"PO-Revision-Date: 2026-08-08 12:45+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-"
 "si@googlegroups.com>\n"
@@ -173,23 +173,27 @@ msgstr "Predogled uganke Sudoku GNOME"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Igra sudoku za GNOME v temnem načinu z ušesci in opozorili"
 
-#: lib/board.vala:846 lib/board.vala:857
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:57
+msgid "The GNOME Project"
+msgstr "Projekt GNOME"
+
+#: lib/board.vala:839 lib/board.vala:850
 msgid "Unknown Difficulty"
 msgstr "Neznana zahtevnost"
 
-#: lib/board.vala:848
+#: lib/board.vala:841
 msgid "Easy Difficulty"
 msgstr "Enostavna uganka"
 
-#: lib/board.vala:850
+#: lib/board.vala:843
 msgid "Medium Difficulty"
 msgstr "Srednje zahtevna uganka"
 
-#: lib/board.vala:852
+#: lib/board.vala:845
 msgid "Hard Difficulty"
 msgstr "Zahtevna uganka"
 
-#: lib/board.vala:854
+#: lib/board.vala:847
 msgid "Very Hard Difficulty"
 msgstr "Zelo zahtevna uganka"
 
@@ -213,7 +217,7 @@ msgstr "Premor"
 msgid "Play"
 msgstr "Igraj"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:254
 msgid "_New Game…"
 msgstr "_Nova igra …"
 
@@ -423,15 +427,15 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "_Zelo zahtevna"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:331
 msgid "_Start Game"
 msgstr "_Začni igro"
 
-#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:162
+#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:164
 msgid "_Open..."
 msgstr "_Odpri ..."
 
-#: src/blueprints/start-view.blp:147
+#: src/blueprints/start-view.blp:148
 msgid "_Start Shared Game"
 msgstr "Za_čni deljeno igro"
 
@@ -576,16 +580,16 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Celozaslonski način"
 
-#: src/game-view.vala:149
+#: src/game-view.vala:144
 msgid "Paused"
 msgstr "Začasno ustavljeno"
 
-#: src/game-view.vala:411
+#: src/game-view.vala:409
 msgctxt ".skp is a file extension"
 msgid "Sudoku puzzle.skp"
 msgstr "Uganka sudoku.skp"
 
-#: src/game-view.vala:430
+#: src/game-view.vala:428
 msgid "Puzzle copied to clipboard"
 msgstr "Uganka kopirana na odložišče"
 
@@ -595,11 +599,11 @@ msgid "Show release version"
 msgstr "Pokaži podrobnosti različice"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:215
+#: src/gnome-sudoku.vala:219
 msgid "Puzzle Completed!"
 msgstr "Uganka rešena!"
 
-#: src/gnome-sudoku.vala:223
+#: src/gnome-sudoku.vala:227
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -609,7 +613,7 @@ msgstr[2] "%d minutah"
 msgstr[3] "%d minutah"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:228
+#: src/gnome-sudoku.vala:232
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
@@ -617,36 +621,36 @@ msgstr ""
 "rekord!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:234
+#: src/gnome-sudoku.vala:238
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Dobro opravljeno, sestavljanko ste dokončali v %s!"
 
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:245
 msgid "_Quit"
 msgstr "_Izhod"
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:248
 msgid "_Change Difficulty"
 msgstr "_Spremeni zahtevnost"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:249
 msgid "_Play Again"
 msgstr "_Nova igra"
 
-#: src/gnome-sudoku.vala:359
+#: src/gnome-sudoku.vala:363
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr "Uvoz uganke je spodletel, vnesite veljavno uganko Sudoku"
 
-#: src/gnome-sudoku.vala:360
+#: src/gnome-sudoku.vala:364
 msgid "_Cancel"
 msgstr "Pre_kliči"
 
-#: src/gnome-sudoku.vala:361
+#: src/gnome-sudoku.vala:365
 msgid "_Try Again"
 msgstr "_Poskusi znova"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:423
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
@@ -675,15 +679,3 @@ msgstr "Napaka med tiskanjem datoteke:"
 #: src/printer.vala:45
 msgid "Close"
 msgstr "Zapri"
-
-#~ msgctxt "Shortcuts Window"
-#~ msgid "New Game"
-#~ msgstr "Nova igra"
-
-#~ msgctxt "Shortcuts Window"
-#~ msgid "Reset Puzzle"
-#~ msgstr "Ponastavi uganko"
-
-#~ msgctxt "Shortcuts Window"
-#~ msgid "Print Current Puzzle"
-#~ msgstr "Natisni trenutno uganko"
