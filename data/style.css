@@ -20,6 +20,15 @@
   sudoku-cell {
     background: var(--view-bg-color);
   }
+
+  /*workaround for https://gitlab.gnome.org/GNOME/gtk/-/work_items/8338 */
+  sudoku-cell label.value {
+    background: var(--view-bg-color);
+  }
+  sudoku-cell label.earmark {
+    background: var(--view-bg-color);
+  }
+
   sudoku-cell.fixed {
     background: #CCC;
   }
@@ -111,14 +120,23 @@ sudoku-cell.paused label {
 sudoku-cell.selected {
   background: var(--sudoku-accent-color);
 }
+
+/*workaround for https://gitlab.gnome.org/GNOME/gtk/-/work_items/8338 */
+sudoku-cell.selected label.value {
+  background: var(--sudoku-accent-color);
+}
+sudoku-cell.selected label.earmark {
+  background: var(--sudoku-accent-color);
+}
+
 sudoku-picker {
   margin: 2px;
 }
-sudoku-picker .earmark {
+sudoku-picker .earmark-button {
   margin-right: 16px;
   margin-bottom: 8px;
 }
-sudoku-picker .value {
+sudoku-picker .value-button {
   margin-right: 8px;
   margin-left: 8px;
   margin-top: 4px;

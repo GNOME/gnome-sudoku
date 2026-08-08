@@ -184,7 +184,7 @@ private class ValuePicker : PickerBase
 
                 var label = button.child as Label;
                 label.add_css_class ("numeric");
-                label.add_css_class ("value");
+                label.add_css_class ("value-button");
 
                 value_buttons[n - 1] = button;
                 value_buttons[n - 1].clicked.connect (value_picked_cb);
@@ -251,7 +251,7 @@ private class EarmarkPicker : PickerBase
 
                 var label = button.child as Label;
                 label.add_css_class ("numeric");
-                label.add_css_class ("earmark");
+                label.add_css_class ("earmark-button");
                 button.set_child (label);
 
                 earmark_buttons[n - 1] = button;
