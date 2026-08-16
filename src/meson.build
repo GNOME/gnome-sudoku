@@ -1,19 +1,4 @@
-blueprints = custom_target(
-  'blueprints',
-  input: files(
-    'blueprints/game-view.blp',
-    'blueprints/menu-button.blp',
-    'blueprints/preferences-dialog.blp',
-    'blueprints/print-multiple-dialog.blp',
-    'blueprints/shortcuts-dialog.blp',
-    'blueprints/start-view.blp',
-    'blueprints/window.blp',
-  ),
-  output: '.',
-  install_dir: '@CURRENT_SOURCE_DIR@',
-  command: [blueprintc, 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
-  depends: metainfo_file,
-)
+subdir ('blueprints')
 
 resources = gnome.compile_resources(
   'gnome-sudoku',
