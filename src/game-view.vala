@@ -399,7 +399,7 @@ public class SudokuGameView : Adw.BreakpointBin
 
     private void show_timer_cb ()
     {
-        clock_box.visible = Sudoku.app.show_timer && (!width_is_small || is_vertical);
+        update_buttons_visibility ();
         toggle_pause_action.set_enabled (Sudoku.app.show_timer);
         play_pause_stack.visible = Sudoku.app.show_timer;
         if (Sudoku.app.show_timer)
