@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-31 10:39+0000\n"
-"PO-Revision-Date: 2026-02-08 13:59+0200\n"
+"POT-Creation-Date: 2026-08-18 15:49+0000\n"
+"PO-Revision-Date: 2026-08-20 15:16+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -24,10 +24,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2010-09-13 15:09+0000\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-POT-Import-Date: 2012-03-05 14:46:29+0000\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:13
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
 msgid "Sudoku"
 msgstr "Sudoku"
@@ -177,6 +177,10 @@ msgstr "Gnome Sudoku -pelin esikatselu"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "Sudokupeli, tumma tyyli, muistiinpanot ja varoitukset"
 
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:57
+msgid "The GNOME Project"
+msgstr "Gnome-projekti"
+
 #: lib/board.vala:839 lib/board.vala:850
 msgid "Unknown Difficulty"
 msgstr "Tuntematon vaikeustaso"
@@ -197,27 +201,31 @@ msgstr "Vaikea vaikeustaso"
 msgid "Very Hard Difficulty"
 msgstr "Erittäin vaikea vaikeustaso"
 
-#: src/blueprints/game-view.blp:22
+#: src/blueprints/game-view.blp:18
 msgid "Undo Action"
 msgstr "Kumoa toiminto"
 
-#: src/blueprints/game-view.blp:33
+#: src/blueprints/game-view.blp:26
 msgid "Redo Action"
 msgstr "Tee toiminto uudelleen"
 
-#: src/blueprints/game-view.blp:46
+#: src/blueprints/game-view.blp:34
 msgid "Earmark Mode"
 msgstr "Muistiinpanotila"
 
-#: src/blueprints/game-view.blp:60
+#: src/blueprints/game-view.blp:46
 msgid "Pause"
 msgstr "Keskeytä"
 
-#: src/blueprints/game-view.blp:69
+#: src/blueprints/game-view.blp:53
 msgid "Play"
 msgstr "Pelaa"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
+#: src/blueprints/game-view.blp:76
+msgid "Clock"
+msgstr "Kello"
+
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:235
 msgid "_New Game…"
 msgstr "_Uusi peli…"
 
@@ -427,7 +435,7 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "_Hyvin vaikea"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:313
 msgid "_Start Game"
 msgstr "_Käynnistä peli"
 
@@ -580,16 +588,16 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Koko näyttö"
 
-#: src/game-view.vala:149
+#: src/game-view.vala:158
 msgid "Paused"
 msgstr "Keskeytetty"
 
-#: src/game-view.vala:411
+#: src/game-view.vala:459
 msgctxt ".skp is a file extension"
 msgid "Sudoku puzzle.skp"
 msgstr "Sudoku-pulma.skp"
 
-#: src/game-view.vala:430
+#: src/game-view.vala:478
 msgid "Puzzle copied to clipboard"
 msgstr "Pulma kopioitu leikepöydälle"
 
@@ -599,55 +607,35 @@ msgid "Show release version"
 msgstr "Näytä julkaisuversio"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:215
+#: src/gnome-sudoku.vala:223
 msgid "Puzzle Completed!"
 msgstr "Pulma ratkaistu!"
 
-#: src/gnome-sudoku.vala:223
-#, c-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minuutissa"
-msgstr[1] "%d minuutissa"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:228
-#, c-format
-msgid "Well done, you completed the puzzle in %s and set a new personal best!"
-msgstr ""
-"Onnittelut, ratkaisit pulman %s, ja se on henkilökohtainen ennätyksesi!"
-
-#. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:234
-#, c-format
-msgid "Well done, you completed the puzzle in %s!"
-msgstr "Onnittelut, ratkaisit pulman %s!"
-
-#: src/gnome-sudoku.vala:241
+#: src/gnome-sudoku.vala:225
 msgid "_Quit"
 msgstr "_Lopeta"
 
-#: src/gnome-sudoku.vala:244
+#: src/gnome-sudoku.vala:228
 msgid "_Change Difficulty"
 msgstr "_Vaihda vaikeustasoa"
 
-#: src/gnome-sudoku.vala:245
+#: src/gnome-sudoku.vala:229
 msgid "_Play Again"
 msgstr "_Pelaa uudelleen"
 
-#: src/gnome-sudoku.vala:359
+#: src/gnome-sudoku.vala:345
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr "Pulman tuonti epäonnistui, kirjoita kelvollinen Sudoku-pulma"
 
-#: src/gnome-sudoku.vala:360
+#: src/gnome-sudoku.vala:346
 msgid "_Cancel"
 msgstr "_Peru"
 
-#: src/gnome-sudoku.vala:361
+#: src/gnome-sudoku.vala:347
 msgid "_Try Again"
 msgstr "_Yritä uudelleen"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:406
 msgid "translator-credits"
 msgstr ""
 "Jiri Grönroos, 2012-2026\n"
@@ -686,8 +674,24 @@ msgid "Error printing file:"
 msgstr "Virhe tulostaessa tiedostoa:"
 
 #: src/printer.vala:45
-msgid "Close"
-msgstr "Sulje"
+msgid "_Close"
+msgstr "_Sulje"
+
+#, c-format
+#~ msgid "%d minute"
+#~ msgid_plural "%d minutes"
+#~ msgstr[0] "%d minuutissa"
+#~ msgstr[1] "%d minuutissa"
+
+#, c-format
+#~ msgid ""
+#~ "Well done, you completed the puzzle in %s and set a new personal best!"
+#~ msgstr ""
+#~ "Onnittelut, ratkaisit pulman %s, ja se on henkilökohtainen ennätyksesi!"
+
+#, c-format
+#~ msgid "Well done, you completed the puzzle in %s!"
+#~ msgstr "Onnittelut, ratkaisit pulman %s!"
 
 #~ msgid "Difficulty level of sudokus to be printed"
 #~ msgstr "Tulostettavien sudokujen vaikeustaso"
@@ -861,9 +865,6 @@ msgstr "Sulje"
 
 #~ msgid "Go back to the current game"
 #~ msgstr "Siirry takaisin nykyiseen peliin"
-
-#~ msgid "The GNOME Project"
-#~ msgstr "Gnome-projekti"
 
 #~ msgid "_Create your own puzzle"
 #~ msgstr "_Luo oma pulma"
