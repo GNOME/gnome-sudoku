@@ -20,15 +20,6 @@
   sudoku-cell {
     background: var(--view-bg-color);
   }
-
-  /*workaround for https://gitlab.gnome.org/GNOME/gtk/-/work_items/8338 */
-  sudoku-cell label.value {
-    background: var(--view-bg-color);
-  }
-  sudoku-cell label.earmark {
-    background: var(--view-bg-color);
-  }
-
   sudoku-cell.fixed {
     background: #CCC;
   }
