@@ -1,5 +1,5 @@
 # Hungarian translation for gnome-sudoku.
-# Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025 Free Software Foundation, Inc.
+# Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025, 2026 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-sudoku package.
 #
 # Szabolcs Ban <shooby at gnome dot hu>, 1999, 2000, 2001.
@@ -9,13 +9,13 @@
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Szabolcs Varga <shirokuma at shirokuma dot hu>, 2005.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2025-08-27 10:59+0000\n"
-"PO-Revision-Date: 2025-08-27 23:19+0200\n"
+"POT-Creation-Date: 2026-06-27 08:24+0000\n"
+"PO-Revision-Date: 2026-09-01 21:58+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
@@ -215,6 +215,10 @@ msgstr "Egy GNOME sudoku játékelőnézet"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "GNOME sudoku játék sötét módban, füljelzőkkel és figyelmeztetésekkel"
 
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:57
+msgid "The GNOME Project"
+msgstr "A GNOME projekt"
+
 #: lib/sudoku-board.vala:531
 msgid "Unknown Difficulty"
 msgstr "Ismeretlen nehézség"
@@ -337,8 +341,6 @@ msgid "General"
 msgstr "Általános"
 
 #: src/blueprints/preferences-dialog.blp:10
-#| msgctxt "General Preferences"
-#| msgid "_Timer and Pause Buttons"
 msgctxt "General Preferences"
 msgid "_Timer and Highscores"
 msgstr "_Időzítő és legjobb pontszámok"
@@ -632,7 +634,7 @@ msgstr "_Vissza"
 msgid "Play _Anyway"
 msgstr "Játszás _mindenképp"
 
-#: src/gnome-sudoku.vala:262
+#: src/gnome-sudoku.vala:260
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -640,38 +642,32 @@ msgstr[0] "%d perc"
 msgstr[1] "%d perc"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:267
+#: src/gnome-sudoku.vala:265
 #, c-format
-#| msgid "Well done, you completed the puzzle in %d minute!"
-#| msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
-"Szép munka, a feladványt %s alatt oldotta meg, és új személyes rekordot állíto"
-"tt fel!"
+"Szép munka, a feladványt %s alatt oldotta meg, és új személyes rekordot "
+"állított fel!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:274
+#: src/gnome-sudoku.vala:272
 #, c-format
-#| msgid "Well done, you completed the puzzle in %d minute!"
-#| msgid_plural "Well done, you completed the puzzle in %d minutes!"
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Szép munka, a feladványt %s alatt oldotta meg!"
 
-#: src/gnome-sudoku.vala:279
-#| msgid "Well done, you completed the puzzle in %d minute!"
-#| msgid_plural "Well done, you completed the puzzle in %d minutes!"
+#: src/gnome-sudoku.vala:277
 msgid "Well done, you completed the puzzle!"
 msgstr "Szép munka, megoldotta a feladványt!"
 
-#: src/gnome-sudoku.vala:282
+#: src/gnome-sudoku.vala:280
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/gnome-sudoku.vala:283
+#: src/gnome-sudoku.vala:281
 msgid "Play _Again"
 msgstr "Játék új_ra"
 
-#: src/gnome-sudoku.vala:483
+#: src/gnome-sudoku.vala:482
 msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby at gnome dot hu>\n"
