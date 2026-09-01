@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-01-31 10:39+0000\n"
-"PO-Revision-Date: 2026-02-22 18:22+0100\n"
+"POT-Creation-Date: 2026-08-28 16:24+0000\n"
+"PO-Revision-Date: 2026-09-01 21:56+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:12
 #: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
@@ -45,7 +45,6 @@ msgid "Initialize the earmarks with the possible values for each cell"
 msgstr "A füljelzők előkészítése az egyes cellák lehetséges értékeivel"
 
 #: data/org.gnome.Sudoku.gschema.xml:25
-#| msgid "Check earmarks against duplicates in row, column and block"
 msgid "Check for duplicates in row, column and block"
 msgstr "Kettőzések ellenőrzése a sorban, az oszlopban és a blokkban"
 
@@ -136,8 +135,8 @@ msgstr "Végtelen mennyiségű új feladvány előállítása a qqwing használa
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:19
 msgid "Easily share puzzles with friends, or save them for later."
 msgstr ""
-"Könnyedén megoszthatja a feladványokat az ismerőseivel, vagy elmentheti azokat"
-" későbbre."
+"Könnyedén megoszthatja a feladványokat az ismerőseivel, vagy elmentheti "
+"azokat későbbre."
 
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:20
 msgid "Adjust a scalable grid to your preferences."
@@ -175,6 +174,10 @@ msgstr "Egy GNOME sudoku játékelőnézet"
 #: data/org.gnome.Sudoku.metainfo.xml.in.in:36
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "GNOME sudoku játék sötét módban, füljelzőkkel és figyelmeztetésekkel"
+
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:57
+msgid "The GNOME Project"
+msgstr "A GNOME projekt"
 
 #: lib/board.vala:839 lib/board.vala:850
 msgid "Unknown Difficulty"
@@ -216,17 +219,15 @@ msgstr "Szüneteltetés"
 msgid "Play"
 msgstr "Játszás"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:250
+#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:254
 msgid "_New Game…"
 msgstr "Ú_j játék…"
 
 #: src/blueprints/menu-button.blp:12
-#| msgid "_Reset Puzzle"
 msgid "_Puzzle"
 msgstr "_Feladvány"
 
 #: src/blueprints/menu-button.blp:16
-#| msgid "_Reset Puzzle"
 msgid "_Reset"
 msgstr "_Visszaállítás"
 
@@ -317,13 +318,11 @@ msgid "Warnings"
 msgstr "Figyelmeztetések"
 
 #: src/blueprints/preferences-dialog.blp:33
-#| msgid "_Warnings"
 msgctxt "Warning Preferences"
 msgid "_Duplicate Warnings"
 msgstr "_Kettőzési figyelmeztetések"
 
 #: src/blueprints/preferences-dialog.blp:38
-#| msgid "_Warnings"
 msgctxt "Warning Preferences"
 msgid "S_olution Warnings"
 msgstr "_Megoldási figyelmeztetések"
@@ -358,17 +357,14 @@ msgid "Print Multiple Puzzles"
 msgstr "Több feladvány nyomtatása"
 
 #: src/blueprints/print-multiple-dialog.blp:23
-#| msgid "Number of Puzzles"
 msgid "_Number of Puzzles"
 msgstr "Feladványok _száma"
 
 #: src/blueprints/print-multiple-dialog.blp:38
-#| msgid "Number of puzzles per page"
 msgid "_Number of Puzzles per Page"
 msgstr "Feladványok _száma oldalanként"
 
 #: src/blueprints/print-multiple-dialog.blp:52
-#| msgid "Difficulty"
 msgid "_Difficulty"
 msgstr "_Nehézség"
 
@@ -389,13 +385,10 @@ msgid "Very Hard"
 msgstr "Nagyon nehéz"
 
 #: src/blueprints/print-multiple-dialog.blp:68
-#| msgctxt "Shortcuts Window"
-#| msgid "Print Current Puzzle"
 msgid "Print _Current Puzzle"
 msgstr "_Jelenlegi feladvány nyomtatása"
 
 #: src/blueprints/print-multiple-dialog.blp:76
-#| msgid "_Print"
 msgid "_Print…"
 msgstr "_Nyomtatás…"
 
@@ -436,7 +429,7 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "N_agyon nehéz"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:327
+#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:331
 msgid "_Start Game"
 msgstr "Játék _indítása"
 
@@ -445,7 +438,6 @@ msgid "_Open..."
 msgstr "_Megnyitás…"
 
 #: src/blueprints/start-view.blp:148
-#| msgid "_Start Game"
 msgid "_Start Shared Game"
 msgstr "Megosztott játék _indítása"
 
@@ -501,7 +493,6 @@ msgid "Redo"
 msgstr "Újra"
 
 #: src/blueprints/shortcuts-dialog.blp:64
-#| msgid "_New Game…"
 msgctxt "Shortcuts Window"
 msgid "New Game…"
 msgstr "Új játék…"
@@ -522,15 +513,11 @@ msgid "Zoom Reset"
 msgstr "Nagyítás visszaállítása"
 
 #: src/blueprints/shortcuts-dialog.blp:84
-#| msgctxt "Shortcuts Window"
-#| msgid "Reset Puzzle"
 msgctxt "Shortcuts Window"
 msgid "Puzzle"
 msgstr "Feladvány"
 
 #: src/blueprints/shortcuts-dialog.blp:88
-#| msgctxt "Shortcuts Window"
-#| msgid "Zoom Reset"
 msgctxt "Shortcuts Window"
 msgid "Reset"
 msgstr "Visszaállítás"
@@ -595,17 +582,16 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
-#: src/game-view.vala:149
-#| msgid "Pause"
+#: src/game-view.vala:144
 msgid "Paused"
 msgstr "Szüneteltetve"
 
-#: src/game-view.vala:411
+#: src/game-view.vala:409
 msgctxt ".skp is a file extension"
 msgid "Sudoku puzzle.skp"
 msgstr "Sudoku feladvány.skp"
 
-#: src/game-view.vala:430
+#: src/game-view.vala:428
 msgid "Puzzle copied to clipboard"
 msgstr "A feladvány a vágólapra másolva"
 
@@ -615,11 +601,11 @@ msgid "Show release version"
 msgstr "Verziószám megjelenítése"
 
 #. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:215
+#: src/gnome-sudoku.vala:219
 msgid "Puzzle Completed!"
 msgstr "A feladvány befejezve!"
 
-#: src/gnome-sudoku.vala:223
+#: src/gnome-sudoku.vala:227
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -627,7 +613,7 @@ msgstr[0] "%d perc"
 msgstr[1] "%d perc"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:228
+#: src/gnome-sudoku.vala:232
 #, c-format
 msgid "Well done, you completed the puzzle in %s and set a new personal best!"
 msgstr ""
@@ -635,41 +621,38 @@ msgstr ""
 "állított fel!"
 
 #. TRANSLATORS: %s is a localized time string in minute(s)
-#: src/gnome-sudoku.vala:234
+#: src/gnome-sudoku.vala:238
 #, c-format
 msgid "Well done, you completed the puzzle in %s!"
 msgstr "Szép munka, a feladványt %s alatt oldotta meg!"
 
-#: src/gnome-sudoku.vala:241
-#| msgid "Quit"
+#: src/gnome-sudoku.vala:245
 msgid "_Quit"
 msgstr "_Kilépés"
 
-#: src/gnome-sudoku.vala:244
-#| msgid "Easy Difficulty"
+#: src/gnome-sudoku.vala:248
 msgid "_Change Difficulty"
 msgstr "Nehézség _megváltoztatása"
 
-#: src/gnome-sudoku.vala:245
-#| msgid "Play _Again"
+#: src/gnome-sudoku.vala:249
 msgid "_Play Again"
 msgstr "_Játék újra"
 
-#: src/gnome-sudoku.vala:359
+#: src/gnome-sudoku.vala:363
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr ""
-"Nem sikerült importálni a feladványt, adjon meg egy érvényes Sudoku-feladványt"
+"Nem sikerült importálni a feladványt, adjon meg egy érvényes Sudoku-"
+"feladványt"
 
-#: src/gnome-sudoku.vala:360
+#: src/gnome-sudoku.vala:364
 msgid "_Cancel"
 msgstr "_Mégse"
 
-#: src/gnome-sudoku.vala:361
-#| msgid "Play _Again"
+#: src/gnome-sudoku.vala:365
 msgid "_Try Again"
 msgstr "_Próbálja újra"
 
-#: src/gnome-sudoku.vala:419
+#: src/gnome-sudoku.vala:423
 msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby at gnome dot hu>\n"
