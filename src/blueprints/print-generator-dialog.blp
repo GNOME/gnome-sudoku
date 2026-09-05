@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $SudokuPrintDialog: Adw.Dialog {
+template $SudokuPrintGeneratorDialog: Adw.Dialog {
   title: _("Print Multiple Puzzles");
   content-width: 460;
   focus-widget: print_button;
@@ -28,7 +28,6 @@ template $SudokuPrintDialog: Adw.Dialog {
             adjustment: Adjustment {
               lower: 1;
               upper: 120; //divisible by 2, 3 and 4
-              value: 2;
               step-increment: 1;
               page-increment: 5;
             };
@@ -42,7 +41,6 @@ template $SudokuPrintDialog: Adw.Dialog {
             adjustment: Adjustment {
               lower: 1;
               upper: 4;
-              value: 1;
               step-increment: 1;
               page-increment: 1;
             };
@@ -60,8 +58,6 @@ template $SudokuPrintDialog: Adw.Dialog {
                 _("Very Hard"),
               ]
             };
-
-            selected: 1;
           }
 
           Adw.SwitchRow print_current_puzzle_row {
@@ -76,7 +72,7 @@ template $SudokuPrintDialog: Adw.Dialog {
           label: _("_Print…");
           halign: center;
           use-underline: true;
-          clicked => $print();
+          clicked => $print_button_pressed() swapped;
 
           styles [
             "suggested-action",

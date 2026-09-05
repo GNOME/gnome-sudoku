@@ -50,7 +50,7 @@ template $SudokuStartView : Adw.Bin {
               title: C_("Difficulty", "_Custom");
               use-underline: true;
               activatable-widget: custom_check;
-              activated => $custom_checkbutton_activated_cb();
+              activated => $custom_checkbutton_activated_cb() swapped;
             }
           }
 
@@ -65,7 +65,7 @@ template $SudokuStartView : Adw.Bin {
               title: C_("Difficulty", "_Easy");
               use-underline: true;
               activatable-widget: easy_check;
-              activated => $difficulty_checkbutton_activated_cb();
+              activated => $difficulty_checkbutton_activated_cb() swapped;
             }
 
             Adw.ActionRow {
@@ -79,7 +79,7 @@ template $SudokuStartView : Adw.Bin {
               title: C_("Difficulty", "_Medium");
               use-underline: true;
               activatable-widget: medium_check;
-              activated => $difficulty_checkbutton_activated_cb();
+              activated => $difficulty_checkbutton_activated_cb() swapped;
             }
 
             Adw.ActionRow {
@@ -93,7 +93,7 @@ template $SudokuStartView : Adw.Bin {
               title: C_("Difficulty", "_Hard");
               use-underline: true;
               activatable-widget: hard_check;
-              activated => $difficulty_checkbutton_activated_cb();
+              activated => $difficulty_checkbutton_activated_cb() swapped;
             }
 
             Adw.ActionRow {
@@ -107,7 +107,7 @@ template $SudokuStartView : Adw.Bin {
               title: C_("Difficulty", "_Very Hard");
               use-underline: true;
               activatable-widget: very_hard_check;
-              activated => $difficulty_checkbutton_activated_cb();
+              activated => $difficulty_checkbutton_activated_cb() swapped;
             }
           }
 
@@ -119,7 +119,7 @@ template $SudokuStartView : Adw.Bin {
               halign: center;
               label: _("_Start Game");
               use-underline: true;
-              clicked => $start_game_cb();
+              clicked => $start_game_cb() swapped;
 
               styles [
                 "pill",
@@ -137,7 +137,7 @@ template $SudokuStartView : Adw.Bin {
                 label: _("_Open...");
                 can-shrink: true;
                 use-underline: true;
-                clicked => $open_file_cb();
+                clicked => $open_file_cb() swapped;
 
                 styles [
                   "round"
@@ -149,7 +149,7 @@ template $SudokuStartView : Adw.Bin {
                 hexpand: true;
                 can-shrink: true;
                 use-underline: true;
-                clicked => $start_shared_game_cb();
+                clicked => $start_shared_game_cb() swapped;
 
                 styles [
                   "round",
@@ -161,9 +161,9 @@ template $SudokuStartView : Adw.Bin {
             Button open_button_pill {
               margin-top: 12;
               halign: center;
-              label: _("_Open...");
+              label: _("_Open…");
               use-underline: true;
-              clicked => $open_file_cb();
+              clicked => $open_file_cb() swapped;
 
               styles [
                 "pill",

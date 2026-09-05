@@ -1,5 +1,10 @@
 using Gtk 4.0;
 using Adw 1;
+using Gio 2.0;
+
+Gio.Settings settings {
+  schema-id: "org.gnome.Sudoku";
+}
 
 template $SudokuWindow: Adw.ApplicationWindow {
   title: _("Sudoku");
@@ -7,8 +12,7 @@ template $SudokuWindow: Adw.ApplicationWindow {
   content: Adw.ViewStack view_stack {
     enable-transitions: true;
 
-    $SudokuStartView start_view {}
-
     $SudokuGameView game_view {}
+    $SudokuStartView start_view {}
   };
 }

@@ -4,7 +4,7 @@ blueprints = custom_target(
     'game-view.blp',
     'menu-button.blp',
     'preferences-dialog.blp',
-    'print-multiple-dialog.blp',
+    'print-generator-dialog.blp',
     'shortcuts-dialog.blp',
     'start-view.blp',
     'window.blp',

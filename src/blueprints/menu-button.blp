@@ -21,7 +21,7 @@ menu primary-menu {
       section {
         item {
           label: _("_Share");
-          action: "game-view.share-puzzle-to-clipboard";
+          action: "game-view.share-puzzle";
         }
 
         item {
@@ -31,14 +31,14 @@ menu primary-menu {
 
         item {
           label: _("_Export…");
-          action: "game-view.export-puzzle-to-filesystem";
+          action: "game-view.export-puzzle";
         }
       }
 
       section {
         item {
           label: _("Print _Generator");
-          action: "app.print-generator";
+          action: "app.print-generator-dialog";
         }
       }
     }
@@ -81,13 +81,12 @@ menu primary-menu {
 
     item {
       label: _("_About Sudoku");
-      action: "app.about";
+      action: "app.about-dialog";
     }
   }
 }
 
 template $SudokuMenuButton : Adw.Bin {
-
   MenuButton {
     icon-name: "open-menu-symbolic";
     primary: true;

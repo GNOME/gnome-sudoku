@@ -26,10 +26,10 @@
   sudoku-cell.highlight-coord {
     background: oklch(from var(--sudoku-accent-color) calc(l - 0.02) calc(c * 0.25) h);
   }
-  sudoku-cell.highlight-number {
+  sudoku-cell.highlight-digit {
     background: oklch(from var(--sudoku-accent-color) calc(l - 0.07) c h);
   }
-  sudoku-cell .earmark.highlight-number {
+  sudoku-earmark.highlight-digit {
     color: oklab(from var(--sudoku-accent-color) 0.5 a b);
     font-weight: bold;
   }
@@ -55,7 +55,7 @@
   sudoku-grid {
     background: oklch(0.56 0 0);
   }
-  sudoku-grid > .block {
+  sudoku-block {
     background: oklch(0.47 0 0);
   }
   sudoku-cell {
@@ -67,12 +67,12 @@
   sudoku-cell.highlight-coord {
     background: oklch(from var(--sudoku-accent-color) l calc(c * 0.25) h);
   }
-  sudoku-cell .earmark.highlight-number {
+  sudoku-cell.highlight-digit {
+    background: oklch(from var(--sudoku-accent-color) 0.32 calc(c * 0.7) h);
+  }
+  sudoku-earmark.highlight-digit {
     color: oklab(from var(--sudoku-accent-color) 0.85 a b);
     font-weight: bold;
-  }
-  sudoku-cell.highlight-number {
-    background: oklch(from var(--sudoku-accent-color) 0.32 calc(c * 0.7) h);
   }
   sudoku-cell.paused {
     background: var(--sudoku-dark-grey);
@@ -84,13 +84,13 @@
 :root {
   --sudoku-pause-delay: 2s;
 }
-sudoku-cell .error {
+sudoku-cell.error {
   color: var(--error-color);
 }
-sudoku-cell .error.earmark {
+sudoku-earmark.error{
   text-decoration: line-through;
 }
-sudoku-cell .error.value {
+sudoku-value.error {
   font-weight: bold;
 }
 @keyframes slow-appear {
@@ -104,38 +104,38 @@ overlay.paused > label {
   transition: background var(--sudoku-pause-delay);
   animation: slow-appear var(--sudoku-pause-delay) forwards;
 }
-sudoku-cell.paused label {
+.paused > sudoku-value, .paused sudoku-earmark {
   opacity: 0;
   transition: opacity var(--sudoku-pause-delay);
 }
-sudoku-cell.selected {
+sudoku-cell.accented {
   background: var(--sudoku-accent-color);
 }
 
 /*workaround for https://gitlab.gnome.org/GNOME/gtk/-/work_items/8338 */
-sudoku-cell.selected label.value {
+sudoku-cell.accented sudoku-value {
   background: var(--sudoku-accent-color);
 }
-sudoku-cell.selected label.earmark {
+sudoku-cell.selected sudoku-earmark {
   background: var(--sudoku-accent-color);
 }
 
 sudoku-picker {
   margin: 2px;
 }
-sudoku-picker .earmark-button {
-  margin-right: 16px;
-  margin-bottom: 8px;
-}
-sudoku-picker .value-button {
-  margin-right: 8px;
-  margin-left: 8px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
 sudoku-picker .text-button {
   font-size: larger;
   /*Overrides the default text-button padding*/
   padding-left: 10px;
   padding-right: 10px;
+}
+sudoku-picker label.earmark {
+  margin-right: 16px;
+  margin-bottom: 8px;
+}
+sudoku-picker label.value {
+  margin-right: 8px;
+  margin-left: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }

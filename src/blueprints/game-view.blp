@@ -2,7 +2,11 @@ using Gtk 4.0;
 using Adw 1;
 
 template $SudokuGameView : Adw.BreakpointBin {
-  Adw.ToolbarView {
+  Label paused_label {
+    label: _("Paused");
+  }
+
+  child: Adw.ToolbarView {
     top-bar-style: raised;
     bottom-bar-style: raised;
 
@@ -104,7 +108,7 @@ template $SudokuGameView : Adw.BreakpointBin {
         Overlay grid_overlay {}
       }
     };
-  }
+  };
 
   Adw.Breakpoint ui_breakpoint {
     condition ("max-aspect-ratio: 3/4")

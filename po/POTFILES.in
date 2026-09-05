@@ -4,9 +4,6 @@ data/org.gnome.Sudoku.desktop.in.in
 data/org.gnome.Sudoku.gschema.xml
 data/org.gnome.Sudoku.metainfo.xml.in.in
 
-lib/board.vala
-lib/game.vala
-
 src/blueprints/game-view.blp
 src/blueprints/menu-button.blp
 src/blueprints/preferences-dialog.blp
@@ -15,8 +12,11 @@ src/blueprints/start-view.blp
 src/blueprints/shortcuts-dialog.blp
 src/blueprints/window.blp
 
-src/game-view.vala
-src/gnome-sudoku.vala
-src/number-picker.vala
-src/printer.vala
-src/window.vala
+src/lib/enums.rs
+
+src/earmark-picker.rs
+src/game-view.rs
+src/main.rs
+src/printer.rs
+src/value-picker.rs
+src/window.rs
