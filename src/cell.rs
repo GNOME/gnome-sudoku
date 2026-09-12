@@ -335,8 +335,8 @@ mod imp {
 
     impl ObjectImpl for SudokuCell {
         fn constructed(&self) {
-            self.setup_actions();
             self.parent_constructed();
+            self.setup_actions();
         }
 
         fn dispose (&self) {

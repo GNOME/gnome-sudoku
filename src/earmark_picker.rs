@@ -85,6 +85,8 @@ mod imp {
 
     impl ObjectImpl for SudokuEarmarkPicker {
         fn constructed(&self) {
+            self.parent_constructed();
+
             self.clear_button.connect_clicked(glib::clone!(
                 #[weak(rename_to = earmark_picker)] self,
                 move |_|
@@ -98,15 +100,17 @@ mod imp {
             ));
             self.obj().attach (&self.clear_button, 0, 4, 2, 1);
 
+            let unlock = gettextrs::gettext("Unlock");
+            let lock = gettextrs::gettext("Lock");
             self.lock_button.connect_toggled(glib::clone!(
                 #[weak(rename_to = earmark_picker)] self,
                 move |lock_button: &gtk::ToggleButton|
                 {
                     if lock_button.is_active() {
-                        lock_button.set_tooltip_text(Some(&gettextrs::gettext("Unlock")));
+                        lock_button.set_tooltip_text(Some(&unlock));
                     }
                     else {
-                        lock_button.set_tooltip_text(Some(&gettextrs::gettext("Lock")));
+                        lock_button.set_tooltip_text(Some(&lock));
                         earmark_picker.finished();
                     }
                 }
@@ -133,8 +137,6 @@ mod imp {
                     self.obj().attach(button, col_block as i32, row_block as i32, 1, 1);
                 }
             }
-
-            self.parent_constructed();
         }
 
         fn signals() -> &'static [Signal] {

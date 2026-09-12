@@ -40,8 +40,6 @@ use std::cell::{Cell, OnceCell};
 
 mod imp {
 
-use crate::earmark_picker::SudokuEarmarkPicker;
-
 use super::*;
 
     #[glib::object_subclass]
@@ -336,6 +334,7 @@ use super::*;
 
     impl ObjectImpl for SudokuGrid {
         fn constructed(&self) {
+            self.parent_constructed();
             self.obj().set_direction(gtk::TextDirection::Ltr);
 
             let focus_controller = EventControllerFocus::new();
@@ -392,8 +391,6 @@ use super::*;
                     block.attach(cell, col % 3, row % 3, 1, 1);
                 }
             }
-
-            self.parent_constructed();
         }
 
         fn dispose(&self) {

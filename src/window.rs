@@ -98,6 +98,8 @@ mod imp {
 
     impl ObjectImpl for SudokuWindow {
         fn constructed(&self) {
+            self.parent_constructed();
+
             self.setup_actions();
 
             self.settings.bind("default-height", self.obj().as_ref(), "default-height").build();
@@ -139,8 +141,6 @@ mod imp {
             let headerbar_natural_height = measure.1;
             let small_window_height = headerbar_natural_height + config::SMALL_WINDOW_WIDTH;
             self.obj().set_height_request(small_window_height);
-
-            self.parent_constructed();
         }
 
         fn dispose(&self) {

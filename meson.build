@@ -1,6 +1,6 @@
 project(
   'gnome-sudoku',
-  ['rust'],
+  'rust',
   license: 'GPL3+',
   meson_version: '>= 1.4',
   version: '52.alpha'

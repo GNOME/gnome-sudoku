@@ -164,6 +164,7 @@ use super::*;
             self.backend.set(backend.clone()).expect("Game View is already initialized");
             self.obj().set_size_request (window.width_request(), window.height_request());
             connect_cb_pref!(self, connect_pref_timer_notify, show_timer_cb);
+            self.setup_actions();
 
             let backwards_controller = GestureClick::new();
             backwards_controller.set_button(8);
@@ -578,7 +579,7 @@ use super::*;
 
     impl ObjectImpl for SudokuGameView {
         fn constructed(&self) {
-            self.setup_actions();
+            self.parent_constructed();
             self.grid_overlay.set_child(Some(&self.grid));
 
             self.menu_button.imp().main_menu.connect_closed(glib::clone!(
@@ -588,8 +589,6 @@ use super::*;
                     game_view.grab_focus();
                 }
             ));
-
-            self.parent_constructed();
         }
 
         fn dispose(&self) {

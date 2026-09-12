@@ -292,9 +292,8 @@ mod imp {
 
     impl ObjectImpl for SudokuStartView {
         fn constructed(&self) {
-            self.very_hard_check.set_active(true);
-
             self.parent_constructed();
+            self.very_hard_check.set_active(true);
         }
 
         fn dispose(&self) {
