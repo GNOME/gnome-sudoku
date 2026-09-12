@@ -82,25 +82,25 @@ mod imp {
         pub fn init (&self, backend: &SudokuBackend) {
             self.backend.set(backend.clone()).expect("PreferencesDialog is already initialized");
 
-            self.backend().bind_property("show-timer", &*self.show_timer, "active")
+            self.backend().bind_property("pref-timer", &*self.show_timer, "active")
                 .flags(BindingFlags::SYNC_CREATE | BindingFlags::BIDIRECTIONAL).build();
-            self.backend().bind_property("autoclean-earmarks", &*self.autoclean_earmarks, "active")
+            self.backend().bind_property("pref-autoclean-earmarks", &*self.autoclean_earmarks, "active")
                 .flags(BindingFlags::SYNC_CREATE | BindingFlags::BIDIRECTIONAL).build();
-            self.backend().bind_property("number_picker-second_click", &*self.number_picker_second_click, "active")
+            self.backend().bind_property("pref-picker-second-click", &*self.number_picker_second_click, "active")
                 .flags(BindingFlags::SYNC_CREATE | BindingFlags::BIDIRECTIONAL).build();
-            self.backend().bind_property("show-possibilities", &*self.show_possibilities, "active")
+            self.backend().bind_property("pref-show-all-possibilities", &*self.show_possibilities, "active")
                 .flags(BindingFlags::SYNC_CREATE | BindingFlags::BIDIRECTIONAL).build();
-            self.backend().bind_property("duplicate_warnings", &*self.duplicate_warnings, "active")
+            self.backend().bind_property("pref-duplicate-warnings", &*self.duplicate_warnings, "active")
                 .flags(BindingFlags::SYNC_CREATE | BindingFlags::BIDIRECTIONAL).build();
-            self.backend().bind_property("solution-warnings", &*self.solution_warnings, "active")
+            self.backend().bind_property("pref-solution-warnings", &*self.solution_warnings, "active")
                 .flags(BindingFlags::SYNC_CREATE | BindingFlags::BIDIRECTIONAL).build();
-            self.backend().bind_property("earmark-warnings", &*self.earmark_warnings, "active")
+            self.backend().bind_property("pref-earmark-warnings", &*self.earmark_warnings, "active")
                 .flags(BindingFlags::SYNC_CREATE | BindingFlags::BIDIRECTIONAL).build();
-            self.backend().bind_property("highlight-row-column", &*self.highlight_row_column, "active")
+            self.backend().bind_property("pref-highlight-row-column", &*self.highlight_row_column, "active")
                 .flags(BindingFlags::SYNC_CREATE | BindingFlags::BIDIRECTIONAL).build();
-            self.backend().bind_property("highlight-block", &*self.highlight_block, "active")
+            self.backend().bind_property("pref-highlight-block", &*self.highlight_block, "active")
                 .flags(BindingFlags::SYNC_CREATE | BindingFlags::BIDIRECTIONAL).build();
-            self.backend().bind_property("highlight-numbers", &*self.highlight_numbers, "active")
+            self.backend().bind_property("pref-highlight-numbers", &*self.highlight_numbers, "active")
                 .flags(BindingFlags::SYNC_CREATE | BindingFlags::BIDIRECTIONAL).build();
         }
     }
