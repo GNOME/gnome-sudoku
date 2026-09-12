@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-09-12 06:44+0000\n"
-"PO-Revision-Date: 2026-09-12 14:40+0200\n"
+"POT-Creation-Date: 2026-09-12 18:25+0000\n"
+"PO-Revision-Date: 2026-09-12 23:19+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-"
 "si@googlegroups.com>\n"
@@ -201,7 +201,7 @@ msgstr "Igraj"
 msgid "Clock"
 msgstr "Ura"
 
-#: src/blueprints/menu-button.blp:7 src/game_view.rs:464
+#: src/blueprints/menu-button.blp:7 src/game_view.rs:467
 msgid "_New Game…"
 msgstr "_Nova igra …"
 
@@ -411,7 +411,7 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "_Zelo zahtevna"
 
-#: src/blueprints/start-view.blp:120
+#: src/blueprints/start-view.blp:120 src/start_view.rs:135
 msgid "_Start Game"
 msgstr "_Začni igro"
 
@@ -568,18 +568,80 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Celozaslonski način"
 
-#: src/game_view.rs:452
+#: src/lib/enums.rs:52
+msgid "Easy Difficulty"
+msgstr "Enostavna uganka"
+
+#: src/lib/enums.rs:53
+msgid "Medium Difficulty"
+msgstr "Srednje zahtevna uganka"
+
+#: src/lib/enums.rs:54
+msgid "Hard Difficulty"
+msgstr "Zahtevna uganka"
+
+#: src/lib/enums.rs:55
+msgid "Very Hard Difficulty"
+msgstr "Zelo zahtevna uganka"
+
+#: src/earmark_picker.rs:73
+msgid "Lock"
+msgstr "Zakleni"
+
+#: src/earmark_picker.rs:81 src/value_picker.rs:75
+msgid "Clear"
+msgstr "Počisti"
+
+#: src/game_view.rs:388
+msgid "Puzzle copied to clipboard"
+msgstr "Uganka je bila kopirana v odložišče"
+
+#: src/game_view.rs:424
+msgctxt ".skp is a file extension"
+msgid "Sudoku puzzle.skp"
+msgstr "Sudoku-uganka.skp"
+
+#: src/game_view.rs:455
 msgid "Puzzle Completed!"
 msgstr "Uganka rešena!"
 
-#: src/game_view.rs:454
+#: src/game_view.rs:457
 msgid "_Quit"
 msgstr "_Izhod"
 
-#: src/game_view.rs:457
+#: src/game_view.rs:460
 msgid "_Change Difficulty"
 msgstr "_Spremeni zahtevnost"
 
-#: src/game_view.rs:458 src/game_view.rs:463
+#: src/game_view.rs:461 src/game_view.rs:466
 msgid "_Play Again"
 msgstr "_Nova igra"
+
+#. Help string for command line --version flag
+#: src/main.rs:167
+msgid "Show release version"
+msgstr "Pokaži podrobnosti različice"
+
+#: src/printer.rs:52
+msgid "Error printing file:"
+msgstr "Napaka pri tiskanju datoteke:"
+
+#: src/printer.rs:55
+msgid "_Close"
+msgstr "_Zapri"
+
+#: src/start_view.rs:178
+msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
+msgstr "Uganke ni možno uvoziti, vnesite veljavno uganko Sudoku"
+
+#: src/start_view.rs:181
+msgid "_Cancel"
+msgstr "Pre_kliči"
+
+#: src/start_view.rs:182
+msgid "_Try Again"
+msgstr "_Poskusi znova"
+
+#: src/window.rs:299
+msgid "translator-credits"
+msgstr "Martin Srebotnjak  <miles@filmsi.net>"
