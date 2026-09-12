@@ -22,8 +22,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-07-27 17:35+0000\n"
-"PO-Revision-Date: 2026-07-29 17:32+0200\n"
+"POT-Creation-Date: 2026-09-12 06:44+0000\n"
+"PO-Revision-Date: 2026-09-12 11:52+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -34,8 +34,8 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 "X-Project-Style: gnome\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:13
-#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:17
+#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:10
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -89,27 +89,23 @@ msgstr "Zvýrazňovat blok vybraného políčka"
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Zvýrazňovat odpovídající čísla vybraného políčka"
 
-#: data/org.gnome.Sudoku.gschema.xml:61
-msgid "The puzzle's difficulty"
-msgstr "Obtížnost sudoku"
-
-#: data/org.gnome.Sudoku.gschema.xml:68
+#: data/org.gnome.Sudoku.gschema.xml:64
 msgid "Zoom level"
 msgstr "Úroveň přiblížení"
 
-#: data/org.gnome.Sudoku.gschema.xml:72
+#: data/org.gnome.Sudoku.gschema.xml:68
 msgid "Width of the window in pixels"
 msgstr "Šířka okna v pixelech"
 
-#: data/org.gnome.Sudoku.gschema.xml:76
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Height of the window in pixels"
 msgstr "Výška okna v pixelech"
 
-#: data/org.gnome.Sudoku.gschema.xml:80
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "true if the window is maximized"
 msgstr "Zapnuto, když je okno maximalizováno"
 
-#: data/org.gnome.Sudoku.gschema.xml:84
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "true if the window is fullscreen"
 msgstr "Zapnuto, když je okno přes celou obrazovku"
 
@@ -183,51 +179,35 @@ msgstr "Sudoku v prostředí GNOME v tmavém režimu s oušky a upozorněními"
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
-#: lib/board.vala:839 lib/board.vala:850
-msgid "Unknown Difficulty"
-msgstr "Neznámá obtížnost"
+#: src/blueprints/game-view.blp:6
+msgid "Paused"
+msgstr "Pozastaveno"
 
-#: lib/board.vala:841
-msgid "Easy Difficulty"
-msgstr "Nízká obtížnost"
-
-#: lib/board.vala:843
-msgid "Medium Difficulty"
-msgstr "Střední obtížnost"
-
-#: lib/board.vala:845
-msgid "Hard Difficulty"
-msgstr "Vysoká obtížnost"
-
-#: lib/board.vala:847
-msgid "Very Hard Difficulty"
-msgstr "Velmi vysoká obtížnost"
-
-#: src/blueprints/game-view.blp:18
+#: src/blueprints/game-view.blp:22
 msgid "Undo Action"
 msgstr "Vrátit akci zpět"
 
-#: src/blueprints/game-view.blp:26
+#: src/blueprints/game-view.blp:30
 msgid "Redo Action"
 msgstr "Znovu provést akci"
 
-#: src/blueprints/game-view.blp:34
+#: src/blueprints/game-view.blp:38
 msgid "Earmark Mode"
 msgstr "Režim oušek"
 
-#: src/blueprints/game-view.blp:46
+#: src/blueprints/game-view.blp:50
 msgid "Pause"
 msgstr "Pozastavit"
 
-#: src/blueprints/game-view.blp:53
+#: src/blueprints/game-view.blp:57
 msgid "Play"
 msgstr "Hrát"
 
-#: src/blueprints/game-view.blp:76
+#: src/blueprints/game-view.blp:80
 msgid "Clock"
 msgstr "Hodiny"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:235
+#: src/blueprints/menu-button.blp:7 src/game_view.rs:464
 msgid "_New Game…"
 msgstr "_Nová hra…"
 
@@ -275,23 +255,23 @@ msgstr "_Nápověda"
 msgid "_About Sudoku"
 msgstr "O _aplikaci Sudoku"
 
-#: src/blueprints/menu-button.blp:94
+#: src/blueprints/menu-button.blp:93
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
-#: src/blueprints/menu-button.blp:103
+#: src/blueprints/menu-button.blp:102
 msgid "Zoom Out"
 msgstr "Oddálit"
 
-#: src/blueprints/menu-button.blp:115
+#: src/blueprints/menu-button.blp:114
 msgid "Zoom In"
 msgstr "Přiblížit"
 
-#: src/blueprints/menu-button.blp:130
+#: src/blueprints/menu-button.blp:129
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
-#: src/blueprints/menu-button.blp:141
+#: src/blueprints/menu-button.blp:140
 msgid "Leave Fullscreen"
 msgstr "Opustit celou obrazovku"
 
@@ -360,43 +340,43 @@ msgctxt "Highlighter Preferences"
 msgid "Highlight Matching _Numbers"
 msgstr "Zvýrazňovat odpovídající čís_la"
 
-#: src/blueprints/print-multiple-dialog.blp:5
+#: src/blueprints/print-generator-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "Tisk několika sudoku"
 
-#: src/blueprints/print-multiple-dialog.blp:23
+#: src/blueprints/print-generator-dialog.blp:23
 msgid "_Number of Puzzles"
 msgstr "_Počet sudoku"
 
-#: src/blueprints/print-multiple-dialog.blp:38
+#: src/blueprints/print-generator-dialog.blp:37
 msgid "_Number of Puzzles per Page"
 msgstr "_Počet sudoku na stránku"
 
-#: src/blueprints/print-multiple-dialog.blp:52
+#: src/blueprints/print-generator-dialog.blp:50
 msgid "_Difficulty"
 msgstr "_Obtížnost"
 
-#: src/blueprints/print-multiple-dialog.blp:57
+#: src/blueprints/print-generator-dialog.blp:55
 msgid "Easy"
 msgstr "Jednoduchá"
 
-#: src/blueprints/print-multiple-dialog.blp:58
+#: src/blueprints/print-generator-dialog.blp:56
 msgid "Medium"
 msgstr "Střední"
 
-#: src/blueprints/print-multiple-dialog.blp:59
+#: src/blueprints/print-generator-dialog.blp:57
 msgid "Hard"
 msgstr "Těžká"
 
-#: src/blueprints/print-multiple-dialog.blp:60
+#: src/blueprints/print-generator-dialog.blp:58
 msgid "Very Hard"
 msgstr "Velmi těžká"
 
-#: src/blueprints/print-multiple-dialog.blp:68
+#: src/blueprints/print-generator-dialog.blp:64
 msgid "Print _Current Puzzle"
 msgstr "Vytisknout _současné sudoku"
 
-#: src/blueprints/print-multiple-dialog.blp:76
+#: src/blueprints/print-generator-dialog.blp:72
 msgid "_Print…"
 msgstr "_Tisk…"
 
@@ -437,17 +417,21 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "_Velmi těžká"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:313
+#: src/blueprints/start-view.blp:120
 msgid "_Start Game"
 msgstr "_Začít hru"
 
-#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:164
+#: src/blueprints/start-view.blp:137
 msgid "_Open..."
 msgstr "_Otevřít…"
 
 #: src/blueprints/start-view.blp:148
 msgid "_Start Shared Game"
 msgstr "_Začít sdílenou hru"
+
+#: src/blueprints/start-view.blp:164
+msgid "_Open…"
+msgstr "_Otevřít…"
 
 #: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
@@ -590,90 +574,89 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
-#: src/game-view.vala:158
-msgid "Paused"
-msgstr "Pozastaveno"
-
-#: src/game-view.vala:459
-msgctxt ".skp is a file extension"
-msgid "Sudoku puzzle.skp"
-msgstr "Sudoku puzzle.skp"
-
-#: src/game-view.vala:478
-msgid "Puzzle copied to clipboard"
-msgstr "Sudoku zkopírováno do schránky"
-
-#. Help string for command line --version flag
-#: src/gnome-sudoku.vala:91
-msgid "Show release version"
-msgstr "Zobrazit verzi vydání"
-
-#. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:223
+#: src/game_view.rs:452
 msgid "Puzzle Completed!"
 msgstr "Sudoku dokončeno!"
 
-#: src/gnome-sudoku.vala:225
+#: src/game_view.rs:454
 msgid "_Quit"
 msgstr "U_končit"
 
-#: src/gnome-sudoku.vala:228
+#: src/game_view.rs:457
 msgid "_Change Difficulty"
 msgstr "_Změnit obtížnost"
 
-#: src/gnome-sudoku.vala:229
+#: src/game_view.rs:458 src/game_view.rs:463
 msgid "_Play Again"
 msgstr "Hrát znov_u"
 
-#: src/gnome-sudoku.vala:345
-msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
-msgstr "Import sudoku se nezdařil, zadejte prosím platné Sudoku puzzle"
+#~ msgid "The puzzle's difficulty"
+#~ msgstr "Obtížnost sudoku"
 
-#: src/gnome-sudoku.vala:346
-msgid "_Cancel"
-msgstr "_Zrušit"
+#~ msgid "Unknown Difficulty"
+#~ msgstr "Neznámá obtížnost"
 
-#: src/gnome-sudoku.vala:347
-msgid "_Try Again"
-msgstr "Zkusi_t znovu"
+#~ msgid "Easy Difficulty"
+#~ msgstr "Nízká obtížnost"
 
-#: src/gnome-sudoku.vala:406
-msgid "translator-credits"
-msgstr ""
-"Jirka Lébl\n"
-"Michal Bukovjan <bukm@centrum.cz>\n"
-"Miloslav Trmač <mitr@volny.cz>\n"
-"Petr Tomeš <ptomes@gmail.com>\n"
-"Lukáš Novotný <lukasnov@cvs.gnome.org>\n"
-"Jakub Friedl <jfriedl@suse.cz>\n"
-"Jan Parkman <parkmaj@users.sourceforge.net>\n"
-"Petr Kovář <pknbe@volny.cz>\n"
-"Lucas Lommer <llommer@svn.gnome.org>\n"
-"Kamil Páral <ripper42@gmail.com>\n"
-"Marek Lisý <marek.lisy@centrum.cz>\n"
-"Petr Pulc <petrpulc@gmail.com>\n"
-"Marek Černocký <marek@manet.cz>"
+#~ msgid "Medium Difficulty"
+#~ msgstr "Střední obtížnost"
 
-#: src/number-picker.vala:134
-msgid "Clear"
-msgstr "Vymazat"
+#~ msgid "Hard Difficulty"
+#~ msgstr "Vysoká obtížnost"
 
-#: src/number-picker.vala:231 src/number-picker.vala:306
-msgid "Lock"
-msgstr "Uzamknout"
+#~ msgid "Very Hard Difficulty"
+#~ msgstr "Velmi vysoká obtížnost"
 
-#: src/number-picker.vala:303
-msgid "Unlock"
-msgstr "Odemknout"
+#~ msgctxt ".skp is a file extension"
+#~ msgid "Sudoku puzzle.skp"
+#~ msgstr "Sudoku puzzle.skp"
 
-#. Error message if printing fails
-#: src/printer.vala:44
-msgid "Error printing file:"
-msgstr "Chyba při tisku souboru:"
+#~ msgid "Puzzle copied to clipboard"
+#~ msgstr "Sudoku zkopírováno do schránky"
 
-#: src/printer.vala:45
-msgid "_Close"
-msgstr "Za_vřít"
+#~ msgid "Show release version"
+#~ msgstr "Zobrazit verzi vydání"
+
+#~ msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
+#~ msgstr "Import sudoku se nezdařil, zadejte prosím platné Sudoku puzzle"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Zrušit"
+
+#~ msgid "_Try Again"
+#~ msgstr "Zkusi_t znovu"
+
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Jirka Lébl\n"
+#~ "Michal Bukovjan <bukm@centrum.cz>\n"
+#~ "Miloslav Trmač <mitr@volny.cz>\n"
+#~ "Petr Tomeš <ptomes@gmail.com>\n"
+#~ "Lukáš Novotný <lukasnov@cvs.gnome.org>\n"
+#~ "Jakub Friedl <jfriedl@suse.cz>\n"
+#~ "Jan Parkman <parkmaj@users.sourceforge.net>\n"
+#~ "Petr Kovář <pknbe@volny.cz>\n"
+#~ "Lucas Lommer <llommer@svn.gnome.org>\n"
+#~ "Kamil Páral <ripper42@gmail.com>\n"
+#~ "Marek Lisý <marek.lisy@centrum.cz>\n"
+#~ "Petr Pulc <petrpulc@gmail.com>\n"
+#~ "Marek Černocký <marek@manet.cz>"
+
+#~ msgid "Clear"
+#~ msgstr "Vymazat"
+
+#~ msgid "Lock"
+#~ msgstr "Uzamknout"
+
+#~ msgid "Unlock"
+#~ msgstr "Odemknout"
+
+#~ msgid "Error printing file:"
+#~ msgstr "Chyba při tisku souboru:"
+
+#~ msgid "_Close"
+#~ msgstr "Za_vřít"
 
 #, c-format
 #~ msgid "%d minute"
