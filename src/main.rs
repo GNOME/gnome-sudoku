@@ -133,6 +133,19 @@ use super::*;
 
     impl ObjectImpl for GnomeSudoku {
         fn constructed(&self) {
+            use config::*;
+            setlocale(LocaleCategory::LcAll, "");
+            gettextrs::bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR)
+                .expect("Unable to bind the text domain");
+            gettextrs::bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8")
+                .expect("Unable to bind the text domain codeset");
+            gettextrs::textdomain(GETTEXT_PACKAGE).expect("Unable to switch to the text domain");
+
+            let resources = gio::Resource::from_data(&glib::Bytes::from_static(GNOME_SUDOKU_RESOURCES))
+                .expect("failed to load resources");
+
+            gio::resources_register(&resources);
+
             self.parent_constructed();
         }
 
@@ -170,20 +183,7 @@ impl GnomeSudoku {
     }
 }
 
-fn main() -> glib::ExitCode {
-    use config::*;
-    setlocale(LocaleCategory::LcAll, "");
-    gettextrs::bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR)
-        .expect("Unable to bind the text domain");
-    gettextrs::bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8")
-        .expect("Unable to bind the text domain codeset");
-    gettextrs::textdomain(GETTEXT_PACKAGE).expect("Unable to switch to the text domain");
-
-    let resources = gio::Resource::from_data(&glib::Bytes::from_static(GNOME_SUDOKU_RESOURCES))
-        .expect("failed to load resources");
-
-    gio::resources_register(&resources);
-
+fn main() {
     let app = GnomeSudoku::new();
-    return app.run();
+    app.run();
 }
