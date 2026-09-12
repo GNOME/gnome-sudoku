@@ -322,7 +322,6 @@ mod imp {
         fn zoom_in (&self) {
             let backend = self.backend();
             backend.set_pref_zoom(backend.pref_zoom().zoom_in());
-            game!(backend)._auto_complete();
             if backend.pref_zoom().is_fully_zoomed_in() {
                 self.zoom_in_action.set_enabled(false);
             }
