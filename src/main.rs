@@ -46,6 +46,7 @@ mod print_generator_dialog;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 
+use gettextrs::{LocaleCategory, setlocale};
 use gtk::gio;
 use gtk::gio::ApplicationFlags;
 use gtk::glib::{self, Char, OptionArg, OptionFlags};
@@ -171,6 +172,7 @@ impl GnomeSudoku {
 
 fn main() -> glib::ExitCode {
     use config::*;
+    setlocale(LocaleCategory::LcAll, "");
     gettextrs::bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR)
         .expect("Unable to bind the text domain");
     gettextrs::bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8")
