@@ -132,7 +132,7 @@ mod imp {
         fn open_file_cb (&self, _: &gtk::Button) {
             let file_dialog = FileDialog::new();
             use gettextrs::gettext;
-            file_dialog.set_accept_label(Some(&gettext("Start Game")));
+            file_dialog.set_accept_label(Some(&gettext("_Start Game")));
             let filter = {
                 let default = file_dialog.default_filter();
                 if default.is_none() {
@@ -179,7 +179,7 @@ mod imp {
                 None
             );
             dialog.add_response("close", &gettext("_Cancel"));
-            dialog.add_response("open", &gettext("Try Again"));
+            dialog.add_response("open", &gettext("_Try Again"));
             dialog.set_response_appearance("open", adw::ResponseAppearance::Suggested);
             dialog.set_default_response(Some("open"));
 
