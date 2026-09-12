@@ -18,10 +18,10 @@ You can find out more about the project at the [wiki's homepage](https://gitlab.
 
 # Contributing to GNOME Sudoku
 
-- [Report issues](https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/)
+- [Report issues](https://gitlab.gnome.org/GNOME/gnome-sudoku/-/work_items)
 
 - [Translate](https://l10n.gnome.org/module/gnome-sudoku/)
 
 - [Contribute Code](https://gitlab.gnome.org/GNOME/gnome-sudoku/-/wikis/code)
 
-- [Donate](https://www.gnome.org/donate/)
+- [Donate](https://donate.gnome.org/en/)
