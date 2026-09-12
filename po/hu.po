@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-08-28 16:15+0000\n"
-"PO-Revision-Date: 2026-09-01 21:55+0200\n"
+"POT-Creation-Date: 2026-09-12 06:44+0000\n"
+"PO-Revision-Date: 2026-09-12 13:06+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 25.12.3\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:13
-#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:17
+#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:10
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -81,27 +81,23 @@ msgstr "A kijelölt cella blokkjának kiemelése"
 msgid "Highlight the selected cell's matching numbers"
 msgstr "A kijelölt cellával egyező számok kiemelése"
 
-#: data/org.gnome.Sudoku.gschema.xml:61
-msgid "The puzzle's difficulty"
-msgstr "A feladvány nehézsége"
-
-#: data/org.gnome.Sudoku.gschema.xml:68
+#: data/org.gnome.Sudoku.gschema.xml:64
 msgid "Zoom level"
 msgstr "Nagyítási szint"
 
-#: data/org.gnome.Sudoku.gschema.xml:72
+#: data/org.gnome.Sudoku.gschema.xml:68
 msgid "Width of the window in pixels"
 msgstr "Az ablak szélessége képpontokban"
 
-#: data/org.gnome.Sudoku.gschema.xml:76
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Height of the window in pixels"
 msgstr "Az ablak magassága képpontokban"
 
-#: data/org.gnome.Sudoku.gschema.xml:80
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "true if the window is maximized"
 msgstr "igaz, ha az ablak teljes méretű"
 
-#: data/org.gnome.Sudoku.gschema.xml:84
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "true if the window is fullscreen"
 msgstr "igaz, ha az ablak teljes képernyős"
 
@@ -179,52 +175,35 @@ msgstr "GNOME sudoku játék sötét módban, füljelzőkkel és figyelmeztetés
 msgid "The GNOME Project"
 msgstr "A GNOME projekt"
 
-#: lib/board.vala:839 lib/board.vala:850
-msgid "Unknown Difficulty"
-msgstr "Ismeretlen nehézség"
+#: src/blueprints/game-view.blp:6
+msgid "Paused"
+msgstr "Szüneteltetve"
 
-#: lib/board.vala:841
-msgid "Easy Difficulty"
-msgstr "Egyszerű nehézség"
-
-#: lib/board.vala:843
-msgid "Medium Difficulty"
-msgstr "Közepes nehézség"
-
-#: lib/board.vala:845
-msgid "Hard Difficulty"
-msgstr "Magas nehézség"
-
-#: lib/board.vala:847
-msgid "Very Hard Difficulty"
-msgstr "Nagyon magas nehézség"
-
-#: src/blueprints/game-view.blp:18
+#: src/blueprints/game-view.blp:22
 msgid "Undo Action"
 msgstr "Művelet visszavonása"
 
-#: src/blueprints/game-view.blp:26
+#: src/blueprints/game-view.blp:30
 msgid "Redo Action"
 msgstr "Művelet ismétlése"
 
-#: src/blueprints/game-view.blp:34
+#: src/blueprints/game-view.blp:38
 msgid "Earmark Mode"
 msgstr "Füljelző mód"
 
-#: src/blueprints/game-view.blp:46
+#: src/blueprints/game-view.blp:50
 msgid "Pause"
 msgstr "Szüneteltetés"
 
-#: src/blueprints/game-view.blp:53
+#: src/blueprints/game-view.blp:57
 msgid "Play"
 msgstr "Játszás"
 
-#: src/blueprints/game-view.blp:76
-#| msgid "Unlock"
+#: src/blueprints/game-view.blp:80
 msgid "Clock"
 msgstr "Óra"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:235
+#: src/blueprints/menu-button.blp:7 src/game_view.rs:464
 msgid "_New Game…"
 msgstr "Ú_j játék…"
 
@@ -272,23 +251,23 @@ msgstr "_Súgó"
 msgid "_About Sudoku"
 msgstr "A Sudoku _névjegye"
 
-#: src/blueprints/menu-button.blp:94
+#: src/blueprints/menu-button.blp:93
 msgid "Main Menu"
 msgstr "Főmenü"
 
-#: src/blueprints/menu-button.blp:103
+#: src/blueprints/menu-button.blp:102
 msgid "Zoom Out"
 msgstr "Kicsinyítés"
 
-#: src/blueprints/menu-button.blp:115
+#: src/blueprints/menu-button.blp:114
 msgid "Zoom In"
 msgstr "Nagyítás"
 
-#: src/blueprints/menu-button.blp:130
+#: src/blueprints/menu-button.blp:129
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
-#: src/blueprints/menu-button.blp:141
+#: src/blueprints/menu-button.blp:140
 msgid "Leave Fullscreen"
 msgstr "Teljes képernyő elhagyása"
 
@@ -357,43 +336,43 @@ msgctxt "Highlighter Preferences"
 msgid "Highlight Matching _Numbers"
 msgstr "Egyező _számok kiemelése"
 
-#: src/blueprints/print-multiple-dialog.blp:5
+#: src/blueprints/print-generator-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "Több feladvány nyomtatása"
 
-#: src/blueprints/print-multiple-dialog.blp:23
+#: src/blueprints/print-generator-dialog.blp:23
 msgid "_Number of Puzzles"
 msgstr "Feladványok _száma"
 
-#: src/blueprints/print-multiple-dialog.blp:38
+#: src/blueprints/print-generator-dialog.blp:37
 msgid "_Number of Puzzles per Page"
 msgstr "Feladványok _száma oldalanként"
 
-#: src/blueprints/print-multiple-dialog.blp:52
+#: src/blueprints/print-generator-dialog.blp:50
 msgid "_Difficulty"
 msgstr "_Nehézség"
 
-#: src/blueprints/print-multiple-dialog.blp:57
+#: src/blueprints/print-generator-dialog.blp:55
 msgid "Easy"
 msgstr "Könnyű"
 
-#: src/blueprints/print-multiple-dialog.blp:58
+#: src/blueprints/print-generator-dialog.blp:56
 msgid "Medium"
 msgstr "Közepes"
 
-#: src/blueprints/print-multiple-dialog.blp:59
+#: src/blueprints/print-generator-dialog.blp:57
 msgid "Hard"
 msgstr "Nehéz"
 
-#: src/blueprints/print-multiple-dialog.blp:60
+#: src/blueprints/print-generator-dialog.blp:58
 msgid "Very Hard"
 msgstr "Nagyon nehéz"
 
-#: src/blueprints/print-multiple-dialog.blp:68
+#: src/blueprints/print-generator-dialog.blp:64
 msgid "Print _Current Puzzle"
 msgstr "_Jelenlegi feladvány nyomtatása"
 
-#: src/blueprints/print-multiple-dialog.blp:76
+#: src/blueprints/print-generator-dialog.blp:72
 msgid "_Print…"
 msgstr "_Nyomtatás…"
 
@@ -434,17 +413,22 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "N_agyon nehéz"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:313
+#: src/blueprints/start-view.blp:120
 msgid "_Start Game"
 msgstr "Játék _indítása"
 
-#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:164
+#: src/blueprints/start-view.blp:137
 msgid "_Open..."
 msgstr "_Megnyitás…"
 
 #: src/blueprints/start-view.blp:148
 msgid "_Start Shared Game"
 msgstr "Megosztott játék _indítása"
+
+#: src/blueprints/start-view.blp:164
+#| msgid "_Open..."
+msgid "_Open…"
+msgstr "_Megnyitás…"
 
 #: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
@@ -587,86 +571,18 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
-#: src/game-view.vala:158
-msgid "Paused"
-msgstr "Szüneteltetve"
-
-#: src/game-view.vala:459
-msgctxt ".skp is a file extension"
-msgid "Sudoku puzzle.skp"
-msgstr "Sudoku feladvány.skp"
-
-#: src/game-view.vala:478
-msgid "Puzzle copied to clipboard"
-msgstr "A feladvány a vágólapra másolva"
-
-#. Help string for command line --version flag
-#: src/gnome-sudoku.vala:91
-msgid "Show release version"
-msgstr "Verziószám megjelenítése"
-
-#. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:223
+#: src/game_view.rs:452
 msgid "Puzzle Completed!"
 msgstr "A feladvány befejezve!"
 
-#: src/gnome-sudoku.vala:225
+#: src/game_view.rs:454
 msgid "_Quit"
 msgstr "_Kilépés"
 
-#: src/gnome-sudoku.vala:228
+#: src/game_view.rs:457
 msgid "_Change Difficulty"
 msgstr "Nehézség _megváltoztatása"
 
-#: src/gnome-sudoku.vala:229
+#: src/game_view.rs:458 src/game_view.rs:463
 msgid "_Play Again"
 msgstr "_Játék újra"
-
-#: src/gnome-sudoku.vala:345
-msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
-msgstr ""
-"Nem sikerült importálni a feladványt, adjon meg egy érvényes Sudoku-"
-"feladványt"
-
-#: src/gnome-sudoku.vala:346
-msgid "_Cancel"
-msgstr "_Mégse"
-
-#: src/gnome-sudoku.vala:347
-msgid "_Try Again"
-msgstr "_Próbálja újra"
-
-#: src/gnome-sudoku.vala:406
-msgid "translator-credits"
-msgstr ""
-"Bán Szabolcs <shooby at gnome dot hu>\n"
-"Dvornik László <dvornik at gnome dot hu>\n"
-"Kelemen Gábor <kelemeng at gnome dot hu>\n"
-"Kovács Emese <emese at gnome dot hu>\n"
-"Meskó Balázs <mesko dot balazs at fsf dot hu>\n"
-"Nagy Gergely <greg at gnome dot hu>\n"
-"Tímár András <timar at gnome dot hu>\n"
-"Úr Balázs <ur.balazs at fsf dot hu>\n"
-"Varga Szabolcs <shirokuma at shirokuma dot hu>"
-
-#: src/number-picker.vala:134
-msgid "Clear"
-msgstr "Törlés"
-
-#: src/number-picker.vala:231 src/number-picker.vala:306
-msgid "Lock"
-msgstr "Zárolás"
-
-#: src/number-picker.vala:303
-msgid "Unlock"
-msgstr "Feloldás"
-
-#. Error message if printing fails
-#: src/printer.vala:44
-msgid "Error printing file:"
-msgstr "Hiba a fájl nyomtatása közben:"
-
-#: src/printer.vala:45
-#| msgid "Close"
-msgid "_Close"
-msgstr "_Bezárás"
