@@ -47,11 +47,12 @@ impl DifficultyCategory {
     pub fn to_translated_string (&self) -> String
     {
         use DifficultyCategory::*;
+        use gettextrs::gettext;
         match self {
-            Easy => gettextrs::gettext("Easy Difficulty"),
-            Medium =>  gettextrs::gettext("Medium Difficulty"),
-            Hard =>  gettextrs::gettext("Hard Difficulty"),
-            VeryHard =>  gettextrs::gettext("Very Hard Difficulty"),
+            Easy => gettext("Easy Difficulty"),
+            Medium =>  gettext("Medium Difficulty"),
+            Hard =>  gettext("Hard Difficulty"),
+            VeryHard =>  gettext("Very Hard Difficulty"),
             _ => {
                 eprintln!("Unknown difficulty, this is a bug - please report it");
                 "BUG - UNKNOWN DIFFICULTY".to_string()

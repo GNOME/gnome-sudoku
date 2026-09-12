@@ -45,13 +45,14 @@ mod imp {
     impl SudokuPrinter {
         pub fn print_sudoku (&self, window: &gtk::Window) -> PrintOperationResult {
             let result = self.print_operation.run(gtk::PrintOperationAction::PrintDialog, Some(window));
+            use gettextrs::gettext;
             match result {
                 Ok(print_op) => print_op,
                 Err(e) => {
-                    let mut title = gettextrs::gettext("Error printing file");
+                    let mut title = gettext("Error printing file");
                     title = format!("{}\n{}", title, e.message());
                     let dialog = adw::AlertDialog::builder().title(title).build();
-                    dialog.add_response("close", &gettextrs::gettext("_Close"));
+                    dialog.add_response("close", &gettext("_Close"));
                     dialog.present(Some(window));
                     PrintOperationResult::Error
                 }

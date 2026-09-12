@@ -384,7 +384,8 @@ use super::*;
         fn share_puzzle_cb (&self) {
             let clipboard = self.obj().clipboard();
             clipboard.set_text(&self.backend().game_ascii());
-            let toast = adw::Toast::new(&gettextrs::gettext("Puzzle copied to clipboard"));
+            use gettextrs::gettext;
+            let toast = adw::Toast::new(&gettext("Puzzle copied to clipboard"));
             toast.set_timeout(3);
             self.toast_overlay.add_toast(toast);
         }
@@ -417,7 +418,8 @@ use super::*;
 
         fn export_puzzle_cb (&self) {
             let file_dialog = FileDialog::new();
-            file_dialog.set_initial_name(Some(&gettextrs::pgettext(
+            use gettextrs::pgettext;
+            file_dialog.set_initial_name(Some(&pgettext(
                 ".skp is a file extension",
                 "Sudoku puzzle.skp")
             ));

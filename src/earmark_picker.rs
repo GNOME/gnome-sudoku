@@ -69,7 +69,8 @@ mod imp {
 
             let lock_button = gtk::ToggleButton::new();
             lock_button.set_icon_name("sudoku-lock-symbolic");
-            lock_button.set_tooltip_text(Some(&gettextrs::gettext("Lock")));
+            use gettextrs::gettext;
+            lock_button.set_tooltip_text(Some(&gettext("Lock")));
 
             Self {
                 backend: Default::default(),
@@ -77,7 +78,7 @@ mod imp {
                 lock_button,
                 value_cb_handler: Default::default(),
                 earmark_cb_handler: Default::default(),
-                clear_button: gtk::Button::with_label(&gettextrs::gettext("Clear")),
+                clear_button: gtk::Button::with_label(&gettext("Clear")),
                 earmark_buttons: buttons,
             }
         }
@@ -100,17 +101,16 @@ mod imp {
             ));
             self.obj().attach (&self.clear_button, 0, 4, 2, 1);
 
-            let unlock = gettextrs::gettext("Unlock");
-            let lock = gettextrs::gettext("Lock");
             self.lock_button.connect_toggled(glib::clone!(
                 #[weak(rename_to = earmark_picker)] self,
                 move |lock_button: &gtk::ToggleButton|
                 {
+                    use gettextrs::gettext;
                     if lock_button.is_active() {
-                        lock_button.set_tooltip_text(Some(&unlock));
+                        lock_button.set_tooltip_text(Some(&gettext("Unlock")));
                     }
                     else {
-                        lock_button.set_tooltip_text(Some(&lock));
+                        lock_button.set_tooltip_text(Some(&gettext("Lock")));
                         earmark_picker.finished();
                     }
                 }

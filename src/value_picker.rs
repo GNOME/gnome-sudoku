@@ -66,12 +66,13 @@ mod imp {
                 })
             };
 
+            use gettextrs::gettext;
             Self {
                 backend: Default::default(),
                 cell: Default::default(),
                 value_cb_handler: Default::default(),
                 earmark_cb_handler: Default::default(),
-                clear_button: gtk::Button::with_label(&gettextrs::gettext("Clear")),
+                clear_button: gtk::Button::with_label(&gettext("Clear")),
                 value_buttons: buttons,
             }
         }

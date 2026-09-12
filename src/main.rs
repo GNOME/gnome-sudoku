@@ -158,12 +158,13 @@ impl GnomeSudoku {
             .property("resource-base-path", "/org/gnome/Sudoku")
             .build();
 
+        use gettextrs::gettext;
         obj.add_main_option("version",
             Char('v' as i8),
             OptionFlags::NONE,
             OptionArg::None,
             /* Help string for command line --version flag */
-            &gettextrs::gettext("Show release version"),
+            &gettext("Show release version"),
             None);
 
         return obj;
