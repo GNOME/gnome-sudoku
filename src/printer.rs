@@ -49,7 +49,7 @@ mod imp {
             match result {
                 Ok(print_op) => print_op,
                 Err(e) => {
-                    let mut title = gettext("Error printing file");
+                    let mut title = gettext("Error printing file:");
                     title = format!("{}\n{}", title, e.message());
                     let dialog = adw::AlertDialog::builder().title(title).build();
                     dialog.add_response("close", &gettext("_Close"));
