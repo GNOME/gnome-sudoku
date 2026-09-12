@@ -14,7 +14,7 @@ You can find out more about the project at the [wiki's homepage](https://gitlab.
 - The latest development version is available on [GNOME Nightly](https://nightly.gnome.org/):  
 `flatpak install gnome-nightly org.gnome.Sudoku.Devel`
 
-- [Building GNOME Sudoku](https://gitlab.gnome.org/GNOME/gnome-sudoku/-/wikis/build).
+- [Building GNOME Sudoku](BUILD.md).
 
 # Contributing to GNOME Sudoku
 
@@ -22,6 +22,6 @@ You can find out more about the project at the [wiki's homepage](https://gitlab.
 
 - [Translate](https://l10n.gnome.org/module/gnome-sudoku/)
 
-- [Contribute Code](https://gitlab.gnome.org/GNOME/gnome-sudoku/-/wikis/code)
+- [Contribute Code](CONTRIBUTING.md)
 
 - [Donate](https://donate.gnome.org/en/)
