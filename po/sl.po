@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-07-27 17:35+0000\n"
-"PO-Revision-Date: 2026-07-28 14:23+0200\n"
+"POT-Creation-Date: 2026-09-12 06:44+0000\n"
+"PO-Revision-Date: 2026-09-12 14:40+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-"
 "si@googlegroups.com>\n"
@@ -26,8 +26,8 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: Poedit 3.8\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:13
-#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:17
+#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:10
 msgid "Sudoku"
 msgstr "Sudoku"
 
@@ -83,27 +83,23 @@ msgstr "Poudari blok izbrane celice"
 msgid "Highlight the selected cell's matching numbers"
 msgstr "Poudari ujemajoče se številke izbrane celice"
 
-#: data/org.gnome.Sudoku.gschema.xml:61
-msgid "The puzzle's difficulty"
-msgstr "Zahtevnost sestavljanke"
-
-#: data/org.gnome.Sudoku.gschema.xml:68
+#: data/org.gnome.Sudoku.gschema.xml:64
 msgid "Zoom level"
 msgstr "Raven povečave"
 
-#: data/org.gnome.Sudoku.gschema.xml:72
+#: data/org.gnome.Sudoku.gschema.xml:68
 msgid "Width of the window in pixels"
 msgstr "Širina okna v točkah"
 
-#: data/org.gnome.Sudoku.gschema.xml:76
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Height of the window in pixels"
 msgstr "Višina okna v točkah"
 
-#: data/org.gnome.Sudoku.gschema.xml:80
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "true if the window is maximized"
 msgstr "PRAV, če je okno razpeto"
 
-#: data/org.gnome.Sudoku.gschema.xml:84
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "true if the window is fullscreen"
 msgstr "Res (true), če je okno celozaslonsko"
 
@@ -177,51 +173,35 @@ msgstr "Igra sudoku za GNOME v temnem načinu z ušesci in opozorili"
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
-#: lib/board.vala:839 lib/board.vala:850
-msgid "Unknown Difficulty"
-msgstr "Neznana zahtevnost"
+#: src/blueprints/game-view.blp:6
+msgid "Paused"
+msgstr "Začasno ustavljeno"
 
-#: lib/board.vala:841
-msgid "Easy Difficulty"
-msgstr "Enostavna uganka"
-
-#: lib/board.vala:843
-msgid "Medium Difficulty"
-msgstr "Srednje zahtevna uganka"
-
-#: lib/board.vala:845
-msgid "Hard Difficulty"
-msgstr "Zahtevna uganka"
-
-#: lib/board.vala:847
-msgid "Very Hard Difficulty"
-msgstr "Zelo zahtevna uganka"
-
-#: src/blueprints/game-view.blp:18
+#: src/blueprints/game-view.blp:22
 msgid "Undo Action"
 msgstr "Razveljavi dejanje"
 
-#: src/blueprints/game-view.blp:26
+#: src/blueprints/game-view.blp:30
 msgid "Redo Action"
 msgstr "Ponovi dejanje"
 
-#: src/blueprints/game-view.blp:34
+#: src/blueprints/game-view.blp:38
 msgid "Earmark Mode"
 msgstr "Način ušesc"
 
-#: src/blueprints/game-view.blp:46
+#: src/blueprints/game-view.blp:50
 msgid "Pause"
 msgstr "Premor"
 
-#: src/blueprints/game-view.blp:53
+#: src/blueprints/game-view.blp:57
 msgid "Play"
 msgstr "Igraj"
 
-#: src/blueprints/game-view.blp:76
+#: src/blueprints/game-view.blp:80
 msgid "Clock"
 msgstr "Ura"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:235
+#: src/blueprints/menu-button.blp:7 src/game_view.rs:464
 msgid "_New Game…"
 msgstr "_Nova igra …"
 
@@ -269,23 +249,23 @@ msgstr "Pomo_č"
 msgid "_About Sudoku"
 msgstr "_O programu Sudoku"
 
-#: src/blueprints/menu-button.blp:94
+#: src/blueprints/menu-button.blp:93
 msgid "Main Menu"
 msgstr "Glavni meni"
 
-#: src/blueprints/menu-button.blp:103
+#: src/blueprints/menu-button.blp:102
 msgid "Zoom Out"
 msgstr "Oddalji"
 
-#: src/blueprints/menu-button.blp:115
+#: src/blueprints/menu-button.blp:114
 msgid "Zoom In"
 msgstr "Približaj"
 
-#: src/blueprints/menu-button.blp:130
+#: src/blueprints/menu-button.blp:129
 msgid "Fullscreen"
 msgstr "Celozaslonski način"
 
-#: src/blueprints/menu-button.blp:141
+#: src/blueprints/menu-button.blp:140
 msgid "Leave Fullscreen"
 msgstr "Zapusti celozaslonski način"
 
@@ -354,43 +334,43 @@ msgctxt "Highlighter Preferences"
 msgid "Highlight Matching _Numbers"
 msgstr "Poudari ujemajoče se _številke"
 
-#: src/blueprints/print-multiple-dialog.blp:5
+#: src/blueprints/print-generator-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "Natisni več ugank sudoku"
 
-#: src/blueprints/print-multiple-dialog.blp:23
+#: src/blueprints/print-generator-dialog.blp:23
 msgid "_Number of Puzzles"
 msgstr "_Število ugank"
 
-#: src/blueprints/print-multiple-dialog.blp:38
+#: src/blueprints/print-generator-dialog.blp:37
 msgid "_Number of Puzzles per Page"
 msgstr "_Število ugank na stran"
 
-#: src/blueprints/print-multiple-dialog.blp:52
+#: src/blueprints/print-generator-dialog.blp:50
 msgid "_Difficulty"
 msgstr "Za_htevnost"
 
-#: src/blueprints/print-multiple-dialog.blp:57
+#: src/blueprints/print-generator-dialog.blp:55
 msgid "Easy"
 msgstr "Enostavno"
 
-#: src/blueprints/print-multiple-dialog.blp:58
+#: src/blueprints/print-generator-dialog.blp:56
 msgid "Medium"
 msgstr "Srednje"
 
-#: src/blueprints/print-multiple-dialog.blp:59
+#: src/blueprints/print-generator-dialog.blp:57
 msgid "Hard"
 msgstr "Zahtevno"
 
-#: src/blueprints/print-multiple-dialog.blp:60
+#: src/blueprints/print-generator-dialog.blp:58
 msgid "Very Hard"
 msgstr "Zelo zahtevno"
 
-#: src/blueprints/print-multiple-dialog.blp:68
+#: src/blueprints/print-generator-dialog.blp:64
 msgid "Print _Current Puzzle"
 msgstr "Natisni trenutno _uganko"
 
-#: src/blueprints/print-multiple-dialog.blp:76
+#: src/blueprints/print-generator-dialog.blp:72
 msgid "_Print…"
 msgstr "_Natisni …"
 
@@ -431,17 +411,21 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "_Zelo zahtevna"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:313
+#: src/blueprints/start-view.blp:120
 msgid "_Start Game"
 msgstr "_Začni igro"
 
-#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:164
+#: src/blueprints/start-view.blp:137
 msgid "_Open..."
 msgstr "_Odpri ..."
 
 #: src/blueprints/start-view.blp:148
 msgid "_Start Shared Game"
 msgstr "Za_čni deljeno igro"
+
+#: src/blueprints/start-view.blp:164
+msgid "_Open…"
+msgstr "_Odpri ..."
 
 #: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
@@ -584,79 +568,18 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Celozaslonski način"
 
-#: src/game-view.vala:158
-msgid "Paused"
-msgstr "Začasno ustavljeno"
-
-#: src/game-view.vala:459
-msgctxt ".skp is a file extension"
-msgid "Sudoku puzzle.skp"
-msgstr "Uganka sudoku.skp"
-
-#: src/game-view.vala:478
-msgid "Puzzle copied to clipboard"
-msgstr "Uganka kopirana na odložišče"
-
-#. Help string for command line --version flag
-#: src/gnome-sudoku.vala:91
-msgid "Show release version"
-msgstr "Pokaži podrobnosti različice"
-
-#. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:223
+#: src/game_view.rs:452
 msgid "Puzzle Completed!"
 msgstr "Uganka rešena!"
 
-#: src/gnome-sudoku.vala:225
+#: src/game_view.rs:454
 msgid "_Quit"
 msgstr "_Izhod"
 
-#: src/gnome-sudoku.vala:228
+#: src/game_view.rs:457
 msgid "_Change Difficulty"
 msgstr "_Spremeni zahtevnost"
 
-#: src/gnome-sudoku.vala:229
+#: src/game_view.rs:458 src/game_view.rs:463
 msgid "_Play Again"
 msgstr "_Nova igra"
-
-#: src/gnome-sudoku.vala:345
-msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
-msgstr "Uvoz uganke je spodletel, vnesite veljavno uganko Sudoku"
-
-#: src/gnome-sudoku.vala:346
-msgid "_Cancel"
-msgstr "Pre_kliči"
-
-#: src/gnome-sudoku.vala:347
-msgid "_Try Again"
-msgstr "_Poskusi znova"
-
-#: src/gnome-sudoku.vala:406
-msgid "translator-credits"
-msgstr ""
-"Matej Urbančič <mateju@src.gnome.org>\n"
-"Matic Žgur\n"
-"Matej Erman\n"
-"Tadej Janež\n"
-"Martin Srebotnjak"
-
-#: src/number-picker.vala:134
-msgid "Clear"
-msgstr "Počisti"
-
-#: src/number-picker.vala:231 src/number-picker.vala:306
-msgid "Lock"
-msgstr "Zakleni"
-
-#: src/number-picker.vala:303
-msgid "Unlock"
-msgstr "Odkleni"
-
-#. Error message if printing fails
-#: src/printer.vala:44
-msgid "Error printing file:"
-msgstr "Napaka med tiskanjem datoteke:"
-
-#: src/printer.vala:45
-msgid "_Close"
-msgstr "_Zapri"
