@@ -295,7 +295,8 @@ mod imp {
             about_dialog.set_version (config::VERSION);
             about_dialog.set_copyright ("Copyright © 2005–2008 Thomas M. Hinkle\nCopyright © 2010–2011 Robert Ancell\nCopyright © 2014 Parin Porecha\nCopyright © 2023 Jamie Murphy\nCopyright © 2024-2026 Johan Gay");
             about_dialog.set_developers (&authors);
-            about_dialog.set_translator_credits (&gettextrs::gettext("translator-credits"));
+            use gettextrs::gettext;
+            about_dialog.set_translator_credits (&gettext("translator-credits"));
             about_dialog.present (Some(self.obj().as_ref()));
         }
 
