@@ -131,7 +131,8 @@ mod imp {
         #[template_callback]
         fn open_file_cb (&self, _: &gtk::Button) {
             let file_dialog = FileDialog::new();
-            file_dialog.set_accept_label(Some(&gettextrs::gettext("Start Game")));
+            use gettextrs::gettext;
+            file_dialog.set_accept_label(Some(&gettext("Start Game")));
             let filter = {
                 let default = file_dialog.default_filter();
                 if default.is_none() {
