@@ -206,14 +206,7 @@ mod imp {
                 create_cb_entry!(self, "shortcuts-dialog", shortcuts_dialog_cb),
                 create_cb_entry!(self, "back", back_cb),
                 create_cb_entry!(self, "zoom-reset", zoom_reset),
-
-                gio::ActionEntryBuilder::new("about-dialog")
-                    .activate(glib::clone!(
-                            #[weak(rename_to = obj)] self,
-                            move |_, _, _|
-                            obj.about_dialog_cb()
-                    ))
-                .build()
+                create_cb_entry!(self, "about-dialog", about_dialog_cb),
             ];
             action_group.add_action_entries(actions);
 
