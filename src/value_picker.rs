@@ -79,7 +79,6 @@ mod imp {
 
     impl ObjectImpl for SudokuValuePicker {
         fn constructed(&self) {
-            self.parent_constructed();
             self.obj().attach (&self.clear_button, 0, 4, 3, 1);
 
             self.clear_button.connect_clicked(glib::clone!(
@@ -110,6 +109,8 @@ mod imp {
                     self.obj().attach(button, col_block as i32, row_block as i32, 1, 1);
                 }
             }
+
+            self.parent_constructed();
         }
 
         fn signals() -> &'static [Signal] {

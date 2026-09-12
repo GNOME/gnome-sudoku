@@ -265,8 +265,6 @@ mod imp {
 
     impl ObjectImpl for SudokuPrinter {
         fn constructed(&self) {
-            self.parent_constructed();
-
             self.print_operation.connect_begin_print(glib::clone!(
                 #[weak(rename_to = printer)] self,
                 move |_, _| {
@@ -285,6 +283,8 @@ mod imp {
                 move |_, context, page_nr|
                 printer.draw_page_cb(context, page_nr)
             ));
+
+            self.parent_constructed();
         }
     }
 

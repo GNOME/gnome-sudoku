@@ -85,8 +85,6 @@ mod imp {
 
     impl ObjectImpl for SudokuEarmarkPicker {
         fn constructed(&self) {
-            self.parent_constructed();
-
             self.clear_button.connect_clicked(glib::clone!(
                 #[weak(rename_to = earmark_picker)] self,
                 move |_|
@@ -135,6 +133,8 @@ mod imp {
                     self.obj().attach(button, col_block as i32, row_block as i32, 1, 1);
                 }
             }
+
+            self.parent_constructed();
         }
 
         fn signals() -> &'static [Signal] {

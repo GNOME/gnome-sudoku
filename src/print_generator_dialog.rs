@@ -117,8 +117,6 @@ mod imp {
 
     impl ObjectImpl for SudokuPrintGeneratorDialog {
         fn constructed(&self) {
-            self.parent_constructed();
-
             //makes sure the number of puzzles to print is a factor of the puzzles per page
             self.puzzles_per_page_row.adjustment().connect_value_changed(glib::clone!(
                 #[weak(rename_to = dialog)] self,
@@ -134,6 +132,8 @@ mod imp {
                     }
                 }
             ));
+
+            self.parent_constructed();
         }
 
         fn dispose (&self) {

@@ -55,7 +55,6 @@ mod imp {
 
     impl ObjectImpl for SudokuNumberPicker {
         fn constructed(&self) {
-            self.parent_constructed();
             self.picker_stack.add_child(&self.value_picker);
             self.value_picker.connect_closure("finished", false, closure_local!(
                 #[weak(rename_to = picker_popover)] self.obj(),
@@ -70,6 +69,8 @@ mod imp {
                 picker_popover.popdown()
             ));
             self.obj().set_child(Some(&self.picker_stack));
+
+            self.parent_constructed();
         }
     }
 
