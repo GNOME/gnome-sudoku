@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-games master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-06-27 04:41+0000\n"
-"PO-Revision-Date: 2026-06-28 08:22+0800\n"
+"POT-Creation-Date: 2026-09-12 18:25+0000\n"
+"PO-Revision-Date: 2026-09-13 11:16+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 50.0\n"
 
-#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:13
-#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:5
+#: data/org.gnome.Sudoku.desktop.in.in:2 src/blueprints/game-view.blp:17
+#: src/blueprints/start-view.blp:12 src/blueprints/window.blp:10
 msgid "Sudoku"
 msgstr "数独"
 
@@ -79,27 +79,23 @@ msgstr "高亮选中单元格的区块"
 msgid "Highlight the selected cell's matching numbers"
 msgstr "高亮单元格的匹配数字"
 
-#: data/org.gnome.Sudoku.gschema.xml:61
-msgid "The puzzle's difficulty"
-msgstr "谜题难度"
-
-#: data/org.gnome.Sudoku.gschema.xml:68
+#: data/org.gnome.Sudoku.gschema.xml:64
 msgid "Zoom level"
 msgstr "缩放级别"
 
-#: data/org.gnome.Sudoku.gschema.xml:72
+#: data/org.gnome.Sudoku.gschema.xml:68
 msgid "Width of the window in pixels"
 msgstr "窗口的宽度（像素）"
 
-#: data/org.gnome.Sudoku.gschema.xml:76
+#: data/org.gnome.Sudoku.gschema.xml:72
 msgid "Height of the window in pixels"
 msgstr "窗口的高度（像素）"
 
-#: data/org.gnome.Sudoku.gschema.xml:80
+#: data/org.gnome.Sudoku.gschema.xml:76
 msgid "true if the window is maximized"
 msgstr "若窗口已经最大化则为 true"
 
-#: data/org.gnome.Sudoku.gschema.xml:84
+#: data/org.gnome.Sudoku.gschema.xml:80
 msgid "true if the window is fullscreen"
 msgstr "若窗口已经全屏则为 true"
 
@@ -168,51 +164,39 @@ msgstr "GNOME 数独游戏预览"
 msgid "A GNOME sudoku game in dark mode featuring earmarks and warnings"
 msgstr "具有耳标和警告功能的暗色模式 GNOME 数独游戏"
 
-#: lib/board.vala:839 lib/board.vala:850
-msgid "Unknown Difficulty"
-msgstr "未知难度"
+#: data/org.gnome.Sudoku.metainfo.xml.in.in:57
+msgid "The GNOME Project"
+msgstr "GNOME 项目"
 
-#: lib/board.vala:841
-msgid "Easy Difficulty"
-msgstr "简易难度"
+#: src/blueprints/game-view.blp:6
+msgid "Paused"
+msgstr "已暂停"
 
-#: lib/board.vala:843
-msgid "Medium Difficulty"
-msgstr "中等难度"
-
-#: lib/board.vala:845
-msgid "Hard Difficulty"
-msgstr "困难难度"
-
-#: lib/board.vala:847
-msgid "Very Hard Difficulty"
-msgstr "非常困难难度"
-
-#: src/blueprints/game-view.blp:18
+#: src/blueprints/game-view.blp:22
 msgid "Undo Action"
 msgstr "撤消动作"
 
-#: src/blueprints/game-view.blp:26
+#: src/blueprints/game-view.blp:30
 msgid "Redo Action"
 msgstr "重做动作"
 
-#: src/blueprints/game-view.blp:34
+#: src/blueprints/game-view.blp:38
 msgid "Earmark Mode"
 msgstr "耳标模式"
 
-#: src/blueprints/game-view.blp:46
+#: src/blueprints/game-view.blp:50
 msgid "Pause"
 msgstr "暂停"
 
-#: src/blueprints/game-view.blp:53
+#: src/blueprints/game-view.blp:57
 msgid "Play"
 msgstr "游玩"
 
-#: src/blueprints/game-view.blp:76
+#: src/blueprints/game-view.blp:80
 msgid "Clock"
 msgstr "时钟"
 
-#: src/blueprints/menu-button.blp:7 src/gnome-sudoku.vala:230
+#: src/blueprints/menu-button.blp:7 src/game_view.rs:467
 msgid "_New Game…"
 msgstr "新建游戏(_N)…"
 
@@ -260,23 +244,23 @@ msgstr "帮助(_H)"
 msgid "_About Sudoku"
 msgstr "关于数独(_A)"
 
-#: src/blueprints/menu-button.blp:94
+#: src/blueprints/menu-button.blp:93
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: src/blueprints/menu-button.blp:103
+#: src/blueprints/menu-button.blp:102
 msgid "Zoom Out"
 msgstr "缩小"
 
-#: src/blueprints/menu-button.blp:115
+#: src/blueprints/menu-button.blp:114
 msgid "Zoom In"
 msgstr "放大"
 
-#: src/blueprints/menu-button.blp:130
+#: src/blueprints/menu-button.blp:129
 msgid "Fullscreen"
 msgstr "全屏"
 
-#: src/blueprints/menu-button.blp:141
+#: src/blueprints/menu-button.blp:140
 msgid "Leave Fullscreen"
 msgstr "退出全屏"
 
@@ -345,43 +329,43 @@ msgctxt "Highlighter Preferences"
 msgid "Highlight Matching _Numbers"
 msgstr "高亮匹配数字(_N)"
 
-#: src/blueprints/print-multiple-dialog.blp:5
+#: src/blueprints/print-generator-dialog.blp:5
 msgid "Print Multiple Puzzles"
 msgstr "打印多个数独"
 
-#: src/blueprints/print-multiple-dialog.blp:23
+#: src/blueprints/print-generator-dialog.blp:23
 msgid "_Number of Puzzles"
 msgstr "谜题数量(_N)"
 
-#: src/blueprints/print-multiple-dialog.blp:38
+#: src/blueprints/print-generator-dialog.blp:37
 msgid "_Number of Puzzles per Page"
 msgstr "每页谜题数量(_N)"
 
-#: src/blueprints/print-multiple-dialog.blp:52
+#: src/blueprints/print-generator-dialog.blp:50
 msgid "_Difficulty"
 msgstr "难度(_D)"
 
-#: src/blueprints/print-multiple-dialog.blp:57
+#: src/blueprints/print-generator-dialog.blp:55
 msgid "Easy"
 msgstr "简单"
 
-#: src/blueprints/print-multiple-dialog.blp:58
+#: src/blueprints/print-generator-dialog.blp:56
 msgid "Medium"
 msgstr "中等"
 
-#: src/blueprints/print-multiple-dialog.blp:59
+#: src/blueprints/print-generator-dialog.blp:57
 msgid "Hard"
 msgstr "困难"
 
-#: src/blueprints/print-multiple-dialog.blp:60
+#: src/blueprints/print-generator-dialog.blp:58
 msgid "Very Hard"
 msgstr "非常困难"
 
-#: src/blueprints/print-multiple-dialog.blp:68
+#: src/blueprints/print-generator-dialog.blp:64
 msgid "Print _Current Puzzle"
 msgstr "打印当前谜题(_C)"
 
-#: src/blueprints/print-multiple-dialog.blp:76
+#: src/blueprints/print-generator-dialog.blp:72
 msgid "_Print…"
 msgstr "打印(_P)…"
 
@@ -422,17 +406,21 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "非常困难(_V)"
 
-#: src/blueprints/start-view.blp:120 src/gnome-sudoku.vala:308
+#: src/blueprints/start-view.blp:120 src/start_view.rs:135
 msgid "_Start Game"
 msgstr "开始游戏(_S)"
 
-#: src/blueprints/start-view.blp:137 src/blueprints/start-view.blp:164
+#: src/blueprints/start-view.blp:137
 msgid "_Open..."
 msgstr "打开(_O)…"
 
 #: src/blueprints/start-view.blp:148
 msgid "_Start Shared Game"
 msgstr "开始分享的游戏(_S)"
+
+#: src/blueprints/start-view.blp:164
+msgid "_Open…"
+msgstr "打开(_O)…"
 
 #: src/blueprints/shortcuts-dialog.blp:7
 msgctxt "Shortcuts Window"
@@ -575,54 +563,81 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "全屏"
 
-#: src/game-view.vala:156
-msgid "Paused"
-msgstr "已暂停"
+#: src/lib/enums.rs:52
+msgid "Easy Difficulty"
+msgstr "简易难度"
 
-#: src/game-view.vala:442
+#: src/lib/enums.rs:53
+msgid "Medium Difficulty"
+msgstr "中等难度"
+
+#: src/lib/enums.rs:54
+msgid "Hard Difficulty"
+msgstr "困难难度"
+
+#: src/lib/enums.rs:55
+msgid "Very Hard Difficulty"
+msgstr "非常困难难度"
+
+#: src/earmark_picker.rs:73
+msgid "Lock"
+msgstr "锁定"
+
+#: src/earmark_picker.rs:81 src/value_picker.rs:75
+msgid "Clear"
+msgstr "清除"
+
+#: src/game_view.rs:388
+msgid "Puzzle copied to clipboard"
+msgstr "谜题已复制到剪贴板"
+
+#: src/game_view.rs:424
 msgctxt ".skp is a file extension"
 msgid "Sudoku puzzle.skp"
 msgstr "数独谜题.skp"
 
-#: src/game-view.vala:461
-msgid "Puzzle copied to clipboard"
-msgstr "谜题已复制到剪贴板"
-
-#. Help string for command line --version flag
-#: src/gnome-sudoku.vala:91
-msgid "Show release version"
-msgstr "显示发行版本"
-
-#. Text in dialog that displays when the game is over.
-#: src/gnome-sudoku.vala:218
+#: src/game_view.rs:455
 msgid "Puzzle Completed!"
 msgstr "谜题已解决！"
 
-#: src/gnome-sudoku.vala:220
+#: src/game_view.rs:457
 msgid "_Quit"
 msgstr "退出(_Q)"
 
-#: src/gnome-sudoku.vala:223
+#: src/game_view.rs:460
 msgid "_Change Difficulty"
 msgstr "更改难度(_C)"
 
-#: src/gnome-sudoku.vala:224
+#: src/game_view.rs:461 src/game_view.rs:466
 msgid "_Play Again"
 msgstr "再玩一遍(_P)"
 
-#: src/gnome-sudoku.vala:340
+#. Help string for command line --version flag
+#: src/main.rs:167
+msgid "Show release version"
+msgstr "显示发行版本"
+
+#: src/printer.rs:52
+msgid "Error printing file:"
+msgstr "打印文件出错："
+
+#: src/printer.rs:55
+msgid "_Close"
+msgstr "关闭(_C)"
+
+#: src/start_view.rs:178
 msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
 msgstr "导入谜题失败，请输入有效的数独谜题"
 
-#: src/gnome-sudoku.vala:341
+#: src/start_view.rs:181
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: src/gnome-sudoku.vala:342
+#: src/start_view.rs:182
 msgid "_Try Again"
 msgstr "重试(_T)"
 
-#: src/gnome-sudoku.vala:401
+#: src/window.rs:299
 msgid "translator-credits"
 msgstr ""
 "Yang Zhang <zyangmath@gmail.com>, 2007\n"
@@ -634,26 +649,14 @@ msgstr ""
 "Mingcong Bai <jeffbai@aosc.xyz>, 2018\n"
 "lumingzh <lumingzh@qq.com>, 2023-2026"
 
-#: src/number-picker.vala:134
-msgid "Clear"
-msgstr "清除"
+#~ msgid "The puzzle's difficulty"
+#~ msgstr "谜题难度"
 
-#: src/number-picker.vala:231 src/number-picker.vala:306
-msgid "Lock"
-msgstr "锁定"
+#~ msgid "Unknown Difficulty"
+#~ msgstr "未知难度"
 
-#: src/number-picker.vala:303
-msgid "Unlock"
-msgstr "解锁"
-
-#. Error message if printing fails
-#: src/printer.vala:44
-msgid "Error printing file:"
-msgstr "打印文件出错："
-
-#: src/printer.vala:45
-msgid "_Close"
-msgstr "关闭(_C)"
+#~ msgid "Unlock"
+#~ msgstr "解锁"
 
 #, c-format
 #~ msgid "%d minute"
@@ -807,9 +810,6 @@ msgstr "关闭(_C)"
 #~ msgstr ""
 #~ "如果您想在纸上玩它，可以将游戏打印出来。您也可以选择每页纸打印几局，和要打"
 #~ "印游戏的难度：这样一来，GNOME Sudoku 就成了一本能玩下去的数独书了。"
-
-#~ msgid "The GNOME Project"
-#~ msgstr "GNOME 项目"
 
 #~ msgid "Additionally warn when correct solution is violated or not earmarked"
 #~ msgstr "当正确解法被妨碍或未被标记时会附加警告"
