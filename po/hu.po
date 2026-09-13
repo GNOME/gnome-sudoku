@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-sudoku master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sudoku/issues/\n"
-"POT-Creation-Date: 2026-09-12 06:44+0000\n"
-"PO-Revision-Date: 2026-09-12 13:06+0200\n"
+"POT-Creation-Date: 2026-09-12 18:25+0000\n"
+"PO-Revision-Date: 2026-09-13 12:55+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -203,7 +203,7 @@ msgstr "Játszás"
 msgid "Clock"
 msgstr "Óra"
 
-#: src/blueprints/menu-button.blp:7 src/game_view.rs:464
+#: src/blueprints/menu-button.blp:7 src/game_view.rs:467
 msgid "_New Game…"
 msgstr "Ú_j játék…"
 
@@ -413,7 +413,7 @@ msgctxt "Difficulty"
 msgid "_Very Hard"
 msgstr "N_agyon nehéz"
 
-#: src/blueprints/start-view.blp:120
+#: src/blueprints/start-view.blp:120 src/start_view.rs:135
 msgid "_Start Game"
 msgstr "Játék _indítása"
 
@@ -426,7 +426,6 @@ msgid "_Start Shared Game"
 msgstr "Megosztott játék _indítása"
 
 #: src/blueprints/start-view.blp:164
-#| msgid "_Open..."
 msgid "_Open…"
 msgstr "_Megnyitás…"
 
@@ -571,18 +570,88 @@ msgctxt "Shortcuts Window"
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
-#: src/game_view.rs:452
+#: src/lib/enums.rs:52
+#| msgid "_Difficulty"
+msgid "Easy Difficulty"
+msgstr "Egyszerű nehézség"
+
+#: src/lib/enums.rs:53
+#| msgid "_Difficulty"
+msgid "Medium Difficulty"
+msgstr "Közepes nehézség"
+
+#: src/lib/enums.rs:54
+#| msgid "_Difficulty"
+msgid "Hard Difficulty"
+msgstr "Magas nehézség"
+
+#: src/lib/enums.rs:55
+#| msgid "Select Difficulty"
+msgid "Very Hard Difficulty"
+msgstr "Nagyon magas nehézség"
+
+#: src/earmark_picker.rs:73
+msgid "Lock"
+msgstr "Zárolás"
+
+#: src/earmark_picker.rs:81 src/value_picker.rs:75
+#| msgctxt "Shortcuts Window"
+#| msgid "Clear Cell"
+msgid "Clear"
+msgstr "Törlés"
+
+#: src/game_view.rs:388
+msgid "Puzzle copied to clipboard"
+msgstr "A feladvány a vágólapra másolva"
+
+#: src/game_view.rs:424
+msgctxt ".skp is a file extension"
+msgid "Sudoku puzzle.skp"
+msgstr "Sudoku feladvány.skp"
+
+#: src/game_view.rs:455
 msgid "Puzzle Completed!"
 msgstr "A feladvány befejezve!"
 
-#: src/game_view.rs:454
+#: src/game_view.rs:457
 msgid "_Quit"
 msgstr "_Kilépés"
 
-#: src/game_view.rs:457
+#: src/game_view.rs:460
 msgid "_Change Difficulty"
 msgstr "Nehézség _megváltoztatása"
 
-#: src/game_view.rs:458 src/game_view.rs:463
+#: src/game_view.rs:461 src/game_view.rs:466
 msgid "_Play Again"
 msgstr "_Játék újra"
+
+#. Help string for command line --version flag
+#: src/main.rs:167
+msgid "Show release version"
+msgstr "Kiadási verzió megjelenítése"
+
+#: src/printer.rs:52
+msgid "Error printing file:"
+msgstr "Hiba a fájl nyomtatásakor:"
+
+#: src/printer.rs:55
+msgid "_Close"
+msgstr "_Bezárás"
+
+#: src/start_view.rs:178
+msgid "Failed to import the puzzle, please enter a valid Sudoku puzzle"
+msgstr ""
+"Nem sikerült importálni a feladványt, adjon meg egy érvényes Sudoku-feladványt"
+
+#: src/start_view.rs:181
+msgid "_Cancel"
+msgstr "_Mégse"
+
+#: src/start_view.rs:182
+#| msgid "_Play Again"
+msgid "_Try Again"
+msgstr "P_róbálja újra"
+
+#: src/window.rs:299
+msgid "translator-credits"
+msgstr "Úr Balázs <ur dot balazs at fsf dot hu>"
