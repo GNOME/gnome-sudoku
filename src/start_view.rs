@@ -117,6 +117,7 @@ mod imp {
                 self.start_open_stack.set_visible_child(&*self.open_button_pill);
                 self.connect_clipboard();
             }
+            self.save_selected_difficulty();
         }
 
         #[template_callback]
@@ -126,6 +127,7 @@ mod imp {
                 self.clipboard.get().unwrap().disconnect(handle);
                 self.clipboard_string.replace(Default::default());
             }
+            self.save_selected_difficulty();
         }
 
         #[template_callback]
@@ -171,6 +173,10 @@ mod imp {
         #[template_callback]
         fn start_shared_game_cb (&self, _: &gtk::Button) {
             self.backend.get().unwrap().tgame_start();
+        }
+
+        fn save_selected_difficulty (&self) {
+            self.backend.get().unwrap().set_selected_difficulty(self.get_selected_difficulty());
         }
 
         pub fn open_fail (&self) {
@@ -295,10 +301,6 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
             self.very_hard_check.set_active(true);
-        }
-
-        fn dispose(&self) {
-            self.backend.get().unwrap().set_selected_difficulty(self.get_selected_difficulty());
         }
     }
 
