@@ -449,6 +449,10 @@ impl SudokuBackend {
         game!(self).reset();
     }
 
+    pub fn game_play_order (&self) -> Vec<Coord>{
+        game!(self).play_order()
+    }
+
     pub fn game_time_played (&self) -> f64 {
         game!(self).total_time_played()
     }

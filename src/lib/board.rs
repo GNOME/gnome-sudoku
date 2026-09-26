@@ -28,9 +28,9 @@ use crate::lib::enums::Coord;
 #[derive(Clone, Debug)]
 pub struct SudokuBoard {
     pub cells : [[SudokuBoardCell; 9]; 9],
-    total_fixed : usize,
+    pub total_fixed : usize,
     total_earmarks : Cell<usize>,
-    total_filled : Cell<usize>,
+    pub total_filled : Cell<usize>,
     pub broken_coords: RefCell<HashSet<Coord>>,
     digits : [DigitOccurences; 9],
 
@@ -531,6 +531,18 @@ impl SudokuBoard {
         }
 
         Ok(board)
+    }
+
+    pub fn cells_not_fixed (&self) -> HashSet<Coord>{
+        let mut ret: HashSet<Coord> = Default::default();
+        for row in 0..9 {
+            for col in 0..9 {
+                if !self.cells[row][col].fixed {
+                    ret.insert(Coord { row, col });
+                }
+            }
+        }
+        ret
     }
 }
 

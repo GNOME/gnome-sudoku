@@ -18,6 +18,7 @@
  * along with GNOME Sudoku. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use adw::StyleManager;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 
@@ -32,13 +33,19 @@ use crate::lib::game::{SudokuGame, StackAction};
 use crate::lib::utils::{new_shortcut, new_shortcut_with_args};
 
 use crate::cell::SudokuCell;
+use crate::picker_popover;
 use crate::picker_popover::SudokuPickerPopover;
 use crate::connect_cb_action;
 use crate::connect_cb_pref;
 
 use std::cell::{Cell, OnceCell};
+use std::pin::Pin;
+use std::rc::Rc;
+use std::time::Duration;
 
 mod imp {
+
+use gtk::{CssProvider, glib::SourceId};
 
 use super::*;
 
@@ -66,6 +73,8 @@ use super::*;
         pub selected_col: Cell<usize>,
         pub picker_popover: SudokuPickerPopover,
         pub backend: OnceCell<SudokuBackend>,
+        pub completed_css_provider: CssProvider,
+        pub completed_source_id: Cell<Option<SourceId>>
     }
 
     impl Default for SudokuGrid {
@@ -77,6 +86,8 @@ use super::*;
 
             Self {
                 cells: cells,
+                completed_source_id: Default::default(),
+                completed_css_provider: Default::default(),
                 selected_row: Cell::new(4),
                 selected_col: Cell::new(4),
                 focus_controller: Default::default(),
@@ -303,8 +314,9 @@ use super::*;
             backend.connect_closure("game-changed", false, glib::closure_local!(
                 #[weak(rename_to = grid)] self,
                 move |_: SudokuBackend| {
-                    //necessary because the focus flip flops during game completed
-                    grid.obj().unselect();
+                    if let Some(source_id) = grid.completed_source_id.take() {
+                        SourceId::remove(source_id);
+                    }
 
                     for row in 0..9 {
                         for col in 0..9 {
@@ -317,6 +329,8 @@ use super::*;
                     grid.update_warnings();
                     grid.add_game_hooks();
 
+                    grid.obj().set_can_focus (true);
+                    grid.obj().set_can_target (true);
                     grid.grab_focus();
                 }
             ));
@@ -492,6 +506,52 @@ impl SudokuGrid {
 
     pub fn init (&self, backend: &SudokuBackend) {
         self.imp().init(backend);
+    }
+
+    pub fn completed_animation (&self, v: Pin<Vec<Coord>>, current: usize) {
+        let duration = {
+            match current {
+                0 => 500,
+                1 => 400,
+                2..3 => 300,
+                3..7 => 200,
+                7..15 => 100,
+                15.. => 50
+            }
+        };
+
+        let pos = v[current];
+        let s = {
+            ":root {--sudoku-completed-duration: ".to_owned() +
+            &duration.to_string() +
+            "ms" +
+            ";}"
+        };
+
+        self.imp().completed_css_provider.load_from_string(&s);
+        self.imp().cells[pos.row][pos.col].add_css_class("completed");
+        let source_id = Some(glib::timeout_add_local_once(Duration::from_millis(duration), glib::clone!(
+            #[weak(rename_to = grid)] self,
+            move || {
+                grid.imp().completed_source_id.set(None);
+                if current + 1 < v.len() {
+                    grid.completed_animation(v, current + 1);
+                }
+                else {
+                    grid.popup_completed_dialog();
+                }
+            }
+        )));
+        self.imp().completed_source_id.set(source_id);
+    }
+
+    pub fn popup_completed_dialog (&self) {
+        glib::timeout_add_local_once(Duration::from_millis(500), glib::clone!(
+            #[weak(rename_to = grid)] self,
+            move || {
+                grid.activate_action("game-view.completed-dialog", None).unwrap();
+            }
+        ));
     }
 
     pub fn unselect (&self) {

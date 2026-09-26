@@ -42,6 +42,8 @@ use std::cell::OnceCell;
 mod imp {
     use std::cell::Cell;
 
+use gtk::{CssProvider, ReducedMotion};
+
 use super::*;
 
     #[glib::object_subclass]
@@ -220,6 +222,7 @@ use super::*;
                     game_view.add_game_hooks();
                     game_view.initialize_buttons();
                     game_view.initialize_clock_label();
+                    game_view.toggle_pause_action.set_enabled(true);
                     game_view.windowtitle.set_subtitle(&backend.game_difficulty().to_translated_string());
                 }
             ));
@@ -287,6 +290,7 @@ use super::*;
                 create_cb_entry!(self, "share-puzzle", share_puzzle_cb),
                 create_cb_entry!(self, "export-puzzle", export_puzzle_cb),
                 create_cb_entry!(self, "save-game-as", save_game_as_cb),
+                create_cb_entry!(self, "completed-dialog", present_completed_dialog),
             ];
             action_group.add_action_entries(actions);
 
@@ -446,11 +450,31 @@ use super::*;
         fn game_completed_cb (&self) {
             // game.board.completed.disconnect (board_completed_cb);
             self.backend().game_save_completed ();
+            self.backend().game_stop_clock();
             let highscore_changed = self.backend().game_save_highscore ();
             if highscore_changed {
                 self.clock_stack.set_visible_child (&*self.clock_medal);
             }
 
+            let play_order = self.backend().game_play_order();
+            self.grid.unselect();
+            self.grid.set_can_focus(false);
+            self.grid.set_can_target(false);
+
+            let reduced_motion = gtk::Settings::default().unwrap().gtk_interface_reduced_motion();
+            if reduced_motion == ReducedMotion::Reduce {
+                self.present_completed_dialog();
+            }
+            else {
+                self.reset_board_action.set_enabled(false);
+                self.undo_action.set_enabled(false);
+                self.redo_action.set_enabled(false);
+                self.toggle_pause_action.set_enabled(false);
+                self.grid.completed_animation(std::pin::Pin::new(play_order), 0);
+            }
+        }
+
+        pub fn present_completed_dialog (&self ) {
             use gettextrs::gettext;
             let win_str = gettext("Puzzle Completed!");
             let dialog = adw::AlertDialog::new(Some(&win_str), None);
@@ -470,8 +494,7 @@ use super::*;
 
             dialog.connect_response(None, glib::clone!(
                 #[weak(rename_to = game_view)] self,
-                move |dialog, response|
-                {
+                move |dialog, response| {
                     match response {
                         "start-menu" | "close" => {
                             game_view.backend().game_delete();

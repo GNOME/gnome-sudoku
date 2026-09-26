@@ -9,6 +9,11 @@
     --sudoku-accent-pink: oklch(0.92 0.20 5);
     --sudoku-accent-purple: oklch(0.92 0.25 300);
     --sudoku-accent-slate: oklch(0.88 0.03 250);
+
+    --sudoku-cell-color: var(--view-bg-color);
+    --sudoku-cell-fixed-color: #CCC;
+    --sudoku-cell-highlight-color: oklch(from var(--sudoku-accent-color) calc(l - 0.02) calc(c * 0.25) h);
+    --sudoku-cell-highlight-color-extra: oklch(from var(--sudoku-accent-color) calc(l - 0.07) c h);
   }
   sudoku-grid {
     border: 2px solid #333;
@@ -18,16 +23,10 @@
     background: #999;
   }
   sudoku-cell {
-    background: var(--view-bg-color);
+    background: var(--sudoku-cell-color);
   }
   sudoku-cell.fixed {
-    background: #CCC;
-  }
-  sudoku-cell.highlight-coord {
-    background: oklch(from var(--sudoku-accent-color) calc(l - 0.02) calc(c * 0.25) h);
-  }
-  sudoku-cell.highlight-digit {
-    background: oklch(from var(--sudoku-accent-color) calc(l - 0.07) c h);
+    background: var(--sudoku-cell-fixed-color);
   }
   sudoku-earmark.highlight-digit {
     color: oklab(from var(--sudoku-accent-color) 0.5 a b);
@@ -41,7 +40,6 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --sudoku-dark-grey: oklch(0.39 0 0);
     --sudoku-accent-blue: oklch(0.35 0.1 230);
     --sudoku-accent-teal: oklch(0.35 0.1 205);
     --sudoku-accent-green: oklch(0.35 0.1 145);
@@ -51,6 +49,11 @@
     --sudoku-accent-pink: oklch(0.35 0.1 345);
     --sudoku-accent-purple: oklch(0.35 0.1 310);
     --sudoku-accent-slate: oklch(0.35 0.03 250);
+
+    --sudoku-cell-color: oklch(0.39 0 0);
+    --sudoku-cell-fixed-color: oklch(0.32 0 0);
+    --sudoku-cell-highlight-color: oklch(from var(--sudoku-accent-color) l calc(c * 0.25) h);
+    --sudoku-cell-highlight-color-extra: oklch(from var(--sudoku-accent-color) 0.32 calc(c * 0.7) h);
   }
   sudoku-grid {
     background: oklch(0.56 0 0);
@@ -59,30 +62,39 @@
     background: oklch(0.47 0 0);
   }
   sudoku-cell {
-    background: var(--sudoku-dark-grey);
+    background: var(--sudoku-cell-color);
   }
   sudoku-cell.fixed {
-    background: oklch(0.32 0 0);
-  }
-  sudoku-cell.highlight-coord {
-    background: oklch(from var(--sudoku-accent-color) l calc(c * 0.25) h);
-  }
-  sudoku-cell.highlight-digit {
-    background: oklch(from var(--sudoku-accent-color) 0.32 calc(c * 0.7) h);
+    background: var(--sudoku-cell-fixed-color);
   }
   sudoku-earmark.highlight-digit {
     color: oklab(from var(--sudoku-accent-color) 0.85 a b);
     font-weight: bold;
   }
   sudoku-cell.paused {
-    background: var(--sudoku-dark-grey);
+    background: var(--sudoku-cell-color);
     transition: background var(--sudoku-pause-delay);
   }
 }
-
 /*Styles in common for both light mode and dark mode*/
 :root {
   --sudoku-pause-delay: 2s;
+  --sudoku-completed-duration: 500ms;
+}
+
+@keyframes completed-animation {
+  0% {background-color: var(--sudoku-cell-color);}
+  50% {background-color: var(--sudoku-cell-highlight-color-extra);}
+  100% {background-color: var(--sudoku-cell-highlight-color);}
+}
+sudoku-cell.highlight-coord {
+    background: var(--sudoku-cell-highlight-color);
+}
+sudoku-cell.highlight-digit {
+    background: var(--sudoku-cell-highlight-color-extra);
+}
+sudoku-cell.completed {
+  animation: completed-animation forwards var(--sudoku-completed-duration);
 }
 sudoku-cell.error {
   color: var(--error-color);
@@ -102,6 +114,7 @@ overlay.paused > label {
   color: #FFF;
   background: rgba(0, 0, 0, 0.75);
   transition: background var(--sudoku-pause-delay);
+  animation: success-animation forwards 1s;
   animation: slow-appear var(--sudoku-pause-delay) forwards;
 }
 .paused > sudoku-value, .paused sudoku-earmark {

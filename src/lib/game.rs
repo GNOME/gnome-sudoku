@@ -18,6 +18,7 @@
  * along with GNOME Sudoku. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use fastrand::Rng;
 use gtk::glib::{self, ThreadPool};
 use gtk::glib::SourceId;
 use gtk::glib::{Properties, subclass::Signal};
@@ -32,6 +33,7 @@ use crate::lib::enums::CompatValue;
 use crate::lib::enums::Coord;
 
 use std::cell::{Cell, OnceCell};
+use std::collections::HashSet;
 use std::sync::Arc;
 use std::time::{Duration, SystemTime};
 use std::{cell::RefCell, sync::OnceLock};
@@ -529,6 +531,49 @@ impl SudokuGame {
 
     pub fn current_action (&self) -> StackAction {
         self.imp().current_action.get().unwrap()
+    }
+
+    fn unique (v: Vec<Coord>) -> Vec<Coord>{
+        let mut ret = Vec::new();
+        let mut hashset = HashSet::<Coord>::new();
+        for coord in v {
+            if hashset.insert(coord) {
+                ret.push(coord);
+            }
+        }
+        ret
+    }
+
+    pub fn play_order (&self) -> Vec<Coord> {
+        let stack = self.imp().stack.borrow();
+        let mut play_order : Vec<Coord> = Default::default();
+        for item in stack.iter() {
+            for value_change in &item.value_changes {
+                play_order.push(value_change.pos);
+            }
+        }
+        let mut play_order: Vec<Coord> = Self::unique(play_order);
+        play_order.reverse();
+
+        if play_order.len() == 81 - self.board().total_fixed {
+            return play_order;
+        }
+
+        //this is in case the game was loaded we generate a random
+        //order for already filled in cells
+        let mut randomized_save_order: Vec<Coord> = Vec::new();
+        let cells_not_fixed = self.board().cells_not_fixed();
+        for coord in play_order.iter() {
+            if !cells_not_fixed.contains(&coord) {
+                randomized_save_order.push(*coord);
+            }
+        }
+
+        let mut rng = Rng::new();
+        rng.shuffle(&mut randomized_save_order);
+        play_order.append(&mut randomized_save_order);
+
+        play_order
     }
 
     pub fn undo (&self) {
