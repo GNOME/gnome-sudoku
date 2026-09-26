@@ -280,10 +280,15 @@ impl SudokuGame {
             }).unwrap();
         }
 
+        let mut count = 0;
         loop {
             std::thread::sleep(Duration::from_millis(1));
             if generator.get().is_some() {
                 break;
+            }
+            count += 1;
+            if count > 10000 {
+                panic!("Failed to generate a board in less than 10 seconds");
             }
         }
 
