@@ -291,7 +291,7 @@ mod imp {
                 false => -1.0
             };
             let save_name = board.fixed_to_string() + ".save";
-            let save_path = self.paths.saved_dir.join(save_name);
+            let save_path = self.paths.finished_dir.join(save_name);
             let save_path = save_path.to_str().expect("Failed to convert path");
             Self::create_file_for_board(save_path, board, timer);
         }
