@@ -398,7 +398,13 @@ impl SudokuBoard {
         let mut ret = String::from("");
         for row in &self.cells {
             for cell in row {
-                ret += &cell.value.get().map_or_else(||"0".to_string(), |m| (m + 1).to_string());
+                if cell.fixed {
+                    let value = cell.value.get().unwrap() + 1;
+                    ret += &value.to_string();
+                }
+                else {
+                    ret += "0";
+                }
             }
         }
         ret
