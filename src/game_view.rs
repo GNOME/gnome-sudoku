@@ -496,10 +496,7 @@ use super::*;
                 #[weak(rename_to = game_view)] self,
                 move |dialog, response| {
                     match response {
-                        "start-menu" | "close" => {
-                            game_view.backend().game_delete();
-                            game_view.obj().activate_action("app.new-game", None).unwrap();
-                        },
+                        "start-menu" | "close" => game_view.obj().activate_action("app.new-game", None).unwrap(),
                         "quit" => game_view.obj().activate_action("app.quit", None).unwrap(),
                         "play-again" => game_view.backend().new_game(),
                         _ => println!("dialog answer {}", response)
