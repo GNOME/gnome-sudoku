@@ -250,8 +250,15 @@ mod imp {
         }
 
         fn new_game_cb (&self) {
-            if self.backend().game_exists() {
-                self.backend().game_stop_clock();
+            let backend = self.backend();
+            if backend.game_exists() {
+                if backend.game_completed() {
+                    self.game_view.cancel_completed_animation();
+                    backend.game_delete();
+                }
+                else {
+                    backend.game_stop_clock();
+                }
             }
 
             self.show_start_view();

@@ -314,10 +314,6 @@ use super::*;
             backend.connect_closure("game-changed", false, glib::closure_local!(
                 #[weak(rename_to = grid)] self,
                 move |_: SudokuBackend| {
-                    if let Some(source_id) = grid.completed_source_id.take() {
-                        SourceId::remove(source_id);
-                    }
-
                     for row in 0..9 {
                         for col in 0..9 {
                             grid.cells[row][col].update_visibility();
@@ -506,6 +502,12 @@ impl SudokuGrid {
 
     pub fn init (&self, backend: &SudokuBackend) {
         self.imp().init(backend);
+    }
+
+    pub fn cancel_completed_animation (&self) {
+        if let Some(animation) = self.imp().completed_source_id.take() {
+            animation.remove();
+        }
     }
 
     pub fn completed_animation (&self, v: Pin<Vec<Coord>>, current: usize) {

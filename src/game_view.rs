@@ -661,6 +661,10 @@ impl SudokuGameView {
         self.imp().backend.get().is_some()
     }
 
+    pub fn cancel_completed_animation (&self) {
+        self.imp().grid.cancel_completed_animation();
+    }
+
     pub fn grid (&self) -> &SudokuGrid {
         &self.imp().grid
     }

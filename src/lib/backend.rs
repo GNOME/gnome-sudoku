@@ -325,6 +325,10 @@ impl SudokuBackend {
             .build()
     }
 
+    pub fn game_completed (&self) -> bool {
+        game!(self).board().is_complete()
+    }
+
     pub fn game (&self) -> Ref<'_, Option<SudokuGame>> {
         self.imp().game.borrow()
     }
