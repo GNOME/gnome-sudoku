@@ -265,13 +265,8 @@ impl SudokuGame {
                     boardg.solve().unwrap();
                     if let Some(generator) = weak_generator.upgrade() {
                         if boardg.difficulty() == difficulty {
-                            if generator.get().is_none() {
-                                let _ = generator.set(boardg);
-                                break;
-                            }
-                            else {
-                                break;
-                            }
+                            generator.get_or_init(|| boardg);
+                            break;
                         }
                     }
                     else {
@@ -283,11 +278,8 @@ impl SudokuGame {
         }
 
         let mut count = 0;
-        loop {
+        while generator.get().is_none() {
             std::thread::sleep(Duration::from_millis(1));
-            if generator.get().is_some() {
-                break;
-            }
             count += 1;
             if count > 10000 {
                 panic!("Failed to generate a board in less than 10 seconds");

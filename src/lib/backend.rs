@@ -558,9 +558,11 @@ impl SudokuBackend {
                 if old_highscore > new_highscore {
                     let difficulty = game!(self).difficulty();
                     self.set_highscore(difficulty, new_highscore);
-                    return true
+                    true
                 }
-                false
+                else {
+                    false
+                }
             }
             None => {
                 let difficulty = game!(self).difficulty();
@@ -630,41 +632,9 @@ impl SudokuBackend {
 
         for _i in 0..gtk::glib::num_processors() {
             let weak_boards = Arc::downgrade(&boards);
-            pool.push(move ||{
-                let mut boardg: SudokuBoardGenerator = Default::default();
-                'a: loop {
-                    boardg.new_puzzle ();
-                    boardg.solve().unwrap();
-                    if boardg.difficulty() == difficulty {
-                        let board = SudokuBoard::from_generated(
-                            &boardg.get_puzzle(),
-                            &boardg.get_solution(),
-                            difficulty
-                        );
-
-                        if let Some(boards) = weak_boards.upgrade()
-                        {
-                            if let Ok(mut boards) = boards.lock() {
-                                if boards.len() > number_of_puzzles as usize {
-                                    break 'a;
-                                }
-                                else {
-                                    boards.push(board);
-                                    if boards.len() > number_of_puzzles as usize {
-                                        break 'a;
-                                    }
-                                    else {
-                                        continue 'a;
-                                    }
-                                }
-                            }
-                        }
-                        else {
-                            break 'a;
-                        }
-                    }
-                }
-            }).unwrap();
+            pool.push(move ||
+                Self::generate_multiple_puzzles_helper(weak_boards, number_of_puzzles, difficulty)
+            ).unwrap();
         }
 
         loop {
@@ -674,6 +644,43 @@ impl SudokuBackend {
             }
         }
         Arc::into_inner(boards).unwrap().into_inner().unwrap()
+    }
+
+    fn generate_multiple_puzzles_helper (boards: std::sync::Weak<Mutex<Vec<SudokuBoard>>>, number_of_puzzles: u8, difficulty: DifficultyCategory) {
+        let mut boardg: SudokuBoardGenerator = Default::default();
+        loop {
+            boardg.new_puzzle ();
+            boardg.solve().unwrap();
+            if boardg.difficulty() != difficulty {
+                continue;
+            }
+
+            let board = SudokuBoard::from_generated(
+                &boardg.get_puzzle(),
+                &boardg.get_solution(),
+                difficulty
+            );
+
+            if let Some(boards) = boards.upgrade() {
+                if let Ok(mut boards) = boards.lock() {
+                    if boards.len() > number_of_puzzles as usize {
+                        break;
+                    }
+                    else {
+                        boards.push(board);
+                        if boards.len() > number_of_puzzles as usize {
+                            break;
+                        }
+                        else {
+                            continue;
+                        }
+                    }
+                }
+            }
+            else {
+                break;
+            }
+        }
     }
 
     pub fn selected_difficulty (&self) -> DifficultyCategory {
