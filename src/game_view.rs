@@ -498,7 +498,7 @@ use super::*;
                     match response {
                         "start-menu" | "close" => game_view.obj().activate_action("app.new-game", None).unwrap(),
                         "quit" => game_view.obj().activate_action("app.quit", None).unwrap(),
-                        "play-again" => game_view.backend().new_game(),
+                        "play-again" => game_view.backend().game_generate(),
                         _ => println!("dialog answer {}", response)
 
                     }

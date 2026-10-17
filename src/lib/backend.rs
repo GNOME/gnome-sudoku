@@ -481,12 +481,6 @@ impl SudokuBackend {
         }
     }
 
-    pub fn game_generate (&self, difficulty: DifficultyCategory) {
-        let game = SudokuGame::new_from_generator(difficulty);
-        self.imp().game.replace(Some(game));
-        self.imp().game_changed();
-    }
-
     pub fn game_load (&self, path: &str) -> bool {
         let mut errors = Vec::new();
         match SudokuGame::new_from_json(path){
@@ -603,9 +597,11 @@ impl SudokuBackend {
         )
     }
 
-    pub fn new_game (&self) {
-        let difficulty = game!(self).difficulty();
-        self.game_generate(difficulty);
+    pub fn game_generate (&self) {
+        let difficulty = self.selected_difficulty();
+        let game = SudokuGame::new_from_generator(difficulty);
+        self.imp().game.replace(Some(game));
+        self.imp().game_changed();
     }
 
     pub fn check_clipboard (&self, s: &str) {

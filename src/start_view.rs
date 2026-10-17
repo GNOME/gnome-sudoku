@@ -97,18 +97,7 @@ mod imp {
         #[template_callback]
         fn start_game_cb (&self, _: &gtk::Button) {
             let backend = self.backend.get().unwrap();
-            if self.easy_check.is_active() {
-                backend.game_generate(DifficultyCategory::Easy);
-            }
-            else if self.medium_check.is_active() {
-                backend.game_generate(DifficultyCategory::Medium);
-            }
-            else if self.hard_check.is_active() {
-                backend.game_generate(DifficultyCategory::Hard);
-            }
-            else if self.very_hard_check.is_active() {
-                backend.game_generate(DifficultyCategory::VeryHard);
-            }
+            backend.game_generate();
         }
 
         #[template_callback]
