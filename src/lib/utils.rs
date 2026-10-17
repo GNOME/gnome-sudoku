@@ -1,6 +1,6 @@
-/* -*- Mode: vala; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
+/* -*- Mode: rust; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
- * Copyright © 2023 Jamie Murphy <jmurphy@gnome.org>
+ * Copyright © 2026 Johan GAY
  *
  * This file is part of GNOME Sudoku.
  *

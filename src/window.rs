@@ -18,7 +18,6 @@
  * along with GNOME Sudoku. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use adw::StyleManager;
