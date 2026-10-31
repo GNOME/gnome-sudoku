@@ -41,6 +41,7 @@ use gtk::CompositeTemplate;
 use gtk::glib::closure_local;
 use gtk::glib::{self};
 use gtk::glib::subclass::InitializingObject;
+use gtk::glib::timeout_add_seconds_local_once;
 
 use std::cell::{Cell, OnceCell};
 
@@ -80,6 +81,7 @@ mod imp {
         pub visible_dialogue_type: Cell<Option<Type>>,
         pub print_multiple_action: SimpleAction,
         pub new_game_action: SimpleAction,
+        pub start_generated_game_action: SimpleAction,
         pub zoom_in_action: SimpleAction,
         pub zoom_out_action: SimpleAction,
         pub accent_provider: CssProvider,
@@ -153,6 +155,7 @@ mod imp {
                 style_manager: StyleManager::default(),
                 accent_provider: CssProvider::new(),
                 new_game_action: SimpleAction::new("new-game", None),
+                start_generated_game_action: SimpleAction::new("start-generated-game", None),
                 print_multiple_action: SimpleAction::new("print-generator", None),
                 zoom_in_action: SimpleAction::new("zoom-in", None),
                 zoom_out_action: SimpleAction::new("zoom-out", None),
@@ -213,6 +216,7 @@ mod imp {
             connect_cb_action!(self, self.zoom_in_action, zoom_in, action_group);
             connect_cb_action!(self, self.zoom_out_action,  zoom_out, action_group);
             connect_cb_action!(self, self.new_game_action,  new_game_cb, action_group);
+            connect_cb_action!(self, self.start_generated_game_action,  start_generated_game_cb, action_group);
             self.obj().insert_action_group("app", Some(&action_group));
         }
 
@@ -246,6 +250,17 @@ mod imp {
                 ::from_resource("/org/gnome/Sudoku/ui/shortcuts-dialog.ui")
                 .object("SudokuShortcutsDialog").unwrap();
             shortcuts_dialog.present(Some(self.obj().as_ref()));
+        }
+
+        fn start_generated_game_cb (&self) {
+            self.start_generated_game_action.set_enabled(false);
+            let backend = self.backend.get().unwrap();
+            backend.game_generate();
+            timeout_add_seconds_local_once(2, glib::clone!(
+                #[weak(rename_to = win)] self,
+                move ||
+                win.start_generated_game_action.set_enabled(true)
+            ));
         }
 
         fn new_game_cb (&self) {

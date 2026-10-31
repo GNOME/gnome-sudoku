@@ -95,12 +95,6 @@ mod imp {
     #[gtk::template_callbacks]
     impl SudokuStartView {
         #[template_callback]
-        fn start_game_cb (&self, _: &gtk::Button) {
-            let backend = self.backend.get().unwrap();
-            backend.game_generate();
-        }
-
-        #[template_callback]
         fn custom_checkbutton_activated_cb (&self, _: &adw::ActionRow) {
             if let Some(child) = self.start_open_stack.visible_child() && child != *self.open_and_shared_box {
                 self.start_open_stack.set_visible_child(&*self.open_button_pill);

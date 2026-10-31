@@ -119,7 +119,7 @@ template $SudokuStartView : Adw.Bin {
               halign: center;
               label: _("_Start Game");
               use-underline: true;
-              clicked => $start_game_cb() swapped;
+              action-name: "app.start-generated-game";
 
               styles [
                 "pill",
