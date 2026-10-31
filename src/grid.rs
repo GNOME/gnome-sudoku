@@ -25,6 +25,7 @@ use adw::subclass::prelude::*;
 use gtk::glib;
 use gtk::gio;
 use gtk::gio::SimpleAction;
+use gtk::glib::SourceId;
 use gtk::{EventControllerFocus, gio::SimpleActionGroup, glib::{Propagation, Variant, WeakRef, closure_local}};
 
 use crate::lib::backend::SudokuBackend;
@@ -510,6 +511,18 @@ impl SudokuGrid {
         }
     }
 
+    pub fn init_completed_animation (&self){
+        self.imp().completed_source_id.set(Some(
+            glib::timeout_add_local_once(Duration::from_millis(800), glib::clone!(
+                #[weak(rename_to = grid)] self,
+                move || {
+                    let play_order = grid.imp().backend().game_play_order();
+                    grid.completed_animation(std::pin::Pin::new(play_order), 0);
+                }
+            )
+        )));
+    }
+
     pub fn completed_animation (&self, v: Pin<Vec<Coord>>, current: usize) {
         let duration = {
             match current {
@@ -532,28 +545,30 @@ impl SudokuGrid {
 
         self.imp().completed_css_provider.load_from_string(&s);
         self.imp().cells[pos.row][pos.col].add_css_class("completed");
-        let source_id = Some(glib::timeout_add_local_once(Duration::from_millis(duration), glib::clone!(
-            #[weak(rename_to = grid)] self,
-            move || {
-                grid.imp().completed_source_id.set(None);
-                if current + 1 < v.len() {
-                    grid.completed_animation(v, current + 1);
-                }
-                else {
-                    grid.popup_completed_dialog();
-                }
-            }
-        )));
-        self.imp().completed_source_id.set(source_id);
+        if current + 1 < v.len() {
+            self.imp().completed_source_id.set(
+                Some(glib::timeout_add_local_once(Duration::from_millis(duration), glib::clone!(
+                    #[weak(rename_to = grid)] self,
+                    move ||
+                    grid.completed_animation(v, current + 1)
+                )))
+            );
+        }
+        else {
+            self.finish_completed_animation();
+        }
     }
 
-    pub fn popup_completed_dialog (&self) {
-        glib::timeout_add_local_once(Duration::from_millis(500), glib::clone!(
-            #[weak(rename_to = grid)] self,
-            move || {
-                grid.activate_action("game-view.completed-dialog", None).unwrap();
-            }
-        ));
+    pub fn finish_completed_animation (&self) {
+        self.imp().completed_source_id.set(Some(
+            glib::timeout_add_local_once(Duration::from_millis(800), glib::clone!(
+                #[weak(rename_to = grid)] self,
+                move || {
+                    grid.imp().completed_source_id.set(None);
+                    grid.activate_action("game-view.completed-dialog", None).unwrap();
+                }
+            )
+        )));
     }
 
     pub fn unselect (&self) {

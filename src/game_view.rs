@@ -456,7 +456,6 @@ use super::*;
                 self.clock_stack.set_visible_child (&*self.clock_medal);
             }
 
-            let play_order = self.backend().game_play_order();
             self.grid.unselect();
             self.grid.set_can_focus(false);
             self.grid.set_can_target(false);
@@ -470,7 +469,7 @@ use super::*;
                 self.undo_action.set_enabled(false);
                 self.redo_action.set_enabled(false);
                 self.toggle_pause_action.set_enabled(false);
-                self.grid.completed_animation(std::pin::Pin::new(play_order), 0);
+                self.grid.init_completed_animation();
             }
         }
 
