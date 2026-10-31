@@ -35,15 +35,7 @@ mod imp {
         type ParentType = adw::Bin;
 
         fn class_init(klass: &mut Self::Class) {
-
-            gtk::CheckButton::ensure_type();
             klass.bind_template();
-            klass.add_shortcut(
-                &gtk::Shortcut::builder()
-                .action(&gtk::NamedAction::new("window.back"))
-                .trigger(&gtk::ShortcutTrigger::parse_string("<Alt>Left|<Alt>KP_Left").unwrap())
-                .build(),
-            );
         }
 
         fn instance_init(obj: &InitializingObject<Self>) {
