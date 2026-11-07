@@ -32,7 +32,9 @@ use crate::lib::utils::{get_cloned, new_shortcut, new_shortcut_with_args};
 use crate::{connect_cb_action, connect_cb_action_with_arg, picker_popover::SudokuPickerPopover};
 
 mod imp {
-    use super::*;
+    use gtk::glib::Properties;
+
+use super::*;
 
     #[glib::object_subclass]
     impl ObjectSubclass for SudokuCell {
@@ -58,6 +60,8 @@ mod imp {
         }
     }
 
+    #[derive(Properties)]
+    #[properties(wrapper_type = super::SudokuCell)]
     pub struct SudokuCell {
         pub insert_earmark_action: SimpleAction,
         pub insert_value_action: SimpleAction,
@@ -70,6 +74,7 @@ mod imp {
         pub insert_earmark_closure_id: Cell<Option<SignalHandlerId>>,
         pub backend: OnceCell<SudokuBackend>,
         pub picker_popover: Cell<Option<SudokuPickerPopover>>,
+        #[property(get, set)]
         pub accented: Cell<bool>,
         pub selected: Cell<bool>,
         pub position: OnceCell<Coord>
@@ -92,7 +97,6 @@ mod imp {
                 earmark_label.add_css_class("numeric");
                 earmark_label
             });
-
 
             let earmark_hide_animations : [_; 9] = std::array::from_fn(|num| {
                 let anim_target = adw::PropertyAnimationTarget::new(&earmark_labels[num], "opacity");
@@ -148,15 +152,6 @@ mod imp {
             }
             self.value_label.set_visible(value.is_some());
             self.value_label.set_parent(&*self.obj());
-
-            let click_controller = GestureClick::new();
-            click_controller.set_button(0); //all the buttons
-            click_controller.connect_released(glib::clone!(
-                #[weak(rename_to = cell)] self,
-                move |gesture, _, _, _|
-                cell.click_cb(gesture)
-            ));
-            self.obj().add_controller(click_controller);
 
             for earmark in self.earmark_labels.iter().enumerate() {
                 earmark.1.set_visible(backend.game_earmark(self.pos(), earmark.0));
@@ -333,10 +328,28 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for SudokuCell {
         fn constructed(&self) {
             self.parent_constructed();
             self.setup_actions();
+
+            let click_controller = GestureClick::new();
+            click_controller.set_button(0); //all the buttons
+            click_controller.connect_released(glib::clone!(
+                #[weak(rename_to = cell)] self,
+                move |gesture, _, _, _|
+                cell.click_cb(gesture)
+            ));
+            self.obj().add_controller(click_controller);
+
+            adw::bind_property_to_css_class(
+                &*self.obj(),
+                "accented",
+                &*self.obj(),
+                "accented",
+                glib::BindingFlags::DEFAULT
+            );
         }
 
         fn dispose (&self) {
@@ -445,16 +458,6 @@ impl SudokuCell {
                     (height as f64 * self.imp().backend().pref_zoom().to_earmark_multiplier()) as i32);
             }
         }
-    }
-
-    pub fn set_accented (&self, enabled: bool) {
-        if enabled {
-            self.add_css_class("accented");
-        }
-        else {
-            self.remove_css_class("accented");
-        }
-        self.imp().accented.set(enabled);
     }
 
     pub fn init (&self, backend: &SudokuBackend) {
@@ -616,10 +619,6 @@ impl SudokuCell {
 
     pub fn selected (&self) -> bool {
         self.imp().selected.get()
-    }
-
-    pub fn accented (&self) -> bool {
-        self.imp().accented.get()
     }
 
     pub fn update_value_visibility (&self, old_val: Option<usize>, new_val: Option<usize>) {

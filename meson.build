@@ -26,7 +26,7 @@ glib_version = '2.80.0'
 gio = dependency('gio-2.0', version: '>= @0@'.format(glib_version))
 glib = dependency('glib-2.0', version: '>= @0@'.format(glib_version))
 gtk = dependency('gtk4', version: '>= 4.19.3')
-adw = dependency('libadwaita-1', version: '>= 1.8')
+adw = dependency('libadwaita-1', version: '>= 1.10')
 blueprintc = find_program('blueprint-compiler', version: '>= 0.16')
 cargo = find_program('cargo')
 
