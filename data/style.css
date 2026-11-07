@@ -1,3 +1,11 @@
+/*Variables in common for both light mode and dark mode*/
+:root {
+  --sudoku-pause-delay: 2s;
+  --sudoku-completed-duration: 500ms;
+  --sudoku-rounded-corner: 10px;
+  --sudoku-rounded-corner-invisble: calc(var(--sudoku-rounded-corner) + 3px);
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     --sudoku-accent-blue: oklch(0.92 0.25 270);
@@ -17,6 +25,7 @@
   }
   sudoku-grid {
     border: 2px solid #333;
+    border-radius: var(--sudoku-rounded-corner);
     background: #333;
   }
   sudoku-block {
@@ -57,6 +66,7 @@
   }
   sudoku-grid {
     background: oklch(0.56 0 0);
+    border-radius: var(--sudoku-rounded-corner-invisble);
   }
   sudoku-block {
     background: oklch(0.47 0 0);
@@ -76,10 +86,31 @@
     transition: background var(--sudoku-pause-delay);
   }
 }
+
 /*Styles in common for both light mode and dark mode*/
-:root {
-  --sudoku-pause-delay: 2s;
-  --sudoku-completed-duration: 500ms;
+sudoku-cell.top-left {
+  border-top-left-radius: var(--sudoku-rounded-corner);
+}
+sudoku-cell.top-right {
+  border-top-right-radius: var(--sudoku-rounded-corner);
+}
+sudoku-cell.bottom-left {
+  border-bottom-left-radius: var(--sudoku-rounded-corner);
+}
+sudoku-cell.bottom-right {
+  border-bottom-right-radius: var(--sudoku-rounded-corner);
+}
+sudoku-block.top-left {
+  border-top-left-radius: var(--sudoku-rounded-corner-invisble);
+}
+sudoku-block.top-right {
+  border-top-right-radius: var(--sudoku-rounded-corner-invisble);
+}
+sudoku-block.bottom-left {
+  border-bottom-left-radius: var(--sudoku-rounded-corner-invisble);
+}
+sudoku-block.bottom-right {
+  border-bottom-right-radius: var(--sudoku-rounded-corner-invisble);
 }
 
 @keyframes completed-animation {
@@ -112,6 +143,7 @@ sudoku-value.error {
 overlay.paused > label {
   font-weight: bold;
   color: #FFF;
+  border-radius: var(--sudoku-rounded-corner);
   background: rgba(0, 0, 0, 0.75);
   transition: background var(--sudoku-pause-delay);
   animation: success-animation forwards 1s;

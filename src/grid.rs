@@ -373,6 +373,25 @@ use super::*;
                         .property("css-name", "sudoku-block")
                         .build();
 
+                    //for rounded corners
+                    if block_row == 0 {
+                        if block_col == 0 {
+                            block.add_css_class("top-left");
+                        }
+                        else if block_col == 2 {
+                            block.add_css_class("top-right");
+                        }
+                    }
+
+                    if block_row == 2 {
+                        if block_col == 0 {
+                            block.add_css_class("bottom-left");
+                        }
+                        else if block_col == 2 {
+                            block.add_css_class("bottom-right");
+                        }
+                    }
+
                     block.set_direction(gtk::TextDirection::Ltr);
                     self.obj().attach(&block, block_col, block_row, 1, 1);
                 }
@@ -394,6 +413,25 @@ use super::*;
                         move |grid_cell : SudokuCell| {
                             grid_cell.set_picker(&grid.picker_popover);
                     }));
+                    //for rounded corners
+                    if row == 0 {
+                        if col == 0 {
+                            cell.add_css_class("top-left");
+                        }
+                        else if col == 8 {
+                            cell.add_css_class("top-right");
+                        }
+                    }
+
+                    if row == 8 {
+                        if col == 0 {
+                            cell.add_css_class("bottom-left");
+                        }
+                        else if col == 8 {
+                            cell.add_css_class("bottom-right");
+                        }
+                    }
+
                     let row = row as i32;
                     let col = col as i32;
 
