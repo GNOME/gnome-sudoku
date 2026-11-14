@@ -364,6 +364,12 @@ use super::*;
                 }
             ));
 
+            backend.connect_pref_zoom_notify(glib::clone!(
+                #[weak(rename_to = grid_layout)] self,
+                move |_|
+                grid_layout.obj().queue_resize()
+            ));
+
             connect_cb_pref!(self, connect_pref_duplicate_warnings_notify, update_warnings);
             connect_cb_pref!(self, connect_pref_solution_warnings_notify, update_warnings);
             connect_cb_pref!(self, connect_pref_earmark_warnings_notify, update_warnings);

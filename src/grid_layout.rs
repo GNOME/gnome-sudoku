@@ -44,8 +44,6 @@ mod imp {
         margin_default_size: i32,
         margin_small_size: i32,
         margin_size_diff: i32,
-        grid: OnceCell<SudokuGrid>,
-        backend: OnceCell<SudokuBackend>,
     }
 
     impl Default for SudokuGridLayout {
@@ -57,8 +55,6 @@ mod imp {
                 margin_default_size: DEF,
                 margin_small_size: SMALL,
                 margin_size_diff: DIFF,
-                grid: Default::default(),
-                backend: Default::default()
             }
         }
     }
@@ -78,17 +74,6 @@ mod imp {
         fn normalize (mut val: i32, min: i32, max: i32) -> f64 {
             val = val.clamp(min, max);
             (val - min) as f64 / (max - min) as f64
-        }
-
-        pub fn init(&self, grid: &SudokuGrid, backend: &SudokuBackend) {
-            self.backend.set(backend.clone()).expect("Grid Layout is already initialized");
-            self.grid.set(grid.clone()).unwrap();
-
-            backend.connect_pref_zoom_notify(glib::clone!(
-                #[weak(rename_to = grid_layout)] self,
-                move |_|
-                grid_layout.obj().layout_changed()
-            ));
         }
     }
 
@@ -162,11 +147,9 @@ glib::wrapper! {
 
 
 impl SudokuGridLayout {
-    pub fn new (grid: &SudokuGrid, backend: &SudokuBackend) -> Self {
+    pub fn new () -> Self {
         let grid_layout: Self = Object::builder()
             .build();
-
-        grid_layout.imp().init(grid, backend);
 
         return grid_layout;
     }
