@@ -156,15 +156,6 @@ overlay.paused > label {
 sudoku-cell.accented {
   background: var(--sudoku-accent-color);
 }
-
-/*workaround for https://gitlab.gnome.org/GNOME/gtk/-/work_items/8338 */
-sudoku-cell.accented sudoku-value {
-  background: var(--sudoku-accent-color);
-}
-sudoku-cell.selected sudoku-earmark {
-  background: var(--sudoku-accent-color);
-}
-
 sudoku-picker {
   margin: 2px;
 }
