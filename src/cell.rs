@@ -333,6 +333,7 @@ use super::*;
         fn constructed(&self) {
             self.parent_constructed();
             self.setup_actions();
+            self.obj().set_accessible_role(gtk::AccessibleRole::Button);
 
             let click_controller = GestureClick::new();
             click_controller.set_button(0); //all the buttons
