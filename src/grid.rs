@@ -18,14 +18,12 @@
  * along with GNOME Sudoku. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use adw::StyleManager;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 
 use gtk::glib;
 use gtk::gio;
 use gtk::gio::SimpleAction;
-use gtk::glib::SourceId;
 use gtk::{EventControllerFocus, gio::SimpleActionGroup, glib::{Propagation, Variant, WeakRef, closure_local}};
 
 use crate::lib::backend::SudokuBackend;
@@ -34,19 +32,19 @@ use crate::lib::game::{SudokuGame, StackAction};
 use crate::lib::utils::{new_shortcut, new_shortcut_with_args};
 
 use crate::cell::SudokuCell;
-use crate::picker_popover;
 use crate::picker_popover::SudokuPickerPopover;
 use crate::connect_cb_action;
 use crate::connect_cb_pref;
 
 use std::cell::{Cell, OnceCell};
 use std::pin::Pin;
-use std::rc::Rc;
 use std::time::Duration;
 
 mod imp {
 
-use gtk::{CssProvider, glib::SourceId};
+use std::array::from_fn;
+
+use gtk::{Allocation, CssProvider, Orientation, Separator, Widget, glib::{SourceId, gobject_ffi::GObject}};
 
 use super::*;
 
@@ -54,7 +52,7 @@ use super::*;
     impl ObjectSubclass for SudokuGrid {
         const NAME: &'static str = "SudokuGrid";
         type Type = super::SudokuGrid;
-        type ParentType = gtk::Grid;
+        type ParentType = gtk::Widget;
 
         fn class_init(klass: &mut Self::Class) {
             klass.set_css_name("sudoku-grid");
@@ -69,6 +67,10 @@ use super::*;
 
     pub struct SudokuGrid {
         pub cells: [[SudokuCell; 9]; 9],
+        pub block_horizontal_separators: [Separator; 2],
+        pub block_vertical_separators: [Separator; 2],
+        pub cell_horizontal_separators: [Separator; 6],
+        pub cell_vertical_separators: [Separator; 6],
         pub focus_controller: WeakRef<EventControllerFocus>,
         pub selected_row: Cell<usize>,
         pub selected_col: Cell<usize>,
@@ -85,8 +87,38 @@ use super::*;
                 cell
             }));
 
+            let block_horizontal_separators: [Separator; 2] = from_fn(|_| {
+                glib::Object::builder()
+                    .property("css-name", "block-separator")
+                    .property("orientation", Orientation::Horizontal)
+                    .build()
+            });
+            let block_vertical_separators: [Separator; 2] = from_fn(|_| {
+                glib::Object::builder()
+                    .property("css-name", "block-separator")
+                    .property("orientation", Orientation::Vertical)
+                    .build()
+            });
+
+            let cell_horizontal_separators: [Separator; 6] = from_fn(|_| {
+                glib::Object::builder()
+                    .property("css-name", "cell-separator")
+                    .property("orientation", Orientation::Horizontal)
+                    .build()
+            });
+            let cell_vertical_separators: [Separator; 6] = from_fn(|_| {
+                glib::Object::builder()
+                    .property("css-name", "cell-separator")
+                    .property("orientation", Orientation::Vertical)
+                    .build()
+            });
+
             Self {
-                cells: cells,
+                cells,
+                block_horizontal_separators,
+                block_vertical_separators,
+                cell_horizontal_separators,
+                cell_vertical_separators,
                 completed_source_id: Default::default(),
                 completed_css_provider: Default::default(),
                 selected_row: Cell::new(4),
@@ -341,12 +373,21 @@ use super::*;
             self.update_warnings();
         }
 
+        pub fn set_font_size (&self, height: i32) {
+            for row in &self.cells {
+                for cell in row {
+                    let grid_padding = 10; //for size consistency with <= v50, remove with gtk5
+                    let height = (height - grid_padding) / 9;
+                    cell.set_font_sizes(height);
+                }
+            }
+        }
     }
 
     impl ObjectImpl for SudokuGrid {
         fn constructed(&self) {
             self.parent_constructed();
-            self.obj().set_direction(gtk::TextDirection::Ltr);
+            self.obj().set_accessible_role(gtk::AccessibleRole::Grid);
 
             let focus_controller = EventControllerFocus::new();
             self.focus_controller.set(Some(&focus_controller));
@@ -363,40 +404,6 @@ use super::*;
             self.obj().add_controller(self.focus_controller.upgrade().unwrap());
             self.setup_actions();
 
-            for block_row in 0..3 {
-                for block_col in 0..3 {
-                    let block = glib::Object::builder::<gtk::Grid>()
-                        .property("row_spacing", 1)
-                        .property("column_spacing", 1)
-                        .property("row_homogeneous", true)
-                        .property("column_homogeneous", true)
-                        .property("css-name", "sudoku-block")
-                        .build();
-
-                    //for rounded corners
-                    if block_row == 0 {
-                        if block_col == 0 {
-                            block.add_css_class("top-left");
-                        }
-                        else if block_col == 2 {
-                            block.add_css_class("top-right");
-                        }
-                    }
-
-                    if block_row == 2 {
-                        if block_col == 0 {
-                            block.add_css_class("bottom-left");
-                        }
-                        else if block_col == 2 {
-                            block.add_css_class("bottom-right");
-                        }
-                    }
-
-                    block.set_direction(gtk::TextDirection::Ltr);
-                    self.obj().attach(&block, block_col, block_row, 1, 1);
-                }
-            }
-
             for row in 0..9 {
                 for col in 0..9 {
                     let cell = &self.cells[row][col];
@@ -406,7 +413,6 @@ use super::*;
                         move |grid_cell : SudokuCell| {
                             grid.update_selected(&grid_cell);
                     }));
-
 
                     cell.connect_closure("grab-picker", false, closure_local!(
                         #[weak(rename_to = grid)] self,
@@ -432,17 +438,44 @@ use super::*;
                         }
                     }
 
-                    let row = row as i32;
-                    let col = col as i32;
-
-                    let block = self.obj().child_at(col / 3, row / 3);
-                    let block = block.unwrap().dynamic_cast::<gtk::Grid>().unwrap();
-                    block.attach(cell, col % 3, row % 3, 1, 1);
+                    cell.set_parent(&*self.obj());
                 }
+            }
+
+            //make sure to initialize the block separators last
+            for separator in &self.cell_horizontal_separators {
+                separator.set_parent(&*self.obj());
+            }
+            for separator in &self.cell_vertical_separators {
+                separator.set_parent(&*self.obj());
+            }
+            for separator in &self.block_horizontal_separators {
+                separator.set_parent(&*self.obj());
+            }
+            for separator in &self.block_vertical_separators {
+                separator.set_parent(&*self.obj());
             }
         }
 
         fn dispose(&self) {
+            for row in &self.cells {
+                for cell in row {
+                    cell.unparent();
+                }
+            }
+
+            for separator in &self.block_horizontal_separators {
+                separator.unparent();
+            }
+            for separator in &self.block_vertical_separators {
+                separator.unparent();
+            }
+            for separator in &self.cell_horizontal_separators {
+                separator.unparent();
+            }
+            for separator in &self.cell_vertical_separators {
+                separator.unparent();
+            }
             println!("Grid disposed");
         }
     }
@@ -499,6 +532,123 @@ use super::*;
             }
         }
 
+        fn size_allocate(&self, width: i32, height: i32, baseline: i32) {
+            self.set_font_size(height);
+
+            const CELL_SEPARATOR_SIZE: i32 = 1;
+            const BLOCK_SEPARATOR_SIZE: i32 = 2;
+            const SEPARATORS_LENGTH: i32 = BLOCK_SEPARATOR_SIZE * 2 + CELL_SEPARATOR_SIZE * 6;
+            let width_adjusted = width - SEPARATORS_LENGTH;
+            let height_adjusted = height - SEPARATORS_LENGTH;
+
+            let cell_width = width_adjusted / 9;
+            let mut remaining_width = width_adjusted % 9;
+            let mut x = 0;
+            struct CellXs {
+                xpos: i32,
+                width: i32
+            }
+            let cell_xs : [CellXs; 9] = from_fn(|col|{
+                let cell_width = {
+                    if remaining_width > 0 {
+                        remaining_width -= 1;
+                        cell_width + 1
+                    }
+                    else {
+                        cell_width
+                    }
+                };
+
+                let xpos = x;
+                match col {
+                    2 | 5 => x += BLOCK_SEPARATOR_SIZE,
+                    _ => x += CELL_SEPARATOR_SIZE
+                }
+                x += cell_width;
+                CellXs{xpos, width: cell_width}
+            });
+
+            let cell_height = height_adjusted / 9;
+            let mut remaining_height = height_adjusted % 9;
+            let mut y = 0;
+            struct CellYs {
+                ypos: i32,
+                height: i32
+            }
+            let cell_ys : [CellYs; 9] = from_fn(|row|{
+                let cell_height = {
+                    if remaining_height > 0 {
+                        remaining_height -= 1;
+                        cell_height + 1
+                    }
+                    else {
+                        cell_height
+                    }
+                };
+                let ypos = y;
+                match row {
+                    2 | 5 => y += BLOCK_SEPARATOR_SIZE,
+                    _ => y +=  CELL_SEPARATOR_SIZE
+                }
+                y += cell_height;
+                CellYs { ypos, height: cell_height}
+            });
+
+            for row in 0..9 {
+                for col in 0..9 {
+                    let allocation = Allocation::new(
+                        cell_xs[col].xpos,
+                        cell_ys[row].ypos,
+                        cell_xs[col].width,
+                        cell_ys[row].height
+                    );
+                    self.cells[row as usize][col as usize].size_allocate(&allocation, baseline);
+                }
+            }
+
+            let offsets = [0, 1, 3, 4, 6, 7];
+            for i in 0..offsets.len() {
+                let xs = &cell_xs[offsets[i]];
+                let vertical_allocation = Allocation::new(
+                    xs.xpos + xs.width,
+                    0,
+                    CELL_SEPARATOR_SIZE,
+                    height,
+                );
+                self.cell_vertical_separators[i].size_allocate(&vertical_allocation, baseline);
+
+                let ys = &cell_ys[offsets[i]];
+                let horizontal_allocation = Allocation::new(
+                    0,
+                    ys.ypos + ys.height,
+                    width,
+                    CELL_SEPARATOR_SIZE,
+                );
+                self.cell_horizontal_separators[i].size_allocate(&horizontal_allocation, baseline);
+            }
+
+            let offsets = [2, 5];
+            for i in 0..offsets.len() {
+                let xs = &cell_xs[offsets[i]];
+                let vertical_allocation = Allocation::new(
+                    xs.xpos + xs.width,
+                    0,
+                    BLOCK_SEPARATOR_SIZE,
+                    height,
+                );
+                self.block_vertical_separators[i].size_allocate(&vertical_allocation, baseline);
+
+                let ys = &cell_ys[offsets[i]];
+                let horizontal_allocation = Allocation::new(
+                    0,
+                    ys.ypos + ys.height,
+                    width,
+                    BLOCK_SEPARATOR_SIZE,
+                );
+                self.block_horizontal_separators[i].size_allocate(&horizontal_allocation, baseline);
+            }
+        }
+
         fn grab_focus(&self) -> bool {
             if self.backend().keyboard_pressed_recently() {
                 self.selected_cell().select()
@@ -508,7 +658,6 @@ use super::*;
             }
         }
     }
-    impl GridImpl for SudokuGrid{}
 }
 
 glib::wrapper! {
@@ -520,23 +669,9 @@ glib::wrapper! {
 impl SudokuGrid {
     pub fn new_unitialized () -> Self {
         let grid: Self = glib::Object::builder()
-            .property("row_spacing", 2)
-            .property("column_spacing", 2)
-            .property("row_homogeneous", true)
-            .property("column_homogeneous", true)
             .build();
 
         grid
-    }
-
-    pub fn set_font_size (&self, height: i32) {
-        for row in &self.imp().cells {
-            for cell in row {
-                let grid_padding = 10; //for size consistency with <= v50, remove with gtk5
-                let height = (height - grid_padding) / 9;
-                cell.set_font_sizes(height);
-            }
-        }
     }
 
     pub fn init (&self, backend: &SudokuBackend) {

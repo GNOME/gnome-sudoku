@@ -3,7 +3,6 @@
   --sudoku-pause-delay: 2s;
   --sudoku-completed-duration: 500ms;
   --sudoku-rounded-corner: 10px;
-  --sudoku-rounded-corner-invisble: calc(var(--sudoku-rounded-corner) + 3px);
 }
 
 @media (prefers-color-scheme: light) {
@@ -26,9 +25,11 @@
   sudoku-grid {
     border: 2px solid #333;
     border-radius: var(--sudoku-rounded-corner);
+  }
+  block-separator {
     background: #333;
   }
-  sudoku-block {
+  cell-separator {
     background: #999;
   }
   sudoku-cell {
@@ -64,11 +65,10 @@
     --sudoku-cell-highlight-color: oklch(from var(--sudoku-accent-color) l calc(c * 0.25) h);
     --sudoku-cell-highlight-color-extra: oklch(from var(--sudoku-accent-color) 0.32 calc(c * 0.7) h);
   }
-  sudoku-grid {
+  block-separator {
     background: oklch(0.56 0 0);
-    border-radius: var(--sudoku-rounded-corner-invisble);
   }
-  sudoku-block {
+  cell-separator {
     background: oklch(0.47 0 0);
   }
   sudoku-cell {
@@ -99,18 +99,6 @@ sudoku-cell.bottom-left {
 }
 sudoku-cell.bottom-right {
   border-bottom-right-radius: var(--sudoku-rounded-corner);
-}
-sudoku-block.top-left {
-  border-top-left-radius: var(--sudoku-rounded-corner-invisble);
-}
-sudoku-block.top-right {
-  border-top-right-radius: var(--sudoku-rounded-corner-invisble);
-}
-sudoku-block.bottom-left {
-  border-bottom-left-radius: var(--sudoku-rounded-corner-invisble);
-}
-sudoku-block.bottom-right {
-  border-bottom-right-radius: var(--sudoku-rounded-corner-invisble);
 }
 
 @keyframes completed-animation {

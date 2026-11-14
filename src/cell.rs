@@ -227,7 +227,6 @@ use super::*;
 
             self.obj().emit_by_name::<()>("grab-picker", &[]);
             let picker = get_cloned(&self.picker_popover).into_inner().unwrap();
-            println!("picker refcount: {}", &picker.ref_count());
 
             let wants_value = wants_value.unwrap().get::<bool>().unwrap();
             let wants_value_picker = wants_value ^ self.backend().earmark_mode();

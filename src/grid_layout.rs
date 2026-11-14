@@ -149,8 +149,6 @@ mod imp {
             let maximum_top_offset = 40; //align with the start menu
             top = i32::min(top, maximum_top_offset);
 
-            self.grid.get().unwrap().set_font_size(child_height);
-
             let child_allocation = gtk::Allocation::new(start, top, child_width, child_height);
             child.size_allocate(&child_allocation, baseline);
         }
