@@ -555,9 +555,9 @@ impl SudokuGame {
         //order for already filled in cells
         let mut randomized_save_order: Vec<Coord> = Vec::new();
         let cells_not_fixed = self.board().cells_not_fixed();
-        for coord in play_order.iter() {
-            if !cells_not_fixed.contains(&coord) {
-                randomized_save_order.push(*coord);
+        for coord in cells_not_fixed {
+            if !play_order.contains(&coord) {
+                randomized_save_order.push(coord);
             }
         }
 
