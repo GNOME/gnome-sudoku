@@ -373,7 +373,9 @@ impl SudokuBoard {
             }
 
             if let Some(c) = c.to_digit(10) {
-                board.init_cell(row, col, Some((c - 1) as usize));
+                if c != 0 {
+                    board.init_cell(row, col, Some((c - 1) as usize));
+                }
             }
             else if c != '.' && c != ' ' && c!= '-' {
                 continue;
