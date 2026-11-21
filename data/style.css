@@ -46,6 +46,12 @@
     background: var(--view-bg-color);
     transition: background var(--sudoku-pause-delay);
   }
+  sudoku-cell.top-left {
+      border-top-left-radius: var(--sudoku-rounded-corner);
+  }
+  sudoku-cell.top-right {
+      border-top-right-radius: var(--sudoku-rounded-corner);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -88,19 +94,12 @@
 }
 
 /*Styles in common for both light mode and dark mode*/
-sudoku-cell.top-left {
-  border-top-left-radius: var(--sudoku-rounded-corner);
-}
-sudoku-cell.top-right {
-  border-top-right-radius: var(--sudoku-rounded-corner);
-}
 sudoku-cell.bottom-left {
   border-bottom-left-radius: var(--sudoku-rounded-corner);
 }
 sudoku-cell.bottom-right {
   border-bottom-right-radius: var(--sudoku-rounded-corner);
 }
-
 @keyframes completed-animation {
   0% {background-color: var(--sudoku-cell-color);}
   50% {background-color: var(--sudoku-cell-highlight-color-extra);}
