@@ -174,8 +174,9 @@ use super::*;
             backwards_controller.connect_pressed(glib::clone!(
                 #[weak(rename_to = game_view)] self,
                 move |gesture: &GestureClick, _, _, _| {
-                    game_view.obj().activate_action("game-view.undo", None).unwrap();
-                    gesture.set_state(EventSequenceState::Claimed);
+                    if game_view.obj().activate_action("game-view.undo", None).is_ok() {
+                        gesture.set_state(EventSequenceState::Claimed);
+                    }
                 }
             ));
 
@@ -187,8 +188,9 @@ use super::*;
             forwards_controller.connect_pressed(glib::clone!(
                 #[weak(rename_to = game_view)] self,
                 move |gesture: &GestureClick, _, _, _| {
-                    game_view.obj().activate_action("game-view.redo", None).unwrap();
-                    gesture.set_state(EventSequenceState::Claimed);
+                    if game_view.obj().activate_action("game-view.redo", None).is_ok() {
+                        gesture.set_state(EventSequenceState::Claimed);
+                    }
                 }
             ));
             self.obj().add_controller(forwards_controller);
