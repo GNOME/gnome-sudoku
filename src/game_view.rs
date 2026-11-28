@@ -77,7 +77,7 @@ use super::*;
         reset_board_action: SimpleAction,
         toggle_pause_action: SimpleAction,
 
-        is_vertical: Cell<bool>,
+        is_portrait: Cell<bool>,
         width_is_small: Cell<bool>,
 
         pub grid: SudokuGrid,
@@ -128,7 +128,7 @@ use super::*;
     impl Default for SudokuGameView {
         fn default() -> Self {
             Self {
-                is_vertical: Default::default(),
+                is_portrait: Default::default(),
                 width_is_small: Default::default(),
                 undo_action: SimpleAction::new("undo", None),
                 redo_action: SimpleAction::new("redo", None),
@@ -232,14 +232,14 @@ use super::*;
             self.ui_breakpoint.connect_apply(glib::clone!(
                 #[weak(rename_to = game_view)] self,
                 move |_| {
-                    game_view.set_vertical_ui();
+                    game_view.set_portrait_ui();
                 }
             ));
 
             self.ui_breakpoint.connect_unapply(glib::clone!(
                 #[weak(rename_to = game_view)] self,
                 move |_| {
-                    game_view.set_wide_ui();
+                    game_view.set_landscape_ui();
                 }
             ));
 
@@ -333,9 +333,9 @@ use super::*;
             self.backend.get().unwrap()
         }
 
-        fn set_wide_ui (&self) {
+        fn set_landscape_ui (&self) {
             self.unparent_buttons();
-            self.is_vertical.set(false);
+            self.is_portrait.set(false);
             self.update_buttons_visibility();
             self.top_headerbar.pack_start(&*self.undo_button);
             self.top_headerbar.pack_start(&*self.redo_button);
@@ -344,9 +344,9 @@ use super::*;
             self.top_headerbar.pack_end(&*self.clock_box);
         }
 
-        fn set_vertical_ui (&self) {
+        fn set_portrait_ui (&self) {
             self.unparent_buttons();
-            self.is_vertical.set(true);
+            self.is_portrait.set(true);
             self.update_buttons_visibility();
             self.bottom_headerbar.pack_start(&*self.undo_button);
             self.bottom_headerbar.pack_start(&*self.redo_button);
@@ -365,8 +365,8 @@ use super::*;
 
         fn update_buttons_visibility (&self) {
             let show_timer = self.backend().pref_timer();
-            self.clock_box.set_visible(show_timer && (!self.width_is_small.get() || self.is_vertical.get()));
-            self.redo_button.set_visible(!show_timer || !self.width_is_small.get() || self.is_vertical.get());
+            self.clock_box.set_visible(show_timer && (!self.width_is_small.get() || self.is_portrait.get()));
+            self.redo_button.set_visible(!show_timer || !self.width_is_small.get() || self.is_portrait.get());
         }
 
         pub fn initialize_buttons (&self) {
