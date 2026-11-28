@@ -610,10 +610,10 @@ impl SudokuCell {
         let fixed = backend.game_fixed(self.pos());
         self.imp().set_actions(!fixed);
         if backend.game_fixed(self.pos()){
-            self.set_css_classes(&["fixed"]);
+            self.add_css_class("fixed");
         }
         else {
-            self.set_css_classes(&[]);
+            self.remove_css_class("fixed");
         }
     }
 
