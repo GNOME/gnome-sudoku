@@ -42,7 +42,7 @@ use std::cell::OnceCell;
 mod imp {
     use std::cell::Cell;
 
-use gtk::{CssProvider, ReducedMotion};
+use gtk::{CssProvider, ReducedMotion, glib::Properties};
 
 use super::*;
 
@@ -69,7 +69,8 @@ use super::*;
         }
     }
 
-    #[derive(CompositeTemplate)]
+    #[derive(CompositeTemplate, Properties)]
+    #[properties(wrapper_type = super::SudokuGameView)]
     #[template(resource = "/org/gnome/Sudoku/ui/game-view.ui")]
     pub struct SudokuGameView {
         undo_action: SimpleAction,
@@ -77,7 +78,8 @@ use super::*;
         reset_board_action: SimpleAction,
         toggle_pause_action: SimpleAction,
 
-        is_portrait: Cell<bool>,
+        #[property(get, set)]
+        portrait: Cell<bool>,
         width_is_small: Cell<bool>,
 
         pub grid: SudokuGrid,
@@ -128,7 +130,7 @@ use super::*;
     impl Default for SudokuGameView {
         fn default() -> Self {
             Self {
-                is_portrait: Default::default(),
+                portrait: Default::default(),
                 width_is_small: Default::default(),
                 undo_action: SimpleAction::new("undo", None),
                 redo_action: SimpleAction::new("redo", None),
@@ -228,6 +230,14 @@ use super::*;
                     game_view.windowtitle.set_subtitle(&backend.game_difficulty().to_translated_string());
                 }
             ));
+
+            adw::bind_property_to_css_class(
+                &*self.obj(),
+                "portrait",
+                &*self.obj(),
+                "portrait",
+                glib::BindingFlags::DEFAULT
+            );
 
             self.ui_breakpoint.connect_apply(glib::clone!(
                 #[weak(rename_to = game_view)] self,
@@ -335,7 +345,7 @@ use super::*;
 
         fn set_landscape_ui (&self) {
             self.unparent_buttons();
-            self.is_portrait.set(false);
+            self.obj().set_portrait(false);
             self.update_buttons_visibility();
             self.top_headerbar.pack_start(&*self.undo_button);
             self.top_headerbar.pack_start(&*self.redo_button);
@@ -346,7 +356,7 @@ use super::*;
 
         fn set_portrait_ui (&self) {
             self.unparent_buttons();
-            self.is_portrait.set(true);
+            self.obj().set_portrait(true);
             self.update_buttons_visibility();
             self.bottom_headerbar.pack_start(&*self.undo_button);
             self.bottom_headerbar.pack_start(&*self.redo_button);
@@ -365,8 +375,8 @@ use super::*;
 
         fn update_buttons_visibility (&self) {
             let show_timer = self.backend().pref_timer();
-            self.clock_box.set_visible(show_timer && (!self.width_is_small.get() || self.is_portrait.get()));
-            self.redo_button.set_visible(!show_timer || !self.width_is_small.get() || self.is_portrait.get());
+            self.clock_box.set_visible(show_timer && (!self.width_is_small.get() || self.obj().portrait()));
+            self.redo_button.set_visible(!show_timer || !self.width_is_small.get() || self.obj().portrait());
         }
 
         pub fn initialize_buttons (&self) {
@@ -596,6 +606,7 @@ use super::*;
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for SudokuGameView {
         fn constructed(&self) {
             self.parent_constructed();

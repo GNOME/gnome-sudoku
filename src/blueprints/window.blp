@@ -12,7 +12,11 @@ template $SudokuWindow: Adw.ApplicationWindow {
   content: Adw.ViewStack view_stack {
     enable-transitions: true;
 
-    $SudokuGameView game_view {}
-    $SudokuStartView start_view {}
+    $SudokuGameView game_view {
+      css-name: "sudoku-game-view";
+    }
+    $SudokuStartView start_view {
+      css-name: "sudoku-start-view";
+    }
   };
 }

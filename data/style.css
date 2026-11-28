@@ -52,6 +52,15 @@
   sudoku-cell.top-right {
       border-top-right-radius: var(--sudoku-rounded-corner);
   }
+  sudoku-cell.bottom-left {
+      border-bottom-left-radius: var(--sudoku-rounded-corner);
+  }
+  sudoku-cell.bottom-right {
+      border-bottom-right-radius: var(--sudoku-rounded-corner);
+  }
+  overlay.paused > label {
+      border-radius: var(--sudoku-rounded-corner);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -91,15 +100,21 @@
     background: var(--sudoku-cell-color);
     transition: background var(--sudoku-pause-delay);
   }
+  sudoku-game-view:not(.portrait) sudoku-cell.bottom-left {
+      border-bottom-left-radius: var(--sudoku-rounded-corner);
+  }
+  sudoku-game-view:not(.portrait) sudoku-cell.bottom-right {
+      border-bottom-right-radius: var(--sudoku-rounded-corner);
+  }
+  sudoku-game-view:not(.portrait) overlay.paused > label {
+      border-bottom-right-radius: var(--sudoku-rounded-corner);
+  }
+  sudoku-game-view:not(.portrait) overlay.paused > label {
+      border-bottom-left-radius: var(--sudoku-rounded-corner);
+  }
 }
 
 /*Styles in common for both light mode and dark mode*/
-sudoku-cell.bottom-left {
-  border-bottom-left-radius: var(--sudoku-rounded-corner);
-}
-sudoku-cell.bottom-right {
-  border-bottom-right-radius: var(--sudoku-rounded-corner);
-}
 @keyframes completed-animation {
   0% {background-color: var(--sudoku-cell-color);}
   50% {background-color: var(--sudoku-cell-highlight-color-extra);}
@@ -130,7 +145,6 @@ sudoku-value.error {
 overlay.paused > label {
   font-weight: bold;
   color: #FFF;
-  border-radius: var(--sudoku-rounded-corner);
   background: rgba(0, 0, 0, 0.75);
   transition: background var(--sudoku-pause-delay);
   animation: success-animation forwards 1s;
