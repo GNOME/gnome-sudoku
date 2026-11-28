@@ -31,7 +31,9 @@ use crate::grid::SudokuGrid;
 use std::cell::OnceCell;
 
 mod imp {
-    use super::*;
+    use std::cell::Cell;
+
+use super::*;
 
     #[glib::object_subclass]
     impl ObjectSubclass for SudokuGridLayout {
@@ -41,20 +43,20 @@ mod imp {
     }
 
     pub struct SudokuGridLayout {
-        margin_default_size: i32,
-        margin_small_size: i32,
+        margin_default_size: Cell<i32>,
+        margin_small_size: Cell<i32>,
         margin_size_diff: i32,
     }
 
     impl Default for SudokuGridLayout {
         fn default() -> Self {
-            const DEF: i32 = 25;
-            const SMALL: i32 = 10;
-            const DIFF: i32 = DEF - SMALL;
+            let margin_default_size = Cell::new(25);
+            let margin_small_size = Cell::new(25);
+            let margin_size_diff = margin_default_size.get() - margin_small_size.get();
             Self {
-                margin_default_size: DEF,
-                margin_small_size: SMALL,
-                margin_size_diff: DIFF,
+                margin_default_size,
+                margin_small_size,
+                margin_size_diff,
             }
         }
     }
@@ -62,18 +64,30 @@ mod imp {
     impl SudokuGridLayout {
         fn calc_align (&self, size: i32) -> i32 {
             if size > config::MEDIUM_WINDOW_WIDTH {
-                self.margin_default_size
+                self.margin_default_size.get()
             }
             else {
                 let factor = SudokuGridLayout::normalize(
                     size, config::SMALL_WINDOW_WIDTH, config::MEDIUM_WINDOW_WIDTH);
-                self.margin_small_size + (self.margin_size_diff as f64 * factor) as i32
+                self.margin_small_size.get() + (self.margin_size_diff as f64 * factor) as i32
             }
         }
 
         fn normalize (mut val: i32, min: i32, max: i32) -> f64 {
             val = val.clamp(min, max);
             (val - min) as f64 / (max - min) as f64
+        }
+
+        pub fn set_margins (&self, style_manager: &adw::StyleManager) {
+            //adjust for grid border in light mode
+            if style_manager.is_dark() {
+                self.margin_small_size.set(10);
+                self.margin_default_size.set(25);
+            }
+            else {
+                self.margin_small_size.set(8);
+                self.margin_default_size.set(23);
+            }
         }
     }
 
@@ -147,10 +161,20 @@ glib::wrapper! {
 
 
 impl SudokuGridLayout {
-    pub fn new () -> Self {
+    pub fn new_unitialized () -> Self {
         let grid_layout: Self = Object::builder()
             .build();
 
         return grid_layout;
+    }
+
+    pub fn init(&self) {
+        let style_manager = adw::StyleManager::default();
+        self.imp().set_margins(&style_manager);
+        style_manager.connect_dark_notify(glib::clone!(
+            #[weak(rename_to = grid_layout)] self,
+            move |style_manager: &adw::StyleManager|
+            grid_layout.imp().set_margins(style_manager)
+        ));
     }
 }

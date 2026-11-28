@@ -254,6 +254,9 @@ use super::*;
             ));
 
             self.add_game_hooks ();
+            let grid_layout = SudokuGridLayout::new_unitialized();
+            grid_layout.init();
+            self.grid_bin.set_layout_manager(Some(grid_layout));
 
             self.grid.init(backend);
         }
@@ -611,9 +614,6 @@ use super::*;
         fn constructed(&self) {
             self.parent_constructed();
             self.grid_overlay.set_child(Some(&self.grid));
-
-            let grid_layout = SudokuGridLayout::new();
-            self.grid_bin.set_layout_manager(Some(grid_layout));
 
             self.menu_button.imp().main_menu.connect_closed(glib::clone!(
                 #[weak(rename_to = game_view)] self,
