@@ -91,7 +91,7 @@ use super::*;
         pub fn value_changed (&self, pos: Coord, old_val: CompatValue, new_val: CompatValue) {
             self.obj().emit_by_name::<()>(
                 "value-changed",
-                &[&(pos.row as i32), &(pos.col as i32), &old_val.0, &new_val.0]
+                &[&(pos.row as i32), &(pos.col as i32), &old_val, &new_val]
             );
         }
 
@@ -174,8 +174,8 @@ use super::*;
                         .param_types([
                             i32::static_type(),
                             i32::static_type(),
-                            i32::static_type(),
-                            i32::static_type(),
+                            CompatValue::static_type(),
+                            CompatValue::static_type(),
                         ])
                         .build(),
                 ]

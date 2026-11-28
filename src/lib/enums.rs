@@ -18,11 +18,9 @@
  * along with GNOME Sudoku. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use gtk::glib::types::{StaticType, Type};
-use gtk::glib::value::{Value, FromValue, ToValue, GenericValueTypeChecker};
 use gtk::glib::variant::{FromVariant, StaticVariantType, ToVariant};
 use gtk::{self, DirectionType};
-use gtk::glib::{self, Variant, VariantTy};
+use gtk::glib::{self, ValueDelegate, Variant, VariantTy};
 use serde::{Deserialize, Serialize};
 
 //must remain aligned with gschema
@@ -350,16 +348,24 @@ impl ZoomLevel{
 
 //this lets us transform back and forth an i32 into an Option<usize>
 //careful when accessing directly the inner value as i32::MAX is None
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, ValueDelegate)]
 pub struct CompatValue(pub i32);
 
-impl ToValue for CompatValue {
-    fn to_value(&self) -> Value {
-        self.0.to_value()
+impl From<i32> for CompatValue {
+    fn from(v: i32) -> Self {
+        Self(v)
     }
+}
 
-    fn value_type(&self) -> Type {
-        i32::static_type()
+impl<'a> From<&'a CompatValue> for i32 {
+    fn from(v: &'a CompatValue) -> Self {
+        v.0
+    }
+}
+
+impl From<CompatValue> for i32 {
+    fn from(v: CompatValue) -> Self {
+        v.0
     }
 }
 
@@ -380,18 +386,3 @@ impl Into<Option<usize>> for CompatValue {
         }
     }
 }
-
-impl StaticType for CompatValue {
-    fn static_type() -> glib::Type {
-        i32::static_type()
-    }
-}
-
-unsafe impl <'a>FromValue<'a> for CompatValue {
-    type Checker = GenericValueTypeChecker<Self>;
-    #[inline]
-    unsafe fn from_value(value: &'a Value) -> Self {
-        unsafe { Self(i32::from_value(value)) }
-    }
-}
-
