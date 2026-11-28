@@ -51,7 +51,7 @@ use super::*;
     impl Default for SudokuGridLayout {
         fn default() -> Self {
             let margin_default_size = Cell::new(25);
-            let margin_small_size = Cell::new(25);
+            let margin_small_size = Cell::new(10);
             let margin_size_diff = margin_default_size.get() - margin_small_size.get();
             Self {
                 margin_default_size,
